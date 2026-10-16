@@ -88,9 +88,9 @@ Coverage varies by edition: 22–76% of listings geocode at address level (`data
 
 **Pre-1960 layer.** Most entries (about 90%) are placed only at the town centre and are drawn as clusters. Street-level placement uses
 today's numbering, which applies to Denver after the 1887 renumbering, but later street renamings are not handled and these points have
-not been checked against historical maps (e.g. Sanborn atlases); treat them as approximate. Vetting this layer removed 1,266 entries
+not been checked against historical maps (e.g. Sanborn atlases); treat them as approximate. Vetting this layer removed 2,133 entries
 that were workers listed at their home addresses ("Cain Patrick, stoker, Denver Gas Co, 2422 Champa"), not works. It also stopped
-placing 684 office listings at their downtown office addresses.
+placing 1,138 office listings at their downtown office addresses.
 
 ## Reproduce
 
@@ -111,7 +111,7 @@ OCR output can differ slightly across Tesseract versions, which is why the OCR o
 
 The manufacturers' directory starts in 1961, but Colorado's smelters, foundries, assay offices and gas works go back to the 1870s.
 `pipeline/historical/` reads the searchable text of the CU Boulder scans of the *Colorado State Business Directory*
-(17 editions: 1871 Rocky Mountain Directory, 1875, 1877–1883, 1887, 1888, 1891, 1910, 1913, 1915, 1939, 1950) and:
+(22 editions: 1871 Rocky Mountain Directory, 1875, 1877–1884, 1887, 1888, 1891, 1892, 1910, 1911, 1913, 1915, 1929, 1932, 1939, 1950) and:
 
 1. **Finds the town** for every entry from town headings ("ALPINE.", "Delta Business Directory.", "DENVER CONT'D"), page running
    heads ("DEN", "LEA") and, failing that, a town named in the entry, all matched to the USGS GNIS gazetteer.
@@ -126,8 +126,8 @@ The manufacturers' directory starts in 1961, but Colorado's smelters, foundries,
 4. **Links firms** across editions (fuzzy names within a town) and to the 1961–2002 directory, by name in the same city or by a street
    address within 40 m of a later hazardous site.
 
-Result: 4,411 hazardous-trade listings → 4,217 firm-locations; 387 at a street address; 164 link to the 1961–2002 directory,
-giving 130 later sites a documented pre-1960 hazardous precursor.
+Result: 5,273 hazardous-trade listings → 4,974 firm-locations; 460 at a street address; 198 link to the 1961–2002 directory,
+giving 148 later sites a documented pre-1960 hazardous precursor.
 **Caveats:** the text layers are uncorrected OCR with columns interleaved, so names can be garbled (`name_quality`), some entries are
 missed, and counts are not comparable between editions or with the manufacturers' directory. 1871, 1875 and the user-supplied 1877
 volumes are read from the Internet Archive / Google Books copies, which carry text layers.

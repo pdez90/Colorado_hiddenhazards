@@ -126,9 +126,18 @@ def firm_name(e, ms, me):
         if pre and not pre.endswith(','): return (pre + ' ' + e[ms:end]).strip(' ,.')
     return pre or e.split(',')[0]
 
+# place names that are also surnames, smelter names or ordinary words: only accepted when written as a place ('Grant, Colo')
+AMBIG = {'GRANT', 'HENRY', 'GLOBE', 'ARGO', 'UNION', 'GARFIELD', 'GATES', 'EMPIRE', 'LINCOLN', 'WASHINGTON', 'FRANKLIN', 'JACKSON',
+         'ADAMS', 'BRUSH', 'MODEL', 'STANDARD', 'CENTRAL', 'ORCHARD', 'LIBERTY', 'HOPE', 'VICTOR', 'MONARCH', 'EUREKA', 'PIONEER',
+         'CLIMAX', 'SUPERIOR', 'STAR', 'SUNSHINE', 'WESTERN', 'NATIONAL', 'AMERICAN', 'PEOPLES', 'GOLDEN', 'SILVER', 'CRYSTAL',
+         'IRON', 'BRIGHTON', 'MARBLE', 'BOONE', 'HOLLY', 'ALMA', 'PARKER', 'LAWSON', 'WALDEN', 'ROLLINSVILLE', 'MANITOU', 'GILMAN',
+         'MORRISON', 'FLORENCE', 'ARVADA', 'LAMAR', 'TELLER', 'OURAY', 'KIOWA', 'OTIS', 'HUGO', 'MEAD', 'NIWOT', 'WINDSOR', 'BERTHOUD'}
 def town_in_text(e):
-    m = TOWN_RX.search(e)
-    return m.group(1).upper() if m else None
+    for m in TOWN_RX.finditer(e):
+        t = m.group(1).upper()
+        if t not in AMBIG or re.match(r"\s*,?\s*Colo\b", e[m.end():]) or re.search(r"\b(?:at|in|of)\s+$", e[:m.start()]):
+            return t
+    return None
 
 def parse_volume(path, year, vol, mode=None):
     mode = mode or ('classified' if year <= 1880 else 'entry' if year < 1900 else 'line')

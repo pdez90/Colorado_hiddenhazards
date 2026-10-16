@@ -38,6 +38,14 @@ df = df[~df.is_person]
 # listings whose name is plainly not an industrial firm (column-interleaving in the 1950 coded volume attaches codes to neighbours)
 NONIND = r"(?i)\b(groc\w*|grocery|club|fruit|cafe|caf[eé]|store|hotel|motel|assn|association|church|school|bank|tavern|bar|restaurant|beauty|barber|insurance|realty|sales|calculating|florist|bakery|dairy|drug\w*|press club)\b"
 df = df[~df.name.str.contains(NONIND)]
+# names made only of trade/place words are section headings or ad slogans, not firms
+GENERIC = r"(?i)\b(the|co|company|inc|corp|mfg|manufactur\w*|works?|and|of|sheet|metal|iron|steel|brass|wire|ornamental|structural|foundr\w*|machine\w*|machinists?|shops?|tinners?|tanners?|tannery|assay\w*|smelt\w*|refin\w*|reduction|sampling|mills?|chemicals?|chemists?|gas|electric|light|oil|supply|supplies|plating|electro|platers?|wagons?|carriage|makers?|boilers?|repair\w*|denver|colorado|rocky|mountain|creosote|asphalt|rubber|powder|soap|paint|cornice|galvaniz\w*|engines?|mining|coal|ore|stamp)\b"
+distinct = df.name.str.replace(GENERIC, ' ', regex=True).str.replace(r'[^A-Za-z]', '', regex=True)
+df = df[distinct.str.len() >= 3]
+# a street must look like 'number + street name'; drop fragments like '4 Gas', '2 CD', '447 av'
+ok = df.street.fillna('').str.match(r"^\d{1,5}(?:-\d+)?\s+(?:[NSEW]\.?\s+)?(?:\d{1,3}(?:st|nd|rd|th|d)\b|[A-Z][a-z]{2,})") & \
+     ~df.street.fillna('').str.contains(r"(?i)\b(gas|agts?|co|works?|miles?|feet|ft|tons?|stamps?|to|business|denver)\b$")
+df.loc[~ok, 'street'] = ''
 print('kept', len(df))
 # --- junk names
 bad = (df.name.str.len() < 4) | df.name.str.match(r"^[a-z]") | (df.name.str.count(r"[^A-Za-z0-9 ,\.&'’\-]") > 3) \
