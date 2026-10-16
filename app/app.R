@@ -1,5 +1,5 @@
 # Colorado Hidden Hazards — explore historical hazardous manufacturing sites (Colorado Directory of Manufacturers,
-# 1961–2002), current EPA TRI facilities, cleanup sites, schools and health facilities, and CDPHE EnviroScreen 2.0.
+# 1961–2002, and hazardous trades in Colorado State Business Directories, 1877–1950), current EPA TRI facilities, cleanup sites, schools and health facilities, and CDPHE EnviroScreen 2.0.
 # Run from the repository root:  shiny::runApp("app")
 
 suppressPackageStartupMessages({
@@ -16,6 +16,10 @@ tri     <- read.csv(dd("tri_facilities.csv"), colClasses = c(GEOID = "character"
 cleanup <- read.csv(dd("cleanup_sites.csv"))
 schools <- read.csv(dd("schools.csv"), colClasses = c(GEOID = "character"))
 health  <- read.csv(dd("health_facilities.csv"), colClasses = c(GEOID = "character"))
+hist    <- if (file.exists(dd("historical_sites.csv"))) read.csv(dd("historical_sites.csv"), colClasses = c(GEOID = "character")) else NULL
+if (!is.null(hist)) hist <- hist |> mutate(persists_to_1961plus = as.logical(persists_to_1961plus) %in% TRUE, fe_hazard = as.logical(fe_hazard) %in% TRUE,
+                                           across(c(street, dcm_name, dcm_years, link), ~ coalesce(as.character(.x), "")))
+precur  <- if (file.exists(dd("site_precursors.csv"))) read.csv(dd("site_precursors.csv")) else data.frame(site_id = character(), hist_first_year = integer(), hist_names = character())
 tracts  <- st_read(dd("enviroscreen_tracts.geojson"), quiet = TRUE) |> mutate(GEOID = as.character(GEOID))
 by_year_dir <- if (dir.exists(dd("by_year"))) dd("by_year") else file.path("..", "data", "by_year")
 validation  <- local({ f <- c(dd("geocoding_validation_frs.csv"), "../data/results/geocoding_validation_frs.csv"); f <- f[file.exists(f)]
@@ -43,9 +47,14 @@ tract_df <- st_drop_geometry(tracts)
 # persistence: editions in which the site hosted a hazardous-sector firm, and span from first to last such edition
 pers <- site_yr |> group_by(site_id) |> summarise(n_editions = n_distinct(year), haz_first = min(year), haz_last = max(year), .groups = "drop") |>
   mutate(span_years = haz_last - haz_first)
-sites <- sites |> left_join(pers, by = "site_id") |> mutate(n_editions = coalesce(n_editions, 1L), span_years = coalesce(span_years, 0L))
-SPAN_BREAKS <- c(-1, 0, 9, 19, 29, 45); SPAN_LABELS <- c("One edition", "1–9 years", "10–19 years", "20–29 years", "30+ years")
-SPAN_COL <- c("#c6dbef", "#9ecae1", "#4292c6", "#2166ac", "#08306b")
+# a firm or address traced back to the pre-1960 business directories extends the site's span
+sites <- sites |> left_join(pers, by = "site_id") |> left_join(precur, by = "site_id") |>
+  mutate(n_editions = coalesce(n_editions, 1L), haz_first = pmin(haz_first, hist_first_year, na.rm = TRUE),
+         span_years = coalesce(haz_last - haz_first, 0L))
+SPAN_BREAKS <- c(-1, 0, 9, 19, 29, 49, 200)
+SPAN_LABELS <- c("One edition", "1–9 years", "10–19 years", "20–29 years", "30–49 years", "50+ years (traced to pre-1960 directories)")
+SPAN_COL <- c("#c6dbef", "#9ecae1", "#4292c6", "#2166ac", "#08306b", "#000000")
+HIST_COL <- "#8c510a"
 CLEAN_LAYERS <- c("Brownfields", "Voluntary cleanup (VCUP)", "Superfund (SEMS)", "RCRA corrective action",
                   "Environmental covenants / land-use controls")
 CLEAN_COL <- c("#1b7837", "#5aae61", "#253494", "#41b6c4", "#8c6bb1"); names(CLEAN_COL) <- CLEAN_LAYERS
@@ -53,11 +62,13 @@ esc <- function(x) htmltools::htmlEscape(ifelse(is.na(x), "", as.character(x)))
 
 # ---------------------------------------------------------------- UI
 filters <- list(
-  sliderInput("yrs", "Listed in the directory between", min = 1961, max = 2002, value = c(1961, 2002), sep = "", step = 1),
+  sliderInput("yrs", "Listed in a directory between", min = 1877, max = 2002, value = c(1877, 2002), sep = "", step = 1),
+  helpText("1877–1950: hazardous trades in the Colorado State Business Directory (brown). 1961–2002: Directory of Colorado Manufacturers."),
   checkboxGroupInput("sec", "Sector (Frickel & Elliott)", SECTORS, selected = SECTORS[1:7]),
   checkboxGroupInput("st", "Current regulatory status", STATUS, selected = STATUS),
   radioButtons("colby", "Colour sites by", c("Regulatory status" = "status", "Persistence (years listed)" = "span"), inline = FALSE),
-  sliderInput("minspan", "Persisted at least (years between first and last listing)", 0, 41, 0, step = 1),
+  sliderInput("minspan", "Persisted at least (years between first and last listing)", 0, 125, 0, step = 1),
+  checkboxInput("htown", "Include pre-1960 listings placed only at the town centre", TRUE),
   checkboxGroupInput("cf", "Confidence (location + industry)", c("High" = "high", "Medium" = "medium", "Low" = "low"),
                      selected = c("high", "medium", "low"), inline = TRUE),
   helpText("High = street-level geocode and an industry code printed in the directory. ",
@@ -84,7 +95,11 @@ ui <- page_navbar(
       card(card_header("Hazardous-sector sites listed per directory edition, by sector"), plotlyOutput("p_sector", height = 420)),
       card(card_header("…by current regulatory status"), plotlyOutput("p_status", height = 420))),
     card(card_header("Share of listed sites on no current inventory"), plotlyOutput("p_share", height = 300)),
-    tags$small(class = "text-muted", "Editions are irregular (25 between 1961 and 2002); 1971, 1985, 1992 and 2002 volumes are partial.")),
+    tags$small(class = "text-muted", "Editions are irregular (25 between 1961 and 2002); 1971, 1985, 1992 and 2002 volumes are partial."),
+    card(card_header("Before 1960: hazardous-trade firms listed per Colorado State Business Directory edition"), plotlyOutput("p_hist", height = 360),
+         tags$small(class = "text-muted", "Counts come from searchable text of the scanned directories and are not comparable to the manufacturers' directory: ",
+                    "the business directories list every trade and their OCR quality varies by edition. 1891 and 1910–1939 include large Denver sections.")),
+    ),
   nav_panel("Neighborhoods",
     layout_columns(col_widths = c(3, 9),
       card(card_header("Compare census tracts"),
@@ -115,7 +130,8 @@ ui <- page_navbar(
       card(card_header("Geocoded directory listings by edition"),
            selectInput("dl_year", "Edition", sort(as.integer(sub("CO_DCM_(\\d+)_geocoded.csv", "\\1", list.files(by_year_dir, "CO_DCM_.*csv"))))),
            downloadButton("dl_one", "Download edition CSV"), br(), br(),
-           downloadButton("dl_sites", "Download sites matching current filters"),
+           downloadButton("dl_sites", "Download sites matching current filters"), br(), br(),
+           downloadButton("dl_hist", "Download pre-1960 hazardous-trade firms (1877–1950)"),
            hr(), tags$small("Each edition file lists every manufacturer with its OCR'd name and address, SIC/NAICS codes, ",
                             "sector flags, establishment and site IDs, coordinates and geocode level.")),
       card(card_header("How reliable are the locations?"), uiOutput("geo_note"), tableOutput("valid"))))
@@ -135,7 +151,10 @@ server <- function(input, output, session) {
       left_join(sy |> group_by(site_id) |> summarise(years_in_range = paste(sort(unique(year)), collapse = ", ")), by = "site_id")
   })
   output$nsites <- renderText({ s <- sel_sites()
-    sprintf("%s sites, %s on no current inventory", format(nrow(s), big.mark = ","), format(sum(s$radar == "Not on any list"), big.mark = ",")) })
+    h <- sel_hist()
+    paste0(sprintf("%s sites, %s on no current inventory", format(nrow(s), big.mark = ","), format(sum(s$radar == "Not on any list"), big.mark = ",")),
+           if (!is.null(h)) sprintf("; plus %s pre-1960 hazardous-trade firms (%s at a street address, %s still listed after 1960)",
+                                    format(nrow(h), big.mark = ","), sum(h$precision != "town"), sum(h$persists_to_1961plus)) else "") })
 
   # ---- map
   pal_for <- function(v) { x <- tracts[[v]]
@@ -167,7 +186,7 @@ server <- function(input, output, session) {
             popup = sprintf("<b>%s</b><br>%s<br>%s", esc(d$name), esc(d$address), esc(d$type)),
             group = if (k == "Residential & long-term care") k else paste0(k, "s"), options = pathOptions(pane = "ctx")) }
     m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
-          overlayGroups = c("Historical hazardous sites", "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
+          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
       hideGroup(c("Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
@@ -186,10 +205,11 @@ server <- function(input, output, session) {
   })
   observe({
     s <- sel_sites()
-    pop <- sprintf("<b>%s, %s</b><br><b>%s</b> · %s confidence<br>Hazardous use in %s editions, %s–%s (%s years)<br>Listed %s–%s (in range: %s)<br><b>Hazardous firms:</b><br>%s<br><b>Sectors:</b> %s %s<br><b>Nearest inventory record:</b> %s<br><small>%s · %.5f, %.5f</small>",
+    pop <- sprintf("<b>%s, %s</b><br><b>%s</b> · %s confidence<br>Hazardous use in %s editions, %s–%s (%s years)<br>Listed %s–%s (in range: %s)<br><b>Hazardous firms:</b><br>%s<br><b>Sectors:</b> %s %s%s<br><b>Nearest inventory record:</b> %s<br><small>%s · %.5f, %.5f</small>",
                    esc(s$address), esc(s$city), esc(s$radar), esc(s$confidence), s$n_editions, s$haz_first, s$haz_last, s$span_years,
                    s$first_year, s$last_year, esc(s$years_in_range),
                    gsub(" \\| ", "<br>", esc(s$hazard_firms)), esc(s$fe_sectors), esc(s$ext_sectors),
+                   ifelse(is.na(s$hist_first_year), "", sprintf("<br><b>Pre-1960 precursor (since %s):</b> %s", s$hist_first_year, esc(s$hist_names))),
                    ifelse(s$known_match == "" | is.na(s$known_match), "none", esc(s$known_match)), s$site_id, s$lat, s$lon)
     if (input$colby == "span") {
       cls <- cut(s$span_years, SPAN_BREAKS, SPAN_LABELS)
@@ -209,6 +229,35 @@ server <- function(input, output, session) {
       addLegend("bottomleft", colors = leg$colors, labels = leg$labels, title = leg$title, opacity = 1, layerId = "sitelegend")
   })
 
+  # ---- pre-1960 layer
+  sel_hist <- reactive({
+    if (is.null(hist)) return(NULL)
+    h <- hist |> filter(last_year >= input$yrs[1], first_year <= input$yrs[2], (last_year - first_year) >= input$minspan)
+    if (!isTRUE(input$htown)) h <- h |> filter(precision != "town")
+    if (length(input$sec)) h <- h[sapply(strsplit(h$app_sectors, ";"), function(x) any(x %in% input$sec)), ] else h <- h[0, ]
+    h
+  })
+  observe({
+    h <- sel_hist(); px <- leafletProxy("map") |> clearGroup("Pre-1960 hazardous trades") |> removeControl("histlegend")
+    if (is.null(h) || !nrow(h)) return()
+    pop <- function(d) sprintf("<b>%s</b><br>%s%s<br><b>%s</b> · listed %s<br><i>Location: %s</i>%s<br><small>“%s”</small>",
+      esc(d$name), ifelse(d$street == "" | is.na(d$street), "", paste0(esc(d$street), ", ")), esc(d$town), esc(d$sectors), esc(d$years),
+      ifelse(d$precision == "town", "town centre only (address not mapped)", d$precision),
+      ifelse(d$persists_to_1961plus, sprintf("<br><b>Persisted:</b> %s in the 1961–2002 directory (%s; matched by %s)", esc(d$dcm_name), esc(d$dcm_years), esc(d$link)), ""),
+      esc(d$example))
+    ring <- function(d) ifelse(d$persists_to_1961plus, "#000000", "#ffffff")
+    st <- h[h$precision != "town", ]; tw <- h[h$precision == "town", ]
+    if (nrow(tw)) px <- px |> addCircleMarkers(data = tw, ~lon, ~lat, radius = 4, color = ring(tw), weight = ifelse(tw$persists_to_1961plus, 2, 0.8),
+                    fillColor = HIST_COL, fillOpacity = 0.55, popup = pop(tw), group = "Pre-1960 hazardous trades",
+                    clusterOptions = markerClusterOptions(maxClusterRadius = 25, spiderfyOnMaxZoom = TRUE), options = pathOptions(pane = "haz"))
+    if (nrow(st)) px <- px |> addCircleMarkers(data = st, ~lon, ~lat, radius = 3 + 1.2 * sqrt(st$editions), color = ring(st),
+                    weight = ifelse(st$persists_to_1961plus, 2, 0.8), fillColor = HIST_COL, fillOpacity = 0.95, popup = pop(st),
+                    group = "Pre-1960 hazardous trades", options = pathOptions(pane = "haz"))
+    px |> addLegend("bottomleft", colors = c(HIST_COL, HIST_COL), labels = c("Street address (Denver 1891+, larger cities 1910+)", "Town centre only (clustered)"),
+                    title = "Pre-1960 hazardous trades<br><small>black ring = firm or address still in 1961–2002 directory</small>",
+                    opacity = c(0.95, 0.55), layerId = "histlegend")
+  })
+
   # ---- trends
   sy_sel <- reactive({
     s <- sel_sites()
@@ -224,6 +273,14 @@ server <- function(input, output, session) {
     d <- sy_sel() |> count(year, radar) |> mutate(radar = factor(radar, STATUS))
     ggplotly(ggplot(d, aes(year, n, fill = radar)) + geom_col(width = 0.8) + scale_fill_manual(values = STATUS_COL) +
                labs(x = "Directory edition", y = "Sites listed", fill = NULL) + theme_minimal())
+  })
+  output$p_hist <- renderPlotly({
+    h <- sel_hist(); if (is.null(h) || !nrow(h)) return(NULL)
+    d <- h |> mutate(yr = strsplit(years, " ")) |> unnest(yr) |> mutate(yr = as.integer(yr)) |>
+      filter(yr >= input$yrs[1], yr <= input$yrs[2]) |> separate_rows(app_sectors, sep = ";") |> filter(app_sectors %in% input$sec) |>
+      count(yr, app_sectors)
+    ggplotly(ggplot(d, aes(factor(yr), n, fill = app_sectors)) + geom_col() + labs(x = "Business directory edition", y = "Firms", fill = NULL) +
+               theme_minimal())
   })
   output$p_share <- renderPlotly({
     d <- sy_sel() |> group_by(year) |> summarise(share = mean(radar == "Not on any list"), n = n())
@@ -303,13 +360,19 @@ server <- function(input, output, session) {
                                    content = function(f) file.copy(file.path(by_year_dir, sprintf("CO_DCM_%s_geocoded.csv", input$dl_year)), f))
   output$dl_sites <- downloadHandler(filename = function() "CO_hazardous_sites_filtered.csv",
                                      content = function(f) write.csv(sel_sites(), f, row.names = FALSE))
+  output$dl_hist <- downloadHandler(filename = function() "CO_pre1960_hazardous_sites.csv",
+                                    content = function(f) write.csv(if (is.null(hist)) data.frame() else hist, f, row.names = FALSE))
   output$geo_note <- renderUI(HTML(paste0(
     "<p>Addresses were OCR'd from scanned directories and geocoded offline against US Census TIGER/Line 2023 address ranges. ",
     "<b>address</b> = house number interpolated on the matching street segment; <b>address_approx</b> = street found only after OCR correction, ",
     "in a neighbouring ZIP, or at the nearest segment end (check before field work). Listings that could only be placed at a ZIP or city ",
     "centroid are in the edition CSVs but not on the map.</p>",
     "<p>Check against independent coordinates: for directory addresses that also appear in EPA's Facility Registry, the distance between ",
-    "the two coordinates is summarised below. Street renumbering since the 1960s and OCR errors in house numbers are the main error sources.</p>")))
+    "the two coordinates is summarised below. Street renumbering since the 1960s and OCR errors in house numbers are the main error sources.</p>",
+    "<p><b>Pre-1960 layer.</b> Business-directory entries are placed at a street address only for Denver from 1891 (after the city's 1887 ",
+    "renumbering) and for larger cities from 1910, and only when the house number falls inside a current TIGER address range; old street names ",
+    "(e.g. Holladay → Market) are translated. Everything else sits at the USGS GNIS point for the town and is drawn as a cluster. ",
+    "Where a pre-1960 firm reappears in the 1961–2002 directory with an address, that address is used.</p>")))
   output$valid <- renderTable(validation)
 }
 

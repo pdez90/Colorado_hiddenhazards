@@ -29,3 +29,11 @@ py pipeline/export.py             # data/results/*
 py pipeline/export_by_year.py     # data/by_year/*
 py pipeline/validate_geocoding.py
 py pipeline/app_inputs.py         # app/data/*
+# ---- pre-1960 layer: Colorado State Business Directory (1877-1950), hazardous historical trades
+if [[ -d work/hist/pdf || -d work/hist/text ]]; then
+  [[ -d work/hist/pdf ]] && bash pipeline/historical/extract_text.sh
+  py pipeline/historical/run_hist.py       # town headings + entries + trade vocabulary -> work/hist/hist_hazard_entries.csv
+  py pipeline/historical/geocode_hist.py   # street level (Denver 1891+, larger cities 1910+) else GNIS town point
+  py pipeline/historical/link_hist.py      # firms across editions; links to 1961-2002 directory -> data/historical/*
+  py pipeline/historical/app_hist.py       # app/data/historical_sites.csv, site_precursors.csv
+fi

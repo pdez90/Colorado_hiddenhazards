@@ -1,6 +1,7 @@
 # Colorado Hidden Hazards
 
 Historical hazardous industrial sites in Colorado, 1961–2002, identified from the *Colorado Directory of Manufacturers*
+(plus a pre-1960 layer of hazardous trades from the *Colorado State Business Directory*, 1877–1950),
 following Scott Frickel and James R. Elliott, *Sites Unseen: Uncovering Hidden Hazards in American Cities* (Russell Sage, 2018),
 compared with today's federal and state inventories, and explored in an R Shiny app alongside EPA TRI facilities,
 cleanup sites (including brownfields), schools, health facilities and CDPHE EnviroScreen 2.0.
@@ -14,6 +15,7 @@ cleanup sites (including brownfields), schools, health facilities and CDPHE Envi
 | `app/` | R Shiny app (`shiny::runApp("app")`) and its prepared data |
 | `data/by_year/` | **One geocoded CSV per directory edition** (25 editions, 68,368 listings) |
 | `data/results/` | Site workbook (`CO_hazardous_sites_1961-2002.xlsx`), all sites (`.geojson`), all listings, listings that could not be street-located, geocoding validation |
+| `data/historical/` | Pre-1960 layer: hazardous-trade listings (`CO_pre1960_hazardous_listings.csv`) and firm-locations (`CO_pre1960_hazardous_sites.csv`) from the Colorado State Business Directory, 1877–1950; GNIS place gazetteer |
 | `data/ocr/` | Saved Tesseract output for every page (lets anyone rerun everything after OCR without the scans) |
 
 ## Method in brief
@@ -77,6 +79,31 @@ mkdir -p work && tar xzf data/ocr/dcm_ocr_output.tar.gz -C work
 Network inputs change over time (FRS, TRI, CDPHE layers are live); the published results used downloads of 16 October 2026.
 OCR output can differ slightly across Tesseract versions, which is why the OCR output is saved in `data/ocr/`.
 
+## Before 1960: Colorado State Business Directory, 1877–1950
+
+The manufacturers' directory starts in 1961, but Colorado's smelters, foundries, assay offices and gas works go back to the 1870s.
+`pipeline/historical/` reads the searchable text of the CU Boulder scans of the *Colorado State Business Directory*
+(17 editions: 1871 Rocky Mountain Directory, 1875, 1877–1883, 1887, 1888, 1891, 1910, 1913, 1915, 1939, 1950) and:
+
+1. **Finds the town** for every entry from town headings ("ALPINE.", "Delta Business Directory.", "DENVER CONT'D"), page running
+   heads ("DEN", "LEA") and, failing that, a town named in the entry, all matched to the USGS GNIS gazetteer.
+2. **Keeps hazardous historical trades** with a keyword vocabulary mapped to Frickel & Elliott sectors: smelting/reduction/sampling works,
+   foundries, iron and steel works, machine and boiler shops, tinners and sheet-metal works, chemical, paint, soap, powder and fertilizer works,
+   oil refineries, rubber works, carriage/wagon/car shops; plus extended trades (assay offices, stamp and ore mills, gas works, tanneries,
+   tie-treating/creosote plants, coke ovens). The 1950 edition uses numeric business codes, which are mapped directly. Individuals listed
+   by occupation in city-directory sections ("lab., Globe smelter, r. 123 …") are dropped.
+3. **Places entries** at a street address only where today's numbering applies – Denver from 1891 (after the 1887 renumbering) and larger
+   cities from 1910 – and only on an exact TIGER address-range match, translating old street names (Holladay → Market). Everything else sits
+   at the GNIS town point (`precision = town`).
+4. **Links firms** across editions (fuzzy names within a town) and to the 1961–2002 directory, by name in the same city or by a street
+   address within 40 m of a later hazardous site.
+
+Result: 4,873 hazardous-trade listings → 4,673 firm-locations; 509 at a street address; 140 appear in more than one
+edition; 212 link to the 1961–2002 directory, giving 162 later sites a documented pre-1960 hazardous precursor.
+**Caveats:** the text layers are uncorrected OCR with columns interleaved, so names can be garbled (`name_quality`), some entries are
+missed, and counts are not comparable between editions or with the manufacturers' directory. 1871, 1875 and the user-supplied 1877
+volumes are read from the Internet Archive / Google Books copies, which carry text layers.
+
 ## The Shiny app
 
 ```r
@@ -84,15 +111,17 @@ source("app/install_packages.R")
 shiny::runApp("app")
 ```
 
-* **Map** – historical hazardous sites coloured by current regulatory status, filtered by years listed, sector, status and confidence;
+* **Map** – historical hazardous sites coloured by current regulatory status or by **persistence** (years between first and last hazardous
+  listing, extended back to the pre-1960 directories where a precursor is found), filtered by years listed (1877–2002), sector, status and confidence;
+  a **pre-1960 layer** (brown; town-level points clustered, black ring = firm or address still listed after 1960);
   layers for EPA TRI facilities, schools, hospitals, clinics, residential care, brownfields, voluntary cleanup, Superfund, RCRA corrective
   action and land-use controls; census tracts shaded by any EnviroScreen indicator.
-* **Trends** – sites per edition by sector and by status; share on no inventory.
+* **Trends** – sites per edition by sector and by status; share on no inventory; pre-1960 hazardous-trade firms per business-directory edition.
 * **Neighborhoods** – distributions of EnviroScreen and socioeconomic indicators for tracts with vs. without hazardous sites,
   with potentially unknown sites vs. all others, unknown vs. known-only, and TRI vs. non-TRI tracts; medians, population-weighted means,
   Wilcoxon tests.
 * **Nearby schools & health care** – schools and health facilities within a chosen distance of potentially unknown sites.
-* **Data & downloads** – per-edition geocoded CSVs, filtered sites, geocoding validation.
+* **Data & downloads** – per-edition geocoded CSVs, filtered sites, pre-1960 firms, geocoding validation.
 
 To deploy (e.g. shinyapps.io), copy `data/by_year/` into `app/data/by_year/` so the app folder is self-contained.
 
@@ -102,6 +131,9 @@ To deploy (e.g. shinyapps.io), copy `data/by_year/` into `app/data/by_year/` so 
 * US EPA Facility Registry Service, state combined file for Colorado; EPA TRI facility table (Envirofacts).
 * CDPHE Hazardous Materials & Waste Management Division layers, Colorado EnviroScreen 2.0 (census tracts), CDPHE Health Facilities,
   CDE school locations — via geodata.colorado.gov.
+* Colorado State Business Directory (Gazetteer Publishing / J.A. Blake), 1877–1950: CU Boulder Libraries digital collections, linked from
+  History Colorado's business-directory guide (https://www.historycolorado.org/business-directories).
+* USGS Geographic Names Information System (domestic and historical populated places).
 * US Census Bureau TIGER/Line 2023 ADDRFEAT.
 * Frickel, S. & Elliott, J. R. (2018). *Sites Unseen: Uncovering Hidden Hazards in American Cities.* Russell Sage Foundation.
 
