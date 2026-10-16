@@ -40,6 +40,12 @@ VARS <- c("EnviroScreen score (percentile)" = "enviroscreen_pctl",
           "Proximity to hazardous waste facilities (pctl)" = "prox_hazwaste_pctl",
           "Proximity to Superfund/NPL sites (pctl)" = "prox_npl_pctl")
 tract_df <- st_drop_geometry(tracts)
+# persistence: editions in which the site hosted a hazardous-sector firm, and span from first to last such edition
+pers <- site_yr |> group_by(site_id) |> summarise(n_editions = n_distinct(year), haz_first = min(year), haz_last = max(year), .groups = "drop") |>
+  mutate(span_years = haz_last - haz_first)
+sites <- sites |> left_join(pers, by = "site_id") |> mutate(n_editions = coalesce(n_editions, 1L), span_years = coalesce(span_years, 0L))
+SPAN_BREAKS <- c(-1, 0, 9, 19, 29, 45); SPAN_LABELS <- c("One edition", "1–9 years", "10–19 years", "20–29 years", "30+ years")
+SPAN_COL <- c("#c6dbef", "#9ecae1", "#4292c6", "#2166ac", "#08306b")
 CLEAN_LAYERS <- c("Brownfields", "Voluntary cleanup (VCUP)", "Superfund (SEMS)", "RCRA corrective action",
                   "Environmental covenants / land-use controls")
 CLEAN_COL <- c("#1b7837", "#5aae61", "#253494", "#41b6c4", "#8c6bb1"); names(CLEAN_COL) <- CLEAN_LAYERS
@@ -50,6 +56,8 @@ filters <- list(
   sliderInput("yrs", "Listed in the directory between", min = 1961, max = 2002, value = c(1961, 2002), sep = "", step = 1),
   checkboxGroupInput("sec", "Sector (Frickel & Elliott)", SECTORS, selected = SECTORS[1:7]),
   checkboxGroupInput("st", "Current regulatory status", STATUS, selected = STATUS),
+  radioButtons("colby", "Colour sites by", c("Regulatory status" = "status", "Persistence (years listed)" = "span"), inline = FALSE),
+  sliderInput("minspan", "Persisted at least (years between first and last listing)", 0, 41, 0, step = 1),
   checkboxGroupInput("cf", "Confidence (location + industry)", c("High" = "high", "Medium" = "medium", "Low" = "low"),
                      selected = c("high", "medium", "low"), inline = TRUE),
   helpText("High = street-level geocode and an industry code printed in the directory. ",
@@ -123,7 +131,7 @@ server <- function(input, output, session) {
       sy <- sy |> filter(grepl(pat, sectors))
     } else sy <- sy[0, ]
     ids <- unique(sy$site_id)
-    sites |> filter(site_id %in% ids, radar %in% input$st, confidence %in% input$cf) |>
+    sites |> filter(site_id %in% ids, radar %in% input$st, confidence %in% input$cf, span_years >= input$minspan) |>
       left_join(sy |> group_by(site_id) |> summarise(years_in_range = paste(sort(unique(year)), collapse = ", ")), by = "site_id")
   })
   output$nsites <- renderText({ s <- sel_sites()
@@ -134,8 +142,12 @@ server <- function(input, output, session) {
     colorNumeric("YlOrRd", domain = range(x, na.rm = TRUE), na.color = "#00000000") }
   output$map <- renderLeaflet({
     m <- leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
-      addProviderTiles(providers$CartoDB.Positron, group = "Light basemap") |>
-      addProviderTiles(providers$Esri.WorldImagery, group = "Satellite") |>
+      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+               attribution = "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors", group = "Light grey") |>
+      addTiles("https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+               attribution = "&copy; OpenStreetMap contributors", group = "OpenStreetMap") |>
+      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+               attribution = "Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics", group = "Satellite") |>
       setView(-105.2, 39.3, 7) |>
       addMapPane("tr", zIndex = 380) |> addMapPane("ctx", zIndex = 430) |> addMapPane("haz", zIndex = 460)
     tri_pop <- sprintf("<b>%s</b><br>%s, %s<br>EPA TRI facility (%s)", esc(tri$name), esc(tri$address), esc(tri$city), esc(tri$status))
@@ -154,13 +166,13 @@ server <- function(input, output, session) {
       m <- m |> addCircleMarkers(data = d, ~lon, ~lat, radius = 3.5, color = "#7a0f4d", weight = 1, fillColor = hc[[k]], fillOpacity = 1,
             popup = sprintf("<b>%s</b><br>%s<br>%s", esc(d$name), esc(d$address), esc(d$type)),
             group = if (k == "Residential & long-term care") k else paste0(k, "s"), options = pathOptions(pane = "ctx")) }
-    m |> addLayersControl(baseGroups = c("Light basemap", "Satellite"),
+    m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
           overlayGroups = c("Historical hazardous sites", "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
       hideGroup(c("Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
                   "RCRA corrective action", "Voluntary cleanup (VCUP)", "Superfund (SEMS)")) |>
-      addLegend("bottomleft", colors = unname(STATUS_COL), labels = names(STATUS_COL), title = "Historical site status", opacity = 1)
+      identity()
   })
   observe({
     v <- input$esvar; pal <- pal_for(v); lab <- names(VARS)[VARS == v]
@@ -174,14 +186,27 @@ server <- function(input, output, session) {
   })
   observe({
     s <- sel_sites()
-    pop <- sprintf("<b>%s, %s</b><br><b>%s</b> · %s confidence<br>Listed %s–%s (in range: %s)<br><b>Hazardous firms:</b><br>%s<br><b>Sectors:</b> %s %s<br><b>Nearest inventory record:</b> %s<br><small>%s · %.5f, %.5f</small>",
-                   esc(s$address), esc(s$city), esc(s$radar), esc(s$confidence), s$first_year, s$last_year, esc(s$years_in_range),
+    pop <- sprintf("<b>%s, %s</b><br><b>%s</b> · %s confidence<br>Hazardous use in %s editions, %s–%s (%s years)<br>Listed %s–%s (in range: %s)<br><b>Hazardous firms:</b><br>%s<br><b>Sectors:</b> %s %s<br><b>Nearest inventory record:</b> %s<br><small>%s · %.5f, %.5f</small>",
+                   esc(s$address), esc(s$city), esc(s$radar), esc(s$confidence), s$n_editions, s$haz_first, s$haz_last, s$span_years,
+                   s$first_year, s$last_year, esc(s$years_in_range),
                    gsub(" \\| ", "<br>", esc(s$hazard_firms)), esc(s$fe_sectors), esc(s$ext_sectors),
                    ifelse(s$known_match == "" | is.na(s$known_match), "none", esc(s$known_match)), s$site_id, s$lat, s$lon)
-    leafletProxy("map") |> clearGroup("Historical hazardous sites") |>
-      addCircleMarkers(data = s, ~lon, ~lat, radius = ~ifelse(radar == "Not on any list", 5, 4), stroke = TRUE, weight = 1, color = "#ffffff",
-                       fillColor = unname(STATUS_COL[s$radar]), fillOpacity = 0.9, popup = pop, group = "Historical hazardous sites",
-                       options = pathOptions(pane = "haz"))
+    if (input$colby == "span") {
+      cls <- cut(s$span_years, SPAN_BREAKS, SPAN_LABELS)
+      fill <- SPAN_COL[as.integer(cls)]; rad <- 3 + 1.2 * sqrt(s$n_editions)
+      ring <- ifelse(s$radar == "Not on any list", "#d1491f", "#ffffff"); ringw <- ifelse(s$radar == "Not on any list", 1.6, 0.8)
+      leg <- list(colors = SPAN_COL, labels = SPAN_LABELS, title = "Persistence of hazardous use<br><small>size = editions listed; orange ring = on no list</small>")
+    } else {
+      fill <- unname(STATUS_COL[s$radar]); rad <- ifelse(s$radar == "Not on any list", 5, 4); ring <- "#ffffff"; ringw <- 1
+      leg <- list(colors = unname(STATUS_COL), labels = names(STATUS_COL), title = "Historical site status")
+    }
+    n <- nrow(s); rad <- rep_len(rad, n); ring <- rep_len(ring, n); ringw <- rep_len(ringw, n); fill <- rep_len(fill, n)
+    o <- order(s$span_years)
+    leafletProxy("map") |> clearGroup("Historical hazardous sites") |> removeControl("sitelegend") |>
+      addCircleMarkers(lng = s$lon[o], lat = s$lat[o], radius = rad[o], stroke = TRUE, weight = ringw[o], color = ring[o],
+                       fillColor = fill[o], fillOpacity = 0.9, popup = pop[o], group = "Historical hazardous sites",
+                       options = pathOptions(pane = "haz")) |>
+      addLegend("bottomleft", colors = leg$colors, labels = leg$labels, title = leg$title, opacity = 1, layerId = "sitelegend")
   })
 
   # ---- trends
