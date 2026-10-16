@@ -1,0 +1,7 @@
+# large or licensed inputs and intermediates (rebuild with run_all.sh)
+work/
+*.pyc
+__pycache__/
+.Rhistory
+.RData
+rsconnect/
