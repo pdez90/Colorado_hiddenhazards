@@ -1,5 +1,5 @@
 # Colorado Hidden Hazards — explore historical hazardous manufacturing sites (Colorado Directory of Manufacturers,
-# 1961–2002, and hazardous trades in Colorado State Business Directories, 1877–1950), current EPA TRI facilities, cleanup sites, schools and health facilities, and CDPHE EnviroScreen 2.0.
+# 1961–2002, and hazardous trades in Colorado State Business Directories, 1871–1956), current EPA TRI facilities, cleanup sites, schools and health facilities, and CDPHE EnviroScreen 2.0.
 # Run from the repository root:  shiny::runApp("app")
 
 suppressPackageStartupMessages({
@@ -63,7 +63,7 @@ esc <- function(x) htmltools::htmlEscape(ifelse(is.na(x), "", as.character(x)))
 # ---------------------------------------------------------------- UI
 filters <- list(
   sliderInput("yrs", "Listed in a directory between", min = 1871, max = 2002, value = c(1871, 2002), sep = "", step = 1),
-  helpText("1871–1950: hazardous trades in the Colorado State Business Directory (brown). 1961–2002: Directory of Colorado Manufacturers."),
+  helpText("1871–1956: hazardous trades in the Colorado State Business Directory (brown). 1961–2002: Directory of Colorado Manufacturers."),
   checkboxGroupInput("sec", "Sector (Frickel & Elliott)", SECTORS, selected = SECTORS[1:7]),
   checkboxGroupInput("st", "Current regulatory status", STATUS, selected = STATUS),
   radioButtons("colby", "Colour sites by", c("Regulatory status" = "status", "Persistence (years listed)" = "span"), inline = FALSE),
@@ -131,7 +131,7 @@ ui <- page_navbar(
            selectInput("dl_year", "Edition", sort(as.integer(sub("CO_DCM_(\\d+)_geocoded.csv", "\\1", list.files(by_year_dir, "CO_DCM_.*csv"))))),
            downloadButton("dl_one", "Download edition CSV"), br(), br(),
            downloadButton("dl_sites", "Download sites matching current filters"), br(), br(),
-           downloadButton("dl_hist", "Download pre-1960 hazardous-trade firms (1877–1950)"),
+           downloadButton("dl_hist", "Download pre-1960 hazardous-trade firms (1871–1956)"),
            hr(), tags$small("Each edition file lists every manufacturer with its OCR'd name and address, SIC/NAICS codes, ",
                             "sector flags, establishment and site IDs, coordinates and geocode level.")),
       card(card_header("How reliable are the locations?"), uiOutput("geo_note"), tableOutput("valid"))))

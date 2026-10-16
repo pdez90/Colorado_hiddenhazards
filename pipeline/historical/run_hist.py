@@ -46,6 +46,13 @@ df = df[distinct.str.len() >= 3]
 ok = df.street.fillna('').str.match(r"^\d{1,5}(?:-\d+)?\s+(?:[NSEW]\.?\s+)?(?:\d{1,3}(?:st|nd|rd|th|d)\b|[A-Z][a-z]{2,})") & \
      ~df.street.fillna('').str.contains(r"(?i)\b(gas|agts?|co|works?|miles?|feet|ft|tons?|stamps?|to|business|denver)\b$")
 df.loc[~ok, 'street'] = ''
+# a 'name' that is just a town ('Greeley', 'Kit Carson') is a classified-section town label, not a firm
+_towns = set(pd.read_csv('data/historical/gnis_places_co.csv').name)
+df = df[~df.name.str.upper().str.replace(r'[^A-Z ]', '', regex=True).str.strip().isin(_towns)]
+# the same text in many towns in one edition is a running advertisement
+_k = df.name.str.upper().str.replace(r'[^A-Z0-9]', '', regex=True)
+_spread = df.assign(k=_k).groupby(['year', 'k']).town.transform('nunique')
+df = df[_spread <= 3]
 print('kept', len(df))
 # --- junk names
 bad = (df.name.str.len() < 4) | df.name.str.match(r"^[a-z]") | (df.name.str.count(r"[^A-Za-z0-9 ,\.&'’\-]") > 3) \

@@ -1,7 +1,7 @@
 # Colorado Hidden Hazards
 
 Historical hazardous industrial sites in Colorado, 1961–2002, identified from the *Colorado Directory of Manufacturers*
-(plus a pre-1960 layer of hazardous trades from the *Colorado State Business Directory*, 1877–1950),
+(plus a pre-1960 layer of hazardous trades from the *Colorado State Business Directory*, 1871–1956),
 following Scott Frickel and James R. Elliott, *Sites Unseen: Uncovering Hidden Hazards in American Cities* (Russell Sage, 2018),
 compared with today's federal and state inventories, and explored in an R Shiny app alongside EPA TRI facilities,
 cleanup sites (including brownfields), schools, health facilities and CDPHE EnviroScreen 2.0.
@@ -15,7 +15,7 @@ cleanup sites (including brownfields), schools, health facilities and CDPHE Envi
 | `app/` | R Shiny app (`shiny::runApp("app")`) and its prepared data |
 | `data/by_year/` | **One geocoded CSV per directory edition** (25 editions, 68,368 listings) |
 | `data/results/` | Site workbook (`CO_hazardous_sites_1961-2002.xlsx`), all sites (`.geojson`), all listings, listings that could not be street-located, geocoding validation |
-| `data/historical/` | Pre-1960 layer: hazardous-trade listings (`CO_pre1960_hazardous_listings.csv`) and firm-locations (`CO_pre1960_hazardous_sites.csv`) from the Colorado State Business Directory, 1877–1950; GNIS place gazetteer |
+| `data/historical/` | Pre-1960 layer: hazardous-trade listings (`CO_pre1960_hazardous_listings.csv`) and firm-locations (`CO_pre1960_hazardous_sites.csv`) from the Colorado State Business Directory, 1871–1956; GNIS place gazetteer |
 | `data/ocr/` | Saved Tesseract output for every page (lets anyone rerun everything after OCR without the scans) |
 
 ## Method in brief
@@ -88,9 +88,9 @@ Coverage varies by edition: 22–76% of listings geocode at address level (`data
 
 **Pre-1960 layer.** Most entries (about 90%) are placed only at the town centre and are drawn as clusters. Street-level placement uses
 today's numbering, which applies to Denver after the 1887 renumbering, but later street renamings are not handled and these points have
-not been checked against historical maps (e.g. Sanborn atlases); treat them as approximate. Vetting this layer removed 2,133 entries
+not been checked against historical maps (e.g. Sanborn atlases); treat them as approximate. Vetting this layer removed 2,205 entries
 that were workers listed at their home addresses ("Cain Patrick, stoker, Denver Gas Co, 2422 Champa"), not works. It also stopped
-placing 1,138 office listings at their downtown office addresses.
+placing 1,846 office listings at their downtown office addresses.
 
 ## Reproduce
 
@@ -107,11 +107,11 @@ mkdir -p work && tar xzf data/ocr/dcm_ocr_output.tar.gz -C work
 Network inputs change over time (FRS, TRI, CDPHE layers are live); the published results used downloads of 16 October 2026.
 OCR output can differ slightly across Tesseract versions, which is why the OCR output is saved in `data/ocr/`.
 
-## Before 1960: Colorado State Business Directory, 1877–1950
+## Before 1960: Colorado State Business Directory, 1871–1956
 
 The manufacturers' directory starts in 1961, but Colorado's smelters, foundries, assay offices and gas works go back to the 1870s.
 `pipeline/historical/` reads the searchable text of the CU Boulder scans of the *Colorado State Business Directory*
-(22 editions: 1871 Rocky Mountain Directory, 1875, 1877–1884, 1887, 1888, 1891, 1892, 1910, 1911, 1913, 1915, 1929, 1932, 1939, 1950) and:
+(28 editions: 1871 Rocky Mountain Directory, 1875, 1877, 1878, 1879, 1880, 1881, 1882, 1883, 1884, 1885, 1887, 1888, 1891, 1892, 1910, 1911, 1913, 1914, 1915, 1916, 1917, 1927, 1929, 1932, 1939, 1950, 1956) and:
 
 1. **Finds the town** for every entry from town headings ("ALPINE.", "Delta Business Directory.", "DENVER CONT'D"), page running
    heads ("DEN", "LEA") and, failing that, a town named in the entry, all matched to the USGS GNIS gazetteer.
@@ -126,11 +126,12 @@ The manufacturers' directory starts in 1961, but Colorado's smelters, foundries,
 4. **Links firms** across editions (fuzzy names within a town) and to the 1961–2002 directory, by name in the same city or by a street
    address within 40 m of a later hazardous site.
 
-Result: 5,273 hazardous-trade listings → 4,974 firm-locations; 460 at a street address; 198 link to the 1961–2002 directory,
-giving 148 later sites a documented pre-1960 hazardous precursor.
+Result: 6,778 hazardous-trade listings → 6,227 firm-locations; 713 at a street address; 316 link to the 1961–2002 directory,
+giving 213 later sites a documented pre-1960 hazardous precursor.
 **Caveats:** the text layers are uncorrected OCR with columns interleaved, so names can be garbled (`name_quality`), some entries are
 missed, and counts are not comparable between editions or with the manufacturers' directory. 1871, 1875 and the user-supplied 1877
-volumes are read from the Internet Archive / Google Books copies, which carry text layers.
+volumes are read from the Internet Archive / Google Books copies, which carry text layers; the CU 1885 scan has no text layer
+and was OCR'd with Tesseract (300 dpi, `pipeline/historical/ocr_volume.sh`). The 1920 scan (1,548 pages, no text layer) is not yet included.
 
 ## The Shiny app
 
@@ -159,7 +160,7 @@ To deploy (e.g. shinyapps.io), copy `data/by_year/` into `app/data/by_year/` so 
 * US EPA Facility Registry Service, state combined file for Colorado; EPA TRI facility table (Envirofacts).
 * CDPHE Hazardous Materials & Waste Management Division layers, Colorado EnviroScreen 2.0 (census tracts), CDPHE Health Facilities,
   CDE school locations — via geodata.colorado.gov.
-* Colorado State Business Directory (Gazetteer Publishing / J.A. Blake), 1877–1950: CU Boulder Libraries digital collections, linked from
+* Colorado State Business Directory (Gazetteer Publishing / J.A. Blake), 1871–1956: CU Boulder Libraries digital collections, linked from
   History Colorado's business-directory guide (https://www.historycolorado.org/business-directories).
 * USGS Geographic Names Information System (domestic and historical populated places).
 * US Census Bureau TIGER/Line 2023 ADDRFEAT.
