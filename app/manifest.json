@@ -2543,7 +2543,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "fea71456e51599ada8f3e5106b2425da"
+      "checksum": "198e1c1b1c4169dc30b203fb9010856a"
     },
     "data/cleanup_sites.csv": {
       "checksum": "54d15152050c9625f7081204f267bb2d"
@@ -2552,25 +2552,25 @@
       "checksum": "6587db570fd0c807b3d7e6ae56270229"
     },
     "data/geocoding_validation_frs.csv": {
-      "checksum": "21fac2470eb103dbacbcbc3c602da6af"
+      "checksum": "4e13a7276f01e28f9407bb6bb02a4ae6"
     },
     "data/health_facilities.csv": {
       "checksum": "a6c9dd85f9b40f1d83c7c61bc0bef4ec"
     },
     "data/historical_sites.csv": {
-      "checksum": "d4c47cec35eb7ebac7ffb7fe71cc003f"
+      "checksum": "f0a32d9a502bd92a16ae311271cf688c"
     },
     "data/schools.csv": {
       "checksum": "27b404b6f3b14d272f2eac3498b95036"
     },
     "data/site_precursors.csv": {
-      "checksum": "9353a4a707544771c76cc1cbd21a06c4"
+      "checksum": "7a2f56111abe2281c175f2ab81a6c511"
     },
     "data/site_years.csv": {
-      "checksum": "041b2caedec0a9b032eb0063ada09429"
+      "checksum": "eaa5dade38f31571e05e3ed1557008a0"
     },
     "data/sites.csv": {
-      "checksum": "b3aa586941fb2fa200843a322b2b598e"
+      "checksum": "43a40b663c1384814880fdbea367d163"
     },
     "data/tri_facilities.csv": {
       "checksum": "2b76e47d2226c81c161b504737bf908c"

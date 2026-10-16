@@ -38,31 +38,59 @@ cleanup sites (including brownfields), schools, health facilities and CDPHE Envi
    100 m (TRI) or 40 m (RCRA handlers, other permits), shares the firm's name within 250 m, has the same address, or lies inside a
    cleanup site boundary. **"Not on any list"** = none of these.
 
-## Key results (reproduced run)
+## Key results (reproduced run, after the October 2026 geocoding fixes)
 
-* 68,368 listings → 33,473 establishments; **4,510 hazardous-sector sites** located at street level.
-* **1,889 (42%) are on no current federal or state inventory**; 717 (16%) are on a cleanup or contamination list; 332 report to TRI;
-  1,064 are known only as RCRA hazardous-waste handlers; 508 have only other EPA permits or solid-waste records.
-* 1,485 sites hosted two or more hazardous-sector firms over time.
-* Census tracts containing a potentially unknown site have higher EnviroScreen scores (median percentile 59.7 vs 43.1 for other tracts),
-  more low-income residents (23.6% vs 19.1%) and lower educational attainment; differences in people of color are small and not significant.
-  Tracts with unknown sites look like tracts with only known sites (no significant differences), consistent with Frickel & Elliott's
-  finding that relic sites are widespread rather than concentrated where regulators look.
+* 68,368 listings → 33,473 establishments; **4,458 hazardous-sector sites** located at street level.
+* **1,842 (41%) are on no current federal or state inventory** (1,168 of them high confidence); 711 (16%) are on a cleanup or
+  contamination list; 333 report to TRI; 1,069 are known only as RCRA hazardous-waste handlers; 503 have only other EPA permits or
+  solid-waste records.
+* 1,497 sites hosted two or more hazardous-sector firms over time.
+* Census tracts containing a potentially unknown site have higher EnviroScreen scores (median percentile 61.2 vs 42.1 for other tracts),
+  more low-income residents (23.8% vs 18.8%) and lower educational attainment (5.8% vs 4.5% without a high-school diploma); all p < 0.001.
+  The difference in people of color is small (28.1% vs 26.3%, p = 0.02). Tracts with unknown sites look like tracts with only known sites,
+  consistent with Frickel & Elliott's finding that relic sites are widespread rather than concentrated where regulators look.
 
 ## How good is the geocoding?
 
-`pipeline/validate_geocoding.py` compares our coordinates with independent EPA FRS coordinates for identical addresses
-(`data/results/geocoding_validation.md`):
+Three independent checks (October 2026).
 
-| geocode level | n | median distance | within 100 m | within 250 m | over 1 km |
-|---|---|---|---|---|---|
-| address (range interpolation) | 1,927 | 50 m | 69% | 86% | 3.6% |
-| address_approx (OCR-corrected, neighbouring ZIP, nearest segment) | 57 | 206 m | 33% | 56% | 8.8% |
+**1. Against Colorado's statewide address points** (`pipeline/validate_addresspoints.py`,
+`data/results/geocoding_validation_addresspoints.csv`). The State's public address-point layer places addresses on rooftops or parcels
+and does not come from TIGER address ranges. For a random sample of 1,000 sites we looked up the same house number and street in the
+stated town and measured the distance to our point:
 
-FRS coordinates carry their own error, so these distances partly overstate ours. Coverage varies by edition: 22–76% of listings
-geocode at address level (`data/results/geocoding_coverage_by_year.csv`); 1961–1965 have no ZIP codes, and 1971, 1985, 1992 and 2002
-volumes are partial. Errors that remain: OCR'd house numbers, streets renumbered or renamed since the 1960s, PO-box-only listings
-(placed at ZIP centroids and kept off the map). Treat `address_approx` and low-confidence sites as leads to verify.
+| geocode level | sampled | compared | median | 90th pct | within 100 m | within 250 m | over 1 km |
+|---|---|---|---|---|---|---|---|
+| address | 654 | 427 | 49 m | 182 m | 78% | 93% | 0.9% |
+| address_approx | 331 | 131 | 87 m | 597 m | 54% | 78% | 9.2% |
+
+About a third of address-level listings have no matching address point today (the building is gone, the street was renumbered or
+renamed, or the house number was misread); those could not be checked.
+
+**2. Against EPA Facility Registry coordinates** for identical addresses (`pipeline/validate_geocoding.py`,
+`data/results/geocoding_validation.md`): address level n = 1,845, median 48 m, 88% within 250 m, 2.7% over 1 km
+(FRS coordinates carry their own error).
+
+**3. Against the scans.** For 25 randomly chosen sites we compared the parsed address with the printed page: 23 matched, one house
+number was misread by OCR (2915 for 3915 Tennyson, about 1.3 km off), and one could not be located on the crop. Expect roughly
+4% of house numbers to carry an OCR digit error; most other OCR noise (street-type letters, suite numbers) does not move the point.
+
+**What the vetting changed.** The first check exposed a geocoder bug: an address on a south-side street ("1934 S Broadway") could match
+the north-side street of the same name ("Broadway") in the same ZIP, moving it up to 14 km. The geocoder now requires the prefix
+direction to match, falls back to a direction-free match only as `address_approx`, and rejects matches more than 15 km from the stated
+city. 113 sites moved by more than 1 km. Address-level points over 1 km from the address point fell from 4.7% to 0.9% and from 3.6% to
+2.7% against FRS.
+
+**How to read it.** `address` points are good to about a city block (median ~50 m, 93% within 250 m), with roughly 1–3% badly wrong,
+mostly because of misread house numbers. `address_approx` points are right to the street or neighbourhood but about 1 in 10 are more
+than 1 km off; check them before field work. Listings placed only at a ZIP or city centroid are in the edition CSVs but not on the map.
+Coverage varies by edition: 22–76% of listings geocode at address level (`data/results/geocoding_coverage_by_year.csv`).
+
+**Pre-1960 layer.** Most entries (about 90%) are placed only at the town centre and are drawn as clusters. Street-level placement uses
+today's numbering, which applies to Denver after the 1887 renumbering, but later street renamings are not handled and these points have
+not been checked against historical maps (e.g. Sanborn atlases); treat them as approximate. Vetting this layer removed 1,266 entries
+that were workers listed at their home addresses ("Cain Patrick, stoker, Denver Gas Co, 2422 Champa"), not works. It also stopped
+placing 684 office listings at their downtown office addresses.
 
 ## Reproduce
 
@@ -98,8 +126,8 @@ The manufacturers' directory starts in 1961, but Colorado's smelters, foundries,
 4. **Links firms** across editions (fuzzy names within a town) and to the 1961–2002 directory, by name in the same city or by a street
    address within 40 m of a later hazardous site.
 
-Result: 4,873 hazardous-trade listings → 4,673 firm-locations; 509 at a street address; 140 appear in more than one
-edition; 212 link to the 1961–2002 directory, giving 162 later sites a documented pre-1960 hazardous precursor.
+Result: 4,411 hazardous-trade listings → 4,217 firm-locations; 387 at a street address; 164 link to the 1961–2002 directory,
+giving 130 later sites a documented pre-1960 hazardous precursor.
 **Caveats:** the text layers are uncorrected OCR with columns interleaved, so names can be garbled (`name_quality`), some entries are
 missed, and counts are not comparable between editions or with the manufacturers' directory. 1871, 1875 and the user-supplied 1877
 volumes are read from the Internet Archive / Google Books copies, which carry text layers.

@@ -28,6 +28,7 @@ py pipeline/finalize.py
 py pipeline/export.py             # data/results/*
 py pipeline/export_by_year.py     # data/by_year/*
 py pipeline/validate_geocoding.py
+py pipeline/validate_addresspoints.py || echo "address-point check skipped (needs internet access to gis.colorado.gov)"
 py pipeline/app_inputs.py         # app/data/*
 # ---- pre-1960 layer: Colorado State Business Directory (1877-1950), hazardous historical trades
 if [[ -d work/hist/pdf || -d work/hist/text ]]; then

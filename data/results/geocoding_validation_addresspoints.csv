@@ -1,0 +1,1001 @@
+uid,level,q,status,ambiguous,dmin,dmax,year,street,city,qq,era,geo_quality,new_level
+0,address,range_interp,found,False,40.28046511772368,40.28046511772368,2002,640 Innovation Cir,WINDSOR,range_interp,1991-2002,range_interp,address
+1,address,range_interp,found,False,56.1165064767679,56.1165064767679,1980,1510 SWADLEY,LAKEWOOD,range_interp,1976-90,range_interp,address
+2,address,range_interp,found,False,102.33125611592286,121.62087466336835,1999,7233 W 116TH Pl Ste B,BROOMFIELD,range_interp,1991-2002,range_interp,address
+3,address,range_interp,found,False,30.45991193742241,30.45991193742241,1986,1820 S GROVE,DENVER,range_interp,1976-90,range_interp,address
+4,address,range_interp,found,False,272.7866644825557,302.3028213180828,1999,2655 W Midway Blvd,BROOMFIELD,range_interp,1991-2002,range_interp,address
+5,address,range_interp,found,False,79.48609991137818,79.48609991137818,1986,4105 HOLLY ST,DENVER,range_interp,1976-90,range_interp,address
+6,address,range_interp,found,False,53.46117212657287,53.46117212657287,1999,3850 Interpark Dr,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+7,address,range_interp,not_found,False,,,1993,463 13TH St,BURLINGTON,range_interp,1991-2002,range_interp,address
+8,address,range_interp,found,False,31.230778833397984,31.230778833397984,1990,500 S Eaton St,LAKEWOOD,range_interp,1976-90,range_interp,address
+9,address,range_interp,found,False,138.35706534958248,138.35706534958248,1986,1805 w IRVINGTON PL,DENVER,range_interp,1976-90,range_interp,address
+10,address,range_interp_cityzips_dirloose,not_found,False,,,1965,2101 &. 52ND AVE,DENVER,range_interp_dirloose,1961-75,range_interp_cityzips_dirloose,address_approx
+11,address,range_interp,found,False,47.53535557282967,121.1582121522237,1999,100 Technology Dr,BROOMFIELD,range_interp,1991-2002,range_interp,address
+12,address,range_interp,found,False,39.98088163968412,39.98088163968412,1990,200 W Hampden,ENGLEWOOD,range_interp,1976-90,range_interp,address
+13,address,range_interp,not_found,False,,,1990,264 S Pierce,LAKEWOOD,range_interp,1976-90,range_interp,address
+14,address,range_interp,found,False,289.613066679579,289.613066679579,1993,107 Owl Creek Rd,BOULDER,range_interp,1991-2002,range_interp,address
+15,address,range_interp,found,True,19.99751011759589,5929.945071080853,1966,1576 SHERMAN,DENVER,range_interp,1961-75,range_interp,address
+16,address,range_interp,found,False,32.01695470779003,32.01695470779003,1976,1241 S LIPAN,DENVER,range_interp,1976-90,range_interp,address
+17,address,range_interp,found,False,48.51423774602886,48.51423774602886,1990,110 S Sierra Madre,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+18,address,range_interp,found,False,46.82917338132363,46.82917338132363,2002,10488 W Centennial Rd,LITTLETON,range_interp,1991-2002,range_interp,address
+19,address,range_interp,found,False,28.37017016134356,28.37017016134356,1983,3080 VALMONT-NO 7,BOULDER,range_interp,1976-90,range_interp,address
+20,address,range_interp,not_found,False,,,1986,325 BURBANK ST,BROOMFIELD,range_interp,1976-90,range_interp,address
+21,address,range_interp,found,False,272.2204717713733,272.2204717713733,1990,1290 Boston Ave,LONGMONT,range_interp,1976-90,range_interp,address
+22,address,range_interp,found,False,381.1086620926321,381.1086620926321,1999,5245 Centennial Blvd Ste 200,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+23,address,range_interp,found,False,46.50476720060951,46.50476720060951,1986,511 GARFIELD,CARBONDALE,range_interp,1976-90,range_interp,address
+24,address,range_interp,found,False,27.801713984767115,27.801713984767115,1992,1257 Greene St,SILVERTON,range_interp,1991-2002,range_interp,address
+25,address,range_interp,found,False,22.332070114589097,22.332070114589097,1988,909 17 ST,DENVER,range_interp,1976-90,range_interp,address
+26,address,range_interp,found,False,22.147290747754145,22.147290747754145,1999,715 Galapago St,DENVER,range_interp,1991-2002,range_interp,address
+27,address,range_interp,not_found,False,,,1980,628 PEARL,BOULDER,range_interp,1976-90,range_interp,address
+28,address,range_interp,found,False,126.71294766886628,126.71294766886628,1990,5800 E Jewell Ave,DENVER,range_interp,1976-90,range_interp,address
+29,address,range_interp,found,False,95.92380101333468,95.92380101333468,1999,2597 W 64TH Ave,DENVER,range_interp,1991-2002,range_interp,address
+30,address,range_interp,found,False,27.56583627959572,27.56583627959572,1990,617 E Jewell Ave,DENVER,range_interp,1976-90,range_interp,address
+31,address,range_interp,found,False,208.22305255522943,208.22305255522943,2002,1013 N 25TH Ave,GREELEY,range_interp,1991-2002,range_interp,address
+32,address,range_interp,found,False,54.86346826342311,54.86346826342311,1983,4182 SANDBERG OR,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+33,address,range_interp,found,False,1095.6375879005293,1095.6375879005293,1999,3025 Janitell Rd,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+34,address,range_interp_cityzips,found,True,21.98244118145716,6446.845348281726,1986,1710 LAFAYETTE,DENVER,range_interp,1976-90,range_interp_cityzips,address
+35,address,range_interp,not_found,False,,,1999,1663 Central St,DENVER,range_interp,1991-2002,range_interp,address
+36,address,range_interp,not_found,False,,,1988,509 W 2ND ST,RIFLE,range_interp,1976-90,range_interp,address
+37,address,range_interp,found,False,90.69448195896388,90.69448195896388,1983,12189 RALSTON RD,ARVADA,range_interp,1976-90,range_interp,address
+38,address,range_interp,not_found,False,,,1967,415 S MAIN,ROCKY FORD,range_interp,1961-75,range_interp,address
+39,address,range_interp,found,False,27.061694504867063,27.061694504867063,1974,265 N MAIN ST,BRIGHTON,range_interp,1961-75,range_interp,address
+40,address,range_interp,not_found,False,,,1993,2245 Fremont Dr,CANON CITY,range_interp,1991-2002,range_interp,address
+41,address,range_interp,found,False,7.810431005414373,7.810431005414373,1999,2168 S Kalamath St,DENVER,range_interp,1991-2002,range_interp,address
+42,address,range_interp,found,True,27.71442064736536,3435.0066441619456,1992,903 Federal Bivd,DENVER,range_interp,1991-2002,range_interp,address
+43,address,range_interp,found,False,85.54787838684979,85.56254701539878,1993,2000 S Quebec Si,DENVER,range_interp,1991-2002,range_interp,address
+44,address,range_interp,not_found,False,,,1993,5495 E 60TH Ave,COMMERCE CITY,range_interp,1991-2002,range_interp,address
+45,address,range_interp,found,False,42.58477645963715,42.58477645963715,1999,3198 N Speer Blvd,DENVER,range_interp,1991-2002,range_interp,address
+46,address,range_interp,found,False,27.2091992298091,27.2091992298091,1973,1225 S HURON,DENVER,range_interp,1961-75,range_interp,address
+47,address,range_interp,found,False,42.02023987778895,42.02023987778895,1990,3600 E 45TH Ave,DENVER,range_interp,1976-90,range_interp,address
+48,address,range_interp,found,False,459.2527648277275,459.2527648277275,1990,55 Inverness Dr E,ENGLEWOOD,range_interp,1976-90,range_interp,address
+49,address,range_interp,found,False,99.17478000154036,117.1022202561037,1999,5420 Arapahoe Ave,BOULDER,range_interp,1991-2002,range_interp,address
+50,address,range_interp,found,False,77.19731427157159,77.19731427157159,1999,4410 Washington St,DENVER,range_interp,1991-2002,range_interp,address
+51,address,range_interp,found,False,100.30464009363774,100.30464009363774,1999,4910 Northpark Dr,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+52,address,range_interp,found,False,125.96150438168372,161.91676540965264,1999,5661 Airport Blvd,BOULDER,range_interp,1991-2002,range_interp,address
+53,address,range_interp,found,False,45.94195633078955,45.94195633078955,1999,2605 Platte Pl,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+54,address,range_interp,found,False,147.8337073095677,147.8337073095677,1990,525 E 70TH Ave No 2W,THORNTON,range_interp,1976-90,range_interp,address
+55,address,range_interp,not_found,False,,,1970,4601 WARD RD,WHEAT RIDGE,range_interp,1961-75,range_interp,address
+56,address,range_interp,found,False,148.53122301995165,148.53122301995165,1990,5050 E 50TH Ave,DENVER,range_interp,1976-90,range_interp,address
+57,address,range_interp_cityzips,found,False,119.83411962814108,119.83411962814108,1983,1324 N 7TH AVE,GREELEY,range_interp,1976-90,range_interp_cityzips,address
+58,address,range_interp_dirloose,not_found,False,,,1977,301 S SOPRIS AVE,CRESTED BUTTE,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+59,address,range_interp_cityzips,not_found,False,,,1965,5690 WADSWORTH BLVD,ARVADA,range_interp,1961-75,range_interp_cityzips,address
+60,address,range_interp_cityzips,found,False,42.70942162323488,42.70942162323488,1979,429 CONCORD,BOULDER,range_interp,1976-90,range_interp_cityzips,address
+61,address,range_interp,found,True,78.23906226587735,929.0447290871113,1992,517 N 3RD St,STERLING,range_interp,1991-2002,range_interp,address
+62,address,range_interp,found,False,58.4687518690832,58.4687518690832,1983,2801 S TEJON,ENGLEWOOD,range_interp,1976-90,range_interp,address
+63,address,range_interp,found,False,33.46543922267414,33.46543922267414,1999,3370 Arapahoe Ave,BOULDER,range_interp,1991-2002,range_interp,address
+64,address,range_interp,found,False,41.28917945154459,41.28917945154459,1999,1777 S Bellaire St Ste 330,DENVER,range_interp,1991-2002,range_interp,address
+65,address,range_interp,found,False,28.964591028324666,28.964591028324666,1999,185 Coral Way,BROOMFIELD,range_interp,1991-2002,range_interp,address
+66,address,range_interp,not_found,False,,,1993,2521 Gunnison St,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+67,address,range_interp,found,False,15.122557626877995,41.47808491058609,1967,102 S VICTORIA AVE,PUEBLO,range_interp,1961-75,range_interp,address
+68,address,range_interp,found,False,20.3633560303218,20.3633560303218,1977,35 S LINCOLN ST,DENVER,range_interp,1976-90,range_interp,address
+69,address,range_interp_cityzips,not_found,False,,,1977,1525 18TH,DENVER,range_interp,1976-90,range_interp_cityzips,address
+70,address,range_interp,not_found,False,,,2002,1305 Skyline Dr,FORT COLLINS,range_interp,1991-2002,range_interp,address
+71,address,range_interp,found,False,47.41693335530687,47.41693335530687,1999,2595 Canyon Blvd Ste 430,BOULDER,range_interp,1991-2002,range_interp,address
+72,address,range_interp,not_found,False,,,2002,2303 W 8TH St,LOVELAND,range_interp,1991-2002,range_interp,address
+73,address,range_interp,found,False,26.50370931101441,41.19430083065122,1993,1215 Spruce St,BOULDER,range_interp,1991-2002,range_interp,address
+74,address,range_interp_cityzips,found,False,69.2914376273368,69.2914376273368,1973,1155 N 4TH,GRAND JUNCTION,range_interp,1961-75,range_interp_cityzips,address
+75,address,range_interp_cityzips,found,False,31.74656648179672,87.4557019177093,1976,360 S MONROE,DENVER,range_interp,1976-90,range_interp_cityzips,address
+76,address,range_interp,not_found,False,,,1990,985 Wilson Ave,LOVELAND,range_interp,1976-90,range_interp,address
+77,address,range_interp,found,False,31.92393836975087,63.6560616586852,1999,6700 Smith Rd Ste B,DENVER,range_interp,1991-2002,range_interp,address
+78,address,range_interp,found,False,48.54485061278105,140.40641339113375,1999,310 Interlocken Pkwy,BROOMFIELD,range_interp,1991-2002,range_interp,address
+79,address,range_interp,found,True,84.35370805154247,1664.065485563311,2002,1624 9TH St,GREELEY,range_interp,1991-2002,range_interp,address
+80,address,range_interp,found,False,183.1640488896741,183.1640488896741,1983,810 N BROADWAY,CORTEZ,range_interp,1976-90,range_interp,address
+81,address,range_interp_nearzips,found,False,10528.640143681532,10528.640143681532,1992,2904 Galapago,ENGLEWOOD,range_interp,1991-2002,range_interp_nearzips,address_approx
+82,address,range_interp,not_found,False,,,2002,9163 CR 28,PLATTEVILLE,range_interp,1991-2002,range_interp,address
+83,address,range_interp,found,False,27.65810467852594,27.65810467852594,1999,4750 Nome St,DENVER,range_interp,1991-2002,range_interp,address
+84,address,range_interp,not_found,False,,,1985,4767 S WINDERMERE,ENGLEWOOD,range_interp,1976-90,range_interp,address
+85,address,range_interp,found,False,165.6856962038983,165.6856962038983,1990,12520 W Cedar Dr,LAKEWOOD,range_interp,1976-90,range_interp,address
+86,address,range_interp,not_found,False,,,1990,2290 E Prospect No 4,FORT COLLINS,range_interp,1976-90,range_interp,address
+87,address,range_interp,not_found,False,,,1980,13190 E 39TH AVE,DENVER,range_interp,1976-90,range_interp,address
+88,address,range_interp,found,False,31.99890280986528,31.99890280986528,1999,1020 Yuma St,DENVER,range_interp,1991-2002,range_interp,address
+89,address,range_interp,not_found,False,,,1990,6504 S Broadway,LITTLETON,range_interp,1976-90,range_interp,address
+90,address,range_interp,found,False,54.20104583162099,54.20104583162099,1993,2049 S Federal Bivd,DENVER,range_interp,1991-2002,range_interp,address
+91,address,range_interp_dirloose,not_found,False,,,2002,1225 E Red Cedar Cir Unit E,FORT COLLINS,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+92,address,range_interp_cityzips,found,False,21.680555333713304,21.680555333713304,1965,449 S. FEDERAL,DENVER,range_interp,1961-75,range_interp_cityzips,address
+93,address,range_interp,found,False,33.770046770267044,33.770046770267044,1999,1586 S 21ST St Ste C,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+94,address,range_interp,not_found,False,,,1993,6666 Stapleton Dr S,DENVER,range_interp,1991-2002,range_interp,address
+95,address,range_interp,found,False,20.44548839294441,20.44548839294441,1993,3421 E Colfax Ave,DENVER,range_interp,1991-2002,range_interp,address
+96,address,range_interp,found,False,72.90044038257925,72.90044038257925,1988,2791 WINTERS AVE,GRAND JUNCTION,range_interp,1976-90,range_interp,address
+97,address,range_interp_cityzips_dirloose,not_found,False,,,1962,206 Vine Dr.,FORT COLLINS,range_interp_dirloose,1961-75,range_interp_cityzips_dirloose,address_approx
+98,address,range_interp,found,False,22.550131008174127,22.550131008174127,1990,4700 Fig Ct,GOLDEN,range_interp,1976-90,range_interp,address
+99,address,range_interp,found,False,62.13214190058985,181.48360728552328,1988,1500 KANSAS AVE,LONGMONT,range_interp,1976-90,range_interp,address
+100,address,range_interp,found,False,63.60043116280569,63.60043116280569,1999,6285 Lookout Rd,BOULDER,range_interp,1991-2002,range_interp,address
+101,address,range_interp,found,False,22.74379919328372,46.81509254977606,1993,518 17TH St Ste 1507,DENVER,range_interp,1991-2002,range_interp,address
+102,address,range_interp,not_found,False,,,1967,4831 BRIGHTON BLVD,DENVER,range_interp,1961-75,range_interp,address
+103,address,range_interp,found,False,18.24418304950517,18.24418304950517,1983,102 S. BROADWAY,DENVER,range_interp,1976-90,range_interp,address
+104,address,range_interp_cityzips,not_found,False,,,1974,1612 SANTA FE DR,PUEBLO,range_interp,1961-75,range_interp_cityzips,address
+105,address,range_interp,found,False,62.075156427818285,62.075156427818285,2002,3295 S Zuni St,ENGLEWOOD,range_interp,1991-2002,range_interp,address
+106,address,range_interp,not_found,False,,,1988,310 LA PLATA PL,CORTEZ,range_interp,1976-90,range_interp,address
+107,address,range_interp_cityzips,found,False,485.2325461812599,485.2325461812599,1999,5505 Central Ave,BOULDER,range_interp,1991-2002,range_interp_cityzips,address
+108,address,range_interp,not_found,False,,,1971,5600 FRANKLIN ST,DENVER,range_interp,1961-75,range_interp,address
+109,address,fuzzy_range_interp,not_found,False,,,1999,32859 State Highway 67,WOODLAND PARK,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+110,address,range_interp,found,False,288.0531847527722,288.0531847527722,1993,5764 Lamar St,ARVADA,range_interp,1991-2002,range_interp,address
+111,address,range_interp,found,False,48.45651607386616,48.45651607386616,1999,4735 Harrison Ave,BOULDER,range_interp,1991-2002,range_interp,address
+112,address,range_interp_cityzips,found,False,31.780839443683917,31.780839443683917,1962,1125 Glen Ave.,COLORADO SPRINGS,range_interp,1961-75,range_interp_cityzips,address
+113,address,range_interp_cityzips,not_found,False,,,1962,730 Franklin,LOVELAND,range_interp,1961-75,range_interp_cityzips,address
+114,address,range_interp,found,False,80.69639776624645,80.69639776624645,1979,1325 S CHEROKEE,DENVER,range_interp,1976-90,range_interp,address
+115,address,range_interp,not_found,False,,,1986,583 HANOVER WAY,AURORA,range_interp,1976-90,range_interp,address
+116,address,range_interp,not_found,False,,,1992,764 Grant,LOVELAND,range_interp,1991-2002,range_interp,address
+117,address,range_interp,found,False,73.9498737614183,73.9498737614183,1985,1640 RANGE,BOULDER,range_interp,1976-90,range_interp,address
+118,address,range_interp,found,False,56.42071988236222,56.42071988236222,1999,2760 29TH St,BOULDER,range_interp,1991-2002,range_interp,address
+119,address,range_interp_cityzips,found,False,21.57793968290497,21.57793968290497,1977,5450 VALE ORIVE,DENVER,range_interp,1976-90,range_interp_cityzips,address
+120,address,range_interp,found,False,71.70062455834686,71.70062455834686,1990,5301 Vasquez,COMMERCE CITY,range_interp,1976-90,range_interp,address
+121,address,range_interp,found,False,309.60234751999536,309.60234751999536,1990,5660 Central Ave,BOULDER,range_interp,1976-90,range_interp,address
+122,address,range_interp,not_found,False,,,1974,207 S RAILROAD AVE,LOVELAND,range_interp,1961-75,range_interp,address
+123,address,range_interp,found,False,37.95157405038963,37.95157405038963,1979,15461 E BATAVIA OR,AURORA,range_interp,1976-90,range_interp,address
+124,address,range_interp,found,False,31.485518976771093,118.444563798009,1999,2150 W 6TH Ave Ste B,BROOMFIELD,range_interp,1991-2002,range_interp,address
+125,address,range_interp,found,False,30.14428469138528,30.14428469138528,1990,931 E 6TH Ave,DENVER,range_interp,1976-90,range_interp,address
+126,address,range_interp_cityzips,not_found,False,,,1961,5333 Broadway,BOULDER,range_interp,1961-75,range_interp_cityzips,address
+127,address,range_interp,found,False,60.5165395926324,60.5165395926324,2002,9630 Dallas St,HENDERSON,range_interp,1991-2002,range_interp,address
+128,address,range_interp,found,False,23.13367057507844,23.13367057507844,1980,403 BELLEVIEW,CRESTED BUTTE,range_interp,1976-90,range_interp,address
+129,address,range_interp,found,False,35.277021291872735,35.277021291872735,1970,2000 S ACOMA,DENVER,range_interp,1961-75,range_interp,address
+130,address,range_interp,found,False,23.67419186123072,23.67419186123072,1990,601 Ogden,DENVER,range_interp,1976-90,range_interp,address
+131,address,range_interp,found,False,16.04347961160345,16.04347961160345,1983,1510 MINER ST,IDAHO SPRINGS,range_interp,1976-90,range_interp,address
+132,address,range_interp,found,False,23.207446198275992,23.207446198275992,1993,4597 Tejon St,DENVER,range_interp,1991-2002,range_interp,address
+133,address,range_interp,found,False,27.49083155827855,27.49083155827855,1980,2200 Ww CUSTER PL,DENVER,range_interp,1976-90,range_interp,address
+134,address,range_interp_cityzips,found,False,12152.379619282565,12152.379619282565,1965,427 2ND,KERSEY,range_interp,1961-75,range_interp_cityzips,address
+135,address,range_interp,found,False,87.32317971192062,87.32317971192062,1990,219 Right of Way Rd,STERLING,range_interp,1976-90,range_interp,address
+136,address,range_interp,found,False,28.076849654719343,28.076849654719343,1999,1670 York St,DENVER,range_interp,1991-2002,range_interp,address
+137,address,range_interp,not_found,False,,,1993,4800 Nautilus Ct S,BOULDER,range_interp,1991-2002,range_interp,address
+138,address,range_interp,found,False,48.41878524096327,48.41878524096327,1999,2124 14TH St,BOULDER,range_interp,1991-2002,range_interp,address
+139,address,range_interp,found,False,18.45828335129436,18.45828335129436,1973,1934 S BROADWAY,DENVER,range_interp,1961-75,range_interp,address
+140,address,range_interp,found,False,753.9228966929978,753.9228966929978,1999,5800 Brighton Blvd,COMMERCE CITY,range_interp,1991-2002,range_interp,address
+141,address,range_interp,found,False,646.2434472805234,646.2434472805234,1999,2768 Janitell Rd,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+142,address,range_interp_cityzips,found,False,35.427075694686216,35.427075694686216,1983,1423 E VIRGINIA AVE,DENVER,range_interp,1976-90,range_interp_cityzips,address
+143,address,range_interp,found,False,57.69151331400162,57.69151331400162,1990,320 S El Paso,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+144,address,range_interp,found,False,30.38373481151056,30.38373481151056,1984,3815 FOREST ST,DENVER,range_interp,1976-90,range_interp,address
+145,address,range_interp,found,False,47.3319325459633,47.3319325459633,2002,2705 S Raritan St,ENGLEWOOD,range_interp,1991-2002,range_interp,address
+146,address,range_interp,found,False,379.3730422299946,388.2575803093056,1999,600 S Santa Fe Dr,DENVER,range_interp,1991-2002,range_interp,address
+147,address,range_interp,found,False,55.8186428054762,90.38839319009236,1986,3255 E PLATTE-STE H,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+148,address,range_interp,found,False,176.12527956697082,224.6966903241888,1988,5975 N ACADEMY BLVD,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+149,address,range_interp_dirloose,not_found,False,,,1986,1108 WEST ALAMOSA,ALAMOSA,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+150,address,range_interp,not_found,False,,,1999,655 Aspen Ridge Dr,LAFAYETTE,range_interp,1991-2002,range_interp,address
+151,address,range_interp,found,False,187.9989597450688,243.71651627897012,1999,1250 S Hover Rd Ste C,LONGMONT,range_interp,1991-2002,range_interp,address
+152,address,range_interp,found,False,145.46023227894938,145.46023227894938,1999,1265 Boston Ave,LONGMONT,range_interp,1991-2002,range_interp,address
+153,address,range_interp,found,False,1077.8247986278825,1077.8247986278825,1990,2800 S Rooney Rd,MORRISON,range_interp,1976-90,range_interp,address
+154,address,range_interp,found,False,90.47564534675392,90.47564534675392,1983,12150 EAST 112TH AVE,HENDERSON,range_interp,1976-90,range_interp,address
+155,address,range_interp,not_found,False,,,1990,1331 W Mountain,FORT COLLINS,range_interp,1976-90,range_interp,address
+156,address,range_interp_dirloose,not_found,False,,,1992,333 Rodeo Rd,RANGELY,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+157,address,range_interp,found,False,131.62854929054558,131.62854929054558,2002,6510 W 91ST Ave,WESTMINSTER,range_interp,1991-2002,range_interp,address
+158,address,range_interp,found,False,101.87894527431942,101.87894527431942,2002,203 S Bowen St,LONGMONT,range_interp,1991-2002,range_interp,address
+159,address,range_interp_cityzips,found,False,27.248455109933065,27.248455109933065,1990,215 Pitkin,GRAND JUNCTION,range_interp,1976-90,range_interp_cityzips,address
+160,address,range_interp,found,False,26.47767033725665,26.47767033725665,1983,625 ARRAWANNA,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+161,address,range_interp,not_found,False,,,1992,100 Pauline Dr,CANON CITY,range_interp,1991-2002,range_interp,address
+162,address,range_interp,not_found,False,,,1983,669 OHIO PL,CANON CITY,range_interp,1976-90,range_interp,address
+163,address,range_interp,found,False,28.756928622687813,28.756928622687813,1984,64 W MILL ST,BAYFIELD,range_interp,1976-90,range_interp,address
+164,address,range_interp,not_found,False,,,2002,775 Colorado Ave,LOVELAND,range_interp,1991-2002,range_interp,address
+165,address,range_interp,found,False,61.6476098417709,61.6476098417709,1999,3240 Prairie Ave Bldg D,BOULDER,range_interp,1991-2002,range_interp,address
+166,address,range_interp,not_found,False,,,1966,1969 BROADWAY,DENVER,range_interp,1961-75,range_interp,address
+167,address,range_interp,found,False,22.87915999614825,22.87915999614825,1980,6190 S FENTON CT,LITTLETON,range_interp,1976-90,range_interp,address
+168,address,range_interp_cityzips,found,False,29.072602269720523,29.072602269720523,1968,1506 S INGALLS,LAKEWOOD,range_interp,1961-75,range_interp_cityzips,address
+169,address,range_interp,found,False,78.56803428185808,78.56803428185808,1986,14500 E 33RD PL,AURORA,range_interp,1976-90,range_interp,address
+170,address,range_interp,found,False,32.46320843121634,133.61429652531783,1990,6100 E 39TH Ave,DENVER,range_interp,1976-90,range_interp,address
+171,address,range_interp,not_found,False,,,1992,564 25TH Rd,GRAND JUNCTION,range_interp,1991-2002,range_interp,address
+172,address,range_interp,found,False,52.37085513409941,52.37085513409941,1986,650 15TH ST,DENVER,range_interp,1976-90,range_interp,address
+173,address,range_interp,found,False,127.18598861645584,127.18598861645584,1993,5440 Ward Rd,ARVADA,range_interp,1991-2002,range_interp,address
+174,address,range_interp,found,False,21.76458018364827,21.76458018364827,1967,51 S KNOX CT,DENVER,range_interp,1961-75,range_interp,address
+175,address,range_interp_cityzips,found,False,49.37606647537249,69.60059454564332,1977,9769 W 119 ORIVE,BROOMFIELD,range_interp,1976-90,range_interp_cityzips,address
+176,address,range_interp_cityzips,found,False,20.128228697815015,20.128228697815015,1983,9795 GARRISON LANE,BROOMFIELD,range_interp,1976-90,range_interp_cityzips,address
+177,address,range_interp_cityzips,not_found,False,,,1968,1447 STOUT,DENVER,range_interp,1961-75,range_interp_cityzips,address
+178,address,range_interp,found,False,84.27291792316153,84.27291792316153,1999,3291 Peoria St Unit 1,AURORA,range_interp,1991-2002,range_interp,address
+179,address,range_interp,found,False,37.15767945491152,37.15767945491152,2002,2710 Farabaugh,PUEBLO,range_interp,1991-2002,range_interp,address
+180,address,range_interp_cityzips,found,False,145.04278931009364,145.04278931009364,1982,885 S ONEIDA,DENVER,range_interp,1976-90,range_interp_cityzips,address
+181,address,range_interp,not_found,False,,,1990,31d E Panama Dr,LITTLETON,range_interp,1976-90,range_interp,address
+182,address,range_interp_cityzips,not_found,False,,,1992,14128 Mead St,LONGMONT,range_interp,1991-2002,range_interp_cityzips,address
+183,address,range_interp,found,False,63.283169123362335,63.283169123362335,1999,3111 Walnut St,BOULDER,range_interp,1991-2002,range_interp,address
+184,address,range_interp,found,False,43.63038525314494,43.63038525314494,1990,3636 S Jason,ENGLEWOOD,range_interp,1976-90,range_interp,address
+185,address,range_interp,found,False,68.51030962992434,68.51030962992434,1999,11951 E 33RD Ave,AURORA,range_interp,1991-2002,range_interp,address
+186,address,range_interp,not_found,False,,,1993,27688 Us Hwy 160,CORTEZ,range_interp,1991-2002,range_interp,address
+187,address,range_interp,found,False,43.14518291080419,164.58963724360527,1993,11333 E 55TH Ave,DENVER,range_interp,1991-2002,range_interp,address
+188,address,range_interp_cityzips,not_found,False,,,1992,1475 Pine Grove Rd,STEAMBOAT SPRINGS,range_interp,1991-2002,range_interp_cityzips,address
+189,address,range_interp,found,False,37.89493141493007,37.89493141493007,1990,1235 Valley St,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+190,address,range_interp,not_found,False,,,2002,34230 US Hwy 385,WRAY,range_interp,1991-2002,range_interp,address
+191,address,range_interp,not_found,False,,,1982,2969 WEST 9TH AVE,DENVER,range_interp,1976-90,range_interp,address
+192,address,range_interp,found,False,93.80517014762736,93.80517014762736,2002,14452 W 44TH Ave,GOLDEN,range_interp,1991-2002,range_interp,address
+193,address,range_interp,not_found,False,,,1990,2100 W Radcliff Ave,ENGLEWOOD,range_interp,1976-90,range_interp,address
+194,address,range_interp,found,False,52.123506547825926,52.123506547825926,1993,408 S Tejon St,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+195,address,range_interp,found,False,111.82137405695734,111.82137405695734,1990,7102 Raleigh No 8,WESTMINSTER,range_interp,1976-90,range_interp,address
+196,address,range_interp,found,False,23.870625032437196,23.870625032437196,1973,2005 E 17TH AVE,DENVER,range_interp,1961-75,range_interp,address
+197,address,range_interp,found,False,35.511021365060905,35.511021365060905,1999,2826 E Colfax Ave,DENVER,range_interp,1991-2002,range_interp,address
+198,address,range_interp,not_found,False,,,1990,1015 W 12TH Ave,DENVER,range_interp,1976-90,range_interp,address
+199,address,range_interp_cityzips,not_found,False,,,2002,304 W Main,GRAND JUNCTION,range_interp,1991-2002,range_interp_cityzips,address
+200,address,range_interp,found,False,53.75131541876019,53.75131541876019,1990,2512 Alexander Road,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+201,address,range_interp,found,False,19.68936445789074,19.68936445789074,1980,920 MAIN,DURANGO,range_interp,1976-90,range_interp,address
+202,address,range_interp,found,False,53.03432646417198,85.62735630668692,1992,1532 Bowen St,LONGMONT,range_interp,1991-2002,range_interp,address
+203,address,range_interp,not_found,False,,,1993,1313 College Ave,BOULDER,range_interp,1991-2002,range_interp,address
+204,address,range_interp_cityzips,found,False,38.18596598466855,38.18596598466855,2002,3301 W 10TH St,GREELEY,range_interp,1991-2002,range_interp_cityzips,address
+205,address,range_interp,not_found,False,,,1990,1275 Sherman Ste 214,DENVER,range_interp,1976-90,range_interp,address
+206,address,range_interp,found,False,49.06699406889948,49.06699406889948,2002,10758 W Centennial Rd,LITTLETON,range_interp,1991-2002,range_interp,address
+207,address,range_interp_cityzips,found,False,129.9789108794298,129.9789108794298,1973,7860 S PLATTE CANYON RD,LITTLETON,range_interp,1961-75,range_interp_cityzips,address
+208,address,range_interp,found,False,32.59848144169889,48.487070752937534,1979,125 TERRY,LONGMONT,range_interp,1976-90,range_interp,address
+209,address,range_interp,found,False,118.00218536651144,118.00218536651144,1980,30395 BRYANT OR,EVERGREEN,range_interp,1976-90,range_interp,address
+210,address,range_interp_dirloose,found,False,61.0469033598152,61.0469033598152,1983,6606 N FEDERAL,DENVER,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+211,address,range_interp,not_found,False,,,1990,832 E Lincoln Ave,FORT COLLINS,range_interp,1976-90,range_interp,address
+212,address,range_interp,found,False,66.65182319773498,66.65182319773498,1967,1133 8TH AVE,GREELEY,range_interp,1961-75,range_interp,address
+213,address,range_interp_cityzips_dirloose,found,False,13815.67382258872,13815.67382258872,1965,3898 S. JASON,DENVER,range_interp_dirloose,1961-75,range_interp_cityzips_dirloose,address_approx
+214,address,range_interp,found,False,36.58148955366172,36.58148955366172,1974,815 BAXTER RD,PUEBLO,range_interp,1961-75,range_interp,address
+215,address,range_interp,found,False,56.779198689197926,56.779198689197926,1990,505 W Lucerne Dr,LAFAYETTE,range_interp,1976-90,range_interp,address
+216,address,range_interp,found,False,61.114395095164014,61.114395095164014,1999,2851 Industrial Ln,BROOMFIELD,range_interp,1991-2002,range_interp,address
+217,address,range_interp,not_found,False,,,1999,6405 Stapleton Dr N,DENVER,range_interp,1991-2002,range_interp,address
+218,address,range_interp,found,False,45.55196826140886,87.63257442347458,1999,2120 S Holly St Ste 205,DENVER,range_interp,1991-2002,range_interp,address
+219,address,range_interp,not_found,False,,,1992,33180 Us Hwy 40,EVERGREEN,range_interp,1991-2002,range_interp,address
+220,address,range_interp,not_found,False,,,1999,2945 Center Green Ct S Ste B,BOULDER,range_interp,1991-2002,range_interp,address
+221,address,range_interp_cityzips,not_found,False,,,1992,1501 N College,FORT COLLINS,range_interp,1991-2002,range_interp_cityzips,address
+222,address,range_interp,found,False,52.00714095158249,52.00714095158249,1990,113 Main St,LA SALLE,range_interp,1976-90,range_interp,address
+223,address,range_interp,found,False,14.433897223467078,14.433897223467078,1999,3926 Blake St,DENVER,range_interp,1991-2002,range_interp,address
+224,address,range_interp,found,False,39.75660898433233,39.75660898433233,1993,1310 S Chambers Rd,AURORA,range_interp,1991-2002,range_interp,address
+225,address,range_interp,found,True,14.398334746991123,1315.2205998777083,1999,350 Santa Fe Dr,DENVER,range_interp,1991-2002,range_interp,address
+226,address,range_interp,found,False,55.1583517303812,55.1583517303812,1999,3198 Nome St,AURORA,range_interp,1991-2002,range_interp,address
+227,address,range_interp,found,False,46.2195585312341,46.2195585312341,1999,15592 E Batavia Dr,AURORA,range_interp,1991-2002,range_interp,address
+228,address,range_interp,not_found,False,,,1982,3474 W COLFAX AVE,DENVER,range_interp,1976-90,range_interp,address
+229,address,range_interp,not_found,False,,,1973,1125 11TH ST,DENVER,range_interp,1961-75,range_interp,address
+230,address,range_interp,not_found,False,,,2002,2709 W Eisenhower Blvd,LOVELAND,range_interp,1991-2002,range_interp,address
+231,address,range_interp,found,False,45.12825984424728,45.12825984424728,1974,7363 CORTEZ LANE,BOULDER,range_interp,1961-75,range_interp,address
+232,address,range_interp,found,False,19.83280316460423,19.83280316460423,1999,340 S 30TH Ave,BRIGHTON,range_interp,1991-2002,range_interp,address
+233,address,range_interp_cityzips_dirloose,not_found,False,,,1961,500 Orchard,CANON CITY,range_interp_dirloose,1961-75,range_interp_cityzips_dirloose,address_approx
+234,address,range_interp,found,False,44.48351590746127,44.48351590746127,1979,1355 FORD ST,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+235,address,range_interp,found,True,64.15088372105184,15267.27106910301,1999,4301 Broadway,DENVER,range_interp,1991-2002,range_interp,address
+236,address,zip_centroid,found,False,983.4598899212732,983.4598899212732,1993,543 Main,DELTA,zip_centroid,1991-2002,zip_centroid,zip_centroid
+237,address,range_interp_cityzips,found,False,28.246624030715275,28.246624030715275,1976,7479 S DAHLIA COURT,LITTLETON,range_interp,1976-90,range_interp_cityzips,address
+238,address,range_interp,not_found,False,,,1980,2100 S COLLEGE AVE,FORT COLLINS,range_interp,1976-90,range_interp,address
+239,address,range_interp,found,False,47.125815838495136,47.125815838495136,1990,229 Adams,MONTE VISTA,range_interp,1976-90,range_interp,address
+240,address,range_interp,not_found,False,,,1999,2716 Broadway St,BOULDER,range_interp,1991-2002,range_interp,address
+241,address,range_interp,found,False,32.37479233704254,32.37479233704254,1993,775 16TH St,BOULDER,range_interp,1991-2002,range_interp,address
+242,address,range_interp,found,False,56.05156651906452,56.05156651906452,1999,1055 Bader Ct,CASTLE ROCK,range_interp,1991-2002,range_interp,address
+243,address,range_interp,found,False,60.28467663665428,60.28467663665428,1993,4750 Nautilus Ci,BOULDER,range_interp,1991-2002,range_interp,address
+244,address,range_interp_cityzips,found,False,37.96794307530603,37.96794307530603,1974,3141 SOUTH BROADWAY,ENGLEWOOD,range_interp,1961-75,range_interp_cityzips,address
+245,address,range_interp,found,False,46.24952121554182,46.24952121554182,1993,4811 W Kentucky Ave,DENVER,range_interp,1991-2002,range_interp,address
+246,address,range_interp,found,False,40.91545948672866,41.00135904156995,1974,3025 SOUTH VINE STREET,DENVER,range_interp,1961-75,range_interp,address
+247,address,range_interp,found,False,23.26193342760278,23.26193342760278,1993,3642 Hazelwood Ct,BOULDER,range_interp,1991-2002,range_interp,address
+248,address,range_interp,found,False,162.35770689418032,168.48432184159256,1993,8401 Baseline Rd,BOULDER,range_interp,1991-2002,range_interp,address
+249,address,range_interp,found,False,284.8390965507609,284.8390965507609,1993,312 Aabc,ASPEN,range_interp,1991-2002,range_interp,address
+250,address,range_interp_cityzips,found,False,78.46842735171751,78.46842735171751,1961,3706 Sheffield Lane,COLORADO SPRINGS,range_interp,1961-75,range_interp_cityzips,address
+251,address,range_interp_dirloose,found,False,57.69333736468423,57.69333736468423,2002,1131 N 21ST St,GRAND JUNCTION,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+252,address,range_interp,found,False,59.49559134713587,59.49559134713587,1976,1630 KIMBARK,LONGMONT,range_interp,1976-90,range_interp,address
+253,address,range_interp,not_found,False,,,1977,517 MAIN,WALSENBURG,range_interp,1976-90,range_interp,address
+254,address,range_interp_dirloose,not_found,False,,,1966,3800 FEDERAL BLVD,ENGLEWOOD,range_interp_dirloose,1961-75,range_interp_dirloose,address_approx
+255,address,range_interp,found,False,108.61346959146888,108.61346959146888,1973,3850 FRONTIER AVE,BOULDER,range_interp,1961-75,range_interp,address
+256,address,range_interp,found,False,18.01203851368874,18.01203851368874,1983,1478 BIRCH,DENVER,range_interp,1976-90,range_interp,address
+257,address,range_interp,not_found,False,,,2002,3819 Saint Vrain St,EVANS,range_interp,1991-2002,range_interp,address
+258,address,range_interp,found,False,26.843479846258298,80.03819929419686,1999,2160 S Holly St,DENVER,range_interp,1991-2002,range_interp,address
+259,address,range_interp,found,False,28.228887500565577,28.228887500565577,1973,11122 E 47TH,DENVER,range_interp,1961-75,range_interp,address
+260,address,range_interp,found,False,141.59730004018022,141.59730004018022,2002,1865 Launa Dr,MONTROSE,range_interp,1991-2002,range_interp,address
+261,address,range_interp,found,False,58.26236011416846,58.26236011416846,1976,4905 OLIVE,COMMERCE CITY,range_interp,1976-90,range_interp,address
+262,address,range_interp,found,False,34.184431653810776,34.184431653810776,1986,1515 W THOMAS AVE,ENGLEWOOD,range_interp,1976-90,range_interp,address
+263,address,range_interp,found,False,30.925821969916942,30.925821969916942,1983,2250 S LIPAN,DENVER,range_interp,1976-90,range_interp,address
+264,address,range_interp,not_found,False,,,1967,959 W 29TH AVE,DENVER,range_interp,1961-75,range_interp,address
+265,address,range_interp,not_found,False,,,2002,7809 State Hwy 196,LAMAR,range_interp,1991-2002,range_interp,address
+266,address,range_interp_dirloose,not_found,False,,,1967,210 & 9TH,DURANGO,range_interp_dirloose,1961-75,range_interp_dirloose,address_approx
+267,address,range_interp,found,False,41.79709950511603,41.79709950511603,1970,1360 NIAGARA,DENVER,range_interp,1961-75,range_interp,address
+268,address,range_interp,found,False,19.98920124505061,19.98920124505061,1993,1265 Umatilla St,DENVER,range_interp,1991-2002,range_interp,address
+269,address,range_interp,found,False,27.587455969015924,27.587455969015924,1999,1150 W Virginia Ave,DENVER,range_interp,1991-2002,range_interp,address
+270,address,range_interp,found,False,57.67222421452383,143.5019060896237,1992,7399 S Tucson Way,ENGLEWOOD,range_interp,1991-2002,range_interp,address
+271,address,range_interp,not_found,False,,,1990,78841 US Hwy 40,WINTER PARK,range_interp,1976-90,range_interp,address
+272,address,range_interp,found,False,40.727147158601326,40.727147158601326,1983,651 28TH ST,GREELEY,range_interp,1976-90,range_interp,address
+273,address,range_interp,not_found,False,,,2002,728 Front St Ste C,LOUISVILLE,range_interp,1991-2002,range_interp,address
+274,address,range_interp,found,False,22.383323741990523,52.162668862580574,1993,90 Madison St Ste 102,DENVER,range_interp,1991-2002,range_interp,address
+275,address,range_interp,not_found,False,,,2002,1713 E Lincoln Ave Unit B6,FORT COLLINS,range_interp,1991-2002,range_interp,address
+276,address,range_interp,not_found,False,,,2002,901 SW Frontage Rd,FORT COLLINS,range_interp,1991-2002,range_interp,address
+277,address,range_interp,not_found,False,,,1990,116 S Union,PUEBLO,range_interp,1976-90,range_interp,address
+278,address,range_interp,not_found,False,,,1988,609 14TH ST SW,LOVELAND,range_interp,1976-90,range_interp,address
+279,address,range_interp_cityzips,found,False,58.2961547280425,58.2961547280425,1962,400 S. 16TH,COLORADO SPRINGS,range_interp,1961-75,range_interp_cityzips,address
+280,address,range_interp,found,False,80.71862337536119,80.71862337536119,1970,728 W 9TH,PUEBLO,range_interp,1961-75,range_interp,address
+281,address,range_interp,found,False,90.74615999213326,90.74615999213326,1993,3555 Moline,AURORA,range_interp,1991-2002,range_interp,address
+282,address,range_interp,found,False,65.90291357037403,65.90291357037403,1970,2717 WOOD AVE,COLORADO SPRINGS,range_interp,1961-75,range_interp,address
+283,address,range_interp,not_found,False,,,1999,2840 E 43RD Ave,DENVER,range_interp,1991-2002,range_interp,address
+284,address,range_interp,found,False,519.5008867527098,519.5008867527098,1988,3710 BRADLEY ROAD,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+285,address,range_interp,found,False,62.76830640178128,62.76830640178128,1999,4140 Jackson St,DENVER,range_interp,1991-2002,range_interp,address
+286,address,range_interp,not_found,False,,,1968,392 BREEZE,CRAIG,range_interp,1961-75,range_interp,address
+287,address,range_interp_dirloose,not_found,False,,,1990,100 S Cedar,AKRON,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+288,address,range_interp,not_found,False,,,2002,630 Whispering Pines Dr,ESTES PARK,range_interp,1991-2002,range_interp,address
+289,address,range_interp,not_found,False,,,1976,2144 CHAMPA,DENVER,range_interp,1976-90,range_interp,address
+290,address,range_interp,not_found,False,,,2002,3101 Kintzley Ct,LAPORTE,range_interp,1991-2002,range_interp,address
+291,address,range_interp,found,False,69.09561276420408,110.76953906019442,2002,9100 E Panorama Dr Ste 200,ENGLEWOOD,range_interp,1991-2002,range_interp,address
+292,address,range_interp,found,False,124.37729197758208,124.37729197758208,1990,2454 E Platte Pl,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+293,address,range_interp,found,False,72.47317477011737,72.47317477011737,1993,5285 Fox Si,DENVER,range_interp,1991-2002,range_interp,address
+294,address,range_interp,found,False,61.61813978713744,61.61813978713744,1974,3809 STATE STREET,EVANS,range_interp,1961-75,range_interp,address
+295,address,street_nearest_cityzips,not_found,False,,,1986,837 10TH ST,DENVER,street_nearest,1976-90,street_nearest_cityzips,address_approx
+296,address,range_interp,found,False,88.04054883040578,88.04054883040578,1993,2933 Galley Rd,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+297,address,range_interp,found,False,78.13292557148746,78.13292557148746,2002,2303 2ND Ave,GREELEY,range_interp,1991-2002,range_interp,address
+298,address,range_interp,not_found,False,,,1993,16000 E Lockheed Dr,AURORA,range_interp,1991-2002,range_interp,address
+299,address,range_interp_cityzips,not_found,False,,,1965,1700 W COLFAX,DENVER,range_interp,1961-75,range_interp_cityzips,address
+300,address,range_interp_dirloose,found,False,222.4742550489332,222.4742550489332,1992,116 Main,MONTROSE,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+301,address,range_interp,found,False,46.96291248023578,46.96291248023578,1999,885 Arapahoe Ave,BOULDER,range_interp,1991-2002,range_interp,address
+302,address,range_interp,found,False,19.570325983355144,19.570325983355144,1993,1185 S Huron,DENVER,range_interp,1991-2002,range_interp,address
+303,address,range_interp,not_found,False,,,1977,1660 NORTH AVE,GRAND JUNCTION,range_interp,1976-90,range_interp,address
+304,address,range_interp,found,False,271.477425059329,297.16241752717025,1988,485 ELKTON DRIVE,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+305,address,range_interp,found,False,59.17388810124166,96.78173307757186,1999,305 Juanita St Ste B,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+306,address,range_interp_cityzips,not_found,False,,,1961,8015 Garrison,ARVADA,range_interp,1961-75,range_interp_cityzips,address
+307,address,range_interp,found,False,116.2230101862278,116.2230101862278,1993,710 Kipling St,LAKEWOOD,range_interp,1991-2002,range_interp,address
+308,address,range_interp,found,False,45.70556214304172,45.70556214304172,1988,5065 GEIGER CT,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+309,address,range_interp,found,False,87.80430946793336,87.80430946793336,1999,5700 E 39TH Ave,DENVER,range_interp,1991-2002,range_interp,address
+310,address,range_interp,found,False,362.15477435447815,362.15477435447815,1983,11020 ALBION OR,NORTHGLENN,range_interp,1976-90,range_interp,address
+311,address,range_interp,not_found,False,,,1992,228 7TH Ave,UNINCORPORATED OURAY COUNTY,range_interp,1991-2002,range_interp,address
+312,address,range_interp,found,False,48.81868733855644,48.81868733855644,1983,6010 W 10TH ST,GREELEY,range_interp,1976-90,range_interp,address
+313,address,range_interp,found,False,69.99408307767405,69.99408307767405,1990,10777 E 45TH Ave,DENVER,range_interp,1976-90,range_interp,address
+314,address,range_interp,found,False,377.1167975187857,377.1167975187857,1993,5718 Central Ave,BOULDER,range_interp,1991-2002,range_interp,address
+315,address,range_interp,found,False,25.26163651820474,25.629524588944527,1990,4281 W Tufts Ave,DENVER,range_interp,1976-90,range_interp,address
+316,address,range_interp,found,False,76.09221617300909,76.09221617300909,1993,1617 S Acoma St,DENVER,range_interp,1991-2002,range_interp,address
+317,address,range_interp,found,False,24.423153111960744,24.423153111960744,1992,5556 S Sycamore,LITTLETON,range_interp,1991-2002,range_interp,address
+318,address,range_interp_cityzips,not_found,False,,,1961,2712 9TH St.,BOULDER,range_interp,1961-75,range_interp_cityzips,address
+319,address,range_interp,found,False,165.18570480967327,206.22221316510965,1992,12445 E 39TH Ave No 100,DENVER,range_interp,1991-2002,range_interp,address
+320,address,range_interp,found,False,153.68184429324086,153.68184429324086,1999,4101 E 48TH Ave,DENVER,range_interp,1991-2002,range_interp,address
+321,address,range_interp,found,False,109.25499829862112,109.25499829862112,1990,492 Morning Glory Ln,GRAND JUNCTION,range_interp,1976-90,range_interp,address
+322,address,range_interp_dirloose,found,False,28.561382424564997,28.561382424564997,1986,7227 COLFAX,DENVER,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+323,address,range_interp,found,False,26.409891763275272,36.79848566553366,1993,1010 S Joliet St,AURORA,range_interp,1991-2002,range_interp,address
+324,address,range_interp,found,False,71.31166894785974,71.31166894785974,1999,20 Ruxton Ave,MANITOU SPRINGS,range_interp,1991-2002,range_interp,address
+325,address,range_interp,not_found,False,,,1974,136 E ELKHORN AvE,ESTES PARK,range_interp,1961-75,range_interp,address
+326,address,range_interp,not_found,False,,,1992,6865 E 49TH Ave,COMMERCE CITY,range_interp,1991-2002,range_interp,address
+327,address,range_interp,not_found,False,,,1980,110 E MAIN ST,FLORENCE,range_interp,1976-90,range_interp,address
+328,address,range_interp_dirloose,not_found,False,,,1979,4580 E IRONTON ST,DENVER,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+329,address,range_interp,not_found,False,,,1983,913 8TH ST,GOLDEN,range_interp,1976-90,range_interp,address
+330,address,range_interp,found,False,17.43355679161877,17.43355679161877,1982,1060 S.RARITAN,DENVER,range_interp,1976-90,range_interp,address
+331,address,range_interp,not_found,False,,,1982,5600 E. 72ND AVE,COMMERCE CITY,range_interp,1976-90,range_interp,address
+332,address,range_interp,found,False,50.26809860750608,86.82409642355047,1999,597 Nucla Way Ste D,AURORA,range_interp,1991-2002,range_interp,address
+333,address,range_interp,found,False,77.76766012865271,77.76766012865271,2002,1840 Industrial Cir,LONGMONT,range_interp,1991-2002,range_interp,address
+334,address,range_interp_cityzips,found,False,49.126829336164185,49.126829336164185,1965,711 11TH ST,GREELEY,range_interp,1961-75,range_interp_cityzips,address
+335,address,range_interp,not_found,False,,,1983,221 N COLLEGE,FORT COLLINS,range_interp,1976-90,range_interp,address
+336,address,range_interp_cityzips,not_found,False,,,1965,3724 W COLFAX AVE,DENVER,range_interp,1961-75,range_interp_cityzips,address
+337,address,range_interp,found,False,34.95839347508439,34.95839347508439,1970,2260 S BROADWAY,DENVER,range_interp,1961-75,range_interp,address
+338,address,range_interp_cityzips,not_found,False,,,1976,801 FEDERAL BLVD,DENVER,range_interp,1976-90,range_interp_cityzips,address
+339,address,range_interp,found,False,30.3320487007138,63.68806828018681,1999,2595 W Evans Ave,DENVER,range_interp,1991-2002,range_interp,address
+340,address,range_interp,not_found,False,,,1986,2223 N. WEBER,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+341,address,range_interp,not_found,False,,,1992,111 North E,SALIDA,range_interp,1991-2002,range_interp,address
+342,address,range_interp,not_found,False,,,2002,3830 Capitol Dr,FORT COLLINS,range_interp,1991-2002,range_interp,address
+343,address,range_interp,not_found,False,,,2002,521 Whedbee St,FORT COLLINS,range_interp,1991-2002,range_interp,address
+344,address,range_interp,found,False,53.14670010549842,53.14670010549842,1968,1011 MAIN,LONGMONT,range_interp,1961-75,range_interp,address
+345,address,range_interp,found,False,127.66956077117533,127.66956077117533,1999,3250 Quentin St Ste 104,AURORA,range_interp,1991-2002,range_interp,address
+346,address,range_interp,not_found,False,,,1967,2657 W 3RD AVE,DENVER,range_interp,1961-75,range_interp,address
+347,address,range_interp,found,False,68.95459967008497,68.95459967008497,1988,6166 JANICE WAY,ARVADA,range_interp,1976-90,range_interp,address
+348,address,range_interp,found,False,30.24818938081684,30.24818938081684,1990,3820 S Jason St,ENGLEWOOD,range_interp,1976-90,range_interp,address
+349,address,range_interp,found,False,13.227120129398964,37.000560909005074,1999,4242 Elizabeth St,DENVER,range_interp,1991-2002,range_interp,address
+350,address,range_interp_cityzips,not_found,False,,,1970,513 RIVERSIDE,FORT COLLINS,range_interp,1961-75,range_interp_cityzips,address
+351,address,range_interp,not_found,False,,,1973,3700 S SANTA FE LANE,ENGLEWOOD,range_interp,1961-75,range_interp,address
+352,address,range_interp,not_found,False,,,1982,431 W 64TH AVE,DENVER,range_interp,1976-90,range_interp,address
+353,address,range_interp,not_found,False,,,2002,3015 N Elizabeth St,PUEBLO,range_interp,1991-2002,range_interp,address
+354,address,range_interp,not_found,False,,,1992,312 S Wahsatch,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+355,address,range_interp,found,False,78.19224371408924,78.19224371408924,1993,1700 E 68TH Ave,THORNTON,range_interp,1991-2002,range_interp,address
+356,address,range_interp,found,False,18.134330262542864,18.134330262542864,1999,4800 Lima St,DENVER,range_interp,1991-2002,range_interp,address
+357,address,range_interp_cityzips,found,False,53.21036688474096,74.85354307360751,1983,860 S BIRCH NO 205,DENVER,range_interp,1976-90,range_interp_cityzips,address
+358,address,range_interp_cityzips_dirloose,found,True,42.96200423269768,14929.427890322477,1962,5001 Colorado,DENVER,range_interp_dirloose,1961-75,range_interp_cityzips_dirloose,address_approx
+359,address,range_interp,found,False,43.95598027800045,43.95598027800045,1980,443 FRONT ST,FAIRPLAY,range_interp,1976-90,range_interp,address
+360,address,range_interp,found,False,28.57633928192535,28.57633928192535,1983,11 E LAS VEGAS,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+361,address,range_interp,found,False,72.96261987157658,72.96261987157658,1999,1708 13TH St,BOULDER,range_interp,1991-2002,range_interp,address
+362,address,range_interp,found,False,38.146375598379485,48.482445078804,1992,549 South 10,GRAND JUNCTION,range_interp,1991-2002,range_interp,address
+363,address,range_interp,not_found,False,,,1984,1020 W 6TH AVE,DENVER,range_interp,1976-90,range_interp,address
+364,address,range_interp,not_found,False,,,1982,446 ACOMA ST,DENVER,range_interp,1976-90,range_interp,address
+365,address,range_interp,found,False,66.20372631219901,66.20372631219901,1999,4600 Joliet St,DENVER,range_interp,1991-2002,range_interp,address
+366,address,range_interp,found,False,231.55988325180752,231.55988325180752,1999,6870 Broadway Unit E,DENVER,range_interp,1991-2002,range_interp,address
+367,address,range_interp,found,False,294.2306561105254,294.2306561105254,1983,3749 N NEVADA AVE,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+368,address,range_interp,found,False,27.401454650120957,27.401454650120957,1999,2585 W 8TH Ave,DENVER,range_interp,1991-2002,range_interp,address
+369,address,range_interp,found,False,34.97839374254072,34.97839374254072,1966,4930 MONACO,COMMERCE CITY,range_interp,1961-75,range_interp,address
+370,address,range_interp_cityzips_dirloose,not_found,False,,,1976,529 YALE CIR,DENVER,range_interp_dirloose,1976-90,range_interp_cityzips_dirloose,address_approx
+371,address,range_interp,found,False,69.91612333338983,69.91612333338983,1993,18 N Sierra Madre St,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+372,address,range_interp,found,False,102.84876639693674,102.84876639693674,1988,2000 W UNION AVE,ENGLEWOOD,range_interp,1976-90,range_interp,address
+373,address,range_interp,not_found,False,,,1983,102 LAWRENCE,CENTRAL CITY,range_interp,1976-90,range_interp,address
+374,address,range_interp,found,False,76.31340178078663,220.8084123600208,2002,8100 Southpark Way Unit B-1,LITTLETON,range_interp,1991-2002,range_interp,address
+375,address,range_interp,not_found,False,,,2002,918 9TH Ave,GREELEY,range_interp,1991-2002,range_interp,address
+376,address,range_interp,found,False,53.50176126155138,53.50176126155138,1992,7609 E Jamison Dr,ENGLEWOOD,range_interp,1991-2002,range_interp,address
+377,address,zip_centroid,found,False,2235.231861967537,2235.231861967537,1990,10520 S Forest Dr,COLORADO SPRINGS,zip_centroid,1976-90,zip_centroid,zip_centroid
+378,address,range_interp_cityzips,not_found,False,,,1983,1005 RIVERSIDE ORIVE,FORT COLLINS,range_interp,1976-90,range_interp_cityzips,address
+379,address,range_interp_cityzips,not_found,False,,,1983,564 25TH RD,GRAND JUNCTION,range_interp,1976-90,range_interp_cityzips,address
+380,address,range_interp_dirloose,found,False,112.71590679973156,112.71590679973156,1999,1635 N Main St,LONGMONT,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+381,address,range_interp,not_found,False,,,1990,141 S 1ST East,CHEYENNE WELLS,range_interp,1976-90,range_interp,address
+382,address,range_interp,found,False,685.9383818067474,685.9383818067474,2002,2801 N 111TH St,LAFAYETTE,range_interp,1991-2002,range_interp,address
+383,address,range_interp_cityzips,found,False,34.75360707476888,34.75360707476888,1979,950 MIAMI WAY,BOULDER,range_interp,1976-90,range_interp_cityzips,address
+384,address,range_interp,not_found,False,,,1974,824 42ND,EVANS,range_interp,1961-75,range_interp,address
+385,address,range_interp,not_found,False,,,1999,1161 South St,LOUISVILLE,range_interp,1991-2002,range_interp,address
+386,address,range_interp_dirloose,not_found,False,,,1980,6700 E STAPLETON OR,DENVER,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+387,address,range_interp,not_found,False,,,1982,4748 ELATI ST NO 10,DENVER,range_interp,1976-90,range_interp,address
+388,address,range_interp,found,False,23.25311204144557,23.25311204144557,1993,571 Galapago Si,DENVER,range_interp,1991-2002,range_interp,address
+389,address,range_interp,not_found,False,,,1990,7316 Federal Bivd,WESTMINSTER,range_interp,1976-90,range_interp,address
+390,address,range_interp,found,False,75.35239629506806,75.35239629506806,1973,345 SHERIDAN,LAKEWOOD,range_interp,1961-75,range_interp,address
+391,address,street_nearest_cityzips,found,False,87.02433798465819,87.02433798465819,1985,2725 WEST 11TH ST,GREELEY,street_nearest,1976-90,street_nearest_cityzips,address_approx
+392,address,range_interp_cityzips,not_found,False,,,1965,577 YAMPA AVE,CRAIG,range_interp,1961-75,range_interp_cityzips,address
+393,address,range_interp,found,False,32.59224203049879,109.35509049406772,1999,6901 W 117TH Ave,BROOMFIELD,range_interp,1991-2002,range_interp,address
+394,address,range_interp,found,False,36.20356074046357,36.20356074046357,1976,11089 MELODY oR,WESTMINSTER,range_interp,1976-90,range_interp,address
+395,address,range_interp_dirloose,found,False,597.0282249611159,597.0282249611159,1990,5747 N Peterson Rd,SEDALIA,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+396,address,range_interp,found,False,77.3518298762041,77.3518298762041,1999,326 E Colorado Ave,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+397,address,range_interp_dirloose,found,False,36.600607456694334,36.600607456694334,1979,4925 38TH AVE,DENVER,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+398,address,range_interp_dirloose,found,False,3456.721229776193,3456.721229776193,1993,895 9TH Ave,BRIGHTON,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+399,address,range_interp,found,False,33.22124029030354,33.22124029030354,1983,2731 ELIOT,DENVER,range_interp,1976-90,range_interp,address
+400,address,range_interp,found,False,31.85295532084664,31.85295532084664,1993,13749 E Smith Dr,AURORA,range_interp,1991-2002,range_interp,address
+401,address,range_interp_cityzips,not_found,False,,,1993,5 S Cherry St,DENVER,range_interp,1991-2002,range_interp_cityzips,address
+402,address,range_interp,found,False,20.35287852465351,20.35287852465351,1990,3937 S Lipan,ENGLEWOOD,range_interp,1976-90,range_interp,address
+403,address,range_interp,not_found,False,,,1993,1523 Cleveland Pi,DENVER,range_interp,1991-2002,range_interp,address
+404,address,range_interp,found,False,199.8265694780048,236.841690063576,2002,1140 Boston Ave,LONGMONT,range_interp,1991-2002,range_interp,address
+405,address,range_interp,found,False,23.83682627031985,23.83682627031985,1976,1001 DAKIN,DENVER,range_interp,1976-90,range_interp,address
+406,address,range_interp,found,False,24.79179774686038,24.79179774686038,1999,2110 Market St,DENVER,range_interp,1991-2002,range_interp,address
+407,address,range_interp,found,False,402.5593371968059,402.5593371968059,1983,2011 E 58TH AVE,DENVER,range_interp,1976-90,range_interp,address
+408,address,range_interp,found,False,66.80348856198927,66.80348856198927,1999,1851 E 68TH Ave,THORNTON,range_interp,1991-2002,range_interp,address
+409,address,range_interp,not_found,False,,,1983,4650 WARD RO,WHEAT RIDGE,range_interp,1976-90,range_interp,address
+410,address,range_interp,found,False,59.32807346794881,59.32807346794881,1999,123 Genesee Ct,BOULDER,range_interp,1991-2002,range_interp,address
+411,address,range_interp,not_found,False,,,1980,263 N CARTER LAKE RD,LOVELAND,range_interp,1976-90,range_interp,address
+412,address,range_interp,not_found,False,,,1999,3412 N Academy Blvd Ste F,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+413,address,range_interp,found,False,40.89372632611041,40.89372632611041,1988,3020 E 43RD AVE,DENVER,range_interp,1976-90,range_interp,address
+414,address,range_interp_dirloose,found,False,42.48420347467096,42.48420347467096,1990,2301 Cornell,ENGLEWOOD,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+415,address,range_interp,found,False,257.6386341206656,286.7393269140689,1990,9520 E Jewell Ave No B,DENVER,range_interp,1976-90,range_interp,address
+416,address,range_interp,found,True,48.1865942348504,6032.2201295737705,1993,1600 Sherman St,DENVER,range_interp,1991-2002,range_interp,address
+417,address,range_interp,found,False,19.611799670593356,19.611799670593356,1993,3535 Tejon St,DENVER,range_interp,1991-2002,range_interp,address
+418,address,range_interp,not_found,False,,,2002,33452 Dotty Rd,PINE,range_interp,1991-2002,range_interp,address
+419,address,street_nearest,found,False,243.3979659656937,243.3979659656937,1990,326 East Bennett Ave,CRIPPLE CREEK,street_nearest,1976-90,street_nearest,address_approx
+420,address,range_interp,found,False,44.524840052053705,44.524840052053705,1993,825 E Speer Blvd,DENVER,range_interp,1991-2002,range_interp,address
+421,address,range_interp,found,False,48.12353575814677,48.12353575814677,1990,3025 Delta Dr,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+422,address,range_interp_cityzips,found,False,137.51824038292193,137.51824038292193,1992,131 N 35TH Ave,GREELEY,range_interp,1991-2002,range_interp_cityzips,address
+423,address,range_interp_cityzips,not_found,False,,,1999,195 N Santa Fe Dr,CASTLE ROCK,range_interp,1991-2002,range_interp_cityzips,address
+424,address,range_interp_dirloose,not_found,False,,,1990,3002 N State Hwy 83,FRANKTOWN,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+425,address,range_interp,found,False,24.48266196706989,24.48266196706989,1980,5923 N NEVADA AVE,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+426,address,range_interp,found,False,32.753474289940755,36.78084706902749,1980,3563 WAZEE ST,DENVER,range_interp,1976-90,range_interp,address
+427,address,range_interp,found,False,38.168240660045626,38.168240660045626,1982,830 S.LIPAN,DENVER,range_interp,1976-90,range_interp,address
+428,address,range_interp,not_found,False,,,1973,1945 17TH ST,BOULDER,range_interp,1961-75,range_interp,address
+429,address,range_interp_cityzips,not_found,False,,,1968,68 W 44TH AVE,DENVER,range_interp,1961-75,range_interp_cityzips,address
+430,address,range_interp,found,False,95.31552566909896,95.31552566909896,2002,746 Rangeview Dr,GYPSUM,range_interp,1991-2002,range_interp,address
+431,address,range_interp,found,False,54.24474425899496,54.24474425899496,1980,7200 WEST 38TH,WHEAT RIDGE,range_interp,1976-90,range_interp,address
+432,address,range_interp,found,False,314.3548718778905,314.3548718778905,2002,25188 Genesee Trail Rd,GOLDEN,range_interp,1991-2002,range_interp,address
+433,address,range_interp,not_found,False,,,1993,2401 E 40TH Ave,DENVER,range_interp,1991-2002,range_interp,address
+434,address,range_interp,not_found,False,,,1967,668 9TH ST,GREELEY,range_interp,1961-75,range_interp,address
+435,address,range_interp_cityzips,not_found,False,,,1983,12265 CLAUDE CT,THORNTON,range_interp,1976-90,range_interp_cityzips,address
+436,address,range_interp,found,False,23.63328148003265,52.79895476940568,1993,3033 E 1ST Ave,DENVER,range_interp,1991-2002,range_interp,address
+437,address,range_interp,found,False,40.26272427158101,40.26272427158101,1999,1616 Federal Blvd,DENVER,range_interp,1991-2002,range_interp,address
+438,address,range_interp,found,False,60.17778554074943,60.17778554074943,1999,511 S 29TH St,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+439,address,street_nearest,not_found,False,,,1992,110 7TH,WALSENBURG,street_nearest,1991-2002,street_nearest,address_approx
+440,address,street_nearest,found,False,122.33631168588568,122.33631168588568,1983,198 E LINCOLN,HAYDEN,street_nearest,1976-90,street_nearest,address_approx
+441,address,range_interp_cityzips,found,False,29.95837736876283,39.98092588536723,1990,2110 S Ash St,DENVER,range_interp,1976-90,range_interp_cityzips,address
+442,address,range_interp_cityzips,found,False,25.924927625736508,25.924927625736508,1990,1450 Ammons,LAKEWOOD,range_interp,1976-90,range_interp_cityzips,address
+443,address,range_interp,found,False,69.76995026845191,69.76995026845191,1999,1050 Ford St,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+444,address,range_interp,found,False,56.67780295746876,56.67780295746876,1999,4820 Forge Rd,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+445,address,range_interp,found,False,22.90722098562712,50.07277379937868,1999,2715 Blake St,DENVER,range_interp,1991-2002,range_interp,address
+446,address,range_interp,found,False,172.69440305803158,172.69440305803158,1990,1201 W Mansfield Ave,ENGLEWOOD,range_interp,1976-90,range_interp,address
+447,address,range_interp,found,False,34.2783506761163,50.80093781548584,1976,3264 LARIMER,DENVER,range_interp,1976-90,range_interp,address
+448,address,range_interp,found,False,108.91172452777104,108.91172452777104,2002,12076 Grant St,THORNTON,range_interp,1991-2002,range_interp,address
+449,address,range_interp,found,False,43.42920682092464,43.42920682092464,1984,752 NAVAJO ST,DENVER,range_interp,1976-90,range_interp,address
+450,address,range_interp_cityzips,found,False,66.10342055261411,66.10342055261411,1992,3801 Pearl St,BOULDER,range_interp,1991-2002,range_interp_cityzips,address
+451,address,range_interp,found,False,29.47724571389488,29.47724571389488,1999,5725 Observation Ct,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+452,address,range_interp,found,False,30.016226643414004,30.016226643414004,1967,534 MAIN,DURANGO,range_interp,1961-75,range_interp,address
+453,address,range_interp,found,False,51.59848700784337,51.59848700784337,1990,737 S Townsend Ave,MONTROSE,range_interp,1976-90,range_interp,address
+454,address,range_interp,not_found,False,,,2002,2330 E Prospect,FORT COLLINS,range_interp,1991-2002,range_interp,address
+455,address,range_interp,not_found,False,,,2002,8125 Turman Ct,FORT COLLINS,range_interp,1991-2002,range_interp,address
+456,address,range_interp,found,False,147.74289547108185,147.74289547108185,2002,2840 Granada Bivd,PUEBLO,range_interp,1991-2002,range_interp,address
+457,address,range_interp_cityzips,not_found,False,,,1985,2580 PINE GROVE RD,STEAMBOAT SPRINGS,range_interp,1976-90,range_interp_cityzips,address
+458,address,range_interp_cityzips,found,False,39.04620947857929,119.77933005818394,1999,1101 Topeka Blvd,CASTLE ROCK,range_interp,1991-2002,range_interp_cityzips,address
+459,address,range_interp,not_found,False,,,1992,40 W Main,FRISCO,range_interp,1991-2002,range_interp,address
+460,address,range_interp,found,False,62.863725168291126,62.863725168291126,1993,6770 Brighton Bivd,COMMERCE CITY,range_interp,1991-2002,range_interp,address
+461,address,range_interp,found,False,48.84856378465102,48.84856378465102,1999,5343 Cook St,DENVER,range_interp,1991-2002,range_interp,address
+462,address,range_interp_cityzips,not_found,False,,,1977,3755 PARKMOOR VILLAGE OR,COLORADO SPRINGS,range_interp,1976-90,range_interp_cityzips,address
+463,address,range_interp,found,False,69.01165918245641,69.01165918245641,1990,6151 Brighton Blvd,COMMERCE CITY,range_interp,1976-90,range_interp,address
+464,address,range_interp,found,False,36.69978637781084,36.69978637781084,1999,3888 E Mexico Ave Ste 282,DENVER,range_interp,1991-2002,range_interp,address
+465,address,range_interp,found,False,53.34145834721617,53.34145834721617,1999,1742 Federal Blvd,DENVER,range_interp,1991-2002,range_interp,address
+466,address,range_interp,found,False,27.857393896261254,27.857393896261254,1990,308 Walnut,BRIGHTON,range_interp,1976-90,range_interp,address
+467,address,range_interp,not_found,False,,,1985,476 28.1/2 ROAD,GRAND JUNCTION,range_interp,1976-90,range_interp,address
+468,address,range_interp,found,False,33.08120542094225,33.08120542094225,1999,402 Martin St,LONGMONT,range_interp,1991-2002,range_interp,address
+469,address,range_interp,found,False,39.38607477278428,95.97516106530922,1990,1200 Galapago,DENVER,range_interp,1976-90,range_interp,address
+470,address,range_interp,not_found,False,,,2002,715 Denver Ave,LOVELAND,range_interp,1991-2002,range_interp,address
+471,address,range_interp,found,False,29.189908810051897,29.189908810051897,2002,9321 Vine St,THORNTON,range_interp,1991-2002,range_interp,address
+472,address,range_interp,found,False,273.56533531881456,273.56533531881456,1990,11925 6530 Rd,MONTROSE,range_interp,1976-90,range_interp,address
+473,address,range_interp,found,False,38.65627024831938,38.65627024831938,1990,2002 1ST Ave,GREELEY,range_interp,1976-90,range_interp,address
+474,address,range_interp,found,False,46.797283909399766,46.797283909399766,1990,3850 S Lowell Bivd,DENVER,range_interp,1976-90,range_interp,address
+475,address,range_interp_cityzips,not_found,False,,,1966,2509 MATHEWS,FORT COLLINS,range_interp,1961-75,range_interp_cityzips,address
+476,address,range_interp,found,False,39.52151521710617,39.52151521710617,1970,929 W 1ST AVE,DENVER,range_interp,1961-75,range_interp,address
+477,address,range_interp,found,False,51.34489239928863,51.34489239928863,1990,660 Bannock St No 350,DENVER,range_interp,1976-90,range_interp,address
+478,address,range_interp_cityzips,not_found,False,,,1962,3120 Main Ave.,DURANGO,range_interp,1961-75,range_interp_cityzips,address
+479,address,range_interp,not_found,False,,,1990,401 Pine,FORT COLLINS,range_interp,1976-90,range_interp,address
+480,address,range_interp_cityzips,found,False,18.45828335129436,18.45828335129436,1990,1934 S Broadway,DENVER,range_interp,1976-90,range_interp_cityzips,address
+481,address,range_interp,found,False,32.49936410279373,32.49936410279373,1999,2625 Tomah Pl,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+482,address,range_interp,found,False,31.283019298831807,94.97222901460992,1993,2175 S Jasmine St,DENVER,range_interp,1991-2002,range_interp,address
+483,address,range_interp_cityzips,not_found,False,,,1970,1549 LAWRENCE,DENVER,range_interp,1961-75,range_interp_cityzips,address
+484,address,range_interp,found,False,45.78334006674301,45.78334006674301,1999,1214 S Sheridan Blvd,LAKEWOOD,range_interp,1991-2002,range_interp,address
+485,address,range_interp_dirloose,found,False,49.3307889850122,49.3307889850122,1976,10555 51ST AVE,DENVER,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+486,address,range_interp,found,False,56.447913758004624,136.00310975253743,1999,2111 S Trenton Way Unit 112,DENVER,range_interp,1991-2002,range_interp,address
+487,address,range_interp_cityzips,not_found,False,,,1961,4901 W.58th,ARVADA,range_interp,1961-75,range_interp_cityzips,address
+488,address,range_interp,found,False,67.06829754375715,85.28376455899884,1999,3131 Indian Rd,BOULDER,range_interp,1991-2002,range_interp,address
+489,address,range_interp_cityzips,not_found,False,,,1988,705 2ND ST,GREELEY,range_interp,1976-90,range_interp_cityzips,address
+490,address,range_interp,not_found,False,,,1999,2375 15TH St,DENVER,range_interp,1991-2002,range_interp,address
+491,address,range_interp,found,False,70.64866586388281,70.64866586388281,1993,445 E 124TH Ave,THORNTON,range_interp,1991-2002,range_interp,address
+492,address,range_interp,found,False,96.9210162041454,96.9210162041454,2002,4462 Hilltop Rd,LONGMONT,range_interp,1991-2002,range_interp,address
+493,address,range_interp,not_found,False,,,2002,145 F St,SALIDA,range_interp,1991-2002,range_interp,address
+494,address,range_interp_cityzips_dirloose,not_found,False,,,1983,1035 W 4TH AVE,GOLDEN,range_interp_dirloose,1976-90,range_interp_cityzips_dirloose,address_approx
+495,address,range_interp,found,False,31.25767980523675,31.25767980523675,1992,1441 Winters Ave,GRAND JUNCTION,range_interp,1991-2002,range_interp,address
+496,address,range_interp,found,False,35.12243691986331,35.12243691986331,1985,2136 Sumac ST,LONGMONT,range_interp,1976-90,range_interp,address
+497,address,range_interp,not_found,False,,,1990,4425 Grape St,DENVER,range_interp,1976-90,range_interp,address
+498,address,range_interp,not_found,False,,,1993,110 Turner Ave,BERTHOUD,range_interp,1991-2002,range_interp,address
+499,address,range_interp_cityzips,not_found,False,,,1984,4260 COLUMBINE ST,DENVER,range_interp,1976-90,range_interp_cityzips,address
+500,address,range_interp_cityzips,found,False,23.39058790145673,23.39058790145673,1961,915 W. Colorado Ave.,COLORADO SPRINGS,range_interp,1961-75,range_interp_cityzips,address
+501,address,range_interp,not_found,False,,,1988,324 NAVAJO AVE,FLAGLER,range_interp,1976-90,range_interp,address
+502,address,range_interp,found,False,80.29262424692529,84.44629158131124,1993,8055 E Tufts Ave,DENVER,range_interp,1991-2002,range_interp,address
+503,address,range_interp,found,False,30.038356638787214,30.038356638787214,1974,209 N WALNUT,COLORADO SPRINGS,range_interp,1961-75,range_interp,address
+504,address,range_interp_dirloose,found,False,13418.538943046491,13448.228978675284,1980,3773 S JASON ST,DENVER,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+505,address,range_interp,found,False,138.57719542670017,138.57719542670017,1999,4080 Globeville Rd,DENVER,range_interp,1991-2002,range_interp,address
+506,address,street_nearest_cityzips,not_found,False,,,1965,291 S. LIPAN,DENVER,street_nearest,1961-75,street_nearest_cityzips,address_approx
+507,address,range_interp,found,True,50.933517308742026,13602.682514981938,1999,825 Valley St,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+508,address,range_interp,found,False,30.77967997837689,30.77967997837689,1973,5105 WASHINGTON ST,DENVER,range_interp,1961-75,range_interp,address
+509,address,range_interp_cityzips,not_found,False,,,1986,3520 ZUNI ST,DENVER,range_interp,1976-90,range_interp_cityzips,address
+510,address,range_interp,found,False,41.64917828485569,41.64917828485569,1999,3518 Larimer St,DENVER,range_interp,1991-2002,range_interp,address
+511,address,range_interp_dirloose,not_found,False,,,1993,9988 Fallen Rock Rd,CONIFER,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+512,address,range_interp,not_found,False,,,1980,12850 EAST 112TH AVE,HENDERSON,range_interp,1976-90,range_interp,address
+513,address,range_interp,found,False,45.64826280824982,45.64826280824982,1999,831 S Jason St,DENVER,range_interp,1991-2002,range_interp,address
+514,address,range_interp_dirloose,found,False,123.12368130410836,147.08581431988586,2002,2146 35TH Ave Ste D,GREELEY,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+515,address,range_interp,found,False,18.997294504186648,18.997294504186648,1993,2065 S Raritan St,DENVER,range_interp,1991-2002,range_interp,address
+516,address,range_interp,found,False,127.82677888819312,127.82677888819312,2002,14510 E Fremont Ave,ENGLEWOOD,range_interp,1991-2002,range_interp,address
+517,address,range_interp_cityzips,found,False,221.3749757381552,221.3749757381552,1990,700 W Mineral Ave,LITTLETON,range_interp,1976-90,range_interp_cityzips,address
+518,address,range_interp,not_found,False,,,1988,140 INVERNESS DR E,ENGLEWOOD,range_interp,1976-90,range_interp,address
+519,address,range_interp,found,False,250.53114754306583,250.53114754306583,2002,10220 Brighton Rd Unit #1,HENDERSON,range_interp,1991-2002,range_interp,address
+520,address,range_interp,not_found,False,,,1986,0329 HOLLAND HILLS,BASALT,range_interp,1976-90,range_interp,address
+521,address,range_interp_cityzips,found,False,70.61671212706466,70.61671212706466,1979,2212 JUNIPER COURT,BOULDER,range_interp,1976-90,range_interp_cityzips,address
+522,address,range_interp,found,False,40.52383951103337,40.52383951103337,1986,4025 E ILIFF AVE,DENVER,range_interp,1976-90,range_interp,address
+523,address,range_interp_cityzips,found,False,88.46701430479654,88.46701430479654,1990,3970 Zenobia,DENVER,range_interp,1976-90,range_interp_cityzips,address
+524,address,range_interp,found,False,42.75575773523485,42.75575773523485,1993,4755 Paris St,DENVER,range_interp,1991-2002,range_interp,address
+525,address,range_interp,not_found,False,,,1986,1925 W BAKER,ENGLEWOOD,range_interp,1976-90,range_interp,address
+526,address,range_interp,found,False,40.03071332491857,40.03071332491857,1993,4625 Hampshire,BOULDER,range_interp,1991-2002,range_interp,address
+527,address,range_interp,not_found,False,,,1980,1186 AIRPORT CENTER,GLENWOOD SPRINGS,range_interp,1976-90,range_interp,address
+528,address,range_interp,found,False,68.14638423712034,68.14638423712034,1992,3611 Walnut St,DENVER,range_interp,1991-2002,range_interp,address
+529,address,range_interp,found,False,33.17539759037755,33.17539759037755,1999,104 S Carter Ct,LOUISVILLE,range_interp,1991-2002,range_interp,address
+530,address,range_interp_cityzips,not_found,False,,,1973,214 E MOUNTAIN,FORT COLLINS,range_interp,1961-75,range_interp_cityzips,address
+531,address,range_interp_cityzips,not_found,False,,,1961,2962 N. Ave.,GRAND JUNCTION,range_interp,1961-75,range_interp_cityzips,address
+532,address,range_interp,found,False,101.09273855033302,101.09273855033302,1993,1770 Range St,BOULDER,range_interp,1991-2002,range_interp,address
+533,address,range_interp,not_found,False,,,1993,331 S 14TH St,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+534,address,range_interp,not_found,False,,,1999,1840 Range St,BOULDER,range_interp,1991-2002,range_interp,address
+535,address,range_interp,found,False,21.30528740012732,21.30528740012732,1973,595 W LAKE AVE,LITTLETON,range_interp,1961-75,range_interp,address
+536,address,range_interp,not_found,False,,,1999,645 Acoma St,DENVER,range_interp,1991-2002,range_interp,address
+537,address,range_interp,not_found,False,,,1986,2570 W 9TH AVE,DENVER,range_interp,1976-90,range_interp,address
+538,address,range_interp,not_found,False,,,2002,105 S Lincoln,LOVELAND,range_interp,1991-2002,range_interp,address
+539,address,range_interp,found,False,183.1911432494156,183.1911432494156,1999,17500 E 22ND Ave,AURORA,range_interp,1991-2002,range_interp,address
+540,address,range_interp,found,False,73.78295949975546,73.78295949975546,1993,8910 Ralston Rd Ste 202,ARVADA,range_interp,1991-2002,range_interp,address
+541,address,range_interp,found,False,21.47809702571876,21.47809702571876,1999,1620 W 74TH Way,DENVER,range_interp,1991-2002,range_interp,address
+542,address,range_interp,not_found,False,,,1993,808 S Havana Si,AURORA,range_interp,1991-2002,range_interp,address
+543,address,range_interp,not_found,False,,,1974,1760 15TH ST,DENVER,range_interp,1961-75,range_interp,address
+544,address,range_interp_cityzips_dirloose,not_found,False,,,1974,1635 N MAIN,COLORADO SPRINGS,range_interp_dirloose,1961-75,range_interp_cityzips_dirloose,address_approx
+545,address,range_interp,not_found,False,,,1990,1320 D St,SALIDA,range_interp,1976-90,range_interp,address
+546,address,range_interp_cityzips,found,False,30.2746427301703,30.2746427301703,1962,4237 Clayton St.,DENVER,range_interp,1961-75,range_interp_cityzips,address
+547,address,range_interp,found,False,107.79125288444224,137.63008143377826,1999,309 Arrawanna St Ste A,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+548,address,range_interp_cityzips,not_found,False,,,1984,850 S LOWELL BLVD,DENVER,range_interp,1976-90,range_interp_cityzips,address
+549,address,range_interp,found,False,28.592763987374227,28.592763987374227,1999,1329 W Byers Pi,DENVER,range_interp,1991-2002,range_interp,address
+550,address,range_interp_cityzips,found,False,20.59723954486181,20.59723954486181,1962,3261 W. Dakota Ave.,DENVER,range_interp,1961-75,range_interp_cityzips,address
+551,address,range_interp,found,False,30.457848944344924,30.457848944344924,1971,1441 OGDEN ST,DENVER,range_interp,1961-75,range_interp,address
+552,address,range_interp,not_found,False,,,1977,513 UTE AVENUE,GRAND JUNCTION,range_interp,1976-90,range_interp,address
+553,address,range_interp,found,False,274.9934700479144,274.9934700479144,1990,4050 Youngfield St,WHEAT RIDGE,range_interp,1976-90,range_interp,address
+554,address,range_interp,found,False,88.37395088675574,88.37395088675574,1999,10800 E 54TH Ave,DENVER,range_interp,1991-2002,range_interp,address
+555,address,range_interp,found,False,158.25524078540386,158.25524078540386,1999,14705 E 33RD Pl Ste A,AURORA,range_interp,1991-2002,range_interp,address
+556,address,range_interp_cityzips,not_found,False,,,1979,339 PEARL,DENVER,range_interp,1976-90,range_interp_cityzips,address
+557,address,range_interp,found,False,25.45118262452484,34.819457511048995,1999,946 Gilbert St,BOULDER,range_interp,1991-2002,range_interp,address
+558,address,range_interp_cityzips,found,False,62.44729973102322,111.21693578958916,1986,278 SAWYER,DURANGO,range_interp,1976-90,range_interp_cityzips,address
+559,address,range_interp,found,False,41.90188171681478,41.90188171681478,1999,6800 E 53RD PI,COMMERCE CITY,range_interp,1991-2002,range_interp,address
+560,address,range_interp,found,False,41.02028103711509,41.02028103711509,1974,5500 W 44TH,DENVER,range_interp,1961-75,range_interp,address
+561,address,range_interp,found,False,239.60988428808727,239.60988428808727,1993,5009 Centennial Bivd,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+562,address,range_interp,not_found,False,,,1983,6229 S SANTA FE OR,LITTLETON,range_interp,1976-90,range_interp,address
+563,address,range_interp,not_found,False,,,1984,1167 HIGH ST,CANON CITY,range_interp,1976-90,range_interp,address
+564,address,range_interp,found,True,42.55246833589951,2832.4432770489893,1999,750 Canosa Ct,DENVER,range_interp,1991-2002,range_interp,address
+565,address,range_interp,found,False,32.042384454949435,32.042384454949435,1999,3954 Williams St,DENVER,range_interp,1991-2002,range_interp,address
+566,address,range_interp_cityzips,not_found,False,,,1967,331 E PIKES PEAK,COLORADO SPRINGS,range_interp,1961-75,range_interp_cityzips,address
+567,address,range_interp,not_found,False,,,1986,11255 EAST 47TH AVE,DENVER,range_interp,1976-90,range_interp,address
+568,address,range_interp,found,False,146.08907215482802,149.24951493599184,1999,510 Burbank St,BROOMFIELD,range_interp,1991-2002,range_interp,address
+569,address,range_interp,not_found,False,,,1990,333 E Fillmore,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+570,address,range_interp,not_found,False,,,1993,211 S Main St,BRECKENRIDGE,range_interp,1991-2002,range_interp,address
+571,address,range_interp,found,False,33.41501329960687,33.41501329960687,1990,415 Denver Ave,FORT LUPTON,range_interp,1976-90,range_interp,address
+572,address,range_interp,found,False,74.88204318879122,74.88204318879122,1999,1490 Tuskegee PI,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+573,address,range_interp,found,False,41.53933891846895,41.53933891846895,1999,719 Walnut St,BOULDER,range_interp,1991-2002,range_interp,address
+574,address,range_interp,found,False,231.42907395647933,261.26805374201217,2002,1860 Lefthand Cir,LONGMONT,range_interp,1991-2002,range_interp,address
+575,address,range_interp,not_found,False,,,1977,1536 WILLOW STREET,CANON CITY,range_interp,1976-90,range_interp,address
+576,address,range_interp,not_found,False,,,1988,961 17-1/4 RD,FRUITA,range_interp,1976-90,range_interp,address
+577,address,range_interp,found,False,135.71317905668815,135.71317905668815,1999,7735 W 92ND Ave,BROOMFIELD,range_interp,1991-2002,range_interp,address
+578,address,range_interp,not_found,False,,,1990,65 S Ranney St,CRAIG,range_interp,1976-90,range_interp,address
+579,address,range_interp,not_found,False,,,1999,929 E 62ND Ave,DENVER,range_interp,1991-2002,range_interp,address
+580,address,range_interp,not_found,False,,,1982,330 QUIVAS ST,DENVER,range_interp,1976-90,range_interp,address
+581,address,range_interp_cityzips,found,False,26.34871054903341,26.34871054903341,1988,380 S 43RD ST,BOULDER,range_interp,1976-90,range_interp_cityzips,address
+582,address,street_nearest,not_found,False,,,1973,207 BROMLEY LN,BRIGHTON,street_nearest,1961-75,street_nearest,address_approx
+583,address,range_interp,found,False,69.90671449427407,77.88070526348024,1999,4725 Town Center Dr Ste B,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+584,address,range_interp,not_found,False,,,1985,6024 S COLLEGE AVE,FORT COLLINS,range_interp,1976-90,range_interp,address
+585,address,range_interp,found,False,22.44827547482769,22.44827547482769,2002,109 Broadway Ave,PUEBLO,range_interp,1991-2002,range_interp,address
+586,address,range_interp,found,False,43.77719798803464,43.77719798803464,1990,1400 Grove Street,DENVER,range_interp,1976-90,range_interp,address
+587,address,range_interp,found,False,43.34090124160389,43.34090124160389,1967,749 DODGE ST,DELTA,range_interp,1961-75,range_interp,address
+588,address,range_interp,found,False,48.64850153910725,48.64850153910725,1990,12625 W Atlantic Pi,LAKEWOOD,range_interp,1976-90,range_interp,address
+589,address,range_interp_cityzips,not_found,False,,,1980,9250 E EVANS,DENVER,range_interp,1976-90,range_interp_cityzips,address
+590,address,range_interp,not_found,False,,,1988,9800 E 96TH AVE,HENDERSON,range_interp,1976-90,range_interp,address
+591,address,range_interp,found,False,122.52948882927151,122.52948882927151,1993,6600 Arapahoe Ave,BOULDER,range_interp,1991-2002,range_interp,address
+592,address,range_interp,found,False,29.42119797380343,29.42119797380343,1999,701 S Logan St Ste 201,DENVER,range_interp,1991-2002,range_interp,address
+593,address,range_interp,not_found,False,,,2002,599 W 71ST St,LOVELAND,range_interp,1991-2002,range_interp,address
+594,address,range_interp,found,False,28.489463883081683,28.489463883081683,1993,1730 Blake St,DENVER,range_interp,1991-2002,range_interp,address
+595,address,range_interp,found,False,99.73440023798123,99.73440023798123,1988,4795 MARK DABLING,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+596,address,range_interp,not_found,False,,,2002,1422 Webster Ave,FORT COLLINS,range_interp,1991-2002,range_interp,address
+597,address,range_interp,found,False,23.202041878625423,23.202041878625423,1999,2819 Larimer St,DENVER,range_interp,1991-2002,range_interp,address
+598,address,range_interp,not_found,False,,,1970,419 N MAIN,LAMAR,range_interp,1961-75,range_interp,address
+599,address,range_interp,not_found,False,,,2002,8101 SW Frontage Rd,FORT COLLINS,range_interp,1991-2002,range_interp,address
+600,address,range_interp,found,True,30.558123472156367,6116.185527536017,1999,1624 Humboldt St,DENVER,range_interp,1991-2002,range_interp,address
+601,address,range_interp,not_found,False,,,1973,425 S PECOS,DENVER,range_interp,1961-75,range_interp,address
+602,address,range_interp,found,False,40.12262676364956,40.12262676364956,1988,3627 W 32ND,DENVER,range_interp,1976-90,range_interp,address
+603,address,range_interp,not_found,False,,,2002,25 Carmen Pi,PUEBLO,range_interp,1991-2002,range_interp,address
+604,address,range_interp,found,False,127.83341591075624,127.83341591075624,1999,2890 W 62ND Ave,DENVER,range_interp,1991-2002,range_interp,address
+605,address,range_interp,found,False,53.35804927343168,53.35804927343168,1992,6191 W 44TH Ave,WHEAT RIDGE,range_interp,1991-2002,range_interp,address
+606,address,range_interp,found,False,32.83675851756572,32.83675851756572,1993,645 Jersey St,DENVER,range_interp,1991-2002,range_interp,address
+607,address,range_interp,not_found,False,,,1968,3263 WALNUT,DENVER,range_interp,1961-75,range_interp,address
+608,address,range_interp,found,False,136.9565032683528,136.9565032683528,1999,4475 E 50TH Ave,DENVER,range_interp,1991-2002,range_interp,address
+609,address,range_interp,found,False,68.76115290976047,68.76115290976047,1966,175 W PARK AVE,DURANGO,range_interp,1961-75,range_interp,address
+610,address,range_interp,found,False,41.80384510928585,41.80384510928585,1973,545 MAIN ST,GRAND JUNCTION,range_interp,1961-75,range_interp,address
+611,address,range_interp_dirloose,found,False,120.273295355764,120.273295355764,1999,1575 Garden Of The Gods Rd,COLORADO SPRINGS,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+612,address,range_interp,not_found,False,,,1999,4999 Ironton St,DENVER,range_interp,1991-2002,range_interp,address
+613,address,range_interp_dirloose,found,False,35.61267170292268,178.36535953779546,1985,3421 GRAND AVENUE,GLENWOOD SPRINGS,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+614,address,range_interp,not_found,False,,,1992,1485 Rio Ct,DENVER,range_interp,1991-2002,range_interp,address
+615,address,range_interp,not_found,False,,,1983,111 MCCUMBER LANE,FLORENCE,range_interp,1976-90,range_interp,address
+616,address,range_interp,not_found,False,,,1973,3690 S LINCOLN AVE,LOVELAND,range_interp,1961-75,range_interp,address
+617,address,range_interp,found,False,43.710972949214266,43.710972949214266,1988,1590 W 12TH AVE.,DENVER,range_interp,1976-90,range_interp,address
+618,address,range_interp,found,False,5088.4574515353015,5088.4574515353015,1982,1354 LINCOLN ST,DENVER,range_interp,1976-90,range_interp,address
+619,address,range_interp_cityzips,not_found,False,,,1976,3017 S BROADWAY,ENGLEWOOD,range_interp,1976-90,range_interp_cityzips,address
+620,address,range_interp,found,False,131.11492470868436,131.11492470868436,1999,2130 Victor Pl,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+621,address,range_interp,found,False,41.51185773433303,41.51185773433303,1999,1417 S Clermont St,DENVER,range_interp,1991-2002,range_interp,address
+622,address,range_interp,not_found,False,,,1983,204 E MONROE OR,FORT COLLINS,range_interp,1976-90,range_interp,address
+623,address,range_interp,not_found,False,,,1993,1955 S Colorado Bivd Ste 080 80222. 303-759-1300 1355 S Colorado Bivd Ste 080,DENVER,range_interp,1991-2002,range_interp,address
+624,address,range_interp,not_found,False,,,2002,3519 Worwick Dr,FORT COLLINS,range_interp,1991-2002,range_interp,address
+625,address,street_nearest,not_found,False,,,1986,1601 w 14TH AVE,DENVER,street_nearest,1976-90,street_nearest,address_approx
+626,address,range_interp,found,False,39.31497972286078,39.31497972286078,1968,10 GALAPAGO,DENVER,range_interp,1961-75,range_interp,address
+627,address,range_interp,found,False,87.06966162427048,87.06966162427048,1983,3535 S IRVING ST,ENGLEWOOD,range_interp,1976-90,range_interp,address
+628,address,range_interp_dirloose,found,False,28.471452997650964,28.471452997650964,1993,123 Speer Blvd,DENVER,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+629,address,range_interp,found,False,20.374926645569857,20.374926645569857,1973,509 CANON AVE,MANITOU SPRINGS,range_interp,1961-75,range_interp,address
+630,address,range_interp,found,False,168.7881225490054,168.7881225490054,1990,4875 Moline St,DENVER,range_interp,1976-90,range_interp,address
+631,address,zip_centroid,found,False,928.0999268451104,928.0999268451104,1990,122 E 9TH St,LEADVILLE,zip_centroid,1976-90,zip_centroid,zip_centroid
+632,address,range_interp,found,False,282.3588195756227,282.3588195756227,1999,1761 E 58TH Ave,DENVER,range_interp,1991-2002,range_interp,address
+633,address,range_interp_cityzips,not_found,False,,,1962,1918 Curtis,DENVER,range_interp,1961-75,range_interp_cityzips,address
+634,address,range_interp,found,False,31.331902402250968,31.331902402250968,1990,1872 S Broadway,DENVER,range_interp,1976-90,range_interp,address
+635,address,range_interp,not_found,False,,,1976,1621 LARIMER ST,DENVER,range_interp,1976-90,range_interp,address
+636,address,range_interp,found,False,87.44390718442057,87.44390718442057,1993,1535 Paonia S,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+637,address,range_interp,found,False,51.18241488023916,51.18241488023916,1990,3507 N El Paso,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+638,address,range_interp_dirloose,found,False,76.75986614330598,76.75986614330598,1993,2210 E La Salle St,COLORADO SPRINGS,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+639,address,range_interp,found,False,121.4125575243588,121.4125575243588,1990,1603 S Prairie,PUEBLO,range_interp,1976-90,range_interp,address
+640,address,range_interp,found,False,33.22544683778859,33.22544683778859,1990,2023 Mariposa,BOULDER,range_interp,1976-90,range_interp,address
+641,address,range_interp_cityzips,found,False,28.823652420495826,28.823652420495826,1965,1632 S. GRAPE ST,DENVER,range_interp,1961-75,range_interp_cityzips,address
+642,address,range_interp,found,False,203.94985203839536,203.94985203839536,1990,2285 Busch Ave No 1,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+643,address,range_interp_dirloose,not_found,False,,,1985,9665 COLFAX AVE,LAKEWOOD,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+644,address,range_interp,found,False,42.408763326084426,42.408763326084426,2002,2190 W Evans Ave,ENGLEWOOD,range_interp,1991-2002,range_interp,address
+645,address,range_interp_cityzips,found,False,46.64656982928739,46.64656982928739,1986,1666 LAFAYETTE ST,DENVER,range_interp,1976-90,range_interp_cityzips,address
+646,address,range_interp,found,False,32.952494408834255,32.952494408834255,1999,950 S Federal Blvd,DENVER,range_interp,1991-2002,range_interp,address
+647,address,street_nearest_cityzips,not_found,False,,,1976,1516 CLAY ST,DENVER,street_nearest,1976-90,street_nearest_cityzips,address_approx
+648,address,range_interp,found,False,48.51609713084528,48.51609713084528,2002,4940 Iris St,WHEAT RIDGE,range_interp,1991-2002,range_interp,address
+649,address,range_interp,not_found,False,,,1973,1228 19TH,DENVER,range_interp,1961-75,range_interp,address
+650,address,range_interp_cityzips,not_found,False,,,1993,4550 W 38TH Ave,DENVER,range_interp,1991-2002,range_interp_cityzips,address
+651,address,range_interp,found,False,55.953197117490014,89.33264516748802,1988,740 WOOTEN RD,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+652,address,range_interp,found,False,31.94706933870056,31.94706933870056,1980,7580 OSCEOLA,WESTMINSTER,range_interp,1976-90,range_interp,address
+653,address,range_interp,not_found,False,,,1990,431 S Interocean,HOLYOKE,range_interp,1976-90,range_interp,address
+654,address,range_interp,not_found,False,,,1983,105 ROSE LANE,CANON CITY,range_interp,1976-90,range_interp,address
+655,address,range_interp,not_found,False,,,1999,2141 S Broadway,DENVER,range_interp,1991-2002,range_interp,address
+656,address,range_interp,found,False,54.73887313700384,54.73887313700384,1980,1740 E 17TH AVE,DENVER,range_interp,1976-90,range_interp,address
+657,address,range_interp_dirloose,not_found,False,,,1984,4M INSTITUTE,COLORADO SPRINGS,range_interp_dirloose,1976-90,range_interp_dirloose,address_approx
+658,address,range_interp,found,False,67.69682369890951,67.69682369890951,1988,4200 N WEBER,COLORADO SPRINGS,range_interp,1976-90,range_interp,address
+659,address,range_interp,found,False,48.07883678030375,48.07883678030375,1993,3232 11TH Si,BOULDER,range_interp,1991-2002,range_interp,address
+660,address,range_interp,not_found,False,,,2002,120 Hemlock St,FORT COLLINS,range_interp,1991-2002,range_interp,address
+661,address,range_interp_dirloose,not_found,False,,,1992,818 Wahsatch,COLORADO SPRINGS,range_interp_dirloose,1991-2002,range_interp_dirloose,address_approx
+662,address,range_interp,not_found,False,,,1985,163 CARTER LAKE RD,LOVELAND,range_interp,1976-90,range_interp,address
+663,address,range_interp_cityzips,found,False,32.56798900879432,32.56798900879432,1962,820 S. Lipan St.,DENVER,range_interp,1961-75,range_interp_cityzips,address
+664,address,range_interp,found,False,36.07732720142781,36.07732720142781,1999,1050 Yuma St,DENVER,range_interp,1991-2002,range_interp,address
+665,address,range_interp,found,False,115.10583083163796,115.10583083163796,1999,2790 Valmont Rd,BOULDER,range_interp,1991-2002,range_interp,address
+666,address,range_interp,not_found,False,,,2002,8133 2ND St,WELLINGTON,range_interp,1991-2002,range_interp,address
+667,address,range_interp,found,False,124.4322807930064,124.4322807930064,1999,1880 57TH Ct S,BOULDER,range_interp,1991-2002,range_interp,address
+668,address,range_interp,found,False,28.01550309271869,28.01550309271869,1970,1201 24TH,DENVER,range_interp,1961-75,range_interp,address
+669,address,range_interp,found,False,48.8280257544417,48.8280257544417,1992,232 W Colorado,TELLURIDE,range_interp,1991-2002,range_interp,address
+670,address,range_interp,found,False,96.27038659812786,96.27038659812786,1999,6401 Broadway,DENVER,range_interp,1991-2002,range_interp,address
+671,address,range_interp,not_found,False,,,1980,349 MOUNTAIN AVE,BERTHOUD,range_interp,1976-90,range_interp,address
+672,address,range_interp,found,False,18.649831606733517,18.649831606733517,1993,1556 S Eagle St,AURORA,range_interp,1991-2002,range_interp,address
+673,address,range_interp,not_found,False,,,1990,316 Mt Evans Blvd,PINE,range_interp,1976-90,range_interp,address
+674,address,range_interp,not_found,False,,,1990,7 W 5TH St,LA JUNTA,range_interp,1976-90,range_interp,address
+675,address,range_interp,not_found,False,,,1999,6311 Washington St Unit L,DENVER,range_interp,1991-2002,range_interp,address
+676,address,range_interp,not_found,False,,,1993,1387 S Inca St,DENVER,range_interp,1991-2002,range_interp,address
+677,address,range_interp_cityzips_dirloose,not_found,False,,,1961,1025 Vine St.,FORT COLLINS,range_interp_dirloose,1961-75,range_interp_cityzips_dirloose,address_approx
+678,address,range_interp,not_found,False,,,1982,3601 PEARL ST,BOULDER,range_interp,1976-90,range_interp,address
+679,address,range_interp,found,False,46.345610991332094,46.345610991332094,1999,4241 Jason St,DENVER,range_interp,1991-2002,range_interp,address
+680,address,range_interp,not_found,False,,,2002,641 Main St,LOUISVILLE,range_interp,1991-2002,range_interp,address
+681,address,range_interp,found,False,29.677726744929465,29.677726744929465,2002,9181 S Kenwood Ct,HIGHLANDS RANCH,range_interp,1991-2002,range_interp,address
+682,address,range_interp_cityzips,found,False,29.921471693645536,29.921471693645536,1962,820 15TH St.,GREELEY,range_interp,1961-75,range_interp_cityzips,address
+683,address,range_interp_cityzips,not_found,False,,,1962,512 S. Meldrum,FORT COLLINS,range_interp,1961-75,range_interp_cityzips,address
+684,address,range_interp,found,False,789.1666510690143,789.1666510690143,2002,17735 W 32ND Ave,GOLDEN,range_interp,1991-2002,range_interp,address
+685,address,range_interp,not_found,False,,,1986,1302 LAPORTE AVE,FORT COLLINS,range_interp,1976-90,range_interp,address
+686,address,range_interp,found,False,187.8943556309405,230.23113796383657,1973,3131 N NEVADA AVE,COLORADO SPRINGS,range_interp,1961-75,range_interp,address
+687,address,range_interp_cityzips,not_found,False,,,1990,546 Willow St,FORT COLLINS,range_interp,1976-90,range_interp_cityzips,address
+688,address,range_interp,found,False,214.17186483979157,214.17186483979157,1999,1605 S Murray Blvd,COLORADO SPRINGS,range_interp,1991-2002,range_interp,address
+689,address,range_interp,found,False,113.78806638552776,113.78806638552776,1999,10759 Yukon St,BROOMFIELD,range_interp,1991-2002,range_interp,address
+690,address,range_interp,found,False,67.67883305266827,67.67883305266827,1968,1316 E ABRIENDO,PUEBLO,range_interp,1961-75,range_interp,address
+691,address,range_interp,found,False,32.35799865883924,32.35799865883924,1993,2650 18TH St,DENVER,range_interp,1991-2002,range_interp,address
+692,address,range_interp,found,False,217.74671357272723,217.74671357272723,1993,4120 Globeville Rd,DENVER,range_interp,1991-2002,range_interp,address
+693,address,range_interp_cityzips_dirloose,not_found,False,,,1961,1315 N.Main,LONGMONT,range_interp_dirloose,1961-75,range_interp_cityzips_dirloose,address_approx
+694,address,range_interp,found,False,44.32900583281806,44.32900583281806,1999,2017 Curtis St,DENVER,range_interp,1991-2002,range_interp,address
+695,address,range_interp,found,False,64.04489332263412,64.04489332263412,1999,6565 Vine Ct,THORNTON,range_interp,1991-2002,range_interp,address
+696,address,range_interp,found,False,80.0689247394335,80.0689247394335,1990,1111 W Evans Ave,DENVER,range_interp,1976-90,range_interp,address
+697,address,range_interp,not_found,False,,,1971,1118 LARIMER,DENVER,range_interp,1961-75,range_interp,address
+698,address,range_interp,found,False,84.02765266614914,84.02765266614914,2002,447 Park Dr,PUEBLO,range_interp,1991-2002,range_interp,address
+699,address,range_interp,found,False,54.71427531010874,54.71427531010874,1993,3640 Walnut St,BOULDER,range_interp,1991-2002,range_interp,address
+700,address_approx,range_interp_cityzips_trim,found,False,33.02598456760249,58.21165548060456,1974,2715 17TH 0211,DENVER,range_interp,1961-75,range_interp_cityzips_trim,address_approx
+701,address_approx,fuzzy_range_interp,found,False,40.07674510492951,40.07674510492951,1977,3883 MONAC PARKWAY,DENVER,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+702,address_approx,fuzzy_range_interp,not_found,False,,,1980,6180 W 959TH AVE,ARVADA,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+703,address_approx,range_interp_trim,found,False,57.84101115556439,57.84101115556439,2002,8420 S Continental Divide #110,LITTLETON,range_interp,1991-2002,range_interp_trim,address_approx
+704,address_approx,range_interp_trim,not_found,False,,,1986,1150 BRIGHTON 80,BRIGHTON,range_interp,1976-90,range_interp_trim,address_approx
+705,address_approx,range_interp_cityzips_trim,not_found,False,,,1988,850 5TH 46TH ST,BOULDER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+706,address_approx,range_interp_nearzips,found,False,208.9239194063788,208.9239194063788,1974,6611 W 96TH PL,ARVADA,range_interp,1961-75,range_interp_nearzips,address_approx
+707,address_approx,range_interp_trim,found,False,117.7038152400759,117.7038152400759,1982,7475 DAKIN ST 401,DENVER,range_interp,1976-90,range_interp_trim,address_approx
+708,address_approx,fuzzy_range_interp_dirloose,found,False,4056.893181671879,4056.893181671879,1988,911 B FILLMORE,COLORADO SPRINGS,fuzzy_range_interp_dirloose,1976-90,fuzzy_range_interp_dirloose,address_approx
+709,address_approx,fuzzy_range_interp_dirloose,not_found,False,,,1979,4271 WFLORIDA AVE,DENVER,fuzzy_range_interp_dirloose,1976-90,fuzzy_range_interp_dirloose,address_approx
+710,address_approx,fuzzy_range_interp_cityzips_trim_dirloose,not_found,False,,,1970,81 413 BEET SUGAR,COLORADO SPRINGS,fuzzy_range_interp_dirloose,1961-75,fuzzy_range_interp_cityzips_trim_dirloose,address_approx
+711,address_approx,fuzzy_range_interp,not_found,False,,,1990,119 Harriet,LA JUNTA,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+712,address_approx,range_interp_cityzips_trim,found,False,18.445121272600176,41.048270875106304,1976,383 CORONA ST e021,DENVER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+713,address_approx,street_nearest,not_found,False,,,1980,3136 PEARL ST,BOULDER,street_nearest,1976-90,street_nearest,address_approx
+714,address_approx,range_interp_cityzips_trim,not_found,False,,,1992,1808 E Lincoln President. Av,FORT COLLINS,range_interp,1991-2002,range_interp_cityzips_trim,address_approx
+715,address_approx,range_interp_nearzips,found,False,123.16984996858224,123.16984996858224,1990,431 W 84TH Ave,DENVER,range_interp,1976-90,range_interp_nearzips,address_approx
+716,address_approx,fuzzy_street_nearest,not_found,False,,,1988,397 B INDUSTRIAL BLVD,PUEBLO WEST,fuzzy_street_nearest,1976-90,fuzzy_street_nearest,address_approx
+717,address_approx,street_nearest_cityzips_trim_dirloose,found,False,11475.20468540475,11475.20468540475,1985,312 Se FiRst STREET t0546,SEVERANCE,street_nearest_dirloose,1976-90,street_nearest_cityzips_trim_dirloose,address_approx
+718,address_approx,range_interp_trim,found,False,39.68100374840351,39.68100374840351,1990,1107 S Nevada Ave 201,COLORADO SPRINGS,range_interp,1976-90,range_interp_trim,address_approx
+719,address_approx,fuzzy_range_interp,found,False,34.448565098202735,34.448565098202735,1993,1591 C Chambers Rd,AURORA,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+720,address_approx,range_interp_trim,found,False,167.12065274183402,167.12065274183402,1993,1160 Ridglea Wy,BOULDER,range_interp,1991-2002,range_interp_trim,address_approx
+721,address_approx,range_interp_cityzips_trim,found,False,59.2586463944426,59.2586463944426,1999,185 Caprice Ct # 8,CASTLE ROCK,range_interp,1991-2002,range_interp_cityzips_trim,address_approx
+722,address_approx,range_interp_nearzips_trim,not_found,False,,,1985,4020 N OVERLAND TR,FORT COLLINS,range_interp,1976-90,range_interp_nearzips_trim,address_approx
+723,address_approx,range_interp_nearzips,not_found,False,,,1983,1179 MAIN,FOUNTAIN,range_interp,1976-90,range_interp_nearzips,address_approx
+724,address_approx,street_nearest,not_found,False,,,1968,1269 CURTIS,DENVER,street_nearest,1961-75,street_nearest,address_approx
+725,address_approx,range_interp_nearzips,not_found,False,,,1983,330 W 84TH AVE,DENVER,range_interp,1976-90,range_interp_nearzips,address_approx
+726,address_approx,street_nearest,found,False,45.24016620864796,45.24016620864796,1973,1946 MARKET ST,DENVER,street_nearest,1961-75,street_nearest,address_approx
+727,address_approx,range_interp,not_found,False,,,2002,444 E 4TH St#1,LOVELAND,range_interp,1991-2002,range_interp,address
+728,address_approx,range_interp_nearzips,found,False,42.7110092033206,84.64715372480235,1999,6395 Gunpark Dr,NIWOT,range_interp,1991-2002,range_interp_nearzips,address_approx
+729,address_approx,range_interp_cityzips_trim,not_found,False,,,1984,211 STEELE ST soz,DENVER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+730,address_approx,fuzzy_range_interp,found,False,259.30366129026294,259.30366129026294,1992,60 Green Hor Dr,PUEBLO,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+731,address_approx,fuzzy_range_interp,not_found,False,,,1973,141 DEERPATH AVE,MANITOU SPRINGS,fuzzy_range_interp,1961-75,fuzzy_range_interp,address_approx
+732,address_approx,range_interp_nearzips,found,False,38.33540387550677,38.33540387550677,1980,2890 W 90TH PLACE,DENVER,range_interp,1976-90,range_interp_nearzips,address_approx
+733,address_approx,range_interp_trim,found,False,39.95878266188353,77.04704068729747,2002,1825 W Caspian Pi #3,ENGLEWOOD,range_interp,1991-2002,range_interp_trim,address_approx
+734,address_approx,range_interp_trim,found,False,62.26497004738705,62.26497004738705,1993,2897 Valmont Ad,BOULDER,range_interp,1991-2002,range_interp_trim,address_approx
+735,address_approx,range_interp_nearzips,not_found,False,,,1982,6709 We. 96TH PLACE,ARVADA,range_interp,1976-90,range_interp_nearzips,address_approx
+736,address_approx,street_nearest_cityzips_trim,not_found,False,,,1984,1866 5 ACONA,DENVER,street_nearest,1976-90,street_nearest_cityzips_trim,address_approx
+737,address_approx,street_nearest,not_found,False,,,1999,2760 Bott Ave,COLORADO SPRINGS,street_nearest,1991-2002,street_nearest,address_approx
+738,address_approx,street_nearest,found,False,341.7401855693968,341.7401855693968,1990,330 W 152ND Ave,BROOMFIELD,street_nearest,1976-90,street_nearest,address_approx
+739,address_approx,range_interp_cityzips_trim,found,False,5452.602662475371,5493.566282962709,1986,750 GARDEN O GODS RO,COLORADO SPRINGS,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+740,address_approx,range_interp_nearzips_dirloose,not_found,False,,,1986,112 55TH AVE,ARVADA,range_interp_dirloose,1976-90,range_interp_nearzips_dirloose,address_approx
+741,address_approx,fuzzy_range_interp_trim_dirloose,found,False,50.49695267792645,50.49695267792645,1999,1105 Garden Of The Gods Rd # 80907,COLORADO SPRINGS,fuzzy_range_interp_dirloose,1991-2002,fuzzy_range_interp_trim_dirloose,address_approx
+742,address_approx,fuzzy_range_interp,found,True,35.656708891576415,4279.584540243048,1992,1137 Sherman t Suite 4,DENVER,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+743,address_approx,range_interp_nearzips,not_found,False,,,1988,1061 NEWPORT ST,COMMERCE CITY,range_interp,1976-90,range_interp_nearzips,address_approx
+744,address_approx,range_interp,found,False,29.09770312216334,62.11092850638644,2002,1005 N 12TH St#214,GRAND JUNCTION,range_interp,1991-2002,range_interp,address
+745,address_approx,range_interp_nearzips,found,False,25.72959016057856,25.72959016057856,1985,1550 BALSAM,DENVER,range_interp,1976-90,range_interp_nearzips,address_approx
+746,address_approx,range_interp_trim,not_found,False,,,1982,125 RIO GRANDE 3LVO,DENVER,range_interp,1976-90,range_interp_trim,address_approx
+747,address_approx,fuzzy_range_interp_trim,found,False,88.90651855135306,109.84038718180496,1999,5575 Tech Center Dr # 80919,COLORADO SPRINGS,fuzzy_range_interp,1991-2002,fuzzy_range_interp_trim,address_approx
+748,address_approx,range_interp_cityzips_trim,not_found,False,,,1983,439 MAIN 860501,BOULDER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+749,address_approx,fuzzy_range_interp,not_found,False,,,1986,3990 E LAS VEG&S,COLORADO SPRINGS,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+750,address_approx,street_nearest_nearzips_trim,not_found,False,,,2002,675 10 Mile Dr,FRISCO,street_nearest,1991-2002,street_nearest_nearzips_trim,address_approx
+751,address_approx,range_interp_nearzips_dirloose,found,False,20967.282216530697,20967.282216530697,1971,420 ORCHARD,ENGLEWOOD,range_interp_dirloose,1961-75,range_interp_nearzips_dirloose,address_approx
+752,address_approx,range_interp_trim,found,False,49.48126374660069,89.02166252021988,1992,6746 S Revere Pky No 100,ENGLEWOOD,range_interp,1991-2002,range_interp_trim,address_approx
+753,address_approx,street_nearest_trim,not_found,False,,,1988,115 B MOUNTVIEW LANE,COLORADO SPRINGS,street_nearest,1976-90,street_nearest_trim,address_approx
+754,address_approx,street_nearest_cityzips,not_found,False,,,1990,888 Interlocken Parkway,BROOMFIELD,street_nearest,1976-90,street_nearest_cityzips,address_approx
+755,address_approx,street_nearest,not_found,False,,,1992,12929 W 25TH,GOLDEN,street_nearest,1991-2002,street_nearest,address_approx
+756,address_approx,street_nearest,found,False,84.85200720516603,84.85200720516603,1976,8300 E 40TH,DENVER,street_nearest,1976-90,street_nearest,address_approx
+757,address_approx,fuzzy_range_interp_cityzips,not_found,False,,,1990,5560 Wadsworth Bypass,ARVADA,fuzzy_range_interp,1976-90,fuzzy_range_interp_cityzips,address_approx
+758,address_approx,range_interp_trim,not_found,False,,,1992,981 17 One Fourth Rd,FRUITA,range_interp,1991-2002,range_interp_trim,address_approx
+759,address_approx,range_interp_trim,not_found,False,,,2002,14818 W 6TH Ave #10a,GOLDEN,range_interp,1991-2002,range_interp_trim,address_approx
+760,address_approx,range_interp_cityzips_trim,not_found,False,,,1980,1202 OAK ST #0215,LAKEWOOD,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+761,address_approx,fuzzy_range_interp,found,False,36.454619876928255,36.454619876928255,1990,535 Book Cliff Ave,GRAND JUNCTION,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+762,address_approx,street_nearest,not_found,False,,,1992,825 N Summit Bivd,FRISCO,street_nearest,1991-2002,street_nearest,address_approx
+763,address_approx,zip_centroid,not_found,False,,,1977,1300 E 98TH AVE,DENVER,zip_centroid,1976-90,zip_centroid,zip_centroid
+764,address_approx,street_nearest,not_found,False,,,1985,1800 W HAMPDEN,ENGLEWOOD,street_nearest,1976-90,street_nearest,address_approx
+765,address_approx,street_nearest,not_found,False,,,1967,10 BASELINE,LAFAYETTE,street_nearest,1961-75,street_nearest,address_approx
+766,address_approx,street_nearest,found,False,53.18312121042027,53.18312121042027,1999,600 S 21ST St,COLORADO SPRINGS,street_nearest,1991-2002,street_nearest,address_approx
+767,address_approx,street_nearest_cityzips,not_found,False,,,1965,8090 W 55TH PLACE,ARVADA,street_nearest,1961-75,street_nearest_cityzips,address_approx
+768,address_approx,street_nearest_cityzips_trim,not_found,False,,,1985,703 4 9TH,PUEBLO,street_nearest,1976-90,street_nearest_cityzips_trim,address_approx
+769,address_approx,fuzzy_street_nearest_dirloose,not_found,False,,,1973,944 PEAKL,BOULDER,fuzzy_street_nearest_dirloose,1961-75,fuzzy_street_nearest_dirloose,address_approx
+770,address_approx,fuzzy_street_nearest_cityzips,not_found,False,,,1977,30 NDEPENDENT,GRAND JUNCTION,fuzzy_street_nearest,1976-90,fuzzy_street_nearest_cityzips,address_approx
+771,address_approx,street_nearest_cityzips,not_found,False,,,1962,910 Hospital Rd.,FORT COLLINS,street_nearest,1961-75,street_nearest_cityzips,address_approx
+772,address_approx,street_nearest,not_found,False,,,1970,2514 W 12TH,PUEBLO,street_nearest,1961-75,street_nearest,address_approx
+773,address_approx,range_interp_nearzips,not_found,False,,,1974,3435 E 64TH AVENUE,THORNTON,range_interp,1961-75,range_interp_nearzips,address_approx
+774,address_approx,fuzzy_range_interp,not_found,False,,,2002,2270 CR 5,FRASER,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+775,address_approx,range_interp_cityzips_trim,not_found,False,,,1982,3865 NEWPORT ST 0207,DENVER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+776,address_approx,range_interp,found,False,181.63895981104324,181.63895981104324,1999,4949 Pearl East Cir,BOULDER,range_interp,1991-2002,range_interp,address
+777,address_approx,range_interp_cityzips_trim,not_found,False,,,1979,1284 S COLORADO BLVD 0222,DENVER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+778,address_approx,fuzzy_range_interp,not_found,False,,,1990,696 Industral Bivd,DELTA,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+779,address_approx,fuzzy_range_interp_trim_dirloose,found,False,21.90556220038434,21.90556220038434,1990,4593 N Broadway B 203,BOULDER,fuzzy_range_interp_dirloose,1976-90,fuzzy_range_interp_trim_dirloose,address_approx
+780,address_approx,range_interp_nearzips,found,False,96.65263802250354,155.474624395076,1999,5580 Havana,AURORA,range_interp,1991-2002,range_interp_nearzips,address_approx
+781,address_approx,fuzzy_range_interp,not_found,False,,,1990,6931 C R 41,MANCOS,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+782,address_approx,street_nearest_nearzips,not_found,False,,,1993,1605 E 60TH Ave,THORNTON,street_nearest,1991-2002,street_nearest_nearzips,address_approx
+783,address_approx,range_interp_trim,found,False,49.20006478350973,49.20006478350973,1985,4300 S FEDERAL BLy,ENGLEWOOD,range_interp,1976-90,range_interp_trim,address_approx
+784,address_approx,range_interp_trim,found,False,38.77886602165408,38.77886602165408,1990,1935 Dominion Wy A201,COLORADO SPRINGS,range_interp,1976-90,range_interp_trim,address_approx
+785,address_approx,range_interp_nearzips_trim,not_found,False,,,1974,405 EMPIRE BUILDING,DENVER,range_interp,1961-75,range_interp_nearzips_trim,address_approx
+786,address_approx,street_nearest,found,False,236.29168725048305,236.29168725048305,1993,4100 E 60TH Ave,COMMERCE CITY,street_nearest,1991-2002,street_nearest,address_approx
+787,address_approx,range_interp_cityzips_trim,not_found,False,,,1967,451 S LIPAN 8223,DENVER,range_interp,1961-75,range_interp_cityzips_trim,address_approx
+788,address_approx,street_nearest_trim,found,False,337.34243463875487,337.37056395981944,1983,7450 E JEWELL AVE A,DENVER,street_nearest,1976-90,street_nearest_trim,address_approx
+789,address_approx,street_nearest_dirloose,not_found,False,,,1980,700 5TH ST,MANASSA,street_nearest_dirloose,1976-90,street_nearest_dirloose,address_approx
+790,address_approx,range_interp_cityzips,not_found,False,,,1984,1334 4TH AVE,DENVER,range_interp,1976-90,range_interp_cityzips,address
+791,address_approx,street_nearest,not_found,False,,,1970,06 MAIN,CANON CITY,street_nearest,1961-75,street_nearest,address_approx
+792,address_approx,fuzzy_range_interp_trim,not_found,False,,,1992,1700 Widhorse Ra,PUEBLO WEST,fuzzy_range_interp,1991-2002,fuzzy_range_interp_trim,address_approx
+793,address_approx,street_nearest_cityzips_trim,not_found,False,,,1990,361 27 Half Rd,GRAND JUNCTION,street_nearest,1976-90,street_nearest_cityzips_trim,address_approx
+794,address_approx,range_interp_trim,found,False,39.34524055487663,39.34524055487663,1999,3190 N Stone Ave # A,COLORADO SPRINGS,range_interp,1991-2002,range_interp_trim,address_approx
+795,address_approx,range_interp_nearzips,not_found,False,,,1999,441 Allison St Ste 4,ARVADA,range_interp,1991-2002,range_interp_nearzips,address_approx
+796,address_approx,fuzzy_range_interp,not_found,False,,,1967,416 KALAMATE,DENVER,fuzzy_range_interp,1961-75,fuzzy_range_interp,address_approx
+797,address_approx,street_nearest,not_found,False,,,1980,9800 MORRISON RD,LAKEWOOD,street_nearest,1976-90,street_nearest,address_approx
+798,address_approx,street_nearest_nearzips,not_found,False,,,1999,5305 Morrison Rd,LAKEWOOD,street_nearest,1991-2002,street_nearest_nearzips,address_approx
+799,address_approx,range_interp_cityzips_trim,found,False,96.96787324374218,96.96787324374218,1990,8955 S Ridgeline Bivd A,HIGHLANDS RANCH,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+800,address_approx,range_interp_cityzips_trim,not_found,False,,,1973,1890 E ORCHARD RO eol2,LITTLETON,range_interp,1961-75,range_interp_cityzips_trim,address_approx
+801,address_approx,street_nearest,not_found,False,,,1983,6430 S YOSEMITE ST,ENGLEWOOD,street_nearest,1976-90,street_nearest,address_approx
+802,address_approx,street_nearest,found,False,367.3278429596699,367.3278429596699,1990,2520 Broadway,BOULDER,street_nearest,1976-90,street_nearest,address_approx
+803,address_approx,street_nearest,found,False,289.5944688558056,289.5944688558056,1988,2920 PEARL,BOULDER,street_nearest,1976-90,street_nearest,address_approx
+804,address_approx,fuzzy_range_interp,found,False,187.4174487508701,187.4174487508701,1988,4741 ELDORADO SPRING,BOULDER,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+805,address_approx,range_interp_nearzips_dirloose,not_found,False,,,1984,4041 COLORADO BLVD,LAKEWOOD,range_interp_dirloose,1976-90,range_interp_nearzips_dirloose,address_approx
+806,address_approx,street_nearest,not_found,False,,,1988,657 20 1/2 RD,GRAND JUNCTION,street_nearest,1976-90,street_nearest,address_approx
+807,address_approx,street_nearest_cityzips_trim,not_found,False,,,1984,814 UNIVERSITY BLOG,DENVER,street_nearest,1976-90,street_nearest_cityzips_trim,address_approx
+808,address_approx,fuzzy_range_interp_cityzips_trim,not_found,False,,,1982,3070 S KRAMERTA 0222,DENVER,fuzzy_range_interp,1976-90,fuzzy_range_interp_cityzips_trim,address_approx
+809,address_approx,range_interp_nearzips,found,False,25.77712662368348,25.77712662368348,1988,7195 W 30TH AVE,LAKEWOOD,range_interp,1976-90,range_interp_nearzips,address_approx
+810,address_approx,range_interp_trim,found,False,316.0092736906233,316.0092736906233,1990,84 Inverness Cr E,ENGLEWOOD,range_interp,1976-90,range_interp_trim,address_approx
+811,address_approx,range_interp_cityzips_trim,found,False,41.28148483803003,41.28148483803003,1986,225 S ACADEMY SU 217,COLORADO SPRINGS,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+812,address_approx,range_interp_trim,not_found,False,,,1993,2396 Canyon Bhd,BOULDER,range_interp,1991-2002,range_interp_trim,address_approx
+813,address_approx,zip_centroid,found,True,1012.6023579285252,1494.8815938292432,2002,3702 G 7H0Rd,PALISADE,zip_centroid,1991-2002,zip_centroid,zip_centroid
+814,address_approx,street_nearest_cityzips,not_found,False,,,1973,1 SANTA FE OR,PUEBLO,street_nearest,1961-75,street_nearest_cityzips,address_approx
+815,address_approx,street_nearest_cityzips_trim_dirloose,not_found,False,,,1977,78 VALLEY FEDERAL PLAZA,GRAND JUNCTION,street_nearest_dirloose,1976-90,street_nearest_cityzips_trim_dirloose,address_approx
+816,address_approx,range_interp_trim,found,False,464.563068842762,472.541182933667,1990,3370 Chelton Loop So,COLORADO SPRINGS,range_interp,1976-90,range_interp_trim,address_approx
+817,address_approx,fuzzy_range_interp,found,False,102.26984877561506,364.1544208787924,1990,7921 Southpark Plaza Ste 200,LITTLETON,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+818,address_approx,range_interp_cityzips_trim,not_found,False,,,1979,1546 GLENARM PLACE 0202,DENVER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+819,address_approx,range_interp_trim,found,False,71.43127125082935,71.43127125082935,1993,4890 Riverbend Ad,BOULDER,range_interp,1991-2002,range_interp_trim,address_approx
+820,address_approx,range_interp_cityzips_trim,found,False,97.58152350988406,122.8450413851028,1979,1500 W 12TH AVE 0204,DENVER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+821,address_approx,range_interp_nearzips,found,False,123.1328583086211,123.1328583086211,1999,7251 E 49TH Ave,DENVER,range_interp,1991-2002,range_interp_nearzips,address_approx
+822,address_approx,street_nearest_dirloose,not_found,False,,,1999,4625 Colorado Bivd,DENVER,street_nearest_dirloose,1991-2002,street_nearest_dirloose,address_approx
+823,address_approx,range_interp_cityzips_trim,not_found,False,,,1965,1415 4 EVANS,GREELEY,range_interp,1961-75,range_interp_cityzips_trim,address_approx
+824,address_approx,street_nearest,not_found,False,,,1982,1600 S 66,BOULDER,street_nearest,1976-90,street_nearest,address_approx
+825,address_approx,range_interp_nearzips,not_found,False,,,1992,7538 Sheridan Bivd,WHEAT RIDGE,range_interp,1991-2002,range_interp_nearzips,address_approx
+826,address_approx,range_interp_nearzips,not_found,False,,,1986,9800 YORK,DENVER,range_interp,1976-90,range_interp_nearzips,address_approx
+827,address_approx,range_interp_cityzips_trim,found,False,28.9389767246086,28.9389767246086,1984,795 2ND STREET 8051,BENNETT,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+828,address_approx,street_nearest,not_found,False,,,1990,530 E Bleeker,ASPEN,street_nearest,1976-90,street_nearest,address_approx
+829,address_approx,range_interp_trim,found,False,295.0292984848534,295.0292984848534,2002,17301 W Colfax Ave #152,GOLDEN,range_interp,1991-2002,range_interp_trim,address_approx
+830,address_approx,street_nearest,not_found,False,,,1974,47 ROOD AVE,GRAND JUNCTION,street_nearest,1961-75,street_nearest,address_approx
+831,address_approx,street_nearest_cityzips,not_found,False,,,1999,2959 N Liggett Rd,CASTLE ROCK,street_nearest,1991-2002,street_nearest_cityzips,address_approx
+832,address_approx,street_nearest,not_found,False,,,1984,2039 N PROSPECT,COLORADO SPRINGS,street_nearest,1976-90,street_nearest,address_approx
+833,address_approx,zip_centroid,not_found,False,,,1999,3020 N US Highway 85,CASTLE ROCK,zip_centroid,1991-2002,zip_centroid,zip_centroid
+834,address_approx,fuzzy_range_interp,not_found,False,,,1992,1015 E Northen Ave,PUEBLO,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+835,address_approx,fuzzy_street_nearest_cityzips_trim_dirloose,not_found,False,,,1985,347 271/2 ROAD #1501,GRAND JUNCTION,fuzzy_street_nearest_dirloose,1976-90,fuzzy_street_nearest_cityzips_trim_dirloose,address_approx
+836,address_approx,fuzzy_range_interp,not_found,False,,,1977,4101 E LOUISEANA,DENVER,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+837,address_approx,range_interp_cityzips,not_found,False,,,1984,59 ONEIDA,DENVER,range_interp,1976-90,range_interp_cityzips,address
+838,address_approx,range_interp_nearzips,not_found,False,,,2002,920 W Alameda Ave,LAKEWOOD,range_interp,1991-2002,range_interp_nearzips,address_approx
+839,address_approx,street_nearest_nearzips,not_found,False,,,1986,4711 W 98TH AVE,ARVADA,street_nearest,1976-90,street_nearest_nearzips,address_approx
+840,address_approx,zip_centroid,not_found,False,,,1986,4055 EsCOUNTY LINE,ERIE,zip_centroid,1976-90,zip_centroid,zip_centroid
+841,address_approx,zip_centroid,not_found,False,,,1976,2011 98TH,DENVER,zip_centroid,1976-90,zip_centroid,zip_centroid
+842,address_approx,street_nearest,found,False,282.3396992601128,282.3396992601128,1973,5400 MONROE,DENVER,street_nearest,1961-75,street_nearest,address_approx
+843,address_approx,street_nearest_trim,found,False,19981.065155308523,19981.065155308523,1985,512 8 LOOKOUT MT RD,GOLDEN,street_nearest,1976-90,street_nearest_trim,address_approx
+844,address_approx,street_nearest,found,False,519.4938888043172,519.4938888043172,2002,15850 W 6TH Ave,GOLDEN,street_nearest,1991-2002,street_nearest,address_approx
+845,address_approx,range_interp_trim,found,True,527.8523378005943,1309.6040601706318,2002,229 Airport Re Bldg 11 Bay 1,LONGMONT,range_interp,1991-2002,range_interp_trim,address_approx
+846,address_approx,range_interp_cityzips_trim,not_found,False,,,1962,2657 We 7TH Aves,DENVER,range_interp,1961-75,range_interp_cityzips_trim,address_approx
+847,address_approx,street_nearest,not_found,False,,,1974,4le 4TH,ALAMOSA,street_nearest,1961-75,street_nearest,address_approx
+848,address_approx,city_centroid,not_found,False,,,1965,2438 Es HIGHWAY 24,WOODLAND PARK,city_centroid,1961-75,city_centroid,city_centroid
+849,address_approx,street_nearest_cityzips,not_found,False,,,1988,4972 SHERIDAN BLVD,ARVADA,street_nearest,1976-90,street_nearest_cityzips,address_approx
+850,address_approx,range_interp_nearzips,not_found,False,,,1988,5253 GRAPE DR,COMMERCE CITY,range_interp,1976-90,range_interp_nearzips,address_approx
+851,address_approx,range_interp_cityzips_trim,not_found,False,,,1985,201 E WASHINGTON #1082,LAMAR,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+852,address_approx,street_nearest_nearzips_dirloose,not_found,False,,,1983,9625 49TH,COMMERCE CITY,street_nearest_dirloose,1976-90,street_nearest_nearzips_dirloose,address_approx
+853,address_approx,range_interp_cityzips_trim,found,False,67.25884743897036,67.25884743897036,1985,530 S 6TH AVE 0751,STERLING,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+854,address_approx,street_nearest,not_found,False,,,1974,22 SPENCER,GUNNISON,street_nearest,1961-75,street_nearest,address_approx
+855,address_approx,range_interp_cityzips_trim,found,False,39.98529802135139,39.98529802135139,1986,616 E HYMAN 8leil,ASPEN,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+856,address_approx,street_nearest_cityzips_trim,found,False,79.24568730662405,128.29098096505848,2002,1811 Pike Rd #2C,LONGMONT,street_nearest,1991-2002,street_nearest_cityzips_trim,address_approx
+857,address_approx,fuzzy_range_interp_trim,not_found,False,,,1986,2234 S COLORADD 3LVD,DENVER,fuzzy_range_interp,1976-90,fuzzy_range_interp_trim,address_approx
+858,address_approx,street_nearest_cityzips,not_found,False,,,1988,2801 DALLAS,AURORA,street_nearest,1976-90,street_nearest_cityzips,address_approx
+859,address_approx,range_interp_trim,found,False,76.53196126610368,109.99475896812298,2002,12508 E Briarwood Ave #1A,ENGLEWOOD,range_interp,1991-2002,range_interp_trim,address_approx
+860,address_approx,fuzzy_range_interp_trim,found,False,169.413716256024,169.413716256024,1993,4245 Austin Blufis Pky,COLORADO SPRINGS,fuzzy_range_interp,1991-2002,fuzzy_range_interp_trim,address_approx
+861,address_approx,street_nearest_dirloose,not_found,False,,,1990,900 E Linden Ave,FORT COLLINS,street_nearest_dirloose,1976-90,street_nearest_dirloose,address_approx
+862,address_approx,street_nearest_cityzips_dirloose,not_found,False,,,1992,1010 N Cascade Ave,GOLDEN,street_nearest_dirloose,1991-2002,street_nearest_cityzips_dirloose,address_approx
+863,address_approx,range_interp_cityzips_trim,not_found,False,,,1980,703 S BROADWAY a0209,DENVER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+864,address_approx,range_interp_cityzips_trim,not_found,False,,,1980,5000 W 120TH AVE 0020,BROOMFIELD,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+865,address_approx,range_interp_nearzips,not_found,False,,,1983,10027 W 9TH AVE,GOLDEN,range_interp,1976-90,range_interp_nearzips,address_approx
+866,address_approx,range_interp_trim,found,False,116.97913105864852,116.97913105864852,1993,7072 Indian Peaks Trai,BOULDER,range_interp,1991-2002,range_interp_trim,address_approx
+867,address_approx,range_interp_trim_dirloose,not_found,False,,,1983,1941W 46TH AVEsNO.21,DENVER,range_interp_dirloose,1976-90,range_interp_trim_dirloose,address_approx
+868,address_approx,street_nearest_cityzips_dirloose,not_found,False,,,1967,4 YORK,DENVER,street_nearest_dirloose,1961-75,street_nearest_cityzips_dirloose,address_approx
+869,address_approx,street_nearest_cityzips_trim_dirloose,not_found,False,,,1980,9501 47TH AVE 80216-,DENVER,street_nearest_dirloose,1976-90,street_nearest_cityzips_trim_dirloose,address_approx
+870,address_approx,range_interp_trim,found,False,110.73058531957196,152.66752910162765,1999,1999 Broadway Sie 2505,DENVER,range_interp,1991-2002,range_interp_trim,address_approx
+871,address_approx,range_interp_trim_dirloose,found,False,40.89680842394599,40.89680842394599,1979,8000 GIRARD AVE 12,DENVER,range_interp_dirloose,1976-90,range_interp_trim_dirloose,address_approx
+872,address_approx,range_interp_cityzips_trim,found,False,47.511195876504566,51.69056810763381,1982,2700 w EVANS AVE 8021,DENVER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+873,address_approx,range_interp_nearzips,not_found,False,,,1993,4545 E 4TH Ave,COMMERCE CITY,range_interp,1991-2002,range_interp_nearzips,address_approx
+874,address_approx,range_interp_cityzips_trim,found,False,77.077955207446,77.077955207446,1976,2075 BRYANT gozll,DENVER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+875,address_approx,street_nearest_nearzips,not_found,False,,,1977,495 E 91ST AVE,DENVER,street_nearest,1976-90,street_nearest_nearzips,address_approx
+876,address_approx,range_interp_cityzips_trim_dirloose,not_found,False,,,1976,750 4 39TH AVE,DENVER,range_interp_dirloose,1976-90,range_interp_cityzips_trim_dirloose,address_approx
+877,address_approx,zip_centroid,not_found,False,,,1986,2930 Ww 00TH AVE,DENVER,zip_centroid,1976-90,zip_centroid,zip_centroid
+878,address_approx,zip_centroid,not_found,False,,,1990,18390 Highway 145,DOLORES,zip_centroid,1976-90,zip_centroid,zip_centroid
+879,address_approx,zip_centroid,found,False,12867.947727964616,12867.947727964616,1968,2501 DALLAS,THORNTON,zip_centroid,1961-75,zip_centroid,zip_centroid
+880,address_approx,range_interp_trim,found,False,70.36824898041127,88.65853067789621,2002,1131 Delaware Ave #3,LONGMONT,range_interp,1991-2002,range_interp_trim,address_approx
+881,address_approx,range_interp_trim,found,True,41.15240816853338,3668.942555494084,1990,2611 11TH St Ad,GREELEY,range_interp,1976-90,range_interp_trim,address_approx
+882,address_approx,zip_centroid,not_found,False,,,1983,588 ROAD 24-1/2,GRAND JUNCTION,zip_centroid,1976-90,zip_centroid,zip_centroid
+883,address_approx,street_nearest,not_found,False,,,1986,73 ELKTON DR,COLORADO SPRINGS,street_nearest,1976-90,street_nearest,address_approx
+884,address_approx,street_nearest,not_found,False,,,2002,1830 La Porte Ave,FORT COLLINS,street_nearest,1991-2002,street_nearest,address_approx
+885,address_approx,range_interp_trim,found,False,74.83765544927392,74.83765544927392,1999,1420 Quail Lake Gop,COLORADO SPRINGS,range_interp,1991-2002,range_interp_trim,address_approx
+886,address_approx,street_nearest,found,False,227.1074823336234,227.1074823336234,1999,5301 Vasquez Blvd,DENVER,street_nearest,1991-2002,street_nearest,address_approx
+887,address_approx,fuzzy_range_interp_cityzips,not_found,False,,,1962,305 E. 60TH,BRIGHTON,fuzzy_range_interp,1961-75,fuzzy_range_interp_cityzips,address_approx
+888,address_approx,street_nearest_dirloose,not_found,False,,,1985,851 120TH AVE,BROOMFIELD,street_nearest_dirloose,1976-90,street_nearest_dirloose,address_approx
+889,address_approx,street_nearest,found,False,245.3444322329296,245.3444322329296,1974,15 S FRANCIS,LONGMONT,street_nearest,1961-75,street_nearest,address_approx
+890,address_approx,range_interp_trim,found,False,63.78640255908047,63.78640255908047,1999,12650 E 33RD Ave # 101,AURORA,range_interp,1991-2002,range_interp_trim,address_approx
+891,address_approx,range_interp_nearzips,not_found,False,,,1967,3631 TENNYSON,ARVADA,range_interp,1961-75,range_interp_nearzips,address_approx
+892,address_approx,street_nearest_trim,not_found,False,,,1988,537 5 ST VRAIN AVE,ESTES PARK,street_nearest,1976-90,street_nearest_trim,address_approx
+893,address_approx,range_interp_cityzips_trim,not_found,False,,,1968,329 W RIVERSIDE PRKWY scsi,ESTES PARK,range_interp,1961-75,range_interp_cityzips_trim,address_approx
+894,address_approx,street_nearest,found,False,115.83571609528948,115.83571609528948,1974,6054 W 38TH AVE,DENVER,street_nearest,1961-75,street_nearest,address_approx
+895,address_approx,range_interp_nearzips_trim,found,False,463.4471404784474,485.8814951815284,1986,6735 W 84TH CR NO 69,BROOMFIELD,range_interp,1976-90,range_interp_nearzips_trim,address_approx
+896,address_approx,range_interp_trim,not_found,False,,,1980,529 5 GILBERT,CASTLE ROCK,range_interp,1976-90,range_interp_trim,address_approx
+897,address_approx,range_interp_cityzips_trim,found,False,39.1475531337419,39.1475531337419,1979,601 COLORADO BLOG,DENVER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+898,address_approx,street_nearest_cityzips_dirloose,not_found,False,,,1965,2910 S. TEJON,DENVER,street_nearest_dirloose,1961-75,street_nearest_cityzips_dirloose,address_approx
+899,address_approx,street_nearest_cityzips,not_found,False,,,1993,219 Larimer,DENVER,street_nearest,1991-2002,street_nearest_cityzips,address_approx
+900,address_approx,range_interp_nearzips_trim_dirloose,not_found,False,,,1986,2200 4 BATES AVE,ENGLEWOOD,range_interp_dirloose,1976-90,range_interp_nearzips_trim_dirloose,address_approx
+901,address_approx,range_interp_cityzips_trim,not_found,False,,,1977,1816 HEATH PKY,FORT COLLINS,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+902,address_approx,street_nearest_nearzips,not_found,False,,,1988,217 EMPIRE BLDG,DENVER,street_nearest,1976-90,street_nearest_nearzips,address_approx
+903,address_approx,street_nearest,found,False,184.7188787728677,184.7188787728677,1973,194 W DAKOTA AVE,DENVER,street_nearest,1961-75,street_nearest,address_approx
+904,address_approx,range_interp_trim,found,False,72.66455217500337,155.15421585952447,1992,7730 E Belleview #9-6,GREENWOOD VILLAGE,range_interp,1991-2002,range_interp_trim,address_approx
+905,address_approx,range_interp_trim,not_found,False,,,1992,5150 Weld Co Rd 12,DACONO,range_interp,1991-2002,range_interp_trim,address_approx
+906,address_approx,range_interp_trim,not_found,False,,,2002,221 Warren Ave #2,SILVERTHORNE,range_interp,1991-2002,range_interp_trim,address_approx
+907,address_approx,fuzzy_range_interp_dirloose,not_found,False,,,1973,20 RIU GRANDE,COLORADO SPRINGS,fuzzy_range_interp_dirloose,1961-75,fuzzy_range_interp_dirloose,address_approx
+908,address_approx,range_interp_trim,found,False,23.74665161524873,32.67406256989194,1999,4575 Hilton ray Ste 201,COLORADO SPRINGS,range_interp,1991-2002,range_interp_trim,address_approx
+909,address_approx,street_nearest,found,False,106.9246022502306,135.0536195935622,1999,1600 28TH St,BOULDER,street_nearest,1991-2002,street_nearest,address_approx
+910,address_approx,range_interp_trim,found,False,89.3858967272578,89.3858967272578,2002,1240 Ken Pratt Bd,LONGMONT,range_interp,1991-2002,range_interp_trim,address_approx
+911,address_approx,range_interp,not_found,False,,,1977,720 1/2 9TH,GREELEY,range_interp,1976-90,range_interp,address
+912,address_approx,street_nearest_cityzips,not_found,False,,,1984,3105 EAST 38TH AVE,DENVER,street_nearest,1976-90,street_nearest_cityzips,address_approx
+913,address_approx,range_interp_trim,not_found,False,,,2002,850 South Ave #8,GRAND JUNCTION,range_interp,1991-2002,range_interp_trim,address_approx
+914,address_approx,range_interp_nearzips_trim,not_found,False,,,1980,505 9TH ST S.E,LOVELAND,range_interp,1976-90,range_interp_nearzips_trim,address_approx
+915,address_approx,fuzzy_range_interp_dirloose,found,False,31.28988022895637,31.28988022895637,1966,11794 APPLEWOOD KNOLLS D,LAKEWOOD,fuzzy_range_interp_dirloose,1961-75,fuzzy_range_interp_dirloose,address_approx
+916,address_approx,range_interp_cityzips_trim,not_found,False,,,1965,885 SPEER BLVD. ACOMA,DENVER,range_interp,1961-75,range_interp_cityzips_trim,address_approx
+917,address_approx,range_interp_trim,not_found,False,,,2002,5151 S Federal Blvd #H5,LITTLETON,range_interp,1991-2002,range_interp_trim,address_approx
+918,address_approx,range_interp_cityzips_trim,found,False,49.72242623931466,49.72242623931466,1976,5501 PEARL a0216,DENVER,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+919,address_approx,street_nearest,not_found,False,,,1966,1325 N 9TH ST,GRAND JUNCTION,street_nearest,1961-75,street_nearest,address_approx
+920,address_approx,fuzzy_range_interp,found,True,91.86975362764944,16713.711262386136,1988,672 C.R.207,DURANGO,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+921,address_approx,street_nearest_nearzips,found,False,69.86286427280793,69.86286427280793,1999,6561 W 56TH Ave,DENVER,street_nearest,1991-2002,street_nearest_nearzips,address_approx
+922,address_approx,street_nearest_cityzips_dirloose,not_found,False,,,1971,18200 COLFAX,AURORA,street_nearest_dirloose,1961-75,street_nearest_cityzips_dirloose,address_approx
+923,address_approx,fuzzy_range_interp_cityzips,not_found,False,,,1965,705 INDEPENCENT AVE,GRAND JUNCTION,fuzzy_range_interp,1961-75,fuzzy_range_interp_cityzips,address_approx
+924,address_approx,fuzzy_street_nearest_dirloose,not_found,False,,,1968,0X 720,DURANGO,fuzzy_street_nearest_dirloose,1961-75,fuzzy_street_nearest_dirloose,address_approx
+925,address_approx,street_nearest,found,False,695.7473911611172,715.2786086063421,1999,1765 S 8TH St Ste T8,COLORADO SPRINGS,street_nearest,1991-2002,street_nearest,address_approx
+926,address_approx,range_interp_trim,found,False,33.92577593141633,33.92577593141633,1983,250 W 14TH AVE 800,DENVER,range_interp,1976-90,range_interp_trim,address_approx
+927,address_approx,range_interp_trim,not_found,False,,,1986,661 SANTA FE 08,DENVER,range_interp,1976-90,range_interp_trim,address_approx
+928,address_approx,street_nearest,found,False,524.7702990735982,524.7702990735982,1999,6304 Spine Rd Unit A,BOULDER,street_nearest,1991-2002,street_nearest,address_approx
+929,address_approx,street_nearest_trim,not_found,False,,,1986,390 ELM 80,ESTES PARK,street_nearest,1976-90,street_nearest_trim,address_approx
+930,address_approx,range_interp_trim,found,False,27.312917782820627,27.312917782820627,1992,2129 Dogwood Cr,LOUISVILLE,range_interp,1991-2002,range_interp_trim,address_approx
+931,address_approx,fuzzy_range_interp,not_found,False,,,1992,3006 Cumberiand Ct,FORT COLLINS,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+932,address_approx,range_interp_cityzips,found,False,130.79835118283148,130.79835118283148,1980,1100 SIMMS ST,LAKEWOOD,range_interp,1976-90,range_interp_cityzips,address
+933,address_approx,street_nearest_nearzips,not_found,False,,,1992,10621 lima Dr Unit B,NORTHGLENN,street_nearest,1991-2002,street_nearest_nearzips,address_approx
+934,address_approx,street_nearest,found,False,8563.51523215116,8563.51523215116,1986,1516 CLAY ST,DENVER,street_nearest,1976-90,street_nearest,address_approx
+935,address_approx,fuzzy_range_interp_dirloose,found,False,21.356116545136278,21.356116545136278,1990,85 E Chamber St,COLORADO SPRINGS,fuzzy_range_interp_dirloose,1976-90,fuzzy_range_interp_dirloose,address_approx
+936,address_approx,street_nearest_cityzips,not_found,False,,,1962,17 We Oak,FORT COLLINS,street_nearest,1961-75,street_nearest_cityzips,address_approx
+937,address_approx,street_nearest,not_found,False,,,1999,2525 48TH St,BOULDER,street_nearest,1991-2002,street_nearest,address_approx
+938,address_approx,range_interp_nearzips_dirloose,not_found,False,,,1982,4475 90TH AVE,DENVER,range_interp_dirloose,1976-90,range_interp_nearzips_dirloose,address_approx
+939,address_approx,range_interp_trim,found,False,64.14152252188201,64.14152252188201,1990,3100 Pearl Unity Bay,BOULDER,range_interp,1976-90,range_interp_trim,address_approx
+940,address_approx,range_interp_cityzips_trim,found,False,30.244404618348824,30.244404618348824,1980,1830 KIPLING ST so2ts,LAKEWOOD,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+941,address_approx,fuzzy_range_interp,found,False,60.60573514204245,60.60573514204245,1993,5401 Wester Ave,BOULDER,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+942,address_approx,fuzzy_street_nearest,not_found,False,,,1973,140 COSBY AVE,GRAND JUNCTION,fuzzy_street_nearest,1961-75,fuzzy_street_nearest,address_approx
+943,address_approx,range_interp_cityzips_trim,not_found,False,,,1966,1133 W MULBERRY 805Z1,FORT COLLINS,range_interp,1961-75,range_interp_cityzips_trim,address_approx
+944,address_approx,range_interp_trim,not_found,False,,,2002,3720 S College Ave #A,FORT COLLINS,range_interp,1991-2002,range_interp_trim,address_approx
+945,address_approx,range_interp_trim,not_found,False,,,2002,657 S Taylor Ave #C,LOUISVILLE,range_interp,1991-2002,range_interp_trim,address_approx
+946,address_approx,fuzzy_street_nearest_dirloose,not_found,False,,,1967,80x 229,DURANGO,fuzzy_street_nearest_dirloose,1961-75,fuzzy_street_nearest_dirloose,address_approx
+947,address_approx,street_nearest_cityzips,not_found,False,,,1979,131 3RD AVE,COLORADO SPRINGS,street_nearest,1976-90,street_nearest_cityzips,address_approx
+948,address_approx,range_interp_nearzips_dirloose,not_found,False,,,1986,9377 58TH AVE,COMMERCE CITY,range_interp_dirloose,1976-90,range_interp_nearzips_dirloose,address_approx
+949,address_approx,fuzzy_range_interp,not_found,False,,,1992,5540 S Miler St,LITTLETON,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+950,address_approx,street_nearest,not_found,False,,,1983,9151 BRIGHTON BLVD,COMMERCE CITY,street_nearest,1976-90,street_nearest,address_approx
+951,address_approx,range_interp_cityzips_trim,found,False,80.04625518907072,80.04625518907072,1985,12660 W CEDAR OR sozze,LAKEWOOD,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+952,address_approx,street_nearest,found,False,138.0127934024319,138.18845196995792,1993,400 W Evans,DENVER,street_nearest,1991-2002,street_nearest,address_approx
+953,address_approx,fuzzy_range_interp_cityzips,not_found,False,,,2002,2535 Copperridge Dr,STEAMBOAT SPRINGS,fuzzy_range_interp,1991-2002,fuzzy_range_interp_cityzips,address_approx
+954,address_approx,fuzzy_range_interp,not_found,False,,,1990,1360 W Litteton,LITTLETON,fuzzy_range_interp,1976-90,fuzzy_range_interp,address_approx
+955,address_approx,range_interp_trim,found,False,511.3537964456313,523.4296874690714,2002,1813 Sunset P1#D,LONGMONT,range_interp,1991-2002,range_interp_trim,address_approx
+956,address_approx,street_nearest_nearzips,not_found,False,,,1984,9050 RACE ST,DENVER,street_nearest,1976-90,street_nearest_nearzips,address_approx
+957,address_approx,street_nearest_cityzips,not_found,False,,,1962,32h Maple,FORT COLLINS,street_nearest,1961-75,street_nearest_cityzips,address_approx
+958,address_approx,fuzzy_range_interp,not_found,False,,,1992,760 Umatilia,DENVER,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+959,address_approx,street_nearest,not_found,False,,,1980,590 DUDLEY,LAKEWOOD,street_nearest,1976-90,street_nearest,address_approx
+960,address_approx,street_nearest_cityzips_trim_dirloose,found,False,1947.428455574432,1947.428455574432,1980,901 46TH AVE 0216,DENVER,street_nearest_dirloose,1976-90,street_nearest_cityzips_trim_dirloose,address_approx
+961,address_approx,range_interp_cityzips_trim_dirloose,found,False,42.87615770466828,42.87615770466828,1984,2020 43RD AVE eozle,DENVER,range_interp_dirloose,1976-90,range_interp_cityzips_trim_dirloose,address_approx
+962,address_approx,street_nearest_nearzips_dirloose,not_found,False,,,1979,8781 90TH AVENUE,COMMERCE CITY,street_nearest_dirloose,1976-90,street_nearest_nearzips_dirloose,address_approx
+963,address_approx,range_interp_cityzips_trim,found,False,41.51214867749096,41.51214867749096,1993,940 Wadsworth Bid,LAKEWOOD,range_interp,1991-2002,range_interp_cityzips_trim,address_approx
+964,address_approx,range_interp_trim,found,False,454.6343741395519,454.6343741395519,1993,4909 Pearl E Cir,BOULDER,range_interp,1991-2002,range_interp_trim,address_approx
+965,address_approx,range_interp_trim,found,False,189.9719972015232,269.33428272379564,1993,325 Interlocken Pky,BROOMFIELD,range_interp,1991-2002,range_interp_trim,address_approx
+966,address_approx,range_interp_cityzips_trim,found,False,208.22305255522943,208.22305255522943,1980,1013 N 25TH AVE 180632,GREELEY,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+967,address_approx,zip_centroid,not_found,False,,,1993,7075 Hertage Rd,COLORADO SPRINGS,zip_centroid,1991-2002,zip_centroid,zip_centroid
+968,address_approx,street_nearest_cityzips_dirloose,not_found,False,,,1962,73k 2ND Ave.,DURANGO,street_nearest_dirloose,1961-75,street_nearest_cityzips_dirloose,address_approx
+969,address_approx,range_interp_trim,found,False,102.6549896303962,102.6549896303962,1992,5720 Holly St G,COMMERCE CITY,range_interp,1991-2002,range_interp_trim,address_approx
+970,address_approx,street_nearest_cityzips_dirloose,not_found,False,,,1968,76 CHESTER,PUEBLO,street_nearest_dirloose,1961-75,street_nearest_cityzips_dirloose,address_approx
+971,address_approx,fuzzy_street_nearest,not_found,False,,,2002,2600 Sundstrand Way,GRAND JUNCTION,fuzzy_street_nearest,1991-2002,fuzzy_street_nearest,address_approx
+972,address_approx,range_interp_trim,found,False,52.20373302245095,52.20373302245095,1988,27904 MEADOW DR 310,EVERGREEN,range_interp,1976-90,range_interp_trim,address_approx
+973,address_approx,range_interp_trim,not_found,False,,,2002,7292 Federal Bld,WESTMINSTER,range_interp,1991-2002,range_interp_trim,address_approx
+974,address_approx,street_nearest_dirloose,not_found,False,,,1986,325 MILL ST,BAYFIELD,street_nearest_dirloose,1976-90,street_nearest_dirloose,address_approx
+975,address_approx,fuzzy_street_nearest_dirloose,not_found,False,,,1986,80x 104,CREEDE,fuzzy_street_nearest_dirloose,1976-90,fuzzy_street_nearest_dirloose,address_approx
+976,address_approx,street_nearest,not_found,False,,,1990,1610 S Lipan,DENVER,street_nearest,1976-90,street_nearest,address_approx
+977,address_approx,street_nearest,not_found,False,,,1976,8383 S BOULDER RD,BOULDER,street_nearest,1976-90,street_nearest,address_approx
+978,address_approx,fuzzy_range_interp,not_found,False,,,1992,28057 Raliroad Ave,LA JUNTA,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+979,address_approx,range_interp_trim,found,False,180.9995402173856,180.9995402173856,1993,7490 Clubhouse Ad,BOULDER,range_interp,1991-2002,range_interp_trim,address_approx
+980,address_approx,range_interp_nearzips,found,False,55.519640341280336,208.28899550124547,2002,8405 E Hampden Ave,GREENWOOD VILLAGE,range_interp,1991-2002,range_interp_nearzips,address_approx
+981,address_approx,zip_centroid,not_found,False,,,1986,21101 E 51ST Ave,DENVER,zip_centroid,1976-90,zip_centroid,zip_centroid
+982,address_approx,range_interp_trim,found,False,22.519028296229216,22.519028296229216,1970,345 DELAWARE ST REAR,DENVER,range_interp,1961-75,range_interp_trim,address_approx
+983,address_approx,range_interp_trim,not_found,False,,,1993,6858 S Boulder Ad,BOULDER,range_interp,1991-2002,range_interp_trim,address_approx
+984,address_approx,street_nearest,found,False,387.5828157866826,387.5828157866826,1999,7916 Niwot Rd,NIWOT,street_nearest,1991-2002,street_nearest,address_approx
+985,address_approx,fuzzy_range_interp_trim,found,False,156.66181732105278,173.43320267144574,1999,202 E Cheyenne Mountain Blvd #80906,COLORADO SPRINGS,fuzzy_range_interp,1991-2002,fuzzy_range_interp_trim,address_approx
+986,address_approx,range_interp_trim,found,False,235.42813167577688,235.42813167577688,1992,27 Inverness 1970. Way E,ENGLEWOOD,range_interp,1991-2002,range_interp_trim,address_approx
+987,address_approx,range_interp_trim,found,False,39.90267871603435,39.90267871603435,1993,16080 Smith Ad,AURORA,range_interp,1991-2002,range_interp_trim,address_approx
+988,address_approx,street_nearest,not_found,False,,,1993,3833 N El Paso,COLORADO SPRINGS,street_nearest,1991-2002,street_nearest,address_approx
+989,address_approx,fuzzy_range_interp,not_found,False,,,2002,2305 Mount Wemer Cir,STEAMBOAT SPRINGS,fuzzy_range_interp,1991-2002,fuzzy_range_interp,address_approx
+990,address_approx,street_nearest,not_found,False,,,1990,615 E Bleeker St,ASPEN,street_nearest,1976-90,street_nearest,address_approx
+991,address_approx,range_interp_cityzips_trim_dirloose,found,False,11954.603123030216,11954.603123030216,1985,5855 38TH AVE soziz,DENVER,range_interp_dirloose,1976-90,range_interp_cityzips_trim_dirloose,address_approx
+992,address_approx,fuzzy_street_nearest_trim,found,False,245.3060340106184,260.8963645786056,2002,5921 S Middlefield Rd #203,LITTLETON,fuzzy_street_nearest,1991-2002,fuzzy_street_nearest_trim,address_approx
+993,address_approx,range_interp,found,False,90.9134643423366,100.80674713691882,1999,1108 1/2 Main St,LONGMONT,range_interp,1991-2002,range_interp,address
+994,address_approx,range_interp_trim,found,False,35.35531068347833,79.56946434606199,2002,1805 Santa Fe Dr #H,PUEBLO,range_interp,1991-2002,range_interp_trim,address_approx
+995,address_approx,fuzzy_street_nearest_cityzips,not_found,False,,,1967,2601 S BROADRAY,ENGLEWOOD,fuzzy_street_nearest,1961-75,fuzzy_street_nearest_cityzips,address_approx
+996,address_approx,fuzzy_range_interp_trim,not_found,False,,,1980,33 S PRATTE PKY,LONGMONT,fuzzy_range_interp,1976-90,fuzzy_range_interp_trim,address_approx
+997,address_approx,range_interp_trim_dirloose,found,False,152.14353620168458,152.14353620168458,2002,17222 Golden Rd #G,GOLDEN,range_interp_dirloose,1991-2002,range_interp_trim_dirloose,address_approx
+998,address_approx,range_interp_cityzips_trim,not_found,False,,,1985,1696 W TUFTS AVE 210,ENGLEWOOD,range_interp,1976-90,range_interp_cityzips_trim,address_approx
+999,address_approx,fuzzy_street_nearest_cityzips,not_found,False,,,1988,904 W BISENHOWER,LOVELAND,fuzzy_street_nearest,1976-90,fuzzy_street_nearest_cityzips,address_approx

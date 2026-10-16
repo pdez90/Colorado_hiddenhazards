@@ -62,8 +62,8 @@ esc <- function(x) htmltools::htmlEscape(ifelse(is.na(x), "", as.character(x)))
 
 # ---------------------------------------------------------------- UI
 filters <- list(
-  sliderInput("yrs", "Listed in a directory between", min = 1877, max = 2002, value = c(1877, 2002), sep = "", step = 1),
-  helpText("1877–1950: hazardous trades in the Colorado State Business Directory (brown). 1961–2002: Directory of Colorado Manufacturers."),
+  sliderInput("yrs", "Listed in a directory between", min = 1871, max = 2002, value = c(1871, 2002), sep = "", step = 1),
+  helpText("1871–1950: hazardous trades in the Colorado State Business Directory (brown). 1961–2002: Directory of Colorado Manufacturers."),
   checkboxGroupInput("sec", "Sector (Frickel & Elliott)", SECTORS, selected = SECTORS[1:7]),
   checkboxGroupInput("st", "Current regulatory status", STATUS, selected = STATUS),
   radioButtons("colby", "Colour sites by", c("Regulatory status" = "status", "Persistence (years listed)" = "span"), inline = FALSE),
@@ -367,8 +367,10 @@ server <- function(input, output, session) {
     "<b>address</b> = house number interpolated on the matching street segment; <b>address_approx</b> = street found only after OCR correction, ",
     "in a neighbouring ZIP, or at the nearest segment end (check before field work). Listings that could only be placed at a ZIP or city ",
     "centroid are in the edition CSVs but not on the map.</p>",
-    "<p>Check against independent coordinates: for directory addresses that also appear in EPA's Facility Registry, the distance between ",
-    "the two coordinates is summarised below. Street renumbering since the 1960s and OCR errors in house numbers are the main error sources.</p>",
+    "<p><b>Checked three ways (Oct 2026).</b> (1) Against Colorado's statewide address points (rooftop/parcel locations, independent of ",
+    "TIGER) for 1,000 random sites: address-level points median 49 m away, 93% within 250 m, 0.9% over 1 km; approximate points median 87 m, ",
+    "78% within 250 m, 9% over 1 km. (2) Against EPA Facility Registry coordinates for identical addresses (table below). (3) Against the scans: ",
+    "about 1 in 25 house numbers carries an OCR digit error. Misread house numbers and streets renumbered since the 1960s are the main error sources.</p>",
     "<p><b>Pre-1960 layer.</b> Business-directory entries are placed at a street address only for Denver from 1891 (after the city's 1887 ",
     "renumbering) and for larger cities from 1910, and only when the house number falls inside a current TIGER address range; old street names ",
     "(e.g. Holladay → Market) are translated. Everything else sits at the USGS GNIS point for the town and is drawn as a cluster. ",

@@ -9,7 +9,7 @@ df=pd.read_pickle('work/inv/records_linked.pkl')
 geo=pd.read_csv('work/geo/tiger_results.csv')
 df=df.merge(geo,on='geo_key',how='left')
 q=df.geo_quality.fillna('none')
-df['geo_level']=np.select([q.str.contains('range_interp')&~q.str.contains('fuzzy|nearzips|trim'), q.str.contains('range_interp|street_nearest'), q.eq('zip_centroid'), q.eq('city_centroid')],
+df['geo_level']=np.select([q.str.contains('range_interp')&~q.str.contains('fuzzy|nearzips|trim|dirloose'), q.str.contains('range_interp|street_nearest'), q.eq('zip_centroid'), q.eq('city_centroid')],
                           ['address','address_approx','zip_centroid','city_centroid'],'none')
 df['located']=df.geo_level.isin(['address','address_approx'])
 df['hazard_any']=df.fe_hazard|df.ext_hazard

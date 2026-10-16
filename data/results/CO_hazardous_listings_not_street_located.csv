@@ -264,6 +264,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1984,DCM_1961_copy,9,© RUSCO BUILDING PRODUCTS OF COLORADO INC,33RD PL,AURORA,80011,1981.0,,3442,directory,,True,Fabricated metals,False,,E001831,,39.74423,-104.80036,zip_centroid
 1984,DCM_1961_copy,9,UNIVAIR AIRCRAFT CORPORATION,SKY RANCH ATRPOR,AURORA,80011,1946.0,,3728,directory,,True,Transportation equipment,False,,E016424,,39.74423,-104.80036,zip_centroid
 1984,DCM_1961_copy,10,e001,1480 LIMA 60 S HAVANA ST cos,AURORA,,1973.0,,3714,directory,,True,Transportation equipment,False,,E001836,,39.719177,-104.791529,city_centroid
+1984,DCM_1961_copy,10,80011,1448 1/2 EMPORIA ST,AURORA,80010,1952.0,1-9,2993;3441,directory,,True,Petroleum refining; Fabricated metals,False,,E001837,,39.740865,-104.8634865,zip_centroid
 1984,DCM_1961_copy,10,8 ¢ & PLASTICS INC 3079 FABRICATED PLASTIC PRODUCTS,2700 JASPER UNIT 1,COMMERCE CITY,80022,1975.0,,3079,name_keyword,,True,Rubber & plastics,False,,E001838,,39.8127735,-104.918325,zip_centroid
 1984,DCM_1961_copy,10,,EWILE T WILLIANS PRESIDENT 30 POTOMAC ST,AURORA,80011,1977.0,1-9,3079;3544,directory,,True,Rubber & plastics; Industrial machinery,False,,E001839,,39.74423,-104.80036,zip_centroid
 1984,DCM_1961_copy,10,ITER FLO GUTTERS KWIK@KOPY PRINTING,P 0 BOX 22517 SW 94 soza2 2353 S HAVANA 80-23,AURORA,80018,1978.0,1-9,3444;2752,directory,,True,Fabricated metals,False,,E001840,,39.719177,-104.71575016666668,zip_centroid
@@ -356,6 +357,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1984,DCM_1961_copy,28,WARLOFF NANYFACTURING CO,750 GARDEN 0 GODS RD 0907,COLORADO SPRINGS,,1963.0,20-49,3580;3537;2393,directory,,True,Industrial machinery,False,,E002192,,38.84755000000005,-104.7745595,city_centroid
 1984,DCM_1961_copy,29,INFORMATION STORAGE INC,2768 VANITEL ROAD,COLORADO SPRINGS,80906,1983.0,10-19,3573,directory,,True,Industrial machinery,False,,E002201,,38.791067,-104.80561,zip_centroid
 1984,DCM_1961_copy,29,TOO,,COLORADO SPRINGS,,,,3312,directory,,True,Primary metals,False,Blast furnaces & coke,E002205,,38.84755000000005,-104.7745595,city_centroid
+1984,DCM_1961_copy,29,JENSEN AIRCRAFT,9990 GLIDERPORT RD,COLORADO SPRINGS,80908,1972.0,1-9,3728,directory,,True,Transportation equipment,False,,E002212,,38.989071,-104.69628,zip_centroid
 1984,DCM_1961_copy,29,4002 N CASCADE,,COLORADO SPRINGS,,1966.0,,3446;3449,directory,,True,Fabricated metals,False,,E007528,,38.84755000000005,-104.7745595,city_centroid
 1984,DCM_1961_copy,29,KAST@NARBLE INC,M PROSPECT AVE,COLORADO SPRINGS,80907,1969.0,1-9,3079,directory,,True,Rubber & plastics,False,,E002215,,38.88349,-104.824517,zip_centroid
 1984,DCM_1961_copy,29,to's,,COLORADO SPRINGS,,1975.0,,3728,directory,,True,Transportation equipment,False,,E002219,,38.84755000000005,-104.7745595,city_centroid
@@ -480,8 +482,10 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1984,DCM_1961_copy,48,$770 FOREST ST sozie BRS sd,,DENVER,,1976.0,0-19,3079,directory,,True,Rubber & plastics,False,,E002625,,39.740585,-104.9819275,city_centroid
 1984,DCM_1961_copy,48,CHAMPION INTERNATIONAL Col,5050 F 90TH AVE,DENVER,80216,1973.0,100-249,2653;3716,directory,,True,Transportation equipment,False,,E017074,,39.78386,-104.9687765,zip_centroid
 1984,DCM_1961_copy,48,ROBERT L CHAVEZ PRESIDENT,DAMLIA ST,DENVER,80216,,10-19,2873,predicted,,True,Chemicals,False,,E031553,,39.78386,-104.9687765,zip_centroid
+1984,DCM_1961_copy,48,SYSTERS TECHNOLOGY INC.,19685 451ST AVE,DENVER,80239,1980.0,,2829,directory,,True,Chemicals,False,,E002634,,39.7838600000001,-104.851705,zip_centroid
 1984,DCM_1961_copy,49,cmuSE fstievtow,ie stv. eoza6,DENVER,,1978.0,1-9,2863,directory,,True,Chemicals,False,,E002643,,39.740585,-104.9819275,city_centroid
 1984,DCM_1961_copy,49,CHEMICAL AND METAL INDUSTRIES INC,4701 DAMLIA ST,DENVER,80216,1976.0,10-19,2819,directory,,True,Chemicals,False,,E002644,,39.78386,-104.9687765,zip_centroid
+1984,DCM_1961_copy,49,CMERICAL SYSTERS TECHNOLOGY INC.,19685 .51ST AVE,DENVER,80239,1980.0,1-9,2861;2862;2019,directory,,True,Chemicals,False,,E002634,,39.7838600000001,-104.851705,zip_centroid
 1984,DCM_1961_copy,49,777 ‘URATILLA e020 61,,DENVER,,,50-99,2471;3479,directory,,True,Fabricated metals,False,,E002654,,39.740585,-104.9819275,city_centroid
 1984,DCM_1961_copy,49,5355 E 3ETH AVE £0207 29501757,,DENVER,,1926.0,10-19,2789;2761;3442;3231,directory,,True,Fabricated metals,False,,E031553,,39.740585,-104.9819275,city_centroid
 1984,DCM_1961_copy,49,COLORADO METAL MFG CO INC/SEE SHEE:,1310 v EVANS,DENVER,80223,1974.0,10-19,3444,directory,,True,Fabricated metals,False,,E031553,,39.698991,-104.99966,zip_centroid
@@ -490,6 +494,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1984,DCM_1961_copy,50,CRAWFORD PRINTING INK COs,2390 Se KALAMATH,DENVER,80223,1978.0,,2893;2752;2791;2751,directory,,True,Chemicals,False,,E002687,,39.698991,-104.99966,zip_centroid
 1984,DCM_1961_copy,51,D $_M MANUFACTURING CO,,DENVER,,,,3444;3599,directory,,True,Fabricated metals; Industrial machinery,False,,E002700,,39.740585,-104.9819275,city_centroid
 1984,DCM_1961_copy,51,DENVER BULLETS INC.,18 a3TW AV,DENVER,80206,1964.0,1-9,3482,directory,,True,Fabricated metals,False,,E031553,,39.731439,-104.95305,zip_centroid
+1984,DCM_1961_copy,52,DENVER GASKET + PACKING,9935 PEARL ST,DENVER,80216,1961.0,10-19,3293;2499;3559,directory,,True,Industrial machinery,False,,E031553,,39.78386,-104.9687765,zip_centroid
 1984,DCM_1961_copy,52,e026 295-1380,,DENVER,,1960.0,20-49,3471;3479,directory,,True,Fabricated metals,False,,E002713,,39.740585,-104.9819275,city_centroid
 1984,DCM_1961_copy,52,DENVER PATTERN WORKS. INC,177512 S BROADWAY,DENVER,80210,1965.0,,3565;3544,directory,,True,Industrial machinery,False,,E031553,,39.67983,-104.96646,zip_centroid
 1984,DCM_1961_copy,52,DENVER SPRING SERVICE + MFG CO INC,2434 BRIGHTON BLYD 216,DENVER,,1952.0,10-19,3493,directory,,True,Fabricated metals,False,,E031553,,39.740585,-104.9819275,city_centroid
@@ -644,6 +649,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1962,DCM_1962_part1_SIC,14,"Hall Sand & Gravel, Ince",2100 W. Oxford Box 2h,LITTLETON,,,1-19,3531,predicted,,True,Industrial machinery,False,,E000040,,39.610515,-105.021227,city_centroid
 1962,DCM_1962_part1_SIC,14,"Norgren, C.Ae, COo",Rio Grande Ste,LITTLETON,,,20-99,3559,predicted,,True,Industrial machinery,False,,E003250,,39.610515,-105.021227,city_centroid
 1962,DCM_1962_part1_SIC,14,"0.K. Rubber Welders, Ince",5261 S.,LITTLETON,,,,3069,name_keyword,,True,Rubber & plastics,False,,E003251,,39.610515,-105.021227,city_centroid
+1962,DCM_1962_part1_SIC,14,Co.,5150 Se Santa Fe Dre,LITTLETON,,,1-19,3523,predicted,,True,Industrial machinery,False,,E003254,,39.610515,-105.021227,city_centroid
 1962,DCM_1962_part1_SIC,15,Emeraldoil & Carbonic Co.,Las Animas,FORT LYON,,,1-19,2813,predicted,,True,Chemicals,False,,E003270,,38.072829,-103.129487,city_centroid
 1962,DCM_1962_part1_SIC,15,Las Animas Welding & Machine,7h9 Vigil,FORT LYON,,,1-19,3599,predicted,,True,Industrial machinery,False,,E003273,,38.072829,-103.129487,city_centroid
 1962,DCM_1962_part1_SIC,15,Simplot Fertilizer Co.,Las Animas,FORT LYON,,,1-19,2875,predicted,,True,Chemicals,False,,E003277,,38.072829,-103.129487,city_centroid
@@ -1307,6 +1313,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1966,DCM_1966_part1,19,DENVER BOOKBINDING CO PAINTS +VARNI SH» LACQUER,2715 17TH go2il DENVER PAPER BUX INC 0 T0 19 3433 WALNUT,DENVER,80205,1961.0,0-19,2851,name_keyword,,True,Chemicals,False,,E005892,,39.7608,-104.97396,zip_centroid
 1966,DCM_1966_part1,19,,,DENVER,,1915.0,20-99,3531,predicted,,True,Industrial machinery,False,,E005901,,39.740585,-104.9819275,city_centroid
 1966,DCM_1966_part1,20,,,DENVER,,1931.0,,3799,predicted,,True,Transportation equipment,False,,E005911,,39.740585,-104.9819275,city_centroid
+1966,DCM_1966_part1,20,PRODUCTS CONSULIDATED,3560 CHESTNUT PL,AURORA,80200,1927.0,20-99,3449,predicted,,True,Fabricated metals,False,,E005925,,39.812715,-105.049025,zip_centroid
 1966,DCM_1966_part1,20,TRO HYDRAULIC!,rt VINE,DENVER,80216,1960.0,,3599,predicted,,True,Industrial machinery,False,,E005926,,39.78386,-104.9687765,zip_centroid
 1966,DCM_1966_part1,20,© MACHINE,CENTRAL,DENVER,80211,1962.0,,3599,predicted,,True,Industrial machinery,False,,E031553,,39.76463,-105.01587,zip_centroid
 1966,DCM_1966_part1,20,,,DENVER,,,20-99,3711,predicted,,True,Transportation equipment,False,,E005932,,39.740585,-104.9819275,city_centroid
@@ -1345,6 +1352,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1966,DCM_1966_part1,30,S INDUSTRIES,,MILLS,,1962.0,0-19,3714,predicted,,True,Transportation equipment,False,,E006196,,,,none
 1966,DCM_1966_part1,30,WELOING,LIPAN,DENVER,80211,1965.0,0-19,3523,predicted,,True,Industrial machinery,False,,E006200,,39.76463,-105.01587,zip_centroid
 1966,DCM_1966_part1,31,"WILFLEY, A Ry + SONS INC",P BOX 2330,DENVER,80201,,20-99,3441,predicted,,True,Fabricated metals,False,,E006217,,39.74882050000005,-104.998195,zip_centroid
+1966,DCM_1966_part1,31,"WINTER WEISS CO, THE",2201 BLAKE,COLORADO SPRINGS,80295,1923.0,100-249,3714,predicted,,True,Transportation equipment,False,,E006218,,39.772821,-104.897157,zip_centroid
 1966,DCM_1966_part1,32,,,MILLS,,1948.0,0-19,3079,predicted,,True,Rubber & plastics,False,,E006224,,,,none
 1966,DCM_1966_part1,32,,,MILLS,,1935.0,20-99,3599,predicted,,True,Industrial machinery,False,,E006225,,,,none
 1966,DCM_1966_part1,32,P + H BUILDERS,BOX 446,CASTLE ROCK,80104,1946.0,0-19,3599,predicted,,True,Industrial machinery,False,,E000854,,39.37055,-104.860945,zip_centroid
@@ -1354,6 +1362,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1966,DCM_1966_part1,32,,,COLORADO SPRINGS,,1958.0,20-99,3441,predicted,,True,Fabricated metals,False,,E006235,,38.84755000000005,-104.7745595,city_centroid
 1966,DCM_1966_part1,32,,,COLORADO SPRINGS,,1932.0,250-999,3729,predicted,,True,Transportation equipment,False,,E006239,,38.84755000000005,-104.7745595,city_centroid
 1966,DCM_1966_part1,33,mcONA PORTABL c WELDING CO,WY 24,COLORADO SPRINGS,80909,1963.0,0-19,3599,predicted,,True,Industrial machinery,False,,E006243,,38.839777,-104.7745595,zip_centroid
+1966,DCM_1966_part1,33,"BURROUGHS CORP, DEFENSE + SPACE DIV",101 BARNES ST,COLORADO SPRINGS,80909,1962.0,,3531,predicted,,True,Industrial machinery,False,,E003580,,38.839777,-104.7745595,zip_centroid
 1966,DCM_1966_part1,33,COBB SHEET METAL + AIR CONDITIONING SON SAUSAGE CU,80906 DECKER 335 S WAHSATCH 1500 ARCH,COLORADO SPRINGS,80900,1963.0,1-19,3444,name_keyword,,True,Fabricated metals,False,,E006259,,38.84755000000005,-104.7745595,city_centroid
 1966,DCM_1966_part1,33,,,COLORADO SPRINGS,,1955.0,0-19,2899,keyword,,True,Chemicals,False,,E006263,,38.84755000000005,-104.7745595,city_centroid
 1966,DCM_1966_part1,33,"PENS ,PENCILS,OFFICE MAT *DURALITE BLOCK INC",COLORADO SPRINGS MACHINE CORP 328 E FILLMORE,COLORADO SPRINGS,80907,1947.0,,3079,keyword,,True,Rubber & plastics,False,,E006264,,38.88349,-104.824517,zip_centroid
@@ -1469,6 +1478,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1967,DCM_1967_part1,6,BRIGHTON WELDING + MACHINE SHCP,BOX 155,BRIGHTON,80601,1955.0,1-19,3591;3272;2063,directory,,True,Industrial machinery,False,,E006782,,39.97718,-104.81518,zip_centroid
 1967,DCM_1967_part1,6,AEROMOTIVE METAL PRODUCTS INC,5301 VASGUEZ BLVD,COMMERCE CITY,80022,1962.0,20-99,3799;3714,directory,,True,Transportation equipment,False,,E005543,,39.8127735,-104.918325,zip_centroid
 1967,DCM_1967_part1,6,"ANCHOR METALS, P © ORAWEHURST, TEXAS",,,,1966.0,10-19,3441,directory,,True,Fabricated metals,False,,E006783,,,,none
+1967,DCM_1967_part1,6,"ARMCO STEEL CORP, METAL PRODUCTS DIV",130 5TH AVE,COMMERCE CITY,80022,1964.0,100-249,3444,directory,,True,Fabricated metals,False,,E014211,,39.8127735,-104.918325,zip_centroid
 1967,DCM_1967_part1,6,CLEARFIELD MANUFACTURING INC,5315 VASCUEZ BLVD 0022,,,,0-9,3535,directory,,True,Industrial machinery,False,,E006785,,,,none
 1967,DCM_1967_part1,6,CUMCO FOUNDRY INC,6779 BRIGHTON BLVD 0020,,,1962.0,20-99,3321,directory,,True,Primary metals,False,,E006787,,,,none
 1967,DCM_1967_part1,6,COMMERCIAL ASPHALT + AGGREGATE CO,& 78TH AVE HwY 85,COMMERCE CITY,80022,1965.0,10-19,2951;3295,directory,,True,Petroleum refining,False,Asphalt paving mixtures,E006788,,39.8127735,-104.918325,zip_centroid
@@ -1567,6 +1577,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1967,DCM_1967_part1,20,355 YUMA,,ECKERT,,1951.0,20-49,3444,directory,,True,Fabricated metals,False,,E007023,,38.837673,-107.9665,city_centroid
 1967,DCM_1967_part1,20,ALSCO OF COLORADO INC,4401 E EVANS 8C222,ECKERT,,1950.0,100-249,3442;3444,directory,,True,Fabricated metals,False,,E007024,,38.837673,-107.9665,city_centroid
 1967,DCM_1967_part1,20,ALUMINUM PERMANENT MOLDING,1979 DIVISION ST C202,ECKERT,,1951.0,0-19,3361;3369;3537,directory,,True,Primary metals; Industrial machinery,False,,E007025,,38.837673,-107.9665,city_centroid
+1967,DCM_1967_part1,20,AMERICAN PENNANT MFG CO,1621 BLAKE,AURORA,80200,1912.0,10-19,2399;3444,directory,,True,Fabricated metals,False,,E007026,,39.812715,-105.049025,zip_centroid
 1967,DCM_1967_part1,21,,,ECKERT,,1925.0,0-19,3321,directory,,True,Primary metals,False,,E007027,,38.837673,-107.9665,city_centroid
 1967,DCM_1967_part1,21,IRON FOUNDRIES + BARONE INC,3323 STEEL FOUNDRIES 2339 FEMALE JUNIORS CUTERWEAR NE C 3610 SRIGHTON,DENVER,80216,1953.0,10-19,3369,name_keyword,,True,Primary metals,False,,E005783,,39.78386,-104.9687765,zip_centroid
 1967,DCM_1967_part1,21,® V HORST PRES LUGGAGE 16 W 13TH AVE sepa os.,,ECKERT,,1963.0,0-19,3591,directory,,True,Industrial machinery,False,,E007095,,38.837673,-107.9665,city_centroid
@@ -1908,6 +1919,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1968,DCM_1968_part1,6,BCX 155 BC601l 659-0647,,BRIGHTON,,1955.0,,3591,directory,,True,Industrial machinery,False,,E008123,,40.00266,-104.81518,city_centroid
 1968,DCM_1968_part1,6,AEROMOTIVE METAL PROCUCTS INC,5301 VASCUEZ BLVD,COMMERCE CITY,80022,,50-99,3799;3714,directory,,True,Transportation equipment,False,,E005543,,39.8127735,-104.918325,zip_centroid
 1968,DCM_1968_part1,6,ANCHOR METALS HURST» TEXAS,,BROOMFIELD,,1966.0,20-49,3441,directory,,True,Fabricated metals,False,,E008127,,39.9212045,-105.082009,city_centroid
+1968,DCM_1968_part1,6,"ARMCO STEEL CORP, METAL PRODUCTS DIV",130 9TH AVE,COMMERCE CITY,80022,1964.0,100-249,3444,directory,,True,Fabricated metals,False,,E014211,,39.8127735,-104.918325,zip_centroid
 1968,DCM_1968_part1,6,BEALL PIPE + TANK CORP OF CCLO,5701 CEXTER ST,COMMERCE CITY,80022,1957.0,20-99,3715,directory,,True,Transportation equipment,False,,E005545,,39.8127735,-104.918325,zip_centroid
 1968,DCM_1968_part1,6,CCLORACC INTERNATIONAL CORP,5321 CAFLIA ST,COMMERCE CITY,80022,1951.0,1-19,2872,directory,,True,Chemicals,False,,E006786,,39.8127735,-104.918325,zip_centroid
 1968,DCM_1968_part1,6,COMCO FOUNDRY INC,6770 ERIGHTCN BLVD,LAFAYETTE,80026,,20-49,3321;2951;3295,directory,,True,Petroleum refining; Primary metals,False,Asphalt paving mixtures,E008130,,39.986920000000055,-105.090475,zip_centroid
@@ -1928,6 +1940,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1968,DCM_1968_part1,8,"PO G METAL FINISHERS, INC",6712 N FEDERAL BLVD 29221,BROOMFIELD,,1960.0,,3471;3444;3441,directory,,True,Fabricated metals,False,,E008158,,39.9212045,-105.082009,city_centroid
 1968,DCM_1968_part1,8,RACE RODEO * WESTERN SUPPLIES,5800 FECERAL BLVD C221,BROOMFIELD,,,10-19,3791;3199,directory,,True,Transportation equipment,False,,E008160,,39.9212045,-105.082009,city_centroid
 1968,DCM_1968_part1,8,SWALCONE SHEET METAL WCRKS,5686 PECCS,DENVER,80221,,,3444,directory,,True,Fabricated metals,False,,E008163,,39.812751,-105.00745,zip_centroid
+1968,DCM_1968_part1,8,STANLEY AVIATION CCRP,2501 DALLAS,THORNTON,80229,1948.0,250-499,3729;3566;3599;3441,directory,,True,Fabricated metals; Industrial machinery; Transportation equipment,False,,E008164,,39.842291,-104.973335,zip_centroid
 1968,DCM_1968_part1,8,AMERICAN FERTILIZER + CHEMICAL CO,BCX 9,HENDERSON,80640,1947.0,100-249,2871;2879,directory,,True,Chemicals,False,,E008168,,39.874065,-104.880904,zip_centroid
 1968,DCM_1968_part1,8,MACRON MFG CO INC,9481 FIkAY 5,COLORADO SPRINGS,80840,,1-19,3559;3441;3551;3591,directory,,True,Fabricated metals; Industrial machinery,False,,E008170,,38.9912055,-104.860698,zip_centroid
 1968,DCM_1968_part1,8,e137 333-1178,,WATKINS,,1963.0,1-9,2899;3589,directory,,True,Chemicals; Industrial machinery,False,,E008171,,39.74896,-104.5859,city_centroid
@@ -1935,6 +1948,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1968,DCM_1968_part1,9,GAMMON TURKEY FARM,RT 1 BOX 475 ellcl,,,1945.0,1-19,2015;3591;3591;2099,directory,,True,Industrial machinery,False,,E008180,,,,none
 1968,DCM_1968_part1,9,VALLEY SHEET METAL,8TH BELL,ALAMOSA,81101,1954.0,20-99,3444,directory,,True,Fabricated metals,False,,E005592,,37.46929,-105.87481,zip_centroid
 1968,DCM_1968_part1,9,VAN*S MACHINE SHOP,BCX 783,ALAMOSA,81101,1958.0,,3714;3591,directory,,True,Industrial machinery; Transportation equipment,False,,E001718,,37.46929,-105.87481,zip_centroid
+1968,DCM_1968_part1,9,AURORA ASPHALT + PAVING CC,1820 COLFAX,AURORA,80010,1961.0,10-19,2951;3444,directory,,True,Petroleum refining; Fabricated metals,False,Asphalt paving mixtures,E008182,,39.740865,-104.8634865,zip_centroid
 1968,DCM_1968_part1,9,e200 W CHIO PL CENVER» COLC,,AURORA,,,1-9,2011;3593,directory,,True,Industrial machinery,False,,E008183,,39.719177,-104.791529,city_centroid
 1968,DCM_1968_part1,10,AUSTIN HEATING + SUPPLY CO,P O BOx 1002,ENGLEWOOD,80110,1959.0,1-9,3433;3444,directory,,True,Fabricated metals,False,,E005614,,39.65299,-105.008088,zip_centroid
 1968,DCM_1968_part1,10,,ST,ENGLEWOOD,80110,1959.0,20-99,3444,directory,,True,Fabricated metals,False,,E008189,,39.65299,-105.008088,zip_centroid
@@ -3592,6 +3606,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1974,DCM_1974_part2,7,COW-POW INC,8TH FRAZIER,FLORENCE,81226,,,2875,directory,,True,Chemicals,False,,E013588,,38.388833,-105.11607,zip_centroid
 1974,DCM_1974_part2,7,STEAM VAC CCMPANY,P BOX M,CARBONDALE,81623,1963.0,,2899;3589;2421,directory,,True,Chemicals; Industrial machinery,False,,E013595,,39.404067,-107.213143,zip_centroid
 1974,DCM_1974_part2,8,CERTIFIEC RECCI MIX INC,,GRANBY,80446,1967.0,20-49,3273;2951;2711,directory,,True,Petroleum refining,False,Asphalt paving mixtures,E013608,,40.086097,-105.936833,zip_centroid
+1974,DCM_1974_part2,8,A.S-T. CO INC,212 W US HWY 50,GUNNISON,81230,1971.0,0-9,3079;3272;3443,directory,,True,Rubber & plastics; Fabricated metals,False,,E013609,,38.54441,-106.9312185,zip_centroid
 1974,DCM_1974_part2,9,FOUR BAR & TOCL DIE + MACHINE,Lil SOUTH TAYLOR,GUNNISON,81230,1973.0,,3544;3399,directory,,True,Primary metals; Industrial machinery,False,,E013611,,38.54441,-106.9312185,zip_centroid
 1974,DCM_1974_part2,9,MAJESTIC SUN ENTERPRISES LTO,NCRTH OF GUNNISON,GUNNISON,81230,1973.0,,3079;3993;2421,directory,,True,Rubber & plastics,False,,E013613,,38.54441,-106.9312185,zip_centroid
 1974,DCM_1974_part2,9,"HUERFANO ELECTRONIC INCUSTRIES 2752 COMMERCIAL PRINTING, LITHOGRAPHIC",115 INOIANA AVE,WALSENBURG,81089,1964.0,,3432,directory,,True,Fabricated metals,False,,E013614,,37.62555,-104.78402,zip_centroid
@@ -3635,6 +3650,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1974,DCM_1974_part2,14,APACHE STEEL CORP,12280 W 90TH PL,WHEAT RIDGE,80033,1965.0,,3441;3446;3449,directory,,True,Fabricated metals,False,,E008865,,39.7776325,-105.109635,zip_centroid
 1974,DCM_1974_part2,14,"HITCHCOCK, IAC.",EAST OF BURLINGTON,BURLINGTON,80807,1968.0,,3523,directory,,True,Industrial machinery,False,,E023304,,39.3044999995754,-102.27053,zip_centroid
 1974,DCM_1974_part2,14,sos8is 765-4 re,,FLAGLER,,1956.0,,3523,directory,,True,Industrial machinery,False,,E013722,,39.290342,-103.063628,city_centroid
+1974,DCM_1974_part2,15,CUSTOM MACHINE + WELOING WORKS,121 EAST 3RD ST,LEADVILLE,80461,1940.0,0-9,3714;3452;3591,directory,,True,Fabricated metals; Industrial machinery; Transportation equipment,False,,E006456,,39.244323,-106.29691,zip_centroid
 1974,DCM_1974_part2,15,LEADVILLE Corp,SOUTH OF LEADVILLE,LEADVILLE,80461,1938.0,50-99,3339,directory,,True,Primary metals,False,,E001095,,39.244323,-106.29691,zip_centroid
 1974,DCM_1974_part2,15,,MARKETS INC GRAND JUNCTION COLO 639 E 2ND AVENUE,DURANGO,81301,1970.0,,2051;3599,directory,,True,Industrial machinery,False,,E013730,,37.2738005,-107.854809,zip_centroid
 1974,DCM_1974_part2,15,DESIGN IIT,EAST ANIMAS VALLEY 81301 MESA PAVING CO,DURANGO,81301,1973.0,20-49,2951;2499;2434,directory,,True,Petroleum refining,False,Asphalt paving mixtures,E013732,,37.2738005,-107.854809,zip_centroid
@@ -3877,7 +3893,9 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1976,DCM_1976,27,"‘AMERICAN CAN COMPANY GREENWICH, CONN",,DENVER,,1954.0,50-99,3411,directory,,True,Fabricated metals,False,,E013121,,39.740585,-104.9819275,city_centroid
 1976,DCM_1976,27,"AMOCO CHEMICAL CORP CHICAGO, ILL",,DENVER,,1967.0,50-99,3079,directory,,True,Rubber & plastics,False,,E031553,,39.740585,-104.9819275,city_centroid
 1976,DCM_1976,28,18 MAIN ST BRISTOL CT 06010,,DENVER,,1967.0,,3469;3496;3493,directory,,True,Fabricated metals,False,,E031553,,39.740585,-104.9819275,city_centroid
+1976,DCM_1976,28,ASTRO COACH INC,9700 BRIGHTON BLVD,DENVER,80216,1971.0,0-9,3711,directory,,True,Transportation equipment,False,,E014466,,39.78386,-104.9687765,zip_centroid
 1976,DCM_1976,28,ATLAS INTERNATIONAL INC CHEMICAL DIVISION,PO Bax 20235,DENVER,80220,1973.0,0-9,2899;2851;2842,directory,,True,Chemicals,False,,E014467,,39.73826,-104.91945,zip_centroid
+1976,DCM_1976,28,BQ P INDUSTRIES INC,9747 IRONTON ST,DENVER,80239,1960.0,50-99,3079,directory,,True,Rubber & plastics,False,,E015232,,39.7838600000001,-104.851705,zip_centroid
 1976,DCM_1976,29,aE EN Rr oz1o 744-1405,,DENVER,,1957.0,0-9,3716;3079,directory,,True,Rubber & plastics; Transportation equipment,False,,E031553,,39.740585,-104.9819275,city_centroid
 1976,DCM_1976,29,"BICKLEY, GEORGE, ENGRAVER",905 EMPIRE BUILDING,DENVER,80202,1950.0,0-9,3479,directory,,True,Fabricated metals,False,,E009519,,39.74933,-104.99497,zip_centroid
 1976,DCM_1976,29,BRUHN CO INC,3655 BRIGHTON BLVD 80216 BRUHN CO INC. DENVER CO,DENVER,80216,1919.0,20-49,3519;3714,directory,,True,Industrial machinery; Transportation equipment,False,,E031553,,39.78386,-104.9687765,zip_centroid
@@ -4756,6 +4774,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1979,DCM_1979,57,BO-MAR MANUFACTURING CO,ROUTE 1L eosos,CALHAN,,1969.0,1-9,3523,directory,,True,Industrial machinery,False,,E017346,,38.9794515,-104.3215645,city_centroid
 1979,DCM_1979,57,AMS SERVICE CO INC,5730 ELDORA ORIVE,AURORA,80018,1965.0,1-9,3599,directory,,True,Industrial machinery,False,,E017349,,39.719177,-104.71575016666668,zip_centroid
 1979,DCM_1979,57,ACME IRON + WELOING + INC,20 MT.VIEW LANE A,COLORADO SPRINGS,80907,1967.0,1-9,3441;3446,directory,,True,Fabricated metals,False,,E012086,,38.88349,-104.824517,zip_centroid
+1979,DCM_1979,57,"ARROW DYNAMICS, INC.",6450 BURROWS RO,COLORADO SPRINGS,80908,1977.0,1-9,3711,directory,,True,Transportation equipment,False,,E017354,,38.989071,-104.69628,zip_centroid
 1979,DCM_1979,57,410 TIA JUANA hy Egcsee,,COLORADO SPRINGS,,1951.0,20-49,3441;3446,directory,,True,Fabricated metals,False,,E017356,,38.84755000000005,-104.7745595,city_centroid
 1979,DCM_1979,57,BENNETT MFG # SUPPLY CO,2207 E ST VRAIN ST,COLORADO SPRINGS,80909,1951.0,1-9,3799;3449,directory,,True,Fabricated metals; Transportation equipment,False,,E012100,,38.839777,-104.7745595,zip_centroid
 1979,DCM_1979,58,2 CLOER W L_INDUSTRIES,3970 CLEATYIEW ROAD,COLORADO SPRINGS,80931,1976.0,1-9,3099,directory,,True,Rubber & plastics,False,,E015682,,38.806296,-104.737733,zip_centroid
@@ -5095,6 +5114,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1980,DCM_1980_part2,30,MOUNTAIN STATES METAL PROOUCTS INC,49754 MILLER ST,WHEAT RIDGE,80033,1944.0,20-99,3469;3499,directory,,True,Fabricated metals,False,,E018587,,39.7776325,-105.109635,zip_centroid
 1980,DCM_1980_part2,31,"HITCHCOCK, ENC.",EAST OF BURLINGTON,BURLINGTON,80807,1968.0,1-9,3523;2441;3599,directory,,True,Industrial machinery,False,,E023304,,39.3044999995754,-102.27053,zip_centroid
 1980,DCM_1980_part2,31,DORSCH MFG CO,,FLAGLER,80815,1956.0,1-9,3523,directory,,True,Industrial machinery,False,,E010236,,39.290342,-103.063628,zip_centroid
+1980,DCM_1980_part2,31,VENTURE MFG CO INC,114 E 6TH ST,LEADVILLE,80461,1976.0,1-9,3573,directory,,True,Industrial machinery,False,,E018593,,39.244323,-106.29691,zip_centroid
 1980,DCM_1980_part2,31,MESA PAVING CO,15984 COUNTY RO 213,DURANGO,81301,1957.0,20-49,2952,directory,,True,Petroleum refining,False,,E012363,,37.2738005,-107.854809,zip_centroid
 1980,DCM_1980_part2,31,OLEGER SHEET METALS,UST E 19TH ST,DURANGO,81301,,1-9,3448;3444;3449,directory,,True,Fabricated metals,False,,E001129,,37.2738005,-107.854809,zip_centroid
 1980,DCM_1980_part2,32,STONMEAGE INC,22345 HIGHWAY 160,DURANGO,81301,1980.0,,3532,directory,,True,Industrial machinery,False,,E018605,,37.2738005,-107.854809,zip_centroid
@@ -5440,6 +5460,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1983,DCM_1983_part1,9,,DON MCCARTHY PRESIDENT 5301 VASQUEZ BLVD,COMMERCE CITY,80022,1965.0,,3532,directory,,True,Industrial machinery,False,,E019666,,39.8127735,-104.918325,zip_centroid
 1983,DCM_1983_part1,10,@RROW SHEET METAL PRODUCTS CO,22990 W 62ND AVE,DENVER,80221,1976.0,10-19,3444,predicted,,True,Fabricated metals,False,,E017483,,39.812751,-105.00745,zip_centroid
 1983,DCM_1983_part1,10,WUTO-TROL TECHNOLOGY CORPORATION,22500 N WASHINGTON,NORTHGLENN,80233,1962.0,500-999,3573,predicted,,True,Industrial machinery,False,,E017484,,39.899367,-104.966164,zip_centroid
+1983,DCM_1983_part1,10,BS + R MACHINE CO,9941 MARION OR,DENVER,80216,1974.0,10-19,3599,directory,,True,Industrial machinery,False,,E019671,,39.78386,-104.9687765,zip_centroid
 1983,DCM_1983_part1,10,SION CORP.,TOOO N BROADWAY,DENVER,80221,1980.0,10-19,3841;3079,directory,,True,Rubber & plastics,False,,E019673,,39.812751,-105.00745,zip_centroid
 1983,DCM_1983_part1,10,CHAPARRAL INDUSTRIES» INC,3995 WASHINGTON,DENVER,80216,1974.0,100-249,3769;3444;3662,directory,,True,Fabricated metals; Transportation equipment,False,,E011451,,39.78386,-104.9687765,zip_centroid
 1983,DCM_1983_part1,10,CLARETT MCCOYs INCe,,,,1963.0,1-9,2841;2842;2844,directory,,True,Chemicals,False,,E019675,,,,none
@@ -5595,6 +5616,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1983,DCM_1983_part1,53,JOHNSON + HELD LTD. KENTON ¢ ASSOCIATES,820 W 6TH AV 80204 10200 E GIRARD 306A,DENVER,80231,1977.0,1-9,3964;3466;3961,directory,,True,Fabricated metals,False,,E020115,,39.67494,-104.89168,zip_centroid
 1983,DCM_1983_part1,53,KAMINSKY BARREL CO KISNER TYPESETTING INC,2210 BLAKE ST 80205 1305 W 38TH,DENVER,80211,1899.0,1-9,3412,directory,,True,Fabricated metals,False,,E011147,,39.76463,-105.01587,zip_centroid
 1983,DCM_1983_part1,53,,4 SeFOX ST,DENVER,80223,1979.0,,3535;3554;3559;3569,directory,,True,Industrial machinery,False,,E020121,,39.698991,-104.99966,zip_centroid
+1983,DCM_1983_part1,53,KOIS BROS EQUIPMENT CO INC.,9950 JACKSON ST,DENVER,80216,1970.0,20-49,3713;3443;3715,directory,,True,Fabricated metals; Transportation equipment,False,,E011135,,39.78386,-104.9687765,zip_centroid
 1983,DCM_1983_part1,54,LANE MANUFACTURING INC,53560 PACIFIC PL,DENVER,80222,1972.0,1-9,3523;3841,directory,,True,Industrial machinery,False,,E013276,,39.6784440000001,-104.93163,zip_centroid
 1983,DCM_1983_part1,54,LECK ENTERPRISES INC.,4757 WLIST AVE,DENVER,80219,1973.0,1-9,3599,directory,,True,Industrial machinery,False,,E017128,,39.7003805,-105.026195,zip_centroid
 1983,DCM_1983_part1,54,EISURE RESEARCH INC,oat Ww 5TH AVE,DENVER,80204,1966.0,10-19,3949;3559,directory,,True,Industrial machinery,False,,E015415,,39.7355,-105.00966,zip_centroid
@@ -5660,6 +5682,8 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1983,DCM_1983_part2,13,DIGITAL EQUIP CORP.» MAYNARD» MA,,,,1975.0,1000+,3573,directory,,True,Industrial machinery,False,,E020290,,,,none
 1983,DCM_1983_part2,13,EXIOYNEs INC,2860 S CIRCLE ORIVE 60906 1229 LAKE PLAZA DR CO SPRGSs COs,COLORADO SPRINGS,80906,1982.0,20-49,3569;3573,directory,,True,Industrial machinery,False,,E020297,,38.791067,-104.80561,zip_centroid
 1983,DCM_1983_part2,14,"HOTSY CORP, THE ENGLEWOOD, CO",,,,1970.0,100-249,3569;3559;3561,directory,,True,Industrial machinery,False,,E020303,,,,none
+1983,DCM_1983_part2,14,HYDRO GARDENS INC,8765 VOLLMER RD,COLORADO SPRINGS,80908,1973.0,1-9,3231;3448,directory,,True,Fabricated metals,False,,E020304,,38.989071,-104.69628,zip_centroid
+1983,DCM_1983_part2,14,J + M ENGINEERING INC,14775 ROLLER COASTER,COLORADO SPRINGS,80908,1979.0,1-9,2599;3079,directory,,True,Rubber & plastics,False,,E002209,,38.989071,-104.69628,zip_centroid
 1983,DCM_1983_part2,14,K ¢ S METAL PRODUCTS CO,4200 N WEBER 80907 4200 N WEBER COLO SPGS CO,COLORADO SPRINGS,80907,1947.0,10-19,3479;3679;3589;3841,directory,,True,Fabricated metals; Industrial machinery,False,Electronic components,E012122,,38.88349,-104.824517,zip_centroid
 1983,DCM_1983_part2,15,MACKEY CORPORATION,1355 FORO ST,COLORADO SPRINGS,80915,1973.0,20-49,3079;3423,directory,,True,Rubber & plastics; Fabricated metals,False,,E017400,,38.84709,-104.718164,zip_centroid
 1983,DCM_1983_part2,15,612 Se Teson,,COLORADO SPRINGS,80903,1978.0,,2752;3407,directory,,True,Fabricated metals,False,,E020324,,38.828367,-104.82029,zip_centroid
@@ -5826,6 +5850,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1983,DCM_1983_part2,53,WESTERN HARD ¢ SOFT WARES,31004327,NORWOOD,81423,1980.0,1-9,3573,directory,,True,Industrial machinery,False,,E020893,,38.130769,-108.28895,zip_centroid
 1983,DCM_1983_part2,54,HIGHLAND GROVE MANUFACTURING,17351 TELE Cty 2 soele,FLORISSANT,,1979.0,,3599;3799,directory,,True,Industrial machinery; Transportation equipment,False,,E020905,,38.93869,-105.28421,city_centroid
 1983,DCM_1983_part2,55,DAHLGREN MANUFACTURING INC,17708 WELO COUNTY RD,EATON,80615,1975.0,1-9,3537;3523;3433;3441,directory,,True,Fabricated metals; Industrial machinery,False,,E025919,,40.5250635,-104.7012175,zip_centroid
+1983,DCM_1983_part2,55,PRECISION BRAND MACHINING,404 MAIN ST,ERIE,80516,1974.0,1-9,3544;3451,directory,,True,Fabricated metals; Industrial machinery,False,,E020914,,40.03463,-105.03555,zip_centroid
 1983,DCM_1983_part2,55,ECONOMY BODY + KONOMY CAMPERS INC,3231 W SERVICE RD,LA SALLE,80645,1951.0,1-9,3792,directory,,True,Transportation equipment,False,,E016365,,40.334008,-104.704011,zip_centroid
 1983,DCM_1983_part2,55,RAINCAT IRRIGATION SYSTEMS,3201 Ww SERVICE RO,EVANS,80620,1957.0,50-99,3523,directory,,True,Industrial machinery,False,,E018972,,40.377365,-104.69945,zip_centroid
 1983,DCM_1983_part2,55,,,EVANS,,1979.0,,2869,directory,,True,Chemicals,False,,E020917,,40.377365,-104.69945,city_centroid
@@ -5965,6 +5990,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1985,DCM_1985_part2,18,JANKTOWN,,FORT COLLINS,,1980.0,,2875,directory,,True,Chemicals,False,,E021407,,40.558665750000046,-105.0739215,city_centroid
 1985,DCM_1985_part2,18,,,FOWLER,,1972.0,,3715,directory,,True,Transportation equipment,False,,E021417,,38.130375,-104.02374,city_centroid
 1985,DCM_1985_part2,18,,3523 STOCK TRI 9TH OAK,FREDERICK,80530,,50-99,3043;3792,directory,,True,Rubber & plastics; Transportation equipment,False,,E021418,,40.0987655,-104.93951,zip_centroid
+1985,DCM_1985_part2,18,PABCO INSs DIVs OF FIBERBOARD CORPS,2120 16 RD,FRUITA,81521,1977.0,,3292;3499;3451,directory,,True,Fabricated metals,False,,E018749,,39.15923,-108.727842,zip_centroid
 1985,DCM_1985_part2,18,27208 HIGHWAY 69 1040 Tae~zzee,,GARDNER,,1945.0,10-19,2421;2911;3964,directory,,True,Petroleum refining,False,,E021422,,37.777487,-105.203008,city_centroid
 1985,DCM_1985_part2,19,ASPHALT PAVING CO,24802 W 44TH AVE,GOLDEN,80401,1955.0,,2951,directory,,True,Petroleum refining,False,Asphalt paving mixtures,E027827,,39.73544,-105.1939,zip_centroid
 1985,DCM_1985_part2,19,BALL METAL CONTAINER GROUP,4525 INDIANA ST 0401 300 W 208TH CIR WESTMINISTERs CO,BROOMFIELD,80020,1962.0,100-249,3411;3466,directory,,True,Fabricated metals,False,,E002083,,39.92101,-105.07792,zip_centroid
@@ -6088,6 +6114,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1985,DCM_1985_part2,39,,toe dame st STREET SeEs,LOVELAND,80537,,,3362,directory,,True,Primary metals,False,,E021758,,40.395135,-105.073807,zip_centroid
 1985,DCM_1985_part2,39,PO 80x 30% REDFORD vi. suasx,,LOVELAND,,1978.0,20-49,3442;2439,directory,,True,Fabricated metals,False,,E021759,,40.41657275,-105.0601035,city_centroid
 1985,DCM_1985_part2,39,6406,,LUCERNE,,1967.0,,3523,directory,,True,Industrial machinery,False,,E021760,,40.48186,-104.69805555555556,city_centroid
+1985,DCM_1985_part2,39,SILVERCRAFT TURQUOISE + JEWELRY,202 N 4TH,PITKIN,81241,1972.0,20-49,3011;2961,directory,,True,Petroleum refining; Rubber & plastics,False,,E021766,,38.525433,-105.8105985,zip_centroid
 1985,DCM_1985_part2,39,740 MANITOU AVE tosze 25-9655,,MANITOU SPRINGS,,1969.0,10-19,3031;2752;2711,directory,,True,Rubber & plastics,False,,E021771,,38.857665,-104.90968,city_centroid
 1985,DCM_1985_part2,42,,,,80096,,,2965;2008,directory,,True,Petroleum refining,False,,E021780,,,,none
 1985,DCM_1985_part2,44,"IDEAL BASIC INDUSTRIES, CONENT OY",,PONCHA SPRINGS,,,100-249,3442;3211;3444;3099;2751,directory,,True,Rubber & plastics; Fabricated metals,False,,E021788,,38.519545,-106.07577,city_centroid
@@ -6244,6 +6271,8 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1986,DCM_1986_part1,28,146 MAIN ST MAYNARDsMA 01754,,COLORADO SPRINGS,,1976.0,1000+,3573,directory,,True,Industrial machinery,False,,E002169,,38.84755000000005,-104.7745595,city_centroid
 1986,DCM_1986_part1,29,EXIDYNE INC,28669 CIRCLEORSTE350,COLORADO SPRINGS,80906,1982.0,20-49,3589;3573,directory,,True,Industrial machinery,False,,E002184,,38.791067,-104.80561,zip_centroid
 1986,DCM_1986_part1,29,21 IVERNESS WAY E ENGLEWOODsCO,,COLORADO SPRINGS,,1970.0,100-249,3589;3561;2819,directory,,True,Chemicals; Industrial machinery,False,,E022299,,38.84755000000005,-104.7745595,city_centroid
+1986,DCM_1986_part1,30,HYORO GARDENS INC,8765 VOLLMER 29,COLORADO SPRINGS,80908,1972.0,,3231;3448;2873,directory,,True,Chemicals; Fabricated metals,False,,E020304,,38.989071,-104.69628,zip_centroid
+1986,DCM_1986_part1,30,J + M ENGINEERING INC,14775 ROLLER COASTER,COLORADO SPRINGS,80908,1979.0,1-9,2599;3079,directory,,True,Rubber & plastics,False,,E002209,,38.989071,-104.69628,zip_centroid
 1986,DCM_1986_part1,31,MANNA PRO COUNTRY STORE,2110 S SIERRA MADRE,COLORADO SPRINGS,80903,1909.0,10-19,2047;2875;2048,directory,,True,Chemicals,False,,E022312,,38.828367,-104.82029,zip_centroid
 1986,DCM_1986_part1,31,MESA POWER SYSTEMS,2571 OURANSO DR 89910,COLORADO SPRINGS,,1982.0,1-9,3599,directory,,True,Industrial machinery,False,,E022316,,38.84755000000005,-104.7745595,city_centroid
 1986,DCM_1986_part1,31,MICRO-MOLD WEST INC,2531 WESTON RD,COLORADO SPRINGS,80910,,1-9,3544,directory,,True,Industrial machinery,False,,E026931,,38.808323,-104.772867,zip_centroid
@@ -6425,7 +6454,10 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1986,DCM_1986_part2,39,WEHRMAN CORP,3950 S marreosa,ENGLEWOOD,80110,1970.0,1-9,3599,directory,,True,Industrial machinery,False,,E016651,,39.65299,-105.008088,zip_centroid
 1986,DCM_1986_part2,39,AR WILFLEY # SONS INC,7350 E PROGRESS PL eollL,ENGLEWOOD,,1920.0,100-249,3561,directory,,True,Industrial machinery,False,,E022936,,39.63673,-104.97942,city_centroid
 1986,DCM_1986_part2,39,CROCKETT * KELLY INC WESTGUARD IND,1011 WELD CO 8D 1,ERIE,80516,1942.0,20-49,2842;3841,directory,,True,Chemicals,False,,E021302,,40.03463,-105.03555,zip_centroid
+1986,DCM_1986_part2,39,GOLD MACHINING,526 BRIGGS ST,ERIE,80516,1980.0,1-9,3599;3544;3469,directory,,True,Fabricated metals; Industrial machinery,False,,E022939,,40.03463,-105.03555,zip_centroid
+1986,DCM_1986_part2,39,tT S$ PLasTIcs,4055 EsCOUNTY LINE,ERIE,80516,1975.0,1-9,3944;3999;3499,directory,,True,Fabricated metals,False,,E020913,,40.03463,-105.03555,zip_centroid
 1986,DCM_1986_part2,39,PHILLIPS MACHINERY INC,2260 I-25 FRONTAGE,BOULDER,80303,1965.0,1-9,3535;3531,directory,,True,Industrial machinery,False,,E021108,,40.00652,-105.230865,zip_centroid
+1986,DCM_1986_part2,39,PRECISION BRAND MACHINING,404 MAIN ST,ERIE,80516,1974.0,1-9,3544;3451,directory,,True,Fabricated metals; Industrial machinery,False,,E020914,,40.03463,-105.03555,zip_centroid
 1986,DCM_1986_part2,39,S + M MANUFACTURING CO INC,3348 ROAD 44,ERIE,80516,1978.0,1-9,3544;3599,directory,,True,Industrial machinery,False,,E022941,,40.03463,-105.03555,zip_centroid
 1986,DCM_1986_part2,40,ECONOMY BODY + KONOMY CAMPERS INC,3231 w SERVICE RO,LA SALLE,80645,1951.0,1-9,3792,directory,,True,Transportation equipment,False,,E016365,,40.334008,-104.704011,zip_centroid
 1986,DCM_1986_part2,40,COLGRADO MEDICAL INCORPORATED,1202 HWY 74 STE 108,EVERGREEN,80439,1981.0,1-9,3573,directory,,True,Industrial machinery,False,,E022955,,39.65014,-105.339085,zip_centroid
@@ -6584,6 +6616,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1988,DCM_1988_part1,48,822 N WEBER 30003) COLORADO SPRINGS - EL PASO,,,,1970.0,1-9,2499;3089;3868;3999;2752;2759;3889;2431;3821;3825,directory,,True,Rubber & plastics,False,,E023398,,,,none
 1988,DCM_1988_part1,48,COLORADO SPRINGS - EL PAS: (as,,,,1981.0,250-499,3577,directory,,True,Industrial machinery,False,,E023400,,,,none
 1988,DCM_1988_part1,48,COLORADO SPRINGS - PASO,,,,1970.0,100-249,3561;3589,directory,,True,Industrial machinery,False,,E023403,,,,none
+1988,DCM_1988_part1,48,ASSEMBLY HYDRO GARDENS INC,8765 VOLLMER RD,COLORADO SPRINGS,80908,1972.0,10-19,2873;3448;3524;2431;2434;2541,directory,,True,Chemicals; Fabricated metals; Industrial machinery,False,,E020304,,38.989071,-104.69628,zip_centroid
 1988,DCM_1988_part1,49,COLORADO SPRINGS - EL PASO,,,,1983.0,50-99,3577,directory,,True,Industrial machinery,False,,E023408,,,,none
 1988,DCM_1988_part1,49,COLORADO SPRINGS - BL PASO,,,,1969.0,10-19,2448;2653;3086,directory,,True,Rubber & plastics,False,,E023409,,,,none
 1988,DCM_1988_part1,50,331 S 14TH ST Coma! COLORADO SPRINGS - EL PASO,,,,1975.0,1-9,3728,directory,,True,Transportation equipment,False,,E023414,,,,none
@@ -6853,6 +6886,8 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1988,DCM_1988_part3,32,EQUIPMENT +MFG D.B.A-ARMSTEAD MASONRY INC,219 HIGHWAY 52,ERIE,80516,1964.0,1-9,3546,directory,,True,Industrial machinery,False,,E024236,,40.03463,-105.03555,zip_centroid
 1988,DCM_1988_part3,32,CROCKETT+KELLY INC,1001 WELD CO RD 1,ERIE,80516,1942.0,20-49,2842;3841,directory,,True,Chemicals,False,,E021302,,40.03463,-105.03555,zip_centroid
 1988,DCM_1988_part3,32,APPARATUS E+E SHEET METAL INC,2190 1-28 PRONTAGE RD,ERIE,80516,1980.0,1-9,3089;3443;3589,directory,,True,Rubber & plastics; Fabricated metals; Industrial machinery,False,,E024237,,40.03463,-105.03555,zip_centroid
+1988,DCM_1988_part3,32,"MANHOLES, BLOCKS GOLD MACHINING",526 BRIGGS ST,ERIE,80516,1980.0,1-9,3469;3844;3899;3398;3429;2240,directory,,True,Primary metals; Fabricated metals,False,,E022939,,40.03463,-105.03555,zip_centroid
+1988,DCM_1988_part3,33,264 ERIE - ESTES PARK SYivatity } BRAND,404 MAIN ST,ERIE,80516,1974.0,1-9,3451;3544;3844;3899,directory,,True,Fabricated metals; Industrial machinery,False,,E024238,,40.03463,-105.03555,zip_centroid
 1988,DCM_1988_part3,34,ECONOMY BODY+KONOMY CAMPERS INC,3231 W SERVICE RD,LA SALLE,80645,1951.0,,3792;3714,directory,,True,Transportation equipment,False,,E016365,,40.334008,-104.704011,zip_centroid
 1988,DCM_1988_part3,34,EVANS - WEL! TY,,,,1981.0,100-249,3496;3679;7372,directory,,True,Fabricated metals,False,Electronic components,E024249,,,,none
 1988,DCM_1988_part3,34,PRODUCTS DEN-SOIL INC,EVERGREEN HILL,EVERGREEN,80439,1964.0,1-9,2899,directory,,True,Chemicals,False,,E026023,,39.65014,-105.339085,zip_centroid
@@ -6970,6 +7005,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1988,DCM_1988_part4,21,,,LONGMONT,,1977.0,1-9,3577;3641;3993,directory,,True,Industrial machinery,False,,E024739,,40.15879,-105.063636,city_centroid
 1988,DCM_1988_part4,21,TY RONEN cous,,,,1979.0,,2851;3444;3599,directory,,True,Chemicals; Fabricated metals; Industrial machinery,False,,E024743,,,,none
 1988,DCM_1988_part4,21,MOORE BEARING CO,,"U3 SHERMAN, DOL PEK COUNTY",,1980.0,1-9,3494;3535,directory,,True,Fabricated metals; Industrial machinery,False,,E024745,,,,none
+1988,DCM_1988_part4,21,MOUNTAIN LEATHER,4945 HIGHLAND DR,LONGMONT,80501,1977.0,,3172;3421,directory,,True,Fabricated metals,False,,E028140,,40.15879,-105.10699,zip_centroid
 1988,DCM_1988_part4,21,ASSOCIATES INC 1111 DELAWARE AVE 80501),,LONGMONT BOULDER COUNTY,,1971.0,1-9,3569;3829,directory,,True,Industrial machinery,False,,E024748,,,,none
 1988,DCM_1988_part4,22,POLNG HORNER 150 MARTIN,,LONGMONT “ROULDER (SOSO COUNTY,,,,3321;3363;3499,directory,,True,Primary metals; Fabricated metals,False,,E024753,,,,none
 1988,DCM_1988_part4,22,LER BOULDER,DR,LONGMONT,80501,1986.0,80-99,3571,directory,,True,Industrial machinery,False,,E024754,,40.15879,-105.10699,zip_centroid
@@ -7132,9 +7168,11 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1990,DCM_1990_part1,33,CONDOR ENGINEERING INC,2207 E St Vrain St,COLORADO SPRINGS,80909,1984.0,10-19,3089;3441;3451,directory,,True,Rubber & plastics; Fabricated metals,False,,E025446,,38.839777,-104.7745595,zip_centroid
 1990,DCM_1990_part1,34,DENVER EQUIPMENT COMPANY,,COLORADO SPRINGS,,1927.0,,3321;3556;3559;3561,directory,,True,Primary metals; Industrial machinery,False,,E003606,,38.84755000000005,-104.7745595,city_centroid
 1990,DCM_1990_part1,34,DRIVE LINE SERVICE OF COLO SPRINGS,9079 Sierre Madre,COLORADO SPRINGS,80903,1979.0,1-9,3599,directory,,True,Industrial machinery,False,,E023380,,38.828367,-104.82029,zip_centroid
+1990,DCM_1990_part1,34,ENVIRONMENTAL APPLIED SCIENCES,4830 Old Ranch Rd,COLORADO SPRINGS,80908,1977.0,1-9,3564,directory,,True,Industrial machinery,False,,E022288,,38.989071,-104.69628,zip_centroid
 1990,DCM_1990_part1,34,EVERETT-SOLBERG INC,,COLORADO SPRINGS,,,,2431;3442;3446,directory,,True,Fabricated metals,False,,E025458,,38.84755000000005,-104.7745595,city_centroid
 1990,DCM_1990_part1,35,HELLERS INTERIORS,,COLORADO SPRINGS,,1945.0,1-9,2541;3421,directory,,True,Fabricated metals,False,,E025467,,38.84755000000005,-104.7745595,city_centroid
 1990,DCM_1990_part1,35,"HEWLETT-PACKARD CO, TELECOM",,COLORADO SPRINGS,,1981.0,250-499,3577,directory,,True,Industrial machinery,False,,E003626,,38.84755000000005,-104.7745595,city_centroid
+1990,DCM_1990_part1,35,HYDRO GARDENS INC,8765 Vollmer Rd,COLORADO SPRINGS,80908,1972.0,10-19,2873;3448;3524;3829,directory,,True,Chemicals; Fabricated metals; Industrial machinery,False,,E020304,,38.989071,-104.69628,zip_centroid
 1990,DCM_1990_part1,36,KAISER PRODUCTS CORP,9555 N Prospect St,COLORADO SPRINGS,80907,1966.0,1-9,3089;3544;3861,directory,,True,Rubber & plastics; Industrial machinery,False,Photographic equipment/chemicals,E002214,,38.88349,-104.824517,zip_centroid
 1990,DCM_1990_part1,36,LASER MAGNETIC STORAGE INT,4425 Arrows West Dr,COLORADO SPRINGS,80907,1979.0,250-499,3577,directory,,True,Industrial machinery,False,,E025477,,38.88349,-104.824517,zip_centroid
 1990,DCM_1990_part1,37,MICRO-MOLD WEST INC,2531 Weston Rd,COLORADO SPRINGS,80910,1977.0,1-9,3544,directory,,True,Industrial machinery,False,,E026931,,38.808323,-104.772867,zip_centroid
@@ -7174,6 +7212,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1990,DCM_1990_part2,5,ARDELT ENGINEERING CO,,COLORADO,,1978.0,1-93,3498,directory,,True,Fabricated metals,False,,E025589,,,,none
 1990,DCM_1990_part2,5,ARROW SHEET METAL PRODUCTS CO,,COLORADO,,1976.0,20-49,3444,directory,,True,Fabricated metals,False,,E025590,,,,none
 1990,DCM_1990_part2,5,ASPHALT PRODUCTS OIL CORPORATION,,COLORADO,,1980.0,1-9,2952,directory,,True,Petroleum refining,False,,E025592,,,,none
+1990,DCM_1990_part2,5,ATLAS ENERGY PRODUCTS,6700 Franklin St,DENVER,80223,1989.0,10-19,3086,directory,,True,Rubber & plastics,False,,E025594,,39.698991,-104.99966,zip_centroid
 1990,DCM_1990_part2,6,B-D CHEMICAL CO INC,701 Denargo Market,DENVER,80216,1977.0,1-9,2842;2869;2899;2865,directory,,True,Chemicals,False,,E017930,,39.78386,-104.9687765,zip_centroid
 1990,DCM_1990_part2,7,BROMLEY MACHINE CO INC,,COLORADO,,1955.0,1-9,3499;3599,directory,,True,Fabricated metals; Industrial machinery,False,,E025612,,,,none
 1990,DCM_1990_part2,8,CARLISLE SYNTEC SYSTEMS,4570 Wvy St Unit 400,DENVER,80216,1963.0,500-989,3295;2899,directory,,True,Chemicals,False,,E025627,,39.78386,-104.9687765,zip_centroid
@@ -7252,6 +7291,10 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1990,DCM_1990_part2,44,WEATHERGUARD ORNAMENTAL IRON INC,,ENGLEWOOD,,1968.0,50-99,3442;3446,directory,,True,Fabricated metals,False,,E026008,,39.63673,-104.97942,city_centroid
 1990,DCM_1990_part2,45,CROCKETT + KELLY INC,1001 Weld Co Rd 1,ERIE,80516,1942.0,20-49,2842;3841,directory,,True,Chemicals,False,,E021302,,40.03463,-105.03555,zip_centroid
 1990,DCM_1990_part2,45,E+E SHEET METAL INC,2190 1-25 Frontage Rad,ERIE,80516,1980.0,,3089;3443;3589,directory,,True,Rubber & plastics; Fabricated metals; Industrial machinery,False,,E024237,,40.03463,-105.03555,zip_centroid
+1990,DCM_1990_part2,45,GOLD MACHINING,526 Briggs St,ERIE,80516,1980.0,1-9,3469;3544;3599,directory,,True,Fabricated metals; Industrial machinery,False,,E022939,,40.03463,-105.03555,zip_centroid
+1990,DCM_1990_part2,45,LTS PLASTICS,4055 E County Line,ERIE,80516,1975.0,1-9,3489;3944;3999,directory,,True,Fabricated metals,False,,E020913,,40.03463,-105.03555,zip_centroid
+1990,DCM_1990_part2,45,PHILLIPS MACHINERY INC,2240 E I- 25 Frontage Rd,ERIE,80516,1965.0,1-9,3531;3535,directory,,True,Industrial machinery,False,,E026013,,40.03463,-105.03555,zip_centroid
+1990,DCM_1990_part2,45,PRECISION BRAND MACHINING,404 Main St,ERIE,80516,1974.0,1-9,3451;3544,directory,,True,Fabricated metals; Industrial machinery,False,,E020914,,40.03463,-105.03555,zip_centroid
 1990,DCM_1990_part2,45,S+M MANUFACTURING INC,3348 Road 4,ERIE,80516,1978.0,1-9,3544;3599,directory,,True,Industrial machinery,False,,E022941,,40.03463,-105.03555,zip_centroid
 1990,DCM_1990_part2,46,PRESTON STEEL BUILDING CO,3511 W Service Rd,EVANS,80620,1968.0,20-49,3448;3599,directory,,True,Fabricated metals; Industrial machinery,False,,E026022,,40.377365,-104.69945,zip_centroid
 1990,DCM_1990_part2,46,DEN-SOIL INC,,EVERGREEN,,1964.0,1-9,2899,directory,,True,Chemicals,False,,E026023,,39.633557,-105.318215,city_centroid
@@ -7317,6 +7360,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1990,DCM_1990_part3,26,KRUEGER ENTERPRISES INC,,LONGMONT,,1972.0,10-19,3524,directory,,True,Industrial machinery,False,,E026305,,40.15879,-105.063636,city_centroid
 1990,DCM_1990_part3,27,LONGMONT MACHINE + SUPPLY,,LONGMONT,,,1-9,3599,directory,,True,Industrial machinery,False,,E004341,,40.15879,-105.063636,city_centroid
 1990,DCM_1990_part3,27,MINISCRIBE CORP,,LONGMONT,,1980.0,1000+,3572,directory,,True,Industrial machinery,False,,E026308,,40.15879,-105.063636,city_centroid
+1990,DCM_1990_part3,27,MOUNTAIN LEATHER TRADERS,4945 Highland Dr,LONGMONT,80501,1977.0,1-9,3172;3421,directory,,True,Fabricated metals,False,,E028140,,40.15879,-105.10699,zip_centroid
 1990,DCM_1990_part3,28,TEMPERATURE PROCESSING CO INC,10477 Weld Co Rd No 7,LONGMONT,80501,1968.0,10-19,3398,directory,,True,Primary metals,False,,E010887,,40.15879,-105.10699,zip_centroid
 1990,DCM_1990_part3,28,TRHNDUSTRIES INC,,LONGMONT,,1978.0,1-9,3599,directory,,True,Industrial machinery,False,,E026323,,40.15879,-105.063636,city_centroid
 1990,DCM_1990_part3,28,VETTECH INC,,LONGMONT,,1985.0,1-9,3086;3089,directory,,True,Rubber & plastics,False,,E026324,,40.15879,-105.063636,city_centroid
@@ -7841,6 +7885,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1992,DCM_1992_part2,40,WILKERSON CORP,,ENGLEWOOD,,,,3561;3569;3604,directory,,True,Industrial machinery,False,,E027698,,39.63673,-104.97942,city_centroid
 1992,DCM_1992_part2,40,E+E SHEET METALINC,2190 1-25 Frontage Ra,ERIE,80516,1980.0,,3089;3443;3589,directory,,True,Rubber & plastics; Fabricated metals; Industrial machinery,False,,E024237,,40.03463,-105.03555,zip_centroid
 1992,DCM_1992_part2,40,‘GOLD MACHINING,3038283532 Weld County. PO 637,ERIE,80516,1980.0,,3469;3544;3599,directory,,True,Fabricated metals; Industrial machinery,False,,E022939,,40.03463,-105.03555,zip_centroid
+1992,DCM_1992_part2,40,LTS PLASTICS,4055 E County Line Rd,ERIE,80516,,,3089,directory,,True,Rubber & plastics,False,,E020913,,40.03463,-105.03555,zip_centroid
 1992,DCM_1992_part2,40,S+M MANUFACTURING INC,,ENGLEWOOD,,,,3544;3599,directory,,True,Industrial machinery,False,,E027700,,39.63673,-104.97942,city_centroid
 1992,DCM_1992_part2,40,TECHNO-THERM,,ENGLEWOOD,,,,3567;3841,directory,,True,Industrial machinery,False,,E027701,,39.63673,-104.97942,city_centroid
 1992,DCM_1992_part2,41,BOYATT GLASS CO INC,,ESTES PARK,,1987.0,,3211;3452,directory,,True,Fabricated metals,False,,E027703,,40.353163,-105.54361,city_centroid
@@ -8265,6 +8310,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1993,DCM_1993_part1,37,"‘SAFETRAN TRAFFIC SYSTEMS, INC",1485 Grdn of Gods Rd 80907. 719-599-5600 FAX719-599-3853 PO Box 7009,COLORADO SPRINGS,80933,1967.0,,3577;3699,directory,,True,Industrial machinery,False,,E029321,,38.885231,-104.81047,zip_centroid
 1993,DCM_1993_part1,37,"SIGMA METALS, INC",3575 Cheon Loop 80909. 719-574-2280 FAX719-574- 1925 PO Box 15407,COLORADO SPRINGS,80935,1975.0,,3441;3444;3599,directory,,True,Fabricated metals; Industrial machinery,False,,E029330,,38.834985,-104.7725715,zip_centroid
 1993,DCM_1993_part1,37,SPEAR ENGINEERING CO,3107 N Stone 80907. PO Box 7025,COLORADO SPRINGS,80933,1949.0,,3069;3952;3993;3909,directory,,True,Rubber & plastics,False,,E029339,,38.885231,-104.81047,zip_centroid
+1993,DCM_1993_part1,37,SPECIALIZED PRINTING SERVICES,12045 N Juniper Dr,COLORADO SPRINGS,80908,1983.0,,2675;3497;2789,directory,,True,Fabricated metals,False,,E026969,,38.989071,-104.69628,zip_centroid
 1993,DCM_1993_part1,37,SPECIALTY MILLWORKS MANUFACTURING,80907 PO Box 49517,COLORADO SPRINGS,80949,1981.0,,3446;2431,directory,,True,Fabricated metals,False,,E029340,,38.82821,-104.84593,zip_centroid
 1993,DCM_1993_part1,38,"THEMAC, INC",,COLORADO SPRINGS,,1961.0,,3599,directory,,True,Industrial machinery,False,,E026975,,38.84755000000005,-104.7745595,city_centroid
 1993,DCM_1993_part1,38,"TIPPIE COMMUNICATIONS, INC",809103127 719-696-1000 PO Box 17360,COLORADO SPRINGS,80935,,,2806,directory,,True,Chemicals,False,,E029354,,38.834985,-104.7725715,zip_centroid
@@ -8418,6 +8464,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1999,DCM_1999,22,ARCHITECTURAL ELEMENTS,,LONGMONT,,1976.0,1,3446,predicted,332323,True,Fabricated metals,False,,E030580,,40.15879,-105.063636,city_centroid
 1999,DCM_1999,22,ARTEMIS RUBBER TECHNOLOGY INC,14300 E 25 Frontage Rd,LONGMONT,80504,1994.0,15,3069,keyword,326291,True,Rubber & plastics,False,,E030585,,40.160034,-104.978959,zip_centroid
 1999,DCM_1999,22,ATLAS PATTERN WORKS INC,,LONGMONT,,1917.0,6,3321,predicted,332997;31611;333999,True,Primary metals,False,,E030582,,40.15879,-105.063636,city_centroid
+1999,DCM_1999,22,AUTUMN HILL SOFTWARE INC,9417 Foothills Hwy,LONGMONT,80503,1987.0,3,3573,predicted,334611,True,Industrial machinery,False,,E030583,,40.144765,-105.165808,zip_centroid
 1999,DCM_1999,22,COLORADO CUSTOM INC,0 1111 Kimbark St,LONGMONT,80501,,9,3429,predicted,332439,True,Fabricated metals,False,,E009439,,40.15879,-105.10699,zip_centroid
 1999,DCM_1999,22,COLORADO SMALL PARTS INC,1121 Delaware Ave Sie 2,LONGMONT,80501,1993.0,,3079,predicted,326121;333511,True,Rubber & plastics,False,,E030594,,40.15879,-105.10699,zip_centroid
 1999,DCM_1999,23,CORAL SYSTEMS INC,,LONGMONT,,1991.0,59,3573,predicted,334611;541512,True,Industrial machinery,False,,E030597,,40.15879,-105.063636,city_centroid
@@ -8440,6 +8487,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1999,DCM_1999,33,EMPAK INC,,SUPERIOR,,1980.0,325,3079,predicted,326121;32614,True,Rubber & plastics,False,,E030810,,,,none
 1999,DCM_1999,34,FITZ RITE TOOL & MACHINE CO,4720 rove Rd Ste 102,COLORADO SPRINGS,80907,1987.0,2,3599,predicted,33271,True,Industrial machinery,False,,E027013,,38.88349,-104.824517,zip_centroid
 1999,DCM_1999,35,HOWLAND MACHINE CORP,,SUPERIOR,,1978.0,59,3541,predicted,332117;333511,True,Industrial machinery,False,,E030844,,,,none
+1999,DCM_1999,35,HYDRO GARDENS INC,8765 Vollmer Rd,COLORADO SPRINGS,80908,,,3448,predicted,332311;332212;11521,True,Fabricated metals,False,,E020304,,38.989071,-104.69628,zip_centroid
 1999,DCM_1999,36,INDUSTRIAL CERAMICS INC,,SUPERIOR,,,45,3599,predicted,327992;32742;33422,True,Industrial machinery,False,,E030849,,,,none
 1999,DCM_1999,36,INNOVATIVE DIRECTIONS,,SUPERIOR,,,,3551,predicted,333294,True,Industrial machinery,False,,E030850,,,,none
 1999,DCM_1999,36,INTERSOLV INC,8575 llex Dr,COLORADO SPRINGS,80920,,14,3573,predicted,334611,True,Industrial machinery,False,,E030857,,38.9529,-104.77557,zip_centroid
@@ -8454,6 +8502,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 1999,DCM_1999,38,MICRO MOLD WEST INC,2531 Weston Rd,COLORADO SPRINGS,80910,,2,3544,predicted,333511,True,Industrial machinery,False,,E026931,,38.808323,-104.772867,zip_centroid
 1999,DCM_1999,38,MONSON MANUFACTURING,15055 Tanner Trl,COLORADO SPRINGS,80904,1984.0,5,3599,predicted,33271;332117;334119,True,Industrial machinery,False,,E030896,,38.84755000000005,-104.8621645,zip_centroid
 1999,DCM_1999,39,PAR COMPUTER CONSULTING,902 N Circle Dr Ste 202,COLORADO SPRINGS,80909,1990.0,1,3573,predicted,334611;541512;541511,True,Industrial machinery,False,,E030911,,38.839777,-104.7745595,zip_centroid
+1999,DCM_1999,41,RED'S SHEET METAL INC,965 Bald Eagle Dr,COLORADO SPRINGS,80930,1986.0,7,3444,predicted,332322;333415,True,Fabricated metals,False,,E030938,,38.8365345,-104.545385,zip_centroid
 1999,DCM_1999,41,ROCKY MOUNTAIN EMERGENCY VEHICLE INC,304 Aubum Dr,COLORADO SPRINGS,80909,1993.0,,3711,predicted,336211,True,Transportation equipment,False,,E030943,,38.839777,-104.7745595,zip_centroid
 1999,DCM_1999,42,SILICON MOUNTAIN SERVICES INC,2516 Weston Rd,COLORADO SPRINGS,80910,1994.0,4,3079,predicted,326199;326113,True,Rubber & plastics,False,,E030958,,38.808323,-104.772867,zip_centroid
 1999,DCM_1999,43,SUN MICROSYSTEMS,17150 Campus Dr Ste 200,COLORADO SPRINGS,80920,,142,3573,predicted,334611,True,Industrial machinery,False,,E030974,,38.9529,-104.77557,zip_centroid
@@ -8603,6 +8652,8 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 2002,DCM_2002_part2,12,970-867-8696 TIDD TECH LTD,wwew.westemsugar.com PO Box 2036,FRASER,80442,,,3500,naics,333319,True,Industrial machinery,False,,E032076,,39.946574,-105.8159915,zip_centroid
 2002,DCM_2002_part2,12,3 Assembly Ct 80817,7193905431 7171 Weld CR 13.,FREDERICK,80530,,,3400,naics,332812,True,Fabricated metals,False,,E032079,,40.0987655,-104.93951,zip_centroid
 2002,DCM_2002_part2,12,RMB PRODUCTS,,FREDERICK,,,,3000,naics,326122,True,Rubber & plastics,False,,E032080,,40.0987655,-104.93951,city_centroid
+2002,DCM_2002_part2,12,FRONTIER METAL STAMPING INC,3764 Puritan Way,ERIE,80516,,,3400,naics,332116,True,Fabricated metals,False,,E032085,,40.03463,-105.03555,zip_centroid
+2002,DCM_2002_part2,12,GODDARD ENTERPRISES,3762 Imperial St,ERIE,80516,,,3400,naics,332710,True,Fabricated metals,False,,E032086,,40.03463,-105.03555,zip_centroid
 2002,DCM_2002_part2,12,MBK MACHINE CORP,PO Box 417 7450 Johnson Dr Ste A,FREDERICK,80530,,,3400,naics,332999,True,Fabricated metals,False,,E032088,,40.0987655,-104.93951,zip_centroid
 2002,DCM_2002_part2,12,MEADOWLARK OPTICS,PO Box 1000,FREDERICK,80530,,,3500,naics,333314,True,Industrial machinery,False,,E032089,,40.0987655,-104.93951,zip_centroid
 2002,DCM_2002_part2,12,"UQM POWER PRODUCTS, INC",PO Box 439,FREDERICK,80530,,,3700,naics,336350,True,Transportation equipment,False,,E032091,,40.0987655,-104.93951,zip_centroid
@@ -8718,6 +8769,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 2002,DCM_2002_part2,25,ADVANCED FORMING TECHNOLOGY,7040 CR 20,LONGMONT,80504,,,3400,naics,332117,True,Fabricated metals,False,,E030585,,40.160034,-104.978959,zip_centroid
 2002,DCM_2002_part2,25,ALPHARMA INC,1301 lowa Ave,LONGMONT,80501,,,2800,naics,325412,True,Chemicals,False,,E032668,,40.15879,-105.10699,zip_centroid
 2002,DCM_2002_part2,25,ALTRATEK PLASTICS INC,105 Gay SUPO Box 1688,LONGMONT,80501,,,3079,name_keyword,326190,True,Rubber & plastics,False,,E030576,,40.15879,-105.10699,zip_centroid
+2002,DCM_2002_part2,25,Weld AMGEN INC,4000 Nelson Rd,LONGMONT,80503,,,2800,naics,325412,True,Chemicals,False,,E032669,,40.144765,-105.165808,zip_centroid
 2002,DCM_2002_part2,25,(333511) APPLIED FILMS CORP,9586 E 1-25 Frontage Rd,LONGMONT,80504,,,3400,naics,332812,True,Fabricated metals,False,,E032672,,40.160034,-104.978959,zip_centroid
 2002,DCM_2002_part2,26,ARTEMIS RUBBER TECHNOLOGY INC,14300 -25 Frontage Rd,LONGMONT,80504,,,3069,name_keyword,326291,True,Rubber & plastics,False,,E030585,,40.160034,-104.978959,zip_centroid
 2002,DCM_2002_part2,26,BARNES MACHINING LLC,14013 WCR 11,LONGMONT,80504,,,3599,name_keyword,332710,True,Industrial machinery,False,,E032679,,40.160034,-104.978959,zip_centroid
@@ -8750,6 +8802,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 2002,DCM_2002_part2,29,SHEFFER WELDING & FABRICATION T &C MACHINE,332312 1680 Skyway Dr #C,LONGMONT,80504,,,3500,naics,333514,True,Industrial machinery,False,,E032787,,40.160034,-104.978959,zip_centroid
 2002,DCM_2002_part2,29,303-702-0375,www.siemens.de 4363 State Hwy 66,LONGMONT,80504,,,3500,naics,333220,True,Industrial machinery,False,,E032790,,40.160034,-104.978959,zip_centroid
 2002,DCM_2002_part2,29,303-678-9803,www.skyfun.com 10477 Weld Cr7,LONGMONT,80504,,,3400,naics,332811,True,Fabricated metals,False,,E032793,,40.160034,-104.978959,zip_centroid
+2002,DCM_2002_part2,29,303-702-1529 THERMA-STOR,6774 Snead Ct,LONGMONT,80503,,,3500,naics,333415,True,Industrial machinery,False,,E032796,,40.144765,-105.165808,zip_centroid
 2002,DCM_2002_part2,29,1625 S Fordham St Ste 500 80503 TOOLMASTERS INC,3037729729 733 S Bowen St,LONGMONT,80501,,,3500,naics,333514,True,Industrial machinery,False,,E030679,,40.15879,-105.10699,zip_centroid
 2002,DCM_2002_part2,29,(311313) TRUE GOO PRODUCTS,PO Box 2147 1333 Sherman Dr,LONGMONT,80502,,,3700,naics,336999,True,Transportation equipment,False,,E032797,,40.227188,-105.063636,zip_centroid
 2002,DCM_2002_part2,29,V.& S MOLDING INC,337110 1501 Nelson Rd,LONGMONT,80501,,,3000,naics,326199,True,Rubber & plastics,False,,E032800,,40.15879,-105.10699,zip_centroid
@@ -8764,6 +8817,7 @@ year,source_volume,page,name,street,city,zip,est,size,sic,sic_source,naics,fe_ha
 2002,DCM_2002_part2,30,INNOVATIVE OPENINGS INC (314121) TEK SUPPLY INC,637 S Pierce Ave 80027 385 S Pierce Ave,LOUISVILLE,80027,,,3300,naics,331111,True,Primary metals,False,,E032828,,39.964622000000006,-105.13021,zip_centroid
 2002,DCM_2002_part2,30,(336399) SUNWARD CORP,765 S Pierce Ave 80027-3023 7825 N Lavaun Dr,LOUVIERS,80131,,,3500,naics,333132,True,Industrial machinery,False,,E026337,,39.480072,-105.0062755,zip_centroid
 2002,DCM_2002_part2,30,MEDICAL INSTRUMENT REPAIR (339112),449 W Harper St 80027 8124 N Cora St,LOUVIERS,80131,,,3400,naics,332999,True,Fabricated metals,False,,E032831,,39.480072,-105.0062755,zip_centroid
+2002,DCM_2002_part2,30,ALPHA ONE INC,475 Newell Dr,LOVELAND,80537,,,2800,naics,325311,True,Chemicals,False,,E032839,,40.395135,-105.073807,zip_centroid
 2002,DCM_2002_part2,30,AUTOTOOL CORP,,LOUISVILLE,,,,3700,naics,336312,True,Transportation equipment,False,,E032845,,39.966161750000005,-105.1302645,city_centroid
 2002,DCM_2002_part2,30,BEAR RUBBER STAMPS,PO Box 1212 420 Lodge Pole Pi,LOVELAND,80538,,,3069,name_keyword,339943,True,Rubber & plastics,False,,E026339,,40.43346,-105.0464,zip_centroid
 2002,DCM_2002_part2,30,BRONZE SERVICES OF LOVELAND INC,,LOVELAND,80537,,,3300,naics,331528,True,Primary metals,False,,E005165,,40.395135,-105.073807,zip_centroid

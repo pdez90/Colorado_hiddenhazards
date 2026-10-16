@@ -20,6 +20,7 @@ RENAME = {'HOLLADAY': 'MARKET', 'MCGAA': 'MARKET', 'BDWY': 'BROADWAY', 'BDWAY': 
 
 def street_ok(r):
     if not isinstance(r.street, str) or not re.match(r"^\d+ ", r.street): return False
+    if getattr(r, 'office', False) is True: return False          # office address, not the works
     if r.town == 'DENVER': return r.year >= 1891
     return r.town in BIGCITY and r.year >= 1910
 

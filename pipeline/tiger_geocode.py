@@ -63,7 +63,8 @@ def interp(coords,t):
     f=(x-d[k])/max(d[k+1]-d[k],1e-12); return coords[k]+f*(coords[k+1]-coords[k])
 
 class Geocoder:
-    def __init__(self):
+    def __init__(self, max_km=15):
+        self.max_km=max_km
         D=pickle.load(open('work/inv/tiger_index.pkl','rb'))
         self.G=D['G']; self.idx=D['idx']; self.cores=D['cores']
         zc=pd.read_csv('work/inv/zip_city.csv',dtype=str)
@@ -79,10 +80,13 @@ class Geocoder:
         out=[]
         for z in zips: out+=self.idx.get((z,core),[])
         return out
-    def place(self,ids,num,pre,suf):
+    def place(self,ids,num,pre,suf,strict=True):
+        """strict: the segment's prefix direction must equal the address's (both may be blank).
+        Non-strict also lets an address without a direction match a directional segment and vice versa."""
         G=self.G; best=None
         for i in ids:
             r=G.iloc[i]
+            if strict and (r.pre or '')!=(pre or ''): continue
             if pre and r.pre and r.pre!=pre: continue
             for side,(a,b) in (('L',(r.LFROMHN,r.LTOHN)),('R',(r.RFROMHN,r.RTOHN))):
                 if pd.isna(a) or pd.isna(b): continue
@@ -96,6 +100,7 @@ class Geocoder:
         bd=None
         for i in ids:
             r=self.G.iloc[i]
+            if strict and (r.pre or '')!=(pre or ''): continue
             if pre and r.pre and r.pre!=pre: continue
             for a,b in ((r.LFROMHN,r.LTOHN),(r.RFROMHN,r.RTOHN)):
                 for v,t in ((a,0),(b,1)):
@@ -117,20 +122,29 @@ class Geocoder:
             for k in range(len(toks),0,-1):
                 c2=' '.join(toks[:k]); variants.append(c2)
                 if len(variants)>=3: break
-        for vi,core in enumerate(variants if num is not None else []):
+        # reference point for a sanity check: the stated city's ZIP centroids (or the stated ZIP's)
+        refz=[self.zcent[z] for z in (cz or zips) if z in self.zcent]
+        ref=tuple(np.median(np.array(refz),axis=0)) if refz else None
+        def far(pt):
+            if ref is None: return False
+            dk=6371*np.hypot(np.radians(pt[1]-ref[0]),np.radians(pt[0]-ref[1])*np.cos(np.radians(ref[0])))
+            return dk>self.max_km
+        for strict in (True,False):                 # exact direction first (S BROADWAY never lands on BROADWAY)
+          for vi,core in enumerate(variants if num is not None else []):
             for zs,tag in ((zips,''),([z for z in cz if z not in zips],'_cityzips'),(nb,'_nearzips')):
                 if not zs: continue
+                lt='' if strict else '_dirloose'
                 ids=self.cands(zs,core)
                 if ids:
-                    pt,q=self.place(ids,num,pre,suf)
-                    if pt is not None: return pt[1],pt[0],q+tag+('_trim' if vi else '')
+                    pt,q=self.place(ids,num,pre,suf,strict)
+                    if pt is not None and not far(pt): return pt[1],pt[0],q+tag+('_trim' if vi else '')+lt
                 # fuzzy core within these zips
                 allc=sorted({c for z in zs for c in self.cores.get(z,[])})
                 if allc:
                     m=process.extractOne(core,allc,scorer=fuzz.ratio,score_cutoff=86)
                     if m:
-                        pt,q=self.place(self.cands(zs,m[0]),num,pre,suf)
-                        if pt is not None: return pt[1],pt[0],'fuzzy_'+q+tag+('_trim' if vi else '')
+                        pt,q=self.place(self.cands(zs,m[0]),num,pre,suf,strict)
+                        if pt is not None and not far(pt): return pt[1],pt[0],'fuzzy_'+q+tag+('_trim' if vi else '')+lt
         if zip5 and zip5 in self.zcent: la,lo=self.zcent[zip5]; return la,lo,'zip_centroid'
         if cz:
             pts=[self.zcent[z] for z in cz if z in self.zcent]
