@@ -89,6 +89,7 @@ if (!is.na(edshp) && file.exists(file.path(R80, "ed_composition_vs_firms.csv")))
   fwrite(Fm, file.path(A, "denver_1880_firms.csv"))
   file.copy(file.path(R80, "residents_by_distance.csv"), file.path(A, "denver_1880_distance.csv"), overwrite = TRUE)
   file.copy(file.path(R80, "person_models.csv"), file.path(A, "denver_1880_models.csv"), overwrite = TRUE)
+  if (file.exists(file.path(R80, "ed_groups_1880.csv"))) file.copy(file.path(R80, "ed_groups_1880.csv"), file.path(A, "denver_1880_ed_groups.csv"), overwrite = TRUE)
   message("Denver 1880: ", nrow(E), " EDs, ", nrow(Fm), " placed firms")
 } else message("Denver 1880 layer skipped (needs Brown's ed1880.shp under work/census/brown/ and data/results/denver_1880)")
 

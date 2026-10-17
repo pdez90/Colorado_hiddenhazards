@@ -23,7 +23,8 @@ P[, racenameB := tolower(trimws(racenameB))]; P[, seiusB := suppressWarnings(as.
 # occlabelB is an undocumented occupation-string id; the Duncan SEI (seiusB) is documented: 0 = no occupation, 8 = laborers n.e.c.
 P[, `:=`(fb = nativityB == 5, black = racenameB %in% c("black", "mulatto"), chinese = racenameB == "chinese",
          german = BPLB %in% c("Germany", "Prussia", "Bavaria", "Austria"), irish = BPLB == "Ireland", british = BPLB %in% c("England", "Scotland", "Wales"),
-         scandinavian = BPLB %in% c("Sweden", "Norway", "Denmark"), laborer = !is.na(seiusB) & seiusB == 8, employed = !is.na(seiusB) & seiusB > 0, sei = ifelse(!is.na(seiusB) & seiusB > 0, seiusB, NA_real_),
+         scandinavian = BPLB %in% c("Sweden", "Norway", "Denmark"), canadian = BPLB == "Canada", white = racenameB == "white",
+         native_white = racenameB == "white" & nativityB != 5, other_fb = nativityB == 5 & !(BPLB %in% c("Germany", "Prussia", "Bavaria", "Austria", "Ireland", "England", "Scotland", "Wales", "Sweden", "Norway", "Denmark", "Canada", "China")), laborer = !is.na(seiusB) & seiusB == 8, employed = !is.na(seiusB) & seiusB > 0, sei = ifelse(!is.na(seiusB) & seiusB > 0, seiusB, NA_real_),
          adult = !is.na(suppressWarnings(as.numeric(ageB))) & suppressWarnings(as.numeric(ageB)) >= 18)]
 P <- merge(P, data.table(match_addrB = bld$Match_addr, x = bxy[, 1], y = bxy[, 2], ed = bld$enumdist), by = "match_addrB")
 message(nrow(P), " Denver residents at geocoded buildings; foreign born ", round(100 * mean(P$fb), 1), "%, Black ", round(100 * mean(P$black), 1), "%, Chinese ", round(100 * mean(P$chinese), 1), "%"); print(head(sort(table(P$racenameB), decreasing = TRUE), 8)); print(head(sort(table(P$BPLB), decreasing = TRUE), 12))
@@ -60,7 +61,7 @@ comp <- P[, .(residents = .N, pct_foreign_born = 100 * mean(fb), pct_german = 10
               pct_laborers_employed = 100 * mean(laborer[adult & employed], na.rm = TRUE), mean_sei_employed = mean(sei[adult & employed], na.rm = TRUE)), by = band][order(band)]
 fwrite(comp, file.path(O, "residents_by_distance.csv"))
 # person-level models, building-clustered SE: log distance to the nearest hazardous firm (laborer / SEI among employed adults; SEI 0 = no occupation)
-mods <- rbindlist(lapply(c("fb", "black", "chinese", "german", "irish", "laborer"), function(v) {
+mods <- rbindlist(lapply(c("fb", "native_white", "white", "black", "chinese", "german", "irish", "british", "scandinavian", "canadian", "other_fb", "laborer"), function(v) {
   d <- if (v == "laborer") P[adult == TRUE & employed == TRUE] else P
   m <- glm(as.formula(paste(v, "~ log(d_haz + 10)")), family = binomial, data = d); ct <- coeftest(m, vcov. = vcovCL(m, cluster = d$match_addrB))
   data.table(outcome = v, odds_ratio_per_log_m = exp(ct[2, 1]), se = ct[2, 2], p = ct[2, 4], n = nrow(d)) }))
@@ -71,6 +72,10 @@ fwrite(mods, file.path(O, "person_models.csv"))
 edf <- st_join(st_as_sf(Fst, coords = c("x", "y"), crs = UTM), ed[, c("ED")], join = st_within); edc <- as.data.table(st_drop_geometry(edf))[, .(firms = .N), by = ED]
 E <- merge(as.data.table(st_drop_geometry(ed))[, .(ED, pop = poptotE, pct_fb = fbEp, pct_black = blkEp, pct_german = germanEp, pct_irish = irishEp, mean_sei = meanseiE)], edc, by = "ED", all.x = TRUE)
 E[is.na(firms), firms := 0]; fwrite(E[order(-firms)], file.path(O, "ed_composition_vs_firms.csv"))
+# EDs with at least one placed hazardous firm vs. none (population-weighted means of Brown's ED composition)
+EG <- E[, .(EDs = .N, population = sum(pop), pct_fb = weighted.mean(pct_fb, pop), pct_black = weighted.mean(pct_black, pop), pct_german = weighted.mean(pct_german, pop),
+            pct_irish = weighted.mean(pct_irish, pop), mean_sei = weighted.mean(mean_sei, pop)), by = .(group = ifelse(firms > 0, "EDs with hazardous firms", "EDs without"))]
+fwrite(EG, file.path(O, "ed_groups_1880.csv")); print(EG)
 
 md <- c("# Denver 1880: residents of the hazardous-trade neighbourhoods", "",
         sprintf("Brown's 1880 HGIS gives %s Denver residents at %s geocoded buildings (%s EDs). The 1878-1885 business directories list %s hazardous-trade firms in Denver with a street; %s were placed on the 1880 map (%s at the building or within a few house numbers, %s at the street only).",

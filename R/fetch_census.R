@@ -68,18 +68,22 @@ if (!have("*tract_1940*.shp") || !have("*tract_1980*.shp")) {
   for (z in Sys.glob(file.path(W, "*", "*.zip"))) unzip(z, exdir = dirname(z), overwrite = TRUE)
 }
 # ---------------------------------------------------------------- E. 1990-2020 nativity and poverty (nominal tracts + ACS)
-if (!done("E")) {
+if (!done("E2")) {                                            # (E2: the first version of this extract, marker .done_E, missed the ACS tables)
   specs <- list()
-  for (dname in c("1990_STF3", "2000_SF3a")) { tb <- tract_tables(dname, "^Nativity|Place of Birth|^Foreign|Poverty Status( in \\d{4})?( by Age)?$|^Age by Poverty|Persons .*Below Poverty")
+  if (!done("E")) for (dname in c("1990_STF3", "2000_SF3a")) { tb <- tract_tables(dname, "^Nativity|Place of Birth|^Foreign|Poverty Status( in \\d{4})?( by Age)?$|^Age by Poverty|Persons .*Below Poverty")
     if (length(tb)) { message(dname, ": ", paste(tb, collapse = " ")); specs[[dname]] <- ds_spec(dname, data_tables = tb, geog_levels = "tract") } }
-  for (dname in c("2008_2012_ACS5a", "2016_2020_ACS5a")) { tb <- tract_tables(dname, "^Nativity in the United States$|^Poverty Status in the Past 12 Months by Sex by Age$|^Total Population$")
-    if (length(tb)) { message(dname, ": ", paste(tb, collapse = " ")); specs[[dname]] <- ds_spec(dname, data_tables = tb, geog_levels = "tract") } }
+  # ACS: NHGIS spreads the detailed tables over several datasets (ACS5a, ACS5b, ...); ask every one for the tables by code
+  ACS_TABLES <- c("B01003", "B05012", "B05002", "B17001")   # total population, nativity, place of birth, poverty status by sex by age
+  for (dname in ds[grepl("^(2008_2012|2016_2020)_ACS5", name)]$name) {
+    md <- tryCatch(get_metadata("nhgis", dataset = dname), error = function(e) NULL); if (is.null(md) || !"tract" %in% md$geog_levels$name) next
+    tb <- intersect(ACS_TABLES, md$data_tables$name); if (length(tb)) { message(dname, ": ", paste(tb, collapse = " ")); specs[[dname]] <- ds_spec(dname, data_tables = tb, geog_levels = "tract") } }
   shp <- as.data.table(get_metadata_catalog("nhgis", metadata_type = "shapefiles"))
   want <- c(shp[grepl("^us_tract_1990_tl2000$|^us_tract_1990_tl2008$", name)]$name[1], shp[grepl("^us_tract_2000_tl2010$|^us_tract_2000_tl2000$", name)]$name[1], shp[grepl("^us_tract_2020_tl2020$", name)]$name[1])
-  want <- want[!is.na(want)]; message("boundary files: ", paste(want, collapse = ", "))
-  get_and_unpack(submit_extract(define_extract_agg("nhgis", description = "Colorado tracts 1990-2020 nativity and poverty", datasets = unname(specs), shapefiles = want, geographic_extents = CO)), "E: 1990-2020 nativity/poverty")
-  for (z in Sys.glob(file.path(W, "*", "*.zip"))) unzip(z, exdir = dirname(z), overwrite = TRUE)
-  file.create(file.path(W, ".done_E"))
+  want <- want[!is.na(want)]; if (done("E")) want <- NULL else message("boundary files: ", paste(want, collapse = ", "))
+  if (length(specs) || length(want)) {
+    get_and_unpack(submit_extract(define_extract_agg("nhgis", description = "Colorado tracts 1990-2020 nativity and poverty", datasets = unname(specs), shapefiles = want, geographic_extents = CO)), "E: 1990-2020 nativity/poverty")
+    for (z in Sys.glob(file.path(W, "*", "*.zip"))) unzip(z, exdir = dirname(z), overwrite = TRUE) } else message("E: no ACS tables found in the NHGIS catalog - fb/ppov for 2010-2020 stay NA")
+  file.create(file.path(W, ".done_E"), file.path(W, ".done_E2"))
 }
 
 # ---------------------------------------------------------------- codebook parser: variable -> (table title, universe, label)
@@ -105,7 +109,7 @@ RULES <- list(
   hisp  = list(c("", "", "^Persons: Hispanic or Latino$"), c("^Persons of Spanish Origin$|^Spanish American Persons$|Spanish Surname Population$|^Spanish Origin$", "", "^Total$|^Mexican$|^Puerto Rican$|^Cuban$|^Other Spanish$"),
                c("^Spanish Indicator$", "", "Spanish language|Spanish surname")),
   fb    = list(c("^Nativity( and Place of Birth)?$|^Nativity in the United States$", "^Persons|^Total population", "^Foreign born$"), c("Nativity and Parentage", "", "^Foreign Born$"), c("^Foreign.Born White Population( by Sex)?$", "", "^(Total|Male|Female)$"),
-               c("Nativity|Place of Birth|Citizenship", "", "^Foreign born$|^Foreign >> (Male|Female)$|^Foreign born( >> .*)?$")),
+               c("Nativity|Place of Birth|Citizenship", "", "^Foreign born$|^Foreign >> (Male|Female)$|^Foreign born( \\(.*\\))?( >> .*)?$")),
   ppov  = list(c("^Poverty Status( in \\d{4})?$|Poverty Status in the Past 12 Months", "^Persons for Whom Poverty|Population for whom poverty", "^(Income in .* )?below poverty level$"),   # a total cell (ACS tables carry subtotals, so never sum their breakdowns)
                c("^Poverty Status( in \\d{4})?( by Age)?$|^Age by Poverty Status( in \\d{4})?$", "^Persons for Whom Poverty", "below poverty"),
                c("Persons in Families Below Poverty|^Poverty Status by Age$", "Persons in Families|Unrelated Individuals 14", "Aggregate number of persons|^Below poverty level >>")))

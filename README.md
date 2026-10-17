@@ -304,6 +304,40 @@ occupation) is the documented measure and is used for both the laborer flag and 
 `R/fetch_census.R` also fetches foreign born and poverty for 1990–2020 (1990 STF3, 2000 SF3, ACS 2008–12 and 2016–20 tract
 tables, area-weighted onto 2010 tracts where needed), which the standardized NHGIS series lack; re-run it to fill those years.
 
+### Enumeration districts 1880–1940, reconstructed (`R/grf_eds.R`, `pipeline/historical/grf_eds.py`, `R/denver_eds_analysis.R`)
+
+No public source has boundaries for the enumeration districts of 1880–1940 (IPUMS gives each person's ED number but no address;
+NHGIS starts at tracts). Brown's Geographic Reference Files for Denver list every person of the 1900–1940 censuses with the
+household's street, house number and ED. The districts are reconstructed from them: every distinct address is geocoded with the
+project's offline TIGER geocoder (the post-1887 numbering still applies; Holladay → Market etc. translated), street-level results
+kept; stray geocodes dropped (farther from the ED's person-weighted median centre than max(400 m, 2.5× the median), or fewer than
+30% of the ten nearest neighbours in the same ED); the Voronoi tessellation of the remaining addresses dissolved by ED and clipped to
+the concave hull of all addresses, each ED keeping its main body and freed ground going to the nearest ED, so the districts are
+space-filling like tracts. 1880 is tessellated the same way from Brown's geocoded buildings. IPUMS full-count totals are joined by ED
+number (1900–1930: `ENUMDIST mod 100000`; 1940: SD-ED-suffix → "225", "250A"). Polygons: `data/results/denver_eds/denver_eds_<year>.geojson`
+(this project's derived product; the address files stay in `work/`); geocoding log `ed_geocoding.csv`. `R/denver_eds_analysis.R`
+places the hazardous trades of the preceding decade in the districts and writes `ed_year_groups.csv` (EDs with vs without a firm,
+dissimilarity), `ed_distance_models.csv` (composition vs log distance to the nearest firm, population-weighted, HC1) and the app layers.
+Boundaries are approximate (a block or so at the edges). The Python and R versions implement the same steps; R's Voronoi/concave hull
+come from sf (GEOS ≥ 3.11).
+
+`R/county_panel_1880_1940.R` gives the statewide counterpart: the full count by county on each census's county boundaries (NHGIS
+extract F in `fetch_census.R`), with the pre-1960 trades of the decade by county.
+
+### Redlining and racial covenants (`R/holc_covenants.R`)
+
+Xu (2022, *Housing Policy Debate*) compared HOLC's post-hoc Residential Security Map of Chicago with the FHA's implemented
+mortgage-risk map; no FHA map survives for Denver, so here the 1938 HOLC grades (Mapping Inequality, CC-BY-NC, with the
+appraisers' area-description forms and the crosswalk to 2010 tracts) are read against what preceded them — the reconstructed
+1930/1940 districts and the firms of 1921–40 — and what followed (the 1940–2020 tract panel), together with the 730 located racial
+covenants of 1931–35 from Denver Public Library's Mapping Prejudice pilot (public domain; `data/covenants/`). Results
+(`data/results/holc/`): no A or B area held a hazardous firm in 1921–40; 6 of 16 D areas did, and 8 D-area descriptions cite
+industry, railroads, smoke or odours. In 1930 the future D areas were already 7.8% Black (vs 0.4–1.1% elsewhere), 1.6% Hispanic
+and 7.1% laborers; by 1940 their Hispanic share was 9.5% (0.7% elsewhere). Afterwards the D tracts went to 39% Hispanic in 1970
+and 57% in 2000, with poverty 18 points above A tracts by 1980 (1940 baseline, 1940 % Black and 1931–40 firms controlled,
+p < 1e-5) and a further +16 points Hispanic 1980–2010 (p = 0.03); Black share did not differ by grade once the 1940 baseline is
+controlled. 27 of the covenant deeds also bar business or manufacturing use.
+
 `R/app_census_layers.R` turns all of this — the NHGIS tract panel with firm counts per decade, the panel models, the corridor cells,
 the 1880 ED aggregates and placed firms, and the IPUMS city series — into the app's `app/data/` files (aggregates only).
 
@@ -389,8 +423,13 @@ shiny::runApp("app")
   that year), with the firms of that decade overlaid; Colorado or Denver-core view; population-weighted composition of tracts with an
   active hazardous firm, legacy-only and never, by census; the hybrid panel models and the reverse ("who predicts where industry
   goes") model for the Denver core.
-* **Denver 1880–1940** – enumeration districts of 1880 shaded by composition with the placed 1878–85 firms, residents by distance to
-  the nearest firm, the person-level odds ratios, and the IPUMS 1880–1940 city series with segregation indices.
+* **Redlining & covenants** – the 1938 HOLC map with each area's appraisal form in the popup, the 1931–35 racial covenants (orange
+  where the deed also bars manufacturing), the firms of 1921–40 and the 1930 districts; areas by grade; 1940–2020 trajectories of
+  2010 tracts by dominant grade; the change-by-grade models.
+* **Denver 1880–1940** – the reconstructed enumeration districts of every census 1880–1940 (radio buttons) shaded by % Black,
+  foreign born, Mexican-born, Hispanic, laborers, foreign parentage, firms or distance to the nearest firm, with the hazardous trades of
+  the decade; districts with vs without a firm; the distance models; dissimilarity 1880–1940; and the 1880 building-level results.
+  The **Census tracts over time** tab adds 1880–1930 as counties statewide when `co_counties_1880_1940.geojson` is present.
 * **Neighborhoods** – distributions of EnviroScreen and socioeconomic indicators for tracts with vs. without hazardous sites,
   with potentially unknown sites vs. all others, unknown vs. known-only, and TRI vs. non-TRI tracts; medians, population-weighted means,
   Wilcoxon tests.
