@@ -2,8 +2,8 @@
 #   Rscript R/app_census_layers.R            (run from the repository root, after fetch_census.R, ej_panel.R, corridors.R,
 #                                             fetch_ipums_fullcount.R and denver_1880.R)
 # Writes to app/data/:
-#   denver_tracts_2010.geojson        Denver-core 2010 census tracts (simplified) with distance to downtown
-#   denver_panel.csv                  tract x census year 1940-2020: population, % Black, % Hispanic, % foreign born, % poverty
+#   co_tracts_2010.geojson            all Colorado 2010 census tracts (simplified) with distance to downtown Denver and a Denver-core flag
+#   tract_panel.csv                   tract x census year 1940-2020 (all Colorado tracts): population, % Black, % Hispanic, % foreign born, % poverty
 #                                     (NHGIS, area-weighted to 2010 tracts) + hazardous / all directory firms active in the
 #                                     decade ending in that year and legacy (earlier, no longer listed) hazardous firms
 #   ej_panel_models.csv, ej_panel_reverse.csv      the panel-model coefficients (R/ej_panel.R)
@@ -25,10 +25,11 @@ tr <- st_make_valid(st_transform(st_read(shp10[1], quiet = TRUE), UTM))
 tr$GEOID <- if (any(grepl("GEOID", names(tr)))) tr[[grep("GEOID", names(tr), value = TRUE)[1]]] else sub("^G(\\d{2})0(\\d{3})0(\\d{6})$", "\\1\\2\\3", tr$GISJOIN)
 DEN <- st_sfc(st_point(c(500250, 4399500)), crs = UTM)
 tr$dist_km <- round(as.numeric(st_distance(st_centroid(st_geometry(tr)), DEN)) / 1000, 2)
-tr <- tr[substr(tr$GEOID, 1, 5) == "08031" | (substr(tr$GEOID, 1, 5) %in% c("08001", "08005", "08059") & tr$dist_km <= 10), c("GEOID", "dist_km")]
-tr$area_km2 <- round(as.numeric(st_area(tr)) / 1e6, 3)
-message(nrow(tr), " Denver-core tracts")
-st_write(st_transform(st_simplify(tr, dTolerance = 15), 4326), file.path(A, "denver_tracts_2010.geojson"), delete_dsn = TRUE, quiet = TRUE)
+tr <- tr[substr(tr$GEOID, 1, 2) == "08", c("GEOID", "dist_km")]
+tr$core <- substr(tr$GEOID, 1, 5) == "08031" | (substr(tr$GEOID, 1, 5) %in% c("08001", "08005", "08059") & tr$dist_km <= 10)   # the ej_panel.R study area
+tr$area_km2 <- round(as.numeric(st_area(tr)) / 1e6, 3); tr$county <- substr(tr$GEOID, 1, 5)
+message(nrow(tr), " Colorado tracts, ", sum(tr$core), " in the Denver core")
+st_write(st_transform(st_simplify(tr, dTolerance = 40), 4326), file.path(A, "co_tracts_2010.geojson"), delete_dsn = TRUE, quiet = TRUE)
 
 cen <- fread(file.path(C, "denver_tract_panel.csv"), colClasses = c(GEOID = "character"))[GEOID %in% tr$GEOID]
 cen[, `:=`(p_black = pmin(100, 100 * nhblk / pop), p_hisp = pmin(100, 100 * hisp / pop), p_fb = pmin(100, 100 * fb / pop), p_pov = pmin(100, 100 * ppov / pop))]   # area weighting can push a share a hair over 100
@@ -56,8 +57,8 @@ for (v in c("firms_haz", "firms_all", "legacy_haz")) act[is.na(get(v)) & !(censu
 pan <- merge(cen[, .(GEOID, census, pop = round(pop), p_black = round(p_black, 1), p_hisp = round(p_hisp, 1), p_fb = round(p_fb, 1), p_pov = round(p_pov, 1))],
              act, by = c("GEOID", "census"), all = TRUE)
 pan <- merge(pan, as.data.table(st_drop_geometry(tr)), by = "GEOID")
-fwrite(pan[order(GEOID, census)], file.path(A, "denver_panel.csv"))
-message("denver_panel.csv: ", nrow(pan), " tract-years; tracts with a census value by year: ", paste(pan[!is.na(pop), .N, by = census][order(census), paste(census, N)], collapse = ", "))
+fwrite(pan[order(GEOID, census)], file.path(A, "tract_panel.csv"))
+message("tract_panel.csv: ", nrow(pan), " tract-years; tracts with a census value by year: ", paste(pan[!is.na(pop), .N, by = census][order(census), paste(census, N)], collapse = ", "))
 for (f in c("ej_panel_models.csv", "ej_panel_reverse.csv")) if (file.exists(file.path("data/results", f))) file.copy(file.path("data/results", f), file.path(A, f), overwrite = TRUE)
 
 # ---------------------------------------------------------------- 2. corridors

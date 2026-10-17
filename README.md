@@ -301,6 +301,9 @@ pattern is the opposite of what the later tract panel shows for poverty, a remin
 fringe in a 35,000-person city. `occlabelB` in Brown's microdata is an undocumented occupation-string id; SEI (`seiusB`, 0 = no
 occupation) is the documented measure and is used for both the laborer flag and the SEI results.
 
+`R/fetch_census.R` also fetches foreign born and poverty for 1990–2020 (1990 STF3, 2000 SF3, ACS 2008–12 and 2016–20 tract
+tables, area-weighted onto 2010 tracts where needed), which the standardized NHGIS series lack; re-run it to fill those years.
+
 `R/app_census_layers.R` turns all of this — the NHGIS tract panel with firm counts per decade, the panel models, the corridor cells,
 the 1880 ED aggregates and placed firms, and the IPUMS city series — into the app's `app/data/` files (aggregates only).
 
@@ -380,12 +383,14 @@ shiny::runApp("app")
   listed firms by industry, every edition); how long firms stayed listed, hazardous vs other; pre-1960 hazardous-trade firms per edition.
   **Clustering** (Ellison–Glaeser γ by sector and edition, metro or statewide, filled points significant) and **succession** (the most
   common changes of a cell's dominant sector).
-* **Denver over time** – the 185 Denver-core tracts shaded by % Black, % Hispanic, % foreign born, % poverty, population, hazardous
-  firms active in the decade or legacy firms, for every census 1940–2020 (slider, animatable), with the firms of that decade overlaid;
-  population-weighted composition of tracts with an active hazardous firm, legacy-only and never, by census; the hybrid panel models
-  and the reverse ("who predicts where industry goes") model; **Denver 1880**: enumeration districts shaded by composition with the
-  placed 1878–85 firms, residents by distance to the nearest firm, the person-level odds ratios, and the IPUMS 1880–1940 city series
-  with segregation indices.
+* **Census tracts over time** – all 1,249 Colorado tracts (2010 boundaries; Denver only before 1960, the big metros from 1960, the
+  whole state from 1990) shaded by % Black, % Hispanic, % foreign born, % poverty, population, hazardous firms active in the decade or
+  legacy firms, for each decennial census 1940–2020 (radio buttons; a line says how many tracts have data and which variables exist
+  that year), with the firms of that decade overlaid; Colorado or Denver-core view; population-weighted composition of tracts with an
+  active hazardous firm, legacy-only and never, by census; the hybrid panel models and the reverse ("who predicts where industry
+  goes") model for the Denver core.
+* **Denver 1880–1940** – enumeration districts of 1880 shaded by composition with the placed 1878–85 firms, residents by distance to
+  the nearest firm, the person-level odds ratios, and the IPUMS 1880–1940 city series with segregation indices.
 * **Neighborhoods** – distributions of EnviroScreen and socioeconomic indicators for tracts with vs. without hazardous sites,
   with potentially unknown sites vs. all others, unknown vs. known-only, and TRI vs. non-TRI tracts; medians, population-weighted means,
   Wilcoxon tests.

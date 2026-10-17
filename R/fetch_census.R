@@ -8,10 +8,13 @@
 #   B. 1970 and 1980 tract tables (race, Spanish origin, nativity, poverty, total population) in their own boundaries.
 #   C. 1940, 1950 and 1960: every tract table NHGIS has (they are small), in their own boundaries.
 #   D. Tract boundary files for 1940, 1950, 1960, 1970, 1980.
+#   E. Foreign born and poverty for 1990-2020, which the standardized series lack: 1990 STF3 and 2000 SF3 tract tables, ACS 5-year
+#      2008-2012 and 2016-2020 tract tables (nativity, poverty status), with the 1990, 2000 and 2020 tract boundaries.
 # Then work/census/denver_tract_panel.csv: one row per 2010 tract and census year 1940-2020 with pop, nhblk (Negro / Black /
 # nonwhite as reported that year), hisp (Spanish surname 1960, Spanish American 1970, Spanish origin 1980, Hispanic 1990+),
 # fb (foreign born; foreign-born WHITE in 1940-1950), ppov (persons below poverty, 1970+; 1970 = persons in poor families plus
-# poor unrelated individuals). Pre-1990 counts are AREA-WEIGHTED from each year's tracts onto 2010 tracts; the script prints the
+# poor unrelated individuals; 2010 = ACS 2008-12, 2020 = ACS 2016-20 estimates). Counts not on 2010 tracts are AREA-WEIGHTED from
+# each year's tracts onto 2010 tracts; the script prints the
 # NHGIS variables used for every year - keep that list for the methods section.
 if (!requireNamespace("ipumsr", quietly = TRUE)) install.packages("ipumsr")
 suppressPackageStartupMessages({ library(ipumsr); library(data.table); library(sf) })
@@ -64,6 +67,20 @@ if (!have("*tract_1940*.shp") || !have("*tract_1980*.shp")) {
   get_and_unpack(submit_extract(define_extract_agg("nhgis", description = "Colorado tract boundaries 1940-1980", shapefiles = want, geographic_extents = CO)), "D: boundaries")
   for (z in Sys.glob(file.path(W, "*", "*.zip"))) unzip(z, exdir = dirname(z), overwrite = TRUE)
 }
+# ---------------------------------------------------------------- E. 1990-2020 nativity and poverty (nominal tracts + ACS)
+if (!done("E")) {
+  specs <- list()
+  for (dname in c("1990_STF3", "2000_SF3a")) { tb <- tract_tables(dname, "^Nativity|Place of Birth|^Foreign|Poverty Status( in \\d{4})?( by Age)?$|^Age by Poverty|Persons .*Below Poverty")
+    if (length(tb)) { message(dname, ": ", paste(tb, collapse = " ")); specs[[dname]] <- ds_spec(dname, data_tables = tb, geog_levels = "tract") } }
+  for (dname in c("2008_2012_ACS5a", "2016_2020_ACS5a")) { tb <- tract_tables(dname, "^Nativity in the United States$|^Poverty Status in the Past 12 Months by Sex by Age$|^Total Population$")
+    if (length(tb)) { message(dname, ": ", paste(tb, collapse = " ")); specs[[dname]] <- ds_spec(dname, data_tables = tb, geog_levels = "tract") } }
+  shp <- as.data.table(get_metadata_catalog("nhgis", metadata_type = "shapefiles"))
+  want <- c(shp[grepl("^us_tract_1990_tl2000$|^us_tract_1990_tl2008$", name)]$name[1], shp[grepl("^us_tract_2000_tl2010$|^us_tract_2000_tl2000$", name)]$name[1], shp[grepl("^us_tract_2020_tl2020$", name)]$name[1])
+  want <- want[!is.na(want)]; message("boundary files: ", paste(want, collapse = ", "))
+  get_and_unpack(submit_extract(define_extract_agg("nhgis", description = "Colorado tracts 1990-2020 nativity and poverty", datasets = unname(specs), shapefiles = want, geographic_extents = CO)), "E: 1990-2020 nativity/poverty")
+  for (z in Sys.glob(file.path(W, "*", "*.zip"))) unzip(z, exdir = dirname(z), overwrite = TRUE)
+  file.create(file.path(W, ".done_E"))
+}
 
 # ---------------------------------------------------------------- codebook parser: variable -> (table title, universe, label)
 read_codebook <- function(f) {
@@ -87,13 +104,16 @@ RULES <- list(
                c("^Race by Age$", "^Persons$", "^Black >>"), c("Race", "^Persons", "^(Negro|Black)( >> .*)?$"), c("Race|Nonwhite|Non-white|Color", "", "^(Nonwhite|Non-white|Negro)( >> .*)?$")),
   hisp  = list(c("", "", "^Persons: Hispanic or Latino$"), c("^Persons of Spanish Origin$|^Spanish American Persons$|Spanish Surname Population$|^Spanish Origin$", "", "^Total$|^Mexican$|^Puerto Rican$|^Cuban$|^Other Spanish$"),
                c("^Spanish Indicator$", "", "Spanish language|Spanish surname")),
-  fb    = list(c("^Nativity( and Place of Birth)?$", "^Persons", "^Foreign born$"), c("Nativity and Parentage", "", "^Foreign Born$"), c("^Foreign.Born White Population( by Sex)?$", "", "^(Total|Male|Female)$"),
-               c("Nativity", "", "^Foreign born$|^Foreign >> (Male|Female)$")),
-  ppov  = list(c("^Poverty Status( in \\d{4})?$", "^Persons for Whom Poverty", "below poverty"), c("Persons in Families Below Poverty|^Poverty Status by Age$", "Persons in Families|Unrelated Individuals 14", "Aggregate number of persons|^Below poverty level >>")))
+  fb    = list(c("^Nativity( and Place of Birth)?$|^Nativity in the United States$", "^Persons|^Total population", "^Foreign born$"), c("Nativity and Parentage", "", "^Foreign Born$"), c("^Foreign.Born White Population( by Sex)?$", "", "^(Total|Male|Female)$"),
+               c("Nativity|Place of Birth|Citizenship", "", "^Foreign born$|^Foreign >> (Male|Female)$|^Foreign born( >> .*)?$")),
+  ppov  = list(c("^Poverty Status( in \\d{4})?$|Poverty Status in the Past 12 Months", "^Persons for Whom Poverty|Population for whom poverty", "^(Income in .* )?below poverty level$"),   # a total cell (ACS tables carry subtotals, so never sum their breakdowns)
+               c("^Poverty Status( in \\d{4})?( by Age)?$|^Age by Poverty Status( in \\d{4})?$", "^Persons for Whom Poverty", "below poverty"),
+               c("Persons in Families Below Poverty|^Poverty Status by Age$", "Persons in Families|Unrelated Individuals 14", "Aggregate number of persons|^Below poverty level >>")))
 summarise_year <- function(csvs, yr) {
   tabs <- lapply(csvs, function(f) { d <- as.data.table(read_ipums_agg(f, verbose = FALSE)); d[, c("GISJOIN", grep("^[A-Z0-9]{3}\\d{3}$", names(d), value = TRUE)), with = FALSE] })
   D <- Reduce(function(a, b) merge(a, b[, c("GISJOIN", setdiff(names(b), names(a))), with = FALSE], by = "GISJOIN", all = TRUE), tabs)
   cb <- unique(rbindlist(lapply(sub("\\.csv$", "_codebook.txt", csvs), read_codebook)), by = "var"); cb <- cb[var %in% names(D)]   # the same table may sit in two extracts
+  cb <- cb[!(substr(var, 4, 4) == "M" & sub("^(...)M", "\\1E", var) %in% var)]                                          # ACS: keep estimates, drop margins of error
   out <- data.table(GISJOIN = D$GISJOIN, census = yr)
   for (k in names(RULES)) { m <- pick(cb, RULES[[k]])
     message(yr, " ", k, ": ", if (nrow(m)) paste0(m$var, " (", m$table, " / ", m$label, ")", collapse = " + ") else "-")
@@ -119,6 +139,18 @@ for (yr in c(1940, 1950, 1960, 1970, 1980)) {
   ov <- suppressWarnings(st_intersection(Ty[, c("GISJOIN", "a_src")], T10[, "GEOID"])); ov$w <- as.numeric(st_area(ov)) / ov$a_src
   M <- merge(as.data.table(st_drop_geometry(ov))[, .(GISJOIN, GEOID, w)], S, by = "GISJOIN")
   P[[as.character(yr)]] <- M[, lapply(.SD, function(v) if (all(is.na(v))) NA_real_ else sum(v * w, na.rm = TRUE)), by = .(GEOID, census), .SDcols = c("pop", "nhblk", "hisp", "fb", "ppov")]
+}
+# E. fill foreign born and poverty for 1990-2020: 1990/2000/2020 tables area-weighted onto 2010 tracts; the 2008-12 ACS is on 2010 tracts
+aw <- function(S, shpf) { Ty <- st_make_valid(st_transform(st_read(shpf, quiet = TRUE), UTM)); Ty <- Ty[Ty$GISJOIN %in% S$GISJOIN, ]; Ty$a_src <- as.numeric(st_area(Ty))
+  ov <- suppressWarnings(st_intersection(Ty[, c("GISJOIN", "a_src")], T10[, "GEOID"])); ov$w <- as.numeric(st_area(ov)) / ov$a_src
+  M <- merge(as.data.table(st_drop_geometry(ov))[, .(GISJOIN, GEOID, w)], S, by = "GISJOIN")
+  M[, .(fb = if (all(is.na(fb))) NA_real_ else sum(fb * w, na.rm = TRUE), ppov = if (all(is.na(ppov))) NA_real_ else sum(ppov * w, na.rm = TRUE)), by = GEOID] }
+for (yr in c(1990, 2000, 2010, 2020)) {
+  csvs <- Sys.glob(file.path(W, "*", switch(as.character(yr), "1990" = "*_1990_tract.csv", "2000" = "*_2000_tract.csv", "2010" = "*_20125_tract.csv", "2020" = "*_20205_tract.csv")))
+  csvs <- csvs[!grepl("_ts_", csvs)]; if (!length(csvs) || is.null(P[[as.character(yr)]])) { message(yr, ": nativity/poverty tables missing, fb and ppov stay NA"); next }
+  S <- summarise_year(csvs, yr)
+  F <- if (yr == 2010) S[, .(GEOID = gj(GISJOIN), fb, ppov)] else { shpf <- Sys.glob(file.path(W, "*", sprintf("*tract_%d*.shp", yr))); if (!length(shpf)) { message(yr, ": boundaries missing"); next }; aw(S, shpf[1]) }
+  P[[as.character(yr)]] <- merge(P[[as.character(yr)]][, .(GEOID, census, pop, nhblk, hisp)], F, by = "GEOID", all.x = TRUE)
 }
 panel <- rbindlist(P, fill = TRUE)[, .(GEOID, census, pop, nhblk, hisp, fb, ppov)][order(GEOID, census)]
 fwrite(panel, file.path(W, "denver_tract_panel.csv"))
