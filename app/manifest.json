@@ -2543,7 +2543,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "2a39f19ed6d4d5833db412b9f5f29545"
+      "checksum": "0290f6c36d4db3d463eb6915c40dd33f"
     },
     "data/cleanup_sites.csv": {
       "checksum": "54d15152050c9625f7081204f267bb2d"
@@ -2558,13 +2558,13 @@
       "checksum": "a6c9dd85f9b40f1d83c7c61bc0bef4ec"
     },
     "data/historical_sites.csv": {
-      "checksum": "1d032f5cbac2c6da48b9b7a80fb9483a"
+      "checksum": "b90ebb45edad56f6da833c2f6306e430"
     },
     "data/schools.csv": {
       "checksum": "27b404b6f3b14d272f2eac3498b95036"
     },
     "data/site_precursors.csv": {
-      "checksum": "a0761398dbe053e8222a9993dde38fe4"
+      "checksum": "e162e1140504f510b220da9de401e7ec"
     },
     "data/site_years.csv": {
       "checksum": "eaa5dade38f31571e05e3ed1557008a0"

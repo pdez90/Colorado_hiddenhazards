@@ -247,13 +247,27 @@ server <- function(input, output, session) {
       esc(d$example))
     ring <- function(d) ifelse(d$persists_to_1961plus, "#000000", "#ffffff")
     st <- h[h$precision != "town", ]; tw <- h[h$precision == "town", ]
-    if (nrow(tw)) px <- px |> addCircleMarkers(data = tw, ~lon, ~lat, radius = 4, color = ring(tw), weight = ifelse(tw$persists_to_1961plus, 2, 0.8),
-                    fillColor = HIST_COL, fillOpacity = 0.55, popup = pop(tw), group = "Pre-1960 hazardous trades",
-                    clusterOptions = markerClusterOptions(maxClusterRadius = 25, spiderfyOnMaxZoom = TRUE), options = pathOptions(pane = "haz"))
+    # firms known only to the town share one point: draw ONE marker per town whose popup lists every firm (scrollable)
+    if (nrow(tw)) {
+      tw <- tw[order(tw$town, tw$first_year, tw$name), ]
+      row <- sprintf("<tr><td>%s%s</td><td>%s</td><td>%s</td></tr>", esc(tw$name), ifelse(tw$persists_to_1961plus, " <b>&#9679;</b>", ""),
+                     esc(tw$sectors), esc(tw$years))
+      tg <- data.frame(town = tw$town, lat = tw$lat, lon = tw$lon, row = row, persist = tw$persists_to_1961plus) |>
+        group_by(town, lat, lon) |>
+        summarise(n = n(), n_persist = sum(persist), rows = paste(row, collapse = ""), .groups = "drop")
+      tpop <- sprintf("<b>%s</b>: %s pre-1960 hazardous-trade firm%s<br><i>Placed at the town centre: the directories give no usable street address.</i>%s
+                       <div style='max-height:260px;overflow-y:auto;margin-top:4px'><table style='font-size:11px'><tr><th align=left>Firm</th><th align=left>Trade</th><th align=left>Listed</th></tr>%s</table></div>",
+                      esc(tg$town), tg$n, ifelse(tg$n == 1, "", "s"),
+                      ifelse(tg$n_persist > 0, sprintf("<br>&#9679; = still listed in the 1961–2002 directory (%s)", tg$n_persist), ""), tg$rows)
+      px <- px |> addCircleMarkers(data = tg, ~lon, ~lat, radius = pmin(4 + 1.6 * sqrt(tg$n), 18), color = ifelse(tg$n_persist > 0, "#000000", "#ffffff"),
+                    weight = ifelse(tg$n_persist > 0, 2, 0.8), fillColor = HIST_COL, fillOpacity = 0.5, popup = tpop,
+                    popupOptions = popupOptions(maxWidth = 420), label = sprintf("%s: %s firms", tg$town, tg$n),
+                    group = "Pre-1960 hazardous trades", options = pathOptions(pane = "haz"))
+    }
     if (nrow(st)) px <- px |> addCircleMarkers(data = st, ~lon, ~lat, radius = 3 + 1.2 * sqrt(st$editions), color = ring(st),
                     weight = ifelse(st$persists_to_1961plus, 2, 0.8), fillColor = HIST_COL, fillOpacity = 0.95, popup = pop(st),
                     group = "Pre-1960 hazardous trades", options = pathOptions(pane = "haz"))
-    px |> addLegend("bottomleft", colors = c(HIST_COL, HIST_COL), labels = c("Street address (Denver 1891+, larger cities 1910+)", "Town centre only (clustered)"),
+    px |> addLegend("bottomleft", colors = c(HIST_COL, HIST_COL), labels = c("Street address (Denver 1891+, larger cities 1910+)", "Town centre only (one marker per town; size = number of firms)"),
                     title = "Pre-1960 hazardous trades<br><small>black ring = firm or address still in 1961–2002 directory</small>",
                     opacity = c(0.95, 0.55), layerId = "histlegend")
   })

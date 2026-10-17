@@ -92,6 +92,79 @@ not been checked against historical maps (e.g. Sanborn atlases); treat them as a
 that were workers listed at their home addresses ("Cain Patrick, stoker, Denver Gas Co, 2422 Champa"), not works. It also stopped
 placing 1,846 office listings at their downtown office addresses.
 
+## Do hidden hazards matter for health? (first analysis, October 2026)
+
+`pipeline/health/build_exposures.py` and `pipeline/health/health_models.py`; full results in `data/results/health_models.csv`.
+
+**Data.** Outcomes come from CDPHE Colorado EnviroScreen 2.0. Its block-group layer repeats the tract value for every health indicator,
+so outcomes vary only between tracts: the analysis uses 1,248–1,428 tracts with at least 500 residents (depending on the outcome). Asthma hospitalization, low birth weight and life
+expectancy come from administrative records; the heart disease, cancer, diabetes and mental health indices are modelled estimates.
+Exposure is a kernel density of sites (σ = 500 m) at each block-group centroid, averaged to the tract, log-transformed and expressed
+per standard deviation.
+
+**Models.** Nested, each fit by OLS and as a spatial error model (queen contiguity):
+M1 SES and demographics (low income, people of color, < high school, linguistic isolation, age 65+, under 5, log density) →
+M2 + hazards regulators track (EnviroScreen proximity to hazardous-waste, NPL and RMP facilities; TRI and cleanup-site density) →
+M3 + historical hazardous-sector sites that are on some inventory → M4 + hidden historical sites (on no inventory).
+Placebo: non-hazardous manufacturers from the same directories (same source, same geocoding, no hazardous process).
+
+Coefficients for 1 SD more exposure, spatial error models (standard errors in parentheses; * p<0.05, ** p<0.01):
+
+| Outcome | Hidden sites, M4 (per SD) | Known historical, M4 | Placebo (non-hazardous mfrs), M4+placebo | ΔAIC M3→M4 | LR p (M4 vs M3) |
+|---|---|---|---|---|---|
+| Asthma hospitalization rate (log) | 0.025 (0.041) | 0.054 (0.049) | 0.038 (0.045) | 1.7 | 0.544 |
+| Low birth weight (%) | 0.075 (0.163) | 0.033 (0.198) | -0.063 (0.179) | 1.8 | 0.643 |
+| Life expectancy (years) | -0.140 (0.152) | -0.264 (0.182) | -0.391 (0.167)* | 1.1 | 0.358 |
+| Heart disease (index) | 1.067 (0.964) | -1.454 (1.119) | 2.989 (1.086)** | 0.7 | 0.269 |
+| Cancer (index) | 0.008 (0.918) | 0.160 (1.076) | -0.116 (1.030) | 2.0 | 0.993 |
+| Diabetes (index) | 1.214 (0.885) | -0.367 (1.017) | 1.377 (1.003) | 0.1 | 0.17 |
+| Poor mental health (%) | -0.154 (0.088) | 0.080 (0.106) | 0.009 (0.097) | -1.0 | 0.0801 |
+
+**Reading.** Unadjusted, tracts with more hidden sites have more asthma hospitalizations, lower life expectancy and more heart disease
+and diabetes. Most of that goes away with SES and demographics, and the rest goes away once regulated hazards (above all
+cleanup-site density) are in the model: hidden sites add no explanatory power for any outcome (likelihood-ratio p ≥ 0.08). The
+placebo is as strong as or stronger than the hidden sites (life expectancy, heart disease). So at the tract level, with these outcomes,
+the association is with industrial land use generally, not specifically with unregulated hazardous sites. This does not show hidden
+hazards are harmless: tract averages and modelled outcomes are blunt, and many cleanup sites are themselves former hidden sites
+(cleanup listing is partly an outcome of the same history).
+
+### Block-group mortality (Colorado death records, 2015–2019)
+
+`pipeline/health/mortality_bg.py`. Natural-cause and all-cause deaths from Colorado death records, aggregated to 2010 block groups,
+with person-years as the offset (the record-level file and block-group counts are restricted and are not in this repository).
+Negative binomial models with county fixed effects and tract-clustered standard errors; covariates are SES, age structure (% 65+,
+its square, % under 5), density and PM2.5. Rate ratios per 1 SD of log site density (95% CI):
+
+Block groups: 3439, natural-cause deaths 2015-2019: 158,758
+
+| Outcome | Model | Hidden sites RR per SD | Known historical | Placebo (non-hazardous) | Cleanup sites | AIC |
+|---|---|---|---|---|---|---|
+| natural-cause | M1 SES+age+PM2.5 |  |  |  |  | 30739.0 |
+| natural-cause | M2 +regulated |  |  |  | 1.027 (0.993–1.062) | 30736.0 |
+| natural-cause | M3 +known historical |  | 1.022 (0.979–1.066) |  | 1.017 (0.979–1.056) | 30736.6 |
+| natural-cause | M4 +hidden | 1.033 (0.993–1.074) | 1.004 (0.958–1.051) |  | 1.010 (0.971–1.051) | 30734.5 |
+| natural-cause | M4 hidden high-confidence only | 1.013 (0.976–1.051) | 1.014 (0.968–1.062) |  | 1.014 (0.976–1.054) | 30737.9 |
+| natural-cause | Placebo: M2 +non-hazardous mfrs |  |  | 1.070 (1.029–1.111)* | 0.994 (0.956–1.033) | 30719.7 |
+| natural-cause | M4 +placebo | 1.012 (0.971–1.055) | 0.993 (0.948–1.040) | 1.066 (1.022–1.112)* | 0.993 (0.953–1.035) | 30723.1 |
+| all-cause | M1 SES+age+PM2.5 |  |  |  |  | 31421.8 |
+| all-cause | M2 +regulated |  |  |  | 1.034 (1.001–1.067)* | 31414.2 |
+| all-cause | M3 +known historical |  | 1.030 (0.989–1.073) |  | 1.019 (0.984–1.056) | 31413.3 |
+| all-cause | M4 +hidden | 1.031 (0.994–1.070) | 1.012 (0.969–1.057) |  | 1.013 (0.977–1.051) | 31411.1 |
+| all-cause | M4 hidden high-confidence only | 1.013 (0.978–1.050) | 1.022 (0.978–1.069) |  | 1.017 (0.981–1.054) | 31414.4 |
+| all-cause | Placebo: M2 +non-hazardous mfrs |  |  | 1.069 (1.031–1.108)* | 1.000 (0.965–1.037) | 31396.7 |
+| all-cause | M4 +placebo | 1.012 (0.973–1.053) | 1.002 (0.959–1.047) | 1.063 (1.021–1.106)* | 0.997 (0.959–1.036) | 31399.9 |
+
+Hidden sites raise mortality by about 3% per SD, with confidence intervals that include no effect; the non-hazardous-manufacturer
+placebo is larger (about 7% per SD) and significant, and including it shrinks the hidden-site estimate to 1%. The same pattern as the
+tract analysis: mortality is higher around historical industry generally, and these data cannot attribute it to the hidden hazardous
+sites specifically. Age adjustment is limited to block-group age shares (the death file has no age), so residual age confounding is
+possible.
+
+**What could detect an effect if there is one:** outcomes that vary below the tract (geocoded birth records, hospital discharges or
+blood-lead tests from CDPHE under a data agreement); outcomes specific to the pathways these sites create (childhood blood lead,
+soil and indoor-air vapor intrusion, specific cancers from the Colorado Central Cancer Registry); and within-neighbourhood designs
+(distance to the nearest site among residents of the same tract) that hold industrial land use constant.
+
 ## Reproduce
 
 ```bash
@@ -111,7 +184,7 @@ OCR output can differ slightly across Tesseract versions, which is why the OCR o
 
 The manufacturers' directory starts in 1961, but Colorado's smelters, foundries, assay offices and gas works go back to the 1870s.
 `pipeline/historical/` reads the searchable text of the CU Boulder scans of the *Colorado State Business Directory*
-(28 editions: 1871 Rocky Mountain Directory, 1875, 1877, 1878, 1879, 1880, 1881, 1882, 1883, 1884, 1885, 1887, 1888, 1891, 1892, 1910, 1911, 1913, 1914, 1915, 1916, 1917, 1927, 1929, 1932, 1939, 1950, 1956) and:
+(34 editions: 1871 Rocky Mountain Directory, 1875, 1877, 1878, 1879, 1880, 1881, 1882, 1883, 1884, 1885, 1887, 1888, 1891, 1892, 1910, 1911, 1912, 1913, 1914, 1915, 1916, 1917, 1920, 1927, 1929, 1932, 1933, 1935, 1939, 1941, 1943, 1950, 1956) and:
 
 1. **Finds the town** for every entry from town headings ("ALPINE.", "Delta Business Directory.", "DENVER CONT'D"), page running
    heads ("DEN", "LEA") and, failing that, a town named in the entry, all matched to the USGS GNIS gazetteer.
@@ -126,12 +199,13 @@ The manufacturers' directory starts in 1961, but Colorado's smelters, foundries,
 4. **Links firms** across editions (fuzzy names within a town) and to the 1961–2002 directory, by name in the same city or by a street
    address within 40 m of a later hazardous site.
 
-Result: 6,778 hazardous-trade listings → 6,227 firm-locations; 713 at a street address; 316 link to the 1961–2002 directory,
-giving 213 later sites a documented pre-1960 hazardous precursor.
+Result: 8,386 hazardous-trade listings → 7,495 firm-locations; 928 at a street address; 399 link to the 1961–2002 directory,
+giving 249 later sites a documented pre-1960 hazardous precursor.
 **Caveats:** the text layers are uncorrected OCR with columns interleaved, so names can be garbled (`name_quality`), some entries are
 missed, and counts are not comparable between editions or with the manufacturers' directory. 1871, 1875 and the user-supplied 1877
-volumes are read from the Internet Archive / Google Books copies, which carry text layers; the CU 1885 scan has no text layer
-and was OCR'd with Tesseract (300 dpi, `pipeline/historical/ocr_volume.sh`). The 1920 scan (1,548 pages, no text layer) is not yet included.
+volumes are read from the Internet Archive / Google Books copies, which carry text layers; the CU 1885 and 1920 scans have no text
+layer and were OCR'd with Tesseract (`pipeline/historical/ocr_volume.sh`; 300 dpi for 1885, 220 dpi for the 1,548-page 1920 volume).
+All 52 CU Boulder volumes are now in hand; the 1950s beyond 1956 are not in that collection.
 
 ## The Shiny app
 
@@ -142,7 +216,7 @@ shiny::runApp("app")
 
 * **Map** – historical hazardous sites coloured by current regulatory status or by **persistence** (years between first and last hazardous
   listing, extended back to the pre-1960 directories where a precursor is found), filtered by years listed (1877–2002), sector, status and confidence;
-  a **pre-1960 layer** (brown; town-level points clustered, black ring = firm or address still listed after 1960);
+  a **pre-1960 layer** (brown; firms placed only at a town centre share one marker per town whose popup lists them all, black ring = firm or address still listed after 1960);
   layers for EPA TRI facilities, schools, hospitals, clinics, residential care, brownfields, voluntary cleanup, Superfund, RCRA corrective
   action and land-use controls; census tracts shaded by any EnviroScreen indicator.
 * **Trends** – sites per edition by sector and by status; share on no inventory; pre-1960 hazardous-trade firms per business-directory edition.

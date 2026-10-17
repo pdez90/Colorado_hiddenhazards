@@ -36,10 +36,10 @@ df['office'] = df.entry.str.contains(r"(?i)\b(?:offices?|bldg|blk|block|building
 print('dropped as persons:', int(df.is_person.sum()), '; office listings:', int(df.office.sum()))
 df = df[~df.is_person]
 # listings whose name is plainly not an industrial firm (column-interleaving in the 1950 coded volume attaches codes to neighbours)
-NONIND = r"(?i)\b(groc\w*|grocery|club|fruit|cafe|caf[eé]|store|hotel|motel|assn|association|church|school|bank|tavern|bar|restaurant|beauty|barber|insurance|realty|sales|calculating|florist|bakery|dairy|drug\w*|press club)\b"
+NONIND = r"(?i)\b(groc\w*|grocery|club|fruit|cafe|caf[eé]|store|hotel|motel|assn|association|church|school|bank|tavern|bar|restaurant|beauty|barber|insurance|realty|sales|calculating|florist|house|saloon|bakery|dairy|drug\w*|press club)\b"
 df = df[~df.name.str.contains(NONIND)]
 # names made only of trade/place words are section headings or ad slogans, not firms
-GENERIC = r"(?i)\b(the|co|company|inc|corp|mfg|manufactur\w*|works?|and|of|sheet|metal|iron|steel|brass|wire|ornamental|structural|foundr\w*|machine\w*|machinists?|shops?|tinners?|tanners?|tannery|assay\w*|smelt\w*|refin\w*|reduction|sampling|mills?|chemicals?|chemists?|gas|electric|light|oil|supply|supplies|plating|electro|platers?|wagons?|carriage|makers?|boilers?|repair\w*|denver|colorado|rocky|mountain|creosote|asphalt|rubber|powder|soap|paint|cornice|galvaniz\w*|engines?|mining|coal|ore|stamp)\b"
+GENERIC = r"(?i)\b(the|co|company|inc|corp|mfg|manufactur\w*|works?|and|of|sheet|metal|iron|steel|brass|wire|ornamental|structural|foundr\w*|machine\w*|machinists?|shops?|tinners?|tanners?|tannery|assay\w*|smelt\w*|refin\w*|reduction|sampling|mills?|chemicals?|chemists?|gas|electric|light|oil|supply|supplies|plating|electro|platers?|wagons?|carriage|makers?|boilers?|repair\w*|denver|colorado|rocky|mountain|creosote|asphalt|rubber|powder|soap|paint|cornice|galvaniz\w*|engines?|mining|coal|ore|stamp|fertiliz\w*|machining|welding|painting|body|auto|suite|upon|request|office|for|years?|phone|pounders|finishers|pattern|consumers|petroleum|coordinator|abstract)\b"
 distinct = df.name.str.replace(GENERIC, ' ', regex=True).str.replace(r'[^A-Za-z]', '', regex=True)
 df = df[distinct.str.len() >= 3]
 # a street must look like 'number + street name'; drop fragments like '4 Gas', '2 CD', '447 av'
