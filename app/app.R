@@ -416,14 +416,27 @@ server <- function(input, output, session) {
   output$cmp_title <- renderText(names(VARS)[VARS == input$nvar])
   output$p_cmp <- renderPlotly({
     d <- groups(); d$val <- d[[input$nvar]]; d <- d[!is.na(d$val), ]
-    w <- if (isTRUE(input$popw)) d$population else NULL
-    cols <- c("#d1491f", "#24589e", "#7a4aa8", "#7f8c8d"); names(cols) <- unique(d$group)
-    p <- if (input$ptype == "dens")
-      ggplot(d, aes(val, fill = group, colour = group, weight = if (is.null(w)) 1 else population)) + geom_density(alpha = 0.25, adjust = 0.9)
-    else ggplot(d, aes(group, val, fill = group, weight = if (is.null(w)) 1 else population)) + geom_boxplot(alpha = 0.5, outlier.size = 0.6)
-    ggplotly(p + scale_fill_manual(values = cols) + scale_colour_manual(values = cols) +
-               labs(x = if (input$ptype == "dens") names(VARS)[VARS == input$nvar] else NULL, y = NULL, fill = NULL, colour = NULL) +
-               theme_minimal() + theme(legend.position = "bottom"))
+    d$w <- if (isTRUE(input$popw)) pmax(d$population, 1) else 1
+    gs <- unique(d$group); cols <- c("#d1491f", "#24589e", "#7a4aa8", "#7f8c8d")[seq_along(gs)]; names(cols) <- gs
+    lab <- names(VARS)[VARS == input$nvar]
+    if (input$ptype == "dens") {
+      p <- ggplot(d, aes(val, fill = group, colour = group, weight = w)) + geom_density(alpha = 0.25, adjust = 0.9) +
+        scale_fill_manual(values = cols) + scale_colour_manual(values = cols) + labs(x = lab, y = NULL, fill = NULL, colour = NULL) +
+        theme_minimal() + theme(legend.position = "bottom")
+      ggplotly(p)
+    } else {
+      # box plot from (population-weighted) quantiles, drawn directly in plotly: robust across ggplot2/plotly versions
+      wq <- function(x, w, p) { o <- order(x); x <- x[o]; w <- w[o]; cw <- cumsum(w) / sum(w); sapply(p, function(q) x[which(cw >= q)[1]]) }
+      pl <- plot_ly()
+      for (g in gs) { xi <- d$val[d$group == g]; wi <- d$w[d$group == g]; q <- wq(xi, wi, c(.05, .25, .5, .75, .95))
+        pl <- add_trace(pl, type = "box", name = g, x = g, q1 = list(q[2]), median = list(q[3]), q3 = list(q[4]),
+                        lowerfence = list(q[1]), upperfence = list(q[5]), fillcolor = cols[[g]], line = list(color = "#333333"),
+                        hovertemplate = sprintf("%s<br>5%%: %.1f<br>25%%: %.1f<br>median: %.1f<br>75%%: %.1f<br>95%%: %.1f<br>tracts: %d<extra></extra>",
+                                                g, q[1], q[2], q[3], q[4], q[5], length(xi))) }
+      layout(pl, yaxis = list(title = lab), xaxis = list(title = ""), showlegend = FALSE,
+             annotations = list(x = 0.5, y = 1.06, xref = "paper", yref = "paper", showarrow = FALSE, font = list(size = 11),
+                                text = if (isTRUE(input$popw)) "Boxes: population-weighted 25-50-75th percentiles; whiskers 5th-95th" else "Boxes: 25-50-75th percentiles; whiskers 5th-95th"))
+    }
   })
   output$t_cmp <- renderDT({
     d <- groups(); gs <- sort(unique(d$group))

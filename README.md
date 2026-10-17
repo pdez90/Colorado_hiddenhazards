@@ -214,6 +214,40 @@ blood-lead tests from CDPHE under a data agreement); outcomes specific to the pa
 soil and indoor-air vapor intrusion, specific cancers from the Colorado Central Cancer Registry); and within-neighbourhood designs
 (distance to the nearest site among residents of the same tract) that hold industrial land use constant.
 
+## Industrial corridors and the origins of environmental inequality (R, October 2026)
+
+`R/corridors.R` (runs from the repository's own data; outputs in `data/results/corridors/`):
+
+* **Formation and persistence.** 500 m grid cells with any located manufacturer, 1961–2002, classed as persistent (listed from the
+  1960s to the 1990s in ≥ 60% of the editions between), emerging (first listed 1980 or later), former (none after 1980) or intermittent;
+  "persistent, sector turnover" when the dominant two-digit sector changed at least twice. Pre-1960 street-level firms extend a cell's
+  history where they exist (Denver 1891+). Denver metro (25 km of downtown): 1,765 cells, of which 256 persistent (225 with sector
+  turnover), 822 emerging, 191 former.
+* **Clustering.** Ellison–Glaeser γ per sector and edition on 1 km cells, measured against the distribution of *all* located manufacturers
+  that year (so it asks whether a sector is more concentrated than manufacturing in general), with a random-relabelling p-value.
+  Printing (92% of editions significant), petroleum products and machinery cluster beyond general manufacturing; chemicals, primary
+  metals and transportation equipment do not, statewide or in the metro. γ is on the Ellison–Glaeser scale with equal plant weights.
+* **Succession.** Transition counts of a cell's dominant sector between successive editions (`sector_transitions.csv`) and from first to
+  last listing (`sector_first_to_last.csv`). Machinery ↔ fabricated metals and food ↔ printing are the common exchanges.
+* **Do old industrial areas attract new industry?** Entries (first listing) per cell and edition against the cell's stock and its
+  neighbours' stock in the previous edition and distance to downtown: pooled Poisson elasticity 0.96 for own stock, 0.26 for
+  neighbours; within-cell (demeaned) 0.07 per log-unit. Persistence of location, not an explanation of it (no rail, river or zoning
+  controls yet).
+* **Present-day legacy.** Tract spatial error models: a tract's cumulative manufacturing history (firm-years 1961–2002, hazardous-sector
+  firm-years, or hidden sites) predicts today's EnviroScreen score, low income and people of color (all p < 0.01 except hidden sites
+  for people of color). Associations, with density as the only control.
+
+`R/ej_panel.R` — the "how did it develop" design of Marlow, Frickel & Elliott (2020): a tract panel for the Denver core (Denver County
+plus the inner parts of Adams, Arapahoe and Jefferson), 1970–2010, matched to the 1970, 1980, 1990, 1999 and 2002 directories, with
+active-site density (within-tract change), legacy-site density (sites listed earlier but no longer active) and the reverse model
+(composition at t → entries by t+1). It needs census extracts that are not redistributed here: the Longitudinal Tract Data Base
+(Brown University, free) in 2010 tract boundaries, and optionally NHGIS 1940–1960 tract tables and boundaries (areal-interpolated to
+2010 tracts as counts, then percentages) and Brown's 1880 enumeration districts for a cross-section against the 1879–1885 directories.
+`R/fetch_census.R` downloads them through the NHGIS API (`ipumsr`): standardized-to-2010 tract time series 1970–2020 for
+Colorado (population, race, Hispanic origin, nativity, poverty), the 2010 tract boundaries, and the 1940–1960 Denver tract tables
+and boundaries; it writes `work/census/denver_tract_panel.csv`, which `ej_panel.R` reads. You need an NHGIS account and an API key
+(https://account.ipums.org/api_keys) in the environment variable `IPUMS_API_KEY`; the key is never stored.
+
 ## Reproduce
 
 ```bash

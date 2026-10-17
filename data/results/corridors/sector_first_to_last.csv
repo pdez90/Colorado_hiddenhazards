@@ -1,0 +1,278 @@
+first,last,N
+Printing,Printing,134
+Printing,,117
+Food,,68
+Food,Food,66
+Fabricated metals,Fabricated metals,60
+,,50
+Machinery,,49
+Lumber & wood,,46
+Fabricated metals,,46
+Machinery,Machinery,44
+Electronics,,36
+Lumber & wood,Lumber & wood,35
+"Stone, clay & glass","Stone, clay & glass",31
+Misc. manufacturing,Misc. manufacturing,30
+,Printing,29
+Furniture,,29
+"Stone, clay & glass",,28
+Instruments,,23
+Electronics,Electronics,21
+Food,Printing,20
+Misc. manufacturing,,18
+Misc. manufacturing,Printing,18
+Machinery,Fabricated metals,17
+Instruments,Instruments,17
+,Food,17
+Printing,Machinery,16
+Apparel,,15
+Chemicals,,15
+,Fabricated metals,15
+Fabricated metals,Machinery,14
+,Machinery,14
+Rubber & plastics,,13
+Chemicals,Chemicals,13
+Printing,Food,13
+Printing,Misc. manufacturing,13
+Food,Machinery,13
+Machinery,Printing,12
+Fabricated metals,Rubber & plastics,11
+Paper,,11
+Apparel,Apparel,11
+Printing,Apparel,11
+Apparel,Printing,11
+Food,Lumber & wood,11
+Transportation eq.,Transportation eq.,11
+Lumber & wood,Printing,11
+Printing,Furniture,10
+Fabricated metals,Printing,10
+Printing,Fabricated metals,10
+Food,Fabricated metals,10
+,Lumber & wood,10
+Misc. manufacturing,Fabricated metals,10
+Machinery,Rubber & plastics,10
+Fabricated metals,Electronics,10
+Transportation eq.,,10
+,Apparel,9
+Lumber & wood,Food,9
+Rubber & plastics,Rubber & plastics,9
+Machinery,Lumber & wood,9
+Food,Apparel,9
+Electronics,Fabricated metals,9
+Fabricated metals,Food,9
+Petroleum,Petroleum,8
+Printing,Lumber & wood,8
+Food,Misc. manufacturing,8
+"Stone, clay & glass",Fabricated metals,8
+,"Stone, clay & glass",8
+"Stone, clay & glass",Lumber & wood,8
+Rubber & plastics,Machinery,8
+Rubber & plastics,Fabricated metals,8
+Misc. manufacturing,Machinery,8
+,Misc. manufacturing,7
+Primary metals,Fabricated metals,7
+Instruments,Electronics,7
+Chemicals,Fabricated metals,7
+Machinery,Electronics,7
+Textiles,,7
+Printing,Rubber & plastics,7
+Furniture,Fabricated metals,7
+Transportation eq.,Fabricated metals,7
+Food,Chemicals,7
+Chemicals,Printing,7
+Fabricated metals,Lumber & wood,7
+"Stone, clay & glass",Printing,7
+"Stone, clay & glass",Machinery,6
+Food,Rubber & plastics,6
+Fabricated metals,Furniture,6
+Fabricated metals,"Stone, clay & glass",6
+Instruments,Printing,6
+Chemicals,Food,6
+"Stone, clay & glass",Rubber & plastics,6
+Furniture,Furniture,6
+Machinery,Misc. manufacturing,6
+,Electronics,6
+Apparel,Machinery,6
+Lumber & wood,Rubber & plastics,6
+Transportation eq.,Machinery,6
+,Rubber & plastics,6
+Misc. manufacturing,Food,6
+Printing,Electronics,6
+Printing,"Stone, clay & glass",6
+Food,"Stone, clay & glass",6
+Printing,Transportation eq.,5
+Electronics,Machinery,5
+,Furniture,5
+Misc. manufacturing,Apparel,5
+Lumber & wood,Fabricated metals,5
+Food,Furniture,5
+Lumber & wood,Machinery,5
+Apparel,Misc. manufacturing,5
+Primary metals,Primary metals,5
+Misc. manufacturing,Rubber & plastics,5
+Furniture,Machinery,5
+Fabricated metals,Chemicals,5
+"Stone, clay & glass",Apparel,5
+Misc. manufacturing,Electronics,5
+,Instruments,5
+Leather,,5
+Fabricated metals,Misc. manufacturing,5
+Paper,Food,4
+Apparel,Food,4
+Transportation eq.,Food,4
+Rubber & plastics,Food,4
+Misc. manufacturing,Chemicals,4
+Machinery,Food,4
+Primary metals,,4
+Lumber & wood,Apparel,4
+Instruments,Misc. manufacturing,4
+"Stone, clay & glass",Misc. manufacturing,4
+Instruments,Machinery,4
+Transportation eq.,Chemicals,4
+,Chemicals,4
+Electronics,Chemicals,4
+Furniture,Printing,4
+Lumber & wood,Furniture,4
+Electronics,Instruments,4
+Chemicals,Machinery,4
+Machinery,Instruments,4
+Fabricated metals,Apparel,3
+Printing,Instruments,3
+Machinery,Apparel,3
+Instruments,Food,3
+Rubber & plastics,Misc. manufacturing,3
+Lumber & wood,Chemicals,3
+Electronics,Food,3
+"Stone, clay & glass",Primary metals,3
+"Stone, clay & glass",Transportation eq.,3
+Petroleum,,3
+Fabricated metals,Transportation eq.,3
+Instruments,Fabricated metals,3
+Paper,Fabricated metals,3
+Machinery,Paper,3
+Electronics,Printing,3
+Furniture,Electronics,3
+Rubber & plastics,Electronics,3
+Chemicals,Lumber & wood,3
+Leather,Leather,3
+Furniture,Lumber & wood,3
+Food,Electronics,3
+"Stone, clay & glass",Electronics,3
+Misc. manufacturing,Lumber & wood,3
+,Transportation eq.,3
+Transportation eq.,Lumber & wood,3
+Rubber & plastics,Lumber & wood,3
+Instruments,Rubber & plastics,3
+Chemicals,"Stone, clay & glass",3
+Furniture,Food,3
+Apparel,Lumber & wood,3
+Food,Paper,3
+Chemicals,Rubber & plastics,3
+Leather,Apparel,3
+Rubber & plastics,Chemicals,3
+"Stone, clay & glass",Instruments,3
+Apparel,Rubber & plastics,2
+Machinery,Transportation eq.,2
+Printing,Chemicals,2
+Furniture,Apparel,2
+Chemicals,Apparel,2
+Lumber & wood,Petroleum,2
+Primary metals,Chemicals,2
+Rubber & plastics,Apparel,2
+Electronics,Furniture,2
+,Paper,2
+Misc. manufacturing,Instruments,2
+Lumber & wood,"Stone, clay & glass",2
+Food,Petroleum,2
+Furniture,Rubber & plastics,2
+Furniture,Chemicals,2
+Apparel,Chemicals,2
+Printing,Primary metals,2
+Paper,Paper,2
+Fabricated metals,Petroleum,2
+Petroleum,Printing,2
+Petroleum,Rubber & plastics,2
+Electronics,Rubber & plastics,2
+Paper,Rubber & plastics,2
+Transportation eq.,Printing,2
+Electronics,Misc. manufacturing,2
+Misc. manufacturing,Paper,2
+Lumber & wood,Leather,2
+Instruments,Chemicals,2
+Machinery,Chemicals,2
+Food,Instruments,2
+Apparel,Furniture,2
+Electronics,Lumber & wood,2
+Transportation eq.,"Stone, clay & glass",2
+Machinery,Leather,2
+Leather,Fabricated metals,2
+Rubber & plastics,Printing,2
+Lumber & wood,Paper,2
+Chemicals,Furniture,2
+Electronics,Transportation eq.,2
+Textiles,Textiles,2
+Chemicals,Electronics,2
+"Stone, clay & glass",Paper,2
+Machinery,"Stone, clay & glass",2
+Misc. manufacturing,Furniture,2
+Transportation eq.,Furniture,2
+Food,Primary metals,2
+Fabricated metals,Paper,1
+Apparel,Textiles,1
+Misc. manufacturing,Petroleum,1
+Petroleum,Food,1
+Machinery,Primary metals,1
+Leather,Primary metals,1
+Leather,Machinery,1
+Primary metals,Machinery,1
+Printing,Petroleum,1
+Misc. manufacturing,"Stone, clay & glass",1
+Leather,Transportation eq.,1
+Primary metals,Rubber & plastics,1
+Rubber & plastics,Petroleum,1
+Rubber & plastics,Transportation eq.,1
+Furniture,Misc. manufacturing,1
+"Stone, clay & glass",Chemicals,1
+Leather,Food,1
+Paper,"Stone, clay & glass",1
+Paper,Transportation eq.,1
+Chemicals,Paper,1
+Instruments,Transportation eq.,1
+Instruments,Lumber & wood,1
+Fabricated metals,Primary metals,1
+Primary metals,"Stone, clay & glass",1
+"Stone, clay & glass",Furniture,1
+Chemicals,Leather,1
+Printing,Textiles,1
+Rubber & plastics,Leather,1
+Lumber & wood,Transportation eq.,1
+Apparel,Paper,1
+Rubber & plastics,Textiles,1
+Rubber & plastics,"Stone, clay & glass",1
+Transportation eq.,Petroleum,1
+Food,Textiles,1
+Printing,Paper,1
+Electronics,Textiles,1
+Misc. manufacturing,Transportation eq.,1
+Chemicals,Instruments,1
+Rubber & plastics,Instruments,1
+Machinery,Petroleum,1
+"Stone, clay & glass",Petroleum,1
+Fabricated metals,Instruments,1
+Machinery,Furniture,1
+Transportation eq.,Paper,1
+,Textiles,1
+Apparel,Instruments,1
+Leather,Misc. manufacturing,1
+"Stone, clay & glass",Food,1
+Textiles,Apparel,1
+Misc. manufacturing,Leather,1
+,Petroleum,1
+Petroleum,Apparel,1
+Textiles,Food,1
+Apparel,Fabricated metals,1
+Rubber & plastics,Primary metals,1
+Petroleum,Primary metals,1
+Leather,Instruments,1
+Rubber & plastics,Paper,1
+Instruments,"Stone, clay & glass",1
