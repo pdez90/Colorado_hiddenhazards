@@ -2543,7 +2543,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "0290f6c36d4db3d463eb6915c40dd33f"
+      "checksum": "adb7e099dd883cf0e6fafea8fd3b65a2"
     },
     "data/cleanup_sites.csv": {
       "checksum": "54d15152050c9625f7081204f267bb2d"
@@ -2551,26 +2551,38 @@
     "data/enviroscreen_tracts.geojson": {
       "checksum": "6587db570fd0c807b3d7e6ae56270229"
     },
+    "data/firm_longevity.csv": {
+      "checksum": "5fc9116dbc626be0749a2754a262ce76"
+    },
     "data/geocoding_validation_frs.csv": {
-      "checksum": "4e13a7276f01e28f9407bb6bb02a4ae6"
+      "checksum": "460a892b8095528551157ec444139604"
     },
     "data/health_facilities.csv": {
       "checksum": "a6c9dd85f9b40f1d83c7c61bc0bef4ec"
     },
     "data/historical_sites.csv": {
-      "checksum": "b90ebb45edad56f6da833c2f6306e430"
+      "checksum": "d705f76066d1e3ca947a1add278a64a1"
+    },
+    "data/industry_mix.csv": {
+      "checksum": "f9a0cb01d0e036bfdd414c145845e088"
+    },
+    "data/radium_firms.csv": {
+      "checksum": "261b39fce722a524b7028fa55eb6d007"
     },
     "data/schools.csv": {
       "checksum": "27b404b6f3b14d272f2eac3498b95036"
     },
+    "data/site_firms.csv": {
+      "checksum": "106a1294aed3d9dc25fbfa227e08154e"
+    },
     "data/site_precursors.csv": {
-      "checksum": "e162e1140504f510b220da9de401e7ec"
+      "checksum": "09780cc9edc7ffee5559b05ebaebf984"
     },
     "data/site_years.csv": {
-      "checksum": "eaa5dade38f31571e05e3ed1557008a0"
+      "checksum": "07bd4ea660f445c87abb45554a8c86f3"
     },
     "data/sites.csv": {
-      "checksum": "43a40b663c1384814880fdbea367d163"
+      "checksum": "e3d590e04e0a2a6e13286f6106d64c8b"
     },
     "data/tri_facilities.csv": {
       "checksum": "2b76e47d2226c81c161b504737bf908c"

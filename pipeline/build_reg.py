@@ -59,5 +59,5 @@ for k,feats in J.items():
             lat=lat,lon=lon,programs=svc,tier=tier))
 reg=pd.concat([reg,pd.DataFrame(rows)],ignore_index=True)
 reg=reg[(reg.lat.between(36.5,41.5))&(reg.lon.between(-109.5,-101.5))|reg.lat.isna()]
-reg.to_pickle('work/inv/reg.pkl')
+reg.to_pickle('work/inv/reg.pkl'); reg.to_csv('work/inv/reg.csv',index=False)   # CSV for R/build_sites.R
 print(reg.groupby(['source','tier']).size().to_string()); print('with coords',reg.lat.notna().mean().round(3))

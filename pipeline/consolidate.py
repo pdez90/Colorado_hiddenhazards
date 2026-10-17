@@ -1,6 +1,6 @@
 """Combine parsed volumes into one establishment-year table, assign SIC (observed or predicted), hazard flags."""
 import json, glob, re, os, sys, collections
-import pandas as pd
+import pandas as pd, numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
 from sic_predict import predict
 
@@ -86,6 +86,75 @@ def main():
     m=df.sic.str.len().eq(0) & df.naics.str.len().gt(0)
     df.loc[m,'sic']=df.loc[m,'naics'].apply(sic_from_naics)
     df.loc[m,'sic_source']='naics'
+    # ---- OCR digit errors in printed SIC codes: when a printed code and its printed description disagree, the code is
+    # one digit away from a code whose usual description matches, and that code is common, use it ('2673 NITROGENOUS
+    # FERTILIZERS' -> 2873; '2092 EXPLOSIVES' -> 2892; '3291 MACHINE SHOPS, JOBBING' -> 3591). Logged in sic_ocr_fix.
+    from rapidfuzz import fuzz
+    pairs=[(i,k,c,str(d)) for i,cs,ds,src in zip(df.index,df.sic,df.sic_desc,df.sic_source) if src=='directory' and len(cs)==len(ds)
+           for k,(c,d) in enumerate(zip(cs,ds)) if str(d).strip()]
+    PP=pd.DataFrame(pairs,columns=['i','k','code','desc'])
+    PP['dl']=PP.desc.str.lower().str.strip()
+    TITLE=PP.groupby('code').dl.agg(lambda x: x.value_counts().index[0]).to_dict(); SUPPORT=PP.code.value_counts().to_dict()
+    pr=predict(PP.desc.tolist()); PP['pred']=[x[0] for x in pr]; PP['score']=[x[1] for x in pr]
+    one=lambda a,b: len(a)==len(b)==4 and sum(x!=y for x,y in zip(a,b))==1
+    PP['ok']=[fuzz.token_set_ratio(d,TITLE.get(c,''))>=60 for c,d in zip(PP.code,PP.dl)]
+    PP['pred_fit']=[fuzz.token_set_ratio(d,TITLE.get(c,'')) for c,d in zip(PP.pred,PP.dl)]
+    # candidate = the classifier's prediction, or else the one-digit neighbour of the printed code whose usual description fits best
+    COMMON=[c for c,n in SUPPORT.items() if n>=20 and len(c)==4]
+    # (only when the misread moved the code into another major group - the case that flips hazard flags - the printed code's
+    # usual description clearly does not fit (<40) and the neighbour's fits closely (>=90): '3011 JEWELRY' -> 3911, '2911 MEAT PACKING' -> 2011)
+    def neighbour(code,dl):
+        if fuzz.token_set_ratio(dl,TITLE.get(code,''))>=40: return None
+        best=None
+        for c in COMMON:
+            if one(code,c) and c[:2]!=code[:2]:
+                f=fuzz.token_set_ratio(dl,TITLE.get(c,''))
+                if f>=90 and (best is None or f>best[1]): best=(c,f)
+        return best
+    bad=~PP.ok & ~(np.array([one(a,b) for a,b in zip(PP.code,PP.pred)],dtype=bool) & (PP.pred_fit>=80))
+    for i in PP.index[bad]:
+        nb=neighbour(PP.at[i,'code'],PP.at[i,'dl'])
+        if nb: PP.at[i,'pred']=nb[0]; PP.at[i,'pred_fit']=nb[1]
+    FX=PP[(PP.code!=PP.pred) & ~PP.ok & (PP.pred_fit>=80) & np.array([one(a,b) for a,b in zip(PP.code,PP.pred)],dtype=bool) & (PP.pred.map(SUPPORT).fillna(0)>=20)]
+    df['sic_ocr_fix']=''
+    for r in FX.itertuples():
+        L=list(df.at[r.i,'sic']); L[r.k]=r.pred; df.at[r.i,'sic']=L
+        df.at[r.i,'sic_ocr_fix']=(df.at[r.i,'sic_ocr_fix']+f' {r.code}->{r.pred}').strip()
+    print('SIC OCR corrections:',len(FX),'codes in',FX.i.nunique(),'records')
+    # ---- hazardous codes that cannot belong to the firm (logged in sic_dropped):
+    # (a) software: some 1980s-1999 editions file software houses under computer equipment (3573 'prepackaged software');
+    # (b) a predicted code that contradicts the firm's own name (a bottler predicted as a soap maker), or a code pair bled in from the neighbouring entry: the firm's name says bakery/dairy/bottler/printer etc., the record
+    #     also carries a code of that industry, and the hazardous code is unrelated (a bakery with 'paving mixtures').
+    haz=lambda c: c[:2] in FE_MAJOR or c in EXT_4 or c[:2]=='10'
+    SOFT=r"SOFTWARE|PROGRAMMING|DATA PROCESSING|COMPUTER INTEGRATED SYSTEMS"
+    HARD=r"HARDWARE|EQUIP|CIRCUIT|PARTS|TRANSMISSION|MANUFACTUR|TERMINAL|DEVICE|SYSTEMS? FOR"
+    NAMEIND={'20':r"BAKER|BAKING|BISCUIT|DAIRY|DAIRIES|CREAMERY|BOTTLING|BREW|WINERY|DISTILL|\bMEATS?\b|SAUSAGE|CANDY|CANDIES|CONFECTION|"
+                  r"TORTILLA|COFFEE|ICE CREAM|CHEESE|FLOUR MILL|SNACK|NOODLE|\bFOODS?\b|SEVEN.UP|COCA.COLA|PEPSI|DR\.? PEPPER|ROYAL CROWN",
+             '27':r"BINDERY|PRINTING|PRINTERS|PUBLISHING|PUBLISHERS|NEWSPAPER|\bPRESS\b|LITHOGRAPH|GAZETTE",
+             '23':r"GARMENT|APPAREL|SPORTSWEAR|DRAPER|TAILOR"}
+    DESCIND={'20':r"MILK|BREAD|BAKERY|SOFT DRINK|BEVERAGE|\bMEAT|SAUSAGE|CANDY|CHEESE|ICE CREAM|TORTILLA|COFFEE|FLOUR|MALT|WINE|WINERY|BREW",
+             '27':r"PRINTING|PUBLISH|NEWSPAPER",'23':r"APPAREL|GARMENT|CLOTHING"}
+    HAZNAME=r"CHEM|PLASTIC|METAL|MACHIN|STEEL|IRON|RUBBER|PAINT|\bOIL\b|FERTIL|AUTO|TRUCK|TRAILER|TOOL|EQUIP|FOUNDR|WELD|ENGINE"
+    df['sic_dropped']=''
+    ANYIND='|'.join(DESCIND.values())
+    for i,cs,ds,nm,src,prod in zip(df.index,df.sic,df.sic_desc,df.name,df.sic_source,df['product']):
+        if not any(haz(c) for c in cs): continue
+        nm=str(nm).upper(); paired=len(cs)==len(ds); keep=[]; drop=[]
+        simple=not re.search(r"\d",nm) and len(nm.split())<=5 and not re.search(HAZNAME,nm)
+        alltxt=(' '.join(map(str,ds))+' '+(prod if isinstance(prod,str) else '')).upper()
+        # (c) a code predicted from a description that names a non-hazardous industry or software ('Winery' -> 3599)
+        predbad=src=='predicted' and not re.search(r"\bCANS?\b|\bINKS?\b|MACHIN|EQUIP|CONTAINER|PRESSES|\bPLATES?\b|CHEMICAL|METAL|PLASTIC",alltxt) and \
+                (bool(re.search(ANYIND,alltxt)) or (bool(re.search(SOFT,alltxt)) and not re.search(HARD,alltxt)))
+        for k,c in enumerate(cs):
+            d=str(ds[k]).upper() if paired else ''
+            bad=haz(c) and (predbad or (re.search(SOFT,d) and not re.search(HARD,d)) or
+                            (simple and any(re.search(p,nm) and (src=='predicted' or any(x[:2]==s2 for x in cs) or re.search(DESCIND[s2],d)) for s2,p in NAMEIND.items())))
+            (drop if bad else keep).append(c)
+        if drop:
+            if paired and keep: df.at[i,'sic_desc']=[d for c,d in zip(cs,ds) if c in keep]
+            soft=bool(re.search(SOFT,alltxt))
+            df.at[i,'sic']=keep or (['7372'] if soft else []); df.at[i,'sic_dropped']=' '.join(drop)
+    print('hazardous codes dropped as software / bled-in:',(df.sic_dropped!='').sum(),'records')
     df['sic2']=df.sic.apply(lambda L: sorted({c[:2] for c in L}))
     df['fe_hazard']=df.sic2.apply(lambda L: any(c in FE_MAJOR for c in L))
     df['fe_sectors']=df.sic2.apply(lambda L: '; '.join(FE_MAJOR[c] for c in L if c in FE_MAJOR))

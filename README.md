@@ -11,9 +11,11 @@ cleanup sites (including brownfields), schools, health facilities and CDPHE Envi
 | Path | Contents |
 |---|---|
 | `pipeline/` | Python pipeline: page extraction, Tesseract OCR, format-specific parsers, SIC/NAICS coding, cross-year linking, offline TIGER/Line geocoder, inventory matching, exports |
+| `R/` | **R re-implementation** of the geocoder, site building and inventory matching, exposures and health models, checked against the Python results (see `R/README.md`) |
 | `run_all.sh` | Runs the pipeline end to end (`./run_all.sh`), or from saved OCR (`./run_all.sh parse`) |
 | `app/` | R Shiny app (`shiny::runApp("app")`) and its prepared data |
 | `data/by_year/` | **One geocoded CSV per directory edition** (25 editions, 68,368 listings) |
+| `data/geocoder/` | ZIP centroids and ZIP–town table used by the geocoder, and every address key with its geocode (for checking the R geocoder) |
 | `data/results/` | Site workbook (`CO_hazardous_sites_1961-2002.xlsx`), all sites (`.geojson`), all listings, listings that could not be street-located, geocoding validation |
 | `data/historical/` | Pre-1960 layer: hazardous-trade listings (`CO_pre1960_hazardous_listings.csv`) and firm-locations (`CO_pre1960_hazardous_sites.csv`) from the Colorado State Business Directory, 1871–1956; GNIS place gazetteer |
 | `data/ocr/` | Saved Tesseract output for every page (lets anyone rerun everything after OCR without the scans) |
@@ -22,33 +24,69 @@ cleanup sites (including brownfields), schools, health facilities and CDPHE Envi
 
 1. **Directories.** 25 editions of the Colorado Directory of Manufacturers (1961–2002) were OCR'd (Tesseract 5.3.4, word boxes)
    and parsed with format-specific parsers (`pipeline/volumes.py` maps each volume to its year and format).
-   Columns are rebuilt from word positions. OCR digit confusions (C→0, e/€/@→8, S/$→9) are corrected using field context.
+   Columns are rebuilt from word positions. OCR digit confusions (C→0, e/€/@→8, S/$→9, B→8) are corrected using field context;
+   a ZIP code that the parser left at the end of the street ("1546 GLENARM PL 0202") is moved back to the ZIP field.
 2. **Industry.** Printed SIC codes (1965, 1967–1993) or NAICS codes (1999, 2002). The 1961, 1962 and 1966 editions print only product
    descriptions; codes are inferred with a nearest-neighbour classifier trained on description–code pairs from the other editions,
    plus keyword rules for smelters, refineries, plating, wood preserving, etc. (`industry_code_source` records which).
+   Two checks guard against OCR errors in codes (`pipeline/consolidate.py`): a printed code whose printed description belongs to a
+   code one digit away in another industry is corrected ("2911 MEAT PACKING PLANTS" → 2011; 795 codes, logged in `sic_ocr_fix`), and a
+   hazardous code is removed when it cannot belong to the firm – software houses filed under computer equipment, or a code bled in
+   from the neighbouring entry that contradicts the firm's own name or description (a bakery with "paving mixtures", a bottler
+   predicted as a soap maker; 382 listings, logged in `sic_dropped`).
 3. **Hazardous sectors.** Frickel & Elliott's seven: SIC 28 chemicals, 29 petroleum refining, 30 rubber & plastics, 33 primary metals,
    34 fabricated metals, 35 industrial machinery, 37 transportation equipment (NAICS 325, 324, 326, 331, 332, 333, 336).
    An *extended* set adds wood preserving, tanning, electronic components and circuit boards, batteries, photographic chemicals and ore milling.
-4. **Linking.** Listings are linked across editions into establishments (fuzzy name within ZIP or city).
+4. **Linking.** Listings are linked across editions into establishments (token-sorted fuzzy name ≥ 92 within ZIP or city, or ≥ 80 at the
+   same street address; 68,368 listings → 40,942 establishments, largest 27 listings).
 5. **Geocoding (fully reproducible, offline).** `pipeline/tiger_geocode.py` interpolates house numbers on US Census TIGER/Line 2023
-   ADDRFEAT address ranges, tolerating OCR errors (street-type and direction misreads, trailing junk, fuzzy street names ≥86 similarity,
-   neighbouring ZIPs within 12 km). Results are deterministic given the inputs. Listings within 30 m form one **site**.
+   ADDRFEAT address ranges, tolerating OCR errors (street-type and direction misreads, unit numbers, trailing junk, fuzzy street names
+   ≥ 86 similarity that keep the street's own numbers, neighbouring ZIPs within 12 km). Any loosened match is `address_approx`, never
+   `address`; so is an address printed without a direction when the same number exists on a directional version of the street in
+   the same town or a neighbouring ZIP ("4300 LIPAN" in Denver could be 4300 N or 4300 S Lipan; `range_interp_dirambig`, 8% of
+   address keys). Results are deterministic given the inputs. Listings within 30 m form one **site**.
 6. **Inventory matching.** Each site is compared with EPA's Facility Registry Service (Colorado state file), EPA TRI, and CDPHE
    Hazardous Materials & Waste Management Division layers. A site is "known" if a record lies within 75 m (cleanup programs),
    100 m (TRI) or 40 m (RCRA handlers, other permits), shares the firm's name within 250 m, has the same address, or lies inside a
-   cleanup site boundary. **"Not on any list"** = none of these.
+   cleanup site boundary. Sites placed only approximately are searched over 250 m, and every site's radius grows by the spread of its
+   member points. **"Not on any list"** = none of these.
 
-## Key results (reproduced run, after the October 2026 geocoding fixes)
+## Key results (reproduced run, 17 October 2026, after the accuracy review below)
 
-* 68,368 listings → 33,473 establishments; **4,458 hazardous-sector sites** located at street level.
-* **1,842 (41%) are on no current federal or state inventory** (1,168 of them high confidence); 711 (16%) are on a cleanup or
-  contamination list; 333 report to TRI; 1,069 are known only as RCRA hazardous-waste handlers; 503 have only other EPA permits or
+* 68,368 listings → 40,942 establishments; **4,312 hazardous-sector sites** located at street level.
+* **1,331 (31%) are on no current federal or state inventory** (936 of them high confidence); 860 (20%) are on a cleanup or
+  contamination list; 389 report to TRI; 1,238 are known only as RCRA hazardous-waste handlers; 494 have only other EPA permits or
   solid-waste records.
-* 1,497 sites hosted two or more hazardous-sector firms over time.
-* Census tracts containing a potentially unknown site have higher EnviroScreen scores (median percentile 61.2 vs 42.1 for other tracts),
-  more low-income residents (23.8% vs 18.8%) and lower educational attainment (5.8% vs 4.5% without a high-school diploma); all p < 0.001.
-  The difference in people of color is small (28.1% vs 26.3%, p = 0.02). Tracts with unknown sites look like tracts with only known sites,
-  consistent with Frickel & Elliott's finding that relic sites are widespread rather than concentrated where regulators look.
+* 1,642 sites hosted two or more hazardous-sector firms over time.
+* Census tracts containing a potentially unknown site have higher EnviroScreen scores (median percentile 61.8 vs 43.5 for other tracts),
+  more low-income residents (24.7% vs 19.1%) and lower educational attainment (5.8% vs 4.5% without a high-school diploma); all p < 0.001.
+  The difference in people of color is small and not significant (27.8% vs 26.4%, p = 0.06). Tracts with unknown sites have the same
+  EnviroScreen scores as tracts with only known sites (61.8 vs 60.4, p = 0.57), consistent with Frickel & Elliott's finding that relic
+  sites are widespread rather than concentrated where regulators look.
+
+## Accuracy review (17 October 2026)
+
+An independent code review and a re-check of every stage changed the following. Each fix is in the code, so `run_all.sh` reproduces it.
+
+| Problem found | Effect before the fix | Fix |
+|---|---|---|
+| Street-type mismatch (ST vs AVE) accepted as an exact address | some points on the wrong street | now `address_approx` |
+| Suite/unit numbers read as part of the street; fuzzy street matches could change the street number ("W 38TH" ↔ "W 36TH") | wrong street | units stripped; fuzzy matches must keep the street's digits |
+| Interpolation along a segment in raw degrees | small along-street shifts | distances scaled by cos(latitude) |
+| A site at an approximate location called "not on any list" after a 40–100 m search | hidden count inflated | approximate sites searched over 250 m; radius grows with the site's spread |
+| One-digit OCR errors in printed SIC codes ("2911 MEAT PACKING") | non-hazardous firms flagged (and the reverse) | 795 codes corrected |
+| Codes bled in from neighbouring entries; software houses filed under computers | bakeries, bottlers, printers, software firms flagged hazardous | 382 listings' hazardous codes removed |
+| Cross-edition linking chained unrelated firms (one "firm" had 4,776 listings) | firm histories and site persistence wrong | stricter name matching; largest firm now 27 listings |
+| Name matching to inventories used a random 12 of a site's names | results varied between runs at 167 busy addresses | all names, fixed order |
+| ZIP codes left in the street field | 419 listings without a ZIP, many unplaced | ZIP recovered |
+| An address printed without its direction placed on the plain street when a directional street also holds that number (Denver's 4300 LIPAN → 4300 N Lipan, but the firm was at 4300 S Lipan, 15 km away) | about 1 in 25 "exact" points on the wrong side of town | flagged `dirambig`, counted as approximate (medium confidence) |
+| Pre-1960: a trade word from the next listing in an interleaved line ("Goldhammer S, phys, 312 17th. GOODRICH RUBBER CO") | physicians, grocers etc. listed as hazardous trades; addresses of neighbours | 350 entries dropped, 732 streets corrected |
+
+Net effect since the previously published run: hazardous-sector sites 4,458 → 4,312, sites on no list 1,842 → 1,331, and high-confidence hidden sites 1,168 → 936. A random check of 50 "not on any list" sites
+against the directory text still found about 1 in 10 with a doubtful industry code (a bookbinder coded as metal stamping, a jeweller
+whose 1984 code was misread as tires): treat each site as a lead to check, not a finding. Town headings are sometimes wrong in the
+1961, 1962 and 1965 editions (e.g. Boulder pages filed under Allenspark); those listings fail the geocoder's 15 km town check and stay
+off the map rather than being misplaced.
 
 ## How good is the geocoding?
 
@@ -61,14 +99,25 @@ stated town and measured the distance to our point:
 
 | geocode level | sampled | compared | median | 90th pct | within 100 m | within 250 m | over 1 km |
 |---|---|---|---|---|---|---|---|
-| address | 654 | 427 | 49 m | 182 m | 78% | 93% | 0.9% |
-| address_approx | 331 | 131 | 87 m | 597 m | 54% | 78% | 9.2% |
+| address | 679 | 455 | 49 m | 171 m | 79% | 94% | 0.9% |
+| address_approx | 299 | 119 | 103 m | 946 m | 50% | 75% | 10.1% |
 
-About a third of address-level listings have no matching address point today (the building is gone, the street was renumbered or
+(19 sampled sites fell back to a ZIP centroid under the corrected geocoder and are no longer mapped.)
+
+**Re-check on the final data** (17 October 2026, fresh random sample of 300 address-level and 100 approximate sites, queried from
+a browser in 20 batched requests; `data/results/geocoding_validation_addresspoints_recheck.csv`): address level n = 131 compared,
+median 67 m, 88% within 250 m, 3.8% (5 sites) over 1 km; approximate n = 32, median 97 m, 75% within 250 m, 12.5% over 1 km.
+All five address-level misses were Denver addresses printed without a direction ("4440 YATES", "4300 LIPAN", "4200 FOX") that the
+geocoder had put on the north side of town while the State's address points only know the south-side address, 14–16 km away.
+That is the `dirambig` rule above: those points are now approximate, and 119 hidden sites moved from high to medium confidence.
+Addresses that do not exist today anywhere in the stated town (129 of the 167 unmatched address-level sites) cannot be checked.
+
+(Run on 17 October 2026 before the last data fixes, which moved few points; the State's service is not reachable from every network, so
+`validate_addresspoints.py` leaves the saved results in place when it cannot connect.) About a third of address-level listings have no matching address point today (the building is gone, the street was renumbered or
 renamed, or the house number was misread); those could not be checked.
 
 **2. Against EPA Facility Registry coordinates** for identical addresses (`pipeline/validate_geocoding.py`,
-`data/results/geocoding_validation.md`): address level n = 1,845, median 48 m, 88% within 250 m, 2.7% over 1 km
+`data/results/geocoding_validation.md`, rerun on the final data): address level n = 1,841, median 48 m, 88% within 250 m, 2.7% over 1 km
 (FRS coordinates carry their own error).
 
 **3. Against the scans.** For 25 randomly chosen sites we compared the parsed address with the printed page: 23 matched, one house
@@ -81,7 +130,7 @@ direction to match, falls back to a direction-free match only as `address_approx
 city. 113 sites moved by more than 1 km. Address-level points over 1 km from the address point fell from 4.7% to 0.9% and from 3.6% to
 2.7% against FRS.
 
-**How to read it.** `address` points are good to about a city block (median ~50 m, 93% within 250 m), with roughly 1–3% badly wrong,
+**How to read it.** `address` points are good to about a city block (median ~50 m, 94% within 250 m), with roughly 1–3% badly wrong,
 mostly because of misread house numbers. `address_approx` points are right to the street or neighbourhood but about 1 in 10 are more
 than 1 km off; check them before field work. Listings placed only at a ZIP or city centroid are in the edition CSVs but not on the map.
 Coverage varies by edition: 22–76% of listings geocode at address level (`data/results/geocoding_coverage_by_year.csv`).
@@ -112,17 +161,17 @@ Coefficients for 1 SD more exposure, spatial error models (standard errors in pa
 
 | Outcome | Hidden sites, M4 (per SD) | Known historical, M4 | Placebo (non-hazardous mfrs), M4+placebo | ΔAIC M3→M4 | LR p (M4 vs M3) |
 |---|---|---|---|---|---|
-| Asthma hospitalization rate (log) | 0.025 (0.041) | 0.054 (0.049) | 0.038 (0.045) | 1.7 | 0.544 |
-| Low birth weight (%) | 0.075 (0.163) | 0.033 (0.198) | -0.063 (0.179) | 1.8 | 0.643 |
-| Life expectancy (years) | -0.140 (0.152) | -0.264 (0.182) | -0.391 (0.167)* | 1.1 | 0.358 |
-| Heart disease (index) | 1.067 (0.964) | -1.454 (1.119) | 2.989 (1.086)** | 0.7 | 0.269 |
-| Cancer (index) | 0.008 (0.918) | 0.160 (1.076) | -0.116 (1.030) | 2.0 | 0.993 |
-| Diabetes (index) | 1.214 (0.885) | -0.367 (1.017) | 1.377 (1.003) | 0.1 | 0.17 |
-| Poor mental health (%) | -0.154 (0.088) | 0.080 (0.106) | 0.009 (0.097) | -1.0 | 0.0801 |
+| Asthma hospitalization rate (log) | 0.003 (0.040) | 0.076 (0.050) | 0.025 (0.041) | 2.0 | 0.934 |
+| Low birth weight (%) | 0.068 (0.159) | 0.044 (0.203) | -0.053 (0.165) | 1.8 | 0.671 |
+| Life expectancy (years) | 0.056 (0.147) | -0.435 (0.186)* | -0.379 (0.154)* | 1.9 | 0.702 |
+| Heart disease (index) | 0.588 (0.925) | -1.092 (1.127) | 2.541 (1.003)* | 1.6 | 0.525 |
+| Cancer (index) | 0.059 (0.884) | 0.178 (1.086) | 0.152 (0.952) | 1.9 | 0.947 |
+| Diabetes (index) | 0.866 (0.846) | 0.083 (1.021) | 1.080 (0.926) | 0.9 | 0.306 |
+| Poor mental health (%) | -0.145 (0.086) | 0.093 (0.107) | -0.023 (0.090) | -0.9 | 0.0896 |
 
 **Reading.** Unadjusted, tracts with more hidden sites have more asthma hospitalizations, lower life expectancy and more heart disease
 and diabetes. Most of that goes away with SES and demographics, and the rest goes away once regulated hazards (above all
-cleanup-site density) are in the model: hidden sites add no explanatory power for any outcome (likelihood-ratio p ≥ 0.08). The
+cleanup-site density) are in the model: hidden sites add no explanatory power for any outcome (likelihood-ratio p ≥ 0.09). The
 placebo is as strong as or stronger than the hidden sites (life expectancy, heart disease). So at the tract level, with these outcomes,
 the association is with industrial land use generally, not specifically with unregulated hazardous sites. This does not show hidden
 hazards are harmless: tract averages and modelled outcomes are blunt, and many cleanup sites are themselves former hidden sites
@@ -140,22 +189,22 @@ Block groups: 3439, natural-cause deaths 2015-2019: 158,758
 | Outcome | Model | Hidden sites RR per SD | Known historical | Placebo (non-hazardous) | Cleanup sites | AIC |
 |---|---|---|---|---|---|---|
 | natural-cause | M1 SES+age+PM2.5 |  |  |  |  | 30739.0 |
-| natural-cause | M2 +regulated |  |  |  | 1.027 (0.993–1.062) | 30736.0 |
-| natural-cause | M3 +known historical |  | 1.022 (0.979–1.066) |  | 1.017 (0.979–1.056) | 30736.6 |
-| natural-cause | M4 +hidden | 1.033 (0.993–1.074) | 1.004 (0.958–1.051) |  | 1.010 (0.971–1.051) | 30734.5 |
-| natural-cause | M4 hidden high-confidence only | 1.013 (0.976–1.051) | 1.014 (0.968–1.062) |  | 1.014 (0.976–1.054) | 30737.9 |
-| natural-cause | Placebo: M2 +non-hazardous mfrs |  |  | 1.070 (1.029–1.111)* | 0.994 (0.956–1.033) | 30719.7 |
-| natural-cause | M4 +placebo | 1.012 (0.971–1.055) | 0.993 (0.948–1.040) | 1.066 (1.022–1.112)* | 0.993 (0.953–1.035) | 30723.1 |
-| all-cause | M1 SES+age+PM2.5 |  |  |  |  | 31421.8 |
-| all-cause | M2 +regulated |  |  |  | 1.034 (1.001–1.067)* | 31414.2 |
-| all-cause | M3 +known historical |  | 1.030 (0.989–1.073) |  | 1.019 (0.984–1.056) | 31413.3 |
-| all-cause | M4 +hidden | 1.031 (0.994–1.070) | 1.012 (0.969–1.057) |  | 1.013 (0.977–1.051) | 31411.1 |
-| all-cause | M4 hidden high-confidence only | 1.013 (0.978–1.050) | 1.022 (0.978–1.069) |  | 1.017 (0.981–1.054) | 31414.4 |
-| all-cause | Placebo: M2 +non-hazardous mfrs |  |  | 1.069 (1.031–1.108)* | 1.000 (0.965–1.037) | 31396.7 |
-| all-cause | M4 +placebo | 1.012 (0.973–1.053) | 1.002 (0.959–1.047) | 1.063 (1.021–1.106)* | 0.997 (0.959–1.036) | 31399.9 |
+| natural-cause | M2 +regulated |  |  |  | 1.027 (0.993–1.062) | 30736.1 |
+| natural-cause | M3 +known historical |  | 1.045 (0.999–1.092) |  | 1.006 (0.968–1.045) | 30732.1 |
+| natural-cause | M4 +hidden | 1.004 (0.967–1.042) | 1.042 (0.993–1.094) |  | 1.005 (0.967–1.046) | 30734.1 |
+| natural-cause | M4 hidden high-confidence only | 1.007 (0.974–1.042) | 1.040 (0.990–1.092) |  | 1.005 (0.967–1.045) | 30733.9 |
+| natural-cause | Placebo: M2 +non-hazardous mfrs |  |  | 1.067 (1.029–1.106)* | 0.996 (0.959–1.035) | 30718.5 |
+| natural-cause | M4 +placebo | 0.990 (0.953–1.029) | 1.027 (0.977–1.079) | 1.064 (1.023–1.106)* | 0.990 (0.950–1.031) | 30720.8 |
+| all-cause | M1 SES+age+PM2.5 |  |  |  |  | 31421.9 |
+| all-cause | M2 +regulated |  |  |  | 1.034 (1.001–1.067)* | 31414.3 |
+| all-cause | M3 +known historical |  | 1.051 (1.008–1.095)* |  | 1.010 (0.974–1.047) | 31408.1 |
+| all-cause | M4 +hidden | 1.005 (0.970–1.041) | 1.047 (1.001–1.097)* |  | 1.009 (0.973–1.047) | 31410.0 |
+| all-cause | M4 hidden high-confidence only | 1.008 (0.976–1.041) | 1.045 (0.998–1.095) |  | 1.009 (0.973–1.046) | 31409.7 |
+| all-cause | Placebo: M2 +non-hazardous mfrs |  |  | 1.068 (1.032–1.105)* | 1.002 (0.967–1.039) | 31394.6 |
+| all-cause | M4 +placebo | 0.991 (0.956–1.028) | 1.032 (0.985–1.082) | 1.063 (1.024–1.103)* | 0.994 (0.956–1.032) | 31396.1 |
 
-Hidden sites raise mortality by about 3% per SD, with confidence intervals that include no effect; the non-hazardous-manufacturer
-placebo is larger (about 7% per SD) and significant, and including it shrinks the hidden-site estimate to 1%. The same pattern as the
+Hidden sites are not associated with mortality (rate ratio 1.00 per SD, 95% CI 0.97–1.04); the non-hazardous-manufacturer placebo is
+(about 7% per SD, significant), and known historical sites sit in between (about 4–5%). The same pattern as the
 tract analysis: mortality is higher around historical industry generally, and these data cannot attribute it to the hidden hazardous
 sites specifically. Age adjustment is limited to block-group age shares (the death file has no age), so residual age confounding is
 possible.
@@ -176,6 +225,10 @@ python pipeline/fetch_inputs.py          # TIGER, EPA FRS + TRI, CDPHE layers, E
 mkdir -p work && tar xzf data/ocr/dcm_ocr_output.tar.gz -C work
 ./run_all.sh parse
 ```
+
+In R: `Rscript R/run_all.R` reruns geocoding, site building and inventory matching, exposures and the health models from the
+Python hand-off files (see `R/README.md`; comparisons in `data/results/r_vs_python.md`: identical sites and statuses, geocodes identical
+to 0.0 m on all 36,615 address keys, model coefficients equal to 1e-6).
 
 Network inputs change over time (FRS, TRI, CDPHE layers are live); the published results used downloads of 16 October 2026.
 OCR output can differ slightly across Tesseract versions, which is why the OCR output is saved in `data/ocr/`.
@@ -199,8 +252,17 @@ The manufacturers' directory starts in 1961, but Colorado's smelters, foundries,
 4. **Links firms** across editions (fuzzy names within a town) and to the 1961–2002 directory, by name in the same city or by a street
    address within 40 m of a later hazardous site.
 
-Result: 8,386 hazardous-trade listings → 7,495 firm-locations; 928 at a street address; 399 link to the 1961–2002 directory,
-giving 249 later sites a documented pre-1960 hazardous precursor.
+Result: 8,203 hazardous-trade listings → 7,305 firm-locations; 805 at a street address; 356 link to the 1961–2002 directory,
+giving 222 later sites a documented pre-1960 hazardous precursor.
+
+**Radium and uranium.** Colorado's carnotite ores made it the world's main radium source in 1910–1922; Denver refined it, and spas sold
+"radium water" and radium cave baths as cures. `pipeline/app_radium.py` collects every radium, uranium and vanadium firm in both
+directories (names, products and SIC 1094; detection instruments excluded) into `app/data/radium_firms.csv`: 53 firm-places from the
+business directories (Colorado Radium Products Co, Radium Ores Co, National Radium Co, Minerals Recovery Co, Hot Springs Hotel &
+Radium Cave Baths in Idaho Springs, Placerville Radium Springs, the Vanadium Corporation of America mills…) and 31 from the
+manufacturers' directory (uranium mills at Rifle, Durango, Naturita, Maybell and Telluride, Cotter Corp at Cañon City, S.W.
+Shattuck Chemical at 1805 S Bannock – now the Shattuck Superfund site). Most are placed at the town only; names come from
+uncorrected OCR. The map shows them as a yellow layer.
 **Caveats:** the text layers are uncorrected OCR with columns interleaved, so names can be garbled (`name_quality`), some entries are
 missed, and counts are not comparable between editions or with the manufacturers' directory. 1871, 1875 and the user-supplied 1877
 volumes are read from the Internet Archive / Google Books copies, which carry text layers; the CU 1885 and 1920 scans have no text
@@ -215,16 +277,20 @@ shiny::runApp("app")
 ```
 
 * **Map** – historical hazardous sites coloured by current regulatory status or by **persistence** (years between first and last hazardous
-  listing, extended back to the pre-1960 directories where a precursor is found), filtered by years listed (1877–2002), sector, status and confidence;
+  listing, extended back to the pre-1960 directories where a precursor is found), filtered by years listed (1871–2002), sector, status and confidence;
+  each site's popup lists **every firm at the address**: years listed, what the directory says it made, year established, employment
+  class, hazardous-sector firms shaded (all of it downloadable in Data & downloads);
+  a **radium & uranium** layer (yellow);
   a **pre-1960 layer** (brown; firms placed only at a town centre share one marker per town whose popup lists them all, black ring = firm or address still listed after 1960);
   layers for EPA TRI facilities, schools, hospitals, clinics, residential care, brownfields, voluntary cleanup, Superfund, RCRA corrective
   action and land-use controls; census tracts shaded by any EnviroScreen indicator.
-* **Trends** – sites per edition by sector and by status; share on no inventory; pre-1960 hazardous-trade firms per business-directory edition.
+* **Trends** – sites per edition by sector and by status; share on no inventory; **phases of Colorado manufacturing** (share of all
+  listed firms by industry, every edition); how long firms stayed listed, hazardous vs other; pre-1960 hazardous-trade firms per edition.
 * **Neighborhoods** – distributions of EnviroScreen and socioeconomic indicators for tracts with vs. without hazardous sites,
   with potentially unknown sites vs. all others, unknown vs. known-only, and TRI vs. non-TRI tracts; medians, population-weighted means,
   Wilcoxon tests.
 * **Nearby schools & health care** – schools and health facilities within a chosen distance of potentially unknown sites.
-* **Data & downloads** – per-edition geocoded CSVs, filtered sites, pre-1960 firms, geocoding validation.
+* **Data & downloads** – per-edition geocoded CSVs, filtered sites, firms at the filtered sites, pre-1960 firms, geocoding validation.
 
 To deploy (e.g. shinyapps.io), copy `data/by_year/` into `app/data/by_year/` so the app folder is self-contained.
 

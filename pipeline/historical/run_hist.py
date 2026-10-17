@@ -31,13 +31,48 @@ def is_person(r):
     if OCC.search(head) and re.match(r"^[A-Z][a-z’']+\s+[A-Z][a-z]+", head.strip(' .,"<>*')): return True   # 'Surname Given, occupation, Employer'
     return bool(PERSON.search(e)) and not FIRM.search(str(r.name))
 df['is_person'] = df.apply(is_person, axis=1)
+# --- interleaved columns (1900+ text layers run several listings into one line):
+# (1) a trade that comes after another listing's address belongs to that next listing ('Goldhammer S, phys, 312 17th. GOODRICH RUBBER CO')
+# (2) the street must follow the firm within its own listing; text after the next 'Surname Initials,' is someone else's
+from hist_parse import ADDR
+NEXT = re.compile(r"[,.;]\s+[A-Z][a-z’']+\s+[A-Z](?:\s[A-Z])?(?:\s[A-Z][a-z]+)?,\s")
+def own_listing(r):
+    e = str(r.entry); m = re.search(re.escape(str(r.trade)), e, re.I)
+    if not m: return pd.Series([True, r.street])
+    in_name = str(r.trade).lower() in str(r['name']).lower()
+    head = e[:m.start()]
+    if not in_name and ADDR.search(head) and not re.search(r"(?i)\b(?:mfrs?|manufactur|works|shop)\b", head): return pd.Series([False, ''])
+    rest = e[m.end():]; cut = NEXT.search(rest); rest = rest[:cut.start()] if cut else rest
+    a = ADDR.search(rest) or (ADDR.search(head) if in_name else None)
+    return pd.Series([True, (a.group(1) + ' ' + a.group(2)) if a else ''])
+LINE = (df.year >= 1900) & (df.year != 1950) & (df.sector != 'Radium & uranium')   # radium firms: names repaired below, placed at town
+df[['own', 'street2']] = [True, None]
+df.loc[LINE, ['own', 'street2']] = df[LINE].apply(own_listing, axis=1).values
+print('line-mode entries whose trade belongs to a neighbouring listing:', int((~df.own.astype(bool)).sum()),
+      '; streets changed:', int((LINE & (df.street2.fillna('') != df.street.fillna(''))).sum()))
+df.loc[LINE, 'street'] = df.loc[LINE, 'street2']
+df = df[df.own.astype(bool)].drop(columns=['own', 'street2'])
+df.loc[df.entry.str.contains(r"\br\.\s?(?:rear\s+)?\d", na=False), 'is_person'] = True     # 'r. rear 2152 Champa' = residence
 # corporate / sales offices are not works: keep the firm, but do not map it at the office address
 df['office'] = df.entry.str.contains(r"(?i)\b(?:offices?|bldg|blk|block|building|rooms?|suite)\b|\b(?:agt|agency|agents?)\b")
 print('dropped as persons:', int(df.is_person.sum()), '; office listings:', int(df.office.sum()))
+# radium & uranium: the text layers interleave columns, so the entry's first words are often a neighbouring listing
+# ('Roehford Mrs E, hairdressing, 26 Rocky Mountain Radium Products'); take the firm name around the radium/vanadium words instead,
+# and drop descriptive town paragraphs ('At Idaho Springs there are radium water baths') and bare section headings
+RAD = df.sector == 'Radium & uranium'
+FIRM_RAD = (r"((?:(?:[A-Z][\w'.]*|&)\s+){0,4}(?:Radium|RADIUM|Carnotite|Vanadium|VANADIUM|Uranium|MINERALS RECOVERY|Minerals Recovery)"
+            r"(?:[\w&'. ]{0,40}?\b(?:Products|Springs|Baths|Mill|Ores)(?:\s+(?:Co|CO|co)\b)?|[\w&'. ]{0,40}?\b(?:Co|CO|co|Corp\w*|Gorp|Company)\b))")
+def _radname(e):
+    m = re.search(FIRM_RAD, str(e)); return m.group(1).strip(' -—“"&') if m else None
+nm = df.loc[RAD, 'entry'].map(_radname)
+df.loc[RAD & nm.reindex(df.index).notna(), 'name'] = nm.dropna()
+_moved = RAD & pd.Series([str(e).find(str(n)) > 3 for e, n in zip(df.entry, df.name)], index=df.index)
+df.loc[RAD, 'street'] = ''   # their addresses are offices or belong to the neighbouring listing: place radium firms at the town only
+df = df[~(RAD & (nm.reindex(df.index).isna() | df.entry.str.match(r"\s*(?:At |largest|of |outschools|[a-z])")))]
 df = df[~df.is_person]
 # listings whose name is plainly not an industrial firm (column-interleaving in the 1950 coded volume attaches codes to neighbours)
 NONIND = r"(?i)\b(groc\w*|grocery|club|fruit|cafe|caf[eé]|store|hotel|motel|assn|association|church|school|bank|tavern|bar|restaurant|beauty|barber|insurance|realty|sales|calculating|florist|house|saloon|bakery|dairy|drug\w*|press club)\b"
-df = df[~df.name.str.contains(NONIND)]
+df = df[~df.name.str.contains(NONIND) | (df.sector == 'Radium & uranium')]   # radium-cure hotels/baths are kept on purpose
 # names made only of trade/place words are section headings or ad slogans, not firms
 GENERIC = r"(?i)\b(the|co|company|inc|corp|mfg|manufactur\w*|works?|and|of|sheet|metal|iron|steel|brass|wire|ornamental|structural|foundr\w*|machine\w*|machinists?|shops?|tinners?|tanners?|tannery|assay\w*|smelt\w*|refin\w*|reduction|sampling|mills?|chemicals?|chemists?|gas|electric|light|oil|supply|supplies|plating|electro|platers?|wagons?|carriage|makers?|boilers?|repair\w*|denver|colorado|rocky|mountain|creosote|asphalt|rubber|powder|soap|paint|cornice|galvaniz\w*|engines?|mining|coal|ore|stamp|fertiliz\w*|machining|welding|painting|body|auto|suite|upon|request|office|for|years?|phone|pounders|finishers|pattern|consumers|petroleum|coordinator|abstract)\b"
 distinct = df.name.str.replace(GENERIC, ' ', regex=True).str.replace(r'[^A-Za-z]', '', regex=True)

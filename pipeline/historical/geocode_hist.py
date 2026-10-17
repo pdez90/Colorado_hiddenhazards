@@ -38,7 +38,7 @@ for r in df.itertuples():
         st = re.sub(r"(\d+)D\b", r"\1ND", st)                     # '3d' -> '3RD' handled by ordfix; '2d' -> '2ND'
         st = re.sub(r"\b(\d+)ND\b", lambda m: m.group(1) + {1: 'ST', 2: 'ND', 3: 'RD'}.get(int(m.group(1)) % 10 if int(m.group(1)) % 100 not in (11, 12, 13) else 0, 'TH'), st)
         la, lo, q = geo.geocode(st, r.town, '') if st else (None, None, 'none')
-        if q.startswith('range_interp'): lat, lon, prec = la, lo, 'street'
+        if q in ('range_interp', 'range_interp_cityzips'): lat, lon, prec = la, lo, 'street'
     if lat is None and isinstance(r.town, str) and r.town in TC:
         lat, lon, _ = TC[r.town]; prec = 'town'
     out.append((lat, lon, prec, TC.get(r.town, (None, None, ''))[2] if isinstance(r.town, str) else ''))

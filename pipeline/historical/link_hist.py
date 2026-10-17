@@ -50,9 +50,9 @@ for f, g in H.groupby('hfirm'):
             m = C[sc == sc.max()]
             best = dict(dcm_name=m.name.iloc[0], dcm_years=f"{int(m.year.min())}-{int(m.year.max())}",
                         dcm_site=next((s for s in m.site_id if isinstance(s, str)), ''), link='name', link_score=int(sc.max()),
-                        dcm_lat=m.lat.dropna().iloc[0] if m.lat.notna().any() else np.nan,
-                        dcm_lon=m.lon.dropna().iloc[0] if m.lon.notna().any() else np.nan,
-                        dcm_level=m.geo_level.dropna().iloc[0] if m.geo_level.notna().any() else '')
+                        # coordinates and level from one row, preferring an address-level geocode
+                        **(lambda rr: dict(dcm_lat=rr.lat, dcm_lon=rr.lon, dcm_level=rr.geo_level) if rr is not None else dict(dcm_lat=np.nan, dcm_lon=np.nan, dcm_level=''))(
+                            next((x for _, x in m.sort_values('geo_level').iterrows() if pd.notna(x.lat) and x.geo_level in ('address', 'address_approx')), None)))
     if best is None:
         st = g[g.precision == 'street']
         if len(st):

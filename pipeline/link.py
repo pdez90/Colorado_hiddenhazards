@@ -19,11 +19,16 @@ for blk,g in df.groupby('blk'):
     for a in range(len(idx)):
         for b in range(a+1,len(idx)):
             if not names[a] or not names[b]: continue
-            s=fuzz.token_set_ratio(names[a],names[b])
-            same_st = streets[a] and streets[a]==streets[b]
+            # token_sort_ratio compares whole names; token_set_ratio alone would call 'DIAMOND' and 'DIAMOND VOGEL PAINTS'
+            # identical and chain unrelated firms into one establishment
+            s=fuzz.token_sort_ratio(names[a],names[b])
+            same_st = bool(streets[a]) and streets[a]==streets[b]
             num_a=re.match(r'^(\d+)',streets[a]); num_b=re.match(r'^(\d+)',streets[b])
-            same_num = num_a and num_b and num_a.group(1)==num_b.group(1)
-            if s>=92 or (s>=80 and (same_st or same_num)):
+            same_num = bool(num_a and num_b and num_a.group(1)==num_b.group(1))
+            ta,tb=names[a].split(),names[b].split()
+            subset_ok = min(len(ta),len(tb))>=2 and min(len(names[a]),len(names[b]))>=0.6*max(len(names[a]),len(names[b])) \
+                        and fuzz.token_set_ratio(names[a],names[b])>=95
+            if s>=92 or (s>=80 and (same_st or same_num)) or (subset_ok and (same_st or same_num)):
                 union(idx[a],idx[b])
 # second pass: no-zip records (1961-65) to zip records in same city by name
 cz=df[df.blk.str.match(r'^8')].groupby(df.city_g.fillna('')).groups
@@ -32,11 +37,15 @@ for city,g in df[~df.blk.str.match(r'^8')].groupby('blk'):
     cand=df.loc[cz[city]]
     for i,r in g.iterrows():
         if not r.name_n: continue
-        sc=cand.name_n.apply(lambda n: fuzz.token_set_ratio(r.name_n,n) if n else 0)
+        sc=cand.name_n.apply(lambda n: fuzz.token_sort_ratio(r.name_n,n) if n else 0)
         j=sc.idxmax() if len(sc) else None
         if j is not None and sc[j]>=92: union(i,j)
 df['estab_id']=[find(i) for i in range(len(df))]
 df['estab_id']=df.groupby('estab_id').ngroup().map(lambda x:'E%06d'%x)
 df.to_pickle('work/inv/records_linked.pkl')
+# CSV hand-off for the R scripts (R/build_sites.R): one row per directory record, SIC codes space-separated
+H=df[['year','name','name_n','street_n','city_g','zip5','geo_key','estab_id','fe_hazard','ext_hazard','fe_sectors','ext_sectors','est','size','sic_source']].copy()
+H['sic']=df.sic.apply(lambda L:' '.join(L)); H.to_csv('work/inv/records_linked.csv',index=False)
 g=df.groupby('estab_id').year.agg(['min','max','nunique'])
 print('records',len(df),'establishments',len(g)); print(g['nunique'].describe().round(2).to_dict())
+print('largest establishment clusters (records):', df.estab_id.value_counts().head(5).to_dict())

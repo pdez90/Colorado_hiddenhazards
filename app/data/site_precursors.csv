@@ -1,79 +1,49 @@
 site_id,hist_first_year,hist_names
 S00022,1911,Boulder Ore Sampling Co | Brown Sheet Metal Works &Garage | Coleman & T e rwillige r
-S00124,1956,Crask Sheet MetalWksHG Crask
 S00164,1935,Branch: Box 2184
 S00166,1956,Englewood Iron Works John P & Boyd Hoffhines 1065
-S00217,1912,City Iron & Wire Works Co | Solitaire Oil & Gas Co
 S00224,1941,Acme Silver Plating Works | Gillard Plastics Inc
-S00226,1915,Peterson H P | West H S
-S00227,1956,COLORADO SPRINGS-Gagnon Plating & Mfg | DENVER-Advance Metal Foundry
 S00231,1910,Ainsworth & Sons Wm
 S00235,1916,Peerless Alloy Co
 S00236,1943,Schmidt G A Auto Body Co
 S00240,1920,Western Bronze & Brass Foundry Western File Service | Western Iron Foundry | Western Smelting Co
-S00241,1939,- ~ ~ Liberty Petroleum Co
-S00248,1892,"Cleary, P J boiler shop | SchererFrank"
 S00256,1950,Wilson & Co Inc
 S00268,1950,Pearl-Friedland Co The
 S00280,1939,auto body reprs
 S00281,1914,Honey Vernon | Kester & Robbins
-S00283,1950,Pueblo By-Products Co
-S00286,1920,Taylor & Yard
-S00320,1956,Oliger Sheet Metal Louis J Oliger
-S00322,1956,Telluride Iron Works Co
-S00326,1933,Simon 0F
-S00335,1929,F Tanner mgr
-S00341,1935,Gas Co o f Sterling
-S00364,1956,Steward Metal Works
-S00389,1941,Cleaners Hanger Co Inc | Sparr Sheet Metal Works
-S00392,1912,eblo Brass & Iron Foundry
-S00393,1950,Fountain Foundry | Fountain Iron & Brass Fndry Carl H Spannans
-S00394,1913,Pueblo Sheet MetalW orks | Speeht John F
-S00396,1913,Mapes Chas | soap mfrs
-S00397,1932,— Power Iron Works
-S00552,1956,Larsen Machine Shop
-S00610,1956,Heyse Sheet Metal & Roofing Co
-S00757,1917,Burdett Oxygen Co
-S00766,1929,Colorado Compressed Gas Co | SeventhAve CafeWE DeVries 233E 7th Seiberling Rubber Co
-S00770,1950,"• DENVER, COLORADO Colo As s ayi ng Co PO Box"
-S00772,1913,Brotherton C A
-S00782,1956,Turner Sheet Metal
-S00785,1892,"Established il Ravenscroft, Frank C | United States Rubber Co"
-S00797,1939,and suppl ies
-S00820,1891,Lead Works
-S00830,1950,Snow White Prod Co
-S00844,1956,Denver Wire Works Steve Skulavik
-S00856,1950,Cook Frank C Co
-S00860,1915,Goldhammer S
-S00872,1891,Brickham Henry | Crosta CA Inc | Shank & Ahearn
-S00894,1950,Midstate Mfg Co
-S00897,1956,American Steel & Iron Works
-S00952,1956,Dufficy Machine & Iron Works
-S00957,1950,Eaton Mtl Prod Co
-S00973,1929,Greeley Rendering Plant
-S00975,1950,Graham Bros Theatre EquipJM &HW Graham
-S00985,1950,Erickson Supply Co Inc
-S00992,1910,O ’BrienDL
-S00993,1891,Gaffort Otto
-S01009,1950,"Colo Standard Upholstery Co M Nierenberg M Stein, I Lande | Square Deal Mfg Co WA. WA Jr, I, Trusella P Thomas"
-S01012,1935,Frazier Jesse G
-S01023,1950,Colo Gear Co
-S01024,1913,Chamberlain C M | Chamberlain Machine Works | Monarch Mfg Co
-S01053,1950,Genera Machinery I< Supply Co | Power Equip Co Inc
-S01057,1950,Eberhardt-Denver Co
-S01061,1956,O'Brien Sheet Metal & Furnace Works
-S01082,1891,O’Byrne John J | Western Chemical Works Co | equipment
-S01089,1929,Goldberg Simon
-S01101,1891,"LEYNER J GEORGE, manufacturing and jobbing"
-S01105,1914,J g West Denver Stock Yds
-S01149,1920,Denver lnternat'l Printing Ink Div ~f InterChemical Corp | Morell Mfg Co | Stone Chemical Co
-S01161,1941,Kenyon Iron Works
-S01162,1914,MacCarthyMS | Maccabees The Tabor B {8-27) MacGlear Mfg &t Supply Go H Mary It James MacLear Jr | Maclear Mfg Co
-S01196,1910,mgr Majestic Chemical Manu­
+S00319,1956,Oliger Sheet Metal Louis J Oliger
+S00321,1956,Telluride Iron Works Co
+S00325,1933,Simon 0F
+S00363,1956,Steward Metal Works
+S00388,1941,Cleaners Hanger Co Inc | Sparr Sheet Metal Works
+S00391,1912,eblo Brass & Iron Foundry
+S00392,1950,Fountain Foundry | Fountain Iron & Brass Fndry Carl H Spannans
+S00395,1913,Mapes Chas | soap mfrs
+S00554,1956,Larsen Machine Shop
+S00612,1956,Heyse Sheet Metal & Roofing Co
+S00769,1929,Colorado Compressed Gas Co | SeventhAve CafeWE DeVries 233E 7th Seiberling Rubber Co
+S00773,1950,"• DENVER, COLORADO Colo As s ayi ng Co PO Box"
+S00788,1920,United States Rubber Co
+S00823,1891,Lead Works
+S00833,1950,Snow White Prod Co
+S00858,1950,Cook Frank C Co
+S00896,1950,Midstate Mfg Co
+S00954,1956,Dufficy Machine & Iron Works
+S00959,1950,Eaton Mtl Prod Co
+S00994,1910,O ’BrienDL
+S01011,1950,"Colo Standard Upholstery Co M Nierenberg M Stein, I Lande | Square Deal Mfg Co WA. WA Jr, I, Trusella P Thomas"
+S01025,1950,Colo Gear Co
+S01055,1950,Genera Machinery I< Supply Co | Power Equip Co Inc
+S01059,1950,Eberhardt-Denver Co
+S01063,1956,O'Brien Sheet Metal & Furnace Works
+S01092,1929,Goldberg Simon
+S01104,1891,"LEYNER J GEORGE, manufacturing and jobbing"
+S01152,1950,Denver lnternat'l Printing Ink Div ~f InterChemical Corp
+S01164,1941,Kenyon Iron Works
+S01165,1914,Maclear Mfg Co
 S01197,1939,Fox sec | Grimes Pipe a. Supply Co The D a. J Grimes
-S01204,1956,Foster Auto Body Co
 S01206,1920,"General Chemical Div Allied Chemical I, Dye Corp | The General Chemical Co)"
-S01220,1911,The Western Chemical Co
+S01220,1911,The Western Chemical Co | in charge
 S01228,1911,COLLIER & SON P F | Denver Machine ShopEF White &PT Schonstrom | Heinsohn A E Printing Ir Machinery Ir Supplies A E Heinsohn
 S01254,1956,Dunn Sheet Metal & Mfg. C o
 S01255,1911,Hood Rubber Co | RELIABLE EMPLOYMENT RetaliaJL | Von Schulz & Low
@@ -82,169 +52,118 @@ S01259,1912,BROWNE IRON WORKS COMPANY •H | MIDWEST STEEL AND IRON WORKS CO | N
 S01261,1892,EMPIRE BOTTLING CO | Fair C W | and ore concentrating Graves & Vinton Co
 S01286,1950,Red Dot L-P Gas Co
 S01287,1920,Gates Rubber Co
-S01291,1935,Glenshore Mfg Co Inc | I™ § Denver Rubber Goods
+S01291,1950,Glenshore Mfg Co Inc
+S01295,1941,Kinzbach Win
 S01296,1911,Banner Chemical Co | NOCK & GARSIDE
 S01298,1884,Commercial Chemical Corp | DENVER TYPE FOUNDRY | Denver Electrotype and Stereotype
 S01299,1912,Griffin Wheel Co
 S01301,1914,Regent Rubber Co
 S01302,1914,GUNTHER & SONS | genl mgr Colorado Iron Works
 S01305,1914,Ellsworth AutoCo
-S01318,1910,GartmanCE
-S01319,1910,Carroll & Co Thos M
 S01323,1891,Mee Robert | Scientific Supply Co
 S01327,1950,Sechrist Albert Mfg Co The
-S01329,1932,—Denver Sheet MetalWorks
 S01331,1950,Shattuck SW Chemical Co The
-S01340,1950,Nogren CA Co
-S01347,1950,Stayput Clamp It Coupling Co
-S01357,1950,Western Fndry J Ernest & James L Higson | Western Foundries
-S01390,1956,Rendering Works
-S01393,1941,Birt’s Auto Body Shop
-S01401,1913,Boak Rubber Co
-S01416,1929,Tanner MercGo
-S01436,1950,Schneebeck Industries Inc
-S01445,1910,Hassell Iron Works Co | Sheet Metal Workers Union
-S01469,1941,Norton Sheet Metal Works
-S01472,1950,RichardsonGDSonMfgCoGD Richardson & T Richardson
-S01473,1950,Montgomery Ward & Co Inc
-S01479,1920,Fort Collins Sheet MetalW ks | heating
-S01488,1914,Garbe W | Garbe W F | Giddings pres
-S01507,1956,Mille r Petroleum Co
-S01533,1929,"Grand Jct Mach Co H H Hutton, RF Gilmore & LE Oberto | Johnson W B"
-S01550,1912,Iseminger Mach Co A Orpha It Grant M Iseminger | McKenzie J E
+S01346,1950,Stayput Clamp It Coupling Co
+S01356,1950,Western Fndry J Ernest & James L Higson | Western Foundries
+S01389,1956,Rendering Works
+S01392,1941,Birt’s Auto Body Shop
+S01400,1913,Boak Rubber Co
+S01415,1929,Tanner MercGo
+S01435,1950,Schneebeck Industries Inc
+S01468,1941,Norton Sheet Metal Works
+S01472,1950,Montgomery Ward & Co Inc
+S01478,1920,Fort Collins Sheet MetalW ks | heating
+S01487,1914,Garbe W | Garbe W F | Giddings pres
+S01506,1956,Mille r Petroleum Co
 S01615,1943,Otto
 S01636,1950,Crucible Steel Co of America | Gourmet Shop Roy B Simons & Ina E Simons Goodrich BF Co
-S01640,1950,Colo Metal ProdHH &A Goldberg
 S01641,1913,Mandy E R | Sparr H J
 S01648,1915,Fox P
-S01651,1941,Trent Spencer S
 S01655,1956,Broadway Sheet Metal Works
-S01699,1950,Grabler Mfg Co The
-S01704,1956,He abler Sheet Metal Shop
-S01708,1950,Dart Mfg & Sls Co
-S01716,1915,Bennie Tire & Rubber Co B A
-S01717,1950,Economy Forms Corp
-S01718,1892,"& Mayne, Long, Lloyd, Wm, Lloyd, Wm B, Lord, 0 A, Lobach, E B, COLLECTIONS Colored Lead | AMERICAN MERCANTILE UNION lS^LawmceSt,D | COLLECTIONS ColoredL ead"
-S01733,1891,Heale George H. B
-S01745,1939,Robvon Corp The | ~:!: paste
-S01748,1950,Metalcraft Welding Ii Fabricating Co
-S01750,1950,Morton Neon Co
-S01771,1950,Highland Industries Inc | Triangle Western Sls & Supply Co
-S01775,1950,PiersWL assayer | Rains Flo Mfg Co Robert H Rains
-S01776,1943,METALWORKS INC | South Denver Sheet Metal & Furnace Worl
-S01782,1917,Service Co
-S01791,1941,Wheeler Robt F
-S01798,1916,Verdeckberg Iron & Wire Works
-S01806,1916,Broadway Rubber Co | Fisk Rubber Co
-S01812,1933,Wompey Sheet Metal Works
-S01844,1956,Maxwell Sheet Metal Kenneth G Maxwell 111
-S01859,1950,Denver Oxygen Co The
-S01875,1950,Pueblo Novelty -Works George & Ada B Pueblo Fixture Exch The E Stein ZZZ N SanBerger
-S01877,1950,Earl Martin
-S01878,1956,Hopkins Sheet Metal Works
-S01920,1939,T &M TransportationCo
-S01952,1950,Arapahoe Mfg Co
-S01965,1939,iBrunton Lucins
-S01994,1914,Bouldei* | CRAGHEAD W S | Colorado Sanitarium Food Co
-S02020,1943,Cars 11
-S02028,1950,De Fire Clay Co PO Box
-S02035,1956,Clyde's Auto Body Repair
-S02042,1956,Barone Boiler & Sheet Iron Works
-S02045,1914,Hingley J A
-S02052,1911,Richards J W | RichardsJW
-S02060,1956,PUEBLO-Fountain Foundry
-S02061,1910,CARD C S IRON WORKS CO THE | —Rosenblum Adolph
-S02062,1956,Sheet Metal Joint Committee Inc
-S02064,1912,Degenhardt J A | SchmittWC
-S02085,1891,BATTERY MANUFACTURERS | De Metals Fndry James Renalde | Denver Metals Foundry
-S02095,1943,Dow die Sheet Metal C o | Dowdle Sheet Metal & Furnace | Dowdle Sheet Metal C o
-S02097,1891,Pekrul Iron Works | Snider R | tor Co
-S02098,1913,Braun N | Jesse H
-S02101,1920,Schlitter Iron Foundry
-S02104,1933,Berry )machinists
-S02130,1891,Cassell V E | Denver Tourist & Publicity BurDenver Sheet Metal Works Co | Dorr Cyanide Machinery Co 728
-S02139,1917,(See Assayers and Chemists.)
-S02143,1956,Moyle's Sheet Metal & Furnace
-S02146,1943,Koppers Co
-S02168,1935,Western Chemical Go
-S02171,1950,Burlingame Walter E
-S02182,1950,De Pest Control & Serv Lab
-S02183,1943,ga tions and collections fo r mer­ Pueblo Sheet Metal Works
-S02184,1911,Flaherty P J | Newlander A Machine Works
-S02215,1950,Compressed Steel Co Inc | National Associated Petroleum Co Midland Svgs b
-S02220,1950,Thompson Pipe & Steel Co
-S02222,1950,United Iron Fndry J A Quintana Et Al | United Iron Foundry Inc
-S02223,1929,Kristof J F | United Steel & Iron Works
-S02244,1950,Colo Spgs Capitol Packing Co
-S02292,1956,BEER CHEMICAL & SCIENTIFIC PORCELAIN
-S02314,1935,neers and machinists
-S02315,1956,Southern Union Gas Company
-S02337,1912,Colorado Chemical &Spray | Pioneer Boiler Works | and tin shop
-S02350,1950,Grand Serv The Standard Oil Co
-S02387,1920,Norcross Chemical Co
-S02400,1911,May & Co props
-S02431,1917,Home Gas & Electric Co | Taylor J A
-S02440,1956,Aurora Ornamental Iron
-S02542,1914,Grueter Henry | Lobach E B | Vinland 0 S
-S02544,1950,Freeman• Freeman Inc
-S02589,1933,Sample Machine Shop | Wilfley & Bribach
-S02600,1911,(See Page ad. at Classified Chemical Manufacturers.) | Capitol Foundry Co | pres
-S02615,1916,Alameda Sheet Metal & Hardware | Woeber Auto Body Co
-S02642,1950,Parancor Pipeline Protection Co
-S02701,1913,CHEMICAL LABORATORY
-S02776,1914,Her F M
-S02803,1950,"FlexoveyorMfgCoGC Penn, EC HorneIt James Shields"
-S02836,1935,Thompson-Hayward Chemical C o
-S02850,1912,Freund &CoGeo | Lead Works Co | Macadam and Asphalt Rollers
-S02865,1920,Haver-Glover Serv | Pioneer Iron & Wire Works Co | Rocky Mtn Mercantile Co
-S02867,1950,Union Welding Lee W Ulrich
-S02976,1956,Ruedy Fertilizer Plant Charles F Leppla Jr
-S03016,1914,Richards D F
-S03032,1915,AMERICAN SMELTING & RE­
-S03051,1910,Bates Paul A
-S03317,1956,States Asphalt Co
-S03447,1941,Hind W m F
-S03613,1950,DeRouen Mach Wks Roy DeRouen
-S03675,1929,Home Gas & Electric Go
-S03702,1935,plants
-S03750,1939,Won-der-All Chemical Co
-S03790,1941,Kinzbach Win
-S03800,1941,Brehm Draperies
-S03809,1950,Morse Bros Machinery Co M & Fannie Grimes et al
-S03865,1891,? Karth Charles F
-S03902,1950,Canon Welding Works Cl yde J Mer ris & Robert E Killion
-S03990,1956,Platt Sheet Metal Works Donald K Platt 1748
-S04130,1950,Fort Collins Sheet Metal Works | Graden Coal Co The
-S04161,1891,"Thompson W. J., col’d"
-S04195,1929,ABBOTTINVESTMENTCO
-S04202,1892,"Hi's Hamburgs Hi V Plummer | Wilson&Co, pr’ ps, 1135Lar Denver Consolidated Gas Co"
-S04303,1914,WESTERN SMELTING WORKS
-S04305,1915,Boss Rubber Co | Dencol Rubber Co | Mountain States Telephone & Republic Rubber Co
-S04329,1920,Hart Frank
-S04476,1956,Brewer Sheet Metal Works
-S04582,1956,Cascade Petroleum Co | Royal Oil Co Cascade Petroleum Co
-S04596,1956,Dawson
-S04617,1913,Clarke’s Foundry | Clarks Foundry S A
-S04897,1950,Davis Power Tools John W Davis & Leona B Graham
-S05161,1920,Carey Lester
-S05287,1956,Greeley Gas Company
-S05417,1950,Surplus Tools & Commodities Wm D Cox & CF Hale
-S05451,1911,Leson J
-S05468,1950,Morton & Peabody Inc
-S05476,1915,Boetto B | Davis Ruble W
-S05616,1950,Wei-Come Inn Emanuel Horst
-S05641,1914,“ Hendrie Rubber Co W C
-S05670,1950,Triploil Refining Co Otis Amos
-S05805,1950,United Gas Co
-S06001,1917,Clark F J
-S06099,1932,Allen De Lee
-S06217,1956,Minnequa Garage & Ornamental Iron Works
-S06539,1935,Harner C D | irrigalion gates
-S06586,1941,Mackey Jerome E
-S06637,1891,CO Taubman Andy | CO Welch Austin J | City Rubber Works
-S06918,1920,Tri State Petroleum Co
-S08530,1910,Plains Iron Works Co | ver Gas & Electric Co
-S08553,1912,SHEET METAL Colo Tobacco Works
-S08682,1950,Curriers of Denver Robert F Buchanan
-S09162,1932,Pyramid Petroleum Co
-S09222,1941,Donald sec
+S01698,1950,Grabler Mfg Co The
+S01707,1950,Dart Mfg & Sls Co
+S01715,1915,Bennie Tire & Rubber Co B A
+S01716,1950,Economy Forms Corp
+S01717,1892,"& Mayne, Long, Lloyd, Wm, Lloyd, Wm B, Lord, 0 A, Lobach, E B, COLLECTIONS Colored Lead | AMERICAN MERCANTILE UNION lS^LawmceSt,D | COLLECTIONS ColoredL ead"
+S01732,1891,Heale George H. B
+S01744,1939,Robvon Corp The | ~:!: paste
+S01747,1950,Metalcraft Welding Ii Fabricating Co
+S01749,1950,Morton Neon Co
+S01770,1950,Highland Industries Inc | Triangle Western Sls & Supply Co
+S01774,1950,PiersWL assayer | Rains Flo Mfg Co Robert H Rains
+S01775,1943,METALWORKS INC | South Denver Sheet Metal & Furnace Worl
+S01781,1917,Service Co
+S01790,1941,Wheeler Robt F
+S01810,1933,Wompey Sheet Metal Works
+S01842,1956,Maxwell Sheet Metal Kenneth G Maxwell 111
+S01873,1950,Pueblo Novelty -Works George & Ada B Pueblo Fixture Exch The E Stein ZZZ N SanBerger
+S01875,1950,Earl Martin
+S01876,1956,Hopkins Sheet Metal Works
+S01918,1939,T &M TransportationCo
+S01950,1950,Arapahoe Mfg Co
+S01963,1939,iBrunton Lucins
+S01992,1914,Bouldei* | CRAGHEAD W S | Colorado Sanitarium Food Co
+S02016,1943,Cars 11
+S02024,1950,De Fire Clay Co PO Box
+S02031,1956,Clyde's Auto Body Repair
+S02041,1914,Hingley J A
+S02048,1911,Richards J W | RichardsJW
+S02056,1956,PUEBLO-Fountain Foundry
+S02057,1910,CARD C S IRON WORKS CO THE
+S02058,1956,Sheet Metal Joint Committee Inc
+S02082,1929,BATTERY MANUFACTURERS
+S02092,1943,Dow die Sheet Metal C o | Dowdle Sheet Metal & Furnace | Dowdle Sheet Metal C o
+S02095,1913,Braun N | Jesse H
+S02098,1920,Schlitter Iron Foundry
+S02101,1933,Berry )machinists
+S02127,1911,genl mgr
+S02136,1917,(See Assayers and Chemists.)
+S02140,1956,Moyle's Sheet Metal & Furnace
+S02143,1943,Koppers Co
+S02156,1950,Crosta CA Inc
+S02179,1950,De Pest Control & Serv Lab
+S02181,1911,Flaherty P J | Newlander A Machine Works
+S02211,1950,Compressed Steel Co Inc | National Associated Petroleum Co Midland Svgs b
+S02216,1950,Thompson Pipe & Steel Co
+S02218,1956,United Iron Foundry Inc
+S02219,1956,United Steel & Iron Works
+S02239,1950,Colo Spgs Capitol Packing Co
+S02288,1956,BEER CHEMICAL & SCIENTIFIC PORCELAIN
+S02346,1950,Grand Serv The Standard Oil Co
+S02383,1920,Norcross Chemical Co
+S02436,1956,Aurora Ornamental Iron
+S02538,1950,Freeman• Freeman Inc
+S02583,1933,Sample Machine Shop | Wilfley & Bribach
+S02594,1914,(See Page ad. at Classified Chemical Manufacturers.)
+S02609,1916,Alameda Sheet Metal & Hardware | Woeber Auto Body Co
+S02636,1950,Parancor Pipeline Protection Co
+S02768,1914,Her F M
+S02794,1950,"FlexoveyorMfgCoGC Penn, EC HorneIt James Shields"
+S02826,1935,Thompson-Hayward Chemical C o
+S02840,1912,Freund &CoGeo | Lead Works Co | Macadam and Asphalt Rollers
+S02856,1920,Haver-Glover Serv | Pioneer Iron & Wire Works Co | Rocky Mtn Mercantile Co
+S02858,1950,Union Welding Lee W Ulrich
+S02993,1891,Brickham Henry
+S03309,1956,States Asphalt Co
+S03691,1935,plants
+S03852,1911,Nursery Co
+S03888,1950,Canon Welding Works Cl yde J Mer ris & Robert E Killion
+S04115,1950,Fort Collins Sheet Metal Works | Graden Coal Co The
+S04179,1929,ABBOTTINVESTMENTCO
+S04186,1950,Hi's Hamburgs Hi V Plummer
+S04312,1920,Hart Frank
+S04565,1956,Cascade Petroleum Co | Royal Oil Co Cascade Petroleum Co
+S04879,1950,Davis Power Tools John W Davis & Leona B Graham
+S05145,1920,Carey Lester
+S05272,1956,Greeley Gas Company
+S05402,1950,Surplus Tools & Commodities Wm D Cox & CF Hale
+S05435,1911,Leson J
+S05452,1950,Morton & Peabody Inc
+S05602,1950,Wei-Come Inn Emanuel Horst
+S05656,1950,Triploil Refining Co Otis Amos
+S05791,1950,United Gas Co
+S06082,1932,Allen De Lee
+S06517,1935,Harner C D | irrigalion gates
+S06563,1941,Mackey Jerome E
+S08655,1950,Curriers of Denver Robert F Buchanan
+S09136,1932,Pyramid Petroleum Co

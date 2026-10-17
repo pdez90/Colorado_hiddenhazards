@@ -20,6 +20,23 @@ hist    <- if (file.exists(dd("historical_sites.csv"))) read.csv(dd("historical_
 if (!is.null(hist)) hist <- hist |> mutate(persists_to_1961plus = as.logical(persists_to_1961plus) %in% TRUE, fe_hazard = as.logical(fe_hazard) %in% TRUE,
                                            across(c(street, dcm_name, dcm_years, link), ~ coalesce(as.character(.x), "")))
 precur  <- if (file.exists(dd("site_precursors.csv"))) read.csv(dd("site_precursors.csv")) else data.frame(site_id = character(), hist_first_year = integer(), hist_names = character())
+# firms at each site (one row per firm linked across editions): what the directory says it made, years, size
+firms   <- if (file.exists(dd("site_firms.csv"))) read.csv(dd("site_firms.csv"), colClasses = c(sic = "character", employees = "character")) else NULL
+firm_html <- if (is.null(firms)) setNames(character(), character()) else local({
+  f <- firms |> mutate(hazardous = as.logical(hazardous) %in% TRUE, makes = coalesce(makes, ""), employees = coalesce(employees, ""),
+                       yrs = ifelse(first_year == last_year, as.character(first_year), paste0(first_year, "–", last_year)),
+                       row = sprintf("<tr%s><td>%s%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",
+                                     ifelse(hazardous, " style='background:#fbe9e2'", ""), htmltools::htmlEscape(name),
+                                     ifelse(hazardous, " <span title='hazardous sector'>&#9888;</span>", ""), yrs,
+                                     htmltools::htmlEscape(makes), ifelse(is.na(established), "", established), htmltools::htmlEscape(employees)))
+  h <- f |> group_by(site_id) |> summarise(html = paste0(
+    "<div style='max-height:200px;overflow-y:auto;font-size:11px'><table class='table table-sm' style='margin:0'>",
+    "<tr><th>Firm</th><th>Listed</th><th>What it made (directory)</th><th>Est.</th><th>Employees</th></tr>",
+    paste(row, collapse = ""), "</table></div>"), .groups = "drop")
+  setNames(h$html, h$site_id) })
+mix     <- if (file.exists(dd("industry_mix.csv"))) read.csv(dd("industry_mix.csv")) else NULL
+radium  <- if (file.exists(dd("radium_firms.csv"))) read.csv(dd("radium_firms.csv")) else NULL
+longev  <- if (file.exists(dd("firm_longevity.csv"))) read.csv(dd("firm_longevity.csv")) else NULL
 tracts  <- st_read(dd("enviroscreen_tracts.geojson"), quiet = TRUE) |> mutate(GEOID = as.character(GEOID))
 by_year_dir <- if (dir.exists(dd("by_year"))) dd("by_year") else file.path("..", "data", "by_year")
 validation  <- local({ f <- c(dd("geocoding_validation_frs.csv"), "../data/results/geocoding_validation_frs.csv"); f <- f[file.exists(f)]
@@ -71,12 +88,12 @@ filters <- list(
   checkboxInput("htown", "Include pre-1960 listings placed only at the town centre", TRUE),
   checkboxGroupInput("cf", "Confidence (location + industry)", c("High" = "high", "Medium" = "medium", "Low" = "low"),
                      selected = c("high", "medium", "low"), inline = TRUE),
-  helpText("High = street-level geocode and an industry code printed in the directory. ",
+  helpText("High = exact street-level geocode and an industry code printed in the directory; medium = one of the two (an address printed without its N/S/E/W direction counts as approximate). ",
            "'Not on any list' = no match in EPA FRS, TRI, RCRA, Superfund, brownfield or CDPHE cleanup inventories.")
 )
 
 ui <- page_navbar(
-  title = "Colorado Hidden Hazards",
+  title = "Colorado Hidden Hazards", fillable = "Map",   # other tabs scroll so their plots keep full height
   theme = bs_theme(version = 5, bootswatch = "flatly", primary = "#24589e", base_font = font_google("Public Sans", local = FALSE)),
   sidebar = do.call(sidebar, c(list(width = 300), filters)),
   nav_panel("Map",
@@ -96,6 +113,11 @@ ui <- page_navbar(
       card(card_header("…by current regulatory status"), plotlyOutput("p_status", height = 420))),
     card(card_header("Share of listed sites on no current inventory"), plotlyOutput("p_share", height = 300)),
     tags$small(class = "text-muted", "Editions are irregular (25 between 1961 and 2002); 1971, 1985, 1992 and 2002 volumes are partial."),
+    layout_columns(col_widths = c(7, 5),
+      card(card_header("Phases of Colorado manufacturing: share of listed firms by industry, 1961–2002 (all manufacturers)"), plotlyOutput("p_mix", height = 420),
+           tags$small(class = "text-muted", "* = Frickel & Elliott hazardous sector. Shares of firms with an industry code in each edition; the directories' coverage changes between editions.")),
+      card(card_header("How long did firms stay listed?"), plotlyOutput("p_longev", height = 420),
+           tags$small(class = "text-muted", "Years between a firm's first and last listing (firms linked across editions). Firms still listed in 2002 or first listed in 1961 are cut off by the directory's own span."))),
     card(card_header("Before 1960: hazardous-trade firms listed per Colorado State Business Directory edition"), plotlyOutput("p_hist", height = 360),
          tags$small(class = "text-muted", "Counts come from searchable text of the scanned directories and are not comparable to the manufacturers' directory: ",
                     "the business directories list every trade and their OCR quality varies by edition. 1891 and 1910–1939 include large Denver sections.")),
@@ -131,6 +153,7 @@ ui <- page_navbar(
            selectInput("dl_year", "Edition", sort(as.integer(sub("CO_DCM_(\\d+)_geocoded.csv", "\\1", list.files(by_year_dir, "CO_DCM_.*csv"))))),
            downloadButton("dl_one", "Download edition CSV"), br(), br(),
            downloadButton("dl_sites", "Download sites matching current filters"), br(), br(),
+           downloadButton("dl_firms", "Download firms at sites matching current filters"), br(), br(),
            downloadButton("dl_hist", "Download pre-1960 hazardous-trade firms (1871–1956)"),
            hr(), tags$small("Each edition file lists every manufacturer with its OCR'd name and address, SIC/NAICS codes, ",
                             "sector flags, establishment and site IDs, coordinates and geocode level.")),
@@ -185,8 +208,18 @@ server <- function(input, output, session) {
       m <- m |> addCircleMarkers(data = d, ~lon, ~lat, radius = 3.5, color = "#7a0f4d", weight = 1, fillColor = hc[[k]], fillOpacity = 1,
             popup = sprintf("<b>%s</b><br>%s<br>%s", esc(d$name), esc(d$address), esc(d$type)),
             group = if (k == "Residential & long-term care") k else paste0(k, "s"), options = pathOptions(pane = "ctx")) }
+    # radium & uranium: Colorado's radium industry (1910s-20s), 'radium cure' waters and baths, and uranium/vanadium mills
+    if (!is.null(radium) && nrow(radium)) {
+      rp <- radium[!is.na(radium$lat), ]
+      m <- m |> addCircleMarkers(data = rp, ~lon, ~lat, radius = ifelse(rp$precision == "street", 8, 6), color = "#000000", weight = 2.5,
+        fillColor = "#ffd400", fillOpacity = ifelse(rp$precision == "street", 0.95, 0.6),
+        popup = sprintf("<b>&#9762; %s</b><br>%s%s · listed %s<br>%s<br><i>Location: %s</i><br><small>Source: %s</small>",
+                        esc(rp$name), ifelse(is.na(rp$street) | rp$street == "", "", paste0(esc(rp$street), ", ")), esc(rp$city), esc(rp$years),
+                        esc(rp$what), ifelse(rp$precision == "street", "street address", "town only (no usable street address)"), esc(rp$source)),
+        label = ~paste0("\u2622 ", name), group = "Radium & uranium firms", options = pathOptions(pane = "haz"))
+    }
     m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
-          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
+          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Radium & uranium firms", "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
       hideGroup(c("Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
@@ -205,10 +238,11 @@ server <- function(input, output, session) {
   })
   observe({
     s <- sel_sites()
-    pop <- sprintf("<b>%s, %s</b><br><b>%s</b> · %s confidence<br>Hazardous use in %s editions, %s–%s (%s years)<br>Listed %s–%s (in range: %s)<br><b>Hazardous firms:</b><br>%s<br><b>Sectors:</b> %s %s%s<br><b>Nearest inventory record:</b> %s<br><small>%s · %.5f, %.5f</small>",
+    ft <- unname(firm_html[s$site_id]); ft <- ifelse(is.na(ft), gsub(" \\| ", "<br>", esc(s$hazard_firms)), ft)
+    pop <- sprintf("<b>%s, %s</b><br><b>%s</b> · %s confidence<br>Hazardous use in %s editions, %s–%s (%s years)<br>Listed %s–%s (in range: %s)<br><b>Firms at this address</b> <small>(shaded = hazardous sector; download all in Data &amp; downloads)</small>:<br>%s<b>Sectors:</b> %s %s%s<br><b>Nearest inventory record:</b> %s<br><small>%s · %.5f, %.5f</small>",
                    esc(s$address), esc(s$city), esc(s$radar), esc(s$confidence), s$n_editions, s$haz_first, s$haz_last, s$span_years,
                    s$first_year, s$last_year, esc(s$years_in_range),
-                   gsub(" \\| ", "<br>", esc(s$hazard_firms)), esc(s$fe_sectors), esc(s$ext_sectors),
+                   ft, esc(s$fe_sectors), esc(s$ext_sectors),
                    ifelse(is.na(s$hist_first_year), "", sprintf("<br><b>Pre-1960 precursor (since %s):</b> %s", s$hist_first_year, esc(s$hist_names))),
                    ifelse(s$known_match == "" | is.na(s$known_match), "none", esc(s$known_match)), s$site_id, s$lat, s$lon)
     if (input$colby == "span") {
@@ -225,6 +259,7 @@ server <- function(input, output, session) {
     leafletProxy("map") |> clearGroup("Historical hazardous sites") |> removeControl("sitelegend") |>
       addCircleMarkers(lng = s$lon[o], lat = s$lat[o], radius = rad[o], stroke = TRUE, weight = ringw[o], color = ring[o],
                        fillColor = fill[o], fillOpacity = 0.9, popup = pop[o], group = "Historical hazardous sites",
+                       popupOptions = popupOptions(maxWidth = 560, minWidth = 380),
                        options = pathOptions(pane = "haz")) |>
       addLegend("bottomleft", colors = leg$colors, labels = leg$labels, title = leg$title, opacity = 1, layerId = "sitelegend")
   })
@@ -296,6 +331,17 @@ server <- function(input, output, session) {
     ggplotly(ggplot(d, aes(factor(yr), n, fill = app_sectors)) + geom_col() + labs(x = "Business directory edition", y = "Firms", fill = NULL) +
                theme_minimal())
   })
+  output$p_mix <- renderPlotly({ if (is.null(mix)) return(NULL)
+    ggplotly(ggplot(mix, aes(year, share, fill = group, text = sprintf("%s, %s: %.1f%% (%s firms)", group, year, 100 * share, establishments))) +
+               geom_col(position = "stack", width = 0.9) + scale_y_continuous(labels = scales::percent) +
+               labs(x = "Directory edition", y = "Share of listed firms", fill = NULL) + theme_minimal(), tooltip = "text") })
+  output$p_longev <- renderPlotly({ if (is.null(longev)) return(NULL)
+    d <- longev |> mutate(span = last_year - first_year, sector = ifelse(as.logical(hazardous) %in% TRUE, "Hazardous sector", "Other manufacturing"),
+                          bin = cut(span, c(-1, 0, 4, 9, 19, 29, 41), c("1 edition", "1–4", "5–9", "10–19", "20–29", "30–41"))) |>
+      count(sector, bin) |> group_by(sector) |> mutate(share = n / sum(n))
+    ggplotly(ggplot(d, aes(bin, share, fill = sector, text = sprintf("%s: %.0f%% (%s firms)", bin, 100 * share, n))) + geom_col(position = "dodge") +
+               scale_fill_manual(values = c("Hazardous sector" = "#d1491f", "Other manufacturing" = "#9a9a9a")) +
+               scale_y_continuous(labels = scales::percent) + labs(x = "Years between first and last listing", y = "Share of firms", fill = NULL) + theme_minimal(), tooltip = "text") })
   output$p_share <- renderPlotly({
     d <- sy_sel() |> group_by(year) |> summarise(share = mean(radar == "Not on any list"), n = n())
     ggplotly(ggplot(d, aes(year, share, group = 1, text = paste0(year, ": ", round(100 * share), "% of ", n, " sites"))) + geom_line(colour = "#d1491f") +
@@ -374,6 +420,8 @@ server <- function(input, output, session) {
                                    content = function(f) file.copy(file.path(by_year_dir, sprintf("CO_DCM_%s_geocoded.csv", input$dl_year)), f))
   output$dl_sites <- downloadHandler(filename = function() "CO_hazardous_sites_filtered.csv",
                                      content = function(f) write.csv(sel_sites(), f, row.names = FALSE))
+  output$dl_firms <- downloadHandler(filename = function() "CO_firms_at_hazardous_sites_filtered.csv",
+    content = function(f) write.csv(if (is.null(firms)) data.frame() else firms[firms$site_id %in% sel_sites()$site_id, ], f, row.names = FALSE))
   output$dl_hist <- downloadHandler(filename = function() "CO_pre1960_hazardous_sites.csv",
                                     content = function(f) write.csv(if (is.null(hist)) data.frame() else hist, f, row.names = FALSE))
   output$geo_note <- renderUI(HTML(paste0(
@@ -382,8 +430,9 @@ server <- function(input, output, session) {
     "in a neighbouring ZIP, or at the nearest segment end (check before field work). Listings that could only be placed at a ZIP or city ",
     "centroid are in the edition CSVs but not on the map.</p>",
     "<p><b>Checked three ways (Oct 2026).</b> (1) Against Colorado's statewide address points (rooftop/parcel locations, independent of ",
-    "TIGER) for 1,000 random sites: address-level points median 49 m away, 93% within 250 m, 0.9% over 1 km; approximate points median 87 m, ",
-    "78% within 250 m, 9% over 1 km. (2) Against EPA Facility Registry coordinates for identical addresses (table below). (3) Against the scans: ",
+    "TIGER) for 1,000 random sites: address-level points median 49 m away, 94% within 250 m, 0.9% over 1 km; approximate points median 103 m, ",
+    "75% within 250 m, 10% over 1 km; a re-check on the final data (400 sites) gave 88% within 250 m and 3.8% over 1 km at address level, the misses being ",
+    "Denver addresses printed without a direction (N vs S), which are now counted as approximate. (2) Against EPA Facility Registry coordinates for identical addresses (table below). (3) Against the scans: ",
     "about 1 in 25 house numbers carries an OCR digit error. Misread house numbers and streets renumbered since the 1960s are the main error sources.</p>",
     "<p><b>Pre-1960 layer.</b> Business-directory entries are placed at a street address only for Denver from 1891 (after the city's 1887 ",
     "renumbering) and for larger cities from 1910, and only when the house number falls inside a current TIGER address range; old street names ",

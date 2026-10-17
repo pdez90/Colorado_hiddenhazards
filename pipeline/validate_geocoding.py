@@ -17,7 +17,7 @@ for lvl, g in m.groupby('geo_level'):
     d = g.dist_m
     rows.append(dict(geocode_level=lvl, n=len(g), median_m=round(d.median()), p75_m=round(d.quantile(.75)), p90_m=round(d.quantile(.9)),
                      within_100m=round((d <= 100).mean(), 3), within_250m=round((d <= 250).mean(), 3), over_1km=round((d > 1000).mean(), 3)))
-ext = pd.DataFrame(rows); ext.to_csv('data/results/geocoding_validation_frs.csv', index=False)
+ext = pd.DataFrame(rows); ext.to_csv('data/results/geocoding_validation_frs.csv', index=False); ext.to_csv('app/data/geocoding_validation_frs.csv', index=False)
 cov = df.groupby('year').geo_level.value_counts(normalize=True).unstack(fill_value=0).round(3)
 cov.insert(0, 'listings', df.groupby('year').size()); cov.to_csv('data/results/geocoding_coverage_by_year.csv')
 with open('data/results/geocoding_validation.md', 'w') as f:

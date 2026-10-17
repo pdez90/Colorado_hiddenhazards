@@ -26,12 +26,15 @@ def parse_name(s):
 def parse_addr(s):
     s=str(s).upper().strip()
     tk=s.split(' ',1)
-    if tk and len(tk[0])<=6 and sum(c.isdigit() for c in tk[0])>=max(1,len(tk[0])-2) and not re.search(r'(ST|ND|RD|TH)$',tk[0]):
-        tk[0]=tk[0].translate(str.maketrans('OQDCcIlLSBZGo','0000011159260')); s=' '.join(tk)
+    if tk and len(tk[0])<=6 and sum(c.isdigit() for c in tk[0])>=max(1,len(tk[0])-2) and not re.search(r'(ST|ND|RD|TH)$',tk[0]) \
+            and not re.match(r'^I\d+$',tk[0]):
+        tk[0]=tk[0].translate(str.maketrans('OQDCcIlLSBZGo','0000011158260')); s=' '.join(tk)
     m=re.match(r'^(\d+)[A-Z]?(?:\s*1/2)?\s+(.*)$',s)
     if not m: return None,None,'',''
     num=int(m.group(1)); rest=m.group(2)
-    rest=re.split(r'\b(STE|SUITE|UNIT|NO|APT|BLDG|#|FL|RM)\b',rest)[0]
+    rest=re.split(r'(?:\b(?:STE|SUITE|UNIT|NO|APT|BLDG|FL|RM)\b|#)',rest)[0]
+    # a bare number after the street type is a unit ('2505 W 2ND AVE 7'); roads and highways keep their numbers
+    rest=re.sub(r'\b(ST|STREET|AVE|AV|AVENUE|BLVD|BOULEVARD|DR|DRIVE|PL|PLACE|CT|COURT|WAY|LN|LANE|CIR|CIRCLE|PKWY|PARKWAY|TER|TERRACE)\s+\d+[A-Z]?\s*$',r'\1',rest.strip())
     pre,core,suf=parse_name(rest)
     return num,core,pre,suf
 
@@ -57,7 +60,8 @@ def build():
     print('segments',len(G),'keys',len(idx))
 
 def interp(coords,t):
-    d=np.r_[0,np.cumsum(np.hypot(*np.diff(coords,axis=0).T))]
+    c=np.cos(np.radians(coords[0,1]))
+    dx=np.diff(coords,axis=0); d=np.r_[0,np.cumsum(np.hypot(dx[:,0]*c,dx[:,1]))]
     if d[-1]==0: return coords[0]
     x=t*d[-1]; k=np.searchsorted(d,x)-1; k=min(max(k,0),len(d)-2)
     f=(x-d[k])/max(d[k+1]-d[k],1e-12); return coords[k]+f*(coords[k+1]-coords[k])
@@ -83,19 +87,23 @@ class Geocoder:
     def place(self,ids,num,pre,suf,strict=True):
         """strict: the segment's prefix direction must equal the address's (both may be blank).
         Non-strict also lets an address without a direction match a directional segment and vice versa."""
-        G=self.G; best=None
+        G=self.G; best=None; other_dir=False
         for i in ids:
             r=G.iloc[i]
-            if strict and (r.pre or '')!=(pre or ''): continue
             if pre and r.pre and r.pre!=pre: continue
+            skip=strict and (r.pre or '')!=(pre or '')
             for side,(a,b) in (('L',(r.LFROMHN,r.LTOHN)),('R',(r.RFROMHN,r.RTOHN))):
                 if pd.isna(a) or pd.isna(b): continue
                 lo,hi=min(a,b),max(a,b)
                 if lo<=num<=hi:
-                    score=(0 if (not suf or r.suf==suf) else 1)+(0 if (num%2)==(a%2) else 0.5)
+                    if skip: other_dir=True; continue      # a directional segment (e.g. '4300 S LIPAN') also holds this number
+                    sufbad=bool(suf and r.suf and r.suf!=suf)
+                    score=(1 if sufbad else 0)+(0 if (num%2)==(a%2) else 0.5)
                     t=0.5 if a==b else (num-a)/(b-a)
-                    if best is None or score<best[0]: best=(score,interp(r.coords,t),'range_interp')
-        if best: return best[1],best[2]
+                    if best is None or score<best[0]: best=(score,interp(r.coords,t),'range_interp'+('_sufloose' if sufbad else ''))
+        # an address printed without a direction that exists on both the plain and a directional street (Denver's
+        # '4300 LIPAN' vs '4300 S LIPAN') is ambiguous: keep the plain match but mark it, so it counts as approximate
+        if best: return best[1],best[2]+('_dirambig' if (not pre and other_dir) else '')
         # nearest by number
         bd=None
         for i in ids:
@@ -129,6 +137,15 @@ class Geocoder:
             if ref is None: return False
             dk=6371*np.hypot(np.radians(pt[1]-ref[0]),np.radians(pt[0]-ref[1])*np.cos(np.radians(ref[0])))
             return dk>self.max_km
+        def other_direction(core):
+            # the same number on a directional version of this street anywhere in the town or its neighbouring ZIPs
+            zs=set(zips)|set(cz)|{n for z in (zips or cz) for n in self.nbr.get(z,[])}
+            for i in self.cands(sorted(zs),core):
+                r=self.G.iloc[i]
+                if not r.pre: continue
+                for a,b in ((r.LFROMHN,r.LTOHN),(r.RFROMHN,r.RTOHN)):
+                    if pd.notna(a) and pd.notna(b) and min(a,b)<=num<=max(a,b): return True
+            return False
         for strict in (True,False):                 # exact direction first (S BROADWAY never lands on BROADWAY)
           for vi,core in enumerate(variants if num is not None else []):
             for zs,tag in ((zips,''),([z for z in cz if z not in zips],'_cityzips'),(nb,'_nearzips')):
@@ -137,11 +154,15 @@ class Geocoder:
                 ids=self.cands(zs,core)
                 if ids:
                     pt,q=self.place(ids,num,pre,suf,strict)
-                    if pt is not None and not far(pt): return pt[1],pt[0],q+tag+('_trim' if vi else '')+lt
+                    if pt is not None and not far(pt):
+                        if not pre and q=='range_interp' and other_direction(core): q='range_interp_dirambig'
+                        return pt[1],pt[0],q+tag+('_trim' if vi else '')+lt
                 # fuzzy core within these zips
                 allc=sorted({c for z in zs for c in self.cores.get(z,[])})
                 if allc:
-                    m=process.extractOne(core,allc,scorer=fuzz.ratio,score_cutoff=86)
+                    dg=re.findall(r'\d+',core)
+                    allc_d=[c for c in allc if re.findall(r'\d+',c)==dg]
+                    m=process.extractOne(core,allc_d,scorer=fuzz.ratio,score_cutoff=86) if allc_d else None
                     if m:
                         pt,q=self.place(self.cands(zs,m[0]),num,pre,suf,strict)
                         if pt is not None and not far(pt): return pt[1],pt[0],'fuzzy_'+q+tag+('_trim' if vi else '')+lt

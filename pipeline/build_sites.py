@@ -9,8 +9,12 @@ df=pd.read_pickle('work/inv/records_linked.pkl')
 geo=pd.read_csv('work/geo/tiger_results.csv')
 df=df.merge(geo,on='geo_key',how='left')
 q=df.geo_quality.fillna('none')
-df['geo_level']=np.select([q.str.contains('range_interp')&~q.str.contains('fuzzy|nearzips|trim|dirloose'), q.str.contains('range_interp|street_nearest'), q.eq('zip_centroid'), q.eq('city_centroid')],
+df['geo_level']=np.select([q.str.contains('range_interp')&~q.str.contains('fuzzy|nearzips|trim|dirloose|sufloose|dirambig'), q.str.contains('range_interp|street_nearest'), q.eq('zip_centroid'), q.eq('city_centroid')],
                           ['address','address_approx','zip_centroid','city_centroid'],'none')
+# a street printed without its direction that exists on both the plain and a directional street ('4300 LIPAN' / '4300 S LIPAN')
+# is address_approx (the point may be on the wrong side of town), but when it is right it is exact, so the inventory search
+# radius is not widened for it the way it is for fuzzy / neighbouring-ZIP / trimmed placements
+df['placed_loose']=q.str.contains('fuzzy|nearzips|trim|dirloose|sufloose|street_nearest')
 df['located']=df.geo_level.isin(['address','address_approx'])
 df['hazard_any']=df.fe_hazard|df.ext_hazard
 
@@ -39,9 +43,12 @@ def agg_site(g):
     firms=g.sort_values('year').drop_duplicates('estab_id')
     hz=h.sort_values('year').drop_duplicates('estab_id')
     best=g.sort_values(['geo_level','year']).iloc[0]
+    la,lo=g.lat.mean(),g.lon.mean()
+    spread=float(np.max(6371000*np.hypot(np.radians(g.lat-la),np.radians(g.lon-lo)*np.cos(np.radians(la))))) if len(g) else 0.0
     return pd.Series(dict(
-        lat=g.lat.mean(), lon=g.lon.mean(), address=best.street_n, city=best.city_g, zip=best.zip5,
+        lat=la, lon=lo, spread_m=spread, address=best.street_n, city=best.city_g, zip=best.zip5,
         geo_level='address' if (g.geo_level=='address').any() else 'address_approx',
+        placed_loose=bool((g.placed_loose | ~g.located).all()),
         first_year=min(yrs), last_year=max(yrs), n_editions=len(yrs), years=';'.join(map(str,yrs)),
         n_establishments=firms.estab_id.nunique(), n_hazard_establishments=hz.estab_id.nunique(),
         fe_hazard=bool(g.fe_hazard.any()), ext_hazard=bool(g.ext_hazard.any()),
@@ -51,7 +58,7 @@ def agg_site(g):
         all_firms=' | '.join(f"{r['name']} ({r['year']})" for _,r in firms.iterrows())[:900],
         earliest_est=pd.to_numeric(g.est,errors='coerce').min(),
         max_size=g['size'].dropna().astype(str).max() if g['size'].notna().any() else '',
-        names_n=list({n for n in g.name_n if n})[:12]))
+        names_n=sorted({n for n in g.name_n if n})))   # all names, in a fixed order (a set sliced to 12 varied between runs)
 sites=df[df.site_id.notna()].groupby('site_id').apply(agg_site).reset_index()
 
 # ---- regulatory comparison
@@ -63,6 +70,8 @@ R=reg.dropna(subset=['lat','lon']).reset_index(drop=True)
 rt=BallTree(np.radians(R[['lat','lon']].values),metric='haversine')
 ind,dist=rt.query_radius(np.radians(sites[['lat','lon']].values),r=250/6371000.0,return_distance=True,sort_results=True)
 addr_ix=reg.groupby(['street_n','zip5']).indices
+reg['city_u']=reg.city.fillna('').astype(str).str.upper().str.strip() if 'city' in reg else ''
+addr_city_ix=reg.groupby(['street_n','city_u']).indices
 # polygons for containment
 from shapely import wkt as _w
 from shapely.geometry import Point
@@ -76,7 +85,8 @@ for k,(i,s) in enumerate(sites.iterrows()):
     ii,dd=ind[k],dist[k]*6371000.0
     names=[nn(x) for x in s.names_n] if isinstance(s.names_n,list) else []
     rec={}
-    am=addr_ix.get((s.address, s.zip),[])
+    am=list(addr_ix.get((s.address, s.zip),[])) if s.zip else []
+    if not am: am=list(addr_city_ix.get((s.address, str(s.city or '').upper().strip()),[]))     # blank ZIP: match on street + city
     am_t=collections.defaultdict(list)
     for j in am: am_t[reg.iloc[j]['tier']].append(f"{reg.iloc[j]['name']} [{reg.iloc[j]['source'].replace('EPA_','').replace('CDPHE_','CDPHE ')}]")
     inpoly=[]
@@ -85,7 +95,10 @@ for k,(i,s) in enumerate(sites.iterrows()):
             if PG[j].contains(Point(s.lon,s.lat)): inpoly.append(f"{polys.iloc[j]['name']} [{polys.iloc[j]['source'].replace('CDPHE_','CDPHE ')}]")
     for tier,rad in RULES.items():
         cand=[(j,d) for j,d in zip(ii,dd) if R.at[j,'tier']==tier]
-        prox=[(j,d) for j,d in cand if d<=rad]
+        # approximate locations get the full 250 m search radius, and every site's radius grows by the spread of its
+        # member points, so a site is called 'not on any list' only when no record is near any plausible location
+        r_eff=max(rad,250) if s.placed_loose else min(250,rad+s.spread_m)
+        prox=[(j,d) for j,d in cand if d<=r_eff]
         nm=[(j,d) for j,d in cand if names and R.at[j,'nn'] and max(fuzz.token_set_ratio(R.at[j,'nn'],n) for n in names)>=88]
         hits=[]
         for j,d in nm: hits.append(f"{R.at[j,'name']} [{R.at[j,'source'].replace('EPA_','').replace('CDPHE_','CDPHE ')}; name match, {int(d)} m]")

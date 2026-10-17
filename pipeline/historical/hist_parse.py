@@ -34,6 +34,10 @@ TRADES = [
  (r"\btie (?:treating|preserving|plant)|\bwood preserv|\bcreosot", 'Wood preserving', 'EXT'),
  (r"\bcoke (?:ovens|works|co)\b|\bcoking", 'Coke works', 'EXT'),
  (r"\bbatter(?:y|ies) (?:works|mfr|manufactur)", 'Batteries', 'EXT'),
+ # radium ore processing, radium products and 'radium cure' water/baths (1910s-1930s), uranium/vanadium mills and buyers
+ (r"\bradium (?:products|ores?\b|co\b|company|corp|luminous|mining|reduction|refin|works|water|baths?|cave|springs|emanat|vita|cure|compound)|"
+  r"\bnational radium|\bcarnotite (?:reduction|mining|products|co\b|company)|\bminerals recovery|\bmesothorium|\buranium (?:mill|products|reduction)|"
+  r"\bvanadium (?:co\b|corp|company|products|mill)|\bradio-?active (?:water|springs?|baths?|ore)", 'Radium & uranium', 'EXT'),
 ]
 TRADE_RE = [(re.compile(p, re.I), s, g) for p, s, g in TRADES]
 EXCLUDE = re.compile(r"\b(supplies|supply|agent|agents|dealer|dealers|insurance|stock|broker|attorney|journal|school|teacher|church)\b", re.I)
