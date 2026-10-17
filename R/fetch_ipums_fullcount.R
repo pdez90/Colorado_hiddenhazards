@@ -39,8 +39,11 @@ D[, `:=`(fb = BPL >= 150 & BPL < 900, black = RACE == 2, hisp = HISPAN > 0 & HIS
          foreign_parent = NATIVITY %in% 2:4)]
 ED <- D[, .(pop = .N, black = sum(black), fb = sum(fb), fb_mexico = sum(region == "Mexico"), fb_europe = sum(region == "Europe"),
             fb_asia = sum(region == "Asia"), hisp = sum(hisp), foreign_parentage = sum(foreign_parent), laborers = sum(laborer),
-            denver_city = mean(CITY == 1830)), by = .(YEAR, COUNTYICP, ENUMDIST)]
+            denver_city = mean(CITY == 1710)), by = .(YEAR, COUNTYICP, ENUMDIST)]   # IPUMS CITY 1710 = Denver, CO
+# Denver flag for the ED: CITY where it is coded; otherwise the County of Denver (ICP 310, from 1902) or, in 1880/1900, Arapahoe County (ICP 50;
+# the city was ~92% of the county: 1880 EDs 1-17 are the city, as in Brown's 1880 HGIS)
+ED[, denver := denver_city > 0.5 | (denver_city == 0 & (COUNTYICP == 310 | (YEAR < 1910 & COUNTYICP == 50)))]
 fwrite(ED, "work/census/denver_ed_1880_1940.csv")
-print(ED[COUNTYICP == 310, .(EDs = .N, pop = sum(pop), pct_black = round(100 * sum(black) / sum(pop), 1), pct_fb = round(100 * sum(fb) / sum(pop), 1),
+print(ED[denver == TRUE, .(EDs = .N, pop = sum(pop), pct_black = round(100 * sum(black) / sum(pop), 1), pct_fb = round(100 * sum(fb) / sum(pop), 1),
                             pct_hisp = round(100 * sum(hisp) / sum(pop), 1)), by = YEAR])
-message("wrote work/census/denver_ed_1880_1940.csv (county 310 = Denver). Join to ED boundaries from Brown's Urban Transition project to map.")
+message("wrote work/census/denver_ed_1880_1940.csv (denver = Denver city by IPUMS CITY 1710, else county 310 / Arapahoe 50 before 1902). Join to ED boundaries from Brown's Urban Transition project to map.")

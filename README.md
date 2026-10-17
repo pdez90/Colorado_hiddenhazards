@@ -271,7 +271,38 @@ nominal 1990 and 2000 tract tables, and to extend the panel back to 1940–1960 
 `R/fetch_ipums_fullcount.R` takes the period before tracts (1880–1940) from the IPUMS USA 100% census files, Colorado only, and
 aggregates them to enumeration districts (population, Black, foreign born by region, Hispanic, labourers); the ED boundaries to map
 them come from Brown University's Urban Transition HGIS (1880 for Denver; 1900–1940 street-and-ED reference files), which is free
-but asks for an e-mail and acceptance of its conditions of use.
+but asks for an e-mail and acceptance of its conditions of use. Denver is IPUMS `CITY` 1710 (the City and County of Denver exists only
+from 1902; in 1880 and 1900 Denver is Arapahoe County, `COUNTYICP` 50, whose EDs 1–17 are the city). City totals 1880–1940 and the
+dissimilarity index across EDs (`app/data/denver_city_1880_1940.csv`): Black residents were 2.4–2.6% of Denver throughout, but their
+segregation across enumeration districts rose from 0.41 (1880) to 0.53 (1900), 0.65 (1920) and 0.82 (1940); the foreign-born share fell
+from 24% to 8% while its dissimilarity stayed at 0.13–0.26; the Hispanic share (IPUMS HISPAN) was under 1.5% until 1930 and 4.6% in 1940.
+
+### Denver 1880: who lived next to the hazardous trades? (`R/denver_1880.R`)
+
+Brown University's Urban Transition HGIS geocoded the full 1880 census of Denver to buildings and drew the 17 enumeration districts and
+the 1880 street grid. `R/denver_1880.R` places the 108 hazardous-trade firms of the 1878–1885 business directories (smelters, foundries,
+powder agents, gas works, assay offices…) on that grid by their printed house numbers — the same pre-1887 numbering Brown used, so this
+does not depend on today's streets — and measures every resident's distance to the nearest one. 69 firms are placed (60 at the building
+or within a few house numbers). Results (`data/results/denver_1880/`, aggregates only; Brown's files stay in `work/census/brown/` under
+their conditions of use):
+
+| band | residents | % foreign born | % German | % Black | % Chinese | % laborers (employed adults) | mean SEI (employed adults) |
+|---|---|---|---|---|---|---|---|
+| < 100 m | 10,726 | 27.1 | 4.0 | 2.9 | 1.6 | 10.8 | 31.8 |
+| 100–250 m | 8,985 | 23.7 | 2.8 | 4.6 | 0.4 | 11.3 | 31.3 |
+| 250–500 m | 6,199 | 24.1 | 2.6 | 1.5 | 0.0 | 10.9 | 31.8 |
+| > 500 m | 8,476 | 23.9 | 2.0 | 1.8 | 0.0 | 18.9 | 28.3 |
+
+Person-level models (odds ratio per log-metre of distance, building-clustered SE; < 1 = lived closer): foreign born 0.945 (p = 0.03),
+Black 0.883 (p = 0.03), Chinese 0.33 (p < 1e-10), German-born 0.80 (p < 1e-5), Irish 1.02 (n.s.); employed adults' SEI rose by 1.0 per
+log-metre (p = 0.002), while unskilled laborers (Duncan SEI 8) were more common farther out (OR 1.20), in the cheap land beyond the
+built-up core. In 1880 the hazardous trades were concentrated in the lower-downtown districts (ED 10 alone holds 22 of the 60 placed firms) where the foreign-born and Black shares were highest; the `laborer`
+pattern is the opposite of what the later tract panel shows for poverty, a reminder that "far from industry" meant the undeveloped
+fringe in a 35,000-person city. `occlabelB` in Brown's microdata is an undocumented occupation-string id; SEI (`seiusB`, 0 = no
+occupation) is the documented measure and is used for both the laborer flag and the SEI results.
+
+`R/app_census_layers.R` turns all of this — the NHGIS tract panel with firm counts per decade, the panel models, the corridor cells,
+the 1880 ED aggregates and placed firms, and the IPUMS city series — into the app's `app/data/` files (aggregates only).
 
 ## Reproduce
 
@@ -343,14 +374,25 @@ shiny::runApp("app")
   a **pre-1960 layer** (brown; firms placed only at a town centre share one marker per town whose popup lists them all, black ring = firm or address still listed after 1960);
   layers for EPA TRI facilities, schools, hospitals, clinics, residential care, brownfields, voluntary cleanup, Superfund, RCRA corrective
   action and land-use controls; census tracts shaded by any EnviroScreen indicator.
+  An **industrial corridors** layer draws every 500 m cell with a manufacturer in 1961–2002, coloured by persistence class
+  (persistent, sector turnover, intermittent, former, emerging), sized by peak firms, with the pre-1960 trades in the cell in the popup.
 * **Trends** – sites per edition by sector and by status; share on no inventory; **phases of Colorado manufacturing** (share of all
   listed firms by industry, every edition); how long firms stayed listed, hazardous vs other; pre-1960 hazardous-trade firms per edition.
+  **Clustering** (Ellison–Glaeser γ by sector and edition, metro or statewide, filled points significant) and **succession** (the most
+  common changes of a cell's dominant sector).
+* **Denver over time** – the 185 Denver-core tracts shaded by % Black, % Hispanic, % foreign born, % poverty, population, hazardous
+  firms active in the decade or legacy firms, for every census 1940–2020 (slider, animatable), with the firms of that decade overlaid;
+  population-weighted composition of tracts with an active hazardous firm, legacy-only and never, by census; the hybrid panel models
+  and the reverse ("who predicts where industry goes") model; **Denver 1880**: enumeration districts shaded by composition with the
+  placed 1878–85 firms, residents by distance to the nearest firm, the person-level odds ratios, and the IPUMS 1880–1940 city series
+  with segregation indices.
 * **Neighborhoods** – distributions of EnviroScreen and socioeconomic indicators for tracts with vs. without hazardous sites,
   with potentially unknown sites vs. all others, unknown vs. known-only, and TRI vs. non-TRI tracts; medians, population-weighted means,
   Wilcoxon tests.
 * **Nearby schools & health care** – schools and health facilities within a chosen distance of potentially unknown sites.
 * **About the data** – what each layer is and where it comes from, including what an environmental covenant / land-use control means.
-* **Data & downloads** – per-edition geocoded CSVs, filtered sites, firms at the filtered sites, pre-1960 firms, geocoding validation.
+* **Data & downloads** – per-edition geocoded CSVs, filtered sites, firms at the filtered sites, pre-1960 firms, corridor cells,
+  Denver 1880 EDs and firms, the tract panel, geocoding validation.
 
 To deploy (e.g. shinyapps.io), copy `data/by_year/` into `app/data/by_year/` so the app folder is self-contained.
 
