@@ -73,8 +73,8 @@ file.copy("data/results/corridors/sector_transitions.csv", file.path(A, "corrido
 message("corridor_cells.csv: ", nrow(cells), " cells")
 
 # ---------------------------------------------------------------- 3. Denver 1880 (Brown HGIS + IPUMS aggregates by ED)
-edshp <- file.path(C, "brown/ed1880/ed1880.shp"); R80 <- "data/results/denver_1880"
-if (file.exists(edshp) && file.exists(file.path(R80, "ed_composition_vs_firms.csv"))) {
+edshp <- c(file.path(C, "brown/ed1880/ed1880.shp"), file.path(C, "brown/ed1880.shp")); edshp <- edshp[file.exists(edshp)][1]; R80 <- "data/results/denver_1880"
+if (!is.na(edshp) && file.exists(file.path(R80, "ed_composition_vs_firms.csv"))) {
   ed <- st_transform(st_read(edshp, quiet = TRUE), UTM); ed <- ed[grepl("Denver", ed$CityName), ]
   ctr <- st_coordinates(st_centroid(st_geometry(ed))); ll <- tolonlat(ctr[, 1], ctr[, 2])
   E <- data.table(ED = as.integer(ed$ED), lon = round(ll[, "lon"], 5), lat = round(ll[, "lat"], 5), area_km2 = round(as.numeric(st_area(ed)) / 1e6, 3))
@@ -89,7 +89,7 @@ if (file.exists(edshp) && file.exists(file.path(R80, "ed_composition_vs_firms.cs
   file.copy(file.path(R80, "residents_by_distance.csv"), file.path(A, "denver_1880_distance.csv"), overwrite = TRUE)
   file.copy(file.path(R80, "person_models.csv"), file.path(A, "denver_1880_models.csv"), overwrite = TRUE)
   message("Denver 1880: ", nrow(E), " EDs, ", nrow(Fm), " placed firms")
-} else message("Denver 1880 layer skipped (needs work/census/brown/ed1880 and data/results/denver_1880)")
+} else message("Denver 1880 layer skipped (needs Brown's ed1880.shp under work/census/brown/ and data/results/denver_1880)")
 
 # ---------------------------------------------------------------- 4. Denver 1880-1940 from the IPUMS full count (city totals + ED segregation)
 ipf <- file.path(C, "denver_ed_1880_1940.csv")

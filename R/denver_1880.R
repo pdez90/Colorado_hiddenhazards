@@ -7,16 +7,17 @@
 # street segments, which use the same pre-1887 numbering - so this does not depend on today's street grid.
 suppressPackageStartupMessages({ library(sf); library(data.table); library(sandwich); library(lmtest) })
 sf_use_s2(FALSE); UTM <- 26913; B <- "work/census/brown"; O <- "data/results/denver_1880"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
-rd <- function(p) st_transform(st_read(p, quiet = TRUE), UTM)
-bld <- rbind(rd(file.path(B, "singleunit1880/singleunit1880.shp"))[, c("Match_addr", "address", "enumdist", "poptotB")],
-             rd(file.path(B, "multiunit1880/multiunit1880.shp"))[, c("Match_addr", "address", "enumdist", "poptotB")])
+bf <- function(f) { p <- c(file.path(B, f), file.path(B, basename(f)), file.path(B, "UTP all dat", basename(f))); p <- p[file.exists(p)]; if (!length(p)) stop("missing Brown file: ", f); p[1] }   # zips unpacked into subfolders or flat
+rd <- function(p) st_transform(st_read(bf(p), quiet = TRUE), UTM)
+bld <- rbind(rd("singleunit1880/singleunit1880.shp")[, c("Match_addr", "address", "enumdist", "poptotB")],
+             rd("multiunit1880/multiunit1880.shp")[, c("Match_addr", "address", "enumdist", "poptotB")])
 bld <- bld[grepl("Denver, CO", bld$Match_addr), ]; bxy <- st_coordinates(bld)
-seg <- rd(file.path(B, "street1880/street1880.shp")); seg <- seg[seg$city == "Denver", c("Street", "Type", "Segment_id")]
-ed <- rd(file.path(B, "ed1880/ed1880.shp")); ed <- ed[grepl("Denver", ed$CityName), ]
+seg <- rd("street1880/street1880.shp"); seg <- seg[seg$city == "Denver", c("Street", "Type", "Segment_id")]
+ed <- rd("ed1880/ed1880.shp"); ed <- ed[grepl("Denver", ed$CityName), ]
 message("Denver 1880: ", nrow(bld), " geocoded buildings, ", nrow(seg), " street segments, ", nrow(ed), " EDs")
 
 # ---------------------------------------------------------------- residents
-P <- fread(file.path(B, "UTPalldat/UTP all dat/UTP matched to NAPP.dat"), sep = "\t", encoding = "Latin-1", quote = "")
+P <- fread(bf("UTPalldat/UTP all dat/UTP matched to NAPP.dat"), sep = "\t", encoding = "Latin-1", quote = "")
 setnames(P, 1, "mergeID"); P <- P[citynameB == "DENVER"]
 P[, racenameB := tolower(trimws(racenameB))]; P[, seiusB := suppressWarnings(as.numeric(seiusB))]
 # occlabelB is an undocumented occupation-string id; the Duncan SEI (seiusB) is documented: 0 = no occupation, 8 = laborers n.e.c.
