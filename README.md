@@ -247,6 +247,31 @@ active-site density (within-tract change), legacy-site density (sites listed ear
 Colorado (population, race, Hispanic origin, nativity, poverty), the 2010 tract boundaries, and the 1940–1960 Denver tract tables
 and boundaries; it writes `work/census/denver_tract_panel.csv`, which `ej_panel.R` reads. You need an NHGIS account and an API key
 (https://account.ipums.org/api_keys) in the environment variable `IPUMS_API_KEY`; the key is never stored.
+**First results (Denver core, 185 tracts in 2010 boundaries, 17 October 2026; `data/results/ej_panel_models.csv`, `ej_panel_reverse.csv`).**
+Census years 1940–2020 from NHGIS (1940–1980 area-weighted from their own tracts onto 2010 tracts), matched to the 1970, 1980,
+1990, 1999 and 2002 directories; "active" = establishments listed in the matched directory, "legacy" = sites listed in earlier
+directories but no longer active at the first panel year. Hybrid model with tract-clustered SE; coefficients are percentage points
+per log-unit of site density.
+
+| Outcome | Within-tract change in active density | Between-tract active density | Legacy density (1970) | Reverse: composition → later entries |
+|---|---|---|---|---|
+| % Hispanic | **+4.4 (SE 1.1, p < 0.001)** | **+11.1 (4.0, p = 0.006)** | −0.1 (n.s.) | +0.01 (n.s.) |
+| % Black | +0.2 (n.s.) | +1.4 (n.s.) | −0.8 (n.s.) | +0.004 (n.s.) |
+| % foreign born (1970–80 only) | 0.0 (n.s.) | −0.1 (n.s.) | +0.7 (0.36, p = 0.05) | **−0.25 (0.12, p = 0.04)** |
+| % in poverty (1970–80 only) | +1.2 (n.s.) | **+5.2 (1.7, p = 0.002)** | +2.2 (1.4, p = 0.11) | +0.08 (0.045, p = 0.10) |
+
+Reading: in Denver the tracts that gained manufacturing between censuses gained Hispanic residents, and the historically industrial
+tracts are the Hispanic and the poor tracts — the Latinx pattern Marlow, Frickel & Elliott found in Providence. Black settlement does
+not track industry at tract scale (Denver's Black neighbourhoods, Five Points and Whittier, were shaped by covenants rather than by
+the industrial Platte corridor). In the reverse direction, neither Black nor Hispanic share predicts where industry entered next;
+poorer tracts attracted slightly more entries and tracts with more immigrants slightly fewer. Foreign-born and poverty rest on
+only two panels so far (1970, 1980) because NHGIS's standardized 1990+ tables carry neither; the next step is to add them from the
+nominal 1990 and 2000 tract tables, and to extend the panel back to 1940–1960 against the business directories.
+
+`R/fetch_ipums_fullcount.R` takes the period before tracts (1880–1940) from the IPUMS USA 100% census files, Colorado only, and
+aggregates them to enumeration districts (population, Black, foreign born by region, Hispanic, labourers); the ED boundaries to map
+them come from Brown University's Urban Transition HGIS (1880 for Denver; 1900–1940 street-and-ED reference files), which is free
+but asks for an e-mail and acceptance of its conditions of use.
 
 ## Reproduce
 
