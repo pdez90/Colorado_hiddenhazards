@@ -290,6 +290,7 @@ shiny::runApp("app")
   with potentially unknown sites vs. all others, unknown vs. known-only, and TRI vs. non-TRI tracts; medians, population-weighted means,
   Wilcoxon tests.
 * **Nearby schools & health care** – schools and health facilities within a chosen distance of potentially unknown sites.
+* **About the data** – what each layer is and where it comes from, including what an environmental covenant / land-use control means.
 * **Data & downloads** – per-edition geocoded CSVs, filtered sites, firms at the filtered sites, pre-1960 firms, geocoding validation.
 
 To deploy (e.g. shinyapps.io), copy `data/by_year/` into `app/data/by_year/` so the app folder is self-contained.
