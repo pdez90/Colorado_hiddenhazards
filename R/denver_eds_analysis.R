@@ -20,7 +20,8 @@ MEAS <- list(pct_black = c("black", "pop"), pct_white = c("white", "pop"), pct_f
              pct_group_quarters = c("group_quarters", "pop"), pct_movers = c("movers", "mover_universe"), pct_movers_other_state = c("movers_other_state", "mover_universe"),
              pct_veterans = c("veterans", "adults"), children_per_mother = c("children_ever_born", "mothers"))
 AVG <- c("mean_sei", "mean_occscore", "median_wage", "median_value", "median_rent")
-derive <- function(E) { for (m in names(MEAS)) { n <- MEAS[[m]][1]; d <- MEAS[[m]][2]
+derive <- function(E) { for (k in c(unique(unlist(MEAS)), AVG)) if (k %in% names(E)) E[[k]] <- as.numeric(E[[k]])   # GeoJSON turns all-NA columns into logicals
+  for (m in names(MEAS)) { n <- MEAS[[m]][1]; d <- MEAS[[m]][2]
     E[[m]] <- if (all(c(n, d) %in% names(E))) { v <- (if (grepl("^pct_", m)) 100 else 1) * E[[n]] / E[[d]]; v[!is.finite(v) | E[[d]] < 20] <- NA_real_; v } else NA_real_ }
   for (a in AVG) if (!a %in% names(E)) E[[a]] <- NA_real_; E }
 CORE <- c("pct_black", "pct_fb", "pct_fb_mexico", "pct_hisp", "pct_laborers"); EXTRA <- c("pct_owner_hh", "median_rent", "mean_sei", "pct_haz_industry", "pct_recent_immig", "pct_movers", "pct_illiterate", "pct_boarders")
@@ -70,7 +71,7 @@ fwrite(G, file.path(O, "ed_year_groups.csv")); fwrite(M, file.path(O, "ed_distan
 # app layers
 KEEP <- c("year", "ED", "pop", "households", "firms", "dist_m", names(MEAS), AVG, "addresses", "persons_geocoded", "area_km2")
 GE <- do.call(rbind, lapply(all_E, function(E) { for (k in KEEP) if (!k %in% names(E)) E[[k]] <- NA_real_; st_transform(st_simplify(E[, KEEP], dTolerance = 8), 4326) }))
-for (v in c(names(MEAS), AVG, "area_km2")) GE[[v]] <- round(GE[[v]], 2); GE$dist_m <- round(GE$dist_m)
+for (v in c(names(MEAS), AVG, "area_km2")) GE[[v]] <- round(as.numeric(GE[[v]]), 2); GE$dist_m <- round(as.numeric(GE$dist_m))   # all-NA columns come back from GeoJSON as logical
 GE <- GE[, c(KEEP[sapply(KEEP, function(k) any(!is.na(GE[[k]])))], "geometry")]        # drop measures no census provides
 f <- file.path(A, "denver_eds.geojson"); if (file.exists(f)) file.remove(f); st_write(GE, f, quiet = TRUE); fwrite(rbindlist(all_F), file.path(A, "denver_eds_firms.csv"))
 file.copy(file.path(O, c("ed_year_groups.csv", "ed_distance_models.csv")), A, overwrite = TRUE)
