@@ -98,6 +98,14 @@ if (!done("H2")) {
   if (length(specs)) get_and_unpack(submit_extract(define_extract_agg("nhgis", description = "Colorado tracts 1960-1970 value and rent", datasets = unname(specs), geographic_extents = CO)), "H2: 1960-70 value and rent")
   file.create(file.path(W, ".done_H2"))
 }
+# ---------------------------------------------------------------- H3. 1970 contract/gross rent distributions (no tract-level median table exists; the median is interpolated from the bins)
+if (!done("H3")) {
+  specs <- list()
+  for (dname in ds[grepl("^1970", group)]$name) { tb <- setdiff(tract_tables(dname, "Rent"), tract_tables(dname, "Aggregate|Median|Units Reporting|Reporting Rent"))
+    if (length(tb)) { message(dname, ": ", paste(tb, collapse = " ")); specs[[dname]] <- ds_spec(dname, data_tables = tb, geog_levels = "tract") } }
+  if (length(specs)) get_and_unpack(submit_extract(define_extract_agg("nhgis", description = "Colorado tracts 1970 rent distributions", datasets = unname(specs), geographic_extents = CO)), "H3: 1970 rent")
+  file.create(file.path(W, ".done_H3"))
+}
 # ---------------------------------------------------------------- E. 1990-2020 nativity and poverty (nominal tracts + ACS)
 if (!done("E2")) {                                            # (E2: the first version of this extract, marker .done_E, missed the ACS tables)
   specs <- list()
@@ -141,15 +149,27 @@ RULES <- list(
                c("^Spanish Indicator$", "", "Spanish language|Spanish surname")),
   fb    = list(c("^Nativity( and Place of Birth)?$|^Nativity in the United States$", "^Persons|^Total population", "^Foreign[- ]born$"), c("Nativity and Parentage", "", "^Foreign Born$"), c("^Foreign.Born White Population( by Sex)?$", "", "^(Total|Male|Female)$"),
                c("Nativity|Place of Birth|Citizenship", "", "^Foreign[- ]born$|^Foreign >> (Male|Female)$|^Foreign[- ]born( \\(.*\\))?( >> .*)?$")),
-  own   = list(c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^Owner[- ]occupied$|^Owned$|^Owner occupied( >> Total)?$")),
-  rentocc = list(c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^(Renter|Tenant)[- ]occupied$|^Rented$|^Renter occupied( >> Total)?$")),
-  mval  = list(c("^Median Value", "", "^Median value|^Median$|^Total$|^Median Value|Median value"), c("Value", "", "^Median( value)?( \\(dollars\\))?$")),
+  own   = list(c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^Owner[- ]occupied$|^Owned$|^Owner occupied( >> Total)?$"), c("^Tenure and Vacancy Status$", "", "^Occupied: Owner occupied$")),
+  rentocc = list(c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^(Renter|Tenant)[- ]occupied$|^Rented$|^Renter occupied( >> Total)?$"), c("^Tenure and Vacancy Status$", "", "^Occupied: Renter occupied$")),
+  mval  = list(c("^Median Value", "", "^Median value|^Median$|^Total$|^Median Value|Median value"), c("Value", "", "^Median( value)?( \\(dollars\\))?$"),
+               c("^Owner-Occupied Units Reporting Value by Value$|^Value( of Occupied Units)?$", "", "\\$")),                                   # 1960/1970: dollar bins -> grouped median
   mrent = list(c("^Median Gross Rent", "", "^Median|^Total$"), c("^Median Contract Rent", "", "^Median|^Total$"),   # gross rent where published (2000+, ACS), contract rent before
-               c("Gross Rent", "", "^Median( gross rent)?( \\(dollars\\))?$"), c("Contract Rent|Rent", "", "^Median( contract rent| rent)?( \\(dollars\\))?$")),
+               c("Gross Rent", "", "^Median( gross rent)?( \\(dollars\\))?$"), c("Contract Rent|Rent", "", "^Median( contract rent| rent)?( \\(dollars\\))?$"),
+               c("^Homes by Contract Monthly Rent$|^(Contract|Gross)( Monthly)? Rent$|Rent$", "", "\\$"),                                      # 1940/1970: dollar bins -> grouped median
+               c("^Aggregate .*Contract Rent", "", ".")),                                                                                        # 1960: aggregate / units reporting = mean
   ppov  = list(c("^Poverty Status( in \\d{4})?$|Poverty Status in the Past 12 Months", "^Persons for Whom Poverty|Population for whom poverty", "^(Income in .* )?below poverty level$"),   # a total cell (ACS tables carry subtotals, so never sum their breakdowns)
                c("^Poverty Status( in \\d{4})?( by Age)?$|^Age by Poverty Status( in \\d{4})?$", "^Persons for Whom Poverty", "below poverty"),
                c("Persons in Families Below Poverty|^Poverty Status by Age$", "Persons in Families|Unrelated Individuals 14", "Aggregate number of persons|^Below poverty level >>")))
 num <- function(x) if (is.numeric(x)) x else suppressWarnings(as.numeric(gsub("[,+]", "", as.character(x))))   # "2,000+" -> 2000 (top-coded), "-" -> NA
+# Interpolated median from a dollar-bin distribution (Census Bureau's grouped-median method): bins from labels like "Under $5,000",
+# "$5,000 - $9,999", "$25,000 or more"; the open top bin is taken to run to 1.5x its lower bound. NA when fewer than 10 units.
+grouped_median <- function(D, m) { lab <- m$label; nums <- lapply(regmatches(lab, gregexpr("[0-9][0-9,]*", lab)), function(z) as.numeric(gsub(",", "", z)))
+  openlow <- grepl("^(under|less than)", lab, ignore.case = TRUE); openhigh <- grepl("or more|and over|\\+$", lab, ignore.case = TRUE)
+  lo <- vapply(seq_along(nums), function(i) if (openlow[i]) 0 else nums[[i]][1], 0)
+  hi <- vapply(seq_along(nums), function(i) { z <- nums[[i]]; if (openhigh[i]) z[1] * 1.5 else if (openlow[i]) z[1] else if (length(z) >= 2) z[2] + 1 else z[1] }, 0)
+  o <- order(lo); lo <- lo[o]; hi <- hi[o]; X <- as.matrix(D[, lapply(.SD, num), .SDcols = m$var[o]]); X[is.na(X)] <- 0
+  apply(X, 1, function(r) { n <- sum(r); if (n < 10) return(NA_real_); cum <- cumsum(r); i <- which(cum >= n / 2)[1]; below <- if (i > 1) cum[i - 1] else 0
+    lo[i] + (n / 2 - below) / r[i] * (hi[i] - lo[i]) }) }
 summarise_year <- function(csvs, yr) {
   tabs <- lapply(csvs, function(f) { d <- as.data.table(read_ipums_agg(f, verbose = FALSE)); d[, c("GISJOIN", grep("^[A-Z0-9]{3,4}[EM]?\\d{3}$", names(d), value = TRUE)), with = FALSE] })
   D <- Reduce(function(a, b) merge(a, b[, c("GISJOIN", setdiff(names(b), names(a))), with = FALSE], by = "GISJOIN", all = TRUE), tabs)
@@ -158,7 +178,10 @@ summarise_year <- function(csvs, yr) {
   out <- data.table(GISJOIN = D$GISJOIN, census = yr)
   for (k in names(RULES)) { m <- pick(cb, RULES[[k]])
     message(yr, " ", k, ": ", if (nrow(m)) paste0(m$var, " (", m$table, " / ", m$label, ")", collapse = " + ") else "-")
-    out[[k]] <- if (nrow(m)) rowSums(as.matrix(D[, lapply(.SD, num), .SDcols = m$var]), na.rm = TRUE) else NA_real_ }   # num(): ACS medians can carry text jam values ("2,000+", "-")
+    out[[k]] <- if (!nrow(m)) NA_real_ else if (k %in% MED && all(grepl("\\$", m$label))) grouped_median(D, m)                   # bin distribution -> interpolated median
+      else if (k %in% MED && any(grepl("^Aggregate", m$table))) { u <- pick(cb, list(c("Reporting (Rent|Value)$", "", "^Total$")))                                   # aggregate dollars / units reporting -> mean
+        if (nrow(u)) { a <- num(D[[m$var[1]]]) / num(D[[u$var[1]]]); a[!is.finite(a) | num(D[[u$var[1]]]) < 10] <- NA; message("   (", k, " ", yr, " is a MEAN: aggregate / ", u$var[1], ")"); a } else NA_real_ }
+      else rowSums(as.matrix(D[, lapply(.SD, num), .SDcols = m$var]), na.rm = TRUE) }   # num(): ACS medians can carry text jam values ("2,000+", "-")
   out[grepl("^G08", GISJOIN)]
 }
 # ---------------------------------------------------------------- build the panel

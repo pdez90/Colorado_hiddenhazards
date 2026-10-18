@@ -373,6 +373,11 @@ In R: `Rscript R/run_all.R` reruns geocoding, site building and inventory matchi
 Python hand-off files (see `R/README.md`; comparisons in `data/results/r_vs_python.md`: identical sites and statuses, geocodes identical
 to 0.0 m on all 36,615 address keys, model coefficients equal to 1e-6).
 
+The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because each step reads the previous one's output:
+`Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`
+(Denver districts) → `Rscript R/denver_eds_analysis.R` → `Rscript R/county_panel_1880_1940.R` → `Rscript R/ej_panel.R` → `Rscript R/fetch_hmda.R` →
+`Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale).
+
 Network inputs change over time (FRS, TRI, CDPHE layers are live); the published results used downloads of 16 October 2026.
 OCR output can differ slightly across Tesseract versions, which is why the OCR output is saved in `data/ocr/`.
 

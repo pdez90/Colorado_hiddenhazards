@@ -108,6 +108,7 @@ if (length(ED_cls)) { EC <- rbindlist(ED_cls); fwrite(EC, file.path(O, "ed_holc_
 # ---------------------------------------------------------------- 1940-2020 tract trajectories by dominant HOLC grade (2010 tracts)
 xw <- as.data.table(st_drop_geometry(X))[grade %in% c("A", "B", "C", "D"), .(share = sum(pct_tract)), by = .(GEOID = GEOID10, grade)]
 dom <- xw[, .(grade = grade[which.max(share)], covered = sum(share)), by = GEOID][covered >= 0.4]     # tracts at least 40% inside graded areas
+if (file.mtime("app/data/tract_panel.csv") < file.mtime("work/census/denver_tract_panel.csv")) stop("app/data/tract_panel.csv is older than the census panel: run Rscript R/app_census_layers.R first, then this script")
 pan <- fread("app/data/tract_panel.csv", colClasses = c(GEOID = "character")); pan <- merge(pan, dom, by = "GEOID")
 for (k in c("p_owner", "mval_2020", "mrent_2020")) if (!k %in% names(pan)) pan[[k]] <- NA_real_
 TR <- pan[!is.na(pop) & pop > 0, .(tracts = .N, p_black = weighted.mean(p_black, pop, na.rm = TRUE), p_hisp = weighted.mean(p_hisp, pop, na.rm = TRUE), p_fb = weighted.mean(p_fb, pop, na.rm = TRUE), p_pov = weighted.mean(p_pov, pop, na.rm = TRUE),
