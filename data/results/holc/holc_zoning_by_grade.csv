@@ -1,5 +1,5 @@
-grade,areas,km2,pct_industrial_1929,pct_commercial_1929
-A,6,5.7,0.7,0
-B,12,13.4,0.2,0.2
-C,20,41.2,,
-D,16,27.2,,
+grade,areas,km2,areas_on_map,km2_on_map,pct_industrial_1929,pct_commercial_1929
+A,6,5.7,6,5.7,0.7,0
+B,12,13.4,12,13.4,0.2,0.2
+C,20,41.2,19,36.9,1.6,2
+D,16,27.2,15,25.9,16,4.8
