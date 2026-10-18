@@ -145,8 +145,8 @@ RULES <- list(
                c("^Nativity$", "^Persons", "^(Native|Foreign born)$")),      # 1970: native + foreign born = all persons
   nhblk = list(c("", "", "^Persons: Black"), c("^Race by Sex$|^Nonwhite Persons by Race by Sex$|^Race$|^Persons by Race$", "^Persons$|^Non-?[Ww]hite Persons$", "^(Negro|Negroes|Black)( >> (Male|Female))?$"),
                c("^Race by Age$", "^Persons$", "^Black >>"), c("Race", "^Persons", "^(Negro|Black)( >> .*)?$"), c("Race|Nonwhite|Non-white|Color", "", "^(Nonwhite|Non-white|Negro)( >> .*)?$")),
-  white = list(c("", "", "^Persons: White( alone)?$"), c("^Race by Sex$|^Race$|^Persons by Race$|^Population by Race$|^Race by Age$", "^Persons$|^$", "^White( >> (Male|Female))?$|^White >> "),
-               c("^White Persons( by Sex)?$|^White Population( by Sex)?$|^Total White Persons$", "", "^(Total|Male|Female)$")),   # race white (includes most Hispanic residents before 1980)
+  white = list(c("", "", "^Persons: White"), c("^Race by Sex$|^Race$|^Persons by Race$|^Population by Race$|^Race by Age$|^Persons by Race by Age by Sex$", "", "^White( >> .*)?$"),
+               c("^White Persons( by Sex)?$|^White Population( by Sex)?$|^Total White Persons$", "", "^(Total|Male|Female)$")),   # race white (includes most Hispanic residents before 1980); 1960 = sum of the age x sex cells
   hisp  = list(c("", "", "^Persons: Hispanic or Latino$"), c("^Persons of Spanish Origin$|^Spanish American Persons$|Spanish Surname Population$|^Spanish Origin$", "", "^Total$|^Mexican$|^Puerto Rican$|^Cuban$|^Other Spanish$"),
                c("^Spanish Indicator$", "", "Spanish language|Spanish surname")),
   fb    = list(c("^Nativity( and Place of Birth)?$|^Nativity in the United States$", "^Persons|^Total population", "^Foreign[- ]born$"), c("Nativity and Parentage", "", "^Foreign Born$"), c("^Foreign.Born White Population( by Sex)?$", "", "^(Total|Male|Female)$"),

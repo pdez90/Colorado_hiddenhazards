@@ -145,7 +145,7 @@ RAIL <- NULL; rz <- file.path(H, "tl_2023_us_rails.zip")
 if (!file.exists(rz)) tryCatch(download.file("https://www2.census.gov/geo/tiger/TIGER2023/RAILS/tl_2023_us_rails.zip", rz, mode = "wb", quiet = TRUE), error = function(e) message("rail lines not downloaded (", conditionMessage(e), "); boundary gaps will not be rail-adjusted"))
 if (file.exists(rz) && file.size(rz) > 1e6) { rd <- file.path(H, "rails"); if (!dir.exists(rd)) unzip(rz, exdir = rd)
   RAIL <- st_read(Sys.glob(file.path(rd, "*.shp"))[1], quiet = TRUE); bb <- st_as_sfc(st_bbox(st_transform(st_buffer(st_union(GR), 5000), 4326)))
-  RAIL <- st_transform(RAIL[lengths(st_intersects(RAIL, bb)) > 0, ], UTM); RAIL <- st_union(RAIL); message("rail lines: ", length(st_geometry(RAIL)), " geometries near the HOLC areas") }
+  bb <- st_transform(bb, st_crs(RAIL)); RAIL <- st_transform(RAIL[lengths(st_intersects(RAIL, bb)) > 0, ], UTM); RAIL <- st_union(RAIL); message("rail lines: ", length(st_geometry(RAIL)), " geometries near the HOLC areas") }
 rail_m <- function(g) if (is.null(RAIL)) rep(NA_real_, length(g)) else as.numeric(st_distance(g, RAIL))
 # A. industry by grade and period (street-level hazardous trades 1891-1956; hazardous-sector manufacturers 1961-2002), per km2 of each grade
 PER <- list(c(1891, 1905), c(1906, 1920), c(1921, 1937), c(1938, 1956), c(1961, 1980), c(1981, 2002))

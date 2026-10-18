@@ -35,7 +35,8 @@ res <- lapply(names(WIN), function(yc) { y <- as.integer(yc); f <- firms_of(y); 
   G <- rbind(G, data.table(group = "dissimilarity (all tracts)", EDs = nrow(d), population = sum(d$pop), p_black = round(dis, 3)), fill = TRUE); G[, census := y]
   # distance models
   M <- rbindlist(lapply(names(MEAS), function(m) { dd <- d[!is.na(get(m)) & dist_m > 0]; if (nrow(dd) < 20 || sd(dd[[m]]) == 0) return(NULL)
-    dd$y <- dd[[m]]; if (m %in% c("mval_2020", "mrent_2020")) dd$y <- log(dd$y); fit <- lm(y ~ log(dist_m), dd, weights = pop); ct <- coeftest(fit, vcov. = vcovHC(fit, type = "HC1"))
+    dd$y <- dd[[m]]; if (m %in% c("mval_2020", "mrent_2020")) dd$y <- log(dd$y); dd <- dd[is.finite(y)]; if (nrow(dd) < 20 || sd(dd$y) == 0) return(NULL)
+    fit <- lm(y ~ log(dist_m), dd, weights = pop); ct <- coeftest(fit, vcov. = vcovHC(fit, type = "HC1"))
     data.table(census = y, outcome = if (m %in% c("mval_2020", "mrent_2020")) paste0("log_", m) else m, b_per_log_m = ct[2, 1], se = ct[2, 2], p = ct[2, 4], EDs = nrow(dd), firms = nrow(f)) }))
   # shares in the top population quartile
   S <- rbindlist(lapply(names(MEAS), function(m) { dd <- d[!is.na(get(m))][order(-get(m))]; if (nrow(dd) < 8) return(NULL); cp <- cumsum(dd$pop) / sum(dd$pop); top <- cp <= 0.25 | seq_len(nrow(dd)) == 1
@@ -46,7 +47,7 @@ res <- Filter(Negate(is.null), res)
 G <- rbindlist(lapply(res, `[[`, "G"), fill = TRUE); M <- rbindlist(lapply(res, `[[`, "M")); S <- rbindlist(lapply(res, `[[`, "S")); D <- rbindlist(lapply(res, `[[`, "D"))
 # pooled model with census effects
 P <- rbindlist(lapply(names(MEAS), function(m) { dd <- D[!is.na(get(m)) & dist_m > 0]; dd$y <- dd[[m]]; if (m %in% c("mval_2020", "mrent_2020")) dd$y <- log(dd$y); if (nrow(dd) < 40) return(NULL)
-  fit <- lm(y ~ log(dist_m) + factor(census), dd, weights = pop); ct <- coeftest(fit, vcov. = vcovHC(fit, type = "HC1"))
+  dd <- dd[is.finite(y)]; if (nrow(dd) < 40) return(NULL); fit <- lm(y ~ log(dist_m) + factor(census), dd, weights = pop); ct <- coeftest(fit, vcov. = vcovHC(fit, type = "HC1"))
   data.table(census = 0L, outcome = if (m %in% c("mval_2020", "mrent_2020")) paste0("log_", m) else m, b_per_log_m = ct[2, 1], se = ct[2, 2], p = ct[2, 4], EDs = nrow(dd), firms = NA_integer_) }))
 M <- rbind(M, P)
 for (k in names(MEAS)) G[[k]] <- round(G[[k]], 2)
