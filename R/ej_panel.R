@@ -97,7 +97,7 @@ for (yv in OUTS) for (cy in sort(unique(pan$census))) { d <- pan[!is.na(get(yv))
   res_d[[length(res_d) + 1]] <- data.table(outcome = yv, census = cy, term = rownames(cf)[2:4], b = cf[2:4, 1], se = cf[2:4, 2], p = cf[2:4, 4], tracts = nrow(d)) }
 fwrite(rbindlist(res_d), "data/results/ej_panel_by_decade.csv")
 # reverse direction: does composition at t predict new industrial entry by t+1?
-pan[, `:=`(entry_next = data.table::shift(active_haz, -1) - active_haz), by = GEOID]   # new hazardous establishments by the next edition
+pan[, `:=`(entry_next = data.table::shift(active_haz, -1) - active_haz), by = GEOID]   # net change in active hazardous establishments by the next census
 R2 <- rbindlist(lapply(OUTS, function(xv) { if (!xv %in% names(pan) || all(is.na(pan[[xv]])) || sum(!is.na(pan[[xv]])) < 60 || uniqueN(pan$census[!is.na(pan[[xv]])]) < 3) return(NULL)
   d <- pan[!is.na(entry_next) & !is.na(get(xv))]; m <- lm(as.formula(paste("entry_next ~", xv, "+ log1p(active_d) + popd_w + dist_km + factor(census)")), d)
   cf <- summary(m)$coefficients; data.table(predictor = xv, b = cf[2, 1], se = cf[2, 2], p = cf[2, 4], n = nrow(d)) }))
