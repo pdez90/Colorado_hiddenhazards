@@ -24,7 +24,7 @@ derive <- function(E) { for (k in c(unique(unlist(MEAS)), AVG)) if (k %in% names
   for (m in names(MEAS)) { n <- MEAS[[m]][1]; d <- MEAS[[m]][2]
     E[[m]] <- if (all(c(n, d) %in% names(E))) { v <- (if (grepl("^pct_", m)) 100 else 1) * E[[n]] / E[[d]]; v[!is.finite(v) | E[[d]] < 20] <- NA_real_; v } else NA_real_ }
   for (a in AVG) if (!a %in% names(E)) E[[a]] <- NA_real_; E }
-CORE <- c("pct_black", "pct_fb", "pct_fb_mexico", "pct_hisp", "pct_laborers"); EXTRA <- c("pct_owner_hh", "median_rent", "mean_sei", "pct_haz_industry", "pct_recent_immig", "pct_movers", "pct_illiterate", "pct_boarders")
+CORE <- c("pct_black", "pct_fb", "pct_fb_mexico", "pct_hisp", "pct_laborers"); EXTRA <- c("pct_white", "pct_owner_hh", "median_rent", "mean_sei", "pct_haz_industry", "pct_recent_immig", "pct_movers", "pct_illiterate", "pct_boarders")
 sf_use_s2(FALSE); UTM <- 26913; O <- "data/results/denver_eds"; A <- "app/data"
 hist <- fread("app/data/historical_sites.csv")[precision != "town" & !is.na(lat) & town == "DENVER"]
 hp <- st_transform(st_as_sf(hist[, .(hfirm, name, first_year, last_year, sectors, lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM)
@@ -51,7 +51,7 @@ for (yr in c(1880, 1900, 1910, 1920, 1930, 1940)) {
     m <- lm(as.formula(paste(v, "~ log(dist_m + 50)")), d[!is.na(get(v))], weights = pop); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
     models[[length(models) + 1]] <- data.table(census = yr, outcome = v, b_per_log_m = ct[2, 1], se = ct[2, 2], p = ct[2, 4], EDs = nrow(d), firms = nrow(Fp)) }
   # where were the firms? share of the decade's firms in the districts that make up the top population quartile on each measure (25% = proportional)
-  for (v in c(CORE, "pct_owner_hh", "median_rent", "mean_sei")) { if (sum(!is.na(d[[v]])) < 10 || sum(d$firms) == 0) next
+  for (v in c(CORE, "pct_white", "pct_owner_hh", "median_rent", "mean_sei")) { if (sum(!is.na(d[[v]])) < 10 || sum(d$firms) == 0) next
     o <- d[!is.na(get(v))][order(-get(v))]; o[, cum := cumsum(pop) / sum(pop)]; top <- o$ED[o$cum <= 0.25 | seq_len(nrow(o)) == 1]; bot <- rev(o$ED)[cumsum(rev(o$pop)) / sum(o$pop) <= 0.25]
     shares[[length(shares) + 1]] <- data.table(census = yr, measure = v, firms = sum(d$firms), share_firms_top_quartile = round(100 * sum(d$firms[d$ED %in% top]) / sum(d$firms), 1),
                                                share_firms_bottom_quartile = round(100 * sum(d$firms[d$ED %in% bot]) / sum(d$firms), 1), share_pop_top_quartile = round(100 * sum(d$pop[d$ED %in% top]) / sum(d$pop), 1)) }

@@ -1,0 +1,7 @@
+{
+  "mode": "complete",
+  "note": "mode 'complete' restricts the 1961-2002 manufacturers' directory to the editions whose scans cover the whole geographic section; 'all' uses every edition. Set by R/edition_coverage.R's audit (Oct 2026); switch to 'all' once CU Boulder supplies the missing pages and rerun the pipeline from build_sites.",
+  "complete_editions": [1965, 1966, 1967, 1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990, 1992],
+  "partial_editions": [1961, 1962, 1971, 1976, 1979, 1982, 1984, 1985, 1986, 1993, 1999, 2002],
+  "last_complete_decade": [1983, 1992]
+}

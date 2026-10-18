@@ -102,7 +102,6 @@ census,name,sector,listed,lon,lat
 1920,Denver Iron Works & Foundry DENVER MASTER PLUMBERS,Foundry,1912,-104.99816,39.75402
 1920,FoxM,Metal working,1912,-104.99544,39.7458
 1920,Lead Works Co,Smelting & refining,1912,-105.0003,39.74965
-1920,Griffin Wheel Co,Foundry,1912,-105.00448,39.67855
 1920,BROWNE IRON WORKS COMPANY •H,Iron & steel works,1912,-105.01584,39.7399
 1920,Copenhaver Geo C,Transportation equipment,1913,-104.99455,39.74514
 1920,DicksonEA,Machine shop / machinery,1913,-104.98811,39.75136
@@ -173,7 +172,6 @@ census,name,sector,listed,lon,lat
 1920,“ Colo Assaying Co,Assay office,1917,-104.98912,39.74757
 1920,(See Assayers and Chemists.),Assay office,1917,-104.9969,39.75096
 1920,genl mgr,Foundry; Iron & steel works; Manufactured gas; Metal working,1911,-104.98997,39.74554
-1920,Service Co,Manufactured gas; Transportation equipment,1917,-105.01041,39.70757
 1920,ASPHALTUM,Petroleum refining & asphalt,1913,-104.99065,39.74637
 1920,Austgen Rubber Co,Rubber,1917,-104.98751,39.71576
 1920,Bio-Pharm Chemical Co,Chemicals,1917,-104.98419,39.75021
@@ -215,7 +213,6 @@ census,name,sector,listed,lon,lat
 1920,GUNTHER & SONS,Tannery,1920,-104.94738,39.71866
 1920,— General Tire & Rubber Co,Rubber,1920,-104.98607,39.72728
 1930,genl mgr,Foundry; Iron & steel works; Manufactured gas; Metal working,1911,-104.98997,39.74554
-1930,Service Co,Manufactured gas; Transportation equipment,1917,-105.01041,39.70757
 1930,ASPHALTUM,Petroleum refining & asphalt,1913,-104.99065,39.74637
 1930,Johnson J A,Metal working,1917,-105.00952,39.75664
 1930,Queen City Brass Works,Foundry,1911,-105.00108,39.74906
@@ -252,7 +249,6 @@ census,name,sector,listed,lon,lat
 1940,Hicks Arthur G^ machine shop,Machine shop / machinery,1935,-104.97053,39.75448
 1940,Western Iron Foundry,Foundry,1935,-105.00303,39.74873
 1940,genl mgr,Foundry; Iron & steel works; Manufactured gas; Metal working,1911,-104.98997,39.74554
-1940,Service Co,Manufactured gas; Transportation equipment,1917,-105.01041,39.70757
 1940,ASPHALTUM,Petroleum refining & asphalt,1913,-104.99065,39.74637
 1940,Johnson J A,Metal working,1917,-105.00952,39.75664
 1940,Queen City Brass Works,Foundry,1911,-105.00108,39.74906

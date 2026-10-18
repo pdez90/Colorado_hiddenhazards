@@ -53,6 +53,8 @@ ed80     <- rd_opt("denver_1880_eds.csv"); ed80_poly <- if (file.exists(dd("denv
 city1880 <- rd_opt("denver_city_1880_1940.csv")
 co_cnty  <- if (file.exists(dd("co_counties_1880_1940.geojson"))) st_read(dd("co_counties_1880_1940.geojson"), quiet = TRUE) else NULL   # R/county_panel_1880_1940.R
 eds      <- if (file.exists(dd("denver_eds.geojson"))) st_read(dd("denver_eds.geojson"), quiet = TRUE) else NULL                       # R/denver_eds_analysis.R
+trd      <- if (file.exists(dd("denver_tracts.geojson"))) st_read(dd("denver_tracts.geojson"), quiet = TRUE) else NULL; trd_m <- rd_opt("denver_tracts_models.csv"); trd_s <- rd_opt("denver_tracts_shares.csv"); trd_g <- rd_opt("denver_tracts_groups.csv")   # R/denver_tracts_1950_2020.R
+TR_VARS  <- c("White (%, race)" = "p_white", "Black (%)" = "p_black", "Hispanic (%)" = "p_hisp", "Foreign born (%)" = "p_fb", "Below poverty (%)" = "p_pov", "Owner-occupied (%)" = "p_owner", "Median home value (2020 $)" = "mval_2020", "Median rent (2020 $)" = "mrent_2020", "Hazardous firms in the decade" = "firms", "Distance to nearest firm (m)" = "dist_m")
 eds_f    <- rd_opt("denver_eds_firms.csv"); eds_g <- rd_opt("ed_year_groups.csv"); eds_m <- rd_opt("ed_distance_models.csv")
 ED_LABELS <- c(pct_black = "Black (%)", pct_white = "White (%)", pct_fb = "Foreign born (%)", pct_fb_mexico = "Mexican-born (%)", pct_fb_europe = "European-born (%)", pct_fb_asia = "Asian-born (%)", pct_hisp = "Hispanic (%)",
                pct_foreign_parentage = "Foreign or mixed parentage (%)", pct_recent_immig = "Immigrated in the last 10 years (%)", pct_naturalized = "Naturalized citizens (% of foreign born)", pct_noncitizen = "Non-citizens (% of foreign born)",
@@ -71,7 +73,7 @@ eds_holc <- if (file.exists(dd("eds_holc_1930.geojson"))) st_read(dd("eds_holc_1
 HOLC_COL6 <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d", Industrial = "#8c8c8c", Commercial = "#c8a2c8", ungraded = "#eeeeee")
 HOLC_COL <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d")
 PAN_YEARS <- c(if (!is.null(co_cnty)) c(1880, 1900, 1910, 1920, 1930), seq(1940, 2020, 10))
-PAN_VARS <- c("Black (%)" = "p_black", "Hispanic (%)" = "p_hisp", "Foreign born (%)" = "p_fb", "Below poverty line (%)" = "p_pov",
+PAN_VARS <- c("Black (%)" = "p_black", "White (%, race)" = "p_white", "Hispanic (%)" = "p_hisp", "Foreign born (%)" = "p_fb", "Below poverty line (%)" = "p_pov",
               "Owner-occupied households (%)" = "p_owner", "Median home value (2020 $)" = "mval_2020", "Median rent (2020 $)" = "mrent_2020",
               "Mortgage denial rate 2018-21 (%, HMDA; 2020 only)" = "hmda_denial", "Mortgage denial rate, Hispanic applicants (%)" = "hmda_denial_hisp", "Mortgage denial rate, Black applicants (%)" = "hmda_denial_black", "Hispanic share of mortgage applications (%)" = "hmda_pct_hisp_apps",
               "Population" = "pop", "Hazardous firms active in the decade" = "firms_haz", "Legacy hazardous firms (earlier, no longer listed)" = "legacy_haz")
@@ -118,7 +120,7 @@ hleg <- function(p) plotly::layout(p, legend = list(orientation = "h", x = 0, y 
 # ---------------------------------------------------------------- UI
 filters <- list(
   sliderInput("yrs", "Listed in a directory between", min = 1871, max = 2002, value = c(1871, 2002), sep = "", step = 1, ticks = FALSE),
-  helpText("1871–1956: hazardous trades in the Colorado State Business Directory (brown). 1961–2002: Directory of Colorado Manufacturers."),
+  helpText("1871–1956: hazardous trades in the Colorado State Business Directory (brown). 1965–1992: Directory of Colorado Manufacturers, the 13 editions whose scans are complete (the 12 partial editions are set aside until CU Boulder supplies the missing pages; see Data & downloads)."),
   checkboxGroupInput("sec", "Sector (Frickel & Elliott)", SECTORS, selected = SECTORS[1:7]),
   tags$details(tags$summary(tags$small("What these sectors are")),
     tags$small(class = "text-muted", "The seven manufacturing industries that Scott Frickel and James Elliott (", tags$i("Sites Unseen"), ", 2018) identify as the most likely to leave ",
@@ -218,28 +220,31 @@ ui <- page_navbar(id = "nav",
       card(card_header("Panel models (Denver core): does industry predict who moves in, or do residents predict where industry goes?"), uiOutput("ej_models"),
            tags$small(class = "text-muted", "Hybrid (within/between) models after Marlow, Frickel & Elliott (2020), the 185 tracts of Denver and its first-ring suburbs within 10 km of downtown, 1970–2010, directory editions 1970/1980/1990/1999/2002, tract-clustered SE; the between part also as a spatial error model. Reproduce with Rscript R/ej_panel.R.")))
     ),
-  nav_panel("Denver 1880–1940",
+  nav_panel("Denver 1880–2020",
     layout_columns(col_widths = c(3, 6, 3),
-      card(card_header("Denver by enumeration district, 1880–1940"),
-           radioButtons("ed_year", "Census", choices = if (is.null(eds)) 1880 else sort(unique(eds$year)), selected = 1880, inline = TRUE),
+      card(card_header("Denver by enumeration district (1880–1940) and census tract (1950–2020)"),
+           radioButtons("ed_year", "Census", choices = c(if (is.null(eds)) 1880 else sort(unique(eds$year)), if (is.null(trd)) NULL else sort(unique(trd$census))), selected = 1880, inline = TRUE),
+           uiOutput("ed_unit"),
            selectInput("ed_var", "Districts shaded by", ED_VARS, selected = "pct_fb"),
            checkboxInput("ed_firms", "Show hazardous-trade firms of the decade", TRUE),
            tags$small(class = "text-muted",
              "District boundaries are this project's reconstruction (see About the data): every household address in Brown University's Geographic Reference Files for Denver (1900–1940) ",
              "was geocoded with the project's offline TIGER geocoder and the districts drawn as the dissolved Voronoi cells of their addresses; 1880 uses Brown's geocoded buildings the same way. ",
-             "Composition is the IPUMS full count aggregated by district. Firms: the hazardous trades of the business directories listed in the preceding decade, at their street address (1878–1885 firms on the 1880 grid for 1880)."),
+             "Composition is the IPUMS full count aggregated by district. Firms: the hazardous trades of the business directories listed in the preceding decade, at their street address (1878–1885 firms on the 1880 grid for 1880). ",
+             tags$b("From 1950 the unit changes to the census tract"), " (the 185 tracts of the Denver core on 2010 boundaries, earlier censuses interpolated), because census microdata are sealed for 72 years and the address files that let us draw districts stop at 1940. ",
+             "The same analyses are run on tracts with the tract tables' measures (race, Hispanic origin, nativity, poverty, tenure, value, rent); firms of the decade are the manufacturers' directory sites from 1970 (2000, 2010 and 2020 use the last complete directory decade, 1983–1992)."),
            ),
       card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_1880", height = "70vh"))),
       card(card_header("Composition vs. distance to the nearest firm"), tableOutput("t_edm"),
-           tags$small(class = "text-muted", "Percentage points per log-metre from the district centroid to the nearest hazardous firm (population-weighted, robust SE; negative = higher near industry). 'pooled' = all censuses with census effects. ",
+           tags$small(class = "text-muted", "Percentage points per log-metre from the district or tract centroid to the nearest hazardous firm (population-weighted, robust SE; negative = higher near industry). 'pooled' = all censuses with census effects (1880–1940 districts and 1950–2020 tracts pooled separately). Value and rent enter as logs. ",
              "SEI = Duncan socioeconomic index (IPUMS): each occupation scored 0-96 from the income and education of its holders in 1950, the only income proxy available for every census. ",
              "'In hazardous industries' = share of a district's employed residents working in chemical, metal, petroleum and similar industries (IPUMS IND1950): if the people next to the plants were mainly their own workers this coefficient would be negative; it is nil or positive in every census, so proximity reflects residential sorting rather than workers' housing."),
            card_header("Dissimilarity across districts, 1880–1940"), plotlyOutput("p_city", height = 260),
            tags$small(class = "text-muted", "0 = evenly spread, 1 = complete separation (IPUMS full count; 1880 and 1900 Arapahoe County)."))),
     card(card_header(textOutput("edg_title")), tableOutput("t_edg"),
          tags$small(class = "text-muted", "Population-weighted means of the district composition (IPUMS full count). The last row is the dissimilarity index of each group against the rest of the population across all mapped districts (0\u20131).")),
-    card(card_header("Where the firms were: share of each decade's hazardous-trade firms in the districts housing the top population quartile on each measure"), plotlyOutput("p_ed_sh", height = 340),
-         tags$small(class = "text-muted", "Districts are ranked on the measure and the top 25% of the population taken; if firms were spread like people, 25% (dashed line) would fall there. Hover for the share in the bottom quartile.")),
+    card(card_header("Where the firms were: share of each decade's hazardous firms in the districts (1880–1940) or tracts (1950–2020) housing the top population quartile on each measure"), plotlyOutput("p_ed_sh", height = 340),
+         tags$small(class = "text-muted", "Districts or tracts are ranked on the measure and the top 25% of the population taken; if firms were spread like people, 25% (dashed line) would fall there. Hover for the share in the bottom quartile. The grey line marks the change of unit.")),
     layout_columns(col_widths = c(4, 8),
       card(card_header("1880 at the building level (Brown University Urban Transition HGIS)"),
            tags$small(class = "text-muted", "The 1880 census geocoded to buildings against the hazardous trades of the 1878–1885 directories placed on the 1880 street grid: 34,386 residents, 60 firms at the building. Only aggregates and model results are shown; Brown's building-level data are not redistributed."),
@@ -279,7 +284,7 @@ ui <- page_navbar(id = "nav",
       card(card_header("Mortgage lending today by HOLC grade: HMDA 2018-21 home-purchase applications"), tableOutput("t_hmda"), uiOutput("hmda_note"),
            tags$small(class = "text-muted", "2010 tracts by dominant HOLC grade; denial rate = denied / (originated + denied). The implemented-policy counterpart to the 1938 map: who gets credit in the graded areas today. Source: CFPB HMDA data browser (R/fetch_hmda.R).")),
       card(card_header("Change in tract outcomes by grade, A = reference"), selectInput("rl_mvar", "Outcome", c("Black %" = "p_black", "Hispanic %" = "p_hisp", "Poverty %" = "p_pov", "Owner-occupied %" = "p_owner", "log median home value (2020 $)" = "lmval")), tableOutput("t_holc_m"),
-           tags$small(class = "text-muted", "Percentage points over the period; the 1940 baseline of the outcome, 1940 % Black and 1931-40 firms controlled; HC1 SE. ** p<0.01, * p<0.05. Compare Xu (2022), Table 3, for Chicago."))),
+           tags$small(class = "text-muted", "Percentage points over the period relative to tracts dominated by A areas; the 1940 baseline of the outcome, 1940 % Black and 1931-40 firms controlled; HC1 SE. ** p<0.01, * p<0.05. Industrial and Commercial = tracts at least 40% inside HOLC's ungraded zones of that kind (few tracts, so wide SEs). Compare Xu (2022), Table 3, for Chicago."))),
     layout_columns(col_widths = c(7, 5),
       card(card_header("Did the map create or reinforce? The D–C gap census by census, 1900–2020"),
            layout_columns(col_widths = c(4, 3, 5), selectInput("rl_bvar", "Outcome", c("Black (%)" = "p_black", "Hispanic (%)" = "p_hisp", "Foreign born (%)" = "p_fb", "Owner-occupied (%)" = "p_owner", "Below poverty (%)" = "p_pov", "Laborers (%)" = "p_laborers")),
@@ -289,7 +294,8 @@ ui <- page_navbar(id = "nav",
            plotlyOutput("p_holc_bd", height = 340), tableOutput("t_holc_bd"),
            tags$small(class = "text-muted", "Design after Aaronson, Hartley & Mazumder (2021): the D-side minus C-side difference (population-weighted, HC1 SE) is tracked before and after the 1938 map (grey line). Before 1940 the units are the reconstructed enumeration districts, ",
              "whose centroid falls in a C or D area; from 1940 they are 2010 tracts with earlier censuses interpolated. A gap already widening before 1938 means the map ratified an existing divergence; one that opens only afterwards points to the map (or to the FHA practices and covenants of the same years — Fishback, Rose, Snowden & Storrs 2024 find FHA, not HOLC, drove lending). ",
-             "Railways and the 1925 zoning ordinance are not controlled; boundaries that follow a rail line or an existing racial divide can explain part of any later gap.")),
+             "Blue crosses and the 'net of rail' column: the same gap with each unit's distance to the nearest rail line (TIGER/Line; today's network, in Denver essentially the pre-1900 trunk lines and yards) added to the regression, since a boundary that follows a railway can differ for reasons other than the grade. The 1925 zoning ordinance is not controlled. ",
+             "Error bars are 95% intervals of the difference in population-weighted means across the units in the band: they are wide after 1940 because only ~15 tracts lie on each side and tract-level shares are far more dispersed than district-level ones (a few Five Points tracts were 60-80% Black while most were near 0), and for pairs involving A or B because those areas are few.")),
       card(card_header("Industry by HOLC grade before and after the map: hazardous firms per km²"), tableOutput("t_holc_ind"),
            tags$small(class = "text-muted", "Street-level hazardous trades in the business directory (1891–1956) and hazardous-sector manufacturers in the Directory of Colorado Manufacturers (1961–2002), active in each period, per km² of each grade's area. ",
              "The D/C ratio before 1938 measures the industrial geography the appraisers found; its change afterwards is what the map, zoning and the post-war land market added.")))
@@ -342,6 +348,11 @@ ui <- page_navbar(id = "nav",
     layout_columns(col_widths = c(6, 6),
       card(card_header("Historical layers (built for this project)"),
         tags$dl(
+          tags$dt("Inventory scope (October 2026)"),
+          tags$dd(tags$b("The 1961\u20132002 directory series is used through its 13 complete editions only: 1965, 1966, 1967, 1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990 and 1992. "),
+                  "Twelve editions (1961, 1962, 1971, 1976, 1979, 1982, 1984, 1985, 1986, 1993, 1999, 2002) reached the project as partial scans that stop part-way through the geographic section, so they are set aside until CU Boulder Libraries supplies the missing pages: ",
+                  "sites, firm histories, corridors, the census panels, the redlining comparisons and the health models are all built from the complete editions (config/editions.json; the full-inventory files are kept in data/full_inventory/). ",
+                  "Where an analysis needs 'firms of the decade' for 2000, 2010 or 2020 it uses the last complete decade, 1983\u20131992. The Data & downloads tab lists what every edition contains."),
           tags$dt("Historical hazardous sites, 1961\u20132002"),
           tags$dd("Every manufacturer listed in the Colorado Directory of Manufacturers (25 editions, CU Boulder Libraries scans, OCR'd with Tesseract) ",
                   "whose industry code falls in Frickel & Elliott's hazardous sectors: SIC 28 chemicals, 29 petroleum, 30 rubber & plastics, 33 primary metals, ",
@@ -369,7 +380,7 @@ ui <- page_navbar(id = "nav",
                   "Hispanic (Spanish surname 1960, Spanish American 1970, Spanish origin 1980, Hispanic 1990+), foreign born and persons below the poverty line (1970+). ",
                   "1940\u20131980 values are on each census's own tracts and are re-weighted by area onto 2010 tracts; 1990\u20132020 use NHGIS's standardised 2010-tract time series. ",
                   "Firm counts per tract come from this project's geocoded directories. All 1,249 Colorado tracts (2010 boundaries) are shown; the panel models use the 185 tracts of Denver and the first-ring suburbs within 10 km of downtown."),
-          tags$dt("Denver enumeration districts 1880\u20131940 (reconstructed; Denver 1880\u20131940 tab)"),
+          tags$dt("Denver enumeration districts 1880\u20131940 (reconstructed; Denver 1880\u20132020 tab)"),
           tags$dd("No public source has boundaries for the enumeration districts (EDs) of 1880\u20131940; IPUMS gives every person's ED number but no addresses. Brown University's Geographic Reference Files (GRF) ",
                   "for Denver list every person of the 1900\u20131940 censuses with the household's street, house number and ED (no coordinates). The districts here are reconstructed from them: ",
                   "(1) every distinct address is geocoded with this project's offline TIGER/Line geocoder (Denver's modern numbering dates from 1887; a few renamed streets such as Holladay \u2192 Market are translated), ",
@@ -396,6 +407,9 @@ ui <- page_navbar(id = "nav",
                   "(Logan et al.; s4.ad.brown.edu/Projects/UTP2). The hazardous trades of the 1878\u20131885 Colorado State Business Directories were placed on that 1880 grid by their printed house numbers, ",
                   "and residents' distance to the nearest firm computed at the building. The app shows only enumeration-district aggregates, firm points and model results; the person- and building-level files ",
                   "stay with the project under Brown's conditions of use (no redistribution). Rscript R/denver_1880.R reproduces the analysis from Brown's downloads."),
+          tags$dt("Denver 1950\u20132020 by census tract (Denver 1880\u20132020 tab)"),
+          tags$dd("The district analyses carried forward on the 185 tracts of the Denver core (2010 boundaries, earlier censuses interpolated as on the Census tracts tab): firms of the decade from the business directory (1941-60) and the manufacturers' directory (1961-2002; 2010 and 2020 reuse 1993-2002), ",
+                  "distance from each tract centroid to the nearest one, population-weighted regressions on log distance, tracts with vs without a firm, and firm shares by population quartile. Measures are the tract tables' (race, Hispanic origin from 1960, nativity, poverty from 1970, tenure, value, rent). Rscript R/denver_tracts_1950_2020.R."),
           tags$dt("Denver 1880\u20131940 (IPUMS USA full count)"),
           tags$dd("The complete-count census microdata for 1880, 1900, 1910, 1920, 1930 and 1940 (Ruggles et al., IPUMS USA), Colorado only, aggregated to enumeration districts (Rscript R/fetch_ipums_fullcount.R): ",
                   "population, Black, foreign born by region, Hispanic (IPUMS HISPAN, inferred before 1970) and laborers (OCC1950 970\u2013979). ",
@@ -639,14 +653,14 @@ server <- function(input, output, session) {
                labs(x = "Directory edition", y = "Sites listed", colour = NULL) + theme_minimal())
   })
   output$p_timeline <- renderPlotly({
-    a <- sy_sel() |> count(year, name = "n") |> mutate(series = "Manufacturers' directory sites (hazardous sectors), 1961-2002")
+    a <- sy_sel() |> count(year, name = "n") |> mutate(series = "Manufacturers' directory sites (hazardous sectors), complete editions 1965-1992")
     h <- sel_hist(); b <- if (is.null(h) || !nrow(h)) NULL else h |> mutate(yr = strsplit(years, " ")) |> unnest(yr) |> mutate(year = as.integer(yr)) |> filter(year >= input$yrs[1], year <= input$yrs[2]) |> count(year, name = "n") |> mutate(series = "Business-directory hazardous trades, 1871-1956")
     d <- bind_rows(a, b); if (!nrow(d)) return(NULL)
     inc <- if (is.null(edcov)) integer() else edcov$year[edcov$complete %in% c(FALSE, "FALSE")]; d$complete <- !d$year %in% inc
     if (identical(input$tl_mode, "complete")) d <- d |> filter(complete); if (!nrow(d)) return(NULL)
     d$text <- sprintf("%s: %s (%s)%s", d$year, d$n, d$series, ifelse(d$complete, "", " - incomplete scan"))
     ggplotly(ggplot(d, aes(year, n, colour = series, group = series, text = text)) + geom_line() + geom_point(aes(shape = complete), size = 2.2, fill = "white") + scale_shape_manual(values = c(`TRUE` = 16, `FALSE` = 21), guide = "none") +
-               scale_colour_manual(values = c("Business-directory hazardous trades, 1871-1956" = "#8c510a", "Manufacturers' directory sites (hazardous sectors), 1961-2002" = "#d1491f")) +
+               scale_colour_manual(values = c("Business-directory hazardous trades, 1871-1956" = "#8c510a", "Manufacturers' directory sites (hazardous sectors), complete editions 1965-1992" = "#d1491f")) +
                scale_x_continuous(breaks = seq(1870, 2000, 10)) + labs(x = "Directory edition", y = "Listed", colour = NULL) + theme_minimal(), tooltip = "text") |> hleg() })
   output$p_status <- renderPlotly({
     d <- sy_sel() |> count(year, radar) |> mutate(radar = factor(radar, STATUS))
@@ -828,7 +842,9 @@ server <- function(input, output, session) {
                                                                label = ~lab, group = "firms", options = pathOptions(pane = "haz")) }
     px })
   output$p_pan <- renderPlotly({
-    v <- if (input$pan_var %in% c("p_black", "p_hisp", "p_fb", "p_pov", "p_owner", "mval_2020", "mrent_2020")) input$pan_var else "p_hisp"; lab <- names(PAN_VARS)[PAN_VARS == v]
+    v <- input$pan_var; lab <- names(PAN_VARS)[PAN_VARS == v]
+    validate(need(v %in% c("p_black", "p_white", "p_hisp", "p_fb", "p_pov", "p_owner", "mval_2020", "mrent_2020"), paste0("'", lab, "' is observed once (HMDA 2018-21, shown on the 2020 map), so there is no series to plot; choose a census measure.")),
+             need(v %in% names(den_pan) && any(!is.na(den_pan[[v]])), paste0("'", lab, "' is not in the tract panel yet (rerun R/fetch_census.R and R/app_census_layers.R).")))
     d <- den_pan |> filter(!is.na(.data[[v]]), !is.na(pop), pop > 0, if (input$pan_area == "core") core else TRUE) |>
       mutate(group = case_when(firms_haz > 0 ~ "Active hazardous firm in tract", legacy_haz > 0 ~ "Legacy only (firms gone)", TRUE ~ "Never a hazardous firm")) |>
       group_by(census, group) |> summarise(val = weighted.mean(.data[[v]], pop), tracts = n(), .groups = "drop")
@@ -838,15 +854,15 @@ server <- function(input, output, session) {
                scale_x_continuous(breaks = seq(1940, 2020, 10)) + labs(x = "Census", y = lab, colour = NULL) + theme_minimal(), tooltip = "text") |> hleg() })
   output$ej_models <- renderUI({ if (is.null(ej_mod)) return(NULL)
     TERMS <- c(act_w = "Within tract: change in active-firm density over time", act_b = "Between tracts: average active-firm density", leg_b = "Legacy density (firms gone before 1970)")
-    OUT <- c(p_black = "% Black", p_hisp = "% Hispanic", p_fb = "% foreign born", ppov = "% poverty")
-    h <- ej_mod |> filter(grepl("hybrid", model)) |> mutate(star = ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", ifelse(p < 0.1, "†", ""))),
+    OUT <- c(p_black = "% Black", p_white = "% White (race)", p_hisp = "% Hispanic", p_fb = "% foreign born", ppov = "% poverty", p_owner = "% owner-occupied", lmval = "log home value", lmrent = "log rent")
+    h <- ej_mod |> filter(grepl("hybrid", model), outcome %in% names(OUT)) |> mutate(star = ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", ifelse(p < 0.1, "†", ""))),
       cell = sprintf("%+.2f%s<br><small>(%.2f)</small>", b, star, se), outcome = OUT[outcome], term = TERMS[term]) |> select(term, outcome, cell) |>
       pivot_wider(names_from = outcome, values_from = cell)
     r <- if (!is.null(ej_rev)) ej_rev |> mutate(cell = sprintf("%+.3f%s (%.3f)", b, ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", ifelse(p < 0.1, "†", ""))), se)) else NULL
-    dec <- if (is.null(ej_dec)) "" else { dd <- ej_dec |> filter(term == "act_w") |> mutate(cell = sprintf("%+.1f%s", b, ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", ifelse(p < 0.1, "†", "")))), outcome = OUT[outcome]) |> select(census, outcome, cell) |> pivot_wider(names_from = outcome, values_from = cell)
+    dec <- if (is.null(ej_dec)) "" else { dd <- ej_dec |> filter(term == "act_w", outcome %in% names(OUT)) |> mutate(cell = sprintf("%+.1f%s", b, ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", ifelse(p < 0.1, "†", "")))), outcome = OUT[outcome]) |> select(census, outcome, cell) |> pivot_wider(names_from = outcome, values_from = cell)
       paste0("<p><b>Census by census</b> (the within-tract association, same controls, HC1 SE):</p><table class='table table-sm' style='font-size:12px'><tr><th>Census</th>", paste0("<th>", names(dd)[-1], "</th>", collapse = ""), "</tr>",
              paste0("<tr><td>", dd$census, "</td>", apply(dd[, -1], 1, function(z) paste0("<td>", ifelse(is.na(z), "–", z), "</td>", collapse = "")), "</tr>", collapse = ""), "</table>") }
-    HTML(paste0("<p><b>Who moves in after industry arrives?</b> Pooled over all five censuses 1970\u20132010 (898 tract-years): effect on the outcome (percentage points) per log-unit of hazardous-firm density; (SE); ** p&lt;0.01, * p&lt;0.05, † p&lt;0.1.</p>",
+    HTML(paste0("<p><b>Who moves in after industry arrives?</b> Pooled over all five censuses 1970\u20132010 (898 tract-years): effect on the outcome (percentage points; log points for value and rent) per log-unit of hazardous-firm density; (SE); ** p&lt;0.01, * p&lt;0.05, † p&lt;0.1. Outcomes appear when the census panel provides them for 1970\u20132010 (White, ownership, value and rent after rerunning fetch_census.R and ej_panel.R).</p>",
                 "<table class='table table-sm' style='font-size:12px'><tr><th>Predictor</th>", paste0("<th>", names(h)[-1], "</th>", collapse = ""), "</tr>",
                 paste0("<tr><td>", h$term, "</td>", apply(h[, -1], 1, function(z) paste0("<td>", z, "</td>", collapse = "")), "</tr>", collapse = ""), "</table>",
                 if (!is.null(r)) paste0("<p><b>Does the population predict where industry goes next?</b> Change in a tract's active firms by the next edition, per percentage point of the predictor (tract density, population, distance and year controlled): ",
@@ -861,9 +877,30 @@ server <- function(input, output, session) {
       addTiles("https://server.arcgisonline.com/ArcGis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
                attribution = "Tiles &copy; Esri; districts reconstructed from Brown University GRF addresses; composition IPUMS USA full count; firms: Colorado State Business Directories") |>
       setView(-104.99, 39.74, 12) |> addMapPane("tr", zIndex = 380) |> addMapPane("haz", zIndex = 460) })
+  output$ed_unit <- renderUI({ y <- as.integer(input$ed_year); if (is.na(y)) return(NULL)
+    if (y >= 1950) tags$div(class = "alert alert-warning py-1 px-2 mb-2", tags$small(tags$b("Unit: census tracts"), " (Denver core, 2010 boundaries; interpolated before 2010). Microdata end at 1940, so the measures are the tract tables'.")) else tags$div(class = "alert alert-light py-1 px-2 mb-2", tags$small(tags$b("Unit: enumeration districts"), " reconstructed from the full count.")) })
+  observeEvent(input$ed_year, { y <- as.integer(input$ed_year); if (is.na(y)) return()
+    ch <- if (y >= 1950) TR_VARS else ED_VARS; cur <- input$ed_var
+    map <- c(pct_black = "p_black", pct_hisp = "p_hisp", pct_fb = "p_fb", pct_owner_hh = "p_owner", median_rent = "mrent_2020", median_value = "mval_2020", p_black = "pct_black", p_hisp = "pct_hisp", p_fb = "pct_fb", p_owner = "pct_owner_hh", mrent_2020 = "median_rent", mval_2020 = "median_value")
+    sel <- if (cur %in% ch) cur else if (!is.null(cur) && cur %in% names(map) && map[[cur]] %in% ch) map[[cur]] else ch[[1]]
+    updateSelectInput(session, "ed_var", label = if (y >= 1950) "Tracts shaded by" else "Districts shaded by", choices = ch, selected = sel) }, ignoreInit = TRUE)
   observe({
-    req(input$map_1880_zoom); if (is.null(eds)) return()
-    y <- as.integer(input$ed_year); v <- input$ed_var; d <- eds[eds$year == y, ]; x <- d[[v]]; lab <- names(ED_VARS)[ED_VARS == v]
+    req(input$map_1880_zoom); y <- as.integer(input$ed_year); v <- input$ed_var
+    if (!is.na(y) && y >= 1950) { if (is.null(trd) || !v %in% names(trd)) return(); d <- trd[trd$census == y, ]; x <- d[[v]]; lab <- names(TR_VARS)[TR_VARS == v]
+      pal <- if (all(is.na(x))) function(z) "#c7c7c7" else colorBin(if (v == "firms") "PuRd" else if (v == "dist_m") "Blues" else "YlOrBr", domain = x, bins = 7, pretty = TRUE, na.color = "#f0f0f0")
+      px <- leafletProxy("map_1880") |> clearGroup("eds") |> clearGroup("firms") |> removeControl("ednote") |> removeControl("edlegend") |>
+        addPolygons(data = d, fillColor = pal(x), fillOpacity = 0.7, color = "#555555", weight = 0.8, group = "eds", options = pathOptions(pane = "tr"),
+                    label = sprintf("Tract %s (%s): %s = %s", d$GEOID, y, lab, ifelse(is.na(x), "no data", round(x, 1))),
+                    popup = sprintf("<b>Tract %s</b>, %s census<br>Population %s · Black %s%% · Hispanic %s%% · foreign born %s%% · below poverty %s%% · owner-occupied %s%%<br>Median home value $%s · median rent $%s (2020 $)<br>Hazardous firms of the decade inside: <b>%s</b> · nearest firm %s m from the centroid",
+                                    d$GEOID, y, format(d$pop, big.mark = ","), esc(d$p_black), esc(d$p_hisp), esc(d$p_fb), esc(d$p_pov), esc(d$p_owner), esc(d$mval_2020), esc(d$mrent_2020), esc(d$firms), esc(d$dist_m)))
+      if (!all(is.na(x))) px <- px |> addLegend("bottomright", pal = pal, values = x, title = paste0(lab, "<br><small>", y, " census, tracts</small>"), layerId = "edlegend", opacity = 0.8)
+      else px <- px |> addControl(sprintf("<div style='background:#fff3cd;padding:6px 10px;border-radius:4px;max-width:260px'><b>%s: not in the %s tract tables</b><br><small>Hispanic from 1960, poverty from 1970, foreign born not in 1950/1990 tract tables.</small></div>", lab, y), position = "bottomright", layerId = "ednote")
+      if (isTRUE(input$ed_firms)) { a <- list("1950" = c(1941, 1950), "1960" = c(1951, 1960), "1970" = c(1961, 1970), "1980" = c(1971, 1980), "1990" = c(1981, 1990), "2000" = c(1983, 1992), "2010" = c(1983, 1992), "2020" = c(1983, 1992))[[as.character(y)]]
+        f <- if (y <= 1960) { if (is.null(hist)) NULL else hist |> filter(precision != "town", !is.na(lat), fe_hazard %in% c(TRUE, "True"), first_year <= a[2], last_year >= a[1]) |> transmute(lon, lat, name, info = years) }
+             else { ss <- sites |> filter(!is.na(lat), fe_hazard %in% c(TRUE, "True"), first_year <= a[2], last_year >= a[1]); ss |> transmute(lon, lat, name = address, info = paste(first_year, last_year, sep = "-")) }
+        if (!is.null(f) && nrow(f)) px <- px |> addCircleMarkers(data = f, ~lon, ~lat, radius = 4, color = "#000000", weight = 1, fillColor = "#d1491f", fillOpacity = 0.9, group = "firms", options = pathOptions(pane = "haz"), label = sprintf("%s (%s)", f$name, f$info)) }
+      return(px) }
+    if (is.null(eds) || !v %in% names(eds)) return(); d <- eds[eds$year == y, ]; x <- d[[v]]; lab <- names(ED_VARS)[ED_VARS == v]
     pal <- if (all(is.na(x))) function(z) "#c7c7c7" else colorBin(if (v == "firms") "PuRd" else if (v == "dist_m") "Blues" else "YlOrBr", domain = x, bins = 7, pretty = TRUE, na.color = "#f0f0f0")
     extra <- paste(c(if ("pct_owner_hh" %in% names(d)) sprintf("owner-occupied %s%%", esc(d$pct_owner_hh)), if ("median_rent" %in% names(d)) sprintf("median rent $%s", esc(d$median_rent)), if ("mean_sei" %in% names(d)) sprintf("mean SEI %s", esc(d$mean_sei)),
                      if ("pct_haz_industry" %in% names(d)) sprintf("in hazardous industries %s%%", esc(d$pct_haz_industry)), if ("pct_movers" %in% names(d)) sprintf("moved since 1935 %s%%", esc(d$pct_movers))), collapse = " · ")
@@ -879,14 +916,21 @@ server <- function(input, output, session) {
       if (nrow(f)) px <- px |> addCircleMarkers(data = f, ~lon, ~lat, radius = 4.5, color = "#000000", weight = 1, fillColor = "#d1491f", fillOpacity = 0.95, group = "firms", options = pathOptions(pane = "haz"),
                                                 label = sprintf("%s (%s)", f$name, f$listed), popup = sprintf("<b>%s</b><br>%s · listed %s", esc(f$name), esc(f$sector), f$listed)) }
     px })
-  output$edg_title <- renderText(sprintf("%s: enumeration districts with vs. without a hazardous-trade firm of the preceding decade", input$ed_year))
-  output$t_edg <- renderTable({ if (is.null(eds_g)) return(NULL); y <- as.integer(input$ed_year)
+  output$edg_title <- renderText({ y <- as.integer(input$ed_year); sprintf("%s: %s with vs. without a hazardous firm of the preceding decade", y, if (!is.na(y) && y >= 1950) "census tracts" else "enumeration districts") })
+  output$t_edg <- renderTable({ y <- as.integer(input$ed_year)
+    if (!is.na(y) && y >= 1950) { if (is.null(trd_g)) return(NULL)
+      g <- trd_g |> filter(census == y) |> transmute(Group = sub("dissimilarity \\(all tracts\\)", "Dissimilarity index, Black vs rest, across all tracts (0\u20131)", group), Tracts = EDs, Population = population, `White % (race)` = p_white, `Black %` = p_black, `Hispanic %` = p_hisp, `Foreign born %` = p_fb, `Below poverty %` = p_pov, `Owner-occupied %` = p_owner, `Median value (2020 $)` = mval_2020, `Median rent (2020 $)` = mrent_2020)
+      return(g[, sapply(g, function(z) !all(is.na(z))), drop = FALSE]) }
+    if (is.null(eds_g)) return(NULL)
     gc <- function(v, r) if (v %in% names(eds_g)) round(eds_g[[v]][eds_g$census == y], r) else NA
-    g <- eds_g |> filter(census == y) |> transmute(Group = sub("dissimilarity \\(all mapped EDs\\)", "Dissimilarity index across all districts (0\u20131)", group), EDs, Population = population, `Black %` = round(pct_black, 2), `Foreign born %` = round(pct_fb, 1), `Mexican-born %` = round(pct_fb_mexico, 2), `Hispanic %` = round(pct_hisp, 2), `Laborers %` = round(pct_laborers, 1))
+    g <- eds_g |> filter(census == y) |> transmute(Group = sub("dissimilarity \\(all mapped EDs\\)", "Dissimilarity index across all districts (0\u20131)", group), EDs, Population = population, `White % (race)` = if ("pct_white" %in% names(eds_g)) round(pct_white, 1) else NA, `Black %` = round(pct_black, 2), `Foreign born %` = round(pct_fb, 1), `Mexican-born %` = round(pct_fb_mexico, 2), `Hispanic %` = round(pct_hisp, 2), `Laborers %` = round(pct_laborers, 1))
     g$`Owner households %` <- gc("pct_owner_hh", 1); g$`Median rent $` <- gc("median_rent", 0); g$`Mean SEI` <- gc("mean_sei", 1); g$`In hazardous industries %` <- gc("pct_haz_industry", 1); g$`Recent immigrants %` <- gc("pct_recent_immig", 1); g$`Moved since 1935 %` <- gc("pct_movers", 1)
     g[, sapply(g, function(z) !all(is.na(z))), drop = FALSE] }, striped = TRUE, spacing = "xs")
-  output$t_edm <- renderTable({ if (is.null(eds_m)) return(NULL); y <- as.integer(input$ed_year)
-    OUT <- c(pct_black = "Black %", pct_fb = "Foreign born %", pct_fb_mexico = "Mexican-born %", pct_hisp = "Hispanic %", pct_laborers = "Laborers %", pct_owner_hh = "Owner households %", median_rent = "Median rent $", mean_sei = "Mean SEI", pct_haz_industry = "In hazardous industries %", pct_recent_immig = "Recent immigrants %", pct_movers = "Moved since 1935 %", pct_illiterate = "Illiterate %", pct_boarders = "Boarders %")
+  output$t_edm <- renderTable({ y <- as.integer(input$ed_year)
+    if (!is.na(y) && y >= 1950) { if (is.null(trd_m)) return(NULL); OUT <- c(p_white = "White % (race)", p_black = "Black %", p_hisp = "Hispanic %", p_fb = "Foreign born %", p_pov = "Below poverty %", p_owner = "Owner-occupied %", log_mval_2020 = "log home value", log_mrent_2020 = "log rent")
+      return(trd_m |> filter(census %in% c(y, 0)) |> transmute(Census = ifelse(census == 0, "pooled 1950-2020", as.character(census)), Outcome = coalesce(OUT[outcome], outcome), `b per log m` = round(b_per_log_m, 3), SE = round(se, 3), p = format.pval(p, digits = 2, eps = 1e-4), Tracts = EDs)) }
+    if (is.null(eds_m)) return(NULL)
+    OUT <- c(pct_white = "White % (race)", pct_black = "Black %", pct_fb = "Foreign born %", pct_fb_mexico = "Mexican-born %", pct_hisp = "Hispanic %", pct_laborers = "Laborers %", pct_owner_hh = "Owner households %", median_rent = "Median rent $", mean_sei = "Mean SEI", pct_haz_industry = "In hazardous industries %", pct_recent_immig = "Recent immigrants %", pct_movers = "Moved since 1935 %", pct_illiterate = "Illiterate %", pct_boarders = "Boarders %")
     eds_m |> filter(census %in% c(y, 0)) |> transmute(Census = ifelse(census == 0, "pooled", as.character(census)), Outcome = coalesce(OUT[outcome], outcome), `b per log m` = round(b_per_log_m, 3), SE = round(se, 3), p = format.pval(p, digits = 2, eps = 1e-4), EDs) }, striped = TRUE, spacing = "xs")
   output$t_d80 <- renderTable({ if (is.null(d80)) return(NULL)
     d80 |> transmute(Distance = band, Residents = residents, `Foreign born %` = round(pct_foreign_born, 1), `German %` = round(pct_german, 1), `Black %` = round(pct_black, 1), `Chinese %` = round(pct_chinese, 1),
@@ -954,10 +998,13 @@ server <- function(input, output, session) {
     ed_cls |> filter(census == 1930) |> transmute(`HOLC class` = grade, `Covenants 1931-35` = ifelse(has_covenant, "yes", "none"), EDs, Population = population, `Black % 1930` = pct_black, `Hispanic % 1930` = pct_hisp, `Foreign born %` = pct_fb, `Laborers %` = pct_laborers,
                                                  `Firms to 1937 (per 10k)` = sprintf("%d (%.1f)", firms_pre1938, firms_per_10k_pre1938), `Firms 1938-56 (per 10k)` = sprintf("%d (%.1f)", firms_1938_1956, firms_per_10k_1938_56), `Sites 1961-2002 (per 10k)` = sprintf("%d (%.1f)", firms_1961_2002, firms_per_10k_1961_2002)) }, striped = TRUE, spacing = "xs")
   output$p_ed_sh <- renderPlotly({ if (is.null(ed_sh)) return(NULL)
-    LAB <- c(pct_black = "Black", pct_fb = "foreign born", pct_fb_mexico = "Mexican-born", pct_hisp = "Hispanic", pct_laborers = "laborers", pct_owner_hh = "owner-occupied", median_rent = "rent", mean_sei = "SEI")
-    d <- ed_sh |> filter(measure %in% names(LAB)) |> mutate(m = factor(LAB[measure], LAB))
+    LAB <- c(pct_white = "White", pct_black = "Black", pct_fb = "foreign born", pct_fb_mexico = "Mexican-born", pct_hisp = "Hispanic", pct_laborers = "laborers", pct_owner_hh = "owner-occupied", median_rent = "rent", mean_sei = "SEI")
+    d <- ed_sh |> filter(measure %in% names(LAB)) |> mutate(m = LAB[measure])
+    if (!is.null(trd_s)) { LT <- c(p_white = "White", p_black = "Black", p_hisp = "Hispanic", p_fb = "foreign born", p_pov = "below poverty", p_owner = "owner-occupied", mrent_2020 = "rent", mval_2020 = "home value")
+      d <- bind_rows(d, trd_s |> filter(measure %in% names(LT)) |> mutate(m = LT[measure])) }
+    d <- d |> mutate(m = factor(m, unique(c(LAB, "below poverty", "home value")))); nb <- sum(unique(d$census) < 1950)
     ggplotly(ggplot(d, aes(factor(census), share_firms_top_quartile, fill = m, text = sprintf("%s, top quartile by %s: %.0f%% of %s firms (bottom quartile %.0f%%)", census, m, share_firms_top_quartile, firms, share_firms_bottom_quartile))) +
-               geom_col(position = position_dodge(width = 0.8), width = 0.75) + geom_hline(yintercept = 25, linetype = "dashed", colour = "grey40") +
+               geom_col(position = position_dodge(width = 0.8), width = 0.75) + geom_hline(yintercept = 25, linetype = "dashed", colour = "grey40") + geom_vline(xintercept = nb + 0.5, colour = "grey60") +
                labs(x = "Census", y = "% of the decade's firms in the top-quartile districts", fill = "Ranked by") + theme_minimal(), tooltip = "text") |> hleg() })
   output$t_holc_g <- renderTable({ if (is.null(holc_g)) return(NULL)
     holc_g |> transmute(Grade = grade, Areas = areas, `Firms before map (1871-1937)` = firms_pre1938, `Areas with one` = areas_with_firm_pre1938, `Firms 1921-37` = firms_1921_1937, `Firms 1938-56` = firms_1938_1956, `Remarks cite industry` = mentions_industry, Covenants = covenants_1931_35, `Pop 1930` = pop_1930, `Black % 1930` = pct_black_1930, `Hispanic % 1930` = pct_hisp_1930, `Laborers % 1930` = pct_laborers_1930, `Black % 1940` = pct_black_1940, `Hispanic % 1940` = pct_hisp_1940) }, striped = TRUE, spacing = "xs")
@@ -976,12 +1023,16 @@ server <- function(input, output, session) {
     if (!nrow(d)) return(NULL); lab <- c(p_black = "Black (%)", p_hisp = "Hispanic (%)", p_fb = "Foreign born (%)", p_owner = "Owner-occupied (%)", p_pov = "Below poverty (%)", p_laborers = "Laborers (%)")[[v]]
     g <- ggplot(d, aes(census, gap, group = basis, linetype = basis, text = text)) + geom_hline(yintercept = 0, colour = "grey50") + geom_vline(xintercept = 1938, colour = "grey60") + geom_line(colour = "#c0392b") + geom_point(colour = "#c0392b", size = 2) +
       scale_linetype_manual(values = c("districts" = "dashed", "HOLC areas" = "dashed", "2010 tracts" = "solid"), guide = "none") + scale_x_continuous(breaks = seq(1900, 2020, 20)) + labs(x = NULL, y = sprintf("%s minus %s: %s", pp$hi, pp$lo, lab)) + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
-    if (input$rl_bdes == "band") g <- g + geom_errorbar(aes(ymin = lo, ymax = hi), width = 2, colour = "#c0392b", alpha = 0.6)
+    if (input$rl_bdes == "band") { g <- g + geom_errorbar(aes(ymin = lo, ymax = hi), width = 2, colour = "#c0392b", alpha = 0.6)
+      if ("gap_rail" %in% names(holc_bd)) { r <- holc_bd |> filter(outcome == v, pair == input$rl_pair, !is.na(gap_rail)) |> transmute(census, basis, gap = gap_rail, text = sprintf("%s: gap net of distance to rail lines %+.1f (SE %.1f)", census, gap_rail, se_rail))
+        if (nrow(r)) g <- g + geom_point(data = r, aes(census, gap, text = text), inherit.aes = FALSE, shape = 4, size = 2.5, colour = "#2c7fb8") } }
     ggplotly(g, tooltip = "text") })
   output$t_holc_bd <- renderTable({ if (input$rl_bdes != "band" || is.null(holc_bd) || !"pair" %in% names(holc_bd)) return(NULL); pp <- bd_pair()
     d <- holc_bd |> filter(outcome == input$rl_bvar, pair == input$rl_pair); if (!nrow(d)) return(NULL)
-    d <- d |> transmute(Census = as.integer(census), Units = basis, lo = sprintf("%.1f (n=%d)", mean_C, n_C), hi = sprintf("%.1f (n=%d)", mean_D, n_D), Gap = sprintf("%+.1f%s", gap, ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", ifelse(p < 0.1, "\u2020", "")))), SE = se)
-    names(d)[3:4] <- c(paste(pp$lo, "side"), paste(pp$hi, "side")); d }, striped = TRUE, spacing = "xs")
+    st <- function(b, p) sprintf("%+.1f%s", b, ifelse(is.na(p), "", ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", ifelse(p < 0.1, "\u2020", "")))))
+    d2 <- d |> transmute(Census = as.integer(census), Units = basis, lo = sprintf("%.1f (n=%d)", mean_C, n_C), hi = sprintf("%.1f (n=%d)", mean_D, n_D), Gap = st(gap, p), SE = se,
+                         `Gap net of rail` = if ("gap_rail" %in% names(d)) ifelse(is.na(gap_rail), "", st(gap_rail, p_rail)) else NULL)
+    names(d2)[3:4] <- c(paste(pp$lo, "side"), paste(pp$hi, "side")); d2 }, striped = TRUE, spacing = "xs")
   output$t_holc_ind <- renderTable({ if (is.null(holc_ind)) return(NULL); w <- holc_ind |> select(period, grade, per_km2) |> tidyr::pivot_wider(names_from = grade, values_from = per_km2)
     w |> mutate(`D / C` = ifelse(C > 0, sprintf("%.1f", D / C), "—"), Map = ifelse(as.integer(substr(period, 1, 4)) < 1938, "before", "after")) |> select(Period = period, Map, everything()) }, striped = TRUE, spacing = "xs")
   # ---- benchmarks
@@ -1007,7 +1058,7 @@ server <- function(input, output, session) {
     renderTable(d, striped = TRUE, spacing = "xs")() })
   output$t_holc_m <- renderTable({ if (is.null(holc_m)) return(NULL)
     holc_m |> filter(outcome == input$rl_mvar) |> mutate(star = ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", "")), Outcome = c(p_black = "Black %", p_hisp = "Hispanic %", p_pov = "Poverty %", p_owner = "Owner-occupied %", lmval = "log median home value (2020 $)")[outcome]) |>
-      transmute(Outcome, Period = period, Grade = grade, Change = sprintf("%+.1f%s", b, star), SE = round(se, 1), Tracts = n) }, striped = TRUE, spacing = "xs")
+      transmute(Outcome, Period = period, `Class (vs A)` = grade, Change = sprintf("%+.1f%s", b, star), SE = round(se, 1), Tracts = n) }, striped = TRUE, spacing = "xs")
 
   # ---- downloads
   output$dl_one <- downloadHandler(filename = function() if (as.integer(input$dl_year) < 1960) sprintf("CO_business_directory_%s_hazardous_trades.csv", input$dl_year) else sprintf("CO_DCM_%s_geocoded.csv", input$dl_year),

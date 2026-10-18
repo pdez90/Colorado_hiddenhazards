@@ -5,6 +5,8 @@
 # Libraries, every manufacturer with a code; pipeline/). For the manufacturers' directory the number of scanned pages is the
 # best guide to completeness (about 40 listings per page in every edition); the twelve editions flagged incomplete are the ones whose
 # scans stop part-way through the geographic section (which runs through the counties or cities alphabetically) or have missing pages.
+# every edition, including the partial ones set aside by config/editions.json (data/full_inventory/ keeps the all-editions files)
+LISTINGS_ALL <- if (file.exists("data/full_inventory/CO_directory_listings_1961-2002.csv")) "data/full_inventory/CO_directory_listings_1961-2002.csv" else "data/results/CO_directory_listings_1961-2002.csv"
 suppressPackageStartupMessages(library(data.table))
 # ---- 1871-1956: business directory
 H <- fread("data/historical/CO_pre1960_hazardous_listings.csv")
@@ -14,7 +16,7 @@ B[, `:=`(complete = TRUE, note = "full volume scanned (CU Boulder Libraries digi
 B[year == 1871, note := "Rocky Mountain Directory and Colorado Gazetteer 1871; full volume"]
 B[year == 1950, note := "full volume; this edition uses numeric business codes, mapped directly, so more trades are captured than in the keyword-based editions"]
 # ---- 1961-2002: manufacturers' directory
-L <- fread("data/results/CO_directory_listings_1961-2002.csv", colClasses = c(sic = "character", naics = "character"))
+L <- fread(LISTINGS_ALL, colClasses = c(sic = "character", naics = "character"))
 M <- L[, .(series = "Directory of Colorado Manufacturers", volumes = paste(sort(unique(source_volume)), collapse = "; "), pages = uniqueN(paste(source_volume, page)), listings = .N, hazardous = uniqueN(estab_id[fe_hazard %in% c(TRUE, "True")]),
            street_level_pct = round(100 * mean(geo_level %in% c("address", "address_approx")), 1), no_code_pct = round(100 * mean(sic == "" & naics == ""), 1)), by = year]
 INC <- c("1961" = "geographic section by county, pp. 2-88, with 31 pages missing (6-7, 21-23, 25, 27, 30, 37-49, 53-55, 61, 66-67, 70-71, 80, 87); pp. 37-49 cover Denver and El Paso counties",

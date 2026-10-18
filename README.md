@@ -6,6 +6,18 @@ following Scott Frickel and James R. Elliott, *Sites Unseen: Uncovering Hidden H
 compared with today's federal and state inventories, and explored in an R Shiny app alongside EPA TRI facilities,
 cleanup sites (including brownfields), schools, health facilities and CDPHE EnviroScreen 2.0.
 
+## Inventory scope (October 2026)
+
+The 1961–2002 *Directory of Colorado Manufacturers* is used through its **13 complete editions** only — 1965, 1966, 1967, 1968, 1970,
+1973, 1974, 1977, 1980, 1983, 1988, 1990, 1992. The other twelve (1961, 1962, 1971, 1976, 1979, 1982, 1984, 1985, 1986, 1993, 1999,
+2002) reached the project as partial scans that stop part-way through the geographic section and are set aside until CU Boulder
+Libraries supplies the missing pages. The switch is `config/editions.json` (`mode: "complete"`), applied once, in `pipeline/build_sites.py`
+and `R/build_sites.R`, so that every downstream product — sites, firm histories, `data/by_year/`, corridors, the census panels, the
+redlining comparisons and the health models — inherits it. The all-editions files are kept in `data/full_inventory/`; `R/edition_coverage.R`
+and `R/benchmarks.R` read those so the Data and Benchmarks tabs still document every edition. Where an analysis needs "firms of the
+decade" for 2000, 2010 or 2020 it uses the last complete decade, 1983–1992. To restore the full inventory set `mode` to `"all"` and rerun
+from `build_sites`.
+
 ## What is in the repository
 
 | Path | Contents |

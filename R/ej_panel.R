@@ -53,8 +53,10 @@ cen <- if (file.exists(nhgis_panel)) fread(nhgis_panel, colClasses = c(GEOID = "
     out <- merge(out, m, by = "GEOID", all.x = TRUE) }
   out }), fill = TRUE)
 cen <- cen[GEOID %in% tr$GEOID]
-for (v in c("nhwht", "fb", "ppov")) if (!v %in% names(cen)) cen[[v]] <- NA_real_
-cen[, `:=`(p_black = 100 * nhblk / pop, p_hisp = 100 * hisp / pop, p_white = 100 * nhwht / pop, p_fb = 100 * fb / pop)]
+if (!"nhwht" %in% names(cen) && "white" %in% names(cen)) cen[, nhwht := white]   # NHGIS panel: race white (incl. most Hispanic residents before 1980); LTDB: non-Hispanic white
+for (v in c("nhwht", "fb", "ppov", "own", "rentocc", "mval_2020", "mrent_2020")) if (!v %in% names(cen)) cen[[v]] <- NA_real_
+cen[, `:=`(p_black = 100 * nhblk / pop, p_hisp = 100 * hisp / pop, p_white = 100 * nhwht / pop, p_fb = 100 * fb / pop, p_owner = 100 * own / (own + rentocc),
+           lmval = fifelse(is.finite(mval_2020) & mval_2020 > 0, log(mval_2020), NA_real_), lmrent = fifelse(is.finite(mrent_2020) & mrent_2020 > 0, log(mrent_2020), NA_real_))]
 if (file.exists(nhgis_panel)) cen[, ppov := 100 * ppov / pop]   # NHGIS gives counts below poverty; LTDB gives a percentage
 
 # ---------------------------------------------------------------- industrial presence per tract per census year
@@ -84,7 +86,8 @@ pan[, popd_w := log1p(pop_d) - mean(log1p(pop_d)), by = GEOID]
 tr_p <- tr[match(unique(pan$GEOID), tr$GEOID), ]
 w <- nb2listw(poly2nb(tr_p, queen = TRUE), style = "W", zero.policy = TRUE)
 res <- list()
-for (yv in c("p_black", "p_hisp", "p_fb", "ppov")) { if (all(is.na(pan[[yv]]))) next
+OUTS <- c("p_black", "p_hisp", "p_white", "p_fb", "ppov", "p_owner", "lmval", "lmrent")
+for (yv in OUTS) { if (!yv %in% names(pan) || all(is.na(pan[[yv]])) || sum(!is.na(pan[[yv]])) < 60) next
   d <- pan[!is.na(get(yv))]
   fo <- as.formula(paste(yv, "~ act_w + act_b + leg_b + popd_w + dist_km + factor(census)"))
   ols <- lm(fo, d)
@@ -100,13 +103,13 @@ for (yv in c("p_black", "p_hisp", "p_fb", "ppov")) { if (all(is.na(pan[[yv]]))) 
 R1 <- rbindlist(res); fwrite(R1, "data/results/ej_panel_models.csv")
 # the same within/between associations census by census (the pooled coefficients above average over 1970-2010)
 res_d <- list()
-for (yv in c("p_black", "p_hisp", "p_fb", "ppov")) for (cy in sort(unique(pan$census))) { d <- pan[!is.na(get(yv)) & census == cy]; if (nrow(d) < 40 || sd(d$act_w) == 0) next
+for (yv in OUTS) for (cy in sort(unique(pan$census))) { d <- pan[!is.na(get(yv)) & census == cy]; if (nrow(d) < 40 || sd(d$act_w) == 0) next
   ols <- lm(as.formula(paste(yv, "~ act_w + act_b + leg_b + popd_w + dist_km")), d); cf <- lmtest::coeftest(ols, vcov. = sandwich::vcovHC(ols, type = "HC1"))
   res_d[[length(res_d) + 1]] <- data.table(outcome = yv, census = cy, term = rownames(cf)[2:4], b = cf[2:4, 1], se = cf[2:4, 2], p = cf[2:4, 4], tracts = nrow(d)) }
 fwrite(rbindlist(res_d), "data/results/ej_panel_by_decade.csv")
 # reverse direction: does composition at t predict new industrial entry by t+1?
 pan[, `:=`(entry_next = data.table::shift(active, -1) - active), by = GEOID]
-R2 <- rbindlist(lapply(c("p_black", "p_hisp", "p_fb", "ppov"), function(xv) { if (all(is.na(pan[[xv]]))) return(NULL)
+R2 <- rbindlist(lapply(OUTS, function(xv) { if (!xv %in% names(pan) || all(is.na(pan[[xv]])) || sum(!is.na(pan[[xv]])) < 60) return(NULL)
   d <- pan[!is.na(entry_next) & !is.na(get(xv))]; m <- lm(as.formula(paste("entry_next ~", xv, "+ log1p(active_d) + popd_w + dist_km + factor(census)")), d)
   cf <- summary(m)$coefficients; data.table(predictor = xv, b = cf[2, 1], se = cf[2, 2], p = cf[2, 4], n = nrow(d)) }))
 fwrite(R2, "data/results/ej_panel_reverse.csv")

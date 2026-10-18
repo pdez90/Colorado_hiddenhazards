@@ -12,6 +12,9 @@ RE <- 6371000; rad <- function(x) x * pi / 180
 hav <- function(la1, lo1, la2, lo2) { a <- sin((rad(la2) - rad(la1)) / 2)^2 + cos(rad(la1)) * cos(rad(la2)) * sin((rad(lo2) - rad(lo1)) / 2)^2; 2 * RE * asin(pmin(1, sqrt(a))) }
 
 df <- fread("work/inv/records_linked.csv", colClasses = c(zip5 = "character", sic = "character", est = "character", size = "character"), na.strings = "")
+# edition set: config/editions.json restricts the directory to the editions whose scans are complete (see R/edition_coverage.R)
+if (file.exists("config/editions.json")) { ED <- jsonlite::fromJSON("config/editions.json")
+  if (identical(ED$mode, "complete")) { n0 <- nrow(df); df <- df[year %in% ED$complete_editions]; message("edition set 'complete': ", nrow(df), " of ", n0, " records kept from ", length(ED$complete_editions), " editions") } }
 geo <- fread(geo_f, na.strings = "")
 df$row <- seq_len(nrow(df)); df <- merge(df, geo, by = "geo_key", all.x = TRUE); setorder(df, row)   # keep record order (ties as in Python)
 q <- fifelse(is.na(df$geo_quality), "none", df$geo_quality)

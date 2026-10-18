@@ -145,6 +145,8 @@ RULES <- list(
                c("^Nativity$", "^Persons", "^(Native|Foreign born)$")),      # 1970: native + foreign born = all persons
   nhblk = list(c("", "", "^Persons: Black"), c("^Race by Sex$|^Nonwhite Persons by Race by Sex$|^Race$|^Persons by Race$", "^Persons$|^Non-?[Ww]hite Persons$", "^(Negro|Negroes|Black)( >> (Male|Female))?$"),
                c("^Race by Age$", "^Persons$", "^Black >>"), c("Race", "^Persons", "^(Negro|Black)( >> .*)?$"), c("Race|Nonwhite|Non-white|Color", "", "^(Nonwhite|Non-white|Negro)( >> .*)?$")),
+  white = list(c("", "", "^Persons: White( alone)?$"), c("^Race by Sex$|^Race$|^Persons by Race$|^Population by Race$|^Race by Age$", "^Persons$|^$", "^White( >> (Male|Female))?$|^White >> "),
+               c("^White Persons( by Sex)?$|^White Population( by Sex)?$|^Total White Persons$", "", "^(Total|Male|Female)$")),   # race white (includes most Hispanic residents before 1980)
   hisp  = list(c("", "", "^Persons: Hispanic or Latino$"), c("^Persons of Spanish Origin$|^Spanish American Persons$|Spanish Surname Population$|^Spanish Origin$", "", "^Total$|^Mexican$|^Puerto Rican$|^Cuban$|^Other Spanish$"),
                c("^Spanish Indicator$", "", "Spanish language|Spanish surname")),
   fb    = list(c("^Nativity( and Place of Birth)?$|^Nativity in the United States$", "^Persons|^Total population", "^Foreign[- ]born$"), c("Nativity and Parentage", "", "^Foreign Born$"), c("^Foreign.Born White Population( by Sex)?$", "", "^(Total|Male|Female)$"),
@@ -190,12 +192,12 @@ csv_a <- Sys.glob(file.path(W, "*", "*_ts_geog2010_tract.csv"))
 if (length(csv_a)) { D <- as.data.table(read_ipums_agg(csv_a[1], verbose = FALSE)); cb <- read_codebook(sub("\\.csv$", "_codebook.txt", csv_a[1]))
   ycol <- intersect(c("DATAYEAR", "YEAR"), names(D))[1]; D[, census := as.integer(substr(as.character(get(ycol)), 1, 4))]
   for (yr in sort(unique(D$census))) { d <- D[census == yr]; out <- data.table(GEOID = gj(d$GISJOIN), census = yr)
-    for (k in c("pop", "nhblk", "hisp")) { m <- pick(cb[var %in% names(d)], RULES[[k]]); out[[k]] <- if (nrow(m)) rowSums(as.matrix(d[, m$var, with = FALSE]), na.rm = TRUE) else NA_real_
+    for (k in c("pop", "nhblk", "white", "hisp")) { m <- pick(cb[var %in% names(d)], RULES[[k]]); out[[k]] <- if (nrow(m)) rowSums(as.matrix(d[, m$var, with = FALSE]), na.rm = TRUE) else NA_real_
       if (yr == min(D$census)) message("1990+ ", k, ": ", paste(m$var, collapse = "+")) }
     out$fb <- NA_real_; out$ppov <- NA_real_; out$own <- NA_real_; out$rentocc <- NA_real_; out$mval <- NA_real_; out$mrent <- NA_real_; P[[as.character(yr)]] <- out[substr(GEOID, 1, 2) == "08"] } }
 tr10 <- Sys.glob(file.path(W, "*", "*tract_2010*.shp")); if (!length(tr10)) stop("2010 tract shapefile not found under work/census")
 T10 <- st_make_valid(st_transform(st_read(tr10[1], quiet = TRUE), UTM)); T10 <- T10[substr(T10$GISJOIN, 1, 3) == "G08", ]; T10$GEOID <- gj(T10$GISJOIN)
-CNT <- c("pop", "nhblk", "hisp", "fb", "ppov", "own", "rentocc"); MED <- c("mval", "mrent")      # counts are split by area; medians are averaged weighting by occupied units x area
+CNT <- c("pop", "nhblk", "white", "hisp", "fb", "ppov", "own", "rentocc"); MED <- c("mval", "mrent")      # counts are split by area; medians are averaged weighting by occupied units x area
 interp <- function(M) { for (k in c(CNT, MED)) if (!k %in% names(M)) M[[k]] <- NA_real_
   M[, hu := fifelse(is.na(own) & is.na(rentocc), pop, fifelse(is.na(own), 0, own) + fifelse(is.na(rentocc), 0, rentocc))]
   out <- M[, lapply(.SD, function(v) if (all(is.na(v))) NA_real_ else sum(v * w, na.rm = TRUE)), by = .(GEOID, census), .SDcols = CNT]
@@ -220,14 +222,15 @@ for (yr in c(1990, 2000, 2010, 2020)) {
   csvs <- csvs[!grepl("_ts_", csvs)]; if (!length(csvs) || is.null(P[[as.character(yr)]])) { message(yr, ": nativity/poverty tables missing, fb and ppov stay NA"); next }
   S <- summarise_year(csvs, yr)
   F <- if (yr == 2010) S[, .(GEOID = gj(GISJOIN), fb, ppov, own, rentocc, mval, mrent)] else { shpf <- Sys.glob(file.path(W, "*", sprintf("*tract_%d*.shp", yr))); if (!length(shpf)) { message(yr, ": boundaries missing"); next }; aw(S, shpf[1]) }
-  P[[as.character(yr)]] <- merge(P[[as.character(yr)]][, .(GEOID, census, pop, nhblk, hisp)], F, by = "GEOID", all.x = TRUE)
+  P[[as.character(yr)]] <- merge(P[[as.character(yr)]][, .(GEOID, census, pop, nhblk, white, hisp)], F, by = "GEOID", all.x = TRUE)
 }
 # real dollars: CPI-U annual averages (1982-84 = 100) -> 2020 dollars
 CPI <- c("1940" = 14.0, "1950" = 24.1, "1960" = 29.6, "1970" = 38.8, "1980" = 82.4, "1990" = 130.7, "2000" = 172.2, "2010" = 218.1, "2020" = 258.8)
 panel <- rbindlist(P, fill = TRUE)
 for (k in c("own", "rentocc", "mval", "mrent")) if (!k %in% names(panel)) panel[[k]] <- NA_real_
 panel[, `:=`(mval_2020 = mval * 258.8 / CPI[as.character(census)], mrent_2020 = mrent * 258.8 / CPI[as.character(census)])]
-panel <- panel[, .(GEOID, census, pop, nhblk, hisp, fb, ppov, own, rentocc, mval, mrent, mval_2020, mrent_2020)][order(GEOID, census)]
+if (!"white" %in% names(panel)) panel[, white := NA_real_]
+panel <- panel[, .(GEOID, census, pop, nhblk, white, hisp, fb, ppov, own, rentocc, mval, mrent, mval_2020, mrent_2020)][order(GEOID, census)]
 fwrite(panel, file.path(W, "denver_tract_panel.csv"))
 message("wrote ", file.path(W, "denver_tract_panel.csv"), ": ", nrow(panel), " tract-years; years ", paste(sort(unique(panel$census)), collapse = " "))
 file.copy(Sys.glob(sub("\\.shp$", ".*", tr10[1])), W, overwrite = TRUE)

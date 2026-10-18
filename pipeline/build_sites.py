@@ -6,6 +6,12 @@ from rapidfuzz import fuzz
 from consolidate import norm_street, FE_MAJOR
 
 df=pd.read_pickle('work/inv/records_linked.pkl')
+# edition set: config/editions.json restricts the directory to the editions whose scans are complete (see R/edition_coverage.R)
+import json, os
+ED=json.load(open('config/editions.json')) if os.path.exists('config/editions.json') else {'mode':'all'}
+if ED.get('mode')=='complete':
+    keep=set(ED['complete_editions']); n0=len(df); df=df[df.year.isin(keep)].copy()
+    print(f"edition set 'complete': {len(df)} of {n0} records kept from {len(keep)} editions {sorted(keep)}")
 geo=pd.read_csv('work/geo/tiger_results.csv')
 df=df.merge(geo,on='geo_key',how='left')
 q=df.geo_quality.fillna('none')

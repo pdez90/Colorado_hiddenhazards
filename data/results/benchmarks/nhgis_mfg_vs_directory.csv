@@ -143,7 +143,7 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1900,061,Kiowa,2,,,0,0,0,Total Number of Manufacturing Establishments
 1900,073,Lincoln,2,,,0,0,0,Total Number of Manufacturing Establishments
 1900,009,Baca,0,0,0,0,0,0,Total Number of Manufacturing Establishments
-1920,031,Denver,1097,16635,125411272,170,39,0.15,Manufacturing Establishments
+1920,031,Denver,1097,16635,125411272,170,38,0.15,Manufacturing Establishments
 1920,001,Adams,143,6585,47568936,1,0,0.01,Manufacturing Establishments
 1920,041,El Paso,141,848,4788504,9,4,0.06,Manufacturing Establishments
 1920,023,Costilla,98,794,9743802,0,0,0,Manufacturing Establishments
@@ -203,7 +203,7 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1920,017,Cheyenne,4,1,9290,1,0,0.25,Manufacturing Establishments
 1920,037,Eagle,4,7,31016,2,0,0.5,Manufacturing Establishments
 1920,015,Chaffee,3,6,30896,3,0,1,Manufacturing Establishments
-1930,031,Denver,781,16239,,121,27,0.15,"Manufacturing Establishments, 1929"
+1930,031,Denver,781,16239,,121,26,0.15,"Manufacturing Establishments, 1929"
 1930,001,Adams,81,5831,,1,0,0.01,"Manufacturing Establishments, 1929"
 1930,041,El Paso,69,933,,7,3,0.1,"Manufacturing Establishments, 1929"
 1930,023,Costilla,50,1066,,0,0,0,"Manufacturing Establishments, 1929"
@@ -238,7 +238,7 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1930,019,Clear Creek,3,13,,2,0,0.67,"Manufacturing Establishments, 1929"
 1930,023,Costilla,3,37,,0,0,0,"Manufacturing Establishments, 1929"
 1930,037,Eagle,3,15,,2,0,0.67,"Manufacturing Establishments, 1929"
-1940,031,Denver,620,11477,107715056,217,42,0.35,"Manufacturing Establishments, 1939"
+1940,031,Denver,620,11477,107715056,217,41,0.35,"Manufacturing Establishments, 1939"
 1940,001,Adams,72,5019,41212184,4,0,0.06,"Manufacturing Establishments, 1939"
 1940,041,El Paso,62,421,3163302,15,4,0.24,"Manufacturing Establishments, 1939"
 1940,069,Larimer,47,681,6911092,5,0,0.11,"Manufacturing Establishments, 1939"

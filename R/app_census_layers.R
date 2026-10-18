@@ -32,7 +32,8 @@ message(nrow(tr), " Colorado tracts, ", sum(tr$core), " in the Denver core")
 st_write(st_transform(st_simplify(tr, dTolerance = 40), 4326), file.path(A, "co_tracts_2010.geojson"), delete_dsn = TRUE, quiet = TRUE)
 
 cen <- fread(file.path(C, "denver_tract_panel.csv"), colClasses = c(GEOID = "character"))[GEOID %in% tr$GEOID]
-cen[, `:=`(p_black = pmin(100, 100 * nhblk / pop), p_hisp = pmin(100, 100 * hisp / pop), p_fb = pmin(100, 100 * fb / pop), p_pov = pmin(100, 100 * ppov / pop))]   # area weighting can push a share a hair over 100
+if (!"white" %in% names(cen)) cen[, white := NA_real_]
+cen[, `:=`(p_white = pmin(100, 100 * white / pop), p_black = pmin(100, 100 * nhblk / pop), p_hisp = pmin(100, 100 * hisp / pop), p_fb = pmin(100, 100 * fb / pop), p_pov = pmin(100, 100 * ppov / pop))]   # area weighting can push a share a hair over 100
 for (k in c("own", "rentocc", "mval_2020", "mrent_2020")) if (!k %in% names(cen)) cen[[k]] <- NA_real_
 cen[, p_owner := fifelse(!is.na(own) & !is.na(rentocc) & own + rentocc >= 20, pmin(100, 100 * own / (own + rentocc)), NA_real_)]
 cen[pop < 50, c("p_black", "p_hisp", "p_fb", "p_pov") := NA_real_]
@@ -48,7 +49,7 @@ hp <- st_transform(st_as_sf(hist[, .(hfirm, lon, lat)], coords = c("lon", "lat")
 w <- st_within(hp, tr); hist$GEOID10 <- tr$GEOID[sapply(w, function(i) if (length(i)) i[1] else NA_integer_)]
 hist <- hist[!is.na(GEOID10)]
 WIN <- list("1940" = c(1931, 1940), "1950" = c(1941, 1950), "1960" = c(1951, 1960), "1970" = c(1961, 1970), "1980" = c(1971, 1980),
-            "1990" = c(1981, 1990), "2000" = c(1991, 2002), "2010" = c(1993, 2002), "2020" = c(1993, 2002))
+            "1990" = c(1981, 1990), "2000" = c(1983, 1992), "2010" = c(1983, 1992), "2020" = c(1983, 1992))
 act <- rbindlist(lapply(names(WIN), function(y) { a <- WIN[[y]]
   if (as.integer(y) <= 1960) { d <- hist[first_year <= a[2] & last_year >= a[1], .(firms_haz = .N, firms_all = NA_integer_), by = .(GEOID = GEOID10)]
   } else d <- fy[first_year <= a[2] & last_year >= a[1], .(firms_haz = sum(hazardous), firms_all = .N), by = .(GEOID = GEOID10)]
@@ -56,7 +57,7 @@ act <- rbindlist(lapply(names(WIN), function(y) { a <- WIN[[y]]
     rbind(hist[, .(GEOID = GEOID10, hazardous = TRUE)], fy[last_year < a[1], .(GEOID = GEOID10, hazardous)])[hazardous == TRUE, .(legacy_haz = .N), by = GEOID]
   merge(merge(data.table(GEOID = tr$GEOID), d, by = "GEOID", all.x = TRUE), leg, by = "GEOID", all.x = TRUE)[, census := as.integer(y)] }))
 for (v in c("firms_haz", "firms_all", "legacy_haz")) act[is.na(get(v)) & !(census <= 1960 & v == "firms_all"), (v) := 0L]
-pan <- merge(cen[, .(GEOID, census, pop = round(pop), p_black = round(p_black, 1), p_hisp = round(p_hisp, 1), p_fb = round(p_fb, 1), p_pov = round(p_pov, 1), p_owner = round(p_owner, 1), mval_2020 = round(mval_2020), mrent_2020 = round(mrent_2020))],
+pan <- merge(cen[, .(GEOID, census, pop = round(pop), p_white = round(p_white, 1), p_black = round(p_black, 1), p_hisp = round(p_hisp, 1), p_fb = round(p_fb, 1), p_pov = round(p_pov, 1), p_owner = round(p_owner, 1), mval_2020 = round(mval_2020), mrent_2020 = round(mrent_2020))],
              act, by = c("GEOID", "census"), all = TRUE)
 pan <- merge(pan, as.data.table(st_drop_geometry(tr)), by = "GEOID")
 if (file.exists("data/results/hmda_tracts_2018_2021.csv")) { Hm <- fread("data/results/hmda_tracts_2018_2021.csv", colClasses = c(GEOID = "character"))[, .(GEOID, census = 2020L, hmda_apps = apps, hmda_denial = denial_rate, hmda_denial_black = black_denial_rate, hmda_denial_hisp = hisp_denial_rate, hmda_pct_hisp_apps = pct_apps_hisp)]

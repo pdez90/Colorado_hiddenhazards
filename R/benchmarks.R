@@ -14,6 +14,8 @@
 #      county and industry. These are samples of surviving schedules, not a complete census, and carry no street addresses.
 # Outputs: data/results/benchmarks/{cbp_vs_directory_state.csv, cbp_vs_directory_county.csv, nhgis_mfg_vs_directory.csv,
 #          atack_colorado.csv, benchmarks_summary.md}; the first three are copied to app/data/ for the Benchmarks tab.
+# every edition, including the partial ones set aside by config/editions.json (data/full_inventory/ keeps the all-editions files)
+LISTINGS_ALL <- if (file.exists("data/full_inventory/CO_directory_listings_1961-2002.csv")) "data/full_inventory/CO_directory_listings_1961-2002.csv" else "data/results/CO_directory_listings_1961-2002.csv"
 suppressPackageStartupMessages({ library(data.table); library(sf) })
 sf_use_s2(FALSE); W <- "work/benchmarks"; O <- "data/results/benchmarks"; A <- "app/data"
 for (d in c(W, file.path(W, "cbp"), file.path(W, "atack"), O)) dir.create(d, showWarnings = FALSE, recursive = TRUE)
@@ -21,7 +23,7 @@ HAZ_SIC <- c("28", "29", "30", "33", "34", "35", "37"); HAZ_NAICS <- c("325", "3
 cty_names <- c("001"="Adams","003"="Alamosa","005"="Arapahoe","007"="Archuleta","009"="Baca","011"="Bent","013"="Boulder","014"="Broomfield","015"="Chaffee","017"="Cheyenne","019"="Clear Creek","021"="Conejos","023"="Costilla","025"="Crowley","027"="Custer","029"="Delta","031"="Denver","033"="Dolores","035"="Douglas","037"="Eagle","039"="Elbert","041"="El Paso","043"="Fremont","045"="Garfield","047"="Gilpin","049"="Grand","051"="Gunnison","053"="Hinsdale","055"="Huerfano","057"="Jackson","059"="Jefferson","061"="Kiowa","063"="Kit Carson","065"="Lake","067"="La Plata","069"="Larimer","071"="Las Animas","073"="Lincoln","075"="Logan","077"="Mesa","079"="Mineral","081"="Moffat","083"="Montezuma","085"="Montrose","087"="Morgan","089"="Otero","091"="Ouray","093"="Park","095"="Phillips","097"="Pitkin","099"="Prowers","101"="Pueblo","103"="Rio Blanco","105"="Rio Grande","107"="Routt","109"="Saguache","111"="San Juan","113"="San Miguel","115"="Sedgwick","117"="Summit","119"="Teller","121"="Washington","123"="Weld","125"="Yuma")
 
 # ---------------------------------------------------------------- directory 1961-2002 by county and edition
-L <- fread("data/results/CO_directory_listings_1961-2002.csv", colClasses = c(sic = "character", naics = "character", zip = "character"))
+L <- fread(LISTINGS_ALL, colClasses = c(sic = "character", naics = "character", zip = "character"))
 L <- L[!is.na(lat)]
 tr <- st_make_valid(st_read("app/data/enviroscreen_tracts.geojson", quiet = TRUE)[, "GEOID"]); tr$county <- substr(tr$GEOID, 3, 5)
 cty <- suppressWarnings(st_make_valid(aggregate(tr[, "county"], by = list(county = tr$county), FUN = function(x) x[1])))   # dissolve to counties
@@ -58,7 +60,7 @@ CMP_state <- CMP[, .(cbp_mfg = sum(cbp_mfg, na.rm = TRUE), cbp_haz = sum(cbp_haz
 CMP_state[, `:=`(ratio_mfg = round(dir_mfg / cbp_mfg, 2), ratio_haz = round(dir_haz / cbp_haz, 2))]
 CMP_state[dir_all == 0, `:=`(dir_mfg = NA, dir_haz = NA, dir_all = NA, ratio_mfg = NA, ratio_haz = NA)]   # years without a directory edition
 # how much of each edition we hold: scanned pages, listings, parts, share without an industry code (the directory line tracks these, not the economy)
-L0 <- fread("data/results/CO_directory_listings_1961-2002.csv", colClasses = c(sic = "character", naics = "character"))
+L0 <- fread(LISTINGS_ALL, colClasses = c(sic = "character", naics = "character"))
 ED <- L0[, .(pages = uniqueN(paste(source_volume, page)), listings = .N, parts = uniqueN(source_volume), pct_no_code = round(100 * mean(sic == "" & naics == ""), 1)), by = year]
 CMP_state <- merge(CMP_state, ED, by = "year", all.x = TRUE)
 fwrite(CMP_state, file.path(O, "cbp_vs_directory_state.csv"))
