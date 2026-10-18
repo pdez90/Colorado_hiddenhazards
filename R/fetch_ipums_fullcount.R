@@ -54,9 +54,8 @@ na0 <- function(x) { x <- as.numeric(x); x[is.na(x)] <- 0; x }
 D[, BPL := as.numeric(BPL)]
 D[, region := fcase(BPL < 150, "US", BPL == 200, "Mexico", BPL >= 150 & BPL < 400, "other Americas", BPL >= 400 & BPL < 500, "Europe", BPL >= 500 & BPL < 600, "Asia", default = "other/unknown")]
 D[, `:=`(fb = BPL >= 150 & BPL < 900, black = RACE == 2, white = RACE == 1, hisp = na0(HISPAN) > 0 & na0(HISPAN) < 9, laborer = na0(OCC1950) >= 970 & na0(OCC1950) <= 979,
-         foreign_parent = NATIVITY %in% 2:4, adult = AGE >= 18, child = AGE < 15, aged = AGE >= 65, male = SEX == 1,
-         married = MARST %in% 1:2 & AGE >= 15,
-         recent_immig = fb & na0(YRIMMIG) > 0 & (YEAR - na0(YRIMMIG)) <= 10,
+         foreign_parent = NATIVITY %in% 2:4, adult = AGE >= 18, child = AGE < 15, aged = AGE >= 65, male = SEX == 1, married = MARST %in% 1:2 & AGE >= 15)]
+D[, `:=`(recent_immig = fb & na0(YRIMMIG) > 0 & (YEAR - na0(YRIMMIG)) <= 10,
          naturalized = na0(CITIZEN) == 2, noncitizen = na0(CITIZEN) %in% 3:4,
          mt_spanish = na0(MTONGUE) == 12, mt_german = na0(MTONGUE) == 2, mt_italian = na0(MTONGUE) == 10, no_english = na0(SPEAKENG) == 1 & AGE >= 10,
          illiterate = na0(LIT) %in% 1:3 & AGE >= 10, lit_universe = na0(LIT) > 0 & AGE >= 10, in_school = na0(SCHOOL) == 2 & AGE >= 5 & AGE <= 17, school_universe = na0(SCHOOL) > 0 & AGE >= 5 & AGE <= 17,

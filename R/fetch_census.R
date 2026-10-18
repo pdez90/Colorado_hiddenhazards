@@ -102,7 +102,7 @@ read_codebook <- function(f) {
   for (l in L) {
     if (grepl("^\\s*(Table )?\\d+[.:]\\s+\\S", l) && !grepl("^\\s+[A-Z0-9]{3}\\d{3}[LU]?:", l)) { title <- trimws(sub("^\\s*(Table )?\\d+[.:]\\s+(\\(\\w+\\)\\s*)?", "", l)); uni <- ""; next }
     if (grepl("^\\s*Universe:", l)) { uni <- trimws(sub("^\\s*Universe:\\s*", "", l)); next }
-    m <- regmatches(l, regexec("^\\s+([A-Z0-9]{3}[A-Z0-9]{2,4}[LU]?):\\s+(.+)$", l))[[1]]   # ABC001, ABC001L, ACS: ABCE001 / ABCM001
+    m <- regmatches(l, regexec("^\\s+([A-Z0-9]{3}[A-Z0-9]{2,5}[LU]?):\\s+(.+)$", l))[[1]]   # ABC001, ABC001L, ACS: ABCE001 / ABCM001
     if (length(m) == 3 && !grepl("bound:", m[3])) out[[length(out) + 1]] <- data.table(var = m[2], table = title, universe = uni, label = trimws(m[3]))
   }
   rbindlist(out)
@@ -124,10 +124,10 @@ RULES <- list(
                c("^Poverty Status( in \\d{4})?( by Age)?$|^Age by Poverty Status( in \\d{4})?$", "^Persons for Whom Poverty", "below poverty"),
                c("Persons in Families Below Poverty|^Poverty Status by Age$", "Persons in Families|Unrelated Individuals 14", "Aggregate number of persons|^Below poverty level >>")))
 summarise_year <- function(csvs, yr) {
-  tabs <- lapply(csvs, function(f) { d <- as.data.table(read_ipums_agg(f, verbose = FALSE)); d[, c("GISJOIN", grep("^[A-Z0-9]{3}[EM]?\\d{3}$", names(d), value = TRUE)), with = FALSE] })
+  tabs <- lapply(csvs, function(f) { d <- as.data.table(read_ipums_agg(f, verbose = FALSE)); d[, c("GISJOIN", grep("^[A-Z0-9]{3,4}[EM]?\\d{3}$", names(d), value = TRUE)), with = FALSE] })
   D <- Reduce(function(a, b) merge(a, b[, c("GISJOIN", setdiff(names(b), names(a))), with = FALSE], by = "GISJOIN", all = TRUE), tabs)
   cb <- unique(rbindlist(lapply(sub("\\.csv$", "_codebook.txt", csvs), read_codebook)), by = "var"); cb <- cb[var %in% names(D)]   # the same table may sit in two extracts
-  cb <- cb[!(substr(var, 4, 4) == "M" & sub("^(...)M", "\\1E", var) %in% var)]                                          # ACS: keep estimates, drop margins of error
+  cb <- cb[!(grepl("M\\d{3}$", var) & sub("M(\\d{3})$", "E\\1", var) %in% var)]                                          # ACS: keep estimates, drop margins of error
   out <- data.table(GISJOIN = D$GISJOIN, census = yr)
   for (k in names(RULES)) { m <- pick(cb, RULES[[k]])
     message(yr, " ", k, ": ", if (nrow(m)) paste0(m$var, " (", m$table, " / ", m$label, ")", collapse = " + ") else "-")
