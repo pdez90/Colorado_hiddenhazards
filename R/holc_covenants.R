@@ -115,6 +115,51 @@ TR <- pan[!is.na(pop) & pop > 0, .(tracts = .N, p_black = weighted.mean(p_black,
                                    p_owner = weighted.mean(p_owner, pop, na.rm = TRUE), mval_2020 = weighted.mean(mval_2020, pop, na.rm = TRUE), mrent_2020 = weighted.mean(mrent_2020, pop, na.rm = TRUE),
                                    firms_haz = sum(firms_haz, na.rm = TRUE)), by = .(census, grade)][order(census, grade)]
 fwrite(TR, file.path(O, "trajectories_by_grade.csv")); file.copy(file.path(O, c("holc_by_grade.csv", "trajectories_by_grade.csv")), A, overwrite = TRUE)
+# ---------------------------------------------------------------- did the map create or reinforce? pre-trends and a boundary comparison
+# Following Aaronson, Hartley & Mazumder (2021): outcomes are tracked before and after 1938 by grade, and within a narrow band on either
+# side of C-D boundaries, where neighbouring places share location advantages. Before 1940 the units are the reconstructed districts
+# (HOLC polygons are fixed, so the 1900-1940 series needs no harmonisation); from 1940 they are 2010 tracts. A gap that was already
+# widening before 1938 argues for "reinforced"; one that opens only afterwards for "created". Railways and zoning are not controlled.
+GR <- areas[areas$grade %in% c("A", "B", "C", "D"), c("area_id", "grade")]
+Cu <- st_union(GR[GR$grade == "C", ]); Du <- st_union(GR[GR$grade == "D", ])
+side_of <- function(g) { ins <- st_intersects(g, GR); vapply(ins, function(i) if (length(i)) GR$grade[i[1]] else NA_character_, "") }
+in_band <- function(g, band) as.logical(st_is_within_distance(g, Cu, band, sparse = FALSE)) & as.logical(st_is_within_distance(g, Du, band, sparse = FALSE))
+# A. industry by grade and period (street-level hazardous trades 1891-1956; hazardous-sector manufacturers 1961-2002), per km2 of each grade
+PER <- list(c(1891, 1905), c(1906, 1920), c(1921, 1937), c(1938, 1956), c(1961, 1980), c(1981, 2002))
+sp <- pt(sites[sites$fe_hazard %in% c(TRUE, "True"), ]); sp$first_year <- sites$first_year[!is.na(sites$lat) & sites$fe_hazard %in% c(TRUE, "True")]; sp$last_year <- sites$last_year[!is.na(sites$lat) & sites$fe_hazard %in% c(TRUE, "True")]
+firms_in <- function(a, b) { src <- if (a >= 1961) sp else hp; src[src$first_year <= b & src$last_year >= a, ] }
+IND <- rbindlist(lapply(PER, function(pr) { f <- firms_in(pr[1], pr[2]); f$grade <- side_of(f); f$band <- in_band(f, 400)
+  g <- as.data.table(st_drop_geometry(GR))[, .(km2 = as.numeric(sum(st_area(GR[GR$grade == .BY$grade, ]))) / 1e6), by = grade]
+  d <- merge(g, as.data.table(st_drop_geometry(f))[!is.na(grade), .(firms = .N, firms_band = sum(band)), by = grade], by = "grade", all.x = TRUE)
+  d[is.na(firms), `:=`(firms = 0L, firms_band = 0L)]; d[, `:=`(period = sprintf("%d-%d", pr[1], pr[2]), start = pr[1], per_km2 = round(firms / km2, 2), km2 = round(km2, 1))]; d }))
+IND[, source := ifelse(start >= 1961, "Directory of Colorado Manufacturers (hazardous sectors)", "Colorado State Business Directory (hazardous trades, street level)")]
+setorder(IND, start, grade); fwrite(IND, file.path(O, "holc_industry_periods.csv")); file.copy(file.path(O, "holc_industry_periods.csv"), A, overwrite = TRUE)
+print(dcast(IND, period ~ grade, value.var = "per_km2"))
+# B. boundary comparison, census by census: units whose centroid lies within 400 m (districts) / 800 m (tracts) of both a C and a D area
+bnd_ed <- rbindlist(lapply(c(1900, 1910, 1920, 1930, 1940), function(yr) { f <- sprintf("data/results/denver_eds/denver_eds_%d.geojson", yr); if (!file.exists(f)) return(NULL)
+  E <- st_make_valid(st_transform(st_read(f, quiet = TRUE), UTM)); E <- E[!is.na(E$pop) & E$pop > 0, ]; ce <- st_centroid(st_geometry(E))
+  for (k in c("owner_hh", "tenure_hh")) if (!k %in% names(E)) E[[k]] <- NA_real_
+  data.table(census = yr, basis = "districts", unit = as.character(E$ED), pop = E$pop, p_black = 100 * E$black / E$pop, p_hisp = 100 * E$hisp / E$pop, p_fb = 100 * E$fb / E$pop, p_laborers = 100 * E$laborers / E$pop,
+             p_owner = 100 * E$owner_hh / E$tenure_hh, side = side_of(ce), band = in_band(ce, 400)) }))
+TRg <- st_make_valid(st_transform(st_read("app/data/co_tracts_2010.geojson", quiet = TRUE), UTM)); TRg <- TRg[TRg$GEOID %in% pan$GEOID, ]; ct <- st_centroid(st_geometry(TRg))
+tb <- data.table(GEOID = TRg$GEOID, side = side_of(ct), band = in_band(ct, 800))
+bnd_tr <- merge(pan[, .(census, unit = GEOID, pop, p_black, p_hisp, p_fb, p_pov, p_owner)], tb, by.x = "unit", by.y = "GEOID")[, basis := "2010 tracts"]
+BD <- rbindlist(list(bnd_ed, bnd_tr), fill = TRUE)[band == TRUE & side %in% c("C", "D") & !is.na(pop) & pop > 0]
+BR <- rbindlist(lapply(split(BD, by = c("census", "basis")), function(d) rbindlist(lapply(c("p_black", "p_hisp", "p_fb", "p_owner", "p_pov", "p_laborers"), function(v) {
+  if (!v %in% names(d) || sum(!is.na(d[[v]])) < 10 || uniqueN(d$side[!is.na(d[[v]])]) < 2) return(NULL); dd <- d[!is.na(d[[v]]), ]; dd$y <- dd[[v]]; dd$D <- dd$side == "D"
+  m <- lm(y ~ D, dd, weights = pop); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
+  data.table(census = dd$census[1], basis = dd$basis[1], outcome = v, n_C = sum(!dd$D), n_D = sum(dd$D), mean_C = round(weighted.mean(dd$y[!dd$D], dd$pop[!dd$D]), 2), mean_D = round(weighted.mean(dd$y[dd$D], dd$pop[dd$D]), 2),
+             gap = round(ct["DTRUE", 1], 2), se = round(ct["DTRUE", 2], 2), p = signif(ct["DTRUE", 4], 2)) }))))
+setorder(BR, outcome, census); fwrite(BR, file.path(O, "holc_boundary.csv")); file.copy(file.path(O, "holc_boundary.csv"), A, overwrite = TRUE)
+print(BR[outcome %in% c("p_black", "p_hisp")])
+# C. grade gaps by census from the full-grade series (D - C, C - B), before (HOLC polygons) and after (tracts)
+GAP <- rbindlist(list(if (exists("PRE") && nrow(PRE)) melt(PRE, id.vars = c("grade", "census"), measure.vars = intersect(c("p_black", "p_hisp", "p_fb", "p_owner", "p_laborers"), names(PRE)))[, basis := "HOLC areas"],
+                      melt(TR, id.vars = c("grade", "census"), measure.vars = intersect(c("p_black", "p_hisp", "p_fb", "p_owner", "p_pov"), names(TR)))[, basis := "2010 tracts"]), fill = TRUE)
+GAP <- dcast(GAP[!is.na(value) & !is.nan(value)], census + basis + variable ~ grade, value.var = "value")
+for (g in c("A", "B", "C", "D")) if (!g %in% names(GAP)) GAP[[g]] <- NA_real_
+for (g in c("A", "B", "C", "D")) GAP[[g]] <- round(GAP[[g]], 2)
+GAP[, `:=`(D_minus_C = round(D - C, 2), C_minus_B = round(C - B, 2), D_minus_A = round(D - A, 2))]; setorder(GAP, variable, census, basis)
+fwrite(GAP, file.path(O, "holc_gaps.csv")); file.copy(file.path(O, "holc_gaps.csv"), A, overwrite = TRUE)
 # mortgage lending today (HMDA 2018-21, R/fetch_hmda.R) by dominant HOLC grade: the implemented-policy counterpart
 hm <- "data/results/hmda_tracts_2018_2021.csv"
 if (file.exists(hm)) { Hm <- merge(fread(hm, colClasses = c(GEOID = "character")), dom, by = "GEOID")
@@ -126,14 +171,14 @@ if (file.exists(hm)) { Hm <- merge(fread(hm, colClasses = c(GEOID = "character")
   HM <- data.table(term = rownames(ct), b = ct[, 1], se = ct[, 2], p = ct[, 4])[grepl("grade", term)][, term := sub(".*\\)", "grade ", term)]
   fwrite(HM, file.path(O, "hmda_grade_model.csv")); file.copy(file.path(O, "hmda_grade_model.csv"), A, overwrite = TRUE); print(HM) }
 # Xu-style: change in each outcome over a period on grade dummies (A = reference), with the 1940 baseline of the outcome, 1940 % Black, and firms 1931-40 controlled
-pan[, lmval := log(mval_2020)]
+pan[, lmval := fifelse(is.finite(mval_2020) & mval_2020 > 0, log(mval_2020), NA_real_)]   # a few tracts have 0/NA value (grouped medians with < 10 units)
 W <- dcast(pan, GEOID + grade ~ census, value.var = c("p_black", "p_hisp", "p_fb", "p_pov", "firms_haz", "p_owner", "lmval"))
 M <- list()
 for (v in c("p_black", "p_hisp", "p_pov", "p_owner", "lmval")) for (per in list(c(1940, 1980), c(1980, 2010), c(1940, 2010))) {
   y0 <- paste0(v, "_", per[1]); y1 <- paste0(v, "_", per[2]); if (!all(c(y0, y1) %in% names(W))) next
   if (v == "p_pov" && per[1] == 1940) { d <- W[!is.na(W[[y1]])]; d$base <- 0 } else { d <- W[!is.na(W[[y1]]) & !is.na(W[[y0]])]; d$base <- d[[y0]] }
   d$dy <- d[[y1]] - d$base; d$grade <- factor(d$grade, c("A", "B", "C", "D")); d$black40 <- d$p_black_1940; d$firms40 <- log1p(d$firms_haz_1940)
-  if (nrow(d) < 30 || length(unique(d$grade)) < 3) next
+  d <- d[is.finite(dy) & is.finite(base)]; if (nrow(d) < 30 || length(unique(d$grade)) < 3) next
   m <- lm(dy ~ grade + base + black40 + firms40, d); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
   for (g in c("B", "C", "D")) if (paste0("grade", g) %in% rownames(ct)) M[[length(M) + 1]] <- data.table(outcome = v, period = paste(per, collapse = "-"), grade = g, b = ct[paste0("grade", g), 1], se = ct[paste0("grade", g), 2], p = ct[paste0("grade", g), 4], n = nrow(d)) }
 M <- rbindlist(M); fwrite(M, file.path(O, "holc_tract_models.csv")); file.copy(file.path(O, "holc_tract_models.csv"), A, overwrite = TRUE)

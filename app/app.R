@@ -56,7 +56,7 @@ eds_f    <- rd_opt("denver_eds_firms.csv"); eds_g <- rd_opt("ed_year_groups.csv"
 ED_VARS  <- c("Black (%)" = "pct_black", "Foreign born (%)" = "pct_fb", "Mexican-born (%)" = "pct_fb_mexico", "Hispanic (%)" = "pct_hisp", "Laborers (% of population)" = "pct_laborers",
               "Foreign or mixed parentage (%)" = "pct_foreign_parentage", "Hazardous firms in the decade" = "firms", "Distance to nearest firm (m)" = "dist_m")
 holc     <- if (file.exists(dd("holc_denver.geojson"))) st_read(dd("holc_denver.geojson"), quiet = TRUE) else NULL      # R/holc_covenants.R
-coven    <- rd_opt("covenants_denver.csv"); holc_g <- rd_opt("holc_by_grade.csv"); holc_tr <- rd_opt("trajectories_by_grade.csv"); holc_pre <- rd_opt("trajectories_pre_by_grade.csv"); holc_m <- rd_opt("holc_tract_models.csv"); holc_sh <- rd_opt("holc_facility_shares.csv"); ed_sh <- rd_opt("ed_firm_shares.csv"); ed_cls <- rd_opt("ed_holc_classes.csv")
+coven    <- rd_opt("covenants_denver.csv"); holc_bd <- rd_opt("holc_boundary.csv"); holc_gap <- rd_opt("holc_gaps.csv"); holc_ind <- rd_opt("holc_industry_periods.csv"); bm_state <- rd_opt("cbp_vs_directory_state.csv"); bm_cty <- rd_opt("cbp_vs_directory_county.csv"); bm_nh <- rd_opt("nhgis_mfg_vs_directory.csv"); holc_g <- rd_opt("holc_by_grade.csv"); holc_tr <- rd_opt("trajectories_by_grade.csv"); holc_pre <- rd_opt("trajectories_pre_by_grade.csv"); holc_m <- rd_opt("holc_tract_models.csv"); holc_sh <- rd_opt("holc_facility_shares.csv"); ed_sh <- rd_opt("ed_firm_shares.csv"); ed_cls <- rd_opt("ed_holc_classes.csv")
 eds_holc <- if (file.exists(dd("eds_holc_1930.geojson"))) st_read(dd("eds_holc_1930.geojson"), quiet = TRUE) else NULL
 HOLC_COL6 <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d", Industrial = "#8c8c8c", Commercial = "#c8a2c8", ungraded = "#eeeeee")
 HOLC_COL <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d")
@@ -102,6 +102,7 @@ CLEAN_LAYERS <- c("Brownfields", "Voluntary cleanup (VCUP)", "Superfund (SEMS)",
                   "Environmental covenants / land-use controls")
 CLEAN_COL <- c("#1b7837", "#5aae61", "#253494", "#41b6c4", "#8c6bb1"); names(CLEAN_COL) <- CLEAN_LAYERS
 esc <- function(x) htmltools::htmlEscape(ifelse(is.na(x), "", as.character(x)))
+gradeleg <- function(p) { seen <- character(); for (i in seq_along(p$x$data)) { nm <- p$x$data[[i]]$name; if (is.null(nm)) next; g <- sub("^\\((.)\\,.*$", "\\1", nm); if (nchar(g) == 1) { p$x$data[[i]]$name <- g; p$x$data[[i]]$legendgroup <- g; p$x$data[[i]]$showlegend <- !(g %in% seen); seen <- c(seen, g) } }; p }   # one legend entry per grade when colour and linetype are both mapped
 hleg <- function(p) plotly::layout(p, legend = list(orientation = "h", x = 0, y = -0.32, yanchor = "top"), margin = list(b = 120))   # horizontal legend clear of the axis title
 
 # ---------------------------------------------------------------- UI
@@ -109,6 +110,15 @@ filters <- list(
   sliderInput("yrs", "Listed in a directory between", min = 1871, max = 2002, value = c(1871, 2002), sep = "", step = 1, ticks = FALSE),
   helpText("1871–1956: hazardous trades in the Colorado State Business Directory (brown). 1961–2002: Directory of Colorado Manufacturers."),
   checkboxGroupInput("sec", "Sector (Frickel & Elliott)", SECTORS, selected = SECTORS[1:7]),
+  tags$details(tags$summary(tags$small("What these sectors are")),
+    tags$small(class = "text-muted", "The seven manufacturing industries that Scott Frickel and James Elliott (", tags$i("Sites Unseen"), ", 2018) identify as the most likely to leave ",
+      "contaminated ground when they close, by their input materials and waste streams: SIC 28 chemicals and allied products, 29 petroleum refining, 30 rubber and plastics, ",
+      "33 primary metals (smelters, foundries, mills), 34 fabricated metals (plating, coating, machine shops), 35 industrial machinery, 37 transportation equipment (NAICS 325, 324, 326, 331, 332, 333, 336). ",
+      "Each 1961–2002 directory listing carries its own SIC/NAICS code, so a site is in a sector if any firm listed at the address had that code. ",
+      tags$b("Extended sectors"), " adds smaller trades with similar legacies that fall outside those codes: wood preserving (SIC 2491), leather tanning (3111), electronic tubes, circuit boards, semiconductors and components (3671–3679), ",
+      "storage and primary batteries (3691–3692), photographic equipment and chemicals (3861), asphalt paving mixtures (2951), blast furnaces and coke (3312) and metal mining or ore milling (SIC 10). ",
+      "Pre-1960 business-directory trades (smelters, sampling works, foundries, tanneries, gas works and so on) are mapped onto the same sectors by keyword.")),
+  checkboxInput("radium", "Radium, uranium & vanadium firms (☢, both directories)", TRUE),
   checkboxGroupInput("st", "Current regulatory status", STATUS, selected = STATUS),
   radioButtons("colby", "Colour sites by", c("Regulatory status" = "status", "Persistence (years listed)" = "span"), inline = FALSE),
   sliderInput("minspan", "Persisted at least (years between first and last listing)", 0, 125, 0, step = 1, ticks = FALSE),
@@ -138,7 +148,20 @@ ui <- page_navbar(id = "nav",
            tags$b("Sites shown"), textOutput("nsites"),
            tags$small(class = "text-muted",
              "Use the layer control (top right of the map) to add TRI facilities, schools, hospitals, clinics, ",
-             "residential care, brownfields and other cleanup sites. Click any point for details.")))),
+             "residential care, brownfields and other cleanup sites. Click any point for details."),
+           tags$details(tags$summary(tags$small("What the map layers are")), tags$small(class = "text-muted", tags$dl(class = "mb-0",
+             tags$dt("Historical hazardous sites"), tags$dd("Addresses of manufacturers in Frickel & Elliott's hazardous sectors from the 1961–2002 Directory of Colorado Manufacturers, filtered by the sidebar."),
+             tags$dt("Pre-1960 hazardous trades"), tags$dd("Smelters, foundries, refineries, tanneries, gas works and similar trades in the 1871–1956 Colorado State Business Directory; street-level in Denver from 1891, otherwise one marker per town."),
+             tags$dt("Industrial corridors"), tags$dd("500 m cells with any manufacturer 1961–2002, classed by persistence (definition on the Data & downloads tab)."),
+             tags$dt("EnviroScreen tracts"), tags$dd("Colorado EnviroScreen 2.0 (CDPHE) tract scores: cumulative environmental burden and social vulnerability, as percentiles."),
+             tags$dt("EPA TRI facilities"), tags$dd("Facilities currently reporting toxic releases to EPA's Toxics Release Inventory."),
+             tags$dt("Brownfields"), tags$dd("Properties in CDPHE's and EPA's brownfields programmes: land whose reuse is complicated by known or suspected contamination, usually under assessment or redevelopment."),
+             tags$dt("Voluntary cleanup (VCUP)"), tags$dd("Sites cleaned up under Colorado's Voluntary Cleanup and Redevelopment Act, where an owner remediates to agreed standards and receives a no-action determination."),
+             tags$dt("Superfund (SEMS)"), tags$dd("Sites in EPA's Superfund Enterprise Management System, from assessed sites to the National Priorities List."),
+             tags$dt("RCRA corrective action"), tags$dd("Hazardous-waste handlers required by EPA/CDPHE to investigate and clean up releases at their own facilities under the Resource Conservation and Recovery Act."),
+             tags$dt("Environmental covenants / land-use controls"), tags$dd("Deed restrictions recorded because contamination was left in place after a cleanup: they may forbid residential use or drinking-water wells, require vapour barriers, or bar digging below a given depth. ",
+               "CDPHE's Institutional Controls layer (environmental covenants, use restrictions and notices of environmental use restrictions). The clearest public record that a parcel still holds managed contamination."),
+             tags$dt("Schools, hospitals, clinics, residential care"), tags$dd("Colorado Department of Education school locations and CDPHE licensed health facilities (geodata.colorado.gov), used on the Nearby schools & health care tab."))))))),
   nav_panel("Trends",
     card(card_header("Hazardous-trade firms and sites listed, 1871\u20132002: both directory series on one timeline"), plotlyOutput("p_timeline", height = 320),
          tags$small(class = "text-muted", "Brown: hazardous trades found in the Colorado State Business Directory (34 editions, every trade, OCR'd scans; counts depend on each edition's coverage and scan quality). Orange: hazardous-sector sites in the Directory of Colorado Manufacturers (25 editions, manufacturers only). The two series are not on the same footing \u2014 the business directories list far more small trades \u2014 but together they trace the whole span. Both respond to the sidebar filters.")),
@@ -242,7 +265,18 @@ ui <- page_navbar(id = "nav",
       card(card_header("Mortgage lending today by HOLC grade: HMDA 2018-21 home-purchase applications"), tableOutput("t_hmda"), uiOutput("hmda_note"),
            tags$small(class = "text-muted", "2010 tracts by dominant HOLC grade; denial rate = denied / (originated + denied). The implemented-policy counterpart to the 1938 map: who gets credit in the graded areas today. Source: CFPB HMDA data browser (R/fetch_hmda.R).")),
       card(card_header("Change in tract outcomes by grade, A = reference"), selectInput("rl_mvar", "Outcome", c("Black %" = "p_black", "Hispanic %" = "p_hisp", "Poverty %" = "p_pov", "Owner-occupied %" = "p_owner", "log median home value (2020 $)" = "lmval")), tableOutput("t_holc_m"),
-           tags$small(class = "text-muted", "Percentage points over the period; the 1940 baseline of the outcome, 1940 % Black and 1931-40 firms controlled; HC1 SE. ** p<0.01, * p<0.05. Compare Xu (2022), Table 3, for Chicago.")))
+           tags$small(class = "text-muted", "Percentage points over the period; the 1940 baseline of the outcome, 1940 % Black and 1931-40 firms controlled; HC1 SE. ** p<0.01, * p<0.05. Compare Xu (2022), Table 3, for Chicago."))),
+    layout_columns(col_widths = c(7, 5),
+      card(card_header("Did the map create or reinforce? The D–C gap census by census, 1900–2020"),
+           layout_columns(col_widths = c(6, 6), selectInput("rl_bvar", "Outcome", c("Black (%)" = "p_black", "Hispanic (%)" = "p_hisp", "Foreign born (%)" = "p_fb", "Owner-occupied (%)" = "p_owner", "Below poverty (%)" = "p_pov", "Laborers (%)" = "p_laborers")),
+                          radioButtons("rl_bdes", "Comparison", c("Boundary band: units within 400 m (districts) / 800 m (tracts) of both a C and a D area" = "band", "All C vs all D areas" = "all"))),
+           plotlyOutput("p_holc_bd", height = 340), tableOutput("t_holc_bd"),
+           tags$small(class = "text-muted", "Design after Aaronson, Hartley & Mazumder (2021): the D-side minus C-side difference (population-weighted, HC1 SE) is tracked before and after the 1938 map (grey line). Before 1940 the units are the reconstructed enumeration districts, ",
+             "whose centroid falls in a C or D area; from 1940 they are 2010 tracts with earlier censuses interpolated. A gap already widening before 1938 means the map ratified an existing divergence; one that opens only afterwards points to the map (or to the FHA practices and covenants of the same years — Fishback, Rose, Snowden & Storrs 2024 find FHA, not HOLC, drove lending). ",
+             "Railways and the 1925 zoning ordinance are not controlled; boundaries that follow a rail line or an existing racial divide can explain part of any later gap.")),
+      card(card_header("Industry by HOLC grade before and after the map: hazardous firms per km²"), tableOutput("t_holc_ind"),
+           tags$small(class = "text-muted", "Street-level hazardous trades in the business directory (1891–1956) and hazardous-sector manufacturers in the Directory of Colorado Manufacturers (1961–2002), active in each period, per km² of each grade's area. ",
+             "The D/C ratio before 1938 measures the industrial geography the appraisers found; its change afterwards is what the map, zoning and the post-war land market added.")))
     ),
   nav_panel("Neighborhoods",
     layout_columns(col_widths = c(3, 9),
@@ -269,6 +303,24 @@ ui <- page_navbar(id = "nav",
            tags$small(class = "text-muted", textOutput("rv_nsel", inline = TRUE)),
            hr(), tableOutput("recv_sum")),
       card(DTOutput("t_recv")))),
+  nav_panel("Benchmarks",
+    layout_columns(col_widths = c(3, 9),
+      card(card_header("The directories against the national series"),
+           tags$small("No public national dataset locates individual factories: the Census Bureau's Longitudinal Business Database (1976+) does, but only inside a Federal Statistical Research Data Center, and County Business Patterns, the Census of Manufactures and the NHGIS tables publish totals for counties or states. ",
+             "This tab checks the directories' coverage against those totals, county by county, and shows what the 1870–1880 establishment samples add. The sidebar filters do not apply here."),
+           hr(), selectInput("bm_year", "County comparison: edition", NULL), checkboxInput("bm_haz", "Hazardous sectors only", FALSE),
+           tags$small(class = "text-muted", "CBP: Eckert, Fort, Schott & Yang (2021) raw county files (1975–85 National Archives, 1986+ Census Bureau). NHGIS: county manufacturing tables 1880–1940 (IPUMS NHGIS). Atack–Bateman–Weiss: Census of Manufactures samples 1870, 1880 (Vanderbilt / ICPSR). Rscript R/benchmarks.R reproduces this tab.")),
+      div(
+        layout_columns(col_widths = c(6, 6),
+          card(card_header("1975–2002: manufacturing establishments in Colorado — County Business Patterns vs the Directory of Colorado Manufacturers"), plotlyOutput("p_bm_state", height = 360),
+               tags$small(class = "text-muted", "CBP counts every establishment with a payroll (SIC 20–39 to 1997, NAICS 31–33 from 1998), from administrative records; the directory lists firms that answered the publisher's questionnaire. The ratio is the directory's coverage rate; it varies by edition with the publisher's effort, which is why edition-to-edition changes in site counts on the Trends tab should be read against this chart.")),
+          card(card_header("County agreement"), tableOutput("t_bm_fit"), uiOutput("bm_fit_note"))),
+        layout_columns(col_widths = c(7, 5),
+          card(card_header("Counties in the chosen edition: directory vs CBP"), plotlyOutput("p_bm_cty", height = 380), tableOutput("t_bm_cty")),
+          card(card_header("1880–1940: census manufacturing establishments by county vs the business directory's hazardous trades"), uiOutput("bm_nh"),
+               tags$small(class = "text-muted", "The business directory lists only the hazardous trades, so its count is a floor on coverage of all manufacturing. NHGIS county tables derive from the Census of Manufactures as tabulated with each decennial census (variables differ by year). ",
+                 "The Atack–Bateman–Weiss samples (1870, 1880) give establishment records (county, industry, capital, workers, output) from surviving schedules, without street addresses; if Colorado rows were found they are in data/results/benchmarks/atack_colorado.csv."))))
+    )),
   nav_panel("About the data",
     layout_columns(col_widths = c(6, 6),
       card(card_header("Historical layers (built for this project)"),
@@ -292,8 +344,8 @@ ui <- page_navbar(id = "nav",
           tags$dt("Firms at this address (popups)"),
           tags$dd("All manufacturers the directories list at the site, linked across editions: what the directory says they made, year established and employment class, as printed (uncorrected OCR)."),
           tags$dt("Industrial corridors (500 m cells)"),
-          tags$dd("Every 500 m grid cell with a located manufacturer in 1961\u20132002, classed by how long industry stayed: persistent (listed in 80%+ of editions, same dominant sector), ",
-                  "persistent with sector turnover, intermittent, former (no manufacturer after the 1980s) and emerging (first listed 1990 or later). Popups give first and last edition, peak number of firms, ",
+          tags$dd("Every 500 m grid cell (UTM 13N) with a street-level-geocoded manufacturer in 1961\u20132002, classed by how long industry stayed: persistent (first listed by 1968, still listed in 1990 or later, with a firm in at least 60% of the editions in between), ",
+                  "persistent with sector turnover (dominant 2-digit SIC sector changed, three or more sectors led the cell), emerging (first listed 1980 or later), former (last listed 1980 or earlier) and intermittent (the rest). Popups give first and last edition, peak number of firms, ",
                   "first and last dominant sector and any street-level pre-1960 hazardous trade in the cell. Clustering (Ellison\u2013Glaeser) and succession statistics are on the Trends tab; Rscript R/corridors.R reproduces them."),
           tags$dt("Census tracts 1940\u20132020 (Census tracts over time tab)"),
           tags$dd("Decennial census tract tables from IPUMS NHGIS (Manson et al., University of Minnesota), fetched through the NHGIS API (Rscript R/fetch_census.R): total population, Black (nonwhite in 1940), ",
@@ -363,8 +415,24 @@ ui <- page_navbar(id = "nav",
            downloadButton("dl_one", "Download edition CSV"), br(), br(),
            uiOutput("dl_btns"),
            downloadButton("dl_hist", "Download pre-1960 hazardous-trade firms (1871–1956)"), br(), br(),
-           downloadButton("dl_cells", "Download industrial corridor cells (500 m)"), br(), br(),
+           downloadButton("dl_cells", "Download industrial corridor cells (500 m)"),
+           tags$small(class = "text-muted d-block mt-1 mb-3", tags$b("How corridor cells are defined. "),
+             "Every geocoded manufacturer in the 1961–2002 Directory of Colorado Manufacturers (street-level geocodes only) is snapped to a 500 m × 500 m grid cell (UTM zone 13N), ",
+             "and every cell with at least one manufacturer in any edition is kept (4,078 cells). For each cell the script counts establishments per edition, finds the dominant 2-digit SIC sector, ",
+             "and computes coverage = editions with a firm ÷ editions between the cell's first and last listing. Classes: ", tags$i("persistent"), " = first listed 1968 or earlier, still listed 1990 or later, coverage ≥ 60%; ",
+             tags$i("persistent, sector turnover"), " = persistent, but the dominant sector changed and three or more sectors led it over time; ", tags$i("emerging"), " = first listed 1980 or later; ",
+             tags$i("former"), " = last listed 1980 or earlier; everything else ", tags$i("intermittent"), ". Each cell also records any street-level pre-1960 hazardous trade inside it. ",
+             "Clustering (Ellison–Glaeser) uses 1 km cells. Code: R/corridors.R."),
            downloadButton("dl_1880", "Download Denver 1880–1940 enumeration districts (reconstructed) & firms"),
+           tags$small(class = "text-muted d-block mt-1 mb-3", tags$b("How the enumeration districts were constructed. "),
+             "No public source maps the census enumeration districts (EDs) of 1880–1940, and the IPUMS full count gives each person's ED number but no address. ",
+             "Brown University's Geographic Reference Files list every Denver resident of 1900–1940 with street, house number and ED (no coordinates). From these: ",
+             "(1) every distinct address is geocoded offline against TIGER/Line address ranges (Denver's modern numbering dates from 1887; renamed streets such as Holladay → Market are translated), keeping street-level results only; ",
+             "(2) stray geocodes are dropped — those farther from their district's person-weighted median centre than max(400 m, 2.5 × the median distance), or with fewer than 30% of their ten nearest neighbours in the same district; ",
+             "(3) a Voronoi tessellation of the remaining addresses is dissolved by district, clipped to the concave hull of all addresses (ratio 0.25, buffered 120 m), each district keeps its main body (parts at least 25% of its largest piece) and freed ground goes to the nearest district, so districts are space-filling like tracts; ",
+             "(4) IPUMS full-count totals (population, race, nativity, Hispanic origin, occupation, housing, 1935 residence) are attached by district number. ",
+             "1880 is tessellated the same way from Brown's geocoded 1880 buildings. About 73% of the 1900 population is placed at street level (data/results/denver_eds/ed_geocoding.csv); boundaries are approximate by a block or so at the edges. ",
+             "The address files stay with the project under Brown's conditions of use; only these derived polygons and aggregates are published. Code: R/grf_eds.R (cross-checked with pipeline/historical/grf_eds.py) and R/denver_eds_analysis.R."),
            hr(), tags$small("Each edition file lists every manufacturer with its OCR'd name and address, SIC/NAICS codes, ",
                             "sector flags, establishment and site IDs, coordinates and geocode level.")),
       card(card_header("How reliable are the locations?"), uiOutput("geo_note"), tableOutput("valid"))))
@@ -423,16 +491,6 @@ server <- function(input, output, session) {
       m <- m |> addCircleMarkers(data = d, ~lon, ~lat, radius = 3.5, color = "#7a0f4d", weight = 1, fillColor = hc[[k]], fillOpacity = 1,
             popup = sprintf("<b>%s</b><br>%s<br>%s", esc(d$name), esc(d$address), esc(d$type)),
             group = if (k == "Residential & long-term care") k else paste0(k, "s"), options = pathOptions(pane = "ctx")) }
-    # radium & uranium: Colorado's radium industry (1910s-20s), 'radium cure' waters and baths, and uranium/vanadium mills
-    if (!is.null(radium) && nrow(radium)) {
-      rp <- radium[!is.na(radium$lat), ]
-      m <- m |> addCircleMarkers(data = rp, ~lon, ~lat, radius = ifelse(rp$precision == "street", 8, 6), color = "#000000", weight = 2.5,
-        fillColor = "#ffd400", fillOpacity = ifelse(rp$precision == "street", 0.95, 0.6),
-        popup = sprintf("<b>&#9762; %s</b><br>%s%s · listed %s<br>%s<br><i>Location: %s</i><br><small>Source: %s</small>",
-                        esc(rp$name), ifelse(is.na(rp$street) | rp$street == "", "", paste0(esc(rp$street), ", ")), esc(rp$city), esc(rp$years),
-                        esc(rp$what), ifelse(rp$precision == "street", "street address", "town only (no usable street address)"), esc(rp$source)),
-        label = ~paste0("\u2622 ", name), group = "Radium & uranium firms", options = pathOptions(pane = "haz"))
-    }
     # industrial corridors: 500 m cells with any manufacturer 1961-2002, classed by persistence (R/corridors.R)
     if (!is.null(cells) && nrow(cells)) {
       cc <- cells[order(match(cells$class, rev(CELL_CLASSES))), ]
@@ -447,7 +505,7 @@ server <- function(input, output, session) {
                   opacity = 0.8, group = "Industrial corridors (500 m cells)")
     }
     m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
-          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Radium & uranium firms", "Industrial corridors (500 m cells)", "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
+          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
       hideGroup(c("Industrial corridors (500 m cells)", "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
@@ -500,6 +558,15 @@ server <- function(input, output, session) {
     if (length(input$sec) && nrow(h)) h <- h[vapply(strsplit(h$app_sectors, ";"), function(x) any(x %in% input$sec), logical(1)), ] else h <- h[0, ]   # vapply: sapply returns list() on 0 rows and crashed the session
     h
   })
+  # radium & uranium: Colorado's radium industry (1910s-20s), 'radium cure' waters and baths, and uranium/vanadium mills; a sidebar filter like the sectors
+  observe({ req(input$map_zoom); px <- leafletProxy("map") |> clearGroup("Radium & uranium firms"); if (is.null(radium) || !isTRUE(input$radium)) return()
+    rp <- radium[!is.na(radium$lat) & radium$last_year >= input$yrs[1] & radium$first_year <= input$yrs[2], ]; if (!nrow(rp)) return()
+    px |> addCircleMarkers(data = rp, ~lon, ~lat, radius = ifelse(rp$precision == "street", 8, 6), color = "#000000", weight = 2.5,
+        fillColor = "#ffd400", fillOpacity = ifelse(rp$precision == "street", 0.95, 0.6),
+        popup = sprintf("<b>&#9762; %s</b><br>%s%s · listed %s<br>%s<br><i>Location: %s</i><br><small>Source: %s</small>",
+                        esc(rp$name), ifelse(is.na(rp$street) | rp$street == "", "", paste0(esc(rp$street), ", ")), esc(rp$city), esc(rp$years),
+                        esc(rp$what), ifelse(rp$precision == "street", "street address", "town only (no usable street address)"), esc(rp$source)),
+        label = ~paste0("☢ ", name), group = "Radium & uranium firms", options = pathOptions(pane = "haz")) })
   observe({
     h <- sel_hist(); px <- leafletProxy("map") |> clearGroup("Pre-1960 hazardous trades") |> removeControl("histlegend")
     if (is.null(h) || !nrow(h)) return()
@@ -871,7 +938,36 @@ server <- function(input, output, session) {
     if (!is.null(holc_pre) && v %in% names(holc_pre)) d <- bind_rows(holc_pre |> filter(!is.na(.data[[v]]), !is.nan(.data[[v]])) |> mutate(basis = "HOLC areas (districts area-weighted)", unit = sprintf("%s areas", areas)) |> select(census, grade, all_of(v), basis, unit), d)
     xb <- if (min(d$census) < 1940) seq(1900, 2020, 20) else seq(1940, 2020, 20)
     ggplotly(ggplot(d, aes(census, .data[[v]], colour = grade, group = interaction(grade, basis), linetype = basis, text = sprintf("Grade %s, %s: %.1f (%s; %s)", grade, census, .data[[v]], unit, basis))) + geom_vline(xintercept = 1938, colour = "grey60") + geom_line() + geom_point(size = 2) +
-               scale_colour_manual(values = c(A = "#4d8a3a", B = "#3b8fa0", C = "#c9a800", D = "#c0392b")) + scale_linetype_manual(values = c("HOLC areas (districts area-weighted)" = "dashed", "2010 tracts by dominant grade" = "solid"), guide = "none") + scale_x_continuous(breaks = xb) + labs(x = NULL, y = lab, colour = "HOLC grade") + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1)), tooltip = "text") |> hleg() })
+               scale_colour_manual(values = c(A = "#4d8a3a", B = "#3b8fa0", C = "#c9a800", D = "#c0392b")) + scale_linetype_manual(values = c("HOLC areas (districts area-weighted)" = "dashed", "2010 tracts by dominant grade" = "solid"), guide = "none") + scale_x_continuous(breaks = xb) + labs(x = NULL, y = lab, colour = "HOLC grade") + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1)), tooltip = "text") |> gradeleg() |> hleg() })
+  output$p_holc_bd <- renderPlotly({ v <- input$rl_bvar
+    d <- if (input$rl_bdes == "band") { if (is.null(holc_bd)) return(NULL); holc_bd |> filter(outcome == v) |> transmute(census, basis, gap, lo = gap - 1.96 * se, hi = gap + 1.96 * se, text = sprintf("%s: D %.1f vs C %.1f (n = %d + %d); gap %+.1f (SE %.1f), %s", census, mean_D, mean_C, n_D, n_C, gap, se, basis)) }
+         else { if (is.null(holc_gap)) return(NULL); holc_gap |> filter(variable == v) |> transmute(census, basis, gap = D_minus_C, lo = NA, hi = NA, text = sprintf("%s: D %.1f vs C %.1f; gap %+.1f (%s)", census, D, C, D_minus_C, basis)) }
+    if (!nrow(d)) return(NULL); lab <- c(p_black = "Black (%)", p_hisp = "Hispanic (%)", p_fb = "Foreign born (%)", p_owner = "Owner-occupied (%)", p_pov = "Below poverty (%)", p_laborers = "Laborers (%)")[[v]]
+    g <- ggplot(d, aes(census, gap, group = basis, linetype = basis, text = text)) + geom_hline(yintercept = 0, colour = "grey50") + geom_vline(xintercept = 1938, colour = "grey60") + geom_line(colour = "#c0392b") + geom_point(colour = "#c0392b", size = 2) +
+      scale_linetype_manual(values = c("districts" = "dashed", "HOLC areas" = "dashed", "2010 tracts" = "solid"), guide = "none") + scale_x_continuous(breaks = seq(1900, 2020, 20)) + labs(x = NULL, y = paste("D minus C:", lab)) + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    if (input$rl_bdes == "band") g <- g + geom_errorbar(aes(ymin = lo, ymax = hi), width = 2, colour = "#c0392b", alpha = 0.6)
+    ggplotly(g, tooltip = "text") })
+  output$t_holc_bd <- renderTable({ if (is.null(holc_bd)) return(NULL); holc_bd |> filter(outcome == input$rl_bvar) |> transmute(Census = as.integer(census), Units = basis, `C side` = sprintf("%.1f (n=%d)", mean_C, n_C), `D side` = sprintf("%.1f (n=%d)", mean_D, n_D), Gap = sprintf("%+.1f%s", gap, ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", ifelse(p < 0.1, "†", "")))), SE = se) }, striped = TRUE, spacing = "xs")
+  output$t_holc_ind <- renderTable({ if (is.null(holc_ind)) return(NULL); w <- holc_ind |> select(period, grade, per_km2) |> tidyr::pivot_wider(names_from = grade, values_from = per_km2)
+    w |> mutate(`D / C` = ifelse(C > 0, sprintf("%.1f", D / C), "—"), Map = ifelse(as.integer(substr(period, 1, 4)) < 1938, "before", "after")) |> select(Period = period, Map, everything()) }, striped = TRUE, spacing = "xs")
+  # ---- benchmarks
+  observe({ if (!is.null(bm_cty)) updateSelectInput(session, "bm_year", choices = sort(unique(bm_cty$year), decreasing = TRUE), selected = 1990) })
+  output$p_bm_state <- renderPlotly({ if (is.null(bm_state)) return(NULL); h <- isTRUE(input$bm_haz)
+    d <- bm_state |> transmute(year, CBP = if (h) cbp_haz else cbp_mfg, Directory = if (h) dir_haz else dir_mfg) |> tidyr::pivot_longer(-year, names_to = "series", values_to = "n") |> filter(!is.na(n))
+    ggplotly(ggplot(d, aes(year, n, colour = series, group = series, text = sprintf("%s %s: %s", series, year, format(n, big.mark = ",")))) + geom_line() + geom_point(size = 2) + scale_colour_manual(values = c(CBP = "#2c7fb8", Directory = "#d1491f")) + expand_limits(y = 0) +
+               labs(x = NULL, y = if (h) "Hazardous-sector establishments" else "Manufacturing establishments", colour = NULL) + theme_minimal(), tooltip = "text") |> hleg() })
+  output$t_bm_fit <- renderTable({ if (is.null(bm_cty)) return(NULL); h <- isTRUE(input$bm_haz); d <- bm_cty |> filter(dir_all > 0) |> mutate(dir = if (h) dir_haz else dir_mfg, cbp = if (h) cbp_haz else cbp_mfg)
+    d |> group_by(Edition = year) |> summarise(Counties = n(), `Directory` = sum(dir), CBP = sum(cbp), Ratio = round(sum(dir) / sum(cbp), 2), `r (log counts)` = round(cor(log1p(dir), log1p(cbp)), 2), .groups = "drop") |> mutate(Edition = as.integer(Edition)) }, striped = TRUE, spacing = "xs")
+  output$bm_fit_note <- renderUI(tags$small(class = "text-muted", "Correlation across the 64 counties of log establishment counts in the same year; the ratio is directory / CBP, statewide."))
+  output$p_bm_cty <- renderPlotly({ if (is.null(bm_cty) || is.null(input$bm_year) || input$bm_year == "") return(NULL); h <- isTRUE(input$bm_haz)
+    d <- bm_cty |> filter(year == as.integer(input$bm_year)) |> mutate(dir = if (h) dir_haz else dir_mfg, cbp = if (h) cbp_haz else cbp_mfg)
+    ggplotly(ggplot(d, aes(cbp, dir, text = sprintf("%s: CBP %d, directory %d (%d at a street address)", county_name, cbp, dir, dir_street))) + geom_abline(slope = 1, intercept = 0, colour = "grey60", linetype = "dashed") + geom_point(colour = "#d1491f", alpha = 0.8, size = 2.5) +
+               scale_x_log10() + scale_y_log10() + labs(x = "CBP establishments (log scale)", y = "Directory establishments (log scale)") + theme_minimal(), tooltip = "text") })
+  output$t_bm_cty <- renderTable({ if (is.null(bm_cty) || is.null(input$bm_year) || input$bm_year == "") return(NULL); h <- isTRUE(input$bm_haz)
+    bm_cty |> filter(year == as.integer(input$bm_year)) |> arrange(desc(cbp_mfg)) |> head(12) |> transmute(County = county_name, CBP = if (h) cbp_haz else cbp_mfg, Directory = if (h) dir_haz else dir_mfg, `Street-level` = dir_street, Ratio = round(Directory / pmax(CBP, 1), 2)) }, striped = TRUE, spacing = "xs")
+  output$bm_nh <- renderUI({ if (is.null(bm_nh)) return(tags$small(class = "text-muted", "Not yet built: run Rscript R/benchmarks.R with an NHGIS key to add the 1880-1940 comparison."))
+    d <- bm_nh |> group_by(Census = as.integer(census)) |> summarise(Counties = n(), `Census mfg. establishments` = sum(mfg_estab, na.rm = TRUE), `Directory hazardous trades` = sum(dir_haz), `r (log)` = round(cor(log1p(mfg_estab), log1p(dir_haz)), 2), .groups = "drop")
+    renderTable(d, striped = TRUE, spacing = "xs")() })
   output$t_holc_m <- renderTable({ if (is.null(holc_m)) return(NULL)
     holc_m |> filter(outcome == input$rl_mvar) |> mutate(star = ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", "")), Outcome = c(p_black = "Black %", p_hisp = "Hispanic %", p_pov = "Poverty %", p_owner = "Owner-occupied %", lmval = "log median home value (2020 $)")[outcome]) |>
       transmute(Outcome, Period = period, Grade = grade, Change = sprintf("%+.1f%s", b, star), SE = round(se, 1), Tracts = n) }, striped = TRUE, spacing = "xs")

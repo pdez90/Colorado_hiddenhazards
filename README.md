@@ -354,6 +354,30 @@ firms per 10,000 residents before the map and 43 hazardous-sector sites per 10,0
 the post-war industrial growth went into the redlined and industrial districts. The app's Redlining tab shows the 1930
 districts by class, covenants, composition and firms before/after the map, and the share of each era's facilities by HOLC class.
 
+**Did the map create or reinforce the pattern?** Following Aaronson, Hartley & Mazumder (2021), `R/holc_covenants.R` also tracks the
+D-minus-C gap census by census from 1900 (reconstructed districts area-weighted into the fixed HOLC polygons; no harmonisation needed)
+to 2020 (2010 tracts), both for all C vs all D areas and within a boundary band (district centroids within 400 m, tract centroids within
+800 m, of both a C and a D area), with population-weighted HC1 standard errors (`holc_boundary.csv`, `holc_gaps.csv`); and hazardous
+firms per km² of each grade in six periods from 1891 to 2002 (`holc_industry_periods.csv`). At the C–D boundaries the Black-share gap
+was nil in 1900–1920, 4 points by 1930 and 5 by 1940 — before the map — then 10–18 points in 1950–1970 before converging after 1980;
+the Hispanic gap opens only in 1940 and after. Industry in D areas was already 3–4× C's density before 1938 and became 7–8× in
+1961–2002. Reading: the appraisers ratified a divergence already under way, which then accelerated. Railways and the 1925 zoning
+ordinance are not controlled, and Fishback, Rose, Snowden & Storrs (2024) show that FHA practice, not the HOLC map, governed lending,
+so the post-1938 acceleration cannot be attributed to the map alone.
+
+### Benchmarks against the national series (`R/benchmarks.R`)
+
+No public national dataset locates individual factories (the Census Bureau's Longitudinal Business Database does, but only inside a
+Research Data Center), so the directories are checked against county totals. (1) County Business Patterns establishment counts
+1975–2002 by county and 2-digit SIC / NAICS, from the raw county files redistributed by Eckert, Fort, Schott & Yang (2021, NBER WP
+26632; 1975–85 National Archives, 1986+ Census Bureau): the Directory of Colorado Manufacturers covers 30–100% of CBP manufacturing
+establishments depending on the edition (median ratio in Denver 0.77), with county counts correlating at r = 0.85 (log) and the
+hazardous sectors at r = 0.88 (`cbp_vs_directory_state.csv`, `cbp_vs_directory_county.csv`). The edition-to-edition swings are the
+publisher's coverage, not industrial change — read the Trends tab against this. (2) NHGIS county manufacturing tables 1880–1940
+(fetched through the NHGIS API) against the business directory's hazardous trades by county (`nhgis_mfg_vs_directory.csv`). (3) The
+Atack–Bateman–Weiss Census of Manufactures samples for 1870 and 1880 (Vanderbilt; also at ICPSR), tabulated for Colorado if present —
+samples of surviving schedules with county and industry but no addresses. The app's Benchmarks tab shows all three.
+
 `R/app_census_layers.R` turns all of this — the NHGIS tract panel with firm counts per decade, the panel models, the corridor cells,
 the 1880 ED aggregates and placed firms, and the IPUMS city series — into the app's `app/data/` files (aggregates only).
 
@@ -376,7 +400,8 @@ to 0.0 m on all 36,615 address keys, model coefficients equal to 1e-6).
 The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because each step reads the previous one's output:
 `Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`
 (Denver districts) → `Rscript R/denver_eds_analysis.R` → `Rscript R/county_panel_1880_1940.R` → `Rscript R/ej_panel.R` → `Rscript R/fetch_hmda.R` →
-`Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale).
+`Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
+`Rscript R/benchmarks.R` (CBP, NHGIS county manufacturing and the Atack samples; needs network and the NHGIS key).
 
 Network inputs change over time (FRS, TRI, CDPHE layers are live); the published results used downloads of 16 October 2026.
 OCR output can differ slightly across Tesseract versions, which is why the OCR output is saved in `data/ocr/`.
