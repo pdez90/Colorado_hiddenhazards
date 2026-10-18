@@ -87,7 +87,7 @@ tr_p <- tr[match(unique(pan$GEOID), tr$GEOID), ]
 w <- nb2listw(poly2nb(tr_p, queen = TRUE), style = "W", zero.policy = TRUE)
 res <- list()
 OUTS <- c("p_black", "p_hisp", "p_white", "p_fb", "ppov", "p_owner", "lmval", "lmrent")
-for (yv in OUTS) { if (!yv %in% names(pan) || all(is.na(pan[[yv]])) || sum(!is.na(pan[[yv]])) < 60) next
+for (yv in OUTS) { if (!yv %in% names(pan) || all(is.na(pan[[yv]])) || sum(!is.na(pan[[yv]])) < 60 || uniqueN(pan$census[!is.na(pan[[yv]])]) < 3) next   # needs at least three censuses for the within/between design
   d <- pan[!is.na(get(yv))]
   fo <- as.formula(paste(yv, "~ act_w + act_b + leg_b + popd_w + dist_km + factor(census)"))
   ols <- lm(fo, d)
@@ -109,7 +109,7 @@ for (yv in OUTS) for (cy in sort(unique(pan$census))) { d <- pan[!is.na(get(yv))
 fwrite(rbindlist(res_d), "data/results/ej_panel_by_decade.csv")
 # reverse direction: does composition at t predict new industrial entry by t+1?
 pan[, `:=`(entry_next = data.table::shift(active, -1) - active), by = GEOID]
-R2 <- rbindlist(lapply(OUTS, function(xv) { if (!xv %in% names(pan) || all(is.na(pan[[xv]])) || sum(!is.na(pan[[xv]])) < 60) return(NULL)
+R2 <- rbindlist(lapply(OUTS, function(xv) { if (!xv %in% names(pan) || all(is.na(pan[[xv]])) || sum(!is.na(pan[[xv]])) < 60 || uniqueN(pan$census[!is.na(pan[[xv]])]) < 3) return(NULL)
   d <- pan[!is.na(entry_next) & !is.na(get(xv))]; m <- lm(as.formula(paste("entry_next ~", xv, "+ log1p(active_d) + popd_w + dist_km + factor(census)")), d)
   cf <- summary(m)$coefficients; data.table(predictor = xv, b = cf[2, 1], se = cf[2, 2], p = cf[2, 4], n = nrow(d)) }))
 fwrite(R2, "data/results/ej_panel_reverse.csv")

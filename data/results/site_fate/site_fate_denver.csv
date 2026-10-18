@@ -1,0 +1,988 @@
+site_id,address,first_year,last_year,radar,fe_sectors,lat,lon,SCHEDNUM,D_CLASS,D_CLASS_CN,CPD_LANDUSE,TOTAL_UNITS,use_now,last_decade
+S00001,2950 S FOX ST,1965,1965,Other EPA permit only,Industrial machinery,39.7591025809492,-104.99540839566,,,,,,No parcel match,1960s
+S00002,3725 JASON ST,1965,1992,Not on any list,Chemicals,39.7683516527011,-104.99940965768,,,,,,No parcel match,1990s
+S00003,4000 S KALAMATH,1965,1965,RCRA hazardous-waste handler,Fabricated metals,39.7716408567966,-105.000588,,,,,,No parcel match,1960s
+S00006,4274 S LOGAN,1965,1965,Cleanup / contamination list,Industrial machinery,39.77653,-104.982439,,,,,,No parcel match,1960s
+S00007,3881 S JASON ST,1965,1965,RCRA hazardous-waste handler,Industrial machinery,39.7704010613467,-104.999411540817,,,,,,No parcel match,1960s
+S00011,3790 S JASON,1965,1980,Cleanup / contamination list,Industrial machinery; Transportation equipment,39.7689691421457,-104.999407161605,,,,,,No parcel match,1980s
+S00014,2910 S TEJON,1965,1965,Cleanup / contamination list,Chemicals,39.76079,-105.011141,,,,,,No parcel match,1960s
+S00016,75 S PECOS ST,1965,1965,Cleanup / contamination list,Fabricated metals,39.7156198834313,-105.00622608826,,,,,,No parcel match,1960s
+S00017,2800 S FEDERAL BLVD,1965,1965,RCRA hazardous-waste handler,Fabricated metals,39.665332,-105.02512,,,,,,No parcel match,1960s
+S00018,3840 S JASON ST,1965,1965,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7699026945972,-104.999409295922,,,,,,No parcel match,1960s
+S00020,3800 JASON,1965,1990,Other EPA permit only,Fabricated metals; Industrial machinery; Transportation equipment,39.7694458573963,-104.999408,,,,,,No parcel match,1990s
+S00021,3910 S KALAMATH,1965,1965,RCRA hazardous-waste handler,Industrial machinery,39.7706324896729,-105.000591489796,,,,,,No parcel match,1960s
+S00022,3720 S LIPAN ES,1965,1965,RCRA hazardous-waste handler,Chemicals,39.7682996313804,-105.00176993151,,,,,,No parcel match,1960s
+S00024,4201 S NAVAJO,1965,1965,RCRA hazardous-waste handler,Fabricated metals,39.774281,-105.00419,,,,,,No parcel match,1960s
+S00025,4695 S PECOS ST,1965,1965,Cleanup / contamination list,Fabricated metals,39.7824815870217,-105.006435,,,,,,No parcel match,1960s
+S00027,1100 W 38TH AVE,1965,1992,Other EPA permit only,Fabricated metals,39.769263257195,-105.000597467683,,,,,,No parcel match,1990s
+S00029,5035 S BROADWAY,1965,1965,Cleanup / contamination list,Industrial machinery,39.7880248545747,-104.987576320421,,,,,,No parcel match,1960s
+S00062,1601 WAZEE,1965,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery; Transportation equipment,39.7514045179071,-104.999846973463,,,,,,No parcel match,1990s
+S00063,1732 MARION,1965,1965,Cleanup / contamination list,Fabricated metals,39.7437548558247,-104.972128942055,,,,,,No parcel match,1960s
+S00065,424 LIPAN,1965,1968,RCRA hazardous-waste handler,Fabricated metals,39.7228756370697,-105.001482634314,,,,,,No parcel match,1960s
+S00066,4156 MORRISON RD,1965,1965,Cleanup / contamination list,Fabricated metals,39.7052617409888,-105.041225355325,,,,,,No parcel match,1960s
+S00070,2950 ARKINS CT,1965,1980,Cleanup / contamination list,Chemicals; Transportation equipment,39.7661543253315,-104.987444911143,,,,,,No parcel match,1980s
+S00071,5190 CLARKSON ST,1965,1980,Cleanup / contamination list,Rubber & plastics,39.790877283606,-104.977106223916,,,,,,No parcel match,1980s
+S00072,1409 STOUT,1965,1973,Cleanup / contamination list,Primary metals; Rubber & plastics,39.7440542827286,-104.995372465317,,,,,,No parcel match,1970s
+S00073,1105 ZUNI,1965,1992,RCRA hazardous-waste handler,Chemicals; Petroleum refining,39.7340091338396,-105.015984652028,,,,,,No parcel match,1990s
+S00076,1114 LARIMER,1965,1968,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7456030340975,-105.003210151811,,,,,,No parcel match,1960s
+S00078,1600 BOULDER,1965,1965,Not on any list,Rubber & plastics,39.759257,-105.010504,,,,,,No parcel match,1960s
+S00079,2740 ZUNI,1965,1973,Other EPA permit only,Primary metals,39.7568410203894,-105.015832044428,,,,,,No parcel match,1970s
+S00080,451 BROADWAY,1965,1988,RCRA hazardous-waste handler,Industrial machinery,39.7232686674365,-104.987483138193,,,,,,No parcel match,1980s
+S00082,2151 LAWRENCE,1965,1980,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7536982207267,-104.989877469696,,,,,,No parcel match,1980s
+S00083,1285 S HURON,1965,1970,Not on any list,Chemicals; Fabricated metals,39.6933165627775,-104.996841279608,,,,,,No parcel match,1970s
+S00084,1385 INCA,1965,1992,RCRA hazardous-waste handler,Fabricated metals,39.735266,-104.9976,,,,,,No parcel match,1990s
+S00088,4398 ELATI,1965,1988,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.776598,-104.993641,,,,,,No parcel match,1980s
+S00091,4495 LOGAN,1965,1965,Cleanup / contamination list,Fabricated metals,39.7782498160459,-104.982431203855,,,,,,No parcel match,1960s
+S00094,1130 12TH,1965,1980,Cleanup / contamination list,Chemicals; Rubber & plastics; Transportation equipment,39.745861,-105.002624,,,,,,No parcel match,1980s
+S00095,857 BRYANT ST,1965,1983,RCRA hazardous-waste handler,Chemicals; Industrial machinery,39.7304191785711,-105.019279177835,,,,,,No parcel match,1980s
+S00097,2657 WH 3RD AVE,1965,1967,RCRA hazardous-waste handler,Fabricated metals,39.7211658585244,-105.019643571422,,,,,,No parcel match,1960s
+S00098,2144 LARIMER ST,1965,1970,Not on any list,Chemicals,39.7543005434493,-104.990838646394,,,,,,No parcel match,1970s
+S00099,2628 WALNUT,1965,1990,Other EPA permit only,Chemicals; Fabricated metals,39.7594760711802,-104.985896278562,,,,,,No parcel match,1990s
+S00100,1653 CENTRAL,1965,1992,Not on any list,Chemicals; Fabricated metals; Industrial machinery; Primary metals,39.7587485962163,-105.008736131114,,,,,,No parcel match,1990s
+S00101,1590 BRYANT,1965,1974,Cleanup / contamination list,Fabricated metals,39.745861,-105.018955,,,,,,No parcel match,1970s
+S00102,495 E 51ST AVE,1965,1990,Cleanup / contamination list,Primary metals,39.7892175766545,-104.981125992322,,,,,,No parcel match,1990s
+S00103,4245 FOX SI,1965,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery; Transportation equipment,39.7747845767531,-104.994842644607,,,,,,No parcel match,1990s
+S00104,2600 S DELAWARE,1965,1992,TRI reporter,Fabricated metals; Industrial machinery; Primary metals; Transportation equipment,39.669492,-104.992271,,,,,,No parcel match,1990s
+S00106,1590 WE 12TH,1965,1988,Cleanup / contamination list,Rubber & plastics,39.7352875925019,-105.007682347961,,,,,,No parcel match,1980s
+S00107,4280 COLUMBINE,1965,1983,Cleanup / contamination list,Fabricated metals; Rubber & plastics,39.7763161812805,-104.957156,,,,,,No parcel match,1980s
+S00108,130 E 5TH AVE,1965,1965,Not on any list,Fabricated metals,39.7241359388014,-104.985877003168,,,,,,No parcel match,1960s
+S00110,194 W DAKOTA AVE,1965,1992,Cleanup / contamination list,Chemicals; Fabricated metals; Industrial machinery,39.7093412505657,-104.991142613657,,,,,,No parcel match,1990s
+S00111,2565 CURTIS,1965,1983,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Industrial machinery; Rubber & plastics,39.7562126122449,-104.983145734694,,,,,,No parcel match,1980s
+S00112,2050 LAWRENCE,1965,1990,Not on any list,Fabricated metals,39.7526593803476,-104.99121554667,,,,,,No parcel match,1990s
+S00114,444 BANNOCK,1965,1965,Not on any list,Fabricated metals,39.7235486125836,-104.990844641572,,,,,,No parcel match,1960s
+S00115,2433 CURTIS,1965,1990,Cleanup / contamination list,Chemicals; Industrial machinery,39.7549772607635,-104.984751206033,,,,,,No parcel match,1990s
+S00116,2763 BLAKE,1965,1990,Cleanup / contamination list,Industrial machinery,39.761768,-104.98467,,,,,,No parcel match,1990s
+S00118,2900 LARIMER,1965,1988,TRI reporter,Transportation equipment,39.7613720060981,-104.981754335882,,,,,,No parcel match,1980s
+S00119,1331 W EVANS AVE,1965,1992,Cleanup / contamination list,Chemicals; Fabricated metals; Industrial machinery; Petroleum refining; Primary metals,39.67854,-105.003341058824,,,,,,No parcel match,1990s
+S00121,2770 WE COLFAX,1965,1980,Cleanup / contamination list,Fabricated metals,39.7400176300639,-105.021001941903,,,,,,No parcel match,1980s
+S00123,1346 W CEDAR,1965,1992,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Industrial machinery; Rubber & plastics,39.7130373520408,-105.005239870748,,,,,,No parcel match,1990s
+S00124,1200 13TH,1965,1974,Not on any list,Primary metals,39.7451786572161,-104.9993881787,,,,,,No parcel match,1970s
+S00130,421 W 4TH AVE,1965,1992,Not on any list,Fabricated metals,39.7225340765015,-104.993042736654,,,,,,No parcel match,1990s
+S00131,869 S BROADWAY,1965,1977,Cleanup / contamination list,Fabricated metals,39.7004607353629,-104.987475667405,,,,,,No parcel match,1970s
+S00132,2323 S LIPAN,1965,1988,RCRA hazardous-waste handler,Fabricated metals,39.6744656755567,-105.001770877557,,,,,,No parcel match,1980s
+S00135,500 E 45 AVE,1965,1990,Cleanup / contamination list,Fabricated metals,39.778318,-104.981295,,,,,,No parcel match,1990s
+S00137,1986 S CHEROKEE,1965,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Primary metals; Transportation equipment,39.6804372215038,-104.991110363669,,,,,,No parcel match,1990s
+S00139,1418 WAZEE ST,1965,1977,Cleanup / contamination list,Industrial machinery,39.7495481603391,-105.002186724959,,,,,,No parcel match,1970s
+S00141,1245 S INCA,1965,1988,RCRA hazardous-waste handler,Fabricated metals; Rubber & plastics; Transportation equipment,39.6942579944653,-104.997995935967,,,,,,No parcel match,1980s
+S00144,1224 LAWRENCE,1965,1965,Not on any list,Fabricated metals,39.7452585252525,-105.000729828283,,,,,,No parcel match,1960s
+S00145,2363 LARIMER,1965,1990,Not on any list,Chemicals,39.7563233351893,-104.988230694628,,,,,,No parcel match,1990s
+S00146,960 W 48TH AVE,1965,1980,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Rubber & plastics,39.7838843416883,-104.999228462853,,,,,,No parcel match,1980s
+S00147,1411 MARKET,1965,1983,Not on any list,Chemicals; Fabricated metals; Industrial machinery; Primary metals,39.7481183315902,-105.000530451343,,,,,,No parcel match,1980s
+S00148,4950 YORK,1965,1992,RCRA hazardous-waste handler,Chemicals,39.7862399958163,-104.959277160879,,,,,,No parcel match,1990s
+S00149,131 S HARRISON ST,1965,1992,Other EPA permit only,Industrial machinery,39.7140497142857,-104.941343397959,,,,,,No parcel match,1990s
+S00151,688 BRYANT,1965,1990,Other EPA permit only,Industrial machinery,39.7264651054026,-105.018685353597,,,,,,No parcel match,1990s
+S00155,4501 FOX ST,1965,1980,Cleanup / contamination list,Rubber & plastics,39.7767993289288,-104.994826403852,,,,,,No parcel match,1980s
+S00156,678 49TH,1965,1965,Cleanup / contamination list,Industrial machinery,39.7855800560533,-104.978650251897,,,,,,No parcel match,1960s
+S00158,4444 YORK,1965,1983,Cleanup / contamination list,Industrial machinery; Rubber & plastics; Transportation equipment,39.7786251243608,-104.959398376252,,,,,,No parcel match,1980s
+S00159,1441 7TH,1965,1974,RCRA hazardous-waste handler,Fabricated metals,39.7445170316297,-105.009101094555,,,,,,No parcel match,1970s
+S00160,850 S LIPAN,1965,1990,RCRA hazardous-waste handler,Chemicals; Petroleum refining; Rubber & plastics,39.7011498244362,-105.001528355698,,,,,,No parcel match,1990s
+S00161,1934 WE 33RD,1965,1968,Not on any list,Chemicals,39.763222490955,-105.010156940059,,,,,,No parcel match,1960s
+S00162,2307 LARIMER,1965,1974,Not on any list,Fabricated metals,39.7558527162334,-104.989040226322,,,,,,No parcel match,1970s
+S00164,8075 E 40TH,1965,1974,Other EPA permit only,Rubber & plastics,39.77282,-104.894441731061,,,,,,No parcel match,1970s
+S00165,2130 S PLATTE RIVER DR,1965,1990,Cleanup / contamination list,Chemicals; Industrial machinery,39.6780642834517,-104.997488412183,,,,,,No parcel match,1990s
+S00168,860 NAVAJO,1965,1990,Other EPA permit only,Fabricated metals; Industrial machinery,39.7297751849885,-105.004084309111,,,,,,No parcel match,1990s
+S00169,745 DECATUR ST,1965,1980,Not on any list,Fabricated metals; Industrial machinery,39.7279029115285,-105.022122087899,,,,,,No parcel match,1980s
+S00171,935 S PATTON CT,1965,1968,Not on any list,Industrial machinery,39.6997413946459,-105.039081907408,,,,,,No parcel match,1960s
+S00173,485 S JERSEY,1965,1965,Not on any list,Fabricated metals,39.7077542839927,-104.919942569064,,,,,,No parcel match,1960s
+S00174,919 DECATUR,1965,1968,Cleanup / contamination list,Industrial machinery,39.7315300415715,-105.021734837768,,,,,,No parcel match,1960s
+S00175,2257 CURTIS,1965,1968,Cleanup / contamination list,Industrial machinery,39.7533409476499,-104.986844349674,,,,,,No parcel match,1960s
+S00178,2030 CHAMPA,1965,1980,Not on any list,Chemicals; Fabricated metals; Primary metals; Rubber & plastics,39.7507103459126,-104.988513918885,,,,,,No parcel match,1980s
+S00180,4806 YORK,1965,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7837733115117,-104.959254230065,,,,,,No parcel match,1990s
+S00181,4650 STEELE,1965,1988,TRI reporter,Industrial machinery,39.7815254911096,-104.949910173066,,,,,,No parcel match,1980s
+S00182,2114 CURTIS ST,1965,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Petroleum refining,39.7521094140166,-104.988444845736,,,,,,No parcel match,1990s
+S00183,4901 RACE 1735 LAWRENCE,1965,1965,Cleanup / contamination list,Industrial machinery,39.785898,-104.963517,,,,,,No parcel match,1960s
+S00185,285 RIO GRANDE,1965,1983,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Rubber & plastics,39.7207343649617,-105.005536591695,,,,,,No parcel match,1980s
+S00186,4238 YORK,1965,1965,Cleanup / contamination list,Chemicals,39.7757439403519,-104.959413941263,,,,,,No parcel match,1960s
+S00187,2180 S DELAWARE,1965,1992,Not on any list,Fabricated metals; Industrial machinery,39.6769829483988,-104.992265788643,,,,,,No parcel match,1990s
+S00190,1221 CALIFORNIA,1965,1980,Cleanup / contamination list,Industrial machinery,39.743335,-104.994598,,,,,,No parcel match,1980s
+S00191,3500 WYNKOOP,1965,1990,Cleanup / contamination list,Chemicals; Rubber & plastics,39.7696529192833,-104.977991407075,,,,,,No parcel match,1990s
+S00192,2907 HURON,1965,1990,Cleanup / contamination list,Fabricated metals; Rubber & plastics,39.7585268849185,-104.99713965327,,,,,,No parcel match,1990s
+S00193,1322 BLAKE,1965,1974,Cleanup / contamination list,Industrial machinery; Primary metals; Rubber & plastics,39.7485923367605,-105.003075978422,,,,,,No parcel match,1970s
+S00194,2017 W 38TH AVE,1965,1977,Cleanup / contamination list,Fabricated metals,39.769286,-105.011392367937,,,,,,No parcel match,1970s
+S00195,249 DELAWARE ST REAR,1965,1965,RCRA hazardous-waste handler,Fabricated metals,39.7201272666971,-104.99281741754,,,,,,No parcel match,1960s
+S00196,158 FILMORE,1965,1965,Cleanup / contamination list,Chemicals,39.7189989795918,-104.953425938776,,,,,,No parcel match,1960s
+S00198,501 S LIPAN,1965,1966,Other EPA permit only,Primary metals,39.707555,-105.001506,,,,,,No parcel match,1960s
+S00199,1230 7TH ST,1965,1974,RCRA hazardous-waste handler,Rubber & plastics,39.7426605955162,-105.007741935211,,,,,,No parcel match,1970s
+S00201,1642 ARAPAHOE,1965,1970,RCRA hazardous-waste handler,Chemicals,39.748117576418,-104.995360749529,,,,,,No parcel match,1970s
+S00203,2535 LARIMER ST,1965,1968,Not on any list,Fabricated metals,39.7579538430024,-104.986109939634,,,,,,No parcel match,1960s
+S00206,2062 BLAKE ST,1965,1965,Not on any list,Fabricated metals,39.7549020857979,-104.993552409224,,,,,,No parcel match,1960s
+S00208,1157 10TH,1965,1965,Not on any list,Industrial machinery,39.7427840855934,-105.003245844944,,,,,,No parcel match,1960s
+S00213,995 FEDERAL BLVD,1965,1970,RCRA hazardous-waste handler,Fabricated metals,39.7329147759132,-105.025161592066,,,,,,No parcel match,1970s
+S00215,2225 LOCUST,1965,1965,Not on any list,Fabricated metals,39.7497263267317,-104.913986,,,,,,No parcel match,1960s
+S00216,425 S PECOS,1965,1973,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7091310634612,-105.006248628151,,,,,,No parcel match,1970s
+S00218,1235 STOUT,1965,1965,Not on any list,Industrial machinery,39.7428060744661,-104.998243646872,,,,,,No parcel match,1960s
+S00220,1818 BLAKE,1965,1992,Not on any list,Industrial machinery,39.7526254139091,-104.996469837388,,,,,,No parcel match,1990s
+S00222,4601 MONACO BLVD,1965,1992,Cleanup / contamination list,Rubber & plastics,39.7796049425287,-104.912875954023,,,,,,No parcel match,1990s
+S00223,1893 S PEARL,1965,1990,Not on any list,Industrial machinery,39.6822088004469,-104.9804706215,,,,,,No parcel match,1990s
+S00228,1545 GLENARM,1965,1970,Not on any list,Industrial machinery,39.7433269118312,-104.991107877594,,,,,,No parcel match,1970s
+S00229,1300 FOX,1965,1980,Other EPA permit only,Industrial machinery; Primary metals,39.736857,-104.995307,,,,,,No parcel match,1980s
+S00230,2853 WALNUT ST,1965,1990,RCRA hazardous-waste handler,Industrial machinery,39.7616193696141,-104.98312821725,,,,,,No parcel match,1990s
+S00232,1535 PLATTE,1965,1992,Other EPA permit only,Industrial machinery,39.7568344008707,-105.008803567887,,,,,,No parcel match,1990s
+S00233,1615 WE 12TH,1965,1990,Cleanup / contamination list,Industrial machinery,39.735291,-105.008627710536,,,,,,No parcel match,1990s
+S00236,2958 ZUNI ST,1965,1983,Not on any list,Chemicals; Fabricated metals,39.7590966576087,-105.015835,,,,,,No parcel match,1980s
+S00237,2017 WELTON,1965,1990,RCRA hazardous-waste handler,Fabricated metals; Primary metals; Rubber & plastics,39.7483942689076,-104.986279788715,,,,,,No parcel match,1990s
+S00238,1353 SANTA FE DR,1965,1968,RCRA hazardous-waste handler,Fabricated metals,39.7375955220538,-104.998725218306,,,,,,No parcel match,1960s
+S00239,2851 LARIMER,1965,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7609592569319,-104.98223853682,,,,,,No parcel match,1990s
+S00242,1830 PLATTE,1965,1980,Not on any list,Industrial machinery,39.7597105527471,-105.005050349817,,,,,,No parcel match,1980s
+S00243,3062 FOX,1965,1965,Other EPA permit only,Chemicals,39.7603706571621,-104.99541794074,,,,,,No parcel match,1960s
+S00245,200 FILLMORE SUITE 307,1965,1988,Other EPA permit only,Rubber & plastics,39.71941,-104.953419,,,,,,No parcel match,1980s
+S00246,785 VALLEJO,1965,1983,TRI reporter,Fabricated metals,39.7291257382616,-105.013187454698,,,,,,No parcel match,1980s
+S00248,19 E EXPOSITION,1965,1983,RCRA hazardous-waste handler,Chemicals; Fabricated metals,39.7038510956181,-104.987398882311,,,,,,No parcel match,1980s
+S00251,1415 LARIMER,1965,1990,Cleanup / contamination list,Industrial machinery,39.7475229202226,-104.999664959184,,,,,,No parcel match,1990s
+S00252,5254 COOK,1965,1988,Not on any list,Fabricated metals,39.7919893110516,-104.947578650768,,,,,,No parcel match,1980s
+S00256,1345 10TH,1965,1970,Cleanup / contamination list,Industrial machinery,39.7445812727273,-105.004528767677,,,,,,No parcel match,1970s
+S00257,1322 LAWRENCE ST,1965,1970,Other EPA permit only,Chemicals; Fabricated metals; Industrial machinery,39.7460728187526,-104.999729539756,,,,,,No parcel match,1970s
+S00258,2075 BRYANT,1965,1973,Cleanup / contamination list,Chemicals,39.7482833535331,-105.018968870115,,,,,,No parcel match,1970s
+S00259,25 BRCADWAY,1965,1974,Not on any list,Industrial machinery,39.7174288469816,-104.987505616258,,,,,,No parcel match,1970s
+S00260,2101 52ND AVE,1965,1965,Cleanup / contamination list,Chemicals,39.791055,-105.012371,,,,,,No parcel match,1960s
+S00262,3860 GALAPAGO,1965,1965,Cleanup / contamination list,Fabricated metals,39.7702852806616,-104.99605486641,,,,,,No parcel match,1960s
+S00264,242 ELATI,1965,1973,Other EPA permit only,Industrial machinery,39.719347,-104.99399,,,,,,No parcel match,1970s
+S00266,2440 LARIMER,1965,1990,RCRA hazardous-waste handler,Industrial machinery,39.7572503446942,-104.98703276742,,,,,,No parcel match,1990s
+S00267,2156 ARAPAHOE,1965,1973,RCRA hazardous-waste handler,Fabricated metals,39.7530798811697,-104.988925077251,,,,,,No parcel match,1970s
+S00269,1950 W 14TH,1965,1983,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Primary metals,39.7385,-105.012580647722,,,,,,No parcel match,1980s
+S00270,4751 FOX,1965,1992,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.783079209962,-104.994315689324,,,,,,No parcel match,1990s
+S00271,2001 S BANNOCK,1965,1974,Not on any list,Fabricated metals; Industrial machinery,39.680323,-104.989958,,,,,,No parcel match,1970s
+S00272,1400 W EVANS,1965,1983,Cleanup / contamination list,Industrial machinery; Rubber & plastics,39.6785511646686,-105.00442229126,,,,,,No parcel match,1980s
+S00277,2166 15TH,1965,1967,Cleanup / contamination list,Chemicals,39.7541540506391,-105.006275697843,,,,,,No parcel match,1960s
+S00279,485 OSAGE,1965,1967,TRI reporter,Fabricated metals; Industrial machinery; Primary metals,39.722812434926,-105.005570332466,,,,,,No parcel match,1960s
+S00280,2116 S KALAMATH,1965,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.6781532086651,-105.000622094728,,,,,,No parcel match,1990s
+S00281,1450 5TH,1965,1990,Cleanup / contamination list,Chemicals,39.7435701951445,-105.011360546161,,,,,,No parcel match,1990s
+S00282,1301 HW CENTER AVE,1965,1965,Not on any list,Fabricated metals,39.70577,-105.00384,,,,,,No parcel match,1960s
+S00286,2306 CHAMPA,1965,1980,Cleanup / contamination list,Chemicals; Rubber & plastics,39.7531092098202,-104.985401552704,,,,,,No parcel match,1980s
+S00287,999 TEJON,1965,1983,Cleanup / contamination list,Fabricated metals; Industrial machinery; Transportation equipment,39.732439,-105.011299,,,,,,No parcel match,1980s
+S00290,3001 WALNUT,1965,1988,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Transportation equipment,39.762959,-104.981394,,,,,,No parcel match,1980s
+S00291,451 S LIPAN,1965,1990,RCRA hazardous-waste handler,Industrial machinery,39.7079847414966,-105.001504612245,,,,,,No parcel match,1990s
+S00292,1024 LIPAN,1965,1965,RCRA hazardous-waste handler,Fabricated metals,39.732488877551,-105.001579,,,,,,No parcel match,1960s
+S00294,1335 S INCA,1965,1970,Not on any list,Transportation equipment,39.6924346390404,-104.998022729426,,,,,,No parcel match,1970s
+S00295,1146 5TH,1965,1990,RCRA hazardous-waste handler,Industrial machinery,39.7407082028973,-105.009238057162,,,,,,No parcel match,1990s
+S00296,1980 S ACOMA,1965,1970,Other EPA permit only,Industrial machinery; Rubber & plastics,39.6806561830708,-104.988793079605,,,,,,No parcel match,1970s
+S00297,2838 N SPEER BLVD,1965,1990,Not on any list,Fabricated metals; Rubber & plastics,39.7575704522017,-105.019325896274,,,,,,No parcel match,1990s
+S00298,707 E 50TH,1965,1992,Cleanup / contamination list,Chemicals,39.787386,-104.978228566145,,,,,,No parcel match,1990s
+S00299,1642 PLATTE ST,1965,1990,Cleanup / contamination list,Chemicals; Fabricated metals,39.7577764554437,-105.007594401529,,,,,,No parcel match,1990s
+S00301,2185 S JASON,1965,1992,TRI reporter,Chemicals; Industrial machinery; Rubber & plastics; Transportation equipment,39.6769334199675,-104.999460303489,,,,,,No parcel match,1990s
+S00303,4400 YORK,1965,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.777671,-104.95939,,,,,,No parcel match,1990s
+S00304,2669 LARIMER,1965,1974,Cleanup / contamination list,Fabricated metals; Primary metals,39.7591720448815,-104.984547608127,,,,,,No parcel match,1970s
+S00305,2230 S DELAWARE ST,1965,1992,Cleanup / contamination list,Chemicals; Fabricated metals; Industrial machinery; Primary metals; Rubber & plastics; Transportation equipment,39.6760121948052,-104.992267896104,,,,,,No parcel match,1990s
+S00308,4210 TENNYSON,1965,1980,Cleanup / contamination list,Chemicals,39.774232693895,-105.04398602847,,,,,,No parcel match,1980s
+S00309,1632 S GRAPE ST,1965,1965,Not on any list,Fabricated metals,39.686968244898,-104.92444,,,,,,No parcel match,1960s
+S00310,1936 LAWRENCE,1965,1970,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7516156415362,-104.992565538845,,,,,,No parcel match,1970s
+S00312,1423 S BROADWAY,1965,1988,TRI reporter,Fabricated metals,39.6908603047971,-104.987483323491,,,,,,No parcel match,1980s
+S00313,3500 ROCKMONT OR,1965,1990,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Industrial machinery,39.763076,-105.001686,,,,,,No parcel match,1990s
+S00314,1636 LAWRENCE ST,1965,1970,TRI reporter,Fabricated metals,39.7488942111974,-104.996072270954,,,,,,No parcel match,1970s
+S00320,1955 WE VIRGINIA AVE,1965,1973,Other EPA permit only,Fabricated metals,39.707573,-105.010409911381,,,,,,No parcel match,1970s
+S00321,1543 LARIMER,1965,1970,Other EPA permit only,Fabricated metals; Industrial machinery,39.7486802780149,-104.998120438698,,,,,,No parcel match,1970s
+S00325,291 S LIPAN,1965,1965,Cleanup / contamination list,Fabricated metals,39.711174,-105.001564,,,,,,No parcel match,1960s
+S00327,2985 INCA,1965,1983,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.759086069987,-104.998436723338,,,,,,No parcel match,1980s
+S00328,4990 ACOMA,1965,1990,Cleanup / contamination list,Chemicals; Industrial machinery,39.7872467528192,-104.988724027815,,,,,,No parcel match,1990s
+S00329,831 S JASON,1965,1990,Other EPA permit only,Chemicals; Fabricated metals,39.7017318963615,-104.999168090779,,,,,,No parcel match,1990s
+S00330,1115 7TH,1965,1974,Cleanup / contamination list,Chemicals,39.7413688313194,-105.00640725373,,,,,,No parcel match,1970s
+S00332,855 BROADWAY,1965,1992,Cleanup / contamination list,Chemicals,39.7297743151813,-104.987403,,,,,,No parcel match,1990s
+S00333,1535 WW 13TH AVE,1965,1983,Cleanup / contamination list,Chemicals,39.7368903741474,-105.006707671412,,,,,,No parcel match,1980s
+S00334,1050 S BROADWAY,1965,1988,Cleanup / contamination list,Industrial machinery; Rubber & plastics,39.6975993691808,-104.987441997248,,,,,,No parcel match,1980s
+S00335,3810 PECOS ST,1965,1992,RCRA hazardous-waste handler,Transportation equipment,39.7694505614024,-105.006456005349,,,,,,No parcel match,1990s
+S00338,3724 W COLFAX AVE,1965,1965,Not on any list,Industrial machinery,39.740339227016,-105.03610481906,,,,,,No parcel match,1960s
+S00339,925 FEDERAL,1965,1970,RCRA hazardous-waste handler,Industrial machinery,39.7316333475405,-105.025157226595,,,,,,No parcel match,1970s
+S00340,827 14TH,1965,1970,Cleanup / contamination list,Fabricated metals,39.7441602802123,-104.995704919106,,,,,,No parcel match,1970s
+S00341,1240 UMATILLA ST,1965,1980,Cleanup / contamination list,Chemicals; Fabricated metals,39.7355901398506,-105.012353957215,,,,,,No parcel match,1980s
+S00342,2944 LARIMER ST,1965,1990,TRI reporter,Fabricated metals; Industrial machinery; Transportation equipment,39.7617410789323,-104.981220367589,,,,,,No parcel match,1990s
+S00343,424 JASON,1965,1965,Cleanup / contamination list,Fabricated metals,39.7082515480847,-104.999270304726,,,,,,No parcel match,1960s
+S00344,222 SANTA FE,1965,1983,RCRA hazardous-waste handler,Chemicals,39.7197144482466,-104.998578,,,,,,No parcel match,1980s
+S00345,1843 LAWRENCE,1965,1968,Other EPA permit only,Industrial machinery,39.7508309330203,-104.993579989651,,,,,,No parcel match,1960s
+S00346,5040 ACOMA,1965,1988,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.788101134837,-104.988702837099,,,,,,No parcel match,1980s
+S00349,5070 STEELE ST,1965,1965,Cleanup / contamination list,Chemicals,39.7886717125278,-104.94992285399,,,,,,No parcel match,1960s
+S00351,2010 CURTIS ST,1965,1980,Not on any list,Industrial machinery,39.7511402014354,-104.989714205289,,,,,,No parcel match,1980s
+S00352,3975 YORK,1965,1992,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7724683741295,-104.959558460966,,,,,,No parcel match,1990s
+S00355,2368 15TH ST,1965,1980,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Industrial machinery,39.756188444774,-105.00892270183,,,,,,No parcel match,1980s
+S00358,1438 S CHEROKEE,1965,1990,TRI reporter,Chemicals; Fabricated metals; Industrial machinery,39.6902747959184,-104.991030918367,,,,,,No parcel match,1990s
+S00360,337 KALAMATH ST,1965,1983,Not on any list,Fabricated metals,39.7216774285714,-105.000182,,,,,,No parcel match,1980s
+S00361,1236 DELAWARE,1965,1970,Other EPA permit only,Fabricated metals,39.735844387412,-104.992940161289,,,,,,No parcel match,1970s
+S00362,1726 CHAMPA,1965,1990,RCRA hazardous-waste handler,Fabricated metals,39.7478346579482,-104.992225091876,,,,,,No parcel match,1990s
+S00363,4555 BRIGHTON BLVD,1965,1965,Cleanup / contamination list,Industrial machinery,39.780861,-104.966713,,,,,,No parcel match,1960s
+S00364,1243 W ALAMEDA,1965,1990,RCRA hazardous-waste handler,Industrial machinery,39.7111813043478,-105.002419521739,,,,,,No parcel match,1990s
+S00368,950 11TH,1965,1973,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.74203,-105.001125,,,,,,No parcel match,1970s
+S00373,2600 E 40TH,1965,1974,Cleanup / contamination list,Primary metals,39.772913,-104.956874,,,,,,No parcel match,1970s
+S00374,75 S CHEROKEE ST,1965,1974,Other EPA permit only,Fabricated metals,39.7150266926225,-104.992169,,,,,,No parcel match,1970s
+S00375,20 WE 12TH AVE,1965,1967,Not on any list,Transportation equipment,39.7352570896701,-104.98767508751,,,,,,No parcel match,1960s
+S00377,2664 CALIFORNIA ST,1965,1965,Not on any list,Chemicals,39.755132,-104.97932477551,,,,,,No parcel match,1960s
+S00378,4201 GALAPAGO,1965,1967,Cleanup / contamination list,Industrial machinery,39.774225,-104.996002,,,,,,No parcel match,1960s
+S00379,1950 S BANNOCK,1965,1980,RCRA hazardous-waste handler,Industrial machinery,39.6812080599944,-104.989953582749,,,,,,No parcel match,1980s
+S00381,2820 N SPEER BLVD,1965,1983,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7574351628057,-105.018969095564,,,,,,No parcel match,1980s
+S00382,4400 GARFIELD,1965,1983,TRI reporter,Industrial machinery,39.7777691648277,-104.944067535389,,,,,,No parcel match,1980s
+S00384,1294 S INCA ST,1965,1983,Not on any list,Fabricated metals; Industrial machinery; Primary metals,39.6931344369241,-104.998017774875,,,,,,No parcel match,1980s
+S00385,4950 JACKSON,1965,1990,RCRA hazardous-waste handler,Fabricated metals; Rubber & plastics; Transportation equipment,39.7863456182569,-104.942914890003,,,,,,No parcel match,1990s
+S00386,2500 15TH,1965,1965,Other EPA permit only,Fabricated metals,39.7574,-105.01051,,,,,,No parcel match,1960s
+S00389,601 E 48TH,1965,1988,Cleanup / contamination list,Fabricated metals; Industrial machinery; Petroleum refining; Rubber & plastics,39.783715,-104.980079,,,,,,No parcel match,1980s
+S00413,3090 DOWNING ST,1965,1977,Not on any list,Fabricated metals,39.76042,-104.973337,,,,,,No parcel match,1970s
+S00414,4894 MORRISON RD,1965,1970,Cleanup / contamination list,Industrial machinery,39.6993387082569,-105.049649095906,,,,,,No parcel match,1970s
+S00569,2145 BLAKE,1966,1983,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7556011673997,-104.992650048318,,,,,,No parcel match,1980s
+S00573,5001 E 52ND AVE,1966,1968,Cleanup / contamination list,Industrial machinery,39.7910382448365,-104.929458758611,,,,,,No parcel match,1960s
+S00586,3925 ONEIDA ST,1966,1966,Not on any list,Petroleum refining,39.7714259401301,-104.90767644899,,,,,,No parcel match,1960s
+S00604,2161 S PLATTE RIVER OR,1966,1990,Other EPA permit only,Chemicals; Fabricated metals,39.6773047970619,-104.998274893673,,,,,,No parcel match,1990s
+S00697,2722 W 2ND AVE,1966,1966,RCRA hazardous-waste handler,Industrial machinery,39.720263,-105.02096818227,,,,,,No parcel match,1960s
+S00700,4200 MILWAUKEE,1966,1992,Cleanup / contamination list,Chemicals; Fabricated metals; Industrial machinery; Primary metals,39.7758424948844,-104.951942562318,,,,,,No parcel match,1990s
+S00701,2819 LARIMER,1966,1990,Cleanup / contamination list,Chemicals; Fabricated metals,39.7605854534075,-104.982721976912,,,,,,No parcel match,1990s
+S00702,1800 BOULDER ST,1966,1992,Not on any list,Rubber & plastics,39.76112,-105.008086,,,,,,No parcel match,1990s
+S00705,1385 S INCA,1966,1983,RCRA hazardous-waste handler,Fabricated metals,39.6913651392475,-104.99803054729,,,,,,No parcel match,1980s
+S00707,39 S KALAMATH,1966,1968,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7160909812102,-105.000179629824,,,,,,No parcel match,1960s
+S00708,1295 S JASON,1966,1992,Cleanup / contamination list,Fabricated metals; Primary metals,39.6932446705575,-104.999181405491,,,,,,No parcel match,1990s
+S00710,3915 TENNYSON,1966,1990,RCRA hazardous-waste handler,Fabricated metals,39.7714610395604,-105.044012232967,,,,,,No parcel match,1990s
+S00711,1101 CHAMPA,1966,1974,RCRA hazardous-waste handler,Industrial machinery; Primary metals,39.742313,-104.999335,,,,,,No parcel match,1970s
+S00712,4801 E 46TH AVE,1966,1968,TRI reporter,Fabricated metals,39.780453,-104.931637,,,,,,No parcel match,1960s
+S00713,2301 BLAKE ST,1966,1967,RCRA hazardous-waste handler,Industrial machinery; Primary metals,39.7571,-104.990714,,,,,,No parcel match,1960s
+S00714,1237 SHOSHONE ST,1966,1974,RCRA hazardous-waste handler,Industrial machinery,39.7359046699466,-105.010390873745,,,,,,No parcel match,1970s
+S00716,5301 E 38TH AVE,1966,1990,RCRA hazardous-waste handler,Chemicals; Industrial machinery; Rubber & plastics,39.7692250361768,-104.926688179405,,,,,,No parcel match,1990s
+S00718,3560 WYNKOOP ST,1966,1977,Cleanup / contamination list,Industrial machinery,39.7702284477043,-104.977241255614,,,,,,No parcel match,1970s
+S00719,194 W DAKOTA AVE,1966,1973,Cleanup / contamination list,Industrial machinery,39.709346,-104.989998,,,,,,No parcel match,1970s
+S00720,5909 E 38TH AVE,1966,1970,TRI reporter,Industrial machinery,39.7692417154658,-104.920773687814,,,,,,No parcel match,1970s
+S00721,4665 E COLFAX,1966,1970,Not on any list,Industrial machinery,39.7401354675646,-104.932626575315,,,,,,No parcel match,1970s
+S00724,303 W EVANS AVE,1966,1990,RCRA hazardous-waste handler,Industrial machinery,39.6785490204082,-104.991137102041,,,,,,No parcel match,1990s
+S00725,1242 11TH,1966,1973,Cleanup / contamination list,Industrial machinery,39.744047,-105.00269,,,,,,No parcel match,1970s
+S00726,4799 DAHLIA,1966,1990,Cleanup / contamination list,Fabricated metals,39.783427,-104.931622,,,,,,No parcel match,1990s
+S00727,4350 GRAPE,1966,1967,Other EPA permit only,Chemicals,39.7770272498086,-104.924642494304,,,,,,No parcel match,1960s
+S00729,3610 BRIGHTON,1966,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7712859408893,-104.977594181645,,,,,,No parcel match,1990s
+S00731,2345 S DELAWARE,1966,1992,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.6741217842471,-104.992272514859,,,,,,No parcel match,1990s
+S00735,3201 BRIGHTON BLVD,1966,1974,Cleanup / contamination list,Rubber & plastics,39.7674980119242,-104.982438441669,,,,,,No parcel match,1970s
+S00737,4305 ONEIDA ST,1966,1992,TRI reporter,Rubber & plastics,39.7765755899506,-104.908211962842,,,,,,No parcel match,1990s
+S00739,1515 JASMINE,1966,1970,Cleanup / contamination list,Industrial machinery,39.74039857242,-104.918773714289,,,,,,No parcel match,1970s
+S00742,4800 BRIGHTON BLVD,1966,1992,Cleanup / contamination list,Petroleum refining,39.783751,-104.966676,,,,,,No parcel match,1990s
+S00743,1129 19TH,1966,1968,Other EPA permit only,Industrial machinery,39.7508217201859,-104.992240131687,,,,,,No parcel match,1960s
+S00744,3655 BRIGHTON BLVD,1966,1983,Cleanup / contamination list,Industrial machinery; Transportation equipment,39.7717356545007,-104.977010976853,,,,,,No parcel match,1980s
+S00750,2501 CHAMPA,1966,1968,Other EPA permit only,Fabricated metals,39.754937,-104.983057,,,,,,No parcel match,1960s
+S00751,5000 CLARKSON,1966,1992,Cleanup / contamination list,Fabricated metals,39.787418519685,-104.977187123408,,,,,,No parcel match,1990s
+S00752,1801 W 14TH,1966,1990,Not on any list,Chemicals; Rubber & plastics,39.738491,-105.011598,0504209007000,573,INDUSTRIAL-AUTO SERVICE GARAGE,Industrial,,Industrial / utility,1990s
+S00753,2501 W 16TH AVE,1966,1980,Cleanup / contamination list,Fabricated metals; Industrial machinery; Primary metals,39.758309,-105.009286,,,,,,No parcel match,1980s
+S00754,3940 W COLFAX,1966,1980,Cleanup / contamination list,Chemicals,39.740337806634,-105.03855343436,,,,,,No parcel match,1980s
+S00758,1611 MARKET,1966,1974,Other EPA permit only,Chemicals,39.7500341288364,-104.998107870933,,,,,,No parcel match,1970s
+S00760,4190 MADISON ST,1966,1988,Cleanup / contamination list,Fabricated metals; Industrial machinery; Rubber & plastics; Transportation equipment,39.7744846393626,-104.946420569862,,,,,,No parcel match,1980s
+S00763,2065 S CHEROKEE,1966,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.6791242426304,-104.991113027211,,,,,,No parcel match,1990s
+S00767,5138 E 39TH AVE,1966,1974,RCRA hazardous-waste handler,Industrial machinery,39.7714183347317,-104.927699010222,,,,,,No parcel match,1970s
+S00768,1325 S CHEROKEE,1966,1974,Not on any list,Transportation equipment,39.6925740204082,-104.991004142857,,,,,,No parcel match,1970s
+S00770,2200 ARAPAHOE,1966,1990,RCRA hazardous-waste handler,Industrial machinery,39.753478,-104.988421,,,,,,No parcel match,1990s
+S00772,100 W 13TH,1966,1974,Not on any list,Industrial machinery; Rubber & plastics,39.736842104096,-104.988811812175,,,,,,No parcel match,1970s
+S00774,855 WYANDOT,1966,1992,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Transportation equipment,39.7297673531405,-105.013982770571,,,,,,No parcel match,1990s
+S00775,1395 S ACOMA,1966,1983,TRI reporter,Chemicals,39.691245916271,-104.988697774868,,,,,,No parcel match,1980s
+S00777,1201 SPEER,1966,1988,Not on any list,Industrial machinery,39.7353199356497,-104.994598739691,,,,,,No parcel match,1980s
+S00779,3001 BLAKE,1966,1992,TRI reporter,Primary metals; Rubber & plastics,39.763653,-104.982239,,,,,,No parcel match,1990s
+S00780,3147 LARIMER,1966,1990,Other EPA permit only,Chemicals; Fabricated metals,39.7636913125824,-104.978696478917,,,,,,No parcel match,1990s
+S00781,40 S GALAPAGO,1966,1974,Not on any list,Fabricated metals,39.7158862504222,-104.99635234809,,,,,,No parcel match,1970s
+S00782,904 S LIPAN,1966,1992,TRI reporter,Fabricated metals; Primary metals,39.6998150816327,-105.001523,,,,,,No parcel match,1990s
+S00783,5025 W 29TH,1966,1974,Not on any list,Fabricated metals,39.7584727755102,-105.051185204082,,,,,,No parcel match,1970s
+S00788,3120 BLAKE,1966,1992,Cleanup / contamination list,Fabricated metals; Transportation equipment,39.7647679199015,-104.980794840769,,,,,,No parcel match,1990s
+S00789,1298 S KALAMATH,1966,1990,Cleanup / contamination list,Chemicals,39.6931254623395,-105.000347727439,,,,,,No parcel match,1990s
+S00790,1525 18TH,1966,1977,Not on any list,Chemicals; Fabricated metals,39.7525793912754,-104.996962789076,,,,,,No parcel match,1970s
+S00792,1505 S PEARL,1965,1990,Not on any list,Fabricated metals,39.6892080150376,-104.980428542987,,,,,,No parcel match,1990s
+S00793,1125 11TH ST,1966,1973,Not on any list,Industrial machinery,39.7432892919293,-105.002113593743,,,,,,No parcel match,1970s
+S00795,3816 DAHLIA ST,1966,1973,Not on any list,Chemicals; Industrial machinery,39.7694427356094,-104.931735816913,,,,,,No parcel match,1970s
+S00796,2250 19TH ST,1966,1983,Not on any list,Fabricated metals; Primary metals; Rubber & plastics,39.7594049366611,-105.003198934009,,,,,,No parcel match,1980s
+S00797,3472 W COLFAX,1966,1980,Not on any list,Rubber & plastics,39.740333520797,-105.033240591042,,,,,,No parcel match,1980s
+S00798,1002 S JASON,1966,1980,Not on any list,Industrial machinery,39.6973630207167,-104.999167591846,,,,,,No parcel match,1980s
+S00799,4556 TENNYSON 80212 DENVER,1966,1992,Other EPA permit only,Fabricated metals,39.7794655871201,-105.043962687143,,,,,,No parcel match,1990s
+S00800,1859 S PEARL,1966,1990,Not on any list,Industrial machinery,39.6829631631868,-104.980487040371,,,,,,No parcel match,1990s
+S00804,3033 BLAKE,1966,1990,TRI reporter,Fabricated metals,39.7639414446529,-104.981865390826,,,,,,No parcel match,1990s
+S00805,1804 S PEARL ST,1966,1983,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.6839192240448,-104.980478611248,,,,,,No parcel match,1980s
+S00807,40 W 49TH AVE,1966,1990,Cleanup / contamination list,Industrial machinery,39.7855752847932,-104.98808175766,,,,,,No parcel match,1990s
+S00808,4120 YORK,1966,1968,Cleanup / contamination list,Fabricated metals,39.7746909390777,-104.95940893308,,,,,,No parcel match,1960s
+S00811,980 GRAPE,1966,1966,RCRA hazardous-waste handler,Fabricated metals,39.7317937195895,-104.924601063974,,,,,,No parcel match,1960s
+S00812,1360 12TH ST,1966,1968,Not on any list,Transportation equipment,39.7465798336941,-105.003155295538,,,,,,No parcel match,1960s
+S00813,1227 E 17TH,1966,1974,Not on any list,Chemicals,39.7432362161203,-104.971806467749,,,,,,No parcel match,1970s
+S00814,1318 22ND ST,1966,1973,Not on any list,Chemicals,39.7549341099792,-104.990333067179,,,,,,No parcel match,1970s
+S00815,4040 E LOUISIANA,1966,1968,Cleanup / contamination list,Petroleum refining,39.6929432002783,-104.940133679156,,,,,,No parcel match,1960s
+S00817,1223 QUIVAS ST,1966,1992,Cleanup / contamination list,Fabricated metals,39.7358732149454,-105.007781456167,,,,,,No parcel match,1990s
+S00818,3938 WYNKOOP,1966,1974,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7731941722174,-104.973746872018,,,,,,No parcel match,1970s
+S00819,2901 INCA,1966,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.758441,-104.998447,,,,,,No parcel match,1990s
+S00820,90 S FOX,1966,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Rubber & plastics,39.7149088250479,-104.995238757658,,,,,,No parcel match,1990s
+S00821,999 S BROADWAY,1966,1990,Cleanup / contamination list,Fabricated metals; Rubber & plastics,39.698625358623,-104.98745427075,,,,,,No parcel match,1990s
+S00822,8250 E 40TH AVE,1966,1992,Cleanup / contamination list,Chemicals; Fabricated metals; Rubber & plastics,39.7728398588943,-104.892566652711,0121400077000,442,INDUSTRIAL-WAREHOUSE,Industrial,,Industrial / utility,1990s
+S00824,820 21ST,1966,1990,Other EPA permit only,Fabricated metals,39.7506397083333,-104.987181152778,,,,,,No parcel match,1990s
+S00825,1620 SHERIDAN BLVD,1966,1966,Other EPA permit only,Industrial machinery,39.742583,-105.053207846154,,,,,,No parcel match,1960s
+S00830,3500 LARIMER,1965,1992,Cleanup / contamination list,Fabricated metals; Industrial machinery; Primary metals; Rubber & plastics,39.7671128795004,-104.974296137538,,,,,,No parcel match,1990s
+S00831,3555 MORRISON RD,1966,1990,RCRA hazardous-waste handler,Transportation equipment,39.7099419118343,-105.034571104439,,,,,,No parcel match,1990s
+S00833,7801 E 40TH,1966,1983,TRI reporter,Chemicals; Industrial machinery,39.7727051628792,-104.898498072735,,,,,,No parcel match,1980s
+S00835,2100 HUMBOLOT,1966,1990,Not on any list,Chemicals,39.748206,-104.96965,,,,,,No parcel match,1990s
+S00838,145 S FEDERAL BLVD,1966,1990,RCRA hazardous-waste handler,Industrial machinery; Transportation equipment,39.7142496022572,-105.025084002098,,,,,,No parcel match,1990s
+S00840,430 S NAVAJO,1966,1990,RCRA hazardous-waste handler,Industrial machinery,39.7087900025911,-105.003868463439,,,,,,No parcel match,1990s
+S00841,1025 21ST,1966,1967,Not on any list,Fabricated metals,39.7520244325787,-104.988983029782,,,,,,No parcel match,1960s
+S00842,3434 E 43RD AVE,1966,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.776386,-104.94713985582,,,,,,No parcel match,1990s
+S00845,154 VALLEJO,1966,1992,Other EPA permit only,Chemicals; Fabricated metals; Industrial machinery; Rubber & plastics,39.7198419386545,-105.013180036072,,,,,,No parcel match,1990s
+S00849,2000 S ACOMA,1966,1970,Other EPA permit only,Industrial machinery,39.680323,-104.988794,,,,,,No parcel match,1970s
+S00859,4427 GAYLORD,1966,1977,Cleanup / contamination list,Industrial machinery,39.7779268144,-104.961327731689,0223128018000,441,INDUSTRIAL-WAREHOUSE,Industrial,,Industrial / utility,1970s
+S00861,360 S NAVAJO,1966,1990,Other EPA permit only,Fabricated metals; Industrial machinery; Primary metals; Rubber & plastics; Transportation equipment,39.7098125918271,-105.003876612245,,,,,,No parcel match,1990s
+S00863,621 17TH ST,1966,1992,RCRA hazardous-waste handler,Chemicals; Industrial machinery,39.7456529338017,-104.990362286388,,,,,,No parcel match,1990s
+S00866,651 S JASON,1966,1980,RCRA hazardous-waste handler,Fabricated metals,39.7050476466784,-104.999191038702,,,,,,No parcel match,1980s
+S00867,4940 E ASBURY AVE,1966,1968,Cleanup / contamination list,Chemicals; Rubber & plastics,39.680396,-104.929547,,,,,,No parcel match,1960s
+S00874,13 13TH AVE,1966,1968,Cleanup / contamination list,Transportation equipment,39.740131,-104.992919,,,,,,No parcel match,1960s
+S00875,1733 MARKET,1966,1980,Cleanup / contamination list,Fabricated metals,39.7511517435392,-104.996642598756,,,,,,No parcel match,1980s
+S00880,1240 S BANNOCK,1966,1990,Other EPA permit only,Fabricated metals,39.6940679138618,-104.990172238076,,,,,,No parcel match,1990s
+S00882,1201 OSAGE,1966,1990,RCRA hazardous-waste handler,Chemicals,39.735289,-105.005272,,,,,,No parcel match,1990s
+S00886,800 WATER,1966,1980,Cleanup / contamination list,Chemicals; Industrial machinery,39.7525111580932,-105.013547570444,,,,,,No parcel match,1980s
+S00887,540 ACOMA,1966,1990,RCRA hazardous-waste handler,Fabricated metals; Rubber & plastics,39.7246218979592,-104.98919,,,,,,No parcel match,1990s
+S00890,1165 S CHEROKEE,1966,1990,Not on any list,Fabricated metals; Rubber & plastics,39.6953963323615,-104.991302172012,,,,,,No parcel match,1990s
+S00891,3062 FOX,1966,1992,Cleanup / contamination list,Chemicals,39.762424,-104.994989,,,,,,No parcel match,1990s
+S00894,1830 S BANNOCK,1966,1983,Cleanup / contamination list,Chemicals; Industrial machinery,39.6833988510148,-104.989934329943,,,,,,No parcel match,1980s
+S00895,4200 MADISON,1966,1966,Cleanup / contamination list,Industrial machinery,39.772786,-104.946401,,,,,,No parcel match,1960s
+S00898,1224 WALNUT,1966,1968,Cleanup / contamination list,Fabricated metals,39.746053,-105.005645,,,,,,No parcel match,1960s
+S00899,4309 ELATI,1966,1973,Cleanup / contamination list,Transportation equipment,39.7755694299618,-104.99362523,,,,,,No parcel match,1970s
+S00900,1850 MARKET,1966,1980,Cleanup / contamination list,Fabricated metals,39.7522430089711,-104.995232250554,,,,,,No parcel match,1980s
+S00901,3410 BRIGHTON BLVD,1966,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery; Rubber & plastics,39.7694502365315,-104.979954734931,,,,,,No parcel match,1990s
+S00904,2263 7TH,1966,1983,Cleanup / contamination list,Rubber & plastics,39.751978,-105.014742,,,,,,No parcel match,1980s
+S00906,3615 BLAKE,1966,1970,Not on any list,Fabricated metals,39.7693701310338,-104.974837095027,,,,,,No parcel match,1970s
+S00907,5100 RACE,1966,1967,Cleanup / contamination list,Industrial machinery,39.7879905,-104.963497808824,,,,,,No parcel match,1960s
+S00909,6270 E EVANS AVE,1966,1974,RCRA hazardous-waste handler,Fabricated metals,39.6784615615213,-104.916138270694,,,,,,No parcel match,1970s
+S00910,1600 WYNKOOP,1966,1974,Cleanup / contamination list,Chemicals; Fabricated metals,39.751906,-105.000919,,,,,,No parcel match,1970s
+S00913,2044 BROADWAY,1966,1980,Cleanup / contamination list,Chemicals,39.7495054489796,-104.987393857143,,,,,,No parcel match,1980s
+S00919,1800 W COLFAX,1966,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.739666,-105.011802,,,,,,No parcel match,1990s
+S00921,3060 BRIGHTON BLVD,1966,1967,Other EPA permit only,Chemicals,39.766259997408,-104.984003493594,,,,,,No parcel match,1960s
+S00922,2027 W COLFAX,1966,1983,Cleanup / contamination list,Chemicals; Industrial machinery; Primary metals; Rubber & plastics; Transportation equipment,39.739616,-105.01229,,,,,,No parcel match,1980s
+S00925,4110 FOX,1966,1988,Cleanup / contamination list,Industrial machinery; Primary metals,39.7731023442782,-104.994850954309,,,,,,No parcel match,1980s
+S00926,748 S BROADWAY,1966,1990,Not on any list,Industrial machinery,39.7029703626479,-104.987488,,,,,,No parcel match,1990s
+S00927,401 SANTA FE OR,1966,1983,Not on any list,Industrial machinery,39.722532,-104.998577,,,,,,No parcel match,1980s
+S00928,1031 W CENTER AVE,1966,1983,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Primary metals,39.7056349654978,-105.001614038932,0516116024000,442,INDUSTRIAL-WAREHOUSE,Industrial,,Industrial / utility,1980s
+S00929,615 W 14TH,1966,1990,TRI reporter,Industrial machinery; Rubber & plastics,39.7385425771249,-104.995373060396,,,,,,No parcel match,1990s
+S00930,3512 E 12TH,1966,1983,RCRA hazardous-waste handler,Fabricated metals,39.7351096514179,-104.946099311944,,,,,,No parcel match,1980s
+S00932,2240 S KALAMATH,1966,1990,TRI reporter,Fabricated metals; Industrial machinery; Transportation equipment,39.6760974117628,-105.000619416539,,,,,,No parcel match,1990s
+S00933,2727 W 27TH,1966,1968,Not on any list,Fabricated metals,39.7560326531285,-105.020947316145,,,,,,No parcel match,1960s
+S00934,2505 W 8TH AVE,1966,1967,Other EPA permit only,Chemicals,39.7293166148202,-105.01731957668,,,,,,No parcel match,1960s
+S00935,3660 E 40TH AVE,1966,1992,Cleanup / contamination list,Industrial machinery,39.7728878862827,-104.944808512033,,,,,,No parcel match,1990s
+S00939,2001 W BARBERRY PL,1966,1992,RCRA hazardous-waste handler,Chemicals; Rubber & plastics,39.7301926984348,-105.012130762836,,,,,,No parcel match,1990s
+S00940,745 S CHEROKEE,1966,1974,Not on any list,Rubber & plastics; Transportation equipment,39.7030126666667,-104.992189333333,,,,,,No parcel match,1970s
+S00941,210 WYANDOT,1966,1990,Cleanup / contamination list,Chemicals; Industrial machinery; Rubber & plastics,39.720443982136,-105.014274409623,,,,,,No parcel match,1990s
+S00942,1400 DELGANY,1966,1988,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.751507,-105.004846,,,,,,No parcel match,1980s
+S00943,1445 OSAGE,1966,1992,RCRA hazardous-waste handler,Primary metals,39.7391997016595,-105.005228829826,,,,,,No parcel match,1990s
+S00945,4460 MADISON,1966,1966,Cleanup / contamination list,Fabricated metals,39.7784276526068,-104.946407,,,,,,No parcel match,1960s
+S00947,2040 CLAY,1966,1992,Other EPA permit only,Fabricated metals; Rubber & plastics,39.7482989355512,-105.020522663924,,,,,,No parcel match,1990s
+S00949,687 S JASON,1966,1977,Other EPA permit only,Fabricated metals,39.7041505708514,-104.999193246333,,,,,,No parcel match,1970s
+S00950,3501 E 46TH AVE,1966,1990,Not on any list,Fabricated metals,39.7796693278395,-104.944053023234,,,,,,No parcel match,1990s
+S00951,1375 KEARNEY,1966,1966,RCRA hazardous-waste handler,Chemicals,39.7369741863612,-104.917260859361,,,,,,No parcel match,1960s
+S00952,2705 HIGH,1966,1980,RCRA hazardous-waste handler,Fabricated metals,39.7557840204725,-104.964721,,,,,,No parcel match,1980s
+S00954,1500 W 12TH,1966,1980,Cleanup / contamination list,Fabricated metals; Petroleum refining,39.735286,-105.00655,,,,,,No parcel match,1980s
+S00957,3600 E 45TH,1966,1990,RCRA hazardous-waste handler,Chemicals; Industrial machinery,39.778914,-104.945218,0224113032000,442,INDUSTRIAL-WAREHOUSE,Industrial,,Industrial / utility,1990s
+S00959,5101 FRANKLIN ST,1966,1968,Cleanup / contamination list,Chemicals,39.7896510884975,-104.96881453432,,,,,,No parcel match,1960s
+S00960,2480 W 4TH NO 9,1966,1983,Cleanup / contamination list,Rubber & plastics,39.722063135105,-105.015882668264,,,,,,No parcel match,1980s
+S00968,3835 E 48TH AVE,1966,1990,Other EPA permit only,Rubber & plastics,39.7837776975878,-104.942469902783,,,,,,No parcel match,1990s
+S00970,2700 ARAPAHOE,1966,1980,RCRA hazardous-waste handler,Chemicals,39.758147,-104.982393,,,,,,No parcel match,1980s
+S00971,4320 FOX,1966,1980,Cleanup / contamination list,Rubber & plastics; Transportation equipment,39.7757211765611,-104.994846923196,,,,,,No parcel match,1980s
+S00975,655 BROADWAY 680203,1966,1980,Other EPA permit only,Chemicals; Primary metals,39.7261564667928,-104.987431478317,,,,,,No parcel match,1980s
+S00976,3309 BLAKE,1966,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7664882996918,-104.97855000362,,,,,,No parcel match,1990s
+S00979,5010 COOK,1966,1992,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7875501011482,-104.947563977342,,,,,,No parcel match,1990s
+S00980,4242 ELIZABETH,1966,1990,Cleanup / contamination list,Fabricated metals; Petroleum refining,39.7759314279932,-104.956455472355,,,,,,No parcel match,1990s
+S00981,2482 W 2ND AVE,1966,1990,Cleanup / contamination list,Chemicals; Industrial machinery; Rubber & plastics,39.7205631837706,-105.015204051924,,,,,,No parcel match,1990s
+S00983,3000 LARIMER,1966,1983,TRI reporter,Fabricated metals; Industrial machinery; Primary metals,39.76228,-104.980515,,,,,,No parcel match,1980s
+S00985,851 TEJON,1966,1966,RCRA hazardous-waste handler,Primary metals,39.730188,-105.011207,,,,,,No parcel match,1960s
+S00986,3609 WYNKOOP,1966,1983,Cleanup / contamination list,Fabricated metals,39.7706503740362,-104.976684995784,,,,,,No parcel match,1980s
+S00988,2137 S BIRCH,1966,1990,RCRA hazardous-waste handler,Chemicals,39.6779844854677,-104.936327119421,,,,,,No parcel match,1990s
+S00990,1550 S PEARL,1966,1983,Not on any list,Industrial machinery; Primary metals,39.6884699317074,-104.980431209542,,,,,,No parcel match,1980s
+S00995,2000 E 40TH,1966,1990,Cleanup / contamination list,Primary metals,39.772897,-104.96363,,,,,,No parcel match,1990s
+S00996,1518 COLORADO BLVD,1966,1974,RCRA hazardous-waste handler,Fabricated metals,39.7402435310773,-104.940592539717,,,,,,No parcel match,1970s
+S00997,111 S NAVAJO,1966,1990,Cleanup / contamination list,Transportation equipment,39.7146380408806,-105.003887026261,,,,,,No parcel match,1990s
+S00998,819 E 6TH AVE,1966,1974,Not on any list,Fabricated metals; Industrial machinery,39.7256091633038,-104.977340943236,,,,,,No parcel match,1970s
+S00999,3850 OLIVE,1966,1992,Cleanup / contamination list,Industrial machinery,39.7702006326531,-104.906639204082,,,,,,No parcel match,1990s
+S01001,3901 YORK,1966,1990,Cleanup / contamination list,Rubber & plastics,39.771158548991,-104.959739031792,,,,,,No parcel match,1990s
+S01002,5400 MONROE,1966,1973,Cleanup / contamination list,Chemicals,39.794599,-104.945106,,,,,,No parcel match,1970s
+S01318,4801 MONACO,1967,1983,Cleanup / contamination list,Industrial machinery,39.783818,-104.912887,,,,,,No parcel match,1980s
+S01342,460 S CLAY ST,1967,1967,Not on any list,Fabricated metals; Industrial machinery,39.7082192248262,-105.020388313283,,,,,,No parcel match,1960s
+S01406,3600 PECOS,1967,1968,Not on any list,Fabricated metals; Primary metals; Transportation equipment,39.7669350713377,-105.006452641369,,,,,,No parcel match,1960s
+S01407,1271 W BAYAUD,1967,1990,Cleanup / contamination list,Chemicals,39.714823,-105.005410577465,,,,,,No parcel match,1990s
+S01408,3838 WYNKOOP,1967,1980,Cleanup / contamination list,Fabricated metals,39.7724988932336,-104.974293552358,,,,,,No parcel match,1980s
+S01410,185 W LOUISIANA AVE,1967,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.6930187222222,-104.990774555556,,,,,,No parcel match,1990s
+S01412,1523 WAZEE,1965,1990,TRI reporter,Industrial machinery,39.7505199030087,-105.001131799574,,,,,,No parcel match,1990s
+S01413,946 SANTA FE,1965,1990,Cleanup / contamination list,Fabricated metals; Primary metals; Rubber & plastics,39.730944279569,-104.998635286445,,,,,,No parcel match,1990s
+S01415,1670 PLATTE,1967,1970,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7580634542984,-105.007216154371,,,,,,No parcel match,1970s
+S01417,4 YORK,1967,1967,Other EPA permit only,Chemicals,39.711113,-104.960553,,,,,,No parcel match,1960s
+S01421,70 SANTA FE DR,1967,1992,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7181355633333,-104.998575463333,,,,,,No parcel match,1990s
+S01424,900 WEWATTA,1967,1980,Not on any list,Chemicals,39.7499160565486,-105.007112158075,,,,,,No parcel match,1980s
+S01425,4955 BANNOCK ST,1967,1992,Cleanup / contamination list,Fabricated metals; Industrial machinery; Transportation equipment,39.7851830350241,-104.990163973211,,,,,,No parcel match,1990s
+S01427,1415 PLATTE,1967,1983,Other EPA permit only,Chemicals,39.7546076580717,-105.010142785667,,,,,,No parcel match,1980s
+S01431,3765 BLAKE ST,1967,1992,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7705217234569,-104.973342329874,,,,,,No parcel match,1990s
+S01434,3434 BRIGHTON BLVD,1967,1992,Cleanup / contamination list,Fabricated metals,39.7697461835851,-104.979578766988,,,,,,No parcel match,1990s
+S01436,1227 17TH,1967,1968,Cleanup / contamination list,Industrial machinery,39.7496398699831,-104.995565315672,,,,,,No parcel match,1960s
+S01437,2650 W BARBERRY PL,1967,1970,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7302961758816,-105.019897657384,,,,,,No parcel match,1970s
+S01438,1U GALAPAGO,1965,1968,Not on any list,Chemicals,39.7167562514225,-104.996354,,,,,,No parcel match,1960s
+S01440,4370 JASON SS,1967,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7762525516348,-104.999383446935,,,,,,No parcel match,1990s
+S01441,345 DELAWARE ST REAR,1967,1970,Cleanup / contamination list,Fabricated metals,39.721655571854,-104.992822415436,,,,,,No parcel match,1970s
+S01444,952 S FEDERAL BLVD,1967,1990,RCRA hazardous-waste handler,Rubber & plastics,39.6992574134615,-105.02508,,,,,,No parcel match,1990s
+S01445,4483 N WASHINGTON,1967,1968,Cleanup / contamination list,Chemicals,39.778094994117,-104.979266811765,,,,,,No parcel match,1960s
+S01449,2300 19TH ST,1967,1980,Not on any list,Chemicals; Fabricated metals; Industrial machinery,39.7600658214947,-105.003789199002,,,,,,No parcel match,1980s
+S01451,805 W 11TH AVE,1967,1974,Not on any list,Chemicals,39.733677,-104.997642183836,,,,,,No parcel match,1970s
+S01452,4511 E 46TH AVE,1967,1990,Not on any list,Fabricated metals; Rubber & plastics,39.7804773820576,-104.934005752285,,,,,,No parcel match,1990s
+S01456,2085 S HOLLY,1967,1990,Other EPA permit only,Fabricated metals,39.6792776588404,-104.922269016419,,,,,,No parcel match,1990s
+S01460,118 S PECOS,1967,1983,Cleanup / contamination list,Fabricated metals,39.71466008118,-105.006258830549,,,,,,No parcel match,1980s
+S01462,860 VALLEJO,1967,1968,Not on any list,Fabricated metals,39.7307263665073,-105.012826624068,,,,,,No parcel match,1960s
+S01463,910 W ILIFF,1967,1967,RCRA hazardous-waste handler,Industrial machinery,39.6748375106235,-104.998320187752,,,,,,No parcel match,1960s
+S01469,3890 N RACE,1967,1967,Cleanup / contamination list,Industrial machinery,39.7699812652865,-104.963441777153,,,,,,No parcel match,1960s
+S01479,2535 WALNUT,1965,1992,Cleanup / contamination list,Chemicals; Fabricated metals; Rubber & plastics,39.758452147316,-104.987263151169,,,,,,No parcel match,1990s
+S01480,2601 S BANNOCK,1967,1967,Not on any list,Fabricated metals; Industrial machinery,39.669486,-104.989971,,,,,,No parcel match,1960s
+S01483,2530 W BARBERRY PL,1965,1990,Other EPA permit only,Industrial machinery,39.7302969032345,-105.018369672383,,,,,,No parcel match,1990s
+S01484,4270 KEARNEY,1966,1990,RCRA hazardous-waste handler,Fabricated metals; Rubber & plastics,39.7757307121596,-104.917615918077,,,,,,No parcel match,1990s
+S01486,3965 ONEIDA,1967,1980,Other EPA permit only,Rubber & plastics,39.7718573194684,-104.907679680296,,,,,,No parcel match,1980s
+S01487,1844 LARIMER,1967,1968,Cleanup / contamination list,Chemicals,39.7514995274502,-104.994475346929,,,,,,No parcel match,1960s
+S01489,3990 ULSTER,1967,1970,Other EPA permit only,Fabricated metals; Industrial machinery; Transportation equipment,39.7725861073668,-104.894099056885,,,,,,No parcel match,1970s
+S01490,1122 9TH,1967,1973,Cleanup / contamination list,Industrial machinery,39.740961,-105.00338,,,,,,No parcel match,1970s
+S01492,2101 BLAKE ST,1967,1988,Not on any list,Industrial machinery,39.755233,-104.993136,,,,,,No parcel match,1980s
+S01493,1338 S JASON,1967,1992,Cleanup / contamination list,Transportation equipment,39.6925014529335,-104.999187409022,,,,,,No parcel match,1990s
+S01496,2121 W 10TH AVE,1967,1970,Cleanup / contamination list,Fabricated metals,39.7324259512519,-105.012590593057,,,,,,No parcel match,1970s
+S01498,695 CANOSA CT,1967,1983,Other EPA permit only,Fabricated metals; Rubber & plastics,39.7274403887021,-105.019849184143,,,,,,No parcel match,1980s
+S01501,2088 S HURON ST,1967,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery; Rubber & plastics,39.6786500421171,-104.997158,,,,,,No parcel match,1990s
+S01504,669 LARIMER,1967,1988,Not on any list,Primary metals,39.7438740903291,-105.007159516328,,,,,,No parcel match,1980s
+S01505,1 W EVANS AVE,1967,1967,TRI reporter,Chemicals; Petroleum refining,39.678514,-104.988272,,,,,,No parcel match,1960s
+S01510,762 WYANDOT ST,1967,1974,TRI reporter,Industrial machinery,39.729318,-105.013988,,,,,,No parcel match,1970s
+S01515,1516 CLAY,1967,1983,Cleanup / contamination list,Rubber & plastics,39.74683,-105.02049,,,,,,No parcel match,1980s
+S01516,1400 S LIPAN,1967,1990,Cleanup / contamination list,Chemicals; Fabricated metals; Industrial machinery; Transportation equipment,39.69125,-105.00157,,,,,,No parcel match,1990s
+S01519,1090 LIPAN ST,1967,1973,Not on any list,Rubber & plastics,39.7334635714286,-105.001579,,,,,,No parcel match,1970s
+S01520,669 LIPAN ST,1967,1988,Other EPA permit only,Chemicals; Fabricated metals; Industrial machinery,39.7268373112058,-105.001600730582,,,,,,No parcel match,1980s
+S01521,3061 S BRYANT,1967,1970,Not on any list,Transportation equipment,39.6611329753243,-105.018000496633,,,,,,No parcel match,1970s
+S01522,3722 CHESTNUT PL,1967,1967,Cleanup / contamination list,Transportation equipment,39.7736421665909,-104.978028710863,,,,,,No parcel match,1960s
+S01524,4975 JACKSON,1967,1980,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7870128491939,-104.942944902346,,,,,,No parcel match,1980s
+S01526,4969 COLORACO BLVD,1967,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery; Transportation equipment,39.790994,-104.939882,,,,,,No parcel match,1990s
+S01527,15 S CHEROKEE,1967,1967,Not on any list,Fabricated metals,39.715573428334,-104.992169,,,,,,No parcel match,1960s
+S01528,301 S CHEROKEE,1967,1988,Cleanup / contamination list,Chemicals; Petroleum refining,39.711183,-104.992398,,,,,,No parcel match,1980s
+S01695,390 S IVY,1968,1974,Not on any list,Fabricated metals; Rubber & plastics,39.709453100893,-104.921130859552,,,,,,No parcel match,1970s
+S01697,355 YUMA,1968,1992,TRI reporter,Fabricated metals; Transportation equipment,39.7219184197589,-105.015183816889,,,,,,No parcel match,1990s
+S01698,4401 E EVANS,1968,1973,Not on any list,Fabricated metals,39.6784527964894,-104.936304817349,,,,,,No parcel match,1970s
+S01699,2232 LAWRENCE ST,1968,1974,Not on any list,Rubber & plastics,39.7544465215441,-104.988906886788,,,,,,No parcel match,1970s
+S01700,4695 IRONTON,1968,1983,Not on any list,Industrial machinery; Transportation equipment,39.7822049294657,-104.86328174929,,,,,,No parcel match,1980s
+S01701,3510 BRIGHTON BLVD C216,1968,1970,Cleanup / contamination list,Fabricated metals; Transportation equipment,39.7704124228444,-104.978729484712,,,,,,No parcel match,1970s
+S01704,3330 E 54TH,1968,1983,Cleanup / contamination list,Fabricated metals,39.7946170816327,-104.948340346939,,,,,,No parcel match,1980s
+S01706,3900 ULSTER,1968,1970,RCRA hazardous-waste handler,Industrial machinery,39.771581,-104.894096,,,,,,No parcel match,1970s
+S01707,4747 HOLLY ST,1968,1992,Cleanup / contamination list,Chemicals,39.7828531644886,-104.922275967423,,,,,,No parcel match,1990s
+S01708,79 MEADE,1968,1970,Not on any list,Industrial machinery,39.7178303073492,-105.036107970164,,,,,,No parcel match,1970s
+S01709,1447 STOUT,1968,1968,Cleanup / contamination list,Industrial machinery,39.7444173677801,-104.994900640371,,,,,,No parcel match,1960s
+S01710,4625 COLORADC BLVD,1968,1990,RCRA hazardous-waste handler,Chemicals,39.7864217130191,-104.940390982503,,,,,,No parcel match,1990s
+S01711,1550 S BANNOCK ST,1968,1968,TRI reporter,Industrial machinery,39.689393,-104.990382,,,,,,No parcel match,1960s
+S01712,1450 9TH ST 8204,1968,1980,Not on any list,Chemicals; Industrial machinery,39.745654,-105.006940060606,,,,,,No parcel match,1980s
+S01714,781 UMATILLA,1968,1990,TRI reporter,Fabricated metals,39.7289249149638,-105.012147673551,,,,,,No parcel match,1990s
+S01717,1195 S LIPAN,1968,1970,Other EPA permit only,Industrial machinery,39.6949372232145,-105.001528182356,,,,,,No parcel match,1970s
+S01720,125 W 12TH,1966,1988,Cleanup / contamination list,Chemicals; Transportation equipment,39.7352527220797,-104.989426356572,,,,,,No parcel match,1980s
+S01721,1051 S PLATTE RIVER DR 8223,1968,1990,RCRA hazardous-waste handler,Industrial machinery; Transportation equipment,39.6970100120957,-104.992855885116,,,,,,No parcel match,1990s
+S01723,2234 S LIPAN ST,1968,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.6760553466549,-105.001772,,,,,,No parcel match,1990s
+S01724,1632 E 47TH,1968,1988,Cleanup / contamination list,Chemicals,39.7819360460918,-104.968093481312,,,,,,No parcel match,1980s
+S01726,307 UNIVERSITY BLOG,1968,1992,Other EPA permit only,Transportation equipment,39.7212780797828,-104.959435155686,,,,,,No parcel match,1990s
+S01730,5395 E 39TH,1968,1990,Other EPA permit only,Fabricated metals,39.7714235222412,-104.924760760925,,,,,,No parcel match,1990s
+S01732,1444 BLAKE,1966,1992,RCRA hazardous-waste handler,Industrial machinery,39.7490574943731,-105.001077433991,,,,,,No parcel match,1990s
+S01734,3240 WALNUT ST,1968,1970,TRI reporter,Fabricated metals,39.7652083950216,-104.978481892974,,,,,,No parcel match,1970s
+S01735,3845 FOREST,1968,1992,Cleanup / contamination list,Fabricated metals; Rubber & plastics,39.7701816465901,-104.926996784581,,,,,,No parcel match,1990s
+S01736,5030 YORK,1968,1974,RCRA hazardous-waste handler,Chemicals,39.7878399980445,-104.959263013491,,,,,,No parcel match,1970s
+S01737,1999 S NAVAJO,1967,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.6815820419378,-105.004082683938,,,,,,No parcel match,1990s
+S01738,3111 LARIMER,1968,1990,Not on any list,Chemicals,39.7633128214084,-104.97917220886,,,,,,No parcel match,1990s
+S01741,1820 S ACOMA,1968,1992,Cleanup / contamination list,Industrial machinery; Transportation equipment,39.6836152540038,-104.9887798675,,,,,,No parcel match,1990s
+S01743,4800 RACE ST,1968,1968,Cleanup / contamination list,Transportation equipment,39.783763,-104.963482,,,,,,No parcel match,1960s
+S01744,3560 CHESTNUT PL,1968,1990,Cleanup / contamination list,Industrial machinery; Transportation equipment,39.7722383657921,-104.979864933284,,,,,,No parcel match,1990s
+S01746,4360 VINE,1968,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7772217119509,-104.962424874257,,,,,,No parcel match,1990s
+S01747,1415 WEWATTA ST,1968,1980,Cleanup / contamination list,Industrial machinery,39.7511361078548,-105.003613004187,,,,,,No parcel match,1980s
+S01749,1220 S ACOMA,1968,1990,RCRA hazardous-waste handler,Industrial machinery,39.6944451011698,-104.988671012521,,,,,,No parcel match,1990s
+S01750,2600 W 8TH,1968,1992,RCRA hazardous-waste handler,Chemicals,39.729308,-105.019284,,,,,,No parcel match,1990s
+S01753,4200 KEARNEY,1968,1990,Not on any list,Fabricated metals; Industrial machinery,39.774478,-104.917609,,,,,,No parcel match,1990s
+S01755,2570 W 8TH AVE,1968,1990,RCRA hazardous-waste handler,Chemicals; Industrial machinery,39.7293094078385,-105.018795695937,,,,,,No parcel match,1990s
+S01760,1295 S BROADWAY,1965,1990,Not on any list,Fabricated metals,39.6929037811558,-104.987468484362,,,,,,No parcel match,1990s
+S01766,1475 S LIPAN,1968,1968,Cleanup / contamination list,Transportation equipment,39.6898764693878,-105.001588122449,,,,,,No parcel match,1960s
+S01767,1835 BRYANT E201,1968,1973,Cleanup / contamination list,Fabricated metals,39.7462149663497,-105.018972737139,,,,,,No parcel match,1970s
+S01773,5701 STAPLETON DR NO,1968,1983,Not on any list,Industrial machinery,39.7786848587312,-104.921791773155,,,,,,No parcel match,1980s
+S01774,2250 S LIPAN,1968,1983,RCRA hazardous-waste handler,Fabricated metals,39.6757595097866,-105.001772,,,,,,No parcel match,1980s
+S01776,1025 WW 3RD AVE,1968,1968,Not on any list,Industrial machinery,39.720926,-105.000522,,,,,,No parcel match,1960s
+S01777,1360 NIAGARA,1968,1970,Not on any list,Chemicals,39.7381437341891,-104.9104986246,,,,,,No parcel match,1970s
+S01778,3801 RACE,1968,1992,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.769298,-104.963428,,,,,,No parcel match,1990s
+S01780,2168 S KALAMATH,1965,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Rubber & plastics; Transportation equipment,39.6774663983189,-105.000621387136,,,,,,No parcel match,1990s
+S01782,3020 E 43RD AVE,1968,1988,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7763989795918,-104.951710510204,,,,,,No parcel match,1980s
+S01783,900 VALLEJO ST,1968,1977,Not on any list,Industrial machinery; Rubber & plastics,39.7310742188951,-105.012826,,,,,,No parcel match,1970s
+S01784,2201 BLAKE,1967,1992,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Industrial machinery; Rubber & plastics; Transportation equipment,39.7563070131723,-104.991726605205,,,,,,No parcel match,1990s
+S01785,3600 45TH EC21,1968,1968,Cleanup / contamination list,Chemicals; Industrial machinery,39.778391,-105.034637,,,,,,No parcel match,1960s
+S01789,5800 JEWELL AVE,1968,1974,Cleanup / contamination list,Fabricated metals,39.682091,-104.922234,,,,,,No parcel match,1970s
+S01791,1621 BLAKE,1965,1983,TRI reporter,Chemicals; Fabricated metals; Primary metals; Rubber & plastics,39.7508357771277,-104.998893972173,,,,,,No parcel match,1980s
+S01793,2555 S SANTA FE,1968,1988,RCRA hazardous-waste handler,Chemicals; Industrial machinery; Rubber & plastics,39.670194396351,-104.995568254012,,,,,,No parcel match,1980s
+S01794,15 TEJON,1968,1968,Cleanup / contamination list,Fabricated metals,39.7176786502564,-105.010943635912,,,,,,No parcel match,1960s
+S01797,1555 W VIRGINIA AVE,1968,1968,Not on any list,Fabricated metals,39.7075692620552,-105.005883738254,,,,,,No parcel match,1960s
+S01798,5205 STEELE ST,1968,1968,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.791057749887,-104.949874128956,,,,,,No parcel match,1960s
+S01800,511 BROADWAY,1968,1970,Not on any list,Fabricated metals,39.7242891574068,-104.987476894753,,,,,,No parcel match,1970s
+S01802,1530 BLAKE,1965,1992,TRI reporter,Chemicals,39.7497877792588,-105.000276099101,,,,,,No parcel match,1990s
+S01804,577 S JASON,1968,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7060691950889,-104.999189153573,,,,,,No parcel match,1990s
+S01805,3601 W COLFAX,1968,1977,Cleanup / contamination list,Fabricated metals,39.740334,-105.0346,,,,,,No parcel match,1970s
+S01806,5500 E PACIFIC PL,1968,1990,Other EPA permit only,Fabricated metals; Industrial machinery; Rubber & plastics,39.67924,-104.923895,,,,,,No parcel match,1990s
+S01809,3609 WAZEE,1968,1968,Cleanup / contamination list,Fabricated metals,39.7699778889086,-104.975800707045,,,,,,No parcel match,1960s
+S01811,1762 BLAKE,1966,1990,Cleanup / contamination list,Chemicals; Industrial machinery,39.7519004459204,-104.997411959041,,,,,,No parcel match,1990s
+S01812,3264 LARIMER,1968,1974,Cleanup / contamination list,Fabricated metals,39.7647700816327,-104.977321591837,,,,,,No parcel match,1970s
+S01816,744 NAVAJO,1968,1968,Not on any list,Industrial machinery,39.7287713764236,-105.004087243782,,,,,,No parcel match,1960s
+S01817,156 TEJON,1968,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery; Transportation equipment,39.7189953333348,-105.010868232804,,,,,,No parcel match,1990s
+S01818,6300 STAPLETCN SCUTF CR,1968,1983,Cleanup / contamination list,Fabricated metals,39.7779925280854,-104.915229133427,,,,,,No parcel match,1980s
+S01820,1170 W 46TH,1968,1983,Cleanup / contamination list,Rubber & plastics,39.780163,-105.001529868496,,,,,,No parcel match,1980s
+S01822,3950 KEARNEY,1968,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Rubber & plastics,39.7717006327158,-104.917612809784,,,,,,No parcel match,1990s
+S01823,1120 10TH,1968,1968,Not on any list,Industrial machinery,39.74248426099,-105.003015750435,,,,,,No parcel match,1960s
+S01825,1437 MARKET,1968,1980,Not on any list,Fabricated metals,39.7483418554936,-105.000245831972,,,,,,No parcel match,1980s
+S01826,554 SANTA FE DR,1965,1992,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Transportation equipment,39.7249117071872,-104.998574519965,,,,,,No parcel match,1990s
+S01827,3425 LIPAN,1968,1968,Not on any list,Industrial machinery,39.7650678798532,-105.001762458945,,,,,,No parcel match,1960s
+S01830,4575 JACKSON,1968,1992,RCRA hazardous-waste handler,Chemicals; Industrial machinery,39.7793639934918,-104.942883554143,,,,,,No parcel match,1990s
+S01831,920 W 12TH AVE,1965,1988,RCRA hazardous-waste handler,Chemicals; Industrial machinery; Transportation equipment,39.7357097512252,-104.998704776803,,,,,,No parcel match,1980s
+S01832,730 W 12TH,1968,1990,Not on any list,Fabricated metals,39.735292919937,-104.996860687121,,,,,,No parcel match,1990s
+S01833,2020 S BANNOCK,1968,1990,Not on any list,Transportation equipment,39.6799464693878,-104.989958,,,,,,No parcel match,1990s
+S01836,4758 BROADWAY,1968,1973,Cleanup / contamination list,Industrial machinery,39.7829247683285,-104.9876014372,,,,,,No parcel match,1970s
+S01996,55 LIPAN,1970,1980,RCRA hazardous-waste handler,Rubber & plastics,39.7176206118536,-105.001608829134,,,,,,No parcel match,1980s
+S01997,1420 18TH ST,1970,1970,Cleanup / contamination list,Industrial machinery,39.7518858147586,-104.996047724793,,,,,,No parcel match,1970s
+S02000,1020 WWW 8TH AVE,1968,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.728917325573,-105.000646992844,,,,,,No parcel match,1990s
+S02002,1355 W ALAMEDA,1970,1988,RCRA hazardous-waste handler,Fabricated metals,39.7111872463047,-105.005130435047,,,,,,No parcel match,1980s
+S02003,832 ACOMA,1970,1983,Not on any list,Primary metals,39.7295111897255,-104.988859,,,,,,No parcel match,1980s
+S02004,1194 S BANNOCK,1970,1983,RCRA hazardous-waste handler,Industrial machinery; Petroleum refining,39.6948634666802,-104.990158454774,,,,,,No parcel match,1980s
+S02005,95 RIO GRANDE BLVD,1970,1983,RCRA hazardous-waste handler,Chemicals; Industrial machinery; Rubber & plastics,39.7177328127204,-105.003155056656,,,,,,No parcel match,1980s
+S02006,4747 IRONTON ST,1970,1988,RCRA hazardous-waste handler,Rubber & plastics,39.7832767532392,-104.863285047861,,,,,,No parcel match,1980s
+S02009,2014 MARKET,1970,1973,Not on any list,Rubber & plastics,39.753718687001,-104.993333749281,,,,,,No parcel match,1970s
+S02013,2715 17TH,1970,1992,Not on any list,Fabricated metals; Rubber & plastics,39.7611787142857,-105.010600857143,,,,,,No parcel match,1990s
+S02014,3100 E 43RD AVE,1970,1992,Cleanup / contamination list,Fabricated metals,39.776395,-104.950835,,,,,,No parcel match,1990s
+S02015,3500 BLAKE ST,1970,1980,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.768284,-104.976247,,,,,,No parcel match,1980s
+S02021,1604 S PEARL ST,1970,1970,Not on any list,Fabricated metals,39.6875056732304,-104.980442610905,,,,,,No parcel match,1970s
+S02022,1900 W 12TH AVE,1970,1992,Cleanup / contamination list,Fabricated metals; Industrial machinery; Primary metals,39.7352334370087,-105.012399389845,,,,,,No parcel match,1990s
+S02024,401 W 43RD AVE,1970,1992,Cleanup / contamination list,Fabricated metals,39.775464,-104.992315,,,,,,No parcel match,1990s
+S02025,545 S JASON,1970,1983,RCRA hazardous-waste handler,Chemicals,39.7066952083333,-104.999192291667,,,,,,No parcel match,1980s
+S02028,1125 W CUSTER PL,1970,1992,RCRA hazardous-waste handler,Industrial machinery,39.7066586538462,-105.000446076923,,,,,,No parcel match,1990s
+S02029,1500 W 47TH AVE,1970,1992,RCRA hazardous-waste handler,Industrial machinery,39.7819766583555,-105.004552830889,,,,,,No parcel match,1990s
+S02030,77 KNOX CT,1970,1992,Not on any list,Fabricated metals; Transportation equipment,39.7179095882917,-105.032471,,,,,,No parcel match,1990s
+S02032,1175 SANTA FE OR,1970,1974,Not on any list,Rubber & plastics,39.7348786171596,-104.998668326577,,,,,,No parcel match,1970s
+S02033,929 W 1ST AVE,1970,1970,Other EPA permit only,Fabricated metals,39.718396,-104.999289571429,,,,,,No parcel match,1970s
+S02035,3300 WALNUT,1970,1992,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Rubber & plastics,39.7657765896263,-104.977763463356,,,,,,No parcel match,1990s
+S02039,25 LARIMER,1970,1992,Not on any list,Chemicals; Fabricated metals,39.7399275774341,-105.015783546575,,,,,,No parcel match,1990s
+S02042,1355 S INCA,1970,1988,RCRA hazardous-waste handler,Industrial machinery; Rubber & plastics,39.6920028523531,-104.998025676776,,,,,,No parcel match,1980s
+S02046,2290 S LIPAN,1970,1992,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Industrial machinery,39.6751020948219,-105.001772364379,,,,,,No parcel match,1990s
+S02050,1622 S BANNOCK,1970,1970,Cleanup / contamination list,Industrial machinery,39.685767,-104.989901,,,,,,No parcel match,1970s
+S02052,4980 MONROE ST,1970,1990,RCRA hazardous-waste handler,Rubber & plastics,39.786636244898,-104.944303938776,,,,,,No parcel match,1990s
+S02056,1020 YUMA,1970,1970,RCRA hazardous-waste handler,Chemicals,39.7327947358247,-105.015148201608,,,,,,No parcel match,1970s
+S02057,4490 GARFIELD,1966,1990,TRI reporter,Fabricated metals; Industrial machinery; Transportation equipment,39.7783961809964,-104.944075785065,,,,,,No parcel match,1990s
+S02058,5305 STEELE ST,1970,1990,Other EPA permit only,Fabricated metals; Industrial machinery,39.7928718161919,-104.949870795748,,,,,,No parcel match,1990s
+S02060,725 S BROADWAY,1970,1973,RCRA hazardous-waste handler,Fabricated metals,39.7034519353637,-104.987488,,,,,,No parcel match,1970s
+S02061,8000 E 40TH AVE,1970,1992,Cleanup / contamination list,Fabricated metals; Industrial machinery; Primary metals; Rubber & plastics,39.7728208703439,-104.895409968202,,,,,,No parcel match,1990s
+S02064,5060 ACOMA,1970,1988,Cleanup / contamination list,Industrial machinery; Rubber & plastics; Transportation equipment,39.788501065089,-104.988692157562,,,,,,No parcel match,1980s
+S02065,2133 S BELLAIRE,1970,1974,Other EPA permit only,Fabricated metals; Industrial machinery,39.6778559986563,-104.937417262875,,,,,,No parcel match,1970s
+S02066,1127 S JASON,1970,1988,RCRA hazardous-waste handler,Industrial machinery,39.6961685294105,-104.99915190733,,,,,,No parcel match,1980s
+S02067,3043 WALNUT ST,1970,1988,Cleanup / contamination list,Chemicals,39.7633542984706,-104.980871955623,,,,,,No parcel match,1980s
+S02068,1201 24TH,1970,1970,Not on any list,Fabricated metals,39.756009,-104.986889,,,,,,No parcel match,1970s
+S02073,8601 E 48TH,1970,1970,Not on any list,Fabricated metals; Industrial machinery; Petroleum refining; Rubber & plastics,39.7843460408163,-104.887988163265,,,,,,No parcel match,1970s
+S02131,5200 W COLFAX,1970,1970,Other EPA permit only,Transportation equipment,39.740306,-105.053206,,,,,,No parcel match,1970s
+S02206,78 DAHLIA,1973,1977,Not on any list,Petroleum refining,39.7174874080449,-104.931627212299,,,,,,No parcel match,1970s
+S02231,5201 BANNOCK ST,1973,1990,Cleanup / contamination list,Petroleum refining,39.791035,-104.989088,,,,,,No parcel match,1990s
+S02393,2140 S LIPAN,1968,1990,Solid waste facility,Fabricated metals,39.677617025797,-105.00177809439,,,,,,No parcel match,1990s
+S02394,3012 HURON,1973,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery; Transportation equipment,39.7595727055159,-104.997148635136,,,,,,No parcel match,1990s
+S02397,3954 WILLIAMS,1973,1990,Cleanup / contamination list,Primary metals,39.7720780325429,-104.965934936833,,,,,,No parcel match,1990s
+S02398,1558 CALIFORNIA ST,1973,1983,RCRA hazardous-waste handler,Rubber & plastics,39.744808030253,-104.992700026739,,,,,,No parcel match,1980s
+S02399,5 S KALAMATH,1973,1973,RCRA hazardous-waste handler,Industrial machinery,39.7165329980521,-105.000180836472,,,,,,No parcel match,1970s
+S02400,1158 S JASON,1973,1990,RCRA hazardous-waste handler,Industrial machinery,39.6956266914257,-104.999154914756,,,,,,No parcel match,1990s
+S02401,4640 LIPAN,1973,1974,Not on any list,Fabricated metals,39.7809042202047,-105.001711095736,,,,,,No parcel match,1970s
+S02402,1607 S LOCUST,1973,1983,Not on any list,Rubber & plastics,39.6874346325865,-104.914059,,,,,,No parcel match,1980s
+S02403,1685 S FAIRFAX,1973,1990,Other EPA permit only,Chemicals,39.6859791787934,-104.928689222951,,,,,,No parcel match,1990s
+S02404,830 S LIPAN,1973,1974,Not on any list,Fabricated metals,39.701603,-105.001531,,,,,,No parcel match,1970s
+S02405,6875 E EVANS,1973,1980,Not on any list,Industrial machinery,39.678455363544,-104.908478989948,,,,,,No parcel match,1980s
+S02408,2625 W COLFAX AVE,1973,1973,Cleanup / contamination list,Fabricated metals,39.7405535584921,-105.019425913443,,,,,,No parcel match,1970s
+S02409,4900 CLARKSON,1973,1992,Cleanup / contamination list,Fabricated metals,39.78556,-104.977141,,,,,,No parcel match,1990s
+S02410,4999 KINGSTON ST,1973,1990,TRI reporter,Industrial machinery; Rubber & plastics,39.7896761239246,-104.859031198822,,,,,,No parcel match,1990s
+S02416,1361 S BROADWAY,1973,1990,TRI reporter,Rubber & plastics; Transportation equipment,39.6918847324961,-104.987474807092,,,,,,No parcel match,1990s
+S02419,020 E 43RD,1965,1992,Cleanup / contamination list,Fabricated metals; Industrial machinery; Transportation equipment,39.7749419542885,-104.987586912656,,,,,,No parcel match,1990s
+S02422,1290 S BANNOCK ST,1968,1990,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Industrial machinery; Transportation equipment,39.6934265832207,-104.990183335,,,,,,No parcel match,1990s
+S02423,2068 S BANNOCK ST,1973,1990,Other EPA permit only,Industrial machinery,39.6791073440233,-104.989958,,,,,,No parcel match,1990s
+S02425,4233 THOMPSON CT,1973,1980,Cleanup / contamination list,Chemicals,39.7759078493683,-104.955299948578,,,,,,No parcel match,1980s
+S02427,2201 S KALAMATH,1973,1988,RCRA hazardous-waste handler,Chemicals,39.676672,-105.000621,,,,,,No parcel match,1980s
+S02428,4730 W 3RD AVE,1973,1974,Not on any list,Primary metals,39.721261952365,-105.047496418561,,,,,,No parcel match,1970s
+S02429,1955 S CHEROKEE,1973,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Rubber & plastics,39.6811398914624,-104.991108152053,,,,,,No parcel match,1990s
+S02433,1075 S GALAPAGO,1973,1990,Not on any list,Fabricated metals; Transportation equipment,39.6968937899988,-104.995621030332,,,,,,No parcel match,1990s
+S02437,1125 LIPAN,1973,1974,Not on any list,Fabricated metals; Primary metals,39.7340779352409,-105.001575550569,,,,,,No parcel match,1970s
+S02438,1144 S BANNOCK,1973,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Rubber & plastics,39.6958784443079,-104.990139125888,,,,,,No parcel match,1990s
+S02439,11155 E 45 AVE,1973,1990,TRI reporter,Fabricated metals,39.7788687962613,-104.858042542807,,,,,,No parcel match,1990s
+S02441,2611 W 6 AVE,1973,1990,TRI reporter,Industrial machinery,39.72573,-105.018676,,,,,,No parcel match,1990s
+S02443,1249 BANNOCK ST,1973,1983,Not on any list,Fabricated metals,39.7360367138303,-104.990244549486,,,,,,No parcel match,1980s
+S02446,4426 VINE ST,1973,1983,Cleanup / contamination list,Industrial machinery; Transportation equipment,39.7778771084979,-104.962416946511,,,,,,No parcel match,1980s
+S02447,1996 S NAVAJO,1973,1983,Other EPA permit only,Industrial machinery,39.68061,-105.004089,,,,,,No parcel match,1980s
+S02448,1155 W 5TH AVE,1973,1990,Cleanup / contamination list,Chemicals; Fabricated metals,39.7241776215275,-105.001709874014,,,,,,No parcel match,1990s
+S02449,1910 S CHEROKEE,1973,1992,Cleanup / contamination list,Industrial machinery,39.681878350496,-104.991106674399,,,,,,No parcel match,1990s
+S02450,2025 S LIPAN,1973,1983,RCRA hazardous-waste handler,Industrial machinery,39.6799196416213,-105.001787819275,,,,,,No parcel match,1980s
+S02451,1634 VALLEJO,1973,1973,RCRA hazardous-waste handler,Industrial machinery,39.6867445240454,-105.013062052604,,,,,,No parcel match,1970s
+S02456,35 S RARITAN,1973,1974,RCRA hazardous-waste handler,Primary metals,39.7165370691174,-105.008613232965,,,,,,No parcel match,1970s
+S02457,3301 W ALAMEDA AVE,1973,1988,RCRA hazardous-waste handler,Fabricated metals,39.711167,-105.02994,,,,,,No parcel match,1980s
+S02463,1700 FILLMORE,1973,1973,RCRA hazardous-waste handler,Fabricated metals,39.7438,-104.95359,,,,,,No parcel match,1970s
+S02465,1132 SPEER BLVD,1973,1990,Not on any list,Transportation equipment,39.7341879949695,-104.993757746227,,,,,,No parcel match,1990s
+S02466,23 SKALAMATH,1973,1974,Not on any list,Fabricated metals; Industrial machinery,39.716955612244,-105.00018202097,,,,,,No parcel match,1970s
+S02467,5366 GARFIELD,1973,1980,RCRA hazardous-waste handler,Petroleum refining,39.7937900809595,-104.944025630773,,,,,,No parcel match,1980s
+S02471,431 W 8TH AVE,1973,1973,Not on any list,Fabricated metals,39.728932,-104.993495778931,,,,,,No parcel match,1970s
+S02472,4050 GLOBEVILLE RD,1973,1980,TRI reporter,Chemicals,39.7712053474933,-104.990103755497,,,,,,No parcel match,1980s
+S02475,330 S GILPIN,1973,1973,Not on any list,Industrial machinery; Transportation equipment,39.7105606111025,-104.967478352466,,,,,,No parcel match,1970s
+S02477,1570 S ACOMA,1973,1990,RCRA hazardous-waste handler,Fabricated metals,39.6880974251995,-104.988735563639,,,,,,No parcel match,1990s
+S02478,2525 S DELAWARE,1973,1992,Cleanup / contamination list,Industrial machinery; Primary metals; Transportation equipment,39.6708611460291,-104.992271010204,,,,,,No parcel match,1990s
+S02479,2001 S PLATTE RIVER DR,1973,1992,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Rubber & plastics,39.682177,-105.001828,,,,,,No parcel match,1990s
+S02481,4925 38TH AVE,1973,1974,RCRA hazardous-waste handler,Fabricated metals,39.7692150747268,-104.930231570353,,,,,,No parcel match,1970s
+S02484,1219 N SPEER,1973,1977,Not on any list,Industrial machinery,39.7355276537111,-104.995492863167,,,,,,No parcel match,1970s
+S02488,1301 W THIRD AVE,1973,1973,Not on any list,Industrial machinery,39.7209264955012,-105.004225180112,,,,,,No parcel match,1970s
+S02489,4158 JASON ST,1973,1990,RCRA hazardous-waste handler,Chemicals; Fabricated metals,39.7736574539234,-104.999396851739,,,,,,No parcel match,1990s
+S02491,1360 7TH ST,1973,1974,RCRA hazardous-waste handler,Chemicals,39.7440135378145,-105.008730936592,,,,,,No parcel match,1970s
+S02493,10777 E 45TH AVE,1973,1990,RCRA hazardous-waste handler,Industrial machinery,39.7788556121479,-104.862523057058,,,,,,No parcel match,1990s
+S02494,3055 E 52ND AVE,1973,1980,Cleanup / contamination list,Primary metals,39.7909937195219,-104.951204170122,,,,,,No parcel match,1980s
+S02496,820 S LIPAN,1973,1990,Not on any list,Chemicals; Industrial machinery; Rubber & plastics,39.7018883339069,-105.001531,,,,,,No parcel match,1990s
+S02497,5270 STEELE ST,1973,1973,Not on any list,Transportation equipment,39.792294681217,-104.9498642088,,,,,,No parcel match,1970s
+S02500,1660 11TH ST,1973,1980,Not on any list,Rubber & plastics,39.749516278481,-105.005906113924,,,,,,No parcel match,1980s
+S02501,4333 VINE ST,1973,1974,Cleanup / contamination list,Fabricated metals,39.7768877130203,-104.962427728949,,,,,,No parcel match,1970s
+S02502,1800 LAWRENCE,1973,1977,Not on any list,Fabricated metals,39.750407,-104.994127,,,,,,No parcel match,1970s
+S02506,266 KNOX CT,1973,1973,Not on any list,Fabricated metals,39.7209232631579,-105.032474263158,,,,,,No parcel match,1970s
+S02507,4880 HAVANA,1973,1990,Cleanup / contamination list,Chemicals,39.7863729491525,-104.865772033898,,,,,,No parcel match,1990s
+S02513,2360 S DELAWARE,1973,1992,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.6732909909791,-104.992269649354,,,,,,No parcel match,1990s
+S02516,2700 WALNUT ST,1973,1992,RCRA hazardous-waste handler,Fabricated metals; Primary metals; Rubber & plastics,39.7602483372813,-104.984888651792,,,,,,No parcel match,1990s
+S02519,1940 WW 12TH PL,1973,1990,RCRA hazardous-waste handler,Primary metals,39.7361084195527,-105.012484417747,,,,,,No parcel match,1990s
+S02520,4759 LIPAN,1966,1990,RCRA hazardous-waste handler,Chemicals,39.7821999448552,-105.001691823072,,,,,,No parcel match,1990s
+S02521,788 W 8 AVE,1973,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7289030026975,-104.997571932341,,,,,,No parcel match,1990s
+S02523,112 W ALAMEDA AVE,1973,1980,RCRA hazardous-waste handler,Rubber & plastics,39.7111696912961,-104.989981119639,,,,,,No parcel match,1980s
+S02527,4412 TENNYSON,1973,1980,Other EPA permit only,Chemicals,39.7768505003715,-105.043972766576,,,,,,No parcel match,1980s
+S02529,3495 E 42ND AVE,1973,1990,Cleanup / contamination list,Rubber & plastics; Transportation equipment,39.7749674430871,-104.946430352894,,,,,,No parcel match,1990s
+S02530,4949 IRONTON,1973,1980,Not on any list,Chemicals; Rubber & plastics,39.7868657060728,-104.863296550185,,,,,,No parcel match,1980s
+S02531,1860 LINCOLN,1973,1988,RCRA hazardous-waste handler,Industrial machinery,39.7458197142857,-104.986118428571,,,,,,No parcel match,1980s
+S02532,2635 S SANTA FE,1973,1992,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Industrial machinery; Rubber & plastics,39.6688408119637,-104.995918041661,,,,,,No parcel match,1990s
+S02533,5280 BROADWAY,1973,1990,Cleanup / contamination list,Industrial machinery,39.791034,-104.987547,,,,,,No parcel match,1990s
+S02534,4134 GARFIELD,1973,1990,Cleanup / contamination list,Chemicals; Fabricated metals,39.7740688184515,-104.944075,,,,,,No parcel match,1990s
+S02535,4040 GRAPE,1966,1992,Other EPA permit only,Chemicals,39.7732165804918,-104.924613825662,,,,,,No parcel match,1990s
+S02758,6845 E 48TH AVE,1974,1992,RCRA hazardous-waste handler,Rubber & plastics,39.7838198346661,-104.909348238342,,,,,,No parcel match,1990s
+S02763,6885 E 48TH AVE,1974,1983,RCRA hazardous-waste handler,Chemicals,39.7838133207262,-104.908672091381,,,,,,No parcel match,1980s
+S02766,11155 E 47TH AVE,1974,1990,TRI reporter,Chemicals,39.7823697405675,-104.858232307119,,,,,,No parcel match,1990s
+S02768,4939 E 39TH AVE,1974,1990,TRI reporter,Chemicals,39.7717315415574,-104.930180448146,,,,,,No parcel match,1990s
+S02829,944 PEARL,1974,1974,Other EPA permit only,Fabricated metals,39.7311222936441,-104.979827132796,,,,,,No parcel match,1970s
+S02854,506 SANTA FE OR,1974,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7241237414966,-104.998576812925,,,,,,No parcel match,1990s
+S02855,2525 W 8TH,1974,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7293143048772,-105.017791036769,,,,,,No parcel match,1990s
+S02857,339 SANTA FE ORIVE,1974,1990,Cleanup / contamination list,Fabricated metals; Rubber & plastics,39.7215891423124,-104.998577,,,,,,No parcel match,1990s
+S02859,4525 IRONTON,1974,1990,RCRA hazardous-waste handler,Fabricated metals; Primary metals,39.7792694245804,-104.863275577998,,,,,,No parcel match,1990s
+S02860,4690 JASON ST,1974,1983,RCRA hazardous-waste handler,Fabricated metals,39.7818784279162,-104.999478249112,,,,,,No parcel match,1980s
+S02861,1441 W 46TH AVE,1974,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Rubber & plastics,39.780159655963,-105.004460784479,,,,,,No parcel match,1990s
+S02863,5450 VALE DR,1974,1977,Not on any list,Transportation equipment,39.698786,-104.924112,,,,,,No parcel match,1970s
+S02864,8125 E 39TH,1974,1977,Not on any list,Fabricated metals,39.7715074910925,-104.893270001616,,,,,,No parcel match,1970s
+S02865,2 LIPAN ST,1974,1980,Not on any list,Rubber & plastics,39.716588,-105.001611,,,,,,No parcel match,1980s
+S02867,3943 BLAKE,1974,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery; Transportation equipment,39.7720802323972,-104.971335237427,,,,,,No parcel match,1990s
+S02868,5005 E 39TH AVE,1974,1990,TRI reporter,Industrial machinery,39.7713262455064,-104.929315388469,,,,,,No parcel match,1990s
+S02869,4060 DAHLIA ST,1974,1974,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7739239591837,-104.931744,,,,,,No parcel match,1970s
+S02874,4890 KINGSTON,1974,1974,Cleanup / contamination list,Industrial machinery; Transportation equipment,39.7889337173821,-104.859030108046,,,,,,No parcel match,1970s
+S02875,2750 W 29TH AVE,1974,1980,Other EPA permit only,Industrial machinery; Transportation equipment,39.7584605181908,-105.021726676515,,,,,,No parcel match,1980s
+S02876,5818 COLFAX AVE,1974,1974,Cleanup / contamination list,Industrial machinery,39.740141,-104.920331497401,,,,,,No parcel match,1970s
+S02878,3333 E 52ND AVE,1974,1992,Cleanup / contamination list,Petroleum refining; Rubber & plastics,39.7910010612617,-104.948374951174,,,,,,No parcel match,1990s
+S02882,1300 40TH ST,1974,1990,Cleanup / contamination list,Rubber & plastics,39.7716543741261,-104.969298286364,,,,,,No parcel match,1990s
+S02884,2665 S SANTA FE OR,1974,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Petroleum refining; Rubber & plastics,39.6681888238598,-104.996087056287,,,,,,No parcel match,1990s
+S02885,11250 E 40TH AVE,1974,1980,RCRA hazardous-waste handler,Industrial machinery,39.7729052065462,-104.856981266874,,,,,,No parcel match,1980s
+S02886,3641 EUDORA WAY,1974,1974,Cleanup / contamination list,Chemicals; Industrial machinery; Rubber & plastics,39.7677682619751,-104.930523,,,,,,No parcel match,1970s
+S02888,4825 NOME,1974,1988,RCRA hazardous-waste handler,Industrial machinery,39.7848176889192,-104.852649810183,,,,,,No parcel match,1980s
+S02890,750 W 39TH AVE,1974,1990,Cleanup / contamination list,Industrial machinery,39.7704959292964,-104.995763517642,,,,,,No parcel match,1990s
+S02891,4935 PEARL ST,1974,1990,Cleanup / contamination list,Fabricated metals; Rubber & plastics,39.7862249439034,-104.980026008103,,,,,,No parcel match,1990s
+S02894,1044 SPEER BLVD,1974,1977,Other EPA permit only,Fabricated metals,39.7325077259313,-104.992531116535,,,,,,No parcel match,1970s
+S02895,1900 S NAVAJO ST,1974,1980,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Primary metals,39.6821244414894,-105.004079159574,,,,,,No parcel match,1980s
+S02897,1600 E 36TH AVE,1974,1974,Cleanup / contamination list,Industrial machinery,39.766958,-104.96842,,,,,,No parcel match,1970s
+S02902,1550 W EVANS BLDG 3 UT R80223,1974,1990,Cleanup / contamination list,Industrial machinery; Primary metals; Rubber & plastics,39.6785687939963,-105.005567882629,,,,,,No parcel match,1990s
+S02904,2121 S JASON,1974,1992,RCRA hazardous-waste handler,Industrial machinery,39.6782228911803,-104.999476447335,,,,,,No parcel match,1990s
+S02906,1727 E 39TH,1974,1992,Cleanup / contamination list,Industrial machinery; Primary metals,39.7713280359485,-104.966984856526,,,,,,No parcel match,1990s
+S02907,4000 BLAKE,1974,1974,Cleanup / contamination list,Fabricated metals,39.772639,-104.970613,,,,,,No parcel match,1970s
+S02909,5050 FOX BUILDING Q,1974,1980,Cleanup / contamination list,Fabricated metals,39.7886991628015,-104.994977128604,,,,,,No parcel match,1980s
+S02910,801 E 17TH AVE,1974,1990,Cleanup / contamination list,Chemicals; Transportation equipment,39.743257,-104.9774455,,,,,,No parcel match,1990s
+S02913,1805 W IRVINGTCN PL,1974,1977,Cleanup / contamination list,Chemicals,39.7174451414141,-105.008653373737,,,,,,No parcel match,1970s
+S02916,3532 FRANKLIN ST,1974,1983,Cleanup / contamination list,Industrial machinery,39.7661491631926,-104.968423154649,,,,,,No parcel match,1980s
+S02918,2125 S JASMINE,1974,1988,Not on any list,Industrial machinery,39.6781302380604,-104.91878808629,,,,,,No parcel match,1980s
+S02920,3501 WAZEE ST,1974,1988,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.768997,-104.977131,,,,,,No parcel match,1980s
+S02921,2651 E 52ND AVE,1974,1977,Cleanup / contamination list,Fabricated metals,39.7909849902909,-104.953723382783,,,,,,No parcel match,1970s
+S02923,3540 KALAMATH,1974,1977,Not on any list,Fabricated metals,39.7660841972796,-105.000687599914,,,,,,No parcel match,1970s
+S02925,2930 W 38TH AVE,1974,1977,RCRA hazardous-waste handler,Fabricated metals,39.7692827103604,-105.024118084813,,,,,,No parcel match,1970s
+S02926,2057 S HUDSON,1974,1974,Not on any list,Industrial machinery,39.6787999991603,-104.923896853137,,,,,,No parcel match,1970s
+S02927,931 W 9TH AVE,1974,1992,Cleanup / contamination list,Industrial machinery,39.7305024114016,-104.998767222944,,,,,,No parcel match,1990s
+S02930,1101 S MONACO PKWY,1974,1980,Not on any list,Chemicals; Fabricated metals,39.6960698991597,-104.91289,,,,,,No parcel match,1980s
+S02932,3600 N RACE,1974,1974,Cleanup / contamination list,Industrial machinery,39.766953,-104.963438,,,,,,No parcel match,1970s
+S02934,4256 ELATI,1974,1990,Cleanup / contamination list,Industrial machinery,39.7749185618115,-104.993622204083,,,,,,No parcel match,1990s
+S02937,1855 12TH AVE,1974,1974,Cleanup / contamination list,Fabricated metals,39.748705,-105.004684,,,,,,No parcel match,1970s
+S02939,5075 COOK,1974,1992,Cleanup / contamination list,Fabricated metals; Transportation equipment,39.7887347535644,-104.947559298426,,,,,,No parcel match,1990s
+S02940,2390 S KALAMATH ST,1974,1988,RCRA hazardous-waste handler,Industrial machinery,39.6731930818991,-105.000612,,,,,,No parcel match,1980s
+S02942,6404 E 39TH AVE,1974,1992,Other EPA permit only,Rubber & plastics,39.7710813345037,-104.913854715998,,,,,,No parcel match,1990s
+S02943,4905 WASHINGTON,1974,1992,Cleanup / contamination list,Transportation equipment,39.7855383062715,-104.978297702664,,,,,,No parcel match,1990s
+S02944,2190 S LIPAN,1974,1983,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.6767967149902,-105.001772612581,,,,,,No parcel match,1980s
+S02945,290 FILLMORE ST,1974,1977,Other EPA permit only,Chemicals,39.7208481631882,-104.953418,,,,,,No parcel match,1970s
+S02950,2050 S PECOS,1974,1983,Cleanup / contamination list,Chemicals; Industrial machinery,39.6798200400326,-105.006419633949,0528104013000,441,INDUSTRIAL-WAREHOUSE,Industrial,,Industrial / utility,1980s
+S02952,2045 W 8TH AVE,1974,1990,TRI reporter,Industrial machinery; Transportation equipment,39.7293085840716,-105.011631079217,,,,,,No parcel match,1990s
+S02954,2301 S DELAWARE,1974,1992,TRI reporter,Fabricated metals,39.6749238367347,-104.992275734694,,,,,,No parcel match,1990s
+S02955,930 W 6TH AVE,1974,1974,Cleanup / contamination list,Transportation equipment,39.7257063061225,-104.99905444898,,,,,,No parcel match,1970s
+S02957,8175 E 39TH AVE,1974,1992,RCRA hazardous-waste handler,Fabricated metals,39.7713553385809,-104.891549024016,,,,,,No parcel match,1990s
+S02960,2300 S KALAMATH,1974,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Primary metals,39.674859,-105.000616,,,,,,No parcel match,1990s
+S02963,8300 E 40TH,1974,1974,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.772847,-104.892076,0121400117000,441,INDUSTRIAL-WAREHOUSE,Industrial,,Industrial / utility,1970s
+S02964,1420 W 46TH AVE,1974,1974,Not on any list,Industrial machinery,39.7801611022929,-105.003516959183,,,,,,No parcel match,1970s
+S02970,3145 W ALAMEDA,1974,1983,Not on any list,Fabricated metals,39.7111421662209,-105.027495124725,,,,,,No parcel match,1980s
+S02978,2563 15TH ST,1974,1980,Not on any list,Rubber & plastics,39.7580369517844,-105.011335149416,,,,,,No parcel match,1980s
+S02979,1146 S KALAMATH,1973,1990,TRI reporter,Fabricated metals; Transportation equipment,39.695621847273,-105.000323649318,,,,,,No parcel match,1990s
+S02981,2350 ARAPAHOE ST,1974,1992,Not on any list,Industrial machinery,39.7549194325753,-104.986555844908,,,,,,No parcel match,1990s
+S02982,2675 S DELAWARE,1974,1983,RCRA hazardous-waste handler,Fabricated metals,39.6681229960915,-104.992291718811,,,,,,No parcel match,1980s
+S02983,765 S JASON,1974,1980,RCRA hazardous-waste handler,Chemicals,39.7029348182417,-104.99918179685,,,,,,No parcel match,1980s
+S02984,4595 STAPLETON OR N,1974,1974,TRI reporter,Industrial machinery,39.779819,-104.935026,,,,,,No parcel match,1970s
+S02985,2620 LARIMER ST,1965,1988,Cleanup / contamination list,Fabricated metals; Rubber & plastics,39.7586587577929,-104.98527572338,,,,,,No parcel match,1980s
+S02986,5240 E COLFAX,1974,1977,RCRA hazardous-waste handler,Fabricated metals; Rubber & plastics,39.7401435495153,-104.926590322504,,,,,,No parcel match,1970s
+S02988,4665 JOLIET,1974,1990,RCRA hazardous-waste handler,Fabricated metals,39.7817056676255,-104.861322937735,,,,,,No parcel match,1990s
+S02989,2711 W COLFAX AVE,1974,1992,Cleanup / contamination list,Chemicals,39.7405600857361,-105.020384660173,,,,,,No parcel match,1990s
+S02990,1506 KEARNEY,1974,1990,Cleanup / contamination list,Rubber & plastics,39.7402527346939,-104.917555,,,,,,No parcel match,1990s
+S02994,2326 CHAMPA,1974,1977,Cleanup / contamination list,Rubber & plastics,39.753303391528,-104.985153592601,,,,,,No parcel match,1970s
+S02995,4150 TEJON ST,1974,1974,RCRA hazardous-waste handler,Transportation equipment,39.7735344087809,-105.011221,,,,,,No parcel match,1970s
+S02998,4001 HOLLY ST 16,1974,1992,Other EPA permit only,Industrial machinery; Rubber & plastics,39.7728473090881,-104.922314030202,,,,,,No parcel match,1990s
+S03172,596 SHERIDAN BLVD,1977,1977,Cleanup / contamination list,Fabricated metals; Industrial machinery; Rubber & plastics,39.727349,-105.053254,,,,,,No parcel match,1970s
+S03195,3760 11 WHEELING ST,1977,1980,RCRA hazardous-waste handler,Rubber & plastics,39.733647,-104.943319164776,,,,,,No parcel match,1980s
+S03198,3730 WHEELING ST,1977,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Transportation equipment,39.7671277448951,-104.833006836656,,,,,,No parcel match,1990s
+S03257,2811 W 9TH AVE,1977,1992,Cleanup / contamination list,Industrial machinery,39.7312009890154,-105.02207875674,,,,,,No parcel match,1990s
+S03260,144 S BROADWAY,1977,1990,RCRA hazardous-waste handler,Fabricated metals,39.7138543444235,-104.987536228877,,,,,,No parcel match,1990s
+S03261,245 FOX ST,1977,1977,Not on any list,Fabricated metals,39.720059122449,-104.995168489796,,,,,,No parcel match,1970s
+S03262,3198 N SPEER BLVD,1977,1988,Cleanup / contamination list,Fabricated metals,39.762069,-105.028819,,,,,,No parcel match,1980s
+S03268,1255 S KALAMATH,1977,1990,Cleanup / contamination list,Fabricated metals,39.6940183440534,-105.000338825356,,,,,,No parcel match,1990s
+S03269,4450 CHEROKEE,1977,1988,Cleanup / contamination list,Chemicals,39.777509188979,-104.991201733743,,,,,,No parcel match,1980s
+S03272,2460 S BROADWAY,1977,1988,Not on any list,Fabricated metals,39.6720956118284,-104.987582169237,,,,,,No parcel match,1980s
+S03275,505 W 40TH AVE,1973,1990,Cleanup / contamination list,Chemicals; Industrial machinery; Rubber & plastics,39.7718902503942,-104.993665261949,,,,,,No parcel match,1990s
+S03277,5025 DAHLIA ST,1977,1977,Cleanup / contamination list,Fabricated metals; Primary metals,39.7876440391954,-104.931612699066,,,,,,No parcel match,1970s
+S03278,1950 S LIPAN,1977,1983,RCRA hazardous-waste handler,Transportation equipment,39.6812552496304,-105.001791475136,,,,,,No parcel match,1980s
+S03295,2065 S OSAGE ST,1977,1990,Cleanup / contamination list,Rubber & plastics,39.6792988559391,-105.005251019321,,,,,,No parcel match,1990s
+S03298,48 VALLEJO,1977,1977,RCRA hazardous-waste handler,Fabricated metals,39.718888694072,-105.01318,,,,,,No parcel match,1970s
+S03301,2440 BLAKE ST,1977,1990,Other EPA permit only,Fabricated metals; Primary metals; Rubber & plastics,39.7586911312104,-104.988648078906,,,,,,No parcel match,1990s
+S03302,3900 MAGNOLIA ST UNIT A,1977,1990,Other EPA permit only,Fabricated metals; Industrial machinery; Rubber & plastics,39.771088,-104.911908,,,,,,No parcel match,1990s
+S03307,5560 E PACIFIC PL,1977,1992,RCRA hazardous-waste handler,Industrial machinery,39.6792369399686,-104.92289948979,,,,,,No parcel match,1990s
+S03309,4300 FOREST ST,1977,1983,TRI reporter,Primary metals,39.776543,-104.926994,,,,,,No parcel match,1980s
+S03316,1924 SANTA FE ORIVE,1977,1977,RCRA hazardous-waste handler,Industrial machinery,39.6818509800511,-104.9924648384,,,,,,No parcel match,1970s
+S03317,3905 NIAGARA,1977,1992,Cleanup / contamination list,Fabricated metals,39.7712201050505,-104.910850232323,,,,,,No parcel match,1990s
+S03318,4295 KEARNEY ST,1977,1983,TRI reporter,Rubber & plastics,39.776488449048,-104.917620487719,,,,,,No parcel match,1980s
+S03321,1172 W VIRGINIA AVE,1977,1990,Not on any list,Fabricated metals,39.7075539387755,-105.000893938776,,,,,,No parcel match,1990s
+S03330,2600 WALNUT,1977,1990,Cleanup / contamination list,Fabricated metals; Rubber & plastics,39.7592160707706,-104.98623798722,,,,,,No parcel match,1990s
+S03333,13400 E 39TH AVE,1977,1990,Other EPA permit only,Rubber & plastics,39.770958,-104.833065,,,,,,No parcel match,1990s
+S03336,1420 WW 6 AVE,1977,1977,TRI reporter,Industrial machinery,39.725371,-105.005634,,,,,,No parcel match,1970s
+S03337,1064 S SANTA FE DR,1977,1983,Cleanup / contamination list,Industrial machinery,39.6976873507319,-104.991740822431,,,,,,No parcel match,1980s
+S03341,1300 S PEARL,1977,1977,Not on any list,Fabricated metals; Industrial machinery,39.693001,-104.980421,,,,,,No parcel match,1970s
+S03342,11975 E 40 AVE,1977,1983,Other EPA permit only,Industrial machinery,39.772907,-104.848820656161,,,,,,No parcel match,1980s
+S03346,1546 BROADWAY,1974,1990,RCRA hazardous-waste handler,Industrial machinery,39.7413085834558,-104.987393316695,,,,,,No parcel match,1990s
+S03347,601 48TH,1977,1983,Cleanup / contamination list,Rubber & plastics,39.7843483250487,-104.995095276216,,,,,,No parcel match,1980s
+S03355,4365 W FLORIDA AVE,1977,1980,RCRA hazardous-waste handler,Industrial machinery,39.6894905311938,-105.043781426271,,,,,,No parcel match,1980s
+S03601,2350 S KALAMATH,1980,1980,RCRA hazardous-waste handler,Industrial machinery,39.6739334902111,-105.000613450386,,,,,,No parcel match,1980s
+S03664,306 S VALLEJO ST,1980,1980,RCRA hazardous-waste handler,Rubber & plastics,39.707374,-105.013333,,,,,,No parcel match,1980s
+S03668,1630 W EVANS NO D,1980,1990,Cleanup / contamination list,Fabricated metals,39.678627,-105.008664,,,,,,No parcel match,1990s
+S03698,3602 3 JASON ST,1980,1980,Cleanup / contamination list,Chemicals,39.72133589796,-105.034947387563,,,,,,No parcel match,1980s
+S03845,250 BROADWAY,1980,1992,RCRA hazardous-waste handler,Industrial machinery,39.7201715621865,-104.987472991204,,,,,,No parcel match,1990s
+S03846,4245 MORRISON RD,1980,1983,Cleanup / contamination list,Fabricated metals; Transportation equipment,39.7043738670057,-105.042486715842,,,,,,No parcel match,1980s
+S03847,4355 MONACO ST,1980,1990,Cleanup / contamination list,Chemicals; Fabricated metals; Industrial machinery,39.7760026193529,-104.912884745993,,,,,,No parcel match,1990s
+S03849,2277 S CHEROKEE,1980,1980,TRI reporter,Fabricated metals,39.6752967739544,-104.991123835238,,,,,,No parcel match,1980s
+S03850,1230 9TH ST,1980,1988,Cleanup / contamination list,Fabricated metals; Industrial machinery; Transportation equipment,39.744432,-105.00599,,,,,,No parcel match,1980s
+S03854,1415 S JASMINE WAY,1980,1980,Not on any list,Transportation equipment,39.6907431930801,-104.918355558338,,,,,,No parcel match,1980s
+S03856,7900 E 40TH AVE,1980,1980,TRI reporter,Transportation equipment,39.7728229600665,-104.896919277836,,,,,,No parcel match,1980s
+S03859,629 SANTA FE OR,1980,1990,Other EPA permit only,Fabricated metals; Primary metals,39.7262149693878,-104.998581489796,,,,,,No parcel match,1990s
+S03861,12850 E 40TH AVE,1980,1992,RCRA hazardous-waste handler,Chemicals; Rubber & plastics,39.7728233661291,-104.838187336975,,,,,,No parcel match,1990s
+S03862,4100 FEDERAL BLVD,1980,1990,Not on any list,Rubber & plastics,39.773421,-105.025175,,,,,,No parcel match,1990s
+S03864,4999 OAKLAND ST,1980,1992,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7884394236181,-104.8506651936,,,,,,No parcel match,1990s
+S03866,750 W 48TH AVE,1980,1992,Cleanup / contamination list,Fabricated metals,39.7840390698277,-104.997954792904,,,,,,No parcel match,1990s
+S03868,2145 S PLATTE AIV DR,1980,1992,Cleanup / contamination list,Chemicals; Fabricated metals,39.760435,-105.004106,,,,,,No parcel match,1990s
+S03875,2120 DELGANEY,1980,1980,Cleanup / contamination list,Fabricated metals,39.7577597172657,-104.996833778127,,,,,,No parcel match,1980s
+S03877,1331 30TH ST,1980,1988,TRI reporter,Fabricated metals; Rubber & plastics,39.7624877786715,-104.980784184163,,,,,,No parcel match,1980s
+S03883,5070 OAKLAND ST,1980,1992,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7897703738955,-104.85066858694,,,,,,No parcel match,1990s
+S03893,3841 EUDORA WAY,1980,1983,Other EPA permit only,Industrial machinery; Rubber & plastics,39.770253341325,-104.930690796425,,,,,,No parcel match,1980s
+S03895,4199 ONEIDA ST,1980,1980,Not on any list,Rubber & plastics,39.773384,-104.908213,,,,,,No parcel match,1980s
+S03897,4780 HOLLY,1980,1980,Cleanup / contamination list,Fabricated metals; Rubber & plastics,39.7832795935275,-104.92227495097,,,,,,No parcel match,1980s
+S03905,101 WALNUT ST,1980,1983,Cleanup / contamination list,Chemicals,39.742449,-105.013517,,,,,,No parcel match,1980s
+S03906,1255 W 47TH AVE,1980,1988,Other EPA permit only,Industrial machinery,39.7819784238787,-105.002241163045,,,,,,No parcel match,1980s
+S03908,1300 S PATTON CT,1980,1983,Not on any list,Industrial machinery,39.693111,-105.039059,,,,,,No parcel match,1980s
+S03910,2486 W 2ND AVE,1965,1992,Cleanup / contamination list,Chemicals; Fabricated metals; Industrial machinery; Rubber & plastics,39.7202550740373,-105.016805586875,,,,,,No parcel match,1990s
+S03911,3353 LARIMER,1980,1992,Not on any list,Industrial machinery,39.7656154695817,-104.976227188332,,,,,,No parcel match,1990s
+S03913,125 RIO GRANDE BLVD,1980,1980,RCRA hazardous-waste handler,Fabricated metals,39.7182124800285,-105.003552236445,,,,,,No parcel match,1980s
+S03920,4410 WASHINGTON ST,1980,1990,TRI reporter,Industrial machinery; Rubber & plastics,39.7762017743137,-104.978956778627,,,,,,No parcel match,1990s
+S03921,5105 E 38TH AVE,1980,1990,Other EPA permit only,Fabricated metals; Industrial machinery; Primary metals,39.7692212035636,-104.928124958984,,,,,,No parcel match,1990s
+S03926,185 GARFIELD NO 7,1980,1980,Not on any list,Fabricated metals; Industrial machinery; Rubber & plastics,39.7191711416074,-104.943749426782,,,,,,No parcel match,1980s
+S03927,1529 W ALAMEDA AVE,1980,1990,RCRA hazardous-waste handler,Fabricated metals; Primary metals; Rubber & plastics,39.7111998855555,-105.008828967792,,,,,,No parcel match,1990s
+S03936,1920 MARKET,1977,1992,RCRA hazardous-waste handler,Chemicals,39.7530270548717,-104.994222915645,,,,,,No parcel match,1990s
+S03943,833 SANTA FE CR,1965,1990,RCRA hazardous-waste handler,Fabricated metals,39.7295671703177,-104.998619293718,,,,,,No parcel match,1990s
+S03945,4990 IRONTON ST,1980,1990,Other EPA permit only,Rubber & plastics,39.7877669093772,-104.863298499207,,,,,,No parcel match,1990s
+S03948,2219 MARKET ST,1980,1980,RCRA hazardous-waste handler,Industrial machinery,39.7556651151756,-104.990822186964,,,,,,No parcel match,1980s
+S03951,3787 LIMA ST,1980,1983,Other EPA permit only,Chemicals; Fabricated metals; Industrial machinery,39.7698954501659,-104.856407887589,,,,,,No parcel match,1980s
+S03952,120 YUMA,1965,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery; Rubber & plastics,39.7190671439647,-105.015200669571,,,,,,No parcel match,1990s
+S03953,240 S PECOS ST,1980,1980,Not on any list,Transportation equipment,39.7126757283057,-105.006269077813,,,,,,No parcel match,1980s
+S03955,333 W 48TH,1980,1980,Cleanup / contamination list,Industrial machinery; Transportation equipment,39.78406,-104.990132,,,,,,No parcel match,1980s
+S03956,820 W 9TH AVE,1980,1990,Not on any list,Fabricated metals; Industrial machinery,39.7305046639714,-104.997671998995,,,,,,No parcel match,1990s
+S03957,1901 S BANNOCK,1980,1983,Cleanup / contamination list,Chemicals,39.68213,-104.98995,,,,,,No parcel match,1980s
+S03958,4455 E 46TH AVE,1980,1983,TRI reporter,Fabricated metals; Industrial machinery,39.780477,-104.934466605425,,,,,,No parcel match,1980s
+S03959,200 LIPAN ST,1980,1988,RCRA hazardous-waste handler,Industrial machinery; Rubber & plastics,39.71943,-105.001605,,,,,,No parcel match,1980s
+S03961,6700 E STAPLETON OR,1980,1980,TRI reporter,Fabricated metals,39.7780001772229,-104.910688689999,,,,,,No parcel match,1980s
+S03965,2722 W 44TH AVE,1980,1992,Not on any list,Fabricated metals,39.7766151258061,-105.0207620612,,,,,,No parcel match,1990s
+S03970,208 KALAMATH,1980,1990,RCRA hazardous-waste handler,Fabricated metals,39.7194842040816,-105.000182,,,,,,No parcel match,1990s
+S03972,10825 E 47TH,1980,1990,RCRA hazardous-waste handler,Industrial machinery,39.7824431301534,-104.862057399967,,,,,,No parcel match,1990s
+S03973,4422 CHEROKEE,1980,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.77702804778,-104.99119351734,,,,,,No parcel match,1990s
+S03976,3433 S PATTON WAY,1980,1990,Not on any list,Fabricated metals,39.6560428034821,-105.038555538645,,,,,,No parcel match,1990s
+S03977,6035 E 36TH AVE,1980,1980,Not on any list,Chemicals,39.7674404885607,-104.918397629572,,,,,,No parcel match,1980s
+S03980,1976 S BANNOCK,1980,1983,Other EPA permit only,Fabricated metals; Transportation equipment,39.6807655294938,-104.989955623941,,,,,,No parcel match,1980s
+S03983,9501 47TH AVE,1980,1980,Cleanup / contamination list,Fabricated metals,39.782198,-104.876251,,,,,,No parcel match,1980s
+S03984,2037 S FEDERAL BLVD,1980,1990,RCRA hazardous-waste handler,Fabricated metals,39.6796837347378,-105.025041800988,,,,,,No parcel match,1990s
+S03987,11100 E 45TH AVE,1980,1990,TRI reporter,Industrial machinery,39.778866,-104.858997,,,,,,No parcel match,1990s
+S03991,970 LINCOLN ST,1980,1990,RCRA hazardous-waste handler,Industrial machinery,39.7315894358687,-104.986127415684,,,,,,No parcel match,1990s
+S03998,4500 JACKSON ST,1980,1990,Not on any list,Fabricated metals; Industrial machinery,39.778905,-104.942894,,,,,,No parcel match,1990s
+S04000,1339 OSAGE ST,1980,1980,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7374981321918,-105.005244042441,,,,,,No parcel match,1980s
+S04001,105 HOLLY ST,1980,1980,Not on any list,Rubber & plastics,39.717957877551,-104.922261877551,,,,,,No parcel match,1980s
+S04002,3811 JOLIET ST,1980,1983,TRI reporter,Industrial machinery,39.7703269569745,-104.861101206427,,,,,,No parcel match,1980s
+S04010,3511 E 41ST,1980,1990,Cleanup / contamination list,Industrial machinery,39.7739255333761,-104.946398648765,,,,,,No parcel match,1990s
+S04014,3188 W ALAMEDA,1980,1983,Not on any list,Fabricated metals,39.7111449607577,-105.028510333317,,,,,,No parcel match,1980s
+S04025,1717 S ACOMA,1980,1990,Cleanup / contamination list,Fabricated metals,39.6854778153759,-104.988763446281,,,,,,No parcel match,1990s
+S04027,1630 35TH ST,1980,1988,Cleanup / contamination list,Chemicals,39.7692015840301,-104.977393764634,,,,,,No parcel match,1980s
+S04036,13300 E 38TH AVE,1980,1990,Solid waste facility,Fabricated metals,39.7691855355246,-104.835926870532,,,,,,No parcel match,1990s
+S04043,3960 HIGH ST,1980,1990,Cleanup / contamination list,Industrial machinery; Rubber & plastics; Transportation equipment,39.7722732046265,-104.964703670419,,,,,,No parcel match,1990s
+S04044,4748 ELAT ST NO 10,1980,1980,Cleanup / contamination list,Industrial machinery,39.7830714472124,-104.992634609579,,,,,,No parcel match,1980s
+S04045,5095 PARIS ST,1980,1992,Other EPA permit only,Fabricated metals,39.7901332995464,-104.848977194514,,,,,,No parcel match,1990s
+S04046,601 OGDEN,1980,1990,Not on any list,Industrial machinery,39.725589,-104.975233,,,,,,No parcel match,1990s
+S04049,1369 W BYERS PL,1980,1990,Not on any list,Industrial machinery,39.7121464700384,-105.00554620831,,,,,,No parcel match,1990s
+S04051,3615 MORRISON RD,1980,1980,Not on any list,Transportation equipment,39.7094944715998,-105.035210571271,,,,,,No parcel match,1980s
+S04052,4211 STEELE,1980,1992,Cleanup / contamination list,Industrial machinery,39.7751480937065,-104.949687638983,,,,,,No parcel match,1990s
+S04054,760 UMATILLA ST,1980,1992,TRI reporter,Chemicals; Petroleum refining,39.7285488211085,-105.012142086239,,,,,,No parcel match,1990s
+S04056,1385 S HURON,1980,1983,Other EPA permit only,Rubber & plastics,39.6918484242909,-104.99686013275,,,,,,No parcel match,1980s
+S04058,3901 NOME,1980,1990,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery; Primary metals,39.7714014833888,-104.851717570792,,,,,,No parcel match,1990s
+S04060,3940 GRAPE ST,1980,1980,Other EPA permit only,Industrial machinery,39.7719456319675,-104.924615,,,,,,No parcel match,1980s
+S04062,4700 HAVANA ST,1980,1983,RCRA hazardous-waste handler,Rubber & plastics,39.782434,-104.865728,,,,,,No parcel match,1980s
+S04443,950 NIAGARA,1983,1983,Not on any list,Industrial machinery,39.731096714902,-104.910497035418,,,,,,No parcel match,1980s
+S04490,9351 E CORNELL,1983,1983,Not on any list,Fabricated metals,39.6614381286836,-104.879400601362,,,,,,No parcel match,1980s
+S04512,3041 SEKRAMERIA ST,1983,1983,Cleanup / contamination list,Transportation equipment,39.7605095548454,-104.91641,,,,,,No parcel match,1980s
+S04697,3615 FOREST ST,1983,1983,TRI reporter,Rubber & plastics,39.7675421211539,-104.926999646074,,,,,,No parcel match,1980s
+S04698,2219 S JASON,1983,1983,TRI reporter,Fabricated metals; Industrial machinery,39.6764000001156,-104.999460286502,,,,,,No parcel match,1980s
+S04700,1383 WE ALAMEDA,1983,1990,Other EPA permit only,Fabricated metals,39.7111838156563,-105.005883116283,,,,,,No parcel match,1990s
+S04702,040 FOX ST,1983,1992,Not on any list,Fabricated metals; Industrial machinery,39.7173539180922,-104.995173169288,,,,,,No parcel match,1990s
+S04703,1277 S CHEROKEE,1983,1988,Other EPA permit only,Fabricated metals,39.6934228163265,-104.991337489796,,,,,,No parcel match,1980s
+S04705,744 SANTA FE OR,1983,1992,Not on any list,Fabricated metals; Rubber & plastics,39.7280532157804,-104.998605642867,,,,,,No parcel match,1990s
+S04706,745 VALLEJO,1968,1992,TRI reporter,Fabricated metals; Rubber & plastics,39.7284293330896,-105.013179209839,,,,,,No parcel match,1990s
+S04710,2045 W 9TH AVE,1983,1992,Not on any list,Industrial machinery; Primary metals,39.7310563456915,-105.012233002025,,,,,,No parcel match,1990s
+S04715,2957 S SHERIDAN,1983,1988,Not on any list,Fabricated metals; Industrial machinery,39.6608256808511,-105.053237234043,,,,,,No parcel match,1980s
+S04719,3911 INCA ST,1983,1983,Cleanup / contamination list,Fabricated metals,39.7706227148879,-104.998199022072,,,,,,No parcel match,1980s
+S04722,10525 E 40TH AVE,1983,1990,Other EPA permit only,Chemicals; Fabricated metals; Industrial machinery,39.772921,-104.865301431378,,,,,,No parcel match,1990s
+S04724,4305 GRAPE ST,1983,1983,Other EPA permit only,Rubber & plastics,39.7766051111033,-104.924643882187,,,,,,No parcel match,1980s
+S04726,4770 FOREST ST,1983,1983,Cleanup / contamination list,Rubber & plastics,39.7832819476045,-104.926999165415,,,,,,No parcel match,1980s
+S04727,2145 S PLATTE RIV OR,1983,1983,Cleanup / contamination list,Fabricated metals,39.6776603667307,-104.998328677321,,,,,,No parcel match,1980s
+S04730,10685 E 51ST AVE,1983,1990,TRI reporter,Chemicals,39.7903176463258,-104.863483312816,,,,,,No parcel match,1990s
+S04732,11295 E 51ST AVE,1983,1990,TRI reporter,Fabricated metals; Industrial machinery; Transportation equipment,39.7903287512246,-104.85747674387,,,,,,No parcel match,1990s
+S04734,1115 LINCOLN ST,1983,1990,Not on any list,Fabricated metals,39.7340499985586,-104.986128568431,,,,,,No parcel match,1990s
+S04736,11000 E 40TH AVE,1983,1983,RCRA hazardous-waste handler,Fabricated metals,39.7729114886882,-104.859925365183,,,,,,No parcel match,1980s
+S04738,2237 S JASON ST,1983,1990,TRI reporter,Industrial machinery,39.6759930002985,-104.999459164523,,,,,,No parcel match,1990s
+S04741,5000 E COLFAX,1983,1983,Cleanup / contamination list,Fabricated metals; Transportation equipment,39.740135,-104.929221,,,,,,No parcel match,1980s
+S04742,2750 BLAKE ST,1983,1988,Cleanup / contamination list,Industrial machinery,39.7613076463718,-104.985265514448,,,,,,No parcel match,1980s
+S04743,4877 NATIONAL WESTERN DR,1983,1990,Cleanup / contamination list,Chemicals; Fabricated metals,39.7806172051598,-104.975539535104,,,,,,No parcel match,1990s
+S04744,4920 ALCOTT ST,1983,1983,Not on any list,Fabricated metals; Industrial machinery,39.7859869789944,-105.016994992646,,,,,,No parcel match,1980s
+S04745,1801 W 13TH AVE,1983,1990,Cleanup / contamination list,Fabricated metals,39.736894688832,-105.011066638524,,,,,,No parcel match,1990s
+S04748,1431 W MAPLE,1983,1990,Not on any list,Fabricated metals; Industrial machinery,39.7139366003189,-105.007029552222,,,,,,No parcel match,1990s
+S04752,3740 PARIS ST UNIT H,1983,1983,RCRA hazardous-waste handler,Industrial machinery,39.7687211620762,-104.848601914532,,,,,,No parcel match,1980s
+S04754,707 UMATILLA ST,1983,1992,RCRA hazardous-waste handler,Rubber & plastics,39.7276182051545,-105.012128530627,,,,,,No parcel match,1990s
+S04756,4670 HOLLY ST,1983,1990,TRI reporter,Rubber & plastics,39.780415,-104.922285,,,,,,No parcel match,1990s
+S04757,3200 PECOS,1983,1990,RCRA hazardous-waste handler,Transportation equipment,39.762041,-105.006441,,,,,,No parcel match,1990s
+S04765,1425 W 13TH AVE,1983,1990,RCRA hazardous-waste handler,Rubber & plastics,39.7368783919865,-105.004651349378,,,,,,No parcel match,1990s
+S04768,5200 W PRINCETON DR,1983,1988,Not on any list,Fabricated metals,39.640418,-105.053382,,,,,,No parcel match,1980s
+S04769,5300 ADAMS STO,1983,1983,RCRA hazardous-waste handler,Fabricated metals,39.79281,-104.948717,,,,,,No parcel match,1980s
+S04773,3915 HIGH ST,1983,1992,Cleanup / contamination list,Fabricated metals,39.7715522858934,-104.964703,,,,,,No parcel match,1990s
+S04774,3900 JOLIET ST,1983,1992,TRI reporter,Chemicals,39.7716564566199,-104.861101785478,,,,,,No parcel match,1990s
+S04787,6035 E 38TH AVE,1983,1990,RCRA hazardous-waste handler,Chemicals,39.769253,-104.91817251984,,,,,,No parcel match,1990s
+S04790,5501 E 47TH AVE,1983,1983,Not on any list,Fabricated metals,39.781155,-104.924636,,,,,,No parcel match,1980s
+S04793,1331 WE MAPLE AVE,1983,1992,Not on any list,Chemicals,39.7139500686715,-105.005295148349,,,,,,No parcel match,1990s
+S04796,1410 S SANTA FE DR,1983,1990,Cleanup / contamination list,Fabricated metals,39.6911654748287,-104.992321123938,,,,,,No parcel match,1990s
+S04803,177 WE ALASKA PL,1983,1990,Not on any list,Transportation equipment,39.7084668530062,-104.990930894152,,,,,,No parcel match,1990s
+S04804,1030 W ELLSWORTH AVE,1983,1983,RCRA hazardous-waste handler,Industrial machinery,39.7165853537448,-105.000618756516,,,,,,No parcel match,1980s
+S04808,3001 BRIGHTON BLVD,1983,1983,Cleanup / contamination list,Industrial machinery,39.7654210785966,-104.985078239983,,,,,,No parcel match,1980s
+S04810,5131 RACE CT,1983,1992,Cleanup / contamination list,Industrial machinery; Rubber & plastics,39.7884312133058,-104.965194332696,,,,,,No parcel match,1990s
+S04811,4105 HOLLY ST,1983,1983,RCRA hazardous-waste handler,Rubber & plastics,39.7737733028677,-104.922315745005,,,,,,No parcel match,1980s
+S04819,3433 BLAKE,1966,1990,Not on any list,Industrial machinery; Primary metals,39.7675777836802,-104.977161134926,,,,,,No parcel match,1990s
+S04822,6363 E 38TH,1983,1983,Other EPA permit only,Fabricated metals,39.7692651613252,-104.91452801344,,,,,,No parcel match,1980s
+S04823,5025 NOME ST,1983,1990,RCRA hazardous-waste handler,Industrial machinery,39.788776336171,-104.852672074813,,,,,,No parcel match,1990s
+S04825,820 LIPAN,1983,1992,Not on any list,Chemicals; Industrial machinery; Rubber & plastics,39.7292311226376,-105.001589,,,,,,No parcel match,1990s
+S04831,1455 WE CEDAR AVE,1983,1992,Not on any list,Fabricated metals,39.7130429267446,-105.00758239035,,,,,,No parcel match,1990s
+S04832,4295 INCA ST,1983,1988,Cleanup / contamination list,Fabricated metals,39.7754362450874,-104.998191796241,,,,,,No parcel match,1980s
+S04833,5300 MONROE ST,1983,1988,RCRA hazardous-waste handler,Transportation equipment,39.792797,-104.945103,,,,,,No parcel match,1980s
+S04834,4575 JOLIET ST,1983,1990,RCRA hazardous-waste handler,Industrial machinery; Rubber & plastics,39.7801529405029,-104.86131860857,,,,,,No parcel match,1990s
+S04835,3650 MORRISON RO,1983,1990,Not on any list,Fabricated metals; Transportation equipment,39.7092035337108,-105.035627451674,,,,,,No parcel match,1990s
+S04841,3300 E 43RD AVE,1983,1990,Cleanup / contamination list,Transportation equipment,39.776395,-104.948631,,,,,,No parcel match,1990s
+S04844,3115 E 40TH AVE 2,1983,1990,Cleanup / contamination list,Industrial machinery,39.772901,-104.950698284921,,,,,,No parcel match,1990s
+S04845,995 W ILIFF AVE,1983,1990,RCRA hazardous-waste handler,Chemicals; Fabricated metals; Industrial machinery,39.67490516803,-104.999446421027,,,,,,No parcel match,1990s
+S04846,1255 W VIRGINIA AVE,1983,1992,Not on any list,Fabricated metals; Industrial machinery,39.7075605102041,-105.002800897959,,,,,,No parcel match,1990s
+S04849,11155 E 51ST AVE,1983,1990,TRI reporter,Fabricated metals; Industrial machinery,39.790328,-104.858599093531,,,,,,No parcel match,1990s
+S04850,6800 ESHAMPDEN AVE,1983,1983,RCRA hazardous-waste handler,Fabricated metals,39.6530965352937,-104.910039292322,,,,,,No parcel match,1980s
+S04852,4785 ELATI ST 19,1983,1983,Cleanup / contamination list,Fabricated metals,39.7835232829046,-104.992630711405,,,,,,No parcel match,1980s
+S04855,6701 STAPLETON DR,1983,1992,Cleanup / contamination list,Fabricated metals,39.7786801546008,-104.910460207624,,,,,,No parcel match,1990s
+S04857,772 SANTA FE OR,1983,1992,Not on any list,Fabricated metals; Rubber & plastics,39.7285075006975,-104.998608500004,,,,,,No parcel match,1990s
+S04862,878 S LIPAN,1983,1983,RCRA hazardous-waste handler,Rubber & plastics,39.7004490005481,-105.001525335199,,,,,,No parcel match,1980s
+S04870,2667 W ALAMEDA AVE,1983,1990,RCRA hazardous-waste handler,Industrial machinery,39.7111703333333,-105.019551666667,,,,,,No parcel match,1990s
+S04871,355 MONACO,1983,1983,Not on any list,Industrial machinery,39.7214631062749,-104.91275977085,,,,,,No parcel match,1980s
+S04873,4990 PARIS ST,1983,1992,TRI reporter,Industrial machinery; Rubber & plastics,39.7881568333409,-104.848894947342,,,,,,No parcel match,1990s
+S04878,3015 ZUNI,1983,1992,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7600165049559,-105.015834923347,,,,,,No parcel match,1990s
+S04880,2315 EUDORA,1983,1992,Not on any list,Fabricated metals; Industrial machinery,39.7511844149081,-104.930504061791,,,,,,No parcel match,1990s
+S05068,911 S SHERIDAN,1983,1992,Not on any list,Fabricated metals,39.6997522666667,-105.053240052083,,,,,,No parcel match,1990s
+S05174,352 29 RD,1983,1983,Cleanup / contamination list,Fabricated metals,39.755284,-104.97385,,,,,,No parcel match,1980s
+S05287,4972 SHERIDAN BLVD,1988,1988,Cleanup / contamination list,Fabricated metals; Rubber & plastics,39.791063,-105.053246,,,,,,No parcel match,1980s
+S05394,2150 W 6TH AVE D,1988,1988,RCRA hazardous-waste handler,Industrial machinery,39.725367,-105.009276,,,,,,No parcel match,1980s
+S05535,4248 MORRISON RD,1988,1988,Cleanup / contamination list,Fabricated metals; Transportation equipment,39.7048402429514,-105.041823660339,,,,,,No parcel match,1980s
+S05541,2480 W 26TH AVE NO 40 B,1988,1990,RCRA hazardous-waste handler,Fabricated metals,39.7548172413347,-105.017444649507,,,,,,No parcel match,1990s
+S05542,5959 E 39TH AVE,1988,1988,Not on any list,Fabricated metals; Industrial machinery,39.7710639167198,-104.918935720872,,,,,,No parcel match,1980s
+S05554,1111 W EXPOSITION AVE,1988,1990,Cleanup / contamination list,Fabricated metals; Rubber & plastics,39.7039500207938,-105.00117683175,,,,,,No parcel match,1990s
+S05555,3560 WALNUT,1965,1990,Cleanup / contamination list,Chemicals; Fabricated metals; Transportation equipment,39.7680186226302,-104.974857167047,,,,,,No parcel match,1990s
+S05557,3003 ARAPAHOE ST 103,1988,1990,Other EPA permit only,Industrial machinery,39.7609680129807,-104.978740467122,,,,,,No parcel match,1990s
+S05562,1660 LINCOLN STE1680,1988,1990,Cleanup / contamination list,Fabricated metals,39.7426582037234,-104.986115,,,,,,No parcel match,1990s
+S05569,1001 W 42ND AVE,1988,1990,RCRA hazardous-waste handler,Fabricated metals,39.774233,-104.999391,,,,,,No parcel match,1990s
+S05570,4701 DAHLIA ST,1988,1992,Cleanup / contamination list,Chemicals,39.781391,-104.931632,,,,,,No parcel match,1990s
+S05571,2068 5 BANNOCK ST,1988,1988,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.723766,-104.963473,,,,,,No parcel match,1980s
+S05579,90 S SANTA FE,1966,1990,Cleanup / contamination list,Fabricated metals,39.7146654667374,-104.998561034935,,,,,,No parcel match,1990s
+S05583,4435 INCA,1988,1990,Cleanup / contamination list,Fabricated metals; Transportation equipment,39.7771676747713,-104.998196227536,,,,,,No parcel match,1990s
+S05585,3730 SALEM ST,1988,1992,Other EPA permit only,Fabricated metals,39.7680350029397,-104.840625397309,,,,,,No parcel match,1990s
+S05590,507 COLORADO BLVD,1988,1988,Not on any list,Fabricated metals,39.7242114285714,-104.940748489796,,,,,,No parcel match,1980s
+S05591,3845 MORRISON RD,1988,1988,Cleanup / contamination list,Transportation equipment,39.7077180324524,-105.037735222653,,,,,,No parcel match,1980s
+S05601,321 W 45TH AVE,1988,1990,Cleanup / contamination list,Fabricated metals; Industrial machinery,39.7783350357911,-104.991418251984,,,,,,No parcel match,1990s
+S05605,1301 CHEROKEE,1988,1988,Not on any list,Fabricated metals,39.736864,-104.991649,,,,,,No parcel match,1980s
+S05611,4464 DAVENPORT WAY,1988,1988,Not on any list,Fabricated metals,39.7768452662799,-104.828395280398,,,,,,No parcel match,1980s
+S05614,4150 FOX ST UNIT A 2,1988,1990,Cleanup / contamination list,Industrial machinery,39.7736117305291,-104.994843823357,,,,,,No parcel match,1990s
+S05617,588 QUIVAS ST,1988,1988,RCRA hazardous-waste handler,Fabricated metals,39.7252354296653,-105.00749599329,,,,,,No parcel match,1980s
+S05628,4757 W 1ST AVE,1988,1990,Not on any list,Industrial machinery,39.7181777190077,-105.047637999934,,,,,,No parcel match,1990s
+S05632,4955 MOLINE ST,1988,1990,Not on any list,Rubber & plastics,39.788223080988,-104.854867103309,,,,,,No parcel match,1990s
+S05634,50 RIO GRANDE BLVD,1988,1990,Not on any list,Fabricated metals,39.7171286379799,-105.002474875616,,,,,,No parcel match,1990s
+S05636,33 S FOX ST,1988,1990,RCRA hazardous-waste handler,Industrial machinery,39.7158812836559,-104.995169,,,,,,No parcel match,1990s
+S05638,711 CHEROKEE,1988,1988,Cleanup / contamination list,Fabricated metals,39.725668,-104.992157,,,,,,No parcel match,1980s
+S05639,1051 5 PLATTE RIV DR,1988,1988,Cleanup / contamination list,Chemicals; Industrial machinery; Rubber & plastics; Transportation equipment,39.740324,-105.008948,,,,,,No parcel match,1980s
+S05647,4880 COLORADO BLVD,1988,1990,RCRA hazardous-waste handler,Fabricated metals,39.7870627316077,-104.940376296651,,,,,,No parcel match,1990s
+S05650,5000 LIMA ST,1988,1990,TRI reporter,Fabricated metals,39.7875293171101,-104.856632364586,,,,,,No parcel match,1990s
+S05654,4761 MOLINE ST,1988,1990,Not on any list,Chemicals,39.7837526175896,-104.854850969869,,,,,,No parcel match,1990s
+S05655,5805 E 39TH ST,1988,1990,TRI reporter,Industrial machinery,39.771059793854,-104.920388515715,,,,,,No parcel match,1990s
+S05656,2590 W 2ND NO 15,1988,1990,RCRA hazardous-waste handler,Industrial machinery,39.7202692425274,-105.018620068206,,,,,,No parcel match,1990s
+S05657,4875 MOLINE ST,1988,1990,RCRA hazardous-waste handler,Rubber & plastics,39.7863795910195,-104.854860408111,,,,,,No parcel match,1990s
+S05668,13105 E 38TH AVE,1988,1990,RCRA hazardous-waste handler,Chemicals,39.7691871936599,-104.836434259934,,,,,,No parcel match,1990s
+S05671,7450 E JEWELL AVE,1988,1990,Not on any list,Chemicals; Fabricated metals; Rubber & plastics,39.6820844501019,-104.901238878519,,,,,,No parcel match,1990s
+S05673,3818 LARIMER ST,1988,1988,Cleanup / contamination list,Fabricated metals,39.767919,-104.973338,,,,,,No parcel match,1980s
+S05678,560 RARITAN WAY,1988,1990,RCRA hazardous-waste handler,Rubber & plastics,39.7244249592676,-105.009271006851,,,,,,No parcel match,1990s
+S05679,903 FEDERAL BLVD,1988,1992,RCRA hazardous-waste handler,Transportation equipment,39.731230612295,-105.025156102269,,,,,,No parcel match,1990s
+S05687,666 S SANTA FE DR,1988,1990,RCRA hazardous-waste handler,Chemicals,39.702115,-104.994061333333,,,,,,No parcel match,1990s
+S05693,1355 S HURON ST,1988,1990,Other EPA permit only,Fabricated metals,39.6922800571219,-104.996855259133,,,,,,No parcel match,1990s
+S05695,5001 DAHLIA ST,1988,1990,Cleanup / contamination list,Transportation equipment,39.787226,-104.931615,,,,,,No parcel match,1990s
+S05696,1175 S LIPAN ST,1988,1990,Other EPA permit only,Industrial machinery,39.6953133409106,-105.001524397172,,,,,,No parcel match,1990s
+S05697,813 NAVAJO ST,1988,1988,Other EPA permit only,Fabricated metals,39.7291327360705,-105.004080613809,,,,,,No parcel match,1980s
+S05718,3937 5 LIPAN,1988,1988,Not on any list,Industrial machinery; Primary metals; Transportation equipment,39.7245422789139,-105.038768572974,,,,,,No parcel match,1980s
+S05751,3231 S UNIVERSITY,1988,1988,Not on any list,Rubber & plastics,39.6575493130182,-104.959460224336,,,,,,No parcel match,1980s
+S05753,375 S RARITAN,1988,1988,RCRA hazardous-waste handler,Rubber & plastics,39.7098025024666,-105.008635003764,,,,,,No parcel match,1980s
+S06093,2490 FEDERAL HEIGHTS,1988,1988,Cleanup / contamination list,Rubber & plastics,39.7535243849434,-105.025278222501,,,,,,No parcel match,1980s
+S06168,10555 E DARTMOUTH AVE NO 230,1990,1992,Not on any list,Industrial machinery,39.6602897142857,-104.865274387755,,,,,,No parcel match,1990s
+S06351,1440 W 3RD AVE,1990,1990,Not on any list,Rubber & plastics,39.720926,-105.00510483298,,,,,,No parcel match,1990s
+S06355,4399 DELAWARE ST,1990,1990,Cleanup / contamination list,Transportation equipment,39.776596,-104.992324,,,,,,No parcel match,1990s
+S06359,4810 VASQUEZ BIVD,1990,1992,RCRA hazardous-waste handler,Chemicals; Industrial machinery,39.783975169226,-104.9472016283,,,,,,No parcel match,1990s
+S06367,220 W 6TH AVE,1990,1992,RCRA hazardous-waste handler,Rubber & plastics,39.7256639066021,-104.991372672526,,,,,,No parcel match,1990s
+S06372,11925 E 49TH ST,1990,1990,RCRA hazardous-waste handler,Chemicals,39.7864044201824,-104.849551883164,,,,,,No parcel match,1990s
+S06378,11101 E 53RD AVE,1990,1990,Other EPA permit only,Rubber & plastics,39.793116,-104.859596,,,,,,No parcel match,1990s
+S06382,11939 E 51ST AVE,1990,1990,Not on any list,Fabricated metals,39.7903273427106,-104.849597922535,,,,,,No parcel match,1990s
+S06384,11333 E 55TH AVE,1990,1990,Other EPA permit only,Rubber & plastics,39.7958546668224,-104.856438056075,,,,,,No parcel match,1990s
+S06387,5585 E 47TH ST,1990,1992,Cleanup / contamination list,Rubber & plastics,39.7811658535132,-104.922618282936,,,,,,No parcel match,1990s
+S06389,1853 S ACOMA,1990,1992,Cleanup / contamination list,Fabricated metals,39.6829950377827,-104.988784955023,,,,,,No parcel match,1990s
+S06393,4221 MONACO,1990,1992,Not on any list,Rubber & plastics,39.7742789315345,-104.912827175676,,,,,,No parcel match,1990s
+S06397,4080 GIOBEVILLE RD,1990,1992,TRI reporter,Chemicals; Petroleum refining,39.7716937781021,-104.989794899295,,,,,,No parcel match,1990s
+S06398,5885 STAPLETON DR N,1990,1990,Cleanup / contamination list,Fabricated metals,39.778660932952,-104.920867046704,,,,,,No parcel match,1990s
+S06399,4600 S ULSTER ST 390,1990,1990,Not on any list,Industrial machinery,39.631528,-104.896928,,,,,,No parcel match,1990s
+S06405,3255 S BIRCH,1990,1990,Not on any list,Industrial machinery,39.6573786944129,-104.9362922449,,,,,,No parcel match,1990s
+S06408,12555 E 37TH AVE,1990,1992,TRI reporter,Fabricated metals,39.7676011677852,-104.842107872483,,,,,,No parcel match,1990s
+S06410,3671 W UNION AVE,1990,1990,Not on any list,Industrial machinery,39.6324549275362,-105.036186275362,,,,,,No parcel match,1990s
+S06417,1690 S FEDERAL BIVD UNIT B,1990,1992,Not on any list,Rubber & plastics,39.686679,-105.025053,,,,,,No parcel match,1990s
+S06424,4120 GLOBEVILLE RD,1990,1990,Cleanup / contamination list,Chemicals,39.7723958795805,-104.989557930039,,,,,,No parcel match,1990s
+S06426,5775 W 52ND AVE,1990,1992,RCRA hazardous-waste handler,Fabricated metals,39.7910705638929,-105.058560204413,,,,,,No parcel match,1990s
+S06433,2245 MARKET ST,1990,1990,Not on any list,Fabricated metals; Rubber & plastics,39.755919620017,-104.990499056326,,,,,,No parcel match,1990s
+S06441,775 MARIPOSA,1990,1990,Not on any list,Fabricated metals; Industrial machinery,39.7285117336166,-105.002844295379,,,,,,No parcel match,1990s
+S06454,4785 LEYDEN ST,1990,1990,Cleanup / contamination list,Fabricated metals,39.7832297477684,-104.917620939076,,,,,,No parcel match,1990s
+S06455,1340 W BYERS PL,1990,1992,Not on any list,Industrial machinery,39.7121447360693,-105.004719105039,,,,,,No parcel match,1990s
+S06456,4850 STEELE,1990,1990,Cleanup / contamination list,Industrial machinery,39.7843642659294,-104.949819553176,,,,,,No parcel match,1990s
+S06467,1224 5TH ST,1990,1990,RCRA hazardous-waste handler,Transportation equipment,39.7414298125699,-105.009784073991,,,,,,No parcel match,1990s
+S06472,11715 E 51ST ST,1990,1990,TRI reporter,Industrial machinery,39.7903289457878,-104.852256206677,,,,,,No parcel match,1990s
+S06475,5590 JOLIET ST,1990,1990,Not on any list,Rubber & plastics,39.7981695093848,-104.861332407352,,,,,,No parcel match,1990s
+S06476,1051 W 46TH AVE,1990,1990,Other EPA permit only,Rubber & plastics,39.7801639123977,-104.999936534127,,,,,,No parcel match,1990s
+S06482,11075 E 47TH AVE,1990,1990,RCRA hazardous-waste handler,Industrial machinery,39.782445,-104.859212343632,,,,,,No parcel match,1990s
+S06486,4554 LIPAN ST,1990,1990,TRI reporter,Fabricated metals; Industrial machinery,39.7788606960276,-105.001709510227,,,,,,No parcel match,1990s
+S06510,3650 E 41ST AVE,1990,1992,Cleanup / contamination list,Rubber & plastics,39.7738544836674,-104.944662756829,,,,,,No parcel match,1990s
+S06517,5500 JOLIET,1990,1990,Other EPA permit only,Chemicals,39.795869,-104.861342,,,,,,No parcel match,1990s
+S06954,6191 E 38TH AVE,1992,1992,Not on any list,Fabricated metals; Rubber & plastics,39.7692571830259,-104.916517628409,,,,,,No parcel match,1990s
+S06956,5343 COOK ST,1992,1992,Other EPA permit only,Fabricated metals; Primary metals,39.7935838495426,-104.947590194335,,,,,,No parcel match,1990s
+S06957,701 DECATUR ST,1992,1992,RCRA hazardous-waste handler,Fabricated metals,39.727515,-105.022128,,,,,,No parcel match,1990s
+S06962,2950 YORK ST,1992,1992,Other EPA permit only,Chemicals,39.7588642226232,-104.959757376259,,,,,,No parcel match,1990s
+S06967,2155 VALENTIA ST,1992,1992,RCRA hazardous-waste handler,Fabricated metals,39.7488003289652,-104.891668364676,,,,,,No parcel match,1990s
+S06969,595 E 5TH AVE,1992,1992,Not on any list,Rubber & plastics,39.7241024085048,-104.979981816322,,,,,,No parcel match,1990s
+S06974,4055 WALNUT ST,1992,1992,Cleanup / contamination list,Fabricated metals,39.7724928989047,-104.969035762514,,,,,,No parcel match,1990s
+S06975,175 FEDERAL BIVD,1992,1992,RCRA hazardous-waste handler,Fabricated metals; Industrial machinery,39.7195158083632,-105.025100347483,,,,,,No parcel match,1990s
+S06988,2045 VAIENTIA ST,1992,1992,RCRA hazardous-waste handler,Rubber & plastics,39.7478436667011,-104.891677625685,,,,,,No parcel match,1990s
+S06989,1485 RIO CT,1992,1992,Not on any list,Fabricated metals,39.739979076271,-105.007452161954,,,,,,No parcel match,1990s
+S06991,4795 LEYDEN ST,1992,1992,Cleanup / contamination list,Fabricated metals,39.7836366663167,-104.917716316065,,,,,,No parcel match,1990s
+S07004,8105 E COLFAX AVE,1992,1992,RCRA hazardous-waste handler,Fabricated metals,39.740153,-104.893982204082,,,,,,No parcel match,1990s
+S07006,1390 CHEROKEE ST,1992,1992,Cleanup / contamination list,Fabricated metals,39.7383150213247,-104.991654183679,,,,,,No parcel match,1990s
+S07008,4200 JACKSON,1992,1992,Cleanup / contamination list,Rubber & plastics,39.774483,-104.942847,,,,,,No parcel match,1990s
+S07009,267 W ALAMEDA AVE,1992,1992,Other EPA permit only,Industrial machinery,39.7111788702564,-105.030818530722,,,,,,No parcel match,1990s
