@@ -2,7 +2,7 @@
 #   Rscript R/site_fate.R
 # Source: City and County of Denver assessor parcels, open-data feature service ODC_PROP_PARCELS_A (layer 245; no key). For every site
 # point one REST query returns the parcel it falls in with the assessor's property class (D_CLASS_CN, e.g. "SINGLE FAMILY-RANCH",
-# "INDUSTRIAL-WAREHOUSE", "EXEMPT-SCHOOL"), the current zone district (ZONE_ID), dwelling units and the year the present building was
+# "INDUSTRIAL-WAREHOUSE", "EXEMPT-SCHOOL"), the current zone district (ZONE_ID; ZONE_10 is the same code with hyphens, not the former code), dwelling units and the year the present building was
 # built. Responses are cached in work/site_fate/parcels_by_point.csv so a rerun only fetches new points.
 # Every site (1965-1992 manufacturers' directory, hazardous sectors) and every street-level pre-1960 hazardous trade in Denver County is
 # scored: broad use today; whether the current building post-dates the last directory listing (redeveloped); whether the zone is still
@@ -57,7 +57,7 @@ broad <- function(cls, zone) { cls <- toupper(ifelse(is.na(cls), "", cls)); zone
         grepl("COMMERCIAL|OFFICE|RETAIL|STORE|HOTEL|MOTEL|RESTAURANT|PARKING|GARAGE|SERVICE|BANK|THEATER|SHOPPING", cls), "Commercial / office",
         default = "Other") }
 score <- function(d) { d <- merge(d[, pkey := sprintf("%.6f,%.6f", lon, lat)], PC[, .(pkey, SCHEDNUM, PROP_CLASS, D_CLASS_CN, ZONE_ID, ZONE_10, TOT_UNITS, year_built, SITUS_ADDRESS_LINE1, OWNER_NAME, LAND_AREA, parcel_dist_m = dist_m)], by = "pkey", all.x = TRUE)
-  d[, use_now := broad(D_CLASS_CN, ZONE_ID)]; d[, zone_industrial := grepl("^I-?(A|B|MX)", toupper(ZONE_ID))]; d[, zone_industrial_1956code := grepl("^I-?[0-9]", toupper(ZONE_10))]   # I-A, I-B, I-MX-* and the former-code IA/IB districts
+  d[, use_now := broad(D_CLASS_CN, ZONE_ID)]; d[, zone_industrial := grepl("^I-?(A|B|MX)", toupper(ZONE_ID))]   # I-A, I-B, I-MX-* and the former-code IA/IB districts
   d[, redeveloped := !is.na(year_built) & year_built > last_year]; d[, last_decade := paste0(floor(last_year / 10) * 10, "s")]; d[, pkey := NULL]; d[] }
 S <- score(sites[, .(site_id, address, first_year, last_year, radar, fe_sectors, lat, lon)])
 H <- score(hist[, .(hfirm, name, street, first_year, last_year, sectors, persists_to_1961plus, lat, lon)])
@@ -68,8 +68,8 @@ SM <- rbind(S[, .(series = lab["S"], n = .N), by = .(last_decade, use_now)], H[,
 SM[, pct := round(100 * n / sum(n), 1), by = .(series, last_decade)]; setorder(SM, series, last_decade, -n); fwrite(SM, file.path(O, "site_fate_summary.csv"))
 ST <- rbind(S[, .(series = lab["S"], n = .N), by = use_now], H[, .(series = lab["H"], n = .N), by = use_now]); ST[, pct := round(100 * n / sum(n), 1), by = series]
 print(dcast(ST, use_now ~ series, value.var = "pct", fill = 0))
-Z <- rbind(S[use_now != "No parcel match", .(series = lab["S"], n = .N, pct_zone_industrial = round(100 * mean(zone_industrial), 1), pct_zone_industrial_1956code = round(100 * mean(zone_industrial_1956code), 1), pct_redeveloped = round(100 * mean(redeveloped), 1), median_year_built = median(year_built, na.rm = TRUE))],
-           H[use_now != "No parcel match", .(series = lab["H"], n = .N, pct_zone_industrial = round(100 * mean(zone_industrial), 1), pct_zone_industrial_1956code = round(100 * mean(zone_industrial_1956code), 1), pct_redeveloped = round(100 * mean(redeveloped), 1), median_year_built = median(year_built, na.rm = TRUE))])
+Z <- rbind(S[use_now != "No parcel match", .(series = lab["S"], n = .N, pct_zone_industrial = round(100 * mean(zone_industrial), 1), pct_redeveloped = round(100 * mean(redeveloped), 1), median_year_built = median(year_built, na.rm = TRUE))],
+           H[use_now != "No parcel match", .(series = lab["H"], n = .N, pct_zone_industrial = round(100 * mean(zone_industrial), 1), pct_redeveloped = round(100 * mean(redeveloped), 1), median_year_built = median(year_built, na.rm = TRUE))])
 print(Z); fwrite(Z, file.path(O, "site_fate_zoning.csv"))
 SEN <- S[use_now %in% c("Residential", "Park / open space", "Civic / school / health") & radar == "Not on any list"]
 fwrite(SEN[, .(site_id, address, first_year, last_year, fe_sectors, use_now, D_CLASS_CN, ZONE_ID, ZONE_10, TOT_UNITS, year_built, parcel_dist_m, lat, lon)], file.path(O, "site_fate_sensitive.csv"))

@@ -211,9 +211,9 @@ W <- dcast(pan, GEOID + grade ~ census, value.var = c("p_black", "p_hisp", "p_fb
 W <- merge(W, dom6[, .(GEOID, cls)], by = "GEOID", all.x = TRUE); W[is.na(cls), cls := grade]
 W <- merge(W, if (is.null(ZS_T)) data.table(GEOID = W$GEOID, ind29 = NA_real_) else ZS_T[, .(GEOID, ind29 = share_industrial_1929)], by = "GEOID", all.x = TRUE)
 M <- list()
-for (v in c("p_black", "p_hisp", "p_pov", "p_owner", "lmval")) for (per in list(c(1940, 1980), c(1980, 2010), c(1940, 2010))) {
+for (v in c("p_black", "p_hisp", "p_pov", "p_owner", "lmval")) for (per in (if (v == "p_pov") list(c(1970, 1980), c(1980, 2010), c(1970, 2010)) else list(c(1940, 1980), c(1980, 2010), c(1940, 2010)))) {   # poverty is first measured in 1970, so its change is 1970-2010
   y0 <- paste0(v, "_", per[1]); y1 <- paste0(v, "_", per[2]); if (!all(c(y0, y1) %in% names(W))) next
-  if (v == "p_pov" && per[1] == 1940) { d <- W[!is.na(W[[y1]])]; d$base <- 0 } else { d <- W[!is.na(W[[y1]]) & !is.na(W[[y0]])]; d$base <- d[[y0]] }
+  d <- W[!is.na(W[[y1]]) & !is.na(W[[y0]])]; d$base <- d[[y0]]
   d$dy <- d[[y1]] - d$base; d$grade <- factor(d$cls, c("A", "B", "C", "D", "Industrial", "Commercial")); d$black40 <- d$p_black_1940; d$firms40 <- log1p(d$firms_haz_1940)
   d <- d[is.finite(dy) & is.finite(base) & !is.na(grade)]; if (nrow(d) < 30 || length(unique(d$grade)) < 3) next
   m <- lm(dy ~ grade + base + black40 + firms40, d); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
