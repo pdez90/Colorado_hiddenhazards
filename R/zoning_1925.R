@@ -11,7 +11,8 @@
 #      gcps_1929.csv) whose real positions come from TIGER road intersections (tigris), by an affine fit in UTM 13N (RMSE printed);
 #   2. writes the zoned cells as dissolved polygons, data/results/zoning_1929/zoning_1929.geojson (+ app/data copy);
 #   3. computes the share of each HOLC area, 1930/1940 enumeration district and 2010 core tract that was zoned industrial and commercial
-#      in 1929, data/results/zoning_1929/zoning_shares_{holc,eds,tracts}.csv, read by holc_covenants.R as a control.
+#      in 1929, data/results/zoning_1929/zoning_shares_{holc,eds,tracts}.csv, read by holc_covenants.R as a control; a "strict" share drops the
+#      cells classified only by the platted thick-hatch rule (Industrial A vs Residence E ambiguity) for the sensitivity check.
 # Known limits: Residence E (apartment, thick "/" hatch) and Industrial A share a hatch and are told apart only by lot lines, so a few
 # platted Industrial A blocks (Sun Valley, Valverde) and the unplatted hatched land north-east of the city are the least certain cells.
 suppressPackageStartupMessages({ library(sf); library(data.table) })
@@ -45,9 +46,13 @@ Z$class <- ifelse(grepl("Industrial", Z$zone), "Industrial", "Commercial")
 print(st_drop_geometry(Z))
 f_out <- file.path(O, "zoning_1929.geojson"); if (file.exists(f_out)) file.remove(f_out); st_write(st_transform(Z, 4326), f_out, quiet = TRUE); file.copy(f_out, A, overwrite = TRUE)
 ZI <- st_union(Z[Z$class == "Industrial", ]); ZC <- st_union(Z[Z$class == "Commercial", ])
+# strict industrial layer: drop the cells classified only by the "thick '/' hatch with lot lines" rule (Industrial A or Residence E; uncertain)
+unc <- if ("uncertain" %in% names(cells)) cells$uncertain == 1 else rep(FALSE, nrow(cells))
+ZIs <- if (any(!unc & grepl("Industrial", cells$zone))) st_make_valid(st_union(st_sfc(polys[!unc & grepl("Industrial", cells$zone)], crs = UTM))) else ZI
+message(sum(unc), " uncertain cells (", round(100 * mean(unc[grepl("Industrial", cells$zone)])), "% of industrial cells) excluded from the strict layer")
 share <- function(g) { g <- st_make_valid(st_transform(g, UTM)); a <- as.numeric(st_area(g))
   f <- function(zz) { it <- suppressWarnings(st_intersection(g, zz)); s <- numeric(length(g)); if (length(it)) s[attr(it, "idx")[, 1]] <- as.numeric(st_area(it)); s }
-  data.table(area_km2 = round(a / 1e6, 3), share_industrial_1929 = round(f(ZI) / a, 3), share_commercial_1929 = round(f(ZC) / a, 3)) }
+  data.table(area_km2 = round(a / 1e6, 3), share_industrial_1929 = round(f(ZI) / a, 3), share_industrial_1929_strict = round(f(ZIs) / a, 3), share_commercial_1929 = round(f(ZC) / a, 3)) }
 # ---- 3. shares by HOLC area, ED and tract
 H <- st_read(file.path(A, "holc_denver.geojson"), quiet = TRUE); hs <- cbind(as.data.table(st_drop_geometry(H))[, .(area_id, grade)], share(st_geometry(H)))
 fwrite(hs, file.path(O, "zoning_shares_holc.csv")); print(hs[grade %in% c("A", "B", "C", "D"), .(areas = .N, km2 = sum(area_km2), pct_industrial_1929 = round(100 * sum(share_industrial_1929 * area_km2) / sum(area_km2), 1), pct_commercial_1929 = round(100 * sum(share_commercial_1929 * area_km2) / sum(area_km2), 1)), by = grade][order(grade)])

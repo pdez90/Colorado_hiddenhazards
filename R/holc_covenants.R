@@ -16,6 +16,10 @@
 # Outputs: app/data/holc_denver.geojson, app/data/covenants_denver.csv, data/results/holc/{holc_by_grade.csv, holc_areas.csv,
 #   trajectories_by_grade.csv, holc_tract_models.csv, holc_summary.md}
 suppressPackageStartupMessages({ library(sf); library(data.table); library(sandwich); library(lmtest) })
+HAS_FIXEST <- requireNamespace("fixest", quietly = TRUE); if (!HAS_FIXEST) message("fixest not installed: spatially robust (Conley) standard errors will be skipped (install.packages('fixest'))")
+conley_se <- function(fml, d, cutoff_km = 2) { if (!HAS_FIXEST || !all(c("lat", "lon") %in% names(d))) return(c(NA, NA, NA))   # coefficient on DTRUE with Conley HAC SE, `cutoff_km` radius
+  ct <- tryCatch({ m <- fixest::feols(fml, data = d, weights = ~pop); fixest::coeftable(m, vcov = fixest::vcov_conley(m, lat = "lat", lon = "lon", cutoff = cutoff_km)) }, error = function(e) NULL)
+  if (is.null(ct) || !"DTRUE" %in% rownames(ct)) return(c(NA, NA, NA)); c(ct["DTRUE", 1], ct["DTRUE", 2], ct["DTRUE", 4]) }
 sf_use_s2(FALSE); UTM <- 26913; H <- "work/holc"; O <- "data/results/holc"; A <- "app/data"; dir.create(O, showWarnings = FALSE, recursive = TRUE); dir.create(H, showWarnings = FALSE, recursive = TRUE)
 for (r in c("mapping-inequality-census-crosswalk", "HOLC_Area_Description_Data")) if (!dir.exists(file.path(H, r))) system2("git", c("clone", "--depth", "1", paste0("https://github.com/americanpanorama/", r, ".git"), file.path(H, r)))
 X <- st_read(file.path(H, "mapping-inequality-census-crosswalk/MIv3Areas_2010TractCrosswalk.geojson"), quiet = TRUE)
@@ -169,10 +173,13 @@ bnd_ed <- rbindlist(lapply(c(1900, 1910, 1920, 1930, 1940), function(yr) { f <- 
   E <- st_make_valid(st_transform(st_read(f, quiet = TRUE), UTM)); E <- E[!is.na(E$pop) & E$pop > 0, ]; ce <- st_centroid(st_geometry(E))
   for (k in c("owner_hh", "tenure_hh")) if (!k %in% names(E)) E[[k]] <- NA_real_
   data.table(census = yr, basis = "districts", unit = as.character(E$ED), pop = E$pop, p_black = 100 * E$black / E$pop, p_hisp = 100 * E$hisp / E$pop, p_fb = 100 * E$fb / E$pop, p_laborers = 100 * E$laborers / E$pop,
-             p_owner = 100 * E$owner_hh / E$tenure_hh, side = side_of(ce), band = in_band(ce, 400), rail_m = rail_m(ce),
-             ind29 = if (is.null(ZS_E)) NA_real_ else ZS_E[census == yr][match(as.character(E$ED), ED), share_industrial_1929])[, c("nA", "nB", "nC", "nD") := as.data.table(near_g(ce, 400))[]] }))
+             p_owner = 100 * E$owner_hh / E$tenure_hh, side = side_of(ce), band = in_band(ce, 400), rail_m = rail_m(ce), lon = st_coordinates(st_transform(ce, 4326))[, 1], lat = st_coordinates(st_transform(ce, 4326))[, 2],
+             ind29 = if (is.null(ZS_E)) NA_real_ else ZS_E[census == yr][match(as.character(E$ED), ED), share_industrial_1929],
+             ind29s = if (is.null(ZS_E) || !"share_industrial_1929_strict" %in% names(ZS_E)) NA_real_ else ZS_E[census == yr][match(as.character(E$ED), ED), share_industrial_1929_strict])[, c("nA", "nB", "nC", "nD") := as.data.table(near_g(ce, 400))[]][, c("nC_narrow", "nD_narrow") := as.data.table(near_g(ce, 200))[, c("C", "D")]][, c("nC_wide", "nD_wide") := as.data.table(near_g(ce, 800))[, c("C", "D")]] }))
 TRg <- st_make_valid(st_transform(st_read("app/data/co_tracts_2010.geojson", quiet = TRUE), UTM)); TRg <- TRg[TRg$GEOID %in% pan$GEOID, ]; ct <- st_centroid(st_geometry(TRg))
-tb <- data.table(GEOID = TRg$GEOID, side = side_of(ct), band = in_band(ct, 800), rail_m = rail_m(ct), ind29 = if (is.null(ZS_T)) NA_real_ else ZS_T$share_industrial_1929[match(TRg$GEOID, ZS_T$GEOID)])[, c("nA", "nB", "nC", "nD") := as.data.table(near_g(ct, 800))[]]
+tb <- data.table(GEOID = TRg$GEOID, side = side_of(ct), band = in_band(ct, 800), rail_m = rail_m(ct), lon = st_coordinates(st_transform(ct, 4326))[, 1], lat = st_coordinates(st_transform(ct, 4326))[, 2],
+                 ind29 = if (is.null(ZS_T)) NA_real_ else ZS_T$share_industrial_1929[match(TRg$GEOID, ZS_T$GEOID)],
+                 ind29s = if (is.null(ZS_T) || !"share_industrial_1929_strict" %in% names(ZS_T)) NA_real_ else ZS_T$share_industrial_1929_strict[match(TRg$GEOID, ZS_T$GEOID)])[, c("nA", "nB", "nC", "nD") := as.data.table(near_g(ct, 800))[]][, c("nC_narrow", "nD_narrow") := as.data.table(near_g(ct, 400))[, c("C", "D")]][, c("nC_wide", "nD_wide") := as.data.table(near_g(ct, 1600))[, c("C", "D")]]
 bnd_tr <- merge(pan[, .(census, unit = GEOID, pop, p_black, p_hisp, p_fb, p_pov, p_owner)], tb, by.x = "unit", by.y = "GEOID")[, basis := "2010 tracts"]
 BD0 <- rbindlist(list(bnd_ed, bnd_tr), fill = TRUE)[!is.na(pop) & pop > 0 & !is.na(side)]
 BR <- rbindlist(lapply(PAIRS, function(pr) { hi <- pr[1]; lo <- pr[2]                      # units within the band of both grades of the pair, lying in one of them
@@ -182,10 +189,26 @@ BR <- rbindlist(lapply(PAIRS, function(pr) { hi <- pr[1]; lo <- pr[2]           
     if (sum(dd$D) < 3 || sum(!dd$D) < 3) return(NULL); m <- lm(y ~ D, dd, weights = pop); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
     rr <- if (all(is.na(dd$rail_m)) || sum(!is.na(dd$rail_m)) < 8) c(NA, NA, NA) else { m2 <- lm(y ~ D + log1p(rail_m), dd, weights = pop); c2 <- coeftest(m2, vcov. = vcovHC(m2, type = "HC1")); c(c2["DTRUE", 1], c2["DTRUE", 2], c2["DTRUE", 4]) }
     zz <- if (all(is.na(dd$ind29)) || sum(!is.na(dd$ind29)) < 8 || sd(dd$ind29, na.rm = TRUE) == 0) c(NA, NA, NA) else { d3 <- dd[!is.na(ind29)]; m3 <- if (all(is.na(d3$rail_m))) lm(y ~ D + ind29, d3, weights = pop) else lm(y ~ D + log1p(rail_m) + ind29, d3, weights = pop); c3 <- coeftest(m3, vcov. = vcovHC(m3, type = "HC1")); c(c3["DTRUE", 1], c3["DTRUE", 2], c3["DTRUE", 4]) }
+    zs <- if (!"ind29s" %in% names(dd) || all(is.na(dd$ind29s)) || sum(!is.na(dd$ind29s)) < 8 || sd(dd$ind29s, na.rm = TRUE) == 0) c(NA, NA, NA) else { d4 <- dd[!is.na(ind29s)]; m4 <- if (all(is.na(d4$rail_m))) lm(y ~ D + ind29s, d4, weights = pop) else lm(y ~ D + log1p(rail_m) + ind29s, d4, weights = pop); c4 <- coeftest(m4, vcov. = vcovHC(m4, type = "HC1")); c(c4["DTRUE", 1], c4["DTRUE", 2], c4["DTRUE", 4]) }
+    cs <- conley_se(y ~ D, dd, 2)
     data.table(pair = paste0(hi, "-", lo), census = dd$census[1], basis = dd$basis[1], outcome = v, n_C = sum(!dd$D), n_D = sum(dd$D), mean_C = round(weighted.mean(dd$y[!dd$D], dd$pop[!dd$D]), 2), mean_D = round(weighted.mean(dd$y[dd$D], dd$pop[dd$D]), 2),
                gap = round(ct["DTRUE", 1], 2), se = round(ct["DTRUE", 2], 2), p = signif(ct["DTRUE", 4], 2), gap_rail = round(rr[1], 2), se_rail = round(rr[2], 2), p_rail = signif(rr[3], 2), gap_zone = round(zz[1], 2), se_zone = round(zz[2], 2), p_zone = signif(zz[3], 2), ind29_C = round(mean(dd$ind29[!dd$D], na.rm = TRUE), 3), ind29_D = round(mean(dd$ind29[dd$D], na.rm = TRUE), 3),
+               gap_zone_strict = round(zs[1], 2), se_zone_strict = round(zs[2], 2), p_zone_strict = signif(zs[3], 2), se_conley2km = round(cs[2], 2), p_conley2km = signif(cs[3], 2),
                rail_m_C = round(median(dd$rail_m[!dd$D], na.rm = TRUE)), rail_m_D = round(median(dd$rail_m[dd$D], na.rm = TRUE))) })))) }))
 setorder(BR, pair, outcome, census); fwrite(BR, file.path(O, "holc_boundary.csv")); file.copy(file.path(O, "holc_boundary.csv"), A, overwrite = TRUE)
+# B2. bandwidth sensitivity for the D-C pair: narrow / standard / wide bands (districts 200/400/800 m; tracts 400/800/1600 m)
+BW <- rbindlist(lapply(c("narrow", "standard", "wide"), function(bw) { nC <- if (bw == "standard") "nC" else paste0("nC_", bw); nD <- if (bw == "standard") "nD" else paste0("nD_", bw)
+  if (!all(c(nC, nD) %in% names(BD0))) return(NULL); keep <- BD0$side %in% c("C", "D") & as.logical(BD0[[nC]]) & as.logical(BD0[[nD]]); keep[is.na(keep)] <- FALSE; BD <- BD0[keep]
+  rbindlist(lapply(split(BD, by = c("census", "basis")), function(d) rbindlist(lapply(c("p_black", "p_hisp"), function(v) { dd <- d[!is.na(d[[v]]), ]; if (nrow(dd) < 10) return(NULL); dd$y <- dd[[v]]; dd$D <- dd$side == "D"
+    if (sum(dd$D) < 3 || sum(!dd$D) < 3) return(NULL); m <- lm(y ~ D, dd, weights = pop); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
+    data.table(bandwidth = bw, metres = if (dd$basis[1] == "districts") c(narrow = 200, standard = 400, wide = 800)[[bw]] else c(narrow = 400, standard = 800, wide = 1600)[[bw]], census = dd$census[1], basis = dd$basis[1], outcome = v, n_C = sum(!dd$D), n_D = sum(dd$D), gap = round(ct["DTRUE", 1], 2), se = round(ct["DTRUE", 2], 2), p = signif(ct["DTRUE", 4], 2)) })))) }))
+if (nrow(BW)) { setorder(BW, outcome, census, metres); fwrite(BW, file.path(O, "holc_boundary_bandwidth.csv")); file.copy(file.path(O, "holc_boundary_bandwidth.csv"), A, overwrite = TRUE); print(dcast(BW[outcome == "p_black"], census + basis ~ bandwidth, value.var = "gap")) }
+# B3. did the D-C gap change course at the map? Weighted regression of the census-by-census gap on time with a post-1938 level shift and slope change
+TT <- rbindlist(lapply(c("p_black", "p_hisp"), function(v) { g <- BR[pair == "D-C" & outcome == v & !is.na(se) & se > 0 & !(census == 1940 & basis == "2010 tracts")]   # one 1940 point (districts)
+  if (nrow(g) < 6) return(NULL); g[, `:=`(t = (census - 1938) / 10, post = as.integer(census > 1938), w = 1 / se^2)]
+  m0 <- lm(gap ~ t, g, weights = w); m1 <- lm(gap ~ t + post + post:t, g, weights = w); an <- anova(m0, m1); ct <- coeftest(m1)
+  data.table(outcome = v, points = nrow(g), pre_slope_per_decade = round(coef(m1)["t"], 2), post_level_shift = round(coef(m1)["post"], 2), p_level = signif(ct["post", 4], 2), post_slope_change = round(coef(m1)["t:post"], 2), p_slope = signif(ct["t:post", 4], 2), p_joint = signif(an$`Pr(>F)`[2], 2)) }))
+if (nrow(TT)) { fwrite(TT, file.path(O, "holc_trend_test.csv")); file.copy(file.path(O, "holc_trend_test.csv"), A, overwrite = TRUE); message("pre/post-map trend test on the D-C gap (weighted by 1/SE^2; few points, indicative only):"); print(TT) }
 print(BR[outcome %in% c("p_black", "p_hisp")])
 # C. grade gaps by census from the full-grade series (D - C, C - B), before (HOLC polygons) and after (tracts)
 GAP <- rbindlist(list(if (exists("PRE") && nrow(PRE)) melt(PRE, id.vars = c("grade", "census"), measure.vars = intersect(c("p_black", "p_hisp", "p_fb", "p_owner", "p_laborers"), names(PRE)))[, basis := "HOLC areas"],
@@ -210,6 +233,7 @@ pan[, lmval := fifelse(is.finite(mval_2020) & mval_2020 > 0, log(mval_2020), NA_
 W <- dcast(pan, GEOID + grade ~ census, value.var = c("p_black", "p_hisp", "p_fb", "p_pov", "firms_haz", "p_owner", "lmval"))
 W <- merge(W, dom6[, .(GEOID, cls)], by = "GEOID", all.x = TRUE); W[is.na(cls), cls := grade]
 W <- merge(W, if (is.null(ZS_T)) data.table(GEOID = W$GEOID, ind29 = NA_real_) else ZS_T[, .(GEOID, ind29 = share_industrial_1929)], by = "GEOID", all.x = TRUE)
+W <- merge(W, tb[, .(GEOID, lat, lon, ind29s)], by = "GEOID", all.x = TRUE)
 M <- list()
 for (v in c("p_black", "p_hisp", "p_pov", "p_owner", "lmval")) for (per in (if (v == "p_pov") list(c(1970, 1980), c(1980, 2010), c(1970, 2010)) else list(c(1940, 1980), c(1980, 2010), c(1940, 2010)))) {   # poverty is first measured in 1970, so its change is 1970-2010
   y0 <- paste0(v, "_", per[1]); y1 <- paste0(v, "_", per[2]); if (!all(c(y0, y1) %in% names(W))) next
@@ -218,9 +242,13 @@ for (v in c("p_black", "p_hisp", "p_pov", "p_owner", "lmval")) for (per in (if (
   d <- d[is.finite(dy) & is.finite(base) & !is.na(grade)]; if (nrow(d) < 30 || length(unique(d$grade)) < 3) next
   m <- lm(dy ~ grade + base + black40 + firms40, d); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
   cz <- if (sum(!is.na(d$ind29)) >= 30 && sd(d$ind29, na.rm = TRUE) > 0) { mz <- lm(dy ~ grade + base + black40 + firms40 + ind29, d[!is.na(ind29)]); coeftest(mz, vcov. = vcovHC(mz, type = "HC1")) } else NULL
+  czs <- if ("ind29s" %in% names(d) && sum(!is.na(d$ind29s)) >= 30 && sd(d$ind29s, na.rm = TRUE) > 0) { mzs <- lm(dy ~ grade + base + black40 + firms40 + ind29s, d[!is.na(ind29s)]); coeftest(mzs, vcov. = vcovHC(mzs, type = "HC1")) } else NULL
+  cc <- if (HAS_FIXEST && all(c("lat", "lon") %in% names(d))) tryCatch({ mf <- fixest::feols(dy ~ grade + base + black40 + firms40, data = d); fixest::coeftable(mf, vcov = fixest::vcov_conley(mf, lat = "lat", lon = "lon", cutoff = 2)) }, error = function(e) NULL) else NULL
   for (g in c("B", "C", "D", "Industrial", "Commercial")) if (paste0("grade", g) %in% rownames(ct)) M[[length(M) + 1]] <- data.table(outcome = v, period = paste(per, collapse = "-"), grade = g, b = ct[paste0("grade", g), 1], se = ct[paste0("grade", g), 2], p = ct[paste0("grade", g), 4], n = nrow(d),
     b_zone = if (!is.null(cz) && paste0("grade", g) %in% rownames(cz)) cz[paste0("grade", g), 1] else NA_real_, se_zone = if (!is.null(cz) && paste0("grade", g) %in% rownames(cz)) cz[paste0("grade", g), 2] else NA_real_, p_zone = if (!is.null(cz) && paste0("grade", g) %in% rownames(cz)) cz[paste0("grade", g), 4] else NA_real_,
-    b_ind29 = if (!is.null(cz)) cz["ind29", 1] else NA_real_, p_ind29 = if (!is.null(cz)) cz["ind29", 4] else NA_real_) }
+    b_ind29 = if (!is.null(cz)) cz["ind29", 1] else NA_real_, p_ind29 = if (!is.null(cz)) cz["ind29", 4] else NA_real_,
+    b_zone_strict = if (!is.null(czs) && paste0("grade", g) %in% rownames(czs)) czs[paste0("grade", g), 1] else NA_real_, p_zone_strict = if (!is.null(czs) && paste0("grade", g) %in% rownames(czs)) czs[paste0("grade", g), 4] else NA_real_,
+    se_conley2km = if (!is.null(cc) && paste0("grade", g) %in% rownames(cc)) cc[paste0("grade", g), 2] else NA_real_, p_conley2km = if (!is.null(cc) && paste0("grade", g) %in% rownames(cc)) cc[paste0("grade", g), 4] else NA_real_) }
 M <- rbindlist(M); fwrite(M, file.path(O, "holc_tract_models.csv")); file.copy(file.path(O, "holc_tract_models.csv"), A, overwrite = TRUE)
 md <- c("# Redlining (HOLC 1938) and racial covenants (1931-35) vs. the hazardous trades, Denver", "",
         "## HOLC areas by grade: industry before and after the map, appraisers' remarks, covenants, and the 1930 full-count composition (reconstructed EDs, area-weighted)", "",

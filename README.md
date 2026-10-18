@@ -377,7 +377,11 @@ the Hispanic gap opens only in 1940 and after. Industry in D areas was already 3
 ordinance are not controlled, and Fishback, Rose, Snowden & Storrs (2024) show that FHA practice, not the HOLC map, governed lending,
 so the post-1938 acceleration cannot be attributed to the map alone. Two controls address this: the distance of each unit to the
 nearest rail line (TIGER rails; `gap_rail`), and the share of each unit zoned industrial under Denver's first zoning ordinance
-(`gap_zone`, `b_zone`), from `R/zoning_1925.R`.
+(`gap_zone`, `b_zone`), from `R/zoning_1925.R`. Robustness outputs: `holc_boundary.csv` also carries Conley (2 km) standard errors
+(`se_conley2km`, needs the `fixest` package) and the gap with the strict zoning layer (`gap_zone_strict`); `holc_boundary_bandwidth.csv`
+repeats the D–C gaps with narrow/standard/wide bands (districts 200/400/800 m, tracts 400/800/1600 m); `holc_trend_test.csv` regresses the
+census-by-census D–C gap on time with a post-1938 level shift and slope change (weighted by 1/SE², thirteen points, indicative only);
+`holc_tract_models.csv` carries Conley SEs and the strict-zoning estimates for the change models.
 
 ### The 1925 zoning ordinance (`R/zoning_1925.R`)
 Denver zoned in February 1925, thirteen years before the HOLC map. The Denver Public Library's scan of the *Building Zone Map* as revised
@@ -389,7 +393,12 @@ road intersections with `tigris`; affine fit in UTM 13N, RMSE printed) and write
 industrially and commercially zoned share of every HOLC area, enumeration district and 2010 tract (`zoning_shares_*.csv`), which
 `holc_covenants.R` then uses as a control in the boundary gaps and the change models. Residence E (apartments) and Industrial A share a
 hatch and are separated only by the absence of lot lines, so a few platted Industrial A blocks and the unplatted land north-east of
-the 1929 city are the least certain cells. Run after `holc_covenants.R` once (for `holc_denver.geojson`), then rerun `holc_covenants.R`.
+the 1929 city are the least certain cells; `zone_cells_1929.csv` flags them (`uncertain`), and a strict share that drops them is carried
+through the analyses as a sensitivity check. The library's 1944 revision of the same map was registered to the 1929 scan by a ten-point
+affine fit (`affine_1944_to_1929_px.csv`, RMSE ≈ 32 m); it is a darker print of the same plate and cannot be classified with the same
+thresholds, but side-by-side inspection of the registered districts (`zone_map_1929_vs_1944_districts.jpg`) shows the same industrial
+hatching in 1944 as in 1929, with the 1929–44 amendments confined to a few pencil-marked blocks, so the 1929 layer is used as the zoning
+in force for 1925–44. Run after `holc_covenants.R` once (for `holc_denver.geojson`), then rerun `holc_covenants.R`.
 
 ### What became of the sites (`R/site_fate.R`)
 Every geocoded Denver site (1965–92 manufacturers' directory, hazardous sectors; street-level pre-1960 hazardous trades) is matched to
