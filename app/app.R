@@ -65,7 +65,7 @@ ED_VARS  <- c("Black (%)" = "pct_black", "Foreign born (%)" = "pct_fb", "Mexican
               "Foreign or mixed parentage (%)" = "pct_foreign_parentage", "Hazardous firms in the decade" = "firms", "Distance to nearest firm (m)" = "dist_m")   # replaced by whatever the district file provides
 if (!is.null(eds)) { have <- names(ED_LABELS)[names(ED_LABELS) %in% names(eds)]; have <- have[sapply(have, function(k) any(!is.na(eds[[k]])))]; if (length(have)) ED_VARS <- setNames(have, ED_LABELS[have]) }
 holc     <- if (file.exists(dd("holc_denver.geojson"))) st_read(dd("holc_denver.geojson"), quiet = TRUE) else NULL      # R/holc_covenants.R
-coven    <- rd_opt("covenants_denver.csv"); holc_bd <- rd_opt("holc_boundary.csv"); holc_gap <- rd_opt("holc_gaps.csv"); holc_ind <- rd_opt("holc_industry_periods.csv"); bm_state <- rd_opt("cbp_vs_directory_state.csv"); bm_cty <- rd_opt("cbp_vs_directory_county.csv"); bm_nh <- rd_opt("nhgis_mfg_vs_directory.csv"); bm_at <- rd_opt("atack_colorado_by_sector.csv"); holc_g <- rd_opt("holc_by_grade.csv"); holc_tr <- rd_opt("trajectories_by_grade.csv"); holc_pre <- rd_opt("trajectories_pre_by_grade.csv"); holc_m <- rd_opt("holc_tract_models.csv"); holc_sh <- rd_opt("holc_facility_shares.csv"); ed_sh <- rd_opt("ed_firm_shares.csv"); ed_cls <- rd_opt("ed_holc_classes.csv")
+coven    <- rd_opt("covenants_denver.csv"); holc_bd <- rd_opt("holc_boundary.csv"); holc_gap <- rd_opt("holc_gaps.csv"); holc_ind <- rd_opt("holc_industry_periods.csv"); bm_state <- rd_opt("cbp_vs_directory_state.csv"); bm_cty <- rd_opt("cbp_vs_directory_county.csv"); bm_nh <- rd_opt("nhgis_mfg_vs_directory.csv"); bm_at <- rd_opt("atack_colorado_by_sector.csv"); edcov <- rd_opt("edition_coverage.csv"); holc_g <- rd_opt("holc_by_grade.csv"); holc_tr <- rd_opt("trajectories_by_grade.csv"); holc_pre <- rd_opt("trajectories_pre_by_grade.csv"); holc_m <- rd_opt("holc_tract_models.csv"); holc_sh <- rd_opt("holc_facility_shares.csv"); ed_sh <- rd_opt("ed_firm_shares.csv"); ed_cls <- rd_opt("ed_holc_classes.csv")
 eds_holc <- if (file.exists(dd("eds_holc_1930.geojson"))) st_read(dd("eds_holc_1930.geojson"), quiet = TRUE) else NULL
 HOLC_COL6 <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d", Industrial = "#8c8c8c", Commercial = "#c8a2c8", ungraded = "#eeeeee")
 HOLC_COL <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d")
@@ -172,8 +172,9 @@ ui <- page_navbar(id = "nav",
                "CDPHE's Institutional Controls layer (environmental covenants, use restrictions and notices of environmental use restrictions). The clearest public record that a parcel still holds managed contamination."),
              tags$dt("Schools, hospitals, clinics, residential care"), tags$dd("Colorado Department of Education school locations and CDPHE licensed health facilities (geodata.colorado.gov), used on the Nearby schools & health care tab."))))))),
   nav_panel("Trends",
-    card(card_header("Hazardous-trade firms and sites listed, 1871\u20132002: both directory series on one timeline"), plotlyOutput("p_timeline", height = 320),
-         tags$small(class = "text-muted", "Brown: hazardous trades found in the Colorado State Business Directory (34 editions, every trade, OCR'd scans; counts depend on each edition's coverage and scan quality). Orange: hazardous-sector sites in the Directory of Colorado Manufacturers (25 editions, manufacturers only). The two series are not on the same footing \u2014 the business directories list far more small trades \u2014 but together they trace the whole span. Both respond to the sidebar filters.")),
+    card(card_header("Hazardous-trade firms and sites listed, 1871\u20132002: both directory series on one timeline"),
+         radioButtons("tl_mode", NULL, c("All editions (incomplete scans hollow)" = "all", "Complete editions only" = "complete"), inline = TRUE), plotlyOutput("p_timeline", height = 320),
+         tags$small(class = "text-muted", "Brown: hazardous trades found in the Colorado State Business Directory (34 editions, every trade, OCR'd scans; counts depend on each edition's coverage and scan quality). Orange: hazardous-sector sites in the Directory of Colorado Manufacturers (25 editions, manufacturers only). The two series are not on the same footing \u2014 the business directories list far more small trades \u2014 but together they trace the whole span. Six manufacturers' directory editions (1961, 1962, 1984, 1985, 1993, 2002) reached us as partial scans - typically the half of the geographic section after Denver is missing - and are drawn hollow or dropped; the Data & downloads tab lists what each edition contains. Both respond to the sidebar filters.")),
     layout_columns(col_widths = c(6, 6),
       card(card_header("Hazardous-sector sites listed per directory edition, by sector"), plotlyOutput("p_sector", height = 420)),
       card(card_header("…by current regulatory status"), plotlyOutput("p_status", height = 420))),
@@ -450,6 +451,12 @@ ui <- page_navbar(id = "nav",
              "The address files stay with the project under Brown's conditions of use; only these derived polygons and aggregates are published. Code: R/grf_eds.R (cross-checked with pipeline/historical/grf_eds.py) and R/denver_eds_analysis.R."),
            hr(), tags$small("Each edition file lists every manufacturer with its OCR'd name and address, SIC/NAICS codes, ",
                             "sector flags, establishment and site IDs, coordinates and geocode level.")),
+      card(card_header("Editions used: what each contains and how complete our copy is"),
+           tags$small(class = "text-muted", tags$b("Before 1960: Colorado State Business Directory, 1871\u20131956. "), "34 editions (1871 Rocky Mountain Directory; 1875, 1877\u20131885, 1887\u201388, 1891\u201392, 1910\u20131917, 1920, 1927, 1929, 1932\u201333, 1935, 1939, 1941, 1943, 1950, 1956), ",
+             "read from the full-volume scans in CU Boulder Libraries' digital collection. These are general business directories, not manufacturers' directories: every trade in every town is listed, so the pipeline keeps only the hazardous trades (smelters, reduction and sampling works, foundries, machine and boiler shops, chemical, paint, soap, powder and fertilizer works, refineries, tanneries, gas works and the like) by keyword, ",
+             "places them at a street address only where modern numbering applies (Denver from 1891, larger cities from 1910) and otherwise at the town, and links firms across editions by name. The 'Download pre-1960 hazardous-trade firms' file above is that extraction. ",
+             tags$b("1961\u20132002: Directory of Colorado Manufacturers "), "(Business Research Division, CU Boulder), every listed manufacturer with its industry code, from page scans of the geographic section. Six editions reached us as partial scans; the table gives pages, listings and what is missing, and the Trends tab can be limited to complete editions."),
+           DT::dataTableOutput("t_edcov")),
       card(card_header("How reliable are the locations?"), uiOutput("geo_note"), tableOutput("valid"))))
 )
 
@@ -632,7 +639,10 @@ server <- function(input, output, session) {
     a <- sy_sel() |> count(year, name = "n") |> mutate(series = "Manufacturers' directory sites (hazardous sectors), 1961-2002")
     h <- sel_hist(); b <- if (is.null(h) || !nrow(h)) NULL else h |> mutate(yr = strsplit(years, " ")) |> unnest(yr) |> mutate(year = as.integer(yr)) |> filter(year >= input$yrs[1], year <= input$yrs[2]) |> count(year, name = "n") |> mutate(series = "Business-directory hazardous trades, 1871-1956")
     d <- bind_rows(a, b); if (!nrow(d)) return(NULL)
-    ggplotly(ggplot(d, aes(year, n, colour = series, group = series, text = sprintf("%s: %s (%s)", year, n, series))) + geom_line() + geom_point(size = 1.5) +
+    inc <- if (is.null(edcov)) integer() else edcov$year[edcov$complete %in% c(FALSE, "FALSE")]; d$complete <- !d$year %in% inc
+    if (identical(input$tl_mode, "complete")) d <- d |> filter(complete); if (!nrow(d)) return(NULL)
+    d$text <- sprintf("%s: %s (%s)%s", d$year, d$n, d$series, ifelse(d$complete, "", " - incomplete scan"))
+    ggplotly(ggplot(d, aes(year, n, colour = series, group = series, text = text)) + geom_line() + geom_point(aes(shape = complete), size = 2.2, fill = "white") + scale_shape_manual(values = c(`TRUE` = 16, `FALSE` = 21), guide = "none") +
                scale_colour_manual(values = c("Business-directory hazardous trades, 1871-1956" = "#8c510a", "Manufacturers' directory sites (hazardous sectors), 1961-2002" = "#d1491f")) +
                scale_x_continuous(breaks = seq(1870, 2000, 10)) + labs(x = "Directory edition", y = "Listed", colour = NULL) + theme_minimal(), tooltip = "text") |> hleg() })
   output$p_status <- renderPlotly({
@@ -999,6 +1009,9 @@ server <- function(input, output, session) {
   # ---- downloads
   output$dl_one <- downloadHandler(filename = function() sprintf("CO_DCM_%s_geocoded.csv", input$dl_year),
                                    content = function(f) file.copy(file.path(by_year_dir, sprintf("CO_DCM_%s_geocoded.csv", input$dl_year)), f))
+  output$t_edcov <- DT::renderDataTable({ if (is.null(edcov)) return(NULL)
+    DT::datatable(edcov |> transmute(Series = series, Edition = as.integer(year), `Scanned pages` = as.integer(pages), Listings = as.integer(listings), `Hazardous firms` = as.integer(hazardous), `Street-level (%)` = street_level_pct, `No code (%)` = no_code_pct, Complete = ifelse(complete %in% c(TRUE, "TRUE"), "yes", "NO"), Note = note),
+                  rownames = FALSE, options = list(pageLength = 12, scrollX = TRUE, order = list(list(1, "asc"))), class = "compact stripe") |> DT::formatStyle("Complete", target = "row", backgroundColor = DT::styleEqual("NO", "#fff3cd")) })
   output$dl_btns <- renderUI({ n <- format(nrow(sel_sites()), big.mark = ",")
     tagList(downloadButton("dl_sites", sprintf("Download the %s sites matching the sidebar filters", n)), br(), br(),
             downloadButton("dl_firms", sprintf("Download firms at those %s sites", n)), br(), br()) })
