@@ -1,1 +1,1 @@
-site_id,address,first_year,last_year,fe_sectors,use_now,CPD_LANDUSE,D_CLASS_CN,TOTAL_UNITS,lat,lon
+site_id,address,first_year,last_year,fe_sectors,use_now,D_CLASS_CN,ZONE_ID,TOT_UNITS,year_built,lat,lon

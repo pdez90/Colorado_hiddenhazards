@@ -1,322 +1,322 @@
-hfirm,name,street,first_year,last_year,sectors,persists_to_1961plus,lat,lon,SCHEDNUM,D_CLASS,D_CLASS_CN,CPD_LANDUSE,TOTAL_UNITS,use_now,last_decade
-HF01906,"Austin, Percy,atty, 26Goodblk Bacon, Geo M, furnaces and",1544 Stout,1892,1892,Metal working,FALSE,39.7453383750079,-104.9937291682,,,,,,No parcel match,1890s
-HF01907,"Boellert, Math, blacksmith, Blake, FO",1909 Blake,1892,1892,Petroleum refining & asphalt,FALSE,39.7534245864625,-104.995418732916,,,,,,No parcel match,1890s
-HF01917,"Dowell, chanc, 14th &Arap Denver Steam Laundry Co, Denver Variety Machine Shop",1819 Welton,1892,1892,Machine shop / machinery,FALSE,39.7465423488331,-104.988683182008,,,,,,No parcel match,1890s
-HF01929,COLLECTIONS ColoredL ead,1525 Platte St,1892,1892,Paint & varnish,TRUE,39.756688208901,-105.008987806251,,,,,,No parcel match,1890s
-HF01934,"& Mayne, Long, Lloyd, Wm, Lloyd, Wm B, Lord, 0 A, Lobach, E B, COLLECTIONS Colored Lead",1525 Platte St,1892,1892,Paint & varnish,TRUE,39.756688208901,-105.008987806251,,,,,,No parcel match,1890s
-HF01937,"Maginn, EJ",1516 Wewatta,1892,1892,Transportation equipment,FALSE,39.7518397982475,-105.00281439867,,,,,,No parcel match,1890s
-HF01952,"AMERICAN MERCANTILE UNION lS^LawmceSt,D",1525 Platte St,1892,1892,Paint & varnish,TRUE,39.756688208901,-105.008987806251,,,,,,No parcel match,1890s
-HF02199,The Western Chemical Co,2701 Welton,1911,1911,Chemicals,FALSE,39.754789,-104.978048,,,,,,No parcel match,1910s
-HF02244,Globe Sheet Metal Works 1413,1509 Market,1911,1911,Metal working,FALSE,39.7490143595076,-104.999393040191,,,,,,No parcel match,1910s
-HF02266,Nenman-Allen Chemical Co. 1434,536 15th,1911,1911,Chemicals,FALSE,39.7437022254596,-104.992682241593,,,,,,No parcel match,1910s
-HF02312,Type Foundry,1621 Blake,1911,1911,Foundry,TRUE,39.7507397354052,-104.998937030821,,,,,,No parcel match,1910s
-HF02480,LEAD WORKS,1422 Curtis,1911,1911,Smelting & refining,FALSE,39.7455294947008,-104.996917787583,,,,,,No parcel match,1910s
-HF02493,Denver.FAlR CORNICE WORKS C W,1433 Lawrence,1911,1911,Metal working,FALSE,39.7469701056944,-104.998562882736,,,,,,No parcel match,1910s
-HF02601,Denver Iron Works & Foundry DENVER MASTER PLUMBERS,1827 Wynkoop,1912,1912,Foundry,FALSE,39.7540238292857,-104.998161064647,,,,,,No parcel match,1910s
-HF02615,FoxM,933 15th,1912,1912,Metal working,FALSE,39.7458004666512,-104.995441882701,,,,,,No parcel match,1910s
-HF02626,Lead Works Co,1516 Blake,1912,1912,Smelting & refining,TRUE,39.7496509486762,-105.000303354821,,,,,,No parcel match,1910s
-HF02888,BROWNE IRON WORKS COMPANY •H,25 Lari,1912,1913,Iron & steel works,TRUE,39.7399003121588,-105.015835954297,,,,,,No parcel match,1910s
-HF02901,Copenhaver Geo C,833 15th,1913,1913,Transportation equipment,FALSE,39.7451358364759,-104.994548532482,,,,,,No parcel match,1910s
-HF02906,DicksonEA,925 21st,1913,1913,Machine shop / machinery,FALSE,39.7513555512193,-104.98811289898,,,,,,No parcel match,1910s
-HF02916,Freund &CoGeo,1542 Blake,1913,1913,Metal working,TRUE,39.7499369237324,-104.999948582071,,,,,,No parcel match,1910s
-HF02922,HeinshonAE,1621 Blake,1913,1913,Machine shop / machinery,TRUE,39.7507397354052,-104.998937030821,,,,,,No parcel match,1910s
-HF02924,ler & Iron Works Co,1516 Blake,1913,1913,Iron & steel works,TRUE,39.7496509486762,-105.000303354821,,,,,,No parcel match,1910s
-HF02930,Jones & Greathead,1335 Welton,1911,1913,Metal working,FALSE,39.742033563204,-104.994517308495,,,,,,No parcel match,1910s
-HF02942,O ’BrienDL,3827 Walnut,1910,1913,Metal working,TRUE,39.7705205352916,-104.97162686014,,,,,,No parcel match,1910s
-HF02954,Universal Soap Mfg Co,1533 Wynkoop,1913,1913,Soap,FALSE,39.7512648571429,-105.001725142857,,,,,,No parcel match,1910s
-HF02960,WALTER LOUIS H,1822 Welton,1911,1913,Metal working,FALSE,39.7465771092585,-104.988633037554,,,,,,No parcel match,1910s
-HF02963,Western Shoe & Rubber Co,1437 Lawrence,1913,1913,Rubber,FALSE,39.7470082710834,-104.998513403497,,,,,,No parcel match,1910s
-HF02964,WESTERN SMELTING WORKS,1558 Wazee,1913,1913,Smelting & refining,FALSE,39.7508371687674,-105.000520778119,,,,,,No parcel match,1910s
-HF02965,Type Foundry,1621 Blake,1913,1913,Foundry,TRUE,39.7507397354052,-104.998937030821,,,,,,No parcel match,1910s
-HF03214,Braun N,2208 Larimer,1913,1914,Transportation equipment,TRUE,39.7548866540464,-104.990073275856,,,,,,No parcel match,1910s
-HF03216,© i £ BROWN L B,25 Lari,1914,1914,Iron & steel works,TRUE,39.7399003121588,-105.015835954297,,,,,,No parcel match,1910s
-HF03227,COLLIER & SON P F,1434 Blake,1914,1914,Foundry,TRUE,39.7490874815693,-105.001038056763,,,,,,No parcel match,1910s
-HF03235,(See Page ad. at Classified Chemical Manufacturers.),829 Larimer,1914,1914,Chemicals,TRUE,39.7440445412369,-105.006833325298,,,,,,No parcel match,1910s
-HF03239,Deline & Co,1517 Stout,1914,1914,Chemicals,FALSE,39.7450686218199,-104.994063972725,,,,,,No parcel match,1910s
-HF03248,Ellsworth AutoCo,2012 Curtis,1914,1914,Machine shop / machinery,TRUE,39.7510534650854,-104.989827695187,,,,,,No parcel match,1910s
-HF03267,Gartman C E,1414 15th,1914,1914,Machine shop / machinery,FALSE,39.7490993956661,-104.999698871984,,,,,,No parcel match,1910s
-HF03272,covering all Mines,1513 15th,1914,1914,Smelting & refining,TRUE,39.7496900386881,-105.000466257845,,,,,,No parcel match,1910s
-HF03281,INDEPENDENT POWDER CO,3654 Navajo,1914,1914,Explosives,FALSE,39.7675098360596,-105.004129242767,,,,,,No parcel match,1910s
-HF03282,Her F M,242 W Florida,1914,1914,Foundry,TRUE,39.6893938571429,-104.990666142857,,,,,,No parcel match,1910s
-HF03293,jo Lowith Iron Works Co,1 Larimer,1914,1914,Iron & steel works,TRUE,39.739852,-105.015941,,,,,,No parcel match,1910s
-HF03297,MINE & SMELTER SUPPLY CO,1650 Champa,1914,1914,Smelting & refining,FALSE,39.746996371551,-104.993318930493,,,,,,No parcel match,1910s
-HF03301,NOCK & GARSIDE,2330 15th,1911,1914,Machine shop / machinery,FALSE,39.7557905755392,-105.008404578509,,,,,,No parcel match,1910s
-HF03590,BOSS RUBBER CO,2835 Welton,1915,1915,Rubber,FALSE,39.7560586938776,-104.976428367347,,,,,,No parcel match,1910s
-HF03612,DENVER GAS & ELECTRIC Denver IronW orks & Foundry Co,1827 Wynkoop,1915,1915,Foundry,FALSE,39.7540238292857,-104.998161064647,,,,,,No parcel match,1910s
-HF03621,genl mgr Colorado Iron Works,140 Cook,1914,1915,Iron & steel works,TRUE,39.7184706730845,-104.947375957696,,,,,,No parcel match,1910s
-HF03628,Fish A E,1932 Curtis,1915,1915,Machine shop / machinery,FALSE,39.7503102099265,-104.990796758171,,,,,,No parcel match,1910s
-HF03632,Fox P,2752 W Colfax,1915,1915,Metal working,TRUE,39.7400184800029,-105.020960719859,,,,,,No parcel match,1910s
-HF03656,MINE & SMELTER SUPPLY CO Mitchell A,1105 Stout,1915,1915,Smelting & refining,FALSE,39.741428987664,-104.998798189386,,,,,,No parcel match,1910s
-HF03665,OHIO & COLORADO SMELTING,1451 Curtis,1915,1915,Smelting & refining,FALSE,39.7457919303299,-104.996588645907,,,,,,No parcel match,1910s
-HF03670,Regent Rubber Co,1320 Lawrence,1914,1915,Rubber,TRUE,39.7459388629813,-104.999905009495,,,,,,No parcel match,1910s
-HF03677,Somerville Brass Foundry,1749 S Broadway,1911,1915,Foundry,FALSE,39.6848894877837,-104.987538895192,,,,,,No parcel match,1910s
-HF03893,Banner Chemical Co,2301 15th,1914,1916,Chemicals,FALSE,39.755495,-105.00802,,,,,,No parcel match,1910s
-HF03897,Bennie Tire & Rubber Co B A,1548 Glenarm,1915,1916,Rubber,TRUE,39.7433646274301,-104.991058316301,,,,,,No parcel match,1910s
-HF03918,Dorrington W H,1449 Court,1914,1916,Metal working,FALSE,39.741095011829,-104.990520795723,,,,,,No parcel match,1910s
-HF03925,Fair C W,1763 Blake,1915,1916,Metal working,TRUE,39.7520673199909,-104.997196694423,,,,,,No parcel match,1910s
-HF03932,GARDELL J G,1414 15th,1916,1916,Machine shop / machinery,FALSE,39.7490993956661,-104.999698871984,,,,,,No parcel match,1910s
-HF03943,Johnson &Ball,2439 15th,1916,1916,Metal working,FALSE,39.7566435730657,-105.009518470734,,,,,,No parcel match,1910s
-HF03979,Woeber Auto Body Co,"",1916,1916,Transportation equipment,TRUE,39.7864226668681,-104.942914966783,,,,,,No parcel match,1910s
-HF04113,Crushers,3262 Blake,1916,1916,Petroleum refining & asphalt,FALSE,39.7660903972628,-104.979063944473,,,,,,No parcel match,1910s
-HF04115,Macadam and Asphalt Rollers,1507 Blake,1916,1916,Petroleum refining & asphalt,TRUE,39.7496648508085,-105.000286069101,,,,,,No parcel match,1910s
-HF04146,Rex Iron Works Co The,34 Larimer,1916,1916,Iron & steel works,TRUE,39.7399184292184,-105.015796562158,,,,,,No parcel match,1910s
-HF04225,“ Atlas Wire & Iron Works Co,916 W 8th,1912,1917,Iron & steel works,FALSE,39.7289075377477,-104.998875771677,,,,,,No parcel match,1910s
-HF04264,Enterprise Sheet Metal Works,2233 Glenarm,1917,1917,Metal working,FALSE,39.7497383545329,-104.982833125346,,,,,,No parcel match,1910s
-HF04265,EMPIRE BOTTLING CO,1749 Blake,1917,1917,Foundry,TRUE,39.7519318859627,-104.997371401939,,,,,,No parcel match,1910s
-HF04275,Fortner L A,3492 W 38th,1914,1917,Metal working,FALSE,39.7694857804325,-105.033024741759,,,,,,No parcel match,1910s
-HF04280,GLOBE SHEET METAL WORKS,2262 Glenarm,1913,1917,Metal working,FALSE,39.7500201773009,-104.982460424946,,,,,,No parcel match,1910s
-HF04288,Hoover Chemical Laboratory,2042 Champa,1917,1917,Chemicals,TRUE,39.7506549638394,-104.988584815794,,,,,,No parcel match,1910s
-HF04319,RELIABLE EMPLOYMENT RetaliaJL,1743 Champa,1917,1917,Metal working,TRUE,39.7478507941437,-104.992204673491,,,,,,No parcel match,1910s
-HF04333,finishing and copper plating,1638 Blake,1911,1917,Metal working,TRUE,39.7509075511511,-104.998713786881,,,,,,No parcel match,1910s
-HF04352,Western Brass Works,1440 Blake,1917,1917,Foundry,TRUE,39.7491361115023,-105.000974204435,,,,,,No parcel match,1910s
-HF04357,WESTERN WIRE WORKS,205 15th,1917,1917,Metal working,FALSE,39.7409352056977,-104.989050206079,,,,,,No parcel match,1910s
-HF04440,Smelter settlement,137 E 1st av,1917,1917,Smelting & refining,FALSE,39.7183490528418,-104.985783601234,,,,,,No parcel match,1910s
-HF04557,ABGCle mers & Dyers,1219 E Colfax,1932,1932,Metal working,FALSE,39.740026,-104.972025,,,,,,No parcel match,1930s
-HF04558,auto body builders,3820 Steele,1932,1932,Transportation equipment,FALSE,39.7695735082163,-104.949892034902,,,,,,No parcel match,1930s
-HF04576,Leson Sheet MetalW orks,1233 E 13th,1932,1932,Metal working,FALSE,39.736875,-104.972629876356,,,,,,No parcel match,1930s
-HF04578,Metal Spinning & Plating Works Meyer Brokerage Go,1417 15th,1932,1932,Metal working,FALSE,39.7490471490174,-104.999630975789,,,,,,No parcel match,1930s
-HF04666,MACHINE SHOPGOBATTI MFG. GO,503 W. 4th,1935,1935,Machine shop / machinery,FALSE,39.7225318976121,-104.994027061149,,,,,,No parcel match,1930s
-HF04675,Dunn Sheet Metal Works,311 E 7th av,1935,1935,Metal working,FALSE,39.7272819804279,-104.983494533914,,,,,,No parcel match,1930s
-HF04683,Goulden Geo H,1060 Acoma,1935,1935,Machine shop / machinery,FALSE,39.7331555905445,-104.988845561789,,,,,,No parcel match,1930s
-HF04685,Harner C D,221 W 10th av,1935,1935,Machine shop / machinery,FALSE,39.732052,-104.990542102041,,,,,,No parcel match,1930s
-HF04687,Hicks Arthur G^ machine shop,1429 E 26th av,1935,1935,Machine shop / machinery,FALSE,39.7544812841722,-104.97052699836,,,,,,No parcel match,1930s
-HF04702,Western Iron Foundry,1320 Wazee,1935,1935,Foundry,TRUE,39.7487296484727,-105.003032948297,,,,,,No parcel match,1930s
-HF04787,Otto,3500 Larimer,1943,1943,Transportation equipment,TRUE,39.766953,-104.974504,,,,,,No parcel match,1940s
-HF04791,Erickson dist mgr,620 E 17th av,1943,1943,Soap,FALSE,39.7432630124504,-104.97965669216,,,,,,No parcel match,1940s
-HF04795,Cars 11,2814 Lari,1943,1943,Metal working,TRUE,39.7605571381003,-104.98275886334,,,,,,No parcel match,1940s
-HF04799,Dowdle Sheet Metal & Furnace,1804 S Pearl,1943,1943,Metal working,TRUE,39.6839192240448,-104.980478611248,,,,,,No parcel match,1940s
-HF04801,American Smelting & Refining,2627 W 8th,1943,1943,Smelting & refining,FALSE,39.729311045977,-105.019887241379,,,,,,No parcel match,1940s
-HF04804,genl mgr,1710 Welton,1911,1943,Foundry; Iron & steel works; Manufactured gas; Metal working,TRUE,39.7455409875189,-104.989971946145,,,,,,No parcel match,1940s
-HF04814,Schmidt G A Auto Body Co,1630 Platte,1943,1943,Transportation equipment,TRUE,39.7576807891588,-105.007720483915,,,,,,No parcel match,1940s
-HF04824,Voss pres,1329 Walnut,1943,1943,Machine shop / machinery,FALSE,39.7588692118395,-104.986702797989,,,,,,No parcel match,1940s
-HF04892,Western Sheet Metal Works,1915 E 9th,1943,1943,Metal working,FALSE,39.730484,-104.96458258508,,,,,,No parcel match,1940s
-HF04920,ASPHALTUM,1727 California,1913,1943,Petroleum refining & asphalt,FALSE,39.7463688203506,-104.9906518334,,,,,,No parcel match,1940s
-HF04969,METALWORKS INC,1413 S Bdway,1943,1943,Metal working,TRUE,39.6909505081734,-104.987482166558,,,,,,No parcel match,1940s
-HF05126,"go o BACON GEORGE M., dealer in hardware, stoves, ranges and furnaces, tin and",1120 15th,1891,1891,Metal working,FALSE,39.747012030158,-104.996975664008,,,,,,No parcel match,1890s
-HF05130,Western Chemical Works Co,1106 15th,1891,1891,Chemicals,FALSE,39.7469595083802,-104.996906600062,,,,,,No parcel match,1890s
-HF05132,Bloedorn Frank C,2948 Blake,1891,1891,Machine shop / machinery,FALSE,39.7631699089517,-104.982858831348,,,,,,No parcel match,1890s
-HF05136,"Button & Flaherty, (C. E. Burton and D. J. Flah erty,) proprs, Queen City Cornice Works",418 15th,1891,1891,Metal working,FALSE,39.7423883219851,-104.990913423941,,,,,,No parcel match,1890s
-HF05145,Denver Electrotype and Stereotype,1622 Blake,1891,1891,Foundry,TRUE,39.7507583815992,-104.998912225938,,,,,,No parcel match,1890s
-HF05150,DENVER TYPE FOUNDRY,1622 Blake,1891,1891,Foundry,TRUE,39.7507583815992,-104.998912225938,,,,,,No parcel match,1890s
-HF05166,Heale George H. B,1422 Larimer,1891,1891,Metal working,TRUE,39.7475415102041,-104.999557428571,,,,,,No parcel match,1890s
-HF05171,Lead Works,2747 Blake,1891,1891,Smelting & refining,TRUE,39.7615486255854,-104.984953608728,,,,,,No parcel match,1890s
-HF05180,"LEYNER J GEORGE, manufacturing and jobbing",1613 Wazee,1891,1891,Machine shop / machinery,TRUE,39.7513348757277,-104.999875692788,,,,,,No parcel match,1890s
-HF05190,Mee Robert,847 Water,1891,1891,Machine shop / machinery,TRUE,39.7525813636337,-105.013390519435,,,,,,No parcel match,1890s
-HF05220,"Walker Thomas C., propr, Midland Foundry and Machine Works",1534 Delgany,1891,1891,Foundry,FALSE,39.7525250672111,-105.003579247938,,,,,,No parcel match,1890s
-HF05310,Austgen Rubber Co,19 S Bdway,1917,1920,Rubber,FALSE,39.7157622960774,-104.987509495065,,,,,,No parcel match,1920s
-HF05315,Bio-Pharm Chemical Co,613 22d,1917,1920,Chemicals,FALSE,39.7502102670189,-104.984190712406,,,,,,No parcel match,1920s
-HF05318,Brickham Henry,1820 Market,1891,1920,Metal working,TRUE,39.7519395627623,-104.995623407427,,,,,,No parcel match,1920s
-HF05325,CARD C S IRON WORKS CO THE,1427 Stout,1910,1920,Iron & steel works,TRUE,39.744226098529,-104.995148745858,,,,,,No parcel match,1920s
-HF05342,Dawson W H,1937 Larimer,1914,1920,Metal working,FALSE,39.7523515482729,-104.993358966222,,,,,,No parcel match,1920s
-HF05345,“ Diamond Rubber Co,1633 Court,1913,1920,Rubber,FALSE,39.7426904328597,-104.98845515065,,,,,,No parcel match,1920s
-HF05355,Garnett-Klator Chemical Co,2019 Champa,1920,1920,Chemicals,FALSE,39.7504249651748,-104.988879376433,,,,,,No parcel match,1920s
-HF05359,Gates Rubber Co,999 S Bdwy,1920,1920,Rubber,TRUE,39.698606,-104.987454,,,,,,No parcel match,1920s
-HF05367,Greubel T C,1628 Court,1915,1920,Metal working,FALSE,39.7427708634211,-104.988345868651,,,,,,No parcel match,1920s
-HF05372,Hingley J A,1816 Blake,1914,1920,Machine shop / machinery,TRUE,39.752567072456,-104.996547114464,,,,,,No parcel match,1920s
-HF05380,Jesse H,2212 Larimer,1920,1920,Metal working,TRUE,39.7549254810697,-104.990023413784,,,,,,No parcel match,1920s
-HF05381,Johnson J A,2439 15th,1917,1932,Metal working,FALSE,39.7566435730657,-105.009518470734,,,,,,No parcel match,1930s
-HF05385,Lang Haes tinner,1165 Welton,1920,1920,Metal working,FALSE,39.7405727645151,-104.996402637008,,,,,,No parcel match,1920s
-HF05386,Leson J,1913 W 32nd av,1911,1920,Metal working,FALSE,39.7620461574935,-105.009798463183,,,,,,No parcel match,1920s
-HF05395,Mutual Chemical Co,1424 W Colfax av,1920,1920,Chemicals,FALSE,39.7402191849827,-105.005479511689,,,,,,No parcel match,1920s
-HF05400,National Smelting & Refining Co,25 Larimer,1920,1920,Smelting & refining,TRUE,39.7399003121588,-105.015835954297,,,,,,No parcel match,1920s
-HF05408,Peerless Alloy Co,1409 Blake,1916,1920,Foundry; Smelting & refining,TRUE,39.7488768040236,-105.001314817353,,,,,,No parcel match,1920s
-HF05414,Pierce Rubber Co,9 S Broadway,1920,1920,Rubber,FALSE,39.7162137970847,-104.987504662389,,,,,,No parcel match,1920s
-HF05420,Queen City Brass Works,1431 Blake,1911,1932,Foundry,TRUE,39.749055061614,-105.001080624982,,,,,,No parcel match,1930s
-HF05421,QUEEN CITY FOUNDRY CO,1633 Blake,1884,1920,Foundry,TRUE,39.7508516125692,-104.998788201528,,,,,,No parcel match,1920s
-HF05426,Republic Rubber Co,1645 Tremont pl,1915,1920,Rubber,FALSE,39.7435926530612,-104.989030836735,,,,,,No parcel match,1920s
-HF05427,Retalia J L,1752 Welton,1916,1920,Metal working,FALSE,39.745941172927,-104.989460956073,,,,,,No parcel match,1920s
-HF05437,Schlitter Iron Foundry,3924 Wynkoop,1920,1943,Foundry,TRUE,39.7729497185933,-104.973714089743,,,,,,No parcel match,1940s
-HF05438,riage and wagon maker,46 W Colfax av,1920,1920,Transportation equipment,FALSE,39.7396739327004,-105.011200005772,,,,,,No parcel match,1920s
-HF05439,Schmitt W C,1551 Blake,1914,1920,Metal working,FALSE,39.7500897334257,-104.999759453172,,,,,,No parcel match,1920s
-HF05453,Stiles George A,1416 Blake,1920,1920,Machine shop / machinery,TRUE,39.7489416080471,-105.001229634705,,,,,,No parcel match,1920s
-HF05461,United States Rubber Co,1515 Wazee,1920,1943,Rubber,TRUE,39.7504187797629,-105.001066815795,,,,,,No parcel match,1940s
-HF05468,The General Chemical Co),"",1920,1920,Chemicals,TRUE,39.714823,-105.005410577465,,,,,,No parcel match,1920s
-HF05471,Western Shoe & Rubber Co,1437 Lawrence,1920,1920,Rubber,FALSE,39.7470082710834,-104.998513403497,,,,,,No parcel match,1920s
-HF05472,Western Smelting Co,1304 Blake,1920,1920,Smelting & refining,TRUE,39.7485193961203,-105.003044986268,,,,,,No parcel match,1920s
-HF05798,Mastrini John,1201 Spruce,1927,1927,Smelting & refining,FALSE,39.73562,-104.897557,,,,,,No parcel match,1920s
-HF05864,ABBOTTINVESTMENTCO,2601 Walnut,1929,1929,Paint & varnish,TRUE,39.759231,-104.986218,,,,,,No parcel match,1920s
-HF05877,Crites E B,258 S Bdway,1929,1929,Metal working,FALSE,39.7122402616941,-104.987547522724,,,,,,No parcel match,1920s
-HF05885,Flaherty P J,1417 Fox,1911,1929,Metal working,TRUE,39.7387086867846,-104.995296974121,,,,,,No parcel match,1920s
-HF05902,Metal Spinning & Plating Works,1417 Blake,1929,1929,Metal working,TRUE,39.7489416080471,-105.001229634705,,,,,,No parcel match,1920s
-HF05921,— Scott Automobile Body Co,631 E 18th av,1929,1935,Transportation equipment,FALSE,39.7448579387755,-104.979524897959,,,,,,No parcel match,1930s
-HF05922,copper plating,1638 Blake,1929,1932,Metal working,TRUE,39.7509075511511,-104.998713786881,,,,,,No parcel match,1930s
-HF05996,Sparr H J,112 E 5th,1929,1929,Metal working,TRUE,39.7241377755206,-104.986102001267,,,,,,No parcel match,1920s
-HF05997,Specht John F,1715 E 13th,1929,1929,Metal working,FALSE,39.7368262880091,-104.96706671427,,,,,,No parcel match,1920s
-HF06078,KesslerFred,2706 Lari,1933,1933,Metal working,FALSE,39.7595573784659,-104.984054462871,,,,,,No parcel match,1930s
-HF06083,Berry )machinists,820 21st,1933,1933,Machine shop / machinery,TRUE,39.75063575,-104.987176083333,,,,,,No parcel match,1930s
-HF06201,A-C MOTORS & METAL WORKS,1 S Santa,1939,1939,Metal working,FALSE,39.716597,-104.998577,,,,,,No parcel match,1930s
-HF06203,derson ) machine shop,1849 Champa,1939,1939,Machine shop / machinery,FALSE,39.7488480903286,-104.99092726467,,,,,,No parcel match,1930s
-HF06217,Commercial Chemical Corp,1612 Blake,1939,1939,Chemicals,TRUE,39.7506654323318,-104.999036607204,,,,,,No parcel match,1930s
-HF06223,Denver Grinding Ball & Foundry,1677 S Clarkson,1935,1939,Foundry,FALSE,39.6861728979592,-104.978108,,,,,,No parcel match,1930s
-HF06225,Dunn Sheet Metal Wks,1890 Market,1939,1939,Metal working,FALSE,39.7526038177885,-104.99476836657,,,,,,No parcel match,1930s
-HF06227,Fox sec,1326 Larimer,1939,1939,Machine shop / machinery,FALSE,39.7467153333333,-105.000759666667,,,,,,No parcel match,1930s
-HF06229,Goldberg Bros,1842 Calif,1911,1939,Metal working,FALSE,39.747456747996,-104.989264066071,,,,,,No parcel match,1930s
-HF06230,Goldberg Simon,2717 W Colfax,1929,1939,Metal working,TRUE,39.7405609131517,-105.020510398056,,,,,,No parcel match,1930s
-HF06236,irrigalion gates,221 W 10th av,1939,1939,Machine shop / machinery,FALSE,39.732052,-104.990542102041,,,,,,No parcel match,1930s
-HF06261,Pioneer Iron & Wire Works Co,1435 Market,1920,1939,Metal working,TRUE,39.7483159725483,-105.000278786265,,,,,,No parcel match,1930s
-HF06266,Rocky Mountain Chromium Plating Co,1417 15th,1939,1939,Metal working,FALSE,39.7490471490174,-104.999630975789,,,,,,No parcel match,1930s
-HF06276,~:!: paste,2447 Larimer ST,1939,1939,Machine shop / machinery,TRUE,39.7572106301684,-104.987085864014,,,,,,No parcel match,1930s
-HF06278,of lumber,331 W Colfax,1939,1939,Machine shop / machinery,FALSE,39.7401257111611,-104.992041942827,,,,,,No parcel match,1930s
-HF06282,Western Bronze & Brass Foundry Western File Service,1322 Blake,1939,1939,Foundry,TRUE,39.7485481786618,-105.002855924476,,,,,,No parcel match,1930s
-HF06374,and ventilating,151 W 1st,1935,1939,Metal working,FALSE,39.7183731400512,-104.990020883859,,,,,,No parcel match,1930s
-HF06512,Borax Consolidated Ltd,2016 Blake,1950,1950,Chemicals,FALSE,39.7544802064491,-104.994085770556,,,,,,No parcel match,1950s
-HF06515,Buck'sGun Shop BruceF Jackson,3945 Race,1950,1950,Plastics,FALSE,39.7723399178211,-104.963632337176,,,,,,No parcel match,1950s
-HF06518,Cavaleri,1735 W 35th,1950,1950,Metal working,FALSE,39.7656400161951,-105.006994423907,,,,,,No parcel match,1950s
-HF06523,Chromite Co of Denver The Robert S Layton,4620 E Colfax,1950,1950,Metal working,FALSE,39.740135,-104.933574468607,,,,,,No parcel match,1950s
-HF06527,Colo Fumigating &t Exterminating Co,1754 S Bdwy,1950,1950,Chemicals,FALSE,39.6847785487581,-104.987539507551,,,,,,No parcel match,1950s
-HF06528,Colo Gear Co,2724 Walnut,1950,1950,Machine shop / machinery,TRUE,39.7603860385071,-104.984712333821,,,,,,No parcel match,1950s
-HF06531,Colo Sanitary Wiping Cloth Co Philip Saffil,2637 W 13th Av,1950,1950,Plastics,FALSE,39.7365212027639,-105.018825563677,,,,,,No parcel match,1950s
-HF06532,Colo Serum Co,4950 York,1950,1950,Chemicals,TRUE,39.7862399958163,-104.959277160879,,,,,,No parcel match,1950s
-HF06533,"Colo Standard Upholstery Co M Nierenberg M Stein, I Lande",2363 Larimer,1950,1950,Plastics,TRUE,39.7563420215767,-104.988206562299,,,,,,No parcel match,1950s
-HF06534,Colo Tool & Die Co A J Giest,2211 Champa,1950,1950,Machine shop / machinery,FALSE,39.7522244625191,-104.986558404756,,,,,,No parcel match,1950s
-HF06535,Colo Toro Co,693 E Speer Blvd,1950,1950,Machine shop / machinery,FALSE,39.7209111207015,-104.978822131734,,,,,,No parcel match,1950s
-HF06537,Compressed Steel Co Inc,110 S Santa,1950,1950,Metal working,TRUE,39.7147004355061,-104.998562471839,,,,,,No parcel match,1950s
-HF06539,Continental Can Co Inc QCC Po Box,241 S Cherokee,1950,1950,Metal working,FALSE,39.7122824925978,-104.992381497316,,,,,,No parcel match,1950s
-HF06540,Cook Frank C Co,3147 Larimer,1950,1950,Plastics,TRUE,39.7636615064512,-104.978733933018,,,,,,No parcel match,1950s
-HF06541,Cook RobertA MachSls RobertA CookIrJ W Johnson,963 Lafayette,1950,1950,Machine shop / machinery,FALSE,39.7314665319442,-104.970633608335,,,,,,No parcel match,1950s
-HF06544,Crosta CA Inc,1830 Mkt St,1950,1950,Metal working,TRUE,39.7520343897026,-104.995501170904,,,,,,No parcel match,1950s
-HF06545,Crucible Steel Co of America,2635 Walnut,1950,1950,Metal working,TRUE,39.7595515443392,-104.985797373303,,,,,,No parcel match,1950s
-HF06546,Curriers of Denver Robert F Buchanan,1300 E Colfax Av,1950,1950,Metal working,FALSE,39.740024,-104.970737,,,,,,No parcel match,1950s
-HF06547,Dart Mfg & Sls Co,1246 Champa,1950,1950,Plastics,FALSE,39.7431770443002,-104.998202078442,,,,,,No parcel match,1950s
-HF06549,Davis Power Tools John W Davis & Leona B Graham,3362 Larimer,1950,1950,Machine shop / machinery,TRUE,39.7656777339613,-104.976146702959,,,,,,No parcel match,1950s
-HF06552,De Brass & Copper Co Frank L Beeson & Fern Beeson,4023 E Colfax,1950,1950,Metal working,FALSE,39.7401304510791,-104.940086996425,,,,,,No parcel match,1950s
-HF06553,De Diet Mineral Co John R Taft,3158 W Colfax,1950,1950,Soap,FALSE,39.7403980952381,-105.028118690476,,,,,,No parcel match,1950s
-HF06555,De Fire Clay Co PO Box,2301 Blake St,1950,1950,Chemicals,TRUE,39.7571,-104.990714,,,,,,No parcel match,1950s
-HF06559,De Pest Control & Serv Lab,754 S Bdwy,1950,1950,Chemicals,TRUE,39.7029168545684,-104.987488,,,,,,No parcel match,1950s
-HF06562,De Rubber Prod Co Sue C Titus,1734 Lawrence,1950,1950,Rubber,FALSE,39.7497865549046,-104.994913674524,,,,,,No parcel match,1950s
-HF06570,Eaton Mtl Prod Co,4800 York,1950,1950,Metal working,TRUE,39.783762,-104.959254,,,,,,No parcel match,1950s
-HF06572,Economy Forms Corp,2863 Walnut,1950,1950,Metal working,TRUE,39.7616880308115,-104.983039202912,,,,,,No parcel match,1950s
-HF06575,"FlexoveyorMfgCoGC Penn, EC HorneIt James Shields",1220 S Acoma St,1950,1950,Machine shop / machinery,TRUE,39.6944451011698,-104.988671012521,,,,,,No parcel match,1950s
-HF06576,Freeman• Freeman Inc,"",1950,1950,Chemicals,TRUE,39.7067324166667,-104.999192583333,,,,,,No parcel match,1950s
-HF06577,Gains Orthofedic Appl Inc,1633 Court Pl,1950,1950,Machine shop / machinery,FALSE,39.7426904328597,-104.98845515065,,,,,,No parcel match,1950s
-HF06578,Gal Gas.Inc,5604 E Colfax Av,1950,1950,Petroleum refining & asphalt,FALSE,39.7401417959256,-104.922294062183,,,,,,No parcel match,1950s
-HF06580,"General Chemical Div Allied Chemical I, Dye Corp",1271 W Bayaud Av,1950,1950,Chemicals,TRUE,39.714823,-105.005410577465,,,,,,No parcel match,1950s
-HF06582,Genera Machinery I< Supply Co,3434 Brighton Blvd,1950,1950,Machine shop / machinery,TRUE,39.7697118509225,-104.97962234306,,,,,,No parcel match,1950s
-HF06583,Gillard Plastics Inc,1137 Larimer St,1950,1950,Plastics,TRUE,39.7456642223532,-105.003070722835,,,,,,No parcel match,1950s
-HF06584,Glenshore Mfg Co Inc,"",1950,1950,Plastics,TRUE,39.7480803642313,-104.995411499604,,,,,,No parcel match,1950s
-HF06587,Goodrich BF Co,53 S Bdwy,1950,1950,Rubber,FALSE,39.7153194909958,-104.987515589687,,,,,,No parcel match,1950s
-HF06589,Gourmet Shop Roy B Simons & Ina E Simons Goodrich BF Co,2625 Walnut St,1950,1950,Rubber,TRUE,39.7594572028904,-104.985921004876,,,,,,No parcel match,1950s
-HF06590,Grabler Mfg Co The,1962 Blake St,1950,1950,Metal working,TRUE,39.753969599351,-104.994729839203,,,,,,No parcel match,1950s
-HF06594,Great Western Exterminating Co,4536 E Colfax Av,1950,1950,Chemicals,FALSE,39.740135,-104.934560818546,,,,,,No parcel match,1950s
-HF06596,Grimes Pipe a. Supply Co The D a. J Grimes,1300 Larimer St,1950,1950,Metal working,FALSE,39.74669,-105.000813,,,,,,No parcel match,1950s
-HF06597,Gunderson-Taylor Machinery Co,970 Cherokee St,1950,1950,Machine shop / machinery,FALSE,39.7319288767343,-104.991679513689,,,,,,No parcel match,1950s
-HF06599,Hanes Agcy,617 E 1st Av,1950,1950,Chemicals,FALSE,39.7183213702359,-104.980089762243,,,,,,No parcel match,1950s
-HF06601,Haver-Glover Serv,1411 Mkt St,1950,1950,Soap,TRUE,39.7480830431662,-105.000575397652,,,,,,No parcel match,1950s
-HF06602,Heinsohn A E Printing Ir Machinery Ir Supplies A E Heinsohn,1443 Blake St,1950,1950,Machine shop / machinery,TRUE,39.7491523214799,-105.000952920326,,,,,,No parcel match,1950s
-HF06605,Hercules Powder Co,1822 California,1884,1950,Chemicals; Explosives,FALSE,39.7472701602405,-104.989511601287,,,,,,No parcel match,1950s
-HF06606,Highland Industries Inc,2255 S Delaware,1950,1950,Metal working,TRUE,39.6756974081633,-104.992270163265,,,,,,No parcel match,1950s
-HF06610,Hold Everything Prod Edwin Hill & Jack Kline,1334 Speer Blvd,1950,1950,Plastics,FALSE,39.7372130454924,-104.995985744557,,,,,,No parcel match,1950s
-HF06611,Horning Martha K,783 S Wash,1950,1950,Metal working,FALSE,39.702339340475,-104.979271629288,,,,,,No parcel match,1950s
-HF06613,Howard Flint Ink Co,2807 Blake St,1950,1950,Chemicals,FALSE,39.7620713784398,-104.984276368332,,,,,,No parcel match,1950s
-HF06615,Hurley Co The,2140 Mkt St,1950,1950,Plastics,FALSE,39.7549464931091,-104.9917515609,,,,,,No parcel match,1950s
-HF06619,Denver lnternat'l Printing Ink Div ~f InterChemical Corp,1824 Curtis,1950,1950,Chemicals,FALSE,39.7492932652566,-104.992103065044,,,,,,No parcel match,1950s
-HF06622,Jesmer Ralph K,4836 Bryant St,1950,1950,Machine shop / machinery,FALSE,39.7845301432706,-105.019316559043,,,,,,No parcel match,1950s
-HF06633,Metalcraft Welding Ii Fabricating Co,"",1950,1950,Metal working,TRUE,39.7830560865007,-104.994315893354,,,,,,No parcel match,1950s
-HF06634,Midstate Mfg Co,1131 S Bannock,1950,1950,Metal working,TRUE,39.6960784394583,-104.990135532085,,,,,,No parcel match,1950s
-HF06635,WM. E. GEER SEC & GEN MGR. FREDERICK Mile High Paint Co,915 S York,1950,1950,Iron & steel works,FALSE,39.6999602852509,-104.960565,,,,,,No parcel match,1950s
-HF06639,Morton Neon Co,"",1950,1950,Plastics,TRUE,39.7311961942009,-105.023980422279,,,,,,No parcel match,1950s
-HF06640,Morton & Peabody Inc,1925 W 13th,1950,1950,Machine shop / machinery,FALSE,39.736905,-105.012434523142,,,,,,No parcel match,1950s
-HF06642,Nathan Louis B William & Jacob Goldberg,1745 Wazee,1950,1950,Metal working,FALSE,39.752582686831,-104.99827639373,,,,,,No parcel match,1950s
-HF06643,Nat'l Cash Register Co The,1725 Welton,1950,1950,Plastics,FALSE,39.7456741387554,-104.989801293743,,,,,,No parcel match,1950s
-HF06645,· Nat'l Lead Co,2945 Blake,1950,1950,Metal working,FALSE,39.7631313011455,-104.982908469956,,,,,,No parcel match,1950s
-HF06652,Overland Fndry Go Hosek Mfg Go,1251 Osage,1950,1950,Plastics,FALSE,39.7361017505561,-105.005263507309,,,,,,No parcel match,1950s
-HF06653,K-1 • Pacific States Gast Iron Pipe Go,1921 Blake,1950,1950,Metal working,FALSE,39.7535454771693,-104.995265347009,,,,,,No parcel match,1950s
-HF06655,Pearl-Friedland Co The,2119 Curtis,1950,1950,Metal working,TRUE,39.7520317346904,-104.988547271675,,,,,,No parcel match,1950s
-HF06656,Perfec BondingMtlCoGR & EttaV Fisher,157 S Lafayette,1950,1950,Machine shop / machinery,FALSE,39.7136982860774,-104.971017381479,,,,,,No parcel match,1950s
-HF06662,Plastics CenterCF Pearson •ED Samborski,427 E 19th,1950,1950,Plastics,FALSE,39.7461825467043,-104.981519346488,,,,,,No parcel match,1950s
-HF06663,Power Equip Co Inc,3440 Brighton Blvd,1950,1950,Machine shop / machinery,TRUE,39.7697686773986,-104.979550217148,,,,,,No parcel match,1950s
-HF06671,Rains Flo Mfg Co Robert H Rains,1913 Lawrence,1950,1950,Plastics,TRUE,39.7514542326417,-104.992776285815,,,,,,No parcel match,1950s
-HF06676,RedfieldGun SightColWItWC Redfield Et Al,3315 Gilpin,1950,1950,Plastics,FALSE,39.7634244285701,-104.967178714855,,,,,,No parcel match,1950s
-HF06677,Reliable Pest Control Co O R Phillips & CB Morgan,3145 Tejon,1950,1950,Chemicals,FALSE,39.7616273536777,-105.011154069569,,,,,,No parcel match,1950s
-HF06680,Robvon Corp The,2440 Larimer,1950,1950,Metal working,TRUE,39.7572566154088,-104.987024383747,,,,,,No parcel match,1950s
-HF06681,Rock TowerInnAA Phelps &P Paulucci,3500 W Alameda,1950,1950,Plastics,FALSE,39.711225132741,-105.034013971735,,,,,,No parcel match,1950s
-HF06683,Rocky Mtn Mercantile Co,1415 Mkt,1950,1950,Metal working,TRUE,39.7481218604326,-105.000525956712,,,,,,No parcel match,1950s
-HF06685,4801 W 38th,4801 W 38th,1950,1950,Machine shop / machinery,FALSE,39.769359,-105.048598,,,,,,No parcel match,1950s
-HF06693,Scientific Supply Co,800 Water,1950,1950,Chemicals,TRUE,39.7525124957912,-105.01354457799,,,,,,No parcel match,1950s
-HF06694,Sechrist Albert Mfg Co The,"",1950,1950,Metal working,TRUE,39.7872467528192,-104.988724027815,,,,,,No parcel match,1950s
-HF06696,SeventhAve CafeWE DeVries 233E 7th Seiberling Rubber Co,2101 Blake,1950,1950,Rubber,TRUE,39.755233,-104.993136,,,,,,No parcel match,1950s
-HF06697,Shattuck SW Chemical Co The,1805 S Bannock,1950,1950,Chemicals,TRUE,39.6833101474117,-104.989935378258,,,,,,No parcel match,1950s
-HF06702,Smedegaard G N Constr Co,2570 Grape,1950,1950,Plastics,FALSE,39.7541707137042,-104.924623426611,,,,,,No parcel match,1950s
-HF06705,Smitherenn Co Inc Great Western Div,4536 E Colfax,1950,1950,Chemicals,FALSE,39.740135,-104.934560818546,,,,,,No parcel match,1950s
-HF06706,Snow White Prod Co,1951 Mkt,1950,1950,Soap,TRUE,39.7531759892403,-104.994031137143,,,,,,No parcel match,1950s
-HF06708,Snyder Metal Equip David Snyder,2706 Larimer,1950,1950,Metal working,FALSE,39.7595573784659,-104.984054462871,,,,,,No parcel match,1950s
-HF06710,"Square Deal Mfg Co WA. WA Jr, I, Trusella P Thomas",2344 Larimer,1950,1950,Chemicals,TRUE,39.7561738440897,-104.988423753261,,,,,,No parcel match,1950s
-HF06712,Starco Prod Co,1519 Lawrence,1950,1950,Chemicals,FALSE,39.7477711757752,-104.997528151296,,,,,,No parcel match,1950s
-HF06713,Stayput Clamp It Coupling Co,3975 York,1950,1950,Metal working,TRUE,39.7724683741295,-104.959558460966,,,,,,No parcel match,1950s
-HF06716,Sun Valley ElecMfgCoAM Campbell &W R Harn,710 W Colfax,1950,1950,Machine shop / machinery,FALSE,39.7400157142857,-104.996869714286,,,,,,No parcel match,1950s
-HF06717,Surplus Tools & Commodities Wm D Cox & CF Hale,1379 W Alameda,1950,1950,Machine shop / machinery,TRUE,39.7111840456954,-105.005785645507,,,,,,No parcel match,1950s
-HF06718,Temple Paul N,1925 Blake,1950,1950,Chemicals,FALSE,39.753585869758,-104.995214346265,,,,,,No parcel match,1950s
-HF06720,Thompson Pipe & Steel Co,3001 Larimer,1950,1950,Metal working,TRUE,39.76228,-104.980515,,,,,,No parcel match,1950s
-HF06721,Tibbs Veterinary Supply Grant R & OR Tibbs,1110 E 18th Av,1950,1950,Soap,FALSE,39.7448329828134,-104.973260817307,,,,,,No parcel match,1950s
-HF06724,Triangle Western Sls & Supply Co,2255 S Delaware,1950,1950,Plastics,TRUE,39.6756974081633,-104.992270163265,,,,,,No parcel match,1950s
-HF06725,Triploil Refining Co Otis Amos,3345 Brighton Blvd,1950,1950,Petroleum refining & asphalt,FALSE,39.7688602690951,-104.980705317672,,,,,,No parcel match,1950s
-HF06726,Turco Prod Inc,2016 Blake,1950,1950,Chemicals,FALSE,39.7544802064491,-104.994085770556,,,,,,No parcel match,1950s
-HF06729,Union Welding Lee W Ulrich,3425 Lipan St,1950,1950,Machine shop / machinery,TRUE,39.7650678798532,-105.001762458945,,,,,,No parcel match,1950s
-HF06732,Vine Pharmacy Anthony J Joy,2039 E 13th Av,1950,1950,Metal working,FALSE,39.7368180628061,-104.963004450307,,,,,,No parcel match,1950s
-HF06735,Wesco Corp Evergreen,531 S Vine,1950,1950,Plastics,FALSE,39.7069316935921,-104.96286217659,,,,,,No parcel match,1950s
-HF06737,Western Belting & Packing Co,1720 Wazee,1950,1950,Rubber,FALSE,39.7523601084552,-104.998566642454,,,,,,No parcel match,1950s
-HF06739,Western Fndry J Ernest & James L Higson,2000 E 40th Av,1950,1950,Metal working,TRUE,39.772897,-104.96363,,,,,,No parcel match,1950s
-HF06744,Wilkerson Valve Co Inc,260 S Dale Ct,1950,1950,Metal working,FALSE,39.7118760207389,-105.021506313479,,,,,,No parcel match,1950s
-HF07194,Denver Machine ShopEF White &PT Schonstrom,1409 Blake St,1956,1956,Machine shop / machinery,TRUE,39.7488768040236,-105.001314817353,,,,,,No parcel match,1950s
-HF07198,Dowdle Sheet Metal C o,1804 S. Pearl,1956,1956,Metal working,TRUE,39.6839192240448,-104.980478611248,,,,,,No parcel match,1950s
-HF07200,Dunn Sheet Metal & Mfg. C o,350 W. Evans,1956,1956,Metal working,FALSE,39.6785495,-104.99168,,,,,,No parcel match,1950s
-HF07206,Gates Rubber Co,999 S Bdwy,1956,1956,Rubber,TRUE,39.698606,-104.987454,,,,,,No parcel match,1950s
-HF07209,Hank's Auto Body Henry Vecch iarelli,4001 W 38th,1956,1956,Transportation equipment,FALSE,39.769432,-105.039337,,,,,,No parcel match,1950s
-HF07219,States Asphalt Co,5201 Bannock,1956,1956,Petroleum refining & asphalt,TRUE,39.791035,-104.989088,,,,,,No parcel match,1950s
-HF07220,Moyle's Sheet Metal & Furnace,1240 S. Bannock,1956,1956,Metal working,TRUE,39.6940679138618,-104.990172238076,,,,,,No parcel match,1950s
-HF07221,National Associated Petroleum Co Midland Svgs b,100 S Santa,1956,1956,Petroleum refining & asphalt,TRUE,39.714796,-104.998565,,,,,,No parcel match,1950s
-HF07225,Newlander A Machine Works,615 W 14th av,1956,1956,Machine shop / machinery,TRUE,39.7384522851194,-104.9954694267,,,,,,No parcel match,1950s
-HF07228,Oil Chemical & Atomic Wrkrs International,1840 California,1956,1956,Chemicals,FALSE,39.7474380892204,-104.989288819593,,,,,,No parcel match,1950s
-HF07230,Oneida Chemical Co Inc,1123 Larimer,1956,1956,Chemicals,TRUE,39.7456199136163,-105.003171688645,,,,,,No parcel match,1950s
-HF07241,Pyramid Petroleum Co,400 W Bayaud Av,1932,1956,Petroleum refining & asphalt,FALSE,39.714814,-104.993548,,,,,,No parcel match,1950s
-HF07245,Red Dot L-P Gas Co,2910 Huron,1950,1956,Manufactured gas; Petroleum refining & asphalt,TRUE,39.7585362148426,-104.99713972342,,,,,,No parcel match,1950s
-HF07246,ReffelJW Metals Foundry John Reffel 1950S,609 15th,1956,1956,Foundry,FALSE,39.7436354277574,-104.992592843164,,,,,,No parcel match,1950s
-HF07247,Reliable Sheet Metal Robert J Oppelt,2685 S High,1956,1956,Metal working,FALSE,39.6678942849267,-104.965279569059,,,,,,No parcel match,1950s
-HF07252,Royal Auto Body Richard S Jones & Vernon L,1158 S Broadway,1956,1956,Transportation equipment,FALSE,39.6955469768504,-104.98744117371,,,,,,No parcel match,1950s
-HF07253,Royal Oil Co Cascade Petroleum Co,2120 Delgany,1956,1956,Petroleum refining & asphalt,TRUE,39.7577597172657,-104.996833778127,,,,,,No parcel match,1950s
-HF07267,Thompson-Hayward Chemical C o,2228 Blake,1935,1956,Chemicals,TRUE,39.7564310136085,-104.991567736618,,,,,,No parcel match,1950s
-HF07269,United Steel & Iron Works,3609 Wynkoop,1956,1956,Iron & steel works,TRUE,39.7706503740362,-104.976684995784,,,,,,No parcel match,1950s
-HF07273,Victory Auto Body & Paint Shop,2260 California,1956,1956,Transportation equipment,FALSE,39.7513523771172,-104.98419886082,,,,,,No parcel match,1950s
-HF07275,Wilkin Sheet Metal,290 S. Perry,1956,1956,Metal working,FALSE,39.7115534271912,-105.03969475832,,,,,,No parcel match,1950s
-HF07276,Williams Sheet Metal W k s,524 W. Colfax,1956,1956,Metal working,FALSE,39.7401409016555,-104.994612428455,,,,,,No parcel match,1950s
-HF07279,Woeber Auto Body & Mfg. C o,4950 Jackson,1956,1956,Transportation equipment,TRUE,39.7864226668681,-104.942914966783,,,,,,No parcel match,1950s
-HF07433,Sheet Metal Joint Committee Inc,3935 W. Colfax,1956,1956,Metal working,TRUE,39.7403377370476,-105.038553434608,,,,,,No parcel match,1950s
-HF07435,Clyde's Auto Body Repair,415 S Bannock,1956,1956,Transportation equipment,TRUE,39.7090910781024,-104.989999761161,,,,,,No parcel match,1950s
-HF07543,Johnny's Boiler Shop,1725 Wabash,1956,1956,Machine shop / machinery,FALSE,39.7440163326506,-104.889336457539,,,,,,No parcel match,1950s
-HF07547,Sample Machine Shop,1852 Larimer ST,1956,1956,Machine shop / machinery,TRUE,39.7515747685116,-104.994375479046,,,,,,No parcel match,1950s
-HF07553,Alameda Sheet Metal & Hardware,4965 Jackson,1956,1956,Metal working,TRUE,39.7866692223461,-104.942915318718,,,,,,No parcel match,1950s
-HF07559,Broadway Sheet Metal Works,"",1956,1956,Metal working,TRUE,39.6712385595799,-104.889857707882,,,,,,No parcel match,1950s
-HF07561,Dow die Sheet Metal C o,1804 S. Pearl,1956,1956,Metal working,TRUE,39.6839192240448,-104.980478611248,,,,,,No parcel match,1950s
-HF07565,Kincannon Sheet Metal,1029 S. Federal,1956,1956,Metal working,FALSE,39.6980638130073,-105.025080754395,,,,,,No parcel match,1950s
-HF07568,Longo sfieet Metal Works,1735 W. 35th,1956,1956,Metal working,FALSE,39.7656400161951,-105.006994423907,,,,,,No parcel match,1950s
-HF07569,Merz,1419 Morrison Rd,1956,1956,Foundry,FALSE,39.7384921999596,-105.021843059726,,,,,,No parcel match,1950s
-HF07571,MIDWEST STEEL AND IRON WORKS CO,25 Larimer St,1920,1956,Iron & steel works,TRUE,39.7399003121588,-105.015835954297,,,,,,No parcel match,1950s
-HF07572,O'Brien Sheet Metal & Furnace Works,3512 E. 12th,1956,1956,Metal working,TRUE,39.7351093899814,-104.946041795901,,,,,,No parcel match,1950s
-HF07573,Reliable Sheet Metal,2685 S. High,1956,1956,Metal working,FALSE,39.6678942849267,-104.965279569059,,,,,,No parcel match,1950s
-HF07575,Smaldone Sheet Metal Works,4980 Elm,1956,1956,Metal working,FALSE,39.7871011834738,-105.022793,,,,,,No parcel match,1950s
-HF07576,South Denver Sheet Metal & Furnace Worl,1413 S. Bdwy,1956,1956,Metal working,TRUE,39.6909505081734,-104.987482166558,,,,,,No parcel match,1950s
-HF07578,Western Foundries,2000 E. 40th,1956,1956,Foundry,TRUE,39.772897,-104.96363,,,,,,No parcel match,1950s
-HF07580,Wixson Furnace & Sheet Metal W k s,2301 W. 30th,1956,1956,Metal working,FALSE,39.759644,-105.014482,,,,,,No parcel match,1950s
-HF07581,Wompey Sheet Metal Works,2500 15th,1933,1956,Metal working,TRUE,39.7574,-105.01051,,,,,,No parcel match,1950s
-HF07584,Fort Collins Sheet Metal Works,226 Walnut,1956,1956,Metal working,TRUE,39.742503110515,-105.013365297306,,,,,,No parcel match,1950s
-HF07595,PUEBLO-Fountain Foundry,1815 W. 14th,1956,1956,Foundry,TRUE,39.7384917182947,-105.011702152738,0504209007000,573,INDUSTRIAL-AUTO SERVICE GARAGE,Industrial,,Industrial / utility,1950s
-HF07599,ROCKY FORD-Steward Metal Works,1004 Elm ST,1956,1956,Metal working,FALSE,39.7323431323088,-104.929276030304,,,,,,No parcel match,1950s
-HF07602,City & County Wire Works,320 Josephine,1956,1956,Metal working,FALSE,39.7210659415286,-104.958251022842,,,,,,No parcel match,1950s
-HF07636,Cascade Petroleum Co,2120 Delgany,1956,1956,Petroleum refining & asphalt,TRUE,39.7577597172657,-104.996833778127,,,,,,No parcel match,1950s
-HF07692,Quality Sheet Metal Works,3301 W Colorado av,1941,1941,Metal working,FALSE,39.68495,-105.029788,,,,,,No parcel match,1940s
-HF07701,Acme Silver Plating Works,"",1941,1941,Metal working,TRUE,39.7455945943381,-105.003229383394,,,,,,No parcel match,1940s
-HF07703,Arscott S E Jr,1422 Law,1941,1941,Petroleum refining & asphalt,FALSE,39.7468746922218,-104.998686580835,,,,,,No parcel match,1940s
-HF07723,Hood Rubber Co,1751 Champa,1941,1941,Rubber,TRUE,39.747928247882,-104.992106665246,,,,,,No parcel match,1940s
-HF07725,Keddy Frank A,600 W Colfax,1941,1941,Transportation equipment,FALSE,39.740019,-104.995275,,,,,,No parcel match,1940s
-HF07726,Kenyon Iron Works,2042 Larimer,1941,1941,Iron & steel works,FALSE,39.7533477372025,-104.992075752371,,,,,,No parcel match,1940s
-HF07727,Kinzbach Win,1737 15th,1941,1941,Machine shop / machinery,FALSE,39.7511774615892,-105.00241193529,,,,,,No parcel match,1940s
-HF07729,Mackey Jerome E,3535 Walnut,1941,1941,Petroleum refining & asphalt,TRUE,39.7679482824671,-104.974946714373,,,,,,No parcel match,1940s
-HF07732,McPherson Edw B,1218 Elati,1941,1941,Foundry,FALSE,39.7355545905936,-104.994136319615,,,,,,No parcel match,1940s
-HF07733,Frank sec-treas,1744 Lawrence,1941,1941,Machine shop / machinery,FALSE,39.7498833978966,-104.99479062095,,,,,,No parcel match,1940s
-HF07739,Newlander Aug,2484 S Bdway,1939,1941,Machine shop / machinery,FALSE,39.6715442854005,-104.987583285318,,,,,,No parcel match,1940s
-HF07740,Nichols Carl J,227 Josephine,1941,1941,Machine shop / machinery,FALSE,39.7197957684857,-104.958316298419,,,,,,No parcel match,1940s
-HF07747,Perry Abner J,486 S Bdway,1941,1941,Transportation equipment,FALSE,39.7077662388942,-104.987616980456,,,,,,No parcel match,1940s
-HF07752,andall kindsof electroplat­,1444 Blake,1932,1943,Metal working,TRUE,39.7491685314575,-105.000931636216,,,,,,No parcel match,1940s
-HF07757,South Denver Sheet Metal & F u r ­ Spahn Benj J,2860 N Speer,1941,1941,Metal working,FALSE,39.7577532641152,-105.019800776965,,,,,,No parcel match,1940s
-HF07764,Wheeler Robt F,2747 N Speer,1941,1941,Transportation equipment,FALSE,39.7568492256935,-105.017363659908,,,,,,No parcel match,1940s
-HF07872,— General Tire & Rubber Co,107 E 7th av,1920,1941,Rubber,FALSE,39.7272770612245,-104.986073040816,,,,,,No parcel match,1940s
+hfirm,name,street,first_year,last_year,sectors,persists_to_1961plus,lat,lon,SCHEDNUM,PROP_CLASS,D_CLASS_CN,ZONE_ID,TOT_UNITS,year_built,SITUS_ADDRESS_LINE1,OWNER_NAME,LAND_AREA,use_now,zone_industrial,redeveloped,last_decade
+HF07543,Johnny's Boiler Shop,1725 Wabash,1956,1956,Machine shop / machinery,FALSE,39.7440163326506,-104.889336457539,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07559,Broadway Sheet Metal Works,"",1956,1956,Metal working,TRUE,39.6712385595799,-104.889857707882,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05798,Mastrini John,1201 Spruce,1927,1927,Smelting & refining,FALSE,39.73562,-104.897557,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06578,Gal Gas.Inc,5604 E Colfax Av,1950,1950,Petroleum refining & asphalt,FALSE,39.7401417959256,-104.922294062183,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06702,Smedegaard G N Constr Co,2570 Grape,1950,1950,Plastics,FALSE,39.7541707137042,-104.924623426611,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07599,ROCKY FORD-Steward Metal Works,1004 Elm ST,1956,1956,Metal working,FALSE,39.7323431323088,-104.929276030304,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06523,Chromite Co of Denver The Robert S Layton,4620 E Colfax,1950,1950,Metal working,FALSE,39.740135,-104.933574468607,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06594,Great Western Exterminating Co,4536 E Colfax Av,1950,1950,Chemicals,FALSE,39.740135,-104.934560818546,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06705,Smitherenn Co Inc Great Western Div,4536 E Colfax,1950,1950,Chemicals,FALSE,39.740135,-104.934560818546,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06552,De Brass & Copper Co Frank L Beeson & Fern Beeson,4023 E Colfax,1950,1950,Metal working,FALSE,39.7401304510791,-104.940086996425,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03979,Woeber Auto Body Co,"",1916,1916,Transportation equipment,TRUE,39.7864226668681,-104.942914966783,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF07279,Woeber Auto Body & Mfg. C o,4950 Jackson,1956,1956,Transportation equipment,TRUE,39.7864226668681,-104.942914966783,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07553,Alameda Sheet Metal & Hardware,4965 Jackson,1956,1956,Metal working,TRUE,39.7866692223461,-104.942915318718,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07572,O'Brien Sheet Metal & Furnace Works,3512 E. 12th,1956,1956,Metal working,TRUE,39.7351093899814,-104.946041795901,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03621,genl mgr Colorado Iron Works,140 Cook,1914,1915,Iron & steel works,TRUE,39.7184706730845,-104.947375957696,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF04558,auto body builders,3820 Steele,1932,1932,Transportation equipment,FALSE,39.7695735082163,-104.949892034902,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF07602,City & County Wire Works,320 Josephine,1956,1956,Metal working,FALSE,39.7210659415286,-104.958251022842,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07740,Nichols Carl J,227 Josephine,1941,1941,Machine shop / machinery,FALSE,39.7197957684857,-104.958316298419,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF06570,Eaton Mtl Prod Co,4800 York,1950,1950,Metal working,TRUE,39.783762,-104.959254,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06532,Colo Serum Co,4950 York,1950,1950,Chemicals,TRUE,39.7862399958163,-104.959277160879,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06713,Stayput Clamp It Coupling Co,3975 York,1950,1950,Metal working,TRUE,39.7724683741295,-104.959558460966,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06635,WM. E. GEER SEC & GEN MGR. FREDERICK Mile High Paint Co,915 S York,1950,1950,Iron & steel works,FALSE,39.6999602852509,-104.960565,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06735,Wesco Corp Evergreen,531 S Vine,1950,1950,Plastics,FALSE,39.7069316935921,-104.96286217659,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06732,Vine Pharmacy Anthony J Joy,2039 E 13th Av,1950,1950,Metal working,FALSE,39.7368180628061,-104.963004450307,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06739,Western Fndry J Ernest & James L Higson,2000 E 40th Av,1950,1950,Metal working,TRUE,39.772897,-104.96363,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07578,Western Foundries,2000 E. 40th,1956,1956,Foundry,TRUE,39.772897,-104.96363,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06515,Buck'sGun Shop BruceF Jackson,3945 Race,1950,1950,Plastics,FALSE,39.7723399178211,-104.963632337176,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04892,Western Sheet Metal Works,1915 E 9th,1943,1943,Metal working,FALSE,39.730484,-104.96458258508,0502400001000,9239,INDUSTRIAL-MISC RECREATION,OSA,,1905,1000 N HIGH ST,CITY & COUNTY OF DENVER,1742400,Industrial / utility,FALSE,FALSE,1940s
+HF07247,Reliable Sheet Metal Robert J Oppelt,2685 S High,1956,1956,Metal working,FALSE,39.6678942849267,-104.965279569059,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07573,Reliable Sheet Metal,2685 S. High,1956,1956,Metal working,FALSE,39.6678942849267,-104.965279569059,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05997,Specht John F,1715 E 13th,1929,1929,Metal working,FALSE,39.7368262880091,-104.96706671427,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06676,RedfieldGun SightColWItWC Redfield Et Al,3315 Gilpin,1950,1950,Plastics,FALSE,39.7634244285701,-104.967178714855,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04687,Hicks Arthur G^ machine shop,1429 E 26th av,1935,1935,Machine shop / machinery,FALSE,39.7544812841722,-104.97052699836,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06541,Cook RobertA MachSls RobertA CookIrJ W Johnson,963 Lafayette,1950,1950,Machine shop / machinery,FALSE,39.7314665319442,-104.970633608335,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06546,Curriers of Denver Robert F Buchanan,1300 E Colfax Av,1950,1950,Metal working,FALSE,39.740024,-104.970737,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06656,Perfec BondingMtlCoGR & EttaV Fisher,157 S Lafayette,1950,1950,Machine shop / machinery,FALSE,39.7136982860774,-104.971017381479,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF02942,O ’BrienDL,3827 Walnut,1910,1913,Metal working,TRUE,39.7705205352916,-104.97162686014,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF04557,ABGCle mers & Dyers,1219 E Colfax,1932,1932,Metal working,FALSE,39.740026,-104.972025,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF04576,Leson Sheet MetalW orks,1233 E 13th,1932,1932,Metal working,FALSE,39.736875,-104.972629876356,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06721,Tibbs Veterinary Supply Grant R & OR Tibbs,1110 E 18th Av,1950,1950,Soap,FALSE,39.7448329828134,-104.973260817307,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05437,Schlitter Iron Foundry,3924 Wynkoop,1920,1943,Foundry,TRUE,39.7729497185933,-104.973714089743,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF04787,Otto,3500 Larimer,1943,1943,Transportation equipment,TRUE,39.766953,-104.974504,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF07729,Mackey Jerome E,3535 Walnut,1941,1941,Petroleum refining & asphalt,TRUE,39.7679482824671,-104.974946714373,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF06549,Davis Power Tools John W Davis & Leona B Graham,3362 Larimer,1950,1950,Machine shop / machinery,TRUE,39.7656777339613,-104.976146702959,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03590,BOSS RUBBER CO,2835 Welton,1915,1915,Rubber,FALSE,39.7560586938776,-104.976428367347,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF07269,United Steel & Iron Works,3609 Wynkoop,1956,1956,Iron & steel works,TRUE,39.7706503740362,-104.976684995784,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF02199,The Western Chemical Co,2701 Welton,1911,1911,Chemicals,FALSE,39.754789,-104.978048,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06223,Denver Grinding Ball & Foundry,1677 S Clarkson,1935,1939,Foundry,FALSE,39.6861728979592,-104.978108,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06540,Cook Frank C Co,3147 Larimer,1950,1950,Plastics,TRUE,39.7636615064512,-104.978733933018,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06535,Colo Toro Co,693 E Speer Blvd,1950,1950,Machine shop / machinery,FALSE,39.7209111207015,-104.978822131734,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04113,Crushers,3262 Blake,1916,1916,Petroleum refining & asphalt,FALSE,39.7660903972628,-104.979063944473,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06611,Horning Martha K,783 S Wash,1950,1950,Metal working,FALSE,39.702339340475,-104.979271629288,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05921,— Scott Automobile Body Co,631 E 18th av,1929,1935,Transportation equipment,FALSE,39.7448579387755,-104.979524897959,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06663,Power Equip Co Inc,3440 Brighton Blvd,1950,1950,Machine shop / machinery,TRUE,39.7697686773986,-104.979550217148,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06582,Genera Machinery I< Supply Co,3434 Brighton Blvd,1950,1950,Machine shop / machinery,TRUE,39.7697118509225,-104.97962234306,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04791,Erickson dist mgr,620 E 17th av,1943,1943,Soap,FALSE,39.7432630124504,-104.97965669216,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF06599,Hanes Agcy,617 E 1st Av,1950,1950,Chemicals,FALSE,39.7183213702359,-104.980089762243,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04799,Dowdle Sheet Metal & Furnace,1804 S Pearl,1943,1943,Metal working,TRUE,39.6839192240448,-104.980478611248,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF07198,Dowdle Sheet Metal C o,1804 S. Pearl,1956,1956,Metal working,TRUE,39.6839192240448,-104.980478611248,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07561,Dow die Sheet Metal C o,1804 S. Pearl,1956,1956,Metal working,TRUE,39.6839192240448,-104.980478611248,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06720,Thompson Pipe & Steel Co,3001 Larimer,1950,1950,Metal working,TRUE,39.76228,-104.980515,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06725,Triploil Refining Co Otis Amos,3345 Brighton Blvd,1950,1950,Petroleum refining & asphalt,FALSE,39.7688602690951,-104.980705317672,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06662,Plastics CenterCF Pearson •ED Samborski,427 E 19th,1950,1950,Plastics,FALSE,39.7461825467043,-104.981519346488,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04280,GLOBE SHEET METAL WORKS,2262 Glenarm,1913,1917,Metal working,FALSE,39.7500201773009,-104.982460424946,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF04795,Cars 11,2814 Lari,1943,1943,Metal working,TRUE,39.7605571381003,-104.98275886334,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF04264,Enterprise Sheet Metal Works,2233 Glenarm,1917,1917,Metal working,FALSE,39.7497383545329,-104.982833125346,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05132,Bloedorn Frank C,2948 Blake,1891,1891,Machine shop / machinery,FALSE,39.7631699089517,-104.982858831348,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF06645,· Nat'l Lead Co,2945 Blake,1950,1950,Metal working,FALSE,39.7631313011455,-104.982908469956,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06572,Economy Forms Corp,2863 Walnut,1950,1950,Metal working,TRUE,39.7616880308115,-104.983039202912,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04675,Dunn Sheet Metal Works,311 E 7th av,1935,1935,Metal working,FALSE,39.7272819804279,-104.983494533914,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06078,KesslerFred,2706 Lari,1933,1933,Metal working,FALSE,39.7595573784659,-104.984054462871,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06708,Snyder Metal Equip David Snyder,2706 Larimer,1950,1950,Metal working,FALSE,39.7595573784659,-104.984054462871,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05315,Bio-Pharm Chemical Co,613 22d,1917,1920,Chemicals,FALSE,39.7502102670189,-104.984190712406,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF07273,Victory Auto Body & Paint Shop,2260 California,1956,1956,Transportation equipment,FALSE,39.7513523771172,-104.98419886082,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06613,Howard Flint Ink Co,2807 Blake St,1950,1950,Chemicals,FALSE,39.7620713784398,-104.984276368332,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06528,Colo Gear Co,2724 Walnut,1950,1950,Machine shop / machinery,TRUE,39.7603860385071,-104.984712333821,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05171,Lead Works,2747 Blake,1891,1891,Smelting & refining,TRUE,39.7615486255854,-104.984953608728,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF04440,Smelter settlement,137 E 1st av,1917,1917,Smelting & refining,FALSE,39.7183490528418,-104.985783601234,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06545,Crucible Steel Co of America,2635 Walnut,1950,1950,Metal working,TRUE,39.7595515443392,-104.985797373303,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06589,Gourmet Shop Roy B Simons & Ina E Simons Goodrich BF Co,2625 Walnut St,1950,1950,Rubber,TRUE,39.7594572028904,-104.985921004876,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07872,— General Tire & Rubber Co,107 E 7th av,1920,1941,Rubber,FALSE,39.7272770612245,-104.986073040816,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF05996,Sparr H J,112 E 5th,1929,1929,Metal working,TRUE,39.7241377755206,-104.986102001267,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF05864,ABBOTTINVESTMENTCO,2601 Walnut,1929,1929,Paint & varnish,TRUE,39.759231,-104.986218,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06534,Colo Tool & Die Co A J Giest,2211 Champa,1950,1950,Machine shop / machinery,FALSE,39.7522244625191,-104.986558404756,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04824,Voss pres,1329 Walnut,1943,1943,Machine shop / machinery,FALSE,39.7588692118395,-104.986702797989,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF06680,Robvon Corp The,2440 Larimer,1950,1950,Metal working,TRUE,39.7572566154088,-104.987024383747,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06276,~:!: paste,2447 Larimer ST,1939,1939,Machine shop / machinery,TRUE,39.7572106301684,-104.987085864014,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06083,Berry )machinists,820 21st,1933,1933,Machine shop / machinery,TRUE,39.75063575,-104.987176083333,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF07252,Royal Auto Body Richard S Jones & Vernon L,1158 S Broadway,1956,1956,Transportation equipment,FALSE,39.6955469768504,-104.98744117371,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05359,Gates Rubber Co,999 S Bdwy,1920,1920,Rubber,TRUE,39.698606,-104.987454,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF07206,Gates Rubber Co,999 S Bdwy,1956,1956,Rubber,TRUE,39.698606,-104.987454,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04969,METALWORKS INC,1413 S Bdway,1943,1943,Metal working,TRUE,39.6909505081734,-104.987482166558,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF07576,South Denver Sheet Metal & Furnace Worl,1413 S. Bdwy,1956,1956,Metal working,TRUE,39.6909505081734,-104.987482166558,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06559,De Pest Control & Serv Lab,754 S Bdwy,1950,1950,Chemicals,TRUE,39.7029168545684,-104.987488,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05414,Pierce Rubber Co,9 S Broadway,1920,1920,Rubber,FALSE,39.7162137970847,-104.987504662389,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF05310,Austgen Rubber Co,19 S Bdway,1917,1920,Rubber,FALSE,39.7157622960774,-104.987509495065,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06587,Goodrich BF Co,53 S Bdwy,1950,1950,Rubber,FALSE,39.7153194909958,-104.987515589687,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03677,Somerville Brass Foundry,1749 S Broadway,1911,1915,Foundry,FALSE,39.6848894877837,-104.987538895192,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06527,Colo Fumigating &t Exterminating Co,1754 S Bdwy,1950,1950,Chemicals,FALSE,39.6847785487581,-104.987539507551,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05877,Crites E B,258 S Bdway,1929,1929,Metal working,FALSE,39.7122402616941,-104.987547522724,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF07739,Newlander Aug,2484 S Bdway,1939,1941,Machine shop / machinery,FALSE,39.6715442854005,-104.987583285318,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF07747,Perry Abner J,486 S Bdway,1941,1941,Transportation equipment,FALSE,39.7077662388942,-104.987616980456,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF02906,DicksonEA,925 21st,1913,1913,Machine shop / machinery,FALSE,39.7513555512193,-104.98811289898,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06533,"Colo Standard Upholstery Co M Nierenberg M Stein, I Lande",2363 Larimer,1950,1950,Plastics,TRUE,39.7563420215767,-104.988206562299,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05367,Greubel T C,1628 Court,1915,1920,Metal working,FALSE,39.7427708634211,-104.988345868651,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06710,"Square Deal Mfg Co WA. WA Jr, I, Trusella P Thomas",2344 Larimer,1950,1950,Chemicals,TRUE,39.7561738440897,-104.988423753261,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05345,“ Diamond Rubber Co,1633 Court,1913,1920,Rubber,FALSE,39.7426904328597,-104.98845515065,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06577,Gains Orthofedic Appl Inc,1633 Court Pl,1950,1950,Machine shop / machinery,FALSE,39.7426904328597,-104.98845515065,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06655,Pearl-Friedland Co The,2119 Curtis,1950,1950,Metal working,TRUE,39.7520317346904,-104.988547271675,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04288,Hoover Chemical Laboratory,2042 Champa,1917,1917,Chemicals,TRUE,39.7506549638394,-104.988584815794,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF02960,WALTER LOUIS H,1822 Welton,1911,1913,Metal working,FALSE,39.7465771092585,-104.988633037554,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06575,"FlexoveyorMfgCoGC Penn, EC HorneIt James Shields",1220 S Acoma St,1950,1950,Machine shop / machinery,TRUE,39.6944451011698,-104.988671012521,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF01917,"Dowell, chanc, 14th &Arap Denver Steam Laundry Co, Denver Variety Machine Shop",1819 Welton,1892,1892,Machine shop / machinery,FALSE,39.7465423488331,-104.988683182008,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF06694,Sechrist Albert Mfg Co The,"",1950,1950,Metal working,TRUE,39.7872467528192,-104.988724027815,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04683,Goulden Geo H,1060 Acoma,1935,1935,Machine shop / machinery,FALSE,39.7331555905445,-104.988845561789,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF05355,Garnett-Klator Chemical Co,2019 Champa,1920,1920,Chemicals,FALSE,39.7504249651748,-104.988879376433,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF05426,Republic Rubber Co,1645 Tremont pl,1915,1920,Rubber,FALSE,39.7435926530612,-104.989030836735,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF04357,WESTERN WIRE WORKS,205 15th,1917,1917,Metal working,FALSE,39.7409352056977,-104.989050206079,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF07219,States Asphalt Co,5201 Bannock,1956,1956,Petroleum refining & asphalt,TRUE,39.791035,-104.989088,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06229,Goldberg Bros,1842 Calif,1911,1939,Metal working,FALSE,39.747456747996,-104.989264066071,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF07228,Oil Chemical & Atomic Wrkrs International,1840 California,1956,1956,Chemicals,FALSE,39.7474380892204,-104.989288819593,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05427,Retalia J L,1752 Welton,1916,1920,Metal working,FALSE,39.745941172927,-104.989460956073,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06605,Hercules Powder Co,1822 California,1884,1950,Chemicals; Explosives,FALSE,39.7472701602405,-104.989511601287,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06643,Nat'l Cash Register Co The,1725 Welton,1950,1950,Plastics,FALSE,39.7456741387554,-104.989801293743,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03248,Ellsworth AutoCo,2012 Curtis,1914,1914,Machine shop / machinery,TRUE,39.7510534650854,-104.989827695187,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06697,Shattuck SW Chemical Co The,1805 S Bannock,1950,1950,Chemicals,TRUE,39.6833101474117,-104.989935378258,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04804,genl mgr,1710 Welton,1911,1943,Foundry; Iron & steel works; Manufactured gas; Metal working,TRUE,39.7455409875189,-104.989971946145,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF07435,Clyde's Auto Body Repair,415 S Bannock,1956,1956,Transportation equipment,TRUE,39.7090910781024,-104.989999761161,0515205039000,0200,VACANT LAND /GENERAL COMMON ELEMENTS,CMX,,,419 S BROADWAY,BMP NORTHEAST LLC,19252,Vacant,FALSE,FALSE,1950s
+HF06374,and ventilating,151 W 1st,1935,1939,Metal working,FALSE,39.7183731400512,-104.990020883859,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF05380,Jesse H,2212 Larimer,1920,1920,Metal working,TRUE,39.7549254810697,-104.990023413784,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF03214,Braun N,2208 Larimer,1913,1914,Transportation equipment,TRUE,39.7548866540464,-104.990073275856,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06634,Midstate Mfg Co,1131 S Bannock,1950,1950,Metal working,TRUE,39.6960784394583,-104.990135532085,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07220,Moyle's Sheet Metal & Furnace,1240 S. Bannock,1956,1956,Metal working,TRUE,39.6940679138618,-104.990172238076,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03918,Dorrington W H,1449 Court,1914,1916,Metal working,FALSE,39.741095011829,-104.990520795723,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF04685,Harner C D,221 W 10th av,1935,1935,Machine shop / machinery,FALSE,39.732052,-104.990542102041,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06236,irrigalion gates,221 W 10th av,1939,1939,Machine shop / machinery,FALSE,39.732052,-104.990542102041,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF04920,ASPHALTUM,1727 California,1913,1943,Petroleum refining & asphalt,FALSE,39.7463688203506,-104.9906518334,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF03282,Her F M,242 W Florida,1914,1914,Foundry,TRUE,39.6893938571429,-104.990666142857,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06555,De Fire Clay Co PO Box,2301 Blake St,1950,1950,Chemicals,TRUE,39.7571,-104.990714,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03628,Fish A E,1932 Curtis,1915,1915,Machine shop / machinery,FALSE,39.7503102099265,-104.990796758171,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05136,"Button & Flaherty, (C. E. Burton and D. J. Flah erty,) proprs, Queen City Cornice Works",418 15th,1891,1891,Metal working,FALSE,39.7423883219851,-104.990913423941,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF06203,derson ) machine shop,1849 Champa,1939,1939,Machine shop / machinery,FALSE,39.7488480903286,-104.99092726467,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF03897,Bennie Tire & Rubber Co B A,1548 Glenarm,1915,1916,Rubber,TRUE,39.7433646274301,-104.991058316301,0234615031000,2130,COMMERCIAL-MISC IMPS,CBD,,,1526 GLENARM PL,DENVER DOWNTOWN DEVELOPMENT AUTHORITY,22509,Commercial / office,FALSE,FALSE,1910s
+HF07267,Thompson-Hayward Chemical C o,2228 Blake,1935,1956,Chemicals,TRUE,39.7564310136085,-104.991567736618,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07200,Dunn Sheet Metal & Mfg. C o,350 W. Evans,1956,1956,Metal working,FALSE,39.6785495,-104.99168,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06597,Gunderson-Taylor Machinery Co,970 Cherokee St,1950,1950,Machine shop / machinery,FALSE,39.7319288767343,-104.991679513689,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06615,Hurley Co The,2140 Mkt St,1950,1950,Plastics,FALSE,39.7549464931091,-104.9917515609,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06278,of lumber,331 W Colfax,1939,1939,Machine shop / machinery,FALSE,39.7401257111611,-104.992041942827,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF07726,Kenyon Iron Works,2042 Larimer,1941,1941,Iron & steel works,FALSE,39.7533477372025,-104.992075752371,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF06619,Denver lnternat'l Printing Ink Div ~f InterChemical Corp,1824 Curtis,1950,1950,Chemicals,FALSE,39.7492932652566,-104.992103065044,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07723,Hood Rubber Co,1751 Champa,1941,1941,Rubber,TRUE,39.747928247882,-104.992106665246,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF04319,RELIABLE EMPLOYMENT RetaliaJL,1743 Champa,1917,1917,Metal working,TRUE,39.7478507941437,-104.992204673491,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06606,Highland Industries Inc,2255 S Delaware,1950,1950,Metal working,TRUE,39.6756974081633,-104.992270163265,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06724,Triangle Western Sls & Supply Co,2255 S Delaware,1950,1950,Plastics,TRUE,39.6756974081633,-104.992270163265,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06539,Continental Can Co Inc QCC Po Box,241 S Cherokee,1950,1950,Metal working,FALSE,39.7122824925978,-104.992381497316,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07246,ReffelJW Metals Foundry John Reffel 1950S,609 15th,1956,1956,Foundry,FALSE,39.7436354277574,-104.992592843164,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF02266,Nenman-Allen Chemical Co. 1434,536 15th,1911,1911,Chemicals,FALSE,39.7437022254596,-104.992682241593,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06671,Rains Flo Mfg Co Robert H Rains,1913 Lawrence,1950,1950,Plastics,TRUE,39.7514542326417,-104.992776285815,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06696,SeventhAve CafeWE DeVries 233E 7th Seiberling Rubber Co,2101 Blake,1950,1950,Rubber,TRUE,39.755233,-104.993136,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03297,MINE & SMELTER SUPPLY CO,1650 Champa,1914,1914,Smelting & refining,FALSE,39.746996371551,-104.993318930493,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05342,Dawson W H,1937 Larimer,1914,1920,Metal working,FALSE,39.7523515482729,-104.993358966222,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF07241,Pyramid Petroleum Co,400 W Bayaud Av,1932,1956,Petroleum refining & asphalt,FALSE,39.714814,-104.993548,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF01906,"Austin, Percy,atty, 26Goodblk Bacon, Geo M, furnaces and",1544 Stout,1892,1892,Metal working,FALSE,39.7453383750079,-104.9937291682,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF04666,MACHINE SHOPGOBATTI MFG. GO,503 W. 4th,1935,1935,Machine shop / machinery,FALSE,39.7225318976121,-104.994027061149,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06706,Snow White Prod Co,1951 Mkt,1950,1950,Soap,TRUE,39.7531759892403,-104.994031137143,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03239,Deline & Co,1517 Stout,1914,1914,Chemicals,FALSE,39.7450686218199,-104.994063972725,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06512,Borax Consolidated Ltd,2016 Blake,1950,1950,Chemicals,FALSE,39.7544802064491,-104.994085770556,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06726,Turco Prod Inc,2016 Blake,1950,1950,Chemicals,FALSE,39.7544802064491,-104.994085770556,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07732,McPherson Edw B,1218 Elati,1941,1941,Foundry,FALSE,39.7355545905936,-104.994136319615,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF06633,Metalcraft Welding Ii Fabricating Co,"",1950,1950,Metal working,TRUE,39.7830560865007,-104.994315893354,0222200059000,9139,VACANT LAND /GENERAL COMMON ELEMENTS,IB,,,402 W 48TH AVE APPRX,CITY & COUNTY OF DENVER,27,Vacant,TRUE,FALSE,1950s
+HF07547,Sample Machine Shop,1852 Larimer ST,1956,1956,Machine shop / machinery,TRUE,39.7515747685116,-104.994375479046,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF02930,Jones & Greathead,1335 Welton,1911,1913,Metal working,FALSE,39.742033563204,-104.994517308495,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF02901,Copenhaver Geo C,833 15th,1913,1913,Transportation equipment,FALSE,39.7451358364759,-104.994548532482,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF07276,Williams Sheet Metal W k s,524 W. Colfax,1956,1956,Metal working,FALSE,39.7401409016555,-104.994612428455,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06590,Grabler Mfg Co The,1962 Blake St,1950,1950,Metal working,TRUE,39.753969599351,-104.994729839203,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06225,Dunn Sheet Metal Wks,1890 Market,1939,1939,Metal working,FALSE,39.7526038177885,-104.99476836657,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF07733,Frank sec-treas,1744 Lawrence,1941,1941,Machine shop / machinery,FALSE,39.7498833978966,-104.99479062095,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF06562,De Rubber Prod Co Sue C Titus,1734 Lawrence,1950,1950,Rubber,FALSE,39.7497865549046,-104.994913674524,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05325,CARD C S IRON WORKS CO THE,1427 Stout,1910,1920,Iron & steel works,TRUE,39.744226098529,-104.995148745858,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06718,Temple Paul N,1925 Blake,1950,1950,Chemicals,FALSE,39.753585869758,-104.995214346265,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06653,K-1 • Pacific States Gast Iron Pipe Go,1921 Blake,1950,1950,Metal working,FALSE,39.7535454771693,-104.995265347009,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07725,Keddy Frank A,600 W Colfax,1941,1941,Transportation equipment,FALSE,39.740019,-104.995275,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF05885,Flaherty P J,1417 Fox,1911,1929,Metal working,TRUE,39.7387086867846,-104.995296974121,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06584,Glenshore Mfg Co Inc,"",1950,1950,Plastics,TRUE,39.7480803642313,-104.995411499604,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF01907,"Boellert, Math, blacksmith, Blake, FO",1909 Blake,1892,1892,Petroleum refining & asphalt,FALSE,39.7534245864625,-104.995418732916,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF02615,FoxM,933 15th,1912,1912,Metal working,FALSE,39.7458004666512,-104.995441882701,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF07225,Newlander A Machine Works,615 W 14th av,1956,1956,Machine shop / machinery,TRUE,39.7384522851194,-104.9954694267,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06544,Crosta CA Inc,1830 Mkt St,1950,1950,Metal working,TRUE,39.7520343897026,-104.995501170904,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05318,Brickham Henry,1820 Market,1891,1920,Metal working,TRUE,39.7519395627623,-104.995623407427,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06610,Hold Everything Prod Edwin Hill & Jack Kline,1334 Speer Blvd,1950,1950,Plastics,FALSE,39.7372130454924,-104.995985744557,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05385,Lang Haes tinner,1165 Welton,1920,1920,Metal working,FALSE,39.7405727645151,-104.996402637008,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF05372,Hingley J A,1816 Blake,1914,1920,Machine shop / machinery,TRUE,39.752567072456,-104.996547114464,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF03665,OHIO & COLORADO SMELTING,1451 Curtis,1915,1915,Smelting & refining,FALSE,39.7457919303299,-104.996588645907,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF07253,Royal Oil Co Cascade Petroleum Co,2120 Delgany,1956,1956,Petroleum refining & asphalt,TRUE,39.7577597172657,-104.996833778127,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07636,Cascade Petroleum Co,2120 Delgany,1956,1956,Petroleum refining & asphalt,TRUE,39.7577597172657,-104.996833778127,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06716,Sun Valley ElecMfgCoAM Campbell &W R Harn,710 W Colfax,1950,1950,Machine shop / machinery,FALSE,39.7400157142857,-104.996869714286,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05130,Western Chemical Works Co,1106 15th,1891,1891,Chemicals,FALSE,39.7469595083802,-104.996906600062,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF02480,LEAD WORKS,1422 Curtis,1911,1911,Smelting & refining,FALSE,39.7455294947008,-104.996917787583,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05126,"go o BACON GEORGE M., dealer in hardware, stoves, ranges and furnaces, tin and",1120 15th,1891,1891,Metal working,FALSE,39.747012030158,-104.996975664008,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF07245,Red Dot L-P Gas Co,2910 Huron,1950,1956,Manufactured gas; Petroleum refining & asphalt,TRUE,39.7585362148426,-104.99713972342,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03925,Fair C W,1763 Blake,1915,1916,Metal working,TRUE,39.7520673199909,-104.997196694423,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF04265,EMPIRE BOTTLING CO,1749 Blake,1917,1917,Foundry,TRUE,39.7519318859627,-104.997371401939,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06712,Starco Prod Co,1519 Lawrence,1950,1950,Chemicals,FALSE,39.7477711757752,-104.997528151296,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF02601,Denver Iron Works & Foundry DENVER MASTER PLUMBERS,1827 Wynkoop,1912,1912,Foundry,FALSE,39.7540238292857,-104.998161064647,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF03612,DENVER GAS & ELECTRIC Denver IronW orks & Foundry Co,1827 Wynkoop,1915,1915,Foundry,FALSE,39.7540238292857,-104.998161064647,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06547,Dart Mfg & Sls Co,1246 Champa,1950,1950,Plastics,FALSE,39.7431770443002,-104.998202078442,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06642,Nathan Louis B William & Jacob Goldberg,1745 Wazee,1950,1950,Metal working,FALSE,39.752582686831,-104.99827639373,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF02963,Western Shoe & Rubber Co,1437 Lawrence,1913,1913,Rubber,FALSE,39.7470082710834,-104.998513403497,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05471,Western Shoe & Rubber Co,1437 Lawrence,1920,1920,Rubber,FALSE,39.7470082710834,-104.998513403497,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06537,Compressed Steel Co Inc,110 S Santa,1950,1950,Metal working,TRUE,39.7147004355061,-104.998562471839,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF02493,Denver.FAlR CORNICE WORKS C W,1433 Lawrence,1911,1911,Metal working,FALSE,39.7469701056944,-104.998562882736,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF07221,National Associated Petroleum Co Midland Svgs b,100 S Santa,1956,1956,Petroleum refining & asphalt,TRUE,39.714796,-104.998565,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06737,Western Belting & Packing Co,1720 Wazee,1950,1950,Rubber,FALSE,39.7523601084552,-104.998566642454,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06201,A-C MOTORS & METAL WORKS,1 S Santa,1939,1939,Metal working,FALSE,39.716597,-104.998577,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF07703,Arscott S E Jr,1422 Law,1941,1941,Petroleum refining & asphalt,FALSE,39.7468746922218,-104.998686580835,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF04333,finishing and copper plating,1638 Blake,1911,1917,Metal working,TRUE,39.7509075511511,-104.998713786881,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05922,copper plating,1638 Blake,1929,1932,Metal working,TRUE,39.7509075511511,-104.998713786881,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF05421,QUEEN CITY FOUNDRY CO,1633 Blake,1884,1920,Foundry,TRUE,39.7508516125692,-104.998788201528,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF03656,MINE & SMELTER SUPPLY CO Mitchell A,1105 Stout,1915,1915,Smelting & refining,FALSE,39.741428987664,-104.998798189386,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF04225,“ Atlas Wire & Iron Works Co,916 W 8th,1912,1917,Iron & steel works,FALSE,39.7289075377477,-104.998875771677,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05145,Denver Electrotype and Stereotype,1622 Blake,1891,1891,Foundry,TRUE,39.7507583815992,-104.998912225938,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF05150,DENVER TYPE FOUNDRY,1622 Blake,1891,1891,Foundry,TRUE,39.7507583815992,-104.998912225938,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF02312,Type Foundry,1621 Blake,1911,1911,Foundry,TRUE,39.7507397354052,-104.998937030821,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF02922,HeinshonAE,1621 Blake,1913,1913,Machine shop / machinery,TRUE,39.7507397354052,-104.998937030821,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF02965,Type Foundry,1621 Blake,1913,1913,Foundry,TRUE,39.7507397354052,-104.998937030821,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06217,Commercial Chemical Corp,1612 Blake,1939,1939,Chemicals,TRUE,39.7506654323318,-104.999036607204,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06576,Freeman• Freeman Inc,"",1950,1950,Chemicals,TRUE,39.7067324166667,-104.999192583333,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF02244,Globe Sheet Metal Works 1413,1509 Market,1911,1911,Metal working,FALSE,39.7490143595076,-104.999393040191,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05166,Heale George H. B,1422 Larimer,1891,1891,Metal working,TRUE,39.7475415102041,-104.999557428571,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF04578,Metal Spinning & Plating Works Meyer Brokerage Go,1417 15th,1932,1932,Metal working,FALSE,39.7490471490174,-104.999630975789,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06266,Rocky Mountain Chromium Plating Co,1417 15th,1939,1939,Metal working,FALSE,39.7490471490174,-104.999630975789,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF03267,Gartman C E,1414 15th,1914,1914,Machine shop / machinery,FALSE,39.7490993956661,-104.999698871984,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF03932,GARDELL J G,1414 15th,1916,1916,Machine shop / machinery,FALSE,39.7490993956661,-104.999698871984,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05439,Schmitt W C,1551 Blake,1914,1920,Metal working,FALSE,39.7500897334257,-104.999759453172,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF05180,"LEYNER J GEORGE, manufacturing and jobbing",1613 Wazee,1891,1891,Machine shop / machinery,TRUE,39.7513348757277,-104.999875692788,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF03670,Regent Rubber Co,1320 Lawrence,1914,1915,Rubber,TRUE,39.7459388629813,-104.999905009495,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF02916,Freund &CoGeo,1542 Blake,1913,1913,Metal working,TRUE,39.7499369237324,-104.999948582071,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06261,Pioneer Iron & Wire Works Co,1435 Market,1920,1939,Metal working,TRUE,39.7483159725483,-105.000278786265,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF04115,Macadam and Asphalt Rollers,1507 Blake,1916,1916,Petroleum refining & asphalt,TRUE,39.7496648508085,-105.000286069101,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF02626,Lead Works Co,1516 Blake,1912,1912,Smelting & refining,TRUE,39.7496509486762,-105.000303354821,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF02924,ler & Iron Works Co,1516 Blake,1913,1913,Iron & steel works,TRUE,39.7496509486762,-105.000303354821,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF03272,covering all Mines,1513 15th,1914,1914,Smelting & refining,TRUE,39.7496900386881,-105.000466257845,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF02964,WESTERN SMELTING WORKS,1558 Wazee,1913,1913,Smelting & refining,FALSE,39.7508371687674,-105.000520778119,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06683,Rocky Mtn Mercantile Co,1415 Mkt,1950,1950,Metal working,TRUE,39.7481218604326,-105.000525956712,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06601,Haver-Glover Serv,1411 Mkt St,1950,1950,Soap,TRUE,39.7480830431662,-105.000575397652,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06227,Fox sec,1326 Larimer,1939,1939,Machine shop / machinery,FALSE,39.7467153333333,-105.000759666667,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF06596,Grimes Pipe a. Supply Co The D a. J Grimes,1300 Larimer St,1950,1950,Metal working,FALSE,39.74669,-105.000813,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07752,andall kindsof electroplat­,1444 Blake,1932,1943,Metal working,TRUE,39.7491685314575,-105.000931636216,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF06602,Heinsohn A E Printing Ir Machinery Ir Supplies A E Heinsohn,1443 Blake St,1950,1950,Machine shop / machinery,TRUE,39.7491523214799,-105.000952920326,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04352,Western Brass Works,1440 Blake,1917,1917,Foundry,TRUE,39.7491361115023,-105.000974204435,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF03227,COLLIER & SON P F,1434 Blake,1914,1914,Foundry,TRUE,39.7490874815693,-105.001038056763,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05461,United States Rubber Co,1515 Wazee,1920,1943,Rubber,TRUE,39.7504187797629,-105.001066815795,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF05420,Queen City Brass Works,1431 Blake,1911,1932,Foundry,TRUE,39.749055061614,-105.001080624982,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF05453,Stiles George A,1416 Blake,1920,1920,Machine shop / machinery,TRUE,39.7489416080471,-105.001229634705,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF05902,Metal Spinning & Plating Works,1417 Blake,1929,1929,Metal working,TRUE,39.7489416080471,-105.001229634705,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF05408,Peerless Alloy Co,1409 Blake,1916,1920,Foundry; Smelting & refining,TRUE,39.7488768040236,-105.001314817353,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF07194,Denver Machine ShopEF White &PT Schonstrom,1409 Blake St,1956,1956,Machine shop / machinery,TRUE,39.7488768040236,-105.001314817353,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF02954,Universal Soap Mfg Co,1533 Wynkoop,1913,1913,Soap,FALSE,39.7512648571429,-105.001725142857,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06729,Union Welding Lee W Ulrich,3425 Lipan St,1950,1950,Machine shop / machinery,TRUE,39.7650678798532,-105.001762458945,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07727,Kinzbach Win,1737 15th,1941,1941,Machine shop / machinery,FALSE,39.7511774615892,-105.00241193529,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF01937,"Maginn, EJ",1516 Wewatta,1892,1892,Transportation equipment,FALSE,39.7518397982475,-105.00281439867,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF06282,Western Bronze & Brass Foundry Western File Service,1322 Blake,1939,1939,Foundry,TRUE,39.7485481786618,-105.002855924476,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF04702,Western Iron Foundry,1320 Wazee,1935,1935,Foundry,TRUE,39.7487296484727,-105.003032948297,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF05472,Western Smelting Co,1304 Blake,1920,1920,Smelting & refining,TRUE,39.7485193961203,-105.003044986268,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06583,Gillard Plastics Inc,1137 Larimer St,1950,1950,Plastics,TRUE,39.7456642223532,-105.003070722835,0233713021000,9229,INDUSTRIAL-SCHOOL,CMP,,1976,955 LAWRENCE WAY,BOARD OF DIRECTORS OF THE AURARIA HIGHER EDUCATION CTR,675672,Industrial / utility,FALSE,TRUE,1950s
+HF07230,Oneida Chemical Co Inc,1123 Larimer,1956,1956,Chemicals,TRUE,39.7456199136163,-105.003171688645,0233713021000,9229,INDUSTRIAL-SCHOOL,CMP,,1976,955 LAWRENCE WAY,BOARD OF DIRECTORS OF THE AURARIA HIGHER EDUCATION CTR,675672,Industrial / utility,FALSE,TRUE,1950s
+HF07701,Acme Silver Plating Works,"",1941,1941,Metal working,TRUE,39.7455945943381,-105.003229383394,0233713021000,9229,INDUSTRIAL-SCHOOL,CMP,,1976,955 LAWRENCE WAY,BOARD OF DIRECTORS OF THE AURARIA HIGHER EDUCATION CTR,675672,Industrial / utility,FALSE,TRUE,1940s
+HF05220,"Walker Thomas C., propr, Midland Foundry and Machine Works",1534 Delgany,1891,1891,Foundry,FALSE,39.7525250672111,-105.003579247938,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF03281,INDEPENDENT POWDER CO,3654 Navajo,1914,1914,Explosives,FALSE,39.7675098360596,-105.004129242767,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06652,Overland Fndry Go Hosek Mfg Go,1251 Osage,1950,1950,Plastics,FALSE,39.7361017505561,-105.005263507309,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05468,The General Chemical Co),"",1920,1920,Chemicals,TRUE,39.714823,-105.005410577465,0509500022000,8991,VACANT LAND,IB,,,1601 W ELLSWORTH AVE,BURLINGTON NORTHERN RR CO PROPERTY TAX DEPARTMENT,277000,Vacant,TRUE,FALSE,1920s
+HF06580,"General Chemical Div Allied Chemical I, Dye Corp",1271 W Bayaud Av,1950,1950,Chemicals,TRUE,39.714823,-105.005410577465,0509500022000,8991,VACANT LAND,IB,,,1601 W ELLSWORTH AVE,BURLINGTON NORTHERN RR CO PROPERTY TAX DEPARTMENT,277000,Vacant,TRUE,FALSE,1950s
+HF05395,Mutual Chemical Co,1424 W Colfax av,1920,1920,Chemicals,FALSE,39.7402191849827,-105.005479511689,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF06717,Surplus Tools & Commodities Wm D Cox & CF Hale,1379 W Alameda,1950,1950,Machine shop / machinery,TRUE,39.7111840456954,-105.005785645507,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03235,(See Page ad. at Classified Chemical Manufacturers.),829 Larimer,1914,1914,Chemicals,TRUE,39.7440445412369,-105.006833325298,0233706012998,2130,COMMERCIAL-MISC IMPS,CMP,,,800 WALNUT ST,,173003,Commercial / office,FALSE,FALSE,1910s
+HF06518,Cavaleri,1735 W 35th,1950,1950,Metal working,FALSE,39.7656400161951,-105.006994423907,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07568,Longo sfieet Metal Works,1735 W. 35th,1956,1956,Metal working,FALSE,39.7656400161951,-105.006994423907,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04814,Schmidt G A Auto Body Co,1630 Platte,1943,1943,Transportation equipment,TRUE,39.7576807891588,-105.007720483915,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF03893,Banner Chemical Co,2301 15th,1914,1916,Chemicals,FALSE,39.755495,-105.00802,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF03301,NOCK & GARSIDE,2330 15th,1911,1914,Machine shop / machinery,FALSE,39.7557905755392,-105.008404578509,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF01929,COLLECTIONS ColoredL ead,1525 Platte St,1892,1892,Paint & varnish,TRUE,39.756688208901,-105.008987806251,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF01934,"& Mayne, Long, Lloyd, Wm, Lloyd, Wm B, Lord, 0 A, Lobach, E B, COLLECTIONS Colored Lead",1525 Platte St,1892,1892,Paint & varnish,TRUE,39.756688208901,-105.008987806251,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF01952,"AMERICAN MERCANTILE UNION lS^LawmceSt,D",1525 Platte St,1892,1892,Paint & varnish,TRUE,39.756688208901,-105.008987806251,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF03943,Johnson &Ball,2439 15th,1916,1916,Metal working,FALSE,39.7566435730657,-105.009518470734,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05381,Johnson J A,2439 15th,1917,1932,Metal working,FALSE,39.7566435730657,-105.009518470734,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF05386,Leson J,1913 W 32nd av,1911,1920,Metal working,FALSE,39.7620461574935,-105.009798463183,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF07581,Wompey Sheet Metal Works,2500 15th,1933,1956,Metal working,TRUE,39.7574,-105.01051,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06677,Reliable Pest Control Co O R Phillips & CB Morgan,3145 Tejon,1950,1950,Chemicals,FALSE,39.7616273536777,-105.011154069569,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05438,riage and wagon maker,46 W Colfax av,1920,1920,Transportation equipment,FALSE,39.7396739327004,-105.011200005772,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF07595,PUEBLO-Fountain Foundry,1815 W. 14th,1956,1956,Foundry,TRUE,39.7384917182947,-105.011702152738,0504209007000,2230,INDUSTRIAL-AUTO SERVICE GARAGE,IB,,1947,1380 N UMATILLA ST,MILLERTIME HOLDINGS LLC,35507,Industrial / utility,TRUE,FALSE,1950s
+HF06640,Morton & Peabody Inc,1925 W 13th,1950,1950,Machine shop / machinery,FALSE,39.736905,-105.012434523142,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07584,Fort Collins Sheet Metal Works,226 Walnut,1956,1956,Metal working,TRUE,39.742503110515,-105.013365297306,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF05190,Mee Robert,847 Water,1891,1891,Machine shop / machinery,TRUE,39.7525813636337,-105.013390519435,,,,,,,,,,No parcel match,FALSE,FALSE,1890s
+HF06693,Scientific Supply Co,800 Water,1950,1950,Chemicals,TRUE,39.7525124957912,-105.01354457799,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07580,Wixson Furnace & Sheet Metal W k s,2301 W. 30th,1956,1956,Metal working,FALSE,39.759644,-105.014482,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF04146,Rex Iron Works Co The,34 Larimer,1916,1916,Iron & steel works,TRUE,39.7399184292184,-105.015796562158,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF02888,BROWNE IRON WORKS COMPANY •H,25 Lari,1912,1913,Iron & steel works,TRUE,39.7399003121588,-105.015835954297,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF03216,© i £ BROWN L B,25 Lari,1914,1914,Iron & steel works,TRUE,39.7399003121588,-105.015835954297,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF05400,National Smelting & Refining Co,25 Larimer,1920,1920,Smelting & refining,TRUE,39.7399003121588,-105.015835954297,,,,,,,,,,No parcel match,FALSE,FALSE,1920s
+HF07571,MIDWEST STEEL AND IRON WORKS CO,25 Larimer St,1920,1956,Iron & steel works,TRUE,39.7399003121588,-105.015835954297,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF03293,jo Lowith Iron Works Co,1 Larimer,1914,1914,Iron & steel works,TRUE,39.739852,-105.015941,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF07764,Wheeler Robt F,2747 N Speer,1941,1941,Transportation equipment,FALSE,39.7568492256935,-105.017363659908,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF06531,Colo Sanitary Wiping Cloth Co Philip Saffil,2637 W 13th Av,1950,1950,Plastics,FALSE,39.7365212027639,-105.018825563677,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06622,Jesmer Ralph K,4836 Bryant St,1950,1950,Machine shop / machinery,FALSE,39.7845301432706,-105.019316559043,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07757,South Denver Sheet Metal & F u r ­ Spahn Benj J,2860 N Speer,1941,1941,Metal working,FALSE,39.7577532641152,-105.019800776965,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF04801,American Smelting & Refining,2627 W 8th,1943,1943,Smelting & refining,FALSE,39.729311045977,-105.019887241379,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF06230,Goldberg Simon,2717 W Colfax,1929,1939,Metal working,TRUE,39.7405609131517,-105.020510398056,,,,,,,,,,No parcel match,FALSE,FALSE,1930s
+HF03632,Fox P,2752 W Colfax,1915,1915,Metal working,TRUE,39.7400184800029,-105.020960719859,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06744,Wilkerson Valve Co Inc,260 S Dale Ct,1950,1950,Metal working,FALSE,39.7118760207389,-105.021506313479,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07569,Merz,1419 Morrison Rd,1956,1956,Foundry,FALSE,39.7384921999596,-105.021843059726,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07575,Smaldone Sheet Metal Works,4980 Elm,1956,1956,Metal working,FALSE,39.7871011834738,-105.022793,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06639,Morton Neon Co,"",1950,1950,Plastics,TRUE,39.7311961942009,-105.023980422279,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07565,Kincannon Sheet Metal,1029 S. Federal,1956,1956,Metal working,FALSE,39.6980638130073,-105.025080754395,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06553,De Diet Mineral Co John R Taft,3158 W Colfax,1950,1950,Soap,FALSE,39.7403980952381,-105.028118690476,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07692,Quality Sheet Metal Works,3301 W Colorado av,1941,1941,Metal working,FALSE,39.68495,-105.029788,,,,,,,,,,No parcel match,FALSE,FALSE,1940s
+HF04275,Fortner L A,3492 W 38th,1914,1917,Metal working,FALSE,39.7694857804325,-105.033024741759,,,,,,,,,,No parcel match,FALSE,FALSE,1910s
+HF06681,Rock TowerInnAA Phelps &P Paulucci,3500 W Alameda,1950,1950,Plastics,FALSE,39.711225132741,-105.034013971735,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07433,Sheet Metal Joint Committee Inc,3935 W. Colfax,1956,1956,Metal working,TRUE,39.7403377370476,-105.038553434608,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07209,Hank's Auto Body Henry Vecch iarelli,4001 W 38th,1956,1956,Transportation equipment,FALSE,39.769432,-105.039337,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF07275,Wilkin Sheet Metal,290 S. Perry,1956,1956,Metal working,FALSE,39.7115534271912,-105.03969475832,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
+HF06685,4801 W 38th,4801 W 38th,1950,1950,Machine shop / machinery,FALSE,39.769359,-105.048598,,,,,,,,,,No parcel match,FALSE,FALSE,1950s
