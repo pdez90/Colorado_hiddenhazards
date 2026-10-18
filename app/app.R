@@ -56,7 +56,7 @@ eds_f    <- rd_opt("denver_eds_firms.csv"); eds_g <- rd_opt("ed_year_groups.csv"
 ED_VARS  <- c("Black (%)" = "pct_black", "Foreign born (%)" = "pct_fb", "Mexican-born (%)" = "pct_fb_mexico", "Hispanic (%)" = "pct_hisp", "Laborers (% of population)" = "pct_laborers",
               "Foreign or mixed parentage (%)" = "pct_foreign_parentage", "Hazardous firms in the decade" = "firms", "Distance to nearest firm (m)" = "dist_m")
 holc     <- if (file.exists(dd("holc_denver.geojson"))) st_read(dd("holc_denver.geojson"), quiet = TRUE) else NULL      # R/holc_covenants.R
-coven    <- rd_opt("covenants_denver.csv"); holc_bd <- rd_opt("holc_boundary.csv"); holc_gap <- rd_opt("holc_gaps.csv"); holc_ind <- rd_opt("holc_industry_periods.csv"); bm_state <- rd_opt("cbp_vs_directory_state.csv"); bm_cty <- rd_opt("cbp_vs_directory_county.csv"); bm_nh <- rd_opt("nhgis_mfg_vs_directory.csv"); holc_g <- rd_opt("holc_by_grade.csv"); holc_tr <- rd_opt("trajectories_by_grade.csv"); holc_pre <- rd_opt("trajectories_pre_by_grade.csv"); holc_m <- rd_opt("holc_tract_models.csv"); holc_sh <- rd_opt("holc_facility_shares.csv"); ed_sh <- rd_opt("ed_firm_shares.csv"); ed_cls <- rd_opt("ed_holc_classes.csv")
+coven    <- rd_opt("covenants_denver.csv"); holc_bd <- rd_opt("holc_boundary.csv"); holc_gap <- rd_opt("holc_gaps.csv"); holc_ind <- rd_opt("holc_industry_periods.csv"); bm_state <- rd_opt("cbp_vs_directory_state.csv"); bm_cty <- rd_opt("cbp_vs_directory_county.csv"); bm_nh <- rd_opt("nhgis_mfg_vs_directory.csv"); bm_at <- rd_opt("atack_colorado_by_sector.csv"); holc_g <- rd_opt("holc_by_grade.csv"); holc_tr <- rd_opt("trajectories_by_grade.csv"); holc_pre <- rd_opt("trajectories_pre_by_grade.csv"); holc_m <- rd_opt("holc_tract_models.csv"); holc_sh <- rd_opt("holc_facility_shares.csv"); ed_sh <- rd_opt("ed_firm_shares.csv"); ed_cls <- rd_opt("ed_holc_classes.csv")
 eds_holc <- if (file.exists(dd("eds_holc_1930.geojson"))) st_read(dd("eds_holc_1930.geojson"), quiet = TRUE) else NULL
 HOLC_COL6 <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d", Industrial = "#8c8c8c", Commercial = "#c8a2c8", ungraded = "#eeeeee")
 HOLC_COL <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d")
@@ -318,6 +318,7 @@ ui <- page_navbar(id = "nav",
         layout_columns(col_widths = c(7, 5),
           card(card_header("Counties in the chosen edition: directory vs CBP"), plotlyOutput("p_bm_cty", height = 380), tableOutput("t_bm_cty")),
           card(card_header("1880–1940: census manufacturing establishments by county vs the business directory's hazardous trades"), uiOutput("bm_nh"),
+               tags$b("1880 Census of Manufactures sample (Atack–Bateman–Weiss): Colorado establishments by industry (* = Frickel & Elliott sector)"), tableOutput("t_bm_at"),
                tags$small(class = "text-muted", "The business directory lists only the hazardous trades, so its count is a floor on coverage of all manufacturing. NHGIS county tables derive from the Census of Manufactures as tabulated with each decennial census (variables differ by year). ",
                  "The Atack–Bateman–Weiss samples (1870, 1880) give establishment records (county, industry, capital, workers, output) from surviving schedules, without street addresses; if Colorado rows were found they are in data/results/benchmarks/atack_colorado.csv."))))
     )),
@@ -965,6 +966,7 @@ server <- function(input, output, session) {
                scale_x_log10() + scale_y_log10() + labs(x = "CBP establishments (log scale)", y = "Directory establishments (log scale)") + theme_minimal(), tooltip = "text") })
   output$t_bm_cty <- renderTable({ if (is.null(bm_cty) || is.null(input$bm_year) || input$bm_year == "") return(NULL); h <- isTRUE(input$bm_haz)
     bm_cty |> filter(year == as.integer(input$bm_year)) |> arrange(desc(cbp_mfg)) |> head(12) |> transmute(County = county_name, CBP = if (h) cbp_haz else cbp_mfg, Directory = if (h) dir_haz else dir_mfg, `Street-level` = dir_street, Ratio = round(Directory / pmax(CBP, 1), 2)) }, striped = TRUE, spacing = "xs")
+  output$t_bm_at <- renderTable({ if (is.null(bm_at)) return(NULL); bm_at |> filter(year == 1880) |> transmute(Sector = ifelse(hazardous, paste0(sector, " *"), sector), Establishments = as.integer(establishments), Workers = as.integer(workers), `Capital ($)` = format(round(capital), big.mark = ",")) }, striped = TRUE, spacing = "xs")
   output$bm_nh <- renderUI({ if (is.null(bm_nh)) return(tags$small(class = "text-muted", "Not yet built: run Rscript R/benchmarks.R with an NHGIS key to add the 1880-1940 comparison."))
     d <- bm_nh |> group_by(Census = as.integer(census)) |> summarise(Counties = n(), `Census mfg. establishments` = sum(mfg_estab, na.rm = TRUE), `Directory hazardous trades` = sum(dir_haz), `r (log)` = round(cor(log1p(mfg_estab), log1p(dir_haz)), 2), .groups = "drop")
     renderTable(d, striped = TRUE, spacing = "xs")() })

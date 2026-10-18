@@ -71,25 +71,28 @@ print(fit)
 # ---------------------------------------------------------------- 2. NHGIS county manufacturing 1880-1940 vs the business directory
 NH <- NULL
 if (nzchar(Sys.getenv("IPUMS_API_KEY")) && requireNamespace("ipumsr", quietly = TRUE)) {
-  library(ipumsr); set_ipums_api_key(Sys.getenv("IPUMS_API_KEY"), overwrite = TRUE)
+  library(ipumsr)   # ipumsr reads IPUMS_API_KEY from the environment (~/.Renviron); nothing is written there
   ds <- as.data.table(get_metadata_catalog("nhgis", metadata_type = "datasets"))
-  mf <- file.path(W, "nhgis_mfg_county.csv")
-  if (!file.exists(mf)) { specs <- list()
+  mf <- file.path(W, "nhgis_mfg_county_v2.csv")
+  if (!length(Sys.glob(file.path(W, "nhgis*_csv", "*_county.csv")))) { specs <- list()
     for (dname in ds[grepl("^(1880|1890|1900|1910|1920|1930|1940)", group)]$name) {
       md <- tryCatch(get_metadata("nhgis", dataset = dname), error = function(e) NULL); if (is.null(md) || !"county" %in% md$geog_levels$name) next
       tb <- as.data.table(md$data_tables)[grepl("Manufactur", description, ignore.case = TRUE) & grepl("Establishment|Wage Earner|Value of Product|Capital", description, ignore.case = TRUE)]
       if (nrow(tb)) { message(dname, ": ", paste(tb$name, collapse = " ")); specs[[dname]] <- ds_spec(dname, data_tables = tb$name, geog_levels = "county") } }
     if (length(specs)) { ex <- wait_for_extract(submit_extract(define_extract_agg("nhgis", description = "Colorado counties: manufacturing 1880-1940", datasets = unname(specs), geographic_extents = "080")))
-      z <- download_extract(ex, download_dir = W, overwrite = TRUE); fl <- unzip(z, exdir = W)
-      rows <- rbindlist(lapply(grep("_county\\.csv$", fl, value = TRUE), function(f) { d <- as.data.table(read_nhgis(f, verbose = FALSE)); cb <- grep("_codebook\\.txt$", list.files(dirname(f), full.names = TRUE), value = TRUE)
-        cbt <- readLines(cb[basename(cb) == sub("\\.csv$", "_codebook.txt", basename(f))][1]); tab <- ""; vars <- list()
-        for (ln in cbt) { if (grepl("^\\s+Table \\d+:", ln)) tab <- trimws(sub("^\\s+Table \\d+:\\s*", "", ln)); m <- regmatches(ln, regexec("^\\s+([A-Z0-9]{3,6}):\\s+(.*)$", ln))[[1]]; if (length(m) == 3 && m[2] %in% names(d)) vars[[m[2]]] <- c(tab, m[3]) }
-        yr <- as.integer(sub(".*_ds\\d+_(\\d{4})_county\\.csv$", "\\1", f)); v <- names(vars); if (!length(v)) return(NULL)
-        est <- v[grepl("Establishment", sapply(vars, `[`, 1)) & grepl("^Total$|^Number|Establishments$|^Total number", sapply(vars, `[`, 2))][1]
-        we <- v[grepl("Wage Earner", sapply(vars, `[`, 1)) & grepl("Average|^Total$|^Number", sapply(vars, `[`, 2))][1]
-        data.table(census = yr, county = sprintf("%03d", as.integer(substr(d$GISJOIN, 6, 8)) %/% 10), county_nhgis = d$COUNTY, mfg_estab = if (is.na(est)) NA_real_ else as.numeric(d[[est]]), wage_earners = if (is.na(we)) NA_real_ else as.numeric(d[[we]]),
-                   estab_var = est, estab_label = if (is.na(est)) NA_character_ else paste(vars[[est]], collapse = " / ")) }), fill = TRUE)
-      fwrite(rows, mf) } }
+      z <- download_extract(ex, download_dir = W, overwrite = TRUE); unzip(z, exdir = W) } }
+  if (!file.exists(mf)) {
+    rows <- rbindlist(lapply(Sys.glob(file.path(W, "nhgis*_csv", "*_county.csv")), function(f) { d <- as.data.table(read_ipums_agg(f, verbose = FALSE)); cbf <- sub("\\.csv$", "_codebook.txt", f); if (!file.exists(cbf)) return(NULL)
+      tab <- ""; vars <- list()
+      for (ln in readLines(cbf)) { if (grepl("^\\s*Table \\d+:", ln)) tab <- trimws(sub("^\\s*Table \\d+:\\s*", "", ln)); m <- regmatches(ln, regexec("^\\s+([A-Z0-9]{3,6}):\\s+(.*)$", ln))[[1]]; if (length(m) == 3 && m[2] %in% names(d)) vars[[m[2]]] <- c(tab, m[3]) }
+      yr <- as.integer(sub(".*_ds\\d+_(\\d{4})_county\\.csv$", "\\1", f)); v <- names(vars); if (!length(v)) return(NULL); tabs <- vapply(vars, `[`, "", 1)
+      est <- v[grepl("^(Total Number of |Number of )?Manufacturing Establishments( Reporting)?(, 19\\d\\d)?$", tabs)][1]
+      we <- v[grepl("^(Average Number of |Annual Average )?Wage Earners in Manufacturing( Industries)?(, 19\\d\\d)?$|^Average Number of Employees of All Classes", tabs)][1]
+      vp <- v[grepl("^(Total )?Value of (All )?Products", tabs)][1]
+      message(yr, ": establishments = ", est, " (", if (!is.na(est)) vars[[est]][1], "); wage earners = ", we, "; value of products = ", vp)
+      data.table(census = yr, county = sprintf("%03d", as.integer(substr(d$GISJOIN, 6, 8)) %/% 10), county_nhgis = d$COUNTY, mfg_estab = if (is.na(est)) NA_real_ else as.numeric(d[[est]]), wage_earners = if (is.na(we)) NA_real_ else as.numeric(d[[we]]),
+                 value_products = if (is.na(vp)) NA_real_ else as.numeric(d[[vp]]), estab_label = if (is.na(est)) NA_character_ else vars[[est]][1]) }), fill = TRUE)
+    fwrite(rows, mf) }
   if (file.exists(mf)) NH <- fread(mf, colClasses = c(county = "character"))
 } else message("NHGIS step skipped: no IPUMS_API_KEY in the environment (set it in ~/.Renviron) or ipumsr not installed")
 if (!is.null(NH) && nrow(NH)) {
@@ -98,7 +101,7 @@ if (!is.null(NH) && nrow(NH)) {
   NH[, county_name := cty_names[county]]; NB <- merge(NH[!is.na(mfg_estab)], HD, by = c("census", "county_name"), all.x = TRUE)
   for (k in c("dir_haz", "dir_street")) NB[is.na(get(k)), (k) := 0L]
   NB[, ratio_haz_to_census := round(dir_haz / pmax(mfg_estab, 1), 2)]; setorder(NB, census, -mfg_estab)
-  fwrite(NB[, .(census, county, county_name, mfg_estab, wage_earners, dir_haz, dir_street, ratio_haz_to_census, estab_label)], file.path(O, "nhgis_mfg_vs_directory.csv"))
+  fwrite(NB[, .(census, county, county_name, mfg_estab, wage_earners, value_products, dir_haz, dir_street, ratio_haz_to_census, estab_label)], file.path(O, "nhgis_mfg_vs_directory.csv"))
   print(NB[, .(counties = .N, census_mfg_estab = sum(mfg_estab), directory_haz_trades = sum(dir_haz), r_log = round(cor(log1p(mfg_estab), log1p(dir_haz)), 2)), by = census])
 }
 
@@ -109,10 +112,20 @@ for (y in c(1870, 1880)) { f <- file.path(W, "atack", sprintf("%dStateSamples.xl
   if (file.exists(f) && requireNamespace("readxl", quietly = TRUE)) { sh <- readxl::excel_sheets(f)
     d <- as.data.table(readxl::read_excel(f, sheet = sh[1], guess_max = 50000)); nm <- names(d); message("Atack ", y, ": ", nrow(d), " establishments; columns: ", paste(head(nm, 40), collapse = ", "))
     sc <- nm[grepl("^state", nm, ignore.case = TRUE)][1]; if (is.na(sc)) next
-    co <- d[grepl("colorado|^co$", as.character(get(sc)), ignore.case = TRUE) | as.character(get(sc)) %in% c("8", "08", "62")]   # name, FIPS 08 or ICPSR state code 62
+    sv <- as.character(d[[sc]]); co <- d[grepl("colorado|^co$", sv, ignore.case = TRUE) | sv %in% c("8", "08", "62")]   # name, FIPS 08 or ICPSR state code 62 (the samples use ICPSR codes)
     if (!nrow(co)) { message("Atack ", y, ": no Colorado rows (state column '", sc, "', values e.g. ", paste(head(unique(d[[sc]]), 8), collapse = ", "), ")"); next }
     co[, year := y]; AT <- rbindlist(list(AT, co), fill = TRUE) } }
-if (!is.null(AT) && nrow(AT)) { fwrite(AT, file.path(O, "atack_colorado.csv")); message("Atack samples: ", nrow(AT), " Colorado establishments written to ", file.path(O, "atack_colorado.csv")) }
+if (!is.null(AT) && nrow(AT)) { fwrite(AT, file.path(O, "atack_colorado.csv")); message("Atack samples: ", nrow(AT), " Colorado establishments written to ", file.path(O, "atack_colorado.csv"))
+  # by 2-digit industry (the samples carry SIC-style industry codes), against the business directory's hazardous trades listed 1878-1885 statewide
+  ic <- names(AT)[grepl("^industry$", names(AT), ignore.case = TRUE)][1]
+  if (!is.na(ic)) { AT[, sic2 := substr(sprintf("%03d", as.integer(get(ic))), 1, 2)]
+    SICN <- c("20"="Food","21"="Tobacco","22"="Textiles","23"="Apparel","24"="Lumber & wood","25"="Furniture","26"="Paper","27"="Printing","28"="Chemicals","29"="Petroleum","30"="Rubber & leather goods","31"="Leather","32"="Stone, clay & glass","33"="Primary metals","34"="Fabricated metals","35"="Machinery","36"="Electrical","37"="Transportation equipment","38"="Instruments","39"="Miscellaneous")
+    AB <- AT[, .(establishments = .N, workers = sum(suppressWarnings(as.numeric(MEN)) + suppressWarnings(as.numeric(WOMEN)) + suppressWarnings(as.numeric(CHILDREN)), na.rm = TRUE), capital = sum(suppressWarnings(as.numeric(CAPITAL)), na.rm = TRUE)), by = .(year, sic2)]
+    AB[, `:=`(sector = ifelse(is.na(SICN[sic2]), paste("SIC", sic2), SICN[sic2]), hazardous = sic2 %in% HAZ_SIC)]; setorder(AB, year, -establishments)
+    H80 <- fread("app/data/historical_sites.csv")[fe_hazard %in% c(TRUE, "True") & first_year <= 1885 & last_year >= 1878]
+    AB[, directory_haz_1878_85 := NA_integer_]; AB[hazardous == TRUE, directory_haz_1878_85 := nrow(H80)]   # the directory total, repeated on the hazardous rows for the app table
+    fwrite(AB, file.path(O, "atack_colorado_by_sector.csv")); file.copy(file.path(O, "atack_colorado_by_sector.csv"), A, overwrite = TRUE)
+    message("Atack 1880 Colorado: ", sum(AB$establishments[AB$hazardous & AB$year == 1880]), " sampled establishments in Frickel & Elliott sectors; business directory hazardous trades 1878-85: ", nrow(H80)) } }
 
 # ---------------------------------------------------------------- summary and app copies
 file.copy(file.path(O, c("cbp_vs_directory_state.csv", "cbp_vs_directory_county.csv")), A, overwrite = TRUE)
