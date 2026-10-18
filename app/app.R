@@ -39,6 +39,7 @@ radium  <- if (file.exists(dd("radium_firms.csv"))) read.csv(dd("radium_firms.cs
 longev  <- if (file.exists(dd("firm_longevity.csv"))) read.csv(dd("firm_longevity.csv")) else NULL
 tracts  <- st_read(dd("enviroscreen_tracts.geojson"), quiet = TRUE) |> mutate(GEOID = as.character(GEOID))
 by_year_dir <- if (dir.exists(dd("by_year"))) dd("by_year") else file.path("..", "data", "by_year")
+pre60 <- if (file.exists(dd("pre1960_listings.csv"))) read.csv(dd("pre1960_listings.csv")) else NULL      # business-directory hazardous trades by edition (pipeline/historical/)
 validation  <- local({ f <- c(dd("geocoding_validation_frs.csv"), "../data/results/geocoding_validation_frs.csv"); f <- f[file.exists(f)]
                        if (length(f)) read.csv(f[1]) else NULL })
 # historical census (NHGIS 1940-2020 on 2010 tracts; IPUMS full count 1880-1940; Brown 1880 HGIS) and corridor layers: R/app_census_layers.R
@@ -427,8 +428,10 @@ ui <- page_navbar(id = "nav",
   nav_panel("Data & downloads",
     layout_columns(col_widths = c(4, 8),
       card(card_header("Geocoded directory listings by edition"),
-           selectInput("dl_year", "Edition", sort(as.integer(sub("CO_DCM_(\\d+)_geocoded.csv", "\\1", list.files(by_year_dir, "CO_DCM_.*csv"))))),
-           downloadButton("dl_one", "Download edition CSV"), br(), br(),
+           selectInput("dl_year", "Edition", { dcm <- sort(as.integer(sub("CO_DCM_(\\d+)_geocoded.csv", "\\1", list.files(by_year_dir, "CO_DCM_.*csv")))); bd <- if (is.null(pre60)) integer() else sort(unique(pre60$year))
+             c(setNames(as.list(bd), paste(bd, "(State Business Directory: hazardous trades)")), setNames(as.list(dcm), paste(dcm, "(Directory of Colorado Manufacturers)"))) }, selected = 1961),
+           downloadButton("dl_one", "Download edition CSV"),
+           tags$small(class = "text-muted d-block mt-1 mb-3", "1871-1956 files hold the hazardous-trade listings extracted from that edition of the Colorado State Business Directory (volume, page, town, trade, sector, placement precision, coordinates, linked firm id). 1961-2002 files hold every manufacturer listed in that edition with its codes and geocode."), br(),
            uiOutput("dl_btns"),
            downloadButton("dl_hist", "Download pre-1960 hazardous-trade firms (1871–1956)"), br(), br(),
            downloadButton("dl_cells", "Download industrial corridor cells (500 m)"),
@@ -1007,8 +1010,9 @@ server <- function(input, output, session) {
       transmute(Outcome, Period = period, Grade = grade, Change = sprintf("%+.1f%s", b, star), SE = round(se, 1), Tracts = n) }, striped = TRUE, spacing = "xs")
 
   # ---- downloads
-  output$dl_one <- downloadHandler(filename = function() sprintf("CO_DCM_%s_geocoded.csv", input$dl_year),
-                                   content = function(f) file.copy(file.path(by_year_dir, sprintf("CO_DCM_%s_geocoded.csv", input$dl_year)), f))
+  output$dl_one <- downloadHandler(filename = function() if (as.integer(input$dl_year) < 1960) sprintf("CO_business_directory_%s_hazardous_trades.csv", input$dl_year) else sprintf("CO_DCM_%s_geocoded.csv", input$dl_year),
+                                   content = function(f) { y <- as.integer(input$dl_year)
+                                     if (y < 1960) write.csv(pre60[pre60$year == y, ], f, row.names = FALSE) else file.copy(file.path(by_year_dir, sprintf("CO_DCM_%s_geocoded.csv", y)), f) })
   output$t_edcov <- DT::renderDataTable({ if (is.null(edcov)) return(NULL)
     DT::datatable(edcov |> transmute(Series = series, Edition = as.integer(year), `Scanned pages` = as.integer(pages), Listings = as.integer(listings), `Hazardous firms` = as.integer(hazardous), `Street-level (%)` = street_level_pct, `No code (%)` = no_code_pct, Complete = ifelse(complete %in% c(TRUE, "TRUE"), "yes", "NO"), Note = note),
                   rownames = FALSE, options = list(pageLength = 12, scrollX = TRUE, order = list(list(1, "asc"))), class = "compact stripe") |> DT::formatStyle("Complete", target = "row", backgroundColor = DT::styleEqual("NO", "#fff3cd")) })

@@ -75,6 +75,7 @@ cells[, `:=`(lon = round(xy[, "lon"], 5), lat = round(xy[, "lat"], 5), first_sec
 fwrite(cells[, .(lon, lat, class, first, last, editions, max_n, ever_haz, first_sector, last_sector, n_sectors, pre1960_first, pre1960_firms, metro)], file.path(A, "corridor_cells.csv"))
 file.copy("data/results/corridors/ellison_glaeser_by_sector_edition.csv", file.path(A, "corridor_eg.csv"), overwrite = TRUE)
 file.copy("data/results/corridors/sector_transitions.csv", file.path(A, "corridor_transitions.csv"), overwrite = TRUE)
+if (file.exists("data/historical/CO_pre1960_hazardous_listings.csv")) file.copy("data/historical/CO_pre1960_hazardous_listings.csv", file.path(A, "pre1960_listings.csv"), overwrite = TRUE)   # per-edition downloads on the Data tab
 message("corridor_cells.csv: ", nrow(cells), " cells")
 
 # ---------------------------------------------------------------- 3. Denver 1880 (Brown HGIS + IPUMS aggregates by ED)
