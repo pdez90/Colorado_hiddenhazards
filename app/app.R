@@ -159,7 +159,7 @@ ui <- page_navbar(id = "nav",
     conditionalPanel("input.nav == 'Census tracts over time'", tags$small(class = "text-muted", "On this tab the sector and status filters select the firms drawn on the map; the year slider is not used (each census shows the firms of its own decade), and the census charts are not filtered."))),
   nav_panel("Map",
     layout_columns(col_widths = c(9, 3),
-      card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map", height = "78vh"))),
+      card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map", height = "72vh"))),
       card(card_header("EnviroScreen layer"),
            selectInput("esvar", "Shade census tracts by", VARS, selected = "enviroscreen_pctl"),
            sliderInput("esop", "Opacity", 0, 1, 0.45, step = 0.05),
@@ -270,7 +270,7 @@ ui <- page_navbar(id = "nav",
            tags$small(class = "text-muted", "Each geocoded site is matched to the nearest City and County of Denver assessor parcel within 40 m (1,256 of 1,258 points; median distance 10 m) through Denver's open-data parcel service, which gives the assessor's property class, the current zone district, dwelling units and the year the present building was built (R/site_fate.R). ",
              "A geocoded street address can land on a neighbouring lot where parcels have been consolidated or split, so individual matches should be checked against the Sanborn sheets and reverse directories before being cited. ",
              "'No matching cleanup record' means the site matched no record in the inventories this project searched (EPA FRS/SEMS/RCRA, CDPHE VCUP, environmental covenants); it does not establish that a site was never assessed or remediated.")),
-      card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_sf", height = "70vh"))),
+      card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_sf", height = "62vh"))),
       card(card_header("Current use of the former sites"), plotlyOutput("p_sf_use", height = 300), tableOutput("t_sf_zone"),
            tags$small(class = "text-muted", "Share of each series' sites by the assessor's current property class. 'Rebuilt' = the present building is newer than the site's last directory listing (a redevelopment indicator, not a closure date); 'zoned industrial' = I-A, I-B or I-MX districts of the 2010 code."))),
     card(card_header("Current use by the decade a site was last listed"), tableOutput("t_sf_dec"),
@@ -289,7 +289,7 @@ ui <- page_navbar(id = "nav",
              "Click an area for its description. Racial covenants are deeds recorded 1931\u201335 that barred non-white occupants (Denver Public Library's Mapping Prejudice pilot); some also barred manufacturing. ",
              "Xu (2022) showed for Chicago that HOLC's maps were post-hoc appraisals while the FHA's map drove lending; we have not located a surviving Denver FHA mortgage-risk map, so the question here is what the HOLC grades ratified: the 1900\u20131940 districts show who already lived next to industry before the map was drawn, and the 1940\u20132020 panel what followed."),
            ),
-      card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_rl", height = "70vh"))),
+      card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_rl", height = "62vh"))),
       card(card_header("After the map: 2010 tracts by dominant HOLC grade, 1940\u20132020"),
            selectInput("rl_var", NULL, c("Hispanic (%)" = "p_hisp", "Black (%)" = "p_black", "Foreign born (%)" = "p_fb", "Below poverty (%)" = "p_pov", "Owner-occupied (%)" = "p_owner", "Median home value (2020 $)" = "mval_2020", "Median rent (2020 $)" = "mrent_2020", "Hazardous firms in decade" = "firms_haz"), selected = "p_hisp"),
            plotlyOutput("p_holc_tr", height = 300),
@@ -491,6 +491,9 @@ ui <- page_navbar(id = "nav",
            uiOutput("dl_btns"),
            downloadButton("dl_hist", "Download pre-1960 hazardous-trade firms (1871–1956)"), br(), br(),
            downloadButton("dl_cells", "Download industrial corridor cells (500 m)"),
+           tags$hr(), tags$b("Zoning, redlining and site-fate files"), br(),
+           tags$small(class = "text-muted d-block mt-1 mb-2", "Denver's 1925 zoning ordinance as mapped in January 1929 (industrial and commercial districts, georeferenced from the Denver Public Library scan; see Redlining & covenants), the share of every HOLC area and 2010 tract zoned industrial and commercial, the HOLC boundary gaps and change models with their rail and zoning adjustments, and what stands today on each Denver site."),
+           uiOutput("dl_zoning_btns"),
            tags$small(class = "text-muted d-block mt-1 mb-3", tags$b("How corridor cells are defined. "),
              "Every geocoded manufacturer in the 1961–2002 Directory of Colorado Manufacturers (street-level geocodes only) is snapped to a 500 m × 500 m grid cell (UTM zone 13N), ",
              "and every cell with at least one manufacturer in any edition is kept (4,078 cells). For each cell the script counts establishments per edition, finds the dominant 2-digit SIC sector, ",
@@ -916,6 +919,13 @@ server <- function(input, output, session) {
                                         paste(sprintf("%s %s", OUT[r$predictor], r$cell), collapse = "; "), ".</p>") else "",
                 dec, "<p><small>Reading: Hispanic share rose in tracts as industry densified (within) and was higher where industry was dense (between); poverty followed the between pattern; Black share was unrelated at the tract scale; ",
                 "foreign-born share was higher where firms had already left (legacy). In reverse, a higher foreign-born share predicted fewer new firms and higher poverty more.</small></p>")) })
+  DL_FILES <- c(dl_zon_geo = "zoning_1929.geojson", dl_zon_holc = "zoning_shares_holc.csv", dl_zon_tr = "zoning_shares_tracts.csv", dl_zon_g = "holc_zoning_by_grade.csv", dl_holc_bd = "holc_boundary.csv", dl_holc_m = "holc_tract_models.csv",
+                dl_sf1 = "site_fate_denver.csv", dl_sf2 = "site_fate_denver_pre1960.csv", dl_sf3 = "site_fate_summary.csv")
+  DL_LAB <- c(dl_zon_geo = "1925 zoning districts, 1929 map (GeoJSON)", dl_zon_holc = "Zoning share by HOLC area (CSV)", dl_zon_tr = "Zoning share by 2010 tract (CSV)", dl_zon_g = "Zoning by HOLC grade (CSV)", dl_holc_bd = "HOLC boundary gaps with rail and zoning controls (CSV)", dl_holc_m = "Change in tract outcomes by HOLC class (CSV)",
+              dl_sf1 = "Site fate: 1965-92 Denver sites on today's parcels (CSV)", dl_sf2 = "Site fate: pre-1960 Denver trades on today's parcels (CSV)", dl_sf3 = "Site fate: summary by decade of last listing (CSV)")
+  for (k in names(DL_FILES)) local({ kk <- k; output[[kk]] <- downloadHandler(filename = function() DL_FILES[[kk]], content = function(f) file.copy(dd(DL_FILES[[kk]]), f)) })
+  output$dl_zoning_btns <- renderUI({ have <- names(DL_FILES)[file.exists(dd(DL_FILES))]; if (!length(have)) return(tags$small(class = "text-muted", "Run R/zoning_1925.R, R/holc_covenants.R and R/site_fate.R to add these files."))
+    do.call(tagList, lapply(have, function(k) tagList(downloadButton(k, DL_LAB[[k]], class = "btn-sm mb-1"), br()))) })
   output$dl_panel <- downloadHandler(filename = function() "colorado_tract_panel_1940_2020.csv", content = function(f) write.csv(den_pan, f, row.names = FALSE))
 
   # ---- Denver 1880-1940: reconstructed enumeration districts (R/grf_eds.R + R/denver_eds_analysis.R) with the IPUMS full count
@@ -1024,7 +1034,7 @@ server <- function(input, output, session) {
         addLegend("bottomright", colors = unname(HOLC_COL6[1:6]), labels = c("A \u2018best\u2019", "B \u2018still desirable\u2019", "C \u2018definitely declining\u2019", "D \u2018hazardous\u2019", "Industrial zone (not graded)", "Commercial zone (not graded)"), title = "HOLC 1938", opacity = 0.7, layerId = "rllegend") }
     if ("zon" %in% L && !is.null(zon)) { zc <- unname(ZON_COL[zon$zone]); zc[is.na(zc)] <- "#999999"
       px <- px |> addPolygons(data = zon, fillColor = zc, fillOpacity = 0.55, color = zc, weight = 1, group = "zon", options = pathOptions(pane = "holcp"), label = sprintf("1925 zoning (1929 map): %s district, %s km² in all", zon$zone, zon$km2)) |>
-        addLegend("bottomright", colors = unname(ZON_COL), labels = paste(names(ZON_COL), "district"), title = "1925 zoning (1929 map)", opacity = 0.7, layerId = "zonlegend") }
+        addLegend("topleft", colors = unname(ZON_COL), labels = paste(names(ZON_COL), "district"), title = "1925 zoning (1929 map)", opacity = 0.7, layerId = "zonlegend") }
     if (any(c("cov", "firms") %in% L)) { lc <- c(if ("cov" %in% L) c("#333333", "#ff7f00"), if ("firms" %in% L) "#d1491f")
       ll <- c(if ("cov" %in% L) c("Racial covenant 1931-35", "Covenant that also bars manufacturing"), if ("firms" %in% L) sprintf("Hazardous-trade firm, %s", switch(input$rl_firms, pre = "1871-1937", mid = "1921-1937", post = "1938-1956")))
       px <- px |> addLegend("topright", colors = lc, labels = ll, title = "Points", opacity = 0.9, layerId = "ptlegend") }
