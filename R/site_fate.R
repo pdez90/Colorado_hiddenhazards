@@ -22,25 +22,28 @@ sites <- fread(file.path(A, "sites.csv"), colClasses = c(GEOID = "character"))[!
 hist <- fread(file.path(A, "historical_sites.csv"), colClasses = c(GEOID = "character"))[!is.na(lat) & precision != "town" & fe_hazard %in% c(TRUE, "True") & toupper(town) == "DENVER"]
 PTS <- unique(rbind(sites[, .(lon, lat)], hist[, .(lon, lat)]))[, pkey := sprintf("%.6f,%.6f", lon, lat)]
 message(nrow(sites), " manufacturers' sites, ", nrow(hist), " pre-1960 trades, ", nrow(PTS), " distinct points")
-# ---- 2. parcel at each point (cached)
-f_cache <- file.path(W, "parcels_by_point.csv")
+# ---- 2. nearest parcel to each point (cached). Sites were geocoded to street addresses, so most points sit on the street centreline or
+#          the kerb rather than inside the lot: the query asks for every parcel within SEARCH_M metres and keeps the nearest one.
+SEARCH_M <- 40; FLD2 <- c("ZONE_10", "SITUS_ADDR_NBR", "SITUS_STR_NAME")
+f_cache <- file.path(W, "parcels_by_point.csv"); if (file.exists(f_cache) && !"dist_m" %in% names(fread(f_cache, nrows = 1))) file.rename(f_cache, file.path(W, "parcels_by_point_v1.csv"))
 PC <- if (file.exists(f_cache)) fread(f_cache, colClasses = "character") else data.table(pkey = character())
 todo <- PTS[!pkey %in% PC$pkey]
 if (nrow(todo)) {
-  message("querying the Denver parcel service for ", nrow(todo), " points (about ", round(nrow(todo) * 0.4 / 60), " min)")
+  message("querying the Denver parcel service for ", nrow(todo), " points (about ", round(nrow(todo) * 0.5 / 60), " min)")
   one <- function(lon, lat, pkey) {
-    u <- paste0(SVC, "?where=1%3D1&geometry=", lon, "%2C", lat, "&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects",
-                "&outFields=", paste(FLD, collapse = "%2C"), "&returnGeometry=false&f=json")
-    r <- tryCatch(fromJSON(u, simplifyVector = TRUE), error = function(e) NULL)
-    if (is.null(r) || is.null(r$features) || !length(r$features)) return(data.table(pkey = pkey, SCHEDNUM = NA_character_))
-    a <- as.data.table(r$features$attributes)[1]; a$pkey <- pkey; a[] }
+    u <- paste0(SVC, "?geometry=", lon, "%2C", lat, "&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&distance=", SEARCH_M, "&units=esriSRUnit_Meter",
+                "&outFields=", paste(c(FLD, FLD2), collapse = "%2C"), "&returnGeometry=true&outSR=4326&f=geojson")
+    g <- tryCatch(suppressWarnings(st_read(u, quiet = TRUE)), error = function(e) NULL)
+    if (is.null(g) || !nrow(g)) return(data.table(pkey = pkey, SCHEDNUM = NA_character_, dist_m = NA_real_))
+    g <- st_make_valid(g); d <- as.numeric(st_distance(st_transform(st_sfc(st_point(c(lon, lat)), crs = 4326), 26913), st_transform(g, 26913)))
+    a <- as.data.table(st_drop_geometry(g)); a$dist_m <- round(d, 1); a <- a[order(dist_m)][1]; a$pkey <- pkey; a[] }
   new <- rbindlist(lapply(seq_len(nrow(todo)), function(i) { if (i %% 100 == 0) message("  ", i, "/", nrow(todo)); one(todo$lon[i], todo$lat[i], todo$pkey[i]) }), fill = TRUE)
-  for (k in setdiff(FLD, names(new))) new[[k]] <- NA
-  PC <- rbind(PC, new[, c("pkey", FLD), with = FALSE][, lapply(.SD, as.character)], fill = TRUE); fwrite(PC, f_cache) }
-PC <- unique(PC, by = "pkey")
-for (k in c("TOT_UNITS", "RES_ORIG_YEAR_BUILT", "COM_ORIG_YEAR_BUILT", "LAND_AREA")) PC[[k]] <- suppressWarnings(as.numeric(PC[[k]]))
+  for (k in setdiff(c(FLD, FLD2, "dist_m"), names(new))) new[[k]] <- NA
+  PC <- rbind(PC, new[, c("pkey", FLD, FLD2, "dist_m"), with = FALSE][, lapply(.SD, as.character)], fill = TRUE); fwrite(PC, f_cache) }
+PC <- copy(unique(PC, by = "pkey"))
+for (k in c("TOT_UNITS", "RES_ORIG_YEAR_BUILT", "COM_ORIG_YEAR_BUILT", "LAND_AREA", "dist_m")) PC[[k]] <- suppressWarnings(as.numeric(PC[[k]]))
 PC[, year_built := pmax(RES_ORIG_YEAR_BUILT, COM_ORIG_YEAR_BUILT, na.rm = TRUE)]; PC[!is.finite(year_built) | year_built < 1800, year_built := NA]
-message(sum(!is.na(PC$SCHEDNUM)), " of ", nrow(PC), " points fall on an assessor parcel")
+message(sum(!is.na(PC$SCHEDNUM)), " of ", nrow(PC), " points have an assessor parcel within ", SEARCH_M, " m (median distance ", round(median(PC$dist_m, na.rm = TRUE)), " m)")
 # ---- 3. broad classes
 broad <- function(cls, zone) { cls <- toupper(ifelse(is.na(cls), "", cls)); zone <- toupper(ifelse(is.na(zone), "", zone))
   fcase(cls == "", "No parcel match",
@@ -51,8 +54,8 @@ broad <- function(cls, zone) { cls <- toupper(ifelse(is.na(cls), "", cls)); zone
         grepl("EXEMPT|SCHOOL|CHURCH|HOSPITAL|RELIGIOUS|GOVERNMENT|CHARIT|EDUCATION", cls), "Civic / school / health",
         grepl("COMMERCIAL|OFFICE|RETAIL|STORE|HOTEL|MOTEL|RESTAURANT|PARKING|GARAGE|SERVICE|BANK|THEATER|SHOPPING", cls), "Commercial / office",
         default = "Other") }
-score <- function(d) { d <- merge(d[, pkey := sprintf("%.6f,%.6f", lon, lat)], PC[, .(pkey, SCHEDNUM, PROP_CLASS, D_CLASS_CN, ZONE_ID, TOT_UNITS, year_built, SITUS_ADDRESS_LINE1, OWNER_NAME, LAND_AREA)], by = "pkey", all.x = TRUE)
-  d[, use_now := broad(D_CLASS_CN, ZONE_ID)]; d[, zone_industrial := grepl("^I($|[-AB])", toupper(ZONE_ID))]   # I-A, I-B, I-MX-* and the former-code IA/IB districts
+score <- function(d) { d <- merge(d[, pkey := sprintf("%.6f,%.6f", lon, lat)], PC[, .(pkey, SCHEDNUM, PROP_CLASS, D_CLASS_CN, ZONE_ID, ZONE_10, TOT_UNITS, year_built, SITUS_ADDRESS_LINE1, OWNER_NAME, LAND_AREA, parcel_dist_m = dist_m)], by = "pkey", all.x = TRUE)
+  d[, use_now := broad(D_CLASS_CN, ZONE_ID)]; d[, zone_industrial := grepl("^I($|[-AB])", toupper(ZONE_ID))]; d[, zone_industrial_1956code := grepl("^I-", toupper(ZONE_10))]   # I-A, I-B, I-MX-* and the former-code IA/IB districts
   d[, redeveloped := !is.na(year_built) & year_built > last_year]; d[, last_decade := paste0(floor(last_year / 10) * 10, "s")]; d[, pkey := NULL]; d[] }
 S <- score(sites[, .(site_id, address, first_year, last_year, radar, fe_sectors, lat, lon)])
 H <- score(hist[, .(hfirm, name, street, first_year, last_year, sectors, persists_to_1961plus, lat, lon)])
@@ -63,11 +66,11 @@ SM <- rbind(S[, .(series = lab["S"], n = .N), by = .(last_decade, use_now)], H[,
 SM[, pct := round(100 * n / sum(n), 1), by = .(series, last_decade)]; setorder(SM, series, last_decade, -n); fwrite(SM, file.path(O, "site_fate_summary.csv"))
 ST <- rbind(S[, .(series = lab["S"], n = .N), by = use_now], H[, .(series = lab["H"], n = .N), by = use_now]); ST[, pct := round(100 * n / sum(n), 1), by = series]
 print(dcast(ST, use_now ~ series, value.var = "pct", fill = 0))
-Z <- rbind(S[use_now != "No parcel match", .(series = lab["S"], n = .N, pct_zone_industrial = round(100 * mean(zone_industrial), 1), pct_redeveloped = round(100 * mean(redeveloped), 1), median_year_built = median(year_built, na.rm = TRUE))],
-           H[use_now != "No parcel match", .(series = lab["H"], n = .N, pct_zone_industrial = round(100 * mean(zone_industrial), 1), pct_redeveloped = round(100 * mean(redeveloped), 1), median_year_built = median(year_built, na.rm = TRUE))])
+Z <- rbind(S[use_now != "No parcel match", .(series = lab["S"], n = .N, pct_zone_industrial = round(100 * mean(zone_industrial), 1), pct_zone_industrial_1956code = round(100 * mean(zone_industrial_1956code), 1), pct_redeveloped = round(100 * mean(redeveloped), 1), median_year_built = median(year_built, na.rm = TRUE))],
+           H[use_now != "No parcel match", .(series = lab["H"], n = .N, pct_zone_industrial = round(100 * mean(zone_industrial), 1), pct_zone_industrial_1956code = round(100 * mean(zone_industrial_1956code), 1), pct_redeveloped = round(100 * mean(redeveloped), 1), median_year_built = median(year_built, na.rm = TRUE))])
 print(Z); fwrite(Z, file.path(O, "site_fate_zoning.csv"))
 SEN <- S[use_now %in% c("Residential", "Park / open space", "Civic / school / health") & radar == "Not on any list"]
-fwrite(SEN[, .(site_id, address, first_year, last_year, fe_sectors, use_now, D_CLASS_CN, ZONE_ID, TOT_UNITS, year_built, lat, lon)], file.path(O, "site_fate_sensitive.csv"))
+fwrite(SEN[, .(site_id, address, first_year, last_year, fe_sectors, use_now, D_CLASS_CN, ZONE_ID, ZONE_10, TOT_UNITS, year_built, parcel_dist_m, lat, lon)], file.path(O, "site_fate_sensitive.csv"))
 message(nrow(S), " Denver sites (", sum(S$use_now != "No parcel match"), " on a parcel); ", nrow(SEN), " are now residential, park or civic/school/health with no cleanup record; ",
         sum(S$use_now == "Residential"), " residential in all (", sum(S$TOT_UNITS[S$use_now == "Residential"], na.rm = TRUE), " dwelling units)")
 file.copy(file.path(O, c("site_fate_summary.csv", "site_fate_denver.csv", "site_fate_denver_pre1960.csv", "site_fate_zoning.csv")), A, overwrite = TRUE)
