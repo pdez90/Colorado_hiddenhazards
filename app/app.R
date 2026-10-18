@@ -327,7 +327,7 @@ ui <- page_navbar(id = "nav",
       div(
         layout_columns(col_widths = c(6, 6),
           card(card_header("1975–2002: manufacturing establishments in Colorado — County Business Patterns vs the Directory of Colorado Manufacturers"), plotlyOutput("p_bm_state", height = 360),
-               tags$small(class = "text-muted", "CBP counts every establishment with a payroll (SIC 20–39 to 1997, NAICS 31–33 from 1998), from administrative records; the directory lists firms that answered the publisher's questionnaire. The ratio is the directory's coverage rate; it varies by edition with the publisher's effort, which is why edition-to-edition changes in site counts on the Trends tab should be read against this chart.")),
+               tags$small(class = "text-muted", "CBP counts every establishment with a payroll (SIC 20–39 to 1997, NAICS 31–33 from 1998), from administrative records; the directory lists firms that answered the publisher's questionnaire. The ratio is the directory's coverage rate; it varies by edition mainly with how much of each volume was scanned (see the table), which is why edition-to-edition changes in site counts on the Trends tab should be read against this chart.")),
           card(card_header("County agreement"), tableOutput("t_bm_fit"), uiOutput("bm_fit_note"))),
         layout_columns(col_widths = c(7, 5),
           card(card_header("Counties in the chosen edition: directory vs CBP"), plotlyOutput("p_bm_cty", height = 380), tableOutput("t_bm_cty")),
@@ -978,8 +978,10 @@ server <- function(input, output, session) {
     ggplotly(ggplot(d, aes(year, n, colour = series, group = series, text = sprintf("%s %s: %s", series, year, format(n, big.mark = ",")))) + geom_line() + geom_point(size = 2) + scale_colour_manual(values = c(CBP = "#2c7fb8", Directory = "#d1491f")) + expand_limits(y = 0) +
                labs(x = NULL, y = if (h) "Hazardous-sector establishments" else "Manufacturing establishments", colour = NULL) + theme_minimal(), tooltip = "text") |> hleg() })
   output$t_bm_fit <- renderTable({ if (is.null(bm_cty)) return(NULL); h <- isTRUE(input$bm_haz); d <- bm_cty |> filter(dir_all > 0) |> mutate(dir = if (h) dir_haz else dir_mfg, cbp = if (h) cbp_haz else cbp_mfg)
-    d |> group_by(Edition = year) |> summarise(Counties = n(), `Directory` = sum(dir), CBP = sum(cbp), Ratio = round(sum(dir) / sum(cbp), 2), `r (log counts)` = round(cor(log1p(dir), log1p(cbp)), 2), .groups = "drop") |> mutate(Edition = as.integer(Edition)) }, striped = TRUE, spacing = "xs")
-  output$bm_fit_note <- renderUI(tags$small(class = "text-muted", "Correlation across the 64 counties of log establishment counts in the same year; the ratio is directory / CBP, statewide."))
+    f <- d |> group_by(Edition = year) |> summarise(`Directory` = sum(dir), CBP = sum(cbp), Ratio = round(sum(dir) / sum(cbp), 2), `r (log counts)` = round(cor(log1p(dir), log1p(cbp)), 2), .groups = "drop") |> mutate(Edition = as.integer(Edition))
+    if (!is.null(bm_state) && "pages" %in% names(bm_state)) f <- f |> left_join(bm_state |> transmute(Edition = as.integer(year), `Pages scanned` = as.integer(pages), `No code (%)` = pct_no_code), by = "Edition"); f }, striped = TRUE, spacing = "xs")
+  output$bm_fit_note <- renderUI(tags$small(class = "text-muted", "Correlation across the 64 counties of log establishment counts in the same year; the ratio is directory / CBP, statewide. ",
+    "The ratio follows 'pages scanned' (about 40 listings per page in every edition): editions held only in part (1985, 1993, 2002; gaps in 1961-62) are the thin years, and listings without an industry code (1993: 37%) drop out of the sector counts. Edition-to-edition swings are therefore scan coverage, not industrial change."))
   output$p_bm_cty <- renderPlotly({ if (is.null(bm_cty) || is.null(input$bm_year) || input$bm_year == "") return(NULL); h <- isTRUE(input$bm_haz)
     d <- bm_cty |> filter(year == as.integer(input$bm_year)) |> mutate(dir = if (h) dir_haz else dir_mfg, cbp = if (h) cbp_haz else cbp_mfg)
     ggplotly(ggplot(d, aes(cbp, dir, text = sprintf("%s: CBP %d, directory %d (%d at a street address)", county_name, cbp, dir, dir_street))) + geom_abline(slope = 1, intercept = 0, colour = "grey60", linetype = "dashed") + geom_point(colour = "#d1491f", alpha = 0.8, size = 2.5) +

@@ -57,6 +57,10 @@ CMP[, county_name := cty_names[county]]
 CMP_state <- CMP[, .(cbp_mfg = sum(cbp_mfg, na.rm = TRUE), cbp_haz = sum(cbp_haz, na.rm = TRUE), dir_mfg = sum(dir_mfg, na.rm = TRUE), dir_haz = sum(dir_haz, na.rm = TRUE), dir_all = sum(dir_all, na.rm = TRUE)), by = year][order(year)]
 CMP_state[, `:=`(ratio_mfg = round(dir_mfg / cbp_mfg, 2), ratio_haz = round(dir_haz / cbp_haz, 2))]
 CMP_state[dir_all == 0, `:=`(dir_mfg = NA, dir_haz = NA, dir_all = NA, ratio_mfg = NA, ratio_haz = NA)]   # years without a directory edition
+# how much of each edition we hold: scanned pages, listings, parts, share without an industry code (the directory line tracks these, not the economy)
+L0 <- fread("data/results/CO_directory_listings_1961-2002.csv", colClasses = c(sic = "character", naics = "character"))
+ED <- L0[, .(pages = uniqueN(paste(source_volume, page)), listings = .N, parts = uniqueN(source_volume), pct_no_code = round(100 * mean(sic == "" & naics == ""), 1)), by = year]
+CMP_state <- merge(CMP_state, ED, by = "year", all.x = TRUE)
 fwrite(CMP_state, file.path(O, "cbp_vs_directory_state.csv"))
 CC <- CMP[!is.na(cbp_mfg) & year %in% DIR$year][, .(year, county, county_name, cbp_mfg, cbp_haz, dir_mfg, dir_haz, dir_all, dir_street)][order(year, -cbp_mfg)]
 for (k in c("dir_mfg", "dir_haz", "dir_all", "dir_street")) CC[is.na(get(k)), (k) := 0L]
