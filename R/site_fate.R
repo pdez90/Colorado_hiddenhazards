@@ -47,7 +47,9 @@ message(sum(!is.na(PC$SCHEDNUM)), " of ", nrow(PC), " points have an assessor pa
 # ---- 3. broad classes
 broad <- function(cls, zone) { cls <- toupper(ifelse(is.na(cls), "", cls)); zone <- toupper(ifelse(is.na(zone), "", zone))
   fcase(cls == "", "No parcel match",
-        grepl("SINGLE FAM|DUPLEX|TRIPLEX|ROWHOUSE|TOWNHOUSE|CONDO|APARTMENT|MULTI|RESIDENTIAL|MOBILE|MIXED USE.*RES", cls), "Residential",
+        grepl("SINGLE FAM|^SFR|DUPLEX|TRIPLEX|ROWHOUSE|TOWNHOUSE|CONDO|APARTMENT|MULTI|RESIDENTIAL|MOBILE|MIXED USE.*RES", cls), "Residential",
+        grepl("PARK$|^DENVER PARK|OPEN SPACE|GOLF|CEMETERY|RECREATION", cls), "Park / open space",
+        grepl("STADIUM|STOCK SHOW|JAIL|COURTHOUSE|FIRE STATION|POLICE|LIBRARY|MUSEUM|GOVERNMENT|SCHOOL|CHURCH|HOSPITAL|RELIGIOUS|CHARIT|EDUCATION|UNIVERSITY|COLLEGE", cls), "Civic / school / health",
         grepl("INDUSTRIAL|WAREHOUSE|UTILIT|RAILROAD|MANUFACTUR", cls), "Industrial / utility",
         grepl("VACANT", cls), "Vacant",
         grepl("EXEMPT", cls) & grepl("PARK|OPEN SPACE|CEMETERY|RECREATION", cls), "Park / open space",
@@ -55,7 +57,7 @@ broad <- function(cls, zone) { cls <- toupper(ifelse(is.na(cls), "", cls)); zone
         grepl("COMMERCIAL|OFFICE|RETAIL|STORE|HOTEL|MOTEL|RESTAURANT|PARKING|GARAGE|SERVICE|BANK|THEATER|SHOPPING", cls), "Commercial / office",
         default = "Other") }
 score <- function(d) { d <- merge(d[, pkey := sprintf("%.6f,%.6f", lon, lat)], PC[, .(pkey, SCHEDNUM, PROP_CLASS, D_CLASS_CN, ZONE_ID, ZONE_10, TOT_UNITS, year_built, SITUS_ADDRESS_LINE1, OWNER_NAME, LAND_AREA, parcel_dist_m = dist_m)], by = "pkey", all.x = TRUE)
-  d[, use_now := broad(D_CLASS_CN, ZONE_ID)]; d[, zone_industrial := grepl("^I($|[-AB])", toupper(ZONE_ID))]; d[, zone_industrial_1956code := grepl("^I-", toupper(ZONE_10))]   # I-A, I-B, I-MX-* and the former-code IA/IB districts
+  d[, use_now := broad(D_CLASS_CN, ZONE_ID)]; d[, zone_industrial := grepl("^I-?(A|B|MX)", toupper(ZONE_ID))]; d[, zone_industrial_1956code := grepl("^I-?[0-9]", toupper(ZONE_10))]   # I-A, I-B, I-MX-* and the former-code IA/IB districts
   d[, redeveloped := !is.na(year_built) & year_built > last_year]; d[, last_decade := paste0(floor(last_year / 10) * 10, "s")]; d[, pkey := NULL]; d[] }
 S <- score(sites[, .(site_id, address, first_year, last_year, radar, fe_sectors, lat, lon)])
 H <- score(hist[, .(hfirm, name, street, first_year, last_year, sectors, persists_to_1961plus, lat, lon)])

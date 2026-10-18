@@ -1,51 +1,61 @@
 last_decade,use_now,series,n,pct
 1890s,Commercial / office,Business-directory hazardous trades 1891-1956,13,72.2
-1890s,Industrial / utility,Business-directory hazardous trades 1891-1956,3,16.7
-1890s,Other,Business-directory hazardous trades 1891-1956,2,11.1
+1890s,Park / open space,Business-directory hazardous trades 1891-1956,3,16.7
+1890s,Industrial / utility,Business-directory hazardous trades 1891-1956,2,11.1
 1910s,Commercial / office,Business-directory hazardous trades 1891-1956,38,58.5
-1910s,Industrial / utility,Business-directory hazardous trades 1891-1956,11,16.9
-1910s,Residential,Business-directory hazardous trades 1891-1956,9,13.8
+1910s,Residential,Business-directory hazardous trades 1891-1956,11,16.9
+1910s,Industrial / utility,Business-directory hazardous trades 1891-1956,9,13.8
 1910s,Vacant,Business-directory hazardous trades 1891-1956,5,7.7
-1910s,Other,Business-directory hazardous trades 1891-1956,2,3.1
+1910s,Park / open space,Business-directory hazardous trades 1891-1956,2,3.1
 1920s,Commercial / office,Business-directory hazardous trades 1891-1956,23,69.7
 1920s,Residential,Business-directory hazardous trades 1891-1956,4,12.1
 1920s,Vacant,Business-directory hazardous trades 1891-1956,3,9.1
-1920s,Other,Business-directory hazardous trades 1891-1956,2,6.1
+1920s,Civic / school / health,Business-directory hazardous trades 1891-1956,1,3
+1920s,Park / open space,Business-directory hazardous trades 1891-1956,1,3
 1920s,Industrial / utility,Business-directory hazardous trades 1891-1956,1,3
 1930s,Commercial / office,Business-directory hazardous trades 1891-1956,19,61.3
-1930s,Other,Business-directory hazardous trades 1891-1956,6,19.4
+1930s,Residential,Business-directory hazardous trades 1891-1956,7,22.6
 1930s,Vacant,Business-directory hazardous trades 1891-1956,3,9.7
-1930s,Residential,Business-directory hazardous trades 1891-1956,2,6.5
+1930s,Other,Business-directory hazardous trades 1891-1956,1,3.2
 1930s,Industrial / utility,Business-directory hazardous trades 1891-1956,1,3.2
 1940s,Commercial / office,Business-directory hazardous trades 1891-1956,16,53.3
-1940s,Industrial / utility,Business-directory hazardous trades 1891-1956,6,20
-1940s,Residential,Business-directory hazardous trades 1891-1956,4,13.3
+1940s,Residential,Business-directory hazardous trades 1891-1956,5,16.7
+1940s,Industrial / utility,Business-directory hazardous trades 1891-1956,4,13.3
 1940s,Vacant,Business-directory hazardous trades 1891-1956,2,6.7
-1940s,Other,Business-directory hazardous trades 1891-1956,2,6.7
+1940s,Civic / school / health,Business-directory hazardous trades 1891-1956,2,6.7
+1940s,Park / open space,Business-directory hazardous trades 1891-1956,1,3.3
 1950s,Commercial / office,Business-directory hazardous trades 1891-1956,62,43.1
-1950s,Industrial / utility,Business-directory hazardous trades 1891-1956,24,16.7
-1950s,Other,Business-directory hazardous trades 1891-1956,21,14.6
-1950s,Residential,Business-directory hazardous trades 1891-1956,21,14.6
+1950s,Residential,Business-directory hazardous trades 1891-1956,35,24.3
+1950s,Industrial / utility,Business-directory hazardous trades 1891-1956,20,13.9
 1950s,Vacant,Business-directory hazardous trades 1891-1956,15,10.4
+1950s,Park / open space,Business-directory hazardous trades 1891-1956,5,3.5
+1950s,Other,Business-directory hazardous trades 1891-1956,3,2.1
+1950s,Civic / school / health,Business-directory hazardous trades 1891-1956,3,2.1
 1950s,No parcel match,Business-directory hazardous trades 1891-1956,1,0.7
-1960s,Industrial / utility,Manufacturers' directory sites 1965-1992,33,29.5
+1960s,Residential,Manufacturers' directory sites 1965-1992,32,28.6
 1960s,Commercial / office,Manufacturers' directory sites 1965-1992,30,26.8
-1960s,Other,Manufacturers' directory sites 1965-1992,20,17.9
+1960s,Industrial / utility,Manufacturers' directory sites 1965-1992,23,20.5
 1960s,Vacant,Manufacturers' directory sites 1965-1992,16,14.3
-1960s,Residential,Manufacturers' directory sites 1965-1992,13,11.6
-1970s,Industrial / utility,Manufacturers' directory sites 1965-1992,58,35.2
+1960s,Civic / school / health,Manufacturers' directory sites 1965-1992,9,8
+1960s,Park / open space,Manufacturers' directory sites 1965-1992,2,1.8
 1970s,Commercial / office,Manufacturers' directory sites 1965-1992,52,31.5
-1970s,Other,Manufacturers' directory sites 1965-1992,22,13.3
+1970s,Industrial / utility,Manufacturers' directory sites 1965-1992,45,27.3
+1970s,Residential,Manufacturers' directory sites 1965-1992,34,20.6
 1970s,Vacant,Manufacturers' directory sites 1965-1992,17,10.3
-1970s,Residential,Manufacturers' directory sites 1965-1992,16,9.7
-1980s,Industrial / utility,Manufacturers' directory sites 1965-1992,108,40.9
+1970s,Civic / school / health,Manufacturers' directory sites 1965-1992,12,7.3
+1970s,Park / open space,Manufacturers' directory sites 1965-1992,5,3
+1980s,Industrial / utility,Manufacturers' directory sites 1965-1992,101,38.3
 1980s,Commercial / office,Manufacturers' directory sites 1965-1992,68,25.8
-1980s,Other,Manufacturers' directory sites 1965-1992,37,14
+1980s,Residential,Manufacturers' directory sites 1965-1992,50,18.9
 1980s,Vacant,Manufacturers' directory sites 1965-1992,28,10.6
-1980s,Residential,Manufacturers' directory sites 1965-1992,23,8.7
-1990s,Industrial / utility,Manufacturers' directory sites 1965-1992,215,48.2
+1980s,Civic / school / health,Manufacturers' directory sites 1965-1992,8,3
+1980s,Park / open space,Manufacturers' directory sites 1965-1992,6,2.3
+1980s,Other,Manufacturers' directory sites 1965-1992,3,1.1
+1990s,Industrial / utility,Manufacturers' directory sites 1965-1992,205,46
 1990s,Commercial / office,Manufacturers' directory sites 1965-1992,98,22
 1990s,Vacant,Manufacturers' directory sites 1965-1992,68,15.2
-1990s,Other,Manufacturers' directory sites 1965-1992,33,7.4
-1990s,Residential,Manufacturers' directory sites 1965-1992,31,7
+1990s,Residential,Manufacturers' directory sites 1965-1992,60,13.5
+1990s,Civic / school / health,Manufacturers' directory sites 1965-1992,8,1.8
+1990s,Park / open space,Manufacturers' directory sites 1965-1992,5,1.1
+1990s,Other,Manufacturers' directory sites 1965-1992,1,0.2
 1990s,No parcel match,Manufacturers' directory sites 1965-1992,1,0.2

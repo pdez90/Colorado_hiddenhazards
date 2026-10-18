@@ -375,7 +375,28 @@ was nil in 1900–1920, 4 points by 1930 and 5 by 1940 — before the map — th
 the Hispanic gap opens only in 1940 and after. Industry in D areas was already 3–4× C's density before 1938 and became 7–8× in
 1961–2002. Reading: the appraisers ratified a divergence already under way, which then accelerated. Railways and the 1925 zoning
 ordinance are not controlled, and Fishback, Rose, Snowden & Storrs (2024) show that FHA practice, not the HOLC map, governed lending,
-so the post-1938 acceleration cannot be attributed to the map alone.
+so the post-1938 acceleration cannot be attributed to the map alone. Two controls address this: the distance of each unit to the
+nearest rail line (TIGER rails; `gap_rail`), and the share of each unit zoned industrial under Denver's first zoning ordinance
+(`gap_zone`, `b_zone`), from `R/zoning_1925.R`.
+
+### The 1925 zoning ordinance (`R/zoning_1925.R`)
+Denver zoned in February 1925, thirteen years before the HOLC map. The Denver Public Library's scan of the *Building Zone Map* as revised
+to January 1929 (CG4314 .D4 G44 1929) is a monochrome hatched map; a texture classifier run on the 11,849 × 12,000-pixel scan labels
+32-pixel cells as Industrial A ("/" hatch with no lot lines), Industrial B ("\" hatch) or Commercial (dense cross-hatch), with the
+result drawn over the scan in `data/raw/zoning_1929/zone_classification_overlay.jpg` and the cells in `zone_cells_1929.csv`. The
+script georeferences the scan from 16 control points (street intersections and park corners read off the scan, resolved to TIGER
+road intersections with `tigris`; affine fit in UTM 13N, RMSE printed) and writes the zoned districts (`zoning_1929.geojson`) and the
+industrially and commercially zoned share of every HOLC area, enumeration district and 2010 tract (`zoning_shares_*.csv`), which
+`holc_covenants.R` then uses as a control in the boundary gaps and the change models. Residence E (apartments) and Industrial A share a
+hatch and are separated only by the absence of lot lines, so a few platted Industrial A blocks and the unplatted land north-east of
+the 1929 city are the least certain cells. Run after `holc_covenants.R` once (for `holc_denver.geojson`), then rerun `holc_covenants.R`.
+
+### What became of the sites (`R/site_fate.R`)
+Every geocoded Denver site (1965–92 manufacturers' directory, hazardous sectors; street-level pre-1960 hazardous trades) is matched to
+the nearest assessor parcel within 40 m through Denver's open-data parcel service (property class, current and pre-2010 zone district,
+dwelling units, year built), cached in `work/site_fate/parcels_by_point.csv`. Outputs in `data/results/site_fate/` and `app/data/`:
+current use by series and by decade of last listing, the share still zoned industrial, the share rebuilt since the last listing, and the
+residential/school/park conversions with no cleanup record (`site_fate_sensitive.csv`).
 
 ### Benchmarks against the national series (`R/benchmarks.R`)
 
@@ -413,6 +434,7 @@ The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because
 `Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`
 (Denver districts) → `Rscript R/denver_eds_analysis.R` → `Rscript R/county_panel_1880_1940.R` → `Rscript R/ej_panel.R` → `Rscript R/fetch_hmda.R` →
 `Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
+`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` →
 `Rscript R/benchmarks.R` (CBP, NHGIS county manufacturing and the Atack samples; needs network and the NHGIS key) →
 `Rscript R/edition_coverage.R` (per-edition pages, listings, hazardous firms and completeness for both directory series → app/data/edition_coverage.csv;
 twelve of the 25 manufacturers' directory editions are partial scans that stop part-way through the geographic section — complete: 1965–68, 1970, 1973–74, 1977, 1980, 1983, 1988, 1990, 1992 — flagged on the Trends and Data tabs; the complete editions are the ones that match CBP best).
