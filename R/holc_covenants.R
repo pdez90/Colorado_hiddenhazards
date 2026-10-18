@@ -100,13 +100,26 @@ if (length(ED_cls)) { EC <- rbindlist(ED_cls); fwrite(EC, file.path(O, "ed_holc_
 xw <- as.data.table(st_drop_geometry(X))[grade %in% c("A", "B", "C", "D"), .(share = sum(pct_tract)), by = .(GEOID = GEOID10, grade)]
 dom <- xw[, .(grade = grade[which.max(share)], covered = sum(share)), by = GEOID][covered >= 0.4]     # tracts at least 40% inside graded areas
 pan <- fread("app/data/tract_panel.csv", colClasses = c(GEOID = "character")); pan <- merge(pan, dom, by = "GEOID")
+for (k in c("p_owner", "mval_2020", "mrent_2020")) if (!k %in% names(pan)) pan[[k]] <- NA_real_
 TR <- pan[!is.na(pop) & pop > 0, .(tracts = .N, p_black = weighted.mean(p_black, pop, na.rm = TRUE), p_hisp = weighted.mean(p_hisp, pop, na.rm = TRUE), p_fb = weighted.mean(p_fb, pop, na.rm = TRUE), p_pov = weighted.mean(p_pov, pop, na.rm = TRUE),
+                                   p_owner = weighted.mean(p_owner, pop, na.rm = TRUE), mval_2020 = weighted.mean(mval_2020, pop, na.rm = TRUE), mrent_2020 = weighted.mean(mrent_2020, pop, na.rm = TRUE),
                                    firms_haz = sum(firms_haz, na.rm = TRUE)), by = .(census, grade)][order(census, grade)]
 fwrite(TR, file.path(O, "trajectories_by_grade.csv")); file.copy(file.path(O, c("holc_by_grade.csv", "trajectories_by_grade.csv")), A, overwrite = TRUE)
+# mortgage lending today (HMDA 2018-21, R/fetch_hmda.R) by dominant HOLC grade: the implemented-policy counterpart
+hm <- "data/results/hmda_tracts_2018_2021.csv"
+if (file.exists(hm)) { Hm <- merge(fread(hm, colClasses = c(GEOID = "character")), dom, by = "GEOID")
+  HG <- Hm[, .(tracts = .N, apps = sum(apps), denial_rate = round(100 * sum(denied) / sum(apps), 1), pct_apps_black = round(100 * sum(black_apps) / sum(apps), 1), pct_apps_hisp = round(100 * sum(hisp_apps) / sum(apps), 1),
+               black_denial_rate = round(weighted.mean(black_denial_rate, black_apps, na.rm = TRUE), 1), hisp_denial_rate = round(weighted.mean(hisp_denial_rate, hisp_apps, na.rm = TRUE), 1),
+               median_loan_k = round(weighted.mean(median_loan_k, apps)), median_income_k = round(weighted.mean(median_income_k, apps))), by = grade][order(grade)]
+  fwrite(HG, file.path(O, "hmda_by_grade.csv")); file.copy(file.path(O, "hmda_by_grade.csv"), A, overwrite = TRUE); print(HG)
+  m <- lm(denial_rate ~ factor(grade, c("A", "B", "C", "D")) + log(median_income_k), Hm[apps >= 30], weights = apps); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
+  HM <- data.table(term = rownames(ct), b = ct[, 1], se = ct[, 2], p = ct[, 4])[grepl("grade", term)][, term := sub(".*\\)", "grade ", term)]
+  fwrite(HM, file.path(O, "hmda_grade_model.csv")); file.copy(file.path(O, "hmda_grade_model.csv"), A, overwrite = TRUE); print(HM) }
 # Xu-style: change in each outcome over a period on grade dummies (A = reference), with the 1940 baseline of the outcome, 1940 % Black, and firms 1931-40 controlled
-W <- dcast(pan, GEOID + grade ~ census, value.var = c("p_black", "p_hisp", "p_fb", "p_pov", "firms_haz"))
+pan[, lmval := log(mval_2020)]
+W <- dcast(pan, GEOID + grade ~ census, value.var = c("p_black", "p_hisp", "p_fb", "p_pov", "firms_haz", "p_owner", "lmval"))
 M <- list()
-for (v in c("p_black", "p_hisp", "p_pov")) for (per in list(c(1940, 1980), c(1980, 2010), c(1940, 2010))) {
+for (v in c("p_black", "p_hisp", "p_pov", "p_owner", "lmval")) for (per in list(c(1940, 1980), c(1980, 2010), c(1940, 2010))) {
   y0 <- paste0(v, "_", per[1]); y1 <- paste0(v, "_", per[2]); if (!all(c(y0, y1) %in% names(W))) next
   if (v == "p_pov" && per[1] == 1940) { d <- W[!is.na(W[[y1]])]; d$base <- 0 } else { d <- W[!is.na(W[[y1]]) & !is.na(W[[y0]])]; d$base <- d[[y0]] }
   d$dy <- d[[y1]] - d$base; d$grade <- factor(d$grade, c("A", "B", "C", "D")); d$black40 <- d$p_black_1940; d$firms40 <- log1p(d$firms_haz_1940)

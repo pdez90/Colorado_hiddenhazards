@@ -321,6 +321,16 @@ dissimilarity), `ed_distance_models.csv` (composition vs log distance to the nea
 Boundaries are approximate (a block or so at the edges). The Python and R versions implement the same steps; R's Voronoi/concave hull
 come from sf (GEOS ≥ 3.11).
 
+**All fields (IPUMS extract with 43 variables, 64 measures per district; `ed_year_groups.csv`, `ed_distance_models.csv`).** The
+housing market reads the hazard exactly as expected: owner-occupancy rises 18–20 points per log-metre from the nearest firm in every
+census 1900–1940 (pooled +18.5, p < 1e-100), mean SEI of employed residents rises 2–4 points, and non-relatives in the household
+(boarders, lodgers, servants) fall by 8–17 points; districts with a firm had 13–30% owner households against 31–48% elsewhere, and in
+1940 a median rent of $17 against $49. Recent immigrants (arrived within ten years) concentrate near industry 1900–1930; illiteracy
+is higher there; and in 1940, 80% of residents of the firm districts had moved house since 1935 against 72% elsewhere (−7 points per
+log-metre, p < 1e-14) — the industrial districts were the city's high-turnover rental belt. Employment in the hazardous industries
+themselves shows no gradient (7–10% of workers everywhere), so the people living next to the plants were not, for the most part,
+their workforce.
+
 `R/county_panel_1880_1940.R` gives the statewide counterpart: the full count by county on each census's county boundaries (NHGIS
 extract F in `fetch_census.R`), with the pre-1960 trades of the decade by county.
 

@@ -98,6 +98,12 @@ for (yv in c("p_black", "p_hisp", "p_fb", "ppov")) { if (all(is.na(pan[[yv]]))) 
                      data.table(outcome = yv, model = sprintf("between tracts, spatial error (lambda %.2f)", sem$lambda), term = rownames(sc)[2:3], b = sc[2:3, 1], se = sc[2:3, 2], p = sc[2:3, 4], n = nrow(mt), tracts = nrow(mt)))
 }
 R1 <- rbindlist(res); fwrite(R1, "data/results/ej_panel_models.csv")
+# the same within/between associations census by census (the pooled coefficients above average over 1970-2010)
+res_d <- list()
+for (yv in c("p_black", "p_hisp", "p_fb", "ppov")) for (cy in sort(unique(pan$census))) { d <- pan[!is.na(get(yv)) & census == cy]; if (nrow(d) < 40 || sd(d$act_w) == 0) next
+  ols <- lm(as.formula(paste(yv, "~ act_w + act_b + leg_b + popd_w + dist_km")), d); cf <- lmtest::coeftest(ols, vcov. = sandwich::vcovHC(ols, type = "HC1"))
+  res_d[[length(res_d) + 1]] <- data.table(outcome = yv, census = cy, term = rownames(cf)[2:4], b = cf[2:4, 1], se = cf[2:4, 2], p = cf[2:4, 4], tracts = nrow(d)) }
+fwrite(rbindlist(res_d), "data/results/ej_panel_by_decade.csv")
 # reverse direction: does composition at t predict new industrial entry by t+1?
 pan[, `:=`(entry_next = data.table::shift(active, -1) - active), by = GEOID]
 R2 <- rbindlist(lapply(c("p_black", "p_hisp", "p_fb", "ppov"), function(xv) { if (all(is.na(pan[[xv]]))) return(NULL)

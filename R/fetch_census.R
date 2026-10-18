@@ -8,6 +8,8 @@
 #   B. 1970 and 1980 tract tables (race, Spanish origin, nativity, poverty, total population) in their own boundaries.
 #   C. 1940, 1950 and 1960: every tract table NHGIS has (they are small), in their own boundaries.
 #   D. Tract boundary files for 1940, 1950, 1960, 1970, 1980.
+#   H. Housing 1970-2020: tenure, median home value and median rent (1940-60 tables are already in C): 1970/1980 tract tables,
+#      1990 STF1/STF3, 2000 SF1/SF3, ACS B25003/B25077/B25064.
 #   F. County boundary files 1880-1940 (NHGIS), for the statewide IPUMS full-count county layer (R/county_panel_1880_1940.R).
 #   E. Foreign born and poverty for 1990-2020, which the standardized series lack: 1990 STF3 and 2000 SF3 tract tables, ACS 5-year
 #      2008-2012 and 2016-2020 tract tables (nativity, poverty status), with the 1990, 2000 and 2020 tract boundaries.
@@ -77,6 +79,17 @@ if (!done("F")) {
   for (z in Sys.glob(file.path(W, "*", "*.zip"))) unzip(z, exdir = dirname(z), overwrite = TRUE)
   file.create(file.path(W, ".done_F"))
 }
+# ---------------------------------------------------------------- H. housing 1970-2020 (tenure, median value, median rent)
+if (!done("H")) {
+  specs <- list(); hp <- "^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied|^Median Value|^Median (Contract|Gross) Rent|^Occupied Housing Units$"
+  for (dname in c(ds[grepl("^(1970|1980)", group)]$name, "1990_STF1", "1990_STF3", "2000_SF1a", "2000_SF3a")) { tb <- tract_tables(dname, hp)
+    if (length(tb)) { message(dname, ": ", paste(tb, collapse = " ")); specs[[dname]] <- ds_spec(dname, data_tables = tb, geog_levels = "tract") } }
+  for (dname in ds[grepl("^(2008_2012|2016_2020)_ACS5", name)]$name) {
+    md <- tryCatch(get_metadata("nhgis", dataset = dname), error = function(e) NULL); if (is.null(md) || !"tract" %in% md$geog_levels$name) next
+    tb <- intersect(c("B25003", "B25077", "B25064"), md$data_tables$name); if (length(tb)) { message(dname, ": ", paste(tb, collapse = " ")); specs[[dname]] <- ds_spec(dname, data_tables = tb, geog_levels = "tract") } }
+  if (length(specs)) { get_and_unpack(submit_extract(define_extract_agg("nhgis", description = "Colorado tracts 1970-2020 housing", datasets = unname(specs), geographic_extents = CO)), "H: housing 1970-2020") }
+  file.create(file.path(W, ".done_H"))
+}
 # ---------------------------------------------------------------- E. 1990-2020 nativity and poverty (nominal tracts + ACS)
 if (!done("E2")) {                                            # (E2: the first version of this extract, marker .done_E, missed the ACS tables)
   specs <- list()
@@ -120,6 +133,10 @@ RULES <- list(
                c("^Spanish Indicator$", "", "Spanish language|Spanish surname")),
   fb    = list(c("^Nativity( and Place of Birth)?$|^Nativity in the United States$", "^Persons|^Total population", "^Foreign[- ]born$"), c("Nativity and Parentage", "", "^Foreign Born$"), c("^Foreign.Born White Population( by Sex)?$", "", "^(Total|Male|Female)$"),
                c("Nativity|Place of Birth|Citizenship", "", "^Foreign[- ]born$|^Foreign >> (Male|Female)$|^Foreign[- ]born( \\(.*\\))?( >> .*)?$")),
+  own   = list(c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^Owner[- ]occupied$|^Owned$|^Owner occupied( >> Total)?$")),
+  rentocc = list(c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^(Renter|Tenant)[- ]occupied$|^Rented$|^Renter occupied( >> Total)?$")),
+  mval  = list(c("^Median Value", "", "^Median value|^Median$|^Total$|^Median Value|Median value")),
+  mrent = list(c("^Median Gross Rent", "", "^Median|^Total$"), c("^Median Contract Rent", "", "^Median|^Total$")),   # gross rent where published (2000+, ACS), contract rent before
   ppov  = list(c("^Poverty Status( in \\d{4})?$|Poverty Status in the Past 12 Months", "^Persons for Whom Poverty|Population for whom poverty", "^(Income in .* )?below poverty level$"),   # a total cell (ACS tables carry subtotals, so never sum their breakdowns)
                c("^Poverty Status( in \\d{4})?( by Age)?$|^Age by Poverty Status( in \\d{4})?$", "^Persons for Whom Poverty", "below poverty"),
                c("Persons in Families Below Poverty|^Poverty Status by Age$", "Persons in Families|Unrelated Individuals 14", "Aggregate number of persons|^Below poverty level >>")))
@@ -142,9 +159,15 @@ if (length(csv_a)) { D <- as.data.table(read_ipums_agg(csv_a[1], verbose = FALSE
   for (yr in sort(unique(D$census))) { d <- D[census == yr]; out <- data.table(GEOID = gj(d$GISJOIN), census = yr)
     for (k in c("pop", "nhblk", "hisp")) { m <- pick(cb[var %in% names(d)], RULES[[k]]); out[[k]] <- if (nrow(m)) rowSums(as.matrix(d[, m$var, with = FALSE]), na.rm = TRUE) else NA_real_
       if (yr == min(D$census)) message("1990+ ", k, ": ", paste(m$var, collapse = "+")) }
-    out$fb <- NA_real_; out$ppov <- NA_real_; P[[as.character(yr)]] <- out[substr(GEOID, 1, 2) == "08"] } }
+    out$fb <- NA_real_; out$ppov <- NA_real_; out$own <- NA_real_; out$rentocc <- NA_real_; out$mval <- NA_real_; out$mrent <- NA_real_; P[[as.character(yr)]] <- out[substr(GEOID, 1, 2) == "08"] } }
 tr10 <- Sys.glob(file.path(W, "*", "*tract_2010*.shp")); if (!length(tr10)) stop("2010 tract shapefile not found under work/census")
 T10 <- st_make_valid(st_transform(st_read(tr10[1], quiet = TRUE), UTM)); T10 <- T10[substr(T10$GISJOIN, 1, 3) == "G08", ]; T10$GEOID <- gj(T10$GISJOIN)
+CNT <- c("pop", "nhblk", "hisp", "fb", "ppov", "own", "rentocc"); MED <- c("mval", "mrent")      # counts are split by area; medians are averaged weighting by occupied units x area
+interp <- function(M) { for (k in c(CNT, MED)) if (!k %in% names(M)) M[[k]] <- NA_real_
+  M[, hu := fifelse(is.na(own) & is.na(rentocc), pop, fifelse(is.na(own), 0, own) + fifelse(is.na(rentocc), 0, rentocc))]
+  out <- M[, lapply(.SD, function(v) if (all(is.na(v))) NA_real_ else sum(v * w, na.rm = TRUE)), by = .(GEOID, census), .SDcols = CNT]
+  med <- M[, lapply(.SD, function(v) { ok <- !is.na(v) & hu * w > 0; if (!any(ok)) NA_real_ else sum(v[ok] * hu[ok] * w[ok]) / sum(hu[ok] * w[ok]) }), by = .(GEOID, census), .SDcols = MED]
+  merge(out, med, by = c("GEOID", "census")) }
 for (yr in c(1940, 1950, 1960, 1970, 1980)) {
   csvs <- Sys.glob(file.path(W, "*", sprintf("*_%d_tract.csv", yr))); shpf <- Sys.glob(file.path(W, "*", sprintf("*tract_%d*.shp", yr)))
   if (!length(csvs) || !length(shpf)) { message(yr, ": tables or boundaries missing, skipped"); next }
@@ -152,21 +175,26 @@ for (yr in c(1940, 1950, 1960, 1970, 1980)) {
   Ty <- st_make_valid(st_transform(st_read(shpf[1], quiet = TRUE), UTM)); Ty <- Ty[Ty$GISJOIN %in% S$GISJOIN, ]; Ty$a_src <- as.numeric(st_area(Ty))
   ov <- suppressWarnings(st_intersection(Ty[, c("GISJOIN", "a_src")], T10[, "GEOID"])); ov$w <- as.numeric(st_area(ov)) / ov$a_src
   M <- merge(as.data.table(st_drop_geometry(ov))[, .(GISJOIN, GEOID, w)], S, by = "GISJOIN")
-  P[[as.character(yr)]] <- M[, lapply(.SD, function(v) if (all(is.na(v))) NA_real_ else sum(v * w, na.rm = TRUE)), by = .(GEOID, census), .SDcols = c("pop", "nhblk", "hisp", "fb", "ppov")]
+  P[[as.character(yr)]] <- interp(M)
 }
 # E. fill foreign born and poverty for 1990-2020: 1990/2000/2020 tables area-weighted onto 2010 tracts; the 2008-12 ACS is on 2010 tracts
 aw <- function(S, shpf) { Ty <- st_make_valid(st_transform(st_read(shpf, quiet = TRUE), UTM)); Ty <- Ty[Ty$GISJOIN %in% S$GISJOIN, ]; Ty$a_src <- as.numeric(st_area(Ty))
   ov <- suppressWarnings(st_intersection(Ty[, c("GISJOIN", "a_src")], T10[, "GEOID"])); ov$w <- as.numeric(st_area(ov)) / ov$a_src
   M <- merge(as.data.table(st_drop_geometry(ov))[, .(GISJOIN, GEOID, w)], S, by = "GISJOIN")
-  M[, .(fb = if (all(is.na(fb))) NA_real_ else sum(fb * w, na.rm = TRUE), ppov = if (all(is.na(ppov))) NA_real_ else sum(ppov * w, na.rm = TRUE)), by = GEOID] }
+  interp(M)[, .(GEOID, fb, ppov, own, rentocc, mval, mrent)] }
 for (yr in c(1990, 2000, 2010, 2020)) {
   csvs <- Sys.glob(file.path(W, "*", switch(as.character(yr), "1990" = "*_1990_tract.csv", "2000" = "*_2000_tract.csv", "2010" = "*_20125_tract.csv", "2020" = "*_20205_tract.csv")))
   csvs <- csvs[!grepl("_ts_", csvs)]; if (!length(csvs) || is.null(P[[as.character(yr)]])) { message(yr, ": nativity/poverty tables missing, fb and ppov stay NA"); next }
   S <- summarise_year(csvs, yr)
-  F <- if (yr == 2010) S[, .(GEOID = gj(GISJOIN), fb, ppov)] else { shpf <- Sys.glob(file.path(W, "*", sprintf("*tract_%d*.shp", yr))); if (!length(shpf)) { message(yr, ": boundaries missing"); next }; aw(S, shpf[1]) }
+  F <- if (yr == 2010) S[, .(GEOID = gj(GISJOIN), fb, ppov, own, rentocc, mval, mrent)] else { shpf <- Sys.glob(file.path(W, "*", sprintf("*tract_%d*.shp", yr))); if (!length(shpf)) { message(yr, ": boundaries missing"); next }; aw(S, shpf[1]) }
   P[[as.character(yr)]] <- merge(P[[as.character(yr)]][, .(GEOID, census, pop, nhblk, hisp)], F, by = "GEOID", all.x = TRUE)
 }
-panel <- rbindlist(P, fill = TRUE)[, .(GEOID, census, pop, nhblk, hisp, fb, ppov)][order(GEOID, census)]
+# real dollars: CPI-U annual averages (1982-84 = 100) -> 2020 dollars
+CPI <- c("1940" = 14.0, "1950" = 24.1, "1960" = 29.6, "1970" = 38.8, "1980" = 82.4, "1990" = 130.7, "2000" = 172.2, "2010" = 218.1, "2020" = 258.8)
+panel <- rbindlist(P, fill = TRUE)
+for (k in c("own", "rentocc", "mval", "mrent")) if (!k %in% names(panel)) panel[[k]] <- NA_real_
+panel[, `:=`(mval_2020 = mval * 258.8 / CPI[as.character(census)], mrent_2020 = mrent * 258.8 / CPI[as.character(census)])]
+panel <- panel[, .(GEOID, census, pop, nhblk, hisp, fb, ppov, own, rentocc, mval, mrent, mval_2020, mrent_2020)][order(GEOID, census)]
 fwrite(panel, file.path(W, "denver_tract_panel.csv"))
 message("wrote ", file.path(W, "denver_tract_panel.csv"), ": ", nrow(panel), " tract-years; years ", paste(sort(unique(panel$census)), collapse = " "))
 file.copy(Sys.glob(sub("\\.shp$", ".*", tr10[1])), W, overwrite = TRUE)

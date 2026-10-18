@@ -33,6 +33,8 @@ st_write(st_transform(st_simplify(tr, dTolerance = 40), 4326), file.path(A, "co_
 
 cen <- fread(file.path(C, "denver_tract_panel.csv"), colClasses = c(GEOID = "character"))[GEOID %in% tr$GEOID]
 cen[, `:=`(p_black = pmin(100, 100 * nhblk / pop), p_hisp = pmin(100, 100 * hisp / pop), p_fb = pmin(100, 100 * fb / pop), p_pov = pmin(100, 100 * ppov / pop))]   # area weighting can push a share a hair over 100
+for (k in c("own", "rentocc", "mval_2020", "mrent_2020")) if (!k %in% names(cen)) cen[[k]] <- NA_real_
+cen[, p_owner := fifelse(!is.na(own) & !is.na(rentocc) & own + rentocc >= 20, pmin(100, 100 * own / (own + rentocc)), NA_real_)]
 cen[pop < 50, c("p_black", "p_hisp", "p_fb", "p_pov") := NA_real_]
 # firms active in the decade ending in each census year: 1961-2002 manufacturers' directory (all firms, hazardous flagged) and,
 # before 1961, street-level pre-1960 hazardous trades.  2010 and 2020 reuse the last editions (1993-2002) and are labelled so in the app.
@@ -54,12 +56,14 @@ act <- rbindlist(lapply(names(WIN), function(y) { a <- WIN[[y]]
     rbind(hist[, .(GEOID = GEOID10, hazardous = TRUE)], fy[last_year < a[1], .(GEOID = GEOID10, hazardous)])[hazardous == TRUE, .(legacy_haz = .N), by = GEOID]
   merge(merge(data.table(GEOID = tr$GEOID), d, by = "GEOID", all.x = TRUE), leg, by = "GEOID", all.x = TRUE)[, census := as.integer(y)] }))
 for (v in c("firms_haz", "firms_all", "legacy_haz")) act[is.na(get(v)) & !(census <= 1960 & v == "firms_all"), (v) := 0L]
-pan <- merge(cen[, .(GEOID, census, pop = round(pop), p_black = round(p_black, 1), p_hisp = round(p_hisp, 1), p_fb = round(p_fb, 1), p_pov = round(p_pov, 1))],
+pan <- merge(cen[, .(GEOID, census, pop = round(pop), p_black = round(p_black, 1), p_hisp = round(p_hisp, 1), p_fb = round(p_fb, 1), p_pov = round(p_pov, 1), p_owner = round(p_owner, 1), mval_2020 = round(mval_2020), mrent_2020 = round(mrent_2020))],
              act, by = c("GEOID", "census"), all = TRUE)
 pan <- merge(pan, as.data.table(st_drop_geometry(tr)), by = "GEOID")
+if (file.exists("data/results/hmda_tracts_2018_2021.csv")) { Hm <- fread("data/results/hmda_tracts_2018_2021.csv", colClasses = c(GEOID = "character"))[, .(GEOID, census = 2020L, hmda_apps = apps, hmda_denial = denial_rate, hmda_denial_black = black_denial_rate, hmda_denial_hisp = hisp_denial_rate, hmda_pct_hisp_apps = pct_apps_hisp)]
+  pan <- merge(pan, Hm, by = c("GEOID", "census"), all.x = TRUE); message("HMDA 2018-21 joined to the 2020 rows: ", sum(!is.na(pan$hmda_apps)), " tracts") }
 fwrite(pan[order(GEOID, census)], file.path(A, "tract_panel.csv"))
 message("tract_panel.csv: ", nrow(pan), " tract-years; tracts with a census value by year: ", paste(pan[!is.na(pop), .N, by = census][order(census), paste(census, N)], collapse = ", "))
-for (f in c("ej_panel_models.csv", "ej_panel_reverse.csv")) if (file.exists(file.path("data/results", f))) file.copy(file.path("data/results", f), file.path(A, f), overwrite = TRUE)
+for (f in c("ej_panel_models.csv", "ej_panel_reverse.csv", "ej_panel_by_decade.csv")) if (file.exists(file.path("data/results", f))) file.copy(file.path("data/results", f), file.path(A, f), overwrite = TRUE)
 
 # ---------------------------------------------------------------- 2. corridors
 SIC2 <- c("20"="Food","22"="Textiles","23"="Apparel","24"="Lumber & wood","25"="Furniture","26"="Paper","27"="Printing","28"="Chemicals",
