@@ -63,7 +63,8 @@ G <- rbindlist(groups); M <- rbindlist(models)
 # pooled: census fixed effects, ED-clustered SE not needed (one obs per ED-year); HC1
 D <- rbindlist(lapply(all_E, function(E) as.data.table(st_drop_geometry(E))[, c("year", "ED", "pop", "dist_m", CORE, EXTRA), with = FALSE][, census := year]))
 for (v in c(CORE, EXTRA)) { dd <- D[!is.na(dist_m) & !is.na(get(v))]; if (nrow(dd) < 30) next
-  m <- lm(as.formula(paste(v, "~ log(dist_m + 50) + factor(census)")), dd, weights = pop); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
+  fml <- if (uniqueN(dd$census) > 1) paste(v, "~ log(dist_m + 50) + factor(census)") else paste(v, "~ log(dist_m + 50)")   # measures a single census provides (e.g. 1935 residence) get no census effects
+  m <- lm(as.formula(fml), dd, weights = pop); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
   M <- rbind(M, data.table(census = 0L, outcome = v, b_per_log_m = ct[2, 1], se = ct[2, 2], p = ct[2, 4], EDs = nrow(dd), firms = NA_integer_)) }
 fwrite(G, file.path(O, "ed_year_groups.csv")); fwrite(M, file.path(O, "ed_distance_models.csv")); S <- rbindlist(shares); fwrite(S, file.path(O, "ed_firm_shares.csv")); file.copy(file.path(O, "ed_firm_shares.csv"), A, overwrite = TRUE)
 # app layers

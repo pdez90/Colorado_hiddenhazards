@@ -47,10 +47,10 @@ Covenant deeds with a point: 730; 440 exclude Black residents by name, 27 also b
 | 2010 | B | 6 | 9.9 | 7.0 | 6.5 | 7.1 | 1 |
 | 2010 | C | 41 | 6.3 | 20.5 | 9.2 | 18.1 | 32 |
 | 2010 | D | 19 | 8.3 | 47.7 | 17.0 | 27.1 | 120 |
-| 2020 | A | 4 | 5.4 | 10.8 | NaN | NaN | 1 |
-| 2020 | B | 6 | 5.6 | 7.6 | NaN | NaN | 1 |
-| 2020 | C | 41 | 5.1 | 16.2 | NaN | NaN | 32 |
-| 2020 | D | 19 | 7.0 | 32.3 | NaN | NaN | 120 |
+| 2020 | A | 4 | 5.4 | 10.8 | 7.3 | 5.3 | 1 |
+| 2020 | B | 6 | 5.6 | 7.6 | 4.7 | 4.2 | 1 |
+| 2020 | C | 41 | 5.1 | 16.2 | 7.7 | 10.9 | 32 |
+| 2020 | D | 19 | 7.0 | 32.3 | 12.6 | 15.4 | 120 |
 
 ## Change in tract outcomes by HOLC grade (A = reference; 1940 baseline, 1940 % Black and 1931-40 firms controlled; HC1 SE)
 
