@@ -1,30 +1,15 @@
 site_id,year,sectors,firms
 S00001,1965,Industrial machinery,ALTA ENGINEERING | YOUNG MACHINE CO.
-S00002,1965,Chemicals,AMERICAN SILICONE
-S00003,1965,Fabricated metals,AUSTIN HEATING + SUPPLY
 S00004,1965,Industrial machinery,"AUTOMATED PROCUCTS, INC."
-S00006,1965,Industrial machinery,CRAKE PRECISICN MACHINE PRODUCTS
-S00007,1965,Industrial machinery,E-V PRODUCTS CO. | KING PRECISION PROCUCTS
-S00011,1965,Industrial machinery,FAB TCOLy INC.
-S00011,1980,Transportation equipment,MECHANEX CORP
 S00012,1980,Fabricated metals;Industrial machinery,THELCO CoRP
 S00012,1983,Industrial machinery,THELCO CORP
 S00013,1965,Industrial machinery,FREEMAN SIGNS :
-S00014,1965,Chemicals,GATEWAY SAFETY PRODUCTS
-S00015,1965,Extended sectors,JERRY'S LEATHER GOODS
 S00016,1965,Fabricated metals,"MARKON INDUSTRIES, INC."
 S00017,1965,Fabricated metals,MEEHLEIS STEEL CO.
-S00018,1965,Fabricated metals;Industrial machinery,MINCCK MFG. CO. eae | ROCKY MOUNTAIN TOOL + MACHINE CO~
-S00020,1965,Fabricated metals,"NYCO, INC."
 S00020,1967,Transportation equipment,POR MFG COMPANY
 S00020,1983,Industrial machinery,J M MACHINE AND TOOLs INC.
-S00021,1965,Industrial machinery,P + J MACHINE CO.
-S00022,1965,Chemicals,PAINT MANUFACTURERS» INC i)
-S00024,1965,Fabricated metals,"STEEL STRUCTURES OF COLC., INC."
-S00025,1965,Fabricated metals,THOMAS PLATING COMPANY
 S00027,1988,Fabricated metals,FANTASY IN IRON
 S00027,1990,Fabricated metals,FANTASY IN IRON
-S00029,1965,Industrial machinery,WORLD-WIDE PRODUCTS
 S00030,1965,Transportation equipment,AMERICAN COLEMAN CC.y THE
 S00030,1966,Transportation equipment,"AMERICAN COLEMAN CO, THE"
 S00030,1967,Fabricated metals;Industrial machinery;Transportation equipment,"AMERICAN COLEMAN CO, THE"
@@ -121,7 +106,7 @@ S00100,1967,Industrial machinery,AMERICAN PATTERN WORKS INC
 S00100,1968,Chemicals;Industrial machinery,AMERICAN PATTERN WORKS INC | EMCO MACHINE PRODUCTS | UNIVERSAL CHEMICAL # SUPPLIES INC
 S00100,1970,Industrial machinery,AMERICAN PATTERN WORKS INC
 S00100,1973,Industrial machinery,CENTRAL MACHINE INC
-S00100,1974,Industrial machinery, | CENTRAL MACHINE INC
+S00100,1974,Industrial machinery,| CENTRAL MACHINE INC
 S00100,1977,Industrial machinery;Primary metals,AMERICAN PATTERN WORKS INC | CENTRAL MACHINE INC
 S00100,1980,Fabricated metals;Industrial machinery,AMERICAN MACHINE | AMERICAN PATTERN WORKS INC
 S00100,1983,Fabricated metals;Industrial machinery,AMERICAN MACHINE | AMERICAN PATTERN WORKS INC
@@ -194,7 +179,7 @@ S00123,1980,Industrial machinery,SPECTRON INSTRUMENT CORP
 S00123,1983,Chemicals;Industrial machinery,HADCO@DENVER CHEMICALS CORP | SPECTRON INSTRUMENT CORP
 S00123,1990,Chemicals;Extended sectors,HADCO-DENVER CHEMICAL CORP | SPECTRON INSTRUMENT CORP
 S00123,1992,Chemicals,HADCO-DENVER CHEMICAL CORP
-S00124,1970,Primary metals,
+S00124,1970,Primary metals,""
 S00124,1973,Primary metals,NATIONAL SMELTING + REFINIAG CO
 S00124,1974,Primary metals,NATIONAL SMELTING + REFINING CO
 S00129,1965,Fabricated metals,BROADWAY SHEET METAL WORKS
@@ -404,9 +389,9 @@ S00237,1974,Primary metals;Rubber & plastics,ACE-KAUFFMAN RUBBER STAMP ¢# SEAL 
 S00237,1980,Fabricated metals,ACE*KAUFFMAN RUBBER STAMP + SEAL CO
 S00237,1983,Fabricated metals,ACE*KAUFFMAN RUBBER STAMP + SEAL CO
 S00237,1990,Rubber & plastics,ACE-KAUFFMAN RUBBER STAMP + SEAL CO
-S00238,1967,Fabricated metals,
+S00238,1967,Fabricated metals,""
 S00239,1965,Industrial machinery,KINZBACH MACHINE SHOP
-S00239,1966,Fabricated metals;Industrial machinery,"""COX, TOLBERT G, SHEET METAL | *KINZBACH MACHINE SHOP"
+S00239,1966,Fabricated metals;Industrial machinery,"""""COX, TOLBERT G, SHEET METAL | *KINZBACH MACHINE SHOP"
 S00239,1967,Fabricated metals,"COX, TOLBERT G, SHEET METAL"
 S00239,1968,Fabricated metals,"COX, TOLBERT G, SHEET METAL"
 S00241,1965,Fabricated metals,KLOPPENBERG + CO.
@@ -684,7 +669,7 @@ S00374,1968,Fabricated metals,WESTERN METAL STRIP
 S00374,1973,Fabricated metals,WESTERN METAL STRIP
 S00374,1974,Fabricated metals,WESTERN METAL STRIP
 S00375,1965,Transportation equipment,"WESTERN MOTOR: REBUILDERS, INC."
-S00375,1967,Transportation equipment,
+S00375,1967,Transportation equipment,""
 S00377,1965,Chemicals,WESTERN WHOLESALE NEON
 S00378,1966,Industrial machinery,WESTERN BATTERY + SUPPLY CO
 S00378,1967,Extended sectors,WESTERN BATTERY CO
@@ -703,7 +688,7 @@ S00384,1965,Primary metals,WIRE AND METAL PRODUCTS CO INC
 S00384,1968,Fabricated metals,WIRE + METAL PRODUCTS CO INC
 S00384,1970,Fabricated metals,WIRE + METAL PRODUCTS CO INC
 S00384,1974,Fabricated metals,PERMA-WALL
-S00384,1977,Fabricated metals,
+S00384,1977,Fabricated metals,""
 S00384,1980,Industrial machinery,SAMCO TOOL + OFE INC
 S00384,1983,Industrial machinery,SAMCO TOOL + DIE INC
 S00385,1965,Transportation equipment,WOEBER AUTO BONY + MFG. CO.
@@ -730,7 +715,7 @@ S00394,1990,Industrial machinery,COLORADO STEAM EQUIPMENT CO INC
 S00397,1965,Industrial machinery,RICHMADE INDUSTRIES
 S00401,1965,Fabricated metals,ARVADA [RON WORKS + MACHINE SHOP
 S00401,1968,Fabricated metals,"WILLIAMS, ET"
-S00401,1973,Fabricated metals,
+S00401,1973,Fabricated metals,""
 S00403,1965,Industrial machinery,AUTCMATIC FIRE CONTROL CORP.
 S00408,1965,Fabricated metals,"ROYAL METAL PRODUCTS, INC.."
 S00408,1977,Fabricated metals,ROYAL METAL PRODUCTS INC
@@ -754,7 +739,6 @@ S00412,1977,Chemicals;Industrial machinery,"STONE PAINTS + CHEMICALS | WINNER FO
 S00412,1980,Industrial machinery,NORTHWEST MOTOR WELODENG
 S00412,1983,Industrial machinery;Primary metals,NORTHWEST MOTOR WELDING | WINNER FOUNDRIES + MFGe» INC
 S00412,1990,Industrial machinery;Primary metals,WINNER FOUNDRIES + MFG INC
-S00413,1965,Fabricated metals,APPLEWOOD SHEET METAL + HEATING
 S00414,1965,Industrial machinery,BERNE MACHINE SHOP
 S00414,1968,Industrial machinery,BERNE MACHINE SHOP
 S00414,1970,Industrial machinery,BERNE MACHINE SHOP
@@ -768,7 +752,7 @@ S00424,1970,Fabricated metals,BERTHOUD SCREW MACHINE PRODUCTS
 S00424,1973,Fabricated metals,BERTHOUD SCREW MACHINE PRODUCTS
 S00426,1965,Industrial machinery,CLOVEN ENTERPRISES
 S00428,1966,Industrial machinery,QUALITY MACHINE Co
-S00428,1968,Rubber & plastics,
+S00428,1968,Rubber & plastics,""
 S00428,1977,Industrial machinery,QUALITY MACHINE CO
 S00429,1965,Transportation equipment,"GOLC STAR MOBILE HOMES, INC."
 S00429,1966,Fabricated metals,GOLD STAR MOBILE HOMES INC
@@ -885,7 +869,7 @@ S00560,1965,Industrial machinery,NOFFSINGER MFG. CO. ote he fe
 S00560,1968,Fabricated metals;Industrial machinery,WERNER FFG CO
 S00564,1965,Industrial machinery,WILES MACHINE WORKS
 S00565,1965,Transportation equipment,FREEMAN TRUCK 30DIES
-S00568,1966,Industrial machinery,
+S00568,1966,Industrial machinery,""
 S00569,1977,Fabricated metals;Industrial machinery,ABRASIVE EQUIPMENT + SUPPLY CO INC
 S00570,1973,Fabricated metals;Industrial machinery,UNION SUPPLY CO
 S00570,1974,Fabricated metals;Industrial machinery,UNION SUPPLY CO
@@ -1307,7 +1291,7 @@ S00731,1992,Fabricated metals,‘SPECIALTY PLATING INC
 S00735,1966,Rubber & plastics,"BENNETT, A Hy CO"
 S00737,1966,Rubber & plastics,BEST QUALITY PLASTICS INC
 S00737,1967,Rubber & plastics,BEST QUALITY PLASTICS INC
-S00737,1974,Extended sectors,
+S00737,1974,Extended sectors,""
 S00738,1967,Industrial machinery;Primary metals,A-1 PATTERN CC INC
 S00738,1968,Fabricated metals;Industrial machinery;Primary metals,‘A-1 PATTERN CO. INC | LIFE-TIME GATE CC
 S00738,1970,Fabricated metals;Industrial machinery,LIFE-TIME GATE CO | METROPOLITAN INDUSTRIES INC
@@ -1532,7 +1516,7 @@ S00830,1965,Industrial machinery,ALMQUIST MACHINE SFOP
 S00830,1966,Fabricated metals;Industrial machinery,ALMQUIST MACHINE SHOP | GOLDBERG BROTHERS MFG CO
 S00830,1967,Fabricated metals;Industrial machinery,ALMQUIST MACHINE SHOP | GCLOBERG BRCTFERS MFG CO
 S00830,1968,Fabricated metals;Industrial machinery,ALMQUIST MACHINE SHOP | GOLOBERG BROTHERS MFG CO
-S00830,1970,Extended sectors;Industrial machinery,ALMQUIST MACHINE SHOP | 
+S00830,1970,Extended sectors;Industrial machinery,ALMQUIST MACHINE SHOP |
 S00830,1973,Rubber & plastics,GOLDBERG BROTHERS MFG CO
 S00830,1974,Rubber & plastics,GOLDBERG BROTHERS MFG CO
 S00830,1980,Fabricated metals;Primary metals,FRANK SCHERER + SON INCORPORATED | GOLOBERG BROTHERS MFG CO
@@ -1623,7 +1607,7 @@ S00875,1968,Fabricated metals,"JOHNSON, ELMER Sy SREET METAL"
 S00875,1973,Fabricated metals,"JOHNSON» ELMER S, SHEET METAL"
 S00875,1974,Fabricated metals,"JOHNSON, ELMER Sy SHEET METAL"
 S00880,1966,Fabricated metals,KILLAM GAS BURNER CO
-S00880,1968,Fabricated metals,
+S00880,1968,Fabricated metals,""
 S00880,1973,Fabricated metals,KILLAM GAS BURNER CO
 S00880,1974,Fabricated metals,KILLAM GAS BURNER CO
 S00880,1988,Fabricated metals,KILLAM GAS BURNER CO
@@ -1724,7 +1708,7 @@ S00928,1974,Fabricated metals,EASTER-OWENS ELECTRIC CO
 S00928,1980,Fabricated metals,EASTER-OWENS ELECTRIC CO
 S00929,1966,Industrial machinery,NEWLANDER MACHINE SHOP
 S00929,1967,Industrial machinery,NEWLANDER MACPINE SHOP
-S00929,1973,Industrial machinery;Rubber & plastics,NEWLANOER MACHINE SHOP | 
+S00929,1973,Industrial machinery;Rubber & plastics,NEWLANOER MACHINE SHOP |
 S00929,1974,Industrial machinery,NEWLANDER MACHINE SHOP
 S00929,1980,Industrial machinery,NEWLANDER MACHINE SHOP
 S00929,1983,Industrial machinery,NEWLANDER MACHINE SHOP
@@ -1910,11 +1894,11 @@ S01013,1980,Industrial machinery;Rubber & plastics,GREEN PATTERN CO
 S01013,1983,Rubber & plastics,DIKO SYSTEMS
 S01015,1966,Industrial machinery,BOYD'S WELDING + MFG CO
 S01015,1968,Fabricated metals;Industrial machinery,BCYO'S WELDING + MFG CO
-S01019,1966,Fabricated metals,
+S01019,1966,Fabricated metals,""
 S01019,1990,Fabricated metals,MECHANICAL LOGISTICS INC
 S01020,1967,Industrial machinery,4030 70:
 S01020,1968,Industrial machinery,PROTO SHOP
-S01021,1966,Fabricated metals,
+S01021,1966,Fabricated metals,""
 S01029,1968,Fabricated metals;Industrial machinery,GLASER WELDING WORKS
 S01034,1966,Fabricated metals,JARDON + KNIGHT
 S01034,1967,Fabricated metals,JARCON + KNIGHT WELDING INC
@@ -2067,7 +2051,7 @@ S01121,1966,Industrial machinery,SPEEDSTER INC SALES + SERVICE
 S01121,1967,Industrial machinery,SPEEDSTER INC SALES + SERVICE | UPTIME CORPCRATION
 S01121,1968,Industrial machinery,SPEEDSTER INC SALES + SERVICE
 S01121,1973,Industrial machinery,MARKET MAKERS LTD
-S01121,1974,Industrial machinery,
+S01121,1974,Industrial machinery,""
 S01121,1983,Fabricated metals;Industrial machinery;Rubber & plastics,GOLDEN TOOL + MACHINE CO INC | INTERNATIONAL BINDING CORP.
 S01121,1988,Industrial machinery;Rubber & plastics,TAPES INTER-BINDING CO | MOUNTAIN CABLE INDUSTRIES INC
 S01121,1990,Industrial machinery,MOUNTAIN CABLE INDUSTRIES INC
@@ -2120,7 +2104,7 @@ S01169,1973,Fabricated metals,CRASK SHEET METAL WORKS
 S01175,1980,Industrial machinery;Rubber & plastics,GRAND JUNCTION MACHINE + PLASTICS CO
 S01176,1966,Industrial machinery;Primary metals,BOLEN MACHINE WORKS FOUNDRY | S + M SUPPLY CO INC
 S01176,1967,Primary metals,GOLEN MACHINE WORKS FCUNCRY
-S01176,1968,Chemicals;Industrial machinery;Transportation equipment, | POWERED PRODLCTS CORP | S + ™ SUPPLY CO INC
+S01176,1968,Chemicals;Industrial machinery;Transportation equipment,| POWERED PRODLCTS CORP | S + ™ SUPPLY CO INC
 S01177,1966,Industrial machinery,CANVAS PRODUCTS CO
 S01177,1967,Chemicals;Fabricated metals;Industrial machinery,CANVAS PRODUCTS CO
 S01177,1980,Rubber & plastics,RAINBOW MARBLE PRODUCTS
@@ -2202,7 +2186,7 @@ S01250,1988,Fabricated metals;Rubber & plastics,"BEMIS, KONA Sie 'G CO"
 S01250,1992,Fabricated metals,AZTEC VENETIAN BUND + AWNING MEG
 S01251,1967,Fabricated metals,LA TOLTECA FOODS INC
 S01251,1968,Fabricated metals,LA TOLTECA FCCOS INC
-S01251,1977,Primary metals,
+S01251,1977,Primary metals,""
 S01251,1988,Fabricated metals;Industrial machinery;Transportation equipment,TUFF STUFF FABRICATIONS
 S01251,1990,Fabricated metals;Industrial machinery;Transportation equipment,TUFF STUFF FABRICATIONS
 S01252,1968,Petroleum refining,BILL'S SWEET SHOP
@@ -2237,14 +2221,14 @@ S01268,1990,Petroleum refining,BRODERICK + GIBBONS INC
 S01269,1966,Primary metals,RIVERSIDE PRINTING CO
 S01271,1967,Chemicals,WELLS MFG CO
 S01271,1968,Chemicals,WELLS MFG CO
-S01271,1973,Chemicals,
+S01271,1973,Chemicals,""
 S01271,1974,Chemicals,WELLS MFG CO
 S01271,1980,Chemicals;Fabricated metals,WELLS MFG CO
 S01273,1977,Fabricated metals,SINGLETON SHEET METAL WORKS INC
 S01273,1983,Fabricated metals,SINGLETON SHEET METAL WORKS INC.
 S01275,1966,Chemicals,"UNION CARBIDE CORP, LINDE OIv"
 S01275,1968,Chemicals,"UNION CARBIDE CORP, LINCE CIV"
-S01275,1973,Chemicals,
+S01275,1973,Chemicals,""
 S01275,1974,Chemicals,"UNTON CARBICE CORP, LINDE DIV"
 S01275,1977,Fabricated metals,MIEOWEST STEEL + IRON WORKS CO INC
 S01275,1980,Chemicals,"UNION CARBIDE CORP, LINDE BIV"
@@ -2256,7 +2240,7 @@ S01276,1968,Fabricated metals,WESTERN PIPE + TUBE CC IAC
 S01279,1966,Chemicals,AGRICULTURAL e204) eS
 S01279,1967,Chemicals,SCHALL_ CHEMICAL INC
 S01279,1968,Chemicals,SCHALL CHEMICAL INC W EBERT ChNER
-S01279,1970,Chemicals,
+S01279,1970,Chemicals,""
 S01279,1973,Chemicals,SCHALL CHEMICAL INC
 S01279,1974,Chemicals,SCHALL CHEMICAL INC BOX A HAYDEN £1639
 S01279,1977,Chemicals,SCHALL CHEMICAL IVC
@@ -2358,7 +2342,7 @@ S01337,1970,Fabricated metals,BARTON BROS INC
 S01339,1967,Transportation equipment,CANDID CAMPER OF COLURADO
 S01339,1968,Transportation equipment,CANDID CAMPER OF COLORADO
 S01339,1970,Transportation equipment,CANDID CAMPER OF COLORADO
-S01339,1973,Transportation equipment,
+S01339,1973,Transportation equipment,""
 S01339,1974,Transportation equipment,JAN-VAN MFG CC INC
 S01342,1967,Fabricated metals;Industrial machinery,"DARTING, B J, CO"
 S01343,1968,Industrial machinery,DELCA NAME PLATE CC
@@ -2383,7 +2367,7 @@ S01346,1968,Industrial machinery,DORSEY-MC COMB DISTRIBUTICN INC
 S01349,1967,Fabricated metals,JOY INDUSTRIES INC
 S01349,1968,Fabricated metals,JOY INDUSTRIES INC
 S01349,1970,Fabricated metals,CAPITAL PRODUCTS OF COLORADO
-S01349,1973,Fabricated metals,AMERICAN DYNAMICS INC | CAPITAL PRODUCTS OF COLORADO | 
+S01349,1973,Fabricated metals,AMERICAN DYNAMICS INC | CAPITAL PRODUCTS OF COLORADO |
 S01349,1974,Fabricated metals,AMERICAN DYNAPICS INC | CAPITAL PRODUCTS OF CCLORACO
 S01349,1983,Industrial machinery,J-THREE INC
 S01352,1968,Fabricated metals,ELCAR FENCE ¢ SUPPLY CC
@@ -2445,7 +2429,7 @@ S01372,1967,Extended sectors,ASTRO ENGINEERING
 S01372,1968,Extended sectors,ASTRO ENGINEERING
 S01372,1970,Extended sectors,ASTRO ENGINEER LNG
 S01372,1973,Extended sectors,ASTRO ENGINEERING
-S01372,1974,Extended sectors,
+S01372,1974,Extended sectors,""
 S01372,1977,Extended sectors,ASTRO ENGINEERING
 S01372,1980,Extended sectors,ASTRO ENOYNE COMPANY INC
 S01373,1967,Transportation equipment,BESTOP MFG CO INC
@@ -2477,7 +2461,7 @@ S01388,1968,Transportation equipment,HAWTHORN ENTERPRISES
 S01388,1973,Transportation equipment,HAWTHORN ENTERPRISES
 S01391,1967,Chemicals,MOUNTAIN STATES FERTILIZER
 S01391,1970,Chemicals,MOUNTAIN STATES FERTILIZER DISPLAYS
-S01392,1967,Fabricated metals,
+S01392,1967,Fabricated metals,""
 S01392,1968,Fabricated metals,NELSONS WELDING SHOP
 S01392,1973,Fabricated metals,NELSONS WELDING SHOP
 S01392,1974,Fabricated metals,NELSONS WELOING SHOP
@@ -2606,7 +2590,7 @@ S01440,1990,Industrial machinery,G+K MACHINE CO
 S01441,1968,Fabricated metals,GASSER MFG CO
 S01441,1970,Fabricated metals,GASSER MFG CO
 S01443,1967,Fabricated metals;Industrial machinery,"GLAZIER, ROY» IRON + BODY SHOP"
-S01444,1977,Rubber & plastics,
+S01444,1977,Rubber & plastics,""
 S01445,1967,Chemicals,HANDLEY MFG co T HILB ve
 S01449,1968,Chemicals,INDUSTRIAL CFEMICALS CORP
 S01449,1970,Chemicals,INDUSTRIAL CHEMICALS CORP
@@ -2769,7 +2753,7 @@ S01577,1973,Industrial machinery;Rubber & plastics,D-C REINFORCED PLASTICS
 S01577,1977,Industrial machinery;Rubber & plastics,O-C REINFORZED PLASTICS
 S01577,1980,Industrial machinery;Rubber & plastics,DeC REINFORCED PLASTICS
 S01577,1983,Industrial machinery;Rubber & plastics,D-C REINFORCED PLASTICS
-S01579,1967,Fabricated metals,
+S01579,1967,Fabricated metals,""
 S01579,1968,Fabricated metals,LAKEWOOD HEATING + SHEET METAL
 S01580,1968,Industrial machinery,CCLSGN SIGN CO INC
 S01580,1973,Fabricated metals,NORTHWEST HEATING + SHEET METAL
@@ -2895,7 +2879,7 @@ S01674,1974,Chemicals,BOULDER SCIENTIFIC CO INC
 S01674,1980,Chemicals,BOULDER SCIENTEFIC Co INC
 S01675,1968,Fabricated metals,CRECOs INC
 S01675,1983,Industrial machinery,VIDEO MEDIC INC
-S01676,1970,Industrial machinery,
+S01676,1970,Industrial machinery,""
 S01676,1980,Industrial machinery,BALL COMPUTER PRODUCTS DIVISION
 S01679,1968,Fabricated metals,MANUEL*S SWEET SHOP
 S01685,1968,Rubber & plastics,VARCO PRODUCTS CO
@@ -2984,7 +2968,7 @@ S01724,1970,Chemicals,DENCO INC
 S01724,1973,Chemicals,DEMCO_INC
 S01724,1974,Chemicals,DEMCO INC
 S01724,1988,Chemicals,OILED TYMPAN SUPREME CHEMICAL
-S01726,1973,Transportation equipment,
+S01726,1973,Transportation equipment,""
 S01730,1974,Fabricated metals,DENVER INNER SPRING CO
 S01730,1980,Fabricated metals,ANKMAR DOOR SALES ENC
 S01730,1983,Fabricated metals,ANKMAR DOORs INC
@@ -2992,7 +2976,7 @@ S01730,1990,Fabricated metals,ANKMAR DOOR INC
 S01732,1966,Extended sectors,ONEIDA CHEMICAL CO INC
 S01732,1967,Extended sectors,ONEIDA CHEMICAL CO IWC
 S01732,1968,Extended sectors;Industrial machinery,DENVER MACHINE SHOP INC | ONEIDA CFEMICAL FEMICAL CO INC 3
-S01732,1970,Extended sectors;Industrial machinery,DENVER MACHINE SHOP INC | 
+S01732,1970,Extended sectors;Industrial machinery,DENVER MACHINE SHOP INC |
 S01732,1973,Extended sectors;Industrial machinery,DENVER MACHINE SHOP INC R O HUMMEL GEN MGR | ONEIDA CHEMICAL CO INC
 S01732,1974,Extended sectors;Industrial machinery,DENVER MACHINE SHOP INC | MERRY x-RAY CHEM. CORP
 S01732,1977,Industrial machinery,DENVER MACHINE SHOP INC
@@ -3199,7 +3183,7 @@ S01855,1983,Industrial machinery;Transportation equipment,DOUBLE B ENTERPRISE + 
 S01856,1988,Rubber & plastics,CIRCUIT BOARD SPEAR ENGINEERING CO
 S01856,1990,Rubber & plastics,SPEAR ENGINEERING CO
 S01862,1968,Fabricated metals,WESTERN BRICGE + SUPPLY CO
-S01863,1973,Fabricated metals,
+S01863,1973,Fabricated metals,""
 S01869,1968,Chemicals,STONE PAINTS + CFEMICALS
 S01870,1973,Fabricated metals,ADCO HEATING + SHEET METAL
 S01870,1974,Fabricated metals,ADCO HEATING + SHEET METAL 0 COBOGURN OWNER
@@ -3362,7 +3346,7 @@ S01988,1970,Fabricated metals,DELBAR CO
 S01989,1970,Industrial machinery,"PLASTIC TOOLING AIDS LAB, ENC"
 S01989,1973,Rubber & plastics,"PLASTIC TCOLING AIDS LAB, INC"
 S01989,1974,Fabricated metals;Rubber & plastics,"+ LASTIC TOOLING AIDS LAB, INC | PRECISION BEAM WELDING"
-S01989,1977,Rubber & plastics,
+S01989,1977,Rubber & plastics,""
 S01989,1980,Fabricated metals;Industrial machinery,KENRAY CORPORATION
 S01989,1983,Industrial machinery;Rubber & plastics,PLASTIC TOOLING AIDS LABs INC
 S01991,1970,Industrial machinery,STORAGE TECHNOLOGY CORP
@@ -3470,10 +3454,10 @@ S02046,1992,Chemicals,CHOICE MANUFACTURING CO
 S02050,1970,Industrial machinery,PERRY TOOL ¢ OLE CO
 S02052,1970,Rubber & plastics,PLASTIC CONTAINER CORP
 S02056,1970,Chemicals,ROCKY MOUNTAIN RESEARCH INC
-S02057,1967,Industrial machinery,
+S02057,1967,Industrial machinery,""
 S02057,1970,Industrial machinery;Transportation equipment,ROOFING EQUIPMENT INC | TRANSMISSION PARTS CO
 S02057,1974,Fabricated metals;Industrial machinery;Transportation equipment,HEART MANUFACTURING COMPANY | ROOFING EQUIPMENT INC | TRANSMISSION PARTS CC
-S02057,1977,Fabricated metals;Transportation equipment,TRANSMISSION PARTS CO | 
+S02057,1977,Fabricated metals;Transportation equipment,TRANSMISSION PARTS CO |
 S02057,1980,Industrial machinery;Transportation equipment,ROOFING EQUIPMENT INC | TRANSMISSION PARTS CO
 S02057,1988,Transportation equipment,SYSTEMS TRANSMISSION PARTS
 S02057,1990,Transportation equipment,TRANSMISSION PARTS CO
@@ -3826,7 +3810,7 @@ S02275,1974,Industrial machinery,MERRILL ENGINEERING LABORATORIES
 S02275,1980,Industrial machinery,MERRILL ENGINEERING LABORATORIES
 S02275,1988,Industrial machinery,LABORATORIES Sueieunons PAHOE
 S02275,1990,Industrial machinery,MERRILL ENGINEERING LABORATORIES
-S02276,1973,Industrial machinery,
+S02276,1973,Industrial machinery,""
 S02276,1974,Industrial machinery,"JS TOOL + DIE, INC"
 S02276,1977,Industrial machinery,"JS TOOL + OIE, INC"
 S02276,1980,Industrial machinery,"3S TOOL + DIE, INC"
@@ -3935,7 +3919,7 @@ S02334,1977,Rubber & plastics,"DICK'S RUBBER STAMP SHOP, INC FLUID METERS AND CO
 S02337,1973,Fabricated metals,THE ETCHART CO
 S02341,1983,Industrial machinery;Rubber & plastics,PROTO-TEL INC
 S02342,1973,Rubber & plastics,HEAD SKI DIVISION
-S02342,1974,Rubber & plastics,
+S02342,1974,Rubber & plastics,""
 S02345,1973,Fabricated metals;Industrial machinery;Transportation equipment,KSA HYDROMEC INC | MARTIN METAL FABRICATION
 S02345,1974,Fabricated metals;Transportation equipment,MARTIN METAL FABRICATION
 S02345,1980,Fabricated metals;Industrial machinery;Transportation equipment,ARTISAN PRECISION MFG.
@@ -4172,7 +4156,7 @@ S02513,1990,Fabricated metals;Industrial machinery,STAINLESS FABRICATING CO
 S02513,1992,Fabricated metals,(GOLESH INC | STAINLESS FABRICATING CO.
 S02514,1973,Fabricated metals;Industrial machinery;Primary metals,STEARNS-ROGER INCORPORATED
 S02514,1974,Industrial machinery;Primary metals,STEARNS-ROGER INCORPORATED
-S02514,1977,Industrial machinery;Primary metals,
+S02514,1977,Industrial machinery;Primary metals,""
 S02516,1973,Rubber & plastics,SUPERIOR FABRICATORS + GASKETS
 S02516,1974,Rubber & plastics,SUPERIOR FABRICATORS + GASKETS
 S02516,1980,Fabricated metals;Rubber & plastics,INOUCTION HARDENING CORP | SUPERIOR FABRICATORS + GASKETS
@@ -4213,7 +4197,7 @@ S02537,1983,Fabricated metals,A + L ALUMINUM MFG CO INC
 S02537,1990,Fabricated metals,A+L ALUMINUM MFG CO INC
 S02538,1973,Fabricated metals;Industrial machinery,A + P STEEL
 S02539,1973,Fabricated metals;Industrial machinery,"ADAMS, J Dy CO"
-S02539,1977,Fabricated metals;Industrial machinery;Primary metals,
+S02539,1977,Fabricated metals;Industrial machinery;Primary metals,""
 S02539,1980,Fabricated metals;Industrial machinery;Primary metals,ADAMS J D0 CO
 S02539,1983,Fabricated metals;Industrial machinery,ADAMS J 0 CO
 S02539,1988,Rubber & plastics,PACKS-EXPANDING FOA IRATHANE SYSTEMS INC
@@ -4295,7 +4279,7 @@ S02586,1973,Fabricated metals;Industrial machinery,WEISS INDUSTRIES INC
 S02586,1977,Fabricated metals;Industrial machinery,WEISS INDUSTRIES INC
 S02586,1983,Fabricated metals;Industrial machinery,WEISS INDUSTRIES INC
 S02586,1988,Fabricated metals;Industrial machinery,PIXTURES WEISS INDUSTRIES INC
-S02587,1973,Fabricated metals,
+S02587,1973,Fabricated metals,""
 S02588,1980,Transportation equipment,WHETS AUSOMCTIVE CORP
 S02588,1983,Transportation equipment,WHITE AUTOMOTIVE CORP
 S02591,1973,Rubber & plastics,ROYAL GORGE PLASTICS
@@ -4414,7 +4398,7 @@ S02684,1974,Transportation equipment,DELTA PRODUCTS INC
 S02684,1980,Transportation equipment,OELTA PRODUCTS INC
 S02685,1988,Chemicals,PYROTECHNICS INDUSTRIES
 S02686,1973,Chemicals,GRAND VALLEY BY-PRODUCTS CO
-S02686,1977,Primary metals,
+S02686,1977,Primary metals,""
 S02686,1983,Rubber & plastics,STRESSED SKIN DESIGN INC
 S02686,1988,Rubber & plastics,BESGNIREM™
 S02689,1973,Fabricated metals,LANE + COMPANY
@@ -4436,7 +4420,7 @@ S02716,1974,Rubber & plastics,"OKORN, ROBERT Fy, TROPHY MFG"
 S02716,1977,Fabricated metals;Industrial machinery,"OKORN, ROBERT Fy TROPHY MFG"
 S02716,1980,Fabricated metals,"OKGRN. ROBERT Fy, TROPHY MFG"
 S02716,1983,Fabricated metals,OKORNs ROBERT Fs TROPHY MFG
-S02717,1973,Chemicals,
+S02717,1973,Chemicals,""
 S02717,1974,Chemicals,PETERSON PAINT CO
 S02717,1977,Chemicals,PETERSON PAINT CO
 S02717,1980,Chemicals,PETERSON PAINT CO
@@ -4448,7 +4432,7 @@ S02730,1973,Industrial machinery,CHISHOLM NFG DEVELOPMENT CO
 S02732,1973,Industrial machinery;Rubber & plastics,"FARMHAND, INC"
 S02732,1983,Fabricated metals,EISENMAN ENTERPRISES INC
 S02733,1973,Industrial machinery;Transportation equipment,GARNSEY * WHEELER REBUILDERS INC
-S02735,1973,Chemicals,
+S02735,1973,Chemicals,""
 S02739,1980,Chemicals,"EWING, JOHN: CO"
 S02739,1983,Chemicals,"EWING» JOHN, CO"
 S02739,1988,Chemicals,LA SALLE JOHN EWING CO
@@ -4460,7 +4444,7 @@ S02740,1990,Fabricated metals;Industrial machinery,KEA MANUFACTURING CO
 S02741,1973,Industrial machinery,KILGORE SUPPLY CO
 S02741,1974,Industrial machinery,KILGORE SUPPLY CO
 S02741,1977,Industrial machinery,KILGORE SUPPLY CO
-S02741,1983,Industrial machinery,
+S02741,1983,Industrial machinery,""
 S02741,1988,Industrial machinery,KILGORE SUPPLY CO
 S02741,1990,Industrial machinery,KILGORE SUPPLY CO
 S02746,1974,Petroleum refining,CUSTCM REFINING COMPANY
@@ -4587,11 +4571,11 @@ S02831,1983,Chemicals;Rubber & plastics,ASPEN RIBBONS INC | CELESTIAL SEASONINGS
 S02831,1988,Chemicals,CELESTIAL SEASONINGS INC
 S02831,1990,Fabricated metals;Industrial machinery;Transportation equipment,B+B INDUSTRIES INC | UNITED STATES MACHINE CO | WESTERN AUTOMATION LABORATORIES INC
 S02831,1992,Fabricated metals;Industrial machinery,B+B INDUSTRIES INC
-S02832,1974,Extended sectors,
+S02832,1974,Extended sectors,""
 S02832,1988,Extended sectors,STANFORD APPLIED ENGINEERING
 S02835,1988,Extended sectors,DATA RAY CORP
 S02835,1990,Fabricated metals;Industrial machinery,STORM PRODUCTS CO
-S02836,1974,Industrial machinery,
+S02836,1974,Industrial machinery,""
 S02837,1974,Industrial machinery,EASY ENGINEERING CORPORATION
 S02842,1974,Industrial machinery,DAVIS MACHINE SHOP 3523 FARM MACHINERY AND EQUIPMENT
 S02842,1980,Industrial machinery,DAVIS MACHINE SHOP INC
@@ -4805,7 +4789,7 @@ S03013,1974,Industrial machinery,EL PASO MACHINE + PROTOTYPE
 S03015,1983,Fabricated metals,OLOACH BUILDING PRODUCTS CO
 S03015,1988,Chemicals,CARBOTHERM LTD
 S03016,1974,Industrial machinery,IDEAL CABINET SHOP
-S03018,1974,Industrial machinery,
+S03018,1974,Industrial machinery,""
 S03019,1974,Rubber & plastics,Oak FARMS DAIRY 3079 MISCELLANEOLS PLASTICS PROCUCTS
 S03024,1966,Rubber & plastics,RUBBER STAMP CO
 S03025,1974,Fabricated metals;Industrial machinery,TITUS WELDING
@@ -4963,7 +4947,6 @@ S03195,1977,Rubber & plastics,B + E PLASTICS INC
 S03195,1980,Rubber & plastics,8 + E PLASTICS ENC
 S03196,1977,Industrial machinery,B + R MACHINE CO
 S03196,1980,Chemicals;Industrial machinery;Rubber & plastics;Transportation equipment,8 ¢ R KACHINE CO | INEX INC | SAY BEE ENGINEERING | PRGTEGCHEN SCIENTIFIC CORP | SILVER EAGLE MFG CO | AMERICAN TELEDATA CORPORATION
-S03197,1977,Rubber & plastics,BIODOMES
 S03198,1980,Industrial machinery,CASTALITE FIREPLACE CORP
 S03198,1983,Industrial machinery,CASTALITE FIREPLACE CORP
 S03198,1988,Transportation equipment,BRANSON AIRCRAFT
@@ -5317,7 +5300,7 @@ S03510,1977,Industrial machinery,WAITE MANUFACTURING CO
 S03510,1980,Industrial machinery;Rubber & plastics,MORTEC INDUSTRIES INC | WALTE MANUFACTURING CO
 S03510,1983,Industrial machinery,MORTEC INDUSTRIES INC
 S03510,1990,Industrial machinery,MORTEC INDUSTRIES INC
-S03515,1977,Industrial machinery,
+S03515,1977,Industrial machinery,""
 S03516,1977,Industrial machinery,DOUS TOMKINS + ROY KERN PARTNER
 S03516,1983,Industrial machinery,REYNOLOSs P Ly» MACHINE + WELDING WORKS
 S03519,1977,Chemicals,MID-CONTINENT CHEMICAL INC
@@ -6129,7 +6112,7 @@ S04437,1983,Industrial machinery,RAY SMITH AIR FILTER INC
 S04437,1988,Chemicals,RAY SMITH AIR FILTER INC
 S04437,1990,Industrial machinery,RAY SMITH AIR FILTER INC
 S04438,1990,Fabricated metals;Industrial machinery,SILVER ENGINEERING WORKS INC
-S04439,1983,Fabricated metals,
+S04439,1983,Fabricated metals,""
 S04439,1988,Fabricated metals,BENNETT D+D WELDING INC
 S04439,1990,Fabricated metals;Industrial machinery,D+D WELDING INC
 S04443,1983,Industrial machinery,COM MACHINE + FABRICATION CORP
@@ -6147,7 +6130,7 @@ S04457,1983,Fabricated metals,DEL©CO STAINLESS INC
 S04457,1990,Fabricated metals;Industrial machinery;Transportation equipment,DEL-CO STAINLESS INC | WALKER TRUCK BODIES
 S04458,1988,Fabricated metals;Transportation equipment,MFG+ASSURANCE TECHNOLOGIES
 S04459,1983,Chemicals,GLOBE MFG MKTG COs LTD
-S04461,1983,Fabricated metals;Industrial machinery;Primary metals;Rubber & plastics, | SPRINGS MACHINING INC | MAJESTIC METALS INC
+S04461,1983,Fabricated metals;Industrial machinery;Primary metals;Rubber & plastics,| SPRINGS MACHINING INC | MAJESTIC METALS INC
 S04462,1990,Transportation equipment,BEAR FRAME + AXLE SERVICE CO
 S04462,1992,Transportation equipment,KAYLNE MANUFACTURING INC
 S04463,1983,Chemicals;Fabricated metals,LENOX CORPORATION JIM MCNELLY OWNER | TR SEIDEL COMPANY
@@ -6274,7 +6257,7 @@ S04605,1983,Industrial machinery,HODGSONsRede + SONS
 S04605,1990,Industrial machinery,RJ HODGSON + SONS
 S04607,1983,Industrial machinery,VENTURE MFG CO INC
 S04607,1990,Chemicals;Industrial machinery;Rubber & plastics,ALPINE TOOLING INC | FRIENDLY PLASTICS CO INC | VENTURE MANUFACTURING CO INC
-S04608,1983,Fabricated metals,"J""LEEN LTD"
+S04608,1983,Fabricated metals,"J""""LEEN LTD"
 S04608,1988,Fabricated metals,J'LEEN LTD
 S04608,1990,Fabricated metals,JLEEN LTD
 S04611,1988,Industrial machinery,COMMUNICATION DATA LAB
@@ -6699,7 +6682,7 @@ S05137,1983,Fabricated metals,POINT-FIVE WINDOWS MFGe
 S05137,1988,Chemicals,GENERAL CUSTOM BLENDING INC
 S05140,1988,Rubber & plastics,VETERINARIAN SPLINT TELEDYNE WATER PIK
 S05141,1990,Industrial machinery;Rubber & plastics,PLASTEC PRODUCTS INC | TOOLTEC MOLD CORP
-S05143,1983,Rubber & plastics,
+S05143,1983,Rubber & plastics,""
 S05148,1983,Rubber & plastics,FELKERs ROGER L + SONS
 S05149,1983,Industrial machinery,GREENTREE RANCH WOOLSs INC
 S05150,1990,Rubber & plastics,CLASSIC PLASTICS INC
@@ -6749,7 +6732,7 @@ S05207,1983,Chemicals,FLAT RIVER AGRICULTURE INC
 S05207,1990,Chemicals,FLAT RIVER AGRI INC
 S05212,1983,Fabricated metals,ANDREWS SHEET METAL INC
 S05218,1983,Chemicals;Fabricated metals,APOLLO SYSTEMS INC
-S05222,1983,Extended sectors,
+S05222,1983,Extended sectors,""
 S05223,1988,Fabricated metals,SHAWNEE MICROM PRECISION INC
 S05223,1990,Fabricated metals,SHAWNEE
 S05226,1983,Industrial machinery,ROCKING ORIGINALS

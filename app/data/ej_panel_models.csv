@@ -1,65 +1,65 @@
 outcome,model,term,b,se,p,n,tracts
-p_black,"hybrid panel, tract-clustered SE",act_w,-0.561072043008594,0.489940661128241,0.252771543138189,437,147
-p_black,"hybrid panel, tract-clustered SE",act_b,2.33843090652212,3.12357033162393,0.454484227854526,437,147
-p_black,"hybrid panel, tract-clustered SE",leg_b,-3.11302480648693,2.90239660101123,0.284066865043759,437,147
-p_black,"between tracts, spatial error (lambda 0.94)",act_b,-0.359960538292206,2.38020708799292,0.879793682584458,147,147
-p_black,"between tracts, spatial error (lambda 0.94)",leg_b,-0.258888494943623,1.77211195073089,0.883850046531549,147,147
-p_black,"sensitivity: all manufacturers, tract-clustered SE",act_w,-0.515694172756262,0.506643518411813,0.309316295483564,437,147
-p_black,"sensitivity: all manufacturers, tract-clustered SE",act_b,2.31929192281452,3.11444867443365,0.456868216490857,437,147
-p_black,"sensitivity: all manufacturers, tract-clustered SE",leg_b,-4.00830522364475,2.93384932818293,0.172583316934122,437,147
-p_hisp,"hybrid panel, tract-clustered SE",act_w,-0.778423430767656,1.24443682386372,0.531960693195457,437,147
-p_hisp,"hybrid panel, tract-clustered SE",act_b,15.1257507614668,3.53622080698778,2.33339508079073e-05,437,147
-p_hisp,"hybrid panel, tract-clustered SE",leg_b,1.09844369945575,3.44712754515657,0.750143382573499,437,147
-p_hisp,"between tracts, spatial error (lambda 0.87)",act_b,6.31622239563445,2.33855347835667,0.0069150054957392,147,147
-p_hisp,"between tracts, spatial error (lambda 0.87)",leg_b,0.540507616859421,1.74863570747533,0.757243580106336,147,147
-p_hisp,"sensitivity: all manufacturers, tract-clustered SE",act_w,-1.46302688779592,0.934561989355175,0.118210526669801,437,147
-p_hisp,"sensitivity: all manufacturers, tract-clustered SE",act_b,7.50107426343052,2.88062012446091,0.00953455969007568,437,147
-p_hisp,"sensitivity: all manufacturers, tract-clustered SE",leg_b,1.23064579550282,2.90096757469826,0.671618692333434,437,147
-p_white,"hybrid panel, tract-clustered SE",act_w,-3.63492342417691,3.17873901179126,0.253464130027838,437,147
-p_white,"hybrid panel, tract-clustered SE",act_b,-9.86309318444089,3.62012217285503,0.00670270727042688,437,147
-p_white,"hybrid panel, tract-clustered SE",leg_b,0.889468597763983,3.30535578945511,0.787982717932705,437,147
-p_white,"between tracts, spatial error (lambda 0.88)",act_b,-3.92531174280416,2.92643998414188,0.179814442777777,147,147
-p_white,"between tracts, spatial error (lambda 0.88)",leg_b,-1.18877508367336,2.18729322317593,0.58679150184026,147,147
-p_white,"sensitivity: all manufacturers, tract-clustered SE",act_w,0.343507662818525,2.00011565351291,0.863719854389821,437,147
-p_white,"sensitivity: all manufacturers, tract-clustered SE",act_b,-7.38759418616452,3.48616284434997,0.0346543471032805,437,147
-p_white,"sensitivity: all manufacturers, tract-clustered SE",leg_b,2.85387416434421,3.40895822831072,0.402963692796667,437,147
-p_fb,"hybrid panel, tract-clustered SE",act_w,0.828285029230411,0.695463044353567,0.234318590129138,437,147
-p_fb,"hybrid panel, tract-clustered SE",act_b,-0.031173480683434,0.568551904124587,0.956299733142354,437,147
-p_fb,"hybrid panel, tract-clustered SE",leg_b,1.03331238549028,0.501338565019081,0.0398949662415262,437,147
-p_fb,"between tracts, spatial error (lambda 0.58)",act_b,0.371438381400806,0.658981046165882,0.572988514511589,147,147
-p_fb,"between tracts, spatial error (lambda 0.58)",leg_b,0.43341353338052,0.506873279805402,0.392510869743334,147,147
-p_fb,"sensitivity: all manufacturers, tract-clustered SE",act_w,-0.265392988910396,0.463722247714666,0.567411601020011,437,147
-p_fb,"sensitivity: all manufacturers, tract-clustered SE",act_b,0.218243147832266,0.478927450329122,0.648842431026582,437,147
-p_fb,"sensitivity: all manufacturers, tract-clustered SE",leg_b,0.551593730173675,0.448362392894791,0.219281095288293,437,147
-ppov,"hybrid panel, tract-clustered SE",act_w,1.4053684593031,1.36299603164419,0.303080629311317,437,147
-ppov,"hybrid panel, tract-clustered SE",act_b,5.7291221098798,1.68074674337229,0.000714482161470943,437,147
-ppov,"hybrid panel, tract-clustered SE",leg_b,1.99151411583696,1.46418223265272,0.174495318213286,437,147
-ppov,"between tracts, spatial error (lambda 0.72)",act_b,3.15729528218026,1.4727055867333,0.0320429804350531,147,147
-ppov,"between tracts, spatial error (lambda 0.72)",leg_b,1.64390261892987,1.11585024452659,0.140689375444945,147,147
-ppov,"sensitivity: all manufacturers, tract-clustered SE",act_w,0.104447452930263,0.729280387863346,0.886183771342581,437,147
-ppov,"sensitivity: all manufacturers, tract-clustered SE",act_b,5.08795279742206,1.24599629324729,5.29457976630258e-05,437,147
-ppov,"sensitivity: all manufacturers, tract-clustered SE",leg_b,0.648112369931145,1.29112405101103,0.615942433091611,437,147
-p_owner,"hybrid panel, tract-clustered SE",act_w,-0.525788430110796,1.65840321172843,0.751363697182723,437,147
-p_owner,"hybrid panel, tract-clustered SE",act_b,4.15781188467063,4.12503495417053,0.314048621141643,437,147
-p_owner,"hybrid panel, tract-clustered SE",leg_b,-5.14806307332574,3.58343528102749,0.151552607665134,437,147
-p_owner,"between tracts, spatial error (lambda 0.63)",act_b,1.43528646720479,4.23932369752029,0.734937481397242,147,147
-p_owner,"between tracts, spatial error (lambda 0.63)",leg_b,-3.31260779302331,3.24421626771557,0.307216034584476,147,147
-p_owner,"sensitivity: all manufacturers, tract-clustered SE",act_w,-0.4764752694391,1.13829780121169,0.675728360191805,437,147
-p_owner,"sensitivity: all manufacturers, tract-clustered SE",act_b,-1.63639602099691,3.36638932288435,0.627145695038247,437,147
-p_owner,"sensitivity: all manufacturers, tract-clustered SE",leg_b,-3.42789007967641,3.08367436466715,0.266921923455888,437,147
-lmval,"hybrid panel, tract-clustered SE",act_w,-0.0565802927257154,0.0586119874534021,0.334920129582804,437,147
-lmval,"hybrid panel, tract-clustered SE",act_b,-0.206189880348057,0.037985476664171,9.54693835364211e-08,437,147
-lmval,"hybrid panel, tract-clustered SE",leg_b,-0.00588131745520127,0.0437289557434295,0.893074392375132,437,147
-lmval,"between tracts, spatial error (lambda 0.67)",act_b,-0.0920607584093229,0.0570468159657241,0.106576113667393,147,147
-lmval,"between tracts, spatial error (lambda 0.67)",leg_b,-0.0180297137855476,0.043479151574796,0.678379893182807,147,147
-lmval,"sensitivity: all manufacturers, tract-clustered SE",act_w,0.0186872190829959,0.0216145217721401,0.387759226913402,437,147
-lmval,"sensitivity: all manufacturers, tract-clustered SE",act_b,-0.068713870393122,0.0502043171078288,0.171814182037615,437,147
-lmval,"sensitivity: all manufacturers, tract-clustered SE",leg_b,-0.0419486300543,0.0451544566008878,0.353409895563613,437,147
-lmrent,"hybrid panel, tract-clustered SE",act_w,0.285915988650502,0.156628019171306,0.0686288539278275,437,147
-lmrent,"hybrid panel, tract-clustered SE",act_b,0.0303375846524915,0.0755389755840656,0.68816738766706,437,147
-lmrent,"hybrid panel, tract-clustered SE",leg_b,-0.0304691614134604,0.067727492675234,0.6530250826767,437,147
-lmrent,"between tracts, spatial error (lambda 0.26)",act_b,0.0434826227910804,0.120971792615352,0.719262730241281,147,147
-lmrent,"between tracts, spatial error (lambda 0.26)",leg_b,-0.0388021824164455,0.0962293848697096,0.686782031875719,147,147
-lmrent,"sensitivity: all manufacturers, tract-clustered SE",act_w,0.129387004507384,0.0940274777344754,0.16952242329355,437,147
-lmrent,"sensitivity: all manufacturers, tract-clustered SE",act_b,-0.0654795213560689,0.0830788800821066,0.431037904417502,437,147
-lmrent,"sensitivity: all manufacturers, tract-clustered SE",leg_b,0.0551538353379731,0.0785349412216955,0.482882907022823,437,147
+p_black,"hybrid panel, tract-clustered SE",act_w,-0.558295275137674,0.491531954777201,0.256663095492043,437,147
+p_black,"hybrid panel, tract-clustered SE",act_b,1.82343779378958,2.99996804827133,0.543629099040328,437,147
+p_black,"hybrid panel, tract-clustered SE",leg_b,-2.62769814949512,2.89214468814133,0.364090504754819,437,147
+p_black,"between tracts, spatial error (lambda 0.94)",act_b,-0.356958555635203,2.37647522144129,0.880602849684324,147,147
+p_black,"between tracts, spatial error (lambda 0.94)",leg_b,-0.24411645742844,1.79635881461118,0.891904166626842,147,147
+p_black,"sensitivity: all manufacturers, tract-clustered SE",act_w,-0.512094648248446,0.506951639085111,0.31299523236193,437,147
+p_black,"sensitivity: all manufacturers, tract-clustered SE",act_b,2.08660190830107,3.06309312551615,0.496107761928844,437,147
+p_black,"sensitivity: all manufacturers, tract-clustered SE",leg_b,-3.79251327162586,2.93455178540471,0.196926296399737,437,147
+p_hisp,"hybrid panel, tract-clustered SE",act_w,-0.787007961994218,1.24954890203008,0.529138715988782,437,147
+p_hisp,"hybrid panel, tract-clustered SE",act_b,17.6493673631743,3.89878403184644,7.76407651568859e-06,437,147
+p_hisp,"hybrid panel, tract-clustered SE",leg_b,-1.60553033433512,3.56423428023251,0.652609311455739,437,147
+p_hisp,"between tracts, spatial error (lambda 0.87)",act_b,7.08065320816246,2.33435641601936,0.00241946548602345,147,147
+p_hisp,"between tracts, spatial error (lambda 0.87)",leg_b,-0.567749648099328,1.77302987173305,0.748805828557835,147,147
+p_hisp,"sensitivity: all manufacturers, tract-clustered SE",act_w,-1.47485740257716,0.936786932939707,0.116137069994974,437,147
+p_hisp,"sensitivity: all manufacturers, tract-clustered SE",act_b,8.48530876690483,2.95962437894215,0.00434765652948926,437,147
+p_hisp,"sensitivity: all manufacturers, tract-clustered SE",leg_b,0.0915793645607377,2.92412218717189,0.975030035280728,437,147
+p_white,"hybrid panel, tract-clustered SE",act_w,-3.5793561850527,3.19424170959296,0.263099878037707,437,147
+p_white,"hybrid panel, tract-clustered SE",act_b,-10.4226759154902,3.51524258933213,0.00319572799973591,437,147
+p_white,"hybrid panel, tract-clustered SE",leg_b,1.49272070228869,3.32058874925475,0.653272833465234,437,147
+p_white,"between tracts, spatial error (lambda 0.88)",act_b,-4.46850770273558,2.92379810418912,0.126432378012544,147,147
+p_white,"between tracts, spatial error (lambda 0.88)",leg_b,-0.49462818274547,2.22000426475301,0.823687229918749,147,147
+p_white,"sensitivity: all manufacturers, tract-clustered SE",act_w,0.351763741038761,2.00436650240398,0.860770586531537,437,147
+p_white,"sensitivity: all manufacturers, tract-clustered SE",act_b,-7.5474335791009,3.41484108107895,0.0276194317424664,437,147
+p_white,"sensitivity: all manufacturers, tract-clustered SE",leg_b,3.07687509393366,3.40554243505177,0.366772689398959,437,147
+p_fb,"hybrid panel, tract-clustered SE",act_w,0.805401668327228,0.699340338216934,0.250102596956145,437,147
+p_fb,"hybrid panel, tract-clustered SE",act_b,0.119737574264279,0.568419786235593,0.833260483849768,437,147
+p_fb,"hybrid panel, tract-clustered SE",leg_b,0.889758295185533,0.515105715620097,0.0848279012599846,437,147
+p_fb,"between tracts, spatial error (lambda 0.58)",act_b,0.356925202952716,0.656792088242978,0.586828871603204,147,147
+p_fb,"between tracts, spatial error (lambda 0.58)",leg_b,0.443706740402087,0.514521735670571,0.388485407185002,147,147
+p_fb,"sensitivity: all manufacturers, tract-clustered SE",act_w,-0.26386007307998,0.464506793541692,0.570302600351116,437,147
+p_fb,"sensitivity: all manufacturers, tract-clustered SE",act_b,0.289272662502377,0.475346630563538,0.543144171788836,437,147
+p_fb,"sensitivity: all manufacturers, tract-clustered SE",leg_b,0.474978775882058,0.446117636152417,0.287613300781526,437,147
+ppov,"hybrid panel, tract-clustered SE",act_w,1.38316449388131,1.36921079635639,0.312973184126348,437,147
+ppov,"hybrid panel, tract-clustered SE",act_b,5.8184681636566,1.62558478822851,0.000383852116596693,437,147
+ppov,"hybrid panel, tract-clustered SE",leg_b,1.97509155380555,1.48730909793519,0.184896410933904,437,147
+ppov,"between tracts, spatial error (lambda 0.72)",act_b,3.27860480219428,1.46956030409632,0.0256804184770469,147,147
+ppov,"between tracts, spatial error (lambda 0.72)",leg_b,1.55534502363208,1.1328963106419,0.169785720354642,147,147
+ppov,"sensitivity: all manufacturers, tract-clustered SE",act_w,0.109443456583397,0.730241625846443,0.88093529901878,437,147
+ppov,"sensitivity: all manufacturers, tract-clustered SE",act_b,5.11908848295259,1.21864295527856,3.23904705424387e-05,437,147
+ppov,"sensitivity: all manufacturers, tract-clustered SE",leg_b,0.63482575092863,1.29934321120146,0.625392733897193,437,147
+p_owner,"hybrid panel, tract-clustered SE",act_w,-0.548683815318284,1.66483017907192,0.741883145633568,437,147
+p_owner,"hybrid panel, tract-clustered SE",act_b,5.12970815721366,4.16165105555606,0.218394981446927,437,147
+p_owner,"hybrid panel, tract-clustered SE",leg_b,-6.36887247351028,3.61381846373832,0.0787194719263885,437,147
+p_owner,"between tracts, spatial error (lambda 0.62)",act_b,1.61979753421557,4.22409516951024,0.701374160061947,147,147
+p_owner,"between tracts, spatial error (lambda 0.62)",leg_b,-3.65985226200443,3.29353813865666,0.266472774507529,147,147
+p_owner,"sensitivity: all manufacturers, tract-clustered SE",act_w,-0.486721450061127,1.13917235759268,0.669405175942492,437,147
+p_owner,"sensitivity: all manufacturers, tract-clustered SE",act_b,-1.19612682551426,3.33539480697923,0.720058589904871,437,147
+p_owner,"sensitivity: all manufacturers, tract-clustered SE",leg_b,-4.01528395446195,3.08135594613478,0.193243019739433,437,147
+lmval,"hybrid panel, tract-clustered SE",act_w,-0.0571514427802828,0.0589119285326138,0.332534975436644,437,147
+lmval,"hybrid panel, tract-clustered SE",act_b,-0.216254561128029,0.0385335284142326,3.59201219536588e-08,437,147
+lmval,"hybrid panel, tract-clustered SE",leg_b,0.00464191829297411,0.0457541672708455,0.919237904896319,437,147
+lmval,"between tracts, spatial error (lambda 0.67)",act_b,-0.0935257380286187,0.0568987901674105,0.100233839745357,147,147
+lmval,"between tracts, spatial error (lambda 0.67)",leg_b,-0.0158306570983771,0.0441476545786258,0.719906071753972,147,147
+lmval,"sensitivity: all manufacturers, tract-clustered SE",act_w,0.0181991789166066,0.0215792823628864,0.399495167548871,437,147
+lmval,"sensitivity: all manufacturers, tract-clustered SE",act_b,-0.0740431203746255,0.0493640479321521,0.134365440684035,437,147
+lmval,"sensitivity: all manufacturers, tract-clustered SE",leg_b,-0.0363874678412222,0.0452743650730761,0.422009477874944,437,147
+lmrent,"hybrid panel, tract-clustered SE",act_w,0.282481068067314,0.156700342904233,0.0721396646283912,437,147
+lmrent,"hybrid panel, tract-clustered SE",act_b,0.0302782042610422,0.0746101132268735,0.685077899359353,437,147
+lmrent,"hybrid panel, tract-clustered SE",leg_b,-0.0314297383255695,0.0694855319316068,0.651266658589492,437,147
+lmrent,"between tracts, spatial error (lambda 0.26)",act_b,0.0429167257300643,0.12031435683101,0.721312705092479,147,147
+lmrent,"between tracts, spatial error (lambda 0.26)",leg_b,-0.0395834829501389,0.0977730493378914,0.68558729259309,147,147
+lmrent,"sensitivity: all manufacturers, tract-clustered SE",act_w,0.125747753198784,0.0937489856792546,0.180524967937547,437,147
+lmrent,"sensitivity: all manufacturers, tract-clustered SE",act_b,-0.0650823885066517,0.081568448433421,0.425377609816699,437,147
+lmrent,"sensitivity: all manufacturers, tract-clustered SE",leg_b,0.0553886616335475,0.0784972935893028,0.480812193247261,437,147

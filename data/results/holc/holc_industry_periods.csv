@@ -15,10 +15,10 @@ period,grade,km2,firms,firms_band,start,per_km2,source,firms_per_edition,edition
 1938-1956,B,13.4,9,0,1938,0.67,"Colorado State Business Directory (hazardous trades, street level)",1.8,5,0.134,2.1
 1938-1956,C,41.2,27,11,1938,0.65,"Colorado State Business Directory (hazardous trades, street level)",5.6,5,0.136,2.1
 1938-1956,D,27.2,37,13,1938,1.36,"Colorado State Business Directory (hazardous trades, street level)",7.8,5,0.287,2.1
-1965-1980,A,5.7,1,0,1965,0.17,Directory of Colorado Manufacturers (hazardous sectors),0.111111111111111,9,0.019,13.8
-1965-1980,B,13.4,12,0,1965,0.9,Directory of Colorado Manufacturers (hazardous sectors),2,9,0.149,13.8
-1965-1980,C,41.2,49,17,1965,1.19,Directory of Colorado Manufacturers (hazardous sectors),8.77777777777778,9,0.213,13.8
-1965-1980,D,27.2,296,76,1965,10.89,Directory of Colorado Manufacturers (hazardous sectors),80.2222222222222,9,2.949,13.8
+1965-1980,A,5.7,1,0,1965,0.17,Directory of Colorado Manufacturers (hazardous sectors),0.111111111111111,9,0.019,13.6
+1965-1980,B,13.4,12,0,1965,0.9,Directory of Colorado Manufacturers (hazardous sectors),2,9,0.149,13.6
+1965-1980,C,41.2,49,17,1965,1.19,Directory of Colorado Manufacturers (hazardous sectors),8.77777777777778,9,0.213,13.6
+1965-1980,D,27.2,286,74,1965,10.53,Directory of Colorado Manufacturers (hazardous sectors),78.6666666666667,9,2.892,13.6
 1981-1992,A,5.7,1,0,1981,0.17,Directory of Colorado Manufacturers (hazardous sectors),0.25,4,0.044,16.8
 1981-1992,B,13.4,5,0,1981,0.37,Directory of Colorado Manufacturers (hazardous sectors),1.75,4,0.131,16.8
 1981-1992,C,41.2,28,12,1981,0.68,Directory of Colorado Manufacturers (hazardous sectors),7.75,4,0.188,16.8
