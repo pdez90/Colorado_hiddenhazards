@@ -55,7 +55,9 @@ eds_f    <- rd_opt("denver_eds_firms.csv"); eds_g <- rd_opt("ed_year_groups.csv"
 ED_VARS  <- c("Black (%)" = "pct_black", "Foreign born (%)" = "pct_fb", "Mexican-born (%)" = "pct_fb_mexico", "Hispanic (%)" = "pct_hisp", "Laborers (% of population)" = "pct_laborers",
               "Foreign or mixed parentage (%)" = "pct_foreign_parentage", "Hazardous firms in the decade" = "firms", "Distance to nearest firm (m)" = "dist_m")
 holc     <- if (file.exists(dd("holc_denver.geojson"))) st_read(dd("holc_denver.geojson"), quiet = TRUE) else NULL      # R/holc_covenants.R
-coven    <- rd_opt("covenants_denver.csv"); holc_g <- rd_opt("holc_by_grade.csv"); holc_tr <- rd_opt("trajectories_by_grade.csv"); holc_m <- rd_opt("holc_tract_models.csv")
+coven    <- rd_opt("covenants_denver.csv"); holc_g <- rd_opt("holc_by_grade.csv"); holc_tr <- rd_opt("trajectories_by_grade.csv"); holc_m <- rd_opt("holc_tract_models.csv"); holc_sh <- rd_opt("holc_facility_shares.csv"); ed_sh <- rd_opt("ed_firm_shares.csv"); ed_cls <- rd_opt("ed_holc_classes.csv")
+eds_holc <- if (file.exists(dd("eds_holc_1930.geojson"))) st_read(dd("eds_holc_1930.geojson"), quiet = TRUE) else NULL
+HOLC_COL6 <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d", Industrial = "#8c8c8c", Commercial = "#c8a2c8", ungraded = "#eeeeee")
 HOLC_COL <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d")
 PAN_YEARS <- c(if (!is.null(co_cnty)) c(1880, 1900, 1910, 1920, 1930), seq(1940, 2020, 10))
 PAN_VARS <- c("Black (%)" = "p_black", "Hispanic (%)" = "p_hisp", "Foreign born (%)" = "p_fb", "Below poverty line (%)" = "p_pov",
@@ -113,10 +115,13 @@ filters <- list(
            "'Not on any list' = no match in EPA FRS, TRI, RCRA, Superfund, brownfield or CDPHE cleanup inventories.")
 )
 
-ui <- page_navbar(
+ui <- page_navbar(id = "nav",
   title = "Colorado Hidden Hazards", fillable = "Map",   # other tabs scroll so their plots keep full height
   theme = bs_theme(version = 5, bootswatch = "flatly", primary = "#24589e", base_font = font_google("Public Sans", local = FALSE)),
-  sidebar = do.call(sidebar, c(list(width = 300), filters)),
+  sidebar = sidebar(width = 300,
+    conditionalPanel("['Map','Trends','Census tracts over time','Neighborhoods','Nearby schools & health care','Data & downloads'].includes(input.nav)", do.call(tagList, filters)),
+    conditionalPanel("!['Map','Trends','Census tracts over time','Neighborhoods','Nearby schools & health care','Data & downloads'].includes(input.nav)",
+      tags$small(class = "text-muted", "The site filters apply to the Map, Trends, Census tracts, Neighborhoods, Nearby schools and Data tabs. This tab uses its own controls."))),
   nav_panel("Map",
     layout_columns(col_widths = c(9, 3),
       card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map", height = "78vh"))),
@@ -129,6 +134,8 @@ ui <- page_navbar(
              "Use the layer control (top right of the map) to add TRI facilities, schools, hospitals, clinics, ",
              "residential care, brownfields and other cleanup sites. Click any point for details.")))),
   nav_panel("Trends",
+    card(card_header("Hazardous-trade firms and sites listed, 1871\u20132002: both directory series on one timeline"), plotlyOutput("p_timeline", height = 320),
+         tags$small(class = "text-muted", "Brown: hazardous trades found in the Colorado State Business Directory (34 editions, every trade, OCR'd scans; counts depend on each edition's coverage and scan quality). Orange: hazardous-sector sites in the Directory of Colorado Manufacturers (25 editions, manufacturers only). The two series are not on the same footing \u2014 the business directories list far more small trades \u2014 but together they trace the whole span. Both respond to the sidebar filters.")),
     layout_columns(col_widths = c(6, 6),
       card(card_header("Hazardous-sector sites listed per directory edition, by sector"), plotlyOutput("p_sector", height = 420)),
       card(card_header("…by current regulatory status"), plotlyOutput("p_status", height = 420))),
@@ -153,7 +160,7 @@ ui <- page_navbar(
   nav_panel("Census tracts over time",
     layout_columns(col_widths = c(3, 9),
       card(card_header("Census tracts 1940–2020 vs. industry"),
-           radioButtons("pan_year", "Decennial census", choices = PAN_YEARS, selected = 1970, inline = TRUE),
+           radioButtons("pan_year", "Decennial census (1880\u20131930 counties, 1940\u20132020 tracts)", choices = PAN_YEARS, selected = 1970, inline = TRUE),
            uiOutput("pan_avail"),
            radioButtons("pan_area", "Area", c("Colorado" = "co", "Denver core (185 tracts)" = "core"), inline = TRUE),
            selectInput("pan_var", "Shade tracts by", PAN_VARS, selected = "p_hisp"),
@@ -189,6 +196,8 @@ ui <- page_navbar(
            tags$small(class = "text-muted", "0 = evenly spread, 1 = complete separation (IPUMS full count; 1880 and 1900 Arapahoe County)."))),
     card(card_header(textOutput("edg_title")), tableOutput("t_edg"),
          tags$small(class = "text-muted", "Population-weighted means of the district composition (IPUMS full count). The last row is the dissimilarity index of each group against the rest of the population across all mapped districts (0\u20131).")),
+    card(card_header("Where the firms were: share of each decade's hazardous-trade firms in the districts housing the top population quartile on each measure"), plotlyOutput("p_ed_sh", height = 340),
+         tags$small(class = "text-muted", "Districts are ranked on the measure and the top 25% of the population taken; if firms were spread like people, 25% (dashed line) would fall there. Hover for the share in the bottom quartile.")),
     layout_columns(col_widths = c(4, 8),
       card(card_header("1880 at the building level (Brown University Urban Transition HGIS)"),
            tags$small(class = "text-muted", "The 1880 census geocoded to buildings against the hazardous trades of the 1878–1885 directories placed on the 1880 street grid: 34,386 residents, 60 firms at the building. Only aggregates and model results are shown; Brown's building-level data are not redistributed."),
@@ -200,8 +209,11 @@ ui <- page_navbar(
   nav_panel("Redlining & covenants",
     layout_columns(col_widths = c(3, 6, 3),
       card(card_header("HOLC 1938 map and racial covenants 1931\u201335"),
-           checkboxGroupInput("rl_layers", NULL, c("HOLC security grades (1938)" = "holc", "Racial covenants 1931-35 (deeds)" = "cov", "Hazardous-trade firms 1921-40" = "firms", "1930 enumeration districts (% Black)" = "ed30"),
+           checkboxGroupInput("rl_layers", NULL, c("HOLC security grades (1938)" = "holc", "Racial covenants 1931-35 (deeds)" = "cov", "Hazardous-trade firms" = "firms", "1930 enumeration districts" = "ed30"),
                               selected = c("holc", "cov", "firms")),
+           conditionalPanel("input.rl_layers.includes('ed30')", selectInput("rl_edvar", "Shade 1930 districts by", c("Black (%)" = "pct_black", "Hispanic (%)" = "pct_hisp", "Foreign born (%)" = "pct_fb", "Laborers (%)" = "pct_laborers",
+                                                                                 "Racial covenants recorded 1931-35" = "covenants", "HOLC class of the district (1938)" = "grade", "Hazardous firms before the map (to 1937)" = "firms_pre1938", "Hazardous firms after the map (1938-56)" = "firms_1938_1956", "Hazardous-sector sites 1961-2002" = "firms_1961_2002"))),
+           radioButtons("rl_firms", "Firms listed", c("Before the map: 1871-1937 (street level)" = "pre", "1921-1937 only" = "mid", "After the map: 1938-1956" = "post"), selected = "pre"),
            tags$small(class = "text-muted",
              "The Home Owners' Loan Corporation graded Denver's neighbourhoods A (\u2018best\u2019) to D (\u2018hazardous\u2019) in 1938; its appraisers' forms record what they saw as detrimental influences, the share of foreign-born and Black families and any \u2018infiltration\u2019. ",
              "Click an area for its description. Racial covenants are deeds recorded 1931\u201335 that barred non-white occupants (Denver Public Library's Mapping Prejudice pilot); some also barred manufacturing. ",
@@ -213,9 +225,13 @@ ui <- page_navbar(
            plotlyOutput("p_holc_tr", height = 300),
            tags$small(class = "text-muted", "Population-weighted means of 2010 tracts at least 40% inside graded areas (4 A, 6 B, 41 C, 19 D tracts)."),
            )),
-    layout_columns(col_widths = c(7, 5),
+    card(card_header("1930 enumeration districts by HOLC class and covenants: who lived there, and industry before and after the map"), tableOutput("t_edcls"),
+         tags$small(class = "text-muted", "Each 1930 district takes the HOLC class covering most of its area ('ungraded' = outside all HOLC areas); 'covenants' = at least one 1931-35 racial covenant deed inside it. Firms per 10,000 residents of 1930. HOLC's Industrial and Commercial zones carried no residential grade but held most of the pre-map industry.")),
+    layout_columns(col_widths = c(7, 5, 5),
       card(card_header("HOLC areas by grade: industry, the appraisers' remarks, covenants, and who lived there (1930 and 1940 full count, reconstructed districts)"), tableOutput("t_holc_g"),
-           tags$small(class = "text-muted", "Population-weighted; 'remarks cite industry' = the area's detrimental influences or remarks mention industry, factories, smelters, railroads, smoke or odors.")),
+           tags$small(class = "text-muted", "Population-weighted; 'remarks cite industry' = the area's detrimental influences or remarks mention industry, factories, smelters, railroads, smoke or odors. Firms are the street-level hazardous trades of the business directories; 'before the map' = any listing 1871-1937.")),
+      card(card_header("Where the facilities are: share by HOLC grade, then and now"), plotlyOutput("p_holc_sh", height = 360),
+           tags$small(class = "text-muted", "Share of each layer's facilities that fall inside HOLC's A-D residential grades and its ungraded Industrial and Commercial zones (facilities outside all HOLC areas excluded), against the classes' shares of land and of 1940 population. Hazardous trades: street-level business-directory listings; 1961-2002: this project's geocoded hazardous-sector sites; today: EPA TRI and the cleanup inventories.")),
       card(card_header("Change in tract outcomes by grade, A = reference"), tableOutput("t_holc_m"),
            tags$small(class = "text-muted", "Percentage points over the period; the 1940 baseline of the outcome, 1940 % Black and 1931-40 firms controlled; HC1 SE. ** p<0.01, * p<0.05. Compare Xu (2022), Table 3, for Chicago.")))
     ),
@@ -284,6 +300,12 @@ ui <- page_navbar(
                   "(4) the IPUMS full-count totals are attached by district number. 1880 is tessellated the same way from Brown's geocoded 1880 buildings. 73% of the 1900 population is placed at street level; the geocoding log is in data/results/denver_eds/ed_geocoding.csv. ",
                   "Boundaries are therefore approximate (a block or so at the edges) and are this project's derived product; the address files stay with the project under Brown's conditions of use. ",
                   "Reproduce with Rscript R/grf_eds.R (or python pipeline/historical/grf_eds.py) and Rscript R/denver_eds_analysis.R."),
+          tags$dt("How units are harmonised over time"),
+          tags$dd("Three kinds of unit appear, each handled differently. (1) Census tracts 1940\u20132020 are all expressed on 2010 tract boundaries: NHGIS's own standardised time series for 1990\u20132020 (counts re-allocated by block-level weights), ",
+                  "and for 1940\u20131980 this project's area-weighted interpolation (each old tract's counts split among the 2010 tracts it overlaps in proportion to area; 2020 ACS counts likewise); shares are then computed from the re-allocated counts. ",
+                  "Area weighting assumes people are spread evenly within an old tract, so values are approximate where an old tract straddled very different neighbourhoods. (2) Counties 1880\u20131940 are shown on each census's own boundaries and are not harmonised ",
+                  "(counties were created and split through 1913), so compare the labelled county, not the shape. (3) Enumeration districts 1880\u20131940 are each census's own districts (reconstructed as described above) and are not linked across censuses; ",
+                  "where they are compared with HOLC areas or 2010 tracts, their counts are area-weighted onto those units in the same way as the tracts."),
           tags$dt("HOLC 1938 redlining map (Redlining & covenants tab)"),
           tags$dd("The Home Owners' Loan Corporation's Residential Security Map of Denver (1938) and the appraisers' area-description forms, from Mapping Inequality (Nelson, Winling et al., University of Richmond Digital Scholarship Lab; spatial data CC-BY-NC), ",
                   "with their crosswalk of HOLC areas to 2010 census tracts. The tab reads the grades against the reconstructed 1930 and 1940 districts (area-weighted), the firms of 1921\u201340 and the 1940\u20132020 tract panel. Rscript R/holc_covenants.R."),
@@ -514,6 +536,13 @@ server <- function(input, output, session) {
     ggplotly(ggplot(d, aes(year, n, colour = sectors)) + geom_line() + geom_point(size = 1.2) +
                labs(x = "Directory edition", y = "Sites listed", colour = NULL) + theme_minimal())
   })
+  output$p_timeline <- renderPlotly({
+    a <- sy_sel() |> count(year, name = "n") |> mutate(series = "Manufacturers' directory sites (hazardous sectors), 1961-2002")
+    h <- sel_hist(); b <- if (is.null(h) || !nrow(h)) NULL else h |> mutate(yr = strsplit(years, " ")) |> unnest(yr) |> mutate(year = as.integer(yr)) |> filter(year >= input$yrs[1], year <= input$yrs[2]) |> count(year, name = "n") |> mutate(series = "Business-directory hazardous trades, 1871-1956")
+    d <- bind_rows(a, b); if (!nrow(d)) return(NULL)
+    ggplotly(ggplot(d, aes(year, n, colour = series, group = series, text = sprintf("%s: %s (%s)", year, n, series))) + geom_line() + geom_point(size = 1.5) +
+               scale_colour_manual(values = c("Business-directory hazardous trades, 1871-1956" = "#8c510a", "Manufacturers' directory sites (hazardous sectors), 1961-2002" = "#d1491f")) +
+               scale_x_continuous(breaks = seq(1870, 2000, 10)) + labs(x = "Directory edition", y = "Listed", colour = NULL) + theme_minimal() + theme(legend.position = "bottom"), tooltip = "text") })
   output$p_status <- renderPlotly({
     d <- sy_sel() |> count(year, radar) |> mutate(radar = factor(radar, STATUS))
     ggplotly(ggplot(d, aes(year, n, fill = radar)) + geom_col(width = 0.8) + scale_fill_manual(values = STATUS_COL) +
@@ -674,8 +703,9 @@ server <- function(input, output, session) {
     req(input$map_den_zoom)                                   # wait until the map exists (the tab may not have been opened yet)
     v <- input$pan_var; d <- pan_year(); x <- d[[v]]; lab <- names(PAN_VARS)[PAN_VARS == v]; cm <- county_mode()
     pal <- if (all(is.na(x))) function(z) "#c7c7c7" else colorBin(if (v %in% c("firms_haz", "legacy_haz")) "PuRd" else "YlGnBu", domain = x, bins = 7, pretty = TRUE, na.color = "#f0f0f0")
-    px <- leafletProxy("map_den") |> clearGroup("tracts") |> clearGroup("firms") |> removeControl("panlegend") |> removeControl("pannote") |>
-      addPolygons(data = d, fillColor = pal(x), fillOpacity = 0.7, color = if (cm) "#666666" else "#ffffff", weight = if (cm) 0.8 else 0.6, group = "tracts", options = pathOptions(pane = "tr"),
+    px <- leafletProxy("map_den") |> clearGroup("tracts") |> clearGroup("firms") |> removeControl("panlegend") |> removeControl("pannote") |> removeControl("unitnote") |>
+      addControl(sprintf("<div style='background:#ffffffdd;padding:4px 10px;border-radius:4px'><b>%s census · %s</b></div>", input$pan_year, if (cm) "counties on that census's boundaries (IPUMS full count; no tracts before 1940)" else "2010 census tracts (NHGIS, harmonised)"), position = "topleft", layerId = "unitnote") |>
+      addPolygons(data = d, fillColor = pal(x), fillOpacity = 0.7, color = if (cm) "#666666" else "#ffffff", weight = if (cm) 0.8 else 0.6, group = "tracts", options = pathOptions(pane = "tr"), label = if (cm) sprintf("%s County, %s", d$GEOID, input$pan_year) else NULL,
                   popup = if (cm) sprintf("<b>%s County</b>, %s census (full count)<br>%s: <b>%s</b><br>Population %s · Black %s%% · foreign born %s%% (Mexican-born %s%%) · Hispanic %s%% · laborers %s%%<br>Pre-1960 hazardous-trade firms listed in the decade: %s",
                                   d$GEOID, input$pan_year, lab, ifelse(is.na(x), "no data", round(x, 1)), ifelse(is.na(d$pop), "–", format(d$pop, big.mark = ",")), esc(d$p_black), esc(d$p_fb), esc(d$p_fb_mexico), esc(d$p_hisp), esc(d$p_laborers), esc(d$firms_haz))
                           else sprintf("<b>Tract %s</b>, %s census<br>%s: <b>%s</b><br>Population %s · Black %s%% · Hispanic %s%% · Foreign born %s%% · Poverty %s%%<br>Hazardous firms active in decade: %s (all manufacturers: %s) · legacy hazardous firms: %s<br><small>%s km from downtown</small>",
@@ -775,26 +805,44 @@ server <- function(input, output, session) {
     req(input$map_rl_zoom); if (is.null(holc)) return()
     px <- leafletProxy("map_rl") |> clearGroup("holc") |> clearGroup("cov") |> clearGroup("firms") |> clearGroup("ed30") |> removeControl("rllegend")
     L <- input$rl_layers
-    if ("ed30" %in% L && !is.null(eds)) { e <- eds[eds$year == 1930, ]; pe <- colorBin("Greys", domain = e$pct_black, bins = c(0, 1, 2, 5, 10, 25, 100), na.color = "#f0f0f0")
-      px <- px |> addPolygons(data = e, fillColor = pe(e$pct_black), fillOpacity = 0.7, color = "#999999", weight = 0.4, group = "ed30", options = pathOptions(pane = "ed"),
-                              label = sprintf("ED %s (1930): %s%% Black, %s%% Hispanic, %s%% laborers", e$ED, e$pct_black, e$pct_hisp, e$pct_laborers)) }
+    px <- px |> removeControl("edlegend30")
+    if ("ed30" %in% L && !is.null(eds_holc)) { e <- eds_holc; v <- input$rl_edvar; x <- e[[v]]
+      if (v == "grade") { fc <- unname(HOLC_COL6[x]); fc[is.na(fc)] <- "#eeeeee"; px <- px |> addLegend("bottomleft", colors = unname(HOLC_COL6), labels = names(HOLC_COL6), title = "HOLC class of 1930 district", opacity = 0.7, layerId = "edlegend30") }
+      else { pe <- colorBin(if (v %in% c("covenants", "firms_pre1938", "firms_1938_1956", "firms_1961_2002")) "Purples" else "Greys", domain = x, bins = 6, pretty = TRUE, na.color = "#f0f0f0"); fc <- pe(x)
+        px <- px |> addLegend("bottomleft", pal = pe, values = x, title = paste0("1930 districts: ", names(c("Black (%)" = "pct_black", "Hispanic (%)" = "pct_hisp", "Foreign born (%)" = "pct_fb", "Laborers (%)" = "pct_laborers", "Racial covenants 1931-35" = "covenants", "Firms to 1937" = "firms_pre1938", "Firms 1938-56" = "firms_1938_1956", "Sites 1961-2002" = "firms_1961_2002"))[c("pct_black", "pct_hisp", "pct_fb", "pct_laborers", "covenants", "firms_pre1938", "firms_1938_1956", "firms_1961_2002") == v]), opacity = 0.8, layerId = "edlegend30") }
+      px <- px |> addPolygons(data = e, fillColor = fc, fillOpacity = 0.7, color = "#999999", weight = 0.4, group = "ed30", options = pathOptions(pane = "ed"),
+                              label = sprintf("ED %s (1930): HOLC %s · %s covenants · %s%% Black, %s%% Hispanic, %s%% foreign born, %s%% laborers · firms to 1937: %s, 1938-56: %s, sites 1961-2002: %s", e$ED, e$grade, e$covenants, e$pct_black, e$pct_hisp, e$pct_fb, e$pct_laborers, e$firms_pre1938, e$firms_1938_1956, e$firms_1961_2002)) }
     if ("holc" %in% L) { h <- holc; gcol <- ifelse(h$grade %in% names(HOLC_COL), HOLC_COL[h$grade], "#bbbbbb")
       px <- px |> addPolygons(data = h, fillColor = gcol, fillOpacity = ifelse("ed30" %in% L, 0.25, 0.45), color = gcol, weight = 2, group = "holc", options = pathOptions(pane = "holcp"),
         label = sprintf("%s (grade %s): %s", h$label, h$grade, esc(h$cat)),
         popupOptions = popupOptions(maxWidth = 520),
-        popup = sprintf("<b>HOLC area %s \u2014 grade %s (%s)</b><br><b>Detrimental influences:</b> %s<br><b>Favorable:</b> %s<br><b>Occupation:</b> %s · <b>income:</b> %s<br><b>Foreign-born families:</b> %s · <b>Negro:</b> %s · <b>infiltration of:</b> %s · <b>relief families:</b> %s · <b>population:</b> %s<br><b>Remarks:</b> <small>%s</small><hr style='margin:4px 0'>Hazardous-trade firms 1921\u201340 inside: <b>%s</b> · racial covenants 1931\u201335: <b>%s</b><br>1930 full count (reconstructed EDs): %s residents, Black %s%%, foreign born %s%%, Hispanic %s%%, laborers %s%% · 1940: Black %s%%, Hispanic %s%%",
+        popup = sprintf("<b>HOLC area %s \u2014 grade %s (%s)</b><br><b>Detrimental influences:</b> %s<br><b>Favorable:</b> %s<br><b>Occupation:</b> %s · <b>income:</b> %s<br><b>Foreign-born families:</b> %s · <b>Negro:</b> %s · <b>infiltration of:</b> %s · <b>relief families:</b> %s · <b>population:</b> %s<br><b>Remarks:</b> <small>%s</small><hr style='margin:4px 0'>Hazardous-trade firms inside: <b>%s</b> before the map (1871\u201337), %s in 1921\u201337, %s after (1938\u201356) · racial covenants 1931\u201335: <b>%s</b><br>1930 full count (reconstructed EDs): %s residents, Black %s%%, foreign born %s%%, Hispanic %s%%, laborers %s%% · 1940: Black %s%%, Hispanic %s%%",
                         h$label, h$grade, esc(h$cat), esc(h$detrimental), esc(h$favorable), esc(h$occupation), esc(h$income), esc(h$holc_foreign_born), esc(h$holc_negro), esc(h$infiltration), esc(h$relief), esc(h$pop_trend), esc(h$remarks),
-                        h$firms_1921_1940, h$covenants_1931_35, esc(h$pop_1930), esc(h$pct_black_1930), esc(h$pct_fb_1930), esc(h$pct_hisp_1930), esc(h$pct_laborers_1930), esc(h$pct_black_1940), esc(h$pct_hisp_1940))) |>
+                        h$firms_pre1938, h$firms_1921_1937, h$firms_1938_1956, h$covenants_1931_35, esc(h$pop_1930), esc(h$pct_black_1930), esc(h$pct_fb_1930), esc(h$pct_hisp_1930), esc(h$pct_laborers_1930), esc(h$pct_black_1940), esc(h$pct_hisp_1940))) |>
         addLegend("bottomright", colors = unname(HOLC_COL), labels = c("A \u2018best\u2019", "B \u2018still desirable\u2019", "C \u2018definitely declining\u2019", "D \u2018hazardous\u2019"), title = "HOLC 1938", opacity = 0.7, layerId = "rllegend") }
     if ("cov" %in% L && !is.null(coven)) px <- px |> addCircleMarkers(data = coven, ~lon, ~lat, radius = 3, color = "#000000", weight = 0.5, fillColor = ifelse(coven$excludes_industry %in% TRUE, "#ff7f00", "#333333"), fillOpacity = 0.85, group = "cov", options = pathOptions(pane = "pts"),
         label = sprintf("Covenant %s, %s%s", coven$year, coven$subdivision, ifelse(coven$excludes_industry %in% TRUE, " (also bars business/manufacturing)", "")),
         popup = sprintf("<b>Racial covenant, %s</b><br>%s<br><i>\u201c%s\u201d</i>%s", coven$year, esc(coven$subdivision), esc(coven$restriction), ifelse(coven$excludes_industry %in% TRUE, "<br><b>Also restricts business or manufacturing use.</b>", "")))
-    if ("firms" %in% L && !is.null(hist)) { f <- hist |> filter(precision != "town", town == "DENVER", first_year <= 1940, last_year >= 1921)
+    if ("firms" %in% L && !is.null(hist)) { w <- switch(input$rl_firms, pre = c(1871, 1937), mid = c(1921, 1937), post = c(1938, 1956)); f <- hist |> filter(precision != "town", town == "DENVER", first_year <= w[2], last_year >= w[1])
       px <- px |> addCircleMarkers(data = f, ~lon, ~lat, radius = 4.5, color = "#ffffff", weight = 0.8, fillColor = "#d1491f", fillOpacity = 0.95, group = "firms", options = pathOptions(pane = "pts"),
                                    label = sprintf("%s (%s)", f$name, f$years), popup = sprintf("<b>%s</b><br>%s · %s · listed %s", esc(f$name), esc(f$street), esc(f$sectors), esc(f$years))) }
     px })
+  output$p_holc_sh <- renderPlotly({ if (is.null(holc_sh)) return(NULL)
+    cls <- intersect(c("A", "B", "C", "D", "Industrial", "Commercial"), sub("share_", "", grep("^share_", names(holc_sh), value = TRUE)))
+    d <- holc_sh |> select(layer, total, all_of(paste0("share_", cls))) |> rename_with(~ sub("share_", "", .x)) |> pivot_longer(all_of(cls), names_to = "grade", values_to = "share") |> mutate(layer = factor(layer, rev(unique(holc_sh$layer))), grade = factor(grade, cls))
+    ggplotly(ggplot(d, aes(share, layer, fill = grade, text = sprintf("%s: %.1f%% in %s (n = %s)", layer, share, grade, round(total)))) + geom_col(position = "stack") +
+               scale_fill_manual(values = c(A = "#4d8a3a", B = "#3b8fa0", C = "#c9a800", D = "#c0392b", Industrial = "#7f7f7f", Commercial = "#b07cb0")) + labs(x = "Share (%)", y = NULL, fill = "HOLC class") + theme_minimal() + theme(legend.position = "bottom"), tooltip = "text") })
+  output$t_edcls <- renderTable({ if (is.null(ed_cls)) return(NULL)
+    ed_cls |> filter(census == 1930) |> transmute(`HOLC class` = grade, `Covenants 1931-35` = ifelse(has_covenant, "yes", "none"), EDs, Population = population, `Black % 1930` = pct_black, `Hispanic % 1930` = pct_hisp, `Foreign born %` = pct_fb, `Laborers %` = pct_laborers,
+                                                 `Firms to 1937 (per 10k)` = sprintf("%d (%.1f)", firms_pre1938, firms_per_10k_pre1938), `Firms 1938-56 (per 10k)` = sprintf("%d (%.1f)", firms_1938_1956, firms_per_10k_1938_56), `Sites 1961-2002 (per 10k)` = sprintf("%d (%.1f)", firms_1961_2002, firms_per_10k_1961_2002)) }, striped = TRUE, spacing = "xs")
+  output$p_ed_sh <- renderPlotly({ if (is.null(ed_sh)) return(NULL)
+    LAB <- c(pct_black = "Black", pct_fb = "foreign born", pct_fb_mexico = "Mexican-born", pct_hisp = "Hispanic", pct_laborers = "laborers", pct_owner_hh = "owner-occupied", median_rent = "rent", mean_sei = "SEI")
+    d <- ed_sh |> filter(measure %in% names(LAB)) |> mutate(m = factor(LAB[measure], LAB))
+    ggplotly(ggplot(d, aes(factor(census), share_firms_top_quartile, fill = m, text = sprintf("%s, top quartile by %s: %.0f%% of %s firms (bottom quartile %.0f%%)", census, m, share_firms_top_quartile, firms, share_firms_bottom_quartile))) +
+               geom_col(position = position_dodge(width = 0.8), width = 0.75) + geom_hline(yintercept = 25, linetype = "dashed", colour = "grey40") +
+               labs(x = "Census", y = "% of the decade's firms in the top-quartile districts", fill = "Ranked by") + theme_minimal() + theme(legend.position = "bottom"), tooltip = "text") })
   output$t_holc_g <- renderTable({ if (is.null(holc_g)) return(NULL)
-    holc_g |> transmute(Grade = grade, Areas = areas, `Firms 1921-40` = firms_1921_1940, `Remarks cite industry` = mentions_industry, Covenants = covenants_1931_35, `Pop 1930` = pop_1930, `Black % 1930` = pct_black_1930, `Hispanic % 1930` = pct_hisp_1930, `Laborers % 1930` = pct_laborers_1930, `Black % 1940` = pct_black_1940, `Hispanic % 1940` = pct_hisp_1940) }, striped = TRUE, spacing = "xs")
+    holc_g |> transmute(Grade = grade, Areas = areas, `Firms before map (1871-1937)` = firms_pre1938, `Areas with one` = areas_with_firm_pre1938, `Firms 1921-37` = firms_1921_1937, `Firms 1938-56` = firms_1938_1956, `Remarks cite industry` = mentions_industry, Covenants = covenants_1931_35, `Pop 1930` = pop_1930, `Black % 1930` = pct_black_1930, `Hispanic % 1930` = pct_hisp_1930, `Laborers % 1930` = pct_laborers_1930, `Black % 1940` = pct_black_1940, `Hispanic % 1940` = pct_hisp_1940) }, striped = TRUE, spacing = "xs")
   output$p_holc_tr <- renderPlotly({ if (is.null(holc_tr)) return(NULL); v <- input$rl_var; lab <- c(p_hisp = "Hispanic (%)", p_black = "Black (%)", p_fb = "Foreign born (%)", p_pov = "Below poverty (%)", firms_haz = "Hazardous firms in decade")[[v]]
     d <- holc_tr |> filter(!is.na(.data[[v]]), !is.nan(.data[[v]]))
     ggplotly(ggplot(d, aes(census, .data[[v]], colour = grade, group = grade, text = sprintf("Grade %s, %s: %.1f (%s tracts)", grade, census, .data[[v]], tracts))) + geom_line() + geom_point(size = 2) +

@@ -1,13 +1,13 @@
 # Redlining (HOLC 1938) and racial covenants (1931-35) vs. the hazardous trades, Denver
 
-## HOLC areas by grade: industry, appraisers' remarks, covenants, and the 1930 full-count composition (reconstructed EDs, area-weighted)
+## HOLC areas by grade: industry before and after the map, appraisers' remarks, covenants, and the 1930 full-count composition (reconstructed EDs, area-weighted)
 
-| grade | areas | km2 | firms 1921-40 | areas with a firm | remarks mention industry | covenants 1931-35 | pop 1930 | % Black 1930 | % foreign born 1930 | % Hispanic 1930 | % laborers 1930 | % Black 1940 | % Hispanic 1940 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| A | 6 | 5.7 | 0 | 0 | 0 | 40 |   6,325 | 1.07 | 8.7 | 0.18 | 2.6 | 1.04 | 0.71 |
-| B | 12 | 13.4 | 0 | 0 | 1 | 26 |  27,024 | 0.45 | 9.5 | 0.24 | 3.1 | 0.30 | 0.72 |
-| C | 20 | 41.2 | 10 | 5 | 5 | 144 | 118,808 | 0.46 | 9.8 | 0.35 | 4.1 | 0.40 | 0.67 |
-| D | 16 | 27.2 | 13 | 6 | 8 | 216 |  74,646 | 7.80 | 11.7 | 1.56 | 7.1 | 8.15 | 9.54 |
+| grade | areas | km2 | firms before the map (1871-1937, street level) | areas with one | firms 1921-37 | firms 1938-56 | remarks mention industry | covenants 1931-35 | pop 1930 | % Black 1930 | % foreign born 1930 | % Hispanic 1930 | % laborers 1930 | % Black 1940 | % Hispanic 1940 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| A | 6 | 5.7 | 0 | 0 | 0 | 0 | 0 | 40 |   6,325 | 1.07 | 8.7 | 0.18 | 2.6 | 1.04 | 0.71 |
+| B | 12 | 13.4 | 0 | 0 | 0 | 9 | 1 | 26 |  27,024 | 0.45 | 9.5 | 0.24 | 3.1 | 0.30 | 0.72 |
+| C | 20 | 41.2 | 15 | 8 | 9 | 27 | 5 | 144 | 118,808 | 0.46 | 9.8 | 0.35 | 4.1 | 0.40 | 0.67 |
+| D | 16 | 27.2 | 26 | 7 | 11 | 43 | 8 | 216 |  74,646 | 7.80 | 11.7 | 1.56 | 7.1 | 8.15 | 9.54 |
 
 Covenant deeds with a point: 730; 440 exclude Black residents by name, 27 also bar manufacturing/business use.
 

@@ -8,6 +8,7 @@
 #   B. 1970 and 1980 tract tables (race, Spanish origin, nativity, poverty, total population) in their own boundaries.
 #   C. 1940, 1950 and 1960: every tract table NHGIS has (they are small), in their own boundaries.
 #   D. Tract boundary files for 1940, 1950, 1960, 1970, 1980.
+#   F. County boundary files 1880-1940 (NHGIS), for the statewide IPUMS full-count county layer (R/county_panel_1880_1940.R).
 #   E. Foreign born and poverty for 1990-2020, which the standardized series lack: 1990 STF3 and 2000 SF3 tract tables, ACS 5-year
 #      2008-2012 and 2016-2020 tract tables (nativity, poverty status), with the 1990, 2000 and 2020 tract boundaries.
 # Then work/census/denver_tract_panel.csv: one row per 2010 tract and census year 1940-2020 with pop, nhblk (Negro / Black /
@@ -67,6 +68,15 @@ if (!have("*tract_1940*.shp") || !have("*tract_1980*.shp")) {
   get_and_unpack(submit_extract(define_extract_agg("nhgis", description = "Colorado tract boundaries 1940-1980", shapefiles = want, geographic_extents = CO)), "D: boundaries")
   for (z in Sys.glob(file.path(W, "*", "*.zip"))) unzip(z, exdir = dirname(z), overwrite = TRUE)
 }
+# ---------------------------------------------------------------- F. county boundaries 1880-1940 (for the statewide full-count layer)
+if (!done("F")) {
+  shp <- as.data.table(get_metadata_catalog("nhgis", metadata_type = "shapefiles"))
+  want <- shp[grepl("^us_county_(1880|1900|1910|1920|1930|1940)_tl2000$", name)]$name
+  message("county boundary files: ", paste(want, collapse = ", "))
+  get_and_unpack(submit_extract(define_extract_agg("nhgis", description = "Colorado county boundaries 1880-1940", shapefiles = want, geographic_extents = CO)), "F: county boundaries 1880-1940")
+  for (z in Sys.glob(file.path(W, "*", "*.zip"))) unzip(z, exdir = dirname(z), overwrite = TRUE)
+  file.create(file.path(W, ".done_F"))
+}
 # ---------------------------------------------------------------- E. 1990-2020 nativity and poverty (nominal tracts + ACS)
 if (!done("E2")) {                                            # (E2: the first version of this extract, marker .done_E, missed the ACS tables)
   specs <- list()
@@ -92,7 +102,7 @@ read_codebook <- function(f) {
   for (l in L) {
     if (grepl("^\\s*(Table )?\\d+[.:]\\s+\\S", l) && !grepl("^\\s+[A-Z0-9]{3}\\d{3}[LU]?:", l)) { title <- trimws(sub("^\\s*(Table )?\\d+[.:]\\s+(\\(\\w+\\)\\s*)?", "", l)); uni <- ""; next }
     if (grepl("^\\s*Universe:", l)) { uni <- trimws(sub("^\\s*Universe:\\s*", "", l)); next }
-    m <- regmatches(l, regexec("^\\s+([A-Z0-9]{3}[A-Z0-9]{2,3}[LU]?):\\s+(.+)$", l))[[1]]
+    m <- regmatches(l, regexec("^\\s+([A-Z0-9]{3}[A-Z0-9]{2,4}[LU]?):\\s+(.+)$", l))[[1]]   # ABC001, ABC001L, ACS: ABCE001 / ABCM001
     if (length(m) == 3 && !grepl("bound:", m[3])) out[[length(out) + 1]] <- data.table(var = m[2], table = title, universe = uni, label = trimws(m[3]))
   }
   rbindlist(out)
@@ -108,13 +118,13 @@ RULES <- list(
                c("^Race by Age$", "^Persons$", "^Black >>"), c("Race", "^Persons", "^(Negro|Black)( >> .*)?$"), c("Race|Nonwhite|Non-white|Color", "", "^(Nonwhite|Non-white|Negro)( >> .*)?$")),
   hisp  = list(c("", "", "^Persons: Hispanic or Latino$"), c("^Persons of Spanish Origin$|^Spanish American Persons$|Spanish Surname Population$|^Spanish Origin$", "", "^Total$|^Mexican$|^Puerto Rican$|^Cuban$|^Other Spanish$"),
                c("^Spanish Indicator$", "", "Spanish language|Spanish surname")),
-  fb    = list(c("^Nativity( and Place of Birth)?$|^Nativity in the United States$", "^Persons|^Total population", "^Foreign born$"), c("Nativity and Parentage", "", "^Foreign Born$"), c("^Foreign.Born White Population( by Sex)?$", "", "^(Total|Male|Female)$"),
-               c("Nativity|Place of Birth|Citizenship", "", "^Foreign born$|^Foreign >> (Male|Female)$|^Foreign born( \\(.*\\))?( >> .*)?$")),
+  fb    = list(c("^Nativity( and Place of Birth)?$|^Nativity in the United States$", "^Persons|^Total population", "^Foreign[- ]born$"), c("Nativity and Parentage", "", "^Foreign Born$"), c("^Foreign.Born White Population( by Sex)?$", "", "^(Total|Male|Female)$"),
+               c("Nativity|Place of Birth|Citizenship", "", "^Foreign[- ]born$|^Foreign >> (Male|Female)$|^Foreign[- ]born( \\(.*\\))?( >> .*)?$")),
   ppov  = list(c("^Poverty Status( in \\d{4})?$|Poverty Status in the Past 12 Months", "^Persons for Whom Poverty|Population for whom poverty", "^(Income in .* )?below poverty level$"),   # a total cell (ACS tables carry subtotals, so never sum their breakdowns)
                c("^Poverty Status( in \\d{4})?( by Age)?$|^Age by Poverty Status( in \\d{4})?$", "^Persons for Whom Poverty", "below poverty"),
                c("Persons in Families Below Poverty|^Poverty Status by Age$", "Persons in Families|Unrelated Individuals 14", "Aggregate number of persons|^Below poverty level >>")))
 summarise_year <- function(csvs, yr) {
-  tabs <- lapply(csvs, function(f) { d <- as.data.table(read_ipums_agg(f, verbose = FALSE)); d[, c("GISJOIN", grep("^[A-Z0-9]{3}\\d{3}$", names(d), value = TRUE)), with = FALSE] })
+  tabs <- lapply(csvs, function(f) { d <- as.data.table(read_ipums_agg(f, verbose = FALSE)); d[, c("GISJOIN", grep("^[A-Z0-9]{3}[EM]?\\d{3}$", names(d), value = TRUE)), with = FALSE] })
   D <- Reduce(function(a, b) merge(a, b[, c("GISJOIN", setdiff(names(b), names(a))), with = FALSE], by = "GISJOIN", all = TRUE), tabs)
   cb <- unique(rbindlist(lapply(sub("\\.csv$", "_codebook.txt", csvs), read_codebook)), by = "var"); cb <- cb[var %in% names(D)]   # the same table may sit in two extracts
   cb <- cb[!(substr(var, 4, 4) == "M" & sub("^(...)M", "\\1E", var) %in% var)]                                          # ACS: keep estimates, drop margins of error

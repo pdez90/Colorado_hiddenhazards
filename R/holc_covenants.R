@@ -32,8 +32,10 @@ areas$holc_negro <- get(2, "d"); areas$infiltration <- get(2, "e"); areas$relief
 IND <- "industr|factor|smelter|railroad|railway|rail ?yard|smoke|odor|odour|refiner|packing|stock ?yard|warehouse|freight|foundry|gas plant|power plant|brick ?yard"
 areas$mentions_industry <- grepl(IND, paste(areas$detrimental, areas$remarks), ignore.case = TRUE)
 # firms 1921-1940 (street level) and racial covenants in each area
-hist <- fread("app/data/historical_sites.csv")[precision != "town" & !is.na(lat) & town == "DENVER" & first_year <= 1940 & last_year >= 1921]
-hp <- st_transform(st_as_sf(hist, coords = c("lon", "lat"), crs = 4326), UTM); areas$firms_1921_1940 <- lengths(st_intersects(areas, hp))
+hist <- fread("app/data/historical_sites.csv")[precision != "town" & !is.na(lat) & town == "DENVER"]
+hp <- st_transform(st_as_sf(hist, coords = c("lon", "lat"), crs = 4326), UTM)
+fw <- function(a, b) lengths(st_intersects(areas, hp[hp$first_year <= b & hp$last_year >= a, ]))
+areas$firms_pre1938 <- fw(1871, 1937); areas$firms_1921_1937 <- fw(1921, 1937); areas$firms_1938_1956 <- fw(1938, 1956); areas$firms_1921_1940 <- fw(1921, 1940)   # before the map (all street-level listings), the 17 years before it, after it
 cv <- st_read("data/covenants/denver_racial_covenants_1931_1935.geojson", quiet = TRUE); cv <- cv[!st_is_empty(cv), ]; cv <- st_transform(cv, UTM)
 cv$text <- tolower(paste(cv$racial_tex, cv$abbrev_rac)); cv$excludes_industry <- grepl("manufactur|factory|business|commercial|trade|saloon|store", cv$text)
 cv$excludes_black <- grepl("negro|colored|african", cv$text); cv$year <- as.integer(substr(cv$date_recor, 1, 4))
@@ -51,11 +53,49 @@ fwrite(as.data.table(st_drop_geometry(areas)), file.path(O, "holc_areas.csv"))
 cvl <- st_coordinates(st_transform(cv, 4326)); fwrite(data.table(lon = round(cvl[, 1], 5), lat = round(cvl[, 2], 5), year = cv$year, subdivision = cv$subdivisio, restriction = cv$abbrev_rac, excludes_black = cv$excludes_black, excludes_industry = cv$excludes_industry), file.path(A, "covenants_denver.csv"))
 # ---------------------------------------------------------------- by grade
 ar <- as.data.table(st_drop_geometry(areas))[grade %in% c("A", "B", "C", "D")]
-G <- ar[, .(areas = .N, area_km2 = round(sum(area_km2), 1), firms_1921_1940 = sum(firms_1921_1940), areas_with_firm = sum(firms_1921_1940 > 0), mentions_industry = sum(mentions_industry), covenants_1931_35 = sum(covenants_1931_35),
+G <- ar[, .(areas = .N, area_km2 = round(sum(area_km2), 1), firms_pre1938 = sum(firms_pre1938), areas_with_firm_pre1938 = sum(firms_pre1938 > 0), firms_1921_1937 = sum(firms_1921_1937), firms_1938_1956 = sum(firms_1938_1956), mentions_industry = sum(mentions_industry), covenants_1931_35 = sum(covenants_1931_35),
             pop_1930 = round(sum(pop_1930, na.rm = TRUE)), pct_black_1930 = round(weighted.mean(pct_black_1930, pop_1930, na.rm = TRUE), 2), pct_fb_1930 = round(weighted.mean(pct_fb_1930, pop_1930, na.rm = TRUE), 1),
             pct_hisp_1930 = round(weighted.mean(pct_hisp_1930, pop_1930, na.rm = TRUE), 2), pct_laborers_1930 = round(weighted.mean(pct_laborers_1930, pop_1930, na.rm = TRUE), 1),
             pct_black_1940 = round(weighted.mean(pct_black_1940, pop_1940, na.rm = TRUE), 2), pct_hisp_1940 = round(weighted.mean(pct_hisp_1940, pop_1940, na.rm = TRUE), 2)), by = grade][order(grade)]
 fwrite(G, file.path(O, "holc_by_grade.csv")); print(G)
+# ---------------------------------------------------------------- share of facilities by grade, then and now (within the graded areas)
+pt <- function(df) st_transform(st_as_sf(df[!is.na(df$lat), ], coords = c("lon", "lat"), crs = 4326), UTM)
+sites <- fread("app/data/sites.csv"); tri <- fread("app/data/tri_facilities.csv"); cln <- fread("app/data/cleanup_sites.csv")
+# HOLC also outlined "Industrial" and "Commercial" zones without a residential grade; they are kept as classes of their own
+areas$class <- ifelse(areas$grade %in% c("A", "B", "C", "D"), areas$grade, ifelse(grepl("Industrial", areas$cat), "Industrial", ifelse(grepl("Commercial", areas$cat), "Commercial", "other")))
+CLS <- c("A", "B", "C", "D", "Industrial", "Commercial"); gr <- areas[areas$class %in% CLS, ]
+cnt <- function(p) { k <- st_intersects(p, gr); g <- gr$class[vapply(k, function(z) if (length(z)) z[1] else NA_integer_, 0L)]; table(factor(g, CLS)) }
+SH <- rbind(data.table(layer = "Land area of HOLC areas", t(as.vector(tapply(gr$area_km2, factor(gr$class, CLS), sum)))),
+            data.table(layer = "Population 1940", t(as.vector(tapply(gr$pop_1940, factor(gr$class, CLS), sum, na.rm = TRUE)))),
+            data.table(layer = "Hazardous trades before the map (1871-1937)", t(as.vector(cnt(hp[hp$first_year <= 1937, ])))),
+            data.table(layer = "Hazardous trades after the map (1938-1956)", t(as.vector(cnt(hp[hp$first_year <= 1956 & hp$last_year >= 1938, ])))),
+            data.table(layer = "Hazardous-sector manufacturers 1961-2002", t(as.vector(cnt(pt(sites))))),
+            data.table(layer = "Sites on no current inventory (1961-2002)", t(as.vector(cnt(pt(sites[radar == "Not on any list"]))))),
+            data.table(layer = "EPA TRI facilities (today)", t(as.vector(cnt(pt(tri))))),
+            data.table(layer = "Cleanup / contamination sites (today)", t(as.vector(cnt(pt(cln))))))
+setnames(SH, c("layer", CLS)); SH[is.na(SH)] <- 0; SH[, total := A + B + C + D + Industrial + Commercial]
+for (g in CLS) SH[[paste0("share_", g)]] <- round(100 * SH[[g]] / SH$total, 1)
+fwrite(SH, file.path(O, "holc_facility_shares.csv")); file.copy(file.path(O, "holc_facility_shares.csv"), A, overwrite = TRUE); print(SH[, .(layer, total, share_A, share_B, share_C, share_D, share_Industrial, share_Commercial)])
+# ---------------------------------------------------------------- 1930 and 1940 districts classified by HOLC grade and covenants
+ED_cls <- list()
+for (yr in c(1930, 1940)) { f <- sprintf("data/results/denver_eds/denver_eds_%d.geojson", yr); if (!file.exists(f)) next
+  E <- st_make_valid(st_transform(st_read(f, quiet = TRUE), UTM)); E <- E[!is.na(E$pop) & E$pop > 0, ]; E$a <- as.numeric(st_area(E))
+  ov <- suppressWarnings(st_intersection(E[, c("ED", "a")], gr[, c("class")])); ov$w <- as.numeric(st_area(ov)) / ov$a
+  gs <- as.data.table(st_drop_geometry(ov))[, .(w = sum(w)), by = .(ED, grade = class)]; dom <- gs[, .(grade = grade[which.max(w)], graded_share = sum(w)), by = ED]
+  E <- merge(E, dom, by = "ED", all.x = TRUE); E$grade[is.na(E$grade) | E$graded_share < 0.3] <- "ungraded"
+  E$covenants <- lengths(st_intersects(E, cv)); E$firms_pre1938 <- lengths(st_intersects(E, hp[hp$first_year <= 1937, ])); E$firms_1938_1956 <- lengths(st_intersects(E, hp[hp$first_year <= 1956 & hp$last_year >= 1938, ]))
+  E$firms_1961_2002 <- lengths(st_intersects(E, pt(sites)))
+  d <- as.data.table(st_drop_geometry(E)); d[, `:=`(pct_black = 100 * black / pop, pct_fb = 100 * fb / pop, pct_hisp = 100 * hisp / pop, pct_laborers = 100 * laborers / pop, has_covenant = covenants > 0)]
+  cls <- d[, .(EDs = .N, population = sum(pop), covenants = sum(covenants), pct_black = round(weighted.mean(pct_black, pop), 2), pct_fb = round(weighted.mean(pct_fb, pop), 1), pct_hisp = round(weighted.mean(pct_hisp, pop), 2), pct_laborers = round(weighted.mean(pct_laborers, pop), 1),
+                firms_pre1938 = sum(firms_pre1938), firms_1938_1956 = sum(firms_1938_1956), firms_1961_2002 = sum(firms_1961_2002)), by = .(grade, has_covenant)][, census := yr][order(grade, has_covenant)]
+  cls[, firms_per_10k_pre1938 := round(1e4 * firms_pre1938 / population, 2)]; cls[, firms_per_10k_1938_56 := round(1e4 * firms_1938_1956 / population, 2)]; cls[, firms_per_10k_1961_2002 := round(1e4 * firms_1961_2002 / population, 2)]
+  ED_cls[[length(ED_cls) + 1]] <- cls
+  G2 <- st_transform(st_simplify(E[, c("ED", "pop", "grade", "graded_share", "covenants", "firms_pre1938", "firms_1938_1956", "firms_1961_2002")], dTolerance = 8), 4326)
+  G2$pct_black <- round(d$pct_black, 2); G2$pct_hisp <- round(d$pct_hisp, 2); G2$pct_fb <- round(d$pct_fb, 1); G2$pct_laborers <- round(d$pct_laborers, 1); G2$census <- yr
+  f2 <- file.path(A, sprintf("eds_holc_%d.geojson", yr)); if (file.exists(f2)) file.remove(f2); st_write(G2, f2, quiet = TRUE)
+}
+if (length(ED_cls)) { EC <- rbindlist(ED_cls); fwrite(EC, file.path(O, "ed_holc_classes.csv")); file.copy(file.path(O, "ed_holc_classes.csv"), A, overwrite = TRUE); print(EC[census == 1930, .(grade, has_covenant, EDs, population, pct_black, pct_hisp, firms_pre1938, firms_1938_1956, firms_1961_2002)]) }
+
 # ---------------------------------------------------------------- 1940-2020 tract trajectories by dominant HOLC grade (2010 tracts)
 xw <- as.data.table(st_drop_geometry(X))[grade %in% c("A", "B", "C", "D"), .(share = sum(pct_tract)), by = .(GEOID = GEOID10, grade)]
 dom <- xw[, .(grade = grade[which.max(share)], covered = sum(share)), by = GEOID][covered >= 0.4]     # tracts at least 40% inside graded areas
@@ -75,9 +115,9 @@ for (v in c("p_black", "p_hisp", "p_pov")) for (per in list(c(1940, 1980), c(198
   for (g in c("B", "C", "D")) if (paste0("grade", g) %in% rownames(ct)) M[[length(M) + 1]] <- data.table(outcome = v, period = paste(per, collapse = "-"), grade = g, b = ct[paste0("grade", g), 1], se = ct[paste0("grade", g), 2], p = ct[paste0("grade", g), 4], n = nrow(d)) }
 M <- rbindlist(M); fwrite(M, file.path(O, "holc_tract_models.csv")); file.copy(file.path(O, "holc_tract_models.csv"), A, overwrite = TRUE)
 md <- c("# Redlining (HOLC 1938) and racial covenants (1931-35) vs. the hazardous trades, Denver", "",
-        "## HOLC areas by grade: industry, appraisers' remarks, covenants, and the 1930 full-count composition (reconstructed EDs, area-weighted)", "",
-        "| grade | areas | km2 | firms 1921-40 | areas with a firm | remarks mention industry | covenants 1931-35 | pop 1930 | % Black 1930 | % foreign born 1930 | % Hispanic 1930 | % laborers 1930 | % Black 1940 | % Hispanic 1940 |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
-        sprintf("| %s | %d | %s | %d | %d | %d | %d | %s | %.2f | %.1f | %.2f | %.1f | %.2f | %.2f |", G$grade, G$areas, G$area_km2, G$firms_1921_1940, G$areas_with_firm, G$mentions_industry, G$covenants_1931_35, format(G$pop_1930, big.mark = ","), G$pct_black_1930, G$pct_fb_1930, G$pct_hisp_1930, G$pct_laborers_1930, G$pct_black_1940, G$pct_hisp_1940), "",
+        "## HOLC areas by grade: industry before and after the map, appraisers' remarks, covenants, and the 1930 full-count composition (reconstructed EDs, area-weighted)", "",
+        "| grade | areas | km2 | firms before the map (1871-1937, street level) | areas with one | firms 1921-37 | firms 1938-56 | remarks mention industry | covenants 1931-35 | pop 1930 | % Black 1930 | % foreign born 1930 | % Hispanic 1930 | % laborers 1930 | % Black 1940 | % Hispanic 1940 |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        sprintf("| %s | %d | %s | %d | %d | %d | %d | %d | %d | %s | %.2f | %.1f | %.2f | %.1f | %.2f | %.2f |", G$grade, G$areas, G$area_km2, G$firms_pre1938, G$areas_with_firm_pre1938, G$firms_1921_1937, G$firms_1938_1956, G$mentions_industry, G$covenants_1931_35, format(G$pop_1930, big.mark = ","), G$pct_black_1930, G$pct_fb_1930, G$pct_hisp_1930, G$pct_laborers_1930, G$pct_black_1940, G$pct_hisp_1940), "",
         sprintf("Covenant deeds with a point: %d; %d exclude Black residents by name, %d also bar manufacturing/business use.", nrow(cv), sum(cv$excludes_black), sum(cv$excludes_industry)), "",
         "## 2010 tracts by dominant HOLC grade (tracts at least 40% inside graded areas): population-weighted means, 1940-2020", "",
         "| census | grade | tracts | % Black | % Hispanic | % foreign born | % poverty | hazardous firms in decade |", "|---|---|---|---|---|---|---|---|",

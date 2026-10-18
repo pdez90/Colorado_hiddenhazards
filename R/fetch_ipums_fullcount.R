@@ -25,15 +25,23 @@ SAMPLES <- c("us1880e", "us1900m", "us1910m", "us1920c", "us1930d", "us1940b")  
 VARS <- c("YEAR", "SERIAL", "PERNUM", "COUNTYICP", "CITY", "ENUMDIST", "GQ", "FARM", "NFAMS", "RELATE",
           "SEX", "AGE", "MARST", "RACE", "HISPAN", "BPL", "MBPL", "FBPL", "NATIVITY", "CITIZEN", "YRIMMIG", "MTONGUE", "SPEAKENG", "CHBORN", "VETSTAT",
           "LIT", "SCHOOL", "EDUC", "OCC1950", "IND1950", "OCCSCORE", "SEI", "LABFORCE", "CLASSWKR", "EMPSTAT", "INCWAGE", "WKSWORK1",
-          "OWNERSHP", "MORTGAGE", "VALUEH", "RENT", "RADIO", "MIGRATE5", "MIGPLAC5")
+          "OWNERSHP", "MORTGAGE", "VALUEH", "RENT", "RADIO", "MIGRATE5", "MIGPLAC5")   # RADIO (1930) is not in the public full count; it is dropped automatically
 # use the newest downloaded extract that has every variable; otherwise request a new one
 ddis <- Sys.glob("work/ipums/*.xml"); use <- NULL
-for (f in rev(sort(ddis))) { v <- read_ipums_ddi(f)$var_info$var_name; if (all(VARS %in% v)) { use <- f; break } }
+CORE_NEW <- c("OWNERSHP", "MIGRATE5", "IND1950", "SEI", "LIT", "CITIZEN")     # a download counts as complete when it has these (variables absent from every sample are dropped at request time)
+for (f in rev(sort(ddis))) { v <- read_ipums_ddi(f)$var_info$var_name; if (all(CORE_NEW %in% v)) { use <- f; break } }
 if (is.null(use)) {
   message("requesting a new IPUMS USA extract with ", length(VARS), " variables (previous downloads lack some)")
-  ext <- define_extract_micro("usa", description = "Colorado full count 1880-1940, ED-level composition (all fields)",
-    samples = SAMPLES, variables = c(list(var_spec("STATEFIP", case_selections = "08")), as.list(VARS)))
-  sub <- submit_extract(ext); message("submitted IPUMS USA extract ", sub$number, " (full count, Colorado); large extracts take 10-60 min")
+  vars <- VARS; sub <- NULL
+  for (attempt in 1:12) {                         # the API rejects variables absent from every selected sample; drop them and retry
+    ext <- define_extract_micro("usa", description = "Colorado full count 1880-1940, ED-level composition (all fields)",
+      samples = SAMPLES, variables = c(list(var_spec("STATEFIP", case_selections = "08")), as.list(vars)))
+    sub <- tryCatch(submit_extract(ext), error = function(e) e)
+    if (!inherits(sub, "error")) break
+    bad <- unique(regmatches(conditionMessage(sub), gregexpr("[A-Z0-9]+(?=: This variable is not available)", conditionMessage(sub), perl = TRUE))[[1]])
+    if (!length(bad)) stop(sub); message("not in these samples, dropped: ", paste(bad, collapse = ", ")); vars <- setdiff(vars, bad) }
+  if (inherits(sub, "error")) stop(sub)
+  message("submitted IPUMS USA extract ", sub$number, " (full count, Colorado, ", length(vars), " variables); large extracts take 10-60 min")
   sub <- wait_for_extract(sub); files <- download_extract(sub, download_dir = "work/ipums", overwrite = TRUE)
   use <- grep("\\.xml$", files, value = TRUE)[1]; if (is.na(use)) use <- rev(sort(Sys.glob("work/ipums/*.xml")))[1]
 }

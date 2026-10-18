@@ -336,7 +336,13 @@ industry, railroads, smoke or odours. In 1930 the future D areas were already 7.
 and 7.1% laborers; by 1940 their Hispanic share was 9.5% (0.7% elsewhere). Afterwards the D tracts went to 39% Hispanic in 1970
 and 57% in 2000, with poverty 18 points above A tracts by 1980 (1940 baseline, 1940 % Black and 1931–40 firms controlled,
 p < 1e-5) and a further +16 points Hispanic 1980–2010 (p = 0.03); Black share did not differ by grade once the 1940 baseline is
-controlled. 27 of the covenant deeds also bar business or manufacturing use.
+controlled. 27 of the covenant deeds also bar business or manufacturing use. HOLC also outlined ungraded "Industrial" and "Commercial"
+zones, and that is where the pre-1938 industry sat: 64% of the street-level hazardous trades listed before the map were in
+Commercial zones and 12% in Industrial ones, 15% in D areas and none in A or B (`holc_facility_shares.csv`). Classing the 1930
+districts by the HOLC class that covers them (`ed_holc_classes.csv`): the D districts, 8.6% Black in 1930, held 3 hazardous
+firms per 10,000 residents before the map and 43 hazardous-sector sites per 10,000 in 1961–2002, against 7–8 per 10,000 in A–C —
+the post-war industrial growth went into the redlined and industrial districts. The app's Redlining tab shows the 1930
+districts by class, covenants, composition and firms before/after the map, and the share of each era's facilities by HOLC class.
 
 `R/app_census_layers.R` turns all of this — the NHGIS tract panel with firm counts per decade, the panel models, the corridor cells,
 the 1880 ED aggregates and placed firms, and the IPUMS city series — into the app's `app/data/` files (aggregates only).

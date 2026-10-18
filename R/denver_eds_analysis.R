@@ -28,7 +28,7 @@ sf_use_s2(FALSE); UTM <- 26913; O <- "data/results/denver_eds"; A <- "app/data"
 hist <- fread("app/data/historical_sites.csv")[precision != "town" & !is.na(lat) & town == "DENVER"]
 hp <- st_transform(st_as_sf(hist[, .(hfirm, name, first_year, last_year, sectors, lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM)
 f80 <- fread("data/results/denver_1880/firms_1878_1885_placed.csv")[how != "street only"]
-all_E <- list(); all_F <- list(); groups <- list(); models <- list()
+all_E <- list(); all_F <- list(); groups <- list(); models <- list(); shares <- list()
 for (yr in c(1880, 1900, 1910, 1920, 1930, 1940)) {
   f <- file.path(O, sprintf("denver_eds_%d.geojson", yr)); if (!file.exists(f)) { message(yr, ": no ED polygons yet"); next }
   E <- st_transform(st_read(f, quiet = TRUE), UTM); E <- E[!is.na(E$pop) & E$pop > 0, ]
@@ -49,6 +49,11 @@ for (yr in c(1880, 1900, 1910, 1920, 1930, 1940)) {
   if (nrow(Fp) >= 3) for (v in c(CORE, EXTRA)) { if (sum(!is.na(d[[v]])) < 10) next
     m <- lm(as.formula(paste(v, "~ log(dist_m + 50)")), d[!is.na(get(v))], weights = pop); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
     models[[length(models) + 1]] <- data.table(census = yr, outcome = v, b_per_log_m = ct[2, 1], se = ct[2, 2], p = ct[2, 4], EDs = nrow(d), firms = nrow(Fp)) }
+  # where were the firms? share of the decade's firms in the districts that make up the top population quartile on each measure (25% = proportional)
+  for (v in c(CORE, "pct_owner_hh", "median_rent", "mean_sei")) { if (sum(!is.na(d[[v]])) < 10 || sum(d$firms) == 0) next
+    o <- d[!is.na(get(v))][order(-get(v))]; o[, cum := cumsum(pop) / sum(pop)]; top <- o$ED[o$cum <= 0.25 | seq_len(nrow(o)) == 1]; bot <- rev(o$ED)[cumsum(rev(o$pop)) / sum(o$pop) <= 0.25]
+    shares[[length(shares) + 1]] <- data.table(census = yr, measure = v, firms = sum(d$firms), share_firms_top_quartile = round(100 * sum(d$firms[d$ED %in% top]) / sum(d$firms), 1),
+                                               share_firms_bottom_quartile = round(100 * sum(d$firms[d$ED %in% bot]) / sum(d$firms), 1), share_pop_top_quartile = round(100 * sum(d$pop[d$ED %in% top]) / sum(d$pop), 1)) }
   d[, census := yr]; all_E[[length(all_E) + 1]] <- E
   if (nrow(Fp)) { ll <- st_coordinates(st_transform(Fp, 4326)); all_F[[length(all_F) + 1]] <- data.table(census = yr, name = Fp$name, sector = Fp$sector, listed = Fp$year, lon = round(ll[, 1], 5), lat = round(ll[, 2], 5)) }
   message(yr, ": ", nrow(E), " EDs with population, ", nrow(Fp), " firms (", sum(E$firms > 0), " EDs with a firm)")
@@ -60,7 +65,7 @@ D <- rbindlist(lapply(all_E, function(E) as.data.table(st_drop_geometry(E))[, c(
 for (v in c(CORE, EXTRA)) { dd <- D[!is.na(dist_m) & !is.na(get(v))]; if (nrow(dd) < 30) next
   m <- lm(as.formula(paste(v, "~ log(dist_m + 50) + factor(census)")), dd, weights = pop); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
   M <- rbind(M, data.table(census = 0L, outcome = v, b_per_log_m = ct[2, 1], se = ct[2, 2], p = ct[2, 4], EDs = nrow(dd), firms = NA_integer_)) }
-fwrite(G, file.path(O, "ed_year_groups.csv")); fwrite(M, file.path(O, "ed_distance_models.csv"))
+fwrite(G, file.path(O, "ed_year_groups.csv")); fwrite(M, file.path(O, "ed_distance_models.csv")); S <- rbindlist(shares); fwrite(S, file.path(O, "ed_firm_shares.csv")); file.copy(file.path(O, "ed_firm_shares.csv"), A, overwrite = TRUE)
 # app layers
 KEEP <- c("year", "ED", "pop", "households", "firms", "dist_m", names(MEAS), AVG, "addresses", "persons_geocoded", "area_km2")
 GE <- do.call(rbind, lapply(all_E, function(E) { for (k in KEEP) if (!k %in% names(E)) E[[k]] <- NA_real_; st_transform(st_simplify(E[, KEEP], dTolerance = 8), 4326) }))
