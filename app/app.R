@@ -56,7 +56,7 @@ eds_f    <- rd_opt("denver_eds_firms.csv"); eds_g <- rd_opt("ed_year_groups.csv"
 ED_VARS  <- c("Black (%)" = "pct_black", "Foreign born (%)" = "pct_fb", "Mexican-born (%)" = "pct_fb_mexico", "Hispanic (%)" = "pct_hisp", "Laborers (% of population)" = "pct_laborers",
               "Foreign or mixed parentage (%)" = "pct_foreign_parentage", "Hazardous firms in the decade" = "firms", "Distance to nearest firm (m)" = "dist_m")
 holc     <- if (file.exists(dd("holc_denver.geojson"))) st_read(dd("holc_denver.geojson"), quiet = TRUE) else NULL      # R/holc_covenants.R
-coven    <- rd_opt("covenants_denver.csv"); holc_g <- rd_opt("holc_by_grade.csv"); holc_tr <- rd_opt("trajectories_by_grade.csv"); holc_m <- rd_opt("holc_tract_models.csv"); holc_sh <- rd_opt("holc_facility_shares.csv"); ed_sh <- rd_opt("ed_firm_shares.csv"); ed_cls <- rd_opt("ed_holc_classes.csv")
+coven    <- rd_opt("covenants_denver.csv"); holc_g <- rd_opt("holc_by_grade.csv"); holc_tr <- rd_opt("trajectories_by_grade.csv"); holc_pre <- rd_opt("trajectories_pre_by_grade.csv"); holc_m <- rd_opt("holc_tract_models.csv"); holc_sh <- rd_opt("holc_facility_shares.csv"); ed_sh <- rd_opt("ed_firm_shares.csv"); ed_cls <- rd_opt("ed_holc_classes.csv")
 eds_holc <- if (file.exists(dd("eds_holc_1930.geojson"))) st_read(dd("eds_holc_1930.geojson"), quiet = TRUE) else NULL
 HOLC_COL6 <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d", Industrial = "#8c8c8c", Commercial = "#c8a2c8", ungraded = "#eeeeee")
 HOLC_COL <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d")
@@ -229,7 +229,8 @@ ui <- page_navbar(id = "nav",
       card(card_header("After the map: 2010 tracts by dominant HOLC grade, 1940\u20132020"),
            selectInput("rl_var", NULL, c("Hispanic (%)" = "p_hisp", "Black (%)" = "p_black", "Foreign born (%)" = "p_fb", "Below poverty (%)" = "p_pov", "Owner-occupied (%)" = "p_owner", "Median home value (2020 $)" = "mval_2020", "Median rent (2020 $)" = "mrent_2020", "Hazardous firms in decade" = "firms_haz"), selected = "p_hisp"),
            plotlyOutput("p_holc_tr", height = 300),
-           tags$small(class = "text-muted", "Population-weighted means of 2010 tracts at least 40% inside graded areas (4 A, 6 B, 41 C, 19 D tracts)."),
+           tags$small(class = "text-muted", "Dashed, 1900-1940: the reconstructed enumeration districts of each census area-weighted into the HOLC polygons themselves (fixed boundaries, so no harmonisation; the only approximation is the area weighting). ",
+             "Solid, 1940-2020: population-weighted means of 2010 tracts at least 40% inside graded areas (4 A, 6 B, 41 C, 19 D tracts), with earlier censuses interpolated to 2010 tracts. The two 1940 points show how much the change of unit matters. Vertical line: the 1938 map."),
            )),
     card(card_header("1930 enumeration districts by HOLC class and covenants: who lived there, and industry before and after the map"), tableOutput("t_edcls"),
          tags$small(class = "text-muted", "Each 1930 district takes the HOLC class covering most of its area ('ungraded' = outside all HOLC areas); 'covenants' = at least one 1931-35 racial covenant deed inside it. Firms per 10,000 residents of 1930. HOLC's Industrial and Commercial zones carried no residential grade but held most of the pre-map industry.")),
@@ -496,7 +497,7 @@ server <- function(input, output, session) {
     if (is.null(hist)) return(NULL)
     h <- hist |> filter(last_year >= input$yrs[1], first_year <= input$yrs[2], (last_year - first_year) >= input$minspan)
     if (!isTRUE(input$htown)) h <- h |> filter(precision != "town")
-    if (length(input$sec)) h <- h[sapply(strsplit(h$app_sectors, ";"), function(x) any(x %in% input$sec)), ] else h <- h[0, ]
+    if (length(input$sec) && nrow(h)) h <- h[vapply(strsplit(h$app_sectors, ";"), function(x) any(x %in% input$sec), logical(1)), ] else h <- h[0, ]   # vapply: sapply returns list() on 0 rows and crashed the session
     h
   })
   observe({
@@ -866,9 +867,11 @@ server <- function(input, output, session) {
   output$t_holc_g <- renderTable({ if (is.null(holc_g)) return(NULL)
     holc_g |> transmute(Grade = grade, Areas = areas, `Firms before map (1871-1937)` = firms_pre1938, `Areas with one` = areas_with_firm_pre1938, `Firms 1921-37` = firms_1921_1937, `Firms 1938-56` = firms_1938_1956, `Remarks cite industry` = mentions_industry, Covenants = covenants_1931_35, `Pop 1930` = pop_1930, `Black % 1930` = pct_black_1930, `Hispanic % 1930` = pct_hisp_1930, `Laborers % 1930` = pct_laborers_1930, `Black % 1940` = pct_black_1940, `Hispanic % 1940` = pct_hisp_1940) }, striped = TRUE, spacing = "xs")
   output$p_holc_tr <- renderPlotly({ if (is.null(holc_tr)) return(NULL); v <- input$rl_var; lab <- c(p_hisp = "Hispanic (%)", p_black = "Black (%)", p_fb = "Foreign born (%)", p_pov = "Below poverty (%)", p_owner = "Owner-occupied (%)", mval_2020 = "Median home value (2020 $)", mrent_2020 = "Median rent (2020 $)", firms_haz = "Hazardous firms in decade")[[v]]
-    if (!v %in% names(holc_tr)) return(NULL); d <- holc_tr |> filter(!is.na(.data[[v]]), !is.nan(.data[[v]])); if (!nrow(d)) return(NULL)
-    ggplotly(ggplot(d, aes(census, .data[[v]], colour = grade, group = grade, text = sprintf("Grade %s, %s: %.1f (%s tracts)", grade, census, .data[[v]], tracts))) + geom_line() + geom_point(size = 2) +
-               scale_colour_manual(values = c(A = "#4d8a3a", B = "#3b8fa0", C = "#c9a800", D = "#c0392b")) + scale_x_continuous(breaks = seq(1940, 2020, 20)) + labs(x = NULL, y = lab, colour = "HOLC grade") + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1)), tooltip = "text") |> hleg() })
+    if (!v %in% names(holc_tr)) return(NULL); d <- holc_tr |> filter(!is.na(.data[[v]]), !is.nan(.data[[v]])) |> mutate(basis = "2010 tracts by dominant grade", unit = sprintf("%s tracts", tracts)); if (!nrow(d)) return(NULL)
+    if (!is.null(holc_pre) && v %in% names(holc_pre)) d <- bind_rows(holc_pre |> filter(!is.na(.data[[v]]), !is.nan(.data[[v]])) |> mutate(basis = "HOLC areas (districts area-weighted)", unit = sprintf("%s areas", areas)) |> select(census, grade, all_of(v), basis, unit), d)
+    xb <- if (min(d$census) < 1940) seq(1900, 2020, 20) else seq(1940, 2020, 20)
+    ggplotly(ggplot(d, aes(census, .data[[v]], colour = grade, group = interaction(grade, basis), linetype = basis, text = sprintf("Grade %s, %s: %.1f (%s; %s)", grade, census, .data[[v]], unit, basis))) + geom_vline(xintercept = 1938, colour = "grey60") + geom_line() + geom_point(size = 2) +
+               scale_colour_manual(values = c(A = "#4d8a3a", B = "#3b8fa0", C = "#c9a800", D = "#c0392b")) + scale_linetype_manual(values = c("HOLC areas (districts area-weighted)" = "dashed", "2010 tracts by dominant grade" = "solid"), guide = "none") + scale_x_continuous(breaks = xb) + labs(x = NULL, y = lab, colour = "HOLC grade") + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1)), tooltip = "text") |> hleg() })
   output$t_holc_m <- renderTable({ if (is.null(holc_m)) return(NULL)
     holc_m |> filter(outcome == input$rl_mvar) |> mutate(star = ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", "")), Outcome = c(p_black = "Black %", p_hisp = "Hispanic %", p_pov = "Poverty %", p_owner = "Owner-occupied %", lmval = "log median home value (2020 $)")[outcome]) |>
       transmute(Outcome, Period = period, Grade = grade, Change = sprintf("%+.1f%s", b, star), SE = round(se, 1), Tracts = n) }, striped = TRUE, spacing = "xs")

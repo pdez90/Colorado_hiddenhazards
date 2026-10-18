@@ -43,8 +43,17 @@ areas$covenants_1931_35 <- lengths(st_intersects(areas, cv))
 # 1930 and 1940 ED composition, area-weighted onto the HOLC areas
 ed_comp <- function(yr) { f <- sprintf("data/results/denver_eds/denver_eds_%d.geojson", yr); if (!file.exists(f)) return(NULL)
   E <- st_make_valid(st_transform(st_read(f, quiet = TRUE), UTM)); E <- E[!is.na(E$pop), ]; E$a <- as.numeric(st_area(E))
-  ov <- suppressWarnings(st_intersection(E[, c("ED", "a", "pop", "black", "fb", "fb_mexico", "hisp", "laborers")], areas[, "area_id"])); ov$w <- as.numeric(st_area(ov)) / ov$a
-  as.data.table(st_drop_geometry(ov))[, .(pop = sum(pop * w), black = sum(black * w), fb = sum(fb * w), fb_mexico = sum(fb_mexico * w), hisp = sum(hisp * w), laborers = sum(laborers * w)), by = area_id] }
+  for (k in c("owner_hh", "tenure_hh")) if (!k %in% names(E)) E[[k]] <- NA_real_
+  ov <- suppressWarnings(st_intersection(E[, c("ED", "a", "pop", "black", "fb", "fb_mexico", "hisp", "laborers", "owner_hh", "tenure_hh")], areas[, "area_id"])); ov$w <- as.numeric(st_area(ov)) / ov$a
+  as.data.table(st_drop_geometry(ov))[, .(pop = sum(pop * w), black = sum(black * w), fb = sum(fb * w), fb_mexico = sum(fb_mexico * w), hisp = sum(hisp * w), laborers = sum(laborers * w),
+                                         owner_hh = sum(owner_hh * w), tenure_hh = sum(tenure_hh * w)), by = area_id] }
+# before the map: every reconstructed census 1900-1940 aggregated to the HOLC polygons (which are fixed, so no tract harmonisation is involved; the
+# only approximation is area-weighting each census's districts into the polygons) and then population-weighted by grade -> trajectories_pre_by_grade.csv
+PRE <- rbindlist(lapply(c(1900, 1910, 1920, 1930, 1940), function(yr) { e <- ed_comp(yr); if (is.null(e)) return(NULL)
+  e <- merge(e, as.data.table(st_drop_geometry(areas))[, .(area_id, grade)], by = "area_id")[grade %in% c("A", "B", "C", "D")]
+  e[, .(census = yr, areas = .N, pop = round(sum(pop)), p_black = round(100 * sum(black) / sum(pop), 2), p_hisp = round(100 * sum(hisp) / sum(pop), 2), p_fb = round(100 * sum(fb) / sum(pop), 2),
+        p_laborers = round(100 * sum(laborers) / sum(pop), 2), p_owner = round(100 * sum(owner_hh) / sum(tenure_hh), 2)), by = grade] }))
+if (nrow(PRE)) { setorder(PRE, census, grade); fwrite(PRE, file.path(O, "trajectories_pre_by_grade.csv")); file.copy(file.path(O, "trajectories_pre_by_grade.csv"), A, overwrite = TRUE) }
 for (yr in c(1930, 1940)) { e <- ed_comp(yr); if (is.null(e)) next
   e[, `:=`(pb = round(100 * black / pop, 2), pf = round(100 * fb / pop, 1), pm = round(100 * fb_mexico / pop, 2), ph = round(100 * hisp / pop, 2), pl = round(100 * laborers / pop, 1), pop = round(pop))]
   k <- match(areas$area_id, e$area_id); for (v in c("pop", "pb", "pf", "pm", "ph", "pl")) areas[[paste0(c(pop = "pop", pb = "pct_black", pf = "pct_fb", pm = "pct_fb_mexico", ph = "pct_hisp", pl = "pct_laborers")[v], "_", yr)]] <- e[[v]][k] }

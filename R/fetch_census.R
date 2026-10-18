@@ -90,6 +90,14 @@ if (!done("H")) {
   if (length(specs)) { get_and_unpack(submit_extract(define_extract_agg("nhgis", description = "Colorado tracts 1970-2020 housing", datasets = unname(specs), geographic_extents = CO)), "H: housing 1970-2020") }
   file.create(file.path(W, ".done_H"))
 }
+# ---------------------------------------------------------------- H2. 1960 and 1970 median value and rent (NHGIS names these tables differently; extract H found only Tenure for 1970)
+if (!done("H2")) {
+  specs <- list()
+  for (dname in ds[grepl("^(1960|1970)", group)]$name) { tb <- tract_tables(dname, "Median.*(Value|Rent)|^(Value|Contract Rent|Gross Rent)( of| for)?\\b")
+    tb <- setdiff(tb, tract_tables(dname, "Aggregate")); if (length(tb)) { message(dname, ": ", paste(tb, collapse = " ")); specs[[dname]] <- ds_spec(dname, data_tables = tb, geog_levels = "tract") } }
+  if (length(specs)) get_and_unpack(submit_extract(define_extract_agg("nhgis", description = "Colorado tracts 1960-1970 value and rent", datasets = unname(specs), geographic_extents = CO)), "H2: 1960-70 value and rent")
+  file.create(file.path(W, ".done_H2"))
+}
 # ---------------------------------------------------------------- E. 1990-2020 nativity and poverty (nominal tracts + ACS)
 if (!done("E2")) {                                            # (E2: the first version of this extract, marker .done_E, missed the ACS tables)
   specs <- list()
@@ -135,11 +143,13 @@ RULES <- list(
                c("Nativity|Place of Birth|Citizenship", "", "^Foreign[- ]born$|^Foreign >> (Male|Female)$|^Foreign[- ]born( \\(.*\\))?( >> .*)?$")),
   own   = list(c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^Owner[- ]occupied$|^Owned$|^Owner occupied( >> Total)?$")),
   rentocc = list(c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^(Renter|Tenant)[- ]occupied$|^Rented$|^Renter occupied( >> Total)?$")),
-  mval  = list(c("^Median Value", "", "^Median value|^Median$|^Total$|^Median Value|Median value")),
-  mrent = list(c("^Median Gross Rent", "", "^Median|^Total$"), c("^Median Contract Rent", "", "^Median|^Total$")),   # gross rent where published (2000+, ACS), contract rent before
+  mval  = list(c("^Median Value", "", "^Median value|^Median$|^Total$|^Median Value|Median value"), c("Value", "", "^Median( value)?( \\(dollars\\))?$")),
+  mrent = list(c("^Median Gross Rent", "", "^Median|^Total$"), c("^Median Contract Rent", "", "^Median|^Total$"),   # gross rent where published (2000+, ACS), contract rent before
+               c("Gross Rent", "", "^Median( gross rent)?( \\(dollars\\))?$"), c("Contract Rent|Rent", "", "^Median( contract rent| rent)?( \\(dollars\\))?$")),
   ppov  = list(c("^Poverty Status( in \\d{4})?$|Poverty Status in the Past 12 Months", "^Persons for Whom Poverty|Population for whom poverty", "^(Income in .* )?below poverty level$"),   # a total cell (ACS tables carry subtotals, so never sum their breakdowns)
                c("^Poverty Status( in \\d{4})?( by Age)?$|^Age by Poverty Status( in \\d{4})?$", "^Persons for Whom Poverty", "below poverty"),
                c("Persons in Families Below Poverty|^Poverty Status by Age$", "Persons in Families|Unrelated Individuals 14", "Aggregate number of persons|^Below poverty level >>")))
+num <- function(x) if (is.numeric(x)) x else suppressWarnings(as.numeric(gsub("[,+]", "", as.character(x))))   # "2,000+" -> 2000 (top-coded), "-" -> NA
 summarise_year <- function(csvs, yr) {
   tabs <- lapply(csvs, function(f) { d <- as.data.table(read_ipums_agg(f, verbose = FALSE)); d[, c("GISJOIN", grep("^[A-Z0-9]{3,4}[EM]?\\d{3}$", names(d), value = TRUE)), with = FALSE] })
   D <- Reduce(function(a, b) merge(a, b[, c("GISJOIN", setdiff(names(b), names(a))), with = FALSE], by = "GISJOIN", all = TRUE), tabs)
@@ -148,7 +158,7 @@ summarise_year <- function(csvs, yr) {
   out <- data.table(GISJOIN = D$GISJOIN, census = yr)
   for (k in names(RULES)) { m <- pick(cb, RULES[[k]])
     message(yr, " ", k, ": ", if (nrow(m)) paste0(m$var, " (", m$table, " / ", m$label, ")", collapse = " + ") else "-")
-    out[[k]] <- if (nrow(m)) rowSums(as.matrix(D[, m$var, with = FALSE]), na.rm = TRUE) else NA_real_ }
+    out[[k]] <- if (nrow(m)) rowSums(as.matrix(D[, lapply(.SD, num), .SDcols = m$var]), na.rm = TRUE) else NA_real_ }   # num(): ACS medians can carry text jam values ("2,000+", "-")
   out[grepl("^G08", GISJOIN)]
 }
 # ---------------------------------------------------------------- build the panel
