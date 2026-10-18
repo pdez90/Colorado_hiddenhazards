@@ -1,3 +1,7 @@
-outcome,points,pre_slope_per_decade,post_level_shift,p_level,post_slope_change,p_slope,p_joint
-p_black,13,1.36,3.06,0.13,-2.2,0.00093,0.0022
-p_hisp,12,0,0.62,0.15,1.47,0.023,0.015
+outcome,unit,years,points,slope_per_decade,se,p
+p_black,districts,1900-1940,5,1.49,0.25,0.0095
+p_black,2010 tracts,1940-1970,4,3.42,1.04,0.082
+p_black,2010 tracts,1970-2020,6,-2.31,0.41,0.0048
+p_hisp,districts,1900-1940,5,0.08,0.09,0.43
+p_hisp,2010 tracts,1940-1970,3,3.81,0.13,0.022
+p_hisp,2010 tracts,1970-2020,6,-2.1,0.65,0.032

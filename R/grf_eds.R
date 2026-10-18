@@ -28,12 +28,14 @@ ip <- fread("work/census/denver_ed_1880_1940.csv")
 bf <- function(f) { p <- c(file.path(B, f), file.path(B, basename(f))); p <- p[file.exists(p)]; if (!length(p)) stop("missing ", f); p[1] }
 
 ipums_ed <- function(year) {
-  x <- ip[YEAR == year & COUNTYICP %in% c(50, 310)]
+  x <- ip[YEAR == year & COUNTYICP == (if (year < 1910) 50 else 310)]   # Denver lay in Arapahoe County (ICP 50) until 1902 and is its own county
+  # (ICP 310) from 1910; South Arapahoe (ICP 50 after 1902) reuses ED numbers, so the two must never be pooled by ED label
   if (year == 1940) { e <- sprintf("%07d", x$ENUMDIST); x[, ED := paste0(as.integer(substr(e, 3, 6)), c("0" = "", "1" = "A", "2" = "B", "3" = "C")[substr(e, 7, 7)])]
   } else x[, ED := as.character(ENUMDIST %% 100000)]
   cnt <- setdiff(names(x)[vapply(x, is.numeric, TRUE)], c("YEAR", "COUNTYICP", "ENUMDIST", "denver_city", grep("^(mean_|median_)", names(x), value = TRUE)))
   avg <- grep("^(mean_|median_)", names(x), value = TRUE)
-  out <- x[, c(lapply(.SD, sum), list(dummy = 0)), by = ED, .SDcols = cnt][, dummy := NULL]
+  out <- x[, c(lapply(.SD, function(v) if (all(is.na(v))) NA_real_ else sum(v, na.rm = TRUE)), list(dummy = 0)), by = ED, .SDcols = cnt][, dummy := NULL]
+  if (anyDuplicated(out$ED)) stop(year, ": duplicate ED labels after aggregation")
   if (length(avg)) out <- merge(out, x[, lapply(.SD, function(v) if (all(is.na(v))) NA_real_ else weighted.mean(v, pop, na.rm = TRUE)), by = ED, .SDcols = avg], by = "ED")
   out
 }
@@ -91,7 +93,10 @@ for (year in YEARS) {
     message(sprintf("%d: %s persons at %s addresses; %s geocoded at street level (%.1f%% of persons)", year, format(nrow(r$d), big.mark = ","), format(n_addr, big.mark = ","), format(n_ok, big.mark = ","), 100 * sum(A$persons[A$ok]) / sum(A$persons)))
     Ak <- A[ok == TRUE]; P <- st_transform(st_as_sf(Ak[, .(ED, persons, black, lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM)
   }
-  res <- ed_polygons(P); E <- merge(res$E, ipums_ed(year), by = "ED", all.x = TRUE); E$year <- year
+  res <- ed_polygons(P); IE <- ipums_ed(year); E <- merge(res$E, IE, by = "ED", all.x = TRUE); E$year <- year
+  ctot <- sum(ip[YEAR == year & COUNTYICP == (if (year < 1910) 50 else 310)]$pop); mtot <- sum(E$pop, na.rm = TRUE)
+  message(sprintf("%d: mapped ED population %s of the county's %s (%.1f%%)", year, format(mtot, big.mark = ","), format(ctot, big.mark = ","), 100 * mtot / ctot))
+  if (mtot > 1.001 * ctot) stop(year, ": mapped EDs hold more people than the county - ED labels are being pooled")
   f <- file.path(O, sprintf("denver_eds_%d.geojson", year)); if (file.exists(f)) file.remove(f); st_write(st_transform(E, 4326), f, quiet = TRUE)
   message(sprintf("%d: %d ED polygons (%d with IPUMS totals), %s addresses used; median ED area %.2f km2", year, nrow(E), sum(!is.na(E$pop)), format(res$used, big.mark = ","), median(E$area_km2)))
   log[[length(log) + 1]] <- data.table(year = year, addresses = n_addr, geocoded = n_ok, used = res$used, eds = nrow(E), median_area_km2 = round(median(E$area_km2), 3))

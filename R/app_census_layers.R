@@ -3,6 +3,7 @@
 #                                             fetch_ipums_fullcount.R and denver_1880.R)
 # Writes to app/data/:
 #   co_tracts_2010.geojson            all Colorado 2010 census tracts (simplified) with distance to downtown Denver and a Denver-core flag
+#                                     (core = centroid within 10 km of downtown, any county; 147 tracts)
 #   tract_panel.csv                   tract x census year 1940-2020 (all Colorado tracts): population, % Black, % Hispanic, % foreign born, % poverty
 #                                     (NHGIS, area-weighted to 2010 tracts) + hazardous / all directory firms active in the
 #                                     decade ending in that year and legacy (earlier, no longer listed) hazardous firms
@@ -26,25 +27,36 @@ tr$GEOID <- if (any(grepl("GEOID", names(tr)))) tr[[grep("GEOID", names(tr), val
 DEN <- st_sfc(st_point(c(500250, 4399500)), crs = UTM)
 tr$dist_km <- round(as.numeric(st_distance(st_centroid(st_geometry(tr)), DEN)) / 1000, 2)
 tr <- tr[substr(tr$GEOID, 1, 2) == "08", c("GEOID", "dist_km")]
-tr$core <- substr(tr$GEOID, 1, 5) == "08031" | (substr(tr$GEOID, 1, 5) %in% c("08001", "08005", "08059") & tr$dist_km <= 10)   # the ej_panel.R study area
+tr$core <- tr$dist_km <= 10   # study area of every tract analysis (ej_panel.R, denver_tracts_1950_2020.R, holc_covenants.R): 2010 tracts whose centroid is within 10 km of downtown, any county
 tr$area_km2 <- round(as.numeric(st_area(tr)) / 1e6, 3); tr$county <- substr(tr$GEOID, 1, 5)
 message(nrow(tr), " Colorado tracts, ", sum(tr$core), " in the Denver core")
 st_write(st_transform(st_simplify(tr, dTolerance = 40), 4326), file.path(A, "co_tracts_2010.geojson"), delete_dsn = TRUE, quiet = TRUE)
 
 cen <- fread(file.path(C, "denver_tract_panel.csv"), colClasses = c(GEOID = "character"))[GEOID %in% tr$GEOID]
 if (!"white" %in% names(cen)) cen[, white := NA_real_]
-cen[, `:=`(p_white = pmin(100, 100 * white / pop), p_black = pmin(100, 100 * nhblk / pop), p_hisp = pmin(100, 100 * hisp / pop), p_fb = pmin(100, 100 * fb / pop), p_pov = pmin(100, 100 * ppov / pop))]   # area weighting can push a share a hair over 100
+for (k in c("fb_den", "ppov_den")) if (!k %in% names(cen)) set(cen, j = k, value = NA_real_)
+# shares: race and Hispanic over total population; foreign born and poverty over the universe of their own table where the census
+# publishes one (fb_den, ppov_den from fetch_census.R), else over total population (1940-1960 foreign-born white; 1970 poverty)
+cen[, `:=`(p_white = 100 * white / pop, p_black = 100 * nhblk / pop, p_hisp = 100 * hisp / pop,
+           p_fb = 100 * fb / fifelse(is.na(fb_den) | fb_den <= 0, pop, fb_den), p_pov = 100 * ppov / fifelse(is.na(ppov_den) | ppov_den <= 0, pop, ppov_den))]
+over <- cen[pop >= 200, lapply(.SD, function(v) sum(v > 101, na.rm = TRUE)), .SDcols = c("p_white", "p_black", "p_hisp", "p_fb", "p_pov")]
+message("tract-years with a share above 101% (pop >= 200; should be ~0): ", paste(names(over), unlist(over), collapse = ", "))
+for (k in c("p_white", "p_black", "p_hisp", "p_fb", "p_pov")) set(cen, j = k, value = pmin(100, cen[[k]]))   # area weighting of sliver overlaps only
 for (k in c("own", "rentocc", "mval_2020", "mrent_2020")) if (!k %in% names(cen)) cen[[k]] <- NA_real_
 cen[, p_owner := fifelse(!is.na(own) & !is.na(rentocc) & own + rentocc >= 20, pmin(100, 100 * own / (own + rentocc)), NA_real_)]
-cen[pop < 50, c("p_black", "p_hisp", "p_fb", "p_pov") := NA_real_]
+POPMIN <- 200   # one minimum everywhere: a tract-year with fewer than 200 residents (mostly slivers of the tracted area before 1990) has no measures
+cen[is.na(pop) | pop < POPMIN, c("p_white", "p_black", "p_hisp", "p_fb", "p_pov", "p_owner", "mval_2020", "mrent_2020") := NA_real_]
 # firms active in the decade ending in each census year: 1961-2002 manufacturers' directory (all firms, hazardous flagged) and,
-# before 1961, street-level pre-1960 hazardous trades.  2010 and 2020 reuse the last editions (1993-2002) and are labelled so in the app.
+# before 1961, street-level pre-1960 hazardous trades.  2000, 2010 and 2020 reuse the last complete decade (1983-1992) and are labelled
+# so in the app. "Hazardous" is the Frickel & Elliott sector set everywhere (fe_hazard): chemicals, petroleum, rubber & plastics,
+# primary and fabricated metals, industrial machinery, transportation equipment; the extended sectors are not counted here.
 sites <- fread(file.path(A, "sites.csv"), colClasses = c(GEOID = "character")); sy <- fread(file.path(A, "site_years.csv"))
 firms <- fread(file.path(A, "site_firms.csv"))
 pts <- st_transform(st_as_sf(sites[, .(site_id, lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM)
 w <- st_within(pts, tr); sites$GEOID10 <- tr$GEOID[sapply(w, function(i) if (length(i)) i[1] else NA_integer_)]
-fy <- merge(firms[, .(site_id, first_year, last_year, hazardous = as.logical(hazardous))], sites[, .(site_id, GEOID10)], by = "site_id")[!is.na(GEOID10)]
-hist <- fread(file.path(A, "historical_sites.csv"), colClasses = c(GEOID = "character"))[precision != "town" & !is.na(lat)]
+FE <- "Chemicals|Petroleum refining|Rubber & plastics|Primary metals|Fabricated metals|Industrial machinery|Transportation equipment"
+fy <- merge(firms[, .(site_id, first_year, last_year, hazardous = grepl(FE, sectors))], sites[, .(site_id, GEOID10)], by = "site_id")[!is.na(GEOID10)]
+hist <- fread(file.path(A, "historical_sites.csv"), colClasses = c(GEOID = "character"))[precision != "town" & !is.na(lat) & fe_hazard %in% c(TRUE, "True")]
 hp <- st_transform(st_as_sf(hist[, .(hfirm, lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM)
 w <- st_within(hp, tr); hist$GEOID10 <- tr$GEOID[sapply(w, function(i) if (length(i)) i[1] else NA_integer_)]
 hist <- hist[!is.na(GEOID10)]
@@ -64,7 +76,7 @@ if (file.exists("data/results/hmda_tracts_2018_2021.csv")) { Hm <- fread("data/r
   pan <- merge(pan, Hm, by = c("GEOID", "census"), all.x = TRUE); message("HMDA 2018-21 joined to the 2020 rows: ", sum(!is.na(pan$hmda_apps)), " tracts") }
 fwrite(pan[order(GEOID, census)], file.path(A, "tract_panel.csv"))
 message("tract_panel.csv: ", nrow(pan), " tract-years; tracts with a census value by year: ", paste(pan[!is.na(pop), .N, by = census][order(census), paste(census, N)], collapse = ", "))
-for (f in c("ej_panel_models.csv", "ej_panel_reverse.csv", "ej_panel_by_decade.csv")) if (file.exists(file.path("data/results", f))) file.copy(file.path("data/results", f), file.path(A, f), overwrite = TRUE)
+for (f in c("ej_panel_models.csv", "ej_panel_reverse.csv", "ej_panel_by_decade.csv", "ej_panel_legacy_sites.csv")) if (file.exists(file.path("data/results", f))) file.copy(file.path("data/results", f), file.path(A, f), overwrite = TRUE)
 
 # ---------------------------------------------------------------- 2. corridors
 SIC2 <- c("20"="Food","22"="Textiles","23"="Apparel","24"="Lumber & wood","25"="Furniture","26"="Paper","27"="Printing","28"="Chemicals",

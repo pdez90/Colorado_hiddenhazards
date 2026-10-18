@@ -62,12 +62,10 @@ census,name,sector,listed,lon,lat
 1900,"Austin, Percy,atty, 26Goodblk Bacon, Geo M, furnaces and",Metal working,1892,-104.99373,39.74534
 1900,"Boellert, Math, blacksmith, Blake, FO",Petroleum refining & asphalt,1892,-104.99542,39.75342
 1900,"Dowell, chanc, 14th &Arap Denver Steam Laundry Co, Denver Variety Machine Shop",Machine shop / machinery,1892,-104.98868,39.74654
-1900,and ore concentrating Graves & Vinton Co,Ore milling & sampling,1892,-104.99742,39.75189
 1900,COLLECTIONS ColoredL ead,Paint & varnish,1892,-105.00899,39.75669
 1900,"& Mayne, Long, Lloyd, Wm, Lloyd, Wm B, Lord, 0 A, Lobach, E B, COLLECTIONS Colored Lead",Paint & varnish,1892,-105.00899,39.75669
 1900,"Maginn, EJ",Transportation equipment,1892,-105.00281,39.75184
 1900,"AMERICAN MERCANTILE UNION lS^LawmceSt,D",Paint & varnish,1892,-105.00899,39.75669
-1900,Burlingame & Co E E,Assay office,1881,-104.99489,39.74981
 1900,"go o BACON GEORGE M., dealer in hardware, stoves, ranges and furnaces, tin and",Metal working,1891,-104.99698,39.74701
 1900,Western Chemical Works Co,Chemicals,1891,-104.99691,39.74696
 1900,Bloedorn Frank C,Machine shop / machinery,1891,-104.98286,39.76317
@@ -82,21 +80,15 @@ census,name,sector,listed,lon,lat
 1900,Brickham Henry,Metal working,1891,-104.99562,39.75194
 1900,QUEEN CITY FOUNDRY CO,Foundry,1884,-104.99879,39.75085
 1900,Hercules Powder Co,Chemicals; Explosives,1884,-104.98951,39.74727
-1910,COLORADO MODERN GAS CO,Manufactured gas,1910,-104.98968,39.74577
 1910,O ’BrienDL,Metal working,1910,-104.97163,39.77052
-1910,Burlingame & Co E E,Assay office,1881,-104.99489,39.74981
-1910,Ainsworth & Sons Wm,Assay office,1910,-104.98989,39.75369
 1910,Brickham Henry,Metal working,1891,-104.99562,39.75194
 1910,CARD C S IRON WORKS CO THE,Iron & steel works,1910,-104.99515,39.74423
 1910,QUEEN CITY FOUNDRY CO,Foundry,1884,-104.99879,39.75085
 1910,Hercules Powder Co,Chemicals; Explosives,1884,-104.98951,39.74727
 1920,The Western Chemical Co,Chemicals,1911,-104.97805,39.75479
-1920,ance Co,Manufactured gas,1911,-104.9992,39.74917
-1920,Nursery Co,Manufactured gas,1911,-104.98534,39.75855
 1920,Globe Sheet Metal Works 1413,Metal working,1911,-104.99939,39.74901
 1920,Nenman-Allen Chemical Co. 1434,Chemicals,1911,-104.99268,39.7437
 1920,Type Foundry,Foundry,1911,-104.99894,39.75074
-1920,OGDEN ASSAY CO,Assay office,1911,-104.98946,39.74191
 1920,LEAD WORKS,Smelting & refining,1911,-104.99692,39.74553
 1920,Denver.FAlR CORNICE WORKS C W,Metal working,1911,-104.99856,39.74697
 1920,Denver Iron Works & Foundry DENVER MASTER PLUMBERS,Foundry,1912,-104.99816,39.75402
@@ -110,18 +102,13 @@ census,name,sector,listed,lon,lat
 1920,ler & Iron Works Co,Iron & steel works,1913,-105.0003,39.74965
 1920,Jones & Greathead,Metal working,1911,-104.99452,39.74203
 1920,O ’BrienDL,Metal working,1910,-104.97163,39.77052
-1920,RichardsJW,Assay office,1913,-104.9922,39.75079
 1920,Universal Soap Mfg Co,Soap,1913,-105.00173,39.75126
 1920,WALTER LOUIS H,Metal working,1911,-104.98863,39.74658
 1920,Western Shoe & Rubber Co,Rubber,1913,-104.99851,39.74701
 1920,WESTERN SMELTING WORKS,Smelting & refining,1913,-105.00052,39.75084
 1920,Type Foundry,Foundry,1913,-104.99894,39.75074
-1920,Mandy E R,Assay office,1913,-104.98608,39.72414
-1920,Midland Coal & Coke Co,Coke works,1913,-104.98917,39.72909
-1920,The Denver Gas & Electric Light Com pany,Manufactured gas,1913,-105.02565,39.75
 1920,Braun N,Transportation equipment,1913,-104.99007,39.75489
 1920,© i £ BROWN L B,Iron & steel works,1914,-105.01584,39.7399
-1920,Burlingame & Co E E,Assay office,1881,-104.99489,39.74981
 1920,COLLIER & SON P F,Foundry,1914,-105.00104,39.74909
 1920,(See Page ad. at Classified Chemical Manufacturers.),Chemicals,1914,-105.00683,39.74404
 1920,Deline & Co,Chemicals,1914,-104.99406,39.74507
@@ -133,8 +120,6 @@ census,name,sector,listed,lon,lat
 1920,jo Lowith Iron Works Co,Iron & steel works,1914,-105.01594,39.73985
 1920,MINE & SMELTER SUPPLY CO,Smelting & refining,1914,-104.99332,39.747
 1920,NOCK & GARSIDE,Machine shop / machinery,1911,-105.0084,39.75579
-1920,Rice W E,Manufactured gas,1914,-104.99107,39.74249
-1920,Ainsworth & Sons Wm,Assay office,1910,-104.98989,39.75369
 1920,BOSS RUBBER CO,Rubber,1915,-104.97643,39.75606
 1920,DENVER GAS & ELECTRIC Denver IronW orks & Foundry Co,Foundry,1915,-104.99816,39.75402
 1920,genl mgr Colorado Iron Works,Iron & steel works,1914,-104.94738,39.71847
@@ -147,7 +132,6 @@ census,name,sector,listed,lon,lat
 1920,Banner Chemical Co,Chemicals,1914,-105.00802,39.7555
 1920,Bennie Tire & Rubber Co B A,Rubber,1915,-104.99106,39.74336
 1920,Dorrington W H,Metal working,1914,-104.99052,39.7411
-1920,Ermlich G J,Assay office,1911,-104.9916,39.74696
 1920,Fair C W,Metal working,1915,-104.9972,39.75207
 1920,GARDELL J G,Machine shop / machinery,1916,-104.9997,39.7491
 1920,Johnson &Ball,Metal working,1916,-105.00952,39.75664
@@ -163,14 +147,9 @@ census,name,sector,listed,lon,lat
 1920,Hoover Chemical Laboratory,Chemicals,1917,-104.98858,39.75065
 1920,RELIABLE EMPLOYMENT RetaliaJL,Metal working,1917,-104.9922,39.74785
 1920,finishing and copper plating,Metal working,1911,-104.99871,39.75091
-1920,Von Schulz & Low,Assay office,1911,-104.99216,39.74789
 1920,Western Brass Works,Foundry,1917,-105.00097,39.74914
 1920,WESTERN WIRE WORKS,Metal working,1917,-104.98905,39.74094
-1920,cident ins,Manufactured gas,1917,-104.95977,39.7482
 1920,Smelter settlement,Smelting & refining,1917,-104.98578,39.71835
-1920,Philbin W L,Assay office,1912,-104.99002,39.71837
-1920,“ Colo Assaying Co,Assay office,1917,-104.98912,39.74757
-1920,(See Assayers and Chemists.),Assay office,1917,-104.9969,39.75096
 1920,genl mgr,Foundry; Iron & steel works; Manufactured gas; Metal working,1911,-104.98997,39.74554
 1920,ASPHALTUM,Petroleum refining & asphalt,1913,-104.99065,39.74637
 1920,Austgen Rubber Co,Rubber,1917,-104.98751,39.71576
@@ -195,8 +174,6 @@ census,name,sector,listed,lon,lat
 1920,QUEEN CITY FOUNDRY CO,Foundry,1884,-104.99879,39.75085
 1920,Republic Rubber Co,Rubber,1915,-104.98903,39.74359
 1920,Retalia J L,Metal working,1916,-104.98946,39.74594
-1920,Richards J W,Assay office,1911,-104.9922,39.75079
-1920,Rickard §,Assay office,1920,-104.98873,39.74517
 1920,Schlitter Iron Foundry,Foundry,1920,-104.97371,39.77295
 1920,riage and wagon maker,Transportation equipment,1920,-105.0112,39.73967
 1920,Schmitt W C,Metal working,1914,-104.99976,39.75009
@@ -210,7 +187,6 @@ census,name,sector,listed,lon,lat
 1920,Pioneer Iron & Wire Works Co,Metal working,1920,-105.00028,39.74832
 1920,Hercules Powder Co,Chemicals; Explosives,1884,-104.98951,39.74727
 1920,MIDWEST STEEL AND IRON WORKS CO,Iron & steel works,1920,-105.01584,39.7399
-1920,GUNTHER & SONS,Tannery,1920,-104.94738,39.71866
 1920,— General Tire & Rubber Co,Rubber,1920,-104.98607,39.72728
 1930,genl mgr,Foundry; Iron & steel works; Manufactured gas; Metal working,1911,-104.98997,39.74554
 1930,ASPHALTUM,Petroleum refining & asphalt,1913,-104.99065,39.74637
@@ -220,23 +196,18 @@ census,name,sector,listed,lon,lat
 1930,United States Rubber Co,Rubber,1920,-105.00107,39.75042
 1930,Mastrini John,Smelting & refining,1927,-104.89756,39.73562
 1930,ABBOTTINVESTMENTCO,Paint & varnish,1929,-104.98622,39.75923
-1930,Colorado Compressed Gas Co,Manufactured gas,1929,-104.99314,39.75523
 1930,Crites E B,Metal working,1929,-104.98755,39.71224
 1930,Flaherty P J,Metal working,1911,-104.9953,39.73871
 1930,Metal Spinning & Plating Works,Metal working,1929,-105.00123,39.74894
-1930,derm ists,Tannery,1929,-104.98752,39.71527
-1930,in charge,Manufactured gas,1929,-104.97817,39.75488
 1930,— Scott Automobile Body Co,Transportation equipment,1929,-104.97952,39.74486
 1930,copper plating,Metal working,1929,-104.99871,39.75091
 1930,Sparr H J,Metal working,1929,-104.9861,39.72414
 1930,Specht John F,Metal working,1929,-104.96707,39.73683
-1930,BATTERY MANUFACTURERS,Batteries,1929,-104.99665,39.75249
 1930,Goldberg Bros,Metal working,1911,-104.98926,39.74746
 1930,Goldberg Simon,Metal working,1929,-105.02051,39.74056
 1930,Pioneer Iron & Wire Works Co,Metal working,1920,-105.00028,39.74832
 1930,Hercules Powder Co,Chemicals; Explosives,1884,-104.98951,39.74727
 1930,MIDWEST STEEL AND IRON WORKS CO,Iron & steel works,1920,-105.01584,39.7399
-1930,GUNTHER & SONS,Tannery,1920,-104.94738,39.71866
 1930,— General Tire & Rubber Co,Rubber,1920,-104.98607,39.72728
 1940,ABGCle mers & Dyers,Metal working,1932,-104.97202,39.74003
 1940,auto body builders,Transportation equipment,1932,-104.94989,39.76957
@@ -254,10 +225,8 @@ census,name,sector,listed,lon,lat
 1940,Queen City Brass Works,Foundry,1911,-105.00108,39.74906
 1940,Schlitter Iron Foundry,Foundry,1920,-104.97371,39.77295
 1940,United States Rubber Co,Rubber,1920,-105.00107,39.75042
-1940,derm ists,Tannery,1929,-104.98752,39.71527
 1940,— Scott Automobile Body Co,Transportation equipment,1929,-104.97952,39.74486
 1940,copper plating,Metal working,1929,-104.99871,39.75091
-1940,BATTERY MANUFACTURERS,Batteries,1929,-104.99665,39.75249
 1940,KesslerFred,Metal working,1933,-104.98405,39.75956
 1940,Berry )machinists,Machine shop / machinery,1933,-104.98718,39.75064
 1940,A-C MOTORS & METAL WORKS,Metal working,1939,-104.99858,39.7166
@@ -271,10 +240,8 @@ census,name,sector,listed,lon,lat
 1940,irrigalion gates,Machine shop / machinery,1939,-104.99054,39.73205
 1940,Pioneer Iron & Wire Works Co,Metal working,1920,-105.00028,39.74832
 1940,Rocky Mountain Chromium Plating Co,Metal working,1939,-104.99963,39.74905
-1940,chem ists and assayers,Assay office,1939,-104.9892,39.74346
 1940,~:!: paste,Machine shop / machinery,1939,-104.98709,39.75721
 1940,of lumber,Machine shop / machinery,1939,-104.99204,39.74013
-1940,T &M TransportationCo,Tannery,1939,-104.99243,39.75576
 1940,Western Bronze & Brass Foundry Western File Service,Foundry,1939,-105.00286,39.74855
 1940,and ventilating,Metal working,1935,-104.99002,39.71837
 1940,Hercules Powder Co,Chemicals; Explosives,1884,-104.98951,39.74727
@@ -282,8 +249,6 @@ census,name,sector,listed,lon,lat
 1940,Thompson-Hayward Chemical C o,Chemicals,1935,-104.99157,39.75643
 1940,MIDWEST STEEL AND IRON WORKS CO,Iron & steel works,1920,-105.01584,39.7399
 1940,Wompey Sheet Metal Works,Metal working,1933,-105.01051,39.7574
-1940,Wilfley & Bribach,Assay office,1933,-104.99443,39.75154
-1940,GUNTHER & SONS,Tannery,1920,-104.94738,39.71866
 1940,Newlander Aug,Machine shop / machinery,1939,-104.98758,39.67154
 1940,andall kindsof electroplat­,Metal working,1932,-105.00093,39.74917
 1940,— General Tire & Rubber Co,Rubber,1920,-104.98607,39.72728

@@ -85,8 +85,23 @@ ED <- D[, .(pop = .N, households = sum(head), black = sum(black), white = sum(wh
             movers = sum(mover), mover_universe = sum(mover_universe), movers_other_state = sum(mover_other_state),
             denver_city = mean(CITY == 1710)), by = .(YEAR, COUNTYICP, ENUMDIST)]   # IPUMS CITY 1710 = Denver, CO
 for (v in c("mean_sei", "mean_occscore", "median_wage", "median_value", "median_rent")) ED[is.nan(get(v)), (v) := NA_real_]
-# Denver flag: CITY where coded; otherwise the County of Denver (ICP 310, from 1902) or, in 1880/1900, Arapahoe County (ICP 50; 1880 EDs 1-17 are the city)
-ED[, denver := denver_city > 0.5 | (denver_city == 0 & (COUNTYICP == 310 | (YEAR < 1910 & COUNTYICP == 50)))]
+# a question the census did not ask that year (e.g. year of immigration in 1880 and 1940), or asked only on the 1940 sample line
+# (~5% of persons: mother tongue, veteran status, children ever born, parents' birthplace), must be MISSING, not 0: the counts built
+# from it are set to NA for every ED of that year.
+SRC <- list(YRIMMIG = "recent_immig", CITIZEN = c("naturalized", "noncitizen"), MTONGUE = c("mt_spanish", "mt_german", "mt_italian"), SPEAKENG = "no_english",
+            LIT = c("illiterate", "lit_universe"), SCHOOL = c("in_school", "school_universe"), EDUC = c("hs_grad", "educ_universe"), LABFORCE = c("employed", "in_labforce"),
+            EMPSTAT = "unemployed", IND1950 = c("haz_industry", "railroad", "manufacturing"), OCC1950 = "laborers", VETSTAT = "veterans", CHBORN = c("children_ever_born", "mothers"),
+            OWNERSHP = c("owner_hh", "renter_hh", "tenure_hh"), MORTGAGE = "mortgaged_hh", RADIO = c("radio_hh", "radio_universe"), MIGRATE5 = c("movers", "mover_universe", "movers_other_state"),
+            HISPAN = "hisp", NATIVITY = "foreign_parentage", SEI = "mean_sei", OCCSCORE = "mean_occscore", INCWAGE = "median_wage", VALUEH = "median_value", RENT = "median_rent")
+asked <- D[, lapply(.SD, function(v) any(!is.na(v) & as.numeric(v) != 0)), by = YEAR, .SDcols = intersect(names(SRC), names(D))]   # not asked = no valid value at all that year
+SAMPLE_1940 <- c("MTONGUE", "VETSTAT", "CHBORN", "NATIVITY")                                        # 1940 sample-line questions (~5% of persons)
+for (src in intersect(names(SRC), names(D))) { yrs <- c(asked[get(src) == FALSE]$YEAR, if (src %in% SAMPLE_1940) 1940L)
+  for (yr in intersect(yrs, unique(ED$YEAR))) { ED[YEAR == yr, (intersect(SRC[[src]], names(ED))) := NA_real_]; message(yr, ": ", src, " not asked (or 1940 sample line only) -> ", paste(SRC[[src]], collapse = ", "), " set to NA") } }
+# Denver flag: CITY where coded (rural Arapahoe EDs of 1880/1900 have CITY = 0 and are NOT Denver); where CITY is missing, the County
+# of Denver (ICP 310, from 1902) or, in 1880/1900, Arapahoe County (ICP 50).
+# NB the 'boarders' count is IPUMS general RELATE 12-13: other non-relatives of the household head (boarders, lodgers, roomers,
+# employees, other non-relatives) and institutional inmates - labelled "non-relatives" in the app and paper.
+ED[, denver := fifelse(is.na(denver_city), COUNTYICP == 310 | (YEAR < 1910 & COUNTYICP == 50), denver_city > 0.5)]   # CITY decides wherever IPUMS codes it
 fwrite(ED, "work/census/denver_ed_1880_1940.csv")
 print(ED[denver == TRUE, .(EDs = .N, pop = sum(pop), pct_black = round(100 * sum(black) / sum(pop), 1), pct_fb = round(100 * sum(fb) / sum(pop), 1), pct_hisp = round(100 * sum(hisp) / sum(pop), 1),
                             pct_owner_hh = round(100 * sum(owner_hh) / pmax(sum(tenure_hh), 1), 1), pct_movers_1935_40 = round(100 * sum(movers) / pmax(sum(mover_universe), 1), 1)), by = YEAR])

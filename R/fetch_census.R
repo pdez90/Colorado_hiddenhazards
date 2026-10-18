@@ -16,7 +16,11 @@
 # Then work/census/denver_tract_panel.csv: one row per 2010 tract and census year 1940-2020 with pop, nhblk (Negro / Black /
 # nonwhite as reported that year), hisp (Spanish surname 1960, Spanish American 1970, Spanish origin 1980, Hispanic 1990+),
 # fb (foreign born; foreign-born WHITE in 1940-1950), ppov (persons below poverty, 1970+; 1970 = persons in poor families plus
-# poor unrelated individuals; 2010 = ACS 2008-12, 2020 = ACS 2016-20 estimates). Counts not on 2010 tracts are AREA-WEIGHTED from
+# poor unrelated individuals; 2010 = ACS 2008-12, 2020 = ACS 2016-20 estimates), fb_den / ppov_den (the universe of the table the
+# numerator came from), own / rentocc (all occupied units), median value and GROSS rent (contract rent in 1940-1950, the only years
+# without a gross-rent table). 1970 race and total population come from one table (NT105, persons before substitution and allocation).
+# 1990-2020 population, race and Hispanic origin are NHGIS's standardised 2010-tract time series; everything else not on 2010
+# tracts (1940-1980 tables; 1990, 2000 and 2020 nativity, poverty and housing) is AREA-WEIGHTED from
 # each year's tracts onto 2010 tracts; the script prints the
 # NHGIS variables used for every year - keep that list for the methods section.
 if (!requireNamespace("ipumsr", quietly = TRUE)) install.packages("ipumsr")
@@ -139,11 +143,13 @@ read_codebook <- function(f) {
 gj <- function(g) sub("^G(\\d{2})0(\\d{3})0(\\d{6})$", "\\1\\2\\3", g)
 # a rule is c(table regex, universe regex, label regex); the first rule with a match wins; matching columns are summed
 pick <- function(cb, rules) { for (r in rules) { m <- cb[grepl(r[1], table, ignore.case = TRUE) & grepl(r[2], universe, ignore.case = TRUE) & grepl(r[3], label, ignore.case = TRUE)]
+    if (length(r) >= 4) m <- m[!grepl(r[4], universe, ignore.case = TRUE)]   # 4th element: universes to exclude (sub-populations)
     if (nrow(m)) return(if (all(grepl("Below Poverty Level$|^Poverty Status by Age$", m$table))) m else m[substr(var, 1, 3) == substr(m$var[1], 1, 3)]) }; cb[0] }   # one NHGIS table only (1980 ships the same table in STF1, STF3 and PL94-171); except 1970 poverty = poor family members + poor unrelated individuals
 RULES <- list(
   pop   = list(c("^Total Population$|^Persons$|^Population$|^Total Persons$", "^Persons$|^$", "^Total$|^Persons: Total$"), c("^Persons by Race( by Age)?( by Sex)?$|^Race by Sex$|^Race$|^Race by Age$", "^Persons$", "."),
-               c("^Nativity$", "^Persons", "^(Native|Foreign born)$")),      # 1970: native + foreign born = all persons
-  nhblk = list(c("", "", "^Persons: Black"), c("^Race by Sex$|^Nonwhite Persons by Race by Sex$|^Race$|^Persons by Race$", "^Persons$|^Non-?[Ww]hite Persons$", "^(Negro|Negroes|Black)( >> (Male|Female))?$"),
+               c("^Race$", "Before Substitution", "^(White|Negro|Other)$"),   # 1970: NT105 Race (all races) - the same table as White and Black
+               c("^Nativity$", "^Persons", "^(Native|Foreign born)$")),
+  nhblk = list(c("", "", "^Persons: Black"), c("^Race$", "Before Substitution", "^Negro$"), c("^Race by Sex$|^Nonwhite Persons by Race by Sex$|^Race$|^Persons by Race$", "^Persons$|^Non-?[Ww]hite Persons$", "^(Negro|Negroes|Black)( >> (Male|Female))?$"),
                c("^Race by Age$", "^Persons$", "^Black >>"), c("Race", "^Persons", "^(Negro|Black)( >> .*)?$"), c("Race|Nonwhite|Non-white|Color", "", "^(Nonwhite|Non-white|Negro)( >> .*)?$")),
   white = list(c("", "", "^Persons: White"), c("^Race by Sex$|^Race$|^Persons by Race$|^Population by Race$|^Race by Age$|^Persons by Race by Age by Sex$", "", "^White( >> .*)?$"),
                c("^White Persons( by Sex)?$|^White Population( by Sex)?$|^Total White Persons$", "", "^(Total|Male|Female)$")),   # race white (includes most Hispanic residents before 1980); 1960 = sum of the age x sex cells
@@ -151,11 +157,15 @@ RULES <- list(
                c("^Spanish Indicator$", "", "Spanish language|Spanish surname")),
   fb    = list(c("^Nativity( and Place of Birth)?$|^Nativity in the United States$", "^Persons|^Total population", "^Foreign[- ]born$"), c("Nativity and Parentage", "", "^Foreign Born$"), c("^Foreign.Born White Population( by Sex)?$", "", "^(Total|Male|Female)$"),
                c("Nativity|Place of Birth|Citizenship", "", "^Foreign[- ]born$|^Foreign >> (Male|Female)$|^Foreign[- ]born( \\(.*\\))?( >> .*)?$")),
-  own   = list(c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^Owner[- ]occupied$|^Owned$|^Owner occupied( >> Total)?$"), c("^Tenure and Vacancy Status$", "", "^Occupied: Owner occupied$")),
-  rentocc = list(c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^(Renter|Tenant)[- ]occupied$|^Rented$|^Renter occupied( >> Total)?$"), c("^Tenure and Vacancy Status$", "", "^Occupied: Renter occupied$")),
+  own   = list(c("^Tenure$", "^Occupied Units$", "^Owned or being bought|^Cooperative or condominium units which are owned"),     # 1970 NT31A
+               c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^Owner[- ]occupied$|^Owned$|^Owner occupied( >> Total)?$", "Roomers|Persons|White|Negro|Black|Spanish|Hispanic|Vacant|Plumbing|1\\.[05]1"), c("^Tenure and Vacancy Status$", "", "^Occupied: Owner occupied$", "Roomers|Persons|White|Negro|Black|Spanish|Hispanic|Vacant|Plumbing|1\\.[05]1")),
+  rentocc = list(c("^Tenure$", "^Occupied Units$", "^Rented"),
+               c("^Tenure$|^Occupied (Dwelling|Housing) Units by Tenure$|^Tenure of Occupied", "", "^(Renter|Tenant)[- ]occupied$|^Rented$|^Renter occupied( >> Total)?$", "Roomers|Persons|White|Negro|Black|Spanish|Hispanic|Vacant|Plumbing|1\\.[05]1"), c("^Tenure and Vacancy Status$", "", "^Occupied: Renter occupied$", "Roomers|Persons|White|Negro|Black|Spanish|Hispanic|Vacant|Plumbing|1\\.[05]1")),
   mval  = list(c("^Median Value", "", "^Median value|^Median$|^Total$|^Median Value|Median value"), c("Value", "", "^Median( value)?( \\(dollars\\))?$"),
                c("^Owner-Occupied Units Reporting Value by Value$|^Value( of Occupied Units)?$", "", "\\$")),                                   # 1960/1970: dollar bins -> grouped median
-  mrent = list(c("^Median Gross Rent", "", "^Median|^Total$"), c("^Median Contract Rent", "", "^Median|^Total$"),   # gross rent where published (2000+, ACS), contract rent before
+  mrent = list(c("^Median Gross Rent", "", "^Median|^Total$"),                                                     # GROSS rent wherever published: 1960, 1970, 1980-2020
+               c("^Monthly Gross Rent( of Occupied Units)?$|Reporting Gross Rent", "^Renter-Occupied Units (for Which Rent is Tabulated|Reporting Gross Rent)$", "\\$"),
+               c("^Median Contract Rent", "", "^Median|^Total$"),                                                   # contract rent only where gross is not published (1940, 1950)
                c("Gross Rent", "", "^Median( gross rent)?( \\(dollars\\))?$"), c("Contract Rent|Rent", "", "^Median( contract rent| rent)?( \\(dollars\\))?$"),
                c("^Homes by Contract Monthly Rent$|^(Contract|Gross)( Monthly)? Rent$|Rent$", "", "\\$"),                                      # 1940/1970: dollar bins -> grouped median
                c("^Aggregate .*Contract Rent", "", ".")),                                                                                        # 1960: aggregate / units reporting = mean
@@ -183,7 +193,15 @@ summarise_year <- function(csvs, yr) {
     out[[k]] <- if (!nrow(m)) NA_real_ else if (k %in% MED && all(grepl("\\$", m$label))) grouped_median(D, m)                   # bin distribution -> interpolated median
       else if (k %in% MED && any(grepl("^Aggregate", m$table))) { u <- pick(cb, list(c("Reporting (Rent|Value)$", "", "^Total$")))                                   # aggregate dollars / units reporting -> mean
         if (nrow(u)) { a <- num(D[[m$var[1]]]) / num(D[[u$var[1]]]); a[!is.finite(a) | num(D[[u$var[1]]]) < 10] <- NA; message("   (", k, " ", yr, " is a MEAN: aggregate / ", u$var[1], ")"); a } else NA_real_ }
-      else rowSums(as.matrix(D[, lapply(.SD, num), .SDcols = m$var]), na.rm = TRUE) }   # num(): ACS medians can carry text jam values ("2,000+", "-")
+      else { X <- as.matrix(D[, lapply(.SD, num), .SDcols = m$var]); v <- rowSums(X, na.rm = TRUE); v[rowSums(!is.na(X)) == 0] <- NA_real_; v } }   # num(): ACS medians can carry text jam values ("2,000+", "-")
+  # denominators for foreign born and poverty taken from the SAME table as the numerator (its "Total" cell, or the sum of its cells when
+  # the table is a partition: native + foreign born; above + below poverty), so numerator and denominator share one universe and one
+  # interpolation; NA when the table has no such universe (1940-1960 foreign-born white; 1970 poverty) -> the total population is used.
+  for (k in c("fb", "ppov")) { m <- pick(cb, RULES[[k]]); dk <- paste0(k, "_den"); out[[dk]] <- NA_real_
+    if (nrow(m) && uniqueN(substr(m$var, 1, nchar(m$var) - 3)) == 1) { pre <- substr(m$var[1], 1, nchar(m$var[1]) - 3); tb <- cb[substr(var, 1, nchar(var) - 3) == pre]
+      if (any(grepl("^Native|above poverty|^Total$|^At or above", tb$label, ignore.case = TRUE)) && !setequal(tb$var, m$var) && !any(grepl("Foreign Stock|Foreign-Born", c(tb$table, tb$universe), ignore.case = TRUE))) {
+        tv <- if (any(tb$label == "Total")) tb[label == "Total"]$var else tb$var; X <- as.matrix(D[, lapply(.SD, num), .SDcols = tv])
+        v <- rowSums(X, na.rm = TRUE); v[rowSums(!is.na(X)) == 0] <- NA_real_; out[[dk]] <- v; message(yr, " ", dk, ": ", paste(tv, collapse = "+")) } } }
   out[grepl("^G08", GISJOIN)]
 }
 # ---------------------------------------------------------------- build the panel
@@ -192,12 +210,12 @@ csv_a <- Sys.glob(file.path(W, "*", "*_ts_geog2010_tract.csv"))
 if (length(csv_a)) { D <- as.data.table(read_ipums_agg(csv_a[1], verbose = FALSE)); cb <- read_codebook(sub("\\.csv$", "_codebook.txt", csv_a[1]))
   ycol <- intersect(c("DATAYEAR", "YEAR"), names(D))[1]; D[, census := as.integer(substr(as.character(get(ycol)), 1, 4))]
   for (yr in sort(unique(D$census))) { d <- D[census == yr]; out <- data.table(GEOID = gj(d$GISJOIN), census = yr)
-    for (k in c("pop", "nhblk", "white", "hisp")) { m <- pick(cb[var %in% names(d)], RULES[[k]]); out[[k]] <- if (nrow(m)) rowSums(as.matrix(d[, m$var, with = FALSE]), na.rm = TRUE) else NA_real_
+    for (k in c("pop", "nhblk", "white", "hisp")) { m <- pick(cb[var %in% names(d)], RULES[[k]]); out[[k]] <- if (nrow(m)) { X <- as.matrix(d[, m$var, with = FALSE]); v <- rowSums(X, na.rm = TRUE); v[rowSums(!is.na(X)) == 0] <- NA_real_; v } else NA_real_
       if (yr == min(D$census)) message("1990+ ", k, ": ", paste(m$var, collapse = "+")) }
     out$fb <- NA_real_; out$ppov <- NA_real_; out$own <- NA_real_; out$rentocc <- NA_real_; out$mval <- NA_real_; out$mrent <- NA_real_; P[[as.character(yr)]] <- out[substr(GEOID, 1, 2) == "08"] } }
 tr10 <- Sys.glob(file.path(W, "*", "*tract_2010*.shp")); if (!length(tr10)) stop("2010 tract shapefile not found under work/census")
 T10 <- st_make_valid(st_transform(st_read(tr10[1], quiet = TRUE), UTM)); T10 <- T10[substr(T10$GISJOIN, 1, 3) == "G08", ]; T10$GEOID <- gj(T10$GISJOIN)
-CNT <- c("pop", "nhblk", "white", "hisp", "fb", "ppov", "own", "rentocc"); MED <- c("mval", "mrent")      # counts are split by area; medians are averaged weighting by occupied units x area
+CNT <- c("pop", "nhblk", "white", "hisp", "fb", "ppov", "fb_den", "ppov_den", "own", "rentocc"); MED <- c("mval", "mrent")      # counts are split by area; medians are averaged weighting by occupied units x area
 interp <- function(M) { for (k in c(CNT, MED)) if (!k %in% names(M)) M[[k]] <- NA_real_
   M[, hu := fifelse(is.na(own) & is.na(rentocc), pop, fifelse(is.na(own), 0, own) + fifelse(is.na(rentocc), 0, rentocc))]
   out <- M[, lapply(.SD, function(v) if (all(is.na(v))) NA_real_ else sum(v * w, na.rm = TRUE)), by = .(GEOID, census), .SDcols = CNT]
@@ -216,21 +234,24 @@ for (yr in c(1940, 1950, 1960, 1970, 1980)) {
 aw <- function(S, shpf) { Ty <- st_make_valid(st_transform(st_read(shpf, quiet = TRUE), UTM)); Ty <- Ty[Ty$GISJOIN %in% S$GISJOIN, ]; Ty$a_src <- as.numeric(st_area(Ty))
   ov <- suppressWarnings(st_intersection(Ty[, c("GISJOIN", "a_src")], T10[, "GEOID"])); ov$w <- as.numeric(st_area(ov)) / ov$a_src
   M <- merge(as.data.table(st_drop_geometry(ov))[, .(GISJOIN, GEOID, w)], S, by = "GISJOIN")
-  interp(M)[, .(GEOID, fb, ppov, own, rentocc, mval, mrent)] }
+  interp(M)[, .(GEOID, fb, ppov, fb_den, ppov_den, own, rentocc, mval, mrent)] }
 for (yr in c(1990, 2000, 2010, 2020)) {
   csvs <- Sys.glob(file.path(W, "*", switch(as.character(yr), "1990" = "*_1990_tract.csv", "2000" = "*_2000_tract.csv", "2010" = "*_20125_tract.csv", "2020" = "*_20205_tract.csv")))
   csvs <- csvs[!grepl("_ts_", csvs)]; if (!length(csvs) || is.null(P[[as.character(yr)]])) { message(yr, ": nativity/poverty tables missing, fb and ppov stay NA"); next }
   S <- summarise_year(csvs, yr)
-  F <- if (yr == 2010) S[, .(GEOID = gj(GISJOIN), fb, ppov, own, rentocc, mval, mrent)] else { shpf <- Sys.glob(file.path(W, "*", sprintf("*tract_%d*.shp", yr))); if (!length(shpf)) { message(yr, ": boundaries missing"); next }; aw(S, shpf[1]) }
+  F <- if (yr == 2010) S[, .(GEOID = gj(GISJOIN), fb, ppov, fb_den, ppov_den, own, rentocc, mval, mrent)] else { shpf <- Sys.glob(file.path(W, "*", sprintf("*tract_%d*.shp", yr))); if (!length(shpf)) { message(yr, ": boundaries missing"); next }; aw(S, shpf[1]) }
   P[[as.character(yr)]] <- merge(P[[as.character(yr)]][, .(GEOID, census, pop, nhblk, white, hisp)], F, by = "GEOID", all.x = TRUE)
 }
 # real dollars: CPI-U annual averages (1982-84 = 100) -> 2020 dollars
-CPI <- c("1940" = 14.0, "1950" = 24.1, "1960" = 29.6, "1970" = 38.8, "1980" = 82.4, "1990" = 130.7, "2000" = 172.2, "2010" = 218.1, "2020" = 258.8)
+CPI <- c("1940" = 14.0, "1950" = 24.1, "1960" = 29.6, "1970" = 38.8, "1980" = 82.4, "1990" = 130.7, "2000" = 172.2, "2010" = 229.6, "2020" = 258.8)   # census-year dollars (1939, 1949, ... income/value years are close enough); "2010" = ACS 2008-12 in 2012 dollars
 panel <- rbindlist(P, fill = TRUE)
 for (k in c("own", "rentocc", "mval", "mrent")) if (!k %in% names(panel)) panel[[k]] <- NA_real_
 panel[, `:=`(mval_2020 = mval * 258.8 / CPI[as.character(census)], mrent_2020 = mrent * 258.8 / CPI[as.character(census)])]
 if (!"white" %in% names(panel)) panel[, white := NA_real_]
-panel <- panel[, .(GEOID, census, pop, nhblk, white, hisp, fb, ppov, own, rentocc, mval, mrent, mval_2020, mrent_2020)][order(GEOID, census)]
+for (k in c("fb_den", "ppov_den")) if (!k %in% names(panel)) panel[[k]] <- NA_real_
+panel <- panel[, .(GEOID, census, pop, nhblk, white, hisp, fb, fb_den, ppov, ppov_den, own, rentocc, mval, mrent, mval_2020, mrent_2020)][order(GEOID, census)]
+chk <- panel[pop >= 200, .(white = sum(white > 1.01 * pop, na.rm = TRUE), black = sum(nhblk > 1.01 * pop, na.rm = TRUE), hisp = sum(hisp > 1.01 * pop, na.rm = TRUE)), by = census]
+print(chk); if (any(chk[, -1] > 0)) warning("some tract counts exceed the tract population - check the variables printed above")
 fwrite(panel, file.path(W, "denver_tract_panel.csv"))
 message("wrote ", file.path(W, "denver_tract_panel.csv"), ": ", nrow(panel), " tract-years; years ", paste(sort(unique(panel$census)), collapse = " "))
 file.copy(Sys.glob(sub("\\.shp$", ".*", tr10[1])), W, overwrite = TRUE)

@@ -7,7 +7,7 @@
 # result drawn over the scan) labelled 32-pixel cells of the 11,849 x 12,000 scan as Industrial A ("/" hatch without lot lines, or thick
 # "/" hatch), Industrial B ("\" hatch) or Commercial (dense cross-hatch); everything else is residential or business. The cells are in
 # data/raw/zoning_1929/zone_cells_1929.csv. This script
-#   1. georeferences the scan with 16 control points (street intersections and park corners read off the scan, data/raw/zoning_1929/
+#   1. georeferences the scan with the 16 candidate control points (13 resolve to TIGER intersections) (street intersections and park corners read off the scan, data/raw/zoning_1929/
 #      gcps_1929.csv) whose real positions come from TIGER road intersections (tigris), by an affine fit in UTM 13N (RMSE printed);
 #   2. writes the zoned cells as dissolved polygons, data/results/zoning_1929/zoning_1929.geojson (+ app/data copy);
 #   3. computes the share of each HOLC area, 1930/1940 enumeration district and 2010 core tract that was zoned industrial and commercial
@@ -50,9 +50,14 @@ ZI <- st_union(Z[Z$class == "Industrial", ]); ZC <- st_union(Z[Z$class == "Comme
 unc <- if ("uncertain" %in% names(cells)) cells$uncertain == 1 else rep(FALSE, nrow(cells))
 ZIs <- if (any(!unc & grepl("Industrial", cells$zone))) st_make_valid(st_union(st_sfc(polys[!unc & grepl("Industrial", cells$zone)], crs = UTM))) else ZI
 message(sum(unc), " uncertain cells (", round(100 * mean(unc[grepl("Industrial", cells$zone)])), "% of industrial cells) excluded from the strict layer")
+# extent of the map sheet (the scan's corners through the affine fit): units less than half inside it have no 1929 zoning value (NA),
+# rather than 0, so places the map does not cover are not counted as unzoned
+EXT <- st_sfc(st_polygon(list(rbind(corner(0, 0), corner(11849, 0), corner(11849, 12000), corner(0, 12000), corner(0, 0)))), crs = UTM)
 share <- function(g) { g <- st_make_valid(st_transform(g, UTM)); a <- as.numeric(st_area(g))
+  inx <- numeric(length(g)); it0 <- suppressWarnings(st_intersection(g, EXT)); if (length(it0)) inx[attr(it0, "idx")[, 1]] <- as.numeric(st_area(it0)); outside <- inx / a < 0.5
   f <- function(zz) { it <- suppressWarnings(st_intersection(g, zz)); s <- numeric(length(g)); if (length(it)) s[attr(it, "idx")[, 1]] <- as.numeric(st_area(it)); s }
-  data.table(area_km2 = round(a / 1e6, 3), share_industrial_1929 = round(f(ZI) / a, 3), share_industrial_1929_strict = round(f(ZIs) / a, 3), share_commercial_1929 = round(f(ZC) / a, 3)) }
+  out <- data.table(area_km2 = round(a / 1e6, 3), share_industrial_1929 = round(f(ZI) / a, 3), share_industrial_1929_strict = round(f(ZIs) / a, 3), share_commercial_1929 = round(f(ZC) / a, 3))
+  out[outside, c("share_industrial_1929", "share_industrial_1929_strict", "share_commercial_1929") := NA_real_]; out }
 # ---- 3. shares by HOLC area, ED and tract
 H <- st_read(file.path(A, "holc_denver.geojson"), quiet = TRUE); hs <- cbind(as.data.table(st_drop_geometry(H))[, .(area_id, grade)], share(st_geometry(H)))
 fwrite(hs, file.path(O, "zoning_shares_holc.csv")); print(hs[grade %in% c("A", "B", "C", "D"), .(areas = .N, km2 = sum(area_km2), pct_industrial_1929 = round(100 * sum(share_industrial_1929 * area_km2) / sum(area_km2), 1), pct_commercial_1929 = round(100 * sum(share_commercial_1929 * area_km2) / sum(area_km2), 1)), by = grade][order(grade)])

@@ -7,19 +7,11 @@
 #
 #   Rscript R/ej_panel.R
 #
-# INPUTS YOU SUPPLY (not in the repository; put them in work/census/):
-#   1. Longitudinal Tract Data Base (Brown University, free, no account): https://s4.ad.brown.edu/projects/diversity/Researcher/LTDB.htm
-#      -> work/census/LTDB_Std_1970_fullcount.csv ... LTDB_Std_2010_fullcount.csv and LTDB_Std_2010_Sample.csv (income, poverty)
-#      (full-count 1970-2010 in 2010 tract boundaries; variables pop, nhwht, nhblk, hisp, fb (foreign-born, sample files), hinc, ppov)
-#   2. 2010 census tract boundaries for Colorado: work/census/tl_2010_08_tract10.shp (census.gov TIGER/Line 2010) - or the NHGIS 2010 tract shapefile.
-#   3. Optional, NHGIS (needs your account): 1940, 1950, 1960 tract tables for Denver (total population, Black/nonwhite, foreign-born
-#      white, median income or rent) with the matching NHGIS tract shapefiles -> work/census/nhgis_<year>_tracts.csv / .shp.
-#      These are NOT in 2010 boundaries; the script areal-interpolates COUNTS to 2010 tracts (population-weighted by the overlap area),
-#      then computes percentages, as Logan et al. do. Medians are interpolated as a population-weighted mean of tract medians and
-#      flagged as approximate.
-#   4. Optional, 1880: Brown's Urban Transition HGIS enumeration districts for Denver + full-count 1880 (IPUMS) aggregated to EDs;
-#      link to the 1879-1885 business-directory firms placed at street level (data/historical/CO_pre1960_hazardous_sites.csv) -
-#      a one-year cross-section, handled in the last section.
+# INPUTS: work/census/denver_tract_panel.csv and the 2010 tract shapefile, both written by Rscript R/fetch_census.R (NHGIS):
+#   counts on 2010 tract boundaries - 1990-2020 population, race and Hispanic origin from NHGIS's standardised time series, everything
+#   else (1970-1980 tables; 1990-2020 nativity, poverty and housing) area-weighted from each census's own tracts; shares are computed
+#   after interpolation, foreign born and poverty over the universe of their own table. Study area: the 2010 tracts whose centroid is
+#   within 10 km of downtown Denver (147 tracts; the same set as the app's "Denver core"), tract-years with at least 200 residents.
 #
 # Directory-census matching (complete editions only, config/editions.json): 1970 <- 1970 directory, 1980 <- 1980, 1990 <- 1990.
 # There is no complete edition after 1992, so the within/between panel stops at 1990 (three censuses, the minimum for the design).
@@ -32,40 +24,29 @@ sf_use_s2(FALSE); UTM <- 26913; CDIR <- "work/census"
 MATCH <- c("1970" = 1970, "1980" = 1980, "1990" = 1990); LATE <- c(2000L, 2010L, 2020L); LAST_WIN <- c(1983L, 1992L)
 shp10 <- c(Sys.glob(file.path(CDIR, "*tract10*.shp")), Sys.glob(file.path(CDIR, "*tract_2010*.shp")))
 nhgis_panel <- file.path(CDIR, "denver_tract_panel.csv")                      # written by R/fetch_census.R (NHGIS API)
-ltdb <- file.path(CDIR, sprintf("LTDB_Std_%d_fullcount.csv", c(1970, 1980, 1990, 2000, 2010)))
-if (!length(shp10) || !(file.exists(nhgis_panel) || all(file.exists(ltdb)))) stop("Run Rscript R/fetch_census.R first (NHGIS API), or put the LTDB files and a 2010 tract shapefile in work/census/")
+if (!length(shp10) || !file.exists(nhgis_panel)) stop("Run Rscript R/fetch_census.R first (NHGIS API)")
 
 # ---------------------------------------------------------------- tracts and study area
 tr <- st_make_valid(st_transform(st_read(shp10[1], quiet = TRUE), UTM))
 tr$GEOID <- if (any(grepl("GEOID", names(tr)))) tr[[grep("GEOID", names(tr), value = TRUE)[1]]] else sub("^G(\\d{2})0(\\d{3})0(\\d{6})$", "\\1\\2\\3", tr$GISJOIN)
 DEN <- st_sfc(st_point(c(500250, 4399500)), crs = UTM)
 tr$dist_km <- as.numeric(st_distance(st_centroid(st_geometry(tr)), DEN)) / 1000
-tr <- tr[substr(tr$GEOID, 1, 5) == "08031" | (substr(tr$GEOID, 1, 5) %in% c("08001", "08005", "08059") & tr$dist_km <= 10), ]
+tr <- tr[substr(tr$GEOID, 1, 2) == "08" & tr$dist_km <= 10, ]   # same rule as app_census_layers.R
 message(nrow(tr), " tracts in the Denver core")
 
-# ---------------------------------------------------------------- census panel (LTDB, 2010 boundaries)
-pick <- function(d, pats) { for (p in pats) { k <- grep(p, names(d), ignore.case = TRUE, value = TRUE); if (length(k)) return(d[[k[1]]]) }; rep(NA_real_, nrow(d)) }
-cen <- if (file.exists(nhgis_panel)) fread(nhgis_panel, colClasses = c(GEOID = "character"))[census %in% c(as.integer(names(MATCH)), LATE)] else rbindlist(lapply(names(MATCH), function(y) {
-  d <- fread(sprintf("%s/LTDB_Std_%s_fullcount.csv", CDIR, y), colClasses = c(TRTID10 = "character"))
-  s <- sprintf("%s/LTDB_Std_%s_Sample.csv", CDIR, y); s <- if (file.exists(s)) fread(s, colClasses = c(TRTID10 = "character")) else NULL
-  out <- data.table(GEOID = formatC(d$TRTID10, width = 11, flag = "0"), census = as.integer(y),
-                    pop = pick(d, paste0("^pop", substr(y, 3, 4))), nhblk = pick(d, paste0("^nhblk", substr(y, 3, 4))),
-                    hisp = pick(d, paste0("^hisp", substr(y, 3, 4))), nhwht = pick(d, paste0("^nhwht", substr(y, 3, 4))))
-  if (!is.null(s)) { m <- data.table(GEOID = formatC(s$TRTID10, width = 11, flag = "0"), fb = pick(s, paste0("^fb", substr(y, 3, 4))),
-                                     hinc = pick(s, paste0("^hinc", substr(y, 3, 4))), ppov = pick(s, paste0("^ppov", substr(y, 3, 4))))
-    out <- merge(out, m, by = "GEOID", all.x = TRUE) }
-  out }), fill = TRUE)
+# ---------------------------------------------------------------- census panel (NHGIS, 2010 boundaries)
+cen <- fread(nhgis_panel, colClasses = c(GEOID = "character"))[census %in% c(as.integer(names(MATCH)), LATE)]
 cen <- cen[GEOID %in% tr$GEOID]
 if (!"nhwht" %in% names(cen) && "white" %in% names(cen)) cen[, nhwht := white]   # NHGIS panel: race white (incl. most Hispanic residents before 1980); LTDB: non-Hispanic white
-for (v in c("nhwht", "fb", "ppov", "own", "rentocc", "mval_2020", "mrent_2020")) if (!v %in% names(cen)) cen[[v]] <- NA_real_
-cen[, `:=`(p_black = 100 * nhblk / pop, p_hisp = 100 * hisp / pop, p_white = 100 * nhwht / pop, p_fb = 100 * fb / pop, p_owner = 100 * own / (own + rentocc),
+for (v in c("nhwht", "fb", "ppov", "fb_den", "ppov_den", "own", "rentocc", "mval_2020", "mrent_2020")) if (!v %in% names(cen)) set(cen, j = v, value = NA_real_)
+cen[, `:=`(p_black = 100 * nhblk / pop, p_hisp = 100 * hisp / pop, p_white = 100 * nhwht / pop, p_fb = 100 * fb / fifelse(is.na(fb_den) | fb_den <= 0, pop, fb_den), p_owner = 100 * own / (own + rentocc),
            lmval = fifelse(is.finite(mval_2020) & mval_2020 > 0, log(mval_2020), NA_real_), lmrent = fifelse(is.finite(mrent_2020) & mrent_2020 > 0, log(mrent_2020), NA_real_))]
-if (file.exists(nhgis_panel)) cen[, ppov := 100 * ppov / pop]   # NHGIS gives counts below poverty; LTDB gives a percentage
+cen[, ppov := 100 * ppov / fifelse(is.na(ppov_den) | ppov_den <= 0, pop, ppov_den)]   # persons below poverty over the poverty universe (total population in 1970)
 
 # ---------------------------------------------------------------- industrial presence per tract per census year
 L <- fread("data/results/CO_directory_listings_1961-2002.csv", colClasses = c(sic = "character"))
 L <- L[geo_level %in% c("address", "address_approx") & !is.na(lat)]
-L[, haz := substr(sic, 1, 2) %in% c("28", "29", "30", "33", "34", "35", "37")]
+L[, haz := fe_hazard %in% c(TRUE, "True")]   # Frickel & Elliott hazardous sectors, the definition used everywhere
 pts <- st_transform(st_as_sf(L, coords = c("lon", "lat"), crs = 4326), UTM)
 wi <- st_within(pts, tr); L$GEOID <- tr$GEOID[sapply(wi, function(i) if (length(i)) i[1] else NA_integer_)]   # NA outside the core
 L <- L[!is.na(GEOID)]
@@ -116,7 +97,7 @@ for (yv in OUTS) for (cy in sort(unique(pan$census))) { d <- pan[!is.na(get(yv))
   res_d[[length(res_d) + 1]] <- data.table(outcome = yv, census = cy, term = rownames(cf)[2:4], b = cf[2:4, 1], se = cf[2:4, 2], p = cf[2:4, 4], tracts = nrow(d)) }
 fwrite(rbindlist(res_d), "data/results/ej_panel_by_decade.csv")
 # reverse direction: does composition at t predict new industrial entry by t+1?
-pan[, `:=`(entry_next = data.table::shift(active, -1) - active), by = GEOID]
+pan[, `:=`(entry_next = data.table::shift(active_haz, -1) - active_haz), by = GEOID]   # new hazardous establishments by the next edition
 R2 <- rbindlist(lapply(OUTS, function(xv) { if (!xv %in% names(pan) || all(is.na(pan[[xv]])) || sum(!is.na(pan[[xv]])) < 60 || uniqueN(pan$census[!is.na(pan[[xv]])]) < 3) return(NULL)
   d <- pan[!is.na(entry_next) & !is.na(get(xv))]; m <- lm(as.formula(paste("entry_next ~", xv, "+ log1p(active_d) + popd_w + dist_km + factor(census)")), d)
   cf <- summary(m)$coefficients; data.table(predictor = xv, b = cf[2, 1], se = cf[2, 2], p = cf[2, 4], n = nrow(d)) }))
@@ -134,4 +115,4 @@ R3 <- rbindlist(lapply(OUTS, function(yv) rbindlist(lapply(LATE, function(cy) { 
 fwrite(R3, "data/results/ej_panel_legacy_sites.csv"); print(R3)
 file.copy(file.path("data/results", c("ej_panel_models.csv", "ej_panel_reverse.csv", "ej_panel_by_decade.csv", "ej_panel_legacy_sites.csv")), "app/data", overwrite = TRUE)
 print(R1); print(R2)
-message("Note: the LTDB's 2010 values are ACS 2008-12 estimates (sampling error); treat 2010 coefficients with care.")
+message("Note: 2010 and 2020 nativity and poverty are ACS 5-year estimates (2008-12, 2016-20) with sampling error.")

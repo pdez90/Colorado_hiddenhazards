@@ -36,7 +36,7 @@ areas$holc_negro <- get(2, "d"); areas$infiltration <- get(2, "e"); areas$relief
 IND <- "industr|factor|smelter|railroad|railway|rail ?yard|smoke|odor|odour|refiner|packing|stock ?yard|warehouse|freight|foundry|gas plant|power plant|brick ?yard"
 areas$mentions_industry <- grepl(IND, paste(areas$detrimental, areas$remarks), ignore.case = TRUE)
 # firms 1921-1940 (street level) and racial covenants in each area
-hist <- fread("app/data/historical_sites.csv")[precision != "town" & !is.na(lat) & town == "DENVER"]
+hist <- fread("app/data/historical_sites.csv")[precision != "town" & !is.na(lat) & town == "DENVER" & fe_hazard %in% c(TRUE, "True")]   # Frickel & Elliott hazardous trades, as everywhere
 hp <- st_transform(st_as_sf(hist, coords = c("lon", "lat"), crs = 4326), UTM)
 fw <- function(a, b) lengths(st_intersects(areas, hp[hp$first_year <= b & hp$last_year >= a, ]))
 areas$firms_pre1938 <- fw(1871, 1937); areas$firms_1921_1937 <- fw(1921, 1937); areas$firms_1938_1956 <- fw(1938, 1956); areas$firms_1921_1940 <- fw(1921, 1940)   # before the map (all street-level listings), the 17 years before it, after it
@@ -84,7 +84,7 @@ SH <- rbind(data.table(layer = "Land area of HOLC areas", t(as.vector(tapply(gr$
             data.table(layer = "Population 1940", t(as.vector(tapply(gr$pop_1940, factor(gr$class, CLS), sum, na.rm = TRUE)))),
             data.table(layer = "Hazardous trades before the map (1871-1937)", t(as.vector(cnt(hp[hp$first_year <= 1937, ])))),
             data.table(layer = "Hazardous trades after the map (1938-1956)", t(as.vector(cnt(hp[hp$first_year <= 1956 & hp$last_year >= 1938, ])))),
-            data.table(layer = "Hazardous-sector manufacturers 1965-1992 (complete editions)", t(as.vector(cnt(pt(sites))))),
+            data.table(layer = "Hazardous-sector manufacturers 1965-1992 (complete editions)", t(as.vector(cnt(pt(sites[fe_hazard %in% c(TRUE, "True")]))))),
             data.table(layer = "Sites with no match in searched inventories (1965-1992)", t(as.vector(cnt(pt(sites[radar == "Not on any list"]))))),
             data.table(layer = "EPA TRI facilities (today)", t(as.vector(cnt(pt(tri))))),
             data.table(layer = "Cleanup / contamination sites (today)", t(as.vector(cnt(pt(cln))))))
@@ -99,7 +99,7 @@ for (yr in c(1930, 1940)) { f <- sprintf("data/results/denver_eds/denver_eds_%d.
   gs <- as.data.table(st_drop_geometry(ov))[, .(w = sum(w)), by = .(ED, grade = class)]; dom <- gs[, .(grade = grade[which.max(w)], graded_share = sum(w)), by = ED]
   E <- merge(E, dom, by = "ED", all.x = TRUE); E$grade[is.na(E$grade) | E$graded_share < 0.3] <- "ungraded"
   E$covenants <- lengths(st_intersects(E, cv)); E$firms_pre1938 <- lengths(st_intersects(E, hp[hp$first_year <= 1937, ])); E$firms_1938_1956 <- lengths(st_intersects(E, hp[hp$first_year <= 1956 & hp$last_year >= 1938, ]))
-  E$firms_1961_2002 <- lengths(st_intersects(E, pt(sites)))
+  E$firms_1961_2002 <- lengths(st_intersects(E, pt(sites[fe_hazard %in% c(TRUE, "True")])))   # (column name kept for the app; holds the 1965-1992 complete-edition sites)
   d <- as.data.table(st_drop_geometry(E)); d[, `:=`(pct_black = 100 * black / pop, pct_fb = 100 * fb / pop, pct_hisp = 100 * hisp / pop, pct_laborers = 100 * laborers / pop, has_covenant = covenants > 0)]
   cls <- d[, .(EDs = .N, population = sum(pop), covenants = sum(covenants), pct_black = round(weighted.mean(pct_black, pop), 2), pct_fb = round(weighted.mean(pct_fb, pop), 1), pct_hisp = round(weighted.mean(pct_hisp, pop), 2), pct_laborers = round(weighted.mean(pct_laborers, pop), 1),
                 firms_pre1938 = sum(firms_pre1938), firms_1938_1956 = sum(firms_1938_1956), firms_1961_2002 = sum(firms_1961_2002)), by = .(grade, has_covenant)][, census := yr][order(grade, has_covenant)]
@@ -159,13 +159,24 @@ if (!is.null(ZS_H)) { ZG <- ZS_H[grade %in% c("A", "B", "C", "D"), .(areas = .N,
   fwrite(ZG, file.path(O, "holc_zoning_by_grade.csv")); file.copy(file.path(O, "holc_zoning_by_grade.csv"), A, overwrite = TRUE); message("1929 zoning by HOLC grade:"); print(ZG) } else message("no 1929 zoning shares (run R/zoning_1925.R); boundary and change models will not be zoning-adjusted")
 # A. industry by grade and period (street-level hazardous trades 1891-1956; hazardous-sector manufacturers, complete editions 1965-1992), per km2 of each grade
 PER <- list(c(1891, 1905), c(1906, 1920), c(1921, 1937), c(1938, 1956), c(1965, 1980), c(1981, 1992))   # the manufacturers' directory enters through its complete editions 1965-1992
-sp <- pt(sites[sites$fe_hazard %in% c(TRUE, "True"), ]); sp$first_year <- sites$first_year[!is.na(sites$lat) & sites$fe_hazard %in% c(TRUE, "True")]; sp$last_year <- sites$last_year[!is.na(sites$lat) & sites$fe_hazard %in% c(TRUE, "True")]
+sp <- pt(sites[sites$fe_hazard %in% c(TRUE, "True"), ]); sp$site_id <- sites$site_id[!is.na(sites$lat) & sites$fe_hazard %in% c(TRUE, "True")]; sp$first_year <- sites$first_year[!is.na(sites$lat) & sites$fe_hazard %in% c(TRUE, "True")]; sp$last_year <- sites$last_year[!is.na(sites$lat) & sites$fe_hazard %in% c(TRUE, "True")]
 firms_in <- function(a, b) { src <- if (a >= 1960) sp else hp; src[src$first_year <= b & src$last_year >= a, ] }
 IND <- rbindlist(lapply(PER, function(pr) { f <- firms_in(pr[1], pr[2]); f$grade <- side_of(f); f$band <- in_band(f, 400)
   g <- as.data.table(st_drop_geometry(GR))[, .(km2 = as.numeric(sum(st_area(GR[GR$grade == .BY$grade, ]))) / 1e6), by = grade]
   d <- merge(g, as.data.table(st_drop_geometry(f))[!is.na(grade), .(firms = .N, firms_band = sum(band)), by = grade], by = "grade", all.x = TRUE)
   d[is.na(firms), `:=`(firms = 0L, firms_band = 0L)]; d[, `:=`(period = sprintf("%d-%d", pr[1], pr[2]), start = pr[1], per_km2 = round(firms / km2, 2), km2 = round(km2, 1))]; d }))
 IND[, source := ifelse(start >= 1960, "Directory of Colorado Manufacturers (hazardous sectors)", "Colorado State Business Directory (hazardous trades, street level)")]
+# periods differ in length and number of editions, and the two sources are not comparable: per EDITION (mean firms listed in each edition
+# of the period, per km2) and the D/C ratio within each period are the comparable quantities; the change across the 1956/1965 source
+# switch is not interpretable as a change in siting.
+ed_years <- function(a, b) if (a >= 1960) intersect(c(1965:1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990, 1992), a:b) else sort(unique(as.integer(unlist(strsplit(as.character(hist$years), "[^0-9]+")))))[sort(unique(as.integer(unlist(strsplit(as.character(hist$years), "[^0-9]+"))))) %in% a:b]
+SY <- fread("app/data/site_years.csv")
+in_ed <- function(a, b) rbindlist(lapply(ed_years(a, b), function(y) { if (a >= 1960) { f <- sp[sp$site_id %in% SY[year == y]$site_id, ] } else { yy <- strsplit(as.character(hp$years), "[^0-9]+"); f <- hp[vapply(yy, function(z) as.character(y) %in% z, TRUE), ] }
+  if (!nrow(f)) return(NULL); data.table(edition = y, grade = side_of(f)) }))
+PE <- rbindlist(lapply(PER, function(pr) { x <- in_ed(pr[1], pr[2]); if (!nrow(x)) return(NULL); ne <- uniqueN(x$edition)
+  x[!is.na(grade), .(firms_per_edition = .N / ne), by = grade][, `:=`(period = sprintf("%d-%d", pr[1], pr[2]), editions = ne)] }))
+IND <- merge(IND, PE, by = c("period", "grade"), all.x = TRUE); IND[is.na(firms_per_edition), firms_per_edition := 0]; IND[, per_km2_per_edition := round(firms_per_edition / km2, 3)]
+IND[, dc_ratio_within_period := { r <- per_km2_per_edition[grade == "D"] / per_km2_per_edition[grade == "C"]; if (length(r) && is.finite(r)) round(r, 1) else NA_real_ }, by = period]
 setorder(IND, start, grade); fwrite(IND, file.path(O, "holc_industry_periods.csv")); file.copy(file.path(O, "holc_industry_periods.csv"), A, overwrite = TRUE)
 print(dcast(IND, period ~ grade, value.var = "per_km2"))
 # B. boundary comparison, census by census: units whose centroid lies within 400 m (districts) / 800 m (tracts) of both a C and a D area
@@ -203,12 +214,14 @@ BW <- rbindlist(lapply(c("narrow", "standard", "wide"), function(bw) { nC <- if 
     if (sum(dd$D) < 3 || sum(!dd$D) < 3) return(NULL); m <- lm(y ~ D, dd, weights = pop); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
     data.table(bandwidth = bw, metres = if (dd$basis[1] == "districts") c(narrow = 200, standard = 400, wide = 800)[[bw]] else c(narrow = 400, standard = 800, wide = 1600)[[bw]], census = dd$census[1], basis = dd$basis[1], outcome = v, n_C = sum(!dd$D), n_D = sum(dd$D), gap = round(ct["DTRUE", 1], 2), se = round(ct["DTRUE", 2], 2), p = signif(ct["DTRUE", 4], 2)) })))) }))
 if (nrow(BW)) { setorder(BW, outcome, census, metres); fwrite(BW, file.path(O, "holc_boundary_bandwidth.csv")); file.copy(file.path(O, "holc_boundary_bandwidth.csv"), A, overwrite = TRUE); print(dcast(BW[outcome == "p_black"], census + basis ~ bandwidth, value.var = "gap")) }
-# B3. did the D-C gap change course at the map? Weighted regression of the census-by-census gap on time with a post-1938 level shift and slope change
-TT <- rbindlist(lapply(c("p_black", "p_hisp"), function(v) { g <- BR[pair == "D-C" & outcome == v & !is.na(se) & se > 0 & !(census == 1940 & basis == "2010 tracts")]   # one 1940 point (districts)
-  if (nrow(g) < 6) return(NULL); g[, `:=`(t = (census - 1938) / 10, post = as.integer(census > 1938), w = 1 / se^2)]
-  m0 <- lm(gap ~ t, g, weights = w); m1 <- lm(gap ~ t + post + post:t, g, weights = w); an <- anova(m0, m1); ct <- coeftest(m1)
-  data.table(outcome = v, points = nrow(g), pre_slope_per_decade = round(coef(m1)["t"], 2), post_level_shift = round(coef(m1)["post"], 2), p_level = signif(ct["post", 4], 2), post_slope_change = round(coef(m1)["t:post"], 2), p_slope = signif(ct["t:post", 4], 2), p_joint = signif(an$`Pr(>F)`[2], 2)) }))
-if (nrow(TT)) { fwrite(TT, file.path(O, "holc_trend_test.csv")); file.copy(file.path(O, "holc_trend_test.csv"), A, overwrite = TRUE); message("pre/post-map trend test on the D-C gap (weighted by 1/SE^2; few points, indicative only):"); print(TT) }
+# B3. trends of the D-C gap WITHIN one unit. Districts end in 1940 and tracts begin in 1940, so a single series cannot test a change of
+# course at 1938 without confounding it with the change of unit, band width and population base: the district series (1900-1940)
+# gives the pre-map trend and the tract series (1940-2020) the post-map path, each estimated separately (weighted by 1/SE^2).
+TT <- rbindlist(lapply(c("p_black", "p_hisp"), function(v) rbindlist(lapply(list(c("districts", 1900, 1940), c("2010 tracts", 1940, 1970), c("2010 tracts", 1970, 2020)), function(u) {
+  g <- BR[pair == "D-C" & outcome == v & basis == u[1] & census >= as.integer(u[2]) & census <= as.integer(u[3]) & !is.na(se) & se > 0]
+  if (nrow(g) < 3) return(NULL); g[, `:=`(t = (census - 1938) / 10, w = 1 / se^2)]; m <- lm(gap ~ t, g, weights = w); ct <- coeftest(m)
+  data.table(outcome = v, unit = u[1], years = sprintf("%s-%s", u[2], u[3]), points = nrow(g), slope_per_decade = round(coef(m)["t"], 2), se = round(ct["t", 2], 2), p = signif(ct["t", 4], 2)) }))))
+if (nrow(TT)) { fwrite(TT, file.path(O, "holc_trend_test.csv")); file.copy(file.path(O, "holc_trend_test.csv"), A, overwrite = TRUE); message("trend of the D-C gap within each unit (few points; indicative):"); print(TT) }
 print(BR[outcome %in% c("p_black", "p_hisp")])
 # C. grade gaps by census from the full-grade series (D - C, C - B), before (HOLC polygons) and after (tracts)
 GAP <- rbindlist(list(if (exists("PRE") && nrow(PRE)) melt(PRE, id.vars = c("grade", "census"), measure.vars = intersect(c("p_black", "p_hisp", "p_fb", "p_owner", "p_laborers"), names(PRE)))[, basis := "HOLC areas"],
