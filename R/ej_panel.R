@@ -21,12 +21,15 @@
 #      link to the 1879-1885 business-directory firms placed at street level (data/historical/CO_pre1960_hazardous_sites.csv) -
 #      a one-year cross-section, handled in the last section.
 #
-# Directory-census matching: 1970 <- 1970 directory, 1980 <- 1980, 1990 <- 1990, 2000 <- 1999, 2010 <- 2002 (reported gap 8 years;
-# try 1999 as a sensitivity check). Study area: tracts within the City and County of Denver plus tracts of Adams/Arapahoe/Jefferson
+# Directory-census matching (complete editions only, config/editions.json): 1970 <- 1970 directory, 1980 <- 1980, 1990 <- 1990.
+# There is no complete edition after 1992, so the within/between panel stops at 1990 (three censuses, the minimum for the design).
+# The 2000, 2010 and 2020 censuses are analysed separately as legacy-site exposure: each tract's density of hazardous establishments
+# listed 1983-1992 (the last complete decade, the window the app uses for 2000-2020), census by census (data/results/ej_panel_legacy_sites.csv).
+# Exposure is hazardous establishments (SIC 28, 29, 30, 33, 34, 35, 37) throughout; all-manufacturer density is kept as a sensitivity. Study area: tracts within the City and County of Denver plus tracts of Adams/Arapahoe/Jefferson
 # within 10 km of downtown (the historically industrial core), to avoid mixing suburbanisation with neighbourhood change.
 suppressPackageStartupMessages({ library(sf); library(data.table); library(spdep); library(spatialreg); library(sandwich); library(lmtest) })
 sf_use_s2(FALSE); UTM <- 26913; CDIR <- "work/census"
-MATCH <- c("1970" = 1970, "1980" = 1980, "1990" = 1990, "2000" = 1999, "2010" = 2002)
+MATCH <- c("1970" = 1970, "1980" = 1980, "1990" = 1990); LATE <- c(2000L, 2010L, 2020L); LAST_WIN <- c(1983L, 1992L)
 shp10 <- c(Sys.glob(file.path(CDIR, "*tract10*.shp")), Sys.glob(file.path(CDIR, "*tract_2010*.shp")))
 nhgis_panel <- file.path(CDIR, "denver_tract_panel.csv")                      # written by R/fetch_census.R (NHGIS API)
 ltdb <- file.path(CDIR, sprintf("LTDB_Std_%d_fullcount.csv", c(1970, 1980, 1990, 2000, 2010)))
@@ -42,7 +45,7 @@ message(nrow(tr), " tracts in the Denver core")
 
 # ---------------------------------------------------------------- census panel (LTDB, 2010 boundaries)
 pick <- function(d, pats) { for (p in pats) { k <- grep(p, names(d), ignore.case = TRUE, value = TRUE); if (length(k)) return(d[[k[1]]]) }; rep(NA_real_, nrow(d)) }
-cen <- if (file.exists(nhgis_panel)) fread(nhgis_panel, colClasses = c(GEOID = "character"))[census %in% as.integer(names(MATCH))] else rbindlist(lapply(names(MATCH), function(y) {
+cen <- if (file.exists(nhgis_panel)) fread(nhgis_panel, colClasses = c(GEOID = "character"))[census %in% c(as.integer(names(MATCH)), LATE)] else rbindlist(lapply(names(MATCH), function(y) {
   d <- fread(sprintf("%s/LTDB_Std_%s_fullcount.csv", CDIR, y), colClasses = c(TRTID10 = "character"))
   s <- sprintf("%s/LTDB_Std_%s_Sample.csv", CDIR, y); s <- if (file.exists(s)) fread(s, colClasses = c(TRTID10 = "character")) else NULL
   out <- data.table(GEOID = formatC(d$TRTID10, width = 11, flag = "0"), census = as.integer(y),
@@ -71,10 +74,11 @@ ind <- rbindlist(lapply(names(MATCH), function(y) { yr <- MATCH[[y]]
   leg <- L[year < yr, .(estab_id, GEOID, haz)]; leg <- leg[!estab_id %in% L[year == yr]$estab_id]
   leg <- unique(leg)[, .(legacy = .N, legacy_haz = sum(haz)), by = GEOID]
   merge(act, leg, by = "GEOID", all = TRUE)[, census := as.integer(y)] }), fill = TRUE)
+cen_late <- cen[census %in% LATE]; cen <- cen[census %in% as.integer(names(MATCH))]
 pan <- merge(cen, ind, by = c("GEOID", "census"), all.x = TRUE)
 for (v in c("active", "active_haz", "legacy", "legacy_haz")) pan[is.na(get(v)), (v) := 0]
 pan <- merge(pan, data.table(GEOID = tr$GEOID, area_km2 = as.numeric(st_area(tr)) / 1e6, dist_km = tr$dist_km), by = "GEOID")
-pan[, `:=`(active_d = active / area_km2, legacy_d = legacy / area_km2, pop_d = pop / area_km2)]
+pan[, `:=`(active_d = active_haz / area_km2, legacy_d = legacy_haz / area_km2, active_all_d = active / area_km2, legacy_all_d = legacy / area_km2, pop_d = pop / area_km2)]
 pan <- pan[pop >= 200]
 fwrite(pan, "data/results/ej_panel_denver.csv")
 
@@ -87,6 +91,7 @@ tr_p <- tr[match(unique(pan$GEOID), tr$GEOID), ]
 w <- nb2listw(poly2nb(tr_p, queen = TRUE), style = "W", zero.policy = TRUE)
 res <- list()
 OUTS <- c("p_black", "p_hisp", "p_white", "p_fb", "ppov", "p_owner", "lmval", "lmrent")
+pan[, `:=`(actA_w = log1p(active_all_d) - mean(log1p(active_all_d)), actA_b = mean(log1p(active_all_d)), legA_b = log1p(legacy_all_d[census == min(census)])), by = GEOID]
 for (yv in OUTS) { if (!yv %in% names(pan) || all(is.na(pan[[yv]])) || sum(!is.na(pan[[yv]])) < 60 || uniqueN(pan$census[!is.na(pan[[yv]])]) < 3) next   # needs at least three censuses for the within/between design
   d <- pan[!is.na(get(yv))]
   fo <- as.formula(paste(yv, "~ act_w + act_b + leg_b + popd_w + dist_km + factor(census)"))
@@ -99,6 +104,9 @@ for (yv in OUTS) { if (!yv %in% names(pan) || all(is.na(pan[[yv]])) || sum(!is.n
   sem <- errorsarlm(y ~ act_b + leg_b + dist_km, data = mt, listw = wm, zero.policy = TRUE); sc <- summary(sem)$Coef
   res[[yv]] <- rbind(data.table(outcome = yv, model = "hybrid panel, tract-clustered SE", term = rownames(cf)[2:4], b = cf[2:4, 1], se = cf[2:4, 2], p = cf[2:4, 4], n = nrow(d), tracts = uniqueN(d$GEOID)),
                      data.table(outcome = yv, model = sprintf("between tracts, spatial error (lambda %.2f)", sem$lambda), term = rownames(sc)[2:3], b = sc[2:3, 1], se = sc[2:3, 2], p = sc[2:3, 4], n = nrow(mt), tracts = nrow(mt)))
+  # sensitivity: all manufacturers instead of hazardous sectors
+  oA <- lm(as.formula(paste(yv, "~ actA_w + actA_b + legA_b + popd_w + dist_km + factor(census)")), d); cA <- lmtest::coeftest(oA, vcov. = sandwich::vcovCL(oA, cluster = d$GEOID))
+  res[[paste0(yv, "_all")]] <- data.table(outcome = yv, model = "sensitivity: all manufacturers, tract-clustered SE", term = c("act_w", "act_b", "leg_b"), b = cA[2:4, 1], se = cA[2:4, 2], p = cA[2:4, 4], n = nrow(d), tracts = uniqueN(d$GEOID))
 }
 R1 <- rbindlist(res); fwrite(R1, "data/results/ej_panel_models.csv")
 # the same within/between associations census by census (the pooled coefficients above average over 1970-2010)
@@ -113,5 +121,17 @@ R2 <- rbindlist(lapply(OUTS, function(xv) { if (!xv %in% names(pan) || all(is.na
   d <- pan[!is.na(entry_next) & !is.na(get(xv))]; m <- lm(as.formula(paste("entry_next ~", xv, "+ log1p(active_d) + popd_w + dist_km + factor(census)")), d)
   cf <- summary(m)$coefficients; data.table(predictor = xv, b = cf[2, 1], se = cf[2, 2], p = cf[2, 4], n = nrow(d)) }))
 fwrite(R2, "data/results/ej_panel_reverse.csv")
+
+# ---------------------------------------------------------------- 2000-2020: legacy-site exposure (no complete directory after 1992)
+# density of hazardous establishments listed in 1983-1992 per tract; cross-sectional association with each later census, HC1 SE.
+LW <- L[year >= LAST_WIN[1] & year <= LAST_WIN[2] & haz == TRUE, .(late_haz = uniqueN(estab_id)), by = GEOID]
+pl <- merge(cen_late, LW, by = "GEOID", all.x = TRUE)[is.na(late_haz), late_haz := 0]
+pl <- merge(pl, data.table(GEOID = tr$GEOID, area_km2 = as.numeric(st_area(tr)) / 1e6, dist_km = tr$dist_km), by = "GEOID")[pop >= 200]
+pl[, `:=`(late_d = late_haz / area_km2, pop_d = pop / area_km2)]
+R3 <- rbindlist(lapply(OUTS, function(yv) rbindlist(lapply(LATE, function(cy) { d <- pl[census == cy & !is.na(get(yv))]; if (nrow(d) < 40) return(NULL)
+  m <- lm(as.formula(paste(yv, "~ log1p(late_d) + log1p(pop_d) + dist_km")), d); cf <- lmtest::coeftest(m, vcov. = sandwich::vcovHC(m, type = "HC1"))
+  data.table(outcome = yv, census = cy, term = "log hazardous density 1983-1992", b = cf[2, 1], se = cf[2, 2], p = cf[2, 4], tracts = nrow(d)) }))))
+fwrite(R3, "data/results/ej_panel_legacy_sites.csv"); print(R3)
+file.copy(file.path("data/results", c("ej_panel_models.csv", "ej_panel_reverse.csv", "ej_panel_by_decade.csv", "ej_panel_legacy_sites.csv")), "app/data", overwrite = TRUE)
 print(R1); print(R2)
 message("Note: the LTDB's 2010 values are ACS 2008-12 estimates (sampling error); treat 2010 coefficients with care.")

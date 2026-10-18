@@ -47,7 +47,7 @@ rd_opt <- function(f, ...) if (file.exists(dd(f))) read.csv(dd(f), ...) else NUL
 den_tr   <- if (file.exists(dd("co_tracts_2010.geojson"))) st_read(dd("co_tracts_2010.geojson"), quiet = TRUE) |> mutate(GEOID = as.character(GEOID), core = as.logical(core) %in% TRUE) else NULL
 den_pan  <- rd_opt("tract_panel.csv", colClasses = c(GEOID = "character")); if (!is.null(den_pan)) { den_pan$core <- as.logical(den_pan$core) %in% TRUE; for (k in c("p_owner", "mval_2020", "mrent_2020", "hmda_denial", "hmda_denial_hisp", "hmda_denial_black", "hmda_pct_hisp_apps", "hmda_apps")) if (!k %in% names(den_pan)) den_pan[[k]] <- NA_real_ }
 hmda_g <- rd_opt("hmda_by_grade.csv"); hmda_m <- rd_opt("hmda_grade_model.csv")
-ej_mod   <- rd_opt("ej_panel_models.csv"); ej_rev <- rd_opt("ej_panel_reverse.csv"); ej_dec <- rd_opt("ej_panel_by_decade.csv")
+ej_mod   <- rd_opt("ej_panel_models.csv"); ej_rev <- rd_opt("ej_panel_reverse.csv"); ej_dec <- rd_opt("ej_panel_by_decade.csv"); ej_late <- rd_opt("ej_panel_legacy_sites.csv")
 cells    <- rd_opt("corridor_cells.csv"); eg <- rd_opt("corridor_eg.csv"); trans <- rd_opt("corridor_transitions.csv")
 ed80     <- rd_opt("denver_1880_eds.csv"); ed80_poly <- if (file.exists(dd("denver_1880_eds.geojson"))) st_read(dd("denver_1880_eds.geojson"), quiet = TRUE) |> mutate(ED = as.integer(ED)) else NULL; f80 <- rd_opt("denver_1880_firms.csv"); d80 <- rd_opt("denver_1880_distance.csv"); m80 <- rd_opt("denver_1880_models.csv"); g80 <- rd_opt("denver_1880_ed_groups.csv")
 city1880 <- rd_opt("denver_city_1880_1940.csv")
@@ -228,9 +228,11 @@ ui <- page_navbar(id = "nav",
       card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_den", height = "62vh")))),
     layout_columns(col_widths = c(6, 6),
       card(card_header(textOutput("pan_title")), plotlyOutput("p_pan", height = 380),
-           tags$small(class = "text-muted", "Population-weighted means over the tracts with a census value that year (the tracted area grows over time; see the counts in the hover text). 'Legacy only' = tracts whose hazardous firms had all left by that decade.")),
+           checkboxInput("pan_bal", "Same tracts throughout: only tracts with a value in every census the measure exists", TRUE),
+           uiOutput("pan_note"),
+           tags$small(class = "text-muted", "Population-weighted means. Points resting on fewer than 15 tracts are not drawn (they swing on one or two neighbourhoods). Before 1960 only the city of Denver was tracted, so a Colorado series starts as a Denver series; with 'same tracts throughout' every point uses one fixed set of tracts. 'Legacy only' = tracts whose hazardous firms had all left by that decade. 2000, 2010 and 2020 all use the 1983–1992 listings (no complete directory after 1992), so the groups are identical in those three censuses and the lines show how the same places changed.")),
       card(card_header("Panel models (Denver core): does industry predict who moves in, or do residents predict where industry goes?"), uiOutput("ej_models"),
-           tags$small(class = "text-muted", "Hybrid (within/between) models after Marlow, Frickel & Elliott (2020), the 185 tracts of Denver and its first-ring suburbs within 10 km of downtown, 1970–2010, directory editions 1970/1980/1990/1999/2002, tract-clustered SE; the between part also as a spatial error model. Reproduce with Rscript R/ej_panel.R.")))
+           tags$small(class = "text-muted", "Hybrid (within/between) models after Marlow, Frickel & Elliott (2020), the 185 tracts of Denver and its first-ring suburbs within 10 km of downtown. The within/between panel uses the censuses that have a complete directory edition in the same year (1970, 1980, 1990), hazardous-sector establishments, tract-clustered SE. 2000–2020 have no contemporaneous directory and are modelled census by census on 1983–1992 listings (legacy-site exposure). Reproduce with Rscript R/ej_panel.R.")))
     ),
   nav_panel("Denver 1880–2020",
     layout_columns(col_widths = c(3, 6, 3),
@@ -854,12 +856,12 @@ server <- function(input, output, session) {
     y <- as.integer(input$pan_year)
     if (county_mode()) { d <- st_drop_geometry(co_cnty[co_cnty$census == y, ])
       return(HTML(sprintf("<small class='text-muted'>%s: %s counties (%s with full-count totals) · IPUMS full count: Black, foreign born, Mexican-born, Hispanic (inferred), laborers; no poverty</small>", y, nrow(d), sum(!is.na(d$pop))))) }
-    d <- den_pan[den_pan$census == y, ]
+    d <- den_pan[den_pan$census == y & (input$pan_area != "core" | den_pan$core), ]
     ok <- sapply(c("p_black", "p_hisp", "p_fb", "p_pov", "p_owner", "mval_2020", "mrent_2020"), function(v) any(!is.na(d[[v]])))
     HTML(sprintf("<small class='text-muted'>%s: %s tracts with data · %s</small>", y, format(sum(!is.na(d$pop) & d$pop > 0), big.mark = ","),
-                 paste(ifelse(ok, "<span style='color:#1b7837'>&#10003;</span>", "<span style='color:#b2182b'>&#10007;</span>"), c("Black", "Hispanic", "foreign born", "poverty", "ownership", "home value", "rent"), collapse = " "))) })
+                 paste0(c("Black", "Hispanic", "foreign born", "poverty", "ownership", "home value", "rent"), "&nbsp;", ifelse(ok, "<span style='color:#1b7837'>&#10003;</span>", "<span style='color:#b2182b'>&#10007;&nbsp;(not in this census)</span>"), collapse = " · "))) })
   observe({ if (input$pan_area == "core" && !county_mode()) leafletProxy("map_den") |> setView(-104.97, 39.74, 11) else leafletProxy("map_den") |> setView(-105.3, 39.2, 7) })
-  output$pan_title <- renderText(sprintf("Who lived in the industrial tracts? Mean composition of %s tracts with and without an active hazardous firm (1940\u20132020)", if (input$pan_area == "core") "Denver-core" else "Colorado"))
+  output$pan_title <- renderText(sprintf("Who lived in the industrial tracts? Mean composition of %s tracts with and without a hazardous firm (1940\u20132020)", if (input$pan_area == "core") "Denver-core" else "Colorado"))
   pan_firms <- reactive({   # hazardous firms of the sidebar's sectors active in the decade ending in the census year
     y <- as.integer(input$pan_year); a <- if (y <= 1960) c(y - 9, y) else if (y == 1970) c(1961, 1970) else if (y >= 2000) c(1983, 1992) else c(y - 9, y)
     if (y <= 1960) { h <- sel_hist(); if (is.null(h)) return(NULL)
@@ -899,13 +901,28 @@ server <- function(input, output, session) {
     v <- input$pan_var; lab <- names(PAN_VARS)[PAN_VARS == v]
     validate(need(v %in% c("p_black", "p_white", "p_hisp", "p_fb", "p_pov", "p_owner", "mval_2020", "mrent_2020"), paste0("'", lab, "' is observed once (HMDA 2018-21, shown on the 2020 map), so there is no series to plot; choose a census measure.")),
              need(v %in% names(den_pan) && any(!is.na(den_pan[[v]])), paste0("'", lab, "' is not in the tract panel yet (rerun R/fetch_census.R and R/app_census_layers.R).")))
-    d <- den_pan |> filter(!is.na(.data[[v]]), !is.na(pop), pop > 0, if (input$pan_area == "core") core else TRUE) |>
-      mutate(group = case_when(firms_haz > 0 ~ "Active hazardous firm in tract", legacy_haz > 0 ~ "Legacy only (firms gone)", TRUE ~ "Never a hazardous firm")) |>
-      group_by(census, group) |> summarise(val = weighted.mean(.data[[v]], pop), tracts = n(), .groups = "drop")
-    if (!nrow(d)) return(NULL)
+    d <- pan_trend()$d |> filter(tracts >= 15)
+    validate(need(nrow(d) > 0, "Too few tracts with this measure to draw a series."))
     ggplotly(ggplot(d, aes(census, val, colour = group, group = group, text = sprintf("%s, %s: %s (%s tracts)", group, census, round(val, 1), tracts))) + geom_line() + geom_point(size = 2) +
                scale_colour_manual(values = c("Active hazardous firm in tract" = "#d1491f", "Legacy only (firms gone)" = "#7a4aa8", "Never a hazardous firm" = "#7f8c8d")) +
                scale_x_continuous(breaks = seq(1940, 2020, 10)) + labs(x = "Census", y = lab, colour = NULL) + theme_minimal(), tooltip = "text") |> hleg() })
+  pan_trend <- reactive({ v <- input$pan_var; req(v %in% names(den_pan))
+    b <- den_pan |> filter(!is.na(.data[[v]]), !is.na(pop), pop > 0, if (input$pan_area == "core") core else TRUE)
+    yrs <- sort(unique(b$census)); keep <- NULL
+    if (isTRUE(input$pan_bal)) { keep <- b |> count(GEOID) |> filter(n == length(yrs)) |> pull(GEOID); b <- b |> filter(GEOID %in% keep) }
+    d <- b |> mutate(group = case_when(firms_haz > 0 ~ "Active hazardous firm in tract", legacy_haz > 0 ~ "Legacy only (firms gone)", TRUE ~ "Never a hazardous firm")) |>
+      group_by(census, group) |> summarise(val = weighted.mean(.data[[v]], pop), tracts = n(), .groups = "drop")
+    list(d = d, yrs = yrs, n_bal = length(keep)) })
+  output$pan_note <- renderUI({ tt <- pan_trend(); d <- tt$d; drop <- d |> filter(tracts < 15)
+    HTML(paste0("<small>", if (isTRUE(input$pan_bal)) sprintf("Fixed set: <b>%s tracts</b> with a value in every census %s\u2013%s. ", tt$n_bal, min(tt$yrs), max(tt$yrs)) else "All tracts with a value each year (the set changes over time). ",
+                if (nrow(drop)) paste0("Not drawn (under 15 tracts): ", paste(sprintf("%s %s (%s)", drop$group, drop$census, drop$tracts), collapse = "; "), ".") else "", "</small>")) })
+  late_tab <- function() { if (is.null(ej_late)) return("")
+    OUT <- c(p_black = "% Black", p_white = "% White (race)", p_hisp = "% Hispanic", p_fb = "% foreign born", ppov = "% poverty", p_owner = "% owner-occupied", lmval = "log home value", lmrent = "log rent")
+    dd <- ej_late |> filter(outcome %in% names(OUT)) |> mutate(cell = sprintf("%+.2f%s<br><small>(%.2f)</small>", b, ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", ifelse(p < 0.1, "\u2020", ""))), se), outcome = OUT[outcome]) |>
+      select(census, outcome, cell) |> pivot_wider(names_from = outcome, values_from = cell)
+    paste0("<p><b>2000\u20132020: legacy-site exposure.</b> No complete directory edition exists after 1992, so each later census is related to the tract's density of hazardous establishments listed 1983\u20131992 (per log-unit; population density and distance to downtown controlled; HC1 SE):</p>",
+           "<table class='table table-sm' style='font-size:12px'><tr><th>Census</th>", paste0("<th>", names(dd)[-1], "</th>", collapse = ""), "</tr>",
+           paste0("<tr><td>", dd$census, "</td>", apply(dd[, -1], 1, function(z) paste0("<td>", ifelse(is.na(z), "\u2013", z), "</td>", collapse = "")), "</tr>", collapse = ""), "</table>") }
   output$ej_models <- renderUI({ if (is.null(ej_mod)) return(NULL)
     TERMS <- c(act_w = "Within tract: change in active-firm density over time", act_b = "Between tracts: average active-firm density", leg_b = "Legacy density (firms gone before 1970)")
     OUT <- c(p_black = "% Black", p_white = "% White (race)", p_hisp = "% Hispanic", p_fb = "% foreign born", ppov = "% poverty", p_owner = "% owner-occupied", lmval = "log home value", lmrent = "log rent")
@@ -916,13 +933,14 @@ server <- function(input, output, session) {
     dec <- if (is.null(ej_dec)) "" else { dd <- ej_dec |> filter(term == "act_w", outcome %in% names(OUT)) |> mutate(cell = sprintf("%+.1f%s", b, ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", ifelse(p < 0.1, "†", "")))), outcome = OUT[outcome]) |> select(census, outcome, cell) |> pivot_wider(names_from = outcome, values_from = cell)
       paste0("<p><b>Census by census</b> (the within-tract association, same controls, HC1 SE):</p><table class='table table-sm' style='font-size:12px'><tr><th>Census</th>", paste0("<th>", names(dd)[-1], "</th>", collapse = ""), "</tr>",
              paste0("<tr><td>", dd$census, "</td>", apply(dd[, -1], 1, function(z) paste0("<td>", ifelse(is.na(z), "–", z), "</td>", collapse = "")), "</tr>", collapse = ""), "</table>") }
-    HTML(paste0("<p><b>Who moves in after industry arrives?</b> Pooled over all five censuses 1970\u20132010 (898 tract-years): effect on the outcome (percentage points; log points for value and rent) per log-unit of hazardous-firm density; (SE); ** p&lt;0.01, * p&lt;0.05, † p&lt;0.1. Outcomes appear when the census panel provides them for 1970\u20132010 (White, ownership, value and rent after rerunning fetch_census.R and ej_panel.R).</p>",
+    HTML(paste0("<p><b>Who moves in after industry arrives?</b> Pooled over the three censuses with a complete directory edition in the same year, 1970, 1980 and 1990 (534 tract-years): association with the outcome (percentage points; log points for value and rent) per log-unit of hazardous-establishment density; (SE); ** p&lt;0.01, * p&lt;0.05, † p&lt;0.1.</p>",
                 "<table class='table table-sm' style='font-size:12px'><tr><th>Predictor</th>", paste0("<th>", names(h)[-1], "</th>", collapse = ""), "</tr>",
                 paste0("<tr><td>", h$term, "</td>", apply(h[, -1], 1, function(z) paste0("<td>", z, "</td>", collapse = "")), "</tr>", collapse = ""), "</table>",
                 if (!is.null(r)) paste0("<p><b>Does the population predict where industry goes next?</b> Change in a tract's active firms by the next edition, per percentage point of the predictor (tract density, population, distance and year controlled): ",
                                         paste(sprintf("%s %s", OUT[r$predictor], r$cell), collapse = "; "), ".</p>") else "",
-                dec, "<p><small>Reading: Hispanic share rose in tracts as industry densified (within) and was higher where industry was dense (between); poverty followed the between pattern; Black share was unrelated at the tract scale; ",
-                "foreign-born share was higher where firms had already left (legacy). In reverse, a higher foreign-born share predicted fewer new firms and higher poverty more.</small></p>")) })
+                dec, late_tab(), "<p><small>Reading: within a tract, a rise or fall in hazardous-establishment density between 1970 and 1990 was not followed by a change in Hispanic share or poverty in the same decade; the association is between places: ",
+                "tracts with dense industry had larger Hispanic shares and lower home values, and tracts whose firms had already gone by 1970 had more poverty and fewer owners. The same places still differ in 2000, 2010 and 2020 (table above). ",
+                "Black share is not associated with industry at the tract scale. In reverse, a larger foreign-born share predicted fewer new firms by the next edition.</small></p>")) })
   DL_FILES <- c(dl_zon_geo = "zoning_1929.geojson", dl_zon_holc = "zoning_shares_holc.csv", dl_zon_tr = "zoning_shares_tracts.csv", dl_zon_g = "holc_zoning_by_grade.csv", dl_holc_bd = "holc_boundary.csv", dl_holc_m = "holc_tract_models.csv",
                 dl_sf1 = "site_fate_denver.csv", dl_sf2 = "site_fate_denver_pre1960.csv", dl_sf3 = "site_fate_summary.csv")
   DL_LAB <- c(dl_zon_geo = "1925 zoning districts, 1929 map (GeoJSON)", dl_zon_holc = "Zoning share by HOLC area (CSV)", dl_zon_tr = "Zoning share by 2010 tract (CSV)", dl_zon_g = "Zoning by HOLC grade (CSV)", dl_holc_bd = "HOLC boundary gaps with rail and zoning controls (CSV)", dl_holc_m = "Change in tract outcomes by HOLC class (CSV)",
