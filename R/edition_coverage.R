@@ -3,8 +3,8 @@
 # Two series: the Colorado State Business Directory 1871-1956 (full-volume scans from CU Boulder's digital library, hazardous trades
 # extracted by keyword; pipeline/historical/) and the Directory of Colorado Manufacturers 1961-2002 (page scans from CU Boulder
 # Libraries, every manufacturer with a code; pipeline/). For the manufacturers' directory the number of scanned pages is the
-# best guide to completeness (about 40 listings per page in every edition); the six editions flagged incomplete are the ones whose
-# scans stop part-way through the geographic section or have missing pages (see the notes).
+# best guide to completeness (about 40 listings per page in every edition); the twelve editions flagged incomplete are the ones whose
+# scans stop part-way through the geographic section (which runs through the counties or cities alphabetically) or have missing pages.
 suppressPackageStartupMessages(library(data.table))
 # ---- 1871-1956: business directory
 H <- fread("data/historical/CO_pre1960_hazardous_listings.csv")
@@ -22,6 +22,12 @@ INC <- c("1961" = "geographic section by county, pp. 2-88, with 31 pages missing
          "1984" = "scan (file named DCM_1961_copy) ends with Denver on p. 73; all cities after Denver (Durango-Yuma) missing",
          "1985" = "part 1 has only pp. 2-10 (Berthoud-Brighton); cities before Berthoud and Broomfield-Delta (incl. Colorado Springs, Commerce City) missing; part 2 (Denver-Yuma) complete except p. 43",
          "1993" = "only part 1 received (Alamosa-Denver, pp. 3-74); all cities after Denver missing; 37% of listings carry no industry code",
+         "1971" = "single file ends at Louviers (Douglas County, p. 41); counties Eagle-Weld missing, incl. El Paso (Colorado Springs), Jefferson, Larimer, Mesa, Pueblo, Weld",
+         "1976" = "single file ends with Denver (p. 51); counties after Denver missing (Douglas-Weld, incl. El Paso, Jefferson, Larimer, Mesa, Pueblo, Weld)",
+         "1979" = "single file ends with Colorado Springs (El Paso County, p. 60); Fremont-Weld missing, incl. Jefferson (Arvada, Golden, Lakewood, Wheat Ridge), Larimer, Mesa, Pueblo, Weld",
+         "1982" = "single file ends with Denver (p. 62); counties after Denver missing",
+         "1986" = "two files end with Fort Collins (p. 42 of part 2); cities Fort Morgan-Yuma missing, incl. Golden, Grand Junction, Greeley, Lakewood, Littleton, Longmont, Loveland, Pueblo, Wheat Ridge",
+         "1999" = "single file runs Boulder-Denver (pp. 4-91); cities before Boulder (Agate-Berthoud, incl. Arvada, Aurora) and after Denver missing",
          "2002" = "only part 2 received (Englewood-Woodland Park); part 1 (Agate-Denver, incl. Denver, Aurora, Boulder, Colorado Springs) missing")
 M[, complete := !as.character(year) %in% names(INC)]; M[, note := ifelse(complete, "geographic section complete as scanned", INC[as.character(year)])]
 E <- rbind(B, M)[order(year)]

@@ -403,7 +403,7 @@ The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because
 `Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
 `Rscript R/benchmarks.R` (CBP, NHGIS county manufacturing and the Atack samples; needs network and the NHGIS key) →
 `Rscript R/edition_coverage.R` (per-edition pages, listings, hazardous firms and completeness for both directory series → app/data/edition_coverage.csv;
-six manufacturers' directory editions — 1961, 1962, 1984, 1985, 1993, 2002 — are partial scans, flagged on the Trends and Data tabs).
+twelve of the 25 manufacturers' directory editions are partial scans that stop part-way through the geographic section — complete: 1965–68, 1970, 1973–74, 1977, 1980, 1983, 1988, 1990, 1992 — flagged on the Trends and Data tabs; the complete editions are the ones that match CBP best).
 
 Network inputs change over time (FRS, TRI, CDPHE layers are live); the published results used downloads of 16 October 2026.
 OCR output can differ slightly across Tesseract versions, which is why the OCR output is saved in `data/ocr/`.
