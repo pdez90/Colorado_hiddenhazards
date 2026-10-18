@@ -84,8 +84,8 @@ SH <- rbind(data.table(layer = "Land area of HOLC areas", t(as.vector(tapply(gr$
             data.table(layer = "Population 1940", t(as.vector(tapply(gr$pop_1940, factor(gr$class, CLS), sum, na.rm = TRUE)))),
             data.table(layer = "Hazardous trades before the map (1871-1937)", t(as.vector(cnt(hp[hp$first_year <= 1937, ])))),
             data.table(layer = "Hazardous trades after the map (1938-1956)", t(as.vector(cnt(hp[hp$first_year <= 1956 & hp$last_year >= 1938, ])))),
-            data.table(layer = "Hazardous-sector manufacturers 1961-2002", t(as.vector(cnt(pt(sites))))),
-            data.table(layer = "Sites on no current inventory (1961-2002)", t(as.vector(cnt(pt(sites[radar == "Not on any list"]))))),
+            data.table(layer = "Hazardous-sector manufacturers 1965-1992 (complete editions)", t(as.vector(cnt(pt(sites))))),
+            data.table(layer = "Sites with no match in searched inventories (1965-1992)", t(as.vector(cnt(pt(sites[radar == "Not on any list"]))))),
             data.table(layer = "EPA TRI facilities (today)", t(as.vector(cnt(pt(tri))))),
             data.table(layer = "Cleanup / contamination sites (today)", t(as.vector(cnt(pt(cln))))))
 setnames(SH, c("layer", CLS)); SH[is.na(SH)] <- 0; SH[, total := A + B + C + D + Industrial + Commercial]
@@ -157,15 +157,15 @@ ZS_T <- if (file.exists("data/results/zoning_1929/zoning_shares_tracts.csv")) fr
 ZS_H <- if (file.exists("data/results/zoning_1929/zoning_shares_holc.csv")) fread("data/results/zoning_1929/zoning_shares_holc.csv") else NULL
 if (!is.null(ZS_H)) { ZG <- ZS_H[grade %in% c("A", "B", "C", "D"), .(areas = .N, km2 = round(sum(area_km2), 1), pct_industrial_1929 = round(100 * sum(share_industrial_1929 * area_km2) / sum(area_km2), 1), pct_commercial_1929 = round(100 * sum(share_commercial_1929 * area_km2) / sum(area_km2), 1)), by = grade][order(grade)]
   fwrite(ZG, file.path(O, "holc_zoning_by_grade.csv")); file.copy(file.path(O, "holc_zoning_by_grade.csv"), A, overwrite = TRUE); message("1929 zoning by HOLC grade:"); print(ZG) } else message("no 1929 zoning shares (run R/zoning_1925.R); boundary and change models will not be zoning-adjusted")
-# A. industry by grade and period (street-level hazardous trades 1891-1956; hazardous-sector manufacturers 1961-2002), per km2 of each grade
-PER <- list(c(1891, 1905), c(1906, 1920), c(1921, 1937), c(1938, 1956), c(1961, 1980), c(1981, 2002))
+# A. industry by grade and period (street-level hazardous trades 1891-1956; hazardous-sector manufacturers, complete editions 1965-1992), per km2 of each grade
+PER <- list(c(1891, 1905), c(1906, 1920), c(1921, 1937), c(1938, 1956), c(1965, 1980), c(1981, 1992))   # the manufacturers' directory enters through its complete editions 1965-1992
 sp <- pt(sites[sites$fe_hazard %in% c(TRUE, "True"), ]); sp$first_year <- sites$first_year[!is.na(sites$lat) & sites$fe_hazard %in% c(TRUE, "True")]; sp$last_year <- sites$last_year[!is.na(sites$lat) & sites$fe_hazard %in% c(TRUE, "True")]
-firms_in <- function(a, b) { src <- if (a >= 1961) sp else hp; src[src$first_year <= b & src$last_year >= a, ] }
+firms_in <- function(a, b) { src <- if (a >= 1960) sp else hp; src[src$first_year <= b & src$last_year >= a, ] }
 IND <- rbindlist(lapply(PER, function(pr) { f <- firms_in(pr[1], pr[2]); f$grade <- side_of(f); f$band <- in_band(f, 400)
   g <- as.data.table(st_drop_geometry(GR))[, .(km2 = as.numeric(sum(st_area(GR[GR$grade == .BY$grade, ]))) / 1e6), by = grade]
   d <- merge(g, as.data.table(st_drop_geometry(f))[!is.na(grade), .(firms = .N, firms_band = sum(band)), by = grade], by = "grade", all.x = TRUE)
   d[is.na(firms), `:=`(firms = 0L, firms_band = 0L)]; d[, `:=`(period = sprintf("%d-%d", pr[1], pr[2]), start = pr[1], per_km2 = round(firms / km2, 2), km2 = round(km2, 1))]; d }))
-IND[, source := ifelse(start >= 1961, "Directory of Colorado Manufacturers (hazardous sectors)", "Colorado State Business Directory (hazardous trades, street level)")]
+IND[, source := ifelse(start >= 1960, "Directory of Colorado Manufacturers (hazardous sectors)", "Colorado State Business Directory (hazardous trades, street level)")]
 setorder(IND, start, grade); fwrite(IND, file.path(O, "holc_industry_periods.csv")); file.copy(file.path(O, "holc_industry_periods.csv"), A, overwrite = TRUE)
 print(dcast(IND, period ~ grade, value.var = "per_km2"))
 # B. boundary comparison, census by census: units whose centroid lies within 400 m (districts) / 800 m (tracts) of both a C and a D area
