@@ -31,8 +31,11 @@ ipums_ed <- function(year) {
   x <- ip[YEAR == year & COUNTYICP %in% c(50, 310)]
   if (year == 1940) { e <- sprintf("%07d", x$ENUMDIST); x[, ED := paste0(as.integer(substr(e, 3, 6)), c("0" = "", "1" = "A", "2" = "B", "3" = "C")[substr(e, 7, 7)])]
   } else x[, ED := as.character(ENUMDIST %% 100000)]
-  x[, .(pop = sum(pop), black = sum(black), fb = sum(fb), fb_mexico = sum(fb_mexico), fb_europe = sum(fb_europe), fb_asia = sum(fb_asia), hisp = sum(hisp),
-        foreign_parentage = sum(foreign_parentage), laborers = sum(laborers)), by = ED]
+  cnt <- setdiff(names(x)[vapply(x, is.numeric, TRUE)], c("YEAR", "COUNTYICP", "ENUMDIST", "denver_city", grep("^(mean_|median_)", names(x), value = TRUE)))
+  avg <- grep("^(mean_|median_)", names(x), value = TRUE)
+  out <- x[, c(lapply(.SD, sum), list(dummy = 0)), by = ED, .SDcols = cnt][, dummy := NULL]
+  if (length(avg)) out <- merge(out, x[, lapply(.SD, function(v) if (all(is.na(v))) NA_real_ else weighted.mean(v, pop, na.rm = TRUE)), by = ED, .SDcols = avg], by = "ED")
+  out
 }
 
 geocode_year <- function(year, g) {

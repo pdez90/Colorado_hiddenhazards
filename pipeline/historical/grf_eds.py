@@ -27,15 +27,20 @@ YEARS = [int(a) for a in sys.argv[1:]] or [1880, 1900, 1910, 1920, 1930, 1940]
 ip = pd.read_csv('work/census/denver_ed_1880_1940.csv')
 
 def ipums_ed(year):
-    """IPUMS ENUMDIST -> the ED label used in the GRF (and in Brown's 1880 layer)."""
+    """IPUMS ENUMDIST -> the ED label used in the GRF (and in Brown's 1880 layer); sums counts, population-weights means/medians."""
     x = ip[(ip.YEAR == year) & (ip.COUNTYICP.isin([50, 310]))].copy()
     if year == 1940:
         e = x.ENUMDIST.astype(str).str.zfill(7)
         x['ED'] = e.str[2:6].astype(int).astype(str) + e.str[6].map({'0': '', '1': 'A', '2': 'B', '3': 'C'}).fillna('')
     else:
         x['ED'] = (x.ENUMDIST % 100000).astype(str)
-    x = x[x.ED.notna()]
-    return x.groupby('ED', as_index=False)[['pop', 'black', 'fb', 'fb_mexico', 'fb_europe', 'fb_asia', 'hisp', 'foreign_parentage', 'laborers']].sum()
+    avg = [c for c in x.columns if c.startswith(('mean_', 'median_'))]
+    cnt = [c for c in x.columns if c not in avg + ['YEAR', 'COUNTYICP', 'ENUMDIST', 'denver_city', 'denver', 'ED'] and pd.api.types.is_numeric_dtype(x[c])]
+    out = x.groupby('ED', as_index=False)[cnt].sum()
+    for c in avg:
+        w = x.assign(_w=x['pop'] * x[c].notna()).groupby('ED').apply(lambda g: np.average(g[c].fillna(0), weights=g['_w']) if g['_w'].sum() > 0 else np.nan, include_groups=False)
+        out[c] = out.ED.map(w)
+    return out
 
 def hn(s):
     m = re.search(r'(\d+)', str(s)); return int(m.group(1)) if m else None
