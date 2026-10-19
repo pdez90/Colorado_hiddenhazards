@@ -113,7 +113,7 @@ for (yv in c("people_of_color", "low_income", "enviroscreen_pctl", "pollution_cl
   m <- errorsarlm(fo, data = TT, listw = w, zero.policy = TRUE)
   cf <- summary(m)$Coef; LEG[[length(LEG) + 1]] <- data.table(outcome = yv, predictor = xv, b = cf[2, 1], se = cf[2, 2], p = cf[2, 4], lambda = m$lambda, n = nrow(TT))
 }
-LEG <- rbindlist(LEG); fwrite(LEG, "data/results/corridors/legacy_tract_models.csv")
+LEG <- rbindlist(LEG); fwrite(LEG, "data/results/corridors/legacy_tract_models.csv"); file.copy("data/results/corridors/legacy_tract_models.csv", "app/data", overwrite = TRUE)
 
 # ---------------------------------------------------------------- summary
 md <- c("# Industrial corridors: formation, clustering, succession, legacy", "",
