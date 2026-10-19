@@ -12,11 +12,11 @@ C <- ip[, .(EDs = .N, pop = sum(pop), black = sum(black), fb = sum(fb), fb_mexic
             foreign_parentage = sum(foreign_parentage), laborers = sum(laborers, na.rm = TRUE)), by = .(census = YEAR, icp = COUNTYICP)]
 C[, `:=`(fips = sprintf("08%03d", icp %/% 10), pct_black = round(100 * black / pop, 2), pct_fb = round(100 * fb / pop, 1), pct_fb_mexico = round(100 * fb_mexico / pop, 2),
          pct_hisp = round(100 * hisp / pop, 2), pct_laborers = round(100 * laborers / pop, 1))]
-hist <- fread("app/data/historical_sites.csv")[!is.na(lat)]
+hist <- fread("app/data/historical_sites.csv")[!is.na(lat) & fe_hazard %in% c(TRUE, "True")]   # Frickel & Elliott hazardous trades only, as everywhere
 hp <- st_transform(st_as_sf(hist[, .(hfirm, first_year, last_year, lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM)
 out <- list(); tab <- list()
 for (yr in c(1880, 1900, 1910, 1920, 1930, 1940)) {
-  shp <- Sys.glob(file.path(W, "*", sprintf("*county_%d*.shp", yr))); if (!length(shp)) { message(yr, ": county boundaries missing (run R/fetch_census.R)"); next }
+  shp <- Sys.glob(file.path(W, "*", sprintf("US_county_%d.shp", yr)))   # county boundaries only (not the tract-county files); if (!length(shp)) { message(yr, ": county boundaries missing (run R/fetch_census.R)"); next }
   S <- st_make_valid(st_transform(st_read(shp[1], quiet = TRUE), UTM)); S <- S[substr(S$GISJOIN, 1, 3) == "G08", ]
   S$icp <- as.integer(S$NHGISCTY); S$name <- if ("NHGISNAM" %in% names(S)) S$NHGISNAM else S$GISJOIN
   w <- st_within(hp[hp$first_year <= yr & hp$last_year >= yr - 9, ], S); f <- data.table(k = unlist(w))[, .(firms_haz = .N), by = k]

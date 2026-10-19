@@ -10,12 +10,11 @@ dir.create("data/results/corridors", showWarnings = FALSE)
 SIC2 <- c("20"="Food","22"="Textiles","23"="Apparel","24"="Lumber & wood","25"="Furniture","26"="Paper","27"="Printing","28"="Chemicals",
           "29"="Petroleum","30"="Rubber & plastics","31"="Leather","32"="Stone, clay & glass","33"="Primary metals","34"="Fabricated metals",
           "35"="Machinery","36"="Electronics","37"="Transportation eq.","38"="Instruments","39"="Misc. manufacturing")
-HAZ <- c("28","29","30","33","34","35","37")
 
 L <- fread("data/results/CO_directory_listings_1961-2002.csv", colClasses = c(sic = "character", zip = "character"))
 L <- L[geo_level %in% c("address", "address_approx") & !is.na(lat)]
 L[, sic2 := substr(sic, 1, 2)]; L[, sector := SIC2[sic2]]; L[is.na(sector), sector := "Other / not coded"]
-L[, hazardous := sic2 %in% HAZ]
+L[, hazardous := fe_hazard %in% c(TRUE, "True")]   # Frickel & Elliott hazardous sectors, the definition used everywhere (was SIC 28-30, 33-35, 37)
 xy <- st_coordinates(st_transform(st_as_sf(L, coords = c("lon", "lat"), crs = 4326), UTM)); L[, `:=`(x = xy[, 1], y = xy[, 2])]
 DEN <- c(x = 500250, y = 4399500)                      # downtown Denver (approx. 17th & Larimer), UTM 13N
 L[, metro := sqrt((x - DEN["x"])^2 + (y - DEN["y"])^2) <= 25000]
@@ -118,7 +117,7 @@ LEG <- rbindlist(LEG); fwrite(LEG, "data/results/corridors/legacy_tract_models.c
 
 # ---------------------------------------------------------------- summary
 md <- c("# Industrial corridors: formation, clustering, succession, legacy", "",
-        sprintf("Located establishments 1961-2002: %s statewide, %s in the Denver metro (25 km of downtown); 500 m cells with any manufacturer: %s (%s metro).",
+        sprintf("Located establishments in the 13 complete editions 1965-1992: %s statewide, %s in the Denver metro (25 km of downtown); 500 m cells with any manufacturer: %s (%s metro).",
                 format(uniqueN(L$estab_id), big.mark = ","), format(uniqueN(L[metro == TRUE]$estab_id), big.mark = ","), nrow(cells), sum(cells$metro)), "",
         "## Persistence classes of 500 m cells (metro)", "", "| class | cells | ever hazardous | with a pre-1960 street-level firm |", "|---|---|---|---|")
 cc <- cells[metro == TRUE, .(cells = .N, haz = sum(ever_haz), pre = sum(!is.na(pre1960_first))), by = class][order(-cells)]

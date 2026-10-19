@@ -1,0 +1,36 @@
+city,step,areas,km2,1965-1980,1981-1992
+Boulder,best,1,1.43,0,0
+Boulder,"business, industrial or fire district",1,0.36,0.307,4.143
+Boulder,middle,1,1.49,0.224,0.168
+Boulder,worst,1,3.8,1.228,1.184
+Colorado Springs,best,1,2.67,0.125,0.281
+Colorado Springs,"business, industrial or fire district",1,1.57,0.991,2.069
+Colorado Springs,middle,1,5.27,0.084,0.095
+Colorado Springs,worst,1,12.01,0.398,0.5
+Denver,best,18,19.1,0.111,0.105
+Denver,"business, industrial or fire district",2,17.1,4.023,3.627
+Denver,middle,20,41.24,0.213,0.188
+Denver,worst,16,27.17,2.896,3.165
+Fort Collins,best,1,1.32,0.42,0
+Fort Collins,"business, industrial or fire district",1,1.35,0.082,0.37
+Fort Collins,middle,1,1.71,0.065,0
+Fort Collins,worst,2,1.99,1.061,1.382
+Fort Morgan,best,2,1.46,0.61,0
+Fort Morgan,"business, industrial or fire district",1,0.13,0,0
+Fort Morgan,worst,1,0.98,0.114,0.256
+Grand Junction,best,1,0.68,0,0.369
+Grand Junction,"business, industrial or fire district",1,0.28,2.4,4.5
+Grand Junction,middle,2,3.47,0.895,1.943
+Grand Junction,worst,1,0.64,2.602,0.781
+Greeley,best,1,2.74,0.203,0.091
+Greeley,"business, industrial or fire district",1,1.71,1.363,2.191
+Greeley,middle,1,2.77,0.12,0.812
+Greeley,worst,1,1.59,0,0
+Longmont,best,1,0.5,0,0
+Longmont,"business, industrial or fire district",1,0.27,1.237,0.928
+Longmont,middle,1,1.34,0.249,0.187
+Longmont,worst,1,1.82,0.978,2.063
+Pueblo,best,6,2.93,0,0
+Pueblo,"business, industrial or fire district",1,1.62,1.101,1.238
+Pueblo,middle,16,15.13,0.228,0.264
+Pueblo,worst,10,5.71,0.467,0.656
