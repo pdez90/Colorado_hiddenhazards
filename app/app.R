@@ -121,7 +121,7 @@ tri <- in_den(tri); cleanup <- in_den(cleanup); schools <- in_den(schools); heal
 if (!is.null(hist)) hist <- in_den(hist); if (!is.null(radium)) radium <- in_den(radium); if (!is.null(cells)) cells <- in_den(cells)
 tracts <- tracts[lengths(st_intersects(st_point_on_surface(st_make_valid(tracts)), DEN_AREA)) > 0, ]
 # Colorado-wide results (R/statewide.R, R/corridors.R)
-co_reg <- rd_opt("county_regions_1880_1940.csv"); co_cor <- rd_opt("county_correlations_1880_1940.csv"); co_share <- rd_opt("regional_shares_1965_1992.csv")
+co_reg <- rd_opt("county_regions_1880_1940.csv"); co_cor <- rd_opt("county_correlations_1880_1940.csv"); co_share <- rd_opt("regional_shares_1965_1992.csv", check.names = FALSE)
 co_assoc <- rd_opt("tract_associations_1980_2020.csv"); co_gcd <- rd_opt("graded_cities_firm_density.csv"); co_gcl <- rd_opt("graded_cities_tract_lq_1970_2020.csv"); co_leg <- rd_opt("legacy_tract_models.csv")
 tract_df <- st_drop_geometry(tracts)
 # persistence: editions in which the site hosted a hazardous-sector firm, and span from first to last such edition
@@ -172,10 +172,9 @@ ui <- page_navbar(id = "nav",
   theme = bs_theme(version = 5, bootswatch = "flatly", primary = "#24589e", base_font = font_google("Public Sans", local = FALSE)),
   header = tags$style(HTML(".leaflet .info.legend { font-size: 11px; line-height: 1.25; max-width: 260px; } .leaflet-control-layers { font-size: 11.5px; } .leaflet-top.leaflet-left .info.legend { margin-top: 6px; } @media (max-width: 900px) { .leaflet-control-layers-expanded { display: none; } }")),
   sidebar = sidebar(width = 300,
-    conditionalPanel("['Map','Trends','Census tracts over time','Neighborhoods','Nearby schools & health care','Data & downloads'].includes(input.nav)", do.call(tagList, filters)),
-    conditionalPanel("!['Map','Trends','Census tracts over time','Neighborhoods','Nearby schools & health care','Data & downloads'].includes(input.nav)",
-      tags$small(class = "text-muted", "The site filters apply to the Map, Trends, Census tracts, Neighborhoods, Nearby schools and Data tabs. This tab uses its own controls.")),
-    conditionalPanel("input.nav == 'Census tracts over time'", tags$small(class = "text-muted", "On this tab the sector and status filters select the firms drawn on the map; the year slider is not used (each census shows the firms of its own decade), and the census charts are not filtered."))),
+    conditionalPanel("['Map','Trends','Neighborhoods','Nearby schools & health care','Data & downloads'].includes(input.nav)", do.call(tagList, filters)),
+    conditionalPanel("!['Map','Trends','Neighborhoods','Nearby schools & health care','Data & downloads'].includes(input.nav)",
+      tags$small(class = "text-muted", "The site filters apply to the Map, Trends, Neighborhoods, Nearby schools and Data tabs. This tab uses its own controls."))),
   nav_panel("Map",
     layout_columns(col_widths = c(9, 3),
       card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map", height = "72vh"))),
@@ -217,29 +216,6 @@ ui <- page_navbar(id = "nav",
                     "The index needs every manufacturer of an edition as the baseline, so it uses the 13 complete manufacturers' directory editions (1965–1992). The statewide index, the industry mix and sector succession are on the Colorado trends tab.")),
     ),
   nav_menu("Historical change",
-  nav_panel("Census tracts over time",
-    layout_columns(col_widths = c(3, 9),
-      card(card_header("Denver census tracts 1940–2020 vs. industry"),
-           radioButtons("pan_year", "Decennial census", choices = PAN_YEARS, selected = 1970, inline = TRUE),
-           uiOutput("pan_avail"),
-           radioButtons("pan_area", "Area", c("Denver study area (147 tracts within 10 km of downtown)" = "core"), inline = TRUE),
-           selectInput("pan_var", "Shade tracts by", PAN_VARS, selected = "p_hisp"),
-           checkboxInput("pan_firms", "Show hazardous firms active in the decade", TRUE),
-           tags$small(class = "text-muted",
-             if (FALSE) "1880\u20131930 (and 1940 as a check) are counties, from the IPUMS full-count census files aggregated by county on that census's county boundaries, with all pre-1960 hazardous trades (street- or town-level) of the preceding decade. ",
-             "1940\u20132020 tract values are NHGIS census tables on 2010 tract boundaries: population, race and Hispanic origin for 1990\u20132020 from NHGIS's standardised time series; everything else (all 1940\u20131980 tables; 1990\u20132020 nativity, poverty and housing) area-weighted from each census's own tracts. Shares are computed after interpolation, foreign born and poverty over the universe of their own table; tract-years with fewer than 200 residents are left blank. Only cities were tracted early (light grey on the map = not tracted that census): Denver in 1940 and 1950; the Denver, Boulder, Colorado Springs and Pueblo metros from 1960; Fort Collins, Greeley and Grand Junction from 1970–1980; the whole state from 1990. ",
-             "Firms are the sites in the sidebar's sectors listed in a directory edition of the decade ending in the census year (1965–1992 complete editions of the manufacturers' directory; before 1961, street-level pre-1960 trades; 2000, 2010 and 2020 use the last complete decade, 1983–1992, so those columns measure proximity to historically listed sites). ",
-             "Hispanic on tracts: Spanish surname (1960), Spanish American (1970), Spanish origin (1980), Hispanic (1990+); tract tables have no Hispanic measure before 1960 (the 1880\u20131940 county and district values are IPUMS HISPAN, which IPUMS infers from birthplace, parents' birthplace and surname \u2014 a different measure). Poverty: 1970+. Rent: contract rent 1940\u20131950, gross rent from 1960."),
-           hr(), downloadButton("dl_panel", "Download tract panel CSV")),
-      card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_den", height = "62vh")))),
-    layout_columns(col_widths = c(6, 6),
-      card(card_header(textOutput("pan_title")), plotlyOutput("p_pan", height = 380),
-           checkboxInput("pan_bal", "Same tracts throughout: only tracts with a value in every census the measure exists", TRUE),
-           uiOutput("pan_note"),
-           tags$small(class = "text-muted", "Population-weighted means. Points resting on fewer than 15 tracts are not drawn (they swing on one or two neighbourhoods). Fewer of the study tracts were tracted and populated before 1960; with 'same tracts throughout' every point uses one fixed set of tracts. 'Legacy only' = tracts whose hazardous firms had all left by that decade. 2000, 2010 and 2020 all use the 1983–1992 listings (no complete directory after 1992), so the groups are identical in those three censuses and the lines show how the same places changed.")),
-      card(card_header("Panel models (Denver core): does industry predict who moves in, or do residents predict where industry goes?"), uiOutput("ej_models"),
-           tags$small(class = "text-muted", "Hybrid (within/between) models after Marlow, Frickel & Elliott (2020), the 147 2010 tracts whose centroid lies within 10 km of downtown (any county). The within/between panel uses the censuses that have a complete directory edition in the same year (1970, 1980, 1990), hazardous-sector establishments, tract-clustered SE. 2000–2020 have no contemporaneous directory and are modelled census by census on 1983–1992 listings (legacy-site exposure). Reproduce with Rscript R/ej_panel.R.")))
-    ),
   nav_panel("Denver 1880–2020",
     layout_columns(col_widths = c(3, 6, 3),
       card(card_header("Denver by enumeration district (1880–1940) and census tract (1950–2020)"),
@@ -251,7 +227,7 @@ ui <- page_navbar(id = "nav",
              "District boundaries are this project's reconstruction (see About the data): every household address in Brown University's Geographic Reference Files for Denver (1900–1940) ",
              "was geocoded with the project's offline TIGER geocoder and the districts drawn as the dissolved Voronoi cells of their addresses; 1880 uses Brown's geocoded buildings the same way. ",
              "Composition is the IPUMS full count aggregated by district. Firms: the hazardous trades of the business directories listed in the preceding decade, at their street address (1878–1885 firms on the 1880 grid for 1880). ",
-             tags$b("From 1950 the unit changes to the census tract"), " (the 147 2010 tracts within 10 km of downtown; earlier censuses interpolated onto them as on the Census tracts tab), because census microdata are sealed for 72 years and the address files that let us draw districts stop at 1940. ",
+             tags$b("From 1950 the unit changes to the census tract"), " (the 147 2010 tracts within 10 km of downtown; earlier censuses interpolated onto them; see About the data), because census microdata are sealed for 72 years and the address files that let us draw districts stop at 1940. ",
              "The same analyses are run on tracts with the tract tables' measures (race, Hispanic origin, nativity, poverty, tenure, value, rent); firms of the decade are the manufacturers' directory sites from 1970 (2000, 2010 and 2020 use the last complete directory decade, 1983–1992)."),
            ),
       card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_1880", height = "70vh"))),
@@ -271,7 +247,14 @@ ui <- page_navbar(id = "nav",
            hr(), tags$b("Residents by distance to the nearest hazardous firm"), tableOutput("t_d80"),
            tags$b("Enumeration districts with vs. without a hazardous firm (Brown's ED composition)"), tableOutput("t_g80")),
       card(card_header("Person-level odds of living farther from a hazardous firm (1880)"), tableOutput("t_m80"),
-           tags$small(class = "text-muted", "Odds ratio per log-metre of distance (> 1 = more common farther away), building-clustered SE. Foreign-born (German, Canadian, other), Black and Chinese residents lived closer; native-born whites, British- and Scandinavian-born lived farther; employed adults' SEI rose with distance; unskilled laborers (SEI 8) were, on average, farther out.")))
+           tags$small(class = "text-muted", "Odds ratio per log-metre of distance (> 1 = more common farther away), building-clustered SE. Foreign-born (German, Canadian, other), Black and Chinese residents lived closer; native-born whites, British- and Scandinavian-born lived farther; employed adults' SEI rose with distance; unskilled laborers (SEI 8) were, on average, farther out."))),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header(textOutput("pan_title")), selectInput("pan_var", "Measure", PAN_VARS[PAN_VARS %in% c("p_black", "p_white", "p_hisp", "p_fb", "p_pov", "p_owner", "mval_2020", "mrent_2020")], selected = "p_hisp"), plotlyOutput("p_pan", height = 380),
+           checkboxInput("pan_bal", "Same tracts throughout: only tracts with a value in every census the measure exists", TRUE),
+           uiOutput("pan_note"),
+           tags$small(class = "text-muted", "Population-weighted means. Points resting on fewer than 15 tracts are not drawn (they swing on one or two neighbourhoods). Fewer of the study tracts were tracted and populated before 1960; with 'same tracts throughout' every point uses one fixed set of tracts. 'Legacy only' = tracts whose hazardous firms had all left by that decade. 2000, 2010 and 2020 all use the 1983–1992 listings (no complete directory after 1992), so the groups are identical in those three censuses and the lines show how the same places changed."), downloadButton("dl_panel", "Download tract panel CSV (study area)", class = "btn-sm")),
+      card(card_header("Panel models (Denver core): does industry predict who moves in, or do residents predict where industry goes?"), uiOutput("ej_models"),
+           tags$small(class = "text-muted", "Hybrid (within/between) models after Marlow, Frickel & Elliott (2020), the 147 2010 tracts whose centroid lies within 10 km of downtown (any county). The within/between panel uses the censuses that have a complete directory edition in the same year (1970, 1980, 1990), hazardous-sector establishments, tract-clustered SE. 2000–2020 have no contemporaneous directory and are modelled census by census on 1983–1992 listings (legacy-site exposure). Reproduce with Rscript R/ej_panel.R.")))
     ),
   nav_panel("What became of the sites",
     layout_columns(col_widths = c(3, 6, 3),
@@ -471,7 +454,7 @@ ui <- page_navbar(id = "nav",
           tags$dd("Every 500 m grid cell (UTM 13N) with a street-level-geocoded manufacturer in the complete editions 1965\u20131992, classed by how long industry stayed: persistent (first listed by 1968, still listed in 1990 or later, with a firm in at least 60% of the editions in between), ",
                   "persistent with sector turnover (dominant 2-digit SIC sector changed, three or more sectors led the cell), emerging (first listed 1980 or later), former (last listed 1980 or earlier) and intermittent (the rest). Popups give first and last edition, peak number of firms, ",
                   "first and last dominant sector and any street-level pre-1960 hazardous trade in the cell. Clustering (Ellison\u2013Glaeser) and succession statistics are on the Trends tab; Rscript R/corridors.R reproduces them."),
-          tags$dt("Census tracts 1940\u20132020 (Census tracts over time tab)"),
+          tags$dt("Census tracts 1940\u20132020 (Denver 1880\u20132020 tab)"),
           tags$dd("Decennial census tract tables from IPUMS NHGIS (Manson et al., University of Minnesota), fetched through the NHGIS API (Rscript R/fetch_census.R): total population, Black (the 1940 tract table reports nonwhite, which is used as the 1940 value and labelled so in the downloads), ",
                   "Hispanic (Spanish surname 1960, Spanish American 1970, Spanish origin 1980, Hispanic 1990+), foreign born and persons below the poverty line (1970+). ",
                   "Values are NHGIS census tables on 2010 tract boundaries: population, race and Hispanic origin for 1990\u20132020 from NHGIS's standardised time series; everything else (all 1940\u20131980 tables; 1990\u20132020 nativity, poverty and housing) area-weighted from each census's own tracts. Shares are computed after interpolation, foreign born and poverty over the universe of their own table; tract-years with fewer than 200 residents are left blank. ",
@@ -511,7 +494,7 @@ ui <- page_navbar(id = "nav",
                   "and residents' distance to the nearest firm computed at the building. The app shows only enumeration-district aggregates, firm points and model results; the person- and building-level files ",
                   "stay with the project under Brown's conditions of use (no redistribution). Rscript R/denver_1880.R reproduces the analysis from Brown's downloads."),
           tags$dt("Denver 1950\u20132020 by census tract (Denver 1880\u20132020 tab)"),
-          tags$dd("The district analyses carried forward on the 147 2010 tracts within 10 km of downtown (earlier censuses interpolated as on the Census tracts tab; tract-years under 200 residents dropped; robustness on fixed sets of tracts and with distance to downtown controlled): firms of the decade from the business directory (1941-60) and the manufacturers' directory (1961-1992 complete editions; 2000, 2010 and 2020 use the last complete decade, 1983-1992, i.e. proximity to historically listed sites), ",
+          tags$dd("The district analyses carried forward on the 147 2010 tracts within 10 km of downtown (earlier censuses interpolated; see Census tracts 1940–2020 below; tract-years under 200 residents dropped; robustness on fixed sets of tracts and with distance to downtown controlled): firms of the decade from the business directory (1941-60) and the manufacturers' directory (1961-1992 complete editions; 2000, 2010 and 2020 use the last complete decade, 1983-1992, i.e. proximity to historically listed sites), ",
                   "distance from each tract centroid to the nearest one, population-weighted regressions on log distance, tracts with vs without a firm, and firm shares by population quartile. Measures are the tract tables' (race, Hispanic origin from 1960, nativity, poverty from 1970, tenure, value, rent). Rscript R/denver_tracts_1950_2020.R."),
           tags$dt("Denver 1880\u20131940 (IPUMS USA full count)"),
           tags$dd("The complete-count census microdata for 1880, 1900, 1910, 1920, 1930 and 1940 (Ruggles et al., IPUMS USA), Colorado only, aggregated to enumeration districts (Rscript R/fetch_ipums_fullcount.R): ",
@@ -927,7 +910,7 @@ server <- function(input, output, session) {
                                   esc(d$name), d$census, format(d$pop, big.mark = ","), d$firms_haz, d$pct_black, d$pct_hisp, d$pct_fb, d$pct_laborers)) |>
       addLegend("bottomright", pal = pal, values = x, title = paste0(lab, "<br><small>", input$co_year, "</small>"), opacity = 0.8) })
   output$p_co_share <- renderPlotly({ req(co_share); yrs <- setdiff(grep("^[0-9]{4}$", names(co_share), value = TRUE), "1965"); pl <- plot_ly()
-    for (i in seq_len(nrow(co_share))) { r <- co_share$region[i]; y <- as.numeric(co_share[i, yrs])
+    for (i in seq_len(nrow(co_share))) { r <- co_share$region[i]; y <- as.numeric(unlist(co_share[i, yrs]))
       pl <- pl |> add_trace(x = as.integer(yrs), y = y, type = "scatter", mode = "lines+markers", name = r, line = list(color = REG_COL[[r]]), marker = list(color = REG_COL[[r]]),
                             text = sprintf("%s %s: %.1f%%", r, yrs, y), hoverinfo = "text") }
     layout(pl, xaxis = list(title = "Directory edition"), yaxis = list(title = "% of located hazardous-sector manufacturers", rangemode = "tozero"), legend = list(orientation = "h", x = 0, y = -0.25, yanchor = "top"), margin = list(b = 110)) })
@@ -949,59 +932,6 @@ server <- function(input, output, session) {
     setNames(d[order(d$city, match(d$step, c("best", "middle", "worst", "business / industrial"))), ], c("City", "Grade (common scale)", "Areas", "km²", "1965–1980", "1981–1992")) }, digits = 2)
 
   # ---- Denver over time: NHGIS tract panel on 2010 tracts + firms active in the decade
-  county_mode <- reactive(!is.null(co_cnty) && as.integer(input$pan_year) < 1940)
-  pan_year <- reactive({ y <- as.integer(input$pan_year)
-    if (county_mode()) { cc <- co_cnty[co_cnty$census == y, ]
-      return(cc |> transmute(GEOID = name, p_black = pct_black, p_hisp = pct_hisp, p_fb = pct_fb, p_pov = NA_real_, p_owner = NA_real_, mval_2020 = NA_real_, mrent_2020 = NA_real_, hmda_denial = NA_real_, hmda_denial_hisp = NA_real_, hmda_denial_black = NA_real_, hmda_pct_hisp_apps = NA_real_, pop, firms_haz, firms_all = NA_integer_, legacy_haz = NA_integer_, dist_km = NA_real_,
-                             p_laborers = pct_laborers, p_fb_mexico = pct_fb_mexico)) }
-    d <- den_pan[den_pan$census == y, ]
-    tr <- if (input$pan_area == "core") den_tr[den_tr$core, ] else den_tr
-    tr |> left_join(d |> select(-dist_km, -area_km2), by = "GEOID") })
-  output$pan_avail <- renderUI({   # which variables the chosen census has
-    y <- as.integer(input$pan_year)
-    if (county_mode()) { d <- st_drop_geometry(co_cnty[co_cnty$census == y, ])
-      return(HTML(sprintf("<small class='text-muted'>%s: %s counties (%s with full-count totals) · IPUMS full count: Black, foreign born, Mexican-born, Hispanic (inferred), laborers; no poverty</small>", y, nrow(d), sum(!is.na(d$pop))))) }
-    d <- den_pan[den_pan$census == y & (input$pan_area != "core" | den_pan$core), ]
-    ok <- sapply(c("p_black", "p_hisp", "p_fb", "p_pov", "p_owner", "mval_2020", "mrent_2020"), function(v) any(!is.na(d[[v]])))
-    HTML(sprintf("<small class='text-muted'>%s: %s tracts with data · %s</small>", y, format(sum(!is.na(d$pop) & d$pop > 0), big.mark = ","),
-                 paste0(c("Black", "Hispanic", "foreign born", "poverty", "ownership", "home value", "rent"), "&nbsp;", ifelse(ok, "<span style='color:#1b7837'>&#10003;</span>", "<span style='color:#b2182b'>&#10007;&nbsp;(not in this census)</span>"), collapse = " · "))) })
-  observe({ if (input$pan_area == "core" && !county_mode()) leafletProxy("map_den") |> setView(-104.97, 39.74, 11) else leafletProxy("map_den") |> setView(-105.3, 39.2, 7) })
-  output$pan_title <- renderText(sprintf("Who lived in the industrial tracts? Mean composition of %s tracts with and without a hazardous firm (1940\u20132020)", if (input$pan_area == "core") "Denver-core" else "Colorado"))
-  pan_firms <- reactive({   # hazardous firms of the sidebar's sectors active in the decade ending in the census year
-    y <- as.integer(input$pan_year); a <- if (y <= 1960) c(y - 9, y) else if (y == 1970) c(1961, 1970) else if (y >= 2000) c(1983, 1992) else c(y - 9, y)
-    if (y <= 1960) { h <- sel_hist(); if (is.null(h)) return(NULL)
-      h <- h |> filter(if (county_mode()) TRUE else precision != "town", first_year <= a[2], last_year >= a[1]); data.frame(lon = h$lon, lat = h$lat, lab = sprintf("%s (%s)", h$name, h$years))
-    } else { s <- sites |> filter(radar %in% input$st, confidence %in% input$cf); sy <- site_yr |> filter(year >= a[1], year <= a[2])
-      if (length(input$sec)) sy <- sy |> filter(grepl(paste(gsub("([&+()])", "\\\\\\1", input$sec), collapse = "|"), sectors)) else return(NULL)
-      s <- s |> filter(site_id %in% sy$site_id); data.frame(lon = s$lon, lat = s$lat, lab = sprintf("%s, %s (%s)", s$address, s$city, s$hazard_firms)) } })
-  output$map_den <- renderLeaflet({
-    leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
-      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-               attribution = "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors") |>
-      setView(-105.3, 39.2, 7) |> addMapPane("tr", zIndex = 380) |> addMapPane("haz", zIndex = 460) })
-  observe({
-    req(input$map_den_zoom)                                   # wait until the map exists (the tab may not have been opened yet)
-    v <- input$pan_var; d <- pan_year(); x <- d[[v]]; lab <- names(PAN_VARS)[PAN_VARS == v]; cm <- county_mode()
-    pal <- if (all(is.na(x))) function(z) "#c7c7c7" else colorBin(if (v %in% c("firms_haz", "legacy_haz")) "PuRd" else "YlGnBu", domain = x, bins = 7, pretty = TRUE, na.color = "#f0f0f0")
-    px <- leafletProxy("map_den") |> clearGroup("tracts") |> clearGroup("firms") |> removeControl("panlegend") |> removeControl("pannote") |> removeControl("unitnote") |>
-      addControl(sprintf("<div style='background:#ffffffdd;padding:4px 10px;border-radius:4px'><b>%s census · %s</b></div>", input$pan_year, if (cm) "counties on that census's boundaries (IPUMS full count; no tracts before 1940)" else paste0("2010 census tracts (NHGIS; earlier censuses area-weighted onto them)", if (as.integer(input$pan_year) < 1990) " \u00b7 light grey = not tracted in this census" else "")), position = "topleft", layerId = "unitnote") |>
-      addPolygons(data = d, fillColor = pal(x), fillOpacity = 0.7, color = if (cm) "#666666" else "#ffffff", weight = if (cm) 0.8 else 0.6, group = "tracts", options = pathOptions(pane = "tr"), label = if (cm) sprintf("%s County, %s", d$GEOID, input$pan_year) else NULL,
-                  popup = if (cm) sprintf("<b>%s County</b>, %s census (full count)<br>%s: <b>%s</b><br>Population %s · Black %s%% · foreign born %s%% (Mexican-born %s%%) · Hispanic %s%% · laborers %s%%<br>Pre-1960 hazardous-trade firms listed in the decade: %s",
-                                  d$GEOID, input$pan_year, lab, ifelse(is.na(x), "no data", round(x, 1)), ifelse(is.na(d$pop), "–", format(d$pop, big.mark = ",")), esc(d$p_black), esc(d$p_fb), esc(d$p_fb_mexico), esc(d$p_hisp), esc(d$p_laborers), esc(d$firms_haz))
-                          else ifelse(is.na(d$pop) | d$pop < 200, sprintf("<b>Tract %s</b>, %s census: <b>not tracted</b> (or fewer than 200 residents).<br>Before 1990 the Census Bureau drew tracts only in and around cities \u2014 Denver alone in 1940\u201350; the Denver, Boulder, Colorado Springs and Pueblo areas from 1960; a few more cities by 1970\u201380; the whole state from 1990 \u2014 so there is no tract value here for this census.<br><small>%s km from downtown</small>", d$GEOID, input$pan_year, d$dist_km), sprintf("<b>Tract %s</b>, %s census<br>%s: <b>%s</b><br>Population %s · Black %s%% · Hispanic %s%% · Foreign born %s%% · Poverty %s%%<br>Hazardous firms active in decade: %s (all manufacturers: %s) · legacy hazardous firms: %s<br><small>%s km from downtown</small>",
-                                  d$GEOID, input$pan_year, lab, ifelse(is.na(x), "no data", round(x, 1)), ifelse(is.na(d$pop), "–", format(d$pop, big.mark = ",")), esc(d$p_black), esc(d$p_hisp), esc(d$p_fb), esc(d$p_pov),
-                                  esc(d$firms_haz), ifelse(is.na(d$firms_all), "–", d$firms_all), esc(d$legacy_haz), d$dist_km)))
-    if (!all(is.na(x))) px <- px |> addLegend("bottomright", pal = pal, values = x, title = paste0(lab, "<br><small>", input$pan_year, " census</small>"), layerId = "panlegend", opacity = 0.8)
-    else px <- px |> addControl(sprintf("<div style='background:#fff3cd;padding:6px 10px;border-radius:4px;max-width:260px'><b>%s: no %s data</b><br><small>%s</small></div>", lab, input$pan_year,
-        if (v == "p_hisp") "The census had no Hispanic measure before 1960 (Spanish surname)." else if (v == "p_pov") "Poverty was first measured in the 1970 census; 2010 and 2020 use ACS 5-year estimates." else if (cm) "Not in the full-count county series."
-        else if (v == "p_fb") "Foreign born comes from the long-form/ACS tables (1990 STF3, 2000 SF3, ACS 2008-12 and 2016-20); if missing, re-run R/fetch_census.R to fetch them."
-        else if (v %in% c("p_owner", "mval_2020", "mrent_2020")) "Tenure, median value and median rent come from the housing tables (NHGIS extract H); re-run R/fetch_census.R to fetch them. Dollars are 2020 dollars (CPI-U); rent is contract rent before 2000 and gross rent after."
-        else if (grepl("^hmda", v)) "HMDA mortgage data (2018-21 home-purchase applications, CFPB) are shown on the 2020 census only; run R/fetch_hmda.R to fetch them." else "Not in the tract tables for this census."),
-        position = "topright", layerId = "pannote")
-    if (isTRUE(input$pan_firms)) { f <- pan_firms()
-      if (!is.null(f) && nrow(f)) px <- px |> addCircleMarkers(data = f, ~lon, ~lat, radius = 3.5, color = "#ffffff", weight = 0.7, fillColor = "#d1491f", fillOpacity = 0.95,
-                                                               label = ~lab, group = "firms", options = pathOptions(pane = "haz")) }
-    px })
   output$p_pan <- renderPlotly({
     v <- input$pan_var; lab <- names(PAN_VARS)[PAN_VARS == v]
     validate(need(v %in% c("p_black", "p_white", "p_hisp", "p_fb", "p_pov", "p_owner", "mval_2020", "mrent_2020"), paste0("'", lab, "' is observed once (HMDA 2018-21, shown on the 2020 map), so there is no series to plot; choose a census measure.")),
@@ -1012,7 +942,7 @@ server <- function(input, output, session) {
                scale_colour_manual(values = c("Active hazardous firm in tract" = "#d1491f", "Legacy only (firms gone)" = "#7a4aa8", "Never a hazardous firm" = "#7f8c8d")) +
                scale_x_continuous(breaks = seq(1940, 2020, 10)) + labs(x = "Census", y = lab, colour = NULL) + theme_minimal(), tooltip = "text") |> hleg() })
   pan_trend <- reactive({ v <- input$pan_var; req(v %in% names(den_pan))
-    b <- den_pan |> filter(!is.na(.data[[v]]), !is.na(pop), pop > 0, if (input$pan_area == "core") core else TRUE)
+    b <- den_pan |> filter(!is.na(.data[[v]]), !is.na(pop), pop > 0, core)
     yrs <- sort(unique(b$census)); keep <- NULL
     if (isTRUE(input$pan_bal)) { keep <- b |> count(GEOID) |> filter(n == length(yrs)) |> pull(GEOID); b <- b |> filter(GEOID %in% keep) }
     d <- b |> mutate(group = case_when(firms_haz > 0 ~ "Active hazardous firm in tract", legacy_haz > 0 ~ "Legacy only (firms gone)", TRUE ~ "Never a hazardous firm")) |>
@@ -1053,7 +983,7 @@ server <- function(input, output, session) {
   for (k in names(DL_FILES)) local({ kk <- k; output[[kk]] <- downloadHandler(filename = function() DL_FILES[[kk]], content = function(f) file.copy(dd(DL_FILES[[kk]]), f)) })
   output$dl_zoning_btns <- renderUI({ have <- names(DL_FILES)[file.exists(dd(DL_FILES))]; if (!length(have)) return(tags$small(class = "text-muted", "Run R/zoning_1925.R, R/holc_covenants.R and R/site_fate.R to add these files."))
     do.call(tagList, lapply(have, function(k) tagList(downloadButton(k, DL_LAB[[k]], class = "btn-sm mb-1"), br()))) })
-  output$dl_panel <- downloadHandler(filename = function() "colorado_tract_panel_1940_2020.csv", content = function(f) write.csv(den_pan, f, row.names = FALSE))
+  output$dl_panel <- downloadHandler(filename = function() "denver_tract_panel_1940_2020.csv", content = function(f) write.csv(den_pan[den_pan$core, ], f, row.names = FALSE))
 
   # ---- Denver 1880-1940: reconstructed enumeration districts (R/grf_eds.R + R/denver_eds_analysis.R) with the IPUMS full count
   output$map_1880 <- renderLeaflet({
