@@ -635,3 +635,12 @@ To deploy (e.g. shinyapps.io), copy `data/by_year/` into `app/data/by_year/` so 
 * Frickel, S. & Elliott, J. R. (2018). *Sites Unseen: Uncovering Hidden Hazards in American Cities.* Russell Sage Foundation.
 
 A site that appears on no inventory is a lead for records review or soil testing, not evidence of contamination.
+
+## Home prices near historical sites (hedonic model)
+
+```
+Rscript R/fetch_denver_property.R   # Denver Assessor sales, parcels and residential characteristics (public) into work/property/
+Rscript R/hedonic_denver.R          # data/results/hedonic/ and app/data/hedonic_models.csv
+```
+
+Arm's-length residential sales in the City and County of Denver since 2015 are located at their parcels and compared with otherwise similar homes in the same market neighbourhood and year. Distance bands to the nearest hidden site (1965–92 hazardous-sector manufacturer on no current inventory), known site (on a current inventory) and pre-1960 hazardous trade; controls for floor area, basement, bedrooms, baths, stories, lot, age and property type, and in later models for present-day hazards (petroleum releases, TRI facilities, Superfund units, freeways, industrial zoning). The property records stay in work/property/; only model results are written.

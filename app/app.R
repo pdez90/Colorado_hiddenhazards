@@ -91,7 +91,7 @@ ur_poly <- if (file.exists(dd("urban_renewal_denver.geojson"))) st_read(dd("urba
 ou_poly <- if (file.exists(dd("superfund_ou_study.geojson"))) st_read(dd("superfund_ou_study.geojson"), quiet = TRUE) else NULL
 sb_poly <- if (file.exists(dd("sanborn_volumes.geojson"))) st_read(dd("sanborn_volumes.geojson"), quiet = TRUE) else NULL
 vb_nb <- if (file.exists(dd("vbi70_neighborhoods.geojson"))) st_read(dd("vbi70_neighborhoods.geojson"), quiet = TRUE) else NULL
-rod <- rd_opt("vbi70_rod2003_soils.csv"); ur_comp <- rd_opt("urban_renewal_composition.csv"); ur_sites <- rd_opt("urban_renewal_sites.csv")
+hed <- rd_opt("hedonic_models.csv"); rod <- rd_opt("vbi70_rod2003_soils.csv"); ur_comp <- rd_opt("urban_renewal_composition.csv"); ur_sites <- rd_opt("urban_renewal_sites.csv")
 SB_EDS <- c("1887", "1890\u20131893", "1903\u20131904", "1929\u20131930", "1950\u20131951"); SB_COL <- c("#8c510a", "#bf812d", "#dfc27d", "#35978f", "#01665e")
 AERIAL_1933 <- "https://tiles.arcgis.com/tiles/44C95LOqZjbh8Row/arcgis/rest/services/Denver_1933_Aerial/MapServer/tile/{z}/{y}/{x}"
 AERIAL_ATTR <- "1933 aerial survey (Jasper King): Denver Public Library; georeferenced by the City and County of Denver"
@@ -586,7 +586,17 @@ ui <- page_navbar(id = "nav",
            tableOutput("t_cx_rod"),
            tags$small(class = "text-muted", "Residential yards sampled 1998\u20132003, by neighbourhood: 95th percentile and maximum of the average of three soil composites per yard (ppm). EPA Record of Decision, 25 September 2003, Table 3. Property-level results are not public."),
            tags$p(class = "small", "Measured childhood blood-lead results are published only by county; the map's lead layer is CDPHE's modelled risk decile (housing age, poverty and related factors), not test results."),
-           tags$small(tags$a(href = "https://cdphe.colorado.gov/hm/vb-l70-superfund-site", target = "_blank", "CDPHE: Vasquez Boulevard/I-70 site"))))),
+           tags$small(tags$a(href = "https://cdphe.colorado.gov/hm/vb-l70-superfund-site", target = "_blank", "CDPHE: Vasquez Boulevard/I-70 site")))),
+    layout_columns(col_widths = c(7, 5),
+      card(card_header("Home prices near historical sites"), unit_note("arm's-length residential sales in the City and County of Denver, 2015 onward (Denver Assessor); each sale located at its parcel"),
+           radioButtons("hd_model", NULL, c("Same neighbourhood and year, with present-day hazards" = "M2 + present-day hazards", "Same neighbourhood and year" = "M1 base: neighbourhood x year FE",
+                                             "Same census tract and year" = "M3 tract x year FE"), inline = TRUE),
+           plotlyOutput("p_hedonic", height = 330),
+           tags$small(class = "text-muted", "Percentage difference in sale price compared with otherwise similar homes in the same market neighbourhood and year that sold more than 800 m from any site of that kind (95% confidence interval). Controls: floor area, basement, bedrooms, baths, stories, lot size, age, property type and month; errors clustered by tract. Present-day hazards: a petroleum release within 100 m, a TRI facility within 500 m, a Superfund operable unit, a freeway within 250 m and industrial zoning.")),
+      card(card_header("Known versus hidden: within 400 m"), unit_note("same sales; one indicator per kind of site within 400 m"),
+           tableOutput("t_hedonic"),
+           tags$p(class = "small", "If buyers respond to what they can look up, homes near sites on a current environmental inventory should sell at a discount while homes near hidden sites, which leave no record, should not. The last row tests whether the two differ."),
+           tags$small(class = "text-muted", "Only model results are shown; no individual sales or owners.")))),
   nav_panel("Neighborhoods",
     layout_columns(col_widths = c(3, 9),
       card(card_header("Compare census tracts"), unit_note("2010 census tracts"),
@@ -1617,6 +1627,19 @@ server <- function(input, output, session) {
   output$t_ur_case <- renderTable({ d <- ur_case_d(); req(nrow(d)); f <- function(v) ifelse(is.na(v), "\u2013", sprintf("%.1f", v))
     data.frame(Census = d$census, Residents = format(d$residents_est, big.mark = ","), `% Hispanic` = f(d$pct_hispanic), `% Black` = f(d$pct_black), `% owner` = f(d$pct_owner), `% poverty` = f(d$pct_poverty), check.names = FALSE) },
     striped = TRUE, spacing = "xs")
+  output$p_hedonic <- renderPlotly({ req(hed); d <- hed[hed$model == input$hd_model & hed$sample == "All residential sales" & grepl("^Hidden|^Known|^Pre-1960", hed$kind) & hed$distance %in% c("0-200 m", "200-400 m", "400-800 m"), ]
+    req(nrow(d)); cols <- c("Hidden (no current inventory)" = "#c2410c", "Known (on a current inventory)" = "#1d4ed8", "Pre-1960 hazardous trade" = "#6b7280")
+    p <- plot_ly()
+    for (k in names(cols)) { x <- d[d$kind == k, ]; if (!nrow(x)) next
+      p <- add_trace(p, x = x$distance, y = x$pct, type = "scatter", mode = "markers", name = k, marker = list(color = cols[[k]], size = 10),
+                     error_y = list(type = "data", symmetric = FALSE, array = x$hi - x$pct, arrayminus = x$pct - x$lo, color = cols[[k]]),
+                     text = sprintf("%s, %s: %+.1f%% (%.1f to %.1f), p = %s", k, x$distance, x$pct, x$lo, x$hi, x$p), hoverinfo = "text") }
+    layout(p, yaxis = list(title = "% difference in sale price", zeroline = TRUE), xaxis = list(title = "distance from the nearest site", categoryorder = "array",
+                                                                                                categoryarray = c("0-200 m", "200-400 m", "400-800 m")),
+           legend = list(orientation = "h", y = -0.25), margin = list(t = 10)) |> config(displayModeBar = FALSE) })
+  output$t_hedonic <- renderTable({ req(hed); d <- hed[hed$model == "M6 within 400 m (pooled)", ]; req(nrow(d))
+    data.frame(`Site within 400 m` = d$kind, `Price difference` = sprintf("%+.1f%%", d$pct), `95% CI` = sprintf("%.1f to %.1f", d$lo, d$hi), p = format(d$p, digits = 2),
+               Sales = format(d$n, big.mark = ","), check.names = FALSE) }, striped = TRUE, spacing = "s")
   output$t_cx_rod <- renderTable({ req(rod); data.frame(Neighbourhood = rod$neighborhood, `Yards sampled` = format(rod$properties_sampled, big.mark = ","), `Lead 95th pct` = rod$lead_95th_pct_ppm, `Lead max` = rod$lead_max_ppm,
                                                         `Arsenic 95th pct` = rod$arsenic_95th_pct_ppm, `Arsenic max` = rod$arsenic_max_ppm, check.names = FALSE) }, striped = TRUE, spacing = "xs", digits = 0)
   output$t_hw_tr <- renderTable({ req(hw_tr); d <- hw_tr; data.frame(Tracts = d$crossed, n = d$tracts, Census = d$census, Residents = format(d$residents, big.mark = ","), `Population (1950 = 100)` = d$pop_index_1950_100, `% Hispanic` = ifelse(is.na(d$pct_hispanic) | is.nan(d$pct_hispanic), "\u2013", d$pct_hispanic), `% Black` = d$pct_black, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
