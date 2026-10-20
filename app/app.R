@@ -82,6 +82,25 @@ lu_r <- if (requireNamespace("terra", quietly = TRUE) && all(file.exists(dd(spri
 hwy <- if (file.exists(dd("highways_denver.geojson"))) st_read(dd("highways_denver.geojson"), quiet = TRUE) else NULL
 hw_dec <- rd_opt("highways_km_by_decade.csv"); hw_holc <- rd_opt("highways_by_holc_grade.csv"); hw_zon <- rd_opt("highways_by_zoning_1929.csv"); hw_tr <- rd_opt("highways_tracts.csv"); hw_nb <- rd_opt("highways_nber_check.csv"); hw_ev <- rd_opt("highways_event_study.csv")
 cs_mod <- rd_opt("censoc_models.csv", check.names = FALSE); cs_grp <- rd_opt("censoc_groups.csv", check.names = FALSE); cs_lnk <- rd_opt("censoc_linkage.csv", check.names = FALSE)
+# contamination, emissions, urban renewal, lead and health (R/context_layers.R; public sources)
+ctx_site <- rd_opt("site_context.csv"); pet <- rd_opt("petroleum_releases_study.csv"); tri_fy <- rd_opt("tri_facility_years_study.csv")
+tri_year <- rd_opt("tri_by_year.csv"); tri_holc_y <- rd_opt("tri_by_year_holc.csv"); aqs <- rd_opt("aqs_denver_by_year.csv"); aqs_mon <- rd_opt("aqs_monitors_denver.csv")
+ur_tab <- rd_opt("urban_renewal_denver.csv"); hl_hist <- rd_opt("health_by_history.csv", check.names = FALSE); pet_status <- rd_opt("petroleum_by_status.csv"); pet_use <- rd_opt("petroleum_by_use_now.csv")
+ctx_sum <- rd_opt("site_context_summary.csv"); hl_tr <- rd_opt("health_tracts_study.csv", colClasses = c(GEOID = "character"))
+ur_poly <- if (file.exists(dd("urban_renewal_denver.geojson"))) st_read(dd("urban_renewal_denver.geojson"), quiet = TRUE) else NULL
+ou_poly <- if (file.exists(dd("superfund_ou_study.geojson"))) st_read(dd("superfund_ou_study.geojson"), quiet = TRUE) else NULL
+AERIAL_1933 <- "https://tiles.arcgis.com/tiles/44C95LOqZjbh8Row/arcgis/rest/services/Denver_1933_Aerial/MapServer/tile/{z}/{y}/{x}"
+AERIAL_ATTR <- "1933 aerial survey (Jasper King): Denver Public Library; georeferenced by the City and County of Denver"
+ctx_html <- function(ids) { if (is.null(ctx_site)) return(rep("", length(ids))); d <- ctx_site[match(ids, ctx_site$id), ]
+  out <- character(length(ids)); ok <- !is.na(d$id)
+  out[ok] <- paste0("<hr style='margin:4px 0'><b>Later records at this address</b> <small>(within 50 m; TRI within 100 m)</small>:<br>",
+    ifelse(d$petroleum_releases_50m[ok] > 0, sprintf("Petroleum release%s reported %s (%s still open)", ifelse(d$petroleum_releases_50m[ok] > 1, "s", ""),
+           ifelse(is.na(d$first_release_year[ok]), "", paste("from", d$first_release_year[ok])), d$open_releases_50m[ok]), "No petroleum release on record"),
+    ifelse(d$tank_facility_50m[ok] %in% 1, " · regulated storage-tank facility", ""), ifelse(d$tri_facility_100m[ok] %in% TRUE, " · TRI reporter nearby", ""),
+    ifelse(is.na(d$urban_renewal_project[ok]), "", sprintf("<br>Inside the <b>%s</b> urban-renewal project", tools::toTitleCase(d$urban_renewal_project[ok]))),
+    ifelse(is.na(d$superfund_unit[ok]), "", sprintf("<br>Inside Superfund unit: %s", esc(tools::toTitleCase(tolower(d$superfund_unit[ok]))))),
+    ifelse(is.na(d$sanborn[ok]) | d$sanborn[ok] == "", "", paste0("<br><small>", d$sanborn[ok], "</small>")))
+  out }
 enl_mod <- rd_opt("enlistment_models.csv", check.names = FALSE); enl_sh <- rd_opt("enlistment_shares.csv", check.names = FALSE)
 CS_CHK <- c("By age in 1940" = "censoc_ext_childhood.csv", "Own job and household head's job" = "censoc_ext_work_home.csv", "Groups" = "censoc_ext_groups.csv",
             "Who stayed in the Denver area" = "censoc_ext_stayers.csv", "Who links to a death record" = "censoc_ext_linkage_shares.csv",
@@ -204,7 +223,7 @@ filters <- list(
 ui <- page_navbar(id = "nav",
   title = "Denver Hidden Hazards", fillable = "Map",   # other tabs scroll so their plots keep full height
   theme = bs_theme(version = 5, bootswatch = "flatly", primary = "#24589e", base_font = font_google("Public Sans", local = FALSE)),
-  header = tags$style(HTML(".leaflet .info.legend { font-size: 11px; line-height: 1.25; max-width: 260px; } .leaflet-control-layers { font-size: 11.5px; } .leaflet-top.leaflet-left .info.legend { margin-top: 6px; } @media (max-width: 900px) { .leaflet-control-layers-expanded { display: none; } }")),
+  header = tags$style(HTML(".leaflet .info.legend { font-size: 11px; line-height: 1.25; max-width: 260px; } .leaflet-control-layers { font-size: 11.5px; } .leaflet-top.leaflet-left .info.legend { margin-top: 6px; } @media (max-width: 900px) { .leaflet-control-layers-expanded { display: none; } .leaflet .info.legend { font-size: 9.5px; max-width: 170px; max-height: 140px; overflow-y: auto; padding: 4px 6px; opacity: 0.88; } .leaflet .info.legend i { width: 12px; height: 12px; } }")),
   sidebar = sidebar(width = 300,
     conditionalPanel("['Map','Trends','Neighborhoods','Nearby schools & health care','Data & downloads'].includes(input.nav)", do.call(tagList, filters)),
     conditionalPanel("!['Map','Trends','Neighborhoods','Nearby schools & health care','Data & downloads'].includes(input.nav)",
@@ -523,6 +542,39 @@ ui <- page_navbar(id = "nav",
            tags$small(class = "text-muted", "The 15 most common changes of a cell's dominant sector between consecutive complete editions, 1965–1992."))),
     tags$small(class = "text-muted", "Code: R/county_panel_1880_1940.R, R/statewide.R, R/corridors.R.")),
   nav_menu("Explore more",
+  nav_panel("Contamination & health",
+    card(card_header("After the factories: contamination, emissions, renewal and health"),
+      tags$p("Public records that pick up where the directories leave off: petroleum releases from storage tanks (1986\u2013), toxic releases reported to EPA (1987\u2013), measured air quality (1980\u2013), federal urban-renewal projects, Superfund units, modelled childhood lead risk, and health today by census tract. A record near a former site is not proof of contamination from that site, and no record is not proof of none."),
+      unit_note("varies by layer: points (releases, facilities, monitors), project and Superfund polygons, 2010 census tracts within 10 km of downtown plus the City and County of Denver")),
+    layout_columns(col_widths = c(3, 9),
+      card(card_header("Map"), unit_note("2010 census tracts (shading); points and polygons as listed"),
+           selectInput("cx_var", "Shade tracts by", choices = NULL, width = "100%"), sliderInput("cx_op", "Shading opacity", 0, 1, 0.6, 0.05),
+           sliderInput("cx_tri_year", "TRI year (circle size = air releases)", 1987, 2024, 1990, step = 1, sep = "", width = "100%"),
+           checkboxInput("cx_aerial", "1933 aerial photograph", FALSE),
+           tags$small(class = "text-muted", "Toggle layers with the control on the map. Tract health figures are model-based estimates (CDC PLACES 2024 release; life expectancy 2010\u201315, NCHS USALEEP; lead risk: CDPHE 2018 model).")),
+      card(full_screen = TRUE, leafletOutput("map_cx", height = 620))),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("Former sites with a later petroleum release or storage-tank facility"), unit_note("historical sites in the study area; releases and tank facilities within 50 m of the geocoded address"),
+           tableOutput("t_cx_pet"), tags$small(class = "text-muted", "Petroleum releases reported to the Colorado Division of Oil & Public Safety since 1986. 50 m matches the precision of directory street addresses; a nearby release may come from a neighbouring property."),
+           tableOutput("t_cx_pet_use")),
+      card(card_header("Toxic releases reported to EPA, 1987 onward"), unit_note("TRI facility-years in the study area, by the 1938 HOLC grade of the facility's location"),
+           radioButtons("cx_tri_measure", NULL, c("Air releases (lb)" = "air", "Reporting facilities" = "fac"), inline = TRUE), plotlyOutput("p_cx_tri", height = 330),
+           tags$small(class = "text-muted", "TRI covers only facilities and chemicals above reporting thresholds; the list of chemicals and industries has grown over time, so trends mix real change and reporting rules."))),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("Measured air quality, Denver-metro monitors"), unit_note("EPA AQS monitors in Adams, Arapahoe, Broomfield, Denver, Douglas and Jefferson counties; annual means"),
+           selectInput("cx_pol", NULL, choices = NULL, width = "100%"), plotlyOutput("p_cx_aqs", height = 300),
+           tags$small(class = "text-muted", "Average of the annual means of the monitors operating that year; the network changed over time, so the number of monitors is shown on hover.")),
+      card(card_header("Urban renewal projects in Denver"), unit_note("federal urban-renewal projects (Renewing Inequality, University of Richmond)"),
+           div(style = "overflow-x:auto", tableOutput("t_cx_ur")),
+           tags$small(class = "text-muted", "Families and dwellings are the latest figures in the federal Urban Renewal Project Characteristics reports, which give race only for 1955\u20131966: later projects such as Skyline and Auraria have no family counts here. Dashed outlines on the map are approximate boundaries."))),
+    layout_columns(col_widths = c(7, 5),
+      card(card_header("Health today, by the industrial history of the tract"), unit_note("2010 census tracts within 10 km of downtown plus the City and County of Denver; population-weighted means"),
+           div(style = "overflow-x:auto", tableOutput("t_cx_health")),
+           tags$small(class = "text-muted", "Tracts grouped by the historical sites inside them (1965\u201392 hazardous-sector manufacturers on a current inventory = known, on none = hidden; street-level hazardous trades before 1960). PLACES values are % of adults; these are descriptive comparisons that do not adjust for income, age or smoking.")),
+      card(card_header("Superfund and lead in north Denver"), unit_note("EPA Superfund operable units; CDPHE modelled lead-risk decile by tract"),
+           tags$p(class = "small", "The Vasquez Boulevard/I-70 Superfund site covers about 4.5 square miles of Globeville, Elyria-Swansea, Cole, Clayton and Curtis Park, contaminated with lead and arsenic from the Omaha & Grant and Argo smelters (1870s to early 1900s). EPA sampled about 99% of some 4,500 residential properties and replaced the soil at about 800; the residential unit was deleted from the National Priorities List in 2019 (CDPHE)."),
+           tags$p(class = "small", "Measured childhood blood-lead results are published only by county; the map's lead layer is CDPHE's modelled risk decile (housing age, poverty and related factors), not test results."),
+           tags$small(tags$a(href = "https://cdphe.colorado.gov/hm/vb-l70-superfund-site", target = "_blank", "CDPHE: Vasquez Boulevard/I-70 site"))))),
   nav_panel("Neighborhoods",
     layout_columns(col_widths = c(3, 9),
       card(card_header("Compare census tracts"), unit_note("2010 census tracts"),
@@ -784,13 +836,27 @@ server <- function(input, output, session) {
         addLegend("topleft", colors = unname(CELL_COL), labels = CELL_CLASSES, title = "Industrial corridors<br><small>500 m cells, 1965–1992; size = peak firms</small>",
                   opacity = 0.8, group = "Industrial corridors (500 m cells)")
     }
+    m <- m |> addTiles(AERIAL_1933, attribution = AERIAL_ATTR, group = "Aerial photo 1933", options = tileOptions(maxNativeZoom = 19, opacity = 0.9))
+    if (!is.null(pet)) m <- m |> addCircleMarkers(data = pet, ~lon, ~lat, radius = 3, color = "#7f2704", weight = 1, fillColor = ifelse(grepl("closed|nfa", tolower(pet$status)), "#fdae6b", "#d94801"),
+        fillOpacity = 0.9, group = "Petroleum releases (1986\u2013)", options = pathOptions(pane = "ctx"),
+        popup = sprintf("<b>Petroleum release %s</b><br>%s, %s<br>Reported %s · %s%s<br>Source: %s · cause: %s<br><small>Colorado Division of Oil &amp; Public Safety</small>",
+                        esc(pet$release_number), esc(pet$site_name), esc(pet$address), esc(pet$release_year), esc(pet$status), ifelse(is.na(pet$closure_year), "", paste(" ", pet$closure_year)),
+                        esc(pet$release_source), esc(pet$release_cause)))
+    if (!is.null(ur_poly)) m <- m |> addPolygons(data = ur_poly, color = "#4a1486", weight = 2, fillColor = "#9e9ac8", fillOpacity = 0.25, dashArray = ifelse(ur_poly$boundary_confidence == "mapped boundary", NA, "4"),
+        group = "Urban renewal projects", options = pathOptions(pane = "tr"),
+        popup = sprintf("<b>%s</b> urban-renewal project (%s\u2013%s)<br>%s<br>Families in the project area: %s (white %s, non-white %s) · substandard dwellings: %s<br>Historical hazardous sites inside: %s pre-1960, %s 1965\u201392<br><small>Renewing Inequality, University of Richmond (federal reports, 1955\u20131966)</small>",
+                        tools::toTitleCase(ur_poly$project), ur_poly$first_year, ur_poly$last_year, ur_poly$boundary_confidence, ifelse(is.na(ur_poly$total_families), "not reported", ur_poly$total_families),
+                        ifelse(is.na(ur_poly$white_families), "\u2013", ur_poly$white_families), ifelse(is.na(ur_poly$nonwhite_families), "\u2013", ur_poly$nonwhite_families),
+                        ifelse(is.na(ur_poly$substandard_dwellings), "\u2013", ur_poly$substandard_dwellings), ur_poly$historical_sites_inside, ur_poly$sites_1965_92_inside))
+    if (!is.null(ou_poly)) m <- m |> addPolygons(data = ou_poly, color = "#b30000", weight = 2, fillColor = "#fc8d59", fillOpacity = 0.15, group = "Superfund operable units", options = pathOptions(pane = "tr"),
+        popup = sprintf("<b>%s</b><br>%s<br><small>EPA Superfund operable unit</small>", esc(tools::toTitleCase(tolower(ou_poly$SITE_NAME))), esc(ou_poly$SITE_FEATURE_NAME)))
     ZG <- paste("Zoning", names(ZYEARS)); for (k in seq_along(ZYEARS)) m <- add_zoning(m, ZYEARS[[k]], ZG[k], "tr", 0.45)
     LG <- paste("Land use", LU_YEARS); if (!is.null(lu_r)) for (k in seq_along(LU_YEARS)) m <- add_landuse(m, LU_YEARS[k], LG[k], 0.6)
     m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
-          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", paste("Zoning", names(ZYEARS)), if (!is.null(lu_r)) paste("Land use", LU_YEARS), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
+          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", "Aerial photo 1933", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), if (!is.null(lu_r)) paste("Land use", LU_YEARS), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
-      hideGroup(c("Industrial corridors (500 m cells)", paste("Zoning", names(ZYEARS)), paste("Land use", LU_YEARS), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
+      hideGroup(c("Industrial corridors (500 m cells)", "Aerial photo 1933", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), paste("Land use", LU_YEARS), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
                   "RCRA corrective action", "Voluntary cleanup (VCUP)", "Superfund (SEMS)")) |>
       identity()
   })
@@ -813,6 +879,7 @@ server <- function(input, output, session) {
                    ft, esc(s$fe_sectors), esc(s$ext_sectors),
                    ifelse(is.na(s$hist_first_year), "", sprintf("<br><b>Pre-1960 precursor (since %s):</b> %s", s$hist_first_year, esc(s$hist_names))),
                    ifelse(s$known_match == "" | is.na(s$known_match), "none", esc(s$known_match)), s$site_id, s$lat, s$lon)
+    pop <- paste0(pop, ctx_html(s$site_id))
     if (input$colby == "span") {
       cls <- cut(s$span_years, SPAN_BREAKS, SPAN_LABELS)
       fill <- SPAN_COL[as.integer(cls)]; rad <- 3 + 1.2 * sqrt(s$n_editions)
@@ -856,7 +923,7 @@ server <- function(input, output, session) {
       esc(d$name), ifelse(d$street == "" | is.na(d$street), "", paste0(esc(d$street), ", ")), esc(d$town), esc(d$sectors), esc(d$years),
       ifelse(d$precision == "town", "town centre only (address not mapped)", d$precision),
       ifelse(d$persists_to_1961plus, sprintf("<br><b>Persisted:</b> %s in the 1965–1992 directory (%s; matched by %s)", esc(d$dcm_name), esc(d$dcm_years), esc(d$link)), ""),
-      esc(d$example))
+      esc(d$example)) |> paste0(ctx_html(d$hfirm))
     ring <- function(d) ifelse(d$persists_to_1961plus, "#000000", "#ffffff")
     st <- h[h$precision != "town", ]; tw <- h[h$precision == "town", ]
     # firms known only to the town share one point: draw ONE marker per town whose popup lists every firm (scrollable)
@@ -1445,6 +1512,68 @@ server <- function(input, output, session) {
     d <- d[, c(names(d)[!vapply(d, is.numeric, TRUE)], names(d)[vapply(d, is.numeric, TRUE)]), drop = FALSE]
     names(d) <- gsub("_", " ", names(d)); for (k in names(d)) if (is.numeric(d[[k]]) && grepl("^p$", k)) d[[k]] <- ifelse(d[[k]] < 0.01, "<0.01", sprintf("%.2f", d[[k]]))
     d }, striped = TRUE, spacing = "xs", digits = 2)
+  CX_VARS <- c("Life expectancy at birth, 2010\u201315 (years)" = "life_expectancy", "Current asthma (% adults)" = "casthma", "COPD (% adults)" = "copd", "Coronary heart disease (% adults)" = "chd",
+               "Diabetes (% adults)" = "diabetes", "High blood pressure (% adults)" = "bphigh", "Depression (% adults)" = "depression", "Cancer, non-skin (% adults)" = "cancer",
+               "Current smoking (% adults)" = "csmoking", "Childhood lead-risk decile (CDPHE model)" = "lead_risk_decile")
+  observe({ req(hl_tr); ch <- CX_VARS[CX_VARS %in% names(hl_tr)]; updateSelectInput(session, "cx_var", choices = ch, selected = ch[1]) })
+  observe({ req(aqs); p <- sort(unique(aqs$pollutant)); updateSelectInput(session, "cx_pol", choices = p, selected = if ("Lead (TSP)" %in% p) "Lead (TSP)" else p[1]) })
+  observe({ req(tri_fy); r <- range(tri_fy$year); updateSliderInput(session, "cx_tri_year", min = r[1], max = r[2], value = r[1]) })
+  cx_tr <- reactive({ req(den_tr, hl_tr); t <- den_tr[den_tr$core | substr(den_tr$GEOID, 1, 5) == "08031", ]; merge(t, hl_tr, by = "GEOID", all.x = TRUE) })
+  output$map_cx <- renderLeaflet({
+    m <- leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
+      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri", group = "Light grey") |>
+      setView(-104.97, 39.75, 12) |> addMapPane("trc", zIndex = 380) |> addMapPane("poly", zIndex = 400) |> addMapPane("pts", zIndex = 450)
+    if (!is.null(ou_poly)) m <- m |> addPolygons(data = ou_poly, color = "#b30000", weight = 2, fillOpacity = 0.05, group = "Superfund operable units", options = pathOptions(pane = "poly"),
+                                                  popup = sprintf("<b>%s</b><br>%s", esc(tools::toTitleCase(tolower(ou_poly$SITE_NAME))), esc(ou_poly$SITE_FEATURE_NAME)))
+    if (!is.null(ur_poly)) m <- m |> addPolygons(data = ur_poly, color = "#4a1486", weight = 2, fillOpacity = 0.05, dashArray = ifelse(ur_poly$boundary_confidence == "mapped boundary", NA, "4"),
+                                                  group = "Urban renewal projects", options = pathOptions(pane = "poly"), label = tools::toTitleCase(ur_poly$project))
+    if (!is.null(pet)) m <- m |> addCircleMarkers(data = pet, ~lon, ~lat, radius = 2.5, stroke = FALSE, fillColor = ifelse(grepl("closed|nfa", tolower(pet$status)), "#fdae6b", "#d94801"), fillOpacity = 0.8,
+                                                   group = "Petroleum releases", options = pathOptions(pane = "pts"), popup = sprintf("<b>%s</b><br>%s<br>Reported %s · %s", esc(pet$site_name), esc(pet$address), pet$release_year, esc(pet$status)))
+    if (!is.null(sites)) { hs <- sites[sites$fe_hazard %in% c(TRUE, "True") & !is.na(sites$lat), ]
+      m <- m |> addCircleMarkers(data = hs, ~lon, ~lat, radius = 3, color = "#222222", weight = 0.6, fillColor = ifelse(hs$radar == "Not on any list", "#e6550d", "#3182bd"), fillOpacity = 0.9,
+                                 group = "Historical sites 1965\u201392", options = pathOptions(pane = "pts"), popup = paste0("<b>", esc(hs$address), "</b><br>", esc(hs$radar), ctx_html(hs$site_id))) }
+    if (!is.null(aqs_mon)) m <- m |> addCircleMarkers(data = aqs_mon, ~longitude, ~latitude, radius = 6, color = "#006d2c", weight = 2, fillColor = "#a1d99b", fillOpacity = 1,
+                                                       group = "Air monitors (AQS)", options = pathOptions(pane = "pts"), label = ~site_name)
+    m |> addLegend("bottomleft", colors = c("#d94801", "#fdae6b", "#e6550d", "#3182bd", "#7a0177"), labels = c("Petroleum release, open", "Petroleum release, closed", "1965\u201392 site on no inventory", "1965\u201392 site on an inventory", "TRI facility (size = air releases)"), opacity = 0.9) |>
+      addLayersControl(overlayGroups = c("Petroleum releases", "Historical sites 1965\u201392", "TRI facilities", "Air monitors (AQS)", "Urban renewal projects", "Superfund operable units"),
+                       options = layersControlOptions(collapsed = TRUE)) |> hideGroup(c("Air monitors (AQS)"))
+  })
+  observe({ t <- cx_tr(); v <- input$cx_var; req(v %in% names(t)); x <- t[[v]]
+    pal <- colorNumeric(if (v == "life_expectancy") "RdYlBu" else "YlOrRd", x, na.color = "#eeeeee", reverse = FALSE)
+    lab <- names(CX_VARS)[CX_VARS == v]
+    leafletProxy("map_cx") |> clearGroup("tracts") |> removeControl("cxleg") |>
+      addPolygons(data = t, fillColor = pal(x), fillOpacity = input$cx_op, color = "#ffffff", weight = 0.4, group = "tracts", options = pathOptions(pane = "trc"),
+                  popup = sprintf("<b>Tract %s</b><br>%s: <b>%s</b><br>Historical sites inside: %s known, %s hidden 1965\u201392 · %s pre-1960 trades%s",
+                                  t$GEOID, lab, ifelse(is.na(x), "\u2013", round(x, 1)), t$known_1965_92, t$hidden_1965_92, t$pre1960_trades,
+                                  if ("industrial_1937" %in% names(t)) sprintf("<br>Industrial land in 1937: %s%%", round(t$industrial_1937, 1)) else "")) |>
+      addLegend("bottomright", pal = pal, values = x, title = lab, layerId = "cxleg", opacity = 0.8) })
+  observe({ req(tri_fy); d <- tri_fy[tri_fy$year == input$cx_tri_year, ]
+    px <- leafletProxy("map_cx") |> clearGroup("TRI facilities"); if (!nrow(d)) return()
+    px |> addCircleMarkers(data = d, ~lon, ~lat, radius = 3 + 2 * log10(1 + d$air_lb), color = "#49006a", weight = 1, fillColor = "#7a0177", fillOpacity = 0.6, group = "TRI facilities",
+                           options = pathOptions(pane = "pts"), popup = sprintf("<b>%s</b><br>%s<br>%s: %s lb to air, %s lb on-site, %s chemicals%s", esc(d$name), esc(d$address), d$year,
+                           format(round(d$air_lb), big.mark = ","), format(round(d$onsite_lb), big.mark = ","), d$chemicals, ifelse(d$near_historical_site %in% TRUE, "<br>Within 100 m of a historical site", ""))) })
+  observe({ px <- leafletProxy("map_cx") |> clearGroup("aerial"); if (isTRUE(input$cx_aerial)) px |> addTiles(AERIAL_1933, attribution = AERIAL_ATTR, group = "aerial", options = tileOptions(maxNativeZoom = 19, zIndex = 300)) })
+  output$t_cx_pet <- renderTable({ req(pet_status); d <- pet_status
+    data.frame(Series = d$series, Status = d$status, Sites = d$sites, `% with a petroleum release` = d$pct_petroleum_release_50m, `% with an open release` = d$pct_open_release,
+               `% with a tank facility` = d$pct_tank_facility_50m, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  output$t_cx_pet_use <- renderTable({ req(pet_use); d <- pet_use[order(-pet_use$sites), ]
+    data.frame(Series = d$series, `Parcel today` = d$today, Sites = d$sites, `% with a petroleum release` = d$pct_petroleum_release_50m, `% with a tank facility` = d$pct_tank_facility_50m, check.names = FALSE) },
+    digits = 1, striped = TRUE, spacing = "xs")
+  output$p_cx_tri <- renderPlotly({ req(tri_holc_y); d <- tri_holc_y; pl <- plot_ly(); G <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d", ungraded = "#999999")
+    for (g in intersect(names(G), unique(d$holc))) { x <- d[d$holc == g, ]; y <- if (input$cx_tri_measure == "air") x$air_lb else x$facilities
+      pl <- pl |> add_trace(x = x$year, y = y, type = "scatter", mode = "lines+markers", name = if (g == "ungraded") "Ungraded" else paste("Grade", g), line = list(color = if (g == "C") "#c9b400" else G[[g]]), marker = list(color = if (g == "C") "#c9b400" else G[[g]], size = 5)) }
+    layout(pl, xaxis = list(title = ""), yaxis = list(title = if (input$cx_tri_measure == "air") "Pounds released to air" else "TRI facilities", rangemode = "tozero"), legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom"), margin = list(t = 10)) })
+  output$p_cx_aqs <- renderPlotly({ req(aqs, input$cx_pol); d <- aqs[aqs$pollutant == input$cx_pol, ]; req(nrow(d))
+    plot_ly(d, x = ~year, y = ~mean, type = "scatter", mode = "lines+markers", line = list(color = "#006d2c"), marker = list(color = "#006d2c", size = 5),
+            text = ~sprintf("%s %s: %s %s (%s monitors)", pollutant, year, signif(mean, 3), units, monitors), hoverinfo = "text") |>
+      layout(xaxis = list(title = ""), yaxis = list(title = paste0("Annual mean (", d$units[1], ")"), rangemode = "tozero"), margin = list(t = 10)) })
+  output$t_cx_ur <- renderTable({ req(ur_tab); d <- ur_tab; f <- function(v) ifelse(is.na(v), "\u2013", format(round(v), big.mark = ","))
+    data.frame(Project = tools::toTitleCase(d$project_name), Years = paste0(d$first_year, "\u2013", d$last_year), Families = f(d$total_families), White = f(d$white_families), `Non-white` = f(d$nonwhite_families),
+               `Substandard dwellings` = f(d$substandard_dwellings), Acres = f(d$acres), `Acres to industry` = f(d$acres_to_industrial), Mapped = ifelse(d$mapped %in% TRUE, "yes", ""), check.names = FALSE) }, striped = TRUE, spacing = "xs")
+  output$t_cx_health <- renderTable({ req(hl_hist); d <- hl_hist; nm <- c(history = "Tracts with", tracts = "Tracts", population = "Population", life_expectancy = "Life expectancy",
+      casthma = "Asthma %", copd = "COPD %", chd = "Heart disease %", diabetes = "Diabetes %", bphigh = "High BP %", depression = "Depression %", cancer = "Cancer %", csmoking = "Smoking %",
+      obesity = "Obesity %", lpa = "Inactive %", access2 = "Uninsured %", lead_risk_decile = "Lead-risk decile")
+    d <- d[, intersect(names(nm), names(d)), drop = FALSE]; d$population <- format(d$population, big.mark = ","); names(d) <- nm[names(d)]; d }, digits = 1, striped = TRUE, spacing = "xs")
   output$t_hw_tr <- renderTable({ req(hw_tr); d <- hw_tr; data.frame(Tracts = d$crossed, n = d$tracts, Census = d$census, Residents = format(d$residents, big.mark = ","), `Population (1950 = 100)` = d$pop_index_1950_100, `% Hispanic` = ifelse(is.na(d$pct_hispanic) | is.nan(d$pct_hispanic), "\u2013", d$pct_hispanic), `% Black` = d$pct_black, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   Z23_CATS <- c("Industrial (housing not allowed)" = "#7a0177", "Industrial mixed use (housing allowed)" = "#c51b8a", "Mixed use with housing" = "#fa9fb5",
                 "Residential" = "#fdd0a2", "Commercial" = "#9ecae1", "Open space, civic, other" = "#c7e9c0")

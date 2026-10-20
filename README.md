@@ -476,6 +476,17 @@ the IPUMS MLP links (`Rscript R/fetch_ipums_mlp.R` writes them to `work/mlp/` th
 Colorado 1910-1940 full-count extract; the national crosswalk files also work), persistence and cumulative and childhood exposure. All write aggregates only to
 `data/results/censoc/`.
 
+### Contamination, emissions, urban renewal, lead and health (`R/fetch_context_layers.R`, `R/context_layers.R`)
+`Rscript R/fetch_context_layers.R` downloads public layers to `work/context/`: Colorado petroleum releases (1986-) and regulated tank
+facilities (Division of Oil & Public Safety, data.colorado.gov), EPA TRI basic data files for Colorado (1987-), EPA AQS annual means for
+Denver-metro monitors (1980-), Renewing Inequality urban-renewal projects (University of Richmond, CC BY-NC), EPA Superfund operable-unit
+boundaries, CDPHE's modelled childhood lead-risk decile by tract, CDC PLACES tract estimates (2024 release) and NCHS life expectancy
+(USALEEP, 2010-15). `Rscript R/context_layers.R` matches releases and tank facilities to every historical site (50 m) and TRI facilities
+(100 m), summarises TRI releases by year and HOLC grade and AQS means by pollutant, counts sites inside urban-renewal projects and Superfund
+units, compares tract health by industrial history, and builds Sanborn map links (Library of Congress, 1887-1904). Outputs go to
+`data/results/context/` and the app's "Contamination & health" tab (Explore more) and main-map layers, including the georeferenced 1933
+aerial survey (Denver Public Library; City and County of Denver tile service).
+
 ### What became of the sites (`R/site_fate.R`)
 Every geocoded Denver site (1965–92 manufacturers' directory, hazardous sectors; street-level pre-1960 hazardous trades) is matched to
 the nearest assessor parcel within 40 m through Denver's open-data parcel service (property class, current and pre-2010 zone district,
@@ -519,7 +530,7 @@ The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because
 `Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`
 (Denver districts) → `Rscript R/denver_eds_analysis.R` → `Rscript R/county_panel_1880_1940.R` → `Rscript R/ej_panel.R` → `Rscript R/fetch_hmda.R` →
 `Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
-`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` → `Rscript R/landuse_1937_1997.R` → `Rscript R/fetch_highways.R` → `Rscript R/highways_denver.R` → `Rscript R/mortality_block.R` (restricted data; analyst's machine) → `Rscript R/mortality_redevelopment.R` (same) → `Rscript R/censoc_denver_1940.R` (after downloading CenSoc) → `Rscript R/censoc_extensions.R` → `Rscript R/censoc_enlistment.R` → `Rscript R/fetch_ipums_mlp.R` → `Rscript R/mlp_residential_history.R` →
+`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` → `Rscript R/landuse_1937_1997.R` → `Rscript R/fetch_highways.R` → `Rscript R/highways_denver.R` → `Rscript R/mortality_block.R` (restricted data; analyst's machine) → `Rscript R/mortality_redevelopment.R` (same) → `Rscript R/censoc_denver_1940.R` (after downloading CenSoc) → `Rscript R/censoc_extensions.R` → `Rscript R/censoc_enlistment.R` → `Rscript R/fetch_ipums_mlp.R` → `Rscript R/mlp_residential_history.R` → `Rscript R/fetch_context_layers.R` → `Rscript R/context_layers.R` →
 `Rscript R/benchmarks.R` (CBP, NHGIS county manufacturing and the Atack samples; needs network and the NHGIS key) →
 `Rscript R/edition_coverage.R` (per-edition pages, listings, hazardous firms and completeness for both directory series → app/data/edition_coverage.csv;
 twelve of the 25 manufacturers' directory editions are partial scans that stop part-way through the geographic section — complete: 1965–68, 1970, 1973–74, 1977, 1980, 1983, 1988, 1990, 1992 — flagged on the Trends and Data tabs; the complete editions are the ones that match CBP best).
