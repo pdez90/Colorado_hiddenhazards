@@ -6,7 +6,7 @@
 #   petroleum_releases.csv       Colorado Division of Oil & Public Safety, Petroleum Releases 1986- (data.colorado.gov iimu-7683)
 #   tank_facilities.csv          Regulated Storage Tank Facilities (data.colorado.gov iazk-c8xj)
 #   tri/tri_<year>_CO.csv        EPA Toxics Release Inventory basic data files, Colorado, 1987- (data.epa.gov)
-#   aqs_denver.csv               EPA AQS annual concentration by monitor, 1980-, Denver-metro counties (aqs.epa.gov airdata)
+#   aqs_denver.csv               EPA AQS annual summaries by monitor, 1980-, Denver-metro counties (AQS Data Mart API; free key in ~/.Renviron)
 #   ur_projects.geojson, ur_non_spatial.csv   Renewing Inequality urban-renewal projects (University of Richmond DSL; CC BY-NC)
 #   superfund_ou_co.geojson      EPA Superfund operable-unit boundaries, Colorado (EPA public feature service)
 #   lead_risk_tracts.geojson     CDPHE modelled childhood lead-risk decile by census tract, 2018 (CDPHE CoHealth Maps)
@@ -31,20 +31,26 @@ for (y in 1987:(as.integer(format(Sys.Date(), "%Y")) - 1))
 message(length(Sys.glob(file.path(D, "tri", "*.csv"))), " TRI year files")
 # ---------------------------------------------------------------- EPA AQS annual means by monitor, Denver-metro counties
 aqsf <- file.path(D, "aqs_denver.csv")
+CTY <- c("001", "005", "014", "031", "035", "059")      # Adams, Arapahoe, Broomfield, Denver, Douglas, Jefferson
 if (!file.exists(aqsf) || file.size(aqsf) == 0) {
-  CTY <- c("001", "005", "014", "031", "035", "059")      # Adams, Arapahoe, Broomfield, Denver, Douglas, Jefferson
-  A <- rbindlist(lapply(1980:(as.integer(format(Sys.Date(), "%Y")) - 1), function(y) {
-    z <- tempfile(fileext = ".zip"); u <- sprintf("https://aqs.epa.gov/aqsweb/airdata/annual_conc_by_monitor_%d.zip", y)
-    ok <- tryCatch({ download.file(u, z, mode = "wb", quiet = TRUE, method = "curl", extra = "-L -A 'Mozilla/5.0 (Macintosh)'"); file.exists(z) && file.size(z) > 1000 },   # the AQS server refuses R's default client
-                   error = function(e) { message("  AQS ", y, ": ", conditionMessage(e)); FALSE })
-    if (!ok) { message("  AQS ", y, ": not available"); return(NULL) }
-    x <- fread(cmd = paste("unzip -p", shQuote(z)), colClasses = c(`State Code` = "character", `County Code` = "character", `Site Num` = "character"))
-    unlink(z); x <- x[`State Code` == "08" & `County Code` %in% CTY]
-    message("  AQS ", y, ": ", nrow(x), " monitor-pollutant rows")
-    x[, .(year = Year, state = `State Code`, county = `County Code`, site = `Site Num`, parameter_code = `Parameter Code`, poc = POC, latitude = Latitude, longitude = Longitude,
-          parameter = `Parameter Name`, duration = `Sample Duration`, standard = `Pollutant Standard`, units = `Units of Measure`, event = `Event Type`,
-          obs_pct = `Observation Percent`, completeness = `Completeness Indicator`, mean = `Arithmetic Mean`, site_name = `Local Site Name`)] }), fill = TRUE)
-  if (nrow(A)) fwrite(A, aqsf) else message("AQS: nothing downloaded; check https://aqs.epa.gov/aqsweb/airdata/download_files.html in a browser") }
+  # EPA AQS Data Mart API (annual summaries for the Denver-Aurora-Lakewood CBSA, 19740). Needs a free account: set AQS_EMAIL and AQS_KEY
+  # in ~/.Renviron (never in the project). The key is never printed.
+  em <- Sys.getenv("AQS_EMAIL"); ky <- Sys.getenv("AQS_KEY")
+  if (!nzchar(em) || !nzchar(ky)) message("AQS: set AQS_EMAIL and AQS_KEY in ~/.Renviron to download air-quality data") else {
+    if (!requireNamespace("httr", quietly = TRUE)) install.packages("httr", repos = "https://cloud.r-project.org")
+    PARAMS <- list(c("14129", "11101", "42401", "42602", "42101"), c("44201", "81102", "88101", "45201"))   # lead (TSP), TSP, SO2, NO2, CO | ozone, PM10, PM2.5, benzene
+    A <- rbindlist(lapply(1980:(as.integer(format(Sys.Date(), "%Y")) - 1), function(y) rbindlist(lapply(PARAMS, function(pp) {
+      Sys.sleep(5)                                                                   # the API asks for at least 5 s between requests
+      r <- tryCatch(httr::GET("https://aqs.epa.gov/data/api/annualData/byCBSA", httr::timeout(300),
+                              query = list(email = em, key = ky, param = paste(pp, collapse = ","), bdate = sprintf("%d0101", y), edate = sprintf("%d1231", y), cbsa = "19740")),
+                    error = function(e) NULL)
+      if (is.null(r) || httr::status_code(r) != 200) { message("  AQS ", y, ": HTTP ", if (is.null(r)) "error" else httr::status_code(r)); return(NULL) }
+      x <- jsonlite::fromJSON(httr::content(r, as = "text", encoding = "UTF-8"))$Data
+      if (is.null(x) || !length(x) || !nrow(x)) return(NULL); x <- as.data.table(x)[county_code %in% CTY]
+      x[, .(year, state = state_code, county = county_code, site = site_number, parameter_code, poc, latitude, longitude, parameter, duration = sample_duration,
+            standard = pollutant_standard, units = units_of_measure, event = event_type, obs_pct = observation_percent, completeness = NA_character_,
+            mean = arithmetic_mean, site_name = local_site_name)] }), fill = TRUE)), fill = TRUE)
+    if (nrow(A)) { fwrite(A, aqsf); message("AQS: ", nrow(A), " monitor-year rows, ", min(A$year), "-", max(A$year)) } else message("AQS: nothing downloaded") } }
 # ---------------------------------------------------------------- Renewing Inequality (urban renewal)
 R0 <- "https://raw.githubusercontent.com/americanpanorama/Renewing_Inequality_Data/master/Data/"
 get(paste0(R0, "ur_projects.geojson"), "ur_projects.geojson"); get(paste0(R0, "non_spatial_data.csv"), "ur_non_spatial.csv"); get(paste0(R0, "codebook.csv"), "ur_codebook.csv")
