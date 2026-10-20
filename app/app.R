@@ -78,7 +78,8 @@ if (!is.null(bm_state)) bm_state <- bm_state[bm_state$year %in% COMPLETE_ED, ]; 
 # 1925 zoning ordinance as mapped in 1929 (R/zoning_1925.R) and what became of the Denver sites (R/site_fate.R)
 zon      <- if (file.exists(dd("zoning_1929.geojson"))) st_read(dd("zoning_1929.geojson"), quiet = TRUE) else NULL; zon_g <- rd_opt("holc_zoning_by_grade.csv")
 ZON_COL  <- c("Industrial A" = "#b2182b", "Industrial B" = "#762a83", "Commercial" = "#e6ab02")
-sf_sum   <- rd_opt("site_fate_summary.csv"); sf_zone <- rd_opt("site_fate_zoning.csv"); sf_den <- rd_opt("site_fate_denver.csv"); sf_pre <- rd_opt("site_fate_denver_pre1960.csv")
+sf_sum   <- rd_opt("site_fate_summary.csv"); sf_zone <- rd_opt("site_fate_zoning.csv"); z23_29 <- rd_opt("zoning_1929_to_2023.csv", check.names = FALSE); z23_s <- rd_opt("sites_by_zoning_2023.csv", check.names = FALSE); z23_d <- rd_opt("sites_by_zoning_2023_last_listed.csv", check.names = FALSE); z23_t <- rd_opt("tract_composition_by_zoning_2023.csv", check.names = FALSE)
+sf_den <- rd_opt("site_fate_denver.csv"); sf_pre <- rd_opt("site_fate_denver_pre1960.csv")
 USE_COL  <- c("Industrial / utility" = "#636363", "Commercial / office" = "#e6ab02", "Residential" = "#d7301f", "Vacant" = "#bdbdbd", "Civic / school / health" = "#1f78b4", "Park / open space" = "#33a02c", "Other" = "#f0f0f0", "No parcel match" = "#ffffff")
 eds_holc <- if (file.exists(dd("eds_holc_1930.geojson"))) st_read(dd("eds_holc_1930.geojson"), quiet = TRUE) else NULL
 HOLC_COL6 <- c(A = "#76a865", B = "#7cb5bd", C = "#ffff00", D = "#d9838d", Industrial = "#8c8c8c", Commercial = "#c8a2c8", ungraded = "#eeeeee")
@@ -269,7 +270,19 @@ ui <- page_navbar(id = "nav",
       card(card_header("Current use of the former sites"), plotlyOutput("p_sf_use", height = 300), tableOutput("t_sf_zone"),
            tags$small(class = "text-muted", "Share of each series' sites by the assessor's current property class. 'Rebuilt' = the present building is newer than the site's last directory listing (a redevelopment indicator, not a closure date); 'zoned industrial' = I-A, I-B or I-MX districts of the 2010 code."))),
     card(card_header("Current use by the decade a site was last listed"), tableOutput("t_sf_dec"),
-         tags$small(class = "text-muted", "Sites that left the directory earlier have had longer to be converted, so the rows are not a conversion rate; they show what stands today on the sites of each cohort. The 1990s row is the sites still listed in 1990 or 1992, the last complete editions."))),
+         tags$small(class = "text-muted", "Sites that left the directory earlier have had longer to be converted, so the rows are not a conversion rate; they show what stands today on the sites of each cohort. The 1990s row is the sites still listed in 1990 or 1992, the last complete editions.")),
+    h5(class = "mt-3 mb-2", "Zoning today (2023)"),
+    layout_columns(col_widths = c(7, 5),
+      card(card_header("The 1929 zoning districts under 2023 zoning"), div(style = "overflow-x:auto; font-size:0.9em", tableOutput("t_z29")),
+           tags$small(class = "text-muted", "Share of the land in each 1925 district (as revised to January 1929; see Redlining & covenants) by its zoning on 3 October 2023. ",
+             "Industrial = housing not allowed; 'Industrial mixed use' = Denver's I-MX districts, which allow housing (the parcel-based count above treats them as industrial); Other = open space, civic and other. ",
+             "2023 zoning: Denver-metro layer compiled by Carrie Makarewicz (University of Colorado Denver) for the National Zoning Atlas; harmonised categories across 51 jurisdictions.")),
+      card(card_header("Hazardous sites by their 2023 zoning"), plotlyOutput("p_zsites", height = 420),
+           tags$small(class = "text-muted", "Street-located sites in the study area (City and County of Denver plus the 147 tracts within 10 km of downtown) by the 2023 zoning of the land they stand on. ",
+             "The suburban rows are the study tracts outside Denver County, which the city's parcel data do not cover. Sites last listed earlier have had longer to be rezoned."))),
+    card(card_header("Who lives in the tracts zoned for industry today? 2020 census, by the tract's 2023 share of land zoned industrial (housing not allowed)"), tableOutput("t_ztr"),
+         tags$small(class = "text-muted", "The 147 study tracts with 200+ residents in 2020; population-weighted means. A description of where people live today, not a model.")),
+    ),
   nav_panel("Redlining & covenants",
     layout_columns(col_widths = c(3, 6, 3),
       card(card_header("HOLC 1938 map and racial covenants 1931\u201335"),
@@ -519,6 +532,9 @@ ui <- page_navbar(id = "nav",
                   "Source: CDPHE Hazardous Materials & Waste Management Division, Institutional Controls layer (environmental covenants, use restrictions and notices of environmental use restrictions)."),
           tags$dt("Schools, hospitals, clinics, residential care"),
           tags$dd("Colorado Department of Education school locations (public and non-public) and CDPHE licensed health facilities, both via geodata.colorado.gov."),
+          tags$dt("Zoning today (2023)"),
+          tags$dd("Denver-metro zoning layer of 3 October 2023 (51 jurisdictions), compiled by Carrie Makarewicz (University of Colorado Denver) for the National Zoning Atlas: local district codes with harmonised categories. ",
+                  "The layer itself is not redistributed here; the site shows area shares and counts only (Rscript R/zoning_2023.R)."),
           tags$dt("Census tracts: EnviroScreen"),
           tags$dd("CDPHE Colorado EnviroScreen 2.0: environmental, health and social indicators for 2020 census tracts, with percentile scores. Health indicators come from CDPHE administrative data or modelled estimates (see the tool's documentation)."),
           tags$dt("Base maps and address ranges"),
@@ -1180,6 +1196,22 @@ server <- function(input, output, session) {
     d <- sf_sum |> group_by(series, use_now) |> summarise(n = sum(n), .groups = "drop") |> group_by(series) |> mutate(pct = 100 * n / sum(n)) |> ungroup() |> filter(use_now %in% names(USE_COL)[1:6]) |> mutate(use_now = factor(use_now, rev(names(USE_COL)[1:6])), series = ifelse(grepl("Manufact", series), "1965-1992 sites", "1891-1956 trades"))
     ggplotly(ggplot(d, aes(pct, use_now, fill = series, text = sprintf("%s: %.1f%% (%d sites)", series, pct, n))) + geom_col(position = position_dodge(width = 0.8), width = 0.75) + scale_fill_manual(values = c("1965-1992 sites" = "#d1491f", "1891-1956 trades" = "#8c510a")) +
                labs(x = "% of sites", y = NULL, fill = NULL) + theme_minimal(), tooltip = "text") |> hleg() })
+  Z23_CATS <- c("Industrial (housing not allowed)" = "#7a0177", "Industrial mixed use (housing allowed)" = "#c51b8a", "Mixed use with housing" = "#fa9fb5",
+                "Residential" = "#fdd0a2", "Commercial" = "#9ecae1", "Open space, civic, other" = "#c7e9c0")
+  output$t_z29 <- renderTable({ req(z23_29); d <- z23_29[match(c("Industrial A", "Industrial B", "Commercial"), z23_29$zone1929), ]
+    SH <- c("Industrial", "Industrial mixed use", "Mixed use with housing", "Residential", "Commercial", "Other")
+    out <- data.frame(`1929 district` = d$zone1929, `Area (sq km)` = sprintf("%.1f", d$km2_1929), check.names = FALSE)
+    for (i in seq_along(Z23_CATS)) out[[SH[i]]] <- sprintf("%.0f%%", d[[names(Z23_CATS)[i]]]); out }, striped = TRUE, spacing = "s")
+  output$p_zsites <- renderPlotly({ req(z23_s, z23_d)
+    a <- z23_s[z23_s$where != "Study area", ]; a$row <- paste0(ifelse(grepl("^Hazardous-sector", a$series), "1965–92 sites", "Pre-1960 trades"), ", ", ifelse(a$where == "Denver County", "Denver County", "suburbs"), " (", a$n, ")")
+    b <- z23_d; b$row <- paste0("1965–92 sites last listed ", b$last_decade, " (", b$n, ")")
+    d <- rbind(a[, c("row", names(Z23_CATS))], b[, c("row", names(Z23_CATS))]); d$row <- factor(d$row, levels = rev(d$row)); pl <- plot_ly()
+    for (k in names(Z23_CATS)) pl <- pl |> add_trace(y = d$row, x = d[[k]], type = "bar", orientation = "h", name = k, marker = list(color = Z23_CATS[[k]]),
+                                                   text = sprintf("%s: %.1f%%", k, d[[k]]), hoverinfo = "text", textposition = "none")
+    layout(pl, barmode = "stack", xaxis = list(title = "% of sites", range = c(0, 100)), yaxis = list(title = ""), legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom", traceorder = "normal"), margin = list(l = 10, t = 10)) })
+  output$t_ztr <- renderTable({ req(z23_t); d <- z23_t
+    data.frame(`2023 industrial share of the tract` = d$group, Tracts = d$tracts, Residents = format(d$residents, big.mark = ","), `% Hispanic` = d$pct_hispanic, `% Black` = d$pct_black,
+               `% White` = d$pct_white, `% foreign born` = d$pct_foreign_born, `% in poverty` = d$pct_poverty, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "s")
   output$t_sf_zone <- renderTable({ if (is.null(sf_zone)) return(NULL); sf_zone |> transmute(Series = ifelse(grepl("Manufact", series), "1965-92 sites", "1891-1956 trades"), Sites = n, `Zoned industrial %` = pct_zone_industrial, `Rebuilt %` = pct_redeveloped, `Median year built` = as.integer(median_year_built)) }, striped = TRUE, spacing = "xs")
   output$t_sf_dec <- renderTable({ if (is.null(sf_sum)) return(NULL); ser <- if (identical(input$sf_series, "H")) "Business" else "Manufact"
     d <- sf_sum |> filter(grepl(ser, series), use_now %in% names(USE_COL)[1:6]) |> group_by(last_decade) |> mutate(sites = sum(n)) |> ungroup() |> transmute(`Last listed` = last_decade, sites, use_now, pct) |> tidyr::pivot_wider(names_from = use_now, values_from = pct, values_fill = 0) |> arrange(`Last listed`)

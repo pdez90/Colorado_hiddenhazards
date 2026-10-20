@@ -1,0 +1,5 @@
+group,tracts,residents,pct_hispanic,pct_black,pct_white,pct_foreign_born,pct_poverty,pct_owner_occupied
+No industrial zoning,105,479171,24.7,5,67.8,11,11.5,50.8
+Under 5% industrial,10,36226,29.3,3.3,66.3,9.5,14.7,54.8
+5-20% industrial,10,66664,32.7,6.7,59.9,13,12.6,44.4
+20% or more industrial,22,93783,49.3,7.8,47.2,17.8,17.7,51.9
