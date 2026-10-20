@@ -1,0 +1,279 @@
+pollutant,year,monitors,mean,units
+Benzene,1996,3,7.799,Parts per billion Carbon
+Benzene,2000,1,7.2307,Parts per billion Carbon
+Benzene,2001,1,6.076,Parts per billion Carbon
+Benzene,2002,3,5.3946,Parts per billion Carbon
+Benzene,2003,2,4.6734,Parts per billion Carbon
+Benzene,2005,1,6.7035,Parts per billion Carbon
+Benzene,2006,5,4.8884,Parts per billion Carbon
+Benzene,2011,1,1.6,Parts per billion Carbon
+Benzene,2012,1,1.5197,Parts per billion Carbon
+Benzene,2013,1,3.0349,Parts per billion Carbon
+Benzene,2014,2,1.8534,Parts per billion Carbon
+Benzene,2015,1,2.2126,Parts per billion Carbon
+Benzene,2016,1,2.1829,Parts per billion Carbon
+Benzene,2017,1,1.7639,Parts per billion Carbon
+Benzene,2018,1,1.8426,Parts per billion Carbon
+Benzene,2019,2,1.9158,Parts per billion Carbon
+Benzene,2020,2,1.6497,Parts per billion Carbon
+Benzene,2021,2,1.7548,Parts per billion Carbon
+Benzene,2022,2,1.6499,Parts per billion Carbon
+Benzene,2023,3,1.1658,Parts per billion Carbon
+Benzene,2024,4,0.9864,Parts per billion Carbon
+Benzene,2025,5,0.9039,Parts per billion Carbon
+Carbon monoxide,1980,7,2.1487,Parts per million
+Carbon monoxide,1981,6,2.2136,Parts per million
+Carbon monoxide,1982,16,2.4657,Parts per million
+Carbon monoxide,1983,16,2.3616,Parts per million
+Carbon monoxide,1984,6,1.9549,Parts per million
+Carbon monoxide,1985,6,1.7246,Parts per million
+Carbon monoxide,1986,9,2.037,Parts per million
+Carbon monoxide,1987,11,1.7219,Parts per million
+Carbon monoxide,1988,12,1.4251,Parts per million
+Carbon monoxide,1989,8,1.3302,Parts per million
+Carbon monoxide,1990,7,1.1334,Parts per million
+Carbon monoxide,1991,7,1.087,Parts per million
+Carbon monoxide,1992,8,0.9257,Parts per million
+Carbon monoxide,1993,10,1.2196,Parts per million
+Carbon monoxide,1994,11,1.2384,Parts per million
+Carbon monoxide,1995,8,1.1962,Parts per million
+Carbon monoxide,1996,7,0.9844,Parts per million
+Carbon monoxide,1997,7,0.9581,Parts per million
+Carbon monoxide,1998,6,0.9742,Parts per million
+Carbon monoxide,1999,6,0.9175,Parts per million
+Carbon monoxide,2000,6,0.8067,Parts per million
+Carbon monoxide,2001,6,0.7628,Parts per million
+Carbon monoxide,2002,6,0.6366,Parts per million
+Carbon monoxide,2003,6,0.6001,Parts per million
+Carbon monoxide,2004,6,0.6042,Parts per million
+Carbon monoxide,2005,6,0.5735,Parts per million
+Carbon monoxide,2006,6,0.5077,Parts per million
+Carbon monoxide,2007,3,0.4867,Parts per million
+Carbon monoxide,2008,3,0.4736,Parts per million
+Carbon monoxide,2009,3,0.4044,Parts per million
+Carbon monoxide,2010,3,0.4142,Parts per million
+Carbon monoxide,2011,4,0.3406,Parts per million
+Carbon monoxide,2012,3,0.3502,Parts per million
+Carbon monoxide,2013,4,0.402,Parts per million
+Carbon monoxide,2014,4,0.4012,Parts per million
+Carbon monoxide,2015,4,0.4222,Parts per million
+Carbon monoxide,2016,4,0.4098,Parts per million
+Carbon monoxide,2017,4,0.3642,Parts per million
+Carbon monoxide,2018,4,0.3663,Parts per million
+Carbon monoxide,2019,4,0.3597,Parts per million
+Carbon monoxide,2020,4,0.3299,Parts per million
+Carbon monoxide,2021,4,0.3524,Parts per million
+Carbon monoxide,2022,4,0.3353,Parts per million
+Carbon monoxide,2023,4,0.3361,Parts per million
+Carbon monoxide,2024,2,0.3744,Parts per million
+Carbon monoxide,2025,2,0.3407,Parts per million
+Lead (TSP),2010,2,0.008,Micrograms/cubic meter (LC)
+Lead (TSP),2011,2,0.01,Micrograms/cubic meter (LC)
+Lead (TSP),2012,2,0.0101,Micrograms/cubic meter (LC)
+Lead (TSP),2013,1,0.019,Micrograms/cubic meter (LC)
+Lead (TSP),2014,1,0.0195,Micrograms/cubic meter (LC)
+Nitrogen dioxide,1980,3,53.7564,Parts per billion
+Nitrogen dioxide,1981,3,57.1922,Parts per billion
+Nitrogen dioxide,1982,3,53.8526,Parts per billion
+Nitrogen dioxide,1983,3,63.1682,Parts per billion
+Nitrogen dioxide,1984,3,57.8254,Parts per billion
+Nitrogen dioxide,1985,3,57.2291,Parts per billion
+Nitrogen dioxide,1986,3,60.7894,Parts per billion
+Nitrogen dioxide,1987,3,54.3707,Parts per billion
+Nitrogen dioxide,1988,4,58.0319,Parts per billion
+Nitrogen dioxide,1989,3,58.0361,Parts per billion
+Nitrogen dioxide,1991,2,50.636,Parts per billion
+Nitrogen dioxide,1992,5,50.1657,Parts per billion
+Nitrogen dioxide,1993,5,42.1265,Parts per billion
+Nitrogen dioxide,1994,5,44.5366,Parts per billion
+Nitrogen dioxide,1995,7,33.6678,Parts per billion
+Nitrogen dioxide,1996,7,33.9672,Parts per billion
+Nitrogen dioxide,1997,6,32.2469,Parts per billion
+Nitrogen dioxide,1998,6,32.0478,Parts per billion
+Nitrogen dioxide,1999,6,31.1905,Parts per billion
+Nitrogen dioxide,2000,4,34.8508,Parts per billion
+Nitrogen dioxide,2001,4,37.5983,Parts per billion
+Nitrogen dioxide,2002,2,46.8838,Parts per billion
+Nitrogen dioxide,2003,2,50.5167,Parts per billion
+Nitrogen dioxide,2004,2,42.2194,Parts per billion
+Nitrogen dioxide,2005,2,43.9011,Parts per billion
+Nitrogen dioxide,2006,2,44.2561,Parts per billion
+Nitrogen dioxide,2007,2,44.0032,Parts per billion
+Nitrogen dioxide,2008,2,39.9428,Parts per billion
+Nitrogen dioxide,2009,2,39.1538,Parts per billion
+Nitrogen dioxide,2010,2,38.4078,Parts per billion
+Nitrogen dioxide,2011,2,41.2677,Parts per billion
+Nitrogen dioxide,2012,2,41.5162,Parts per billion
+Nitrogen dioxide,2013,3,39.6543,Parts per billion
+Nitrogen dioxide,2014,4,39.7802,Parts per billion
+Nitrogen dioxide,2015,5,43.5294,Parts per billion
+Nitrogen dioxide,2016,5,41.9867,Parts per billion
+Nitrogen dioxide,2017,5,38.2559,Parts per billion
+Nitrogen dioxide,2018,5,37.9955,Parts per billion
+Nitrogen dioxide,2019,6,32.7651,Parts per billion
+Nitrogen dioxide,2020,6,30.6671,Parts per billion
+Nitrogen dioxide,2021,6,31.0666,Parts per billion
+Nitrogen dioxide,2022,6,30.391,Parts per billion
+Nitrogen dioxide,2023,6,29.6099,Parts per billion
+Nitrogen dioxide,2024,6,28.858,Parts per billion
+Nitrogen dioxide,2025,6,28.115,Parts per billion
+Ozone,1980,6,0.0607,Parts per million
+Ozone,1981,6,0.06,Parts per million
+Ozone,1982,7,0.0594,Parts per million
+Ozone,1983,6,0.063,Parts per million
+Ozone,1984,6,0.0581,Parts per million
+Ozone,1985,6,0.0581,Parts per million
+Ozone,1986,6,0.0578,Parts per million
+Ozone,1987,6,0.0612,Parts per million
+Ozone,1988,7,0.0588,Parts per million
+Ozone,1989,7,0.0587,Parts per million
+Ozone,1990,6,0.0562,Parts per million
+Ozone,1991,7,0.0583,Parts per million
+Ozone,1992,8,0.0542,Parts per million
+Ozone,1993,14,0.0567,Parts per million
+Ozone,1994,10,0.0573,Parts per million
+Ozone,1995,9,0.0534,Parts per million
+Ozone,1996,9,0.057,Parts per million
+Ozone,1997,9,0.0553,Parts per million
+Ozone,1998,8,0.0612,Parts per million
+Ozone,1999,8,0.0584,Parts per million
+Ozone,2000,8,0.057,Parts per million
+Ozone,2001,8,0.0559,Parts per million
+Ozone,2002,8,0.0585,Parts per million
+Ozone,2003,8,0.0597,Parts per million
+Ozone,2004,10,0.0544,Parts per million
+Ozone,2005,9,0.0566,Parts per million
+Ozone,2006,9,0.0607,Parts per million
+Ozone,2007,9,0.0599,Parts per million
+Ozone,2008,9,0.0603,Parts per million
+Ozone,2009,11,0.057,Parts per million
+Ozone,2010,11,0.058,Parts per million
+Ozone,2011,11,0.0609,Parts per million
+Ozone,2012,11,0.0614,Parts per million
+Ozone,2013,10,0.0599,Parts per million
+Ozone,2014,9,0.0574,Parts per million
+Ozone,2015,10,0.058,Parts per million
+Ozone,2016,10,0.0573,Parts per million
+Ozone,2017,10,0.0517,Parts per million
+Ozone,2018,10,0.0515,Parts per million
+Ozone,2019,10,0.051,Parts per million
+Ozone,2020,10,0.0505,Parts per million
+Ozone,2021,9,0.054,Parts per million
+Ozone,2022,9,0.0531,Parts per million
+Ozone,2023,9,0.0542,Parts per million
+Ozone,2024,9,0.0561,Parts per million
+Ozone,2025,9,0.0523,Parts per million
+PM10,1985,1,51.4865,Micrograms/cubic meter (25 C)
+PM10,1986,10,50.1926,Micrograms/cubic meter (25 C)
+PM10,1987,10,42.0699,Micrograms/cubic meter (25 C)
+PM10,1988,9,31.1302,Micrograms/cubic meter (25 C)
+PM10,1989,10,30.1155,Micrograms/cubic meter (25 C)
+PM10,1990,11,27.8899,Micrograms/cubic meter (25 C)
+PM10,1991,11,27.6402,Micrograms/cubic meter (25 C)
+PM10,1992,14,26.041,Micrograms/cubic meter (25 C)
+PM10,1993,14,26.7456,Micrograms/cubic meter (25 C)
+PM10,1994,14,23.6263,Micrograms/cubic meter (25 C)
+PM10,1995,16,19.4288,Micrograms/cubic meter (25 C)
+PM10,1996,14,20.037,Micrograms/cubic meter (25 C)
+PM10,1997,14,19.8864,Micrograms/cubic meter (25 C)
+PM10,1998,13,21.8465,Micrograms/cubic meter (25 C)
+PM10,1999,12,20.8919,Micrograms/cubic meter (25 C)
+PM10,2000,14,22.4448,Micrograms/cubic meter (25 C)
+PM10,2001,15,25.9206,Micrograms/cubic meter (25 C)
+PM10,2002,7,31.479,Micrograms/cubic meter (25 C)
+PM10,2003,7,30.0796,Micrograms/cubic meter (25 C)
+PM10,2004,7,27.7776,Micrograms/cubic meter (25 C)
+PM10,2005,9,30.7154,Micrograms/cubic meter (25 C)
+PM10,2006,7,26.1076,Micrograms/cubic meter (25 C)
+PM10,2007,5,27.9925,Micrograms/cubic meter (25 C)
+PM10,2008,5,26.5554,Micrograms/cubic meter (25 C)
+PM10,2009,5,23.8825,Micrograms/cubic meter (25 C)
+PM10,2010,5,25.9235,Micrograms/cubic meter (25 C)
+PM10,2011,5,25.9638,Micrograms/cubic meter (25 C)
+PM10,2012,6,27.8098,Micrograms/cubic meter (25 C)
+PM10,2013,5,26.0894,Micrograms/cubic meter (25 C)
+PM10,2014,5,25.7034,Micrograms/cubic meter (25 C)
+PM10,2015,5,24.0339,Micrograms/cubic meter (25 C)
+PM10,2016,5,27.5938,Micrograms/cubic meter (25 C)
+PM10,2017,4,28.145,Micrograms/cubic meter (25 C)
+PM10,2018,4,28.9718,Micrograms/cubic meter (25 C)
+PM10,2019,4,28.2531,Micrograms/cubic meter (25 C)
+PM10,2020,4,30.853,Micrograms/cubic meter (25 C)
+PM10,2021,4,31.7019,Micrograms/cubic meter (25 C)
+PM10,2022,4,28.6479,Micrograms/cubic meter (25 C)
+PM10,2023,4,26.885,Micrograms/cubic meter (25 C)
+PM10,2024,4,25.7092,Micrograms/cubic meter (25 C)
+PM10,2025,3,25.5439,Micrograms/cubic meter (25 C)
+PM2.5,1999,5,8.634,Micrograms/cubic meter (LC)
+PM2.5,2000,6,9.5332,Micrograms/cubic meter (LC)
+PM2.5,2001,6,11.4084,Micrograms/cubic meter (LC)
+PM2.5,2002,3,9.9022,Micrograms/cubic meter (LC)
+PM2.5,2003,3,10.0605,Micrograms/cubic meter (LC)
+PM2.5,2004,4,10.0157,Micrograms/cubic meter (LC)
+PM2.5,2005,5,8.9802,Micrograms/cubic meter (LC)
+PM2.5,2006,5,8.5633,Micrograms/cubic meter (LC)
+PM2.5,2007,6,9.5756,Micrograms/cubic meter (LC)
+PM2.5,2008,6,7.8422,Micrograms/cubic meter (LC)
+PM2.5,2009,6,7.1183,Micrograms/cubic meter (LC)
+PM2.5,2010,6,7.4899,Micrograms/cubic meter (LC)
+PM2.5,2011,6,6.8661,Micrograms/cubic meter (LC)
+PM2.5,2012,7,7.5983,Micrograms/cubic meter (LC)
+PM2.5,2013,6,7.3916,Micrograms/cubic meter (LC)
+PM2.5,2014,7,7.6574,Micrograms/cubic meter (LC)
+PM2.5,2015,7,7.9064,Micrograms/cubic meter (LC)
+PM2.5,2016,7,7.3696,Micrograms/cubic meter (LC)
+PM2.5,2017,7,7.7799,Micrograms/cubic meter (LC)
+PM2.5,2018,8,7.7109,Micrograms/cubic meter (LC)
+PM2.5,2019,8,7.4207,Micrograms/cubic meter (LC)
+PM2.5,2020,8,8.073,Micrograms/cubic meter (LC)
+PM2.5,2021,8,8.7305,Micrograms/cubic meter (LC)
+PM2.5,2022,8,6.3212,Micrograms/cubic meter (LC)
+PM2.5,2023,8,6.7655,Micrograms/cubic meter (LC)
+PM2.5,2024,9,6.5169,Micrograms/cubic meter (LC)
+PM2.5,2025,9,6.2393,Micrograms/cubic meter (LC)
+Sulfur dioxide,1980,2,34.5992,Parts per billion
+Sulfur dioxide,1981,2,37.6372,Parts per billion
+Sulfur dioxide,1982,3,40.2145,Parts per billion
+Sulfur dioxide,1983,2,32.6528,Parts per billion
+Sulfur dioxide,1984,2,27.2219,Parts per billion
+Sulfur dioxide,1985,2,21.6962,Parts per billion
+Sulfur dioxide,1986,2,22.1067,Parts per billion
+Sulfur dioxide,1987,2,22.9879,Parts per billion
+Sulfur dioxide,1988,2,22.5874,Parts per billion
+Sulfur dioxide,1989,2,21.7842,Parts per billion
+Sulfur dioxide,1990,2,21.4686,Parts per billion
+Sulfur dioxide,1991,2,25.1447,Parts per billion
+Sulfur dioxide,1992,3,24.2089,Parts per billion
+Sulfur dioxide,1993,3,21.425,Parts per billion
+Sulfur dioxide,1994,3,20.7626,Parts per billion
+Sulfur dioxide,1995,2,20.6841,Parts per billion
+Sulfur dioxide,1996,2,23.961,Parts per billion
+Sulfur dioxide,1997,2,21.7035,Parts per billion
+Sulfur dioxide,1998,2,18.9757,Parts per billion
+Sulfur dioxide,1999,2,17.8955,Parts per billion
+Sulfur dioxide,2000,2,19.652,Parts per billion
+Sulfur dioxide,2001,3,18.0343,Parts per billion
+Sulfur dioxide,2002,3,16.3892,Parts per billion
+Sulfur dioxide,2003,3,11.412,Parts per billion
+Sulfur dioxide,2004,3,9.5396,Parts per billion
+Sulfur dioxide,2005,2,9.11,Parts per billion
+Sulfur dioxide,2006,2,9.229,Parts per billion
+Sulfur dioxide,2007,2,8.9576,Parts per billion
+Sulfur dioxide,2008,2,7.7348,Parts per billion
+Sulfur dioxide,2009,2,7.8145,Parts per billion
+Sulfur dioxide,2010,2,7.2743,Parts per billion
+Sulfur dioxide,2011,3,8.0928,Parts per billion
+Sulfur dioxide,2012,3,7.3339,Parts per billion
+Sulfur dioxide,2013,3,7.3156,Parts per billion
+Sulfur dioxide,2014,3,3.9197,Parts per billion
+Sulfur dioxide,2015,3,3.6827,Parts per billion
+Sulfur dioxide,2016,3,3.244,Parts per billion
+Sulfur dioxide,2017,3,2.7153,Parts per billion
+Sulfur dioxide,2018,3,1.8796,Parts per billion
+Sulfur dioxide,2019,3,1.896,Parts per billion
+Sulfur dioxide,2020,3,1.5376,Parts per billion
+Sulfur dioxide,2021,3,1.4924,Parts per billion
+Sulfur dioxide,2022,3,1.3747,Parts per billion
+Sulfur dioxide,2023,3,1.5657,Parts per billion
+Sulfur dioxide,2024,3,1.4768,Parts per billion
+Sulfur dioxide,2025,3,1.4975,Parts per billion
