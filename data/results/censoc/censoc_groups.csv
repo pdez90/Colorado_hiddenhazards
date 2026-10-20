@@ -1,0 +1,25 @@
+file,measure,group,n,adj_mean_age_at_death
+"DMF (men, deaths 1975 on)",1929 zoning district,commercial,366,80.29
+"DMF (men, deaths 1975 on)",1929 zoning district,industrial,450,79.38
+"DMF (men, deaths 1975 on)",1929 zoning district,residence,7574,80.94
+"DMF (men, deaths 1975 on)",1938 HOLC grade,A,389,82.06
+"DMF (men, deaths 1975 on)",1938 HOLC grade,B,1201,81.11
+"DMF (men, deaths 1975 on)",1938 HOLC grade,C,3668,81.25
+"DMF (men, deaths 1975 on)",1938 HOLC grade,D,2451,80.07
+"DMF (men, deaths 1975 on)",1938 HOLC grade,ungraded,681,80.28
+"DMF (men, deaths 1975 on)",Hazardous trades to 1940,hazardous trade within 500 m,2683,80.2
+"DMF (men, deaths 1975 on)",Hazardous trades to 1940,none within 500 m,5707,81.13
+"DMF (men, deaths 1975 on)",Industrial land 1937,10%+ industrial within 250 m,829,79.79
+"DMF (men, deaths 1975 on)",Industrial land 1937,under 10%,7561,80.94
+"Numident (men and women, deaths 1988-2005)",1929 zoning district,commercial,553,81.48
+"Numident (men and women, deaths 1988-2005)",1929 zoning district,industrial,762,81.86
+"Numident (men and women, deaths 1988-2005)",1929 zoning district,residence,12061,81.96
+"Numident (men and women, deaths 1988-2005)",1938 HOLC grade,A,608,81.98
+"Numident (men and women, deaths 1988-2005)",1938 HOLC grade,B,2014,82.11
+"Numident (men and women, deaths 1988-2005)",1938 HOLC grade,C,5841,82.01
+"Numident (men and women, deaths 1988-2005)",1938 HOLC grade,D,3976,81.63
+"Numident (men and women, deaths 1988-2005)",1938 HOLC grade,ungraded,937,82.14
+"Numident (men and women, deaths 1988-2005)",Hazardous trades to 1940,hazardous trade within 500 m,4220,81.8
+"Numident (men and women, deaths 1988-2005)",Hazardous trades to 1940,none within 500 m,9156,81.99
+"Numident (men and women, deaths 1988-2005)",Industrial land 1937,10%+ industrial within 250 m,1267,81.58
+"Numident (men and women, deaths 1988-2005)",Industrial land 1937,under 10%,12109,81.96

@@ -448,6 +448,22 @@ P12, fetched once from NHGIS with `IPUMS_API_KEY`), density and PM2.5, tract pov
 kernel densities of hidden, known historical and pre-1960 sites, TRI, cleanup and a non-hazardous placebo. Writes rate ratios only to
 `data/results/health/`.
 
+### Former sites before and after they were rebuilt (`R/mortality_redevelopment.R`)
+Same restricted inputs as the block models, read in place. Block-year panel 2000–2019 for the Denver study area (yearly block population
+and PM2.5 from `block_noyr.gpkg`; years whose deaths match the 2010 blocks for under 90% are dropped). A site counts as rebuilt from the
+year its parcel's current structure was built (`R/site_fate.R`), when that is after its last directory listing. Kernel (500 m, 2 km) of
+sites still standing, by group (hidden, known, pre-1960), in a Poisson model with block and year fixed effects, a population offset and
+PM2.5; plus an event study around the first rebuild within 400 m. Writes rate ratios only to `data/results/health/`. Needs `fixest`.
+
+### 1940 residents and their age at death (`R/censoc_denver_1940.R`)
+Links Denver's 1940 census (IPUMS full count, `R/fetch_ipums_fullcount.R`) to Social Security death records through CenSoc's HISTID
+(CenSoc-Numident: men and women, deaths 1988–2005; CenSoc-DMF: men, deaths 1975 on; free from https://dataverse.harvard.edu/dataverse/censoc,
+unzipped into `work/censoc/`). Each person gets their 1940 street address from Brown's GRF (geocoded by `R/grf_eds.R`) and, there: the
+1938 HOLC grade, the 1929 zoning district, industrial and commercial land within 250 m in 1937 (USGS), the hazardous trades listed to 1940
+(kernel and within 500 m), and the 1965–92 hidden and known sites. OLS of age at death with birth-year fixed effects, CenSoc weights,
+1940 person and household controls, errors clustered by ED, and a version with ED fixed effects. Writes aggregates only to
+`data/results/censoc/`; the linked person file stays in `work/censoc/`.
+
 ### What became of the sites (`R/site_fate.R`)
 Every geocoded Denver site (1965–92 manufacturers' directory, hazardous sectors; street-level pre-1960 hazardous trades) is matched to
 the nearest assessor parcel within 40 m through Denver's open-data parcel service (property class, current and pre-2010 zone district,
@@ -491,7 +507,7 @@ The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because
 `Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`
 (Denver districts) → `Rscript R/denver_eds_analysis.R` → `Rscript R/county_panel_1880_1940.R` → `Rscript R/ej_panel.R` → `Rscript R/fetch_hmda.R` →
 `Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
-`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` → `Rscript R/landuse_1937_1997.R` → `Rscript R/fetch_highways.R` → `Rscript R/highways_denver.R` → `Rscript R/mortality_block.R` (restricted data; analyst's machine) →
+`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` → `Rscript R/landuse_1937_1997.R` → `Rscript R/fetch_highways.R` → `Rscript R/highways_denver.R` → `Rscript R/mortality_block.R` (restricted data; analyst's machine) → `Rscript R/mortality_redevelopment.R` (same) → `Rscript R/censoc_denver_1940.R` (after downloading CenSoc) →
 `Rscript R/benchmarks.R` (CBP, NHGIS county manufacturing and the Atack samples; needs network and the NHGIS key) →
 `Rscript R/edition_coverage.R` (per-edition pages, listings, hazardous firms and completeness for both directory series → app/data/edition_coverage.csv;
 twelve of the 25 manufacturers' directory editions are partial scans that stop part-way through the geographic section — complete: 1965–68, 1970, 1973–74, 1977, 1980, 1983, 1988, 1990, 1992 — flagged on the Trends and Data tabs; the complete editions are the ones that match CBP best).
