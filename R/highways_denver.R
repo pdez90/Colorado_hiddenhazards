@@ -71,3 +71,34 @@ R5 <- M[, .(tracts = uniqueN(GEOID), residents = sum(pop), pct_hispanic = wm(p_h
 R5[, pop_index_1950_100 := round(100 * residents / residents[census == 1950]), by = crossed]
 fwrite(R5, file.path(O, "highways_tracts.csv")); print(R5)
 file.copy(list.files(O, "\\.(csv|geojson)$", full.names = TRUE), A, overwrite = TRUE)
+# ---------------------------------------------------------------- 5. before and after: tracts lined up on their own freeway's opening
+# Treated: study tracts that a freeway (motorway, not ramps) opened 1950-1979 passes within 250 m of; the tract's opening year is the
+# earliest such opening, and its "last census before" is the census year at or before that opening. Comparison: study tracts with no
+# freeway within 1 km before 1990. For each treated tract and census, the gap from the mean of the comparison tracts in that census is
+# taken, and gaps are averaged by decades since the opening (event time), relative to the last census before (event time 0).
+FW2 <- FW[!is.na(FW$start_year), ]
+d250 <- st_is_within_distance(core, FW2, 250); open_yr <- vapply(d250, function(i) if (length(i)) min(FW2$start_year[i]) else NA_real_, 0)
+d1k <- st_is_within_distance(core, FW2[FW2$start_year < 1990, ], 1000)
+dt <- as.numeric(st_distance(st_centroid(st_geometry(core)), st_transform(st_sfc(st_point(c(-104.9903, 39.7392)), crs = 4326), st_crs(core)))) / 1000
+E <- data.table(GEOID = core$GEOID, open_year = open_yr, near1k_pre1990 = lengths(d1k) > 0, km_downtown = round(dt, 2))
+E[, group := fifelse(!is.na(open_year) & open_year >= 1950 & open_year <= 1979, "treated", fifelse(!near1k_pre1990, "comparison", "other"))]
+E[group == "treated", base_census := 10 * floor(open_year / 10)]
+Pa0 <- fread(file.path(A, "tract_panel.csv"), colClasses = c(GEOID = "character"))[census >= 1940 & !is.na(pop) & pop > 0]
+V <- c("p_hisp", "p_black", "p_white", "p_owner", "p_pov")
+# two comparison sets: all tracts with no freeway within 1 km, and only those as close to downtown as the treated tracts (within the treated tracts' median distance)
+dmax <- median(E[group == "treated", km_downtown])
+ev <- function(cmp_ids, label) {
+  Pa <- merge(Pa0, E[, .(GEOID, group, base_census)], by = "GEOID")
+  cmp <- Pa[GEOID %in% cmp_ids, c(list(c_pop = sum(pop)), lapply(.SD, function(x) weighted.mean(x, pop, na.rm = TRUE))), by = census, .SDcols = V]
+  setnames(cmp, V, paste0("c_", V))
+  Tr <- merge(Pa[group == "treated"], cmp, by = "census"); Tr[, event := (census - base_census) / 10]; Tr <- Tr[event >= -2 & event <= 4]
+  Tr <- merge(Tr, Tr[event == 0, .(GEOID, pop0 = pop, c_pop0 = c_pop)], by = "GEOID")
+  g <- function(a, b, w) { x <- weighted.mean(a - b, w, na.rm = TRUE); if (is.nan(x)) NA_real_ else round(x, 1) }
+  Tr[, .(comparison = label, tracts = uniqueN(GEOID), pop_index = round(100 * sum(pop) / sum(pop0), 1), comparison_pop_index = round(100 * mean(c_pop / c_pop0), 1),
+         gap_hispanic = g(p_hisp, c_p_hisp, pop), gap_black = g(p_black, c_p_black, pop), gap_white = g(p_white, c_p_white, pop),
+         gap_owner = g(p_owner, c_p_owner, pop), gap_poverty = g(p_pov, c_p_pov, pop)), by = .(decades_since_opening = event)][order(decades_since_opening)] }
+R6 <- rbind(ev(E[group == "comparison", GEOID], "All tracts with no freeway within 1 km"),
+            ev(E[group == "comparison" & km_downtown <= dmax, GEOID], sprintf("Same, within %.1f km of downtown", dmax)))
+fwrite(R6, file.path(O, "highways_event_study.csv")); print(R6, nrows = 50); print(E[, .N, by = group]); print(E[group == "comparison" & km_downtown <= dmax, .N])
+fwrite(E[, .(GEOID, group, open_year, km_downtown)], file.path(O, "highways_tract_groups.csv"))
+file.copy(file.path(O, c("highways_event_study.csv", "highways_tract_groups.csv")), A, overwrite = TRUE)

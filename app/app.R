@@ -80,7 +80,7 @@ zon      <- if (file.exists(dd("zoning_1929.geojson"))) st_read(dd("zoning_1929.
 LU_COL <- c("#b2182b", "#5e3c99", "#4d4d4d", "#e6ab02", "#fee8c8", "#fdbb84", "#9ecae1", "#d9f0d3")
 lu_r <- if (requireNamespace("terra", quietly = TRUE) && all(file.exists(dd(sprintf("landuse_%d_20m.tif", LU_YEARS))))) setNames(lapply(LU_YEARS, function(y) terra::project(terra::rast(dd(sprintf("landuse_%d_20m.tif", y))), "EPSG:3857", method = "near")), LU_YEARS) else NULL   # projected once at start-up
 hwy <- if (file.exists(dd("highways_denver.geojson"))) st_read(dd("highways_denver.geojson"), quiet = TRUE) else NULL
-hw_dec <- rd_opt("highways_km_by_decade.csv"); hw_holc <- rd_opt("highways_by_holc_grade.csv"); hw_zon <- rd_opt("highways_by_zoning_1929.csv"); hw_tr <- rd_opt("highways_tracts.csv"); hw_nb <- rd_opt("highways_nber_check.csv")
+hw_dec <- rd_opt("highways_km_by_decade.csv"); hw_holc <- rd_opt("highways_by_holc_grade.csv"); hw_zon <- rd_opt("highways_by_zoning_1929.csv"); hw_tr <- rd_opt("highways_tracts.csv"); hw_nb <- rd_opt("highways_nber_check.csv"); hw_ev <- rd_opt("highways_event_study.csv")
 hw_open <- function(y) { if (is.null(hwy)) return(NULL); h <- hwy[!is.na(hwy$start_year) & hwy$start_year <= y & (is.na(hwy$end_year) | hwy$end_year > y), ]; h }
 lu_year <- rd_opt("landuse_by_year.csv"); lu_holc <- rd_opt("landuse_by_holc_grade.csv"); lu_zone <- rd_opt("landuse_vs_zoning.csv"); lu_sites <- rd_opt("landuse_sites.csv"); lu_trans <- rd_opt("landuse_site_transitions.csv"); lu_paths <- rd_opt("landuse_tract_paths.csv")
 add_landuse <- function(m, y, group, opacity = 0.75, legend = TRUE, layerId = NULL) { if (is.null(lu_r)) return(m)
@@ -358,7 +358,13 @@ ui <- page_navbar(id = "nav",
     layout_columns(col_widths = c(5, 7),
       card(card_header("Through industrial or residential land? Freeways of 1950\u20131979 by 1929 zoning"), unit_note("freeway km on the 1929 zoning map"), tableOutput("t_hw_zon")),
       card(card_header("Tracts the freeways cut through: who lived there, 1950\u20131990"), unit_note("2010 census tracts within 10 km of downtown with data in every census 1950\u20131990"), tableOutput("t_hw_tr"),
-           tags$small(class = "text-muted", "Population-weighted means; population indexed to 1950 = 100. The census had no Hispanic measure before 1960. A description, not an estimate of what the freeways caused.")))),
+           tags$small(class = "text-muted", "Population-weighted means; population indexed to 1950 = 100. The census had no Hispanic measure before 1960. A description, not an estimate of what the freeways caused."))),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("Before and after the freeway opened: gap from comparison tracts"), unit_note("2010 census tracts within 10 km of downtown; each freeway tract lined up on the year a freeway opened within 250 m of it"),
+           selectInput("hw_ev_cmp", NULL, choices = NULL, width = "100%"), plotlyOutput("p_hw_ev", height = 360),
+           tags$small(class = "text-muted", "Each line is the population-weighted gap, in percentage points, between tracts a freeway opened beside (1950\u20131979) and tracts with no freeway within 1 km, by decades since the opening. 0 = the last census before it opened. Hispanic origin is first counted in 1960 and poverty in 1970, so those lines start later.")),
+      card(card_header("The same comparison as a table"), unit_note("2010 census tracts within 10 km of downtown"), div(style = "overflow-x:auto", tableOutput("t_hw_ev")),
+           tags$small(class = "text-muted", "Population is indexed to 100 at the last census before opening. A comparison of trends, not a causal estimate: the freeways were routed through places already changing.")))),
   nav_panel("Redlining & covenants",
     layout_columns(col_widths = c(3, 6, 3),
       card(card_header("HOLC 1938 map and racial covenants 1931\u201335"), unit_note("HOLC area polygons (1938), deed points (covenants) and firm points"),
@@ -1327,6 +1333,18 @@ server <- function(input, output, session) {
   output$t_hw_dec <- renderTable({ req(hw_dec); d <- hw_dec; data.frame(Decade = paste0(d$decade, "s"), `km opened` = d$km_opened, `km removed` = d$km_removed, `km open (cumulative opened)` = d$km_cumulative, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   output$t_hw_nb <- renderTable({ req(hw_nb); d <- hw_nb; data.frame(Interstate = d$route, `NBER: opened (Denver County)` = ifelse(is.na(d$nber_first_opened), "\u2013", paste0(d$nber_first_opened, "\u2013", d$nber_last_opened)), `NBER miles` = ifelse(is.na(d$nber_miles), "\u2013", d$nber_miles), `OpenHistoricalMap: first year` = ifelse(is.na(d$ohm_first), "\u2013", d$ohm_first), check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   output$t_hw_zon <- renderTable({ req(hw_zon); d <- hw_zon; data.frame(`1929 zoning` = d$cls, `Freeway km` = d$km, `% of freeway km` = d$pct, `% of the land` = ifelse(is.na(d$share_of_land), "\u2013", d$share_of_land), check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  observe({ req(hw_ev); ch <- unique(hw_ev$comparison); updateSelectInput(session, "hw_ev_cmp", choices = ch, selected = ch[length(ch)]) })
+  hw_ev_sel <- reactive({ req(hw_ev, input$hw_ev_cmp); hw_ev[hw_ev$comparison == input$hw_ev_cmp, ] })
+  output$p_hw_ev <- renderPlotly({ d <- hw_ev_sel(); pl <- plot_ly()
+    S <- list(gap_hispanic = c("% Hispanic", "#c0392b"), gap_white = c("% white", "#2c7fb8"), gap_black = c("% Black", "#7b3294"), gap_owner = c("% owner-occupied", "#4d9221"), gap_poverty = c("% in poverty", "#e08214"))
+    for (v in names(S)) pl <- pl |> add_trace(x = d$decades_since_opening, y = d[[v]], type = "scatter", mode = "lines+markers", name = S[[v]][1], line = list(color = S[[v]][2]), marker = list(color = S[[v]][2]), connectgaps = FALSE,
+      text = sprintf("%s, %+d decades: %+.1f points", S[[v]][1], d$decades_since_opening, d[[v]]), hoverinfo = "text")
+    layout(pl, xaxis = list(title = "Decades since the freeway opened (0 = last census before)", dtick = 1, zeroline = FALSE), yaxis = list(title = "Gap from comparison tracts (points)", zeroline = TRUE),
+      shapes = list(list(type = "line", x0 = 0.5, x1 = 0.5, y0 = 0, y1 = 1, yref = "paper", line = list(dash = "dot", color = "#888888"))),
+      legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom", xanchor = "left"), margin = list(t = 10)) })
+  output$t_hw_ev <- renderTable({ d <- hw_ev_sel(); f <- function(x) ifelse(is.na(x), "\u2013", sprintf("%+.1f", x))
+    data.frame(`Decades since opening` = d$decades_since_opening, Tracts = d$tracts, `Population (freeway tracts)` = d$pop_index, `Population (comparison)` = d$comparison_pop_index,
+      `Hispanic gap` = f(d$gap_hispanic), `White gap` = f(d$gap_white), `Black gap` = f(d$gap_black), `Owner gap` = f(d$gap_owner), `Poverty gap` = f(d$gap_poverty), check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   output$t_hw_tr <- renderTable({ req(hw_tr); d <- hw_tr; data.frame(Tracts = d$crossed, n = d$tracts, Census = d$census, Residents = format(d$residents, big.mark = ","), `Population (1950 = 100)` = d$pop_index_1950_100, `% Hispanic` = ifelse(is.na(d$pct_hispanic) | is.nan(d$pct_hispanic), "\u2013", d$pct_hispanic), `% Black` = d$pct_black, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   Z23_CATS <- c("Industrial (housing not allowed)" = "#7a0177", "Industrial mixed use (housing allowed)" = "#c51b8a", "Mixed use with housing" = "#fa9fb5",
                 "Residential" = "#fdd0a2", "Commercial" = "#9ecae1", "Open space, civic, other" = "#c7e9c0")

@@ -435,7 +435,10 @@ The rasters end at latitude 39.62, so a sliver of far-south Denver is unmapped; 
 reports; corridors; the 1947 plan), TIGER 2023 primary roads, and OpenHistoricalMap's dated road alignments around Denver (Overpass API) into
 `work/highways/`. `Rscript R/highways_denver.R` writes to `data/results/highways/`: dated alignments for the maps, freeway km by decade,
 an NBER-versus-OpenHistoricalMap check for Denver County's interstates, freeway length and nearby land by HOLC grade, freeway length by
-1929 zoning, and the composition of tracts crossed by freeways built 1950–1979.
+1929 zoning, and the composition of tracts crossed by freeways built 1950–1979. It also lines up each tract that a 1950–1979 freeway opened within 250 m of on
+its own opening year and traces its population-weighted gap (Hispanic, Black, white, owner-occupied, poverty) from tracts with no freeway
+within 1 km, decade by decade from two censuses before to four after (`highways_event_study.csv`, with all such tracts and with those
+no farther from downtown than the median freeway tract as comparisons; tract groups in `highways_tract_groups.csv`).
 
 ### Block-level mortality (`R/mortality_block.R`)
 Run on the machine that holds the Colorado death records (default folder `~/Downloads/CO_HIA`: `co_deaths_official.csv`,
