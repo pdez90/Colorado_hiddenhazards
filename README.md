@@ -485,7 +485,11 @@ boundaries, CDPHE's modelled childhood lead-risk decile by tract, CDC PLACES tra
 (100 m), summarises TRI releases by year and HOLC grade and AQS means by pollutant, counts sites inside urban-renewal projects and Superfund
 units, compares tract health by industrial history, and builds Sanborn map links (Library of Congress, 1887-1904). Outputs go to
 `data/results/context/` and the app's "Contamination & health" tab (Explore more) and main-map layers, including the georeferenced 1933
-aerial survey (Denver Public Library; City and County of Denver tile service).
+aerial survey (Denver Public Library; City and County of Denver tile service). It also maps the Library of Congress Sanborn volume extents for Denver
+(1887-1951) and writes a Sanborn digitising worklist (`data/results/context/sanborn_worklist.csv`: sites now residential, schools or parks,
+with the 1903-04, 1929-30 and 1950-51 volume covering each address), shows the Vasquez Boulevard/I-70 residential soil results by
+neighbourhood (`data/raw/vbi70/`, transcribed from the 2003 Record of Decision), and builds urban-renewal case studies (area-weighted census
+composition 1940-1990 inside each project, plus the sites and petroleum releases inside).
 
 ### What became of the sites (`R/site_fate.R`)
 Every geocoded Denver site (1965–92 manufacturers' directory, hazardous sectors; street-level pre-1960 hazardous trades) is matched to

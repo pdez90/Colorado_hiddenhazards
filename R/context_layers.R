@@ -16,6 +16,8 @@
 #      lead-risk decile by tract.
 #   6. Health today by tract: CDC PLACES (2024 release) and life expectancy 2010-15 (USALEEP), compared across tracts by their industrial
 #      history (1965-92 known and hidden sites, pre-1960 hazardous trades, industrial land in 1937).
+#   8-10. Sanborn volume extents and a digitising worklist; Vasquez Blvd/I-70 soil results by neighbourhood (ROD 2003); urban-renewal
+#      case studies (area-weighted census composition inside each project, 1940-1990).
 #   7. Sanborn fire-insurance map links for every street-level pre-1960 site (the nearest digitised Library of Congress edition, 1887-1904;
 #      1929-1951 editions are on ProQuest through the Denver Public Library).
 # Outputs: data/results/context/*.csv and copies of the map layers in app/data/ (all from public sources).
@@ -88,6 +90,7 @@ if (nrow(TRI)) {
   ALL[, tri_facility_100m := lengths(st_is_within_distance(PS, toUTM(FY[!duplicated(trifd)]), 100)) > 0]
 } else message("no TRI files read (check work/context/tri/)")
 # ---------------------------------------------------------------- 3. AQS
+if (file.exists(file.path(W, "aqs_denver.csv")) && file.size(file.path(W, "aqs_denver.csv")) > 0) {
 AQ <- fread(file.path(W, "aqs_denver.csv"))
 KEEP <- c("Lead (TSP) LC" = "Lead (TSP)", "Total Suspended Particulate (TSP)" = "Total suspended particulates", "Sulfur dioxide" = "Sulfur dioxide",
           "Nitrogen dioxide (NO2)" = "Nitrogen dioxide", "Carbon monoxide" = "Carbon monoxide", "Ozone" = "Ozone", "PM10 Total 0-10um STP" = "PM10", "PM2.5 - Local Conditions" = "PM2.5",
@@ -100,6 +103,7 @@ AT <- AQ[, .(monitors = uniqueN(paste(county, site)), mean = round(mean(mean, na
 fwrite(AT, file.path(O, "aqs_denver_by_year.csv")); file.copy(file.path(O, "aqs_denver_by_year.csv"), A, overwrite = TRUE)
 fwrite(AQ[!duplicated(paste(county, site)), .(county, site, site_name, latitude, longitude)], file.path(A, "aqs_monitors_denver.csv"))
 print(AT[, .(first = min(year), last = max(year), years = .N), by = pollutant])
+} else message("no AQS file: air-quality trends skipped")
 # ---------------------------------------------------------------- 4. urban renewal
 UR <- st_read(file.path(W, "ur_projects.geojson"), quiet = TRUE); UR <- UR[tolower(UR$city) == "denver" & tolower(UR$state) == "co", ]
 NS <- fread(file.path(W, "ur_non_spatial.csv"))[tolower(city) == "denver" & tolower(state) == "co"]
@@ -178,6 +182,54 @@ LOC <- data.table(year = c(1887, 1890, 1890, 1893, 1903, 1903, 1904, 1904),
 ALL[, sanborn := fifelse(status == "pre-1960" & first_year <= 1915, sprintf("Library of Congress Sanborn editions nearest in time: %s",
                          vapply(first_year, function(y) { k <- LOC[order(abs(year - y))][1:3]; paste(sprintf("<a href='%s' target='_blank'>%s</a>", k$url, k$label), collapse = ", ") }, "")),
                          "1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)")]
+# ---------------------------------------------------------------- 8. Sanborn volumes (Library of Congress extents) and a digitising worklist
+SBF <- Sys.glob(file.path(W, "sanborn_*.geojson"))
+SB <- do.call(rbind, lapply(SBF, function(f) { x <- st_read(f, quiet = TRUE); ed <- sub("^sanborn_(.*)\\.geojson$", "\\1", basename(f))
+  x$edition <- gsub("_", "\u2013", ed); x$volume <- suppressWarnings(as.integer(sub("\\D*(\\d+).*", "\\1", x$TITLE))); x$year <- x$VolYear
+  x[, c("edition", "volume", "year", "DESCRIPTION")] }))
+LOCV <- c("1887.1" = "001", "1890\u20131893.1" = "002", "1890\u20131893.2" = "003", "1890\u20131893.3" = "004", "1903\u20131904.1" = "005", "1903\u20131904.2" = "006", "1903\u20131904.3" = "007")
+if (!is.null(SB) && nrow(SB)) {
+  k <- paste(SB$edition, ifelse(SB$edition == "1887", 1L, SB$volume), sep = ".")
+  SB$link <- ifelse(k %in% names(LOCV), sprintf("https://www.loc.gov/item/sanborn00985_%s/", LOCV[k]),
+                    ifelse(SB$edition %in% c("1929\u20131930", "1950\u20131951"), "https://history.denverlibrary.org/research-tool/sanborn-fire-insurance-maps",
+                           "https://www.loc.gov/collections/sanborn-maps/?q=denver+colorado"))
+  SB$online <- ifelse(SB$edition %in% c("1929\u20131930", "1950\u20131951"), "ProQuest Digital Sanborn Maps (Denver Public Library card)", "Library of Congress (free, online)")
+  SB$DESCRIPTION <- NULL
+  if (file.exists(file.path(A, "sanborn_volumes.geojson"))) file.remove(file.path(A, "sanborn_volumes.geojson"))
+  st_write(st_make_valid(SB), file.path(A, "sanborn_volumes.geojson"), quiet = TRUE)
+  SBu <- st_make_valid(st_transform(SB, UTM))
+  vol_at <- function(ed) { w <- st_within(PS, SBu[SBu$edition == ed, ]); v <- SBu$volume[SBu$edition == ed]; vapply(w, function(i) if (length(i)) as.character(v[i[1]]) else NA_character_, "") }
+  ALL[, `:=`(sanborn_1903 = vol_at("1903\u20131904"), sanborn_1929 = vol_at("1929\u20131930"), sanborn_1951 = vol_at("1950\u20131951"))]
+  ALL[, sanborn := paste0(sanborn, fifelse(is.na(sanborn_1929) & is.na(sanborn_1951), "", sprintf("<br>Sanborn volumes covering this address: 1929\u201330 vol. %s · 1950\u201351 vol. %s (ProQuest, Denver Public Library)",
+                                                                                           fifelse(is.na(sanborn_1929), "\u2013", sanborn_1929), fifelse(is.na(sanborn_1951), "\u2013", sanborn_1951))))]
+  WL <- ALL[study == TRUE & (use_now %in% c("Residential", "Civic / school / health", "Park / open space") | (status == "on no current inventory" & use_now == "Vacant"))]
+  WL <- WL[, .(priority = fcase(use_now == "Civic / school / health", 1L, use_now == "Residential", 2L, use_now == "Park / open space", 3L, default = 4L), id, series, status, name, address,
+               first_year, last_year, use_now, sanborn_1903_volume = sanborn_1903, sanborn_1929_volume = sanborn_1929, sanborn_1951_volume = sanborn_1951,
+               petroleum_releases_50m)][order(priority, series, address)]
+  fwrite(WL, file.path(O, "sanborn_worklist.csv")); message(nrow(WL), " sites on the Sanborn worklist (now residential, school, park, or vacant hidden sites)")
+}
+# ---------------------------------------------------------------- 9. Vasquez Boulevard/I-70 residential soils by neighbourhood (ROD 2003, Table 3)
+ROD <- fread("data/raw/vbi70/rod2003_table3_residential_soils.csv"); file.copy("data/raw/vbi70/rod2003_table3_residential_soils.csv", file.path(A, "vbi70_rod2003_soils.csv"), overwrite = TRUE)
+if (file.exists(file.path(W, "denver_neighborhoods.geojson"))) {
+  NB <- st_read(file.path(W, "denver_neighborhoods.geojson"), quiet = TRUE); NB <- NB[NB$NBHD_NAME %in% c("Clayton", "Cole", "Elyria Swansea", "Globeville"), ]
+  row_html <- function(n) { r <- ROD[neighborhood == n]; sprintf("<b>%s</b>: %s yards sampled · lead 95th percentile %s ppm (max %s) · arsenic 95th percentile %s ppm (max %s)",
+                                                              n, r$properties_sampled, r$lead_95th_pct_ppm, r$lead_max_ppm, r$arsenic_95th_pct_ppm, r$arsenic_max_ppm) }
+  NB$soil_html <- vapply(NB$NBHD_NAME, function(n) if (n == "Elyria Swansea") paste(row_html("Elyria"), row_html("Swansea"), sep = "<br>") else row_html(n), "")
+  if (file.exists(file.path(A, "vbi70_neighborhoods.geojson"))) file.remove(file.path(A, "vbi70_neighborhoods.geojson"))
+  st_write(st_make_valid(NB[, c("NBHD_NAME", "soil_html")]), file.path(A, "vbi70_neighborhoods.geojson"), quiet = TRUE) }
+# ---------------------------------------------------------------- 10. urban-renewal case studies: who lived there, census by census (area-weighted 2010 tracts)
+TP <- fread(file.path(A, "tract_panel.csv"), colClasses = c(GEOID = "character"))[census <= 1990 & !is.na(pop)]
+T10a <- st_make_valid(st_transform(TR[, "GEOID"], UTM)); T10a$a_t <- as.numeric(st_area(T10a))
+IX <- suppressWarnings(st_intersection(URs[, "project"], T10a)); IX$share <- as.numeric(st_area(IX)) / IX$a_t
+IX <- data.table(project = IX$project, GEOID = IX$GEOID, share = IX$share)[share > 0.001]
+UC <- merge(IX, TP, by = "GEOID", allow.cartesian = TRUE)[, w := pop * share]
+UC <- UC[, .(residents_est = round(sum(w)), pct_hispanic = round(weighted.mean(p_hisp, w, na.rm = TRUE), 1), pct_black = round(weighted.mean(p_black, w, na.rm = TRUE), 1),
+             pct_owner = round(weighted.mean(p_owner, w, na.rm = TRUE), 1), pct_poverty = round(weighted.mean(p_pov, w, na.rm = TRUE), 1)), by = .(project, census)][order(project, census)]
+for (v in c("pct_hispanic", "pct_black", "pct_owner", "pct_poverty")) UC[is.nan(get(v)), (v) := NA_real_]
+fwrite(UC, file.path(O, "urban_renewal_composition.csv")); file.copy(file.path(O, "urban_renewal_composition.csv"), A, overwrite = TRUE); print(UC)
+URs$petroleum_releases_inside <- lengths(st_intersects(URs, PRs[PR$study, ]))
+fwrite(data.table(project = URs$project, petroleum_releases_inside = URs$petroleum_releases_inside, historical_sites_inside = URs$historical_sites_inside, sites_1965_92_inside = URs$sites_1965_92_inside),
+       file.path(A, "urban_renewal_sites.csv"))
 # ---------------------------------------------------------------- per-site record for the map popups
 fwrite(ALL[study == TRUE, .(id, series, status, petroleum_releases_50m, open_releases_50m, first_release_year, tank_facility_50m,
                             tri_facility_100m = if ("tri_facility_100m" %in% names(ALL)) tri_facility_100m else NA, urban_renewal_project, superfund_unit, sanborn)],

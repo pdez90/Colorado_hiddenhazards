@@ -89,6 +89,10 @@ ur_tab <- rd_opt("urban_renewal_denver.csv"); hl_hist <- rd_opt("health_by_histo
 ctx_sum <- rd_opt("site_context_summary.csv"); hl_tr <- rd_opt("health_tracts_study.csv", colClasses = c(GEOID = "character"))
 ur_poly <- if (file.exists(dd("urban_renewal_denver.geojson"))) st_read(dd("urban_renewal_denver.geojson"), quiet = TRUE) else NULL
 ou_poly <- if (file.exists(dd("superfund_ou_study.geojson"))) st_read(dd("superfund_ou_study.geojson"), quiet = TRUE) else NULL
+sb_poly <- if (file.exists(dd("sanborn_volumes.geojson"))) st_read(dd("sanborn_volumes.geojson"), quiet = TRUE) else NULL
+vb_nb <- if (file.exists(dd("vbi70_neighborhoods.geojson"))) st_read(dd("vbi70_neighborhoods.geojson"), quiet = TRUE) else NULL
+rod <- rd_opt("vbi70_rod2003_soils.csv"); ur_comp <- rd_opt("urban_renewal_composition.csv"); ur_sites <- rd_opt("urban_renewal_sites.csv")
+SB_EDS <- c("1887", "1890\u20131893", "1903\u20131904", "1929\u20131930", "1950\u20131951"); SB_COL <- c("#8c510a", "#bf812d", "#dfc27d", "#35978f", "#01665e")
 AERIAL_1933 <- "https://tiles.arcgis.com/tiles/44C95LOqZjbh8Row/arcgis/rest/services/Denver_1933_Aerial/MapServer/tile/{z}/{y}/{x}"
 AERIAL_ATTR <- "1933 aerial survey (Jasper King): Denver Public Library; georeferenced by the City and County of Denver"
 ctx_html <- function(ids) { if (is.null(ctx_site)) return(rep("", length(ids))); d <- ctx_site[match(ids, ctx_site$id), ]
@@ -393,7 +397,13 @@ ui <- page_navbar(id = "nav",
            selectInput("hw_ev_cmp", NULL, choices = NULL, width = "100%"), plotlyOutput("p_hw_ev", height = 360),
            tags$small(class = "text-muted", "Each line is the population-weighted gap, in percentage points, between tracts a freeway opened beside (1950\u20131979) and tracts with no freeway within 1 km, by decades since the opening. 0 = the last census before it opened. Hispanic origin is first counted in 1960 and poverty in 1970, so those lines start later.")),
       card(card_header("The same comparison as a table"), unit_note("2010 census tracts within 10 km of downtown"), div(style = "overflow-x:auto", tableOutput("t_hw_ev")),
-           tags$small(class = "text-muted", "Population is indexed to 100 at the last census before opening. A comparison of trends, not a causal estimate: the freeways were routed through places already changing.")))),
+           tags$small(class = "text-muted", "Population is indexed to 100 at the last census before opening. A comparison of trends, not a causal estimate: the freeways were routed through places already changing."))),
+    card(card_header("Urban renewal in Denver: case studies"), unit_note("federal urban-renewal project areas (Renewing Inequality, University of Richmond); census composition estimated from 2010 tracts weighted by the share of each tract's area inside the project"),
+      layout_columns(col_widths = c(5, 7),
+        div(selectInput("ur_case", NULL, choices = c("Avondale" = "avondale neighborhood", "Blake Street" = "blake st", "Whittier School" = "whittier school", "Jerome Park" = "jerome park",
+                                                      "Mitchell" = "mitchell neighborhood", "Skyline (downtown)" = "skyline", "Auraria" = "auraria"), width = "100%"), uiOutput("ur_case_text")),
+        div(plotlyOutput("p_ur_case", height = 300), tableOutput("t_ur_case"),
+            tags$small(class = "text-muted", "Area weighting assumes residents were spread evenly within each tract, so small projects inherit their surrounding tracts' composition. Hispanic origin is first counted in 1960 and poverty in 1970."))))),
   nav_panel("Lifespan of 1940 residents",
     card(card_header("Where Denver's residents lived in 1940, and how long they lived"),
       tags$p("CenSoc (UC Berkeley) links people counted in the 1940 census to Social Security death records. Every linked Denver resident of 1940 was placed at the street address where the census found them, and features of that address were measured: the 1929 zoning district, industrial land nearby in 1937 (USGS aerial-photograph maps), hazardous trades listed in the city directories up to 1940, the 1938 HOLC grade, and the 1965\u201392 hazardous sites. Age at death is compared among people born in the same year."),
@@ -573,6 +583,8 @@ ui <- page_navbar(id = "nav",
            tags$small(class = "text-muted", "Tracts grouped by the historical sites inside them (1965\u201392 hazardous-sector manufacturers on a current inventory = known, on none = hidden; street-level hazardous trades before 1960). PLACES values are % of adults; these are descriptive comparisons that do not adjust for income, age or smoking.")),
       card(card_header("Superfund and lead in north Denver"), unit_note("EPA Superfund operable units; CDPHE modelled lead-risk decile by tract"),
            tags$p(class = "small", "The Vasquez Boulevard/I-70 Superfund site covers about 4.5 square miles of Globeville, Elyria-Swansea, Cole, Clayton and Curtis Park, contaminated with lead and arsenic from the Omaha & Grant and Argo smelters (1870s to early 1900s). EPA sampled about 99% of some 4,500 residential properties and replaced the soil at about 800; the residential unit was deleted from the National Priorities List in 2019 (CDPHE)."),
+           tableOutput("t_cx_rod"),
+           tags$small(class = "text-muted", "Residential yards sampled 1998\u20132003, by neighbourhood: 95th percentile and maximum of the average of three soil composites per yard (ppm). EPA Record of Decision, 25 September 2003, Table 3. Property-level results are not public."),
            tags$p(class = "small", "Measured childhood blood-lead results are published only by county; the map's lead layer is CDPHE's modelled risk decile (housing age, poverty and related factors), not test results."),
            tags$small(tags$a(href = "https://cdphe.colorado.gov/hm/vb-l70-superfund-site", target = "_blank", "CDPHE: Vasquez Boulevard/I-70 site"))))),
   nav_panel("Neighborhoods",
@@ -850,13 +862,18 @@ server <- function(input, output, session) {
                         ifelse(is.na(ur_poly$substandard_dwellings), "\u2013", ur_poly$substandard_dwellings), ur_poly$historical_sites_inside, ur_poly$sites_1965_92_inside))
     if (!is.null(ou_poly)) m <- m |> addPolygons(data = ou_poly, color = "#b30000", weight = 2, fillColor = "#fc8d59", fillOpacity = 0.15, group = "Superfund operable units", options = pathOptions(pane = "tr"),
         popup = sprintf("<b>%s</b><br>%s<br><small>EPA Superfund operable unit</small>", esc(tools::toTitleCase(tolower(ou_poly$SITE_NAME))), esc(ou_poly$SITE_FEATURE_NAME)))
+    if (!is.null(sb_poly)) for (k in seq_along(SB_EDS)) { d <- sb_poly[sb_poly$edition == SB_EDS[k], ]; if (!nrow(d)) next
+      m <- m |> addPolygons(data = d, color = SB_COL[k], weight = 2, fillOpacity = 0.06, group = paste("Sanborn maps", SB_EDS[k]), options = pathOptions(pane = "tr"),
+        label = sprintf("Sanborn %s, volume %s", d$edition, d$volume),
+        popup = sprintf("<b>Sanborn fire-insurance map, %s, volume %s</b> (%s)<br>%s<br><a href='%s' target='_blank'>Open</a> · <a href='https://LOC.maps.arcgis.com/apps/instant/interactivelegend/index.html?appid=5df8bc1f04d44edb8222b2ae777f3070' target='_blank'>LOC volume finder</a><br><small>Volume extents: Library of Congress, Geography &amp; Map Division</small>",
+                        d$edition, d$volume, d$year, d$online, d$link)) }
     ZG <- paste("Zoning", names(ZYEARS)); for (k in seq_along(ZYEARS)) m <- add_zoning(m, ZYEARS[[k]], ZG[k], "tr", 0.45)
     LG <- paste("Land use", LU_YEARS); if (!is.null(lu_r)) for (k in seq_along(LU_YEARS)) m <- add_landuse(m, LU_YEARS[k], LG[k], 0.6)
     m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
-          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", "Aerial photo 1933", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), if (!is.null(lu_r)) paste("Land use", LU_YEARS), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
+          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn maps", SB_EDS), "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), if (!is.null(lu_r)) paste("Land use", LU_YEARS), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
-      hideGroup(c("Industrial corridors (500 m cells)", "Aerial photo 1933", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), paste("Land use", LU_YEARS), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
+      hideGroup(c("Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn maps", SB_EDS), "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), paste("Land use", LU_YEARS), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
                   "RCRA corrective action", "Voluntary cleanup (VCUP)", "Superfund (SEMS)")) |>
       identity()
   })
@@ -1525,6 +1542,9 @@ server <- function(input, output, session) {
       setView(-104.97, 39.75, 12) |> addMapPane("trc", zIndex = 380) |> addMapPane("poly", zIndex = 400) |> addMapPane("pts", zIndex = 450)
     if (!is.null(ou_poly)) m <- m |> addPolygons(data = ou_poly, color = "#b30000", weight = 2, fillOpacity = 0.05, group = "Superfund operable units", options = pathOptions(pane = "poly"),
                                                   popup = sprintf("<b>%s</b><br>%s", esc(tools::toTitleCase(tolower(ou_poly$SITE_NAME))), esc(ou_poly$SITE_FEATURE_NAME)))
+    if (!is.null(vb_nb)) m <- m |> addPolygons(data = vb_nb, color = "#67000d", weight = 1.5, fillColor = "#fb6a4a", fillOpacity = 0.25, group = "Superfund soil sampling by neighbourhood",
+        options = pathOptions(pane = "poly"), label = vb_nb$NBHD_NAME,
+        popup = paste0("<b>", vb_nb$NBHD_NAME, "</b> \u2014 Vasquez Blvd/I-70 residential soils, 1998\u20132003<br>", vb_nb$soil_html, "<br><small>EPA Record of Decision 2003, Table 3 (average of yard composites). Cleanup level: lead 400 ppm, arsenic 70 ppm.</small>"))
     if (!is.null(ur_poly)) m <- m |> addPolygons(data = ur_poly, color = "#4a1486", weight = 2, fillOpacity = 0.05, dashArray = ifelse(ur_poly$boundary_confidence == "mapped boundary", NA, "4"),
                                                   group = "Urban renewal projects", options = pathOptions(pane = "poly"), label = tools::toTitleCase(ur_poly$project))
     if (!is.null(pet)) m <- m |> addCircleMarkers(data = pet, ~lon, ~lat, radius = 2.5, stroke = FALSE, fillColor = ifelse(grepl("closed|nfa", tolower(pet$status)), "#fdae6b", "#d94801"), fillOpacity = 0.8,
@@ -1535,7 +1555,7 @@ server <- function(input, output, session) {
     if (!is.null(aqs_mon)) m <- m |> addCircleMarkers(data = aqs_mon, ~longitude, ~latitude, radius = 6, color = "#006d2c", weight = 2, fillColor = "#a1d99b", fillOpacity = 1,
                                                        group = "Air monitors (AQS)", options = pathOptions(pane = "pts"), label = ~site_name)
     m |> addLegend("bottomleft", colors = c("#d94801", "#fdae6b", "#e6550d", "#3182bd", "#7a0177"), labels = c("Petroleum release, open", "Petroleum release, closed", "1965\u201392 site on no inventory", "1965\u201392 site on an inventory", "TRI facility (size = air releases)"), opacity = 0.9) |>
-      addLayersControl(overlayGroups = c("Petroleum releases", "Historical sites 1965\u201392", "TRI facilities", "Air monitors (AQS)", "Urban renewal projects", "Superfund operable units"),
+      addLayersControl(overlayGroups = c("Petroleum releases", "Historical sites 1965\u201392", "TRI facilities", "Air monitors (AQS)", "Urban renewal projects", "Superfund operable units", "Superfund soil sampling by neighbourhood"),
                        options = layersControlOptions(collapsed = TRUE)) |> hideGroup(c("Air monitors (AQS)"))
   })
   observe({ t <- cx_tr(); v <- input$cx_var; req(v %in% names(t)); x <- t[[v]]
@@ -1574,6 +1594,31 @@ server <- function(input, output, session) {
       casthma = "Asthma %", copd = "COPD %", chd = "Heart disease %", diabetes = "Diabetes %", bphigh = "High BP %", depression = "Depression %", cancer = "Cancer %", csmoking = "Smoking %",
       obesity = "Obesity %", lpa = "Inactive %", access2 = "Uninsured %", lead_risk_decile = "Lead-risk decile")
     d <- d[, intersect(names(nm), names(d)), drop = FALSE]; d$population <- format(d$population, big.mark = ","); names(d) <- nm[names(d)]; d }, digits = 1, striped = TRUE, spacing = "xs")
+  UR_TEXT <- list(
+    "avondale neighborhood" = "One of the first four projects of the Denver Urban Renewal Authority, created by the City Council in 1958. The federal reports list 249 families in the project area (246 white, 3 non-white) and 110 substandard and 43 standard dwellings on 39.8 acres; the planned reuse was 23.8 acres residential and 9.5 commercial.",
+    "blake st" = "One of the authority's first four projects. 189 families (181 white, 8 non-white) and 186 substandard dwellings on 45.7 acres beside the rail yards; 23.6 acres were planned for industrial reuse \u2014 renewal here turned housing into industrial land.",
+    "whittier school" = "One of the first four projects, in the historically Black neighbourhood northeast of downtown. 132 families, 128 of them non-white, and 132 substandard dwellings on 8.4 acres, cleared mostly for residential reuse (7.2 acres).",
+    "jerome park" = "One of the first four projects. 69 white families and 34 substandard dwellings on 6.3 acres, 4.3 acres of them planned for industrial reuse.",
+    "mitchell neighborhood" = "A later project (1966\u20131974 in the federal reports) northeast of downtown; the reports give no family counts. Its boundary here is approximate.",
+    "skyline" = "Approved by Denver voters in 1967: 120 acres of downtown were to be cleared of bars, cheap hotels and missions for new towers. About 1,600 people lived in the area, many relocated to public housing farther out; Larimer Square was saved by Dana Crawford, and much of the cleared land stood as parking for decades (Denverite). The federal reports give no family counts for Skyline.",
+    "auraria" = "A largely Hispanic neighbourhood by the 1960s, flooded by the South Platte in June 1965. The Auraria Higher Education Center was announced in 1968; the bond issue passed on 4 November 1969 with 52% of the vote over the opposition of the Auraria Residents Organization; relocations were complete by 1972 and the campus by 1976. St. Cajetan's parish moved away, and Ninth Street was preserved as a historic park (Denver Public Library). Renewing Inequality has no boundary or family counts for this project, so it is not on the map.")
+  output$ur_case_text <- renderUI({ k <- input$ur_case; req(k); u <- if (!is.null(ur_tab)) ur_tab[ur_tab$project_name == k, ] else NULL; st <- if (!is.null(ur_sites)) ur_sites[ur_sites$project == k, ] else NULL
+    tagList(tags$p(class = "small", UR_TEXT[[k]]),
+      if (!is.null(u) && nrow(u)) tags$p(class = "small text-muted", sprintf("Federal reports, %s\u2013%s.", u$first_year[1], u$last_year[1])),
+      if (!is.null(st) && nrow(st)) tags$p(class = "small", tags$b("Inside the project area: "), sprintf("%s pre-1960 hazardous trades, %s hazardous-sector manufacturers of 1965\u201392, %s petroleum releases since 1986.",
+                                                                                                st$historical_sites_inside[1], st$sites_1965_92_inside[1], st$petroleum_releases_inside[1]))) })
+  ur_case_d <- reactive({ req(ur_comp, input$ur_case); ur_comp[ur_comp$project == input$ur_case, ] })
+  output$p_ur_case <- renderPlotly({ d <- ur_case_d(); req(nrow(d)); pl <- plot_ly()
+    S <- list(pct_hispanic = c("% Hispanic", "#c0392b"), pct_black = c("% Black", "#7b3294"), pct_owner = c("% owner-occupied", "#4d9221"), pct_poverty = c("% in poverty", "#e08214"))
+    for (v in names(S)) pl <- pl |> add_trace(x = d$census, y = d[[v]], type = "scatter", mode = "lines+markers", name = S[[v]][1], line = list(color = S[[v]][2]), marker = list(color = S[[v]][2]), connectgaps = FALSE)
+    pl <- pl |> add_trace(x = d$census, y = d$residents_est, type = "bar", name = "Residents (est.)", yaxis = "y2", marker = list(color = "rgba(120,120,120,0.25)"))
+    layout(pl, xaxis = list(title = "", dtick = 10), yaxis = list(title = "%", range = c(0, 100)), yaxis2 = list(title = "Residents", overlaying = "y", side = "right", rangemode = "tozero", showgrid = FALSE),
+           legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom"), margin = list(t = 10, r = 50)) })
+  output$t_ur_case <- renderTable({ d <- ur_case_d(); req(nrow(d)); f <- function(v) ifelse(is.na(v), "\u2013", sprintf("%.1f", v))
+    data.frame(Census = d$census, Residents = format(d$residents_est, big.mark = ","), `% Hispanic` = f(d$pct_hispanic), `% Black` = f(d$pct_black), `% owner` = f(d$pct_owner), `% poverty` = f(d$pct_poverty), check.names = FALSE) },
+    striped = TRUE, spacing = "xs")
+  output$t_cx_rod <- renderTable({ req(rod); data.frame(Neighbourhood = rod$neighborhood, `Yards sampled` = format(rod$properties_sampled, big.mark = ","), `Lead 95th pct` = rod$lead_95th_pct_ppm, `Lead max` = rod$lead_max_ppm,
+                                                        `Arsenic 95th pct` = rod$arsenic_95th_pct_ppm, `Arsenic max` = rod$arsenic_max_ppm, check.names = FALSE) }, striped = TRUE, spacing = "xs", digits = 0)
   output$t_hw_tr <- renderTable({ req(hw_tr); d <- hw_tr; data.frame(Tracts = d$crossed, n = d$tracts, Census = d$census, Residents = format(d$residents, big.mark = ","), `Population (1950 = 100)` = d$pop_index_1950_100, `% Hispanic` = ifelse(is.na(d$pct_hispanic) | is.nan(d$pct_hispanic), "\u2013", d$pct_hispanic), `% Black` = d$pct_black, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   Z23_CATS <- c("Industrial (housing not allowed)" = "#7a0177", "Industrial mixed use (housing allowed)" = "#c51b8a", "Mixed use with housing" = "#fa9fb5",
                 "Residential" = "#fdd0a2", "Commercial" = "#9ecae1", "Open space, civic, other" = "#c7e9c0")

@@ -12,6 +12,8 @@
 #   lead_risk_tracts.geojson     CDPHE modelled childhood lead-risk decile by census tract, 2018 (CDPHE CoHealth Maps)
 #   places_tracts_co.csv         CDC PLACES census-tract health estimates, Colorado (data.cdc.gov yjkw-uj5s, 2024 release)
 #   usaleep_co.csv               NCHS US Small-area Life Expectancy Estimates, 2010-2015, Colorado tracts
+#   sanborn_<years>.geojson      Library of Congress Sanborn volume extents for Denver, 1887-1951 (ArcGIS feature services, GMD_LOC)
+#   denver_neighborhoods.geojson Denver statistical neighbourhoods (Denver Open Data)
 # Re-running skips files already downloaded (delete one to refresh it).
 options(timeout = 1800)
 for (p in c("data.table", "jsonlite")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
@@ -29,10 +31,12 @@ for (y in 1987:(as.integer(format(Sys.Date(), "%Y")) - 1))
 message(length(Sys.glob(file.path(D, "tri", "*.csv"))), " TRI year files")
 # ---------------------------------------------------------------- EPA AQS annual means by monitor, Denver-metro counties
 aqsf <- file.path(D, "aqs_denver.csv")
-if (!file.exists(aqsf)) {
+if (!file.exists(aqsf) || file.size(aqsf) == 0) {
   CTY <- c("001", "005", "014", "031", "035", "059")      # Adams, Arapahoe, Broomfield, Denver, Douglas, Jefferson
   A <- rbindlist(lapply(1980:(as.integer(format(Sys.Date(), "%Y")) - 1), function(y) {
-    z <- tempfile(fileext = ".zip"); ok <- tryCatch({ download.file(sprintf("https://aqs.epa.gov/aqsweb/airdata/annual_conc_by_monitor_%d.zip", y), z, mode = "wb", quiet = TRUE); TRUE }, error = function(e) FALSE)
+    z <- tempfile(fileext = ".zip"); u <- sprintf("https://aqs.epa.gov/aqsweb/airdata/annual_conc_by_monitor_%d.zip", y)
+    ok <- tryCatch({ download.file(u, z, mode = "wb", quiet = TRUE, method = "curl", extra = "-L -A 'Mozilla/5.0 (Macintosh)'"); file.exists(z) && file.size(z) > 1000 },   # the AQS server refuses R's default client
+                   error = function(e) { message("  AQS ", y, ": ", conditionMessage(e)); FALSE })
     if (!ok) { message("  AQS ", y, ": not available"); return(NULL) }
     x <- fread(cmd = paste("unzip -p", shQuote(z)), colClasses = c(`State Code` = "character", `County Code` = "character", `Site Num` = "character"))
     unlink(z); x <- x[`State Code` == "08" & `County Code` %in% CTY]
@@ -40,7 +44,7 @@ if (!file.exists(aqsf)) {
     x[, .(year = Year, state = `State Code`, county = `County Code`, site = `Site Num`, parameter_code = `Parameter Code`, poc = POC, latitude = Latitude, longitude = Longitude,
           parameter = `Parameter Name`, duration = `Sample Duration`, standard = `Pollutant Standard`, units = `Units of Measure`, event = `Event Type`,
           obs_pct = `Observation Percent`, completeness = `Completeness Indicator`, mean = `Arithmetic Mean`, site_name = `Local Site Name`)] }), fill = TRUE)
-  fwrite(A, aqsf) }
+  if (nrow(A)) fwrite(A, aqsf) else message("AQS: nothing downloaded; check https://aqs.epa.gov/aqsweb/airdata/download_files.html in a browser") }
 # ---------------------------------------------------------------- Renewing Inequality (urban renewal)
 R0 <- "https://raw.githubusercontent.com/americanpanorama/Renewing_Inequality_Data/master/Data/"
 get(paste0(R0, "ur_projects.geojson"), "ur_projects.geojson"); get(paste0(R0, "non_spatial_data.csv"), "ur_non_spatial.csv"); get(paste0(R0, "codebook.csv"), "ur_codebook.csv")
@@ -53,5 +57,15 @@ get("https://www.cohealthmaps.dphe.state.co.us/arcgis/rest/services/DCEED/Childh
 # ---------------------------------------------------------------- CDC PLACES and NCHS USALEEP (tracts)
 get("https://data.cdc.gov/resource/yjkw-uj5s.csv?stateabbr=CO&$limit=5000", "places_tracts_co.csv")
 get("https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/CO_A.CSV", "usaleep_co.csv")
+# ---------------------------------------------------------------- Sanborn volume extents for Denver (Library of Congress, Geography & Map Division)
+for (ed in c("1887", "1890_1893", "1903_1904", "1929_1930", "1950_1951")) {
+  f <- sprintf("sanborn_%s.geojson", ed); if (file.exists(file.path(D, f))) next
+  svc <- sprintf("https://services5.arcgis.com/ohAFyIFvXFRGcC67/arcgis/rest/services/Denver_%s/FeatureServer", ed)
+  lid <- tryCatch(jsonlite::fromJSON(paste0(svc, "?f=json"))$layers$id[1], error = function(e) NA)
+  if (is.na(lid)) { message("  Sanborn ", ed, ": service not found"); next }
+  get(sprintf("%s/%s/query?where=1%%3D1&outFields=TITLE,DESCRIPTION,VolYear&outSR=4326&f=geojson", svc, lid), f) }
+# ---------------------------------------------------------------- Denver statistical neighbourhoods (for the Superfund soil table)
+get("https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/ArcGIS/rest/services/Enriched_Statistical_Neighborhood/FeatureServer/0/query?where=1%3D1&outFields=NBHD_ID,NBHD_NAME&outSR=4326&f=geojson",
+    "denver_neighborhoods.geojson")
 writeLines(format(Sys.Date()), file.path(D, "download_date.txt"))
 f <- list.files(D, recursive = TRUE); message("work/context now has ", length(f), " files:"); print(f[!grepl("^tri/", f)])

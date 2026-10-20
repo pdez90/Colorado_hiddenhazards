@@ -1,0 +1,16 @@
+project_id,first_year,last_year,project_name,white_families,nonwhite_families,total_families,substandard_dwellings,standard_dwellings,acres,acres_to_industrial,acres_to_residential,acres_to_commercial,mapped
+3305,1957,1974,avondale neighborhood,246,3,249,110,43,39.8,,23.8,9.5,TRUE
+3306,1957,1974,blake st,181,8,189,186,9,45.7,23.6,0.9,0.9,TRUE
+3315,1957,1974,whittier school,4,128,132,132,28,8.4,,7.2,,TRUE
+3309,1960,1974,jerome park,69,,69,34,,6.3,4.3,,,TRUE
+3303,1960,1974,community renewal prog,,,,,,,,,,
+3304,1966,1974,auroria,,,,,,,,,,
+3307,1970,1974,hospital park (fs),,,,,,,,,,
+3308,1958,1970,downtown area,,,,,,,,,,
+3310,1966,1974,mitchell neighborhood,,,,,,,,,,TRUE
+3311,1970,1974,russel park,,,,,,,,,,
+3312,1966,1974,skyline,,,,,,,,,,TRUE
+3313,1966,1974,south platte riv (fs),,,,,,,,,,
+3314,1961,1970,west colfax industrial redev proj,,,,,,,,,,
+3316,1970,1974,code enforcement proj,,,,,,,,,,
+3317,1970,1974,neighborhood dev prog,,,,,,,,,,
