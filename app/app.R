@@ -76,7 +76,7 @@ coven    <- rd_opt("covenants_denver.csv"); holc_bd <- rd_opt("holc_boundary.csv
 COMPLETE_ED <- if (!is.null(edcov)) as.integer(edcov$year[edcov$complete %in% c(TRUE, "TRUE") & edcov$year >= 1960]) else c(1965:1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990, 1992)
 if (!is.null(bm_state)) bm_state <- bm_state[bm_state$year %in% COMPLETE_ED, ]; if (!is.null(bm_cty)) bm_cty <- bm_cty[bm_cty$year %in% COMPLETE_ED, ]
 # 1925 zoning ordinance as mapped in 1929 (R/zoning_1925.R) and what became of the Denver sites (R/site_fate.R)
-zon      <- if (file.exists(dd("zoning_1929.geojson"))) st_read(dd("zoning_1929.geojson"), quiet = TRUE) else NULL; zon_g <- rd_opt("holc_zoning_by_grade.csv")
+zon      <- if (file.exists(dd("zoning_1929.geojson"))) st_read(dd("zoning_1929.geojson"), quiet = TRUE) else NULL; zon44 <- if (file.exists(dd("zoning_1944.geojson"))) st_read(dd("zoning_1944.geojson"), quiet = TRUE) else NULL; zch <- if (file.exists(dd("zoning_1929_1944_change.geojson"))) st_read(dd("zoning_1929_1944_change.geojson"), quiet = TRUE) else NULL; zch_t <- rd_opt("zoning_changes_1944.csv"); zg44 <- rd_opt("zoning_change_by_holc_grade.csv"); zt44 <- rd_opt("zoning_1929_vs_1944.csv"); zon_g <- rd_opt("holc_zoning_by_grade.csv")
 ZON_COL  <- c("Industrial A" = "#b2182b", "Industrial B" = "#762a83", "Commercial" = "#e6ab02")
 sf_sum   <- rd_opt("site_fate_summary.csv"); sf_zone <- rd_opt("site_fate_zoning.csv"); z23_29 <- rd_opt("zoning_1929_to_2023.csv", check.names = FALSE); z23_s <- rd_opt("sites_by_zoning_2023.csv", check.names = FALSE); z23_d <- rd_opt("sites_by_zoning_2023_last_listed.csv", check.names = FALSE); z23_t <- rd_opt("tract_composition_by_zoning_2023.csv", check.names = FALSE)
 sf_den <- rd_opt("site_fate_denver.csv"); sf_pre <- rd_opt("site_fate_denver_pre1960.csv")
@@ -141,7 +141,8 @@ CLEAN_LAYERS <- c("Brownfields", "Voluntary cleanup (VCUP)", "Superfund (SEMS)",
 CLEAN_COL <- c("#1b7837", "#5aae61", "#253494", "#41b6c4", "#8c6bb1"); names(CLEAN_COL) <- CLEAN_LAYERS
 esc <- function(x) htmltools::htmlEscape(ifelse(is.na(x), "", as.character(x)))
 gradeleg <- function(p) { seen <- character(); for (i in seq_along(p$x$data)) { nm <- p$x$data[[i]]$name; if (is.null(nm)) next; g <- sub("^\\((.)\\,.*$", "\\1", nm); if (nchar(g) == 1) { p$x$data[[i]]$name <- g; p$x$data[[i]]$legendgroup <- g; p$x$data[[i]]$showlegend <- !(g %in% seen); seen <- c(seen, g) } }; p }   # one legend entry per grade when colour and linetype are both mapped
-hleg <- function(p) plotly::layout(p, legend = list(orientation = "h", x = 0, y = -0.32, yanchor = "top"), margin = list(b = 120))   # horizontal legend clear of the axis title
+unit_note <- function(x) tags$div(class = "small mb-2", style = "color:#2c5d8f", tags$b("Spatial unit: "), x)
+hleg <- function(p) plotly::layout(p, legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom", xanchor = "left"), margin = list(t = 10))   # horizontal legend clear of the axis title
 
 # ---------------------------------------------------------------- UI
 filters <- list(
@@ -201,25 +202,25 @@ ui <- page_navbar(id = "nav",
                "CDPHE's Institutional Controls layer (environmental covenants, use restrictions and notices of environmental use restrictions). The clearest public record that a parcel still holds managed contamination."),
              tags$dt("Schools, hospitals, clinics, residential care"), tags$dd("Colorado Department of Education school locations and CDPHE licensed health facilities (geodata.colorado.gov), used on the Nearby schools & health care tab."))))))),
   nav_panel("Trends",
-    card(card_header("Hazardous-trade firms and sites listed, 1871\u20131992: both directory series on one timeline"),
+    card(card_header("Hazardous-trade firms and sites listed, 1871\u20131992: both directory series on one timeline"), unit_note("firms and sites (street addresses) in the Denver study area (City and County of Denver plus the 147 2010 census tracts within 10 km of downtown), counted per directory edition"),
          plotlyOutput("p_timeline", height = 320),
          tags$small(class = "text-muted", "Brown: hazardous trades found in the Colorado State Business Directory (34 editions, every trade, OCR'd scans; counts depend on each edition's coverage and scan quality). Orange: hazardous-sector sites in the Directory of Colorado Manufacturers (25 editions, manufacturers only). The two series are not on the same footing \u2014 the business directories list far more small trades \u2014 but together they trace the whole span. Twelve of the 25 manufacturers' directory editions reached us as partial scans - typically the scan stops at Denver or Colorado Springs and the counties after them are missing - and are drawn hollow or dropped (complete: 1965-68, 1970, 1973-74, 1977, 1980, 1983, 1988, 1990, 1992); the Data & downloads tab lists what each edition contains. Both respond to the sidebar filters.")),
     layout_columns(col_widths = c(6, 6),
-      card(card_header("Hazardous-sector sites listed per directory edition, by sector"), plotlyOutput("p_sector", height = 420)),
-      card(card_header("…by current regulatory status"), plotlyOutput("p_status", height = 420))),
-    card(card_header("Share of listed sites on no current inventory"), plotlyOutput("p_share", height = 300)),
+      card(card_header("Hazardous-sector sites listed per directory edition, by sector"), unit_note("sites (street addresses) in the Denver study area (City and County of Denver plus the 147 2010 census tracts within 10 km of downtown), counted per edition"), plotlyOutput("p_sector", height = 420)),
+      card(card_header("…by current regulatory status"), unit_note("sites (street addresses) in the Denver study area (City and County of Denver plus the 147 2010 census tracts within 10 km of downtown), counted per edition"), plotlyOutput("p_status", height = 420))),
+    card(card_header("Share of listed sites on no current inventory"), unit_note("sites (street addresses) in the Denver study area (City and County of Denver plus the 147 2010 census tracts within 10 km of downtown), per edition"), plotlyOutput("p_share", height = 300)),
     tags$small(class = "text-muted", "Editions are irregular (25 between 1961 and 2002); only the 13 complete editions (1965\u201368, 1970, 1973\u201374, 1977, 1980, 1983, 1988, 1990, 1992) enter the site inventory."),
-    card(card_header("Before 1960: Denver hazardous-trade firms listed per Colorado State Business Directory edition"), plotlyOutput("p_hist", height = 360),
+    card(card_header("Before 1960: Denver hazardous-trade firms listed per Colorado State Business Directory edition"), unit_note("firms (street or town) in the Denver study area (City and County of Denver plus the 147 2010 census tracts within 10 km of downtown), counted per edition"), plotlyOutput("p_hist", height = 360),
          tags$small(class = "text-muted", "Counts come from searchable text of the scanned directories and are not comparable to the manufacturers' directory: ",
                     "the business directories list every trade and their OCR quality varies by edition. 1891 and 1910–1939 include large Denver sections.")),
-    card(card_header("Do hazardous sectors cluster more than manufacturing in general? Ellison–Glaeser index by edition, Denver metro (25 km of downtown)"), plotlyOutput("p_eg", height = 380),
+    card(card_header("Do hazardous sectors cluster more than manufacturing in general? Ellison–Glaeser index by edition, Denver metro (25 km of downtown)"), unit_note("1 km grid cells within 25 km of downtown Denver"), plotlyOutput("p_eg", height = 380),
          tags$small(class = "text-muted", "γ > 0: the sector is more concentrated across 1 km cells than all located manufacturers of that edition; filled points are significant at p < 0.05 (permutation test, 500 draws). ",
                     "The index needs every manufacturer of an edition as the baseline, so it uses the 13 complete manufacturers' directory editions (1965–1992). The statewide index, the industry mix and sector succession are on the Colorado trends tab.")),
     ),
   nav_menu("Historical change",
   nav_panel("Denver 1880–2020",
     layout_columns(col_widths = c(3, 6, 3),
-      card(card_header("Denver by enumeration district (1880–1940) and census tract (1950–2020)"),
+      card(card_header("Denver by enumeration district (1880–1940) and census tract (1950–2020)"), unit_note("enumeration districts 1880–1940 (reconstructed), 2010 census tracts 1950–2020"),
            radioButtons("ed_year", "Census", choices = c(if (is.null(eds)) 1880 else sort(unique(eds$year)), if (is.null(trd)) NULL else sort(unique(trd$census))), selected = 1880, inline = TRUE),
            uiOutput("ed_unit"),
            selectInput("ed_var", "Districts shaded by", ED_VARS, selected = "pct_fb"),
@@ -232,34 +233,34 @@ ui <- page_navbar(id = "nav",
              "The same analyses are run on tracts with the tract tables' measures (race, Hispanic origin, nativity, poverty, tenure, value, rent); firms of the decade are the manufacturers' directory sites from 1970 (2000, 2010 and 2020 use the last complete directory decade, 1983–1992)."),
            ),
       card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_1880", height = "70vh"))),
-      card(card_header("Composition vs. distance to the nearest firm"), tableOutput("t_edm"),
+      card(card_header("Composition vs. distance to the nearest firm"), unit_note("enumeration districts 1880–1940, 2010 census tracts 1950–2020 (follows the census selector); distance from each unit's centroid"), tableOutput("t_edm"),
            tags$small(class = "text-muted", "Percentage points per log-metre from the district or tract centroid to the nearest hazardous firm (population-weighted, robust SE; negative = higher near industry). 'pooled' = all censuses with census effects (1880–1940 districts and 1950–2020 tracts pooled separately). Value and rent enter as logs. ",
              "SEI = Duncan socioeconomic index (IPUMS): each occupation scored 0-96 from the income and education of its holders in 1950, the only income proxy available for every census. ",
              "'In hazardous industries' = share of a district's employed residents working in chemical, metal, petroleum and similar industries (IPUMS IND1950): if the people next to the plants were mainly their own workers this coefficient would be negative; it is nil or positive in every census, so the analysis finds no consistent negative association with hazardous-industry employment; it cannot establish where residents actually worked."),
-           card_header("Dissimilarity across districts, 1880–1940"), plotlyOutput("p_city", height = 260),
+           card_header("Dissimilarity across districts, 1880–1940"), unit_note("enumeration districts, and a fixed 500 m grid (all censuses; not affected by the selector)"), plotlyOutput("p_city", height = 260),
            tags$small(class = "text-muted", "0 = evenly spread, 1 = complete separation (IPUMS full count). The number of districts rises from 17 to 325, and smaller units mechanically raise the index, so only the fixed-grid lines (district counts area-weighted onto one 500 m grid over the area mapped in every census compared) show change over time."))),
-    card(card_header(textOutput("edg_title")), tableOutput("t_edg"),
+    card(card_header(textOutput("edg_title")), unit_note("enumeration districts 1880–1940, 2010 census tracts 1950–2020 (follows the census selector)"), tableOutput("t_edg"),
          tags$small(class = "text-muted", "Population-weighted means: enumeration districts 1880\u20131940 (IPUMS full count) or census tracts 1950\u20132020 (NHGIS tables on 2010 boundaries). The last row is the dissimilarity index of the group against the rest of the population across that census's units (0\u20131). It depends on how many units there are and how big they are (17 districts in 1880, 325 in 1940, about 145 tracts), so it cannot be compared across years or between districts and tracts; the chart above adds the index on one fixed grid.")),
-    card(card_header("Where the firms were: share of each decade's hazardous firms in the districts (1880–1940) or tracts (1950–2020) housing the top population quartile on each measure"), plotlyOutput("p_ed_sh", height = 340),
+    card(card_header("Where the firms were: share of each decade's hazardous firms in the districts (1880–1940) or tracts (1950–2020) housing the top population quartile on each measure"), unit_note("enumeration districts 1880–1940, 2010 census tracts 1950–2020 (all censuses; not affected by the selector)"), plotlyOutput("p_ed_sh", height = 340),
          tags$small(class = "text-muted", "Districts or tracts are ranked on the measure and the top 25% of the population taken; if firms were spread like people, 25% (dashed line) would fall there. Hover for the share in the bottom quartile. The grey line marks the change of unit.")),
-    layout_columns(col_widths = c(4, 8),
-      card(card_header("1880 at the building level (Brown University Urban Transition HGIS)"),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("1880 at the building level (Brown University Urban Transition HGIS)"), unit_note("buildings and enumeration districts, 1880 only (the only census geocoded to buildings; not affected by the census selector)"),
            tags$small(class = "text-muted", "The 1880 census geocoded to buildings against the hazardous trades of the 1878–1885 directories placed on the 1880 street grid: 34,386 residents, 60 firms at the building. Only aggregates and model results are shown; Brown's building-level data are not redistributed."),
            hr(), tags$b("Residents by distance to the nearest hazardous firm"), tableOutput("t_d80"),
            tags$b("Enumeration districts with vs. without a hazardous firm (Brown's ED composition)"), tableOutput("t_g80")),
-      card(card_header("Person-level odds of living farther from a hazardous firm (1880)"), tableOutput("t_m80"),
+      card(card_header("Person-level odds of living farther from a hazardous firm (1880)"), unit_note("individuals, by distance from their building to the nearest firm; 1880 only (not affected by the census selector)"), tableOutput("t_m80"),
            tags$small(class = "text-muted", "Odds ratio per log-metre of distance (> 1 = more common farther away), building-clustered SE. Foreign-born (German, Canadian, other), Black and Chinese residents lived closer; native-born whites, British- and Scandinavian-born lived farther; employed adults' SEI rose with distance; unskilled laborers (SEI 8) were, on average, farther out."))),
     layout_columns(col_widths = c(6, 6),
-      card(card_header(textOutput("pan_title")), selectInput("pan_var", "Measure", PAN_VARS[PAN_VARS %in% c("p_black", "p_white", "p_hisp", "p_fb", "p_pov", "p_owner", "mval_2020", "mrent_2020")], selected = "p_hisp"), plotlyOutput("p_pan", height = 380),
+      card(card_header(textOutput("pan_title")), unit_note("the 147 2010 census tracts within 10 km of downtown, 1940–2020 (all censuses; not affected by the selector)"), selectInput("pan_var", "Measure", PAN_VARS[PAN_VARS %in% c("p_black", "p_white", "p_hisp", "p_fb", "p_pov", "p_owner", "mval_2020", "mrent_2020")], selected = "p_hisp"), plotlyOutput("p_pan", height = 380),
            checkboxInput("pan_bal", "Same tracts throughout: only tracts with a value in every census the measure exists", TRUE),
            uiOutput("pan_note"),
            tags$small(class = "text-muted", "Population-weighted means. Points resting on fewer than 15 tracts are not drawn (they swing on one or two neighbourhoods). Fewer of the study tracts were tracted and populated before 1960; with 'same tracts throughout' every point uses one fixed set of tracts. 'Legacy only' = tracts whose hazardous firms had all left by that decade. 2000, 2010 and 2020 all use the 1983–1992 listings (no complete directory after 1992), so the groups are identical in those three censuses and the lines show how the same places changed."), downloadButton("dl_panel", "Download tract panel CSV (study area)", class = "btn-sm")),
-      card(card_header("Panel models (Denver core): does industry predict who moves in, or do residents predict where industry goes?"), uiOutput("ej_models"),
+      card(card_header("Panel models (Denver core): does industry predict who moves in, or do residents predict where industry goes?"), unit_note("the 147 2010 census tracts within 10 km of downtown, 1970–2020"), uiOutput("ej_models"),
            tags$small(class = "text-muted", "Hybrid (within/between) models after Marlow, Frickel & Elliott (2020), the 147 2010 tracts whose centroid lies within 10 km of downtown (any county). The within/between panel uses the censuses that have a complete directory edition in the same year (1970, 1980, 1990), hazardous-sector establishments, tract-clustered SE. 2000–2020 have no contemporaneous directory and are modelled census by census on 1983–1992 listings (legacy-site exposure). Reproduce with Rscript R/ej_panel.R.")))
     ),
   nav_panel("What became of the sites",
     layout_columns(col_widths = c(3, 6, 3),
-      card(card_header("Denver's historical hazardous sites on today's parcels"),
+      card(card_header("Denver's historical hazardous sites on today's parcels"), unit_note("sites matched to today's assessor parcels, City and County of Denver"),
            radioButtons("sf_series", "Sites", c("Manufacturers' directory sites, complete editions 1965–1992" = "S", "Business-directory hazardous trades 1891–1956 (street level)" = "H")),
            checkboxGroupInput("sf_use", "Current parcel use", choices = names(USE_COL)[1:6], selected = names(USE_COL)[1:6]),
            checkboxInput("sf_sens", "Only residential, school, park or health parcels with no matching cleanup record", FALSE),
@@ -267,26 +268,26 @@ ui <- page_navbar(id = "nav",
              "A geocoded street address can land on a neighbouring lot where parcels have been consolidated or split, so individual matches should be checked against the Sanborn sheets and reverse directories before being cited. ",
              "'No matching cleanup record' means the site matched no record in the inventories this project searched (EPA FRS/SEMS/RCRA, CDPHE VCUP, environmental covenants); it does not establish that a site was never assessed or remediated.")),
       card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_sf", height = "62vh"))),
-      card(card_header("Current use of the former sites"), plotlyOutput("p_sf_use", height = 300), tableOutput("t_sf_zone"),
+      card(card_header("Current use of the former sites"), unit_note("sites matched to today's assessor parcels, City and County of Denver"), plotlyOutput("p_sf_use", height = 300), tableOutput("t_sf_zone"),
            tags$small(class = "text-muted", "Share of each series' sites by the assessor's current property class. 'Rebuilt' = the present building is newer than the site's last directory listing (a redevelopment indicator, not a closure date); 'zoned industrial' = I-A, I-B or I-MX districts of the 2010 code."))),
-    card(card_header("Current use by the decade a site was last listed"), tableOutput("t_sf_dec"),
+    card(card_header("Current use by the decade a site was last listed"), unit_note("sites matched to today's assessor parcels, City and County of Denver"), tableOutput("t_sf_dec"),
          tags$small(class = "text-muted", "Sites that left the directory earlier have had longer to be converted, so the rows are not a conversion rate; they show what stands today on the sites of each cohort. The 1990s row is the sites still listed in 1990 or 1992, the last complete editions.")),
     h5(class = "mt-3 mb-2", "Zoning today (2023)"),
     layout_columns(col_widths = c(7, 5),
-      card(card_header("The 1929 zoning districts under 2023 zoning"), div(style = "overflow-x:auto; font-size:0.9em", tableOutput("t_z29")),
+      card(card_header("The 1929 zoning districts under 2023 zoning"), unit_note("land area (km²) of the 1929 zoning districts"), div(style = "overflow-x:auto; font-size:0.9em", tableOutput("t_z29")),
            tags$small(class = "text-muted", "Share of the land in each 1925 district (as revised to January 1929; see Redlining & covenants) by its zoning on 3 October 2023. ",
              "Industrial = housing not allowed; 'Industrial mixed use' = Denver's I-MX districts, which allow housing (the parcel-based count above treats them as industrial); Other = open space, civic and other. ",
              "2023 zoning: Denver-metro layer compiled by Carrie Makarewicz (University of Colorado Denver) for the National Zoning Atlas; harmonised categories across 51 jurisdictions.")),
-      card(card_header("Hazardous sites by their 2023 zoning"), plotlyOutput("p_zsites", height = 420),
+      card(card_header("Hazardous sites by their 2023 zoning"), unit_note("sites (street addresses) in the Denver study area (City and County of Denver plus the 147 2010 census tracts within 10 km of downtown)"), plotlyOutput("p_zsites", height = 420),
            tags$small(class = "text-muted", "Street-located sites in the study area (City and County of Denver plus the 147 tracts within 10 km of downtown) by the 2023 zoning of the land they stand on. ",
              "The suburban rows are the study tracts outside Denver County, which the city's parcel data do not cover. Sites last listed earlier have had longer to be rezoned."))),
-    card(card_header("Who lives in the tracts zoned for industry today? 2020 census, by the tract's 2023 share of land zoned industrial (housing not allowed)"), tableOutput("t_ztr"),
+    card(card_header("Who lives in the tracts zoned for industry today? 2020 census, by the tract's 2023 share of land zoned industrial (housing not allowed)"), unit_note("the 147 2010 census tracts within 10 km of downtown"), tableOutput("t_ztr"),
          tags$small(class = "text-muted", "The 147 study tracts with 200+ residents in 2020; population-weighted means. A description of where people live today, not a model.")),
     ),
   nav_panel("Redlining & covenants",
     layout_columns(col_widths = c(3, 6, 3),
-      card(card_header("HOLC 1938 map and racial covenants 1931\u201335"),
-           checkboxGroupInput("rl_layers", NULL, c("HOLC security grades (1938)" = "holc", "1925 zoning ordinance: industrial and commercial districts (1929 map)" = "zon", "Racial covenants 1931-35 (deeds)" = "cov", "Hazardous-trade firms" = "firms", "1930 enumeration districts" = "ed30"),
+      card(card_header("HOLC 1938 map and racial covenants 1931\u201335"), unit_note("HOLC area polygons (1938), deed points (covenants) and firm points"),
+           checkboxGroupInput("rl_layers", NULL, c("HOLC security grades (1938)" = "holc", "1925 zoning ordinance: industrial and commercial districts as amended to January 1929" = "zon", "The same districts as amended to April 1944 (changes since 1929 outlined)" = "zon44", "Racial covenants 1931-35 (deeds)" = "cov", "Hazardous-trade firms" = "firms", "1930 enumeration districts" = "ed30"),
                               selected = c("holc", "cov", "firms")),
            conditionalPanel("input.rl_layers.includes('zon')", tags$small(class = "text-muted", "Denver's first zoning ordinance (February 1925) as shown on the official Building Zone Map revised to January 1929 (Denver Public Library, CG4314 .D4 G44 1929), georeferenced from 13 street intersections (RMSE 25 m) and classified by hatch pattern: Industrial A, Industrial B and Commercial districts; everything else was Residence A–E or Business. Residence E (apartments) shares a hatch with Industrial A and is told apart only by lot lines, so a few platted blocks are uncertain (R/zoning_1925.R).")),
            conditionalPanel("input.rl_layers.includes('ed30')", selectInput("rl_edvar", "Shade 1930 districts by", c("Black (%)" = "pct_black", "Hispanic (%)" = "pct_hisp", "Foreign born (%)" = "pct_fb", "Laborers (%)" = "pct_laborers",
@@ -298,26 +299,26 @@ ui <- page_navbar(id = "nav",
              "Xu (2022) showed for Chicago that HOLC's maps were post-hoc appraisals while the FHA's map drove lending; we have not located a surviving Denver FHA mortgage-risk map, so the question here is what the HOLC grades ratified: the 1900\u20131940 districts show who already lived next to industry before the map was drawn, and the 1940\u20132020 panel what followed."),
            ),
       card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_rl", height = "62vh"))),
-      card(card_header("After the map: 2010 tracts by dominant HOLC grade, 1940\u20132020"),
+      card(card_header("After the map: 2010 tracts by dominant HOLC grade, 1940\u20132020"), unit_note("2010 census tracts grouped by dominant HOLC grade (1940–2020); dashed 1900–1940: reconstructed enumeration districts area-weighted into the HOLC areas"),
            selectInput("rl_var", NULL, c("Hispanic (%)" = "p_hisp", "Black (%)" = "p_black", "Foreign born (%)" = "p_fb", "Below poverty (%)" = "p_pov", "Owner-occupied (%)" = "p_owner", "Median home value (2020 $)" = "mval_2020", "Median rent (2020 $)" = "mrent_2020", "Hazardous firms in decade" = "firms_haz"), selected = "p_hisp"),
            plotlyOutput("p_holc_tr", height = 300),
            tags$small(class = "text-muted", "Dashed, 1900-1940: the reconstructed enumeration districts of each census area-weighted into the HOLC polygons themselves (fixed boundaries, so no harmonisation; the only approximation is the area weighting). ",
              "Solid, 1940-2020: population-weighted means of 2010 tracts at least 40% inside graded areas (about 4 A, 6 B, 37\u201341 C and 19 D tracts, depending on the census), with earlier censuses interpolated to 2010 tracts. The two 1940 points show how much the change of unit matters. Vertical line: the 1938 map. ",
              "Gaps: no census tract table measures Hispanic origin before 1960 (the 1900-1940 values are the full count's HISPAN; the 1940 tract point is filled from the districts), poverty starts in 1970, and 'hazardous firms in decade' counts street-level directory firms active in the ten years to each census."),
            )),
-    card(card_header("1930 enumeration districts by HOLC class and covenants: who lived there, and industry before and after the map"), tableOutput("t_edcls"),
+    card(card_header("1930 enumeration districts by HOLC class and covenants: who lived there, and industry before and after the map"), unit_note("1930 enumeration districts (reconstructed)"), tableOutput("t_edcls"),
          tags$small(class = "text-muted", "Each 1930 district takes its largest HOLC class when at least 30% of its area is graded ('ungraded' otherwise); 'covenants' = at least one 1931-35 racial covenant deed inside it. Firms per 10,000 residents of 1930. HOLC's Industrial and Commercial zones carried no residential grade but held most of the pre-map industry.")),
     layout_columns(col_widths = c(7, 5, 5, 7),
-      card(card_header("HOLC areas by grade: industry, the appraisers' remarks, covenants, and who lived there (1930 and 1940 full count, reconstructed districts)"), tableOutput("t_holc_g"),
+      card(card_header("HOLC areas by grade: industry, the appraisers' remarks, covenants, and who lived there (1930 and 1940 full count, reconstructed districts)"), unit_note("HOLC area polygons; 1930 and 1940 composition from reconstructed districts, area-weighted"), tableOutput("t_holc_g"),
            tags$small(class = "text-muted", "Population-weighted; 'remarks cite industry' = the area's detrimental influences or remarks mention industry, factories, smelters, railroads, smoke or odors. Firms are the street-level hazardous trades of the business directories; 'before the map' = any listing 1871-1937.")),
-      card(card_header("Where the facilities are: share by HOLC grade, then and now"), plotlyOutput("p_holc_sh", height = 360),
+      card(card_header("Where the facilities are: share by HOLC grade, then and now"), unit_note("facilities (points), by the HOLC grade of the land they stand on"), plotlyOutput("p_holc_sh", height = 360),
            tags$small(class = "text-muted", "Share of each layer's facilities that fall inside HOLC's A-D residential grades and its ungraded Industrial and Commercial zones (facilities outside all HOLC areas excluded), against the classes' shares of land and of 1940 population. Hazardous trades: street-level business-directory listings; 1965-1992: this project's geocoded hazardous-sector sites; today: EPA TRI and the cleanup inventories.")),
-      card(card_header("Mortgage lending today by HOLC grade: HMDA 2018-21 home-purchase applications"), tableOutput("t_hmda"), uiOutput("hmda_note"),
+      card(card_header("Mortgage lending today by HOLC grade: HMDA 2018-21 home-purchase applications"), unit_note("2010 census tracts grouped by dominant HOLC grade"), tableOutput("t_hmda"), uiOutput("hmda_note"),
            tags$small(class = "text-muted", "2010 tracts by dominant HOLC grade; denial rate = denied / (originated + denied), so withdrawn and incomplete applications are excluded. Context for the 1938 map, not evidence that its classifications were implemented: who gets credit in the graded areas today. Source: CFPB HMDA data browser (R/fetch_hmda.R).")),
-      card(card_header("Change in tract outcomes by grade, A = reference"), selectInput("rl_mvar", "Outcome", c("Black %" = "p_black", "Hispanic %" = "p_hisp", "Poverty %" = "p_pov", "Owner-occupied %" = "p_owner", "log median home value (2020 $)" = "lmval")), tableOutput("t_holc_m"),
+      card(card_header("Change in tract outcomes by grade, A = reference"), unit_note("2010 census tracts grouped by dominant HOLC grade"), selectInput("rl_mvar", "Outcome", c("Black %" = "p_black", "Hispanic %" = "p_hisp", "Poverty %" = "p_pov", "Owner-occupied %" = "p_owner", "log median home value (2020 $)" = "lmval")), tableOutput("t_holc_m"),
            tags$small(class = "text-muted", "Percentage points over the period relative to tracts dominated by A areas; the period's starting value of the outcome, 1940 % Black and 1931-40 firms controlled (poverty is first measured in 1970, so its periods start in 1970); 'net of 1925 zoning' adds the tract's share zoned industrial in 1929; HC1 SE (spatially robust Conley SEs with a 2 km cutoff, reported in the paper's SI, leave the grade estimates significant). ** p<0.01, * p<0.05. Industrial and Commercial = tracts at least 40% inside HOLC's ungraded zones of that kind (few tracts, so wide SEs). Compare Xu (2022), Table 3, for Chicago."))),
     layout_columns(col_widths = c(7, 5),
-      card(card_header("Did the map create or reinforce? The D–C gap census by census, 1900–2020"),
+      card(card_header("Did the map create or reinforce? The D–C gap census by census, 1900–2020"), unit_note("areas either side of HOLC C–D boundaries: reconstructed enumeration districts 1900–1940, 2010 census tracts 1940–2020"),
            layout_columns(col_widths = c(4, 3, 5), selectInput("rl_bvar", "Outcome", c("Black (%)" = "p_black", "Hispanic (%)" = "p_hisp", "Foreign born (%)" = "p_fb", "Owner-occupied (%)" = "p_owner", "Below poverty (%)" = "p_pov", "Laborers (%)" = "p_laborers")),
                           selectInput("rl_pair", "Grades", c("D minus C" = "D-C", "D minus B" = "D-B", "D minus A" = "D-A", "C minus B" = "C-B", "C minus A" = "C-A", "B minus A" = "B-A")),
                           radioButtons("rl_bdes", "Comparison", c("Boundary band: units within 400 m (districts) / 800 m (tracts) of both grades, lying in one of them" = "band", "All areas of each grade" = "all"))),
@@ -327,10 +328,13 @@ ui <- page_navbar(id = "nav",
              "whose centroid falls in a C or D area; from 1940 they are 2010 tracts with earlier censuses interpolated. A gap already widening before 1938 means the map ratified an existing divergence; one that opens only afterwards points to the map (or to the FHA practices and covenants of the same years — Fishback, Rose, Snowden & Storrs 2024 find FHA, not HOLC, drove lending). ",
              "Green crosses and the 'net of rail + 1925 zoning' column add the share of each unit zoned industrial on the 1929 building-zone map as a second control (the ordinance that the appraisers were themselves reading). Blue crosses and the 'net of rail' column: the same gap with each unit's distance to the nearest rail line (TIGER/Line; today's network, in Denver essentially the pre-1900 trunk lines and yards) added to the regression, since a boundary that follows a railway can differ for reasons other than the grade. For 1920 the 1929 zoning share stands in for land already in industrial use, since the ordinance came in 1925. Stars are HC1; with spatially robust (Conley, 2 km) errors the district Black gaps of 1930 and 1940 are not significant (paper SI). ",
              "Error bars are 95% intervals of the difference in population-weighted means across the units in the band: they are wide after 1940 because only ~15 tracts lie on each side and tract-level shares are far more dispersed than district-level ones (a few Five Points tracts were 60-80% Black while most were near 0), and for pairs involving A or B because those areas are few.")),
-      card(card_header("Industry by HOLC grade before and after the map: hazardous firms per km²"), tableOutput("t_holc_ind"),
+      card(card_header("Industry by HOLC grade before and after the map: hazardous firms per km²"), unit_note("HOLC area polygons (firms per km² of each grade)"), tableOutput("t_holc_ind"),
            tags$small(class = "text-muted", "Street-level hazardous trades in the business directory (1891–1956) and hazardous-sector manufacturers in the complete editions of the Directory of Colorado Manufacturers (1965–1992), active in each period, per km² of each grade's area. ",
              "Read the D/C ratio within one source: the business directory (to 1956) and the manufacturers' directory (from 1965) list different things, and periods hold different numbers of editions, so the step between 1938\u201356 and 1965\u201380 is mostly the change of source. Per edition, D/C is about the same just before the map (1921\u201337) and just after it (1938\u201356); the downloadable table gives firms per km\u00b2 per edition and the D/C ratio within each period."),
            tags$hr(), tags$b("The 1925 zoning ordinance by HOLC grade"), tableOutput("t_holc_zon"),
+           tags$hr(), tags$b("Did the districts change around the map? 1929 and 1944 compared"), tableOutput("t_zon44"), tableOutput("t_zch"),
+           tags$small(class = "text-muted", "The April 1944 revision of the same map, registered to the 1929 sheet and classified the same way; every difference of a block or more was checked by eye on both scans and only visibly redrawn districts kept (8 areas; 118 candidates reviewed). ",
+             "No industrial district was added between 1929 and 1944; about 0.5 km² of Industrial A (2%) was redrawn as commercial, business or residence districts, and the share of D land zoned industrial went from 16.2% to 15.9%. Changes smaller than a block, and later hand-coloured amendments on the 1944 copy, are not included."),
            tags$details(tags$summary(tags$small("See the 1929 Building Zone Map and how it was classified")),
              layout_columns(col_widths = c(6, 6),
                tags$figure(tags$a(href = "zoning_1929_scan.jpg", target = "_blank", tags$img(src = "zoning_1929_scan.jpg", style = "width:100%; border:1px solid #ddd")),
@@ -346,53 +350,53 @@ ui <- page_navbar(id = "nav",
         "In short: before 1940 the hazardous trades moved from the mining districts to Denver and went with immigrant, not Hispanic, Colorado; after 1965 manufacturing left Denver for its suburbs and the northern Front Range; ",
         "and since 1990 the Hispanic share is higher beside hazardous industry across the Front Range cities but not in rural Colorado, while poverty and renting are higher beside it everywhere. The associations are between places at one date, not estimates of what caused what.")),
     layout_columns(col_widths = c(7, 5),
-      card(card_header("1880–1940: where the state's hazardous trades were, by region"), plotlyOutput("p_co_reg", height = 380),
+      card(card_header("1880–1940: where the state's hazardous trades were, by region"), unit_note("Colorado counties (each census's boundaries) grouped into regions"), plotlyOutput("p_co_reg", height = 380),
            tags$small(class = "text-muted", "Solid: share of the state's listed hazardous trades (business directory, trades of the ten years ending at the census, town or street level). Dashed: share of the state's population (IPUMS full count). ",
              "The number of surviving directory editions differs between censuses (none survives for 1893–1909), so read direction, not exact levels. Mining counties: Lake, Gilpin, Clear Creek, San Juan, Ouray, Teller, Summit, Hinsdale, Park, Chaffee, San Miguel, Mineral; ",
              "southern Hispano counties: Conejos, Costilla, Huerfano, Las Animas, Rio Grande, Saguache, Alamosa.")),
-      card(card_header("Across counties: trades per resident and who lived there"), tableOutput("t_co_cor"),
+      card(card_header("Across counties: trades per resident and who lived there"), unit_note("Colorado counties with 1,000+ residents, on each census's boundaries"), tableOutput("t_co_cor"),
            tags$small(class = "text-muted", "Correlation across counties (1,000+ residents, each census's own boundaries) of log hazardous trades per 1,000 residents with each share. ",
              "More trades went with more immigrants in every census and with fewer Hispanic residents in five of six: the Hispano south was farming and coal country with few listed trades."))),
     layout_columns(col_widths = c(5, 7),
-      card(card_header("1880–1940 counties"), selectInput("co_year", "Census", c(1880, 1900, 1910, 1920, 1930, 1940), selected = 1920),
+      card(card_header("1880–1940 counties"), unit_note("Colorado counties on each census's boundaries"), selectInput("co_year", "Census", c(1880, 1900, 1910, 1920, 1930, 1940), selected = 1920),
            selectInput("co_var", "Shade counties by", c("Hazardous trades per 1,000 residents" = "rate", "Hispanic (%)" = "pct_hisp", "Foreign born (%)" = "pct_fb", "Black (%)" = "pct_black", "Laborers (%)" = "pct_laborers")),
            tags$small(class = "text-muted", "IPUMS full-count census aggregated by county on that census's boundaries (NHGIS); hazardous trades of the decade from the business directory.")),
       card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_co", height = "52vh")))),
     layout_columns(col_widths = c(7, 5),
-      card(card_header("1965–1992: where the hazardous-sector manufacturers were, by region"), plotlyOutput("p_co_share", height = 380),
+      card(card_header("1965–1992: where the hazardous-sector manufacturers were, by region"), unit_note("sites (street addresses) statewide, grouped into regions by county"), plotlyOutput("p_co_share", height = 380),
            tags$small(class = "text-muted", "Share of the state's located hazardous-sector manufacturers in each complete edition. The 1965 edition places 73% in Denver, an outlier against every later edition. ",
              "Denver suburbs: Adams, Arapahoe, Broomfield, Douglas and Jefferson counties.")),
-      card(card_header("Share of the 1990 population"), tableOutput("t_co_pop"))),
+      card(card_header("Share of the 1990 population"), unit_note("regions (groups of counties)"), tableOutput("t_co_pop"))),
     layout_columns(col_widths = c(8, 4),
-      card(card_header("1990–2020: who lives beside hazardous industry, by region"), plotlyOutput("p_co_assoc", height = 420),
+      card(card_header("1990–2020: who lives beside hazardous industry, by region"), unit_note("Colorado 2010 census tracts with 200+ residents"), plotlyOutput("p_co_assoc", height = 420),
            tags$small(class = "text-muted", "Every Colorado tract with 200+ residents in each census from 1990 (1,158). Percentage points per log unit of hazardous firms of the decade per km², with log population density and county fixed effects; bars are 95% intervals (HC1). ",
              "2000–2020 use the 1983–1992 sites, so those years describe who lives around historically listed industrial land, not new siting. In Denver the Hispanic association fades by 2020 while it grows in the suburbs and the northern Front Range.")),
       card(card_header("Outcome"), radioButtons("co_out", NULL, c("% Hispanic", "% below poverty", "% owner-occupied", "% foreign born", "% Black", "% White")),
            tags$small(class = "text-muted", "Regions: Denver (City and County); Denver suburbs; Boulder, Larimer and Weld; Colorado Springs (El Paso); Pueblo; Grand Junction (Mesa, too few tracts for this chart); rest of Colorado."))),
     layout_columns(col_widths = c(6, 6),
-      card(card_header("Today: historical industry and present burdens, Colorado tracts"), tableOutput("t_co_leg"),
+      card(card_header("Today: historical industry and present burdens, Colorado tracts"), unit_note("Colorado 2010 census tracts"), tableOutput("t_co_leg"),
            tags$small(class = "text-muted", "1,428 Colorado tracts (2020) with 500+ residents; spatial-error models with log population density. Per log unit of the predictor. Associations at one date. ",
              "Firm-years = establishment-editions in the complete editions 1965–1992; sites on no list = hazardous sites with no match in the searched inventories. Outcomes are CDPHE EnviroScreen indicators.")),
-      card(card_header("The other graded cities"),
+      card(card_header("The other graded cities"), unit_note("appraisal-map areas and 2010 census tracts in each graded city"),
            tags$p(tags$small("Mapping Inequality holds Pueblo's 1938 HOLC map (A–D) and local appraisal maps of Colorado Springs, Greeley, Fort Collins, Grand Junction, Boulder, Longmont and Fort Morgan. ",
              "They cannot carry the Denver analysis: outside Denver the pre-1960 directory places trades only at the town, the full count has not been rebuilt into districts, and the graded areas cover 1–15 tracts. ",
              "The table puts every map's grades on one scale (best / middle / worst) and gives hazardous-sector manufacturers per km² per edition; with so few areas it is descriptive only.")),
            tableOutput("t_co_gc"))),
     layout_columns(col_widths = c(7, 5),
-      card(card_header("Phases of Colorado manufacturing: share of listed firms by industry, 1965–1992 (all manufacturers, complete editions)"), plotlyOutput("p_mix", height = 420),
+      card(card_header("Phases of Colorado manufacturing: share of listed firms by industry, 1965–1992 (all manufacturers, complete editions)"), unit_note("firms statewide, per edition"), plotlyOutput("p_mix", height = 420),
            tags$small(class = "text-muted", "* = Frickel & Elliott hazardous sector. Shares of firms with an industry code in each edition; the directories' coverage changes between editions.")),
-      card(card_header("How long did firms stay listed?"), plotlyOutput("p_longev", height = 420),
+      card(card_header("How long did firms stay listed?"), unit_note("firms statewide"), plotlyOutput("p_longev", height = 420),
            tags$small(class = "text-muted", "Years between a firm's first and last listing (firms linked across editions). Firms still listed in 1992 or first listed in 1965 are cut off by the directory's own span."))),
     layout_columns(col_widths = c(7, 5),
-      card(card_header("Do hazardous sectors cluster more than manufacturing in general? Ellison–Glaeser index by edition, statewide"), plotlyOutput("p_eg_co", height = 380),
+      card(card_header("Do hazardous sectors cluster more than manufacturing in general? Ellison–Glaeser index by edition, statewide"), unit_note("1 km grid cells, all of Colorado"), plotlyOutput("p_eg_co", height = 380),
            tags$small(class = "text-muted", "As on the Trends tab, for all of Colorado (1 km cells).")),
-      card(card_header("Succession: what replaced what in 500 m cells (dominant sector, one edition to the next), statewide"), plotlyOutput("p_trans", height = 380),
+      card(card_header("Succession: what replaced what in 500 m cells (dominant sector, one edition to the next), statewide"), unit_note("500 m grid cells, all of Colorado"), plotlyOutput("p_trans", height = 380),
            tags$small(class = "text-muted", "The 15 most common changes of a cell's dominant sector between consecutive complete editions, 1965–1992."))),
     tags$small(class = "text-muted", "Code: R/county_panel_1880_1940.R, R/statewide.R, R/corridors.R.")),
   nav_menu("Explore more",
   nav_panel("Neighborhoods",
     layout_columns(col_widths = c(3, 9),
-      card(card_header("Compare census tracts"),
+      card(card_header("Compare census tracts"), unit_note("2010 census tracts"),
            radioButtons("cmp", NULL, c(
              "Tracts with historical hazardous sites vs. tracts without" = "any",
              "Tracts with potentially unknown sites vs. all other tracts" = "unknown",
@@ -405,10 +409,10 @@ ui <- page_navbar(id = "nav",
              textOutput("nb_nsel", inline = TRUE), " A tract 'has' a site if the site's geocode falls inside it. ",
              "Tract-level comparisons describe places, not the people living next to a given site (ecological fallacy).")),
       card(card_header(textOutput("cmp_title")), plotlyOutput("p_cmp", height = 380),
-           card_header("All indicators: medians, means and Wilcoxon rank-sum test"), DTOutput("t_cmp")))),
+           card_header("All indicators: medians, means and Wilcoxon rank-sum test"), unit_note("2010 census tracts"), DTOutput("t_cmp")))),
   nav_panel("Nearby schools & health care",
     layout_columns(col_widths = c(3, 9),
-      card(card_header("Sensitive places near potentially unknown sites"),
+      card(card_header("Sensitive places near potentially unknown sites"), unit_note("schools and health facilities (points) within the chosen distance of sites"),
            sliderInput("buf", "Distance (m)", 100, 2000, 500, step = 100),
            checkboxGroupInput("recv", "Include", c("Public school", "Non-public school", "Hospital", "Clinic", "Residential & long-term care"),
                               selected = c("Public school", "Non-public school", "Hospital", "Clinic", "Residential & long-term care")),
@@ -426,12 +430,12 @@ ui <- page_navbar(id = "nav",
            tags$small(class = "text-muted", "CBP: Eckert, Fort, Schott & Yang (2021) raw county files (1975–85 National Archives, 1986+ Census Bureau). NHGIS: county manufacturing tables 1880–1940 (IPUMS NHGIS). Atack–Bateman–Weiss: Census of Manufactures samples 1870, 1880 (Vanderbilt / ICPSR). Rscript R/benchmarks.R reproduces this tab.")),
       div(
         layout_columns(col_widths = c(6, 6),
-          card(card_header("1977–1992: manufacturing establishments in Colorado — County Business Patterns vs the complete editions of the Directory of Colorado Manufacturers"), plotlyOutput("p_bm_state", height = 360),
+          card(card_header("1977–1992: manufacturing establishments in Colorado — County Business Patterns vs the complete editions of the Directory of Colorado Manufacturers"), unit_note("Colorado counties (state totals)"), plotlyOutput("p_bm_state", height = 360),
                tags$small(class = "text-muted", "CBP counts every establishment with a payroll (SIC 20–39 to 1997, NAICS 31–33 from 1998), from administrative records; the directory lists firms that answered the publisher's questionnaire. The ratio is the directory's coverage rate; it varies by edition mainly with how much of each volume was scanned (see the table), which is why edition-to-edition changes in site counts on the Trends tab should be read against this chart.")),
-          card(card_header("County agreement"), tableOutput("t_bm_fit"), uiOutput("bm_fit_note"))),
+          card(card_header("County agreement"), unit_note("Colorado counties"), tableOutput("t_bm_fit"), uiOutput("bm_fit_note"))),
         layout_columns(col_widths = c(7, 5),
-          card(card_header("Counties in the chosen edition: directory vs CBP"), plotlyOutput("p_bm_cty", height = 380), tableOutput("t_bm_cty")),
-          card(card_header("1880–1940: census manufacturing establishments by county vs the business directory's hazardous trades"), uiOutput("bm_nh"),
+          card(card_header("Counties in the chosen edition: directory vs CBP"), unit_note("Colorado counties"), plotlyOutput("p_bm_cty", height = 380), tableOutput("t_bm_cty")),
+          card(card_header("1880–1940: census manufacturing establishments by county vs the business directory's hazardous trades"), unit_note("Colorado counties on each census's boundaries"), uiOutput("bm_nh"),
                tags$b("1880 Census of Manufactures sample (Atack–Bateman–Weiss): Colorado establishments by industry (* = Frickel & Elliott sector)"), tableOutput("t_bm_at"),
                tags$small(class = "text-muted", "The business directory lists only the hazardous trades, so its count is a floor on coverage of all manufacturing. NHGIS county tables derive from the Census of Manufactures as tabulated with each decennial census (variables differ by year). ",
                  "The Atack–Bateman–Weiss samples (1870, 1880) give establishment records (county, industry, capital, workers, output) from surviving schedules, without street addresses; if Colorado rows were found they are in data/results/benchmarks/atack_colorado.csv."))))
@@ -543,7 +547,7 @@ ui <- page_navbar(id = "nav",
     )),
   nav_panel("Data & downloads",
     layout_columns(col_widths = c(4, 8),
-      card(card_header("Geocoded directory listings by edition"),
+      card(card_header("Geocoded directory listings by edition"), unit_note("individual listings (points), statewide"),
            selectInput("dl_year", "Edition", { dcm <- sort(as.integer(sub("CO_DCM_(\\d+)_geocoded.csv", "\\1", list.files(by_year_dir, "CO_DCM_.*csv")))); bd <- if (is.null(pre60)) integer() else sort(unique(pre60$year))
              c(setNames(as.list(bd), paste(bd, "(State Business Directory: hazardous trades)")), setNames(as.list(dcm), paste(dcm, "(Directory of Colorado Manufacturers)"))) }, selected = 1965),
            downloadButton("dl_one", "Download edition CSV"),
@@ -650,14 +654,14 @@ server <- function(input, output, session) {
                   opacity = 0.8, group = "Industrial corridors (500 m cells)")
     }
     if (!is.null(zon)) { zc <- unname(ZON_COL[zon$zone]); zc[is.na(zc)] <- "#999999"
-      m <- m |> addPolygons(data = zon, fillColor = zc, fillOpacity = 0.45, color = zc, weight = 1, group = "Denver 1925 zoning (1929 map)", options = pathOptions(pane = "tr"),
+      m <- m |> addPolygons(data = zon, fillColor = zc, fillOpacity = 0.45, color = zc, weight = 1, group = "Denver 1925 zoning (as amended to 1929)", options = pathOptions(pane = "tr"),
                             label = sprintf("Denver 1925 zoning ordinance, as mapped in 1929: %s district", zon$zone)) |>
-        addLegend("topleft", colors = unname(ZON_COL), labels = names(ZON_COL), title = "Denver 1925 zoning<br><small>Building Zone Map rev. 1929 (DPL); residential and business districts not shown</small>", opacity = 0.7, group = "Denver 1925 zoning (1929 map)") }
+        addLegend("topleft", colors = unname(ZON_COL), labels = names(ZON_COL), title = "Denver 1925 zoning, as amended to 1929<br><small>Building Zone Map adopted Feb 1925, revised to 1 Jan 1929 (DPL); residential and business districts not shown</small>", opacity = 0.7, group = "Denver 1925 zoning (as amended to 1929)") }
     m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
-          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", if (!is.null(zon)) "Denver 1925 zoning (1929 map)", "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
+          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", if (!is.null(zon)) "Denver 1925 zoning (as amended to 1929)", "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
-      hideGroup(c("Industrial corridors (500 m cells)", "Denver 1925 zoning (1929 map)", "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
+      hideGroup(c("Industrial corridors (500 m cells)", "Denver 1925 zoning (as amended to 1929)", "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
                   "RCRA corrective action", "Voluntary cleanup (VCUP)", "Superfund (SEMS)")) |>
       identity()
   })
@@ -782,13 +786,13 @@ server <- function(input, output, session) {
     d <- h |> mutate(yr = strsplit(years, " ")) |> unnest(yr) |> mutate(yr = as.integer(yr)) |>
       filter(yr >= input$yrs[1], yr <= input$yrs[2]) |> separate_rows(app_sectors, sep = ";") |> filter(app_sectors %in% input$sec) |>
       count(yr, app_sectors)
-    ggplotly(ggplot(d, aes(factor(yr), n, fill = app_sectors)) + geom_col() + labs(x = "Business directory edition", y = "Firms", fill = NULL) +
-               theme_minimal())
+    ggplotly(ggplot(d, aes(yr, n, fill = app_sectors)) + geom_col(width = 0.9) + scale_x_continuous(breaks = scales::breaks_pretty(8)) + labs(x = "Business directory edition", y = "Firms", fill = NULL) +
+               theme_minimal()) |> hleg()
   })
   output$p_mix <- renderPlotly({ if (is.null(mix)) return(NULL)
     ggplotly(ggplot(mix, aes(year, share, fill = group, text = sprintf("%s, %s: %.1f%% (%s firms)", group, year, 100 * share, establishments))) +
                geom_col(position = "stack", width = 0.9) + scale_y_continuous(labels = scales::percent) +
-               labs(x = "Directory edition", y = "Share of listed firms", fill = NULL) + theme_minimal(), tooltip = "text") })
+               labs(x = "Directory edition", y = "Share of listed firms", fill = NULL) + theme_minimal(), tooltip = "text") |> hleg() })
   output$p_longev <- renderPlotly({ if (is.null(longev)) return(NULL)
     d <- longev |> mutate(span = last_year - first_year, sector = ifelse(as.logical(hazardous) %in% TRUE, "Hazardous sector", "Other manufacturing"),
                           bin = cut(span, c(-1, 0, 4, 9, 19, 29, 41), c("1 edition", "1–4", "5–9", "10–19", "20–29", "30–41"))) |>
@@ -891,8 +895,8 @@ server <- function(input, output, session) {
       pl <- add_trace(pl, data = di, x = ~year, y = ~gamma, type = "scatter", mode = "lines+markers", name = sec, legendgroup = sec,
                       marker = list(size = 8, symbol = ifelse(di$p < 0.05, "circle", "circle-open")),
                       text = sprintf("%s %s: γ = %.4f, p = %.3f (%s of %s firms)", sec, di$year, di$gamma, di$p, di$n, di$n_all), hoverinfo = "text") }
-    layout(pl, xaxis = list(title = list(text = "Directory edition", standoff = 8), dtick = 5), yaxis = list(title = "Ellison–Glaeser γ (vs. all manufacturing)", zeroline = TRUE),
-           legend = list(orientation = "h", x = 0, y = -0.3, yanchor = "top"), margin = list(b = 130)) })
+    layout(pl, xaxis = list(title = list(text = "Directory edition", standoff = 8), dtick = 5), yaxis = list(title = "Ellison–Glaeser γ", zeroline = TRUE),
+           legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom", xanchor = "left"), margin = list(t = 10)) })
   output$p_trans <- renderPlotly({ if (is.null(trans)) return(NULL)
     d <- trans |> filter(from != to, !is.na(to), to != "", !is.na(from), from != "") |> arrange(desc(N)) |> head(15) |> mutate(lab = paste(from, "→", to), lab = factor(lab, rev(lab)))
     ggplotly(ggplot(d, aes(N, lab, text = sprintf("%s: %s cell-transitions (%.0f%% of transitions from %s)", lab, N, 100 * share_of_from, from))) + geom_col(fill = "#7a0177") +
@@ -905,7 +909,7 @@ server <- function(input, output, session) {
     pl <- plot_ly(); for (sec in unique(d$sector)) { di <- d[d$sector == sec, ]
       pl <- add_trace(pl, data = di, x = ~year, y = ~gamma, type = "scatter", mode = "lines+markers", name = sec, marker = list(size = 8, symbol = ifelse(di$p < 0.05, "circle", "circle-open")),
                       text = sprintf("%s %s: γ = %.4f, p = %.3f", sec, di$year, di$gamma, di$p), hoverinfo = "text") }
-    layout(pl, xaxis = list(title = "Directory edition", dtick = 5), yaxis = list(title = "Ellison–Glaeser γ"), legend = list(orientation = "h", x = 0, y = -0.3, yanchor = "top"), margin = list(b = 130)) })
+    layout(pl, xaxis = list(title = "Directory edition", dtick = 5), yaxis = list(title = "Ellison–Glaeser γ"), legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom", xanchor = "left"), margin = list(t = 10)) })
   REG_COL <- c("Denver (Arapahoe before 1902)" = "#d1491f", "Denver" = "#d1491f", "Denver suburbs" = "#f4a582", "mining counties" = "#4d4d4d", "Pueblo" = "#24589e", "southern Hispano counties" = "#1b7837",
                "rest of Colorado" = "#9a9a9a", "Boulder, Larimer, Weld" = "#7a0177", "Colorado Springs (El Paso)" = "#e6ab02", "Grand Junction (Mesa)" = "#41b6c4", "Colorado" = "#000000")
   output$p_co_reg <- renderPlotly({ req(co_reg); pl <- plot_ly()
@@ -913,7 +917,7 @@ server <- function(input, output, session) {
       pl <- pl |> add_trace(x = d$census, y = d$pct_trades, type = "scatter", mode = "lines+markers", name = r, legendgroup = r, line = list(color = REG_COL[[r]]), marker = list(color = REG_COL[[r]]),
                             text = sprintf("%s %s: %s%% of trades (%s), %s%% of population", r, d$census, d$pct_trades, d$trades, d$pct_pop), hoverinfo = "text") |>
         add_trace(x = d$census, y = d$pct_pop, type = "scatter", mode = "lines", name = r, legendgroup = r, showlegend = FALSE, line = list(color = REG_COL[[r]], dash = "dash"), hoverinfo = "skip") }
-    layout(pl, xaxis = list(title = "Census"), yaxis = list(title = "% of the state", rangemode = "tozero"), legend = list(orientation = "h", x = 0, y = -0.25, yanchor = "top"), margin = list(b = 110)) })
+    layout(pl, xaxis = list(title = "Census"), yaxis = list(title = "% of the state", rangemode = "tozero"), legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom", xanchor = "left"), margin = list(t = 10)) })
   output$t_co_cor <- renderTable({ req(co_cor); setNames(co_cor, c("Census", "Counties", "Foreign born", "Hispanic", "Laborers", "Black")) }, digits = 2)
   output$map_co <- renderLeaflet({ req(co_cnty, input$co_year, input$co_var); d <- co_cnty[co_cnty$census == as.integer(input$co_year), ]
     x <- if (input$co_var == "rate") ifelse(d$pop > 0, 1000 * d$firms_haz / d$pop, NA) else d[[input$co_var]]
@@ -929,7 +933,7 @@ server <- function(input, output, session) {
     for (i in seq_len(nrow(co_share))) { r <- co_share$region[i]; y <- as.numeric(unlist(co_share[i, yrs]))
       pl <- pl |> add_trace(x = as.integer(yrs), y = y, type = "scatter", mode = "lines+markers", name = r, line = list(color = REG_COL[[r]]), marker = list(color = REG_COL[[r]]),
                             text = sprintf("%s %s: %.1f%%", r, yrs, y), hoverinfo = "text") }
-    layout(pl, xaxis = list(title = "Directory edition"), yaxis = list(title = "% of located hazardous-sector manufacturers", rangemode = "tozero"), legend = list(orientation = "h", x = 0, y = -0.25, yanchor = "top"), margin = list(b = 110)) })
+    layout(pl, xaxis = list(title = "Directory edition"), yaxis = list(title = "% of hazardous manufacturers", rangemode = "tozero"), legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom", xanchor = "left"), margin = list(t = 10)) })
   output$t_co_pop <- renderTable({ req(co_share); d <- co_share[order(-co_share$pct_pop_1990), c("region", "pct_pop_1990")]; setNames(d, c("Region", "% of 1990 population")) }, digits = 1)
   output$p_co_assoc <- renderPlotly({ req(co_assoc, input$co_out); d <- co_assoc[co_assoc$set == "tracts with data 1990-2020" & co_assoc$outcome == input$co_out & co_assoc$region != "Grand Junction (Mesa)", ]
     if (!nrow(d)) return(NULL); pl <- plot_ly(); regs <- c("Colorado", "Denver", "Denver suburbs", "Boulder, Larimer, Weld", "Colorado Springs (El Paso)", "Pueblo", "rest of Colorado"); regs <- regs[regs %in% d$region]
@@ -938,8 +942,8 @@ server <- function(input, output, session) {
                             line = list(color = REG_COL[[r]], width = if (r == "Colorado") 3 else 1.5), marker = list(color = REG_COL[[r]], size = 8),
                             error_y = list(type = "data", array = 1.96 * di$se, color = REG_COL[[r]], thickness = 1),
                             text = sprintf("%s %s: %+.2f (SE %.2f, p = %.3g)", r, di$census, di$b, di$se, di$p), hoverinfo = "text") }
-    layout(pl, xaxis = list(title = "Census", tickvals = c(1990, 2000, 2010, 2020)), yaxis = list(title = "Points per log unit of hazardous firms per km²", zeroline = TRUE),
-           legend = list(orientation = "h", x = 0, y = -0.25, yanchor = "top"), margin = list(b = 120)) })
+    layout(pl, xaxis = list(title = "Census", tickvals = c(1990, 2000, 2010, 2020)), yaxis = list(title = "Points per log unit of firm density", zeroline = TRUE),
+           legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom", xanchor = "left"), margin = list(t = 10)) })
   output$t_co_leg <- renderTable({ req(co_leg); d <- co_leg
     d$outcome <- c(people_of_color = "People of colour (%)", low_income = "Low income (%)", enviroscreen_pctl = "EnviroScreen (percentile)", pollution_climate_pctl = "Pollution & climate burden (percentile)")[d$outcome]
     d$predictor <- c("log1p(firm_years)" = "All manufacturing, firm-years", "log1p(haz_firm_years)" = "Hazardous sectors, firm-years", "log1p(hidden_sites)" = "Hazardous sites on no list")[d$predictor]
@@ -994,7 +998,7 @@ server <- function(input, output, session) {
                 "Black share is not associated with industry at the tract scale. The reverse models ask whether composition at one census predicts the change in the number of hazardous establishments by the next census; with three censuses they are indicative, and an association in both directions is consistent with industry and disadvantaged residents each drawing the other to cheap land rather than with either causing the other.</small></p>")) })
   DL_FILES <- c(dl_zon_geo = "zoning_1929.geojson", dl_zon_holc = "zoning_shares_holc.csv", dl_zon_tr = "zoning_shares_tracts.csv", dl_zon_g = "holc_zoning_by_grade.csv", dl_holc_bd = "holc_boundary.csv", dl_holc_m = "holc_tract_models.csv",
                 dl_sf1 = "site_fate_denver.csv", dl_sf2 = "site_fate_denver_pre1960.csv", dl_sf3 = "site_fate_summary.csv")
-  DL_LAB <- c(dl_zon_geo = "1925 zoning districts, 1929 map (GeoJSON)", dl_zon_holc = "Zoning share by HOLC area (CSV)", dl_zon_tr = "Zoning share by 2010 tract (CSV)", dl_zon_g = "Zoning by HOLC grade (CSV)", dl_holc_bd = "HOLC boundary gaps with rail and zoning controls (CSV)", dl_holc_m = "Change in tract outcomes by HOLC class (CSV)",
+  DL_LAB <- c(dl_zon_geo = "1925 zoning districts as amended to 1929 (GeoJSON)", dl_zon_holc = "Zoning share by HOLC area (CSV)", dl_zon_tr = "Zoning share by 2010 tract (CSV)", dl_zon_g = "Zoning by HOLC grade (CSV)", dl_holc_bd = "HOLC boundary gaps with rail and zoning controls (CSV)", dl_holc_m = "Change in tract outcomes by HOLC class (CSV)",
               dl_sf1 = "Site fate: 1965-92 Denver sites on today's parcels (CSV)", dl_sf2 = "Site fate: pre-1960 Denver trades on today's parcels (CSV)", dl_sf3 = "Site fate: summary by decade of last listing (CSV)")
   for (k in names(DL_FILES)) local({ kk <- k; output[[kk]] <- downloadHandler(filename = function() DL_FILES[[kk]], content = function(f) file.copy(dd(DL_FILES[[kk]]), f)) })
   output$dl_zoning_btns <- renderUI({ have <- names(DL_FILES)[file.exists(dd(DL_FILES))]; if (!length(have)) return(tags$small(class = "text-muted", "Run R/zoning_1925.R, R/holc_covenants.R and R/site_fate.R to add these files."))
@@ -1110,8 +1114,13 @@ server <- function(input, output, session) {
                         h$firms_pre1938, h$firms_1921_1937, h$firms_1938_1956, h$covenants_1931_35, esc(h$pop_1930), esc(h$pct_black_1930), esc(h$pct_fb_1930), esc(h$pct_hisp_1930), esc(h$pct_laborers_1930), esc(h$pct_black_1940), esc(h$pct_hisp_1940))) |>
         addLegend("bottomright", colors = unname(HOLC_COL6[1:6]), labels = c("A \u2018best\u2019", "B \u2018still desirable\u2019", "C \u2018definitely declining\u2019", "D \u2018hazardous\u2019", "Industrial zone (not graded)", "Commercial zone (not graded)"), title = "HOLC 1938", opacity = 0.7, layerId = "rllegend") }
     if ("zon" %in% L && !is.null(zon)) { zc <- unname(ZON_COL[zon$zone]); zc[is.na(zc)] <- "#999999"
-      px <- px |> addPolygons(data = zon, fillColor = zc, fillOpacity = 0.55, color = zc, weight = 1, group = "zon", options = pathOptions(pane = "holcp"), label = sprintf("1925 zoning (1929 map): %s district, %s km² in all", zon$zone, zon$km2)) |>
-        addLegend("topleft", colors = unname(ZON_COL), labels = paste(names(ZON_COL), "district"), title = "1925 zoning (1929 map)", opacity = 0.7, layerId = "zonlegend") }
+      px <- px |> addPolygons(data = zon, fillColor = zc, fillOpacity = 0.55, color = zc, weight = 1, group = "zon", options = pathOptions(pane = "holcp"), label = sprintf("1925 zoning as amended to 1929: %s district, %s km² in all", zon$zone, zon$km2)) |>
+        addLegend("topleft", colors = unname(ZON_COL), labels = paste(names(ZON_COL), "district"), title = "1925 zoning, as amended to 1929", opacity = 0.7, layerId = "zonlegend") }
+    px <- px |> clearGroup("zon44") |> removeControl("zon44legend")
+    if ("zon44" %in% L && !is.null(zon44)) { zc <- unname(ZON_COL[zon44$zone]); zc[is.na(zc)] <- "#999999"
+      px <- px |> addPolygons(data = zon44, fillColor = zc, fillOpacity = 0.45, color = zc, weight = 1, group = "zon44", options = pathOptions(pane = "holcp"), label = sprintf("Zoning as amended to April 1944: %s district", zon44$zone))
+      if (!is.null(zch)) px <- px |> addPolygons(data = zch, fill = TRUE, fillOpacity = 0, color = "#000000", weight = 2.5, dashArray = "5,4", group = "zon44", options = pathOptions(pane = "holcp"), label = sprintf("Changed 1929-1944: %s (%.2f km²)", zch$change, zch$km2))
+      px <- px |> addLegend("topleft", colors = c(unname(ZON_COL), "#000000"), labels = c(paste(names(ZON_COL), "district, 1944"), "changed since 1929 (dashed)"), title = "Zoning as amended to April 1944", opacity = 0.7, layerId = "zon44legend") }
     if (any(c("cov", "firms") %in% L)) { lc <- c(if ("cov" %in% L) c("#333333", "#ff7f00"), if ("firms" %in% L) "#d1491f")
       ll <- c(if ("cov" %in% L) c("Racial covenant 1931-35", "Covenant that also bars manufacturing"), if ("firms" %in% L) sprintf("Hazardous-trade firm, %s", switch(input$rl_firms, pre = "1871-1937", mid = "1921-1937", post = "1938-1956")))
       px <- px |> addLegend("topright", colors = lc, labels = ll, title = "Points", opacity = 0.9, layerId = "ptlegend") }
@@ -1126,7 +1135,7 @@ server <- function(input, output, session) {
     cls <- intersect(c("A", "B", "C", "D", "Industrial", "Commercial"), sub("share_", "", grep("^share_", names(holc_sh), value = TRUE)))
     d <- holc_sh |> select(layer, total, all_of(paste0("share_", cls))) |> rename_with(~ sub("share_", "", .x)) |> pivot_longer(all_of(cls), names_to = "grade", values_to = "share") |> mutate(layer = factor(layer, rev(unique(holc_sh$layer))), grade = factor(grade, cls))
     ggplotly(ggplot(d, aes(share, layer, fill = grade, text = sprintf("%s: %.1f%% in %s (n = %s)", layer, share, grade, round(total)))) + geom_col(position = "stack") +
-               scale_fill_manual(values = c(A = "#4d8a3a", B = "#3b8fa0", C = "#c9a800", D = "#c0392b", Industrial = "#7f7f7f", Commercial = "#b07cb0")) + labs(x = "Share (%)", y = NULL, fill = "HOLC class") + theme_minimal(), tooltip = "text") |> hleg() })
+               scale_fill_manual(values = c(A = "#4d8a3a", B = "#3b8fa0", C = "#c9a800", D = "#c0392b", Industrial = "#7f7f7f", Commercial = "#b07cb0")) + scale_x_continuous(breaks = seq(0, 100, 50)) + labs(x = "Share (%)", y = NULL, fill = "HOLC class") + theme_minimal(), tooltip = "text") |> hleg() })
   output$t_hmda <- renderTable({ if (is.null(hmda_g)) return(data.frame(Note = "Run R/fetch_hmda.R to add HMDA 2018-21 lending by grade."))
     hmda_g |> transmute(Grade = grade, Tracts = tracts, Applications = apps, `Denial rate %` = denial_rate, `Black denial %` = black_denial_rate, `Hispanic denial %` = hisp_denial_rate, `Hispanic share of applicants %` = pct_apps_hisp, `Black share %` = pct_apps_black, `Median loan $k` = median_loan_k, `Median income $k` = median_income_k) }, striped = TRUE, spacing = "xs")
   output$hmda_note <- renderUI({ if (is.null(hmda_m)) return(NULL)
@@ -1150,7 +1159,7 @@ server <- function(input, output, session) {
     if (!is.null(holc_pre) && v %in% names(holc_pre)) d <- bind_rows(holc_pre |> filter(!is.na(.data[[v]]), !is.nan(.data[[v]])) |> mutate(basis = "HOLC areas (districts area-weighted)", unit = sprintf("%s areas", areas)) |> select(census, grade, all_of(v), basis, unit), d)
     xb <- if (min(d$census) < 1940) seq(1900, 2020, 20) else seq(1940, 2020, 20)
     ggplotly(ggplot(d, aes(census, .data[[v]], colour = grade, group = interaction(grade, basis), linetype = basis, text = sprintf("Grade %s, %s: %.1f (%s; %s)", grade, census, .data[[v]], unit, basis))) + geom_vline(xintercept = 1938, colour = "grey60") + geom_line() + geom_point(size = 2) +
-               scale_colour_manual(values = c(A = "#4d8a3a", B = "#3b8fa0", C = "#c9a800", D = "#c0392b")) + scale_linetype_manual(values = c("HOLC areas (districts area-weighted)" = "dashed", "2010 tracts by dominant grade" = "solid"), guide = "none") + scale_x_continuous(breaks = xb) + labs(x = NULL, y = lab, colour = "HOLC grade") + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1)), tooltip = "text") |> gradeleg() |> plotly::layout(legend = list(orientation = "h", x = 0, y = 1.12, yanchor = "bottom"), margin = list(t = 60)) })
+               scale_colour_manual(values = c(A = "#4d8a3a", B = "#3b8fa0", C = "#c9a800", D = "#c0392b")) + scale_linetype_manual(values = c("HOLC areas (districts area-weighted)" = "dashed", "2010 tracts by dominant grade" = "solid"), guide = "none") + scale_x_continuous(breaks = xb) + labs(x = NULL, y = lab, colour = "HOLC grade") + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1)), tooltip = "text") |> gradeleg() |> plotly::layout(legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom", xanchor = "left"), margin = list(t = 10)) })
   bd_pair <- reactive({ pr <- strsplit(input$rl_pair, "-")[[1]]; list(hi = pr[1], lo = pr[2], col = gsub("-", "_minus_", input$rl_pair)) })
   output$holc_bd_note <- renderUI({ if (input$rl_bdes != "band" || is.null(holc_bd) || !"pair" %in% names(holc_bd)) return(NULL)
     if (!any(holc_bd$pair == input$rl_pair & holc_bd$outcome == input$rl_bvar)) tags$small(class = "text-warning", sprintf("Too few districts or tracts border both %s and %s areas for a boundary comparison (A and B areas are few and small); switch to 'All areas'.", bd_pair()$hi, bd_pair()$lo)) })
@@ -1241,6 +1250,10 @@ server <- function(input, output, session) {
     holc_m |> filter(outcome == input$rl_mvar) |> mutate(star = ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", "")), Outcome = c(p_black = "Black %", p_hisp = "Hispanic %", p_pov = "Poverty %", p_owner = "Owner-occupied %", lmval = "log median home value (2020 $)")[outcome]) |>
       transmute(Outcome, Period = period, `Class (vs A)` = grade, Change = sprintf("%+.1f%s", b, star), SE = round(se, 1), Tracts = n,
                 `Net of 1925 zoning` = if ("b_zone" %in% names(holc_m)) ifelse(is.na(b_zone), "", sprintf("%+.1f%s", b_zone, ifelse(p_zone < 0.01, "**", ifelse(p_zone < 0.05, "*", "")))) else NULL) }, striped = TRUE, spacing = "xs")
+  output$t_zon44 <- renderTable({ req(zg44); d <- zg44[zg44$grade %in% c("A", "B", "C", "D"), ]
+    data.frame(Grade = d$grade, District = d$cls, `% of grade, 1929` = d$pct_1929, `% of grade, 1944` = d$pct_1944, `km², 1929` = d$km2_1929, `km², 1944` = d$km2_1944, check.names = FALSE) }, digits = 2, striped = TRUE, spacing = "xs")
+  output$t_zch <- renderTable({ req(zch_t); d <- zch_t
+    data.frame(`1929` = d$from_1929, `1944` = d$to_1944, `km²` = d$km2, `HOLC grade` = d$holc_grade, Near = d$near, check.names = FALSE) }, digits = 3, striped = TRUE, spacing = "xs")
   output$t_holc_zon <- renderTable({ if (is.null(zon_g)) return(NULL); zon_g |> transmute(Grade = grade, Areas = areas, `km²` = km2, `Zoned industrial in 1929 (%)` = pct_industrial_1929, `Zoned commercial (%)` = pct_commercial_1929) }, striped = TRUE, spacing = "xs")
 
   # ---- downloads

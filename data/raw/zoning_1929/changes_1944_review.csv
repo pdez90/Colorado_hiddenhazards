@@ -1,0 +1,227 @@
+id,kind,zone_model,cells,row0,row1,col0,col1,zone_1929_majority,reviewed,accept,zone_1944,note
+1,added,industrial,8,28,31,153,154,none,0,0,,"not reviewed (under 12 cells, about one block)"
+2,added,industrial,78,29,60,114,119,none,1,0,,same commercial cross-hatch strip and Industrial B both years
+3,added,industrial,10,33,37,153,155,none,0,0,,"not reviewed (under 12 cells, about one block)"
+4,added,industrial,8,43,44,289,292,none,0,0,,"not reviewed (under 12 cells, about one block)"
+5,added,industrial,6,43,44,299,301,none,0,0,,"not reviewed (under 12 cells, about one block)"
+6,added,industrial,20,43,44,306,315,none,1,0,,sheet edge
+7,added,industrial,8,44,46,156,158,none,0,0,,"not reviewed (under 12 cells, about one block)"
+8,added,industrial,65,46,63,229,236,none,1,0,,same hatch both years (1929 label gap at district edge)
+9,added,industrial,8,47,50,200,202,none,0,0,,"not reviewed (under 12 cells, about one block)"
+10,added,industrial,12,49,51,288,291,none,1,0,,same pattern both years
+11,added,industrial,39,52,61,208,215,none,1,0,,same pattern both years
+12,added,industrial,6,54,55,274,276,none,0,0,,"not reviewed (under 12 cells, about one block)"
+13,added,industrial,27,55,60,238,244,none,1,0,,same pattern both years
+14,added,industrial,35,55,61,309,317,none,1,0,,same pattern both years
+15,added,industrial,32,57,63,196,202,none,1,0,,same pattern both years
+16,added,industrial,92,57,75,241,251,none,1,0,,same hatch both years along Colorado Blvd and the rail line
+17,added,industrial,42,58,65,251,261,none,1,0,,same pattern both years
+18,added,industrial,8,58,60,304,306,none,0,0,,"not reviewed (under 12 cells, about one block)"
+19,added,industrial,7,62,64,162,164,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+20,added,industrial,31,62,65,328,340,none,1,0,,sheet edge
+21,added,industrial,13,63,67,121,123,none,1,0,,same pattern both years
+22,added,industrial,103,63,76,346,357,none,1,0,,"same unplatted heavy '/' hatch both years (1929 label gap, not a change)"
+23,added,industrial,6,66,67,207,209,none,0,0,,"not reviewed (under 12 cells, about one block)"
+24,added,industrial,39,67,73,321,329,none,1,0,,same pattern both years
+25,added,industrial,9,69,71,121,123,none,0,0,,"not reviewed (under 12 cells, about one block)"
+26,added,industrial,14,69,75,207,209,none,1,0,,same pattern both years
+27,added,industrial,8,70,72,314,316,none,0,0,,"not reviewed (under 12 cells, about one block)"
+28,added,industrial,6,71,73,174,175,none,0,0,,"not reviewed (under 12 cells, about one block)"
+29,added,industrial,27,73,84,121,123,none,1,0,,same pattern both years
+30,added,industrial,15,78,82,189,191,none,1,0,,same pattern both years
+31,added,industrial,10,79,82,238,240,none,0,0,,"not reviewed (under 12 cells, about one block)"
+32,added,industrial,6,84,85,208,210,none,0,0,,"not reviewed (under 12 cells, about one block)"
+33,added,industrial,11,84,86,234,238,none,0,0,,"not reviewed (under 12 cells, about one block)"
+34,added,industrial,227,84,101,273,305,none,1,0,,same Residence B '/' hatch; 1944 scan darker
+35,added,industrial,83,84,96,321,332,none,1,0,,same Residence B pattern both years
+36,added,industrial,32,84,89,334,342,none,1,0,,same pattern both years
+37,added,industrial,46,87,95,193,199,none,1,0,,same pattern both years
+38,added,industrial,99,88,103,346,357,none,1,0,,same unplatted heavy '/' hatch both years (1929 label gap)
+39,added,industrial,13,90,92,299,303,none,1,0,,same pattern both years
+40,added,industrial,6,92,94,241,242,none,0,0,,"not reviewed (under 12 cells, about one block)"
+41,added,industrial,14,94,99,130,133,none,1,0,,same pattern both years
+42,added,industrial,40,97,106,203,209,none,1,0,,same pattern both years
+43,added,industrial,17,97,101,243,246,none,1,0,,"by Clayton College: residence block redrawn with dots (residence change), not industrial"
+44,added,industrial,10,98,101,339,341,none,0,0,,"not reviewed (under 12 cells, about one block)"
+45,added,industrial,21,99,101,269,276,none,1,0,,same pattern both years
+46,added,industrial,23,100,105,193,196,none,1,0,,same pattern both years
+47,added,industrial,6,102,103,221,223,none,0,0,,"not reviewed (under 12 cells, about one block)"
+48,added,industrial,11,103,107,27,29,none,0,0,,"not reviewed (under 12 cells, about one block)"
+49,added,industrial,40,107,118,193,199,none,1,0,,same Residence C pattern both years
+50,added,industrial,26,108,117,340,344,none,1,0,,same pattern both years
+51,added,industrial,20,113,117,230,235,none,1,0,,same pattern both years
+52,added,industrial,7,116,118,103,105,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+53,added,industrial,9,116,118,208,210,none,0,0,,"not reviewed (under 12 cells, about one block)"
+54,added,industrial,7,121,123,127,129,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+55,added,industrial,19,123,129,193,196,none,1,0,,same pattern both years
+56,added,industrial,8,142,144,96,98,none,0,0,,"not reviewed (under 12 cells, about one block)"
+57,added,industrial,11,145,148,85,87,none,0,0,,"not reviewed (under 12 cells, about one block)"
+58,added,industrial,12,148,150,105,109,none,1,0,,same pattern both years
+59,added,industrial,9,149,151,83,85,none,0,0,,"not reviewed (under 12 cells, about one block)"
+60,added,industrial,20,164,167,286,291,none,1,0,,darker printing only
+61,added,industrial,20,171,178,126,131,none,1,0,,rail line; same pattern both years
+62,added,industrial,41,171,177,293,299,none,1,0,,"block with circled B: darker printing in 1944, district type not clearly changed"
+63,added,industrial,8,178,180,245,247,none,0,0,,"not reviewed (under 12 cells, about one block)"
+64,added,industrial,11,179,182,249,252,none,0,0,,"not reviewed (under 12 cells, about one block)"
+65,added,industrial,6,219,221,62,63,none,0,0,,"not reviewed (under 12 cells, about one block)"
+66,added,industrial,15,227,230,232,236,none,1,0,,same pattern both years
+67,added,industrial,6,230,231,237,239,none,0,0,,"not reviewed (under 12 cells, about one block)"
+68,added,industrial,13,236,239,75,78,none,1,0,,same pattern both years
+69,added,industrial,17,239,242,182,187,none,1,0,,same pattern both years
+70,added,industrial,6,247,248,142,144,none,0,0,,"not reviewed (under 12 cells, about one block)"
+71,added,industrial,36,249,257,108,114,none,1,0,,same pattern both years
+72,added,industrial,8,254,256,186,188,none,0,0,,"not reviewed (under 12 cells, about one block)"
+73,added,industrial,8,266,268,242,244,none,0,0,,"not reviewed (under 12 cells, about one block)"
+74,added,industrial,6,296,298,136,137,none,0,0,,"not reviewed (under 12 cells, about one block)"
+75,added,industrial,6,297,299,151,152,none,0,0,,"not reviewed (under 12 cells, about one block)"
+76,added,industrial,6,308,310,148,149,none,0,0,,"not reviewed (under 12 cells, about one block)"
+77,added,industrial,14,312,315,188,192,Commercial,1,0,,street line next to change 226; no industrial district drawn
+78,added,industrial,35,312,317,224,230,none,1,0,,same pattern both years
+79,added,industrial,8,313,316,112,113,none,0,0,,"not reviewed (under 12 cells, about one block)"
+80,added,industrial,23,313,317,143,150,none,1,0,,same pattern both years
+81,added,industrial,123,315,326,204,220,none,1,0,,same Residence B/C pattern both years
+82,added,industrial,31,316,320,235,242,none,1,0,,same pattern both years
+83,added,industrial,71,318,331,149,164,none,1,0,,same pattern both years
+84,added,industrial,89,323,333,165,178,none,1,0,,same Residence B pattern both years
+85,added,industrial,7,324,326,187,189,none,0,0,,"not reviewed (under 12 cells, about one block)"
+86,added,industrial,300,329,356,163,190,none,1,0,,same Residence B '/' hatch over platted blocks; 1944 scan darker
+87,added,industrial,14,339,341,187,192,none,1,0,,same pattern both years
+88,added,industrial,21,348,351,139,145,none,1,0,,same pattern both years
+89,added,industrial,16,349,354,151,153,none,1,0,,same pattern both years
+90,added,industrial,14,352,355,140,144,none,1,0,,same pattern both years
+91,added,industrial,13,355,357,237,242,none,1,0,,city-limit strip; same pattern
+92,added,commercial,7,25,27,215,217,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+93,added,commercial,7,35,37,188,190,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+94,added,commercial,8,46,48,178,180,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+95,added,commercial,6,47,49,163,164,none,0,0,,"not reviewed (under 12 cells, about one block)"
+96,added,commercial,6,52,54,162,163,none,0,0,,"not reviewed (under 12 cells, about one block)"
+97,added,commercial,8,61,63,141,143,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+98,added,commercial,146,65,81,130,143,Industrial A,1,1,Commercial,"heavy '/' hatch (1929 Industrial A, platted, uncertain) redrawn as dense cross-hatch in 1944"
+99,added,commercial,18,87,93,190,192,none,1,0,,same pattern both years
+100,added,commercial,13,93,97,180,182,none,1,0,,same pattern both years
+101,added,commercial,62,96,105,161,171,Industrial A,1,0,,"Walnut/Blake: possible cross-hatch over some blocks in 1944, not clear enough to accept"
+102,added,commercial,9,102,104,190,192,none,0,0,,"not reviewed (under 12 cells, about one block)"
+103,added,commercial,70,112,128,185,192,none,1,0,,same Residence C cross-hatch both years
+104,added,commercial,12,117,121,165,167,none,1,0,,same pattern both years
+105,added,commercial,6,130,132,184,185,none,0,0,,"not reviewed (under 12 cells, about one block)"
+106,added,commercial,24,130,137,189,192,none,1,0,,same pattern both years
+107,added,commercial,6,137,138,112,114,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+108,added,commercial,13,140,143,116,120,none,1,0,,same pattern both years
+109,added,commercial,6,146,147,139,141,none,0,0,,"not reviewed (under 12 cells, about one block)"
+110,added,commercial,32,147,153,128,135,none,1,0,,same Residence C pattern both years
+111,added,commercial,14,149,153,137,141,none,1,0,,same pattern both years
+112,added,commercial,18,151,156,115,120,none,1,0,,same pattern both years
+113,added,commercial,10,157,159,194,197,none,0,0,,"not reviewed (under 12 cells, about one block)"
+114,added,commercial,6,157,159,216,217,none,0,0,,"not reviewed (under 12 cells, about one block)"
+115,added,commercial,8,158,160,111,113,none,0,0,,"not reviewed (under 12 cells, about one block)"
+116,added,commercial,39,158,163,118,127,none,1,0,,same Residence C pattern both years
+117,added,commercial,29,164,169,124,131,none,1,0,,same Residence C pattern both years
+118,added,commercial,8,176,178,206,208,none,0,0,,"not reviewed (under 12 cells, about one block)"
+119,added,commercial,18,180,186,242,245,none,1,0,,Colorado Blvd: cross-hatch may extend one row in 1944; not clear enough
+120,added,commercial,6,182,184,132,133,none,0,0,,"not reviewed (under 12 cells, about one block)"
+121,added,commercial,76,203,210,178,188,none,1,0,,same commercial cross-hatch both years (1929 label gap)
+122,added,commercial,9,205,207,170,172,none,0,0,,"not reviewed (under 12 cells, about one block)"
+123,added,commercial,6,208,209,173,175,none,0,0,,"not reviewed (under 12 cells, about one block)"
+124,removed,industrial,19,14,17,211,216,Industrial B,1,0,,"district edge, registration"
+125,removed,industrial,15,14,17,221,225,Industrial B,1,0,,district edge
+126,removed,industrial,774,15,52,211,244,Industrial B,1,0,,same Industrial B district (circled B kept); 1944 hatch printed lighter
+127,removed,industrial,6,25,26,171,173,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+128,removed,industrial,17,25,29,181,184,Industrial B,1,0,,district edge
+129,removed,industrial,18,25,30,196,199,Industrial B,1,0,,district edge
+130,removed,industrial,6,27,28,139,141,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+131,removed,industrial,25,32,38,188,194,Industrial B,1,0,,same Industrial B; a road drawn in 1944
+132,removed,industrial,6,43,45,169,170,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+133,removed,industrial,7,43,45,181,183,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+134,removed,industrial,9,43,46,206,208,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+135,removed,industrial,6,44,45,187,189,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+136,removed,industrial,47,46,56,177,183,Industrial B,1,0,,same Industrial B hatch; one small business block drawn in 1944
+137,removed,industrial,22,46,53,318,321,Industrial A,1,0,,sheet edge
+138,removed,industrial,11,50,53,203,205,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+139,removed,industrial,6,58,60,182,183,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+140,removed,industrial,19,59,63,140,146,Industrial A,1,1,Commercial,"section 22, next to change 98: heavy '/' hatch in 1929, dense cross-hatch in 1944"
+141,removed,industrial,6,61,62,203,205,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+142,removed,industrial,39,61,70,213,218,Industrial A,1,0,,same pattern both years
+143,removed,industrial,8,64,66,225,227,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+144,removed,industrial,125,65,81,132,143,Industrial A,1,1,Commercial,same area as 98: heavy '/' hatch replaced by dense cross-hatch
+145,removed,industrial,61,65,86,358,360,Industrial A,1,0,,sheet-edge misregistration
+146,removed,industrial,15,66,69,340,344,Industrial A,1,0,,same pattern both years
+147,removed,industrial,27,70,75,190,194,Industrial A,1,1,none,"by the rail yards near E 40th Ave (section 23): Industrial A hatch in 1929, solid black Business blocks in 1944"
+148,removed,industrial,83,72,83,162,172,Industrial A,1,1,none,"River North by Brighton Blvd and 36th St: heavy '/' Industrial A hatch in 1929, solid black Business district blocks in 1944"
+149,removed,industrial,9,72,75,230,232,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+150,removed,industrial,24,75,79,224,231,Industrial A,1,0,,"blocks platted inside the district by 1944 with lighter hatch; district boundary unchanged, not clear enough"
+151,removed,industrial,6,93,94,169,171,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+152,removed,industrial,12,93,96,341,344,Industrial A,1,0,,same pattern both years
+153,removed,industrial,6,93,94,346,348,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+154,removed,industrial,45,96,106,160,169,Industrial A,1,0,,same as 101: no clear change
+155,removed,industrial,12,100,104,140,142,Industrial A,1,0,,same pattern both years
+156,removed,industrial,42,103,115,352,359,Industrial A,1,0,,same hatch; registration offset
+157,removed,industrial,18,105,111,168,172,Industrial A,1,0,,darker printing only
+158,removed,industrial,7,112,114,152,154,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+159,removed,industrial,19,116,120,353,359,Industrial A,1,0,,"district edge, registration"
+160,removed,industrial,7,117,119,160,162,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+161,removed,industrial,6,120,121,345,347,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+162,removed,industrial,9,122,125,153,155,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+163,removed,industrial,8,125,127,103,105,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+164,removed,industrial,7,126,128,117,119,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+165,removed,industrial,6,137,138,112,114,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+166,removed,industrial,12,146,149,73,75,Industrial A,1,0,,same pattern both years
+167,removed,industrial,12,151,154,88,91,Industrial A,1,0,,same pattern both years
+168,removed,industrial,14,152,156,107,109,Industrial A,1,0,,same pattern both years
+169,removed,industrial,7,155,157,74,76,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+170,removed,industrial,10,167,171,108,109,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+171,removed,industrial,33,176,181,69,75,Industrial A,1,1,none,"heavy '/' hatch over platted blocks (1929 Industrial A, uncertain) redrawn as Residence D dots in 1944"
+172,removed,industrial,11,184,186,94,97,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+173,removed,industrial,24,191,195,256,262,Industrial A,1,0,,"hatch weight differs, district type not clearly changed"
+174,removed,industrial,17,193,197,106,110,Industrial A,1,0,,same pattern both years
+175,removed,industrial,15,212,216,116,120,Industrial A,1,0,,same pattern both years
+176,removed,industrial,9,222,225,115,117,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+177,removed,industrial,18,223,226,120,125,Industrial A,1,0,,same pattern both years
+178,removed,industrial,6,227,228,91,93,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+179,removed,industrial,7,232,234,116,118,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+180,removed,industrial,11,233,236,133,135,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+181,removed,industrial,25,238,243,128,134,Industrial A,1,0,,same pattern both years
+182,removed,industrial,12,239,242,118,121,Industrial A,1,0,,same pattern both years
+183,removed,industrial,22,246,251,118,123,Industrial A,1,0,,same pattern both years
+184,removed,industrial,6,246,248,135,136,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+185,removed,industrial,6,248,249,87,89,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+186,removed,industrial,12,252,255,87,89,Industrial B,1,0,,district edge
+187,removed,industrial,14,257,260,162,165,Industrial A,1,0,,"circled district letter; blocks to the west redrawn as dots, candidate cells unchanged"
+188,removed,industrial,14,275,278,156,159,Industrial A,1,1,none,heavy '/' hatch blocks (1929 Industrial A) redrawn as Residence D dots in 1944
+189,removed,industrial,16,275,281,163,165,Industrial A,1,0,,same pattern both years
+190,removed,industrial,8,279,281,106,108,Industrial B,0,0,,"not reviewed (under 12 cells, about one block)"
+191,removed,industrial,8,284,286,128,130,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+192,removed,industrial,6,300,302,158,159,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+193,removed,industrial,6,323,325,135,136,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+194,removed,industrial,6,328,330,136,137,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+195,removed,industrial,6,332,334,134,135,Industrial A,0,0,,"not reviewed (under 12 cells, about one block)"
+196,removed,commercial,7,62,64,162,164,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+197,removed,commercial,7,116,118,103,105,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+198,removed,commercial,18,121,125,100,104,Commercial,1,0,,same pattern both years
+199,removed,commercial,7,121,123,127,129,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+200,removed,commercial,11,134,137,123,126,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+201,removed,commercial,6,137,139,81,82,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+202,removed,commercial,27,165,168,111,119,Commercial,1,0,,Residence C cross-hatch redrawn as Residence D dots; not a commercial change
+203,removed,commercial,8,173,175,123,125,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+204,removed,commercial,10,175,179,148,149,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+205,removed,commercial,23,177,180,122,129,Commercial,1,0,,same pattern both years
+206,removed,commercial,15,182,188,145,147,Commercial,1,0,,same pattern both years
+207,removed,commercial,12,183,185,138,142,Commercial,1,0,,same pattern both years
+208,removed,commercial,7,191,193,147,149,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+209,removed,commercial,19,192,198,121,125,Commercial,1,0,,same pattern both years
+210,removed,commercial,6,199,201,154,155,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+211,removed,commercial,10,202,205,123,125,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+212,removed,commercial,18,204,207,140,145,Commercial,1,0,,Residence C redrawn as Residence D nearby; candidate cells unchanged
+213,removed,commercial,7,207,209,123,125,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+214,removed,commercial,60,209,219,135,146,Commercial,1,0,,Residence C cross-hatch redrawn as Residence D dots; not a commercial change
+215,removed,commercial,11,209,211,150,153,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+216,removed,commercial,10,218,219,135,139,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+217,removed,commercial,6,219,220,151,153,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+218,removed,commercial,6,222,223,154,156,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+219,removed,commercial,21,224,228,135,139,Commercial,1,0,,Residence C redrawn as Residence D; not a commercial change
+220,removed,commercial,10,228,231,116,119,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+221,removed,commercial,52,228,241,138,143,Commercial,1,0,,Residence C cross-hatch redrawn as Residence D dots; not a commercial change
+222,removed,commercial,9,252,254,147,149,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+223,removed,commercial,40,257,268,146,149,Commercial,1,0,,Residence C/D redrawing next to the rail line; not a commercial change
+224,removed,commercial,31,282,290,158,163,Commercial,1,1,none,"commercial cross-hatch along the diagonal rail line in 1929, light Residence B hatch in 1944"
+225,removed,commercial,10,291,294,164,167,Commercial,0,0,,"not reviewed (under 12 cells, about one block)"
+226,removed,commercial,68,307,314,185,197,Commercial,1,1,none,"by the City Ditch near Jewell Ave: dense commercial cross-hatch in 1929, plain or light hatch (residence) in 1944"

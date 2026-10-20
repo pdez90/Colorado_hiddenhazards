@@ -1,0 +1,9 @@
+grade,cls,km2_1929,km2_1944,grade_km2,pct_1929,pct_1944
+A,commercial,0,0,5.74,0,0
+A,industrial,0.04,0.04,5.74,0.7,0.7
+B,commercial,0.02,0.02,13.36,0.1,0.1
+B,industrial,0.03,0.03,13.36,0.2,0.2
+C,commercial,0.74,0.67,36.71,2,1.8
+C,industrial,0.58,0.56,36.71,1.6,1.5
+D,commercial,1.24,1.24,25.68,4.8,4.8
+D,industrial,4.15,4.09,25.68,16.2,15.9

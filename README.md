@@ -394,11 +394,20 @@ industrially and commercially zoned share of every HOLC area, enumeration distri
 `holc_covenants.R` then uses as a control in the boundary gaps and the change models. Residence E (apartments) and Industrial A share a
 hatch and are separated only by the absence of lot lines, so a few platted Industrial A blocks and the unplatted land north-east of
 the 1929 city are the least certain cells; `zone_cells_1929.csv` flags them (`uncertain`), and a strict share that drops them is carried
-through the analyses as a sensitivity check. The library's 1944 revision of the same map was registered to the 1929 scan by a ten-point
-affine fit (`affine_1944_to_1929_px.csv`, RMSE ≈ 32 m); it is a darker print of the same plate and cannot be classified with the same
-thresholds, but side-by-side inspection of the registered districts (`zone_map_1929_vs_1944_districts.jpg`) shows the same industrial
-hatching in 1944 as in 1929, with the 1929–44 amendments confined to a few pencil-marked blocks, so the 1929 layer is used as the zoning
-in force for 1925–44. Run after `holc_covenants.R` once (for `holc_denver.geojson`), then rerun `holc_covenants.R`.
+through the analyses as a sensitivity check. The library's 1944 revision of the same map (revised to 1 April 1944) was registered to the 1929 scan by a ten-point
+affine fit (`affine_1944_to_1929_px.csv`, RMSE ≈ 32 m) and compared cell by cell (`pipeline/zoning/classify_zoning_1944.py`, then
+`Rscript R/zoning_1944.R`): one random forest trained on the 1929 labels is applied to both scans resampled to a common frame; clusters
+where the two years disagree (226) are candidates, every one of a block or more (118) was inspected on side-by-side binarised crops, and
+only visibly redrawn districts were accepted (`changes_1944_review.csv`, 9 accepted, 8 distinct areas). `zone_cells_1944.csv` is the
+1929 layer with those changes applied. Result: no industrial district added 1929–44; 0.47 km² of Industrial A (2%) redrawn as
+commercial, business or apartment districts; D land zoned industrial 16.2% → 15.9% on the land both sheets cover. Changes smaller than
+a block and the hand-coloured amendments on the 1944 copy are not included.
+
+### Zoning today (`R/zoning_2023.R`)
+Denver-metro zoning of 3 October 2023 compiled by Carrie Makarewicz (University of Colorado Denver) for the National Zoning Atlas
+(place `ALL_DenverMSA_10.3.23.*` in `work/zoning_2023/`; not redistributed). The script tabulates the 1929 districts, the hazardous
+sites and the 147 study tracts by 2023 zoning category (industrial without housing, Denver's I-MX industrial mixed use, other mixed use
+with housing, residential, commercial, other) into `data/results/zoning_2023/`.
 
 ### What became of the sites (`R/site_fate.R`)
 Every geocoded Denver site (1965–92 manufacturers' directory, hazardous sectors; street-level pre-1960 hazardous trades) is matched to
@@ -443,7 +452,7 @@ The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because
 `Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`
 (Denver districts) → `Rscript R/denver_eds_analysis.R` → `Rscript R/county_panel_1880_1940.R` → `Rscript R/ej_panel.R` → `Rscript R/fetch_hmda.R` →
 `Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
-`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` →
+`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` →
 `Rscript R/benchmarks.R` (CBP, NHGIS county manufacturing and the Atack samples; needs network and the NHGIS key) →
 `Rscript R/edition_coverage.R` (per-edition pages, listings, hazardous firms and completeness for both directory series → app/data/edition_coverage.csv;
 twelve of the 25 manufacturers' directory editions are partial scans that stop part-way through the geographic section — complete: 1965–68, 1970, 1973–74, 1977, 1980, 1983, 1988, 1990, 1992 — flagged on the Trends and Data tabs; the complete editions are the ones that match CBP best).

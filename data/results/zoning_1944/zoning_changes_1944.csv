@@ -1,0 +1,9 @@
+id,cells,km2,from_1929,to_1944,holc_grade,near,lon,lat,note
+98,146,0.246,Industrial A,Commercial,ungraded,W 41st Ave & 31st St,-104.99209,39.77333,"heavy '/' hatch (1929 Industrial A, platted, uncertain) redrawn as dense cross-hatch in 1944"
+140,19,0.032,Industrial A,Commercial,ungraded,W 44th Ave & Cahita Ct,-104.98894,39.77774,"section 22, next to change 98: heavy '/' hatch in 1929, dense cross-hatch in 1944"
+147,27,0.046,Industrial A,residence or business,ungraded,E 40th Ave & Williams St,-104.96536,39.77337,"by the rail yards near E 40th Ave (section 23): Industrial A hatch in 1929, solid black Business blocks in 1944"
+148,83,0.14,Industrial A,residence or business,ungraded,E Brighton Blvd & 36th St,-104.97741,39.77159,"River North by Brighton Blvd and 36th St: heavy '/' Industrial A hatch in 1929, solid black Business district blocks in 1944"
+171,33,0.056,Industrial A,residence or business,D,W 11th Ave & Decatur St,-105.02322,39.73459,"heavy '/' hatch over platted blocks (1929 Industrial A, uncertain) redrawn as Residence D dots in 1944"
+188,14,0.024,Industrial A,residence or business,C,E Tennessee Ave & S Logan St,-104.98218,39.69824,heavy '/' hatch blocks (1929 Industrial A) redrawn as Residence D dots in 1944
+224,31,0.052,Commercial,residence or business,C,E Arizona Ave & S Pearl St,-104.98074,39.69473,"commercial cross-hatch along the diagonal rail line in 1929, light Residence B hatch in 1944"
+226,68,0.115,Commercial,residence or business,ungraded,Buchtel Blvd & S Williams St,-104.9661,39.68562,"by the City Ditch near Jewell Ave: dense commercial cross-hatch in 1929, plain or light hatch (residence) in 1944"
