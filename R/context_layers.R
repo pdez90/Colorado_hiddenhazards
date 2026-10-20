@@ -208,6 +208,16 @@ if (!is.null(SB) && nrow(SB)) {
                petroleum_releases_50m)][order(priority, series, address)]
   fwrite(WL, file.path(O, "sanborn_worklist.csv")); message(nrow(WL), " sites on the Sanborn worklist (now residential, school, park, or vacant hidden sites)")
 }
+# ---------------------------------------------------------------- 8b. What the Sanborn sheets show at each checked site (hand-recorded observations; no map images are kept here)
+SOF <- "data/raw/sanborn/sanborn_observations_batch1.csv"
+if (file.exists(SOF)) {
+  SO <- fread(SOF, colClasses = list(character = "sheet"))
+  SO[, popup := sprintf("<br><b>Sanborn check</b> (%s vol. 1, sheet %s): %s%s<br><i>%s</i>", sanborn_edition, sheet, tolower(use_on_sheet),
+                        fifelse(hazard_features %in% c("", "none") | grepl("^none", hazard_features), "", paste0(" · drawn/labelled: ", hazard_features)), verdict)]
+  ALL[SO, on = "id", sanborn := paste0(sanborn, i.popup)]
+  SV <- SO[, .N, by = .(series_status, verdict)][, pct := round(100 * N / sum(N), 1), by = series_status][order(series_status, -N)]
+  fwrite(SV, file.path(O, "sanborn_validation_summary.csv")); print(SV)
+}
 # ---------------------------------------------------------------- 9. Vasquez Boulevard/I-70 residential soils by neighbourhood (ROD 2003, Table 3)
 ROD <- fread("data/raw/vbi70/rod2003_table3_residential_soils.csv"); file.copy("data/raw/vbi70/rod2003_table3_residential_soils.csv", file.path(A, "vbi70_rod2003_soils.csv"), overwrite = TRUE)
 if (file.exists(file.path(W, "denver_neighborhoods.geojson"))) {

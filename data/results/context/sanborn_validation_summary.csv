@@ -1,0 +1,12 @@
+series_status,verdict,N,pct
+on a current inventory,Same or closely related hazardous trade at the address,4,44.4
+on a current inventory,Other industrial or workshop use at the address,4,44.4
+on a current inventory,Dwelling or vacant lot,1,11.1
+on no current inventory,Dwelling or vacant lot,3,50
+on no current inventory,Same or closely related hazardous trade at the address,2,33.3
+on no current inventory,Other industrial or workshop use at the address,1,16.7
+pre-1960,"Store, office, hotel or warehouse",11,35.5
+pre-1960,Other industrial or workshop use at the address,9,29
+pre-1960,Same or closely related hazardous trade at the address,5,16.1
+pre-1960,Related trade or vehicle/fuel use at the address,5,16.1
+pre-1960,Dwelling or vacant lot,1,3.2
