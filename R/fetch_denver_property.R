@@ -6,7 +6,9 @@
 #   sales.csv      Real Property Sales and Transfers, 2015- (one row per recorded transfer; PARID, date, price, instrument, class)
 #   parcels.csv    Parcels: schedule number, situs coordinates (State Plane CO Central, ft; EPSG 2877), property class, year built, area, units
 #   res_chars.csv  Residential characteristics: above-grade area, basement, bedrooms, baths, stories, style, year built, land area, market neighbourhood
-# Owner and grantor/grantee names are dropped on download; the files stay in work/property/ (git-ignored) and only model results are published.
+#   owners.csv     Parcels again, with owner name and mailing address (for R/ownership_denver.R)
+# Grantor/grantee names are dropped from the sales. Owner names are public records but are used only to group parcels into owners;
+# all files stay in work/property/ (git-ignored) and only aggregates are published.
 # Re-running skips files already downloaded (delete one to refresh it).
 for (p in c("data.table", "jsonlite")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages(library(data.table))
@@ -36,5 +38,8 @@ pull("ODC_PROP_PARCELS_A/FeatureServer/245",
 pull("ODC_real_property_residential_characteristics/FeatureServer/50",
      c("OBJECTID", "PARID", "CD", "OFCARD", "PROP_CLASS", "D_CLASS_CN", "LAND_SQFT", "AREA_ABG", "BSMT_AREA", "FBSMT_SQFT", "GRD_AREA", "STORY", "STYLE_CN", "BED_RMS",
        "FULL_B", "HLF_B", "CCYRBLT", "CCAGE_RM", "UNITS", "NBHD_1", "NBHD_1_CN"), "res_chars.csv")
+pull("ODC_PROP_PARCELS_A/FeatureServer/245",
+     c("OBJECTID", "SCHEDNUM", "OWNER_NAME", "OWNER_ADDRESS_LINE1", "OWNER_ADDRESS_LINE2", "OWNER_CITY", "OWNER_STATE", "OWNER_ZIP", "SITUS_ADDRESS_LINE1", "SITUS_ZIP",
+       "SITUS_X_COORD", "SITUS_Y_COORD", "PROP_CLASS", "D_CLASS", "D_CLASS_CN", "TOT_UNITS", "RES_ORIG_YEAR_BUILT", "COM_ORIG_YEAR_BUILT"), "owners.csv")
 writeLines(format(Sys.Date()), file.path(D, "download_date.txt"))
 message("work/property: ", paste(list.files(D), collapse = ", "))

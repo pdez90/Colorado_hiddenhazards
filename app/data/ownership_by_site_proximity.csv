@@ -1,0 +1,6 @@
+area,parcels,units,rental_units,pct_rental,pct_rental_owner_20plus,pct_rental_owner_100plus,pct_rental_company,pct_rental_out_of_state,pct_rental_public
+"Within 400 m of a hidden site (1965-92, no inventory)",48676,88192,66304,75.2,59.3,51.9,60.5,32.5,2.3
+"Within 400 m of a known site (1965-92, on an inventory)",59625,124034,100064,80.7,63.2,54.7,63,34.4,2.3
+Within 400 m of a pre-1960 hazardous trade,45923,102676,82674,80.5,67.4,58.1,66.8,34.2,2
+More than 400 m from any historical site,123954,185213,123876,66.9,49.7,43.8,51.6,30,0.8
+All of Denver,218477,363712,262253,72.1,54.9,47.4,56.2,30.2,1.5

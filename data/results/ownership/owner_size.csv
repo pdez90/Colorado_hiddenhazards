@@ -1,0 +1,13 @@
+grouping,size,owners,rental_units,pct_owners,pct_rental_units
+by owner name,1 unit,89853,89853,88.53,34.3
+by owner name,2-4 units,8796,20823,8.67,7.9
+by owner name,5-19 units,1706,15393,1.68,5.9
+by owner name,20-99 units,706,30735,0.7,11.7
+by owner name,100-999 units,429,101174,0.42,38.6
+by owner name,"1,000+ units",2,4275,0,1.6
+by owner family (shared mailing address),1 unit,79194,79194,86,30.2
+by owner family (shared mailing address),2-4 units,10329,24563,11.22,9.4
+by owner family (shared mailing address),5-19 units,1774,14431,1.93,5.5
+by owner family (shared mailing address),20-99 units,448,19807,0.49,7.6
+by owner family (shared mailing address),100-999 units,321,97757,0.35,37.3
+by owner family (shared mailing address),"1,000+ units",15,26501,0.02,10.1

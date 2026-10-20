@@ -644,3 +644,12 @@ Rscript R/hedonic_denver.R          # data/results/hedonic/ and app/data/hedonic
 ```
 
 Arm's-length residential sales in the City and County of Denver since 2015 are located at their parcels and compared with otherwise similar homes in the same market neighbourhood and year. Distance bands to the nearest hidden site (1965–92 hazardous-sector manufacturer on no current inventory), known site (on a current inventory) and pre-1960 hazardous trade; controls for floor area, basement, bedrooms, baths, stories, lot, age and property type, and in later models for present-day hazards (petroleum releases, TRI facilities, Superfund units, freeways, industrial zoning). The property records stay in work/property/; only model results are written.
+
+## Who owns rental housing
+
+```
+Rscript R/fetch_denver_property.R   # now also writes work/property/owners.csv (owner name and mailing address; public records)
+Rscript R/ownership_denver.R        # data/results/ownership/ and app/data/ownership_*.csv
+```
+
+Residential parcels in the City and County of Denver, grouped into owners by normalised name and, more broadly, into owner families by shared mailing address. Units not occupied by their owner count as rentals. Outputs are aggregates only: owners and units by owner size, concentration (top 10/100 owners, top 1%), owner types, and shares held by large landlords, companies and out-of-state owners by tract, 1938 HOLC grade and distance to historical sites. The largest owners, with names, are written only to work/property/top_owners_private.csv for checking and are not published.

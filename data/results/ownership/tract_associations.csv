@@ -1,0 +1,21 @@
+outcome,term,estimate,se,p,tracts
+pct_rental_owner_20plus,Black residents (per point of %),-0.027,0.261,0.918,143
+pct_rental_owner_20plus,Hispanic residents (per point of %),-0.441,0.129,0.000837,143
+pct_rental_owner_20plus,Poverty rate (per point of %),1.269,0.303,5.07e-05,143
+pct_rental_owner_20plus,Tract has a hidden 1965-92 site,10.902,4.694,0.0217,143
+pct_rental_owner_20plus,Tract has a known 1965-92 site,-14.182,4.949,0.00482,143
+pct_rental_owner_100plus,Black residents (per point of %),0.286,0.261,0.276,143
+pct_rental_owner_100plus,Hispanic residents (per point of %),-0.443,0.129,0.000822,143
+pct_rental_owner_100plus,Poverty rate (per point of %),1.098,0.304,0.00042,143
+pct_rental_owner_100plus,Tract has a hidden 1965-92 site,12.816,4.702,0.00725,143
+pct_rental_owner_100plus,Tract has a known 1965-92 site,-12.924,4.957,0.0101,143
+pct_rental_company,Black residents (per point of %),-0.122,0.241,0.613,143
+pct_rental_company,Hispanic residents (per point of %),-0.402,0.12,0.00101,143
+pct_rental_company,Poverty rate (per point of %),0.816,0.281,0.00428,143
+pct_rental_company,Tract has a hidden 1965-92 site,9.385,4.345,0.0325,143
+pct_rental_company,Tract has a known 1965-92 site,-12.89,4.581,0.00562,143
+pct_rental_out_of_state,Black residents (per point of %),0.233,0.224,0.3,143
+pct_rental_out_of_state,Hispanic residents (per point of %),-0.25,0.111,0.0262,143
+pct_rental_out_of_state,Poverty rate (per point of %),0.062,0.261,0.811,143
+pct_rental_out_of_state,Tract has a hidden 1965-92 site,6.35,4.036,0.118,143
+pct_rental_out_of_state,Tract has a known 1965-92 site,-8.503,4.256,0.0477,143

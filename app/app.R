@@ -91,7 +91,7 @@ ur_poly <- if (file.exists(dd("urban_renewal_denver.geojson"))) st_read(dd("urba
 ou_poly <- if (file.exists(dd("superfund_ou_study.geojson"))) st_read(dd("superfund_ou_study.geojson"), quiet = TRUE) else NULL
 sb_poly <- if (file.exists(dd("sanborn_volumes.geojson"))) st_read(dd("sanborn_volumes.geojson"), quiet = TRUE) else NULL
 vb_nb <- if (file.exists(dd("vbi70_neighborhoods.geojson"))) st_read(dd("vbi70_neighborhoods.geojson"), quiet = TRUE) else NULL
-hed <- rd_opt("hedonic_models.csv"); rod <- rd_opt("vbi70_rod2003_soils.csv"); ur_comp <- rd_opt("urban_renewal_composition.csv"); ur_sites <- rd_opt("urban_renewal_sites.csv")
+hed <- rd_opt("hedonic_models.csv"); own_size <- rd_opt("ownership_owner_size.csv"); own_conc <- rd_opt("ownership_concentration.csv"); own_types <- rd_opt("ownership_owner_types.csv"); own_site <- rd_opt("ownership_by_site_proximity.csv"); own_holc <- rd_opt("ownership_by_holc.csv"); own_assoc <- rd_opt("ownership_tract_associations.csv"); own_tr <- rd_opt("ownership_by_tract.csv", colClasses = c(GEOID = "character")); rod <- rd_opt("vbi70_rod2003_soils.csv"); ur_comp <- rd_opt("urban_renewal_composition.csv"); ur_sites <- rd_opt("urban_renewal_sites.csv")
 SB_EDS <- c("1887", "1890\u20131893", "1903\u20131904", "1929\u20131930", "1950\u20131951"); SB_COL <- c("#8c510a", "#bf812d", "#dfc27d", "#35978f", "#01665e")
 AERIAL_1933 <- "https://tiles.arcgis.com/tiles/44C95LOqZjbh8Row/arcgis/rest/services/Denver_1933_Aerial/MapServer/tile/{z}/{y}/{x}"
 AERIAL_ATTR <- "1933 aerial survey (Jasper King): Denver Public Library; georeferenced by the City and County of Denver"
@@ -597,6 +597,31 @@ ui <- page_navbar(id = "nav",
            tableOutput("t_hedonic"),
            tags$p(class = "small", "If buyers respond to what they can look up, homes near sites on a current environmental inventory should sell at a discount while homes near hidden sites, which leave no record, should not. The last row tests whether the two differ."),
            tags$small(class = "text-muted", "Only model results are shown; no individual sales or owners.")))),
+  nav_panel("Who owns rental housing",
+    card(card_header("Who owns Denver's rental housing?"),
+      tags$p("Every residential parcel in the City and County of Denver, from the Assessor's public records. A unit counts as rental when its owner's mailing address is somewhere else, so second homes and vacant units are included. Parcels are grouped into owners by name, and more broadly into owner families when several names (often LLCs) share one mailing address. Only totals and shares are shown; no owner is named."),
+      unit_note("parcels and units in the City and County of Denver; map: 2010 census tracts with 50+ rental units")),
+    layout_columns(col_widths = c(3, 9),
+      card(card_header("Map"), unit_note("2010 census tracts, City and County of Denver"),
+           selectInput("ow_var", "Shade tracts by", c("Rental units held by owners of 20+ units (%)" = "pct_rental_owner_20plus", "Rental units held by owners of 100+ units (%)" = "pct_rental_owner_100plus",
+                                                    "Rental units held by companies (LLC, corporation, partnership) (%)" = "pct_rental_company", "Rental units with an owner outside Colorado (%)" = "pct_rental_out_of_state",
+                                                    "Units not occupied by their owner (%)" = "pct_rental", "Rental units owned by public agencies (%)" = "pct_rental_public"), width = "100%"),
+           tags$small(class = "text-muted", "Owner size counts the owner family's rental units across all of Denver. Tracts with fewer than 50 rental units are left blank.")),
+      card(full_screen = TRUE, leafletOutput("map_own", height = 520))),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("How big are Denver's landlords?"), unit_note("owners of at least one rental unit; units not occupied by their owner"),
+           radioButtons("ow_group", NULL, c("Owner families (names linked by mailing address)" = "by owner family (shared mailing address)", "Owner names" = "by owner name"), inline = TRUE),
+           plotlyOutput("p_own_size", height = 330),
+           tags$small(class = "text-muted", "Bars: share of all rental units held by owners of each size; hover for the number of owners. Grouping by name alone misses landlords who hold property through many differently named LLCs; grouping by mailing address can join unrelated owners who use the same agent, so the two bracket the true concentration.")),
+      card(card_header("Concentration"), unit_note("privately owned rental units (public agencies excluded)"),
+           tableOutput("t_own_conc"),
+           tableOutput("t_own_types"))),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("Near historical sites and by 1938 HOLC grade"), unit_note("parcels within 400 m of a historical site, and parcels inside each 1938 HOLC area"),
+           tableOutput("t_own_place")),
+      card(card_header("Where large landlords own"), unit_note("2010 tracts with 50+ rental units; regression weighted by rental units"),
+           tableOutput("t_own_assoc"),
+           tags$small(class = "text-muted", "Differences in percentage points per point of each tract characteristic (2020), or for tracts that contain a historical site, holding the others constant. Associations, not causes.")))),
   nav_panel("Neighborhoods",
     layout_columns(col_widths = c(3, 9),
       card(card_header("Compare census tracts"), unit_note("2010 census tracts"),
@@ -1627,6 +1652,36 @@ server <- function(input, output, session) {
   output$t_ur_case <- renderTable({ d <- ur_case_d(); req(nrow(d)); f <- function(v) ifelse(is.na(v), "\u2013", sprintf("%.1f", v))
     data.frame(Census = d$census, Residents = format(d$residents_est, big.mark = ","), `% Hispanic` = f(d$pct_hispanic), `% Black` = f(d$pct_black), `% owner` = f(d$pct_owner), `% poverty` = f(d$pct_poverty), check.names = FALSE) },
     striped = TRUE, spacing = "xs")
+  output$map_own <- renderLeaflet({ req(den_tr, own_tr); t <- merge(den_tr[substr(den_tr$GEOID, 1, 5) == "08031", ], own_tr, by = "GEOID")
+    leaflet(options = leafletOptions(preferCanvas = TRUE)) |> addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri") |>
+      setView(-104.95, 39.74, 11) |> addMapPane("trc", zIndex = 380) })
+  observe({ req(den_tr, own_tr, input$ow_var); t <- merge(den_tr[substr(den_tr$GEOID, 1, 5) == "08031", ], own_tr, by = "GEOID"); v <- input$ow_var
+    x <- ifelse(t$rental_units >= 50, t[[v]], NA); pal <- colorNumeric("PuRd", c(0, 100), na.color = "#eeeeee")
+    leafletProxy("map_own") |> clearGroup("tr") |> removeControl("owleg") |>
+      addPolygons(data = t, fillColor = pal(x), fillOpacity = 0.7, color = "#ffffff", weight = 0.4, group = "tr", options = pathOptions(pane = "trc"),
+                  popup = sprintf("<b>Tract %s</b><br>%s units, %s not owner-occupied (%s%%)<br>Held by owners of 20+ units: %s%% · 100+: %s%%<br>Companies: %s%% · Owners outside Colorado: %s%% · Public: %s%%<br>Historical sites inside: %s known, %s hidden 1965\u201392",
+                                  t$GEOID, format(t$units, big.mark = ","), format(t$rental_units, big.mark = ","), t$pct_rental, t$pct_rental_owner_20plus, t$pct_rental_owner_100plus,
+                                  t$pct_rental_company, t$pct_rental_out_of_state, t$pct_rental_public, t$known_1965_92, t$hidden_1965_92)) |>
+      addLegend("bottomright", pal = pal, values = c(0, 100), title = "%", layerId = "owleg", opacity = 0.8) })
+  output$p_own_size <- renderPlotly({ req(own_size); d <- own_size[own_size$grouping == input$ow_group, ]; req(nrow(d))
+    d$size <- factor(d$size, levels = c("1 unit", "2-4 units", "5-19 units", "20-99 units", "100-999 units", "1,000+ units"))
+    plot_ly(d, x = ~size, y = ~pct_rental_units, type = "bar", marker = list(color = "#7a0177"), hoverinfo = "text",
+            text = ~sprintf("%s: %s owners (%s%% of owners) hold %s rental units (%s%%)", size, format(owners, big.mark = ","), pct_owners, format(rental_units, big.mark = ","), pct_rental_units)) |>
+      layout(xaxis = list(title = "owner size (rental units held in Denver)"), yaxis = list(title = "% of rental units"), margin = list(t = 10)) |> config(displayModeBar = FALSE) })
+  output$t_own_conc <- renderTable({ req(own_conc); data.frame(Owners = own_conc$grouping, `Top 10` = paste0(own_conc$top10_pct, "%"), `Top 100` = paste0(own_conc$top100_pct, "%"),
+    `Top 1% of owners` = paste0(own_conc$top1pct_owners_pct, "%"), `Owners of 20+ units` = paste0(own_conc$owners_20plus_pct, "%"), `Owners of 100+` = paste0(own_conc$owners_100plus_pct, "%"), check.names = FALSE) },
+    striped = TRUE, spacing = "s", caption = "Share of privately owned rental units held by the largest owners", caption.placement = "top")
+  output$t_own_types <- renderTable({ req(own_types); data.frame(Owner = own_types$owner_type, `Rental units` = format(own_types$rental_units, big.mark = ","), Share = paste0(own_types$pct_rental_units, "%"), check.names = FALSE) },
+    striped = TRUE, spacing = "s", caption = "All rental units by type of owner", caption.placement = "top")
+  output$t_own_place <- renderTable({ req(own_site, own_holc)
+    a <- data.frame(Area = own_site$area, `Rental units` = format(own_site$rental_units, big.mark = ","), `Not owner-occ.` = paste0(own_site$pct_rental, "%"),
+                    `Owners 20+` = paste0(own_site$pct_rental_owner_20plus, "%"), Companies = paste0(own_site$pct_rental_company, "%"), `Out of state` = paste0(own_site$pct_rental_out_of_state, "%"), check.names = FALSE)
+    b <- data.frame(Area = paste("HOLC", own_holc$holc), `Rental units` = format(own_holc$rental_units, big.mark = ","), `Not owner-occ.` = paste0(own_holc$pct_rental, "%"),
+                    `Owners 20+` = paste0(own_holc$pct_rental_owner_20plus, "%"), Companies = paste0(own_holc$pct_rental_company, "%"), `Out of state` = paste0(own_holc$pct_rental_out_of_state, "%"), check.names = FALSE)
+    rbind(a, b) }, striped = TRUE, spacing = "s")
+  output$t_own_assoc <- renderTable({ req(own_assoc); lab <- c(pct_rental_owner_20plus = "Owners of 20+ units", pct_rental_owner_100plus = "Owners of 100+ units", pct_rental_company = "Companies", pct_rental_out_of_state = "Out of state")
+    data.frame(`Share of rental units held by` = lab[own_assoc$outcome], `Tract characteristic` = own_assoc$term, Difference = sprintf("%+.2f", own_assoc$estimate), p = format(own_assoc$p, digits = 2), check.names = FALSE) },
+    striped = TRUE, spacing = "s")
   output$p_hedonic <- renderPlotly({ req(hed); d <- hed[hed$model == input$hd_model & hed$sample == "All residential sales" & grepl("^Hidden|^Known|^Pre-1960", hed$kind) & hed$distance %in% c("0-200 m", "200-400 m", "400-800 m"), ]
     req(nrow(d)); cols <- c("Hidden (no current inventory)" = "#c2410c", "Known (on a current inventory)" = "#1d4ed8", "Pre-1960 hazardous trade" = "#6b7280")
     p <- plot_ly()
