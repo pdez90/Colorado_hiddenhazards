@@ -1,0 +1,18 @@
+cat,km2,year,pct
+Industrial,28.31,1929,14
+Commercial or mixed use,3.58,1929,1.8
+"Residence or business (1929, 1944)",170.27,1929,84.2
+Industrial,27.83,1944,13.8
+Commercial or mixed use,3.71,1944,1.8
+"Residence or business (1929, 1944)",170.62,1944,84.4
+Industrial,21.38,2023,10.6
+Industrial mixed use,5.01,2023,2.5
+Commercial or mixed use,40.52,2023,20
+Residential,113.13,2023,56
+"Open space, civic, other",22.02,2023,10.9
+Industrial,20.94,today,10.4
+Industrial mixed use,5.07,today,2.5
+Commercial or mixed use,31.12,today,15.4
+Residential,117.56,today,58.2
+PUD (custom district),3.57,today,1.8
+"Open space, civic, other",23.34,today,11.5

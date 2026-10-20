@@ -76,8 +76,18 @@ coven    <- rd_opt("covenants_denver.csv"); holc_bd <- rd_opt("holc_boundary.csv
 COMPLETE_ED <- if (!is.null(edcov)) as.integer(edcov$year[edcov$complete %in% c(TRUE, "TRUE") & edcov$year >= 1960]) else c(1965:1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990, 1992)
 if (!is.null(bm_state)) bm_state <- bm_state[bm_state$year %in% COMPLETE_ED, ]; if (!is.null(bm_cty)) bm_cty <- bm_cty[bm_cty$year %in% COMPLETE_ED, ]
 # 1925 zoning ordinance as mapped in 1929 (R/zoning_1925.R) and what became of the Denver sites (R/site_fate.R)
-zon      <- if (file.exists(dd("zoning_1929.geojson"))) st_read(dd("zoning_1929.geojson"), quiet = TRUE) else NULL; zon44 <- if (file.exists(dd("zoning_1944.geojson"))) st_read(dd("zoning_1944.geojson"), quiet = TRUE) else NULL; zch <- if (file.exists(dd("zoning_1929_1944_change.geojson"))) st_read(dd("zoning_1929_1944_change.geojson"), quiet = TRUE) else NULL; zch_t <- rd_opt("zoning_changes_1944.csv"); zg44 <- rd_opt("zoning_change_by_holc_grade.csv"); zt44 <- rd_opt("zoning_1929_vs_1944.csv"); zon_g <- rd_opt("holc_zoning_by_grade.csv")
+zon      <- if (file.exists(dd("zoning_1929.geojson"))) st_read(dd("zoning_1929.geojson"), quiet = TRUE) else NULL; zcity <- if (file.exists(dd("zoning_today_categories.geojson"))) st_read(dd("zoning_today_categories.geojson"), quiet = TRUE) else NULL; z23c <- if (file.exists(dd("zoning_2023_categories.geojson"))) st_read(dd("zoning_2023_categories.geojson"), quiet = TRUE) else NULL; zot_land <- rd_opt("zoning_land_by_year.csv"); zot_grade <- rd_opt("zoning_by_holc_grade_years.csv"); zot_fate <- rd_opt("zoning_1929_industrial_fate.csv"); zot_sites <- rd_opt("zoning_sites_by_year.csv"); zot_paths <- rd_opt("zoning_tract_paths.csv"); zot_note <- if (file.exists(dd("zoning_over_time_notes.txt"))) readLines(dd("zoning_over_time_notes.txt")) else character(); zon44 <- if (file.exists(dd("zoning_1944.geojson"))) st_read(dd("zoning_1944.geojson"), quiet = TRUE) else NULL; zch <- if (file.exists(dd("zoning_1929_1944_change.geojson"))) st_read(dd("zoning_1929_1944_change.geojson"), quiet = TRUE) else NULL; zch_t <- rd_opt("zoning_changes_1944.csv"); zg44 <- rd_opt("zoning_change_by_holc_grade.csv"); zt44 <- rd_opt("zoning_1929_vs_1944.csv"); zon_g <- rd_opt("holc_zoning_by_grade.csv")
 ZON_COL  <- c("Industrial A" = "#b2182b", "Industrial B" = "#762a83", "Commercial" = "#e6ab02")
+ZT_COL   <- c("Industrial" = "#b2182b", "Industrial mixed use" = "#e7298a", "Commercial or mixed use" = "#e6ab02", "Residential" = "#fdd0a2", "PUD (custom district)" = "#bdbdbd", "Open space, civic, other" = "#a1d99b")
+ZYEARS   <- c("1929 (1925 ordinance as amended)" = "1929", "1944" = "1944", "2023 (National Zoning Atlas)" = "2023", "Today (city zoning map)" = "today")
+zoning_layer <- function(y) { if (y %in% c("1929", "1944")) { z <- if (y == "1929") zon else zon44; if (is.null(z)) return(NULL)
+    z$cat <- ifelse(grepl("Industrial", z$zone), "Industrial", "Commercial or mixed use"); z$lab <- sprintf("%s zoning: %s district", y, z$zone); z }
+  else { z <- if (y == "2023") z23c else zcity; if (is.null(z)) return(NULL); z$lab <- sprintf("%s zoning: %s", ifelse(y == "today", "Today's", "2023"), z$cat); z } }
+add_zoning <- function(m, y, group, pane, opacity = 0.5, legend_pos = "topleft", layerId = NULL) { z <- zoning_layer(y); if (is.null(z)) return(m)
+  hist <- y %in% c("1929", "1944"); keep <- if (hist) c("Industrial", "Commercial or mixed use") else names(ZT_COL)
+  m <- m |> addPolygons(data = z, fillColor = unname(ZT_COL[z$cat]), fillOpacity = opacity, color = unname(ZT_COL[z$cat]), weight = 0.6, group = group, options = pathOptions(pane = pane), label = z$lab)
+  m |> addLegend(legend_pos, colors = unname(ZT_COL[keep]), labels = if (hist) c("Industrial A or B", "Commercial") else keep, opacity = 0.7, group = group, layerId = layerId,
+                 title = paste0("Zoning ", names(ZYEARS)[ZYEARS == y], if (hist) "<br><small>residence and business districts not shown</small>" else if (y == "2023") "<br><small>C. Makarewicz, CU Denver; <a href='https://storymaps.arcgis.com/stories/adb86c7ab2624e95a84566fecb8a6f6d' target='_blank'>request the data</a></small>" else "")) }
 sf_sum   <- rd_opt("site_fate_summary.csv"); sf_zone <- rd_opt("site_fate_zoning.csv"); z23_29 <- rd_opt("zoning_1929_to_2023.csv", check.names = FALSE); z23_s <- rd_opt("sites_by_zoning_2023.csv", check.names = FALSE); z23_d <- rd_opt("sites_by_zoning_2023_last_listed.csv", check.names = FALSE); z23_t <- rd_opt("tract_composition_by_zoning_2023.csv", check.names = FALSE)
 sf_den <- rd_opt("site_fate_denver.csv"); sf_pre <- rd_opt("site_fate_denver_pre1960.csv")
 USE_COL  <- c("Industrial / utility" = "#636363", "Commercial / office" = "#e6ab02", "Residential" = "#d7301f", "Vacant" = "#bdbdbd", "Civic / school / health" = "#1f78b4", "Park / open space" = "#33a02c", "Other" = "#f0f0f0", "No parcel match" = "#ffffff")
@@ -261,9 +271,10 @@ ui <- page_navbar(id = "nav",
   nav_panel("What became of the sites",
     layout_columns(col_widths = c(3, 6, 3),
       card(card_header("Denver's historical hazardous sites on today's parcels"), unit_note("sites matched to today's assessor parcels, City and County of Denver"),
-           radioButtons("sf_series", "Sites", c("Manufacturers' directory sites, complete editions 1965–1992" = "S", "Business-directory hazardous trades 1891–1956 (street level)" = "H")),
+           radioButtons("sf_series", "Sites", c("Manufacturers' directory sites, complete editions 1965\u20131992" = "S", "Business-directory hazardous trades 1891\u20131956 (street level)" = "H")),
            checkboxGroupInput("sf_use", "Current parcel use", choices = names(USE_COL)[1:6], selected = names(USE_COL)[1:6]),
            checkboxInput("sf_sens", "Only residential, school, park or health parcels with no matching cleanup record", FALSE),
+           radioButtons("sf_zyear", "Zoning drawn under the sites", c("None" = "none", ZYEARS), selected = "today"),
            tags$small(class = "text-muted", "Each geocoded site is matched to the nearest City and County of Denver assessor parcel within 40 m (1,256 of 1,258 points; median distance 10 m) through Denver's open-data parcel service, which gives the assessor's property class, the current zone district, dwelling units and the year the present building was built (R/site_fate.R). ",
              "A geocoded street address can land on a neighbouring lot where parcels have been consolidated or split, so individual matches should be checked against the Sanborn sheets and reverse directories before being cited. ",
              "'No matching cleanup record' means the site matched no record in the inventories this project searched (EPA FRS/SEMS/RCRA, CDPHE VCUP, environmental covenants); it does not establish that a site was never assessed or remediated.")),
@@ -272,7 +283,22 @@ ui <- page_navbar(id = "nav",
            tags$small(class = "text-muted", "Share of each series' sites by the assessor's current property class. 'Rebuilt' = the present building is newer than the site's last directory listing (a redevelopment indicator, not a closure date); 'zoned industrial' = I-A, I-B or I-MX districts of the 2010 code."))),
     card(card_header("Current use by the decade a site was last listed"), unit_note("sites matched to today's assessor parcels, City and County of Denver"), tableOutput("t_sf_dec"),
          tags$small(class = "text-muted", "Sites that left the directory earlier have had longer to be converted, so the rows are not a conversion rate; they show what stands today on the sites of each cohort. The 1990s row is the sites still listed in 1990 or 1992, the last complete editions.")),
-    h5(class = "mt-3 mb-2", "Zoning today (2023)"),
+    h5(class = "mt-3 mb-2", "Zoning, 1929 to today"),
+    tags$p(class = "small text-muted", "Every Denver zoning map available in digital form: the 1925 ordinance as amended to January 1929 and to April 1944 (Denver Public Library scans, classified for this project), the National Zoning Atlas layer of October 2023 (C. Makarewicz, CU Denver), and the city's official zoning map today, which records the year of the ordinance that last zoned each district. The 1956 ordinance's map and later citywide maps before 2010 have not been digitised (the library holds them in print), so there is a gap between 1944 and 2023."),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("How much land was zoned for industry?"), unit_note("the part of the City and County of Denver covered by both the 1929 and 1944 map sheets (202 km²; half the county, the city as built by 1944)"), plotlyOutput("p_zland", height = 360),
+           tags$small(class = "text-muted", "1929 and 1944 distinguish only industrial and commercial districts; the rest is residence or business. Industrial = housing not allowed; industrial mixed use = Denver's I-MX districts, which allow housing (2010 onward).")),
+      card(card_header("Zoned industrial, by 1938 HOLC grade"), unit_note("HOLC areas within the part of the City and County of Denver covered by both the 1929 and 1944 map sheets (202 km²; half the county, the city as built by 1944)"), tableOutput("t_zgrade"),
+           tags$small(class = "text-muted", "% of each grade's land in industrial districts (housing not allowed); in brackets, including I-MX industrial mixed use."))),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("What became of the land zoned industrial in 1929, and when was it last rezoned?"), unit_note("land in the 1929 Industrial A and B districts within Denver County, under today's city zoning map"), tableOutput("t_zfate"),
+           tags$small(class = "text-muted", "The year is that of the ordinance that last zoned the land (the city layer's ORD_YEAR), so earlier rezonings are hidden: land shown under 2010, when the whole city was remapped to the new code, may have left industrial zoning at any time after 1944.")),
+      card(card_header("Hazardous sites standing in an industrial district, each year"), unit_note("street-located sites within the part of the City and County of Denver covered by both the 1929 and 1944 map sheets (202 km²; half the county, the city as built by 1944)"), tableOutput("t_zsites"),
+           tags$small(class = "text-muted", "The 1929 and 1944 columns ask whether the land was zoned industrial before the 1965–92 firms were listed; housing allowed = residential, mixed-use or I-MX districts."))),
+    card(card_header("Tracts zoned for industry in 1929 and today: who lived there, 1970–2020"), unit_note("2010 census tracts within 10 km of downtown that lie at least half within the 1929 and 1944 map sheets and Denver County; 'industrial' = 20% or more of the tract's land in industrial districts"), tableOutput("t_zpaths"),
+         tags$small(class = "text-muted", "Population-weighted means of tracts with 200+ residents. Between 1990 and 2020 the tracts whose industrial zoning has since been removed lost much of their Hispanic and Black population and their poverty fell by more than half, while tracts still zoned industrial kept their composition. Only one tract became industrial after 1929. A description, not an estimate of what rezoning caused.")),
+    h5(class = "mt-3 mb-2", "The whole study area in 2023 (National Zoning Atlas)"),
+    tags$p(class = "small text-muted", "The 2023 layer was compiled by Carrie Makarewicz (University of Colorado Denver) for the National Zoning Atlas and is shown here with her permission. It is not available for download from this site; to request it, use the form on the ", tags$a(href = "https://storymaps.arcgis.com/stories/adb86c7ab2624e95a84566fecb8a6f6d", target = "_blank", "Denver-metro zoning StoryMap"), "."),
     layout_columns(col_widths = c(7, 5),
       card(card_header("The 1929 zoning districts under 2023 zoning"), unit_note("land area (km²) of the 1929 zoning districts"), div(style = "overflow-x:auto; font-size:0.9em", tableOutput("t_z29")),
            tags$small(class = "text-muted", "Share of the land in each 1925 district (as revised to January 1929; see Redlining & covenants) by its zoning on 3 October 2023. ",
@@ -287,9 +313,9 @@ ui <- page_navbar(id = "nav",
   nav_panel("Redlining & covenants",
     layout_columns(col_widths = c(3, 6, 3),
       card(card_header("HOLC 1938 map and racial covenants 1931\u201335"), unit_note("HOLC area polygons (1938), deed points (covenants) and firm points"),
-           checkboxGroupInput("rl_layers", NULL, c("HOLC security grades (1938)" = "holc", "1925 zoning ordinance: industrial and commercial districts as amended to January 1929" = "zon", "The same districts as amended to April 1944 (changes since 1929 outlined)" = "zon44", "Racial covenants 1931-35 (deeds)" = "cov", "Hazardous-trade firms" = "firms", "1930 enumeration districts" = "ed30"),
+           checkboxGroupInput("rl_layers", NULL, c("HOLC security grades (1938)" = "holc", "Zoning districts (choose the year below)" = "zon", "Racial covenants 1931-35 (deeds)" = "cov", "Hazardous-trade firms" = "firms", "1930 enumeration districts" = "ed30"),
                               selected = c("holc", "cov", "firms")),
-           conditionalPanel("input.rl_layers.includes('zon')", tags$small(class = "text-muted", "Denver's first zoning ordinance (February 1925) as shown on the official Building Zone Map revised to January 1929 (Denver Public Library, CG4314 .D4 G44 1929), georeferenced from 13 street intersections (RMSE 25 m) and classified by hatch pattern: Industrial A, Industrial B and Commercial districts; everything else was Residence A–E or Business. Residence E (apartments) shares a hatch with Industrial A and is told apart only by lot lines, so a few platted blocks are uncertain (R/zoning_1925.R).")),
+           conditionalPanel("input.rl_layers.includes('zon')", radioButtons("rl_zyear", "Zoning year", ZYEARS, inline = FALSE), tags$small(class = "text-muted", "1944: districts changed since 1929 are outlined (dashed). Today: the city's official zoning map; 2023: the National Zoning Atlas layer (C. Makarewicz, CU Denver; to obtain it, use the request form on the ", tags$a(href = "https://storymaps.arcgis.com/stories/adb86c7ab2624e95a84566fecb8a6f6d", target = "_blank", "StoryMap"), "). ", "Denver's first zoning ordinance (February 1925) as shown on the official Building Zone Map revised to January 1929 (Denver Public Library, CG4314 .D4 G44 1929), georeferenced from 13 street intersections (RMSE 25 m) and classified by hatch pattern: Industrial A, Industrial B and Commercial districts; everything else was Residence A–E or Business. Residence E (apartments) shares a hatch with Industrial A and is told apart only by lot lines, so a few platted blocks are uncertain (R/zoning_1925.R).")),
            conditionalPanel("input.rl_layers.includes('ed30')", selectInput("rl_edvar", "Shade 1930 districts by", c("Black (%)" = "pct_black", "Hispanic (%)" = "pct_hisp", "Foreign born (%)" = "pct_fb", "Laborers (%)" = "pct_laborers",
                                                                                  "Racial covenants recorded 1931-35" = "covenants", "HOLC class of the district (1938)" = "grade", "Hazardous firms before the map (to 1937)" = "firms_pre1938", "Hazardous firms after the map (1938-56)" = "firms_1938_1956", "Hazardous-sector sites 1965-1992" = "firms_1961_2002"))),
            conditionalPanel("input.rl_layers.includes('firms')", radioButtons("rl_firms", "Hazardous-trade firms listed (orange-red dots)", c("Before the map: 1871-1937 (street level)" = "pre", "1921-1937 only" = "mid", "After the map: 1938-1956" = "post"), selected = "pre")),
@@ -536,9 +562,11 @@ ui <- page_navbar(id = "nav",
                   "Source: CDPHE Hazardous Materials & Waste Management Division, Institutional Controls layer (environmental covenants, use restrictions and notices of environmental use restrictions)."),
           tags$dt("Schools, hospitals, clinics, residential care"),
           tags$dd("Colorado Department of Education school locations (public and non-public) and CDPHE licensed health facilities, both via geodata.colorado.gov."),
+          tags$dt("Denver zoning today"),
+          tags$dd("City and County of Denver official zoning map (open data, CCD_Zoning layer 27; downloaded with Rscript R/fetch_zoning_city.R): every zone district, the code it falls under (2010 Denver Zoning Code, or the 1956 code where land was never remapped) and the year of the ordinance that last zoned it. Analysed with the 1929, 1944 and 2023 maps in Rscript R/zoning_over_time.R."),
           tags$dt("Zoning today (2023)"),
           tags$dd("Denver-metro zoning layer of 3 October 2023 (51 jurisdictions), compiled by Carrie Makarewicz (University of Colorado Denver) for the National Zoning Atlas: local district codes with harmonised categories. ",
-                  "The layer itself is not redistributed here; the site shows area shares and counts only (Rscript R/zoning_2023.R)."),
+                  "It is shown on the site's maps, grouped into six categories, with the author's permission, but it is not offered for download here: to obtain the layer, use the request form on the project's StoryMap, ", tags$a(href = "https://storymaps.arcgis.com/stories/adb86c7ab2624e95a84566fecb8a6f6d", target = "_blank", "Denver-metro zoning (National Zoning Atlas)"), ". Summaries: Rscript R/zoning_2023.R."),
           tags$dt("Census tracts: EnviroScreen"),
           tags$dd("CDPHE Colorado EnviroScreen 2.0: environmental, health and social indicators for 2020 census tracts, with percentile scores. Health indicators come from CDPHE administrative data or modelled estimates (see the tool's documentation)."),
           tags$dt("Base maps and address ranges"),
@@ -653,15 +681,12 @@ server <- function(input, output, session) {
         addLegend("topleft", colors = unname(CELL_COL), labels = CELL_CLASSES, title = "Industrial corridors<br><small>500 m cells, 1965–1992; size = peak firms</small>",
                   opacity = 0.8, group = "Industrial corridors (500 m cells)")
     }
-    if (!is.null(zon)) { zc <- unname(ZON_COL[zon$zone]); zc[is.na(zc)] <- "#999999"
-      m <- m |> addPolygons(data = zon, fillColor = zc, fillOpacity = 0.45, color = zc, weight = 1, group = "Denver 1925 zoning (as amended to 1929)", options = pathOptions(pane = "tr"),
-                            label = sprintf("Denver 1925 zoning ordinance, as mapped in 1929: %s district", zon$zone)) |>
-        addLegend("topleft", colors = unname(ZON_COL), labels = names(ZON_COL), title = "Denver 1925 zoning, as amended to 1929<br><small>Building Zone Map adopted Feb 1925, revised to 1 Jan 1929 (DPL); residential and business districts not shown</small>", opacity = 0.7, group = "Denver 1925 zoning (as amended to 1929)") }
+    ZG <- paste("Zoning", names(ZYEARS)); for (k in seq_along(ZYEARS)) m <- add_zoning(m, ZYEARS[[k]], ZG[k], "tr", 0.45)
     m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
-          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", if (!is.null(zon)) "Denver 1925 zoning (as amended to 1929)", "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
+          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", paste("Zoning", names(ZYEARS)), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
-      hideGroup(c("Industrial corridors (500 m cells)", "Denver 1925 zoning (as amended to 1929)", "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
+      hideGroup(c("Industrial corridors (500 m cells)", paste("Zoning", names(ZYEARS)), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
                   "RCRA corrective action", "Voluntary cleanup (VCUP)", "Superfund (SEMS)")) |>
       identity()
   })
@@ -1096,7 +1121,7 @@ server <- function(input, output, session) {
       setView(-104.97, 39.73, 12) |> addMapPane("ed", zIndex = 370) |> addMapPane("holcp", zIndex = 390) |> addMapPane("pts", zIndex = 460) })
   observe({
     req(input$map_rl_zoom); if (is.null(holc)) return()
-    px <- leafletProxy("map_rl") |> clearGroup("holc") |> clearGroup("cov") |> clearGroup("firms") |> clearGroup("ed30") |> clearGroup("zon") |> removeControl("rllegend") |> removeControl("zonlegend")
+    px <- leafletProxy("map_rl") |> clearGroup("holc") |> clearGroup("cov") |> clearGroup("firms") |> clearGroup("ed30") |> clearGroup("zon") |> removeControl("rllegend") |> removeControl("zonlegend") |> removeControl("ptlegend")
     L <- input$rl_layers
     px <- px |> removeControl("edlegend30")
     if ("ed30" %in% L && !is.null(eds_holc)) { e <- eds_holc; v <- input$rl_edvar; x <- e[[v]]
@@ -1113,14 +1138,9 @@ server <- function(input, output, session) {
                         h$label, h$grade, esc(h$cat), esc(h$detrimental), esc(h$favorable), esc(h$occupation), esc(h$income), esc(h$holc_foreign_born), esc(h$holc_negro), esc(h$infiltration), esc(h$relief), esc(h$pop_trend), esc(h$remarks),
                         h$firms_pre1938, h$firms_1921_1937, h$firms_1938_1956, h$covenants_1931_35, esc(h$pop_1930), esc(h$pct_black_1930), esc(h$pct_fb_1930), esc(h$pct_hisp_1930), esc(h$pct_laborers_1930), esc(h$pct_black_1940), esc(h$pct_hisp_1940))) |>
         addLegend("bottomright", colors = unname(HOLC_COL6[1:6]), labels = c("A \u2018best\u2019", "B \u2018still desirable\u2019", "C \u2018definitely declining\u2019", "D \u2018hazardous\u2019", "Industrial zone (not graded)", "Commercial zone (not graded)"), title = "HOLC 1938", opacity = 0.7, layerId = "rllegend") }
-    if ("zon" %in% L && !is.null(zon)) { zc <- unname(ZON_COL[zon$zone]); zc[is.na(zc)] <- "#999999"
-      px <- px |> addPolygons(data = zon, fillColor = zc, fillOpacity = 0.55, color = zc, weight = 1, group = "zon", options = pathOptions(pane = "holcp"), label = sprintf("1925 zoning as amended to 1929: %s district, %s km² in all", zon$zone, zon$km2)) |>
-        addLegend("topleft", colors = unname(ZON_COL), labels = paste(names(ZON_COL), "district"), title = "1925 zoning, as amended to 1929", opacity = 0.7, layerId = "zonlegend") }
     px <- px |> clearGroup("zon44") |> removeControl("zon44legend")
-    if ("zon44" %in% L && !is.null(zon44)) { zc <- unname(ZON_COL[zon44$zone]); zc[is.na(zc)] <- "#999999"
-      px <- px |> addPolygons(data = zon44, fillColor = zc, fillOpacity = 0.45, color = zc, weight = 1, group = "zon44", options = pathOptions(pane = "holcp"), label = sprintf("Zoning as amended to April 1944: %s district", zon44$zone))
-      if (!is.null(zch)) px <- px |> addPolygons(data = zch, fill = TRUE, fillOpacity = 0, color = "#000000", weight = 2.5, dashArray = "5,4", group = "zon44", options = pathOptions(pane = "holcp"), label = sprintf("Changed 1929-1944: %s (%.2f km²)", zch$change, zch$km2))
-      px <- px |> addLegend("topleft", colors = c(unname(ZON_COL), "#000000"), labels = c(paste(names(ZON_COL), "district, 1944"), "changed since 1929 (dashed)"), title = "Zoning as amended to April 1944", opacity = 0.7, layerId = "zon44legend") }
+    if ("zon" %in% L) { px <- add_zoning(px, input$rl_zyear, "zon", "holcp", 0.5, "topleft", "zonlegend")
+      if (input$rl_zyear == "1944" && !is.null(zch)) px <- px |> addPolygons(data = zch, fill = TRUE, fillOpacity = 0, color = "#000000", weight = 2.5, dashArray = "5,4", group = "zon", options = pathOptions(pane = "holcp"), label = sprintf("Changed 1929-1944: %s (%.2f km²)", zch$change, zch$km2)) }
     if (any(c("cov", "firms") %in% L)) { lc <- c(if ("cov" %in% L) c("#333333", "#ff7f00"), if ("firms" %in% L) "#d1491f")
       ll <- c(if ("cov" %in% L) c("Racial covenant 1931-35", "Covenant that also bars manufacturing"), if ("firms" %in% L) sprintf("Hazardous-trade firm, %s", switch(input$rl_firms, pre = "1871-1937", mid = "1921-1937", post = "1938-1956")))
       px <- px |> addLegend("topright", colors = lc, labels = ll, title = "Points", opacity = 0.9, layerId = "ptlegend") }
@@ -1192,8 +1212,9 @@ server <- function(input, output, session) {
   sf_sel <- reactive({ d <- if (identical(input$sf_series, "H")) sf_pre else sf_den; if (is.null(d)) return(NULL)
     d <- d |> filter(use_now %in% input$sf_use); if (isTRUE(input$sf_sens)) d <- d |> filter(use_now %in% c("Residential", "Park / open space", "Civic / school / health"), if ("radar" %in% names(d)) radar == "Not on any list" else TRUE); d })
   output$map_sf <- renderLeaflet({ leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
-      addTiles("https://server.arcgisonline.com/ArcGis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri; parcels: City and County of Denver open data") |> setView(-104.99, 39.75, 12) |>
+      addTiles("https://server.arcgisonline.com/ArcGis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri; parcels: City and County of Denver open data") |> setView(-104.99, 39.75, 12) |> addMapPane("sfzp", zIndex = 380) |>
       addLegend("bottomright", colors = unname(USE_COL[1:6]), labels = names(USE_COL)[1:6], title = "Parcel use today", opacity = 0.9) })
+  observe({ req(input$map_sf_zoom); px <- leafletProxy("map_sf") |> clearGroup("sfz") |> removeControl("sfzlegend"); if (input$sf_zyear != "none") add_zoning(px, input$sf_zyear, "sfz", "sfzp", 0.35, "topleft", "sfzlegend") })
   observe({ req(input$map_sf_zoom); d <- sf_sel(); px <- leafletProxy("map_sf") |> clearGroup("sf"); if (is.null(d) || !nrow(d)) return()
     nm <- if ("address" %in% names(d)) d$address else paste(d$name, d$street, sep = ", "); sec <- if ("fe_sectors" %in% names(d)) d$fe_sectors else d$sectors
     px |> addCircleMarkers(data = d, ~lon, ~lat, radius = 5, color = "#333333", weight = 0.6, fillColor = unname(USE_COL[d$use_now]), fillOpacity = 0.9, group = "sf",
@@ -1205,6 +1226,17 @@ server <- function(input, output, session) {
     d <- sf_sum |> group_by(series, use_now) |> summarise(n = sum(n), .groups = "drop") |> group_by(series) |> mutate(pct = 100 * n / sum(n)) |> ungroup() |> filter(use_now %in% names(USE_COL)[1:6]) |> mutate(use_now = factor(use_now, rev(names(USE_COL)[1:6])), series = ifelse(grepl("Manufact", series), "1965-1992 sites", "1891-1956 trades"))
     ggplotly(ggplot(d, aes(pct, use_now, fill = series, text = sprintf("%s: %.1f%% (%d sites)", series, pct, n))) + geom_col(position = position_dodge(width = 0.8), width = 0.75) + scale_fill_manual(values = c("1965-1992 sites" = "#d1491f", "1891-1956 trades" = "#8c510a")) +
                labs(x = "% of sites", y = NULL, fill = NULL) + theme_minimal(), tooltip = "text") |> hleg() })
+  output$p_zland <- renderPlotly({ req(zot_land); d <- zot_land; lv <- c("1929", "1944", "2023", "today"); d$year <- factor(d$year, lv, c("1929", "1944", "2023", "Today")); cols <- c(ZT_COL, "Residence or business (1929, 1944)" = "#eeeeee"); pl <- plot_ly()
+    for (k in names(cols)) { x <- d[d$cat == k, ]; if (!nrow(x)) next; pl <- pl |> add_trace(x = x$year, y = x$pct, type = "bar", name = k, marker = list(color = cols[[k]], line = list(color = "#999999", width = 0.4)), text = sprintf("%s, %s: %.1f%% (%.1f km²)", k, x$year, x$pct, x$km2), hoverinfo = "text", textposition = "none") }
+    layout(pl, barmode = "stack", xaxis = list(title = ""), yaxis = list(title = "% of land", range = c(0, 100)), legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom", xanchor = "left", traceorder = "normal"), margin = list(t = 10)) })
+  output$t_zgrade <- renderTable({ req(zot_grade); d <- zot_grade; d$cell <- ifelse(d$year %in% c("1929", "1944"), sprintf("%.1f%%", d$pct_industrial), sprintf("%.1f%% (%.1f%%)", d$pct_industrial, d$pct_industrial_incl_imx))
+    w <- reshape(d[, c("grade", "year", "cell")], idvar = "grade", timevar = "year", direction = "wide"); names(w) <- c("HOLC grade", "1929", "1944", "2023", "Today"); w }, striped = TRUE, spacing = "s")
+  output$t_zfate <- renderTable({ req(zot_fate); d <- zot_fate
+    data.frame(` ` = ifelse(d$part == "zoned today", "Zoned today", ifelse(d$part == "1929 industrial land in Denver County", "All 1929 industrial land", "Last rezoned (land no longer industrial)")), Group = d$group, `km²` = sprintf("%.2f", d$km2), `%` = sprintf("%.1f", d$pct), check.names = FALSE) }, striped = TRUE, spacing = "xs")
+  output$t_zsites <- renderTable({ req(zot_sites); d <- zot_sites; d$year <- ifelse(d$year == "today", "Today", d$year)
+    data.frame(Sites = ifelse(grepl("^Hazardous-sector", d$series), "1965–92 manufacturers", "Pre-1960 trades"), n = d$sites, Year = d$year, `% industrial` = d$pct_industrial, `% industrial incl. I-MX` = d$pct_industrial_incl_imx, `% where housing is allowed` = ifelse(is.na(d$pct_housing_allowed), "–", d$pct_housing_allowed), check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  output$t_zpaths <- renderTable({ req(zot_paths); d <- zot_paths
+    data.frame(Tracts = d$path, n = d$tracts, Census = d$census, Residents = format(d$residents, big.mark = ","), `% Hispanic` = d$pct_hispanic, `% Black` = d$pct_black, `% White` = d$pct_white, `% in poverty` = d$pct_poverty, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   Z23_CATS <- c("Industrial (housing not allowed)" = "#7a0177", "Industrial mixed use (housing allowed)" = "#c51b8a", "Mixed use with housing" = "#fa9fb5",
                 "Residential" = "#fdd0a2", "Commercial" = "#9ecae1", "Open space, civic, other" = "#c7e9c0")
   output$t_z29 <- renderTable({ req(z23_29); d <- z23_29[match(c("Industrial A", "Industrial B", "Commercial"), z23_29$zone1929), ]

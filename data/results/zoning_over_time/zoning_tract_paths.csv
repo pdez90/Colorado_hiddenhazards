@@ -1,0 +1,13 @@
+path,census,tracts,residents,pct_hispanic,pct_black,pct_white,pct_poverty,pct_owner_occupied
+Industrial in 1929 and today,1970,10,44937,41.2,21.2,77.2,26.3,45.7
+Industrial in 1929 and today,1990,10,32816,49.4,22.3,44.6,35.7,47
+Industrial in 1929 and today,2020,10,41470,43.6,13.9,46.1,21.3,43.1
+"Industrial in 1929, not today",1970,7,27469,39.4,28.8,68,28.5,44.5
+"Industrial in 1929, not today",1990,6,19984,45,26.2,42.7,33.3,46.7
+"Industrial in 1929, not today",2020,7,45080,25.2,6.6,66.2,13.7,32.8
+"Industrial today, not in 1929",1970,1,2815,21.9,1.2,97.9,16.8,67.8
+"Industrial today, not in 1929",1990,1,4646,43.4,3,66.9,19.3,44
+"Industrial today, not in 1929",2020,1,6618,66.7,5.4,29.6,16.5,43.8
+Neither,1970,86,375540,14.4,7.4,91.1,12.7,52.6
+Neither,1990,86,304319,23.3,10.4,74.9,17.6,49.2
+Neither,2020,87,405835,23.7,5.8,67.9,11.6,51.6

@@ -405,9 +405,20 @@ a block and the hand-coloured amendments on the 1944 copy are not included.
 
 ### Zoning today (`R/zoning_2023.R`)
 Denver-metro zoning of 3 October 2023 compiled by Carrie Makarewicz (University of Colorado Denver) for the National Zoning Atlas
-(place `ALL_DenverMSA_10.3.23.*` in `work/zoning_2023/`; not redistributed). The script tabulates the 1929 districts, the hazardous
+(place `ALL_DenverMSA_10.3.23.*` in `work/zoning_2023/`). The site shows it on its maps, grouped into six categories, with the author's permission, but does not offer it for download; request the layer through the form on the project's StoryMap, https://storymaps.arcgis.com/stories/adb86c7ab2624e95a84566fecb8a6f6d. The script tabulates the 1929 districts, the hazardous
 sites and the 147 study tracts by 2023 zoning category (industrial without housing, Denver's I-MX industrial mixed use, other mixed use
 with housing, residential, commercial, other) into `data/results/zoning_2023/`.
+
+### Zoning, 1929 to today (`R/fetch_zoning_city.R`, `R/zoning_over_time.R`)
+Every Denver zoning map available in digital form, on one geography and one set of categories: 1929 and 1944 (above), the 2023
+National Zoning Atlas layer, and the city's official zoning map today (`Rscript R/fetch_zoning_city.R` downloads it from Denver's open
+data, layer CCD_Zoning/27, into `work/zoning_city/`; each district carries the year of the ordinance that last zoned it). The 1956
+ordinance's map and later citywide maps before 2010 are not digitised (Denver Public Library holds them in print). `Rscript
+R/zoning_over_time.R` writes to `data/results/zoning_over_time/`: industrial land by year and by HOLC grade on the 202 km² of Denver
+County covered by both historical sheets (14.0% → 13.8% → 10.6% → 10.4%; D land 16.3% → 12.2%); what the 1929 industrial land is zoned
+today and the year of its last zoning ordinance (an upper bound on when it left industrial zoning, since earlier rezonings are not
+recorded); the share of sites in industrial districts each year; tracts industrial in 1929 and/or today with their 1970–2020
+composition; and dissolved category polygons for the site's maps.
 
 ### What became of the sites (`R/site_fate.R`)
 Every geocoded Denver site (1965–92 manufacturers' directory, hazardous sectors; street-level pre-1960 hazardous trades) is matched to
@@ -452,7 +463,7 @@ The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because
 `Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`
 (Denver districts) → `Rscript R/denver_eds_analysis.R` → `Rscript R/county_panel_1880_1940.R` → `Rscript R/ej_panel.R` → `Rscript R/fetch_hmda.R` →
 `Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
-`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` →
+`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` →
 `Rscript R/benchmarks.R` (CBP, NHGIS county manufacturing and the Atack samples; needs network and the NHGIS key) →
 `Rscript R/edition_coverage.R` (per-edition pages, listings, hazardous firms and completeness for both directory series → app/data/edition_coverage.csv;
 twelve of the 25 manufacturers' directory editions are partial scans that stop part-way through the geographic section — complete: 1965–68, 1970, 1973–74, 1977, 1980, 1983, 1988, 1990, 1992 — flagged on the Trends and Data tabs; the complete editions are the ones that match CBP best).
