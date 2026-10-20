@@ -1,0 +1,11 @@
+crossed,census,tracts,residents,pct_hispanic,pct_black,pct_owner_occupied,pop_index_1950_100
+Crossed by a freeway built 1950-1979,1950,34,119683,,0.4,63.8,100
+Crossed by a freeway built 1950-1979,1960,34,147350,13,1.8,63,123
+Crossed by a freeway built 1950-1979,1970,34,143989,26.6,7.1,56.5,120
+Crossed by a freeway built 1950-1979,1980,34,122081,29.7,8.4,54.5,102
+Crossed by a freeway built 1950-1979,1990,34,109816,36.5,7.8,53.3,92
+Not crossed,1950,84,289669,,5,48.2,100
+Not crossed,1960,84,369192,7.5,7.5,55.5,127
+Not crossed,1970,84,346805,14.9,10.3,50.2,120
+Not crossed,1980,84,314175,18,12.6,48.8,108
+Not crossed,1990,84,287517,23.2,12.5,47.6,99

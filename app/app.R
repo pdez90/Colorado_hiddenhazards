@@ -76,7 +76,19 @@ coven    <- rd_opt("covenants_denver.csv"); holc_bd <- rd_opt("holc_boundary.csv
 COMPLETE_ED <- if (!is.null(edcov)) as.integer(edcov$year[edcov$complete %in% c(TRUE, "TRUE") & edcov$year >= 1960]) else c(1965:1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990, 1992)
 if (!is.null(bm_state)) bm_state <- bm_state[bm_state$year %in% COMPLETE_ED, ]; if (!is.null(bm_cty)) bm_cty <- bm_cty[bm_cty$year %in% COMPLETE_ED, ]
 # 1925 zoning ordinance as mapped in 1929 (R/zoning_1925.R) and what became of the Denver sites (R/site_fate.R)
-zon      <- if (file.exists(dd("zoning_1929.geojson"))) st_read(dd("zoning_1929.geojson"), quiet = TRUE) else NULL; zcity <- if (file.exists(dd("zoning_today_categories.geojson"))) st_read(dd("zoning_today_categories.geojson"), quiet = TRUE) else NULL; z23c <- if (file.exists(dd("zoning_2023_categories.geojson"))) st_read(dd("zoning_2023_categories.geojson"), quiet = TRUE) else NULL; zot_land <- rd_opt("zoning_land_by_year.csv"); zot_grade <- rd_opt("zoning_by_holc_grade_years.csv"); zot_fate <- rd_opt("zoning_1929_industrial_fate.csv"); zot_sites <- rd_opt("zoning_sites_by_year.csv"); zot_paths <- rd_opt("zoning_tract_paths.csv"); zot_note <- if (file.exists(dd("zoning_over_time_notes.txt"))) readLines(dd("zoning_over_time_notes.txt")) else character(); zon44 <- if (file.exists(dd("zoning_1944.geojson"))) st_read(dd("zoning_1944.geojson"), quiet = TRUE) else NULL; zch <- if (file.exists(dd("zoning_1929_1944_change.geojson"))) st_read(dd("zoning_1929_1944_change.geojson"), quiet = TRUE) else NULL; zch_t <- rd_opt("zoning_changes_1944.csv"); zg44 <- rd_opt("zoning_change_by_holc_grade.csv"); zt44 <- rd_opt("zoning_1929_vs_1944.csv"); zon_g <- rd_opt("holc_zoning_by_grade.csv")
+zon      <- if (file.exists(dd("zoning_1929.geojson"))) st_read(dd("zoning_1929.geojson"), quiet = TRUE) else NULL; zcity <- if (file.exists(dd("zoning_today_categories.geojson"))) st_read(dd("zoning_today_categories.geojson"), quiet = TRUE) else NULL; z23c <- if (file.exists(dd("zoning_2023_categories.geojson"))) st_read(dd("zoning_2023_categories.geojson"), quiet = TRUE) else NULL; zot_land <- rd_opt("zoning_land_by_year.csv"); zot_grade <- rd_opt("zoning_by_holc_grade_years.csv"); zot_fate <- rd_opt("zoning_1929_industrial_fate.csv"); zot_sites <- rd_opt("zoning_sites_by_year.csv"); zot_paths <- rd_opt("zoning_tract_paths.csv"); zot_note <- if (file.exists(dd("zoning_over_time_notes.txt"))) readLines(dd("zoning_over_time_notes.txt")) else character(); LU_YEARS <- c(1937, 1957, 1977, 1997); LU_GRP <- c("Industrial", "Waste and extraction", "Transportation", "Commercial", "Residential, single family", "Residential, multifamily", "Institutional", "Open land")
+LU_COL <- c("#b2182b", "#5e3c99", "#4d4d4d", "#e6ab02", "#fee8c8", "#fdbb84", "#9ecae1", "#d9f0d3")
+lu_r <- if (requireNamespace("terra", quietly = TRUE) && all(file.exists(dd(sprintf("landuse_%d_20m.tif", LU_YEARS))))) setNames(lapply(LU_YEARS, function(y) terra::project(terra::rast(dd(sprintf("landuse_%d_20m.tif", y))), "EPSG:3857", method = "near")), LU_YEARS) else NULL   # projected once at start-up
+hwy <- if (file.exists(dd("highways_denver.geojson"))) st_read(dd("highways_denver.geojson"), quiet = TRUE) else NULL
+hw_dec <- rd_opt("highways_km_by_decade.csv"); hw_holc <- rd_opt("highways_by_holc_grade.csv"); hw_zon <- rd_opt("highways_by_zoning_1929.csv"); hw_tr <- rd_opt("highways_tracts.csv"); hw_nb <- rd_opt("highways_nber_check.csv")
+hw_open <- function(y) { if (is.null(hwy)) return(NULL); h <- hwy[!is.na(hwy$start_year) & hwy$start_year <= y & (is.na(hwy$end_year) | hwy$end_year > y), ]; h }
+lu_year <- rd_opt("landuse_by_year.csv"); lu_holc <- rd_opt("landuse_by_holc_grade.csv"); lu_zone <- rd_opt("landuse_vs_zoning.csv"); lu_sites <- rd_opt("landuse_sites.csv"); lu_trans <- rd_opt("landuse_site_transitions.csv"); lu_paths <- rd_opt("landuse_tract_paths.csv")
+add_landuse <- function(m, y, group, opacity = 0.75, legend = TRUE, layerId = NULL) { if (is.null(lu_r)) return(m)
+  pal <- colorFactor(LU_COL, domain = 1:8, na.color = "transparent")
+  m <- m |> addRasterImage(lu_r[[as.character(y)]], colors = pal, opacity = opacity, group = group, project = FALSE, maxBytes = 16 * 1024^2)
+  if (legend) m <- m |> addLegend("bottomright", colors = LU_COL, labels = LU_GRP, opacity = opacity, group = group, layerId = layerId, title = paste0("Land use ", y, "<br><small>USGS, from aerial photographs</small>"))
+  m }
+zon44 <- if (file.exists(dd("zoning_1944.geojson"))) st_read(dd("zoning_1944.geojson"), quiet = TRUE) else NULL; zch <- if (file.exists(dd("zoning_1929_1944_change.geojson"))) st_read(dd("zoning_1929_1944_change.geojson"), quiet = TRUE) else NULL; zch_t <- rd_opt("zoning_changes_1944.csv"); zg44 <- rd_opt("zoning_change_by_holc_grade.csv"); zt44 <- rd_opt("zoning_1929_vs_1944.csv"); zon_g <- rd_opt("holc_zoning_by_grade.csv")
 ZON_COL  <- c("Industrial A" = "#b2182b", "Industrial B" = "#762a83", "Commercial" = "#e6ab02")
 ZT_COL   <- c("Industrial" = "#b2182b", "Industrial mixed use" = "#e7298a", "Commercial or mixed use" = "#e6ab02", "Residential" = "#fdd0a2", "PUD (custom district)" = "#bdbdbd", "Open space, civic, other" = "#a1d99b")
 ZYEARS   <- c("1929 (1925 ordinance as amended)" = "1929", "1944" = "1944", "2023 (National Zoning Atlas)" = "2023", "Today (city zoning map)" = "today")
@@ -310,10 +322,47 @@ ui <- page_navbar(id = "nav",
     card(card_header("Who lives in the tracts zoned for industry today? 2020 census, by the tract's 2023 share of land zoned industrial (housing not allowed)"), unit_note("the 147 2010 census tracts within 10 km of downtown"), tableOutput("t_ztr"),
          tags$small(class = "text-muted", "The 147 study tracts with 200+ residents in 2020; population-weighted means. A description of where people live today, not a model.")),
     ),
+  nav_panel("Land use & freeways",
+    layout_columns(col_widths = c(3, 9),
+      card(card_header("What was on the ground"), unit_note("10 m cells of the USGS land-use maps, Denver study area"),
+           radioButtons("lu_year", "Year (aerial photographs)", LU_YEARS, selected = 1937, inline = TRUE),
+           sliderInput("lu_op", "Opacity", 0, 1, 0.7, 0.05),
+           checkboxInput("lu_sites", "Show hazardous sites of the period", TRUE),
+           checkboxInput("lu_holc", "Outline the 1938 HOLC D areas", FALSE),
+           checkboxInput("lu_zon", "Outline the 1929 industrial zoning", FALSE),
+           checkboxInput("lu_hwy", "Show freeways and major roads open that year (OpenHistoricalMap)", TRUE),
+           tags$small(class = "text-muted", "Land use interpreted by hand from aerial photographs and historical maps by the U.S. Geological Survey (Drummond, Stier & Diffendorfer 2019, ",
+             tags$a(href = "https://doi.org/10.5066/P995RGC9", target = "_blank", "data release"), "; public domain), at 1 m with a minimum mapping unit of about 1 hectare, grouped here into eight categories. ",
+             "Unlike zoning, which shows what was allowed, and the directories, which show where firms were listed, this shows what the land was used for. The maps end at latitude 39.62, so a sliver of far-south Denver is blank. ",
+             "Sites drawn: 1937 and 1957 = hazardous trades listed in the preceding decade (business directories, street level); 1977 and 1997 = manufacturers' directory sites listed 1968\u20131977 and 1983\u20131992.")),
+      card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_lu", height = "68vh")))),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("How the study area was used"), unit_note("mapped land in the Denver study area"), plotlyOutput("p_lu_year", height = 380)),
+      card(card_header("Industrial land use by 1938 HOLC grade"), unit_note("HOLC area polygons"), tableOutput("t_lu_holc"),
+           tags$small(class = "text-muted", "% of each grade's mapped land in industrial use (light, heavy, refinery). Compare Ibsen et al. (2025, PLoS ONE 20: e0317988), Table 1."))),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("Zoning and use: how much of the 1929 industrial district was actually industrial?"), unit_note("land in Denver County on the 1929 zoning map, by its 1929 zoning"), tableOutput("t_lu_zone"),
+           tags$small(class = "text-muted", "'Share of all industrial use' = the part of the city's industrial land that lay in each kind of district.")),
+      card(card_header("Do the directory sites fall on industrial land?"), unit_note("street-located sites in the study area; a site counts if industrial land lies within 30 m"), tableOutput("t_lu_sites"),
+           tags$small(class = "text-muted", "An independent check on the inventory: the land-use maps were drawn from aerial photographs without reference to the directories. Sites on no current inventory are the project's 'hidden' sites."))),
+    layout_columns(col_widths = c(5, 7),
+      card(card_header("What replaced the 1965\u201392 sites' industrial land, 1977 to 1997"), unit_note("land under each site point"), tableOutput("t_lu_trans")),
+      card(card_header("Tracts that lost their industrial land: who lived there"), unit_note("2010 census tracts within 10 km of downtown, at least 90% mapped; industrial = 10% or more of the tract's land in industrial use"), tableOutput("t_lu_paths"),
+           tags$small(class = "text-muted", "Population-weighted means of tracts with 200+ residents; 1957 land use is set against the 1960 census, 1997 against 2000. A description, not an estimate of what the change in land use caused."))),
+    h5(class = "mt-3 mb-2", "Freeways"),
+    tags$p(class = "small text-muted", "Dated alignments of Denver's freeways and major roads from OpenHistoricalMap (volunteer-mapped; opening and removal years from its contributors' sources, often CDOT), checked against the NBER/FHWA interstate opening dates for Denver County. OpenHistoricalMap dates the Valley Highway (I-25) from its first sections in the early 1950s; NBER dates interstate segments from when they opened to interstate standard (I-25 1958\u20131965, I-70 1965\u20131968). Choose a year above to see the network open then."),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("Freeways through the 1938 HOLC grades"), unit_note("HOLC area polygons; freeways opened 1950\u20131979"), tableOutput("t_hw_holc"),
+           tags$small(class = "text-muted", "km of freeway per km\u00b2 of each grade, and the share of each grade's land within 250 m of a freeway built 1950\u20131979.")),
+      card(card_header("Freeway built per decade, study area"), unit_note("freeway centre-lines within the Denver study area"), tableOutput("t_hw_dec"), tableOutput("t_hw_nb"))),
+    layout_columns(col_widths = c(5, 7),
+      card(card_header("Through industrial or residential land? Freeways of 1950\u20131979 by 1929 zoning"), unit_note("freeway km on the 1929 zoning map"), tableOutput("t_hw_zon")),
+      card(card_header("Tracts the freeways cut through: who lived there, 1950\u20131990"), unit_note("2010 census tracts within 10 km of downtown with data in every census 1950\u20131990"), tableOutput("t_hw_tr"),
+           tags$small(class = "text-muted", "Population-weighted means; population indexed to 1950 = 100. The census had no Hispanic measure before 1960. A description, not an estimate of what the freeways caused.")))),
   nav_panel("Redlining & covenants",
     layout_columns(col_widths = c(3, 6, 3),
       card(card_header("HOLC 1938 map and racial covenants 1931\u201335"), unit_note("HOLC area polygons (1938), deed points (covenants) and firm points"),
-           checkboxGroupInput("rl_layers", NULL, c("HOLC security grades (1938)" = "holc", "Zoning districts (choose the year below)" = "zon", "Racial covenants 1931-35 (deeds)" = "cov", "Hazardous-trade firms" = "firms", "1930 enumeration districts" = "ed30"),
+           checkboxGroupInput("rl_layers", NULL, c("HOLC security grades (1938)" = "holc", "Zoning districts (choose the year below)" = "zon", "Freeways built 1950\u20131979" = "hwy", "Racial covenants 1931-35 (deeds)" = "cov", "Hazardous-trade firms" = "firms", "1930 enumeration districts" = "ed30"),
                               selected = c("holc", "cov", "firms")),
            conditionalPanel("input.rl_layers.includes('zon')", radioButtons("rl_zyear", "Zoning year", ZYEARS, inline = FALSE), tags$small(class = "text-muted", "1944: districts changed since 1929 are outlined (dashed). Today: the city's official zoning map; 2023: the National Zoning Atlas layer (C. Makarewicz, CU Denver; to obtain it, use the request form on the ", tags$a(href = "https://storymaps.arcgis.com/stories/adb86c7ab2624e95a84566fecb8a6f6d", target = "_blank", "StoryMap"), "). ", "Denver's first zoning ordinance (February 1925) as shown on the official Building Zone Map revised to January 1929 (Denver Public Library, CG4314 .D4 G44 1929), georeferenced from 13 street intersections (RMSE 25 m) and classified by hatch pattern: Industrial A, Industrial B and Commercial districts; everything else was Residence A–E or Business. Residence E (apartments) shares a hatch with Industrial A and is told apart only by lot lines, so a few platted blocks are uncertain (R/zoning_1925.R).")),
            conditionalPanel("input.rl_layers.includes('ed30')", selectInput("rl_edvar", "Shade 1930 districts by", c("Black (%)" = "pct_black", "Hispanic (%)" = "pct_hisp", "Foreign born (%)" = "pct_fb", "Laborers (%)" = "pct_laborers",
@@ -682,11 +731,12 @@ server <- function(input, output, session) {
                   opacity = 0.8, group = "Industrial corridors (500 m cells)")
     }
     ZG <- paste("Zoning", names(ZYEARS)); for (k in seq_along(ZYEARS)) m <- add_zoning(m, ZYEARS[[k]], ZG[k], "tr", 0.45)
+    LG <- paste("Land use", LU_YEARS); if (!is.null(lu_r)) for (k in seq_along(LU_YEARS)) m <- add_landuse(m, LU_YEARS[k], LG[k], 0.6)
     m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
-          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", paste("Zoning", names(ZYEARS)), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
+          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", paste("Zoning", names(ZYEARS)), if (!is.null(lu_r)) paste("Land use", LU_YEARS), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
-      hideGroup(c("Industrial corridors (500 m cells)", paste("Zoning", names(ZYEARS)), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
+      hideGroup(c("Industrial corridors (500 m cells)", paste("Zoning", names(ZYEARS)), paste("Land use", LU_YEARS), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
                   "RCRA corrective action", "Voluntary cleanup (VCUP)", "Superfund (SEMS)")) |>
       identity()
   })
@@ -1138,7 +1188,9 @@ server <- function(input, output, session) {
                         h$label, h$grade, esc(h$cat), esc(h$detrimental), esc(h$favorable), esc(h$occupation), esc(h$income), esc(h$holc_foreign_born), esc(h$holc_negro), esc(h$infiltration), esc(h$relief), esc(h$pop_trend), esc(h$remarks),
                         h$firms_pre1938, h$firms_1921_1937, h$firms_1938_1956, h$covenants_1931_35, esc(h$pop_1930), esc(h$pct_black_1930), esc(h$pct_fb_1930), esc(h$pct_hisp_1930), esc(h$pct_laborers_1930), esc(h$pct_black_1940), esc(h$pct_hisp_1940))) |>
         addLegend("bottomright", colors = unname(HOLC_COL6[1:6]), labels = c("A \u2018best\u2019", "B \u2018still desirable\u2019", "C \u2018definitely declining\u2019", "D \u2018hazardous\u2019", "Industrial zone (not graded)", "Commercial zone (not graded)"), title = "HOLC 1938", opacity = 0.7, layerId = "rllegend") }
-    px <- px |> clearGroup("zon44") |> removeControl("zon44legend")
+    px <- px |> clearGroup("zon44") |> removeControl("zon44legend") |> clearGroup("hwy")
+    if ("hwy" %in% L && !is.null(hwy)) { h <- hwy[hwy$kind == "Freeway" & !is.na(hwy$start_year) & hwy$start_year >= 1950 & hwy$start_year <= 1979, ]
+      px <- px |> addPolylines(data = h, color = "#111111", weight = 4, opacity = 0.85, group = "hwy", options = pathOptions(pane = "holcp"), label = sprintf("%s, opened %s", ifelse(is.na(h$ref_clean), "freeway", h$ref_clean), h$start_year)) }
     if ("zon" %in% L) { px <- add_zoning(px, input$rl_zyear, "zon", "holcp", 0.5, "topleft", "zonlegend")
       if (input$rl_zyear == "1944" && !is.null(zch)) px <- px |> addPolygons(data = zch, fill = TRUE, fillOpacity = 0, color = "#000000", weight = 2.5, dashArray = "5,4", group = "zon", options = pathOptions(pane = "holcp"), label = sprintf("Changed 1929-1944: %s (%.2f km²)", zch$change, zch$km2)) }
     if (any(c("cov", "firms") %in% L)) { lc <- c(if ("cov" %in% L) c("#333333", "#ff7f00"), if ("firms" %in% L) "#d1491f")
@@ -1237,6 +1289,45 @@ server <- function(input, output, session) {
     data.frame(Sites = ifelse(grepl("^Hazardous-sector", d$series), "1965–92 manufacturers", "Pre-1960 trades"), n = d$sites, Year = d$year, `% industrial` = d$pct_industrial, `% industrial incl. I-MX` = d$pct_industrial_incl_imx, `% where housing is allowed` = ifelse(is.na(d$pct_housing_allowed), "–", d$pct_housing_allowed), check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   output$t_zpaths <- renderTable({ req(zot_paths); d <- zot_paths
     data.frame(Tracts = d$path, n = d$tracts, Census = d$census, Residents = format(d$residents, big.mark = ","), `% Hispanic` = d$pct_hispanic, `% Black` = d$pct_black, `% White` = d$pct_white, `% in poverty` = d$pct_poverty, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  output$map_lu <- renderLeaflet({ leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
+      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri; land use: USGS (Drummond et al. 2019)") |>
+      setView(-104.97, 39.74, 12) |> addMapPane("lup", zIndex = 300) |> addMapPane("luo", zIndex = 420) |> addMapPane("lus", zIndex = 450) })
+  observe({ req(input$map_lu_zoom, input$lu_year); px <- leafletProxy("map_lu") |> clearGroup("lu") |> removeControl("lulegend")
+    add_landuse(px, input$lu_year, "lu", input$lu_op, TRUE, "lulegend") })
+  observe({ req(input$map_lu_zoom); px <- leafletProxy("map_lu") |> clearGroup("luo")
+    if (isTRUE(input$lu_holc) && !is.null(holc)) { h <- holc[holc$grade %in% "D", ]; px <- px |> addPolylines(data = h, color = "#c0392b", weight = 2.5, group = "luo", options = pathOptions(pane = "luo"), label = sprintf("HOLC %s (D, 1938)", h$label)) }
+    if (isTRUE(input$lu_zon) && !is.null(zon)) { z <- zon[grepl("Industrial", zon$zone), ]; px <- px |> addPolylines(data = z, color = "#000000", weight = 1.5, dashArray = "4,3", group = "luo", options = pathOptions(pane = "luo"), label = "1929 industrial district") } })
+  observe({ req(input$map_lu_zoom, input$lu_year); px <- leafletProxy("map_lu") |> clearGroup("luh") |> removeControl("luhlegend"); if (!isTRUE(input$lu_hwy)) return()
+    h <- hw_open(as.integer(input$lu_year)); if (is.null(h) || !nrow(h)) return()
+    px |> addPolylines(data = h, color = ifelse(h$kind == "Freeway", "#111111", "#555555"), weight = ifelse(h$kind == "Freeway", 3.5, 1.8), opacity = 0.9, group = "luh", options = pathOptions(pane = "luo"),
+                       label = sprintf("%s%s: open %s%s", ifelse(is.na(h$ref_clean), "", h$ref_clean), ifelse(is.na(h$name), "", paste0(" ", h$name)), h$start_year, ifelse(is.na(h$end_year), "", paste0("\u2013", h$end_year)))) |>
+      addLegend("topright", colors = c("#111111", "#555555"), labels = c("Freeway", "Major road"), title = paste("Open in", input$lu_year), opacity = 0.9, layerId = "luhlegend") })
+  observe({ req(input$map_lu_zoom, input$lu_year); px <- leafletProxy("map_lu") |> clearGroup("lus"); if (!isTRUE(input$lu_sites)) return()
+    y <- as.integer(input$lu_year)
+    if (y <= 1957) { if (is.null(hist)) return(); h <- hist |> filter(precision != "town", first_year <= y, last_year >= y - 20)
+      px |> addCircleMarkers(data = h, ~lon, ~lat, radius = 3.5, color = "#ffffff", weight = 0.6, fillColor = "#111111", fillOpacity = 0.9, group = "lus", options = pathOptions(pane = "lus"), label = sprintf("%s (%s)", h$name, h$years)) }
+    else { a <- if (y == 1977) c(1968, 1977) else c(1983, 1992); ids <- unique(site_yr$site_id[site_yr$year >= a[1] & site_yr$year <= a[2]]); s <- sites[sites$site_id %in% ids, ]
+      px |> addCircleMarkers(data = s, ~lon, ~lat, radius = 3.5, color = "#ffffff", weight = 0.6, fillColor = "#111111", fillOpacity = 0.9, group = "lus", options = pathOptions(pane = "lus"), label = sprintf("%s, %s", s$address, s$hazard_firms)) } })
+  output$p_lu_year <- renderPlotly({ req(lu_year); d <- lu_year[lu_year$unit == "Study area", ]; pl <- plot_ly()
+    for (k in seq_along(LU_GRP)) { x <- d[d$group == LU_GRP[k], ]; if (!nrow(x)) next
+      pl <- pl |> add_trace(x = as.character(x$year), y = x$pct, type = "bar", name = LU_GRP[k], marker = list(color = LU_COL[k], line = list(color = "#999999", width = 0.4)), text = sprintf("%s, %s: %.1f%% (%.1f km\u00b2)", LU_GRP[k], x$year, x$pct, x$km2), hoverinfo = "text", textposition = "none") }
+    layout(pl, barmode = "stack", xaxis = list(title = ""), yaxis = list(title = "% of mapped land", range = c(0, 100)), legend = list(orientation = "h", x = 0, y = 1.02, yanchor = "bottom", xanchor = "left", traceorder = "normal"), margin = list(t = 10)) })
+  output$t_lu_holc <- renderTable({ req(lu_holc); g <- expand.grid(grade = c("A", "B", "C", "D"), year = LU_YEARS, group = c("Industrial", "Residential, single family"), stringsAsFactors = FALSE)
+    d <- merge(g, lu_holc, by = c("grade", "year", "group"), all.x = TRUE); d$pct[is.na(d$pct)] <- 0
+    w <- reshape(d, idvar = c("grade", "group"), timevar = "year", direction = "wide"); names(w) <- sub("pct\\.", "", names(w)); names(w)[1:2] <- c("HOLC grade", "Land use"); w[order(w$`Land use`, w$`HOLC grade`), ] }, digits = 1, striped = TRUE, spacing = "xs")
+  output$t_lu_zone <- renderTable({ req(lu_zone); d <- lu_zone
+    data.frame(`1929 zoning` = d$zoning, Year = d$year, `Industrial use (sq km)` = d$industrial_use_km2, `% of the district in industrial use` = d$pct_of_zone_in_industrial_use, `Share of all industrial use (%)` = d$share_of_all_industrial_use, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  output$t_lu_sites <- renderTable({ req(lu_sites); d <- lu_sites
+    data.frame(Sites = ifelse(grepl("^Hazardous-sector", d$series), "1965\u201392 manufacturers", "Pre-1960 trades"), Status = d$status, Year = d$year, n = d$sites, `% on industrial land` = d$pct_on_industrial_land, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  output$t_lu_trans <- renderTable({ req(lu_trans); d <- lu_trans[lu_trans$land_use_1977 == "Industrial", ]
+    data.frame(`1977` = d$land_use_1977, `1997` = d$land_use_1997, Sites = d$N, `%` = d$pct_of_1977_group, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  output$t_lu_paths <- renderTable({ req(lu_paths); d <- lu_paths
+    data.frame(Tracts = d$path, n = d$tracts, Census = d$census, Residents = format(d$residents, big.mark = ","), `% Hispanic` = d$pct_hispanic, `% Black` = d$pct_black, `% White` = d$pct_white, `% in poverty` = d$pct_poverty, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  output$t_hw_holc <- renderTable({ req(hw_holc); d <- hw_holc; data.frame(`HOLC grade` = d$grade, `Area (sq km)` = d$area_km2, `Freeway km` = d$km_through, `km per sq km` = d$km_per_km2, `% of land within 250 m` = d$pct_within_250m, check.names = FALSE) }, digits = 2, striped = TRUE, spacing = "xs")
+  output$t_hw_dec <- renderTable({ req(hw_dec); d <- hw_dec; data.frame(Decade = paste0(d$decade, "s"), `km opened` = d$km_opened, `km removed` = d$km_removed, `km open (cumulative opened)` = d$km_cumulative, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  output$t_hw_nb <- renderTable({ req(hw_nb); d <- hw_nb; data.frame(Interstate = d$route, `NBER: opened (Denver County)` = ifelse(is.na(d$nber_first_opened), "\u2013", paste0(d$nber_first_opened, "\u2013", d$nber_last_opened)), `NBER miles` = ifelse(is.na(d$nber_miles), "\u2013", d$nber_miles), `OpenHistoricalMap: first year` = ifelse(is.na(d$ohm_first), "\u2013", d$ohm_first), check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  output$t_hw_zon <- renderTable({ req(hw_zon); d <- hw_zon; data.frame(`1929 zoning` = d$cls, `Freeway km` = d$km, `% of freeway km` = d$pct, `% of the land` = ifelse(is.na(d$share_of_land), "\u2013", d$share_of_land), check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  output$t_hw_tr <- renderTable({ req(hw_tr); d <- hw_tr; data.frame(Tracts = d$crossed, n = d$tracts, Census = d$census, Residents = format(d$residents, big.mark = ","), `Population (1950 = 100)` = d$pop_index_1950_100, `% Hispanic` = ifelse(is.na(d$pct_hispanic) | is.nan(d$pct_hispanic), "\u2013", d$pct_hispanic), `% Black` = d$pct_black, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   Z23_CATS <- c("Industrial (housing not allowed)" = "#7a0177", "Industrial mixed use (housing allowed)" = "#c51b8a", "Mixed use with housing" = "#fa9fb5",
                 "Residential" = "#fdd0a2", "Commercial" = "#9ecae1", "Open space, civic, other" = "#c7e9c0")
   output$t_z29 <- renderTable({ req(z23_29); d <- z23_29[match(c("Industrial A", "Industrial B", "Commercial"), z23_29$zone1929), ]

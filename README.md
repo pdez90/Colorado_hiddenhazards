@@ -420,6 +420,31 @@ today and the year of its last zoning ordinance (an upper bound on when it left 
 recorded); the share of sites in industrial districts each year; tracts industrial in 1929 and/or today with their 1970–2020
 composition; and dissolved category polygons for the site's maps.
 
+### Land use 1937–1997 (`R/landuse_1937_1997.R`)
+The USGS historical land-use maps of the northern Front Range (Drummond, Stier & Diffendorfer 2019, https://doi.org/10.5066/P995RGC9;
+public domain): 1 m rasters for 1937, 1957, 1977 and 1997, interpreted by hand from aerial photographs. Download the
+"1937to1997_north_front_range_tifs.zip" set (the "extended" set has only 8 broad classes, without industry) and unzip it into
+`work/usgs_landuse/north/`. The script groups the 37–46 classes into eight (industrial, waste and extraction, transportation, commercial,
+single-family, multifamily, institutional, open land), aggregates to 10 m (cached in `work/usgs_landuse/`), and writes to
+`data/results/landuse/`: land by year, by HOLC grade, against the 1929 zoning, the share of sites on industrial land, land under the sites
+1977→1997, tract industrial-use shares and the composition of tracts by industrial path, plus 20 m category rasters for the site's maps.
+The rasters end at latitude 39.62, so a sliver of far-south Denver is unmapped; shares are computed on mapped land only.
+
+### Freeways (`R/fetch_highways.R`, `R/highways_denver.R`)
+`Rscript R/fetch_highways.R` downloads the NBER highway data (interstate opening dates by route, county and milepost from the FHWA PR-511
+reports; corridors; the 1947 plan), TIGER 2023 primary roads, and OpenHistoricalMap's dated road alignments around Denver (Overpass API) into
+`work/highways/`. `Rscript R/highways_denver.R` writes to `data/results/highways/`: dated alignments for the maps, freeway km by decade,
+an NBER-versus-OpenHistoricalMap check for Denver County's interstates, freeway length and nearby land by HOLC grade, freeway length by
+1929 zoning, and the composition of tracts crossed by freeways built 1950–1979.
+
+### Block-level mortality (`R/mortality_block.R`)
+Run on the machine that holds the Colorado death records (default folder `~/Downloads/CO_HIA`: `co_deaths_official.csv`,
+`block_noyr.gpkg`), which are read in place and never copied into the project. Natural-cause and all-cause deaths 2015–2019 per 2010
+block; negative binomial with county fixed effects, an offset for person-years and tract-clustered errors; block age structure (2010 SF1
+P12, fetched once from NHGIS with `IPUMS_API_KEY`), density and PM2.5, tract poverty, ethnicity, race and tenure, EnviroScreen indicators;
+kernel densities of hidden, known historical and pre-1960 sites, TRI, cleanup and a non-hazardous placebo. Writes rate ratios only to
+`data/results/health/`.
+
 ### What became of the sites (`R/site_fate.R`)
 Every geocoded Denver site (1965–92 manufacturers' directory, hazardous sectors; street-level pre-1960 hazardous trades) is matched to
 the nearest assessor parcel within 40 m through Denver's open-data parcel service (property class, current and pre-2010 zone district,
@@ -463,7 +488,7 @@ The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because
 `Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`
 (Denver districts) → `Rscript R/denver_eds_analysis.R` → `Rscript R/county_panel_1880_1940.R` → `Rscript R/ej_panel.R` → `Rscript R/fetch_hmda.R` →
 `Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
-`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` →
+`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` → `Rscript R/landuse_1937_1997.R` → `Rscript R/fetch_highways.R` → `Rscript R/highways_denver.R` → `Rscript R/mortality_block.R` (restricted data; analyst's machine) →
 `Rscript R/benchmarks.R` (CBP, NHGIS county manufacturing and the Atack samples; needs network and the NHGIS key) →
 `Rscript R/edition_coverage.R` (per-edition pages, listings, hazardous firms and completeness for both directory series → app/data/edition_coverage.csv;
 twelve of the 25 manufacturers' directory editions are partial scans that stop part-way through the geographic section — complete: 1965–68, 1970, 1973–74, 1977, 1980, 1983, 1988, 1990, 1992 — flagged on the Trends and Data tabs; the complete editions are the ones that match CBP best).

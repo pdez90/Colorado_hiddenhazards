@@ -1,0 +1,107 @@
+grade,year,group,pct
+A,1937,Industrial,0.3
+A,1937,Transportation,6
+A,1957,Transportation,5.9
+A,1977,Transportation,4.2
+A,1997,Transportation,4.2
+A,1937,Commercial,6
+A,1957,Commercial,1.2
+A,1977,Commercial,1.5
+A,1997,Commercial,1.5
+A,1937,"Residential, single family",60.3
+A,1957,"Residential, single family",88.3
+A,1977,"Residential, single family",89.9
+A,1997,"Residential, single family",90
+A,1957,"Residential, multifamily",1.1
+A,1977,"Residential, multifamily",0.9
+A,1997,"Residential, multifamily",0.9
+A,1937,Institutional,0.8
+A,1957,Institutional,2.3
+A,1977,Institutional,2.4
+A,1997,Institutional,2.4
+A,1937,Open land,26.7
+A,1957,Open land,1.2
+A,1977,Open land,1
+A,1997,Open land,1
+B,1937,Transportation,1.1
+B,1957,Transportation,1
+B,1977,Transportation,1.5
+B,1997,Transportation,1.5
+B,1937,Commercial,4
+B,1957,Commercial,5.1
+B,1977,Commercial,5.2
+B,1997,Commercial,5.2
+B,1937,"Residential, single family",77.8
+B,1957,"Residential, single family",83.8
+B,1977,"Residential, single family",84.2
+B,1997,"Residential, single family",84.1
+B,1937,"Residential, multifamily",0.7
+B,1957,"Residential, multifamily",3.9
+B,1977,"Residential, multifamily",2.8
+B,1997,"Residential, multifamily",2.4
+B,1937,Institutional,1.9
+B,1957,Institutional,3
+B,1977,Institutional,4
+B,1997,Institutional,3.5
+B,1937,Open land,14.5
+B,1957,Open land,3.3
+B,1977,Open land,2.3
+B,1997,Open land,3.2
+C,1937,Industrial,0.5
+C,1957,Industrial,0
+C,1977,Industrial,0.1
+C,1997,Industrial,0.1
+C,1937,Transportation,0.2
+C,1957,Transportation,0.2
+C,1977,Transportation,1.3
+C,1997,Transportation,1.3
+C,1937,Commercial,11
+C,1957,Commercial,11.3
+C,1977,Commercial,12.5
+C,1997,Commercial,12
+C,1937,"Residential, single family",69.9
+C,1957,"Residential, single family",77.3
+C,1977,"Residential, single family",74.9
+C,1997,"Residential, single family",74.8
+C,1937,"Residential, multifamily",1
+C,1957,"Residential, multifamily",3.6
+C,1977,"Residential, multifamily",4.8
+C,1997,"Residential, multifamily",5.4
+C,1937,Institutional,3
+C,1957,Institutional,3.9
+C,1977,Institutional,4.7
+C,1997,Institutional,4.7
+C,1937,Open land,14.3
+C,1957,Open land,3.6
+C,1977,Open land,1.8
+C,1997,Open land,1.7
+D,1937,Industrial,5.3
+D,1957,Industrial,3.7
+D,1977,Industrial,9
+D,1997,Industrial,9.1
+D,1937,Waste and extraction,0.4
+D,1957,Waste and extraction,0.3
+D,1937,Transportation,1.5
+D,1957,Transportation,2.7
+D,1977,Transportation,5.3
+D,1997,Transportation,5.7
+D,1937,Commercial,17.2
+D,1957,Commercial,25.3
+D,1977,Commercial,22.6
+D,1997,Commercial,21.6
+D,1937,"Residential, single family",46.6
+D,1957,"Residential, single family",49.2
+D,1977,"Residential, single family",45.6
+D,1997,"Residential, single family",45.4
+D,1937,"Residential, multifamily",0.8
+D,1957,"Residential, multifamily",3.4
+D,1977,"Residential, multifamily",4.9
+D,1997,"Residential, multifamily",4.9
+D,1937,Institutional,2.5
+D,1957,Institutional,3.1
+D,1977,Institutional,5.2
+D,1997,Institutional,5.2
+D,1937,Open land,25.7
+D,1957,Open land,12.4
+D,1977,Open land,7.2
+D,1997,Open land,8.1

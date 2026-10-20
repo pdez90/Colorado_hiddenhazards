@@ -1,0 +1,168 @@
+year,Class_Name,group
+1937,Mixed Urban,Commercial
+1937,Office,Commercial
+1937,"Retail and services, minor",Commercial
+1937,"Retail, major",Commercial
+1937,"Industrial, Petro chemical",Industrial
+1937,"Industrial, heavy",Industrial
+1937,"Industrial, light",Industrial
+1937,Cemetery,Institutional
+1937,Communications and Utilities,Institutional
+1937,"Institutional, general",Institutional
+1937,School,Institutional
+1937,"Agricultural business, general",Open land
+1937,"Bare, rock, sand, and other",Open land
+1937,"Bare, transitional",Open land
+1937,Canal and ditch,Open land
+1937,Confined feeding operation,Open land
+1937,"Cropland, irrigated",Open land
+1937,"Cropland, non-irrigated",Open land
+1937,Entertainment and recreation,Open land
+1937,Forest,Open land
+1937,Golf Course,Open land
+1937,Grassland / Herbaceous,Open land
+1937,Lake and pond,Open land
+1937,"Orchards, vineyards, and groves",Open land
+1937,Reservoirs,Open land
+1937,Shrubland,Open land
+1937,Stream and river,Open land
+1937,Turf farms,Open land
+1937,"Wetland, forest and shrub",Open land
+1937,"Wetland, herbaceous",Open land
+1937,"Residential, multi family","Residential, multifamily"
+1937,"Residential, single family","Residential, single family"
+1937,Ariport,Transportation
+1937,"Transportatioin, ground",Transportation
+1937,Landfill and disposal,Waste and extraction
+1937,"Quarries, stripmines,",Waste and extraction
+1957,Mixed Urban,Commercial
+1957,Mixed urban,Commercial
+1957,Office,Commercial
+1957,"Retail and services, minor",Commercial
+1957,"Retail, major",Commercial
+1957,Commercial/Light Industry,Industrial
+1957,"Industrial, heavy",Industrial
+1957,"Industrial, light",Industrial
+1957,"Industrial, petrochemical refinery",Industrial
+1957,Petrochemical Refinery,Industrial
+1957,Cemetery,Institutional
+1957,Communications and Utilities,Institutional
+1957,"Institutional, general",Institutional
+1957,School,Institutional
+1957,"Agricultural business, general",Open land
+1957,"Bare, rock, sand, and other",Open land
+1957,"Bare, transitional",Open land
+1957,Canal and ditch,Open land
+1957,Confined feeding operation,Open land
+1957,"Cropland, irrigated",Open land
+1957,"Cropland, non-irrigated",Open land
+1957,Entertainment / Recreation,Open land
+1957,Entertainment and recreation,Open land
+1957,Forest,Open land
+1957,"Forest, Lowland",Open land
+1957,Golf Course,Open land
+1957,Grassland / Herbaceous,Open land
+1957,Lake and pond,Open land
+1957,"Orchards, vineyards, and groves",Open land
+1957,Reservoirs,Open land
+1957,Shrubland,Open land
+1957,Stream and river,Open land
+1957,Turf farm,Open land
+1957,Turf or sod farm,Open land
+1957,Urban Park,Open land
+1957,"Wetland, forest and shrub",Open land
+1957,"Wetland, herbaceous",Open land
+1957,"Residential, multifamily","Residential, multifamily"
+1957,"Residential, single family","Residential, single family"
+1957,Airport,Transportation
+1957,"Transportatioin, ground",Transportation
+1957,Landfill and disposal,Waste and extraction
+1957,Quarries/Strip Mines/Gravel Pits,Waste and extraction
+1977,Mixed Urban,Commercial
+1977,Mixed urban,Commercial
+1977,Office,Commercial
+1977,"Retail and services, minor",Commercial
+1977,"Retail, major",Commercial
+1977,Commercial/Light Industry,Industrial
+1977,"Industrial, heavy",Industrial
+1977,"Industrial, light",Industrial
+1977,"Industrial, petrochemical refinery",Industrial
+1977,Petrochemical Refinery,Industrial
+1977,Cemetery,Institutional
+1977,Communications and Utilities,Institutional
+1977,"Institutional, general",Institutional
+1977,School,Institutional
+1977,"Agricultural business, general",Open land
+1977,Aquaculture,Open land
+1977,"Bare, rock, sand, and other",Open land
+1977,"Bare, transitional",Open land
+1977,Canal and ditch,Open land
+1977,Confined feeding operation,Open land
+1977,"Cropland, irrigated",Open land
+1977,"Cropland, non-irrigated",Open land
+1977,Deciduous Forest,Open land
+1977,Entertainment / Recreation,Open land
+1977,Entertainment and recreation,Open land
+1977,Forest,Open land
+1977,"Forest, Lowland",Open land
+1977,Golf Course,Open land
+1977,Grassland / Herbaceous,Open land
+1977,Lake and pond,Open land
+1977,Non-residential Developed,Open land
+1977,"Orchards, vineyards, and groves",Open land
+1977,Reservoirs,Open land
+1977,Row Crops,Open land
+1977,Shrubland,Open land
+1977,Stream and river,Open land
+1977,Urban Park,Open land
+1977,"Wetland, forest and shrub",Open land
+1977,"Wetland, herbaceous",Open land
+1977,"Residential, multifamily","Residential, multifamily"
+1977,"Residential, single family","Residential, single family"
+1977,Airport,Transportation
+1977,"Transportatioin, ground",Transportation
+1977,Landfill and disposal,Waste and extraction
+1977,Quarries/Strip Mines/Gravel Pits,Waste and extraction
+1997,Mixed Urban,Commercial
+1997,Mixed urban,Commercial
+1997,Office,Commercial
+1997,"Retail and services, minor",Commercial
+1997,"Retail, major",Commercial
+1997,Commercial/Light Industry,Industrial
+1997,"Industrial, heavy",Industrial
+1997,"Industrial, light",Industrial
+1997,"Industrial, petrochemical refinery",Industrial
+1997,Petrochemical Refinery,Industrial
+1997,Cemetery,Institutional
+1997,Communications and Utilities,Institutional
+1997,"Institutional, general",Institutional
+1997,School,Institutional
+1997,"Agricultural business, general",Open land
+1997,Aquaculture,Open land
+1997,"Bare, rock, sand, and other",Open land
+1997,"Bare, transitional",Open land
+1997,Canal and ditch,Open land
+1997,Confined feeding operation,Open land
+1997,"Cropland, irrigated",Open land
+1997,"Cropland, non-irrigated",Open land
+1997,Entertainment / Recreation,Open land
+1997,Entertainment and recreation,Open land
+1997,Forest,Open land
+1997,"Forest, Lowland",Open land
+1997,Golf Course,Open land
+1997,Grassland / Herbaceous,Open land
+1997,Lake and pond,Open land
+1997,"Orchards, vineyards, and groves",Open land
+1997,Reservoirs,Open land
+1997,Shrubland,Open land
+1997,Stream and river,Open land
+1997,Turf or sod farms,Open land
+1997,Urban Park,Open land
+1997,"Wetland, forest and shrub",Open land
+1997,"Wetland, herbaceous",Open land
+1997,"Residential, multifamily","Residential, multifamily"
+1997,"Residential, single family","Residential, single family"
+1997,Airport,Transportation
+1997,"Transportatioin, ground",Transportation
+1997,Landfill and disposal,Waste and extraction
+1997,Quarries/Strip Mines/Gravel Pits,Waste and extraction
