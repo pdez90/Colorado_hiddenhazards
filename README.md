@@ -462,7 +462,8 @@ unzipped into `work/censoc/`). Each person gets their 1940 street address from B
 1938 HOLC grade, the 1929 zoning district, industrial and commercial land within 250 m in 1937 (USGS), the hazardous trades listed to 1940
 (kernel and within 500 m), and the 1965–92 hidden and known sites. OLS of age at death with birth-year fixed effects, CenSoc weights,
 1940 person and household controls, errors clustered by ED, and a version with ED fixed effects. Writes aggregates only to
-`data/results/censoc/`; the linked person file stays in `work/censoc/`.
+`data/results/censoc/`; the linked person file stays in `work/censoc/`. The app's "Lifespan of 1940 residents" tab (under Historical change) reads copies of
+`censoc_models.csv`, `censoc_groups.csv` and `censoc_linkage.csv` in `app/data/`.
 
 ### What became of the sites (`R/site_fate.R`)
 Every geocoded Denver site (1965–92 manufacturers' directory, hazardous sectors; street-level pre-1960 hazardous trades) is matched to
