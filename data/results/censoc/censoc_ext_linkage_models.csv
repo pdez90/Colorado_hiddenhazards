@@ -1,0 +1,7 @@
+outcome,term,pct_points,lo,hi,p,n
+linked_dmf,zone_ind,-0.814,-2.079,0.45,0.207,87939
+linked_dmf,ind10,0.176,-0.141,0.494,0.276,87939
+linked_dmf,haz_500,-0.42,-1.218,0.377,0.302,87939
+linked_num,zone_ind,0.136,-0.768,1.041,0.768,183120
+linked_num,ind10,0.033,-0.149,0.215,0.724,183120
+linked_num,haz_500,-0.659,-1.132,-0.185,0.00639,183120

@@ -22,8 +22,8 @@
 # be younger newcomers rather than a cleaner neighbourhood.
 # Output (rate ratios, sample sizes and study-area totals only; no block counts): data/results/health/mortality_redevelopment_models.csv,
 # mortality_redevelopment_event.csv, mortality_redevelopment_summary.md.
-if (!requireNamespace("fixest", quietly = TRUE)) install.packages("fixest")
-if (!requireNamespace("RANN", quietly = TRUE)) install.packages("RANN")
+if (!requireNamespace("fixest", quietly = TRUE)) install.packages("fixest", repos = "https://cloud.r-project.org")
+if (!requireNamespace("RANN", quietly = TRUE)) install.packages("RANN", repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(sf); library(data.table) })
 sf_use_s2(FALSE); UTM <- 26913; YRS <- 2000:2019
 args <- commandArgs(trailingOnly = TRUE); HIA <- path.expand(if (length(args)) args[1] else "~/Downloads/CO_HIA")

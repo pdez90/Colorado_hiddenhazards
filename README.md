@@ -465,6 +465,17 @@ unzipped into `work/censoc/`). Each person gets their 1940 street address from B
 `data/results/censoc/`; the linked person file stays in `work/censoc/`. The app's "Lifespan of 1940 residents" tab (under Historical change) reads copies of
 `censoc_models.csv`, `censoc_groups.csv` and `censoc_linkage.csv` in `app/data/`.
 
+### CenSoc follow-ups (`R/censoc_extensions.R`, `R/censoc_enlistment.R`, `R/mlp_residential_history.R`)
+All three run after `R/censoc_denver_1940.R`, which also saves every 1940 resident with their address exposures to
+`work/censoc/denver_1940_residents.rds`. `R/censoc_extensions.R`: results by age in 1940, stayers and leavers (CenSoc-Numident place of
+death, `censoc_numident_geography_supplement_v1.csv`), own and household head's 1940 industry, groups, who links to a death record, Gompertz
+hazard ratios (`gompertztrunc`), and highways and displacement (1940 addresses in a later freeway's path, 75-500 m from one, on residential
+land cleared by 1977, or near a major road already open in 1940). `R/censoc_enlistment.R`: height, weight, body-mass index and schooling at
+WWII Army enlistment (CenSoc Enlistment-Census-1940). `R/mlp_residential_history.R`: 1910-1930 Denver addresses of 1940 residents through
+the IPUMS MLP links (`Rscript R/fetch_ipums_mlp.R` writes them to `work/mlp/` through the IPUMS API, using the MLP key HIK in a
+Colorado 1910-1940 full-count extract; the national crosswalk files also work), persistence and cumulative and childhood exposure. All write aggregates only to
+`data/results/censoc/`.
+
 ### What became of the sites (`R/site_fate.R`)
 Every geocoded Denver site (1965–92 manufacturers' directory, hazardous sectors; street-level pre-1960 hazardous trades) is matched to
 the nearest assessor parcel within 40 m through Denver's open-data parcel service (property class, current and pre-2010 zone district,
@@ -508,7 +519,7 @@ The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because
 `Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`
 (Denver districts) → `Rscript R/denver_eds_analysis.R` → `Rscript R/county_panel_1880_1940.R` → `Rscript R/ej_panel.R` → `Rscript R/fetch_hmda.R` →
 `Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
-`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` → `Rscript R/landuse_1937_1997.R` → `Rscript R/fetch_highways.R` → `Rscript R/highways_denver.R` → `Rscript R/mortality_block.R` (restricted data; analyst's machine) → `Rscript R/mortality_redevelopment.R` (same) → `Rscript R/censoc_denver_1940.R` (after downloading CenSoc) →
+`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` → `Rscript R/landuse_1937_1997.R` → `Rscript R/fetch_highways.R` → `Rscript R/highways_denver.R` → `Rscript R/mortality_block.R` (restricted data; analyst's machine) → `Rscript R/mortality_redevelopment.R` (same) → `Rscript R/censoc_denver_1940.R` (after downloading CenSoc) → `Rscript R/censoc_extensions.R` → `Rscript R/censoc_enlistment.R` → `Rscript R/fetch_ipums_mlp.R` → `Rscript R/mlp_residential_history.R` →
 `Rscript R/benchmarks.R` (CBP, NHGIS county manufacturing and the Atack samples; needs network and the NHGIS key) →
 `Rscript R/edition_coverage.R` (per-edition pages, listings, hazardous firms and completeness for both directory series → app/data/edition_coverage.csv;
 twelve of the 25 manufacturers' directory editions are partial scans that stop part-way through the geographic section — complete: 1965–68, 1970, 1973–74, 1977, 1980, 1983, 1988, 1990, 1992 — flagged on the Trends and Data tabs; the complete editions are the ones that match CBP best).

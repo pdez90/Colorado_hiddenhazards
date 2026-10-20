@@ -82,6 +82,13 @@ lu_r <- if (requireNamespace("terra", quietly = TRUE) && all(file.exists(dd(spri
 hwy <- if (file.exists(dd("highways_denver.geojson"))) st_read(dd("highways_denver.geojson"), quiet = TRUE) else NULL
 hw_dec <- rd_opt("highways_km_by_decade.csv"); hw_holc <- rd_opt("highways_by_holc_grade.csv"); hw_zon <- rd_opt("highways_by_zoning_1929.csv"); hw_tr <- rd_opt("highways_tracts.csv"); hw_nb <- rd_opt("highways_nber_check.csv"); hw_ev <- rd_opt("highways_event_study.csv")
 cs_mod <- rd_opt("censoc_models.csv", check.names = FALSE); cs_grp <- rd_opt("censoc_groups.csv", check.names = FALSE); cs_lnk <- rd_opt("censoc_linkage.csv", check.names = FALSE)
+enl_mod <- rd_opt("enlistment_models.csv", check.names = FALSE); enl_sh <- rd_opt("enlistment_shares.csv", check.names = FALSE)
+CS_CHK <- c("By age in 1940" = "censoc_ext_childhood.csv", "Own job and household head's job" = "censoc_ext_work_home.csv", "Groups" = "censoc_ext_groups.csv",
+            "Who stayed in the Denver area" = "censoc_ext_stayers.csv", "Who links to a death record" = "censoc_ext_linkage_shares.csv",
+            "Survival model (Gompertz) check" = "censoc_ext_gompertz.csv", "Freeways and cleared land" = "censoc_ext_displacement.csv",
+            "Who lived in a later freeway's path" = "censoc_ext_displacement_who.csv", "Earlier addresses, 1910\u20131930" = "mlp_models.csv",
+            "Earlier addresses: who stayed put" = "mlp_persistence.csv")
+cs_chk <- lapply(CS_CHK, function(f) rd_opt(f, check.names = FALSE))
 CS_FILE <- c("Men, deaths 1975\u20132020" = "DMF", "Men and women, deaths at 65+ in 1988\u20132005" = "Numident")
 cs_pick <- function(d, k) if (is.null(d)) NULL else d[startsWith(d$file, k), ]
 hw_open <- function(y) { if (is.null(hwy)) return(NULL); h <- hwy[!is.na(hwy$start_year) & hwy$start_year <= y & (is.na(hwy$end_year) | hwy$end_year > y), ]; h }
@@ -384,12 +391,25 @@ ui <- page_navbar(id = "nav",
            plotlyOutput("p_cs_coef", height = 420),
            tags$small(class = "text-muted", "Difference in age at death (years) with 95% interval, for the people chosen on the left. Below zero = shorter lives. Traits: race, Hispanic origin, foreign birth, born in Colorado, moved in 1935\u201340, renting or owning, rent or home value, the household head's schooling and occupational standing. The district version compares neighbours within the same 1940 enumeration district; it is not run for the zoning and HOLC features, which barely vary within a district."))),
     card(card_header("All estimates"), unit_note("linked Denver residents of 1940"), div(style = "overflow-x:auto", tableOutput("t_cs_mod"))),
+    layout_columns(col_widths = c(7, 5),
+      card(card_header("Young men at WWII Army enlistment, by their 1940 address"), unit_note("Denver men of 1940 born 1905\u20131927, linked to their WWII Army enlistment record (CenSoc); one model per feature"),
+           layout_columns(col_widths = c(6, 6), selectInput("enl_sample", "Men", c("Men born 1905\u20131927", "Boys aged 0\u201317 in 1940"), width = "100%"),
+                          selectInput("enl_out", "Measured at enlistment", c("Height (inches)", "Weight (pounds)", "Body-mass index", "Years of schooling at enlistment", "Enlisted (percentage points)"), width = "100%")),
+           plotlyOutput("p_enl", height = 380),
+           tags$small(class = "text-muted", "Difference at enlistment with 95% interval, after the same 1940 person and household traits, comparing men born in the same year who enlisted in the same year. Height and weight were recorded only for enlistments before March 1943, so they rest on few men (about 1,400; 350 boys). Men rejected on health grounds never appear in these records.")),
+      card(card_header("At enlistment, by 1940 address (averages)"), unit_note("Denver men of 1940 born 1905\u20131927"), tableOutput("t_enl_sh"),
+           tags$small(class = "text-muted", "Raw averages among men who enlisted from civilian life; share enlisted among all men of these ages in 1940 who could be linked."))),
+    card(card_header("Further checks"), unit_note("linked Denver residents of 1940 (and, for the last two, Denver residents of 1940 traced to their 1910\u20131930 census records through the IPUMS Multigenerational Longitudinal Panel)"),
+         selectInput("cs_chk", NULL, names(CS_CHK), width = "100%"), uiOutput("cs_chk_note"), div(style = "overflow-x:auto", tableOutput("t_cs_chk"))),
     card(card_header("What this shows, and what it doesn't"),
       tags$ul(
         tags$li("Men who lived in 1940 in a 1929 industrial district died about 1.6 years younger than other Denver men born the same year, and about a year younger once their own and their household's 1940 circumstances are taken into account. More industrial land within 250 m of the home went with shorter lives (about 0.2 years per 10 percentage points)."),
         tags$li("Commercial land nearby, a check for simply living somewhere busy and central, shows nothing."),
         tags$li("The HOLC D gap shrinks to a third of a year once household circumstances are accounted for: the grade mostly reflects who lived there. Hazardous trades counted as firms, and the 1965\u201392 hidden sites, show little once circumstances are accounted for."),
         tags$li("Within a single 1940 enumeration district the industrial-land difference disappears, so it lies between neighbourhoods and could reflect something else about them. Men and women dying at 65+ in 1988\u20132005 show the same direction, much weaker."),
+        tags$li("The gap for men is concentrated among those aged 15\u201329 in 1940 (about 1.6 years in an industrial district). It holds when each man's own 1940 job, or his household head's, is taken into account: hazardous-industry jobs themselves show nothing. Residents of industrial addresses were no less likely to link to a death record, or to die in the Denver area."),
+        tags$li("The survival-model check (Gompertz, deaths 1975\u20132005) points the same way for the industrial district and the D grade but is not statistically clear, and shows nothing for industrial land: treat the size of the industrial-land gradient with caution."),
+        tags$li("At WWII enlistment, men from industrial addresses had about half a year less schooling, and were somewhat shorter and lighter (height and weight rest on few men). Living in 1940 where a freeway was later built, or on land later cleared, shows no difference in lifespan; those addresses were far more Hispanic (15%) than the rest of Denver (4%)."),
         tags$li("People moved after 1940, only some of the population links to a death record (CenSoc's weights adjust for part of this), and the death windows are truncated. These are associations, not causal estimates.")),
       tags$small("Data: CenSoc-DMF v4 and CenSoc-Numident v3 (Breen, Osborne & Goldstein 2023, ", tags$a(href = "https://censoc.berkeley.edu", target = "_blank", "censoc.berkeley.edu"),
                  "); IPUMS USA 1940 complete count; 1940 addresses from Brown University's Urban Transition project. None of the person-level data is redistributed here."))),
@@ -1401,6 +1421,30 @@ server <- function(input, output, session) {
   output$t_cs_mod <- renderTable({ d <- cs_mods(); d <- d[order(match(d$term, names(CS_EXP)), d$m), ]
     data.frame(Feature = d$feature, Model = c(M1 = "Birth year only", M2 = "+ 1940 traits", M3 = "+ same district")[d$m], `Years` = sprintf("%+.2f", d$years),
                `95% interval` = sprintf("%.2f to %.2f", d$lo, d$hi), p = ifelse(d$p < 0.01, "<0.01", sprintf("%.2f", d$p)), People = format(d$n, big.mark = ","), check.names = FALSE) }, striped = TRUE, spacing = "xs")
+  output$p_enl <- renderPlotly({ req(enl_mod, input$enl_sample, input$enl_out); d <- enl_mod[enl_mod$sample == gsub("\u2013", "-", input$enl_sample) & enl_mod$outcome == input$enl_out, ]; req(nrow(d))
+    d <- d[rev(seq_len(nrow(d))), ]; d$exposure <- factor(d$exposure, d$exposure)
+    plot_ly(d, x = ~estimate, y = ~exposure, type = "scatter", mode = "markers", marker = list(color = "#c0392b", size = 9),
+            error_x = list(type = "data", symmetric = FALSE, array = d$hi - d$estimate, arrayminus = d$estimate - d$lo, color = "#c0392b", width = 0),
+            text = ~sprintf("%s<br>%+.2f (%.2f to %.2f); %s men", exposure, estimate, lo, hi, format(n, big.mark = ",")), hoverinfo = "text") |>
+      layout(xaxis = list(title = paste("Difference:", input$enl_out), zeroline = TRUE, zerolinecolor = "#555555"), yaxis = list(title = "", automargin = TRUE), margin = list(l = 10, t = 10)) })
+  output$t_enl_sh <- renderTable({ req(enl_sh); d <- enl_sh
+    data.frame(`1940 address` = d$address_1940, `Men in 1940` = format(d$men_1940, big.mark = ","), `% enlisted (linked)` = d$pct_enlisted, `Height (in)` = d$mean_height,
+               `Weight (lb)` = d$mean_weight, `Years of school` = d$mean_school_years, `Men with height` = d$with_height, check.names = FALSE) }, striped = TRUE, spacing = "xs", digits = 1)
+  CHK_NOTE <- c("By age in 1940" = "Each model is run separately for people aged 0\u201314, 15\u201329 and 30 and over in 1940. Years of life (95% interval), with 1940 traits.",
+    "Own job and household head's job" = "Men's own 1940 industry (hazardous sectors; any manufacturing) and the household head's, alone and alongside the address features. Years of life (95% interval).",
+    "Groups" = "The models run separately for Hispanic residents, white non-Hispanic residents, and renting and owning households (groups with at least 200 people). Years of life (95% interval).",
+    "Who stayed in the Denver area" = "From the Numident place of death (men and women, deaths 1988\u20132005): whether a 1940 address feature predicts dying in the Denver metro (percentage points), and the age-at-death models among those who died there or elsewhere.",
+    "Who links to a death record" = "Share of Denver residents aged 0\u201350 in 1940 who appear in each death file. Linking depends both on matching names and on dying inside the window.",
+    "Survival model (Gompertz) check" = "Hazard ratios from CenSoc's recommended doubly-truncated Gompertz model (above 1 = higher mortality), with the implied change in life expectancy at 65. Men's deaths are limited to 1975\u20132005 here.",
+    "Freeways and cleared land" = "1940 addresses within 75 m of a freeway built 1950\u20131979 (its path), 75\u2013500 m from one, on residential land cleared by 1977 (USGS land use), or within 100 m of a major road open in 1940; with and without comparing neighbours in the same 1940 enumeration district. We know where people lived in 1940, not whether they were still there when the land was cleared.",
+    "Who lived in a later freeway's path" = "Composition of Denver's 1940 residents (all, not only those linked) by where their address stood relative to the later freeways and clearance.",
+    "Earlier addresses, 1910\u20131930" = "Denver residents of 1940 traced to their 1910, 1920 and 1930 Denver addresses: the number of censuses lived within 500 m of a hazardous trade, and a childhood address (ages 0\u201314) near one. Years of life (95% interval).",
+    "Earlier addresses: who stayed put" = "Of 1940 residents linked to an earlier Colorado census record: share living in Denver then, within 100 m and 1 km of their 1940 address, and within 500 m of a hazardous trade then.")
+  output$cs_chk_note <- renderUI(tags$p(class = "small text-muted", CHK_NOTE[[input$cs_chk]]))
+  output$t_cs_chk <- renderTable({ req(input$cs_chk); d <- cs_chk[[input$cs_chk]]; req(d); drop <- "converged"; if ("term" %in% names(d) && all(is.na(d$term) | grepl("^[A-Za-z_0-9]*$", d$term))) drop <- c(drop, "term"); d <- d[, setdiff(names(d), drop), drop = FALSE]
+    d <- d[, c(names(d)[!vapply(d, is.numeric, TRUE)], names(d)[vapply(d, is.numeric, TRUE)]), drop = FALSE]
+    names(d) <- gsub("_", " ", names(d)); for (k in names(d)) if (is.numeric(d[[k]]) && grepl("^p$", k)) d[[k]] <- ifelse(d[[k]] < 0.01, "<0.01", sprintf("%.2f", d[[k]]))
+    d }, striped = TRUE, spacing = "xs", digits = 2)
   output$t_hw_tr <- renderTable({ req(hw_tr); d <- hw_tr; data.frame(Tracts = d$crossed, n = d$tracts, Census = d$census, Residents = format(d$residents, big.mark = ","), `Population (1950 = 100)` = d$pop_index_1950_100, `% Hispanic` = ifelse(is.na(d$pct_hispanic) | is.nan(d$pct_hispanic), "\u2013", d$pct_hispanic), `% Black` = d$pct_black, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   Z23_CATS <- c("Industrial (housing not allowed)" = "#7a0177", "Industrial mixed use (housing allowed)" = "#c51b8a", "Mixed use with housing" = "#fa9fb5",
                 "Residential" = "#fdd0a2", "Commercial" = "#9ecae1", "Open space, civic, other" = "#c7e9c0")

@@ -23,21 +23,22 @@
 #   M2 = exposure + controls; M3 adds 1940 ED fixed effects, so only the address-level variation within a district is used.
 # Outputs (aggregates only): data/results/censoc/{censoc_linkage.csv, censoc_models.csv, censoc_groups.csv, censoc_summary.md}
 # and work/censoc/censoc_denver_1940_linked.rds (person-level, stays on this machine).
-for (p in c("ipumsr", "RANN")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p)
+for (p in c("ipumsr", "RANN")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(data.table); library(sf); library(terra); library(sandwich); library(lmtest) })
 sf_use_s2(FALSE); UTM <- 26913; W <- "work/censoc"; O <- "data/results/censoc"; A <- "app/data"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
-cs <- Sys.glob(file.path(W, "*.csv")); cs <- cs[!grepl("demo", basename(cs), ignore.case = TRUE)]
+cs <- Sys.glob(file.path(W, "*.csv")); cs <- cs[!grepl("demo|geography|codebook|sib", basename(cs), ignore.case = TRUE)]
 cs <- cs[grepl("numident|dmf", basename(cs), ignore.case = TRUE)]
 if (!length(cs)) stop("put the CenSoc-Numident and/or CenSoc-DMF csv files in work/censoc/ (https://dataverse.harvard.edu/dataverse/censoc)")
 # ---------------------------------------------------------------- 1. the 1940 census: Denver residents with HISTID and household traits
 ddis <- rev(sort(Sys.glob("work/ipums/*.xml"))); use <- NULL
 for (f in ddis) { v <- ipumsr::read_ipums_ddi(f)$var_info$var_name; if (all(c("HISTID", "SEI", "EDUC", "OWNERSHP", "MIGRATE5", "RENT", "VALUEH") %in% v)) { use <- f; break } }
 if (is.null(use)) stop("no IPUMS extract with HISTID, SEI, EDUC, OWNERSHP, MIGRATE5, RENT and VALUEH in work/ipums/: run R/fetch_ipums_fullcount.R")
-V <- c("YEAR", "SERIAL", "PERNUM", "HISTID", "COUNTYICP", "CITY", "ENUMDIST", "RELATE", "SEX", "AGE", "RACE", "HISPAN", "BPL", "EDUC", "SEI", "OWNERSHP", "RENT", "VALUEH", "MIGRATE5", "GQ")
+V <- c("YEAR", "SERIAL", "PERNUM", "HISTID", "COUNTYICP", "CITY", "ENUMDIST", "RELATE", "SEX", "AGE", "RACE", "HISPAN", "BPL", "EDUC", "SEI", "OWNERSHP", "RENT", "VALUEH", "MIGRATE5", "GQ", "IND1950", "OCC1950", "LABFORCE")
 P <- as.data.table(ipumsr::read_ipums_micro(ipumsr::read_ipums_ddi(use), vars = dplyr::all_of(V), verbose = FALSE))
 P <- P[YEAR == 1940 & (CITY == 1710 | COUNTYICP == 310)]; for (v in setdiff(V, "HISTID")) P[[v]] <- as.numeric(P[[v]])
 P[, HISTID := toupper(trimws(as.character(HISTID)))]
-H <- P[RELATE == 1, .(SERIAL, h_hs = fifelse(EDUC > 0 & EDUC < 99, as.numeric(EDUC >= 6), NA_real_), h_sei = fifelse(SEI > 0, SEI, NA_real_),
+HAZ_IND <- c(206:239, 336:339, 346:349, 356:359, 376:379, 466:469, 476:478)   # IND1950 hazardous industries, as in R/fetch_ipums_fullcount.R
+H <- P[RELATE == 1, .(SERIAL, h_haz_job = as.numeric(IND1950 %in% HAZ_IND), h_manuf = as.numeric(IND1950 >= 306 & IND1950 <= 499), h_hs = fifelse(EDUC > 0 & EDUC < 99, as.numeric(EDUC >= 6), NA_real_), h_sei = fifelse(SEI > 0, SEI, NA_real_),
                       owner = as.numeric(OWNERSHP == 1), rent = fifelse(OWNERSHP == 2 & RENT > 0 & RENT < 9998, RENT, NA_real_),
                       value = fifelse(OWNERSHP == 1 & VALUEH > 0 & VALUEH < 9999998, VALUEH, NA_real_))]
 H[, hc_q := NA_integer_]
@@ -92,6 +93,8 @@ shr <- function(code) { r <- lu50(code); focal(r, wm, fun = "sum", na.rm = TRUE)
 pv <- project(vect(Us), crs(LU))
 U[, `:=`(ind37 = 100 * extract(shr(1), pv)[, 2], com37 = 100 * extract(shr(4), pv)[, 2])]
 P <- merge(P, U, by = c("x", "y"), all.x = TRUE)
+P[, `:=`(haz_job = as.numeric(LABFORCE == 2 & IND1950 %in% HAZ_IND), manuf_job = as.numeric(LABFORCE == 2 & IND1950 >= 306 & IND1950 <= 499))]
+saveRDS(P, file.path(W, "denver_1940_residents.rds"))   # every 1940 resident with the address exposures (for R/censoc_extensions.R; stays on this machine)
 # ---------------------------------------------------------------- 4. CenSoc links
 rd <- function(f) { h <- names(fread(f, nrows = 0)); keep <- intersect(h, c("HISTID", "histid", "byear", "bmonth", "dyear", "dmonth", "death_age", "sex", "weight", "link_abe_exact_conservative"))
   x <- fread(f, select = keep, colClasses = list(character = intersect(keep, c("HISTID", "histid")))); setnames(x, tolower(names(x))); x[, histid := toupper(trimws(histid))]

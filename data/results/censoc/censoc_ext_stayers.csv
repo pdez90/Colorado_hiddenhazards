@@ -1,0 +1,16 @@
+exposure,analysis,years,lo,hi,p,n,term
+1929 industrial district,Died in the Denver metro (percentage points),0.54,-4.98,6.05,0.849,12151,
+"Industrial land within 250 m, 1937 (per 10 points)",Died in the Denver metro (percentage points),-0.54,-1.35,0.27,0.194,12151,
+Hazardous trade within 500 m (to 1940),Died in the Denver metro (percentage points),1.19,-1.49,3.86,0.384,12151,
+HOLC grade D (vs A/B),Died in the Denver metro (percentage points),4.25,-0.32,8.81,0.0681,12151,
+Placebo: commercial land within 250 m (per 10 points),Died in the Denver metro (percentage points),-0.47,-1.06,0.12,0.116,12151,
+1929 industrial district,"Age at death, people who died in the Denver metro",0.131,-0.451,0.713,0.658,6253,zone_ind
+"Industrial land within 250 m, 1937 (per 10 points)","Age at death, people who died in the Denver metro",0.03,-0.057,0.117,0.494,6253,ind10
+Hazardous trade within 500 m (to 1940),"Age at death, people who died in the Denver metro",-0.016,-0.35,0.318,0.924,6253,haz_500
+HOLC grade D (vs A/B),"Age at death, people who died in the Denver metro",-0.218,-0.765,0.329,0.436,6253,holc_D
+Placebo: commercial land within 250 m (per 10 points),"Age at death, people who died in the Denver metro",0.002,-0.068,0.072,0.952,6253,com10
+1929 industrial district,"Age at death, people who died elsewhere",0.12,-0.6,0.839,0.744,5898,zone_ind
+"Industrial land within 250 m, 1937 (per 10 points)","Age at death, people who died elsewhere",-0.068,-0.239,0.102,0.431,5898,ind10
+Hazardous trade within 500 m (to 1940),"Age at death, people who died elsewhere",-0.266,-0.598,0.066,0.116,5898,haz_500
+HOLC grade D (vs A/B),"Age at death, people who died elsewhere",-0.008,-0.659,0.643,0.981,5898,holc_D
+Placebo: commercial land within 250 m (per 10 points),"Age at death, people who died elsewhere",-0.019,-0.083,0.045,0.567,5898,com10

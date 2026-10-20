@@ -1,0 +1,9 @@
+model,term,years,lo,hi,p,n,people
+"Censuses (1910-1940) living within 500 m of a hazardous trade, people traced to an earlier Denver address",censuses_near_haz,-0.154,-0.588,0.28,0.486,4005,"Men, deaths 1975-2020"
+"1940 address only, same people (comparison)",haz_500,-0.553,-1.289,0.183,0.141,4005,"Men, deaths 1975-2020"
+"Childhood address (ages 0-14, 1910-1930) within 500 m of a hazardous trade, with the 1940 address",child_haz_500,0.807,-0.421,2.034,0.198,2370,"Men, deaths 1975-2020"
+"1940 address, with the childhood address",haz_500,-0.955,-1.999,0.088,0.0729,2370,"Men, deaths 1975-2020"
+"Censuses (1910-1940) living within 500 m of a hazardous trade, people traced to an earlier Denver address",censuses_near_haz,-0.121,-0.351,0.109,0.304,5956,"Men and women, deaths at 65+ 1988-2005"
+"1940 address only, same people (comparison)",haz_500,-0.131,-0.476,0.213,0.455,5956,"Men and women, deaths at 65+ 1988-2005"
+"Childhood address (ages 0-14, 1910-1930) within 500 m of a hazardous trade, with the 1940 address",child_haz_500,-0.081,-0.536,0.374,0.727,5001,"Men and women, deaths at 65+ 1988-2005"
+"1940 address, with the childhood address",haz_500,-0.238,-0.615,0.138,0.214,5001,"Men and women, deaths at 65+ 1988-2005"
