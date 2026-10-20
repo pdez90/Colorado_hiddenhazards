@@ -37,7 +37,7 @@ get_img <- function(iiif, image_id, edition, volume, pct = 50) {
   f <- file.path(W, sprintf("%s_v%d_%s.jpg", gsub("-", "_", edition), volume, image_id))
   if (file.exists(f) && file.size(f) > 10000) return(invisible(TRUE))
   Sys.sleep(1)
-  ok <- tryCatch({ download.file(sprintf("%s/full/pct:%d/0/default.jpg", iiif, pct), f, mode = "wb", quiet = TRUE); TRUE }, error = function(e) FALSE)
+  ok <- tryCatch({ download.file(sprintf("%s/full/pct:%d/0/default.jpg", iiif, pct), f, mode = "wb", quiet = TRUE); TRUE }, error = function(e) FALSE, warning = function(w) FALSE)   # a truncated transfer only warns
   if (!ok) { message("  failed: ", image_id); if (file.exists(f)) file.remove(f) }
   invisible(ok) }
 # title, index and key pages, plus the first two images of each volume (indexes are sometimes catalogued as plain sheets)

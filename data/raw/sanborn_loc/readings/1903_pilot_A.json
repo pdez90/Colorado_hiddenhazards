@@ -1,0 +1,782 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 155,
+  "image": "1903_1904_v2_00985_02_1903-0155.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wynkoop",
+     "17th"
+    ],
+    "x": 1208,
+    "y": 410
+   },
+   {
+    "streets": [
+     "Wazee",
+     "17th"
+    ],
+    "x": 2272,
+    "y": 410
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "16th"
+    ],
+    "x": 1208,
+    "y": 1853
+   },
+   {
+    "streets": [
+     "Wazee",
+     "16th"
+    ],
+    "x": 2272,
+    "y": 1853
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "15th"
+    ],
+    "x": 1208,
+    "y": 3298
+   },
+   {
+    "streets": [
+     "Wazee",
+     "15th"
+    ],
+    "x": 2272,
+    "y": 3298
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "155-15",
+    "bounded_by": {
+     "N": "17th",
+     "S": "16th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "partial": false,
+    "dwellings": 0,
+    "stores": 5,
+    "other_nonres": 3,
+    "industrial": [
+     {
+      "label": "WHOL. GRO.",
+      "name": "The Struby Estabrook Mercantile Co's",
+      "trade": "warehouse",
+      "features": "lights gas & elec, city steam heat; shipping shed",
+      "dwellings_same_block": false
+     },
+     {
+      "label": "CANDY FAC.",
+      "name": "The Bowman Hall Candy Fac.",
+      "trade": "other",
+      "features": "none labelled",
+      "dwellings_same_block": false
+     },
+     {
+      "label": "W. HO.",
+      "name": "The Peters Paper Co's W. Ho.",
+      "trade": "warehouse",
+      "features": "wooden posts",
+      "dwellings_same_block": false
+     },
+     {
+      "label": "FEED & BALED HAY",
+      "name": "",
+      "trade": "warehouse",
+      "features": "baled hay sheds",
+      "dwellings_same_block": false
+     }
+    ],
+    "notes": "Hotel Oxford (17th & Wazee corner) with own electric light plant, heaters/boilers in basement; Fairbanks Morse engines 1st floor of hotel building (salesroom). Restaurant, saloons, stores along 17th and Wynkoop near 16th. Lots 4-14 on Wynkoop side vacant."
+   },
+   {
+    "block_id": "155-16",
+    "bounded_by": {
+     "N": "16th",
+     "S": "15th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "partial": false,
+    "dwellings": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "industrial": [
+     {
+      "label": "WHOL. GRO.",
+      "name": "C. S. Morey Mercantile Co's",
+      "trade": "warehouse",
+      "features": "coffee & tea roasting/spice mill indicated (small print, uncertain)",
+      "dwellings_same_block": false
+     },
+     {
+      "label": "IMPLEMENT W. HO.",
+      "name": "Lee-Kinsey Implm't Co's W. Ho.; Kansas City Plow Co.; Parlin & Orendorff Co.",
+      "trade": "warehouse",
+      "features": "wooden posts",
+      "dwellings_same_block": false
+     },
+     {
+      "label": "HEAVY HARDWARE",
+      "name": "The Baum Iron Co.",
+      "trade": "warehouse",
+      "features": "",
+      "dwellings_same_block": false
+     },
+     {
+      "label": "HIDES / SEED / PAPER",
+      "name": "L. H. Watkins (uncertain)",
+      "trade": "tannery/hides",
+      "features": "hides storage",
+      "dwellings_same_block": false
+     },
+     {
+      "label": "FLOUR W. HO.",
+      "name": "",
+      "trade": "warehouse",
+      "features": "",
+      "dwellings_same_block": false
+     }
+    ],
+    "notes": "Wholesale warehouse block: plumbing supplies (M. J. O'Fallon), stove w.ho., butchers supply, Joslin D.G. Co. w.ho., Kennicott-Patterson Transfer, Hurlbut Gro. Co. w.ho."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "All of sheet in Congressional Grant - East Denver; 16th St iron viaduct/stone approach over rail tracks west of Wynkoop. Wholesale warehouse district, no dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 190,
+  "image": "1903_1904_v2_00985_02_1903-0190.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Barnes",
+     "Stanton Av."
+    ],
+    "x": 249,
+    "y": 3328
+   },
+   {
+    "streets": [
+     "Winnie",
+     "Stanton Av."
+    ],
+    "x": 1114,
+    "y": 3342
+   },
+   {
+    "streets": [
+     "Corbett",
+     "Stanton Av."
+    ],
+    "x": 2990,
+    "y": 3460
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "190-10",
+    "bounded_by": {
+     "N": "South Platte River",
+     "S": "Stanton Av.",
+     "E": "railroad grounds (B&M R.R.)",
+     "W": "Barnes (50' wide, proposed)"
+    },
+    "partial": false,
+    "dwellings": 56,
+    "stores": 0,
+    "other_nonres": 2,
+    "industrial": [],
+    "notes": "Irregular shanty settlement around Winnie and Court (Winnie labelled '50 ft wide - proposed'). Sheet note: 'All buildings in this space below to Stanton Av. are shanties only and built on disputed ground.' Count of D labels approx (\u00b14); all frame, some iron clad. Flour mill, oil warehouse and rail yards within ~150-250 m."
+   },
+   {
+    "block_id": "190-8",
+    "bounded_by": {
+     "N": "railroad",
+     "S": "Stanton Av.",
+     "E": "Corbett",
+     "W": "railroad spur"
+    },
+    "partial": true,
+    "dwellings": 17,
+    "stores": 0,
+    "other_nonres": 1,
+    "industrial": [
+     {
+      "label": "IRON & STEEL W. HO.; MACHINERY WARE HO.",
+      "name": "Hendrie & Bolthoff Mf'g & Supply Co's W. Ho.",
+      "trade": "warehouse",
+      "features": "iron clad; night watchman; electric lights",
+      "dwellings_same_block": true
+     },
+     {
+      "label": "CARD CONCENTRATOR FACTY; WOODWORKING",
+      "name": "",
+      "trade": "machine shop",
+      "features": "5 h.p. gasoline engine",
+      "dwellings_same_block": true
+     },
+     {
+      "label": "WAGON SHED; HARNESS",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "",
+      "dwellings_same_block": true
+     },
+     {
+      "label": "PAPER WARE HO.",
+      "name": "'The Republican'",
+      "trade": "warehouse",
+      "features": "",
+      "dwellings_same_block": true
+     }
+    ],
+    "notes": "Shanties (lots 21-31) and dwellings + 1 tenement (301-307 Corbett) share the block with the Hendrie & Bolthoff warehouses and a concentrator factory. Hoyt & Robinson's Add'n."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "FLOUR MILL & ELEVATOR 'A'; FEED MILL",
+    "name": "Crescent Flour Mills",
+    "trade": "flour mill/elevator",
+    "features": "engine 250 h.p., boiler room, brick chimney; elevator cap. 125,000 bu; artesian well; capacity 500 bbl/day",
+    "dwellings_same_block": false,
+    "near": "Hoyt & Robinson's Add'n, between B&M R.R. tracks and spur, N side of Stanton Av."
+   },
+   {
+    "label": "WARE HO.",
+    "name": "Star Lubricat'g Oil Co.",
+    "trade": "oil/paint",
+    "features": "iron clad shed",
+    "dwellings_same_block": false,
+    "near": "1124 Stanton Av., between rail tracks"
+   }
+  ],
+  "sheet_notes": "South Platte River and B&M/C&S rail grounds; shanty town on disputed ground (Barnes/Winnie/Court) next to flour mill and oil warehouse."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 203,
+  "image": "1903_1904_v2_00985_02_1903-0203.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Lawrence",
+     "27th"
+    ],
+    "x": 132,
+    "y": 460
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "27th"
+    ],
+    "x": 1114,
+    "y": 460
+   },
+   {
+    "streets": [
+     "Curtis",
+     "27th"
+    ],
+    "x": 2149,
+    "y": 460
+   },
+   {
+    "streets": [
+     "Champa",
+     "27th"
+    ],
+    "x": 3108,
+    "y": 460
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "26th"
+    ],
+    "x": 1114,
+    "y": 1891
+   },
+   {
+    "streets": [
+     "Curtis",
+     "26th"
+    ],
+    "x": 2149,
+    "y": 1891
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "25th"
+    ],
+    "x": 1114,
+    "y": 3313
+   },
+   {
+    "streets": [
+     "Curtis",
+     "25th"
+    ],
+    "x": 2149,
+    "y": 3313
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "203-86",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "partial": false,
+    "dwellings": 36,
+    "stores": 3,
+    "other_nonres": 0,
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": "",
+      "trade": "other",
+      "features": "oven",
+      "dwellings_same_block": true
+     }
+    ],
+    "notes": "dwellings counted as D-labelled units (a 6-unit brick row on 26th counted 6). Saloon, barber, store at 26th & Arapahoe."
+   },
+   {
+    "block_id": "203-87",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "partial": false,
+    "dwellings": 34,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "Story & Appleton's Add'n; includes terrace rows on 26th."
+   },
+   {
+    "block_id": "203-118",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "partial": false,
+    "dwellings": 13,
+    "stores": 0,
+    "other_nonres": 1,
+    "industrial": [],
+    "notes": "Trinity Memorial Church (heat furnace)."
+   },
+   {
+    "block_id": "203-85",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "partial": false,
+    "dwellings": 25,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "count \u00b12 (two buildings at 2530-2532 Lawrence unlabelled)."
+   },
+   {
+    "block_id": "203-88",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "partial": false,
+    "dwellings": 16,
+    "stores": 0,
+    "other_nonres": 2,
+    "industrial": [],
+    "notes": "Colo. State Armory drill room (26th & Curtis); cloth tent; wagon shed."
+   },
+   {
+    "block_id": "203-117",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "partial": false,
+    "dwellings": 23,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "Smith's Terrace (6 units) on 26th."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Curtis Park residential: brick and frame houses and terraces; no industry beyond a bakery. Good residential control."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 229,
+  "image": "1903_1904_v2_00985_02_1903-0229.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Delgany",
+     "38th"
+    ],
+    "x": 132,
+    "y": 176
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "38th"
+    ],
+    "x": 1158,
+    "y": 176
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "38th"
+    ],
+    "x": 2184,
+    "y": 176
+   },
+   {
+    "streets": [
+     "Wazee",
+     "38th"
+    ],
+    "x": 3181,
+    "y": 176
+   },
+   {
+    "streets": [
+     "Delgany",
+     "36th"
+    ],
+    "x": 132,
+    "y": 2785
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "36th"
+    ],
+    "x": 1158,
+    "y": 2785
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "36th"
+    ],
+    "x": 2184,
+    "y": 2785
+   },
+   {
+    "streets": [
+     "Wazee",
+     "36th"
+    ],
+    "x": 3181,
+    "y": 2785
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "229-40/9",
+    "bounded_by": {
+     "N": "38th",
+     "S": "36th",
+     "E": "Wewatta",
+     "W": "Delgany"
+    },
+    "partial": false,
+    "dwellings": 49,
+    "stores": 0,
+    "other_nonres": 1,
+    "industrial": [],
+    "notes": "St. Vincent's Add'n (blocks 40 and 9 in one long block, 37th not opened). Ironton School (heat furnace). Mostly 1-1.5 storey frame-attic houses."
+   },
+   {
+    "block_id": "229-7",
+    "bounded_by": {
+     "N": "38th",
+     "S": "36th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "partial": false,
+    "dwellings": 31,
+    "stores": 4,
+    "other_nonres": 1,
+    "industrial": [],
+    "notes": "Ironton Add'n. Boarding house and saloon at 38th & Wynkoop; stores at 36th & Wynkoop. Directly faces Star Boiler & Sheet Iron Wks across Wynkoop."
+   },
+   {
+    "block_id": "229-2",
+    "bounded_by": {
+     "N": "38th",
+     "S": "36th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "partial": false,
+    "dwellings": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "industrial": [
+     {
+      "label": "BOILER SHOP; BL'KSM. SHOP",
+      "name": "Star Boiler & Sheet Iron W'ks",
+      "trade": "metal working",
+      "features": "iron oven, chimney (brick 25'), 25 h.p. engine, fuel coal; brick & iron clad shops",
+      "dwellings_same_block": false
+     }
+    ],
+    "notes": "lots 1-34 and 42-64 vacant."
+   },
+   {
+    "block_id": "229-12",
+    "bounded_by": {
+     "N": "36th",
+     "S": "(35th, sheet 230)",
+     "E": "Wewatta",
+     "W": "Delgany"
+    },
+    "partial": true,
+    "dwellings": 12,
+    "stores": 1,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "saloon at 3525 Wewatta."
+   },
+   {
+    "block_id": "229-6",
+    "bounded_by": {
+     "N": "36th",
+     "S": "(35th, sheet 230)",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "partial": true,
+    "dwellings": 25,
+    "stores": 1,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "row of 7-8 brick units on 36th (1724-1738); count approx \u00b13."
+   },
+   {
+    "block_id": "229-3",
+    "bounded_by": {
+     "N": "36th",
+     "S": "(35th, sheet 230)",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "partial": true,
+    "dwellings": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [
+     {
+      "label": "MACHINE SHOP; MAIN MACHINE SHOP; BL'KSM. SHOP; PATTERN SHOP",
+      "name": "J. Geo. Leyner Engineers Works Co. (mf'rs of air compressors & rock drills)",
+      "trade": "machine shop",
+      "features": "50 h.p. engine, dynamo, air compressor, iron chimney 50', coal; iron-clad ware ho.",
+      "dwellings_same_block": false
+     },
+     {
+      "label": "STOCK YARD",
+      "name": "",
+      "trade": "meat packing/stockyard",
+      "features": "",
+      "dwellings_same_block": false
+     }
+    ],
+    "notes": "block continues on sheet 230."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Ironton: working-class houses on Delgany-Wynkoop facing boiler works and Leyner machine works on Wynkoop-Wazee. Union Pacific/Pullman shops nearby (sheets 241/245)."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 249,
+  "image": "1903_1904_v2_00985_02_1903-0249.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Cline",
+     "Fisk Av."
+    ],
+    "x": 205,
+    "y": 182
+   },
+   {
+    "streets": [
+     "Powell",
+     "Fisk Av."
+    ],
+    "x": 1217,
+    "y": 182
+   },
+   {
+    "streets": [
+     "Starr",
+     "Fisk Av."
+    ],
+    "x": 2184,
+    "y": 182
+   },
+   {
+    "streets": [
+     "Baldwin",
+     "Fisk Av."
+    ],
+    "x": 3166,
+    "y": 182
+   },
+   {
+    "streets": [
+     "Cline",
+     "Western (46th) Av."
+    ],
+    "x": 205,
+    "y": 2155,
+    "modern": "46th Av."
+   },
+   {
+    "streets": [
+     "Powell",
+     "Western (46th) Av."
+    ],
+    "x": 1217,
+    "y": 2155,
+    "modern": "46th Av."
+   },
+   {
+    "streets": [
+     "Starr",
+     "Western (46th) Av."
+    ],
+    "x": 2184,
+    "y": 2155,
+    "modern": "46th Av."
+   },
+   {
+    "streets": [
+     "Baldwin",
+     "Western (46th) Av."
+    ],
+    "x": 3166,
+    "y": 2155,
+    "modern": "46th Av."
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "249-3",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Powell",
+     "W": "Cline"
+    },
+    "partial": false,
+    "dwellings": 39,
+    "stores": 1,
+    "other_nonres": 1,
+    "industrial": [
+     {
+      "label": "CATTLE YARD",
+      "name": "Western Breeders Ass'n",
+      "trade": "meat packing/stockyard",
+      "features": "sheds, office",
+      "dwellings_same_block": true
+     }
+    ],
+    "notes": "West Elyria; West Elyria Ho. (boarding house/hotel, stoves, lamps); row of 11 dwellings on Western Av.; saloon at Powell & Western."
+   },
+   {
+    "block_id": "249-4",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Starr",
+     "W": "Powell"
+    },
+    "partial": false,
+    "dwellings": 26,
+    "stores": 4,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "Elyria; two saloons, two stores; several vacant buildings."
+   },
+   {
+    "block_id": "249-10",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Baldwin",
+     "W": "Starr"
+    },
+    "partial": false,
+    "dwellings": 30,
+    "stores": 4,
+    "other_nonres": 0,
+    "industrial": [
+     {
+      "label": "FLOUR STORAGE",
+      "name": "",
+      "trade": "warehouse",
+      "features": "",
+      "dwellings_same_block": true
+     }
+    ],
+    "notes": "Elyria; barber; saloon; rows of 4 brick units on Baldwin."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "HOTEL / annex",
+    "name": "Davenport Hotel",
+    "trade": "other",
+    "features": "",
+    "dwellings_same_block": false,
+    "near": "St. Vincent's Add'n, Delgany & 44th (Colorado) Av., south of Western Av.; sparse lots between Union Pacific and Colorado & Southern R.R. switches"
+   }
+  ],
+  "sheet_notes": "Elyria/West Elyria; Colorado & Eastern R.R. (Wagon road to coal fields) along Starr; railroad grounds SE; note at foot 'Grant Smelter beyond'. Cattle yard shares block with ~20 dwellings."
+ }
+]

@@ -1,0 +1,900 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 254,
+  "image": "1903_1904_v2_00985_02_1903-0254.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Josephine",
+     "45th St"
+    ],
+    "x": 205,
+    "y": 207
+   },
+   {
+    "streets": [
+     "Mouat Av",
+     "45th St"
+    ],
+    "modern": [
+     "Columbine",
+     "45th Av"
+    ],
+    "x": 1107,
+    "y": 207
+   },
+   {
+    "streets": [
+     "Murdock Av",
+     "45th St"
+    ],
+    "modern": [
+     "Elizabeth",
+     "45th Av"
+    ],
+    "x": 1745,
+    "y": 207
+   },
+   {
+    "streets": [
+     "Josephine",
+     "44th Av"
+    ],
+    "x": 205,
+    "y": 1539
+   },
+   {
+    "streets": [
+     "Columbine",
+     "44th Av"
+    ],
+    "x": 1107,
+    "y": 1539
+   },
+   {
+    "streets": [
+     "Elizabeth",
+     "44th Av"
+    ],
+    "x": 1745,
+    "y": 1539
+   },
+   {
+    "streets": [
+     "Dunham Pl",
+     "44th Av"
+    ],
+    "x": 2654,
+    "y": 1539
+   },
+   {
+    "streets": [
+     "Josephine",
+     "43rd Av"
+    ],
+    "x": 205,
+    "y": 2888
+   },
+   {
+    "streets": [
+     "Columbine",
+     "43rd Av"
+    ],
+    "x": 1107,
+    "y": 2888
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "254-5",
+    "bounded_by": {
+     "N": "45th St",
+     "S": "44th Av",
+     "E": "Mouat Av (Columbine)",
+     "W": "Josephine"
+    },
+    "partial": false,
+    "dwellings": 12,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "west half built (lots 3-14), east half vacant"
+   },
+   {
+    "block_id": "254-D",
+    "bounded_by": {
+     "N": "45th St",
+     "S": "44th Av",
+     "E": "Murdock Av (Elizabeth)",
+     "W": "Mouat Av (Columbine)"
+    },
+    "partial": false,
+    "dwellings": 7,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "Resub; 1.5-storey frame-attic houses"
+   },
+   {
+    "block_id": "254-8",
+    "bounded_by": {
+     "N": "45th St",
+     "S": "44th Av",
+     "E": "Dunham Pl",
+     "W": "Murdock Av (Elizabeth)"
+    },
+    "partial": false,
+    "dwellings": 3,
+    "stores": 1,
+    "other_nonres": 1,
+    "industrial": [],
+    "notes": "windmill and water tank (elev. 35')"
+   },
+   {
+    "block_id": "254-4",
+    "bounded_by": {
+     "N": "44th Av",
+     "S": "43rd Av",
+     "E": "Columbine",
+     "W": "Josephine"
+    },
+    "partial": false,
+    "dwellings": 7,
+    "stores": 2,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": ""
+   },
+   {
+    "block_id": "254-E",
+    "bounded_by": {
+     "N": "44th Av",
+     "S": "43rd Av",
+     "E": "Elizabeth",
+     "W": "Columbine"
+    },
+    "partial": false,
+    "dwellings": 5,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "Swansea Terrace: one 12-unit row of flats plus 4 two-storey flat buildings (counted as 5 buildings)"
+   },
+   {
+    "block_id": "254-9",
+    "bounded_by": {
+     "N": "44th Av",
+     "S": "43rd Av",
+     "E": "Dunham Pl",
+     "W": "Elizabeth"
+    },
+    "partial": false,
+    "dwellings": 5,
+    "stores": 0,
+    "other_nonres": 1,
+    "industrial": [],
+    "notes": ""
+   },
+   {
+    "block_id": "254-10",
+    "bounded_by": {
+     "N": "44th Av",
+     "S": "43rd Av",
+     "E": null,
+     "W": "Dunham Pl"
+    },
+    "partial": true,
+    "dwellings": 1,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "Swansea; mostly vacant"
+   },
+   {
+    "block_id": "254-67",
+    "bounded_by": {
+     "N": "43rd Av",
+     "S": "U.P. R.R.",
+     "E": "Columbine",
+     "W": "Josephine"
+    },
+    "partial": true,
+    "dwellings": 3,
+    "stores": 1,
+    "other_nonres": 0,
+    "industrial": [
+     {
+      "label": "ANDERSON BROS COAL & WOOD; HAY & FEED; COAL SHED; WOOD",
+      "name": "Anderson Bros",
+      "trade": "coal/wood yard",
+      "features": "coal shed, wood piles, scales; beside U.P. R.R.",
+      "dwellings_same_block": true
+     }
+    ],
+    "notes": "Mouat's Resub; building at 4262 Josephine labelled S / tenements; inset continues block south to the U.P. R.R."
+   },
+   {
+    "block_id": "254-F",
+    "bounded_by": {
+     "N": "43rd Av",
+     "S": null,
+     "E": "Elizabeth",
+     "W": "Columbine"
+    },
+    "partial": true,
+    "dwellings": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "vacant"
+   },
+   {
+    "block_id": "254-61",
+    "bounded_by": {
+     "N": "43rd Av",
+     "S": null,
+     "E": null,
+     "W": "Dunham Pl"
+    },
+    "partial": true,
+    "dwellings": 2,
+    "stores": 0,
+    "other_nonres": 1,
+    "industrial": [],
+    "notes": "1st Add'n to Swansea"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Swansea / Elyria residential, 1903. Light density (many vacant lots), working-class frame houses and one flats terrace; only industry is a coal & wood yard by the U.P. R.R. Dunham Park east of Dunham Pl. Old names: Mouat Av = Columbine, Murdock Av = Elizabeth (both north of 44th)."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 18,
+  "image": "1903_1904_v1_00985_01_1903-0018.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wewatta",
+     "10th St"
+    ],
+    "x": 1495,
+    "y": 211
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "9th St (not opened)"
+    ],
+    "x": 1495,
+    "y": 1313
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "8th St (not opened)"
+    ],
+    "x": 1495,
+    "y": 2463
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "7th St"
+    ],
+    "x": 1495,
+    "y": 3518
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "10th St"
+    ],
+    "x": 2888,
+    "y": 211
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "7th St"
+    ],
+    "x": 2888,
+    "y": 3518
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "18-36",
+    "bounded_by": {
+     "N": "10th St",
+     "S": "9th St (not opened)",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "partial": false,
+    "dwellings": 3,
+    "stores": 0,
+    "other_nonres": 1,
+    "industrial": [],
+    "notes": "West Denver / Congressional Grant; crossed by the mill race; shanties"
+   },
+   {
+    "block_id": "18-70",
+    "bounded_by": {
+     "N": "9th St (not opened)",
+     "S": "8th St (not opened)",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "partial": false,
+    "dwellings": 4,
+    "stores": 0,
+    "other_nonres": 2,
+    "industrial": [
+     {
+      "label": "BARREL STORAGE",
+      "name": "",
+      "trade": "warehouse",
+      "features": "",
+      "dwellings_same_block": true
+     },
+     {
+      "label": "WORK SHOP ELEV'D 40'",
+      "name": "",
+      "trade": "other",
+      "features": "elevated workshop",
+      "dwellings_same_block": true
+     }
+    ],
+    "notes": "'Squatters' shanties' (D marked A-F, some on the unopened 9th St)"
+   },
+   {
+    "block_id": "18-71",
+    "bounded_by": {
+     "N": "8th St (not opened)",
+     "S": "7th St",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "partial": false,
+    "dwellings": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [
+     {
+      "label": "L. A. WATKINS TAR PAPER FAC'Y; TAR PAPER WARE HO.; CARP'R SHOP; LUMBER STORAGE",
+      "name": "L. A. Watkins",
+      "trade": "oil/paint",
+      "features": "tar tanks, iron tar tank 20', pitch kiln 20', coal bin, engine 10 h.p., iron chimney 35'; man sleeps on premises",
+      "dwellings_same_block": false
+     }
+    ],
+    "notes": "tar paper (roofing) works"
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "THE DENVER GAS & ELECTRIC CO'S GAS PLANT: retort ho., water gas plant, purifier tanks, gasometers B and K, meter ho., condensing room, machine shop, coke piles",
+    "name": "Denver Gas & Electric Co",
+    "trade": "gas works",
+    "features": "retorts (stone, iron floor), gasometer B (iron), gasometer K (1 million gal., iron), coal tar tanks under ground, tar tank under ground, purifying tanks, purifier tank under ground, exhauster, coke piles, travelling coke buckets",
+    "dwellings_same_block": false,
+    "near": "west of Wewatta between 10th and 7th, along C&S R.R. and Mill Creek; squatters' shanties ~150 m east"
+   },
+   {
+    "label": "COLORADO AMMONIA CHEMICAL CO.",
+    "name": "Colorado Ammonia Chemical Co",
+    "trade": "chemical",
+    "features": "retort, lime ho., tanks, ammonia tanks; power from gas works",
+    "dwellings_same_block": false,
+    "near": "north end of the gas plant by Mill Creek"
+   },
+   {
+    "label": "INDEPENDENT COAL CO'S COAL YARD; WOOD YARD; COAL SHEDS",
+    "name": "Independent Coal Co",
+    "trade": "coal/wood yard",
+    "features": "coal sheds",
+    "dwellings_same_block": false,
+    "near": "south of gas plant near 7th St"
+   }
+  ],
+  "sheet_notes": "Platte bottoms in West Denver (now Auraria campus / Ball Arena area). Sheet rotated (north arrow to upper left). Gas works with buried coal-tar tanks and a tar-paper factory, with squatters' shanties between them."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 25,
+  "image": "1903_1904_v1_00985_01_1903-0025.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wazee",
+     "7th St"
+    ],
+    "x": 235,
+    "y": 255
+   },
+   {
+    "streets": [
+     "Wazee",
+     "6th St"
+    ],
+    "x": 235,
+    "y": 1334
+   },
+   {
+    "streets": [
+     "Wazee",
+     "5th St"
+    ],
+    "x": 235,
+    "y": 2413
+   },
+   {
+    "streets": [
+     "Wazee",
+     "4th St"
+    ],
+    "x": 235,
+    "y": 3489
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "6th St"
+    ],
+    "modern": [
+     "Market",
+     "6th St"
+    ],
+    "x": 1671,
+    "y": 1334
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "5th St"
+    ],
+    "modern": [
+     "Market",
+     "5th St"
+    ],
+    "x": 1671,
+    "y": 2413
+   },
+   {
+    "streets": [
+     "Larimer",
+     "7th St"
+    ],
+    "x": 3049,
+    "y": 255
+   },
+   {
+    "streets": [
+     "Larimer",
+     "5th St"
+    ],
+    "x": 3049,
+    "y": 2413
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "25-255",
+    "bounded_by": {
+     "N": "7th St",
+     "S": "6th St",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "partial": false,
+    "dwellings": 1,
+    "stores": 0,
+    "other_nonres": 1,
+    "industrial": [
+     {
+      "label": "WESTERN BOILER WORKS: BOILER SHOP, BLKSM SHOP, RIVETING TOWER, IRON STORAGE",
+      "name": "Western Boiler Works",
+      "trade": "metal working",
+      "features": "iron-clad boiler shop, riveting tower, blacksmith shop with engine & boiler, iron chimney 35', water tank elev. 16'",
+      "dwellings_same_block": true
+     },
+     {
+      "label": "BAYHA & BOHM MONUMENT W'KS; STONE SHED",
+      "name": "Bayha & Bohm",
+      "trade": "brick/stone",
+      "features": "",
+      "dwellings_same_block": true
+     },
+     {
+      "label": "D. & R. G. R.R. ICE HO.",
+      "name": "D&RG R.R.",
+      "trade": "rail shops/roundhouse",
+      "features": "ice house, ice slide",
+      "dwellings_same_block": true
+     }
+    ],
+    "notes": "cut by D&RG R.R. yard tracks"
+   },
+   {
+    "block_id": "25-103",
+    "bounded_by": {
+     "N": "7th St",
+     "S": "6th St",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "partial": false,
+    "dwellings": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [
+     {
+      "label": "THE HALLACK AND HOWARD LUMBER CO.: LUMBER SHEDS, SASH & DOOR M'F'G, SASH & DOOR WARE HO., WARE HOUSE (LIME, CEMENT, WIRE, NAILS)",
+      "name": "Hallack & Howard Lumber Co",
+      "trade": "lumber/planing",
+      "features": "steam dry kiln, engine/boiler room, sash & door mill",
+      "dwellings_same_block": false
+     }
+    ],
+    "notes": ""
+   },
+   {
+    "block_id": "25-258",
+    "bounded_by": {
+     "N": "6th St",
+     "S": "5th St",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "partial": false,
+    "dwellings": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "industrial": [
+     {
+      "label": "THE F. C. AYRES MERCANTILE CO. FEED, HAY & GRAIN",
+      "name": "F. C. Ayres Mercantile Co",
+      "trade": "flour mill/elevator",
+      "features": "feed mills, cleaners, iron-clad",
+      "dwellings_same_block": false
+     },
+     {
+      "label": "SAMPLING WORKS NOT RUNNING",
+      "name": "",
+      "trade": "smelter",
+      "features": "ore sampling works (idle)",
+      "dwellings_same_block": false
+     },
+     {
+      "label": "COAL & WOOD YARD",
+      "name": "",
+      "trade": "coal/wood yard",
+      "features": "coal shed",
+      "dwellings_same_block": false
+     }
+    ],
+    "notes": ""
+   },
+   {
+    "block_id": "25-257",
+    "bounded_by": {
+     "N": "6th St",
+     "S": "5th St",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "partial": false,
+    "dwellings": 12,
+    "stores": 0,
+    "other_nonres": 1,
+    "industrial": [
+     {
+      "label": "S. & S. MACHINERY CO. WARE HO., REPAIR SHOP, BLKSM",
+      "name": "S. & S. Machinery Co",
+      "trade": "machine shop",
+      "features": "engine & boiler, blacksmith, water tank on roof",
+      "dwellings_same_block": true
+     }
+    ],
+    "notes": "5-house brick row 1313-1321 W. Walnut and 5 houses on Larimer; S&S strip between the rail spur and the block (uncertain whether inside block 257)"
+   },
+   {
+    "block_id": "25-264",
+    "bounded_by": {
+     "N": "5th St",
+     "S": "4th St",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "partial": false,
+    "dwellings": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [
+     {
+      "label": "THE COLORADO IRON & METAL YARD; JUNK SHEDS; JUNK YARD",
+      "name": "Colorado Iron & Metal",
+      "trade": "metal working",
+      "features": "junk / scrap yard",
+      "dwellings_same_block": false
+     }
+    ],
+    "notes": "crossed by rail spurs"
+   },
+   {
+    "block_id": "25-263",
+    "bounded_by": {
+     "N": "5th St",
+     "S": "4th St",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "partial": false,
+    "dwellings": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "industrial": [
+     {
+      "label": "STONE YARD; STONE SHED",
+      "name": "",
+      "trade": "brick/stone",
+      "features": "",
+      "dwellings_same_block": false
+     }
+    ],
+    "notes": "mostly vacant"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "West Denver (Auraria) between the D&RG yard and Larimer: boiler works, lumber/sash mill, idle ore sampling works, junk yard; one block (257) of dwellings among them. W. Walnut = Market (as printed)."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 51,
+  "image": "1903_1904_v1_00985_01_1903-0051.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Thurman",
+     "Mulberry (proposed)"
+    ],
+    "x": 235,
+    "y": 2674
+   },
+   {
+    "streets": [
+     "S. 2nd St",
+     "Mulberry (proposed)"
+    ],
+    "x": 700,
+    "y": 2690
+   },
+   {
+    "streets": [
+     "S. 3rd St",
+     "Mulberry"
+    ],
+    "x": 1677,
+    "y": 2771
+   },
+   {
+    "streets": [
+     "S. 3rd St",
+     "Grape"
+    ],
+    "x": 1677,
+    "y": 3202
+   },
+   {
+    "streets": [
+     "S. 4th St",
+     "Mulberry"
+    ],
+    "x": 3108,
+    "y": 2771
+   },
+   {
+    "streets": [
+     "S. 4th St",
+     "Grape"
+    ],
+    "x": 3108,
+    "y": 3202
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "51-4",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": null,
+     "W": "Thurman"
+    },
+    "partial": true,
+    "dwellings": 7,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "1st Add'n to Jerome Park, lots 16-27 (250-262 Thurman)"
+   },
+   {
+    "block_id": "51-RM",
+    "bounded_by": {
+     "N": null,
+     "S": "Mulberry",
+     "E": "S. 4th St",
+     "W": "Mill Race"
+    },
+    "partial": true,
+    "dwellings": 2,
+    "stores": 0,
+    "other_nonres": 2,
+    "industrial": [
+     {
+      "label": "UNION ROLLING MILL AND FOUNDRY CO.: MOULDING ROOM, BRASS FOUNDRY, BL'KSM, MACH. SHOP, ROLLS, SCRAP YARD",
+      "name": "Union Rolling Mill and Foundry Co",
+      "trade": "foundry",
+      "features": "cupolas, core oven, brass pot, furnace with iron chimneys 50' and 25', rolls, engines 100 h.p. and 20 h.p., rattlers, oil house, scrap bins",
+      "dwellings_same_block": true
+     }
+    ],
+    "notes": "houses at 201 and 203 Mulberry inside the mill block"
+   },
+   {
+    "block_id": "51-1",
+    "bounded_by": {
+     "N": "Mulberry",
+     "S": "Grape",
+     "E": "S. 4th St",
+     "W": "S. 3rd St"
+    },
+    "partial": false,
+    "dwellings": 8,
+    "stores": 0,
+    "other_nonres": 3,
+    "industrial": [],
+    "notes": "1st Add'n, faces the rolling mill across Mulberry"
+   },
+   {
+    "block_id": "51-2",
+    "bounded_by": {
+     "N": "Grape",
+     "S": null,
+     "E": "S. 4th St",
+     "W": "S. 3rd St"
+    },
+    "partial": true,
+    "dwellings": 3,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": ""
+   },
+   {
+    "block_id": "51-Mobles",
+    "bounded_by": {
+     "N": "Mulberry",
+     "S": null,
+     "E": "Mill Race",
+     "W": "S. 2nd St"
+    },
+    "partial": true,
+    "dwellings": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "platted, vacant"
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "THE DENVER IRON AND WIRE WORKS: ORNAMENTAL IRON & FENCE W'KS; ELECTRO PLATING; WIRE FENCE MACH.; MACHINE SHOP; BLKSM",
+    "name": "Denver Iron and Wire Works",
+    "trade": "metal working",
+    "features": "electro plating room (concrete floor), iron chimney 20', blacksmith, electric motors; watchman lives on premises",
+    "dwellings_same_block": true,
+    "near": "between the mill race and S. 4th St, north part of sheet; ~5 dwellings (incl. 96, 96 1/2, 1035, 1037, 1055) on the same unplatted tract"
+   },
+   {
+    "label": "THE AMERICAN CLAY W'KS POTTERY",
+    "name": "American Clay Works",
+    "trade": "brick/stone",
+    "features": "kiln, washer, upright boiler 10 h.p., iron chimney 30', water tank on roof",
+    "dwellings_same_block": false,
+    "near": "west of the rolling mill by the mill race; a dwelling (A) adjoining"
+   }
+  ],
+  "sheet_notes": "Jerome Park / West Denver industrial edge by the mill race: plating works, rolling mill & foundry, pottery, with houses on the same tracts and directly across Mulberry."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 86,
+  "image": "1903_1904_v1_00985_01_1903-0086.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "W. Alameda Av",
+     "S. Santa Fe Av"
+    ],
+    "x": 1451,
+    "y": 141,
+    "note": "approximate"
+   },
+   {
+    "streets": [
+     "S. Santa Fe Av",
+     "W. Alameda Av (lower label, section line)"
+    ],
+    "x": 1950,
+    "y": 1500,
+    "note": "low confidence"
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "86-5",
+    "bounded_by": {
+     "N": "W. Alameda Av",
+     "S": null,
+     "E": "S. Santa Fe Av",
+     "W": null
+    },
+    "partial": true,
+    "dwellings": 13,
+    "stores": 2,
+    "other_nonres": 0,
+    "industrial": [],
+    "notes": "Norwood Add'n; a tent at the west end"
+   },
+   {
+    "block_id": "86-4",
+    "bounded_by": {
+     "N": "W. Alameda Av",
+     "S": null,
+     "E": "C&S R.R.",
+     "W": "S. Santa Fe Av"
+    },
+    "partial": true,
+    "dwellings": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "industrial": [
+     {
+      "label": "HUGHES BROS LUMBER YARD; LUMBER SHEDS; WARE HO.",
+      "name": "Hughes Bros",
+      "trade": "lumber/planing",
+      "features": "",
+      "dwellings_same_block": false
+     }
+    ],
+    "notes": "Norwood Add'n block 4 north part vacant"
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "THE COLORADO ZINC CO. SEPARATOR",
+    "name": "Colorado Zinc Co",
+    "trade": "smelter",
+    "features": "rotary dryer, crushers, rolls, separators, Wilfley tables, concentrate bins, ore bin, settling tanks, boiler house with iron chimney 50', engine 100 h.p.; runs day and night",
+    "dwellings_same_block": false,
+    "near": "west of S. Santa Fe south of W. Alameda by the power race and South Platte; dwelling 'B' ~40 m away"
+   },
+   {
+    "label": "S. T. RUSH COAL YARD; COAL BIN",
+    "name": "S. T. Rush",
+    "trade": "coal/wood yard",
+    "features": "",
+    "dwellings_same_block": false,
+    "near": "between C&S R.R. and mill race north of W. Alameda"
+   }
+  ],
+  "sheet_notes": "South Platte at W. Alameda: zinc ore separator, lumber and coal yards; Norwood Add'n houses north of the cultivated land; ~4 dwellings (1000-1006) east of the C&S R.R. by the mill race. Few named intersections for georeferencing; neighbouring sheets needed."
+ }
+]
