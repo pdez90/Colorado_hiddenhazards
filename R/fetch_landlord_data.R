@@ -57,11 +57,15 @@ if (!file.exists(AC)) {
   fwrite(a[, .(zcta, med_hh_income, pct_white_nh, pop)], AC); message("ACS ZCTAs: ", nrow(a))
 }
 # ---------------------------------------------------------------- 4. Eviction Lab, Colorado tracts and counties
-EV <- c(tract = "https://eviction-lab-data-downloads.s3.amazonaws.com/data-for-analysis/tract_proprietary_valid_2000_2018.csv",
-        county = "https://eviction-lab-data-downloads.s3.amazonaws.com/data-for-analysis/county_proprietary_valid_2000_2018.csv")
+S3 <- "https://eviction-lab-data-downloads.s3.amazonaws.com/"
+EV <- list(tract = paste0(S3, c("data-for-analysis/tract_proprietary_valid_2000_2018.csv", "estimating-eviction-prevalance-across-us/tract_proprietary_valid_2000_2018.csv",
+                                "estimating-eviction-prevalance-across-us/tract_proprietary_2000_2018.csv")),
+           county = paste0(S3, c("data-for-analysis/county_proprietary_valid_2000_2018.csv", "estimating-eviction-prevalance-across-us/county_proprietary_valid_2000_2018.csv")))
 for (k in names(EV)) { out <- sprintf("work/evictionlab/%s_proprietary_valid_2000_2018_CO.csv", k); if (file.exists(out)) next
-  f <- tempfile(fileext = ".csv"); ok <- tryCatch({ download.file(EV[[k]], f, mode = "wb", quiet = TRUE); TRUE }, error = function(e) FALSE, warning = function(w) FALSE)
-  if (!ok) { message("Eviction Lab ", k, " file not reachable: ", EV[[k]]); next }
+  f <- tempfile(fileext = ".csv"); ok <- FALSE
+  for (u in EV[[k]]) { ok <- tryCatch({ download.file(u, f, mode = "wb", quiet = TRUE); TRUE }, error = function(e) FALSE, warning = function(w) FALSE)
+    if (ok) { message("Eviction Lab ", k, ": ", u); break } else message("Eviction Lab ", k, " file not reachable: ", u) }
+  if (!ok) next
   d <- fread(f, colClasses = "character"); file.remove(f); message("Eviction Lab ", k, " columns: ", paste(names(d), collapse = ", "))
   idc <- names(d)[grepl("^(id|geoid|fips|cofips|GEOID)$", names(d), ignore.case = TRUE)][1]
   d <- d[substr(sprintf("%s", get(idc)), 1, 2) == "08" | (nchar(get(idc)) %in% c(10, 4) & substr(get(idc), 1, 1) == "8")]   # Colorado (FIPS 08; leading zero sometimes dropped)

@@ -8,8 +8,10 @@
 #    roaches, bed bugs, water damage, sewage) and to Community Planning & Development about the outside of a property (trash, weeds,
 #    outdoor storage, inoperable vehicles, dilapidated fences, neglected or vacant buildings, illegal occupancy). Snow-on-sidewalk
 #    requests are left out (weather, not the building). The classification is printed with the most common request types in each class.
-# 2. Linking. A request is joined to a building by house number, street name and ZIP (the Assessor's situs address); otherwise to the
-#    nearest building within 30 m of its coordinates. A building is all parcels sharing a situs street address (a condominium building
+# 2. Linking. A request is joined to a building by house number, street name and ZIP (the Assessor's situs address); failing that, by
+#    the street address alone when it is unique in Denver (no ZIP given), by the nearest house number on the same street and side
+#    (within 10, or 100 for buildings of 20+ units, which often carry several numbers), or by coordinates (nearest building within 60 m,
+#    or nearest building of 20+ units within 150 m). A building is all parcels sharing a situs street address (a condominium building
 #    is one building). Its owner is the owner family holding most of its rental units.
 # 3. Models (rental buildings; Poisson with tract fixed effects and standard errors clustered by tract): requests on the owner's
 #    portfolio size in Denver (log rental units, and size bands), with the building's units (and their square), type, decade built, owner
@@ -29,7 +31,7 @@ F311 <- Sys.glob("work/denver311/311_*.csv"); if (!length(F311)) stop("run Rscri
 # ---------------------------------------------------------------- buildings and their owners
 P <- fread(file.path(D, "owners.csv"), colClasses = "character")[!duplicated(SCHEDNUM)]
 P <- merge(P[, .(SCHEDNUM, SITUS_ADDRESS_LINE1, SITUS_ZIP, SITUS_X_COORD, SITUS_Y_COORD, RES_ORIG_YEAR_BUILT)], fread(G, colClasses = c(SCHEDNUM = "character")), by = "SCHEDNUM")
-addr_key <- function(x) { x <- toupper(trimws(ifelse(is.na(x), "", x))); x <- gsub("[.,#]", " ", x); x <- sub("\\b(UNIT|APT|STE|SUITE)\\b.*$", "", x)
+addr_key <- function(x) { x <- toupper(trimws(ifelse(is.na(x), "", x))); x <- gsub("[.,#]", " ", x); x <- gsub("\\bSAINT\\b", "ST", x); x <- sub("\\b(UNIT|APT|STE|SUITE)\\b.*$", "", x)
   x <- gsub("\\b(N|S|E|W|NORTH|SOUTH|EAST|WEST)\\b", " ", x)
   x <- gsub("\\b(ST|STREET|AVE|AVENUE|AV|BLVD|BOULEVARD|PL|PLACE|DR|DRIVE|CT|COURT|WAY|LN|LANE|RD|ROAD|PKWY|PARKWAY|CIR|CIRCLE|TER|TERRACE)\\b", " ", x)
   w <- strsplit(trimws(gsub("\\s+", " ", x)), " "); vapply(w, function(t) if (length(t) >= 2 && grepl("^[0-9]+", t[1])) paste(head(t, 2), collapse = " ") else "", "") }
@@ -61,12 +63,27 @@ R <- R[!is.na(class)]
 R[, `:=`(akey = addr_key(Incident_Address_1), zip = z5(Incident_Zip_Code), lon = num(Longitude), lat = num(Latitude))]
 R[, bkey := fifelse(akey != "", paste(akey, zip), NA_character_)]
 R[, how := fifelse(bkey %in% B$bkey, "address", NA_character_)]
-nn_i <- R[is.na(how) & !is.na(lon) & !is.na(lat) & lon < -100, which = TRUE]
+# address without a ZIP: the street address if it is unique in Denver
+BK <- B[!grepl("^parcel_", bkey), .(bkey, akey = sub(" [0-9]{5}$|\\s+$", "", bkey))]; uk <- BK[, .N, by = akey][N == 1, akey]
+R[is.na(how) & akey != "" & zip == "" & akey %in% uk, `:=`(bkey = BK$bkey[match(akey, BK$akey)], how = "address (no ZIP; unique street address)")]
+# a building with several street numbers on one parcel: the nearest house number on the same street and side (same parity), within 10
+# numbers, or 100 for a building of 20+ units (apartment complexes)
+BK[, `:=`(num = as.integer(sub(" .*", "", akey)), street = sub("^[0-9]+ ", "", akey), zip = sub(".* ", "", bkey))]; BK[, par := num %% 2L]
+ri <- R[is.na(how) & akey != "", which = TRUE]
+if (length(ri)) { Q <- R[ri, .(i = ri, num = as.integer(sub(" .*", "", akey)), street = sub("^[0-9]+ ", "", akey), zip)][!is.na(num)][, par := num %% 2L]
+  setkey(BK, street, zip, par, num); m <- BK[Q, on = .(street, zip, par, num), roll = "nearest", .(i, bkey, bnum = x.num, qnum = i.num)]
+  m <- merge(m[!is.na(bkey)], B[, .(bkey, bunits = units)], by = "bkey"); m <- m[abs(bnum - qnum) <= fifelse(bunits >= 20, 100, 10)]
+  R[m$i, `:=`(bkey = m$bkey, how = "nearest house number on the same street and side (within 10; 100 for 20+ units)")] }
+# coordinates: nearest building within 60 m, or the nearest building of 20+ units within 150 m (apartment complexes)
+nn_i <- R[is.na(how) & !is.na(lon) & !is.na(lat) & lon < -100 & lon > -106, which = TRUE]
 if (length(nn_i)) { rxy <- st_coordinates(st_transform(st_as_sf(R[nn_i, .(lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM))
-  nn <- RANN::nn2(as.matrix(B[, .(ux, uy)]), rxy, k = 1); hit <- nn$nn.dists[, 1] <= 30
-  R[nn_i[hit], `:=`(bkey = B$bkey[nn$nn.idx[hit, 1]], how = "coordinates (30 m)")] }
-R[is.na(how), how := "not a residential building in the parcel file"]
-R[how == "not a residential building in the parcel file", bkey := NA_character_]
+  nn <- RANN::nn2(as.matrix(B[, .(ux, uy)]), rxy, k = 1); hit <- nn$nn.dists[, 1] <= 60
+  R[nn_i[hit], `:=`(bkey = B$bkey[nn$nn.idx[hit, 1]], how = "coordinates (nearest building within 60 m)")]
+  BB <- B[units >= 20]; nn_j <- nn_i[!hit]
+  if (length(nn_j) && nrow(BB)) { nb <- RANN::nn2(as.matrix(BB[, .(ux, uy)]), rxy[!hit, , drop = FALSE], k = 1); h2 <- nb$nn.dists[, 1] <= 150
+    R[nn_j[h2], `:=`(bkey = BB$bkey[nb$nn.idx[h2, 1]], how = "coordinates (building of 20+ units within 150 m)")] } }
+R[is.na(how), how := fifelse(akey == "" & (is.na(lon) | lon > -100), "no usable address or coordinates", "not a residential building in the parcel file")]
+R[!grepl("^address|^nearest|^coordinates", how), bkey := NA_character_]
 LINK <- R[, .N, by = .(class, how)][, pct := round(100 * N / sum(N), 1), by = class][order(class, -N)]; print(LINK)
 yrs <- sort(unique(num(R$year))); NY <- length(yrs)
 CNT <- dcast(R[!is.na(bkey), .N, by = .(bkey, class)], bkey ~ class, value.var = "N", fill = 0)
@@ -155,15 +172,20 @@ if (file.exists(EVF)) {
                                                                 filing_rate = round(100 * sum(filings_per_year) / sum(renter_households), 2)), by = .(large_owner_tercile)][order(large_owner_tercile)]
     EVS[, years := sprintf("%d-%d", y1 - 4, y1)]; print(EVS); print(EVM)
   }
-} else message("Eviction Lab file missing: run Rscript R/fetch_landlord_data.R")
+} else message("Eviction Lab tract file missing: run Rscript R/fetch_landlord_data.R (tract results skipped)")
+EVCF <- "work/evictionlab/county_proprietary_valid_2000_2018_CO.csv"; EVC <- NULL
+if (file.exists(EVCF)) { E2 <- fread(EVCF, colClasses = "character")
+  EVC <- E2[num(cofips) == 8031, .(year = num(year), filings = num(filings), filing_rate = num(filing_rate), judgments = num(judgements), judgment_rate = num(judgement_rate))][order(year)]
+  message("Denver County eviction filings (Eviction Lab):"); print(EVC) }
 # ---------------------------------------------------------------- write (aggregates only)
 out <- list(classes = CLS_TOP, linking = LINK, rates = RATES, outcome_concentration = OUTC, models = MODELS)
 if (!is.null(EVM)) { out$evictions_by_large_owner_share <- EVS; out$evictions_models <- EVM }
+if (!is.null(EVC)) out$evictions_denver_county <- EVC
 for (k in names(out)) { fwrite(out[[k]], file.path(O, paste0(k, ".csv"))); fwrite(out[[k]], file.path(A, paste0("conditions_", k, ".csv"))) }
 kab <- function(x) { x <- as.data.frame(x); c(paste("|", paste(names(x), collapse = " | "), "|"), paste0(strrep("|---", ncol(x)), "|"),
   apply(x, 1, function(r) paste("|", paste(ifelse(is.na(r), "", trimws(r)), collapse = " | "), "|"))) }
 writeLines(c("# Housing conditions and evictions by landlord, Denver", "", sprintf("311 requests %d-%d (%d years); aggregates only.", min(yrs), max(yrs), NY), "",
              "## Request classes (most common request types)", "", kab(CLS_TOP), "", "## Linking requests to buildings", "", kab(LINK), "",
              "## Rates", "", kab(RATES), "", "## Largest 1% of owners", "", kab(OUTC), "", "## Poisson models (incidence-rate ratios, tract fixed effects)", "", kab(MODELS),
-             if (!is.null(EVM)) c("", "## Evictions (Eviction Lab)", "", kab(EVS), "", kab(EVM))), file.path(O, "summary.md"))
+             if (!is.null(EVM)) c("", "## Evictions (Eviction Lab)", "", kab(EVS), "", kab(EVM)), if (!is.null(EVC)) c("", "## Denver County eviction filings (Eviction Lab)", "", kab(EVC))), file.path(O, "summary.md"))
 message("wrote ", O)
