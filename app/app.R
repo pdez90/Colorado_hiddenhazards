@@ -91,10 +91,13 @@ ur_poly <- if (file.exists(dd("urban_renewal_denver.geojson"))) st_read(dd("urba
 ou_poly <- if (file.exists(dd("superfund_ou_study.geojson"))) st_read(dd("superfund_ou_study.geojson"), quiet = TRUE) else NULL
 sb03 <- if (file.exists(dd("sanborn_1903_sheets.geojson"))) st_read(dd("sanborn_1903_sheets.geojson"), quiet = TRUE) else NULL
 bl03 <- if (file.exists(dd("sanborn_1903_blocks.geojson"))) st_read(dd("sanborn_1903_blocks.geojson"), quiet = TRUE) else NULL
-s03_area <- rd_opt("sanborn1903_expo_area.csv"); s03_zexp <- rd_opt("sanborn1903_zexp.csv"); s03_who <- rd_opt("sanborn1903_who.csv"); s03_pers <- rd_opt("sanborn1903_persist.csv"); s03_trades <- rd_opt("sanborn1903_trades.csv")
+s03_area <- rd_opt("sanborn1903_expo_area.csv"); s03_cov <- rd_opt("sanborn1903_cover.csv"); s03_zexp <- rd_opt("sanborn1903_zexp.csv"); s03_who <- rd_opt("sanborn1903_who.csv"); s03_pers <- rd_opt("sanborn1903_persist.csv"); s03_trades <- rd_opt("sanborn1903_trades.csv")
 sb_poly <- if (file.exists(dd("sanborn_volumes.geojson"))) st_read(dd("sanborn_volumes.geojson"), quiet = TRUE) else NULL
 vb_nb <- if (file.exists(dd("vbi70_neighborhoods.geojson"))) st_read(dd("vbi70_neighborhoods.geojson"), quiet = TRUE) else NULL
 hed <- rd_opt("hedonic_models.csv"); own_size <- rd_opt("ownership_owner_size.csv"); own_conc <- rd_opt("ownership_concentration.csv"); own_types <- rd_opt("ownership_owner_types.csv"); own_site <- rd_opt("ownership_by_site_proximity.csv"); own_holc <- rd_opt("ownership_by_holc.csv"); own_assoc <- rd_opt("ownership_tract_associations.csv"); own_tr <- rd_opt("ownership_by_tract.csv", colClasses = c(GEOID = "character")); rod <- rd_opt("vbi70_rod2003_soils.csv"); ur_comp <- rd_opt("urban_renewal_composition.csv"); ur_sites <- rd_opt("urban_renewal_sites.csv")
+OW_VARS <- c("Rental units held by owners of 20+ units (%)" = "pct_rental_owner_20plus", "Rental units held by owners of 100+ units (%)" = "pct_rental_owner_100plus",
+             "Rental units held by companies (LLC, corporation, partnership) (%)" = "pct_rental_company", "Rental units with an owner outside Colorado (%)" = "pct_rental_out_of_state",
+             "Units not occupied by their owner (%)" = "pct_rental", "Rental units owned by public agencies (%)" = "pct_rental_public")
 SB_EDS <- c("1887", "1890\u20131893", "1903\u20131904", "1929\u20131930", "1950\u20131951"); SB_COL <- c("#8c510a", "#bf812d", "#dfc27d", "#35978f", "#01665e")
 AERIAL_1933 <- "https://tiles.arcgis.com/tiles/44C95LOqZjbh8Row/arcgis/rest/services/Denver_1933_Aerial/MapServer/tile/{z}/{y}/{x}"
 AERIAL_ATTR <- "1933 aerial survey (Jasper King): Denver Public Library; georeferenced by the City and County of Denver"
@@ -364,7 +367,7 @@ ui <- page_navbar(id = "nav",
       unit_note("city blocks on the 152 sheets read (1903\u201304); 1910 enumeration districts; 1929 zoning districts")),
     layout_columns(col_widths = c(6, 6),
       card(card_header("How many homes shared a block with industry?"), unit_note("dwellings (D-marked buildings, flats and shanties) on the sheets read"),
-           tableOutput("t_s03_area"),
+           tableOutput("t_s03_area"), tags$small(class = "text-muted", textOutput("s03_cov_txt", inline = TRUE)), tags$br(),
            tags$small(class = "text-muted", "Hazardous trades: foundries, smelters, metal and machine works, chemical and gas works, oil, paint and tar, tanneries, packing houses and stockyards, breweries, brick and pottery kilns, rail shops and power plants. Heavy trades exclude metal and machine shops and breweries. 'Facing' counts dwellings directly across a street from a plant.")),
       card(card_header("What the 1929 zoning did with them"), unit_note("1903 blocks by the 1929 zoning district they fall in"),
            tableOutput("t_s03_zone"),
@@ -622,9 +625,7 @@ ui <- page_navbar(id = "nav",
       unit_note("parcels and units in the City and County of Denver; map: 2010 census tracts with 50+ rental units")),
     layout_columns(col_widths = c(3, 9),
       card(card_header("Map"), unit_note("2010 census tracts, City and County of Denver"),
-           selectInput("ow_var", "Shade tracts by", c("Rental units held by owners of 20+ units (%)" = "pct_rental_owner_20plus", "Rental units held by owners of 100+ units (%)" = "pct_rental_owner_100plus",
-                                                    "Rental units held by companies (LLC, corporation, partnership) (%)" = "pct_rental_company", "Rental units with an owner outside Colorado (%)" = "pct_rental_out_of_state",
-                                                    "Units not occupied by their owner (%)" = "pct_rental", "Rental units owned by public agencies (%)" = "pct_rental_public"), width = "100%"),
+           selectInput("ow_var", "Shade tracts by", OW_VARS, width = "100%"),
            tags$small(class = "text-muted", "Owner size counts the owner family's rental units across all of Denver. Tracts with fewer than 50 rental units are left blank.")),
       card(full_screen = TRUE, leafletOutput("map_own", height = 520))),
     layout_columns(col_widths = c(6, 6),
@@ -927,7 +928,7 @@ server <- function(input, output, session) {
                         sb03$volume, sb03$sheet, sb03$page, sb03$thumb, sb03$dwellings, sb03$industrial, esc(sb03$notes), sb03$page, sb03$n_inliers, sb03$rmse_m))
     if (!is.null(bl03)) { e3 <- c("Same block as a hazardous trade" = "#b2182b", "Same block as other industry, or facing industry" = "#ef8a62", "Within 150 m of a hazardous trade" = "#fddbc7", "No industry within 150 m" = "#4393c3")
       m <- m |> addCircleMarkers(data = bl03, radius = pmax(3, sqrt(bl03$dwellings) * 1.6), stroke = TRUE, color = "#333333", weight = 0.5,
-        fillColor = unname(e3[bl03$exposure]), fillOpacity = ifelse(bl03$dwellings > 0, 0.85, 0.35), group = "1903 blocks: housing & industry", options = pathOptions(pane = "pts"),
+        fillColor = unname(e3[bl03$exposure]), fillOpacity = ifelse(bl03$dwellings > 0, 0.85, 0.35), group = "1903 blocks: housing & industry", options = pathOptions(pane = "ctx"),
         popup = sprintf("<b>1903 block</b> (sheet %s)<br>%s dwellings%s<br>%s<br><small>1929 zoning: %s</small>", bl03$sheets, bl03$dwellings,
                         ifelse(bl03$n_industrial > 0, sprintf(" \u00b7 %s industrial (%s)", bl03$n_industrial, esc(bl03$trades)), ""), esc(bl03$establishments), bl03$zone_1929)) }
     ZG <- paste("Zoning", names(ZYEARS)); for (k in seq_along(ZYEARS)) m <- add_zoning(m, ZYEARS[[k]], ZG[k], "tr", 0.45)
@@ -1157,6 +1158,7 @@ server <- function(input, output, session) {
   })
   output$recv_sum <- renderTable({ r <- recv(); if (is.null(r) || !nrow(r)) return(data.frame(Note = "None within this distance"))
     r |> count(kind, name = "places") |> rename(Type = kind, `Within distance` = places) })
+  for (o in c("rv_nsel", "nb_nsel", "recv_sum")) outputOptions(output, o, suspendWhenHidden = FALSE)   # small text/table outputs: empty spans count as hidden and would never render
   output$t_recv <- renderDT({ r <- recv(); if (is.null(r)) return(datatable(data.frame()))
     datatable(r |> select(Name = name, Type = kind, Detail = detail, Address = address, `Unknown sites within distance` = n_unknown_sites,
                           `Nearest (m)` = nearest_m, `Nearby sites (first 3)` = nearby_sites),
@@ -1237,6 +1239,7 @@ server <- function(input, output, session) {
     ggplotly(ggplot(d, aes(census, val, colour = group, group = group, text = sprintf("%s, %s: %s (%s tracts)", group, census, round(val, 1), tracts))) + geom_line() + geom_point(size = 2) +
                scale_colour_manual(values = c("Active hazardous firm in tract" = "#d1491f", "Legacy only (firms gone)" = "#7a4aa8", "Never a hazardous firm" = "#7f8c8d")) +
                scale_x_continuous(breaks = seq(1940, 2020, 10)) + labs(x = "Census", y = lab, colour = NULL) + theme_minimal(), tooltip = "text") |> hleg() })
+  output$pan_title <- renderText({ v <- input$pan_var; lab <- names(PAN_VARS)[PAN_VARS == v]; if (!length(lab)) "Census tracts, 1940\u20132020" else paste0(lab, ", 1940\u20132020") })
   pan_trend <- reactive({ v <- input$pan_var; req(v %in% names(den_pan))
     b <- den_pan |> filter(!is.na(.data[[v]]), !is.na(pop), pop > 0, core)
     yrs <- sort(unique(b$census)); keep <- NULL
@@ -1680,21 +1683,20 @@ server <- function(input, output, session) {
   output$t_ur_case <- renderTable({ d <- ur_case_d(); req(nrow(d)); f <- function(v) ifelse(is.na(v), "\u2013", sprintf("%.1f", v))
     data.frame(Census = d$census, Residents = format(d$residents_est, big.mark = ","), `% Hispanic` = f(d$pct_hispanic), `% Black` = f(d$pct_black), `% owner` = f(d$pct_owner), `% poverty` = f(d$pct_poverty), check.names = FALSE) },
     striped = TRUE, spacing = "xs")
-  output$map_own <- renderLeaflet({ req(den_tr, own_tr); t <- merge(den_tr[substr(den_tr$GEOID, 1, 5) == "08031", ], own_tr, by = "GEOID")
+  output$map_own <- renderLeaflet({ req(den_tr, own_tr, input$ow_var); t <- merge(den_tr[substr(den_tr$GEOID, 1, 5) == "08031", ], own_tr, by = "GEOID"); v <- input$ow_var
+    t <- st_transform(t, 4326); x <- ifelse(t$rental_units >= 50, t[[v]], NA); pal <- colorNumeric("PuRd", c(0, 100), na.color = "#eeeeee")
+    lab <- names(OW_VARS)[OW_VARS == v]; bb <- unname(st_bbox(t))
     leaflet(options = leafletOptions(preferCanvas = TRUE)) |> addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri") |>
-      setView(-104.95, 39.74, 11) |> addMapPane("trc", zIndex = 380) })
-  observe({ req(den_tr, own_tr, input$ow_var); t <- merge(den_tr[substr(den_tr$GEOID, 1, 5) == "08031", ], own_tr, by = "GEOID"); v <- input$ow_var
-    x <- ifelse(t$rental_units >= 50, t[[v]], NA); pal <- colorNumeric("PuRd", c(0, 100), na.color = "#eeeeee")
-    leafletProxy("map_own") |> clearGroup("tr") |> removeControl("owleg") |>
-      addPolygons(data = t, fillColor = pal(x), fillOpacity = 0.7, color = "#ffffff", weight = 0.4, group = "tr", options = pathOptions(pane = "trc"),
+      fitBounds(bb[1], bb[2], bb[3], bb[4]) |>
+      addPolygons(data = t, fillColor = pal(x), fillOpacity = 0.7, color = "#ffffff", weight = 0.5,
                   popup = sprintf("<b>Tract %s</b><br>%s units, %s not owner-occupied (%s%%)<br>Held by owners of 20+ units: %s%% · 100+: %s%%<br>Companies: %s%% · Owners outside Colorado: %s%% · Public: %s%%<br>Historical sites inside: %s known, %s hidden 1965\u201392",
                                   t$GEOID, format(t$units, big.mark = ","), format(t$rental_units, big.mark = ","), t$pct_rental, t$pct_rental_owner_20plus, t$pct_rental_owner_100plus,
                                   t$pct_rental_company, t$pct_rental_out_of_state, t$pct_rental_public, t$known_1965_92, t$hidden_1965_92)) |>
-      addLegend("bottomright", pal = pal, values = c(0, 100), title = "%", layerId = "owleg", opacity = 0.8) })
+      addLegend("bottomright", pal = pal, values = c(0, 100), title = paste0(lab, "<br>"), opacity = 0.8) })
   output$p_own_size <- renderPlotly({ req(own_size); d <- own_size[own_size$grouping == input$ow_group, ]; req(nrow(d))
     d$size <- factor(d$size, levels = c("1 unit", "2-4 units", "5-19 units", "20-99 units", "100-999 units", "1,000+ units"))
-    plot_ly(d, x = ~size, y = ~pct_rental_units, type = "bar", marker = list(color = "#7a0177"), hoverinfo = "text",
-            text = ~sprintf("%s: %s owners (%s%% of owners) hold %s rental units (%s%%)", size, format(owners, big.mark = ","), pct_owners, format(rental_units, big.mark = ","), pct_rental_units)) |>
+    plot_ly(d, x = ~size, y = ~pct_rental_units, type = "bar", marker = list(color = "#7a0177"), text = ~paste0(pct_rental_units, "%"), textposition = "outside",
+            cliponaxis = FALSE, hoverinfo = "text", hovertext = ~sprintf("%s: %s owners (%s%% of owners) hold %s rental units (%s%%)", size, format(owners, big.mark = ","), pct_owners, format(rental_units, big.mark = ","), pct_rental_units)) |>
       layout(xaxis = list(title = "owner size (rental units held in Denver)"), yaxis = list(title = "% of rental units"), margin = list(t = 10)) |> config(displayModeBar = FALSE) })
   output$t_own_conc <- renderTable({ req(own_conc); data.frame(Owners = own_conc$grouping, `Top 10` = paste0(own_conc$top10_pct, "%"), `Top 100` = paste0(own_conc$top100_pct, "%"),
     `Top 1% of owners` = paste0(own_conc$top1pct_owners_pct, "%"), `Owners of 20+ units` = paste0(own_conc$owners_20plus_pct, "%"), `Owners of 100+` = paste0(own_conc$owners_100plus_pct, "%"), check.names = FALSE) },
@@ -1713,6 +1715,11 @@ server <- function(input, output, session) {
   output$t_s03_area <- renderTable({ req(s03_area); d <- s03_area
     data.frame(Area = d$area, Dwellings = format(d$dwellings, big.mark = ","), `Same block, hazardous trade` = paste0(d$pct_same_block_haz, "%"), `Same block, heavy trade` = paste0(d$pct_same_block_heavy, "%"),
                `Within 150 m of a hazardous trade` = paste0(d$pct_within_150_haz, "%"), `Facing industry` = format(d$facing_industry, big.mark = ","), check.names = FALSE) }, striped = TRUE, spacing = "s")
+  output$s03_cov_txt <- renderText({ req(s03_cov); d <- s03_cov
+    sprintf("Figures cover the %d of %d sheets placed on today's map: %s of %s dwellings read (%s%% in volume 1, where Auraria's vanished streets left fewer corners to match; %s%% in volume 2).",
+            sum(d$sheets_placed), sum(d$sheets_read), format(sum(d$dwellings_on_placed_sheets), big.mark = ","), format(sum(d$dwellings_read), big.mark = ","),
+            d$pct_dwellings_covered[d$volume == 1], d$pct_dwellings_covered[d$volume == 2]) })
+  outputOptions(output, "s03_cov_txt", suspendWhenHidden = FALSE)
   output$t_s03_zone <- renderTable({ req(s03_zexp); d <- s03_zexp
     data.frame(`1903 situation` = d$exposure, `1929 zoning` = d$zone_1929, Dwellings = format(d$dwellings, big.mark = ","), `Share of group` = paste0(d$pct_of_exposure_group, "%"), check.names = FALSE) }, striped = TRUE, spacing = "s")
   output$t_s03_who <- renderTable({ req(s03_who); d <- s03_who

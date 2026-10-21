@@ -9,7 +9,8 @@
 #   "Rental" therefore means not occupied by its owner: it also includes second homes and vacant units.
 #   Owners: parcels are grouped into owners by normalised name (punctuation, LLC/INC/TRUST and similar suffixes removed). A second,
 #   broader grouping also links names that share a mailing address (landlords who hold property through several LLCs at one office),
-#   except addresses (with unit numbers) shared by more than 5 different individuals (tax or mortgage servicers, not landlords).
+#   except addresses (with unit numbers) shared by more than 5 different individuals or 40 different names (servicers, registered
+#   agents); public and non-profit owners are never linked.
 #   Owner types: public (city, state, federal, Denver Housing Authority, school and transit districts), company (LLC, corporation,
 #   partnership, fund), trust, non-profit or religious, individual.
 # Measures: owners and rental units by owner size; the share of rental units held by the largest owners; by tract, the share of rental
@@ -25,19 +26,22 @@ P <- fread(file.path(D, "owners.csv"), colClasses = "character")
 P <- P[!duplicated(SCHEDNUM)]
 message(nrow(P), " parcels; property classes:"); print(P[, .N, by = D_CLASS_CN][order(-N)][1:min(.N, 40)])
 # ---------------------------------------------------------------- residential parcels and units
-P[, type := fcase(grepl("CONDO", D_CLASS_CN), "Condominium unit", grepl("ROW|TOWN", D_CLASS_CN), "Rowhouse / townhouse",
-                  grepl("DUPLEX|TRIPLEX|TWO.?UNIT|THREE.?UNIT|2-?3 UNIT", D_CLASS_CN), "Duplex / triplex",
-                  grepl("APART|MULTI|4-8|9\\+|UNITS", D_CLASS_CN), "Apartment building (4+ units)",
-                  grepl("SINGLE|SFR|RESIDENTIAL$|RESIDENTIAL-SF|RESIDENTIAL - SF|MOBILE|MANUFACT", D_CLASS_CN), "Single-family house", default = NA_character_)]
+P[, type := fcase(grepl("^RESIDENTIAL[- ]CONDO", D_CLASS_CN), "Condominium unit", grepl("^RESIDENTIAL-ROWHOUSE", D_CLASS_CN), "Rowhouse / townhouse",
+                  grepl("^RESIDENTIAL-(DUPLEX|TRIPLEX)", D_CLASS_CN), "Duplex / triplex",
+                  grepl("^RESIDENTIAL-(APARTMENT|4 TO 8 UNITS|MULTI UNIT)", D_CLASS_CN), "Apartment building (4+ units)",
+                  grepl("^SFR", D_CLASS_CN), "Single-family house", default = NA_character_)]   # Assessor classes; commercial condominiums and land excluded
 P <- P[!is.na(type)]
 P[, units := num(TOT_UNITS)]; P[is.na(units) | units < 1, units := fcase(type == "Duplex / triplex", 2, type == "Apartment building (4+ units)", 4, default = 1)]
 P[type %in% c("Single-family house", "Condominium unit", "Rowhouse / townhouse"), units := pmin(units, 1)]
 # ---------------------------------------------------------------- owner-occupancy (owner's mailing address = the property)
-st_norm <- function(x) { x <- toupper(trimws(x)); x <- gsub("[.,#]", " ", x); x <- gsub("\\b(STREET)\\b", "ST", x); x <- gsub("\\b(AVENUE)\\b", "AVE", x)
-  x <- gsub("\\b(BOULEVARD)\\b", "BLVD", x); x <- gsub("\\b(PLACE)\\b", "PL", x); x <- gsub("\\b(DRIVE)\\b", "DR", x); x <- gsub("\\b(COURT)\\b", "CT", x)
-  x <- gsub("\\b(UNIT|APT|STE|SUITE)\\b", " ", x); gsub("\\s+", " ", trimws(x)) }
-P[, `:=`(own_st = st_norm(OWNER_ADDRESS_LINE1), sit_st = st_norm(SITUS_ADDRESS_LINE1), own_zip = substr(gsub("\\D", "", OWNER_ZIP), 1, 5), sit_zip = substr(gsub("\\D", "", SITUS_ZIP), 1, 5))]
-P[, owner_occ := own_st != "" & (own_st == sit_st | startsWith(own_st, paste0(sit_st, " ")) | startsWith(sit_st, paste0(own_st, " "))) & (own_zip == sit_zip | own_zip == "")]
+# Compare house number + street name only: direction words (N, E, ...), street types, unit numbers and ZIP+4 differ between the
+# situs and mailing records of the same address. A missing ZIP on either side does not block a match.
+addr_key <- function(x) { x <- toupper(trimws(ifelse(is.na(x), "", x))); x <- gsub("[.,#]", " ", x); x <- sub("\\b(UNIT|APT|STE|SUITE)\\b.*$", "", x)
+  x <- gsub("\\b(N|S|E|W|NORTH|SOUTH|EAST|WEST)\\b", " ", x)
+  x <- gsub("\\b(ST|STREET|AVE|AVENUE|AV|BLVD|BOULEVARD|PL|PLACE|DR|DRIVE|CT|COURT|WAY|LN|LANE|RD|ROAD|PKWY|PARKWAY|CIR|CIRCLE|TER|TERRACE)\\b", " ", x)
+  w <- strsplit(trimws(gsub("\\s+", " ", x)), " "); vapply(w, function(t) paste(head(t, 2), collapse = " "), "") }
+P[, `:=`(own_k = addr_key(OWNER_ADDRESS_LINE1), sit_k = addr_key(SITUS_ADDRESS_LINE1), own_zip = substr(gsub("\\D", "", OWNER_ZIP), 1, 5), sit_zip = substr(gsub("\\D", "", SITUS_ZIP), 1, 5))]
+P[, owner_occ := sit_k != "" & own_k == sit_k & (own_zip == sit_zip | own_zip == "" | sit_zip == "")]
 P[, rental_units := fifelse(owner_occ, pmax(units - 1, 0), units)]
 P[, out_of_state := !(toupper(trimws(OWNER_STATE)) %in% c("CO", "COLORADO", ""))]
 # ---------------------------------------------------------------- owner type and owner groups
@@ -51,12 +55,14 @@ nm_norm <- function(x) { x <- toupper(x); x <- gsub("[^A-Z0-9& ]", " ", x)
   x <- gsub("\\b(L L C|LLC|INC|INCORPORATED|CORP|CORPORATION|CO|COMPANY|LP|LLLP|LTD|THE|TRUST|TRUSTEE|TR|ET AL|ETAL|REVOCABLE|LIVING|SERIES [A-Z0-9]+)\\b", " ", x)
   gsub("\\s+", " ", trimws(x)) }
 P[, name_key := nm_norm(OWNER_NAME)]; P[name_key == "", name_key := paste0("blank_", SCHEDNUM)]
-P[, addr_key := fifelse(own_st == "", NA_character_, paste(gsub("\\s+", " ", toupper(trimws(paste(OWNER_ADDRESS_LINE1, OWNER_ADDRESS_LINE2)))), own_zip))]   # unit numbers kept
+P[, addr_key := fifelse(own_k == "", NA_character_, paste(gsub("\\s+", " ", toupper(trimws(paste(OWNER_ADDRESS_LINE1, OWNER_ADDRESS_LINE2)))), own_zip))]   # unit numbers kept
 # owners by name
 P[, g_name := .GRP, by = name_key]
 # owners by name or shared mailing address (connected components), skipping servicer-like addresses
-P[, indiv_names_at_addr := uniqueN(name_key[owner_type == "Individual"]), by = addr_key]
-P[, link_addr := !is.na(addr_key) & indiv_names_at_addr <= 5 & !owner_occ]
+P[, `:=`(indiv_names_at_addr = uniqueN(name_key[owner_type == "Individual"]), names_at_addr = uniqueN(name_key)), by = addr_key]
+# link by address only for private landlords: never public or non-profit owners, never owner-occupiers, and not at addresses shared by
+# more than 5 different individuals or more than 40 different names (tax servicers, registered agents)
+P[, link_addr := !is.na(addr_key) & indiv_names_at_addr <= 5 & names_at_addr <= 40 & !owner_occ & owner_type %in% c("Company", "Trust", "Individual")]
 P[, g := g_name]
 repeat { old <- P$g
   P[link_addr == TRUE, g := min(g), by = addr_key]; P[, g := min(g), by = name_key]
@@ -115,6 +121,10 @@ TP <- fread(file.path(A, "tract_panel.csv"), colClasses = c(GEOID = "character")
 HT <- fread(file.path(A, "health_tracts_study.csv"), colClasses = c(GEOID = "character"))
 HT <- HT[, intersect(c("GEOID", "known_1965_92", "hidden_1965_92", "pre1960_trades"), names(HT)), with = FALSE]
 BY_TR <- merge(merge(BY_TR, TP, by = "GEOID", all.x = TRUE), HT, by = "GEOID", all.x = TRUE)
+# check against the 2020 census: owner-occupied share of units by tract (Assessor) vs owner-occupied share of occupied units (census)
+VAL <- BY_TR[!is.na(p_owner) & units >= 100, .(tracts = .N, assessor_owner_occupied = round(100 - weighted.mean(pct_rental, units), 1),
+                                              census_owner_occupied = round(weighted.mean(p_owner, units), 1), correlation = round(cor(100 - pct_rental, p_owner), 2))]
+fwrite(VAL, file.path(O, "validation_census_tenure.csv")); print(VAL)
 # who lives where large landlords own: tract-level association, weighted by rental units (tracts with 50+ rental units)
 TRM <- BY_TR[rental_units >= 50 & !is.na(p_black) & !is.na(p_pov)]
 TRM[, `:=`(any_hidden = as.numeric(hidden_1965_92 > 0), any_known = as.numeric(known_1965_92 > 0), lrent = log(pmax(mrent_2020, 1)))]

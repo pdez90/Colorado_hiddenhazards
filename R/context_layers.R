@@ -21,7 +21,7 @@
 #   7. Sanborn fire-insurance map links for every street-level pre-1960 site (the nearest digitised Library of Congress edition, 1887-1904;
 #      1929-1951 editions are on ProQuest through the Denver Public Library).
 # Outputs: data/results/context/*.csv and copies of the map layers in app/data/ (all from public sources).
-for (p in c("data.table", "sf", "terra", "RANN", "jsonlite")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
+for (p in c("data.table", "sf", "terra", "RANN", "jsonlite", "tigris")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(data.table); library(sf); library(terra) })
 sf_use_s2(FALSE); UTM <- 26913; W <- "work/context"; A <- "app/data"; O <- "data/results/context"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
 if (!dir.exists(W)) stop("run Rscript R/fetch_context_layers.R first")
@@ -47,7 +47,9 @@ nearby <- function(pts, tgt, r) { if (!nrow(tgt)) return(list(n = rep(0L, nrow(p
   w <- st_is_within_distance(pts, tgt, r); list(n = lengths(w), idx = w) }
 # ---------------------------------------------------------------- 1. petroleum releases and tank facilities
 PR <- fread(file.path(W, "petroleum_releases.csv"))
-PR <- PR[!is.na(latitude) & !is.na(longitude) & latitude != 0][, `:=`(release_year = as.integer(substr(release_date, 1, 4)), closure_year = as.integer(substr(closure_date, 1, 4)))]
+yr_of <- function(d) { d <- trimws(as.character(d)); y <- suppressWarnings(as.integer(format(as.IDate(d, tryFormats = c("%m/%d/%Y", "%Y-%m-%d", "%Y-%m-%dT%H:%M:%S")), "%Y")))
+  fifelse(is.na(y), suppressWarnings(as.integer(sub(".*(\\d{4}).*", "\\1", d))), y) }   # Socrata gives m/d/Y; the year is never in the first four characters
+PR <- PR[!is.na(latitude) & !is.na(longitude) & latitude != 0][, `:=`(release_year = yr_of(release_date), closure_year = yr_of(closure_date))]
 PRs <- toUTM(PR, "longitude", "latitude"); PR[, study := in_study(PRs)]
 TF <- fread(file.path(W, "tank_facilities.csv"))[!is.na(latitude) & !is.na(longitude) & latitude != 0]
 TFs <- toUTM(TF, "longitude", "latitude")
@@ -147,15 +149,18 @@ HT <- PL[, c("tractfips", "totalpopulation", cols), with = FALSE]; setnames(HT, 
 LE <- fread(file.path(W, "usaleep_co.csv"), colClasses = "character"); ln <- names(LE)
 gcol <- grep("^Tract ID$|TRACT", ln, ignore.case = TRUE, value = TRUE)[1]; ecol <- grep("^e\\(0\\)$|e\\(0\\)", ln, value = TRUE)[1]
 LE <- LE[, .(GEOID = get(gcol), life_expectancy = as.numeric(get(ecol)))]
-# PLACES may use 2020 tracts: if most study tracts (2010) are missing, move 2020-tract estimates to the 2010 tract containing each
-# 2020 tract's interior point (population-weighted means)
-if (mean(STUDY_IDS %in% HT$GEOID) < 0.7 && requireNamespace("tigris", quietly = TRUE)) {
-  t20 <- st_transform(tigris::tracts("CO", year = 2020, cb = TRUE, progress_bar = FALSE), UTM); t20 <- t20[t20$GEOID %in% HT$GEOID, ]
-  j <- st_within(st_point_on_surface(st_geometry(t20)), st_transform(TR, UTM)); map <- data.table(g20 = t20$GEOID, GEOID = vapply(j, function(i) if (length(i)) TR$GEOID[i[1]] else NA_character_, ""))
-  HT <- merge(HT, map, by.x = "GEOID", by.y = "g20")[!is.na(GEOID.y)]; HT[, GEOID := GEOID.y][, GEOID.y := NULL]
-  m <- setdiff(names(HT), c("GEOID", "totalpopulation")); HT[, totalpopulation := as.numeric(totalpopulation)]
-  HT <- HT[, c(list(totalpopulation = sum(totalpopulation)), lapply(.SD, function(v) weighted.mean(v, totalpopulation, na.rm = TRUE))), by = GEOID, .SDcols = m]
-  message("PLACES: 2020 tracts moved onto 2010 tracts") }
+# PLACES (2024 release) is on 2020 tracts; the study uses 2010 tracts. Every 2020 tract is apportioned to the 2010 tracts it overlaps by area
+# (its population split in proportion to area), and each 2010 tract gets the population-weighted mean of the pieces. Tracts whose
+# boundaries did not change map one to one; split and merged tracts are handled instead of being dropped.
+if (requireNamespace("tigris", quietly = TRUE)) {
+  t20 <- st_transform(tigris::tracts("CO", year = 2020, cb = TRUE, progress_bar = FALSE), UTM); t20 <- st_make_valid(t20[t20$GEOID %in% HT$GEOID, "GEOID"])
+  t10 <- st_make_valid(st_transform(TR[TR$GEOID %in% STUDY_IDS, "GEOID"], UTM)); names(t10)[names(t10) == "GEOID"] <- "g10"; names(t20)[names(t20) == "GEOID"] <- "g20"
+  t20$a20 <- as.numeric(st_area(t20)); pc <- suppressWarnings(st_intersection(t20, t10)); pc$share <- as.numeric(st_area(pc)) / pc$a20
+  X <- as.data.table(st_drop_geometry(pc))[share > 0.005]
+  HT[, totalpopulation := as.numeric(totalpopulation)]; m <- setdiff(names(HT), c("GEOID", "totalpopulation"))
+  X <- merge(X, HT, by.x = "g20", by.y = "GEOID"); X[, w := totalpopulation * share]
+  HT <- X[, c(list(totalpopulation = sum(w)), lapply(.SD, function(v) weighted.mean(v, w, na.rm = TRUE))), by = .(GEOID = g10), .SDcols = m]
+  message("PLACES: 2020 tracts apportioned to 2010 tracts by area (", nrow(HT), " study tracts)") }
 HT <- merge(HT, LE, by = "GEOID", all = TRUE); HT <- merge(HT, LR, by = "GEOID", all = TRUE)
 HT <- HT[GEOID %in% STUDY_IDS]
 message(sprintf("health measures for %d of %d study tracts (PLACES %d, life expectancy %d, lead risk %d)", nrow(HT), length(STUDY_IDS),

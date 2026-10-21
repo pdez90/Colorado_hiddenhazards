@@ -29,15 +29,14 @@ if (!file.exists(file.path(D, "sales.csv"))) stop("run Rscript R/fetch_denver_pr
 num <- function(x) suppressWarnings(as.numeric(x))
 # ---------------------------------------------------------------- sales
 SA <- fread(file.path(D, "sales.csv"), colClasses = "character")
-SA[, `:=`(price = num(SALE_PRICE), year = as.integer(SALE_YEAR), rdate = as.Date(RECEPTION_DATE, "%Y%m%d"))]
-SA[, month := as.integer(format(rdate, "%m"))]
+SA[, `:=`(price = num(SALE_PRICE), year = as.integer(SALE_YEAR), month = as.integer(num(SALE_MONTHDAY) %/% 100))]   # sale date (not recording date) for both
 SA[, sched := sprintf("%013.0f", num(PARID))]
 SA[, nparc := uniqueN(sched), by = RECEPTION_NUM]
-SA[, type := fcase(grepl("CONDO", D_CLASS_N, ignore.case = TRUE), "Condominium", grepl("ROW", D_CLASS_N, ignore.case = TRUE), "Rowhouse",
+SA[, type := fcase(grepl("^RESIDENTIAL[- ]CONDO|^CONDO", D_CLASS_N, ignore.case = TRUE), "Condominium", grepl("ROW", D_CLASS_N, ignore.case = TRUE), "Rowhouse",
                    grepl("DUPLEX|TRIPLEX|TWO.?FAM|MULTI.?UNIT \\(2|DOUBLE", D_CLASS_N, ignore.case = TRUE), "Duplex / triplex",
                    grepl("SINGLE|RESIDENTIAL$|RESIDENTIAL-SFR|^SFR", D_CLASS_N, ignore.case = TRUE), "Single family", default = NA_character_)]
 n0 <- nrow(SA)
-SA <- SA[!is.na(price) & price >= 25000 & grepl("^(WD|SW)", INSTRUMENT) & nparc == 1 & !is.na(type) & year >= 2015 & !is.na(month)]
+SA <- SA[!is.na(price) & price >= 25000 & grepl("^(WD|SW)", INSTRUMENT) & nparc == 1 & !is.na(type) & year >= 2015 & month %in% 1:12]
 SA[, `:=`(lo = quantile(price, .01), hi = quantile(price, .99)), by = .(year, type)]; SA <- SA[price >= lo & price <= hi]
 message(nrow(SA), " arm's-length residential sales kept of ", n0, " transfers")
 # ---------------------------------------------------------------- parcels (location, zoning) and characteristics
@@ -99,7 +98,7 @@ RES <- rbindlist(list(
   tidy(fit(B3, FE_N), "M1 base: neighbourhood x year FE", "All residential sales"),
   tidy(fit(paste(B3, "+", CUR), FE_N), "M2 + present-day hazards", "All residential sales"),
   tidy(fit(paste(B3, "+", CUR), FE_T), "M3 tract x year FE", "All residential sales"),
-  tidy(fit(paste(B3, "+", CUR), FE_N, M[type == "Single family"]), "M2 + present-day hazards", "Single-family homes"),
+  tidy(fit(paste(B3, "+", CUR), FE_N, M[type == "Single family"]), "M4 single-family homes (as M2)", "Single-family homes"),
   tidy(fit(paste("n400_hidden + n400_known + n400_pre1960 +", CUR), FE_N), "M5 site counts within 400 m", "All residential sales")))
 # hidden vs known within 400 m: one pooled indicator each, and the test of equality
 M[, `:=`(hid400 = as.numeric(d_hidden <= 400), kn400 = as.numeric(d_known <= 400), pre400 = as.numeric(d_pre1960 <= 400))]
@@ -111,7 +110,7 @@ T6 <- T6[, .(model = "M6 within 400 m (pooled)", sample = "All residential sales
              pct = round(100 * (exp(estimate) - 1), 2), lo = round(100 * (exp(estimate - 1.96 * se) - 1), 2), hi = round(100 * (exp(estimate + 1.96 * se) - 1), 2),
              p = signif(p, 3), estimate = round(estimate, 4), se = round(se, 4), n = nobs(m6))]
 RES <- rbind(RES, T6, data.table(model = "M6 within 400 m (pooled)", sample = "All residential sales", kind = "Hidden minus known", distance = "0-400 m",
-                                 pct = round(100 * dd, 2), lo = round(100 * (dd - 1.96 * sdd), 2), hi = round(100 * (dd + 1.96 * sdd), 2),
+                                 pct = round(100 * (exp(dd) - 1), 2), lo = round(100 * (exp(dd - 1.96 * sdd) - 1), 2), hi = round(100 * (exp(dd + 1.96 * sdd) - 1), 2),
                                  p = signif(2 * pnorm(-abs(dd / sdd)), 3), estimate = round(dd, 4), se = round(sdd, 4), n = nobs(m6)))
 # ---------------------------------------------------------------- sample description (aggregates only)
 SMP <- rbindlist(lapply(c("hidden", "known", "pre1960"), function(k) M[, .(sales = .N, median_price = as.numeric(median(price)), median_area = as.numeric(median(area)),

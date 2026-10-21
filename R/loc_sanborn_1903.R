@@ -54,16 +54,6 @@ RO <- aggregate(RO["base"], by = list(b = RO$base), FUN = function(z) z[1]); RO$
 crossings <- function(a, b) { la <- RO[RO$base == a, ]; lb <- RO[RO$base == b, ]; if (!nrow(la) || !nrow(lb)) return(matrix(numeric(0), 0, 2))
   p <- suppressWarnings(st_intersection(st_geometry(la), st_geometry(lb))); if (!length(p)) return(matrix(numeric(0), 0, 2))
   m <- st_coordinates(st_cast(st_sfc(p), "POINT"))[, 1:2, drop = FALSE]; m[!duplicated(round(m / 15)), , drop = FALSE] }
-# where a crossing no longer exists (streets vacated for the Auraria campus, rail yards, the Platte valley), use the crossing of the two
-# streets' straight-line extensions, if both surviving streets are straight (PCA residual < 25 m) and the point lies within 1.5 km of both
-LINE <- new.env()
-st_line_fit <- function(b) { if (!is.null(LINE[[b]])) return(LINE[[b]]); g <- st_geometry(RO[RO$base == b, ]); if (!length(g)) return(NULL)
-  m <- st_coordinates(g)[, 1:2, drop = FALSE]; if (nrow(m) < 2) return(NULL); ctr <- colMeans(m); pc <- prcomp(m, center = TRUE)
-  res <- sqrt(mean(pc$x[, 2]^2)); out <- if (res < 25) list(c = ctr, d = pc$rotation[, 1], g = g) else NULL; LINE[[b]] <- out; out }
-extended <- function(a, b) { la <- st_line_fit(a); lb <- st_line_fit(b); if (is.null(la) || is.null(lb)) return(matrix(numeric(0), 0, 2))
-  M <- cbind(la$d, -lb$d); if (abs(det(M)) < 0.2) return(matrix(numeric(0), 0, 2))
-  t <- solve(M, lb$c - la$c); p <- la$c + t[1] * la$d; pt <- st_sfc(st_point(p), crs = UTM)
-  if (min(st_distance(pt, la$g)) > 1500 || min(st_distance(pt, lb$g)) > 1500) return(matrix(numeric(0), 0, 2)); matrix(p, 1, 2) }
 CX <- new.env()
 cand <- function(a, b) { k <- paste(sort(c(a, b)), collapse = "|")
   if (is.null(CX[[k]])) { m <- crossings(a, b); g <- if (exists("GAZ") && !is.null(GAZ) && nrow(GAZ)) as.matrix(GAZ[key == k, .(X, Y)]) else matrix(numeric(0), 0, 2)
@@ -160,8 +150,10 @@ for (i in seq_len(nrow(BL))) if (grp[i] == 0L) { g <- g + 1L; grp[i] <- g
 BL[, grp := grp]
 B <- BL[, .(x = mean(x), y = mean(y), sheets = paste(unique(sheet), collapse = ","), volume = volume[1], streets = streets[1],
             dwellings = if (all(partial)) sum(dwellings) else max(dwellings), shanties = max(shanties), stores = max(stores),
-            n_industrial = max(n_industrial), n_hazardous = max(n_hazardous), n_heavy = max(n_heavy), trades = paste(unique(unlist(strsplit(trades, "; "))), collapse = "; "),
+            n_industrial = if (all(partial)) sum(n_industrial) else max(n_industrial), n_hazardous = if (all(partial)) sum(n_hazardous) else max(n_hazardous),
+            n_heavy = if (all(partial)) sum(n_heavy) else max(n_heavy), trades = paste(unique(unlist(strsplit(trades, "; "))), collapse = "; "),
             establishments = paste(unique(unlist(strsplit(establishments, "; "))), collapse = "; "), dwellings_facing_industry = max(dwellings_facing_industry)), by = grp]
+B[, dwellings_facing_industry := pmin(dwellings_facing_industry, dwellings)]   # a block cannot have more facing dwellings than dwellings
 BS <- st_as_sf(B, coords = c("x", "y"), crs = UTM, remove = FALSE)
 haz_pts <- BS[BS$n_hazardous > 0, ]
 B[, near_haz_150 := lengths(st_is_within_distance(BS, haz_pts, 150)) > 0]
@@ -181,9 +173,9 @@ SS <- st_transform(st_as_sf(S, coords = c("lon", "lat"), crs = 4326), UTM)
 B[, `:=`(later_hidden_150 = lengths(st_is_within_distance(BS, SS[SS$radar == "Not on any list", ], 150)) > 0,
          later_known_150 = lengths(st_is_within_distance(BS, SS[SS$radar != "Not on any list", ], 150)) > 0)]
 # ---------------------------------------------------------------- results (aggregates)
-area_of <- function(v, x, y) fifelse(v == 1, "Volume 1: Auraria, West Denver, South Platte", "Volume 2: north side, Platte valley to Elyria-Swansea")
+area_of <- function(v) fifelse(v == 1, "Auraria, West Denver, South Platte (vol. 1)", "North side to Elyria-Swansea (vol. 2)")
 B[, area := area_of(volume)]
-EXPO_ALL <- B[dwellings > 0, .(area = "All sheets read", dwellings = sum(dwellings), pct_same_block_haz = round(100 * sum(dwellings[mixed_haz]) / sum(dwellings), 1), pct_same_block_any = round(100 * sum(dwellings[mixed]) / sum(dwellings), 1), pct_within_150_haz = round(100 * sum(dwellings[mixed_haz | near_haz_150]) / sum(dwellings), 1), pct_same_block_heavy = round(100 * sum(dwellings[n_heavy > 0]) / sum(dwellings), 1), pct_within_150_heavy = round(100 * sum(dwellings[near_heavy_150]) / sum(dwellings), 1), facing_industry = sum(pmin(dwellings_facing_industry, dwellings)))]
+EXPO_ALL <- B[dwellings > 0, .(area = "All placed sheets", dwellings = sum(dwellings), pct_same_block_haz = round(100 * sum(dwellings[mixed_haz]) / sum(dwellings), 1), pct_same_block_any = round(100 * sum(dwellings[mixed]) / sum(dwellings), 1), pct_within_150_haz = round(100 * sum(dwellings[mixed_haz | near_haz_150]) / sum(dwellings), 1), pct_same_block_heavy = round(100 * sum(dwellings[n_heavy > 0]) / sum(dwellings), 1), pct_within_150_heavy = round(100 * sum(dwellings[near_heavy_150]) / sum(dwellings), 1), facing_industry = sum(pmin(dwellings_facing_industry, dwellings)))]
 EXPO <- B[dwellings > 0, .(blocks = .N, dwellings = sum(dwellings)), by = .(exposure)][, pct_dwellings := round(100 * dwellings / sum(dwellings), 1)][order(-dwellings)]
 EXPO_AREA <- B[dwellings > 0, .(dwellings = sum(dwellings), pct_same_block_haz = round(100 * sum(dwellings[mixed_haz]) / sum(dwellings), 1),
                                pct_same_block_any = round(100 * sum(dwellings[mixed]) / sum(dwellings), 1),
@@ -193,8 +185,8 @@ EXPO_AREA <- B[dwellings > 0, .(dwellings = sum(dwellings), pct_same_block_haz =
                                facing_industry = sum(pmin(dwellings_facing_industry, dwellings))), by = area]
 EXPO_AREA <- rbind(EXPO_AREA, EXPO_ALL)
 TRADES <- B[, .(trade = unlist(strsplit(trades, "; "))), by = grp][trade != "", .N, by = trade][order(-N)]
-ZONE <- B[, .(blocks = .N, dwellings = sum(dwellings), blocks_with_hazardous_trade = sum(n_hazardous > 0), blocks_with_heavy_trade = sum(n_heavy > 0), mixed_blocks = sum(mixed_haz), dwellings_on_heavy_blocks = sum(dwellings[n_heavy > 0])), by = zone_1929]
-ZONE[, `:=`(pct_of_hazard_blocks = round(100 * blocks_with_hazardous_trade / sum(blocks_with_hazardous_trade), 1), pct_of_mixed_blocks = round(100 * mixed_blocks / sum(mixed_blocks), 1),
+ZONE <- B[, .(blocks = .N, dwellings = sum(dwellings), blocks_with_hazardous_trade = sum(n_hazardous > 0), blocks_with_heavy_trade = sum(n_heavy > 0), blocks_mixed_with_hazardous_trade = sum(mixed_haz), dwellings_on_heavy_blocks = sum(dwellings[n_heavy > 0])), by = zone_1929]
+ZONE[, `:=`(pct_of_hazard_blocks = round(100 * blocks_with_hazardous_trade / sum(blocks_with_hazardous_trade), 1), pct_of_mixed_blocks = round(100 * blocks_mixed_with_hazardous_trade / sum(blocks_mixed_with_hazardous_trade), 1),
             pct_of_dwellings = round(100 * dwellings / sum(dwellings), 1))]
 ZEXP <- B[dwellings > 0, .(dwellings = sum(dwellings)), by = .(exposure, zone_1929)][, pct_of_exposure_group := round(100 * dwellings / sum(dwellings), 1), by = exposure][order(exposure, -dwellings)]
 # who lived there: 1910 enumeration districts, weighted by dwellings
@@ -203,8 +195,10 @@ WHO <- merge(B[dwellings > 0 & !is.na(ed_1910), .(dwellings, exposure, ed = ed_1
 WHO <- WHO[, lapply(.SD, function(v) round(weighted.mean(v, dwellings, na.rm = TRUE), 1)), by = exposure, .SDcols = c("pct_fb", "pct_black", "pct_laborers", "pct_owner_hh")]
 PERSIST <- B[n_hazardous > 0, .(hazardous_blocks_1903 = .N, pct_with_1965_92_site_150m = round(100 * mean(later_hidden_150 | later_known_150), 1),
                                 pct_with_hidden_site_150m = round(100 * mean(later_hidden_150), 1), pct_with_known_site_150m = round(100 * mean(later_known_150), 1))]
+COVER <- SHT[, .(sheets_read = .N, sheets_placed = sum(placed), dwellings_read = sum(dwellings), dwellings_on_placed_sheets = sum(dwellings[placed])), by = .(volume)]
+COVER[, pct_dwellings_covered := round(100 * dwellings_on_placed_sheets / dwellings_read, 1)]; print(COVER)
 fwrite(SHT, file.path(O, "sheets.csv")); fwrite(B[, !c("grp")], file.path(O, "blocks.csv"))
-for (nm in c("EXPO", "EXPO_AREA", "TRADES", "ZONE", "ZEXP", "WHO", "PERSIST")) fwrite(get(nm), file.path(O, paste0(tolower(nm), ".csv")))
+for (nm in c("EXPO", "EXPO_AREA", "TRADES", "ZONE", "ZEXP", "WHO", "PERSIST", "COVER")) fwrite(get(nm), file.path(O, paste0(tolower(nm), ".csv")))
 SHP$thumb <- paste0(SHP$iiif, "/full/pct:12.5/0/default.jpg")
 if (file.exists(file.path(A, "sanborn_1903_sheets.geojson"))) file.remove(file.path(A, "sanborn_1903_sheets.geojson"))
 st_write(st_transform(SHP, 4326), file.path(A, "sanborn_1903_sheets.geojson"), quiet = TRUE)
@@ -212,12 +206,12 @@ BP <- st_transform(st_as_sf(B[, .(sheets, streets, dwellings, n_industrial, n_ha
                             coords = c("x", "y"), crs = UTM), 4326)
 if (file.exists(file.path(A, "sanborn_1903_blocks.geojson"))) file.remove(file.path(A, "sanborn_1903_blocks.geojson"))
 st_write(BP, file.path(A, "sanborn_1903_blocks.geojson"), quiet = TRUE)
-for (nm in c("EXPO", "EXPO_AREA", "ZONE", "ZEXP", "WHO", "PERSIST", "TRADES")) fwrite(get(nm), file.path(A, paste0("sanborn1903_", tolower(nm), ".csv")))
+for (nm in c("EXPO", "EXPO_AREA", "ZONE", "ZEXP", "WHO", "PERSIST", "TRADES", "COVER")) fwrite(get(nm), file.path(A, paste0("sanborn1903_", tolower(nm), ".csv")))
 kab <- function(x) { x <- as.data.frame(x); c(paste("|", paste(names(x), collapse = " | "), "|"), paste0(strrep("|---", ncol(x)), "|"),
   apply(x, 1, function(r) paste("|", paste(ifelse(is.na(r), "", trimws(r)), collapse = " | "), "|"))) }
 writeLines(c("# Housing and industry before zoning: Denver 1903-04 Sanborn maps", "",
              sprintf("%d sheets read, %d placed on the modern map; %s blocks with %s dwellings.", length(SH), sum(ok), format(nrow(B), big.mark = ","), format(sum(B$dwellings), big.mark = ",")), "",
-             "## Dwellings by exposure", "", kab(EXPO), "", "## By area", "", kab(EXPO_AREA), "", "## Trades recorded (blocks)", "", kab(TRADES), "",
+             "## Coverage: dwellings on sheets placed on the map", "", kab(COVER), "", "## Dwellings by exposure (placed sheets)", "", kab(EXPO), "", "## By area", "", kab(EXPO_AREA), "", "## Trades recorded (blocks)", "", kab(TRADES), "",
              "## 1929 zoning of the 1903 blocks", "", kab(ZONE), "", kab(ZEXP), "", "## Who lived there (1910 enumeration districts, dwelling-weighted means)", "", kab(WHO), "",
              "## Persistence: 1903 hazardous blocks with a 1965-92 hazardous-sector site within 150 m", "", kab(PERSIST)), file.path(O, "summary.md"))
 print(SHT[, .(sheets = .N, placed = sum(placed)), by = volume]); print(EXPO); print(EXPO_AREA); print(ZONE); print(WHO); print(PERSIST)

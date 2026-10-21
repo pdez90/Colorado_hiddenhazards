@@ -17,7 +17,7 @@
 #   4. Cumulative exposure: censuses (of those observed, 1910-1940) in which the person lived within 500 m of a hazardous trade, and the
 #      childhood address (the earliest census at ages 0-14); both added to the CenSoc age-at-death models of R/censoc_denver_1940.R.
 # Outputs (aggregates only): data/results/censoc/mlp_persistence.csv, mlp_models.csv, mlp_summary.md
-for (p in c("readr", "RANN")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
+for (p in c("readr", "RANN", "sandwich", "lmtest")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(data.table); library(sf); library(sandwich); library(lmtest) })
 sf_use_s2(FALSE); UTM <- 26913; W <- "work/censoc"; O <- "data/results/censoc"; A <- "app/data"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
 XW <- Sys.glob("work/mlp/*.csv"); if (!length(XW)) stop("put the IPUMS MLP crosswalks (1930-1940, 1920-1940, 1910-1940; Stata CSV) unzipped in work/mlp/")

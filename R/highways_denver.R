@@ -12,6 +12,7 @@
 #   highways_by_holc_grade.csv         km of freeway built 1950-1979 through each 1938 HOLC grade, and share of each grade within 250 m
 #   highways_by_zoning_1929.csv        km of those freeways through 1929 industrial, commercial and other land
 #   highways_tracts.csv                tracts crossed by a freeway built 1950-1979 vs not: population and composition 1950-1990
+for (p in c("haven")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(sf); library(data.table) })
 sf_use_s2(FALSE); UTM <- 26913; O <- "data/results/highways"; A <- "app/data"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
 yr <- function(x) suppressWarnings(as.integer(substr(gsub("^~", "", x), 1, 4)))

@@ -2,7 +2,14 @@
 
 152 sheets read, 126 placed on the modern map; 632 blocks with 8,381 dwellings.
 
-## Dwellings by exposure
+## Coverage: dwellings on sheets placed on the map
+
+| volume | sheets_read | sheets_placed | dwellings_read | dwellings_on_placed_sheets | pct_dwellings_covered |
+|---|---|---|---|---|---|
+| 1 | 41 | 26 | 2021 | 1368 | 67.7 |
+| 2 | 111 | 100 | 7643 | 7013 | 91.8 |
+
+## Dwellings by exposure (placed sheets)
 
 | exposure | blocks | dwellings | pct_dwellings |
 |---|---|---|---|
@@ -15,9 +22,9 @@
 
 | area | dwellings | pct_same_block_haz | pct_same_block_any | pct_within_150_haz | pct_same_block_heavy | pct_within_150_heavy | facing_industry |
 |---|---|---|---|---|---|---|---|
-| Volume 2: north side, Platte valley to Elyria-Swansea | 7013 | 17.6 | 44.6 | 45.8 | 8.0 | 27.4 | 231 |
-| Volume 1: Auraria, West Denver, South Platte | 1368 | 44.2 | 74.9 | 85.2 | 24.4 | 65.1 | 75 |
-| All sheets read | 8381 | 22.0 | 49.5 | 52.2 | 10.7 | 33.6 | 306 |
+| North side to Elyria-Swansea (vol. 2) | 7013 | 17.6 | 44.6 | 45.8 | 8.0 | 27.4 | 231 |
+| Auraria, West Denver, South Platte (vol. 1) | 1368 | 44.2 | 74.9 | 85.2 | 24.4 | 65.1 | 75 |
+| All placed sheets | 8381 | 22.0 | 49.5 | 52.2 | 10.7 | 33.6 | 306 |
 
 ## Trades recorded (blocks)
 
@@ -48,7 +55,7 @@
 
 ## 1929 zoning of the 1903 blocks
 
-| zone_1929 | blocks | dwellings | blocks_with_hazardous_trade | blocks_with_heavy_trade | mixed_blocks | dwellings_on_heavy_blocks | pct_of_hazard_blocks | pct_of_mixed_blocks | pct_of_dwellings |
+| zone_1929 | blocks | dwellings | blocks_with_hazardous_trade | blocks_with_heavy_trade | blocks_mixed_with_hazardous_trade | dwellings_on_heavy_blocks | pct_of_hazard_blocks | pct_of_mixed_blocks | pct_of_dwellings |
 |---|---|---|---|---|---|---|---|---|---|
 | Industrial A | 183 | 1749 | 65 | 44 | 40 | 259 | 35.9 | 28.4 | 20.9 |
 | Other districts (residence or business) | 373 | 5602 | 80 | 50 | 70 | 445 | 44.2 | 49.6 | 66.8 |

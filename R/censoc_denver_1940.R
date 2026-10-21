@@ -23,7 +23,7 @@
 #   M2 = exposure + controls; M3 adds 1940 ED fixed effects, so only the address-level variation within a district is used.
 # Outputs (aggregates only): data/results/censoc/{censoc_linkage.csv, censoc_models.csv, censoc_groups.csv, censoc_summary.md}
 # and work/censoc/censoc_denver_1940_linked.rds (person-level, stays on this machine).
-for (p in c("ipumsr", "RANN")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
+for (p in c("ipumsr", "RANN", "sandwich", "lmtest", "terra")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(data.table); library(sf); library(terra); library(sandwich); library(lmtest) })
 sf_use_s2(FALSE); UTM <- 26913; W <- "work/censoc"; O <- "data/results/censoc"; A <- "app/data"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
 cs <- Sys.glob(file.path(W, "*.csv")); cs <- cs[!grepl("demo|geography|codebook|sib", basename(cs), ignore.case = TRUE)]

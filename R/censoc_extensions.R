@@ -20,7 +20,7 @@
 #                  app/data/landuse_YYYY_20m.tif). Compared with residents of the same 1940 enumeration district (ED fixed effects).
 #                  An intention-to-treat contrast: we know where people lived in 1940, not whether they still lived there when it was cleared.
 # Outputs (aggregates only): data/results/censoc/censoc_ext_*.csv and censoc_extensions_summary.md
-for (p in c("gompertztrunc", "sandwich", "lmtest")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
+for (p in c("gompertztrunc", "sandwich", "lmtest", "terra")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(data.table); library(sandwich); library(lmtest); library(sf); library(terra) })
 sf_use_s2(FALSE)
 W <- "work/censoc"; O <- "data/results/censoc"; dir.create(O, showWarnings = FALSE, recursive = TRUE)

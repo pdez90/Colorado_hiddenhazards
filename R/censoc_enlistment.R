@@ -14,6 +14,7 @@
 # aged 0-17 in 1940, whose height and weight reflect childhood conditions. Who enlisted is shown too: men rejected on health grounds never
 # appear in these records, which biases the comparisons towards zero if industrial neighbourhoods produced more rejections.
 # Outputs (aggregates only): data/results/censoc/enlistment_models.csv, enlistment_shares.csv, enlistment_summary.md
+for (p in c("sandwich", "lmtest")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(data.table); library(sandwich); library(lmtest); library(sf) })
 sf_use_s2(FALSE)
 W <- "work/censoc"; O <- "data/results/censoc"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
