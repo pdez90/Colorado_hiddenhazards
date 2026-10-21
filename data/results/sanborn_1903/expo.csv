@@ -1,5 +1,6 @@
 exposure,blocks,dwellings,pct_dwellings
-No industry within 150 m,180,2979,35.5
-"Same block as other industry, or facing industry",139,2714,32.4
-Same block as a hazardous trade,141,1840,22
-Within 150 m of a hazardous trade,49,848,10.1
+Across the street from a hazardous trade,125,2389,29
+Same block as a hazardous trade,138,1801,21.9
+No hazardous trade within 150 m,107,1614,19.6
+Within 150 m of a hazardous trade,77,1376,16.7
+"Same block as other industry, or facing industry",54,1052,12.8

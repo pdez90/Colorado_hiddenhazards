@@ -19,13 +19,20 @@
 # campus, rail yards) or the names have changed (Elyria, Swansea, West Denver), crossings read off each volume's 1903 key map stand in:
 # the key map is fitted to today's streets from its surviving crossings (similarity transform by RANSAC, then an affine refit), and its
 # historic crossings become a 1903 gazetteer (data/raw/sanborn_loc/readings/key_v*.json). Fit quality is kept (inliers, RMSE).
+# Street-name check: each block's centroid, once placed, should lie within 120 m of the streets the sheet says bound it (tested on
+# the streets shown to survive under the same name: those in one of the sheet's crossings that lands on a modern crossing). A sheet placed on only two crossings is kept only if at least 75% of its block-street pairs pass (4+ testable pairs);
+# the check is reported for every sheet (sheets.csv: street_pairs, pct_streets_within_120m).
+# Block outlines: the block's corners are the modern (or 1903 key-map) crossings of the streets that bound it (N-E, N-W, S-E, S-W, the
+# nearest within 250 m; a missing fourth corner completes the parallelogram), shrunk 12 m to the lot line; blocks with fewer than three
+# corners get a 50 m circle. Plants drawn on unplatted ground (rail yards, river bottoms, smelter and packing-house grounds) are placed
+# from their outlines on the sheet (data/raw/sanborn_loc/readings/1903_outside_xy.json). Distances are edge to edge, block to plant.
 # Measures (dwellings = D-marked buildings, incl. flats and shanties; heavy trades = foundries, smelters, chemical, gas, oil/paint/tar, tanneries,
 # packing houses and stockyards, brick and pottery kilns, rail shops and power plants; hazardous adds metal working and machine shops,
 # breweries and distilleries):
 #   share of dwellings on a block with industry; with a hazardous trade (foundry, smelter, metal and machine works, chemical, gas works,
-#   oil/paint/tar, tannery/hides, meat packing and stockyards, brewery/distillery, brick/pottery, rail shops, power plants); facing one
-#   across a street; within 150 m of a hazardous block; by the block's 1929 zoning (Industrial A/B, Commercial, or residential use
-#   districts) and by the 1900 and 1910 enumeration district it fell in.
+#   oil/paint/tar, tannery/hides, meat packing and stockyards, brewery/distillery, brick/pottery, rail shops, power plants); across the
+#   street from one (block edges within 30 m: the next block over a street, not diagonally across a crossing); facing industry as drawn; within 150 m (edge to edge) of a hazardous block or plant; by the
+#   block's 1929 zoning (Industrial A/B, Commercial, or residential use districts) and by the 1900 and 1910 enumeration district it fell in.
 # Outputs: data/results/sanborn_1903/*.csv, summary.md; app/data/sanborn_1903_sheets.geojson, sanborn_1903_blocks.geojson
 for (p in c("data.table", "sf", "jsonlite")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(data.table); library(sf) })
@@ -110,14 +117,39 @@ if (length(KF)) {
   rm(list = ls(CX), envir = CX)
 }
 FITS <- lapply(SH, function(s) tryCatch(fit_sheet(s), error = function(e) NULL))
-ok <- vapply(FITS, function(f) !is.null(f) && isTRUE(f$inside_volume) && f$rmse_m < 40 && (f$n_inliers >= 3 || (f$n_inliers == 2 && f$m_per_px > 0.097 && f$m_per_px < 0.112)), TRUE)
-message(sum(ok), " of ", length(SH), " sheets placed (", sum(vapply(FITS[ok], function(f) f$n_inliers >= 3, TRUE)), " with 3+ matching crossings)")
+# street-name check: distance from each placed block centroid to the modern line of each street that bounds it. Only streets that
+# demonstrably survive here under the same name are tested: names in one of the sheet's own crossings that lands within 35 m of a
+# modern crossing of the same streets once the sheet is placed (renamed streets, e.g. in Elyria or old West Denver, are skipped;
+# the reader's modern names for a crossing are used where given)
+MX <- new.env(); mcross <- function(a, b) { k <- paste(sort(c(a, b)), collapse = "|"); if (is.null(MX[[k]])) MX[[k]] <- crossings(a, b); MX[[k]] }
+bnames <- function(b) unique(na.omit(st_base(unlist(lapply(c("N", "S", "E", "W"), function(d) nz(b$bounded_by[[d]], NA))))))
+st_check <- function(s, f) { if (is.null(f)) return(c(n = 0, ok = NA_real_))
+  ren <- character(0); V <- character(0)
+  for (i in s$intersections) { st <- unlist(i$streets); md <- unlist(nz(i$modern, NULL)); if (length(st) < 2 || is.null(i$x) || is.null(i$y)) next
+    o <- st_base(st[1:2]); m <- if (length(md) == 2) st_base(md) else o
+    if (length(md) == 2) ren[o] <- m
+    if (any(!nzchar(m)) || m[1] == m[2]) next
+    mc <- mcross(m[1], m[2]); if (!nrow(mc)) next
+    g <- to_geo(f, as.numeric(i$x), as.numeric(i$y)); if (min(sqrt((mc[, 1] - g[1])^2 + (mc[, 2] - g[2])^2)) <= 35) V <- union(V, m) }
+  d <- unlist(lapply(s$blocks, function(b) { c0 <- b$centroid; if (is.null(c0$x) || is.null(c0$y)) return(NULL)
+    nm <- bnames(b); nm <- ifelse(nm %in% names(ren), ren[nm], nm); nm <- unique(nm[nzchar(nm) & nm %in% V & nm %in% RO$base]); if (!length(nm)) return(NULL)
+    g <- st_sfc(st_point(to_geo(f, as.numeric(c0$x), as.numeric(c0$y))[1, ]), crs = UTM)
+    as.numeric(st_distance(g, RO[match(nm, RO$base), ])) }))
+  c(n = length(d), ok = if (length(d)) mean(d <= 120) else NA_real_) }
+SC <- t(vapply(seq_along(SH), function(k) st_check(SH[[k]], FITS[[k]]), c(n = 0, ok = 0)))
+st_pass <- SC[, "n"] >= 4 & !is.na(SC[, "ok"]) & SC[, "ok"] >= 0.75
+ok <- vapply(seq_along(FITS), function(k) { f <- FITS[[k]]; !is.null(f) && isTRUE(f$inside_volume) && f$rmse_m < 40 &&
+  (f$n_inliers >= 3 || (f$n_inliers == 2 && f$m_per_px > 0.097 && f$m_per_px < 0.112 && st_pass[k])) }, TRUE)
+message(sum(ok), " of ", length(SH), " sheets placed (", sum(vapply(FITS[ok], function(f) f$n_inliers >= 3, TRUE)), " with 3+ matching crossings; two-crossing sheets kept only if their streets check out)")
+message(sprintf("street-name check on placed sheets: median %.0f%% of block-street pairs within 120 m; %d placed sheets below 75%%",
+                100 * median(SC[ok, "ok"], na.rm = TRUE), sum(ok & SC[, "n"] >= 4 & SC[, "ok"] < 0.75, na.rm = TRUE)))
 # ---------------------------------------------------------------- sheet footprints with links to the Library of Congress images
 CAT <- fread(file.path(RD, "catalogue.csv"))
 SHT <- rbindlist(lapply(seq_along(SH), function(k) { s <- SH[[k]]; f <- FITS[[k]]; img <- sub("\\.jpg$", "", sub("^1903_1904_v\\d_", "", nz(s$image, "")))
   cr <- CAT[image_id == img]
   data.table(volume = s$volume, sheet = s$sheet, image_id = img, iiif = nz(cr$iiif[1]), page = nz(cr$page[1]), placed = ok[k],
              n_inliers = if (is.null(f)) 0L else f$n_inliers, rmse_m = if (is.null(f)) NA_real_ else round(f$rmse_m, 1),
+             street_pairs = SC[k, "n"], pct_streets_within_120m = round(100 * SC[k, "ok"], 1),
              blocks = length(s$blocks), dwellings = sum(vapply(s$blocks, function(b) sum(unlist(nz(b$dwellings, 0)), unlist(nz(b$flats, 0)), unlist(nz(b$shanties, 0)), na.rm = TRUE), 1)),
              industrial = sum(vapply(s$blocks, function(b) length(b$industrial), 1L)) + length(s$outside_blocks), notes = nz(s$sheet_notes, "")) }))
 W0 <- 3225; H0 <- 3825
@@ -127,6 +159,11 @@ POLY <- lapply(which(ok), function(k) { f <- FITS[[k]]; s <- SH[[k]]   # outline
   if (is.null(px) || nrow(px) < 3) { m <- to_geo(f, c(0, W0, W0, 0, 0), c(0, 0, H0, H0, 0)); return(st_polygon(list(m))) }
   g <- to_geo(f, px[, 1], px[, 2]); st_buffer(st_convex_hull(st_multipoint(g)), 60) })
 SHP <- st_sf(SHT[ok], geometry = st_sfc(POLY, crs = UTM))
+# image corners (top-left, top-right, bottom-left) for laying the sheet image itself on the map
+CRN <- rbindlist(lapply(which(ok), function(k) { g <- to_geo(FITS[[k]], c(0, W0, 0), c(0, 0, H0))
+  ll <- st_coordinates(st_transform(st_sfc(lapply(1:3, function(i) st_point(g[i, ])), crs = UTM), 4326))
+  data.table(tl_lon = ll[1, 1], tl_lat = ll[1, 2], tr_lon = ll[2, 1], tr_lat = ll[2, 2], bl_lon = ll[3, 1], bl_lat = ll[3, 2]) }))
+SHP <- cbind(SHP, CRN)
 # ---------------------------------------------------------------- blocks
 HEAVY <- c("foundry", "smelter", "chemical", "gas works", "oil/paint/tar", "oil/paint", "tannery/hides", "meat packing/stockyard", "brick/stone/pottery", "brick/stone",
            "rail shops/roundhouse", "power/electric")
@@ -137,7 +174,9 @@ BL <- rbindlist(lapply(seq_along(SH), function(k) { s <- SH[[k]]; if (!ok[k]) re
     tr <- vapply(b$industrial, function(i) tolower(nz(i$trade, "other")), ""); lab <- vapply(b$industrial, function(i) paste(na.omit(c(nz(i$name, NA), nz(i$label, NA))), collapse = " – "), "")
     fac <- sum(vapply(b$faces, function(x) as.numeric(nz(x$dwellings_facing, 0)), 1), na.rm = TRUE)
     bb <- unlist(lapply(c("N", "S", "E", "W"), function(d) nz(b$bounded_by[[d]], NA)))
+    bn <- vapply(c("N", "S", "E", "W"), function(d) { v <- nz(b$bounded_by[[d]], NA); if (is.na(v)) "" else st_base(v) }, "")
     data.table(volume = s$volume, sheet = s$sheet, block_id = nz(b$block_id, ""), x = g[1], y = g[2], partial = isTRUE(b$partial),
+               nN = bn[["N"]], nS = bn[["S"]], nE = bn[["E"]], nW = bn[["W"]],
                streets = paste(sort(unique(na.omit(st_base(bb)))), collapse = "/"),
                dwellings = sum(as.numeric(c(nz(b$dwellings, 0), nz(b$flats, 0), nz(b$shanties, 0))), na.rm = TRUE), shanties = as.numeric(nz(b$shanties, 0)),
                stores = as.numeric(nz(b$stores, 0)), n_industrial = length(tr), n_hazardous = sum(tr %in% HAZ), n_heavy = sum(tr %in% HEAVY), trades = paste(unique(tr), collapse = "; "),
@@ -148,19 +187,54 @@ grp <- integer(nrow(BL)); g <- 0L
 for (i in seq_len(nrow(BL))) if (grp[i] == 0L) { g <- g + 1L; grp[i] <- g
   j <- which(grp == 0L & BL$streets == BL$streets[i] & nzchar(BL$streets[i]) & sqrt((BL$x - BL$x[i])^2 + (BL$y - BL$y[i])^2) < 90); grp[j] <- g }
 BL[, grp := grp]
-B <- BL[, .(x = mean(x), y = mean(y), sheets = paste(unique(sheet), collapse = ","), volume = volume[1], streets = streets[1],
+# block outlines from the crossings of the streets that bound the block
+corner <- function(a, b, x, y) { if (!nzchar(a) || !nzchar(b) || a == b) return(NULL); m <- cand(a, b); if (!nrow(m)) return(NULL)
+  d <- sqrt((m[, 1] - x)^2 + (m[, 2] - y)^2); if (min(d) > 250) NULL else m[which.min(d), ] }
+block_poly <- function(x, y, nN, nS, nE, nW) {
+  cn <- list(NE = corner(nN, nE, x, y), NW = corner(nN, nW, x, y), SE = corner(nS, nE, x, y), SW = corner(nS, nW, x, y))
+  have <- !vapply(cn, is.null, TRUE)
+  if (sum(have) == 3) { opp <- c(NE = "SW", NW = "SE", SE = "NW", SW = "NE"); nb <- list(NE = c("NW", "SE"), NW = c("NE", "SW"), SE = c("NE", "SW"), SW = c("NW", "SE"))
+    k <- names(cn)[!have]; cn[[k]] <- cn[[nb[[k]][1]]] + cn[[nb[[k]][2]]] - cn[[opp[[k]]]]; have[k] <- TRUE }
+  if (sum(have) == 4) { m <- do.call(rbind, cn[c("NE", "NW", "SW", "SE")])
+    pg <- st_buffer(st_convex_hull(st_multipoint(m)), -12)
+    if (!st_is_empty(pg)) { ar <- st_area(pg); if (ar > 1500 && ar < 80000 && st_distance(st_point(c(x, y)), pg)[1] < 40) return(list(g = pg, corners = 4L)) } }
+  list(g = st_buffer(st_point(c(x, y)), 50), corners = 0L) }
+BP0 <- lapply(seq_len(nrow(BL)), function(i) with(BL[i], block_poly(x, y, nN, nS, nE, nW)))
+BL[, corners := vapply(BP0, `[[`, 1L, "corners")]
+B <- BL[, .(x = mean(x), y = mean(y), corners = max(corners), piece = .I[which.max(corners)], sheets = paste(unique(sheet), collapse = ","), volume = volume[1], streets = streets[1],
             dwellings = if (all(partial)) sum(dwellings) else max(dwellings), shanties = max(shanties), stores = max(stores),
             n_industrial = if (all(partial)) sum(n_industrial) else max(n_industrial), n_hazardous = if (all(partial)) sum(n_hazardous) else max(n_hazardous),
             n_heavy = if (all(partial)) sum(n_heavy) else max(n_heavy), trades = paste(unique(unlist(strsplit(trades, "; "))), collapse = "; "),
             establishments = paste(unique(unlist(strsplit(establishments, "; "))), collapse = "; "), dwellings_facing_industry = max(dwellings_facing_industry)), by = grp]
 B[, dwellings_facing_industry := pmin(dwellings_facing_industry, dwellings)]   # a block cannot have more facing dwellings than dwellings
-BS <- st_as_sf(B, coords = c("x", "y"), crs = UTM, remove = FALSE)
-haz_pts <- BS[BS$n_hazardous > 0, ]
-B[, near_haz_150 := lengths(st_is_within_distance(BS, haz_pts, 150)) > 0]
-heavy_pts <- BS[BS$n_heavy > 0, ]; B[, near_heavy_150 := lengths(st_is_within_distance(BS, heavy_pts, 150)) > 0]
+B[, poly_from := fifelse(corners == 4L, "street crossings", "50 m circle (corners not found)")]
+BG <- st_sfc(lapply(seq_len(nrow(B)), function(i) if (B$corners[i] == 4L) BP0[[B$piece[i]]]$g else st_buffer(st_point(c(B$x[i], B$y[i])), 50)), crs = UTM)
+BS <- st_as_sf(B, coords = c("x", "y"), crs = UTM, remove = FALSE)      # centroids, for point joins (zoning, enumeration districts)
+# plants on unplatted ground, placed from their outlines on the sheet
+OXF <- file.path(RD, "readings", "1903_outside_xy.json")
+OXY <- if (file.exists(OXF)) as.data.table(jsonlite::fromJSON(OXF)) else data.table(volume = integer(), sheet = character(), index = integer())
+OXY[, sheet := as.character(sheet)]
+OP <- rbindlist(lapply(which(ok), function(k) { s <- SH[[k]]; ob <- s$outside_blocks; if (!length(ob)) return(NULL); f <- FITS[[k]]
+  rbindlist(lapply(seq_along(ob), function(i) { o <- ob[[i]]; r <- OXY[volume == s$volume & sheet == as.character(s$sheet) & index == i - 1L]
+    if (!nrow(r) || is.na(r$x0[1])) return(NULL)
+    g <- to_geo(f, c(r$x0, r$x1, r$x1, r$x0, r$x0), c(r$y0, r$y0, r$y1, r$y1, r$y0))
+    data.table(volume = s$volume, sheet = s$sheet, label = nz(o$label, ""), name = nz(o$name, ""), trade = tolower(nz(o$trade, "other")), geom = list(st_polygon(list(g)))) })) }))
+OPG <- if (nrow(OP)) st_sfc(OP$geom, crs = UTM) else st_sfc(crs = UTM)
+if (nrow(OP)) { OP[, geom := NULL]; OP[, `:=`(hazardous = trade %in% HAZ, heavy = trade %in% HEAVY)] }
+message(nrow(OP), " plants on unplatted ground placed (", sum(OP$hazardous), " hazardous)")
+# edge-to-edge distance from each block to the nearest other hazardous (heavy) block or plant
+dmin <- function(which_blocks, which_plants) {
+  tg <- c(BG[which_blocks], OPG[which_plants]); own <- c(which(which_blocks), rep(NA_integer_, sum(which_plants)))
+  if (!length(tg)) return(rep(Inf, length(BG)))
+  D <- st_distance(BG, tg); D <- matrix(as.numeric(D), nrow = length(BG))
+  for (j in which(!is.na(own))) D[own[j], j] <- Inf                    # a block's own trades are counted as "same block"
+  apply(D, 1, min) }
+B[, `:=`(d_haz_m = round(dmin(B$n_hazardous > 0, if (nrow(OP)) OP$hazardous else logical(0))), d_heavy_m = round(dmin(B$n_heavy > 0, if (nrow(OP)) OP$heavy else logical(0))))]
+B[, `:=`(near_haz_150 = d_haz_m <= 150, near_heavy_150 = d_heavy_m <= 150 | n_heavy > 0, across_haz = d_haz_m <= 30)]
 B[, `:=`(mixed = dwellings > 0 & n_industrial > 0, mixed_haz = dwellings > 0 & n_hazardous > 0)]
-B[, exposure := fcase(mixed_haz, "Same block as a hazardous trade", dwellings_facing_industry > 0 | (dwellings > 0 & n_industrial > 0), "Same block as other industry, or facing industry",
-                      near_haz_150, "Within 150 m of a hazardous trade", default = "No industry within 150 m")]
+B[, exposure := fcase(mixed_haz, "Same block as a hazardous trade", dwellings > 0 & across_haz, "Across the street from a hazardous trade",
+                      dwellings_facing_industry > 0 | (dwellings > 0 & n_industrial > 0), "Same block as other industry, or facing industry",
+                      near_haz_150, "Within 150 m of a hazardous trade", default = "No hazardous trade within 150 m")]
 # 1929 zoning
 Z29 <- st_transform(st_make_valid(st_read(file.path(A, "zoning_1929.geojson"), quiet = TRUE)), UTM)
 B[, zone_1929 := { w <- st_within(BS, Z29); vapply(w, function(i) if (length(i)) as.character(Z29$zone[i[1]]) else "Other districts (residence or business)", "") }]
@@ -170,15 +244,17 @@ for (yy in c(1900, 1910)) { e <- ED[ED$year == yy, ]; w <- st_within(BS, e); B[,
 # later sites: 1965-92 hazardous-sector manufacturers (hidden / known) within 150 m of a hazardous 1903 block
 S <- fread(file.path(A, "sites.csv"))[fe_hazard %in% c(TRUE, "True") & geo_level %in% c("address", "address_approx") & !is.na(lat)]
 SS <- st_transform(st_as_sf(S, coords = c("lon", "lat"), crs = 4326), UTM)
-B[, `:=`(later_hidden_150 = lengths(st_is_within_distance(BS, SS[SS$radar == "Not on any list", ], 150)) > 0,
-         later_known_150 = lengths(st_is_within_distance(BS, SS[SS$radar != "Not on any list", ], 150)) > 0)]
+SH_ <- SS[SS$radar == "Not on any list", ]; SK_ <- SS[SS$radar != "Not on any list", ]
+B[, `:=`(later_hidden_150 = lengths(st_is_within_distance(BG, SH_, 150)) > 0, later_known_150 = lengths(st_is_within_distance(BG, SK_, 150)) > 0)]
+if (nrow(OP)) OP[, `:=`(later_hidden_150 = lengths(st_is_within_distance(OPG, SH_, 150)) > 0, later_known_150 = lengths(st_is_within_distance(OPG, SK_, 150)) > 0)]
 # ---------------------------------------------------------------- results (aggregates)
 area_of <- function(v) fifelse(v == 1, "Auraria, West Denver, South Platte (vol. 1)", "North side to Elyria-Swansea (vol. 2)")
 B[, area := area_of(volume)]
-EXPO_ALL <- B[dwellings > 0, .(area = "All placed sheets", dwellings = sum(dwellings), pct_same_block_haz = round(100 * sum(dwellings[mixed_haz]) / sum(dwellings), 1), pct_same_block_any = round(100 * sum(dwellings[mixed]) / sum(dwellings), 1), pct_within_150_haz = round(100 * sum(dwellings[mixed_haz | near_haz_150]) / sum(dwellings), 1), pct_same_block_heavy = round(100 * sum(dwellings[n_heavy > 0]) / sum(dwellings), 1), pct_within_150_heavy = round(100 * sum(dwellings[near_heavy_150]) / sum(dwellings), 1), facing_industry = sum(pmin(dwellings_facing_industry, dwellings)))]
+EXPO_ALL <- B[dwellings > 0, .(area = "All placed sheets", dwellings = sum(dwellings), pct_same_block_haz = round(100 * sum(dwellings[mixed_haz]) / sum(dwellings), 1), pct_same_block_any = round(100 * sum(dwellings[mixed]) / sum(dwellings), 1), pct_across_street_haz = round(100 * sum(dwellings[!mixed_haz & across_haz]) / sum(dwellings), 1), pct_within_150_haz = round(100 * sum(dwellings[mixed_haz | near_haz_150]) / sum(dwellings), 1), pct_same_block_heavy = round(100 * sum(dwellings[n_heavy > 0]) / sum(dwellings), 1), pct_within_150_heavy = round(100 * sum(dwellings[near_heavy_150]) / sum(dwellings), 1), facing_industry = sum(pmin(dwellings_facing_industry, dwellings)))]
 EXPO <- B[dwellings > 0, .(blocks = .N, dwellings = sum(dwellings)), by = .(exposure)][, pct_dwellings := round(100 * dwellings / sum(dwellings), 1)][order(-dwellings)]
 EXPO_AREA <- B[dwellings > 0, .(dwellings = sum(dwellings), pct_same_block_haz = round(100 * sum(dwellings[mixed_haz]) / sum(dwellings), 1),
                                pct_same_block_any = round(100 * sum(dwellings[mixed]) / sum(dwellings), 1),
+                               pct_across_street_haz = round(100 * sum(dwellings[!mixed_haz & across_haz]) / sum(dwellings), 1),
                                pct_within_150_haz = round(100 * sum(dwellings[mixed_haz | near_haz_150]) / sum(dwellings), 1),
                                pct_same_block_heavy = round(100 * sum(dwellings[n_heavy > 0]) / sum(dwellings), 1),
                                pct_within_150_heavy = round(100 * sum(dwellings[near_heavy_150]) / sum(dwellings), 1),
@@ -193,26 +269,32 @@ ZEXP <- B[dwellings > 0, .(dwellings = sum(dwellings)), by = .(exposure, zone_19
 E10 <- as.data.table(st_drop_geometry(ED[ED$year == 1910, c("ED", "pct_fb", "pct_black", "pct_laborers", "pct_owner_hh")]))
 WHO <- merge(B[dwellings > 0 & !is.na(ed_1910), .(dwellings, exposure, ed = ed_1910)], E10[, ed := as.character(ED)], by = "ed")
 WHO <- WHO[, lapply(.SD, function(v) round(weighted.mean(v, dwellings, na.rm = TRUE), 1)), by = exposure, .SDcols = c("pct_fb", "pct_black", "pct_laborers", "pct_owner_hh")]
-PERSIST <- B[n_hazardous > 0, .(hazardous_blocks_1903 = .N, pct_with_1965_92_site_150m = round(100 * mean(later_hidden_150 | later_known_150), 1),
+pers <- function(d, what) d[, .(what = what, n = .N, pct_with_1965_92_site_150m = round(100 * mean(later_hidden_150 | later_known_150), 1),
                                 pct_with_hidden_site_150m = round(100 * mean(later_hidden_150), 1), pct_with_known_site_150m = round(100 * mean(later_known_150), 1))]
+PERSIST <- rbind(pers(B[n_hazardous > 0], "Blocks with a hazardous trade"), if (nrow(OP) && any(OP$hazardous)) pers(OP[hazardous == TRUE], "Hazardous plants on unplatted ground"))
+OUTSIDE <- if (nrow(OP)) OP[, .(plants = .N), by = trade][order(-plants)] else data.table(trade = character(), plants = integer())
+POLYQ <- B[, .(blocks = .N, dwellings = sum(dwellings)), by = poly_from]
 COVER <- SHT[, .(sheets_read = .N, sheets_placed = sum(placed), dwellings_read = sum(dwellings), dwellings_on_placed_sheets = sum(dwellings[placed])), by = .(volume)]
 COVER[, pct_dwellings_covered := round(100 * dwellings_on_placed_sheets / dwellings_read, 1)]; print(COVER)
-fwrite(SHT, file.path(O, "sheets.csv")); fwrite(B[, !c("grp")], file.path(O, "blocks.csv"))
-for (nm in c("EXPO", "EXPO_AREA", "TRADES", "ZONE", "ZEXP", "WHO", "PERSIST", "COVER")) fwrite(get(nm), file.path(O, paste0(tolower(nm), ".csv")))
-SHP$thumb <- paste0(SHP$iiif, "/full/pct:12.5/0/default.jpg")
+fwrite(SHT, file.path(O, "sheets.csv")); fwrite(B[, !c("grp", "piece")], file.path(O, "blocks.csv"))
+for (nm in c("EXPO", "EXPO_AREA", "TRADES", "ZONE", "ZEXP", "WHO", "PERSIST", "COVER", "OUTSIDE", "POLYQ")) fwrite(get(nm), file.path(O, paste0(tolower(nm), ".csv")))
+SHP$thumb <- paste0(SHP$iiif, "/full/pct:12.5/0/default.jpg"); SHP$overlay <- paste0(SHP$iiif, "/full/pct:25/0/default.jpg")
 if (file.exists(file.path(A, "sanborn_1903_sheets.geojson"))) file.remove(file.path(A, "sanborn_1903_sheets.geojson"))
 st_write(st_transform(SHP, 4326), file.path(A, "sanborn_1903_sheets.geojson"), quiet = TRUE)
-BP <- st_transform(st_as_sf(B[, .(sheets, streets, dwellings, n_industrial, n_hazardous, n_heavy, trades, establishments = substr(establishments, 1, 300), exposure, zone_1929, x, y)],
-                            coords = c("x", "y"), crs = UTM), 4326)
+BP <- st_transform(st_sf(B[, .(sheets, streets, dwellings, n_industrial, n_hazardous, n_heavy, trades, establishments = substr(establishments, 1, 300), exposure, zone_1929, d_haz_m, poly_from)],
+                         geometry = BG), 4326)
 if (file.exists(file.path(A, "sanborn_1903_blocks.geojson"))) file.remove(file.path(A, "sanborn_1903_blocks.geojson"))
 st_write(BP, file.path(A, "sanborn_1903_blocks.geojson"), quiet = TRUE)
-for (nm in c("EXPO", "EXPO_AREA", "ZONE", "ZEXP", "WHO", "PERSIST", "TRADES", "COVER")) fwrite(get(nm), file.path(A, paste0("sanborn1903_", tolower(nm), ".csv")))
+for (nm in c("EXPO", "EXPO_AREA", "ZONE", "ZEXP", "WHO", "PERSIST", "TRADES", "COVER", "OUTSIDE")) fwrite(get(nm), file.path(A, paste0("sanborn1903_", tolower(nm), ".csv")))
+if (file.exists(file.path(A, "sanborn_1903_plants.geojson"))) file.remove(file.path(A, "sanborn_1903_plants.geojson"))
+if (nrow(OP)) st_write(st_transform(st_sf(OP[, .(volume, sheet, label, name, trade, hazardous)], geometry = OPG), 4326), file.path(A, "sanborn_1903_plants.geojson"), quiet = TRUE)
 kab <- function(x) { x <- as.data.frame(x); c(paste("|", paste(names(x), collapse = " | "), "|"), paste0(strrep("|---", ncol(x)), "|"),
   apply(x, 1, function(r) paste("|", paste(ifelse(is.na(r), "", trimws(r)), collapse = " | "), "|"))) }
 writeLines(c("# Housing and industry before zoning: Denver 1903-04 Sanborn maps", "",
              sprintf("%d sheets read, %d placed on the modern map; %s blocks with %s dwellings.", length(SH), sum(ok), format(nrow(B), big.mark = ","), format(sum(B$dwellings), big.mark = ",")), "",
              "## Coverage: dwellings on sheets placed on the map", "", kab(COVER), "", "## Dwellings by exposure (placed sheets)", "", kab(EXPO), "", "## By area", "", kab(EXPO_AREA), "", "## Trades recorded (blocks)", "", kab(TRADES), "",
              "## 1929 zoning of the 1903 blocks", "", kab(ZONE), "", kab(ZEXP), "", "## Who lived there (1910 enumeration districts, dwelling-weighted means)", "", kab(WHO), "",
-             "## Persistence: 1903 hazardous blocks with a 1965-92 hazardous-sector site within 150 m", "", kab(PERSIST)), file.path(O, "summary.md"))
-print(SHT[, .(sheets = .N, placed = sum(placed)), by = volume]); print(EXPO); print(EXPO_AREA); print(ZONE); print(WHO); print(PERSIST)
+             "## Persistence: 1903 hazardous blocks and plants with a 1965-92 hazardous-sector site within 150 m", "", kab(PERSIST), "",
+             "## Plants on unplatted ground (placed from their outlines)", "", kab(OUTSIDE), "", "## Block outlines", "", kab(POLYQ)), file.path(O, "summary.md"))
+print(SHT[, .(sheets = .N, placed = sum(placed)), by = volume]); print(EXPO); print(EXPO_AREA); print(ZONE); print(WHO); print(PERSIST); print(POLYQ)
 message("wrote ", O)

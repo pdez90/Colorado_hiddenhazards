@@ -7,7 +7,7 @@
 # NBER where the two overlap (interstates in Denver County).
 # Outputs (data/results/highways/, copies in app/data):
 #   highways_denver.geojson            freeway and major-road alignments in and around the study area with start and end years (for the maps)
-#   highways_km_by_decade.csv          km of freeway (motorway) opened per decade in the study area
+#   highways_km_by_decade.csv          km of freeway (motorway) opened and removed per decade, and km in service at each decade's end
 #   highways_nber_check.csv            NBER first/last opening by interstate in Denver County vs the OHM start years
 #   highways_by_holc_grade.csv         km of freeway built 1950-1979 through each 1938 HOLC grade, and share of each grade within 250 m
 #   highways_by_zoning_1929.csv        km of those freeways through 1929 industrial, commercial and other land
@@ -30,9 +30,12 @@ f <- file.path(O, "highways_denver.geojson"); if (file.exists(f)) file.remove(f)
 # ---------------------------------------------------------------- 1. km by decade
 FW <- HS[HS$kind == "Freeway" & !grepl("_link", HS$highway), ]
 R1 <- as.data.table(st_drop_geometry(FW))[!is.na(start_year), .(km_opened = round(sum(km), 1)), by = .(decade = 10 * (start_year %/% 10))][order(decade)]
-R1[, km_cumulative := cumsum(km_opened)]
 rem <- as.data.table(st_drop_geometry(FW))[!is.na(end_year), .(km_removed = round(sum(km), 1)), by = .(decade = 10 * (end_year %/% 10))]
-R1 <- merge(R1, rem, by = "decade", all = TRUE); R1[is.na(km_opened), km_opened := 0]; R1[is.na(km_removed), km_removed := 0]
+R1 <- merge(R1, rem, by = "decade", all = TRUE); R1 <- merge(data.table(decade = seq(min(R1$decade), max(R1$decade), 10)), R1, by = "decade", all.x = TRUE); R1[is.na(km_opened), km_opened := 0]; R1[is.na(km_removed), km_removed := 0]
+# km in service at the end of each decade: opened before the decade ended and not yet removed (segments taken down, e.g. the Valley Highway
+# viaducts, drop out; a segment with no end year is still open)
+fw <- as.data.table(st_drop_geometry(FW))[!is.na(start_year)]
+R1[, km_open_at_decade_end := vapply(decade, function(d) round(sum(fw[start_year < d + 10 & (is.na(end_year) | end_year >= d + 10), km]), 1), 0)]
 fwrite(R1, file.path(O, "highways_km_by_decade.csv")); print(R1)
 # ---------------------------------------------------------------- 2. NBER cross-check (Denver County interstates)
 nb <- as.data.table(haven::read_dta("work/highways/openings/openings/highway10122.dta"))[state == "COLORADO" & county == 31]

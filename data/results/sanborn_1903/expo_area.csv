@@ -1,4 +1,4 @@
-area,dwellings,pct_same_block_haz,pct_same_block_any,pct_within_150_haz,pct_same_block_heavy,pct_within_150_heavy,facing_industry
-North side to Elyria-Swansea (vol. 2),7013,17.6,44.6,45.8,8,27.4,231
-"Auraria, West Denver, South Platte (vol. 1)",1368,44.2,74.9,85.2,24.4,65.1,75
-All placed sheets,8381,22,49.5,52.2,10.7,33.6,306
+area,dwellings,pct_same_block_haz,pct_same_block_any,pct_across_street_haz,pct_within_150_haz,pct_same_block_heavy,pct_within_150_heavy,facing_industry
+North side to Elyria-Swansea (vol. 2),6945,17.5,44.7,27.2,73.9,8.1,53.3,227
+"Auraria, West Denver, South Platte (vol. 1)",1287,45.5,74.7,38.9,97.6,24.5,87.6,75
+All placed sheets,8232,21.9,49.4,29,77.6,10.7,58.6,302

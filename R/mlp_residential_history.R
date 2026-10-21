@@ -11,12 +11,16 @@
 #   1. Each 1940 Denver resident is traced to their record in each earlier census through the MLP crosswalk, and, if they lived in Denver
 #      then, to their street address (same address key, geocodes and stray-geocode rule as R/grf_eds.R).
 #   2. At each earlier address: hazardous trades listed in the directories in the preceding decade (within 500 m, and kernel), and in
-#      1930 the 1929 zoning district.
+#      1930 the 1929 zoning district. The directories were sampled unevenly (the 1901-1910 window lists a handful of Denver sites, 1911-1920
+#      about a hundred), so raw counts mostly track which directory years survive. Exposure is therefore also expressed within each census:
+#      the address's percentile among all geocoded Denver residents that year, and whether it is in that year's top quarter. The sites per
+#      window are written to mlp_exposure_windows.csv, and the cumulative measures are repeated on the censuses whose window lists 20+ sites.
 #   3. Persistence: how many 1940 residents lived in Denver, at the same address, or within 500 m of the same place a decade or more earlier,
 #      and how exposure carried over, by 1940 exposure.
-#   4. Cumulative exposure: censuses (of those observed, 1910-1940) in which the person lived within 500 m of a hazardous trade, and the
-#      childhood address (the earliest census at ages 0-14); both added to the CenSoc age-at-death models of R/censoc_denver_1940.R.
-# Outputs (aggregates only): data/results/censoc/mlp_persistence.csv, mlp_models.csv, mlp_summary.md
+#   4. Cumulative exposure: the mean within-census percentile over the censuses observed (1910-1940), the share of those censuses in the
+#      top quarter, the raw count within 500 m (for comparison), and the childhood address (earliest census at ages 0-14); all added to the
+#      CenSoc age-at-death models of R/censoc_denver_1940.R. The 1940 address uses the same 10-year window (1931-1940) as earlier censuses.
+# Outputs (aggregates only): data/results/censoc/mlp_persistence.csv, mlp_exposure_windows.csv, mlp_models.csv, mlp_summary.md
 for (p in c("readr", "RANN", "sandwich", "lmtest")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(data.table); library(sf); library(sandwich); library(lmtest) })
 sf_use_s2(FALSE); UTM <- 26913; W <- "work/censoc"; O <- "data/results/censoc"; A <- "app/data"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
@@ -36,6 +40,12 @@ X <- unique(X, by = c("HISTID", "year"))
 # ---------------------------------------------------------------- 2. earlier Denver addresses and exposures there
 Hs <- fread(file.path(A, "historical_sites.csv"))[town == "DENVER" & precision != "town" & !is.na(lat) & fe_hazard %in% c(TRUE, "True")]
 hxy <- st_coordinates(st_transform(st_as_sf(Hs[, .(lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM))
+KMIN <- 20                                                          # a census window needs this many listed sites to count as comparable
+in_win <- function(yr) Hs$first_year <= yr & Hs$last_year >= yr - 9    # listed in a directory in the decade up to the census
+kern <- function(hk, xy) { if (!nrow(hk) || !nrow(xy)) return(list(k = rep(0, nrow(xy)), w500 = rep(0, nrow(xy))))
+  nn <- RANN::nn2(hk, xy, k = min(nrow(hk), 100), searchtype = "radius", radius = 2000); d <- nn$nn.dists; d[nn$nn.idx == 0] <- NA
+  list(k = rowSums(exp(-0.5 * (d / 500)^2), na.rm = TRUE), w500 = as.numeric(rowSums(d <= 500, na.rm = TRUE) > 0)) }
+pctl <- function(v) 100 * frank(v, ties.method = "average") / length(v)    # percentile among all geocoded residents that census (ties share the average rank)
 Z <- st_make_valid(st_transform(st_read(file.path(A, "zoning_1929.geojson"), quiet = TRUE), UTM))
 addr_year <- function(yr) {
   G <- fread(sprintf("work/census/brown/grf/DenverCO/DenverCO_%d.csv", yr), colClasses = "character", select = c("histid", "b_ed", "b_hn", "b_stfull"))
@@ -46,14 +56,22 @@ addr_year <- function(yr) {
   xy <- st_coordinates(st_transform(st_as_sf(G[!is.na(lat), .(lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM)); G[!is.na(lat), `:=`(x = xy[, 1], y = xy[, 2])]
   G[!is.na(x), `:=`(mx = median(x), my = median(y)), by = ED]; G[, dd := sqrt((x - mx)^2 + (y - my)^2)]
   G[!is.na(dd), thr := if (.N >= 5) max(400, 2.5 * median(dd)) else 600, by = ED]; G[!is.na(dd) & dd > thr, c("x", "y") := NA_real_]
-  G <- G[!is.na(x)]; hk <- hxy[Hs$first_year <= yr & Hs$last_year >= yr - 9, , drop = FALSE]
-  if (nrow(hk)) { nn <- RANN::nn2(hk, as.matrix(G[, .(x, y)]), k = min(nrow(hk), 100), searchtype = "radius", radius = 2000); d <- nn$nn.dists; d[nn$nn.idx == 0] <- NA
-    G[, `:=`(haz_500_then = as.numeric(rowSums(d <= 500, na.rm = TRUE) > 0), haz_k_then = rowSums(exp(-0.5 * (d / 500)^2), na.rm = TRUE))] } else G[, `:=`(haz_500_then = 0, haz_k_then = 0)]
+  G <- G[!is.na(x)]; kk <- kern(hxy[in_win(yr), , drop = FALSE], as.matrix(G[, .(x, y)]))
+  G[, `:=`(haz_500_then = kk$w500, haz_k_then = kk$k)]; G[, haz_pct_then := pctl(haz_k_then)]
   if (yr == 1930) { zp <- st_as_sf(G[, .(x, y)], coords = c("x", "y"), crs = UTM); G[, zone_ind_then := as.numeric(lengths(st_within(zp, Z[grepl("Industrial", Z$zone), ])) > 0)]
   } else G[, zone_ind_then := NA_real_]
-  G[!duplicated(histid_then), .(histid_then, year = yr, x_then = x, y_then = y, haz_500_then, haz_k_then, zone_ind_then)] }
+  G[!duplicated(histid_then), .(histid_then, year = yr, x_then = x, y_then = y, haz_500_then, haz_k_then, haz_pct_then, zone_ind_then)] }
 YRS <- intersect(sort(unique(X$year)), c(1910, 1920, 1930))
 AH <- rbindlist(lapply(YRS, addr_year))
+# the 1940 address on the same footing: sites listed 1931-1940, percentile among all geocoded 1940 residents
+k40 <- kern(hxy[in_win(1940), , drop = FALSE], as.matrix(P[!is.na(x), .(x, y)]))
+P[!is.na(x), `:=`(haz_500_w40 = k40$w500, haz_pct40 = pctl(k40$k))]
+ed_years <- function(yr) { yy <- as.integer(unlist(strsplit(as.character(Hs$years), "[^0-9]+"))); yy <- unique(yy[!is.na(yy)]); sort(yy[yy <= yr & yy >= yr - 9]) }
+WIN <- rbindlist(lapply(c(YRS, 1940), function(yr) data.table(census = yr, window = sprintf("%d-%d", yr - 9, yr), hazardous_sites_listed = sum(in_win(yr)),
+  directory_years_with_a_denver_listing = paste(ed_years(yr), collapse = " "),
+  pct_residents_within_500m = round(100 * if (yr == 1940) mean(P[!is.na(x), haz_500_w40]) else mean(AH[year == yr, haz_500_then]), 1))))
+WIN[, comparable := hazardous_sites_listed >= KMIN]; GOOD <- WIN[comparable == TRUE, census]
+fwrite(WIN, file.path(O, "mlp_exposure_windows.csv")); print(WIN)
 Hh <- merge(X, AH, by = c("histid_then", "year"), all.x = TRUE)
 Hh <- merge(Hh, P[, .(HISTID, AGE, x, y, haz_500, zone29, ind37)], by = "HISTID")
 Hh[, `:=`(in_denver_then = !is.na(x_then), moved_m = sqrt((x - x_then)^2 + (y - y_then)^2))]
@@ -63,17 +81,26 @@ grp40(P); grp40(Hh)
 PS <- rbindlist(lapply(YRS, function(yr) { el <- P[!is.na(x) & GQ < 3 & AGE >= 1940 - yr]                   # born by then (yr, not y: y is a coordinate column)
   h <- Hh[year == yr]
   el[, linked := HISTID %in% h$HISTID]
-  r <- merge(el[, .(HISTID, g40, linked)], h[, .(HISTID, in_denver_then, moved_m, haz_500_then)], by = "HISTID", all.x = TRUE)
+  r <- merge(el[, .(HISTID, g40, linked)], h[, .(HISTID, in_denver_then, moved_m, haz_500_then, haz_pct_then)], by = "HISTID", all.x = TRUE)
   r[, .(census = yr, residents_1940 = .N, pct_linked = round(100 * mean(linked), 1), pct_in_denver_then_of_linked = round(100 * mean(in_denver_then[linked]), 1),
         pct_within_100m_of_1940_address = round(100 * mean(moved_m[linked & in_denver_then %in% TRUE] <= 100), 1),
         pct_within_1km = round(100 * mean(moved_m[linked & in_denver_then %in% TRUE] <= 1000), 1),
-        pct_near_hazardous_trade_then = round(100 * mean(haz_500_then[linked & in_denver_then %in% TRUE]), 1)), by = .(address_1940 = g40)] }))
+        pct_near_hazardous_trade_then = round(100 * mean(haz_500_then[linked & in_denver_then %in% TRUE]), 1),
+        pct_in_top_quarter_then = round(100 * mean(haz_pct_then[linked & in_denver_then %in% TRUE] > 75), 1)), by = .(address_1940 = g40)] }))
 fwrite(PS, file.path(O, "mlp_persistence.csv")); print(PS)
 # ---------------------------------------------------------------- 4. cumulative and childhood exposure in the CenSoc models
-CU <- Hh[in_denver_then == TRUE, .(censuses_observed_before = .N, censuses_near_haz_before = sum(haz_500_then)), by = HISTID]
-CH <- Hh[in_denver_then == TRUE & AGE - (1940 - year) <= 14][order(year)][!duplicated(HISTID), .(HISTID, child_year = year, child_haz_500 = haz_500_then, child_haz_k = haz_k_then)]
+CU <- Hh[in_denver_then == TRUE, .(censuses_observed_before = .N, censuses_near_haz_before = sum(haz_500_then), pct_sum_before = sum(haz_pct_then),
+                                   top_before = sum(haz_pct_then > 75), obs_good_before = sum(year %in% GOOD), pct_sum_good_before = sum(haz_pct_then[year %in% GOOD])), by = HISTID]
+CH <- Hh[in_denver_then == TRUE & AGE - (1940 - year) <= 14][order(year)][!duplicated(HISTID), .(HISTID, child_year = year, child_haz_500 = haz_500_then, child_haz_k = haz_k_then, child_pct = haz_pct_then)]
 L <- merge(L0, CU, by.x = "histid", by.y = "HISTID", all.x = TRUE); L <- merge(L, CH, by.x = "histid", by.y = "HISTID", all.x = TRUE)
-L[, `:=`(censuses_near_haz = fifelse(is.na(censuses_near_haz_before), 0, censuses_near_haz_before) + haz_500, censuses_observed = fifelse(is.na(censuses_observed_before), 0, censuses_observed_before) + 1)]
+L <- merge(L, P[, .(HISTID, haz_500_w40, haz_pct40)], by.x = "histid", by.y = "HISTID", all.x = TRUE)
+z0 <- function(v) fifelse(is.na(v), 0, v); g40 <- 1940 %in% GOOD
+L[, `:=`(censuses_near_haz = z0(censuses_near_haz_before) + haz_500, censuses_observed = z0(censuses_observed_before) + 1)]
+L[, `:=`(mean_pct10 = (z0(pct_sum_before) + haz_pct40) / censuses_observed / 10,             # mean within-census percentile, per 10 points
+         top_share = (z0(top_before) + (haz_pct40 > 75)) / censuses_observed,                  # share of observed censuses in that year's top quarter
+         censuses_observed_good = z0(obs_good_before) + g40,
+         mean_pct10_good = (z0(pct_sum_good_before) + g40 * haz_pct40) / (z0(obs_good_before) + g40) / 10,
+         pct40_10 = haz_pct40 / 10, child_pct10 = child_pct / 10)]
 L <- L[!is.na(x) & !is.na(byear) & !is.na(death_age) & gq == 0 & !is.na(weight) & weight > 0]
 L[, `:=`(hc_q = factor(fifelse(is.na(hc_q), 0L, hc_q)), h_hs_m = as.numeric(is.na(h_hs)), h_hs = fifelse(is.na(h_hs), 0, h_hs), h_sei_m = as.numeric(is.na(h_sei)),
          h_sei = fifelse(is.na(h_sei), 0, h_sei), mover_m = as.numeric(is.na(mover)), mover = fifelse(is.na(mover), 0, mover), owner = fifelse(is.na(owner), 0, owner),
@@ -86,13 +113,16 @@ fit <- function(d, terms, label) { d <- d[complete.cases(d[, ..terms])]; if (nro
   data.table(model = label, term = t, years = round(ct[t, 1], 3), lo = round(ct[t, 1] - 1.96 * ct[t, 2], 3), hi = round(ct[t, 1] + 1.96 * ct[t, 2], 3), p = signif(ct[t, 4], 3), n = nobs(m)) }
 R <- rbindlist(lapply(c("DMF", "Numident"), function(s) { d <- L[src == s]; dt <- d[censuses_observed >= 2]
   rbindlist(list(
-    fit(dt, c("censuses_near_haz", "censuses_observed"), "Censuses (1910-1940) living within 500 m of a hazardous trade, people traced to an earlier Denver address"),
-    fit(dt, c("haz_500", "censuses_observed"), "1940 address only, same people (comparison)"),
-    fit(d[!is.na(child_haz_500)], c("child_haz_500", "haz_500"), "Childhood address (ages 0-14, 1910-1930) within 500 m of a hazardous trade, with the 1940 address"),
-    fit(d[!is.na(child_haz_500)], c("haz_500", "child_haz_500"), "1940 address, with the childhood address"))
+    fit(dt, c("mean_pct10", "censuses_observed"), "Mean within-census percentile of hazardous-trade exposure, 1910-1940 (per 10 points), people traced to an earlier Denver address"),
+    fit(dt, c("top_share", "censuses_observed"), "Share of observed censuses (1910-1940) in that census's top quarter of exposure"),
+    fit(dt[censuses_observed_good >= 2], c("mean_pct10_good", "censuses_observed_good"), sprintf("Mean within-census percentile, only censuses whose directory window lists %d+ sites (%s)", KMIN, paste(GOOD, collapse = ", "))),
+    fit(dt, c("pct40_10", "censuses_observed"), "1940 address only, within-census percentile (per 10 points), same people (comparison)"),
+    fit(dt, c("censuses_near_haz", "censuses_observed"), "Raw count of censuses within 500 m of a listed hazardous trade (depends on which directory years survive)"),
+    fit(d[!is.na(child_pct)], c("child_pct10", "pct40_10"), "Childhood address (ages 0-14, 1910-1930), within-census percentile per 10 points, with the 1940 address"),
+    fit(d[!is.na(child_pct)], c("pct40_10", "child_pct10"), "1940 address, with the childhood address"))
   )[, people := if (s == "DMF") "Men, deaths 1975-2020" else "Men and women, deaths at 65+ 1988-2005"] }), fill = TRUE)
 fwrite(R, file.path(O, "mlp_models.csv")); print(R)
 kab <- function(x) { x <- as.data.frame(x); c(paste("|", paste(names(x), collapse = " | "), "|"), paste0(strrep("|---", ncol(x)), "|"),
   apply(x, 1, function(r) paste("|", paste(ifelse(is.na(r), "", trimws(r)), collapse = " | "), "|"))) }
-writeLines(c("# Residential histories of Denver's 1940 residents (IPUMS MLP)", "", "## Persistence", "", kab(PS), "", "## Age at death and exposure over the life course (years, 95% CI)", "", kab(R)),
+writeLines(c("# Residential histories of Denver's 1940 residents (IPUMS MLP)", "", "## Persistence", "", kab(PS), "", "## Hazardous trades listed in each census window", "", kab(WIN), "", "## Age at death and exposure over the life course (years, 95% CI)", "", kab(R)),
            file.path(O, "mlp_summary.md")); message("wrote ", O)

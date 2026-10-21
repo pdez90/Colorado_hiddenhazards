@@ -91,7 +91,26 @@ ur_poly <- if (file.exists(dd("urban_renewal_denver.geojson"))) st_read(dd("urba
 ou_poly <- if (file.exists(dd("superfund_ou_study.geojson"))) st_read(dd("superfund_ou_study.geojson"), quiet = TRUE) else NULL
 sb03 <- if (file.exists(dd("sanborn_1903_sheets.geojson"))) st_read(dd("sanborn_1903_sheets.geojson"), quiet = TRUE) else NULL
 bl03 <- if (file.exists(dd("sanborn_1903_blocks.geojson"))) st_read(dd("sanborn_1903_blocks.geojson"), quiet = TRUE) else NULL
-s03_area <- rd_opt("sanborn1903_expo_area.csv"); s03_cov <- rd_opt("sanborn1903_cover.csv"); s03_zexp <- rd_opt("sanborn1903_zexp.csv"); s03_who <- rd_opt("sanborn1903_who.csv"); s03_pers <- rd_opt("sanborn1903_persist.csv"); s03_trades <- rd_opt("sanborn1903_trades.csv")
+pl03 <- if (file.exists(dd("sanborn_1903_plants.geojson"))) st_read(dd("sanborn_1903_plants.geojson"), quiet = TRUE) else NULL
+# The 1903-04 sheet images laid on the map: each scan is drawn with its fitted rotation and scale (three corners), loaded only when
+# the layer is switched on. Library of Congress IIIF images (public domain).
+SB03_JS <- "function(el, x, d) { var map = this; if (!d || !d.url) return;
+  if (!L.ImageOverlay.Rot) L.ImageOverlay.Rot = L.ImageOverlay.extend({
+    initialize: function (url, tl, tr, bl, o) { this._c = [L.latLng(tl), L.latLng(tr), L.latLng(bl)]; L.ImageOverlay.prototype.initialize.call(this, url, L.latLngBounds(this._c), o); },
+    onAdd: function (m) { L.ImageOverlay.prototype.onAdd.call(this, m); var me = this; this._image.style.transformOrigin = '0 0'; this._image.style.width = 'auto'; this._image.style.height = 'auto';
+      if (this._image.complete) this._reset(); else this._image.addEventListener('load', function () { me._reset(); }); },
+    _animateZoom: function () { if (this._image) this._image.style.visibility = 'hidden'; },
+    _reset: function () { var im = this._image; if (!im || !this._map || !im.naturalWidth) return; var m = this._map, c = this._c;
+      var p0 = m.latLngToLayerPoint(c[0]), p1 = m.latLngToLayerPoint(c[1]), p2 = m.latLngToLayerPoint(c[2]), w = im.naturalWidth, h = im.naturalHeight;
+      im.style.width = w + 'px'; im.style.height = h + 'px'; im.style.left = '0px'; im.style.top = '0px'; im.style.visibility = 'visible';
+      im.style.transform = 'matrix(' + [(p1.x - p0.x) / w, (p1.y - p0.y) / w, (p2.x - p0.x) / h, (p2.y - p0.y) / h, p0.x, p0.y].join(',') + ')'; } });
+  for (var i = 0; i < d.url.length; i++) {
+    var lyr = new L.ImageOverlay.Rot(d.url[i], [d.tl_lat[i], d.tl_lon[i]], [d.tr_lat[i], d.tr_lon[i]], [d.bl_lat[i], d.bl_lon[i]], { opacity: 0.85, pane: 'sbimg', interactive: false });
+    map.layerManager.addLayer(lyr, 'image', 'sb03img' + i, d.group); } }"
+sb03_images <- function(m) { if (is.null(sb03) || !all(c("tl_lat", "overlay") %in% names(sb03))) return(m)
+  d <- st_drop_geometry(sb03); htmlwidgets::onRender(m, SB03_JS, data = list(url = d$overlay, tl_lat = d$tl_lat, tl_lon = d$tl_lon, tr_lat = d$tr_lat, tr_lon = d$tr_lon,
+                                                                         bl_lat = d$bl_lat, bl_lon = d$bl_lon, group = "Sanborn 1903\u201304 sheet images")) }
+s03_area <- rd_opt("sanborn1903_expo_area.csv"); s03_cov <- rd_opt("sanborn1903_cover.csv"); s03_zexp <- rd_opt("sanborn1903_zexp.csv"); s03_who <- rd_opt("sanborn1903_who.csv"); s03_pers <- rd_opt("sanborn1903_persist.csv"); s03_trades <- rd_opt("sanborn1903_trades.csv"); s03_out <- rd_opt("sanborn1903_outside.csv")
 sb_poly <- if (file.exists(dd("sanborn_volumes.geojson"))) st_read(dd("sanborn_volumes.geojson"), quiet = TRUE) else NULL
 vb_nb <- if (file.exists(dd("vbi70_neighborhoods.geojson"))) st_read(dd("vbi70_neighborhoods.geojson"), quiet = TRUE) else NULL
 hed <- rd_opt("hedonic_models.csv"); own_size <- rd_opt("ownership_owner_size.csv"); own_conc <- rd_opt("ownership_concentration.csv"); own_types <- rd_opt("ownership_owner_types.csv"); own_site <- rd_opt("ownership_by_site_proximity.csv"); own_holc <- rd_opt("ownership_by_holc.csv"); own_assoc <- rd_opt("ownership_tract_associations.csv"); own_tr <- rd_opt("ownership_by_tract.csv", colClasses = c(GEOID = "character")); rod <- rd_opt("vbi70_rod2003_soils.csv"); ur_comp <- rd_opt("urban_renewal_composition.csv"); ur_sites <- rd_opt("urban_renewal_sites.csv")
@@ -363,12 +382,12 @@ ui <- page_navbar(id = "nav",
     ),
   nav_panel("Before zoning: 1903",
     card(card_header("Housing and industry before zoning: the 1903\u201304 Sanborn maps"),
-      tags$p("Denver zoned in 1925. Twenty years earlier, the Sanborn Map Company drew every building in the city for fire insurers. We read 152 sheets of the 1903\u201304 atlas held by the Library of Congress (public domain): the north side from Lower Downtown and the Platte valley to Five Points, Cole, Elyria and Swansea, and Auraria, West Denver and the South Platte corridor. For each block we counted dwellings and recorded every factory, shop and yard with its trade and equipment, then placed each sheet on today's map. On the main Map tab, the layers 'Sanborn 1903\u201304 sheets (images)' and '1903 blocks: housing & industry' show the sheets and blocks; click a sheet for its image."),
+      tags$p("Denver zoned in 1925. Twenty years earlier, the Sanborn Map Company drew every building in the city for fire insurers. We read 152 sheets of the 1903\u201304 atlas held by the Library of Congress (public domain): the north side from Lower Downtown and the Platte valley to Five Points, Cole, Elyria and Swansea, and Auraria, West Denver and the South Platte corridor. For each block we counted dwellings and recorded every factory, shop and yard with its trade and equipment, then placed each sheet on today's map. On the main Map tab, the layers 'Sanborn 1903\u201304 sheet images' and '1903 blocks: housing & industry' lay the sheet images themselves on today's streets and colour each block by what was on it and next to it; click a sheet for its notes and a link to the full-resolution scan. The 'Sanborn coverage' layers only outline what each edition covers."),
       unit_note("city blocks on the 152 sheets read (1903\u201304); 1910 enumeration districts; 1929 zoning districts")),
     layout_columns(col_widths = c(6, 6),
       card(card_header("How many homes shared a block with industry?"), unit_note("dwellings (D-marked buildings, flats and shanties) on the sheets read"),
            tableOutput("t_s03_area"), tags$small(class = "text-muted", textOutput("s03_cov_txt", inline = TRUE)), tags$br(),
-           tags$small(class = "text-muted", "Hazardous trades: foundries, smelters, metal and machine works, chemical and gas works, oil, paint and tar, tanneries, packing houses and stockyards, breweries, brick and pottery kilns, rail shops and power plants. Heavy trades exclude metal and machine shops and breweries. 'Facing' counts dwellings directly across a street from a plant.")),
+           tags$small(class = "text-muted", "Hazardous trades: foundries, smelters, metal and machine works, chemical and gas works, oil, paint and tar, tanneries, packing houses and stockyards, breweries, brick and pottery kilns, rail shops and power plants. Heavy trades exclude metal and machine shops and breweries. 'Facing' counts dwellings directly across a street from a plant, as drawn. Distances run edge to edge: each block's outline comes from the crossings of the streets that bound it (a 50 m circle where its corners could not be found), and 'across the street' means the next block over a street, not diagonally across a crossing. Plants on unplatted ground count as neighbours.")),
       card(card_header("What the 1929 zoning did with them"), unit_note("1903 blocks by the 1929 zoning district they fall in"),
            tableOutput("t_s03_zone"),
            tags$small(class = "text-muted", "The 1929 zoning layer distinguishes Industrial A, Industrial B and Commercial districts; everything else is residence or business districts."))),
@@ -376,7 +395,7 @@ ui <- page_navbar(id = "nav",
       card(card_header("Who lived there"), unit_note("1910 enumeration districts, weighted by each block's dwellings (full-count census)"),
            tableOutput("t_s03_who")),
       card(card_header("What was there"), unit_note("blocks; establishments as labelled on the sheets"),
-           tableOutput("t_s03_trades"), tableOutput("t_s03_pers")))),
+           tableOutput("t_s03_trades"), tableOutput("t_s03_out"), tableOutput("t_s03_pers")))),
   nav_panel("Land use & freeways",
     layout_columns(col_widths = c(3, 9),
       card(card_header("What was on the ground"), unit_note("10 m cells of the USGS land-use maps, Denver study area"),
@@ -409,7 +428,7 @@ ui <- page_navbar(id = "nav",
     layout_columns(col_widths = c(6, 6),
       card(card_header("Freeways through the 1938 HOLC grades"), unit_note("HOLC area polygons; freeways opened 1950\u20131979"), tableOutput("t_hw_holc"),
            tags$small(class = "text-muted", "km of freeway per km\u00b2 of each grade, and the share of each grade's land within 250 m of a freeway built 1950\u20131979.")),
-      card(card_header("Freeway built per decade, study area"), unit_note("freeway centre-lines within the Denver study area"), tableOutput("t_hw_dec"), tableOutput("t_hw_nb"))),
+      card(card_header("Freeway opened, removed and in service, by decade (study area)"), unit_note("freeway centre-lines within the Denver study area"), tableOutput("t_hw_dec"), tableOutput("t_hw_nb"))),
     layout_columns(col_widths = c(5, 7),
       card(card_header("Through industrial or residential land? Freeways of 1950\u20131979 by 1929 zoning"), unit_note("freeway km on the 1929 zoning map"), tableOutput("t_hw_zon")),
       card(card_header("Tracts the freeways cut through: who lived there, 1950\u20131990"), unit_note("2010 census tracts within 10 km of downtown with data in every census 1950\u20131990"), tableOutput("t_hw_tr"),
@@ -863,14 +882,14 @@ server <- function(input, output, session) {
     colorNumeric("YlOrRd", domain = range(x, na.rm = TRUE), na.color = "#00000000") }
   output$map <- renderLeaflet({
     m <- leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
-      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", options = tileOptions(maxNativeZoom = 16),
                attribution = "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors", group = "Light grey") |>
       addTiles("https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                attribution = "&copy; OpenStreetMap contributors", group = "OpenStreetMap") |>
       addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
                attribution = "Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics", group = "Satellite") |>
       setView(-104.97, 39.74, 11) |>
-      addMapPane("tr", zIndex = 380) |> addMapPane("ctx", zIndex = 430) |> addMapPane("haz", zIndex = 460)
+      addMapPane("sbimg", zIndex = 415) |> addMapPane("tr", zIndex = 380) |> addMapPane("ctx", zIndex = 430) |> addMapPane("haz", zIndex = 460)
     tri_pop <- sprintf("<b>%s</b><br>%s, %s<br>EPA TRI facility (%s)", esc(tri$name), esc(tri$address), esc(tri$city), esc(tri$status))
     m <- m |> addCircleMarkers(data = tri, ~lon, ~lat, radius = 4, color = "#5b2a86", weight = 1.5, fillColor = "#b58bd9", fillOpacity = 0.9,
                                popup = tri_pop, group = "EPA TRI facilities", options = pathOptions(pane = "ctx"))
@@ -918,28 +937,36 @@ server <- function(input, output, session) {
     if (!is.null(ou_poly)) m <- m |> addPolygons(data = ou_poly, color = "#b30000", weight = 2, fillColor = "#fc8d59", fillOpacity = 0.15, group = "Superfund operable units", options = pathOptions(pane = "tr"),
         popup = sprintf("<b>%s</b><br>%s<br><small>EPA Superfund operable unit</small>", esc(tools::toTitleCase(tolower(ou_poly$SITE_NAME))), esc(ou_poly$SITE_FEATURE_NAME)))
     if (!is.null(sb_poly)) for (k in seq_along(SB_EDS)) { d <- sb_poly[sb_poly$edition == SB_EDS[k], ]; if (!nrow(d)) next
-      m <- m |> addPolygons(data = d, color = SB_COL[k], weight = 2, fillOpacity = 0.06, group = paste("Sanborn maps", SB_EDS[k]), options = pathOptions(pane = "tr"),
+      m <- m |> addPolygons(data = d, color = SB_COL[k], weight = 2, fillOpacity = 0.06, group = paste("Sanborn coverage", SB_EDS[k]), options = pathOptions(pane = "tr"),
         label = sprintf("Sanborn %s, volume %s", d$edition, d$volume),
         popup = sprintf("<b>Sanborn fire-insurance map, %s, volume %s</b> (%s)<br>%s<br><a href='%s' target='_blank'>Open</a> · <a href='https://LOC.maps.arcgis.com/apps/instant/interactivelegend/index.html?appid=5df8bc1f04d44edb8222b2ae777f3070' target='_blank'>LOC volume finder</a><br><small>Volume extents: Library of Congress, Geography &amp; Map Division</small>",
                         d$edition, d$volume, d$year, d$online, d$link)) }
-    if (!is.null(sb03)) m <- m |> addPolygons(data = sb03, color = "#7f3b08", weight = 1.2, fillOpacity = 0.03, group = "Sanborn 1903\u201304 sheets (images)", options = pathOptions(pane = "tr"),
+    if (!is.null(sb03)) m <- m |> addPolygons(data = sb03, color = "#7f3b08", weight = 1.2, fillOpacity = 0.03, group = "Sanborn 1903\u201304 sheet images", options = pathOptions(pane = "tr"),
         label = sprintf("Sanborn 1903\u201304, vol. %s, sheet %s", sb03$volume, sb03$sheet),
         popup = sprintf("<b>Sanborn 1903\u201304, volume %s, sheet %s</b><br><a href='%s' target='_blank'><img src='%s' style='width:240px;max-width:100%%;border:1px solid #ccc'></a><br>%s dwellings \u00b7 %s industrial or workshop establishments recorded<br><small>%s</small><br><a href='%s' target='_blank'>Full-resolution sheet (Library of Congress)</a><br><small>Public domain. Sheet placed on today's map from %s street crossings (\u00b1%s m).</small>",
                         sb03$volume, sb03$sheet, sb03$page, sb03$thumb, sb03$dwellings, sb03$industrial, esc(sb03$notes), sb03$page, sb03$n_inliers, sb03$rmse_m))
-    if (!is.null(bl03)) { e3 <- c("Same block as a hazardous trade" = "#b2182b", "Same block as other industry, or facing industry" = "#ef8a62", "Within 150 m of a hazardous trade" = "#fddbc7", "No industry within 150 m" = "#4393c3")
-      m <- m |> addCircleMarkers(data = bl03, radius = pmax(3, sqrt(bl03$dwellings) * 1.6), stroke = TRUE, color = "#333333", weight = 0.5,
-        fillColor = unname(e3[bl03$exposure]), fillOpacity = ifelse(bl03$dwellings > 0, 0.85, 0.35), group = "1903 blocks: housing & industry", options = pathOptions(pane = "ctx"),
-        popup = sprintf("<b>1903 block</b> (sheet %s)<br>%s dwellings%s<br>%s<br><small>1929 zoning: %s</small>", bl03$sheets, bl03$dwellings,
-                        ifelse(bl03$n_industrial > 0, sprintf(" \u00b7 %s industrial (%s)", bl03$n_industrial, esc(bl03$trades)), ""), esc(bl03$establishments), bl03$zone_1929)) }
+    if (!is.null(bl03)) { e3 <- c("Same block as a hazardous trade" = "#b2182b", "Across the street from a hazardous trade" = "#d6604d", "Same block as other industry, or facing industry" = "#f4a582",
+                                  "Within 150 m of a hazardous trade" = "#fddbc7", "No hazardous trade within 150 m" = "#4393c3", "No industry within 150 m" = "#4393c3")
+      bpop <- sprintf("<b>1903 block</b> (sheet %s)<br>%s dwellings%s<br>%s<br>%s<br><small>1929 zoning: %s%s</small>", bl03$sheets, bl03$dwellings,
+                      ifelse(bl03$n_industrial > 0, sprintf(" \u00b7 %s industrial (%s)", bl03$n_industrial, esc(bl03$trades)), ""), esc(bl03$establishments), bl03$exposure, bl03$zone_1929,
+                      if ("poly_from" %in% names(bl03)) sprintf("<br>Outline: %s", bl03$poly_from) else "")
+      m <- if (all(st_geometry_type(bl03) %in% c("POLYGON", "MULTIPOLYGON")))
+        addPolygons(m, data = bl03, stroke = TRUE, color = "#333333", weight = 0.6, fillColor = unname(e3[bl03$exposure]), fillOpacity = ifelse(bl03$dwellings > 0, 0.7, 0.3),
+                    group = "1903 blocks: housing & industry", options = pathOptions(pane = "ctx"), popup = bpop)
+      else addCircleMarkers(m, data = bl03, radius = pmax(3, sqrt(bl03$dwellings) * 1.6), stroke = TRUE, color = "#333333", weight = 0.5,
+                            fillColor = unname(e3[bl03$exposure]), fillOpacity = ifelse(bl03$dwellings > 0, 0.85, 0.35), group = "1903 blocks: housing & industry", options = pathOptions(pane = "ctx"), popup = bpop)
+      if (!is.null(pl03)) m <- addPolygons(m, data = pl03, color = ifelse(pl03$hazardous, "#67001f", "#555555"), weight = 1.5, dashArray = "3", fillColor = ifelse(pl03$hazardous, "#67001f", "#999999"), fillOpacity = 0.35,
+                                            group = "1903 blocks: housing & industry", options = pathOptions(pane = "ctx"),
+                                            popup = sprintf("<b>%s</b><br>%s<br>Trade: %s<br><small>Drawn on unplatted ground (sheet %s, volume %s); outline as drawn on the sheet</small>", esc(ifelse(nzchar(pl03$name), pl03$name, pl03$label)), esc(pl03$label), esc(pl03$trade), pl03$sheet, pl03$volume)) }
     ZG <- paste("Zoning", names(ZYEARS)); for (k in seq_along(ZYEARS)) m <- add_zoning(m, ZYEARS[[k]], ZG[k], "tr", 0.45)
     LG <- paste("Land use", LU_YEARS); if (!is.null(lu_r)) for (k in seq_along(LU_YEARS)) m <- add_landuse(m, LU_YEARS[k], LG[k], 0.6)
     m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
-          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn maps", SB_EDS), "Sanborn 1903\u201304 sheets (images)", "1903 blocks: housing & industry", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), if (!is.null(lu_r)) paste("Land use", LU_YEARS), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
+          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn coverage", SB_EDS), "Sanborn 1903\u201304 sheet images", "1903 blocks: housing & industry", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), if (!is.null(lu_r)) paste("Land use", LU_YEARS), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
-      hideGroup(c("Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn maps", SB_EDS), "Sanborn 1903\u201304 sheets (images)", "1903 blocks: housing & industry", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), paste("Land use", LU_YEARS), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
+      hideGroup(c("Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn coverage", SB_EDS), "Sanborn 1903\u201304 sheet images", "1903 blocks: housing & industry", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), paste("Land use", LU_YEARS), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
                   "RCRA corrective action", "Voluntary cleanup (VCUP)", "Superfund (SEMS)")) |>
-      identity()
+      sb03_images()
   })
   observe({
     v <- input$esvar; pal <- pal_for(v); lab <- names(VARS)[VARS == v]
@@ -1202,7 +1229,7 @@ server <- function(input, output, session) {
     pal <- colorNumeric("YlOrRd", domain = x, na.color = "#eeeeee")
     lab <- names(c("Hazardous trades per 1,000 residents" = "rate", "Hispanic (%)" = "pct_hisp", "Foreign born (%)" = "pct_fb", "Black (%)" = "pct_black", "Laborers (%)" = "pct_laborers"))[c("rate", "pct_hisp", "pct_fb", "pct_black", "pct_laborers") == input$co_var]
     leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
-      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri") |>
+      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", options = tileOptions(maxNativeZoom = 16), attribution = "Tiles &copy; Esri") |>
       addPolygons(data = d, fillColor = pal(x), fillOpacity = 0.75, color = "#555", weight = 0.6,
                   popup = sprintf("<b>%s County, %s</b><br>Population %s<br>Hazardous trades of the decade: %s<br>Black %s%% · Hispanic %s%% · foreign born %s%% · laborers %s%%",
                                   esc(d$name), d$census, format(d$pop, big.mark = ","), d$firms_haz, d$pct_black, d$pct_hisp, d$pct_fb, d$pct_laborers)) |>
@@ -1287,7 +1314,7 @@ server <- function(input, output, session) {
   # ---- Denver 1880-1940: reconstructed enumeration districts (R/grf_eds.R + R/denver_eds_analysis.R) with the IPUMS full count
   output$map_1880 <- renderLeaflet({
     leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
-      addTiles("https://server.arcgisonline.com/ArcGis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", options = tileOptions(maxNativeZoom = 16),
                attribution = "Tiles &copy; Esri; districts reconstructed from Brown University GRF addresses; composition IPUMS USA full count; firms: Colorado State Business Directories") |>
       setView(-104.99, 39.74, 12) |> addMapPane("tr", zIndex = 380) |> addMapPane("haz", zIndex = 460) })
   output$ed_unit <- renderUI({ y <- as.integer(input$ed_year); if (is.na(y)) return(NULL)
@@ -1370,7 +1397,7 @@ server <- function(input, output, session) {
   # ---- Redlining & covenants (R/holc_covenants.R)
   output$map_rl <- renderLeaflet({
     leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
-      addTiles("https://server.arcgisonline.com/ArcGis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", options = tileOptions(maxNativeZoom = 16),
                attribution = "Tiles &copy; Esri; HOLC areas &copy; Mapping Inequality (U. Richmond DSL, CC-BY-NC); covenants: Denver Public Library, Mapping Prejudice (public domain)") |>
       setView(-104.97, 39.73, 12) |> addMapPane("ed", zIndex = 370) |> addMapPane("holcp", zIndex = 390) |> addMapPane("pts", zIndex = 460) })
   observe({
@@ -1468,7 +1495,7 @@ server <- function(input, output, session) {
   sf_sel <- reactive({ d <- if (identical(input$sf_series, "H")) sf_pre else sf_den; if (is.null(d)) return(NULL)
     d <- d |> filter(use_now %in% input$sf_use); if (isTRUE(input$sf_sens)) d <- d |> filter(use_now %in% c("Residential", "Park / open space", "Civic / school / health"), if ("radar" %in% names(d)) radar == "Not on any list" else TRUE); d })
   output$map_sf <- renderLeaflet({ leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
-      addTiles("https://server.arcgisonline.com/ArcGis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri; parcels: City and County of Denver open data") |> setView(-104.99, 39.75, 12) |> addMapPane("sfzp", zIndex = 380) |>
+      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", options = tileOptions(maxNativeZoom = 16), attribution = "Tiles &copy; Esri; parcels: City and County of Denver open data") |> setView(-104.99, 39.75, 12) |> addMapPane("sfzp", zIndex = 380) |>
       addLegend("bottomright", colors = unname(USE_COL[1:6]), labels = names(USE_COL)[1:6], title = "Parcel use today", opacity = 0.9) })
   observe({ req(input$map_sf_zoom); px <- leafletProxy("map_sf") |> clearGroup("sfz") |> removeControl("sfzlegend"); if (input$sf_zyear != "none") add_zoning(px, input$sf_zyear, "sfz", "sfzp", 0.35, "topleft", "sfzlegend") })
   observe({ req(input$map_sf_zoom); d <- sf_sel(); px <- leafletProxy("map_sf") |> clearGroup("sf"); if (is.null(d) || !nrow(d)) return()
@@ -1494,7 +1521,7 @@ server <- function(input, output, session) {
   output$t_zpaths <- renderTable({ req(zot_paths); d <- zot_paths
     data.frame(Tracts = d$path, n = d$tracts, Census = d$census, Residents = format(d$residents, big.mark = ","), `% Hispanic` = d$pct_hispanic, `% Black` = d$pct_black, `% White` = d$pct_white, `% in poverty` = d$pct_poverty, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   output$map_lu <- renderLeaflet({ leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
-      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri; land use: USGS (Drummond et al. 2019)") |>
+      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", options = tileOptions(maxNativeZoom = 16), attribution = "Tiles &copy; Esri; land use: USGS (Drummond et al. 2019)") |>
       setView(-104.97, 39.74, 12) |> addMapPane("lup", zIndex = 300) |> addMapPane("luo", zIndex = 420) |> addMapPane("lus", zIndex = 450) })
   observe({ req(input$map_lu_zoom, input$lu_year); px <- leafletProxy("map_lu") |> clearGroup("lu") |> removeControl("lulegend")
     add_landuse(px, input$lu_year, "lu", input$lu_op, TRUE, "lulegend") })
@@ -1528,7 +1555,7 @@ server <- function(input, output, session) {
   output$t_lu_paths <- renderTable({ req(lu_paths); d <- lu_paths
     data.frame(Tracts = d$path, n = d$tracts, Census = d$census, Residents = format(d$residents, big.mark = ","), `% Hispanic` = d$pct_hispanic, `% Black` = d$pct_black, `% White` = d$pct_white, `% in poverty` = d$pct_poverty, `% owner-occupied` = d$pct_owner_occupied, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   output$t_hw_holc <- renderTable({ req(hw_holc); d <- hw_holc; data.frame(`HOLC grade` = d$grade, `Area (sq km)` = d$area_km2, `Freeway km` = d$km_through, `km per sq km` = d$km_per_km2, `% of land within 250 m` = d$pct_within_250m, check.names = FALSE) }, digits = 2, striped = TRUE, spacing = "xs")
-  output$t_hw_dec <- renderTable({ req(hw_dec); d <- hw_dec; data.frame(Decade = paste0(d$decade, "s"), `km opened` = d$km_opened, `km removed` = d$km_removed, `km open (cumulative opened)` = d$km_cumulative, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
+  output$t_hw_dec <- renderTable({ req(hw_dec); d <- hw_dec; data.frame(Decade = paste0(d$decade, "s"), `km opened` = d$km_opened, `km removed` = d$km_removed, `km in service at decade end (net of removals)` = if (is.null(d$km_open_at_decade_end)) NA else d$km_open_at_decade_end, check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   output$t_hw_nb <- renderTable({ req(hw_nb); d <- hw_nb; data.frame(Interstate = d$route, `NBER: opened (Denver County)` = ifelse(is.na(d$nber_first_opened), "\u2013", paste0(d$nber_first_opened, "\u2013", d$nber_last_opened)), `NBER miles` = ifelse(is.na(d$nber_miles), "\u2013", d$nber_miles), `OpenHistoricalMap: first year` = ifelse(is.na(d$ohm_first), "\u2013", d$ohm_first), check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   output$t_hw_zon <- renderTable({ req(hw_zon); d <- hw_zon; data.frame(`1929 zoning` = d$cls, `Freeway km` = d$km, `% of freeway km` = d$pct, `% of the land` = ifelse(is.na(d$share_of_land), "\u2013", d$share_of_land), check.names = FALSE) }, digits = 1, striped = TRUE, spacing = "xs")
   observe({ req(hw_ev); ch <- unique(hw_ev$comparison); updateSelectInput(session, "hw_ev_cmp", choices = ch, selected = ch[length(ch)]) })
@@ -1604,7 +1631,7 @@ server <- function(input, output, session) {
   cx_tr <- reactive({ req(den_tr, hl_tr); t <- den_tr[den_tr$core | substr(den_tr$GEOID, 1, 5) == "08031", ]; merge(t, hl_tr, by = "GEOID", all.x = TRUE) })
   output$map_cx <- renderLeaflet({
     m <- leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
-      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri", group = "Light grey") |>
+      addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", options = tileOptions(maxNativeZoom = 16), attribution = "Tiles &copy; Esri", group = "Light grey") |>
       setView(-104.97, 39.75, 12) |> addMapPane("trc", zIndex = 380) |> addMapPane("poly", zIndex = 400) |> addMapPane("pts", zIndex = 450)
     if (!is.null(ou_poly)) m <- m |> addPolygons(data = ou_poly, color = "#b30000", weight = 2, fillOpacity = 0.05, group = "Superfund operable units", options = pathOptions(pane = "poly"),
                                                   popup = sprintf("<b>%s</b><br>%s", esc(tools::toTitleCase(tolower(ou_poly$SITE_NAME))), esc(ou_poly$SITE_FEATURE_NAME)))
@@ -1686,7 +1713,7 @@ server <- function(input, output, session) {
   output$map_own <- renderLeaflet({ req(den_tr, own_tr, input$ow_var); t <- merge(den_tr[substr(den_tr$GEOID, 1, 5) == "08031", ], own_tr, by = "GEOID"); v <- input$ow_var
     t <- st_transform(t, 4326); x <- ifelse(t$rental_units >= 50, t[[v]], NA); pal <- colorNumeric("PuRd", c(0, 100), na.color = "#eeeeee")
     lab <- names(OW_VARS)[OW_VARS == v]; bb <- unname(st_bbox(t))
-    leaflet(options = leafletOptions(preferCanvas = TRUE)) |> addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri") |>
+    leaflet(options = leafletOptions(preferCanvas = TRUE)) |> addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", options = tileOptions(maxNativeZoom = 16), attribution = "Tiles &copy; Esri") |>
       fitBounds(bb[1], bb[2], bb[3], bb[4]) |>
       addPolygons(data = t, fillColor = pal(x), fillOpacity = 0.7, color = "#ffffff", weight = 0.5,
                   popup = sprintf("<b>Tract %s</b><br>%s units, %s not owner-occupied (%s%%)<br>Held by owners of 20+ units: %s%% · 100+: %s%%<br>Companies: %s%% · Owners outside Colorado: %s%% · Public: %s%%<br>Historical sites inside: %s known, %s hidden 1965\u201392",
@@ -1713,8 +1740,9 @@ server <- function(input, output, session) {
     data.frame(`Share of rental units held by` = lab[own_assoc$outcome], `Tract characteristic` = own_assoc$term, Difference = sprintf("%+.2f", own_assoc$estimate), p = format(own_assoc$p, digits = 2), check.names = FALSE) },
     striped = TRUE, spacing = "s")
   output$t_s03_area <- renderTable({ req(s03_area); d <- s03_area
-    data.frame(Area = d$area, Dwellings = format(d$dwellings, big.mark = ","), `Same block, hazardous trade` = paste0(d$pct_same_block_haz, "%"), `Same block, heavy trade` = paste0(d$pct_same_block_heavy, "%"),
-               `Within 150 m of a hazardous trade` = paste0(d$pct_within_150_haz, "%"), `Facing industry` = format(d$facing_industry, big.mark = ","), check.names = FALSE) }, striped = TRUE, spacing = "s")
+    data.frame(Area = d$area, Dwellings = format(d$dwellings, big.mark = ","), `Same block: hazardous` = paste0(d$pct_same_block_haz, "%"), `Same block: heavy` = paste0(d$pct_same_block_heavy, "%"),
+               `Across the street: hazardous` = if (is.null(d$pct_across_street_haz)) "" else paste0(d$pct_across_street_haz, "%"),
+               `Within 150 m: hazardous (incl. same block)` = paste0(d$pct_within_150_haz, "%"), `Facing industry` = format(d$facing_industry, big.mark = ","), check.names = FALSE) }, striped = TRUE, spacing = "s")
   output$s03_cov_txt <- renderText({ req(s03_cov); d <- s03_cov
     sprintf("Figures cover the %d of %d sheets placed on today's map: %s of %s dwellings read (%s%% in volume 1, where Auraria's vanished streets left fewer corners to match; %s%% in volume 2).",
             sum(d$sheets_placed), sum(d$sheets_read), format(sum(d$dwellings_on_placed_sheets), big.mark = ","), format(sum(d$dwellings_read), big.mark = ","),
@@ -1725,8 +1753,11 @@ server <- function(input, output, session) {
   output$t_s03_who <- renderTable({ req(s03_who); d <- s03_who
     data.frame(`1903 situation` = d$exposure, `Foreign-born` = paste0(d$pct_fb, "%"), Black = paste0(d$pct_black, "%"), Laborers = paste0(d$pct_laborers, "%"), `Owner households` = paste0(d$pct_owner_hh, "%"), check.names = FALSE) }, striped = TRUE, spacing = "s")
   output$t_s03_trades <- renderTable({ req(s03_trades); d <- head(s03_trades, 12); data.frame(Trade = d$trade, Blocks = d$N) }, striped = TRUE, spacing = "s", caption = "Most common trades", caption.placement = "top")
+  output$t_s03_out <- renderTable({ req(s03_out); d <- head(s03_out, 8); data.frame(Trade = d$trade, Plants = d$plants) }, striped = TRUE, spacing = "s",
+    caption = "Plants drawn on unplatted ground (rail yards, river bottoms, smelter and packing-house grounds), placed from their outlines", caption.placement = "top")
   output$t_s03_pers <- renderTable({ req(s03_pers); d <- s03_pers
-    data.frame(`Hazardous blocks, 1903` = d$hazardous_blocks_1903, `With a 1965-92 hazardous-sector site within 150 m` = paste0(d$pct_with_1965_92_site_150m, "%"),
+    if (is.null(d$what)) { d$what <- "Blocks with a hazardous trade"; d$n <- d$hazardous_blocks_1903 }
+    data.frame(`1903` = d$what, N = d$n, `With a 1965-92 hazardous-sector site within 150 m` = paste0(d$pct_with_1965_92_site_150m, "%"),
                `... on no current inventory` = paste0(d$pct_with_hidden_site_150m, "%"), `... on a current inventory` = paste0(d$pct_with_known_site_150m, "%"), check.names = FALSE) },
     striped = TRUE, spacing = "s", caption = "Did the same places stay industrial?", caption.placement = "top")
   output$p_hedonic <- renderPlotly({ req(hed); d <- hed[hed$model == input$hd_model & hed$sample == "All residential sales" & grepl("^Hidden|^Known|^Pre-1960", hed$kind) & hed$distance %in% c("0-200 m", "200-400 m", "400-800 m"), ]
