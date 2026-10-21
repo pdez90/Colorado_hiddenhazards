@@ -1,4 +1,4 @@
 grouping,owners,rental_units,top10_pct,top50_pct,top100_pct,top1pct_owners_pct,owners_20plus_pct,owners_100plus_pct,hhi
-"Private owners, by name",40180,192168,4,12.9,21.7,51.3,68.5,52.7,9.1
-"Private owners, by family",33443,192168,8.5,24.5,36.3,61.8,72.4,62,20.4
-"Private owners, by family: houses, condos, rowhouses, duplexes only",32292,50873,2.4,5.4,7.4,12.5,6.6,1.6,1.5
+"Private owners, by name",37810,186483,4.3,13.6,22.8,51.6,68.6,53,9.8
+"Private owners, by family",32167,186483,8.9,25.8,37.8,62.6,72.3,62.3,22.1
+"Private owners, by family: houses, condos, rowhouses, duplexes only",31034,49326,2.4,5.6,7.7,12.6,6.8,1.6,1.5

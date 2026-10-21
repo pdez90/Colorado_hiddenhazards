@@ -2543,7 +2543,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "af5cbb19a23db3854b1507d9534e29a3"
+      "checksum": "cc0e32fb024e74923a2a6b892438489a"
     },
     "data/aqs_denver_by_year.csv": {
       "checksum": "3cf11657a17f261f9902ec39853a4cde"
@@ -2607,6 +2607,21 @@
     },
     "data/co_tracts_2010.geojson": {
       "checksum": "468e77cf2f0fbc3df02c65a5db551e66"
+    },
+    "data/conditions_classes.csv": {
+      "checksum": "573c79b7ab4b4966d2d881c966dd62ed"
+    },
+    "data/conditions_linking.csv": {
+      "checksum": "f8e3f0998df718d23278dbfeab3094a3"
+    },
+    "data/conditions_models.csv": {
+      "checksum": "bdd564ad189752e40304ee62e4ce4f17"
+    },
+    "data/conditions_outcome_concentration.csv": {
+      "checksum": "78467228f6081e6ec026d9932addf99e"
+    },
+    "data/conditions_rates.csv": {
+      "checksum": "b83d1f4e6287d3fdf9ac479e0841d0c3"
     },
     "data/corridor_cells.csv": {
       "checksum": "bd03dd763b659a2777128e21d2861c66"
@@ -2870,31 +2885,37 @@
       "checksum": "846579bea84b7c6fcb5f72d90c91f257"
     },
     "data/ownership_by_holc.csv": {
-      "checksum": "f13574de1bd902b74e85b3098937eb08"
+      "checksum": "daeb104bfa9df266cee5bb9c21fde3ec"
     },
     "data/ownership_by_site_proximity_small_buildings.csv": {
-      "checksum": "2ba8c87f5a9386a5523999c5f5c0adf4"
+      "checksum": "2a0f38dd7e5a44b4cd90fc8a73fd5af0"
     },
     "data/ownership_by_site_proximity.csv": {
-      "checksum": "d6ed7b23bda04250073a39d5f556f2f4"
+      "checksum": "71a24a89303af13e9cf861e681ac829e"
     },
     "data/ownership_by_tract.csv": {
-      "checksum": "210c4981d05d50bee730aae1b60fb1d9"
+      "checksum": "9cebf0fdf04dce1ce76e5d2d94a58208"
     },
     "data/ownership_concentration.csv": {
-      "checksum": "021fb6df00df6cb20f8c1c6a029960de"
+      "checksum": "72bd618aaa21876dc189fa57a0ec838d"
+    },
+    "data/ownership_linking_stages.csv": {
+      "checksum": "45a2c2642a501aee98b5b03400b69334"
     },
     "data/ownership_occupancy_by_type.csv": {
       "checksum": "5d713a35cc93194b7ba500a6804fa3b9"
     },
+    "data/ownership_owner_location.csv": {
+      "checksum": "aaa877edffb737472691aa17cb1a1afd"
+    },
     "data/ownership_owner_size.csv": {
-      "checksum": "befe825fc2a3e16b6155fe56e39f4458"
+      "checksum": "803f843f161e86c1159815ae808002b8"
     },
     "data/ownership_owner_types.csv": {
-      "checksum": "29098c88f37d990be8cca84cce4e2cfb"
+      "checksum": "2fdb2f0bfa1eab5017614e8e262a9c5f"
     },
     "data/ownership_tract_associations.csv": {
-      "checksum": "8b2d7d4bf0870d9462311953a2a90c76"
+      "checksum": "9f6b370f2c5caee3f8d06a8349fdfc3f"
     },
     "data/petroleum_by_status.csv": {
       "checksum": "8d56f10349fd8650aadb80b8508e06c5"

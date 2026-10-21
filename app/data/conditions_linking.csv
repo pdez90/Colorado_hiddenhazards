@@ -1,0 +1,7 @@
+class,how,N,pct
+Conditions inside the home,address,4499,49.2
+Conditions inside the home,not a residential building in the parcel file,3846,42.1
+Conditions inside the home,coordinates (30 m),799,8.7
+Outside of the property,address,50123,76.2
+Outside of the property,not a residential building in the parcel file,10059,15.3
+Outside of the property,coordinates (30 m),5595,8.5

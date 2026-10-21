@@ -1,13 +1,13 @@
 grouping,size,owners,rental_units,pct_owners,pct_rental_units
-by owner name,1 unit,31731,31731,78.95,16.2
-by owner name,2-4 units,5728,14082,14.25,7.2
-by owner name,5-19 units,1600,14668,3.98,7.5
-by owner name,20-99 units,702,30616,1.75,15.6
-by owner name,100-999 units,428,100662,1.06,51.3
-by owner name,"1,000+ units",2,4275,0,2.2
-by owner family (shared mailing address),1 unit,25009,25009,74.76,12.8
-by owner family (shared mailing address),2-4 units,6086,15046,18.19,7.7
-by owner family (shared mailing address),5-19 units,1568,13079,4.69,6.7
-by owner family (shared mailing address),20-99 units,449,20007,1.34,10.2
-by owner family (shared mailing address),100-999 units,328,100582,0.98,51.3
-by owner family (shared mailing address),"1,000+ units",14,22311,0.04,11.4
+by owner name,1 unit,30832,30832,78.26,15.7
+by owner name,2-4 units,5773,14222,14.65,7.3
+by owner name,5-19 units,1674,15261,4.25,7.8
+by owner name,20-99 units,691,29977,1.75,15.3
+by owner name,100-999 units,425,101387,1.08,51.7
+by owner name,"1,000+ units",2,4355,0.01,2.2
+by owner family (shared mailing address),1 unit,25361,25361,75.13,12.9
+by owner family (shared mailing address),2-4 units,6059,14953,17.95,7.6
+by owner family (shared mailing address),5-19 units,1551,13096,4.6,6.7
+by owner family (shared mailing address),20-99 units,447,19717,1.32,10.1
+by owner family (shared mailing address),100-999 units,320,97520,0.95,49.7
+by owner family (shared mailing address),"1,000+ units",16,25387,0.05,13

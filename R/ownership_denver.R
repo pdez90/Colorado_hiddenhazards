@@ -51,24 +51,112 @@ P[, owner_type := fcase(
   grepl("CHURCH|PARISH|DIOCESE|ARCHBISHOP|CONGREGATION|MINISTR|HABITAT FOR HUMANITY|NONPROFIT|NON-PROFIT|COMMUNITY LAND TRUST|MERCY HOUSING|CATHOLIC|SALVATION ARMY|VOLUNTEERS OF AMERICA|COALITION FOR THE HOMELESS", nm), "Non-profit or religious",
   grepl("\\bL ?L ?C\\b|\\bINC\\b|\\bCORP|\\bL ?P\\b|\\bLLLP\\b|\\bLTD\\b|COMPANY|\\bCO\\b$|PARTNERS|HOLDING|PROPERT|INVEST|APARTMENT|CAPITAL|\\bFUND|\\bREIT\\b|BORROWER|VENTURE|ENTERPRISE|GROUP|ASSOCIATES|REALTY|HOMES\\b|RENTAL|MANAGEMENT|\\bBANK\\b|ASSOCIATION|\\bASSN\\b|SERIES", nm), "Company",
   grepl("TRUST|TRUSTEE|\\bTR\\b|REVOCABLE|LIVING", nm), "Trust", default = "Individual")]
-nm_norm <- function(x) { x <- toupper(x); x <- gsub("[^A-Z0-9& ]", " ", x)
-  x <- gsub("\\b(L L C|LLC|INC|INCORPORATED|CORP|CORPORATION|CO|COMPANY|LP|LLLP|LTD|THE|TRUST|TRUSTEE|TR|ET AL|ETAL|REVOCABLE|LIVING|SERIES [A-Z0-9]+)\\b", " ", x)
+# ---------------------------------------------------------------- linking owners, in stages (after Hangen & O'Brien 2025; An et al. 2024)
+# S1 raw: the Assessor's owner name and mailing address exactly as recorded.
+# S2 cleaned: names cleaned (punctuation, number words to numerals, spelling variants of legal forms, legal suffixes dropped) and
+#    addresses normalised (directions, street types, suite/unit and PO box spellings). Companies are identified by cleaned name alone;
+#    individuals and trusts by cleaned name and mailing address (two "John Smiths" at different addresses are two people).
+# S3 fuzzy: near-identical name + address strings (3-gram cosine similarity >= 0.85, within the same mailing ZIP and name initial)
+#    are joined, unless their numbers, generational suffixes (Jr, Sr, II) or middle initials differ.
+# S4 families: S3 owners sharing a mailing address are joined (private owners only; not at addresses shared by more than 5
+#    individuals or 40 names, or PO boxes used by more than 5 names, unless the address is on the audited list
+#    data/raw/ownership/audited_addresses.csv, stored as hashes: address-named LLCs of one operator, checked by hand).
+# S5 registry (when work/registry/co_business_entities.csv exists, from R/fetch_landlord_data.R): company owners are matched by cleaned
+#    name to the Colorado Secretary of State business registry, and families are joined when their entities share a principal
+#    address or an individual registered agent. Registered-agent firms, and agents or addresses serving more than 10 (agents) or 25
+#    (addresses) registry entities, or more than 20 Denver owner families, are never used as links (they would chain unrelated owners).
+for (p in c("Matrix", "igraph", "digest")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
+NUMW <- c(ONE = 1, TWO = 2, THREE = 3, FOUR = 4, FIVE = 5, SIX = 6, SEVEN = 7, EIGHT = 8, NINE = 9, TEN = 10, ELEVEN = 11, TWELVE = 12, THIRTEEN = 13,
+          FOURTEEN = 14, FIFTEEN = 15, SIXTEEN = 16, SEVENTEEN = 17, EIGHTEEN = 18, NINETEEN = 19, TWENTY = 20, THIRTY = 30, FORTY = 40, FIFTY = 50)
+nm_clean <- function(x) { x <- toupper(ifelse(is.na(x), "", x)); x <- gsub("[.,']", "", x); x <- gsub("[^A-Z0-9& ]", " ", x)
+  for (w in names(NUMW)) x <- gsub(paste0("\\b", w, "\\b"), NUMW[[w]], x)
+  x <- gsub("\\bAND\\b", "&", x)
+  x <- gsub("\\bLIMITED LIABILITY (COMPANY|CO)\\b|\\bL L C\\b|\\bL\\s?L\\s?C\\b", "LLC", x)
+  x <- gsub("\\bL L L P\\b|\\bLLLP\\b", "LLLP", x); x <- gsub("\\bLIMITED PARTNERSHIP\\b|\\bL P\\b", "LP", x)
+  x <- gsub("\\bINCORPORATED\\b|\\bINCORPORATION\\b", "INC", x)
+  x <- gsub("\\bCORPORATION\\b|\\bCORPORATON\\b|\\bCORPORAITON\\b|\\bCORPRATION\\b|\\bCORPORTION\\b|\\bCRP\\b|\\bCP\\b", "CORP", x)
+  x <- gsub("\\bCOMPANY\\b|\\bCOMPNAY\\b|\\bCOMAPNY\\b", "CO", x)
+  x <- gsub("\\bPROPERTIES\\b|\\bPROPERTYS\\b|\\bPROPS?\\b", "PROPERTY", x); x <- gsub("\\bHOLDINGS\\b", "HOLDING", x)
+  x <- gsub("\\bINVESTMENTS\\b", "INVESTMENT", x); x <- gsub("\\bASSOCIATES\\b|\\bASSOCS?\\b", "ASSOC", x); x <- gsub("\\bPARTNERS\\b|\\bPARTNERSHIP\\b", "PARTNER", x)
   gsub("\\s+", " ", trimws(x)) }
-P[, name_key := nm_norm(OWNER_NAME)]; P[name_key == "", name_key := paste0("blank_", SCHEDNUM)]
-P[, addr_key := fifelse(own_k == "", NA_character_, paste(gsub("\\s+", " ", toupper(trimws(paste(OWNER_ADDRESS_LINE1, OWNER_ADDRESS_LINE2)))), own_zip))]   # unit numbers kept
-# owners by name
-P[, g_name := .GRP, by = name_key]
-# owners by name or shared mailing address (connected components), skipping servicer-like addresses
-P[, `:=`(indiv_names_at_addr = uniqueN(name_key[owner_type == "Individual"]), names_at_addr = uniqueN(name_key)), by = addr_key]
+nm_norm <- function(x) { x <- nm_clean(x)
+  x <- gsub("\\b(LLC|LLLP|LP|INC|CORP|CO|LTD|THE|TRUST|TRUSTEE|TRUSTEES|TR|ET AL|ETAL|REVOCABLE|LIVING|SERIES [A-Z0-9]+)\\b", " ", x)
+  gsub("\\s+", " ", trimws(x)) }
+STT <- c(STREET = "ST", AVENUE = "AVE", AV = "AVE", BOULEVARD = "BLVD", PLACE = "PL", DRIVE = "DR", COURT = "CT", LANE = "LN", ROAD = "RD", PARKWAY = "PKWY",
+         CIRCLE = "CIR", TERRACE = "TER", HIGHWAY = "HWY", NORTH = "N", SOUTH = "S", EAST = "E", WEST = "W", SUITE = "STE", APARTMENT = "UNIT", APT = "UNIT", NUMBER = "UNIT")
+addr_norm <- function(line, zip) { x <- toupper(ifelse(is.na(line), "", line)); x <- gsub("[.,']", "", x)
+  x <- gsub("\\bP\\s?O\\s?(BOX|BX|DRAWER)\\b|\\bPOST OFFICE BOX\\b|^BOX\\b|\\bPOB\\b", " POBOX ", x); x <- gsub("#", " UNIT ", x)
+  x <- gsub("[^A-Z0-9 ]", " ", x); for (w in names(STT)) x <- gsub(paste0("\\b", w, "\\b"), STT[[w]], x)
+  x <- gsub("\\b(UNIT|STE) (UNIT|STE)\\b", "\\1", x); x <- gsub("\\s+", " ", trimws(x))
+  z <- substr(gsub("\\D", "", ifelse(is.na(zip), "", zip)), 1, 5); fifelse(x == "", NA_character_, paste(x, z)) }
+P[, raw_key := paste(gsub("\\s+", " ", toupper(trimws(OWNER_NAME))), "|", gsub("\\s+", " ", toupper(trimws(paste(OWNER_ADDRESS_LINE1, OWNER_ADDRESS_LINE2)))), own_zip)]
+P[!nzchar(trimws(OWNER_NAME)), `:=`(raw_key = paste0("blank_", SCHEDNUM), owner_type = "Unknown (no name recorded)")]
+P[, `:=`(name_key = nm_norm(OWNER_NAME), addr_n = addr_norm(paste(OWNER_ADDRESS_LINE1, OWNER_ADDRESS_LINE2), OWNER_ZIP))]
+P[name_key == "", name_key := paste0("blank_", SCHEDNUM)]
+P[, po_box := grepl("POBOX", addr_n)]
+P[, addr_key := addr_n]
+P[, s2_key := fifelse(owner_type %in% c("Individual", "Trust"), paste(name_key, "@", fifelse(is.na(addr_n), "", addr_n)), name_key)]
+P[, g_raw := .GRP, by = raw_key]; P[, g_clean := .GRP, by = s2_key]
+# S3: fuzzy joins between S2 owners
+K <- unique(P[owner_type %in% c("Company", "Trust", "Individual") & !grepl("^blank_", name_key), .(s2_key, name_key, addr_n, own_zip, owner_type)], by = "s2_key")
+K[, str := paste(name_key, fifelse(is.na(addr_n), "", addr_n))][, blk := paste(own_zip, substr(name_key, 1, 2))]
+qg <- function(s) { s <- paste0(" ", s, " "); n <- nchar(s); substring(s, 1:(n - 2), 3:n) }
+fuzzy_pairs <- function(d) { if (nrow(d) < 2) return(NULL)
+  g <- lapply(d$str, qg); ug <- unique(unlist(g)); M <- Matrix::sparseMatrix(i = rep(seq_along(g), lengths(g)), j = match(unlist(g), ug), x = 1, dims = c(length(g), length(ug)))
+  M <- Matrix::Diagonal(x = 1 / sqrt(Matrix::rowSums(M^2))) %*% M; S <- Matrix::triu(Matrix::tcrossprod(M), k = 1)
+  S <- Matrix::summary(as(S, "TsparseMatrix")); S <- S[S$x >= 0.85, , drop = FALSE]; if (!nrow(S)) return(NULL)
+  data.table(a = d$s2_key[S$i], b = d$s2_key[S$j], na = d$name_key[S$i], nb = d$name_key[S$j]) }
+sp <- split(K, by = "blk"); big <- vapply(sp, nrow, 1L) > 4000
+if (any(big)) sp <- c(sp[!big], unlist(lapply(sp[big], function(d) split(d, by = substr(d$name_key, 1, 4))), recursive = FALSE))
+FZ <- rbindlist(lapply(sp, fuzzy_pairs))
+if (nrow(FZ)) {
+  tk <- function(s, f) vapply(strsplit(s, " "), function(t) paste(sort(t[f(t)]), collapse = " "), "")
+  num_t <- function(t) grepl("^[0-9]+$", t); gen_t <- function(t) t %in% c("JR", "SR", "II", "III", "IV"); ini_t <- function(t) nchar(t) == 1 & !grepl("[0-9&]", t)
+  FZ <- FZ[tk(na, num_t) == tk(nb, num_t) & tk(na, gen_t) == tk(nb, gen_t) & (tk(na, ini_t) == tk(nb, ini_t) | tk(na, ini_t) == "" | tk(nb, ini_t) == "")]
+}
+comp_of <- function(nodes, edges) { edges <- as.data.frame(edges); names(edges) <- c("a", "b")
+  gr <- igraph::graph_from_data_frame(edges, directed = FALSE, vertices = data.frame(name = unique(c(nodes, edges$a, edges$b))))
+  cm <- igraph::components(gr)$membership; unname(cm[nodes]) }
+P[, g_name := comp_of(s2_key, if (nrow(FZ)) FZ[, .(a, b)] else data.frame(a = character(), b = character()))]
+message(sprintf("fuzzy step: %d pairs of near-identical owner names joined", nrow(FZ)))
+# S4: families by shared mailing address, skipping servicer-like addresses
+AUD <- if (file.exists("data/raw/ownership/audited_addresses.csv")) fread("data/raw/ownership/audited_addresses.csv")$addr_md5 else character(0)
+ua <- unique(fifelse(is.na(P$addr_key), "", P$addr_key)); P[, addr_md5 := vapply(ua, function(a) digest::digest(a, algo = "md5", serialize = FALSE), "")[match(fifelse(is.na(addr_key), "", addr_key), ua)]]
+P[, `:=`(indiv_names_at_addr = uniqueN(g_name[owner_type == "Individual"]), names_at_addr = uniqueN(g_name)), by = addr_key]
 # link by address only for private landlords: never public or non-profit owners, never owner-occupiers, and not at addresses shared by
-# more than 5 different individuals or more than 40 different names (tax servicers, registered agents)
-P[, link_addr := !is.na(addr_key) & indiv_names_at_addr <= 5 & names_at_addr <= 40 & !owner_occ & owner_type %in% c("Company", "Trust", "Individual")]
-P[, g := g_name]
-repeat { old <- P$g
-  P[link_addr == TRUE, g := min(g), by = addr_key]; P[, g := min(g), by = name_key]
-  if (identical(old, P$g)) break }
-setnames(P, "g", "g_family")
-message(uniqueN(P$g_name), " owner names; ", uniqueN(P$g_family), " owner families (names linked by shared mailing address)")
+# more than 5 different individuals or more than 40 different names (tax servicers, registered agents), nor PO boxes used by more than
+# 5 names (tax-bill processing boxes serve several unrelated investors), unless audited
+P[, link_addr := !is.na(addr_key) & (addr_md5 %in% AUD | (indiv_names_at_addr <= 5 & names_at_addr <= 40 & (!po_box | names_at_addr <= 5))) & !owner_occ & owner_type %in% c("Company", "Trust", "Individual")]
+P[, g_family := comp_of(paste0("n", g_name), rbind(data.frame(a = character(), b = character()),
+                                                     unique(P[link_addr == TRUE, .(a = paste0("n", g_name), b = paste0("a", addr_key))])))]
+# S5: the Colorado business registry
+REG_F <- "work/registry/co_business_entities.csv"; P[, g_registry := g_family]; HAVE_REG <- file.exists(REG_F)
+rough_addr <- function(a, z) { k <- gsub("[^A-Z0-9]", "", toupper(ifelse(is.na(a), "", a))); fifelse(k == "", NA_character_, paste0(k, "_", substr(gsub("\\D", "", ifelse(is.na(z), "", z)), 1, 5))) }
+if (HAVE_REG) {
+  R0 <- fread(REG_F, colClasses = "character")
+  R0[, ra := rough_addr(paste(principaladdress1, principaladdress2), principalzipcode)]
+  R0[, agent := fifelse(nzchar(agentlastname) & !nzchar(agentorganizationname), gsub("\\s+", " ", toupper(trimws(paste(agentfirstname, agentlastname)))), NA_character_)]
+  agent_office <- unique(R0[nzchar(agentorganizationname), rough_addr(agentprincipaladdress1, agentprincipalzipcode)])
+  ra_n <- R0[!is.na(ra), .N, by = ra]; ag_n <- R0[!is.na(agent), .N, by = agent]
+  ok_ra <- setdiff(ra_n[N <= 25, ra], agent_office); ok_ag <- ag_n[N <= 10, agent]
+  ft <- function(x) sub(" .*", "", toupper(trimws(x))); comp_first <- unique(ft(P[owner_type == "Company", OWNER_NAME]))
+  R1 <- R0[ft(entityname) %in% comp_first]; R1[, name_key := nm_norm(entityname)]
+  M1 <- merge(unique(P[owner_type == "Company", .(name_key, g_family)]), R1[, .(name_key, ra, agent)], by = "name_key", allow.cartesian = TRUE)
+  P[, ra_own := rough_addr(paste(OWNER_ADDRESS_LINE1, OWNER_ADDRESS_LINE2), OWNER_ZIP)]
+  EK <- unique(rbind(M1[ra %in% ok_ra, .(f = g_family, k = paste0("ra:", ra))], M1[agent %in% ok_ag, .(f = g_family, k = paste0("ag:", agent))],
+                     P[link_addr == TRUE & ra_own %in% ok_ra & ra_own %in% M1$ra, .(f = g_family, k = paste0("ra:", ra_own))]))
+  EK <- EK[, if (uniqueN(f) <= 20) .SD, by = k]                                         # no key may join more than 20 Denver owner families
+  EK <- EK[, if (uniqueN(f) >= 2) .SD, by = k]
+  fam <- unique(P$g_family); cm <- comp_of(paste0("f", fam), EK[, .(paste0("f", f), k)]); P[, g_registry := cm[match(g_family, fam)]]
+  # a chain of links can still snowball: components joining more than 30 families fall back to their families
+  big <- P[, .(nf = uniqueN(g_family)), by = g_registry][nf > 30, g_registry]
+  P[g_registry %in% big, g_registry := max(cm) + g_family]
+  message(sprintf("registry: %d Denver company owner names found in the registry (of %d); %d linking keys; %d families -> %d (%d chains of 30+ families left unlinked)",
+                  uniqueN(M1$name_key), uniqueN(P[owner_type == "Company", name_key]), uniqueN(EK$k), uniqueN(P$g_family), uniqueN(P$g_registry), length(big)))
+  RL <- P[rental_units > 0, .(families = uniqueN(g_family), rental = sum(rental_units), names = paste(head(unique(OWNER_NAME), 6), collapse = " | ")), by = g_registry][families > 1][order(-rental)]
+  fwrite(RL, file.path(D, "registry_links_private.csv"))                                  # for checking by hand; never published
+  rm(R0, R1); invisible(gc())
+}
 # ---------------------------------------------------------------- owner sizes and concentration (private owners; public owners shown separately)
 band <- function(u) factor(fcase(u <= 1, "1 unit", u <= 4, "2-4 units", u <= 19, "5-19 units", u <= 99, "20-99 units", u <= 999, "100-999 units", default = "1,000+ units"),
                            levels = c("1 unit", "2-4 units", "5-19 units", "20-99 units", "100-999 units", "1,000+ units"))
@@ -79,7 +167,7 @@ size_tab <- function(gcol, label) {
   S[, grouping := label]; list(G = G, S = S) }
 SN <- size_tab("g_name", "by owner name"); SF <- size_tab("g_family", "by owner family (shared mailing address)")
 SIZE <- rbind(SN$S, SF$S); setcolorder(SIZE, "grouping")
-conc <- function(G, label, priv = TRUE) { G <- if (priv) G[type != "Public"] else G; G <- G[order(-rental)]; tot <- sum(G$rental); n <- nrow(G)
+conc <- function(G, label, priv = TRUE) { G <- if (priv) G[!type %in% c("Public", "Unknown (no name recorded)")] else G; G <- G[order(-rental)]; tot <- sum(G$rental); n <- nrow(G)
   data.table(grouping = label, owners = n, rental_units = tot,
              top10_pct = round(100 * sum(head(G$rental, 10)) / tot, 1), top50_pct = round(100 * sum(head(G$rental, 50)) / tot, 1), top100_pct = round(100 * sum(head(G$rental, 100)) / tot, 1),
              top1pct_owners_pct = round(100 * sum(head(G$rental, ceiling(n / 100))) / tot, 1), owners_20plus_pct = round(100 * sum(G$rental[G$rental >= 20]) / tot, 1),
@@ -87,6 +175,11 @@ conc <- function(G, label, priv = TRUE) { G <- if (priv) G[type != "Public"] els
 SFR_TYPES <- c("Single-family house", "Condominium unit", "Rowhouse / townhouse", "Duplex / triplex")
 GS <- P[rental_units > 0 & type %in% SFR_TYPES, .(rental = sum(rental_units), type = owner_type[which.max(rental_units)]), by = g_family]
 CONC <- rbind(conc(SN$G, "Private owners, by name"), conc(SF$G, "Private owners, by family"), conc(GS, "Private owners, by family: houses, condos, rowhouses, duplexes only"))
+# how much linking reveals: concentration at each stage (Hangen & O'Brien 2025)
+gtab <- function(gcol) P[rental_units > 0, .(rental = sum(rental_units), type = owner_type[which.max(rental_units)]), by = c(gcol)]
+LADDER <- rbindlist(list(conc(gtab("g_raw"), "S1 raw name and mailing address, exact"), conc(gtab("g_clean"), "S2 cleaned names and addresses"),
+                         conc(gtab("g_name"), "S3 + near-identical names (fuzzy)"), conc(gtab("g_family"), "S4 + shared mailing address (owner families)"),
+                         if (HAVE_REG) conc(gtab("g_registry"), "S5 + Colorado business registry (principal address, individual agent)")))
 # public and non-profit share
 TYPE <- P[rental_units > 0, .(rental_units = sum(rental_units), parcels = .N), by = owner_type][, pct_rental_units := round(100 * rental_units / sum(rental_units), 1)][order(-rental_units)]
 OCC <- P[, .(parcels = .N, units = sum(units), owner_occupied_units = sum(units - rental_units), rental_units = sum(rental_units)), by = type][, pct_owner_occupied := round(100 * owner_occupied_units / units, 1)][order(-units)]
@@ -134,20 +227,62 @@ ass <- function(yv) { f <- as.formula(paste(yv, "~ p_black + p_hisp + p_pov + an
 ASSOC <- rbindlist(lapply(c("pct_rental_owner_20plus", "pct_rental_owner_100plus", "pct_rental_company", "pct_rental_out_of_state"), ass))
 ASSOC[, term := c(p_black = "Black residents (per point of %)", p_hisp = "Hispanic residents (per point of %)", p_pov = "Poverty rate (per point of %)",
                   any_hidden = "Tract has a hidden 1965-92 site", any_known = "Tract has a known 1965-92 site")[term]]
+# ---------------------------------------------------------------- where landlords live (Preis 2024; Hochstenbach 2022)
+# From the owner's mailing ZIP: on the property, elsewhere in Denver, the metro (ZIP centre within 40 km of downtown), elsewhere in
+# Colorado, another state. Distance from the property's ZIP centre to the mailing ZIP centre, and the two ZIPs' median household income
+# and non-Hispanic white share (ACS 5-year, ZCTAs; R/fetch_landlord_data.R). Mailing addresses can be a manager's or a tax agent's office
+# rather than where the owner lives; PO boxes are flagged.
+ZA <- "data/raw/acs/zcta_acs.csv"; ZGF <- "data/raw/acs/zcta_gazetteer_2020.csv"; LOC <- NULL
+if (file.exists(ZA) && file.exists(ZGF)) {
+  za <- fread(ZA, colClasses = c(zcta = "character")); zg <- fread(ZGF, colClasses = c(zcta = "character"))
+  hav <- function(a1, o1, a2, o2) { r <- pi / 180; 6371 * 2 * asin(sqrt(sin((a2 - a1) * r / 2)^2 + cos(a1 * r) * cos(a2 * r) * sin((o2 - o1) * r / 2)^2)) }
+  wmed <- function(x, w) { k <- !is.na(x) & !is.na(w); x <- x[k]; w <- w[k]; if (!length(x)) return(NA_real_); o <- order(x); x[o][which(cumsum(w[o]) >= sum(w) / 2)[1]] }
+  den_zips <- unique(P$sit_zip[nzchar(P$sit_zip)])
+  L <- Q[rental_units > 0 & !owner_type %in% c("Public", "Unknown (no name recorded)")]
+  L <- merge(L, zg[, .(own_zip = zcta, olat = lat, olon = lon)], by = "own_zip", all.x = TRUE)
+  L <- merge(L, zg[, .(sit_zip = zcta, slat = lat, slon = lon)], by = "sit_zip", all.x = TRUE)
+  L <- merge(L, za[, .(own_zip = zcta, o_inc = med_hh_income, o_white = pct_white_nh)], by = "own_zip", all.x = TRUE)
+  L <- merge(L, za[, .(sit_zip = zcta, s_inc = med_hh_income, s_white = pct_white_nh)], by = "sit_zip", all.x = TRUE)
+  L[, `:=`(d_km = hav(slat, slon, olat, olon), d_den = hav(39.7392, -104.9903, olat, olon), co = toupper(trimws(OWNER_STATE)) %in% c("CO", "COLORADO"))]
+  L[, where := fcase(owner_occ, "Lives on the property", co & own_zip %in% den_zips & toupper(trimws(OWNER_CITY)) == "DENVER", "Elsewhere in Denver",
+                     co & !is.na(d_den) & d_den <= 40, "Denver metro (within 40 km)", co, "Elsewhere in Colorado", !co & !is.na(olat), "Another state", default = "Unknown or abroad")]
+  L[, `:=`(size = band(fam_rental), absent = !owner_occ)]
+  WHERE <- c("Lives on the property", "Elsewhere in Denver", "Denver metro (within 40 km)", "Elsewhere in Colorado", "Another state", "Unknown or abroad")
+  locs <- function(d) { a <- d[absent == TRUE]; tot <- sum(d$rental_units)
+    w <- lapply(WHERE, function(k) round(100 * sum(d$rental_units[d$where == k]) / tot, 1)); names(w) <- paste0("pct_", gsub("_$", "", gsub("[^a-z0-9]+", "_", tolower(WHERE))))
+    c(list(rental_units = tot), w, list(
+      median_km_to_owner = round(wmed(a$d_km, a$rental_units), 1),
+      pct_po_box = round(100 * sum(a$rental_units[a$po_box]) / max(1, sum(a$rental_units)), 1),
+      owner_zip_income = round(weighted.mean(a$o_inc, a$rental_units, na.rm = TRUE)), property_zip_income = round(weighted.mean(a$s_inc, a$rental_units, na.rm = TRUE)),
+      pct_owner_zip_richer_25 = round(100 * sum(a$rental_units[!is.na(a$o_inc) & !is.na(a$s_inc) & a$o_inc > 1.25 * a$s_inc]) / max(1, sum(a$rental_units[!is.na(a$o_inc) & !is.na(a$s_inc)])), 1),
+      owner_zip_pct_white = round(weighted.mean(a$o_white, a$rental_units, na.rm = TRUE), 1), property_zip_pct_white = round(weighted.mean(a$s_white, a$rental_units, na.rm = TRUE), 1))) }
+  LOC <- rbindlist(list(
+    L[, locs(.SD)][, `:=`(group = "All private rental units", value = "all")],
+    L[, locs(.SD), by = .(value = as.character(size))][, group := "Owner family size (rental units in Denver)"],
+    L[, locs(.SD), by = .(value = owner_type)][, group := "Owner type"],
+    L[, locs(.SD), by = .(value = holc)][, group := "1938 HOLC grade"],
+    L[near_hidden == TRUE, locs(.SD)][, `:=`(group = "Historical sites", value = "Within 400 m of a hidden site")],
+    L[near_known == TRUE, locs(.SD)][, `:=`(group = "Historical sites", value = "Within 400 m of a known site")],
+    L[near_pre1960 == TRUE, locs(.SD)][, `:=`(group = "Historical sites", value = "Within 400 m of a pre-1960 hazardous trade")],
+    L[!near_hidden & !near_known & !near_pre1960, locs(.SD)][, `:=`(group = "Historical sites", value = "More than 400 m from any")]), fill = TRUE)
+  setcolorder(LOC, c("group", "value")); LOC <- LOC[order(group, value)]
+  print(LOC)
+} else message("owner location skipped: run Rscript R/fetch_landlord_data.R for ", ZA, " and ", ZGF)
 # ---------------------------------------------------------------- write (aggregates only) and the private check list
 TOP <- SF$G[order(-rental)][1:min(.N, 100)]
 TOP[, example_names := vapply(g_family, function(gf) paste(head(unique(P[g_family == gf & rental_units > 0, OWNER_NAME]), 4), collapse = " | "), "")]
 fwrite(TOP, file.path(D, "top_owners_private.csv"))
-for (nm_ in c("SIZE", "CONC", "TYPE", "OCC", "BY_HOLC", "BY_SITE", "BY_TYPE_SITE", "BY_TR", "ASSOC")) {
+fwrite(P[, .(SCHEDNUM, owner_type, out_of_state, owner_occ, po_box, units, rental_units, type, g_name, g_family, g_registry)], file.path(D, "parcel_owner_groups_private.csv"))
+for (nm_ in c("SIZE", "CONC", "TYPE", "OCC", "BY_HOLC", "BY_SITE", "BY_TYPE_SITE", "BY_TR", "ASSOC", "LADDER", if (!is.null(LOC)) "LOC")) {
   f <- c(SIZE = "owner_size", CONC = "concentration", TYPE = "owner_types", OCC = "occupancy_by_type", BY_HOLC = "by_holc", BY_SITE = "by_site_proximity",
-         BY_TYPE_SITE = "by_site_proximity_small_buildings", BY_TR = "by_tract", ASSOC = "tract_associations")[[nm_]]
+         BY_TYPE_SITE = "by_site_proximity_small_buildings", BY_TR = "by_tract", ASSOC = "tract_associations", LADDER = "linking_stages", LOC = "owner_location")[[nm_]]
   fwrite(get(nm_), file.path(O, paste0(f, ".csv"))); fwrite(get(nm_), file.path(A, paste0("ownership_", f, ".csv"))) }
 kab <- function(x) { x <- as.data.frame(x); c(paste("|", paste(names(x), collapse = " | "), "|"), paste0(strrep("|---", ncol(x)), "|"),
   apply(x, 1, function(r) paste("|", paste(ifelse(is.na(r), "", trimws(r)), collapse = " | "), "|"))) }
 writeLines(c("# Who owns Denver's rental housing", "", sprintf("%s residential parcels, %s units, %s not occupied by their owner. Aggregates only.",
                format(nrow(P), big.mark = ","), format(sum(P$units), big.mark = ","), format(sum(P$rental_units), big.mark = ",")), "",
-             "## Occupancy by property type", "", kab(OCC), "", "## Owner types", "", kab(TYPE), "", "## Owners by size", "", kab(SIZE), "", "## Concentration", "", kab(CONC), "",
+             "## Occupancy by property type", "", kab(OCC), "", "## Owner types", "", kab(TYPE), "", "## Owners by size", "", kab(SIZE), "", "## Concentration", "", kab(CONC), "", "## Concentration at each linking stage", "", kab(LADDER), "", if (!is.null(LOC)) c("## Where owners are (mailing address)", "", kab(LOC), ""),
              "## By 1938 HOLC grade", "", kab(BY_HOLC), "", "## Near historical sites", "", kab(BY_SITE), "", kab(BY_TYPE_SITE), "",
              "## Tract associations (weighted by rental units; tracts with 50+ rental units)", "", kab(ASSOC)), file.path(O, "ownership_summary.md"))
-print(OCC); print(TYPE); print(SIZE); print(CONC); print(BY_HOLC); print(BY_SITE); print(ASSOC)
+print(OCC); print(TYPE); print(SIZE); print(CONC); print(LADDER); print(BY_HOLC); print(BY_SITE); print(ASSOC)
 message("wrote ", O, "; the largest owners (names) are in ", file.path(D, "top_owners_private.csv"), " and are not published")

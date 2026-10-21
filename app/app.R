@@ -113,7 +113,7 @@ sb03_images <- function(m) { if (is.null(sb03) || !all(c("tl_lat", "overlay") %i
 s03_area <- rd_opt("sanborn1903_expo_area.csv"); s03_cov <- rd_opt("sanborn1903_cover.csv"); s03_zexp <- rd_opt("sanborn1903_zexp.csv"); s03_who <- rd_opt("sanborn1903_who.csv"); s03_pers <- rd_opt("sanborn1903_persist.csv"); s03_trades <- rd_opt("sanborn1903_trades.csv"); s03_out <- rd_opt("sanborn1903_outside.csv")
 sb_poly <- if (file.exists(dd("sanborn_volumes.geojson"))) st_read(dd("sanborn_volumes.geojson"), quiet = TRUE) else NULL
 vb_nb <- if (file.exists(dd("vbi70_neighborhoods.geojson"))) st_read(dd("vbi70_neighborhoods.geojson"), quiet = TRUE) else NULL
-hed <- rd_opt("hedonic_models.csv"); own_size <- rd_opt("ownership_owner_size.csv"); own_conc <- rd_opt("ownership_concentration.csv"); own_types <- rd_opt("ownership_owner_types.csv"); own_site <- rd_opt("ownership_by_site_proximity.csv"); own_holc <- rd_opt("ownership_by_holc.csv"); own_assoc <- rd_opt("ownership_tract_associations.csv"); own_tr <- rd_opt("ownership_by_tract.csv", colClasses = c(GEOID = "character")); rod <- rd_opt("vbi70_rod2003_soils.csv"); ur_comp <- rd_opt("urban_renewal_composition.csv"); ur_sites <- rd_opt("urban_renewal_sites.csv")
+hed <- rd_opt("hedonic_models.csv"); own_size <- rd_opt("ownership_owner_size.csv"); own_conc <- rd_opt("ownership_concentration.csv"); own_types <- rd_opt("ownership_owner_types.csv"); own_site <- rd_opt("ownership_by_site_proximity.csv"); own_holc <- rd_opt("ownership_by_holc.csv"); own_assoc <- rd_opt("ownership_tract_associations.csv"); own_tr <- rd_opt("ownership_by_tract.csv", colClasses = c(GEOID = "character")); own_ladder <- rd_opt("ownership_linking_stages.csv"); own_loc <- rd_opt("ownership_owner_location.csv"); cond_rates <- rd_opt("conditions_rates.csv"); cond_models <- rd_opt("conditions_models.csv"); ev_s <- rd_opt("conditions_evictions_by_large_owner_share.csv"); ev_m <- rd_opt("conditions_evictions_models.csv"); rod <- rd_opt("vbi70_rod2003_soils.csv"); ur_comp <- rd_opt("urban_renewal_composition.csv"); ur_sites <- rd_opt("urban_renewal_sites.csv")
 OW_VARS <- c("Rental units held by owners of 20+ units (%)" = "pct_rental_owner_20plus", "Rental units held by owners of 100+ units (%)" = "pct_rental_owner_100plus",
              "Rental units held by companies (LLC, corporation, partnership) (%)" = "pct_rental_company", "Rental units with an owner outside Colorado (%)" = "pct_rental_out_of_state",
              "Units not occupied by their owner (%)" = "pct_rental", "Rental units owned by public agencies (%)" = "pct_rental_public")
@@ -660,7 +660,23 @@ ui <- page_navbar(id = "nav",
            tableOutput("t_own_place")),
       card(card_header("Where large landlords own"), unit_note("2010 tracts with 50+ rental units; regression weighted by rental units"),
            tableOutput("t_own_assoc"),
-           tags$small(class = "text-muted", "Differences in percentage points per point of each tract characteristic (2020), or for tracts that contain a historical site, holding the others constant. Associations, not causes.")))),
+           tags$small(class = "text-muted", "Differences in percentage points per point of each tract characteristic (2020), or for tracts that contain a historical site, holding the others constant. Associations, not causes."))),
+    layout_columns(col_widths = c(5, 7),
+      card(card_header("How much does linking owners reveal?"), unit_note("privately owned rental units; owners linked in stages"),
+           tableOutput("t_own_ladder"),
+           tags$small(class = "text-muted", "Each stage joins more records into one owner: exact names and addresses; cleaned spellings; near-identical names; names sharing a mailing address; and, where available, companies sharing a principal address or a named registered agent in the Colorado business registry. The gain at each stage shows how much ownership is spread across differently named entities (after Hangen & O'Brien 2025).")),
+      card(card_header("Where owners are"), unit_note("privately owned rental units, by the owner's mailing ZIP code"),
+           selectInput("ow_loc_group", NULL, c("Owner family size", "Owner type", "1938 HOLC grade", "Historical sites"), width = "60%"),
+           tableOutput("t_own_loc"),
+           tags$small(class = "text-muted", "From the owner's mailing address, which can be a manager's or tax agent's office rather than where the owner lives. Income and white share are those of the owner's and the property's ZIP code areas (ACS 2018-22), weighted by rental units (after Preis 2024 and Hochstenbach 2022)."))),
+    layout_columns(col_widths = c(7, 5),
+      card(card_header("Housing complaints by landlord"), unit_note("rental buildings (parcels sharing a street address); 311 requests linked to buildings"),
+           selectInput("cond_group", NULL, c("Owner family size (rental units in Denver)", "Owner type", "Owner location", "Building type", "1938 HOLC grade", "Historical sites"), width = "60%"),
+           tableOutput("t_cond_rates"), tableOutput("t_cond_models"),
+           tags$small(class = "text-muted", "311 requests to Public Health & Environment about conditions inside homes (mold, no heat or water, pests, water damage) and to Community Planning & Development about the outside of a property (trash, weeds, storage, neglect). Ratios: Poisson models with tract fixed effects, controlling for the building's units, type, age, owner type and out-of-state owner (after An et al. 2024). A request is a report, not a confirmed violation, and tenants' willingness to call varies.")),
+      card(card_header("Eviction filings"), unit_note("2010 census tracts, City and County of Denver; Eviction Lab filings"),
+           tableOutput("t_ev"), tableOutput("t_ev_m"),
+           tags$small(class = "text-muted", "Eviction Lab (Princeton) court-record filings, tract-years the Lab judged complete, against the share of rental units held by large owners today, so the two are years apart. Weighted by renter households; controls for race, ethnicity, poverty and historical sites.")))),
   nav_panel("Neighborhoods",
     layout_columns(col_widths = c(3, 9),
       card(card_header("Compare census tracts"), unit_note("2010 census tracts"),
@@ -1736,6 +1752,26 @@ server <- function(input, output, session) {
     b <- data.frame(Area = paste("HOLC", own_holc$holc), `Rental units` = format(own_holc$rental_units, big.mark = ","), `Not owner-occ.` = paste0(own_holc$pct_rental, "%"),
                     `Owners 20+` = paste0(own_holc$pct_rental_owner_20plus, "%"), Companies = paste0(own_holc$pct_rental_company, "%"), `Out of state` = paste0(own_holc$pct_rental_out_of_state, "%"), check.names = FALSE)
     rbind(a, b) }, striped = TRUE, spacing = "s")
+  SIZE_ORD <- c("all", "1 unit", "2-4 units", "5-19 units", "20-99 units", "100-999 units", "1,000+ units"); ord_rows <- function(d) d[order(match(d$value, SIZE_ORD), d$value), ]
+  output$t_own_ladder <- renderTable({ req(own_ladder); d <- own_ladder
+    data.frame(Stage = d$grouping, Owners = format(d$owners, big.mark = ","), `Top 10` = paste0(d$top10_pct, "%"), `Top 100` = paste0(d$top100_pct, "%"), `Top 1%` = paste0(d$top1pct_owners_pct, "%"),
+               `Owners of 100+` = paste0(d$owners_100plus_pct, "%"), check.names = FALSE) }, striped = TRUE, spacing = "s")
+  output$t_own_loc <- renderTable({ req(own_loc); d <- ord_rows(own_loc[startsWith(own_loc$group, input$ow_loc_group) | own_loc$group == "All private rental units", ])
+    data.frame(` ` = d$value, `On the property` = paste0(d$pct_lives_on_the_property, "%"), `Rest of Denver` = paste0(d$pct_elsewhere_in_denver, "%"),
+               Metro = paste0(d$pct_denver_metro_within_40_km, "%"), `Rest of CO` = paste0(d$pct_elsewhere_in_colorado, "%"), `Other state` = paste0(d$pct_another_state, "%"),
+               `Median km` = d$median_km_to_owner, `Owner ZIP income` = format(d$owner_zip_income, big.mark = ","), `Property ZIP income` = format(d$property_zip_income, big.mark = ","),
+               `Owner ZIP 25%+ richer` = paste0(d$pct_owner_zip_richer_25, "%"), check.names = FALSE) }, striped = TRUE, spacing = "xs")
+  output$t_cond_rates <- renderTable({ req(cond_rates); d <- ord_rows(cond_rates[cond_rates$group %in% c(input$cond_group, "All rental buildings"), ])
+    data.frame(` ` = d$value, Buildings = format(d$buildings, big.mark = ","), `Inside requests per 100 rental units a year` = d$inside_per_100_units_yr,
+               `Buildings with an inside request` = paste0(d$pct_buildings_inside_request, "%"), `Outside requests per 100 buildings a year` = d$outside_per_100_buildings_yr, check.names = FALSE) },
+    striped = TRUE, spacing = "xs")
+  output$t_cond_models <- renderTable({ req(cond_models); d <- cond_models
+    data.frame(Requests = sub("Requests about ", "", d$outcome), Portfolio = d$portfolio, Term = d$term, Ratio = sprintf("%.2f (%.2f-%.2f)", d$irr, d$lo, d$hi), p = format(d$p, digits = 2), check.names = FALSE) },
+    striped = TRUE, spacing = "xs", caption = "Requests by the owner's portfolio size (rate ratios)", caption.placement = "top")
+  output$t_ev <- renderTable({ req(ev_s); data.frame(`Tracts by share of rentals held by 100+ unit owners` = ev_s$large_owner_tercile, Tracts = ev_s$tracts,
+    `Filings a year` = format(ev_s$filings_per_year, big.mark = ","), `Filing rate (% of renter households)` = ev_s$filing_rate, Years = ev_s$years, check.names = FALSE) }, striped = TRUE, spacing = "s")
+  output$t_ev_m <- renderTable({ req(ev_m); d <- ev_m[!ev_m$term %in% c("p_black", "p_hisp", "p_pov", "any_hidden", "any_known"), ]
+    data.frame(Model = d$model, `Per point of share` = sprintf("%+.3f", d$estimate), p = format(d$p, digits = 2), Tracts = d$tracts, check.names = FALSE) }, striped = TRUE, spacing = "s")
   output$t_own_assoc <- renderTable({ req(own_assoc); lab <- c(pct_rental_owner_20plus = "Owners of 20+ units", pct_rental_owner_100plus = "Owners of 100+ units", pct_rental_company = "Companies", pct_rental_out_of_state = "Out of state")
     data.frame(`Share of rental units held by` = lab[own_assoc$outcome], `Tract characteristic` = own_assoc$term, Difference = sprintf("%+.2f", own_assoc$estimate), p = format(own_assoc$p, digits = 2), check.names = FALSE) },
     striped = TRUE, spacing = "s")
