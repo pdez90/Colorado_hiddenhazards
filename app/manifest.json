@@ -2543,7 +2543,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "cc0e32fb024e74923a2a6b892438489a"
+      "checksum": "e8738beb946214a2beccd2c0ba5d9a9e"
     },
     "data/aqs_denver_by_year.csv": {
       "checksum": "3cf11657a17f261f9902ec39853a4cde"
@@ -2611,17 +2611,26 @@
     "data/conditions_classes.csv": {
       "checksum": "573c79b7ab4b4966d2d881c966dd62ed"
     },
+    "data/conditions_evictions_by_large_owner_share.csv": {
+      "checksum": "ef483fabc141c585b6a1120a8164064f"
+    },
+    "data/conditions_evictions_denver_county.csv": {
+      "checksum": "986f50da87c110c6303fd8edcd9f3510"
+    },
+    "data/conditions_evictions_models.csv": {
+      "checksum": "7699b90ef0b26403d5f1ca42c1d940b4"
+    },
     "data/conditions_linking.csv": {
-      "checksum": "f8e3f0998df718d23278dbfeab3094a3"
+      "checksum": "d05c5600aeb0c59df38f5ff75cba3844"
     },
     "data/conditions_models.csv": {
-      "checksum": "bdd564ad189752e40304ee62e4ce4f17"
+      "checksum": "6e9f51dbb975cd9da9980dc820a722cf"
     },
     "data/conditions_outcome_concentration.csv": {
-      "checksum": "78467228f6081e6ec026d9932addf99e"
+      "checksum": "78f643a501df13450f896fc1add7ecf7"
     },
     "data/conditions_rates.csv": {
-      "checksum": "b83d1f4e6287d3fdf9ac479e0841d0c3"
+      "checksum": "59ef519ba77c6570ca7bb560ada988fc"
     },
     "data/corridor_cells.csv": {
       "checksum": "bd03dd763b659a2777128e21d2861c66"
@@ -2934,6 +2943,30 @@
     },
     "data/regional_shares_1965_1992.csv": {
       "checksum": "8344ba9fda5742922f6deb97d3fbc20e"
+    },
+    "data/rezoning_1925_1956.geojson": {
+      "checksum": "38aa6ef2c881b601fe4cd271c615a7d3"
+    },
+    "data/rezoning_by_dir.csv": {
+      "checksum": "919191ce6dd269ae088aa6ba931af494"
+    },
+    "data/rezoning_by_holc_period.csv": {
+      "checksum": "b117d6603a54f753c41eecdaec98c52f"
+    },
+    "data/rezoning_by_holc_sure.csv": {
+      "checksum": "5656193de46aceca2e0254edeca43e6c"
+    },
+    "data/rezoning_by_holc.csv": {
+      "checksum": "cfbf905af33f5480074547ab6f03ed5b"
+    },
+    "data/rezoning_by_race.csv": {
+      "checksum": "7b78b4bbff8054dc840bd0d24b350709"
+    },
+    "data/rezoning_placed.csv": {
+      "checksum": "c3bdfb441da35fe06fd90e9f03a7ac3c"
+    },
+    "data/rezoning_test.csv": {
+      "checksum": "eff3e5e4c521d6c37bc6e18c161ba2ca"
     },
     "data/sanborn_1903_blocks.geojson": {
       "checksum": "c081cb608892e69ff26e82782bceb47a"

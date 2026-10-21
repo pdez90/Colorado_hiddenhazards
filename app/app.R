@@ -91,6 +91,8 @@ ur_poly <- if (file.exists(dd("urban_renewal_denver.geojson"))) st_read(dd("urba
 ou_poly <- if (file.exists(dd("superfund_ou_study.geojson"))) st_read(dd("superfund_ou_study.geojson"), quiet = TRUE) else NULL
 sb03 <- if (file.exists(dd("sanborn_1903_sheets.geojson"))) st_read(dd("sanborn_1903_sheets.geojson"), quiet = TRUE) else NULL
 bl03 <- if (file.exists(dd("sanborn_1903_blocks.geojson"))) st_read(dd("sanborn_1903_blocks.geojson"), quiet = TRUE) else NULL
+rz <- if (file.exists(dd("rezoning_1925_1956.geojson"))) st_read(dd("rezoning_1925_1956.geojson"), quiet = TRUE) else NULL
+rz_holc <- rd_opt("rezoning_by_holc.csv"); rz_holc_sure <- rd_opt("rezoning_by_holc_sure.csv"); rz_test <- rd_opt("rezoning_test.csv"); rz_dir <- rd_opt("rezoning_by_dir.csv", check.names = FALSE); rz_placed <- rd_opt("rezoning_placed.csv")
 pl03 <- if (file.exists(dd("sanborn_1903_plants.geojson"))) st_read(dd("sanborn_1903_plants.geojson"), quiet = TRUE) else NULL
 # The 1903-04 sheet images laid on the map: each scan is drawn with its fitted rotation and scale (three corners), loaded only when
 # the layer is switched on. Library of Congress IIIF images (public domain).
@@ -395,7 +397,11 @@ ui <- page_navbar(id = "nav",
       card(card_header("Who lived there"), unit_note("1910 enumeration districts, weighted by each block's dwellings (full-count census)"),
            tableOutput("t_s03_who")),
       card(card_header("What was there"), unit_note("blocks; establishments as labelled on the sheets"),
-           tableOutput("t_s03_trades"), tableOutput("t_s03_out"), tableOutput("t_s03_pers")))),
+           tableOutput("t_s03_trades"), tableOutput("t_s03_out"), tableOutput("t_s03_pers"))),
+    card(card_header("After zoning: changes to the zone map, 1925\u20131956"), unit_note("each change to a district boundary in an ordinance amending the 1925 zone map, placed at the blocks or street crossings it names"),
+      tags$p("Denver's first zoning ordinance (No. 14, Series of 1925) was amended block by block until the 1956 code. We read every ordinance of 1923\u20131956 in the City's scanned archive that mentions zoning and found each change of district. Where it fell is read from the lots and blocks it names (matched to today's parcel legal descriptions) or the streets its boundary follows. On the main Map, the layer 'Zone changes 1925\u20131956' shows them (red: residential land rezoned for business or industry; blue: rezoned residential)."),
+      layout_columns(col_widths = c(6, 6), tableOutput("t_rz_holc"), tableOutput("t_rz_dir")),
+      tags$small(class = "text-muted", textOutput("rz_note", inline = TRUE)))),
   nav_panel("Land use & freeways",
     layout_columns(col_widths = c(3, 9),
       card(card_header("What was on the ground"), unit_note("10 m cells of the USGS land-use maps, Denver study area"),
@@ -974,13 +980,18 @@ server <- function(input, output, session) {
       if (!is.null(pl03)) m <- addPolygons(m, data = pl03, color = ifelse(pl03$hazardous, "#67001f", "#555555"), weight = 1.5, dashArray = "3", fillColor = ifelse(pl03$hazardous, "#67001f", "#999999"), fillOpacity = 0.35,
                                             group = "1903 blocks: housing & industry", options = pathOptions(pane = "ctx"),
                                             popup = sprintf("<b>%s</b><br>%s<br>Trade: %s<br><small>Drawn on unplatted ground (sheet %s, volume %s); outline as drawn on the sheet</small>", esc(ifelse(nzchar(pl03$name), pl03$name, pl03$label)), esc(pl03$label), esc(pl03$trade), pl03$sheet, pl03$volume)) }
+    if (!is.null(rz)) { rzc <- ifelse(grepl("^Residential to", rz$direction), "#b2182b", ifelse(rz$to_group == "Residential", "#2166ac", ifelse(rz$annexation, "#1b7837", "#777777")))
+      m <- m |> addCircleMarkers(data = rz, radius = 6, stroke = TRUE, color = "#222222", weight = 0.8, fillColor = rzc, fillOpacity = ifelse(grepl("^uncertain", rz$placed_by), 0.35, 0.85),
+        group = "Zone changes 1925\u20131956", options = pathOptions(pane = "ctx"),
+        popup = sprintf("<b>Ordinance %s, Series of %s</b><br>%s &rarr; %s<br><small>Placed by %s</small><br><a href='%s' target='_blank'>Ordinance text (Denver, Municode)</a>",
+                        sub("^\\d{4}0*", "", rz$ordinance), rz$year, esc(rz$from), esc(rz$to), esc(rz$placed_by), rz$link)) }
     ZG <- paste("Zoning", names(ZYEARS)); for (k in seq_along(ZYEARS)) m <- add_zoning(m, ZYEARS[[k]], ZG[k], "tr", 0.45)
     LG <- paste("Land use", LU_YEARS); if (!is.null(lu_r)) for (k in seq_along(LU_YEARS)) m <- add_landuse(m, LU_YEARS[k], LG[k], 0.6)
     m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
-          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn coverage", SB_EDS), "Sanborn 1903\u201304 sheet images", "1903 blocks: housing & industry", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), if (!is.null(lu_r)) paste("Land use", LU_YEARS), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
+          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn coverage", SB_EDS), "Sanborn 1903\u201304 sheet images", "1903 blocks: housing & industry", "Zone changes 1925\u20131956", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), if (!is.null(lu_r)) paste("Land use", LU_YEARS), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
-      hideGroup(c("Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn coverage", SB_EDS), "Sanborn 1903\u201304 sheet images", "1903 blocks: housing & industry", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), paste("Land use", LU_YEARS), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
+      hideGroup(c("Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn coverage", SB_EDS), "Sanborn 1903\u201304 sheet images", "1903 blocks: housing & industry", "Zone changes 1925\u20131956", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), paste("Land use", LU_YEARS), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
                   "RCRA corrective action", "Voluntary cleanup (VCUP)", "Superfund (SEMS)")) |>
       sb03_images()
   })
@@ -1793,6 +1804,14 @@ server <- function(input, output, session) {
   output$t_s03_who <- renderTable({ req(s03_who); d <- s03_who
     data.frame(`1903 situation` = d$exposure, `Foreign-born` = paste0(d$pct_fb, "%"), Black = paste0(d$pct_black, "%"), Laborers = paste0(d$pct_laborers, "%"), `Owner households` = paste0(d$pct_owner_hh, "%"), check.names = FALSE) }, striped = TRUE, spacing = "s")
   output$t_s03_trades <- renderTable({ req(s03_trades); d <- head(s03_trades, 12); data.frame(Trade = d$trade, Blocks = d$N) }, striped = TRUE, spacing = "s", caption = "Most common trades", caption.placement = "top")
+  output$t_rz_holc <- renderTable({ req(rz_holc); d <- rz_holc
+    data.frame(`1938 HOLC grade` = d$holc, Changes = d$changes, `Residential to business or industry` = paste0(d$pct_res_to_business_or_industrial, "%"), `To residential` = paste0(d$pct_to_residential, "%"), check.names = FALSE) },
+    striped = TRUE, spacing = "s", caption = "Where the zone map changed, 1925 to 1956 (rezonings, not annexations)", caption.placement = "top")
+  output$t_rz_dir <- renderTable({ req(rz_dir); rz_dir }, striped = TRUE, spacing = "xs", caption = "Direction of change by period", caption.placement = "top")
+  output$rz_note <- renderText({ req(rz_placed); paste0(sprintf("%d changes; %d placed on the map (%s by blocks or agreeing streets). ", sum(rz_placed$changes), sum(rz_placed$changes[rz_placed$placed_by != "not placed"]),
+    sum(rz_placed$changes[!grepl("not placed|uncertain|^subdivision$", rz_placed$placed_by)])),
+    if (!is.null(rz_test)) sprintf("HOLC D vs A and B, share rezoned from residential to business or industry: Fisher's exact p = %s. ", format(rz_test$p_all_placed, digits = 2)) else "",
+    "HOLC grades date from 1938, so changes before then are classed by the grade their area later received. Ordinances describe changes as written; the scans' text has errors, and a few changes could not be read or placed.") })
   output$t_s03_out <- renderTable({ req(s03_out); d <- head(s03_out, 8); data.frame(Trade = d$trade, Plants = d$plants) }, striped = TRUE, spacing = "s",
     caption = "Plants drawn on unplatted ground (rail yards, river bottoms, smelter and packing-house grounds), placed from their outlines", caption.placement = "top")
   output$t_s03_pers <- renderTable({ req(s03_pers); d <- s03_pers

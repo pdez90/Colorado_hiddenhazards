@@ -1,0 +1,12 @@
+direction,1925-1945,1946-1954,1955-1956 (new code)
+Annexed as business or commercial,2,5,0
+Annexed as residential,5,13,0
+Business or industrial to residential,44,15,2
+Business to industrial,3,0,0
+Industrial to business,7,0,0
+Residential to business,15,26,46
+Residential to industrial,2,0,7
+To parking,0,0,6
+Within business or commercial districts,4,0,4
+Within industrial districts,0,0,3
+Within residential districts,19,21,17

@@ -7,6 +7,7 @@
 #   parcels.csv    Parcels: schedule number, situs coordinates (State Plane CO Central, ft; EPSG 2877), property class, year built, area, units
 #   res_chars.csv  Residential characteristics: above-grade area, basement, bedrooms, baths, stories, style, year built, land area, market neighbourhood
 #   owners.csv     Parcels again, with owner name and mailing address (for R/ownership_denver.R)
+#   legal.csv      Parcels' legal descriptions (lot, block, subdivision) and situs coordinates, to place historical rezonings (R/rezoning_denver.R)
 # Grantor/grantee names are dropped from the sales. Owner names are public records but are used only to group parcels into owners;
 # all files stay in work/property/ (git-ignored) and only aggregates are published.
 # Re-running skips files already downloaded (delete one to refresh it).
@@ -41,5 +42,6 @@ pull("ODC_real_property_residential_characteristics/FeatureServer/50",
 pull("ODC_PROP_PARCELS_A/FeatureServer/245",
      c("OBJECTID", "SCHEDNUM", "OWNER_NAME", "OWNER_ADDRESS_LINE1", "OWNER_ADDRESS_LINE2", "OWNER_CITY", "OWNER_STATE", "OWNER_ZIP", "SITUS_ADDRESS_LINE1", "SITUS_ZIP",
        "SITUS_X_COORD", "SITUS_Y_COORD", "PROP_CLASS", "D_CLASS", "D_CLASS_CN", "TOT_UNITS", "RES_ORIG_YEAR_BUILT", "COM_ORIG_YEAR_BUILT"), "owners.csv")
+pull("ODC_PROP_PARCELS_A/FeatureServer/245", c("OBJECTID", "SCHEDNUM", "LEGAL_DESC", "SITUS_X_COORD", "SITUS_Y_COORD"), "legal.csv")   # lot, block and subdivision (R/rezoning_denver.R)
 writeLines(format(Sys.Date()), file.path(D, "download_date.txt"))
 message("work/property: ", paste(list.files(D), collapse = ", "))

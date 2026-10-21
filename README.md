@@ -659,6 +659,16 @@ Owners are linked in five stages, and concentration is reported at each (`linkin
 
 Residential parcels in the City and County of Denver, grouped into owners by normalised name and, more broadly, into owner families by shared mailing address. Units not occupied by their owner count as rentals. Outputs are aggregates only: owners and units by owner size, concentration (top 10/100 owners, top 1%), owner types, and shares held by large landlords, companies and out-of-state owners by tract, 1938 HOLC grade and distance to historical sites. The largest owners, with names, are written only to work/property/top_owners_private.csv for checking and are not published.
 
+## Changes to the zone map, 1925–1956 (Denver ordinances)
+
+```
+Rscript R/fetch_denver_ordinances.R      # 560 zoning-related ordinances of 1923-1956 from the City's scanned archive (Municode MuniDocs): text layer -> data/raw/ordinances/text/
+Rscript R/fetch_denver_property.R        # now also work/property/legal.csv (parcels' lot, block and subdivision)
+Rscript R/rezoning_denver.R              # data/results/rezoning/ and app/data/rezoning_*
+```
+
+Every "changed from <district> to <district>" in an ordinance amending the 1925 zone map, and every newly annexed area "classified as" a district, read from the archive's OCR (district words matched allowing two wrong letters; the reprint in the publisher's affidavit ignored; repeats within an ordinance kept once). Each change is placed from the lots and blocks it names, matched to today's parcel legal descriptions, or from the crossings of the streets its boundary follows (TIGER), and flagged where the two disagree by more than 1 km. At each place: the 1938 HOLC grade, the 1929 zoning district, the 1940 or 1950 census tract, and hazardous trades already listed within 400 m. `changes.csv` has one row per change with a link to the ordinance; `by_holc*.csv`, `test.csv` and `summary.md` compare the direction of change across HOLC grades.
+
 ## Before zoning: the 1903–04 Sanborn maps (Library of Congress)
 
 ```
