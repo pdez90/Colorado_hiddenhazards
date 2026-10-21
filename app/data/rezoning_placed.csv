@@ -1,7 +1,7 @@
 placed_by,changes,median_spread_m,checked_both_ways,median_m_between_methods,pct
-street crossings,69,197,9,327,25.2
-not placed,63,,0,,23
-subdivision and block (streets agree),41,0,41,173,15
-uncertain: subdivision and streets disagree by over 1 km,21,256,21,5101,7.7
-subdivision and block,68,0,0,,24.8
-subdivision,12,516,0,,4.4
+street crossings,70,111.5,9,327,26.1
+not placed,71,,0,,26.5
+subdivision and block (streets agree),30,36.5,30,136.5,11.2
+subdivision and block,67,0,0,,25
+uncertain: subdivision and streets disagree by over 1 km,15,0,15,5601,5.6
+subdivision,15,695,0,,5.6

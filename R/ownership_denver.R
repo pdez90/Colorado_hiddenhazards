@@ -4,8 +4,13 @@
 #   Rscript R/ownership_denver.R
 #
 # Every residential parcel in the City and County of Denver, with its owner's name and mailing address (public records).
+#   Parcels: houses, condominium units, rowhouses, duplexes/triplexes, apartment buildings and senior-citizen apartments, and mixed-use
+#   buildings ("RETAIL W/MIXED USE" and the like) that have homes (Assessor's total units above 0; hotels and motels excluded, their units being rooms). Condominium "master" parcels with
+#   no owner name and the whole building's unit count are dropped: the units themselves are separate parcels.
 #   Units: the parcel's total units (1 for houses and condominium units). A unit is owner-occupied when the owner's mailing address is
-#   the property itself (same street line and ZIP); for a 2+ unit building lived in by its owner, the other units count as rentals.
+#   the property itself (same street line and ZIP; for condominium units and rowhouses, also the same unit number when both records
+#   carry one; for duplexes and triplexes, a mailing address at the other door, up to 4 house numbers away on the same side of the
+#   same street, also counts); for a 2+ unit building lived in by its owner, the other units count as rentals.
 #   "Rental" therefore means not occupied by its owner: it also includes second homes and vacant units.
 #   Owners: parcels are grouped into owners by normalised name (punctuation, LLC/INC/TRUST and similar suffixes removed). A second,
 #   broader grouping also links names that share a mailing address (landlords who hold property through several LLCs at one office),
@@ -29,19 +34,37 @@ message(nrow(P), " parcels; property classes:"); print(P[, .N, by = D_CLASS_CN][
 P[, type := fcase(grepl("^RESIDENTIAL[- ]CONDO", D_CLASS_CN), "Condominium unit", grepl("^RESIDENTIAL-ROWHOUSE", D_CLASS_CN), "Rowhouse / townhouse",
                   grepl("^RESIDENTIAL-(DUPLEX|TRIPLEX)", D_CLASS_CN), "Duplex / triplex",
                   grepl("^RESIDENTIAL-(APARTMENT|4 TO 8 UNITS|MULTI UNIT)", D_CLASS_CN), "Apartment building (4+ units)",
-                  grepl("^SFR", D_CLASS_CN), "Single-family house", default = NA_character_)]   # Assessor classes; commercial condominiums and land excluded
+                  grepl("^RESIDENTIAL-SENIOR CITIZEN APT", D_CLASS_CN) & num(TOT_UNITS) > 0, "Apartment building (4+ units)",
+                  grepl("W/MIXED USE$", D_CLASS_CN) & !grepl("HOTEL|MOTEL", D_CLASS_CN) & num(TOT_UNITS) > 0, "Mixed-use building (homes with shops or offices)",   # hotel units are rooms, not homes
+                  grepl("^SFR", D_CLASS_CN), "Single-family house", default = NA_character_)]   # Assessor classes; commercial condominiums, land and mixed-use buildings without homes excluded
 P <- P[!is.na(type)]
+# condominium master parcels: no owner name and the building's total units; the units are their own parcels, so the master would count twice
+P <- P[!(type == "Condominium unit" & !nzchar(trimws(OWNER_NAME)) & !is.na(num(TOT_UNITS)) & num(TOT_UNITS) > 1)]
 P[, units := num(TOT_UNITS)]; P[is.na(units) | units < 1, units := fcase(type == "Duplex / triplex", 2, type == "Apartment building (4+ units)", 4, default = 1)]
 P[type %in% c("Single-family house", "Condominium unit", "Rowhouse / townhouse"), units := pmin(units, 1)]
 # ---------------------------------------------------------------- owner-occupancy (owner's mailing address = the property)
-# Compare house number + street name only: direction words (N, E, ...), street types, unit numbers and ZIP+4 differ between the
-# situs and mailing records of the same address. A missing ZIP on either side does not block a match.
+# Compare house number + street name only: direction words (N, E, ...), street types and ZIP+4 differ between the situs and mailing
+# records of the same address. A missing ZIP on either side does not block a match. Unit numbers are compared separately below.
 addr_key <- function(x) { x <- toupper(trimws(ifelse(is.na(x), "", x))); x <- gsub("[.,#]", " ", x); x <- sub("\\b(UNIT|APT|STE|SUITE)\\b.*$", "", x)
   x <- gsub("\\b(N|S|E|W|NORTH|SOUTH|EAST|WEST)\\b", " ", x)
   x <- gsub("\\b(ST|STREET|AVE|AVENUE|AV|BLVD|BOULEVARD|PL|PLACE|DR|DRIVE|CT|COURT|WAY|LN|LANE|RD|ROAD|PKWY|PARKWAY|CIR|CIRCLE|TER|TERRACE)\\b", " ", x)
   w <- strsplit(trimws(gsub("\\s+", " ", x)), " "); vapply(w, function(t) paste(head(t, 2), collapse = " "), "") }
 P[, `:=`(own_k = addr_key(OWNER_ADDRESS_LINE1), sit_k = addr_key(SITUS_ADDRESS_LINE1), own_zip = substr(gsub("\\D", "", OWNER_ZIP), 1, 5), sit_zip = substr(gsub("\\D", "", SITUS_ZIP), 1, 5))]
 P[, owner_occ := sit_k != "" & own_k == sit_k & (own_zip == sit_zip | own_zip == "" | sit_zip == "")]
+occ0 <- copy(P$owner_occ)
+# unit numbers ("APT 2H", "UNIT 2H", "# 2H" are the same unit): a condominium or rowhouse owner whose mailing address is another unit of
+# the same building lives there but not in this unit, so this one is a rental
+unit_of <- function(x) { x <- toupper(ifelse(is.na(x), "", x)); rx <- "(#|\\bUNIT\\b|\\bAPT\\b|\\bSTE\\b|\\bSUITE\\b)"
+  u <- fifelse(grepl(rx, x), sub(paste0(".*", rx, "\\s*"), "", x), ""); u <- gsub("[^A-Z0-9]", "", u); sub("^0+(?=.)", "", u, perl = TRUE) }
+P[, `:=`(own_u = unit_of(paste(OWNER_ADDRESS_LINE1, OWNER_ADDRESS_LINE2)), sit_u = unit_of(SITUS_ADDRESS_LINE1))]
+P[owner_occ & type %in% c("Condominium unit", "Rowhouse / townhouse") & own_u != "" & sit_u != "" & own_u != sit_u, owner_occ := FALSE]
+# a duplex or triplex has one door (house number) per unit, but only one goes on the parcel record: an owner mailed at the other door
+# (same street and ZIP, same side of the street, house number within 4) lives in the building
+hnum <- function(k) suppressWarnings(as.integer(sub(" .*", "", k))); hstreet <- function(k) sub("^[^ ]* ?", "", k)
+P[type == "Duplex / triplex" & !owner_occ & own_zip != "" & own_zip == sit_zip & hstreet(sit_k) != "" & hstreet(own_k) == hstreet(sit_k) &
+  !is.na(hnum(own_k)) & !is.na(hnum(sit_k)) & abs(hnum(own_k) - hnum(sit_k)) <= 4 & hnum(own_k) %% 2L == hnum(sit_k) %% 2L, owner_occ := TRUE]
+message(sprintf("owner-occupancy: %d condominium/rowhouse parcels mailed to another unit now rentals; %d duplex/triplex parcels mailed to the other door now owner-occupied",
+                sum(occ0 & !P$owner_occ), sum(!occ0 & P$owner_occ)))
 P[, rental_units := fifelse(owner_occ, pmax(units - 1, 0), units)]
 P[, out_of_state := !(toupper(trimws(OWNER_STATE)) %in% c("CO", "COLORADO", ""))]
 # ---------------------------------------------------------------- owner type and owner groups
@@ -57,7 +80,9 @@ P[, owner_type := fcase(
 #    addresses normalised (directions, street types, suite/unit and PO box spellings). Companies are identified by cleaned name alone;
 #    individuals and trusts by cleaned name and mailing address (two "John Smiths" at different addresses are two people).
 # S3 fuzzy: near-identical name + address strings (3-gram cosine similarity >= 0.85, within the same mailing ZIP and name initial)
-#    are joined, unless their numbers, generational suffixes (Jr, Sr, II) or middle initials differ.
+#    are joined when the names alone are also near-identical (similarity >= 0.85: a shared servicer address must not carry two
+#    different names over the line), unless their numbers (also those inside words, as in "UNIT4B"), generational suffixes (Jr, Sr,
+#    II) or middle initials differ.
 # S4 families: S3 owners sharing a mailing address are joined (private owners only; not at addresses shared by more than 5
 #    individuals or 40 names, or PO boxes used by more than 5 names, unless the address is on the audited list
 #    data/raw/ownership/audited_addresses.csv, stored as hashes: address-named LLCs of one operator, checked by hand).
@@ -106,13 +131,19 @@ fuzzy_pairs <- function(d) { if (nrow(d) < 2) return(NULL)
   M <- Matrix::Diagonal(x = 1 / sqrt(Matrix::rowSums(M^2))) %*% M; S <- Matrix::triu(Matrix::tcrossprod(M), k = 1)
   S <- Matrix::summary(as(S, "TsparseMatrix")); S <- S[S$x >= 0.85, , drop = FALSE]; if (!nrow(S)) return(NULL)
   data.table(a = d$s2_key[S$i], b = d$s2_key[S$j], na = d$name_key[S$i], nb = d$name_key[S$j]) }
+# 3-gram cosine similarity of two names on their own (the same measure as above, pair by pair)
+qsim <- function(a, b) mapply(function(x, y) { gx <- table(qg(x)); gy <- table(qg(y)); k <- intersect(names(gx), names(gy))
+  sum(gx[k] * gy[k]) / sqrt(sum(gx^2) * sum(gy^2)) }, a, b, USE.NAMES = FALSE)
 sp <- split(K, by = "blk"); big <- vapply(sp, nrow, 1L) > 4000
 if (any(big)) sp <- c(sp[!big], unlist(lapply(sp[big], function(d) split(d, by = substr(d$name_key, 1, 4))), recursive = FALSE))
 FZ <- rbindlist(lapply(sp, fuzzy_pairs))
 if (nrow(FZ)) {
+  FZ <- FZ[qsim(na, nb) >= 0.85]
   tk <- function(s, f) vapply(strsplit(s, " "), function(t) paste(sort(t[f(t)]), collapse = " "), "")
-  num_t <- function(t) grepl("^[0-9]+$", t); gen_t <- function(t) t %in% c("JR", "SR", "II", "III", "IV"); ini_t <- function(t) nchar(t) == 1 & !grepl("[0-9&]", t)
-  FZ <- FZ[tk(na, num_t) == tk(nb, num_t) & tk(na, gen_t) == tk(nb, gen_t) & (tk(na, ini_t) == tk(nb, ini_t) | tk(na, ini_t) == "" | tk(nb, ini_t) == "")]
+  # every run of digits in the name, also when attached to letters ("UNIT4B", "2ND"), so 123 MAIN LLC and 124 MAIN LLC stay apart
+  dg <- function(s) vapply(regmatches(s, gregexpr("[0-9]+", s)), function(t) paste(sort(t), collapse = " "), "")
+  gen_t <- function(t) t %in% c("JR", "SR", "II", "III", "IV"); ini_t <- function(t) nchar(t) == 1 & !grepl("[0-9&]", t)
+  FZ <- FZ[dg(na) == dg(nb) & tk(na, gen_t) == tk(nb, gen_t) & (tk(na, ini_t) == tk(nb, ini_t) | tk(na, ini_t) == "" | tk(nb, ini_t) == "")]
 }
 comp_of <- function(nodes, edges) { edges <- as.data.frame(edges); names(edges) <- c("a", "b")
   gr <- igraph::graph_from_data_frame(edges, directed = FALSE, vertices = data.frame(name = unique(c(nodes, edges$a, edges$b))))

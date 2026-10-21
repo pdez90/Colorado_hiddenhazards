@@ -10,6 +10,7 @@
 #      -> data/raw/acs/zcta_acs.csv. Uses CENSUS_API_KEY from ~/.Renviron if set (works without one at low volume).
 #   4. Eviction Lab (Princeton), eviction filings and judgments by census tract, 2000-2018 ("proprietary valid" file: counts from
 #      court records purchased from vendors, kept only where the Lab judged them complete) -> work/evictionlab/ (Colorado rows only).
+#      If neither copy of the validated tract file can be read, the Lab's full tract file is saved as tract_proprietary_2000_2018_CO.csv.
 #      Cite: Gromis, Fellows, Hendrickson et al. (2022), Estimating eviction prevalence across the United States, PNAS 119(21).
 options(timeout = 3600)
 for (p in c("data.table", "jsonlite")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
@@ -61,9 +62,11 @@ S3 <- "https://eviction-lab-data-downloads.s3.amazonaws.com/"
 EV <- list(tract = paste0(S3, c("data-for-analysis/tract_proprietary_valid_2000_2018.csv", "estimating-eviction-prevalance-across-us/tract_proprietary_valid_2000_2018.csv",
                                 "estimating-eviction-prevalance-across-us/tract_proprietary_2000_2018.csv")),
            county = paste0(S3, c("data-for-analysis/county_proprietary_valid_2000_2018.csv", "estimating-eviction-prevalance-across-us/county_proprietary_valid_2000_2018.csv")))
-for (k in names(EV)) { out <- sprintf("work/evictionlab/%s_proprietary_valid_2000_2018_CO.csv", k); if (file.exists(out)) next
-  f <- tempfile(fileext = ".csv"); ok <- FALSE
-  for (u in EV[[k]]) { ok <- tryCatch({ download.file(u, f, mode = "wb", quiet = TRUE); TRUE }, error = function(e) FALSE, warning = function(w) FALSE)
+# Each file is saved under its own name (validated "..._valid_..." or full), in order of preference; a kind already saved under a
+# preferred name is skipped. R/housing_conditions_denver.R uses the validated tract file when present, else the full one.
+for (k in names(EV)) { f <- tempfile(fileext = ".csv"); ok <- FALSE
+  for (u in EV[[k]]) { out <- file.path("work/evictionlab", sub("\\.csv$", "_CO.csv", basename(u))); if (file.exists(out)) break
+    ok <- tryCatch({ download.file(u, f, mode = "wb", quiet = TRUE); TRUE }, error = function(e) FALSE, warning = function(w) FALSE)
     if (ok) { message("Eviction Lab ", k, ": ", u); break } else message("Eviction Lab ", k, " file not reachable: ", u) }
   if (!ok) next
   d <- fread(f, colClasses = "character"); file.remove(f); message("Eviction Lab ", k, " columns: ", paste(names(d), collapse = ", "))

@@ -40,7 +40,10 @@ for (nm in keep) {
     if (length(parts) %% 25 == 0) message("   ", format(off, big.mark = ","), " / ", format(n, big.mark = ","))
   }
   d <- rbindlist(parts, fill = TRUE)
-  for (cc in intersect(c("Case_Created_dttm", "Case_Created_Date"), names(d))) if (is.numeric(d[[cc]])) set(d, j = cc, value = format(as.POSIXct(d[[cc]] / 1000, origin = "1970-01-01", tz = "America/Denver"), "%Y-%m-%d"))
+  # ArcGIS returns dates as milliseconds since 1970 (UTC). Case_Created_Date is a date-only field stored as midnight UTC: read it in UTC
+  # (in Denver time it would fall on the evening before). Case_Created_dttm is a moment in time: its date is taken in Denver time.
+  for (cc in intersect(c("Case_Created_dttm", "Case_Created_Date"), names(d))) if (is.numeric(d[[cc]]))
+    set(d, j = cc, value = format(as.POSIXct(d[[cc]] / 1000, origin = "1970-01-01", tz = "UTC"), "%Y-%m-%d", tz = if (cc == "Case_Created_Date") "UTC" else "America/Denver"))
   d[, year := y]; fwrite(d, out); message("   -> ", out, " (", nrow(d), " rows)")
 }
 message("done; ", length(list.files(O, "^311_")), " years in ", O)

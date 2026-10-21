@@ -1,29 +1,30 @@
-group,value,buildings,rental_units,inside_per_100_units_yr,outside_per_100_buildings_yr,pct_buildings_inside_request,pct_buildings_outside_request
-Owner family size (rental units in Denver),2-4 units,9505,16243,0.42,7.98,3.5,27.4
-Owner family size (rental units in Denver),1 unit,16267,18488,0.28,6.25,1.8,21.8
-Owner family size (rental units in Denver),100-999 units,2008,93814,0.35,16.32,24.9,38.3
-Owner family size (rental units in Denver),5-19 units,6082,15105,0.49,9.11,5.8,30.1
-Owner family size (rental units in Denver),20-99 units,2722,19264,0.51,13.21,13.1,36.6
-Owner family size (rental units in Denver),"1,000+ units",302,24976,0.38,19.66,43.4,47.4
-Owner type,Company,12599,145042,0.39,10.75,9.8,31.3
-Owner type,Trust,4164,7024,0.28,6.47,2.3,22.6
-Owner type,Individual,19434,31575,0.36,7.14,3,24.7
-Owner type,Public,581,3701,0.42,10.35,8.6,32.4
-Owner type,Non-profit or religious,108,548,0.57,3.94,11.1,22.2
-Owner location,Mailing address in Colorado,31141,111646,0.38,8.25,4.9,27
-Owner location,Mailing address out of state,5745,76244,0.37,8.83,7.6,26
-Building type,Single-family house,22847,22985,0.34,7.87,2.1,26.7
-Building type,Rowhouse / townhouse,5960,7726,0.21,4.48,1.6,16.9
-Building type,Apartment building (4+ units),3027,138871,0.38,19.65,32.8,46.5
-Building type,Duplex / triplex,3161,6279,0.39,9.47,5,31
-Building type,Condominium unit,1891,12029,0.59,6.15,12.5,20.5
-1938 HOLC grade,A,631,1221,0.21,4.91,2.7,16.2
-1938 HOLC grade,C,10730,45736,0.45,9.18,6.6,29.5
-1938 HOLC grade,Not graded,17045,107765,0.37,7.53,4.9,23.9
-1938 HOLC grade,D,6002,28365,0.33,10,5.6,32.2
-1938 HOLC grade,B,2478,4803,0.34,7.13,3.1,24.6
-Historical sites,Within 400 m of a hidden site,8786,49408,0.34,10.56,5.6,31.2
-Historical sites,Within 400 m of a known site,12259,76353,0.38,10.15,6.5,31
-Historical sites,Within 400 m of a pre-1960 hazardous trade,8699,66082,0.33,10.41,7.4,32.1
-Historical sites,More than 400 m from any,18478,84411,0.37,6.85,4.5,23.6
-All rental buildings,all,36886,187890,0.38,8.34,5.3,26.8
+group,value,buildings,units,rental_units,inside_per_100_units_yr,outside_per_100_buildings_yr,pct_buildings_inside_request,pct_buildings_outside_request
+Owner family size (rental units in Denver),5-19 units,6165,24846,17070,0.28,7.89,5.2,27.8
+Owner family size (rental units in Denver),2-4 units,9568,29572,16942,0.19,7.08,3.2,25.9
+Owner family size (rental units in Denver),1 unit,16720,27098,18642,0.14,5.61,1.6,20.5
+Owner family size (rental units in Denver),100-999 units,1825,119468,118592,0.26,10.86,26.4,31.2
+Owner family size (rental units in Denver),20-99 units,2700,24354,21795,0.42,11.26,13,33.9
+Owner family size (rental units in Denver),"1,000+ units",777,31249,31215,0.26,8.4,16.9,31.3
+Owner type,Company,13073,188468,177276,0.28,8.59,9.1,28.2
+Owner type,Trust,4225,12103,7727,0.15,5.92,2.2,21.4
+Owner type,Individual,19732,50135,33408,0.19,6.33,2.6,23.2
+Owner type,Public,604,5191,5163,0.26,7.06,7.6,28.6
+Owner type,Non-profit or religious,121,690,682,0.4,3,8.3,16.5
+Owner location,Mailing address in Colorado,31857,157523,129061,0.25,7.03,4.5,24.9
+Owner location,Mailing address out of state,5898,99064,95195,0.27,7.25,7,24.2
+Building type,Mixed-use building (homes with shops or offices),412,22663,22563,0.08,11.26,11.4,40
+Building type,Single-family house,22876,24127,22977,0.26,7.25,1.9,25.5
+Building type,Rowhouse / townhouse,5992,13126,7975,0.1,3.73,1.3,15.1
+Building type,Condominium unit,2234,39198,14370,0.16,3.92,10.2,17.4
+Building type,Duplex / triplex,3164,6898,6056,0.32,8.37,4.6,29.1
+Building type,Apartment building (4+ units),3077,150575,150315,0.32,12.61,30,36.9
+1938 HOLC grade,Not graded,17320,147232,126678,0.25,6.49,4.5,22.3
+1938 HOLC grade,A,638,1321,1272,0.2,4.29,2.7,15.8
+1938 HOLC grade,C,11083,60285,52708,0.32,7.83,6.1,27.3
+1938 HOLC grade,D,6195,41904,38488,0.2,7.93,5.1,28.7
+1938 HOLC grade,B,2519,5845,5110,0.23,6.24,2.8,22.8
+Historical sites,Within 400 m of a hidden site,9148,76486,67581,0.2,8.24,5,27.8
+Historical sites,Within 400 m of a known site,12764,114144,103758,0.23,7.85,5.6,27.5
+Historical sites,Within 400 m of a pre-1960 hazardous trade,9179,101186,90738,0.2,7.96,6.5,28.3
+Historical sites,More than 400 m from any,18675,107530,91020,0.27,6.25,4.2,22.3
+All rental buildings,all,37755,256587,224256,0.26,7.07,4.9,24.8

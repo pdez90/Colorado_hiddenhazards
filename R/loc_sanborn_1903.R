@@ -177,7 +177,7 @@ BL <- rbindlist(lapply(seq_along(SH), function(k) { s <- SH[[k]]; if (!ok[k]) re
     bn <- vapply(c("N", "S", "E", "W"), function(d) { v <- nz(b$bounded_by[[d]], NA); if (is.na(v)) "" else st_base(v) }, "")
     data.table(volume = s$volume, sheet = s$sheet, block_id = nz(b$block_id, ""), x = g[1], y = g[2], partial = isTRUE(b$partial),
                nN = bn[["N"]], nS = bn[["S"]], nE = bn[["E"]], nW = bn[["W"]],
-               streets = paste(sort(unique(na.omit(st_base(bb)))), collapse = "/"),
+               streets = { v <- st_base(bb); paste(sort(unique(v[!is.na(v) & nzchar(v)])), collapse = "/") },   # unnamed sides give "", not a street
                dwellings = sum(as.numeric(c(nz(b$dwellings, 0), nz(b$flats, 0), nz(b$shanties, 0))), na.rm = TRUE), shanties = as.numeric(nz(b$shanties, 0)),
                stores = as.numeric(nz(b$stores, 0)), n_industrial = length(tr), n_hazardous = sum(tr %in% HAZ), n_heavy = sum(tr %in% HEAVY), trades = paste(unique(tr), collapse = "; "),
                establishments = paste(lab[nzchar(lab)], collapse = "; "), dwellings_facing_industry = fac) })) }))

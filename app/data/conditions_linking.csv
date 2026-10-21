@@ -1,15 +1,19 @@
 class,how,N,pct
-Conditions inside the home,address,4499,49.2
-Conditions inside the home,no usable address or coordinates,1545,16.9
-Conditions inside the home,nearest house number on the same street and side (within 10; 100 for 20+ units),866,9.5
-Conditions inside the home,coordinates (nearest building within 60 m),755,8.3
-Conditions inside the home,not a residential building in the parcel file,705,7.7
-Conditions inside the home,coordinates (building of 20+ units within 150 m),464,5.1
-Conditions inside the home,address (no ZIP; unique street address),310,3.4
-Outside of the property,address,50123,76.2
-Outside of the property,coordinates (nearest building within 60 m),5231,8
-Outside of the property,nearest house number on the same street and side (within 10; 100 for 20+ units),3630,5.5
-Outside of the property,no usable address or coordinates,2756,4.2
-Outside of the property,not a residential building in the parcel file,2382,3.6
-Outside of the property,coordinates (building of 20+ units within 150 m),1086,1.7
-Outside of the property,address (no ZIP; unique street address),569,0.9
+Conditions inside the home,address,4528,50.3
+Conditions inside the home,no usable address or coordinates,1486,16.5
+Conditions inside the home,address not matched to a residential building,899,10
+Conditions inside the home,nearest house number on the same street and side (within 10; 100 for 20+ units),751,8.3
+Conditions inside the home,the request's address is a non-residential parcel (not linked),525,5.8
+Conditions inside the home,"address (only one building fits; ZIP, direction or street type missing on one side)",488,5.4
+Conditions inside the home,coordinates (building of 20+ units within 150 m),205,2.3
+Conditions inside the home,no usable address; no building near the coordinates,58,0.6
+Conditions inside the home,coordinates (nearest building within 60 m),55,0.6
+Outside of the property,address,50221,76.4
+Outside of the property,the request's address is a non-residential parcel (not linked),6203,9.4
+Outside of the property,no usable address or coordinates,2767,4.2
+Outside of the property,address not matched to a residential building,2231,3.4
+Outside of the property,nearest house number on the same street and side (within 10; 100 for 20+ units),2199,3.3
+Outside of the property,"address (only one building fits; ZIP, direction or street type missing on one side)",852,1.3
+Outside of the property,coordinates (nearest building within 60 m),803,1.2
+Outside of the property,coordinates (building of 20+ units within 150 m),311,0.5
+Outside of the property,no usable address; no building near the coordinates,178,0.3

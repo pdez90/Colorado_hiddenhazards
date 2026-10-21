@@ -1,4 +1,5 @@
 class,agency,request,N
+Conditions inside the home,Environmental Health,Other (rare or free-text summaries),889
 Conditions inside the home,Environmental Health,EQ/PHI - Bed Bugs or other bugs,845
 Conditions inside the home,Public Health & Environment,Mold,727
 Conditions inside the home,Public Health & Environment,No Heat,652
@@ -13,11 +14,11 @@ Conditions inside the home,Public Health & Environment,Sewage,217
 Conditions inside the home,Public Health & Environment,Bed Bugs,212
 Conditions inside the home,Public Health & Environment,Roaches,198
 Conditions inside the home,Public Health & Environment,Mold (Do not route),196
-Conditions inside the home,Public Health & Environment,No Water,195
 Outside of the property,Community Planning & Development,Weeds/Vegetation Violation,21869
 Outside of the property,Community Planning & Development,NIS - Weeds/Vegetation Violation,8984
 Outside of the property,Community Planning & Development,Trash in Yard Violation,5898
 Outside of the property,Community Planning & Development,NIS - Trash in Yard Violation,3814
+Outside of the property,Community Planning & Development,Other (rare or free-text summaries),2601
 Outside of the property,Community Planning & Development,Parking on Lawn,2385
 Outside of the property,Community Planning & Development,Weeds & Vegetation,2044
 Outside of the property,Community Planning & Development,Outdoor Storage Violation,1760
@@ -28,19 +29,18 @@ Outside of the property,Community Planning & Development,Vacant,852
 Outside of the property,Community Planning & Development,Inoperable Vehicle,780
 Outside of the property,Community Planning & Development,NIS - Overflowing Private Dumpster,724
 Outside of the property,Community Planning & Development,Neglect,717
-Outside of the property,Community Planning & Development,Dilapidated Fence,645
+,Environmental Health,Other (rare or free-text summaries),30104
 ,Excise & License,New Business License,25514
 ,Excise & License,Renewal Business License,24621
 ,Community Planning & Development,Snow Removal Complaint/Sidewalk,24449
 ,Public Health & Environment,Animal Adoption/Hold Inquiry,16366
+,Community Planning & Development,Other (rare or free-text summaries),12858
 ,Environmental Health,DAS - Animal Adoption/Hold Inquiry,12309
 ,Excise & License,Online Process / Application,11893
 ,Community Planning & Development,NIS - Inspection Request,11390
 ,Public Health & Environment,Other,10882
 ,Environmental Health,DAP - Loose Animal,10670
+,Excise & License,Other (rare or free-text summaries),10124
 ,Excise & License,Application,9460
 ,Public Health & Environment,More Information Requested,9049
 ,Environmental Health,DAS - Lost my Pet,8946
-,Community Planning & Development,Permits,8835
-,Community Planning & Development,NIS - Snow Removal Complaint/Sidewalk,7692
-,Public Health & Environment,Lost my Pet,7439

@@ -41,7 +41,7 @@ if (!file.exists(CAND)) {
   H <- H[!queries %in% c("Series of 1925", "Ordinance No. 14", "Series of 1925;Ordinance No. 14")]
   fwrite(H, CAND); message(nrow(H), " candidate ordinances -> ", CAND)
 }
-H <- fread(CAND, colClasses = "character"); nfail <- 0
+H <- fread(CAND, colClasses = "character"); nfail <- 0; nrun <- 0      # nrun: failures in a row
 for (i in seq_len(nrow(H))) {
   txt <- file.path(TX, paste0(H$ordinance[i], ".txt")); if (file.exists(txt)) next
   pdf <- file.path(PD, paste0(H$ordinance[i], ".pdf"))
@@ -49,7 +49,9 @@ for (i in seq_len(nrow(H))) {
     ok <- tryCatch({ download.file(sprintf("https://mcclibraryfunctions.azurewebsites.us/api/munidocDownload/31287/%s/pdf", H$node_id[i]), pdf, mode = "wb", quiet = TRUE,
                                 headers = c(HDR[c("Referer", "User-Agent")], Accept = "application/pdf,*/*")); TRUE },
                    error = function(e) FALSE, warning = function(w) FALSE)
-    if (!ok) { message("  failed: ", H$ordinance[i]); if (file.exists(pdf)) file.remove(pdf); nfail <- nfail + 1; if (nfail >= 5 && nfail == i) stop("the archive refuses downloads from R; tell Claude"); next }
+    if (!ok) { message("  failed: ", H$ordinance[i]); if (file.exists(pdf)) file.remove(pdf); nfail <- nfail + 1; nrun <- nrun + 1
+      if (nrun >= 10) stop("ten downloads in a row failed: the archive may be refusing downloads from R; run again later"); next }
+    nrun <- 0
     Sys.sleep(0.5) }
   t <- tryCatch(pdftools::pdf_text(pdf), error = function(e) NULL); if (is.null(t)) { message("  unreadable: ", H$ordinance[i]); next }
   writeLines(paste(sprintf("=== page %d ===\n%s", seq_along(t), t), collapse = "\n"), txt)
