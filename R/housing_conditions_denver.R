@@ -19,8 +19,8 @@
 #    family (S4: names sharing a mailing address) and, if the business registry was linked, by registry group (S5). Also: the share
 #    of buildings with a complaint held by the largest 1% of owners (Hangen & O'Brien 2025), and rates by HOLC grade and near
 #    historical sites. A request is a report, not a verified violation: tenants' willingness to call differs between places and owners.
-# 4. Evictions. Eviction Lab tract filings 2000-2018 (court records bought from vendors; "valid" tract-years only), averaged over the
-#    latest five years available, against the share of rental units held by large owners today (a cross-section 6+ years apart).
+# 4. Evictions. Eviction Lab tract filings 2000-2018 (court records bought from vendors), averaged over the latest five years in which
+#    nearly every tract has a count and which the Lab judged complete for Denver County (2012-2016), against the share of rental units held by large owners today (a cross-section 6+ years apart).
 # Outputs (aggregates only): data/results/housing_conditions/*.csv, summary.md; app/data/conditions_*.csv.
 for (p in c("data.table", "sf", "RANN", "sandwich", "lmtest")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(data.table); library(sf) })
@@ -153,7 +153,13 @@ if (file.exists(EVF)) {
   rc <- nm[grepl("renter|renting", nm, ignore.case = TRUE)][1]
   E[, GEOID := sprintf("%011.0f", num(get(idc)))]; E <- E[substr(GEOID, 1, 5) == "08031"]
   E[, `:=`(year = num(get(yc)), filings = num(get(fc)), judgments = if (!is.na(jc)) num(get(jc)) else NA_real_, renters = if (!is.na(rc)) num(get(rc)) else NA_real_)]
-  y1 <- max(E$year[!is.na(E$filings)]); E5 <- E[year > y1 - 5 & !is.na(filings)]
+  frc <- nm[tolower(nm) == "filing_rate"][1]
+  if (all(is.na(E$renters)) && !is.na(frc)) E[, renters := fifelse(num(get(frc)) > 0, 100 * filings / num(get(frc)), NA_real_)]   # renter households implied by the Lab's rate
+  # latest five years in which nearly every Denver tract has a count, and not past the last year the Lab judged complete for the county
+  cov <- E[, .(ok = mean(!is.na(filings))), by = year][ok >= 0.9, year]
+  cfile <- "work/evictionlab/county_proprietary_valid_2000_2018_CO.csv"
+  cmax <- if (file.exists(cfile)) max(num(fread(cfile, colClasses = "character")[num(cofips) == 8031 & filings != "", year])) else Inf
+  y1 <- max(cov[cov <= cmax]); E5 <- E[year > y1 - 5 & year <= y1 & !is.na(filings)]
   EVT <- E5[, .(years = .N, filings_per_year = mean(filings), judgments_per_year = mean(judgments), renter_households = mean(renters)), by = GEOID]
   EVT[, filing_rate := 100 * filings_per_year / renter_households]
   OT <- if (file.exists("data/results/ownership/by_tract.csv")) fread("data/results/ownership/by_tract.csv", colClasses = c(GEOID = "character")) else NULL

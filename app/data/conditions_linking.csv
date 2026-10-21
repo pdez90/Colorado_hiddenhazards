@@ -1,7 +1,15 @@
 class,how,N,pct
 Conditions inside the home,address,4499,49.2
-Conditions inside the home,not a residential building in the parcel file,3846,42.1
-Conditions inside the home,coordinates (30 m),799,8.7
+Conditions inside the home,no usable address or coordinates,1545,16.9
+Conditions inside the home,nearest house number on the same street and side (within 10; 100 for 20+ units),866,9.5
+Conditions inside the home,coordinates (nearest building within 60 m),755,8.3
+Conditions inside the home,not a residential building in the parcel file,705,7.7
+Conditions inside the home,coordinates (building of 20+ units within 150 m),464,5.1
+Conditions inside the home,address (no ZIP; unique street address),310,3.4
 Outside of the property,address,50123,76.2
-Outside of the property,not a residential building in the parcel file,10059,15.3
-Outside of the property,coordinates (30 m),5595,8.5
+Outside of the property,coordinates (nearest building within 60 m),5231,8
+Outside of the property,nearest house number on the same street and side (within 10; 100 for 20+ units),3630,5.5
+Outside of the property,no usable address or coordinates,2756,4.2
+Outside of the property,not a residential building in the parcel file,2382,3.6
+Outside of the property,coordinates (building of 20+ units within 150 m),1086,1.7
+Outside of the property,address (no ZIP; unique street address),569,0.9
