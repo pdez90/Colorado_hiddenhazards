@@ -1,0 +1,2380 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 21,
+  "image": "1903_1904_v1_00985_01_1903-0021.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Lawrence",
+     "11th"
+    ],
+    "modern": null,
+    "x": 242,
+    "y": 232
+   },
+   {
+    "streets": [
+     "Curtis",
+     "11th"
+    ],
+    "modern": null,
+    "x": 1670,
+    "y": 232
+   },
+   {
+    "streets": [
+     "Champa",
+     "11th"
+    ],
+    "modern": null,
+    "x": 3030,
+    "y": 232
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "9th"
+    ],
+    "modern": null,
+    "x": 242,
+    "y": 2425
+   },
+   {
+    "streets": [
+     "Curtis",
+     "10th"
+    ],
+    "modern": null,
+    "x": 1670,
+    "y": 1306
+   },
+   {
+    "streets": [
+     "Curtis",
+     "8th"
+    ],
+    "modern": null,
+    "x": 1670,
+    "y": 3557
+   },
+   {
+    "streets": [
+     "Champa",
+     "8th"
+    ],
+    "modern": null,
+    "x": 3030,
+    "y": 3557
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "21-30",
+    "bounded_by": {
+     "N": "11th",
+     "S": "10th",
+     "E": "Curtis",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 950,
+     "y": 770
+    },
+    "partial": false,
+    "dwellings": 23,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "CARP'R",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": "small rear-alley shop, lot 1"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "21-29",
+    "bounded_by": {
+     "N": "11th",
+     "S": "10th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 2350,
+     "y": 770
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 2,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "St. Elizabeth's R.C. Church (steam heat) and St. Elizabeth's School; priests' house counted as dwelling"
+   },
+   {
+    "block_id": "21-41",
+    "bounded_by": {
+     "N": "10th",
+     "S": "9th",
+     "E": "Curtis",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 950,
+     "y": 1870
+    },
+    "partial": false,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "PICKLE FAC'Y; STORAGE; OFFICE",
+      "name": "The Perkins Epeneter Pickle Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "iron clad 4th story; kettle; boiler room; heat steam, fuel coal"
+     },
+     {
+      "label": "FURN. WARE HO.; GRAIN WARE HO.; STORAGE; STABLE; WAGON SHED",
+      "name": "Weicker-Cliff Transfer & Storage Co.",
+      "trade": "warehouse",
+      "features": "2-st furniture warehouse, large stable, covered drive"
+     },
+     {
+      "label": "CORRAL; WAGON SHED",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "corral and iron-clad wagon shed on lots 5-6"
+     }
+    ],
+    "faces": [
+     {
+      "street": "9th",
+      "what": "Perkins Epeneter Pickle Co.; Weicker-Cliff Transfer & Storage",
+      "dwellings_facing": 0
+     }
+    ],
+    "notes": "Dwellings concentrated in east half (lots 1-4, 10-12); pickle factory and transfer warehouses fill Lawrence/9th corner"
+   },
+   {
+    "block_id": "21-42",
+    "bounded_by": {
+     "N": "10th",
+     "S": "9th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 2350,
+     "y": 1870
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "21-65",
+    "bounded_by": {
+     "N": "9th",
+     "S": "8th",
+     "E": "Curtis",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 950,
+     "y": 2990
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "9th",
+      "what": "Perkins Epeneter Pickle Co. (block 41)",
+      "dwellings_facing": 5
+     }
+    ],
+    "notes": "Mill race cuts SW corner near Lawrence/8th"
+   },
+   {
+    "block_id": "21-64",
+    "bounded_by": {
+     "N": "9th",
+     "S": "8th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 2350,
+     "y": 2990
+    },
+    "partial": false,
+    "dwellings": 31,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "CARP'R",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": "small carpenter shop 1020 1/2, rear of lot 2"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Dense residential West Denver (Congressional Grant) blocks. Only notable industry: Perkins Epeneter Pickle Co. and Weicker-Cliff transfer/storage warehouses at Lawrence & 9th, directly in a block with ~14 dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 22,
+  "image": "1903_1904_v1_00985_01_1903-0022.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Champa",
+     "11th"
+    ],
+    "modern": null,
+    "x": 194,
+    "y": 1135
+   },
+   {
+    "streets": [
+     "Stout",
+     "11th"
+    ],
+    "modern": null,
+    "x": 1612,
+    "y": 1135
+   },
+   {
+    "streets": [
+     "Champa",
+     "10th"
+    ],
+    "modern": null,
+    "x": 194,
+    "y": 2193
+   },
+   {
+    "streets": [
+     "Stout",
+     "10th"
+    ],
+    "modern": null,
+    "x": 1612,
+    "y": 2193
+   },
+   {
+    "streets": [
+     "Champa",
+     "9th"
+    ],
+    "modern": null,
+    "x": 194,
+    "y": 3290
+   },
+   {
+    "streets": [
+     "Champa",
+     "8th"
+    ],
+    "modern": null,
+    "x": 2104,
+    "y": 3304
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "22-13",
+    "bounded_by": {
+     "N": "Cherry Creek (market stalls)",
+     "S": "11th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 903,
+     "y": 742
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 36,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Two rows of open Market Stalls plus a 35-unit stall building (stores and restaurants) along Cherry Creek; lot 12 store block 1101-1113 (barber, hot-air heater)"
+   },
+   {
+    "block_id": "22-14",
+    "bounded_by": {
+     "N": "Cherry Creek (market stalls)",
+     "S": "11th",
+     "E": "Santa Fe / Cherry Creek",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 2225,
+     "y": 790
+    },
+    "partial": true,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "iron clad, 847 1/2"
+     }
+    ],
+    "faces": [],
+    "notes": "Includes saloon 827, stores 855/851"
+   },
+   {
+    "block_id": "22-28",
+    "bounded_by": {
+     "N": "11th",
+     "S": "10th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 903,
+     "y": 1661
+    },
+    "partial": false,
+    "dwellings": 33,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "CALCIUM LIGHT FAC.",
+      "name": "",
+      "trade": "chemical",
+      "features": "small shed behind 1020 Champa dwelling"
+     },
+     {
+      "label": "BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "brick, 913 1/2 rear alley"
+     }
+    ],
+    "faces": [],
+    "notes": "Calcium (lime-light) gas works sits in the yard of a dwelling"
+   },
+   {
+    "block_id": "22-27",
+    "bounded_by": {
+     "N": "11th",
+     "S": "10th",
+     "E": "W. Colfax Av.",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 1870,
+     "y": 1612
+    },
+    "partial": true,
+    "dwellings": 5,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "22-43",
+    "bounded_by": {
+     "N": "10th",
+     "S": "9th",
+     "E": "W. Colfax Av.",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 871,
+     "y": 2725
+    },
+    "partial": false,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 4,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "LAUNDRY; ENG. RM.",
+      "name": "St. Clara's Convent",
+      "trade": "laundry/dye",
+      "features": "boiler, engine room, brick stack; rear alley"
+     }
+    ],
+    "faces": [],
+    "notes": "St. Clara's Convent + chapel, St. Leo's R.C. Church, St. James M.E. People's Church"
+   },
+   {
+    "block_id": "22-63",
+    "bounded_by": {
+     "N": "9th",
+     "S": "8th",
+     "E": "W. Colfax Av.",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 2513,
+     "y": 2743
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "H. & C. Place row of six 2-st dwellings; Mill Race along 8th"
+   },
+   {
+    "block_id": "22-78",
+    "bounded_by": {
+     "N": "8th",
+     "S": null,
+     "E": null,
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 2257,
+     "y": 3515
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential/institutional West Denver near Cherry Creek with market stalls. Small hazards only: calcium light factory in a residential back yard, convent laundry with boiler, two blacksmiths."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 23,
+  "image": "1903_1904_v1_00985_01_1903-0023.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wewatta",
+     "7th"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 242
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "4th"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 3450
+   }
+  ],
+  "blocks": [],
+  "outside_blocks": [
+   {
+    "label": "ROUND HOUSE; TURN TABLE",
+    "name": "Colorado & Southern R.R. Yard",
+    "trade": "rail shops/roundhouse",
+    "features": "large semicircular roundhouse, 36 hose connections, 35 raised skylights; boiler house with boilers, air compressor, artesian well",
+    "near": "C&S yard, west part of sheet"
+   },
+   {
+    "label": "TAR PAPER FACT'Y (VACANT); RETORT",
+    "name": "",
+    "trade": "oil/paint/tar",
+    "features": "iron clad; retort; water tank; tar still; underground tank",
+    "near": "vacant coal yard east of roundhouse"
+   },
+   {
+    "label": "OIL HO.; OIL PLATF'M",
+    "name": "Colorado & Southern R.R.",
+    "trade": "oil/paint/tar",
+    "features": "oil house and platform",
+    "near": "NW corner near 7th"
+   },
+   {
+    "label": "TAR PAPER W.HO.; TAR PAPER WARE HO.; TAR PAPER ROLLS; STILL; TAR TANKS; WARE HO. TAR IN BBLS",
+    "name": "Denver Gas & Electric Co. Roofing Materials",
+    "trade": "oil/paint/tar",
+    "features": "engine 20 h.p. with boiler; tar still; tar tanks underground, 5 ft and 3 ft above ground; tar in barrels; iron clad sheds",
+    "near": "west side of Wewatta, 7th to 4th (543-648 Wewatta)"
+   },
+   {
+    "label": "COAL SHED; COAL POCKETS; TRESTLE",
+    "name": "Colorado & Southern R.R.",
+    "trade": "coal/wood yard",
+    "features": "coal pockets on trestle",
+    "near": "C&S yard centre"
+   },
+   {
+    "label": "SAND HOUSE; R.R. WATER TANKS",
+    "name": "Colorado & Southern R.R.",
+    "trade": "rail shops/roundhouse",
+    "features": "sand dryers; two elevated water tanks 48,000 gal each",
+    "near": "C&S yard centre"
+   },
+   {
+    "label": "BLKSM.; OFFICE; OIL HO.",
+    "name": "Colorado & Southern R.R.",
+    "trade": "livery/blacksmith",
+    "features": "",
+    "near": "tracks east of coal shed"
+   }
+  ],
+  "sheet_notes": "All railway ground (Colorado & Southern yard) between South Platte River and Wewatta; no dwellings. Denver Gas & Electric Co. tar-roofing works with stills and tar tanks lines Wewatta."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 24,
+  "image": "1903_1904_v1_00985_01_1903-0024.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wewatta",
+     "7th"
+    ],
+    "modern": null,
+    "x": 270,
+    "y": 255
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "7th"
+    ],
+    "modern": null,
+    "x": 1640,
+    "y": 255
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "6th"
+    ],
+    "modern": null,
+    "x": 1640,
+    "y": 1325
+   },
+   {
+    "streets": [
+     "Wazee",
+     "6th"
+    ],
+    "modern": null,
+    "x": 3030,
+    "y": 1325
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "5th"
+    ],
+    "modern": null,
+    "x": 1640,
+    "y": 2410
+   },
+   {
+    "streets": [
+     "Wazee",
+     "4th"
+    ],
+    "modern": null,
+    "x": 3030,
+    "y": 3490
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "24-253",
+    "bounded_by": {
+     "N": "7th",
+     "S": "6th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 950,
+     "y": 790
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "6th",
+      "what": "Richardson Fraser & Co. stone yard; Denver Marble & Onyx Co.",
+      "dwellings_facing": 9
+     }
+    ],
+    "notes": ""
+   },
+   {
+    "block_id": "24-260",
+    "bounded_by": {
+     "N": "6th",
+     "S": "5th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 950,
+     "y": 1870
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STONE YARD; STONE SHED",
+      "name": "Richardson Fraser & Co.",
+      "trade": "brick/stone/pottery",
+      "features": "iron clad stone shed"
+     },
+     {
+      "label": "STONE SAWING; POLISHING, DRILLING ETC.",
+      "name": "The Denver Marble & Onyx Co.",
+      "trade": "brick/stone/pottery",
+      "features": "engine 50 h.p.; boiler; coal; elevated water tank 3,500 gal; iron clad"
+     },
+     {
+      "label": "STONE SAWING; STONE SHED",
+      "name": "",
+      "trade": "brick/stone/pottery",
+      "features": "engine 30 h.p.; boiler; 1637 and 1619"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "24-261",
+    "bounded_by": {
+     "N": "5th",
+     "S": "4th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 950,
+     "y": 2950
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Rail tracks cross; C&S yard to west with fuel oil tank"
+   },
+   {
+    "block_id": "24-254",
+    "bounded_by": {
+     "N": "7th",
+     "S": "6th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 2335,
+     "y": 790
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "D&RG R.R. yard tracks, switch shanty"
+   },
+   {
+    "block_id": "24-259",
+    "bounded_by": {
+     "N": "6th",
+     "S": "5th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 2335,
+     "y": 1870
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "MATTRESS FAC'Y; PICKER ROOM; WOOD SAWING; EXCELSIOR WARE HO.; WARE HO.",
+      "name": "Geo. J. Kindel Mattress Fac'y",
+      "trade": "other",
+      "features": "rag picker, hair picker, spring machines; boiler, engine; sprinklers; 4500 gal tank"
+     },
+     {
+      "label": "WARE HO.",
+      "name": "",
+      "trade": "warehouse",
+      "features": "1514 1/2"
+     },
+     {
+      "label": "STORAGE",
+      "name": "",
+      "trade": "warehouse",
+      "features": "iron clad storage, lot 9"
+     }
+    ],
+    "faces": [],
+    "notes": "Mattress factory occupies Wynkoop end of block; ~11 dwellings in the rest"
+   },
+   {
+    "block_id": "24-262",
+    "bounded_by": {
+     "N": "5th",
+     "S": "4th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 2335,
+     "y": 2950
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "FUEL OIL TANK",
+    "name": "Colorado & Southern R.R.",
+    "trade": "oil/paint/tar",
+    "features": "fuel oil tank",
+    "near": "C&S yard west of Wewatta near 4th"
+   }
+  ],
+  "sheet_notes": "Mixed: dwellings on 6th-7th face stone yards and a marble works; Kindel mattress factory (fire-prone picker rooms) shares block with ~11 dwellings. Rail yards both sides."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 25,
+  "image": "1903_1904_v1_00985_01_1903-0025.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wazee",
+     "7th"
+    ],
+    "modern": null,
+    "x": 258,
+    "y": 255
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "7th"
+    ],
+    "modern": "Market",
+    "x": 1640,
+    "y": 255
+   },
+   {
+    "streets": [
+     "Larimer",
+     "7th"
+    ],
+    "modern": null,
+    "x": 3050,
+    "y": 255
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "5th"
+    ],
+    "modern": "Market",
+    "x": 1640,
+    "y": 2410
+   },
+   {
+    "streets": [
+     "Larimer",
+     "5th"
+    ],
+    "modern": null,
+    "x": 3050,
+    "y": 2410
+   },
+   {
+    "streets": [
+     "Wazee",
+     "4th"
+    ],
+    "modern": null,
+    "x": 258,
+    "y": 3490
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "25-255",
+    "bounded_by": {
+     "N": "7th",
+     "S": "6th",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 950,
+     "y": 790
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BOILER SHOP; BL'KSM. SHOP; RIVETING TOWER; IRON STORAGE",
+      "name": "Western Boiler Works",
+      "trade": "metal working",
+      "features": "iron clad; riveting tower; forge; elevated water tank 16 ft"
+     },
+     {
+      "label": "MONUMENT WKS; STONE SHED",
+      "name": "Bayha & Bohm Monument Wks",
+      "trade": "brick/stone/pottery",
+      "features": ""
+     },
+     {
+      "label": "ICE HO.",
+      "name": "D. & R.G. R.R.",
+      "trade": "warehouse",
+      "features": "ice house with ice slide"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "25-258",
+    "bounded_by": {
+     "N": "6th",
+     "S": "5th",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 950,
+     "y": 1870
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "FEED MILL; FEED, HAY & GRAIN",
+      "name": "The F.C. Ayres Mercantile Co.",
+      "trade": "flour mill/elevator",
+      "features": "feed mills and cleaners; engine; boiler; iron clad"
+     },
+     {
+      "label": "SAMPLING WORKS (NOT RUNNING)",
+      "name": "",
+      "trade": "smelter",
+      "features": "furnace"
+     },
+     {
+      "label": "COAL & WOOD YARD",
+      "name": "",
+      "trade": "coal/wood yard",
+      "features": "coal shed"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "25-263",
+    "bounded_by": {
+     "N": "5th",
+     "S": "4th",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 950,
+     "y": 2950
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "STONE YARD; STONE SHED",
+      "name": "",
+      "trade": "brick/stone/pottery",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "25-103",
+    "bounded_by": {
+     "N": "7th",
+     "S": "6th",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 2335,
+     "y": 790
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "LUMBER SHEDS; SASH & DOOR W.HO.; STEAM DRY KILN; WARE HOUSE (LIME, CEMENT, WIRE, NAILS)",
+      "name": "The Hallack and Howard Lumber Co.",
+      "trade": "lumber/planing",
+      "features": "electric motor power; steam dry kiln; lumber piles"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "25-257",
+    "bounded_by": {
+     "N": "6th",
+     "S": "5th",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 2335,
+     "y": 1870
+    },
+    "partial": false,
+    "dwellings": 12,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "WARE HO.; REPAIR SHOP; BLKSM.",
+      "name": "S. & S. Machinery Co.",
+      "trade": "machine shop",
+      "features": "engine 8 h.p.; boiler; iron clad"
+     }
+    ],
+    "faces": [],
+    "notes": "Machinery repair shop along north (6th/track) edge; dwellings on south and Larimer side"
+   },
+   {
+    "block_id": "25-264",
+    "bounded_by": {
+     "N": "5th",
+     "S": "4th",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 2335,
+     "y": 2950
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "JUNK SHED; JUNK HO.; JUNK YARD",
+      "name": "The Colorado Iron & Metal Yard",
+      "trade": "metal working",
+      "features": "junk yard"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Heavily industrial lower downtown along D&RG tracks: Western Boiler Works, Hallack & Howard lumber, Ayres feed mill, an idle ore sampling works, junk yard. Only block 257 has a real dwelling cluster (~12)."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 26,
+  "image": "1903_1904_v1_00985_01_1903-0026.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Larimer",
+     "7th"
+    ],
+    "modern": null,
+    "x": 100,
+    "y": 255
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "7th"
+    ],
+    "modern": null,
+    "x": 1560,
+    "y": 255
+   },
+   {
+    "streets": [
+     "Curtis",
+     "7th"
+    ],
+    "modern": null,
+    "x": 2950,
+    "y": 255
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "6th"
+    ],
+    "modern": null,
+    "x": 1560,
+    "y": 1340
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "5th"
+    ],
+    "modern": null,
+    "x": 1560,
+    "y": 2420
+   },
+   {
+    "streets": [
+     "Larimer",
+     "4th"
+    ],
+    "modern": null,
+    "x": 100,
+    "y": 3500
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "26-102",
+    "bounded_by": {
+     "N": "7th",
+     "S": "6th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 830,
+     "y": 790
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "LUMBER SHED; WARE HO.",
+      "name": "Frank Kirchof Lumber Yard",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "PLANING MILL; BOX FAC'Y; CARP'R SHOP; TURNING ROOM; SAWING; SHAVINGS VAULT",
+      "name": "The Hallack & Howard Lumber Co.",
+      "trade": "lumber/planing",
+      "features": "boiler room, engine 180 h.p.; glue room over boiler room; shavings vault; metal blowers"
+     }
+    ],
+    "faces": [],
+    "notes": "Dwellings (incl. a boarding house) share block with a planing mill and box factory"
+   },
+   {
+    "block_id": "26-101",
+    "bounded_by": {
+     "N": "7th",
+     "S": "6th",
+     "E": "Curtis",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 2250,
+     "y": 790
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BEER STORAGE; WARE HO.",
+      "name": "Lemps Beer Depot",
+      "trade": "warehouse",
+      "features": "wagon sheds"
+     },
+     {
+      "label": "STONE YARD; STONE SAWING",
+      "name": "Thos. Hayes Stone Yard",
+      "trade": "brick/stone/pottery",
+      "features": "iron clad, electric motor"
+     },
+     {
+      "label": "BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "iron clad, 1136"
+     },
+     {
+      "label": "LUMBER",
+      "name": "Frank Kirchof Lumber Yard",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "COAL YARD; COAL SHEDS; COAL BINS",
+      "name": "Pikes Peak Coal Co.",
+      "trade": "coal/wood yard",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Mill Ditch crosses block"
+   },
+   {
+    "block_id": "26-256",
+    "bounded_by": {
+     "N": "6th",
+     "S": "5th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 830,
+     "y": 1880
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "RAG HO.; RAG PICKING",
+      "name": "Denver Iron & Metal Co.",
+      "trade": "metal working",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Mostly C&S R.R. tracks"
+   },
+   {
+    "block_id": "26-104",
+    "bounded_by": {
+     "N": "6th",
+     "S": "5th",
+     "E": "Curtis",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 2250,
+     "y": 1880
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "ELECTRIC LIGHT PLANT; DYNAMO ROOM; ELECTRIC MACHINE SHOP",
+      "name": "Denver Gas & Electric Co.",
+      "trade": "power/electric",
+      "features": "boilers; engines 100, 650, 650, 650 and 2250 h.p.; 6 dynamos; 150 ft chimney; roof water tank 50,000 gal; coal; artesian well"
+     }
+    ],
+    "faces": [],
+    "notes": "Power plant fills north half; ~17 dwellings across the alley in south half"
+   },
+   {
+    "block_id": "26-265",
+    "bounded_by": {
+     "N": "5th",
+     "S": "4th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 830,
+     "y": 2960
+    },
+    "partial": false,
+    "dwellings": 9,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "MACHINE SHOP",
+      "name": "",
+      "trade": "machine shop",
+      "features": "electric motor power, 1262 at Larimer & 5th"
+     },
+     {
+      "label": "BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "STORAGE OF TELEGRAPH SUPPLIES; STORAGE",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "C&S tracks cross south half"
+   },
+   {
+    "block_id": "26-266",
+    "bounded_by": {
+     "N": "5th",
+     "S": "4th",
+     "E": "W. Colfax Av.",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 2400,
+     "y": 2960
+    },
+    "partial": true,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "STONE SHED; STONE CRUSHER; STONE SCREENS; COMPRESSOR; BLKSM.",
+      "name": "The Interstate Realty & Contract Co.",
+      "trade": "brick/stone/pottery",
+      "features": "iron clad"
+     },
+     {
+      "label": "COAL SHED; COAL BIN; CARP'R; BLKSM.",
+      "name": "The Rugby-Primrose Coal Co.",
+      "trade": "coal/wood yard",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Baker's Villa subdivision"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Major hazard: Denver Gas & Electric Co. electric light plant (several thousand h.p., 150 ft stack) sharing block 104 with ~17 dwellings. Planing mill and box factory share block 102 with ~17 dwellings and a boarding house."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 27,
+  "image": "1903_1904_v1_00985_01_1903-0027.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Lawrence",
+     "8th"
+    ],
+    "modern": null,
+    "x": 240,
+    "y": 300
+   },
+   {
+    "streets": [
+     "Curtis",
+     "8th"
+    ],
+    "modern": null,
+    "x": 1640,
+    "y": 300
+   },
+   {
+    "streets": [
+     "Champa",
+     "8th"
+    ],
+    "modern": null,
+    "x": 3095,
+    "y": 300
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "7th"
+    ],
+    "modern": null,
+    "x": 240,
+    "y": 1340
+   },
+   {
+    "streets": [
+     "Curtis",
+     "7th"
+    ],
+    "modern": null,
+    "x": 1640,
+    "y": 1340
+   },
+   {
+    "streets": [
+     "Curtis",
+     "6th"
+    ],
+    "modern": null,
+    "x": 1640,
+    "y": 2390
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "27-76",
+    "bounded_by": {
+     "N": "8th",
+     "S": "7th",
+     "E": "Curtis",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 940,
+     "y": 820
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "MILL; WARE HO.",
+      "name": "Eagle Mill & Elevator Co.",
+      "trade": "flour mill/elevator",
+      "features": "flour mill 250 bbl/24 hrs; water power (wheel, head race, tail race); 8 double rolls, purifiers, dust collectors; dynamo; iron clad"
+     }
+    ],
+    "faces": [],
+    "notes": "Congressional West Denver mill race runs through block"
+   },
+   {
+    "block_id": "27-77",
+    "bounded_by": {
+     "N": "8th",
+     "S": "7th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 2370,
+     "y": 820
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "STONE SHED",
+      "name": "",
+      "trade": "brick/stone/pottery",
+      "features": "small, 725"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "27-100",
+    "bounded_by": {
+     "N": "7th",
+     "S": "6th",
+     "E": "W. Colfax Av.",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 2150,
+     "y": 1880
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "LUMBER SHED; LATH; SCATTERED LUMBER",
+      "name": "E.D. Hinkley Lumber Yard",
+      "trade": "lumber/planing",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Row of 10 dwellings on 7th backs onto lumber yard; mill race crosses"
+   },
+   {
+    "block_id": "27-103",
+    "bounded_by": {
+     "N": "6th",
+     "S": null,
+     "E": null,
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 1900,
+     "y": 2800
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Eagle Mill & Elevator flour mill (water power) in block with ~16 dwellings; lumber yard behind a dwelling row. Most of lower sheet blank (beyond mapped area)."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 28,
+  "image": "1903_1904_v1_00985_01_1903-0028.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wynkoop",
+     "4th"
+    ],
+    "modern": null,
+    "x": 1606,
+    "y": 160
+   },
+   {
+    "streets": [
+     "Wazee",
+     "4th"
+    ],
+    "modern": null,
+    "x": 3032,
+    "y": 160
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "3rd"
+    ],
+    "modern": null,
+    "x": 1606,
+    "y": 1225
+   },
+   {
+    "streets": [
+     "Wazee",
+     "3rd"
+    ],
+    "modern": null,
+    "x": 3032,
+    "y": 1225
+   },
+   {
+    "streets": [
+     "Wazee",
+     "2nd"
+    ],
+    "modern": null,
+    "x": 3032,
+    "y": 2316
+   },
+   {
+    "streets": [
+     "Larimer",
+     "W. Colfax Av."
+    ],
+    "modern": null,
+    "x": 1000,
+    "y": 3450
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "28-272",
+    "bounded_by": {
+     "N": "4th",
+     "S": "3rd",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 1100,
+     "y": 900
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Colorado & Southern R.R. yard tracks"
+   },
+   {
+    "block_id": "28-271",
+    "bounded_by": {
+     "N": "4th",
+     "S": "3rd",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 2322,
+     "y": 693
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "MOULDING ROOM; CORE OVENS; PATTERN STORAGE",
+      "name": "The Queen City Foundry Co.",
+      "trade": "foundry",
+      "features": "cupolas; core ovens; iron truss roof; also on sheet 29"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "28-273",
+    "bounded_by": {
+     "N": "3rd",
+     "S": "2nd",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 2451,
+     "y": 1790
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "28-283",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": null,
+     "W": null
+    },
+    "centroid": {
+     "x": 700,
+     "y": 1600
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "STONE SHED; BLKSM.; DYNAMO ENG. & COMPRESSOR",
+      "name": "",
+      "trade": "brick/stone/pottery",
+      "features": "iron clad"
+     }
+    ],
+    "faces": [],
+    "notes": "Between South Platte River and tracks; W. Walnut (Market)"
+   },
+   {
+    "block_id": "28-284",
+    "bounded_by": {
+     "N": null,
+     "S": "Iron viaduct (Larimer)",
+     "E": "1st St.",
+     "W": "South Platte River"
+    },
+    "centroid": {
+     "x": 1250,
+     "y": 2100
+    },
+    "partial": false,
+    "dwellings": 10,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STONE YARD",
+      "name": "",
+      "trade": "brick/stone/pottery",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Dwellings along 1st St. side, stone yard on river side"
+   },
+   {
+    "block_id": "28-Baker's Villa 1",
+    "bounded_by": {
+     "N": "Iron viaduct",
+     "S": "W. Colfax Av.",
+     "E": "Larimer",
+     "W": "South Platte River"
+    },
+    "centroid": {
+     "x": 1000,
+     "y": 3050
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "HAY & FEED; COAL SHEDS",
+      "name": "",
+      "trade": "coal/wood yard",
+      "features": "wooden posts, platform"
+     },
+     {
+      "label": "BLKSM.; WOOD WORK",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "2049-2057 W. Colfax"
+     },
+     {
+      "label": "HAY, WOOD & COAL",
+      "name": "",
+      "trade": "coal/wood yard",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "28-282",
+    "bounded_by": {
+     "N": "2nd",
+     "S": null,
+     "E": "Wazee",
+     "W": null
+    },
+    "centroid": {
+     "x": 2700,
+     "y": 2550
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Mostly rail yards and river bottom; Queen City Foundry moulding room with cupolas; scattered dwellings along 1st St. and Larimer near stone yards. Block numbers 283/284 uncertain boundaries."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 29,
+  "image": "1903_1904_v1_00985_01_1903-0029.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wazee",
+     "4th"
+    ],
+    "modern": null,
+    "x": 265,
+    "y": 227
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "4th"
+    ],
+    "modern": "Market",
+    "x": 1681,
+    "y": 227
+   },
+   {
+    "streets": [
+     "Larimer",
+     "4th"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 227
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "3rd"
+    ],
+    "modern": "Market",
+    "x": 1681,
+    "y": 1302
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "2nd"
+    ],
+    "modern": "Market",
+    "x": 1681,
+    "y": 2380
+   },
+   {
+    "streets": [
+     "Wazee",
+     "1st"
+    ],
+    "modern": null,
+    "x": 265,
+    "y": 3456
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "29-270",
+    "bounded_by": {
+     "N": "4th",
+     "S": "3rd",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 969,
+     "y": 757
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "MOULDING ROOM; CUPOLAS; CORE OVENS; CLEANING CASTINGS; RATTLERS; PATTERN SHOP; FLASK SHEDS",
+      "name": "The Queen City Foundry Co.",
+      "trade": "foundry",
+      "features": "two cupolas; core ovens; engine 20 h.p.; boiler; water tank"
+     },
+     {
+      "label": "ICE HOUSES",
+      "name": "Capitol Ice Co.",
+      "trade": "warehouse",
+      "features": "32 ft to eaves"
+     },
+     {
+      "label": "TAR KETTLE; STONE CRUSHER",
+      "name": "",
+      "trade": "oil/paint/tar",
+      "features": "tar kettle beside stone crusher"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "29-274",
+    "bounded_by": {
+     "N": "3rd",
+     "S": "2nd",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 969,
+     "y": 1840
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "3rd",
+      "what": "The Queen City Foundry Co.; Capitol Ice Co.",
+      "dwellings_facing": 5
+     },
+     {
+      "street": "W. Walnut",
+      "what": "H.W. Bingham & Co. lumber yard",
+      "dwellings_facing": 4
+     }
+    ],
+    "notes": ""
+   },
+   {
+    "block_id": "29-281",
+    "bounded_by": {
+     "N": "2nd",
+     "S": "1st",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 969,
+     "y": 2971
+    },
+    "partial": false,
+    "dwellings": 12,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "Wazee & 1st corner"
+     }
+    ],
+    "faces": [],
+    "notes": "Tracks cut SW corner toward South Platte"
+   },
+   {
+    "block_id": "29-269",
+    "bounded_by": {
+     "N": "4th",
+     "S": "3rd",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 2392,
+     "y": 757
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "COAL & WOOD YARD",
+      "name": "Wm. E. Russell",
+      "trade": "coal/wood yard",
+      "features": ""
+     },
+     {
+      "label": "COAL & WOOD YARD",
+      "name": "The Capitol Fuel Co.",
+      "trade": "coal/wood yard",
+      "features": ""
+     },
+     {
+      "label": "PLANING MILL; CARP'R SHOP; TURNING; STEAM DRY HO.; LUMBER SHED",
+      "name": "Grant (Denver Lumber Yard and Planing Mill?)",
+      "trade": "lumber/planing",
+      "features": "engine and boiler, shavings bin; iron clad"
+     }
+    ],
+    "faces": [],
+    "notes": "Saloon 315 and one dwelling at Larimer end next to planing mill"
+   },
+   {
+    "block_id": "29-275",
+    "bounded_by": {
+     "N": "3rd",
+     "S": "2nd",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 2392,
+     "y": 1800
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "LUMBER YARD AND PLANING MILL; SASH, DOOR & HARDW. W.HO.; WARE HO.; LUMBER SHED",
+      "name": "H.W. Bingham & Co.",
+      "trade": "lumber/planing",
+      "features": "iron clad warehouses"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "29-280",
+    "bounded_by": {
+     "N": "2nd",
+     "S": "1st",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 2392,
+     "y": 2910
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Queen City Foundry (cupolas) and Capitol Ice houses face a 22-dwelling block across 3rd; Bingham lumber yard faces dwellings across W. Walnut. Planing-mill name in block 269 is uncertain."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 30,
+  "image": "1903_1904_v1_00985_01_1903-0030.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Larimer",
+     "4th"
+    ],
+    "modern": null,
+    "x": 242,
+    "y": 200
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "4th"
+    ],
+    "modern": null,
+    "x": 1629,
+    "y": 200
+   },
+   {
+    "streets": [
+     "Larimer",
+     "3rd"
+    ],
+    "modern": null,
+    "x": 242,
+    "y": 1290
+   },
+   {
+    "streets": [
+     "Larimer",
+     "2nd"
+    ],
+    "modern": null,
+    "x": 242,
+    "y": 2364
+   },
+   {
+    "streets": [
+     "Larimer",
+     "1st"
+    ],
+    "modern": null,
+    "x": 242,
+    "y": 3425
+   },
+   {
+    "streets": [
+     "W. Colfax Av.",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 2150,
+    "y": 2300
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "30-268",
+    "bounded_by": {
+     "N": "4th",
+     "S": "3rd",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 935,
+     "y": 774
+    },
+    "partial": false,
+    "dwellings": 9,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "SAMPLING MILL; ORE HOUSE; ORE BINS; ORE CRUSHER ROLLS",
+      "name": "The Chamberlain-Dillingham Ore Co.",
+      "trade": "smelter",
+      "features": "engine; boiler; coal; 50 ft hose in boiler room"
+     }
+    ],
+    "faces": [],
+    "notes": "Ore sampling mill across the alley from a row of ~9 dwellings on 4th"
+   },
+   {
+    "block_id": "30-267",
+    "bounded_by": {
+     "N": "4th",
+     "S": "3rd",
+     "E": null,
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 2200,
+     "y": 700
+    },
+    "partial": true,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "C&S R.R. yard; water tank, windmill; one dwelling 1110"
+   },
+   {
+    "block_id": "30-Villa",
+    "bounded_by": {
+     "N": "3rd (tracks)",
+     "S": "W. Colfax Av.",
+     "E": "W. Colfax Av.",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1900,
+     "y": 1150
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Row of 8 attached dwellings 302-316; lot labels 17-21"
+   },
+   {
+    "block_id": "30-276",
+    "bounded_by": {
+     "N": "3rd",
+     "S": "2nd",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 935,
+     "y": 1800
+    },
+    "partial": false,
+    "dwellings": 6,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "COAL YARD",
+      "name": "",
+      "trade": "coal/wood yard",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "3rd",
+      "what": "The Chamberlain-Dillingham Ore Co. sampling mill",
+      "dwellings_facing": 0
+     }
+    ],
+    "notes": "Saloon at Larimer & 3rd"
+   },
+   {
+    "block_id": "30-Baker's Villa",
+    "bounded_by": {
+     "N": "2nd/3rd",
+     "S": "1st",
+     "E": "W. Colfax Av.",
+     "W": "Congressional Grant"
+    },
+    "centroid": {
+     "x": 1300,
+     "y": 2600
+    },
+    "partial": false,
+    "dwellings": 38,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 1,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BAKE HO.; OVEN",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     }
+    ],
+    "faces": [],
+    "notes": "Long block along W. Colfax: W. Colfax Av. School, drug store, bakery, saloon (vacant)"
+   },
+   {
+    "block_id": "30-279",
+    "bounded_by": {
+     "N": "2nd",
+     "S": "1st",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 800,
+     "y": 2950
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "30-Baker's Villa 37-43",
+    "bounded_by": {
+     "N": null,
+     "S": "S. 1st St.",
+     "E": "W. Colfax Av.",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2500,
+     "y": 2900
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Two unlabeled buildings and an office"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Mostly residential near W. Colfax with C&S tracks to the north; the Chamberlain-Dillingham ore sampling mill shares block 268 with a row of dwellings."
+ }
+]

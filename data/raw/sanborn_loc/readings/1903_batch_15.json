@@ -1,0 +1,2266 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 250,
+  "image": "1903_1904_v2_00985_02_1903-0250.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Baldwin",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 242,
+    "y": 194
+   },
+   {
+    "streets": [
+     "London",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 1135,
+    "y": 194
+   },
+   {
+    "streets": [
+     "Nelson",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 2025,
+    "y": 194
+   },
+   {
+    "streets": [
+     "Marshall",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 2928,
+    "y": 194
+   },
+   {
+    "streets": [
+     "Baldwin",
+     "Western (46th) Av."
+    ],
+    "modern": "46th Av.",
+    "x": 242,
+    "y": 2165
+   },
+   {
+    "streets": [
+     "Nelson",
+     "Western (46th) Av."
+    ],
+    "modern": "46th Av.",
+    "x": 2025,
+    "y": 2165
+   },
+   {
+    "streets": [
+     "Frank",
+     "Mouat Av."
+    ],
+    "modern": null,
+    "x": 1048,
+    "y": 2628
+   },
+   {
+    "streets": [
+     "Fisk Av.",
+     "Josephine"
+    ],
+    "modern": null,
+    "x": 2960,
+    "y": 3515
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "250-11",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "London",
+     "W": "Baldwin"
+    },
+    "centroid": {
+     "x": 693,
+     "y": 1177
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 9,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "BAKERY; OVEN",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     }
+    ],
+    "faces": [],
+    "notes": "Elyria Town Hall (hose room, hall 2nd floor) at Fisk & London corner; saloons, barber, tailor, drugs, stores along Baldwin and London; windmill with tank on top at Baldwin & Fisk."
+   },
+   {
+    "block_id": "250-12",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Nelson",
+     "W": "London"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 1177
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Small 'Br. Hog house(?)' outbuilding at lot 13; mostly vacant lots."
+   },
+   {
+    "block_id": "250-13",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Marshall",
+     "W": "Nelson"
+    },
+    "centroid": {
+     "x": 2470,
+     "y": 1177
+    },
+    "partial": false,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "S.; GLOVE MF'Y",
+      "name": null,
+      "trade": "other",
+      "features": "brick store building, glove manufactory in rear part"
+     }
+    ],
+    "faces": [],
+    "notes": "Glove maker in brick store at Fisk & Nelson corner (86 Fisk), attached to dwellings at 88-90."
+   },
+   {
+    "block_id": "250-Mouat",
+    "bounded_by": {
+     "N": "Mouat Av.",
+     "S": "Josephine",
+     "E": "Fisk Av.",
+     "W": "Frank"
+    },
+    "centroid": {
+     "x": 2000,
+     "y": 3048
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Mouat's Add'n to Swansea; row of 1.5-story frame-attic dwellings on Josephine; store and saloon at 4140/4136 Josephine."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "LOCOMOTIVE SHED",
+    "name": "C.& E. R.R. (Colorado & Eastern narrow-gauge coal road)",
+    "trade": "rail shops/roundhouse",
+    "features": "frame shed",
+    "near": "Colorado & Eastern R.R. line, SW corner of sheet west of Frank"
+   }
+  ],
+  "sheet_notes": "Elyria/Swansea residential area, sparsely built (mostly vacant lots), with a few stores, a bakery oven and a small glove manufactory; Colorado & Eastern R.R. and U.P.R.R. tracks at SW corner. Town hall at Fisk & London."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 251,
+  "image": "1903_1904_v2_00985_02_1903-0251.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Marshall",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 348,
+    "y": 258
+   },
+   {
+    "streets": [
+     "Estes",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 1235,
+    "y": 258
+   },
+   {
+    "streets": [
+     "Legge",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 2122,
+    "y": 258
+   },
+   {
+    "streets": [
+     "Parsons",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 3015,
+    "y": 258
+   },
+   {
+    "streets": [
+     "Marshall",
+     "Western (46th) Av."
+    ],
+    "modern": "46th Av.",
+    "x": 348,
+    "y": 2225
+   },
+   {
+    "streets": [
+     "Race",
+     "Western (46th) Av."
+    ],
+    "modern": "46th Av.",
+    "x": 1235,
+    "y": 2225
+   },
+   {
+    "streets": [
+     "Vine",
+     "45th Av."
+    ],
+    "modern": null,
+    "x": 2122,
+    "y": 3531
+   },
+   {
+    "streets": [
+     "Gaylord",
+     "45th Av."
+    ],
+    "modern": null,
+    "x": 3015,
+    "y": 3531
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "251-14",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Estes",
+     "W": "Marshall"
+    },
+    "centroid": {
+     "x": 790,
+     "y": 1242
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Row of 3 attached dwellings on Estes at Fisk; store with wooden posts at Fisk & Estes."
+   },
+   {
+    "block_id": "251-15",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Legge",
+     "W": "Estes"
+    },
+    "centroid": {
+     "x": 1677,
+     "y": 1242
+    },
+    "partial": false,
+    "dwellings": 12,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "251-16",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Parsons",
+     "W": "Legge"
+    },
+    "centroid": {
+     "x": 2570,
+     "y": 1242
+    },
+    "partial": false,
+    "dwellings": 6,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "U.P.R.R. tracks cut SE corner."
+   },
+   {
+    "block_id": "251-1(S)",
+    "bounded_by": {
+     "N": "Western (46th) Av.",
+     "S": "45th Av.",
+     "E": "Race",
+     "W": null
+    },
+    "centroid": {
+     "x": 951,
+     "y": 2870
+    },
+    "partial": true,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Only east half of block drawn; U.P.R.R. crosses SE corner. South Elyria."
+   },
+   {
+    "block_id": "251-4",
+    "bounded_by": {
+     "N": "Western (46th) Av.",
+     "S": "45th Av.",
+     "E": "Vine",
+     "W": "Race"
+    },
+    "centroid": {
+     "x": 1677,
+     "y": 2870
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "U.P.R.R. main tracks run diagonally through block."
+   },
+   {
+    "block_id": "251-7",
+    "bounded_by": {
+     "N": "Western (46th) Av.",
+     "S": "45th Av.",
+     "E": "Gaylord",
+     "W": "Vine"
+    },
+    "centroid": {
+     "x": 2564,
+     "y": 2870
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Entirely vacant; U.P.R.R. crosses NW corner."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Thinly built Elyria residential blocks with no industry; U.P.R.R. tracks cross diagonally SW-NE."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 252,
+  "image": "1903_1904_v2_00985_02_1903-0252.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Parsons",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 264,
+    "y": 274
+   },
+   {
+    "streets": [
+     "Stallcup",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 1151,
+    "y": 274
+   },
+   {
+    "streets": [
+     "York",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 1990,
+    "y": 274
+   },
+   {
+    "streets": [
+     "Josephine",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 2941,
+    "y": 274
+   },
+   {
+    "streets": [
+     "York",
+     "Stevenson"
+    ],
+    "modern": null,
+    "x": 1990,
+    "y": 1845
+   },
+   {
+    "streets": [
+     "Gaylord",
+     "Western (46th) Av."
+    ],
+    "modern": "46th Av.",
+    "x": 268,
+    "y": 2241
+   },
+   {
+    "streets": [
+     "Claude",
+     "45th Av."
+    ],
+    "modern": null,
+    "x": 1177,
+    "y": 3548
+   },
+   {
+    "streets": [
+     "Josephine",
+     "45th Av."
+    ],
+    "modern": null,
+    "x": 2919,
+    "y": 3548
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "252-17",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Stallcup",
+     "W": "Parsons"
+    },
+    "centroid": {
+     "x": 710,
+     "y": 1258
+    },
+    "partial": false,
+    "dwellings": 3,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Union Pacific R.R. main line runs diagonally through the block on its own right of way; windmill at lot 23."
+   },
+   {
+    "block_id": "252-18",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "York",
+     "W": "Stallcup"
+    },
+    "centroid": {
+     "x": 1574,
+     "y": 1258
+    },
+    "partial": false,
+    "dwellings": 9,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "U.P.R.R. crosses NW corner; flagman's house at Fisk crossing."
+   },
+   {
+    "block_id": "252-3",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Stevenson",
+     "E": "Josephine",
+     "W": "York"
+    },
+    "centroid": {
+     "x": 2467,
+     "y": 1064
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Mouat's Add'n to Swansea; regular rows of 1-1.5 story dwellings on York and Josephine."
+   },
+   {
+    "block_id": "252-6",
+    "bounded_by": {
+     "N": "Stevenson",
+     "S": "Western (46th) Av.",
+     "E": "Josephine",
+     "W": "York"
+    },
+    "centroid": {
+     "x": 2387,
+     "y": 2087
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Mouat's subdivision of lots 8-11; dwellings on Josephine only."
+   },
+   {
+    "block_id": "252-10",
+    "bounded_by": {
+     "N": "Western (46th) Av.",
+     "S": "45th Av.",
+     "E": "Claude",
+     "W": "Gaylord"
+    },
+    "centroid": {
+     "x": 719,
+     "y": 2886
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Entirely vacant (South Elyria)."
+   },
+   {
+    "block_id": "252-13",
+    "bounded_by": {
+     "N": "Western (46th) Av.",
+     "S": "45th Av.",
+     "E": "York",
+     "W": "Claude"
+    },
+    "centroid": {
+     "x": 1541,
+     "y": 2886
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Entirely vacant."
+   },
+   {
+    "block_id": "252-1(Swansea)",
+    "bounded_by": {
+     "N": "Western (46th) Av.",
+     "S": "45th Av.",
+     "E": "Josephine",
+     "W": "York"
+    },
+    "centroid": {
+     "x": 2387,
+     "y": 2854
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Swansea; store with dwelling at 4501 Josephine."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "FLAGMAN'S HO.",
+    "name": "Union Pacific R.R.",
+    "trade": "other",
+    "features": "small frame shelter at grade crossing",
+    "near": "U.P.R.R. crossing of Fisk Av. east of Stallcup"
+   }
+  ],
+  "sheet_notes": "Sparse Elyria/Swansea residential blocks with no industrial plants; U.P.R.R. main line cuts diagonally across the NW. Many wholly vacant platted blocks south of Western Av."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 253,
+  "image": "1903_1904_v2_00985_02_1903-0253.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Josephine (2nd St.)",
+     "Fisk Av."
+    ],
+    "modern": "Josephine",
+    "x": 177,
+    "y": 300
+   },
+   {
+    "streets": [
+     "Mouat Av. (3rd St.)",
+     "Fisk Av."
+    ],
+    "modern": "Columbine",
+    "x": 1135,
+    "y": 300
+   },
+   {
+    "streets": [
+     "4th St.",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 2103,
+    "y": 300
+   },
+   {
+    "streets": [
+     "5th St.",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 3031,
+    "y": 300
+   },
+   {
+    "streets": [
+     "Josephine",
+     "Stevenson"
+    ],
+    "modern": null,
+    "x": 177,
+    "y": 1845
+   },
+   {
+    "streets": [
+     "Columbine (Mouat Av.)",
+     "46th Av."
+    ],
+    "modern": "Columbine",
+    "x": 1048,
+    "y": 2225
+   },
+   {
+    "streets": [
+     "Elizabeth (Murdock Av.)",
+     "45th Av."
+    ],
+    "modern": "Elizabeth",
+    "x": 1629,
+    "y": 3548
+   },
+   {
+    "streets": [
+     "Dunham Pl.",
+     "45th Av."
+    ],
+    "modern": null,
+    "x": 2596,
+    "y": 3548
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "253-4",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Stevenson",
+     "E": "Mouat Av. (3rd St.)",
+     "W": "Josephine (2nd St.)"
+    },
+    "centroid": {
+     "x": 661,
+     "y": 1048
+    },
+    "partial": false,
+    "dwellings": 23,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Mouat's Add'n to Swansea; regular rows of 1-1.5 story frame-attic dwellings."
+   },
+   {
+    "block_id": "253-1",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "46th Av.",
+     "E": "4th St.",
+     "W": "Mouat Av. (3rd St.)"
+    },
+    "centroid": {
+     "x": 1622,
+     "y": 1242
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Ernest's Add'n; Swansea School (2-story, steam heat, boiler room) occupies south end; rest vacant."
+   },
+   {
+    "block_id": "253-2",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "46th Av.",
+     "E": "5th St.",
+     "W": "4th St."
+    },
+    "centroid": {
+     "x": 2590,
+     "y": 1242
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Windmill with water tank at lot 39."
+   },
+   {
+    "block_id": "253-5",
+    "bounded_by": {
+     "N": "Stevenson",
+     "S": "46th Av.",
+     "E": "Columbine (Mouat Av.)",
+     "W": "Josephine"
+    },
+    "centroid": {
+     "x": 613,
+     "y": 2090
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Small storage shed at Stevenson."
+   },
+   {
+    "block_id": "253-6/A",
+    "bounded_by": {
+     "N": "46th Av.",
+     "S": "45th Av.",
+     "E": "Columbine (Mouat Av.)",
+     "W": "Josephine"
+    },
+    "centroid": {
+     "x": 590,
+     "y": 2854
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Swansea block 6 (west, vacant) and Mouat's resub block A (east, full row of dwellings on Columbine)."
+   },
+   {
+    "block_id": "253-B",
+    "bounded_by": {
+     "N": "46th Av.",
+     "S": "45th Av.",
+     "E": "Elizabeth (Murdock Av.)",
+     "W": "Columbine (Mouat Av.)"
+    },
+    "centroid": {
+     "x": 1332,
+     "y": 2886
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Resub block B."
+   },
+   {
+    "block_id": "253-C/7",
+    "bounded_by": {
+     "N": "46th Av.",
+     "S": "45th Av.",
+     "E": "Dunham Pl.",
+     "W": "Elizabeth (Murdock Av.)"
+    },
+    "centroid": {
+     "x": 1919,
+     "y": 2886
+    },
+    "partial": false,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Row of 10 attached 1-story dwellings along 45th Av. at Elizabeth (block C); block 7 east half nearly vacant."
+   },
+   {
+    "block_id": "253-12",
+    "bounded_by": {
+     "N": "46th Av.",
+     "S": "45th Av.",
+     "E": null,
+     "W": "Dunham Pl."
+    },
+    "centroid": {
+     "x": 2880,
+     "y": 2886
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Mt. Olivet Baptist Church (heat stoves, lights oil)."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Swansea residential sheet with no industry: worker housing rows, Swansea School and Mt. Olivet Baptist Church; many vacant lots."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 254,
+  "image": "1903_1904_v2_00985_02_1903-0254.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Josephine",
+     "45th St."
+    ],
+    "modern": null,
+    "x": 161,
+    "y": 200
+   },
+   {
+    "streets": [
+     "Mouat Av.",
+     "45th St."
+    ],
+    "modern": "Columbine",
+    "x": 1097,
+    "y": 200
+   },
+   {
+    "streets": [
+     "Murdock Av.",
+     "45th St."
+    ],
+    "modern": "Elizabeth",
+    "x": 1693,
+    "y": 200
+   },
+   {
+    "streets": [
+     "Josephine",
+     "44th Av."
+    ],
+    "modern": null,
+    "x": 161,
+    "y": 1574
+   },
+   {
+    "streets": [
+     "Columbine",
+     "44th Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 1574
+   },
+   {
+    "streets": [
+     "Dunham Pl.",
+     "44th Av."
+    ],
+    "modern": null,
+    "x": 2670,
+    "y": 1574
+   },
+   {
+    "streets": [
+     "Josephine",
+     "43rd Av."
+    ],
+    "modern": null,
+    "x": 161,
+    "y": 2951
+   },
+   {
+    "streets": [
+     "Elizabeth",
+     "43rd Av."
+    ],
+    "modern": null,
+    "x": 1693,
+    "y": 2951
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "254-5",
+    "bounded_by": {
+     "N": "45th St.",
+     "S": "44th Av.",
+     "E": "Mouat Av. (Columbine)",
+     "W": "Josephine"
+    },
+    "centroid": {
+     "x": 661,
+     "y": 887
+    },
+    "partial": false,
+    "dwellings": 12,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Swansea; continuous row of 12 dwellings on Josephine, Mouat Av. side vacant."
+   },
+   {
+    "block_id": "254-D",
+    "bounded_by": {
+     "N": "45th St.",
+     "S": "44th Av.",
+     "E": "Murdock Av. (Elizabeth)",
+     "W": "Mouat Av. (Columbine)"
+    },
+    "centroid": {
+     "x": 1403,
+     "y": 887
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Resub block D; 1.5-story frame-attic dwellings."
+   },
+   {
+    "block_id": "254-8",
+    "bounded_by": {
+     "N": "45th St.",
+     "S": "44th Av.",
+     "E": null,
+     "W": "Murdock Av. (Elizabeth)"
+    },
+    "centroid": {
+     "x": 2183,
+     "y": 887
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Windmill and water tank (elev. 35 ft) at lot 4; east street unnamed on sheet (Dunham Park beyond)."
+   },
+   {
+    "block_id": "254-4",
+    "bounded_by": {
+     "N": "44th Av.",
+     "S": "43rd Av.",
+     "E": "Columbine",
+     "W": "Josephine"
+    },
+    "centroid": {
+     "x": 645,
+     "y": 2258
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Stores at 4332 and 4300 Josephine."
+   },
+   {
+    "block_id": "254-E",
+    "bounded_by": {
+     "N": "44th Av.",
+     "S": "43rd Av.",
+     "E": "Elizabeth",
+     "W": "Columbine"
+    },
+    "centroid": {
+     "x": 1403,
+     "y": 2258
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 10,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "'Swansea Terrace': 2-story row of flats (12 units) along 44th Av. plus 2-story flats on Columbine and Elizabeth; rest of block vacant."
+   },
+   {
+    "block_id": "254-9",
+    "bounded_by": {
+     "N": "44th Av.",
+     "S": "43rd Av.",
+     "E": "Dunham Pl.",
+     "W": "Elizabeth"
+    },
+    "centroid": {
+     "x": 2183,
+     "y": 2258
+    },
+    "partial": false,
+    "dwellings": 5,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "254-10",
+    "bounded_by": {
+     "N": "44th Av.",
+     "S": "43rd Av.",
+     "E": null,
+     "W": "Dunham Pl."
+    },
+    "centroid": {
+     "x": 2941,
+     "y": 2258
+    },
+    "partial": true,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "254-67",
+    "bounded_by": {
+     "N": "43rd Av.",
+     "S": null,
+     "E": "Columbine",
+     "W": "Josephine"
+    },
+    "centroid": {
+     "x": 645,
+     "y": 3354
+    },
+    "partial": true,
+    "dwellings": 2,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "2-story stores with tenements at 4260-4262 Josephine; block continues in inset."
+   },
+   {
+    "block_id": "254-F",
+    "bounded_by": {
+     "N": "43rd Av.",
+     "S": null,
+     "E": "Elizabeth",
+     "W": "Columbine"
+    },
+    "centroid": {
+     "x": 1403,
+     "y": 3386
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Vacant."
+   },
+   {
+    "block_id": "254-67(inset)",
+    "bounded_by": {
+     "N": null,
+     "S": "U.P.R.R.",
+     "E": "Columbine",
+     "W": "Josephine"
+    },
+    "centroid": {
+     "x": 2129,
+     "y": 3386
+    },
+    "partial": true,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL & WOOD; HAY & FEED (IRON CLAD); COAL SHED; SCALES",
+      "name": "Anderson Bros",
+      "trade": "coal/wood yard",
+      "features": "wood piles, iron-clad hay & feed shed, coal shed, scales, beside U.P.R.R."
+     }
+    ],
+    "faces": [
+     {
+      "street": "Josephine",
+      "what": "Anderson Bros coal & wood yard",
+      "dwellings_facing": 1
+     }
+    ],
+    "notes": "Inset of Mouat's Resub. south part of block 67 by U.P.R.R.; dwelling at 4228 Josephine directly adjoins the coal yard."
+   },
+   {
+    "block_id": "254-61",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": null,
+     "W": null
+    },
+    "centroid": {
+     "x": 2941,
+     "y": 3386
+    },
+    "partial": true,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "1st Add'n to Swansea, SE corner of sheet; bounding streets not labelled (house nos. 4328-4346)."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Swansea residential with a 'Swansea Terrace' flats row; only industry is Anderson Bros coal & wood yard by the U.P.R.R. (inset). Dunham Park NE."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 255,
+  "image": "1903_1904_v2_00985_02_1903-0255.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Cline",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 200,
+    "y": 3557
+   },
+   {
+    "streets": [
+     "Powell",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 1187,
+    "y": 3557
+   },
+   {
+    "streets": [
+     "Starr",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 2167,
+    "y": 3557
+   },
+   {
+    "streets": [
+     "Baldwin",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 3057,
+    "y": 3557
+   },
+   {
+    "streets": [
+     "Powell",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 1187,
+    "y": 1638
+   },
+   {
+    "streets": [
+     "Starr",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 2167,
+    "y": 1638
+   },
+   {
+    "streets": [
+     "Baldwin",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 3057,
+    "y": 1638
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "255-West Elyria",
+    "bounded_by": {
+     "N": "B.& M.R.R.",
+     "S": "Fisk Av.",
+     "E": "Powell",
+     "W": "Cline"
+    },
+    "centroid": {
+     "x": 839,
+     "y": 2903
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 1,
+    "shanties": 2,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "CATTLE SHED",
+      "name": null,
+      "trade": "meat packing/stockyard",
+      "features": "long open cattle shed, lots 23-24 on Powell side"
+     }
+    ],
+    "faces": [],
+    "notes": "West Elyria; Ward's Hotel (2-story: bar & office, barber, dining room, cafe, kitchen; steam heater, lights gas) at Cline & Fisk; two shanties; triangular block cut by B.& M.R.R."
+   },
+   {
+    "block_id": "255-1",
+    "bounded_by": {
+     "N": "Frank",
+     "S": "Fisk Av.",
+     "E": "Starr",
+     "W": "Powell"
+    },
+    "centroid": {
+     "x": 1677,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Saloon at Powell & Fisk corner."
+   },
+   {
+    "block_id": "255-9",
+    "bounded_by": {
+     "N": "Frank",
+     "S": "Fisk Av.",
+     "E": "Baldwin",
+     "W": "Starr"
+    },
+    "centroid": {
+     "x": 2606,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Colorado & Eastern R.R. narrow-gauge coal road curves through block along Starr; row of 6 attached dwellings on Starr; 'oven not used' in outbuilding at lot 27."
+   },
+   {
+    "block_id": "255-DUSY land",
+    "bounded_by": {
+     "N": "B.& M.R.R.",
+     "S": "Frank",
+     "E": null,
+     "W": null
+    },
+    "centroid": {
+     "x": 2258,
+     "y": 1290
+    },
+    "partial": true,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Denver Union Stock Yards Co.'s land north of Frank: 4 dwellings (3 in a row at lots 1-3) plus sheds."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "DENVER UNION STOCK YARDS; PLATFORM",
+    "name": "Denver Union Stock Yards",
+    "trade": "meat packing/stockyard",
+    "features": "loading platform along B.& M.R.R. tracks",
+    "near": "NW of sheet, between Riverside Cemetery and B.& M.R.R."
+   },
+   {
+    "label": "GREEN HOUSES (GLASS ROOFS); BOILER RM.; COAL HO.",
+    "name": "Riverside Cemetery greenhouses",
+    "trade": "other",
+    "features": "boiler room with stack, coal house",
+    "near": "Riverside Cemetery, NW corner of sheet"
+   }
+  ],
+  "sheet_notes": "Elyria fringe beside Denver Union Stock Yards and B.& M.R.R.; cattle shed and stockyard platform close to Ward's Hotel and dwellings; Colorado & Eastern coal road runs through block 9."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 256,
+  "image": "1903_1904_v2_00985_02_1903-0256.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Baldwin",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 274,
+    "y": 1767
+   },
+   {
+    "streets": [
+     "London",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 1167,
+    "y": 1758
+   },
+   {
+    "streets": [
+     "Nelson",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 2038,
+    "y": 1742
+   },
+   {
+    "streets": [
+     "Marshall",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 2935,
+    "y": 1732
+   },
+   {
+    "streets": [
+     "Baldwin",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 274,
+    "y": 3644
+   },
+   {
+    "streets": [
+     "London",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 1167,
+    "y": 3644
+   },
+   {
+    "streets": [
+     "Nelson",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 2038,
+    "y": 3644
+   },
+   {
+    "streets": [
+     "Nelson",
+     "Denver"
+    ],
+    "modern": null,
+    "x": 2038,
+    "y": 155
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "256-44",
+    "bounded_by": {
+     "N": "Denver",
+     "S": "Frank",
+     "E": "London",
+     "W": "Baldwin"
+    },
+    "centroid": {
+     "x": 693,
+     "y": 968
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Kenner's; '3 Mile House' roadhouse with dance hall, stage, dressing rooms and saloon (heat stove, electric light); stables."
+   },
+   {
+    "block_id": "256-43",
+    "bounded_by": {
+     "N": "Denver",
+     "S": "Frank",
+     "E": "Nelson",
+     "W": "London"
+    },
+    "centroid": {
+     "x": 1596,
+     "y": 935
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Kenner's Sub.; entirely vacant."
+   },
+   {
+    "block_id": "256-42",
+    "bounded_by": {
+     "N": "Denver",
+     "S": "Frank",
+     "E": "Marshall",
+     "W": "Nelson"
+    },
+    "centroid": {
+     "x": 2493,
+     "y": 935
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Kenner's Sub.; entirely vacant."
+   },
+   {
+    "block_id": "256-8",
+    "bounded_by": {
+     "N": "Frank",
+     "S": "Fisk Av.",
+     "E": "London",
+     "W": "Baldwin"
+    },
+    "centroid": {
+     "x": 693,
+     "y": 2709
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Dense row of small dwellings along Baldwin; saloon at Baldwin & Fisk; store at 62 Baldwin."
+   },
+   {
+    "block_id": "256-7",
+    "bounded_by": {
+     "N": "Frank",
+     "S": "Fisk Av.",
+     "E": "Nelson",
+     "W": "London"
+    },
+    "centroid": {
+     "x": 1590,
+     "y": 2709
+    },
+    "partial": false,
+    "dwellings": 29,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "'C&A Terrace': row of 8 attached 1-story dwellings on London at Frank; many paired dwellings."
+   },
+   {
+    "block_id": "256-6",
+    "bounded_by": {
+     "N": "Frank",
+     "S": "Fisk Av.",
+     "E": "Marshall",
+     "W": "Nelson"
+    },
+    "centroid": {
+     "x": 2490,
+     "y": 2709
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Elyria School (1.5-story, heat stoves, no lights) at SE corner."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Elyria residential sheet without industrial plants; Colorado & Eastern R.R. narrow-gauge coal road runs along Frank. 3 Mile House roadhouse/dance hall at Baldwin & Frank. Upper-right quarter (blocks 42-43) judged from overview only; all vacant."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 257,
+  "image": "1903_1904_v2_00985_02_1903-0257.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Marshall",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 323,
+    "y": 1725
+   },
+   {
+    "streets": [
+     "Estes",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 1226,
+    "y": 1725
+   },
+   {
+    "streets": [
+     "Legge",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 2119,
+    "y": 1725
+   },
+   {
+    "streets": [
+     "Parsons",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 3015,
+    "y": 1725
+   },
+   {
+    "streets": [
+     "Marshall",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 323,
+    "y": 3660
+   },
+   {
+    "streets": [
+     "Estes",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 1226,
+    "y": 3660
+   },
+   {
+    "streets": [
+     "Legge",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 2119,
+    "y": 3660
+   },
+   {
+    "streets": [
+     "Estes",
+     "Denver"
+    ],
+    "modern": null,
+    "x": 1226,
+    "y": 155
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "257-41",
+    "bounded_by": {
+     "N": "Denver",
+     "S": "Frank",
+     "E": "Estes",
+     "W": "Marshall"
+    },
+    "centroid": {
+     "x": 774,
+     "y": 935
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Kenner's Sub.; one dwelling at lot 19."
+   },
+   {
+    "block_id": "257-40",
+    "bounded_by": {
+     "N": "Denver",
+     "S": "Frank",
+     "E": "Legge",
+     "W": "Estes"
+    },
+    "centroid": {
+     "x": 1671,
+     "y": 935
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Vacant."
+   },
+   {
+    "block_id": "257-39",
+    "bounded_by": {
+     "N": "Denver",
+     "S": "Frank",
+     "E": "Parsons",
+     "W": "Legge"
+    },
+    "centroid": {
+     "x": 2564,
+     "y": 935
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Vacant."
+   },
+   {
+    "block_id": "257-5",
+    "bounded_by": {
+     "N": "Frank",
+     "S": "Fisk Av.",
+     "E": "Estes",
+     "W": "Marshall"
+    },
+    "centroid": {
+     "x": 774,
+     "y": 2677
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "257-4",
+    "bounded_by": {
+     "N": "Frank",
+     "S": "Fisk Av.",
+     "E": "Legge",
+     "W": "Estes"
+    },
+    "centroid": {
+     "x": 1671,
+     "y": 2677
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Pilgrim Cong'l Church (heat stoves, lights gas); barber at Estes & Fisk; disused oven in outbuilding at lot 32."
+   },
+   {
+    "block_id": "257-3",
+    "bounded_by": {
+     "N": "Frank",
+     "S": "Fisk Av.",
+     "E": "Parsons",
+     "W": "Legge"
+    },
+    "centroid": {
+     "x": 2564,
+     "y": 2677
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Dwelling at 94 Legge has sides and roof covered with Elaterite (asphalt roofing)."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Elyria residential; no industry. Colorado & Eastern R.R. narrow-gauge coal road runs along Frank. Northern blocks (Kenner's Sub.) nearly vacant."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 258,
+  "image": "1903_1904_v2_00985_02_1903-0258.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Parsons",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 226,
+    "y": 1735
+   },
+   {
+    "streets": [
+     "Stallcup",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 1735
+   },
+   {
+    "streets": [
+     "York",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 1967,
+    "y": 1735
+   },
+   {
+    "streets": [
+     "Josephine",
+     "Frank"
+    ],
+    "modern": null,
+    "x": 2912,
+    "y": 1742
+   },
+   {
+    "streets": [
+     "Parsons",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 226,
+    "y": 3677
+   },
+   {
+    "streets": [
+     "York",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 1967,
+    "y": 3677
+   },
+   {
+    "streets": [
+     "Josephine",
+     "Fisk Av."
+    ],
+    "modern": null,
+    "x": 2912,
+    "y": 3677
+   },
+   {
+    "streets": [
+     "Stallcup",
+     "Denver"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 161
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "258-38",
+    "bounded_by": {
+     "N": "Denver",
+     "S": "Frank",
+     "E": "Stallcup",
+     "W": "Parsons"
+    },
+    "centroid": {
+     "x": 661,
+     "y": 935
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Kenner's Sub.; vacant."
+   },
+   {
+    "block_id": "258-37",
+    "bounded_by": {
+     "N": "Denver",
+     "S": "Frank",
+     "E": "York",
+     "W": "Stallcup"
+    },
+    "centroid": {
+     "x": 1532,
+     "y": 935
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Kenner's Sub.; vacant. Land east of York north of Frank marked 'not platted'."
+   },
+   {
+    "block_id": "258-2",
+    "bounded_by": {
+     "N": "Frank",
+     "S": "Fisk Av.",
+     "E": "Stallcup",
+     "W": "Parsons"
+    },
+    "centroid": {
+     "x": 677,
+     "y": 2709
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Regular row of small dwellings on Parsons; a tent at lot 5; brick-cased plastered dwelling at 92\u00bd Parsons."
+   },
+   {
+    "block_id": "258-1",
+    "bounded_by": {
+     "N": "Frank",
+     "S": "Fisk Av.",
+     "E": "York",
+     "W": "Stallcup"
+    },
+    "centroid": {
+     "x": 1532,
+     "y": 2709
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "U.P.R.R. clips SE corner at Fisk."
+   },
+   {
+    "block_id": "258-2(Mouat's)",
+    "bounded_by": {
+     "N": "Frank",
+     "S": "Fisk Av.",
+     "E": "Josephine",
+     "W": "York"
+    },
+    "centroid": {
+     "x": 2441,
+     "y": 2709
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "WAGON YARD; WAGON SHED; STABLE",
+      "name": "Bradbury, Contractor",
+      "trade": "livery/blacksmith",
+      "features": "fenced wagon yard, long wagon shed and stable along York"
+     }
+    ],
+    "faces": [],
+    "notes": "Mouat's Add'n to Swansea; U.P.R.R. main line runs diagonally through block; contractor's wagon yard occupies west half; two dwellings on Josephine."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Elyria/Swansea edge: mostly small dwellings and vacant lots; Bradbury contractor's wagon yard beside the U.P.R.R. diagonal; Colorado & Eastern narrow-gauge along Frank."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 259,
+  "image": "1903_1904_v2_00985_02_1903-0259.jpg",
+  "intersections": [],
+  "blocks": [],
+  "outside_blocks": [
+   {
+    "label": "SLAUGHTER HOUSE; HOG KILLING; BEEF KILLING; LARD HO.; FERTILIZER W.HO.; SAUSAGE CASING HO.; CURING & PACKING; SMOKE HO'S; COLD STORAGE & SAUSAGE FAC.; SHIPPING RM.; ICE MACHINE & ENGINE HO.; BOILER HO.; BLKSM.; CARP'R.",
+    "name": "The Colorado Packing & Provision Co.",
+    "trade": "meat packing/stockyard",
+    "features": "two boiler batteries (3 + 4 boilers) with iron chimneys 45 ft and 50 ft above roof; 100 h.p. engine; ice machine with condensers; smoke houses; lard rendering; fertilizer warehouse; own electric dynamos, steam heat; 2 artesian, 3 surface and 7 driven wells, four 30-bbl roof water tanks; wooden trough (casing run) and cattle chute over roof; night watchman",
+    "near": "NW of sheet, west of U.P.R.R./B.& M. sidings and Denver Union Stock Yards, Platte River low lands beyond"
+   },
+   {
+    "label": "ICE HO.; FREEZING TANKS; CONDENSER; OFFICE",
+    "name": "The Colorado Packing & Provision Co.",
+    "trade": "meat packing/stockyard",
+    "features": "freezing tanks with condenser; ice chute",
+    "near": "south of main packing plant"
+   },
+   {
+    "label": "TO BE FERTILIZER ROOM (IRON CLAD)",
+    "name": "The Colorado Packing & Provision Co.",
+    "trade": "meat packing/stockyard",
+    "features": "iron-clad; 350 ft to Burkhardt Packing Co.",
+    "near": "west of packing plant, toward Platte River"
+   },
+   {
+    "label": "NAILING BOXES & BOX LUMBER W.HO.; WAGON SHED",
+    "name": "The Colorado Packing & Provision Co.",
+    "trade": "warehouse",
+    "features": "iron clad",
+    "near": "NE corner of packing plant by tracks"
+   },
+   {
+    "label": "HAY BARN (IRON CLAD); STOCK YARD PENS; BRANDING YARDS; SCALE HO.; STOCK SHEDS; OFFICE",
+    "name": "Denver Union Stock Yards",
+    "trade": "meat packing/stockyard",
+    "features": "dozens of numbered pens; open fire places to heat branding irons; long loading platforms on U.P.R.R. and B.& M.R.R. sidings",
+    "near": "centre and east of sheet between U.P.R.R. sidings and B.& M.R.R."
+   }
+  ],
+  "sheet_notes": "Entirely industrial: Colorado Packing & Provision Co. slaughter/packing complex (boiler batteries, ice plant, fertilizer, lard) and Denver Union Stock Yards pens. No platted streets or dwellings, so no street crossings to record; Burkhardt Packing Co. 350 ft west. Adjoins Elyria sheets 255 and 260."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 260,
+  "image": "1903_1904_v2_00985_02_1903-0260.jpg",
+  "intersections": [],
+  "blocks": [],
+  "outside_blocks": [
+   {
+    "label": "SLAUGHTERING; MACHINE SHOP; LARD FAC'Y; DRESSING & SPLITTING; FREEZING TANKS; ICE FACTORY; SMOKE HOUSE; SAUSAGE FACTORY; CUTTING, PACKING, SHIPPING & CHILL RMS; COLD STORAGE; ENGINE HO.; BLKSM.; FERTILIZER BLDG.",
+    "name": "Western Packing Co.",
+    "trade": "meat packing/stockyard",
+    "features": "engine house with 2 boiler batteries and iron chimney (about 100 ft), 2 ice machines, two generators (350 V 500 A and 250 V 400 A dynamos); 4 smoke houses; fertilizer building with tanks; artesian well 663 ft and 30-ft well; power electric, heat steam, fuel coal; iron bridges between buildings; 1 day and 2 night watchmen",
+    "near": "NW of sheet, east bank of South Platte River, west of U.P.R.R. sidings"
+   },
+   {
+    "label": "STOCK SHEDS; BALED HAY SHED; SHEEP WASHING (STONE TROUGH)",
+    "name": "Western Packing Co.",
+    "trade": "meat packing/stockyard",
+    "features": "sheep washing with stone trough",
+    "near": "west bank of South Platte River, SW of sheet"
+   },
+   {
+    "label": "STOCK SHEDS; HITCHING SHED; BALED HAY; STOCK EXCHANGE; HEATING PLANT; OIL HO.",
+    "name": "Denver Union Stock Yards",
+    "trade": "meat packing/stockyard",
+    "features": "Stock Exchange building with heating plant (boilers, brick chimney 50 ft); iron-clad oil house",
+    "near": "NE of sheet between U.P.R.R. sidings and B.& M./B.& Col. R.R."
+   }
+  ],
+  "sheet_notes": "Stockyard/packing district on the South Platte: Western Packing Co. plant and Denver Union Stock Yards with Stock Exchange; the only lodging is the 2.5-story Union Stock Yards Hotel (not counted as dwelling block). No platted streets, so no crossings recorded."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 261,
+  "image": "1903_1904_v2_00985_02_1903-0261.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wewatta",
+     "43rd"
+    ],
+    "modern": null,
+    "x": 3015,
+    "y": 946
+   }
+  ],
+  "blocks": [],
+  "outside_blocks": [
+   {
+    "label": "SMELTER (IRON TRUSS ROOF); FURNACES; BULLION HO.; DUST CHAMBERS; DUST FLUES; CHIMNEYS",
+    "name": "American Smelting & Refining Co., Grant Plant",
+    "trade": "smelter",
+    "features": "row of blast furnaces with iron blast pipe and flue; chimneys 352 ft (main stack), 150 ft (x3), 80 ft, 75 ft; dust flues 10-25 ft high covered with railroad iron; dust chambers 10-14 ft high; 15 h.p. dynamo",
+    "near": "west of Wewatta and U.P.R.R. sidings, c. 43rd St; Grant smelter site"
+   },
+   {
+    "label": "ROASTERS (3 houses); ORE HOUSE; ORE BINS; ORE PILE; COKE PILE",
+    "name": "American Smelting & Refining Co., Grant Plant",
+    "trade": "smelter",
+    "features": "three long roaster houses with ranks of roasting furnaces (wooden truss roofs), elevated tramways, iron and earth floors",
+    "near": "along U.P.R.R. sidings, centre and east of sheet, west of Wewatta"
+   },
+   {
+    "label": "SAMPLING MILL; CRUSHER & ROLLS; BRICK MACHINE; ENGINE HO.",
+    "name": "American Smelting & Refining Co., Grant Plant",
+    "trade": "smelter",
+    "features": "crushers and rolls, 4 mills, 100 h.p. engine, boilers, brick machine, dynamo",
+    "near": "centre of sheet between tracks"
+   },
+   {
+    "label": "BLOWER & ENGINE HO.; COAL; BOILERS; CARP'R SHOP; BLKSM.; PUMP HO.; WATER TANK; ASSAY OFFICE; FURNACES",
+    "name": "American Smelting & Refining Co., Grant Plant",
+    "trade": "smelter",
+    "features": "2 Phila. Corliss engines 500 h.p., 5 blowers, boiler battery with 150 ft chimney, oil house, water tank 60,000 gal, artesian well pump; assay office with furnaces near Wewatta",
+    "near": "west of smelter on slag dump; assay office on Wewatta"
+   },
+   {
+    "label": "SLAG DUMP",
+    "name": "American Smelting & Refining Co., Grant Plant",
+    "trade": "smelter",
+    "features": "open slag dump extending west",
+    "near": "west half of sheet"
+   }
+  ],
+  "sheet_notes": "Whole sheet is the ASARCO Grant smelter (runs night and day): blast furnaces, roasters, sampling mill, 352-ft main stack and dust chambers, slag dump; no dwellings or platted blocks. Only crossing is Wewatta with 43rd at the east edge (approximate)."
+ }
+]

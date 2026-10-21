@@ -1,0 +1,2655 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 190,
+  "image": "1903_1904_v2_00985_02_1903-0190.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Stanton Av",
+     "Barnes"
+    ],
+    "modern": null,
+    "x": 242,
+    "y": 3354
+   },
+   {
+    "streets": [
+     "Stanton Av",
+     "Winnie"
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 3370
+   },
+   {
+    "streets": [
+     "Stanton Av",
+     "Corbett"
+    ],
+    "modern": null,
+    "x": 2983,
+    "y": 3467
+   },
+   {
+    "streets": [
+     "19th St",
+     "Barnes"
+    ],
+    "modern": null,
+    "x": 306,
+    "y": 3612
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "190-10",
+    "bounded_by": {
+     "N": "South Platte River",
+     "S": "Stanton Av",
+     "E": "Winnie (50 ft wide, proposed)",
+     "W": "Barnes (50 ft wide, proposed)"
+    },
+    "centroid": {
+     "x": 710,
+     "y": 2419
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 48,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Sheet note: 'All buildings in this space below to Stanton Av are shanties only and built on disputed ground.' ~48 D-marked shanties (some iron clad) around Winnie and Court; count +/-4. A few more D and 2 storage sheds lie south of Stanton near 19th St."
+   },
+   {
+    "block_id": "190-8",
+    "bounded_by": {
+     "N": null,
+     "S": "Stanton Av",
+     "E": "Corbett",
+     "W": "railroad ground"
+    },
+    "centroid": {
+     "x": 2741,
+     "y": 2258
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 1,
+    "shanties": 8,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PAPER WARE HO.",
+      "name": "\"The Republican\"",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "IRON & STEEL W.HO.; MACHINERY WARE HO.; WAGON SHED; CORRUGATED IRON WARE ROOM",
+      "name": "Hendrie & Bolthoff Mfg & Supply Co's W.Ho.",
+      "trade": "warehouse",
+      "features": "iron clad; night watchman; 2 hydrants with 100 ft hose; electric lights, no heat"
+     },
+     {
+      "label": "CARD CONCENTRATOR FAC'TY; WOODWORKING",
+      "name": "",
+      "trade": "machine shop",
+      "features": "5 h.p. gasoline engine; iron clad"
+     }
+    ],
+    "faces": [
+     {
+      "street": "lot line (same block)",
+      "what": "Card Concentrator Factory / Hendrie & Bolthoff W.Ho.",
+      "dwellings_facing": 4
+     }
+    ],
+    "notes": "Lots 21-31 labelled 'Shanties' (~8 D); lots 1-9 dwellings next to the Card Concentrator factory; Tenements at 1241 Stanton; a photo gallery on wheels."
+   },
+   {
+    "block_id": "190-HR",
+    "bounded_by": {
+     "N": null,
+     "S": "Stanton Av",
+     "E": null,
+     "W": "B&M R.R."
+    },
+    "centroid": {
+     "x": 2193,
+     "y": 3064
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FLOUR MILL; ELEVATOR 'A'; FEED MILL; FLOUR W.HO.",
+      "name": "Crescent Flour Mills & Elevator 'A'",
+      "trade": "flour mill/elevator",
+      "features": "600 bbl/day; steam power, engine 250 h.p., boiler, brick chimney; elevator 125,000 bu crib construction built 1889; artesian well 500 ft deep; dust collectors; night watchman"
+     }
+    ],
+    "faces": [],
+    "notes": "Hoyt & Robinson's Add'n lots 67-76, between B&M tracks and the Corbett-side spurs; a ware room at lot 69."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "WARE HO.",
+    "name": "Star Lubricating Oil Co.",
+    "trade": "oil/paint/tar",
+    "features": "iron-clad section",
+    "near": "1124 Stanton Av on railroad ground east of the shanty settlement"
+   }
+  ],
+  "sheet_notes": "Shanty settlement on disputed South Platte river-bottom ground west of the B&M tracks; Crescent flour mill/elevator and Hendrie & Bolthoff warehouses along Corbett, with shanties and dwellings in the same block."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 191,
+  "image": "1903_1904_v2_00985_02_1903-0191.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Stanton Av",
+     "Corbett"
+    ],
+    "modern": null,
+    "x": 194,
+    "y": 3548
+   },
+   {
+    "streets": [
+     "Stanton Av",
+     "McNassar"
+    ],
+    "modern": null,
+    "x": 1177,
+    "y": 3548
+   },
+   {
+    "streets": [
+     "Stanton Av",
+     "Gerspach"
+    ],
+    "modern": null,
+    "x": 2644,
+    "y": 3548
+   },
+   {
+    "streets": [
+     "Cactus Lane",
+     "McNassar"
+    ],
+    "modern": null,
+    "x": 1193,
+    "y": 2145
+   },
+   {
+    "streets": [
+     "Cactus Lane",
+     "Gerspach"
+    ],
+    "modern": null,
+    "x": 2644,
+    "y": 2258
+   },
+   {
+    "streets": [
+     "Sigler",
+     "Gerspach"
+    ],
+    "modern": null,
+    "x": 2644,
+    "y": 951
+   },
+   {
+    "streets": [
+     "Page",
+     "Lyon"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 64
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "191-7a",
+    "bounded_by": {
+     "N": null,
+     "S": "Stanton Av",
+     "E": "Cottage Lane",
+     "W": "Corbett"
+    },
+    "centroid": {
+     "x": 387,
+     "y": 2096
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "WARE HOUSE",
+      "name": "Denver Public Ware House Co.",
+      "trade": "warehouse",
+      "features": "brick elevators; scales; Gamewell fire alarm; night & Sunday watchman"
+     }
+    ],
+    "faces": [
+     {
+      "street": "lot line (same block)",
+      "what": "Denver Public Ware House Co.",
+      "dwellings_facing": 3
+     }
+    ],
+    "notes": "Hoyt & Robinson's Add'n lots 39-76; railroad curve crosses the north end."
+   },
+   {
+    "block_id": "191-7b",
+    "bounded_by": {
+     "N": null,
+     "S": "Stanton Av",
+     "E": "McNassar",
+     "W": "Cottage Lane"
+    },
+    "centroid": {
+     "x": 903,
+     "y": 2096
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "HAND LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Includes a tent and a cobbler; count +/-3."
+   },
+   {
+    "block_id": "191-1N",
+    "bounded_by": {
+     "N": null,
+     "S": "Cactus Lane",
+     "E": "Argo Court",
+     "W": "McNassar"
+    },
+    "centroid": {
+     "x": 1451,
+     "y": 1612
+    },
+    "partial": false,
+    "dwellings": 9,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Hoyt & Robinson's Annex lots 1-13; hen house; storage; one 'old & vacant' D."
+   },
+   {
+    "block_id": "191-C1",
+    "bounded_by": {
+     "N": "Cactus Lane",
+     "S": "Stanton Av",
+     "E": "Argo Court",
+     "W": "McNassar"
+    },
+    "centroid": {
+     "x": 1435,
+     "y": 2838
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Collins Add'n; iron-clad saloon at 360; storage at 296."
+   },
+   {
+    "block_id": "191-C2",
+    "bounded_by": {
+     "N": "Cactus Lane",
+     "S": "Stanton Av",
+     "E": null,
+     "W": "Argo Court"
+    },
+    "centroid": {
+     "x": 1935,
+     "y": 2902
+    },
+    "partial": false,
+    "dwellings": 12,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Collins Add'n lots 22-33; large private stable with hay loft; E side is a lot line."
+   },
+   {
+    "block_id": "191-C3",
+    "bounded_by": {
+     "N": "Sigler",
+     "S": "Cactus Lane",
+     "E": null,
+     "W": "Argo Court"
+    },
+    "centroid": {
+     "x": 1935,
+     "y": 1612
+    },
+    "partial": false,
+    "dwellings": 5,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Largely open ground; iron-clad pump house."
+   },
+   {
+    "block_id": "191-13",
+    "bounded_by": {
+     "N": "Page",
+     "S": "Sigler",
+     "E": "Lyon",
+     "W": null
+    },
+    "centroid": {
+     "x": 2612,
+     "y": 516
+    },
+    "partial": false,
+    "dwellings": 6,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Garden Add'n block 13."
+   },
+   {
+    "block_id": "191-2",
+    "bounded_by": {
+     "N": "Sigler",
+     "S": "Cactus Lane",
+     "E": "Gerspach",
+     "W": null
+    },
+    "centroid": {
+     "x": 2370,
+     "y": 1612
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Dance hall at 405 1/2; saloon at 403."
+   },
+   {
+    "block_id": "191-3",
+    "bounded_by": {
+     "N": "Sigler",
+     "S": "Cactus Lane",
+     "E": null,
+     "W": "Gerspach"
+    },
+    "centroid": {
+     "x": 2919,
+     "y": 1612
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Saloons at 412 and 408; pigeon loft; E side railroad ground."
+   },
+   {
+    "block_id": "191-1",
+    "bounded_by": {
+     "N": "Cactus Lane",
+     "S": "Stanton Av",
+     "E": "Gerspach",
+     "W": null
+    },
+    "centroid": {
+     "x": 2370,
+     "y": 2902
+    },
+    "partial": false,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "DENVER MACARONI FAC.",
+      "name": "F. Mazzi Prop.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "engine room; iron chimney; water tank"
+     }
+    ],
+    "faces": [
+     {
+      "street": "lot line (same block)",
+      "what": "Denver Macaroni Fac.",
+      "dwellings_facing": 4
+     }
+    ],
+    "notes": "Gerspach's Add'n block 1; the macaroni factory at 317-319 Gerspach sits between dwellings."
+   },
+   {
+    "block_id": "191-4",
+    "bounded_by": {
+     "N": "Cactus Lane",
+     "S": "Stanton Av",
+     "E": "B&M R.R.",
+     "W": "Gerspach"
+    },
+    "centroid": {
+     "x": 2919,
+     "y": 2902
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Gerspach",
+      "what": "Denver Macaroni Fac. (block 191-1)",
+      "dwellings_facing": 3
+     }
+    ],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "CEMENT STORAGE (OLD CREMATORY BUILDING)",
+    "name": "Western Cement Co.",
+    "trade": "warehouse",
+    "features": "iron chimneys 75 ft and 100 ft (old crematory); brick tower 40 ft",
+    "near": "railroad ground north of Sigler, west of Garden Add'n"
+   },
+   {
+    "label": "STONE CUTTERS SHED (2)",
+    "name": "",
+    "trade": "brick/stone/pottery",
+    "features": "",
+    "near": "open ground between McNassar and Argo Court north of Hoyt & Robinson's Annex"
+   }
+  ],
+  "sheet_notes": "Dense working-class frame dwellings (Hoyt & Robinson's, Collins, Gerspach's and Garden Add'ns) with a public warehouse, macaroni factory, hand laundry and an old crematory now used for cement storage."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 192,
+  "image": "1903_1904_v2_00985_02_1903-0192.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "22nd St",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "21st St",
+     "Delgany"
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 3290
+   },
+   {
+    "streets": [
+     "21st St",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 3290
+   },
+   {
+    "streets": [
+     "Stanton Av",
+     "Delgany"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 2258
+   },
+   {
+    "streets": [
+     "21st St",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 3290
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "192-10",
+    "bounded_by": {
+     "N": "Stanton Av",
+     "S": "21st St",
+     "E": "B&M R.R.",
+     "W": "Delgany"
+    },
+    "centroid": {
+     "x": 1322,
+     "y": 2709
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL YARD",
+      "name": "",
+      "trade": "coal/wood yard",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Free Kindergarten and Delgany Public School (heat furnace) in the same block as a coal yard; E side B&M tracks."
+   },
+   {
+    "block_id": "192-11",
+    "bounded_by": {
+     "N": "Stanton Av",
+     "S": "21st St",
+     "E": "Delgany",
+     "W": null
+    },
+    "centroid": {
+     "x": 919,
+     "y": 2999
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "COAL YARD",
+      "name": "",
+      "trade": "coal/wood yard",
+      "features": "iron-clad office"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "192-4",
+    "bounded_by": {
+     "N": "23rd St viaduct",
+     "S": "22nd St",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 2580,
+     "y": 1451
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Railroad spurs cross the block; only an office and small sheds. E edge 'given up to R.R.'."
+   },
+   {
+    "block_id": "192-5",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 2580,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BEER DEPOT; OFF. & WARE HO.; COLD STORAGE",
+      "name": "Crystal Springs Brewing & Ice Co.",
+      "trade": "brewery/distillery",
+      "features": ""
+     },
+     {
+      "label": "FLOUR & FEED WARE HO.",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "ENGINE & DYNAMO ROOM; COAL HO.; PUMP HO.",
+      "name": "The Denver Gas and Electric Light Co.",
+      "trade": "power/electric",
+      "features": "8 steam engines 50-600 h.p.; 18 dynamos; boilers; chimneys 100 ft and 112 ft; elevated water tank 50,000 gal; 3 artesian wells; water coolers; runs day and night"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "ROUND HOUSE; MACHINE SHOP; BLKSM. SHOP; OIL HO.; COAL BUNKER; ICE HOUSES; BOLTS NUTS & WARE HO.; SUPPLY HO.; LUMBER YARD; SAND DRYER",
+    "name": "Burlington and Missouri River R.R. Shops",
+    "trade": "rail shops/roundhouse",
+    "features": "steam power, coal fuel; oil tank under building; head light oil; locomotive coaling bunker 75 ft; water tank; artesian well 500 ft; no city water, no fire plug near premises",
+    "near": "railroad ground north of River St / Stanton Av"
+   },
+   {
+    "label": "ELEVATOR; FEED MILL; WARE HO.",
+    "name": "Denver Elevator Co.",
+    "trade": "flour mill/elevator",
+    "features": "built 1898, crib construction, 250,000 bu; feed rolls; dynamo; cyclone dust collectors",
+    "near": "beside U.P. R.R. tracks south of closed 23rd St viaduct"
+   }
+  ],
+  "sheet_notes": "Railroad sheet: B&M roundhouse and shops, Denver Elevator Co. grain elevator, and the Denver Gas & Electric Light power station; a public school and free kindergarten share a block with a coal yard."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 193,
+  "image": "1903_1904_v2_00985_02_1903-0193.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "23rd St",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 2161,
+    "y": 435
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 2161,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "21st St",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 2161,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "23rd St",
+     "Market"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 435
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Market"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "21st St",
+     "Market"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 1870
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "193-2",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "railroad spur",
+     "W": null
+    },
+    "centroid": {
+     "x": 1226,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "LUMBER YARD; SASH & DOOR WARE HO.; LIME HO.",
+      "name": "The Sayre Newton Lumber Co.",
+      "trade": "lumber/planing",
+      "features": "lumber piles"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "193-26",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Blake",
+     "W": "railroad spur (street unnamed)"
+    },
+    "centroid": {
+     "x": 1742,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PLANING MILL; SAW SHED; DRY RM.; BOILER RM.; LUMBER SHED",
+      "name": "The Sayre Newton Lumber Co. (mfrs sash & doors, office fixtures)",
+      "trade": "lumber/planing",
+      "features": "boiler room with brick chimney ~50 ft; engine 350 h.p.?; blower/shaving vault; water tank 8,000 gal"
+     },
+     {
+      "label": "SHEET METAL WKS.",
+      "name": "",
+      "trade": "metal working",
+      "features": "gas engine 8 h.p."
+     },
+     {
+      "label": "CARP'R SHOP (uncertain)",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "alley (16 ft)",
+      "what": "Sayre Newton planing mill (west half of same block)",
+      "dwellings_facing": 8
+     }
+    ],
+    "notes": "West half of block is the lumber/planing plant, east half dwellings and lodgings across a 16 ft alley."
+   },
+   {
+    "block_id": "193-35",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Market",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 2644,
+     "y": 1096
+    },
+    "partial": false,
+    "dwellings": 6,
+    "flats": 12,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "DENVER STEAM LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": "engine; boilers; brick chimney"
+     },
+     {
+      "label": "UNION BOTTLING WKS.",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "5 generators"
+     },
+     {
+      "label": "SMALL LIVERY",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "Blake",
+      "what": "Sheet Metal Wks. (block 193-26)",
+      "dwellings_facing": 3
+     }
+    ],
+    "notes": "Flats count = ~11 'F.B.' buildings (female boarding) along Market plus lodgings."
+   },
+   {
+    "block_id": "193-H",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "railroad spur",
+     "W": null
+    },
+    "centroid": {
+     "x": 1226,
+     "y": 2451
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "PAINT FACT'Y; DRY GRINDING RM.; CRUSHER; VARNISH FACT'Y; THINNING RM.; PAINT & OIL WARE HO.; PAINT & VARNISH WARE HO.; OIL HO.",
+      "name": "Halleck Paint Oil and Glass Co.",
+      "trade": "oil/paint/tar",
+      "features": "engine 15 h.p.; boilers with iron chimney; paint mixers; pulverizer; crusher; iron-clad oil house; no watchman"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "193-25",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Blake",
+     "W": "railroad spur (street unnamed)"
+    },
+    "centroid": {
+     "x": 1758,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CANNING DEP'T; WARE HO.",
+      "name": "The Kuner Pickle Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "engine room; boiler; brick chimney 40 ft"
+     },
+     {
+      "label": "MFRS OF WINDOW SCREENS; CARP'R & MILL WK.; PAINTING",
+      "name": "W.H. Fishburn Mfg. Co.",
+      "trade": "lumber/planing",
+      "features": "electric power"
+     },
+     {
+      "label": "WAGON SHED; STORAGE; BARB WIRE STORAGE",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "STABLE",
+      "name": "Denver Transit & Ware Ho. Co's",
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "Blake",
+      "what": "The Kuner Pickle Co. main plant (block 193-36)",
+      "dwellings_facing": 4
+     }
+    ],
+    "notes": ""
+   },
+   {
+    "block_id": "193-36",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Market",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 2644,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 3,
+    "flats": 21,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PICKLE RM.; SALTING SHED (30 VATS); SOAK RM.; GENERATING RM. (136 GENERATORS); GLASS WARE HO.; ENG. RM.",
+      "name": "The Kuner Pickle Co. (malt & cider vinegar, pickles, relishes)",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "engine 65 h.p.; boilers; brick chimney 40 ft; water tanks 3,000 and 6,000 gal; artesian water"
+     },
+     {
+      "label": "EXPRESS STABLES",
+      "name": "Wells Fargo & Co.",
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "lot line (same block)",
+      "what": "Kuner Pickle Co. / Wells Fargo stables",
+      "dwellings_facing": 6
+     }
+    ],
+    "notes": "Flats = ~20 'F.B.' (female boarding) along Market and 21st plus lodgings; red-light district adjoining the pickle works."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "ICE HO. (2); PLATFORMS",
+    "name": "",
+    "trade": "warehouse",
+    "features": "",
+    "near": "Union Pacific R.R. ground near Wynkoop"
+   }
+  ],
+  "sheet_notes": "Gaston's Add'n beside the U.P. yard: Sayre Newton lumber/planing mill, Halleck paint & varnish works, Kuner pickle-vinegar works and steam laundry interleaved with dwellings and Market St 'F.B.' houses."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 194,
+  "image": "1903_1904_v2_00985_02_1903-0194.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "23rd St",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 1096,
+    "y": 435
+   },
+   {
+    "streets": [
+     "23rd St",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 2128,
+    "y": 435
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Market"
+    ],
+    "modern": null,
+    "x": 210,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 1096,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "21st St",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 2128,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "21st St",
+     "Market"
+    ],
+    "modern": null,
+    "x": 210,
+    "y": 3306
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "194-53",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Larimer",
+     "W": "Market"
+    },
+    "centroid": {
+     "x": 613,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 8,
+    "shanties": 0,
+    "stores": 9,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CARP'R SHOP",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "LIVERY, BOARDING & SALES STABLE",
+      "name": "The White Front",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "iron clad"
+     },
+     {
+      "label": "MACHINE SHOP",
+      "name": "The S.H. Supply Co.",
+      "trade": "machine shop",
+      "features": "electric motor 10 h.p.; iron clad"
+     },
+     {
+      "label": "COAL & WOOD; HAY & FEED",
+      "name": "",
+      "trade": "coal/wood yard",
+      "features": ""
+     },
+     {
+      "label": "CHINE. LAUNDRY (2)",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "LUNCH ROOM & BAKERY",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "BICYCLE REPAIRS",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "MACHINERY W.HO. (2)",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Flats = ~7 F.B. on Market + lodgings 2nd/3rd."
+   },
+   {
+    "block_id": "194-62",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 1629,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 12,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "CARP'R & UPHOLST'G",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "CARP'R",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "Lawrence",
+      "what": "Boarding & Livery (block 194-82)",
+      "dwellings_facing": 2
+     }
+    ],
+    "notes": "A.M.E. Church; stores along Larimer, dwellings along Lawrence."
+   },
+   {
+    "block_id": "194-82",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 2644,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BOARDING & LIVERY",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Latter Day Saints Church at 1101."
+   },
+   {
+    "block_id": "194-52",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Larimer",
+     "W": "Market"
+    },
+    "centroid": {
+     "x": 613,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 5,
+    "flats": 17,
+    "shanties": 0,
+    "stores": 14,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CARRIAGE WORKS; PAINT & VARNISH RM.; PAINT RM.",
+      "name": "Bascom Carriage Co.",
+      "trade": "other",
+      "features": "elevator"
+     },
+     {
+      "label": "BOARDING & LIVERY",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "harness room"
+     },
+     {
+      "label": "PLUMBING",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Flats = ~16 F.B. along Market."
+   },
+   {
+    "block_id": "194-63",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 1629,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 12,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "MACHINE SHOP & ENGINE ROOM",
+      "name": "Wm. Ainsworth & Sons, mfrs of assay balances & scientific instruments",
+      "trade": "machine shop",
+      "features": "brick chimney; engine; dynamo (uncertain)"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Lawrence",
+      "what": "Livery & Sale (block 194-81)",
+      "dwellings_facing": 4
+     },
+     {
+      "street": "private alley/lot line",
+      "what": "Wm. Ainsworth & Sons",
+      "dwellings_facing": 3
+     }
+    ],
+    "notes": ""
+   },
+   {
+    "block_id": "194-81",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 2644,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 24,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MFRS GINGER ALE, ROOT BEER, MINERAL WATERS",
+      "name": "Hanigan Bros.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     },
+     {
+      "label": "LIVERY; LIVERY & SALE",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "hay lofts 2nd; iron clad"
+     },
+     {
+      "label": "LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "STORAGE OF ALL KINDS",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "The Saxon Rooming Ho. at 1108-1118 22nd St."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Mixed commercial-residential blocks of the 2100-2200 range (Market to Arapahoe): Market St F.B. houses, liveries, Chinese laundries, small machine shops and carriage works among dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 195,
+  "image": "1903_1904_v2_00985_02_1903-0195.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "23rd St",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 355,
+    "y": 435
+   },
+   {
+    "streets": [
+     "23rd St",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 1371,
+    "y": 435
+   },
+   {
+    "streets": [
+     "23rd St",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 2403,
+    "y": 419
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 355,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 1371,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 2403,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "21st St",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 355,
+    "y": 3273
+   },
+   {
+    "streets": [
+     "21st St",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 2403,
+    "y": 3290
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "195-91",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 871,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 24,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "FURNITURE REPAIR SHOP",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Saloon and store at 23rd/Arapahoe corner with dwellings beside the laundry."
+   },
+   {
+    "block_id": "195-114",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 1903,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 27,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PLUMBING",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Restaurant, tailor, barber, plumbing and drug store along Champa at 22nd; row of 3 D at 915-919 22nd."
+   },
+   {
+    "block_id": "195-123",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": null,
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 2709,
+     "y": 1129
+    },
+    "partial": true,
+    "dwellings": 9,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Only the Champa half of the block is on this sheet; residential only."
+   },
+   {
+    "block_id": "195-92",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 871,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BOARDING, LIVERY & FEED",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "iron clad section"
+     },
+     {
+      "label": "FURNITURE & REPAIRING",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "COAL HO. (2)",
+      "name": "",
+      "trade": "coal/wood yard",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "East Denver Turn Hall (gymnasium, lodge rooms, bowling alley; steam heat, coal house). Row of 5 D at 2104-2114 Arapahoe."
+   },
+   {
+    "block_id": "195-113",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 1903,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 7,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "PRINTING & CALCIMINING",
+      "name": "",
+      "trade": "printing",
+      "features": ""
+     },
+     {
+      "label": "MACHINE SHOP & BICYCLE REPAIRS (uncertain)",
+      "name": "",
+      "trade": "machine shop",
+      "features": ""
+     },
+     {
+      "label": "CARP'R",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "lot line (same block)",
+      "what": "Bakery with oven at 2161 Champa",
+      "dwellings_facing": 2
+     }
+    ],
+    "notes": "Flats at 2142-2144 Curtis; chapel at 2137 1/2; shops (tailor, printing & calcimining, machine shop/bicycle, carpenter) at 923-937 21st St."
+   },
+   {
+    "block_id": "195-124",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": null,
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 2709,
+     "y": 2548
+    },
+    "partial": true,
+    "dwellings": 6,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Only the Champa half on this sheet; residential only (Clements Add'n line crosses)."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential blocks between Arapahoe and Champa near 22nd St with corner stores; small trades only (Chinese laundry, furniture repair, bakery, printing, a livery), plus East Denver Turn Hall."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 196,
+  "image": "1903_1904_v2_00985_02_1903-0196.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "23rd St",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 838,
+    "y": 419
+   },
+   {
+    "streets": [
+     "23rd St",
+     "California"
+    ],
+    "modern": null,
+    "x": 1887,
+    "y": 419
+   },
+   {
+    "streets": [
+     "23rd St",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 2902,
+    "y": 419
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 838,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "22nd St",
+     "California"
+    ],
+    "modern": null,
+    "x": 1887,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 2919,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "21st St",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 838,
+    "y": 3290
+   },
+   {
+    "streets": [
+     "21st St",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 2919,
+    "y": 3290
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "196-123",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Stout",
+     "W": null
+    },
+    "centroid": {
+     "x": 548,
+     "y": 1129
+    },
+    "partial": true,
+    "dwellings": 9,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Only the Stout half of the block (other half on sheet 195)."
+   },
+   {
+    "block_id": "196-146",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 1354,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY; KITCHEN; BAKE OVENS",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "bake ovens; coal house"
+     }
+    ],
+    "faces": [
+     {
+      "street": "lot line (same block)",
+      "what": "Bakery with bake ovens at 2260 Stout",
+      "dwellings_facing": 2
+     }
+    ],
+    "notes": "The Montezuma Apartments; Young Woman's Friendly Club; St. Paul's Ev. Luth. Church; a tent at 22nd/Stout."
+   },
+   {
+    "block_id": "196-155",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 2403,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 27,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WELTON LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": "electric motor 3 h.p.; iron chimney; heating plant"
+     },
+     {
+      "label": "WALL PAPER, PAINTS & OILS",
+      "name": "",
+      "trade": "oil/paint/tar",
+      "features": ""
+     },
+     {
+      "label": "HAND LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "alley/lot line",
+      "what": "Welton Laundry",
+      "dwellings_facing": 4
+     }
+    ],
+    "notes": "Tailor, saloon, restaurant, wine room at 23rd/Welton corner; row of 3 D at 623-637 22nd."
+   },
+   {
+    "block_id": "196-124",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Stout",
+     "W": null
+    },
+    "centroid": {
+     "x": 548,
+     "y": 2548
+    },
+    "partial": true,
+    "dwellings": 12,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "The Stout Flats, Princeton Boarding, Stanton Boarding; row of 4 D at 801-811 21st. Stout half only."
+   },
+   {
+    "block_id": "196-145",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 1354,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 4,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "UPHOLSTERING & FURNITURE",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "STEAM HEATING (store bldg)",
+      "name": "",
+      "trade": "other",
+      "features": "steam heating plant"
+     }
+    ],
+    "faces": [],
+    "notes": "Morton, Nicolett, Melrose and other flats on 21st St; veneered D along Stout."
+   },
+   {
+    "block_id": "196-156",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 2403,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 27,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "alley",
+      "what": "Blacksmith at 619 21st St",
+      "dwellings_facing": 2
+     }
+    ],
+    "notes": "Gothic Place row of 6 D; large Apartments building with heating plant."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Almost wholly residential (dwellings, flats, apartments, churches) between Stout and Welton; industry limited to laundries, a bakery, upholstery, paint/oil shop and a blacksmith."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 197,
+  "image": "1903_1904_v2_00985_02_1903-0197.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "23rd St",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 435
+   },
+   {
+    "streets": [
+     "23rd St",
+     "Lincoln Av"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 435
+   },
+   {
+    "streets": [
+     "23rd St",
+     "Grant Av"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 435
+   },
+   {
+    "streets": [
+     "23rd St",
+     "Logan Av"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 435
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Lincoln Av"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Grant Av"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "21st St",
+     "Lincoln Av"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 3306
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "197-180",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Lincoln Av",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 1145
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 9,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BICYCLE REPAIRING",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "CHINE. LAUNDRY, HAND WORK",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "BAKERY",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Commercial row (drugs, barber, stores) at 23rd/Welton; boarding house; row of 3 D on 22nd and 4 attached D on Lincoln."
+   },
+   {
+    "block_id": "197-189",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Grant Av",
+     "W": "Lincoln Av"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 1145
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FEED & COAL",
+      "name": "",
+      "trade": "coal/wood yard",
+      "features": ""
+     },
+     {
+      "label": "HAND LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "23rd St / lot line",
+      "what": "Feed & Coal at 2262 Lincoln",
+      "dwellings_facing": 2
+     }
+    ],
+    "notes": ""
+   },
+   {
+    "block_id": "197-215",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Logan Av",
+     "W": "Grant Av"
+    },
+    "centroid": {
+     "x": 2612,
+     "y": 1145
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "1st Swedish M.E. Church; residential only."
+   },
+   {
+    "block_id": "197-179",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Lincoln Av",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Row of 5 2B D on Welton; residential."
+   },
+   {
+    "block_id": "197-190",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "21st St",
+     "E": "Grant Av",
+     "W": "Lincoln Av"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 7,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "The Audubon flats (row of 6) on 21st; flats at 2109-2115 Grant."
+   },
+   {
+    "block_id": "197-214",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": "20th Av",
+     "E": "Logan Av",
+     "W": "Grant Av"
+    },
+    "centroid": {
+     "x": 2612,
+     "y": 2419
+    },
+    "partial": true,
+    "dwellings": 24,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Rows of attached 2-storey D (338-300 22nd St); barber and stores at Logan; south corner cut by 20th Av (see Volume Three)."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Fully residential area of row houses, flats and churches between Welton and Logan; only a bicycle shop, hand laundries, a bakery and a feed & coal store."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 198,
+  "image": "1903_1904_v2_00985_02_1903-0198.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "24th St",
+     "Logan Av"
+    ],
+    "modern": null,
+    "x": 435,
+    "y": 113
+   },
+   {
+    "streets": [
+     "24th St",
+     "Pennsylvania Av"
+    ],
+    "modern": null,
+    "x": 1354,
+    "y": 113
+   },
+   {
+    "streets": [
+     "23rd St",
+     "Logan Av"
+    ],
+    "modern": null,
+    "x": 435,
+    "y": 1516
+   },
+   {
+    "streets": [
+     "23rd St",
+     "Pennsylvania Av"
+    ],
+    "modern": null,
+    "x": 1354,
+    "y": 1516
+   },
+   {
+    "streets": [
+     "23rd St",
+     "Washington Av"
+    ],
+    "modern": null,
+    "x": 2370,
+    "y": 1500
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Logan Av"
+    ],
+    "modern": null,
+    "x": 435,
+    "y": 2951
+   },
+   {
+    "streets": [
+     "22nd St",
+     "Pennsylvania Av"
+    ],
+    "modern": null,
+    "x": 1354,
+    "y": 2951
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "198-223",
+    "bounded_by": {
+     "N": "24th St",
+     "S": "23rd St",
+     "E": "Pennsylvania Av",
+     "W": "Logan Av"
+    },
+    "centroid": {
+     "x": 855,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 5,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Flats row at 206-216 24th St and 2351-2361 Pennsylvania."
+   },
+   {
+    "block_id": "198-252",
+    "bounded_by": {
+     "N": null,
+     "S": "23rd St",
+     "E": "Washington Av",
+     "W": "Pennsylvania Av"
+    },
+    "centroid": {
+     "x": 1806,
+     "y": 968
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CREAMERY; ICE MACHINE; SEPARATOR & CHURN ROOM; REFRIGERATOR ROOM; BOILER RM.",
+      "name": "Denver Pure Milk Co. Creamery",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "boiler room; 50 h.p. engine for ice machine; ammonia condenser on roof for mfg ice; coal house; steam heat"
+     }
+    ],
+    "faces": [
+     {
+      "street": "lot line (same block)",
+      "what": "Denver Pure Milk Co. Creamery",
+      "dwellings_facing": 3
+     },
+     {
+      "street": "23rd St",
+      "what": "Denver Pure Milk Co. Creamery",
+      "dwellings_facing": 3
+     }
+    ],
+    "notes": "Triangular block cut by Washington Av; A.M.E. Church at 23rd/Washington beside the creamery."
+   },
+   {
+    "block_id": "198-224",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "22nd St",
+     "E": "Pennsylvania Av",
+     "W": "Logan Av"
+    },
+    "centroid": {
+     "x": 855,
+     "y": 2225
+    },
+    "partial": false,
+    "dwellings": 42,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Swedish Ev. Luth. Church; long row of ~12 attached D on Logan and 10 on 22nd St."
+   },
+   {
+    "block_id": "198-251",
+    "bounded_by": {
+     "N": "23rd St",
+     "S": "20th Av",
+     "E": "Washington Av",
+     "W": "Pennsylvania Av"
+    },
+    "centroid": {
+     "x": 1806,
+     "y": 2000
+    },
+    "partial": true,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Private stable; brick house in rear; cut by 20th Av."
+   },
+   {
+    "block_id": "198-225",
+    "bounded_by": {
+     "N": "22nd St",
+     "S": null,
+     "E": "Pennsylvania Av",
+     "W": "Logan Av"
+    },
+    "centroid": {
+     "x": 693,
+     "y": 3290
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Ebert School (steam heat, electric lights)."
+   },
+   {
+    "block_id": "198-222",
+    "bounded_by": {
+     "N": "23rd Av",
+     "S": "24th St",
+     "E": "Washington Av",
+     "W": "Logan Av"
+    },
+    "centroid": {
+     "x": 2322,
+     "y": 3193
+    },
+    "partial": false,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Clements Add'n triangle; saloon, drugs, stores along 24th St."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential sheet between Logan and Washington Avenues with churches and the Ebert School; the only plant is the Denver Pure Milk Co. creamery with ammonia ice machine beside an A.M.E. church and dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 199,
+  "image": "1903_1904_v2_00985_02_1903-0199.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "26th St",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 2757,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "27th St",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 2757,
+    "y": 516
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "199-15",
+    "bounded_by": {
+     "N": "27th St",
+     "S": "26th St",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 2370,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "LUMBER YARD; LUMBER SHED (iron clad)",
+      "name": "Case & Ebert's Add'n lumber yard",
+      "trade": "lumber/planing",
+      "features": "lumber piles 12-16 ft"
+     },
+     {
+      "label": "GENERAL STORAGE; LUMBER SHED; formerly PLANING MILL",
+      "name": "The Mount Lumber & Investment Co.",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "lot line (same block)",
+      "what": "General Storage / lumber yard",
+      "dwellings_facing": 1
+     }
+    ],
+    "notes": "Only one D (2613 Blake) within the lumber block; W side is Union Pacific R.R. yard."
+   },
+   {
+    "block_id": "199-2",
+    "bounded_by": {
+     "N": "26th St",
+     "S": null,
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 2451,
+     "y": 2741
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "LUMBER YARD; LUMBER SHED (iron clad); SAW DUST",
+      "name": "McPhee & McGinnity",
+      "trade": "lumber/planing",
+      "features": "night watchman; lumber piles 15 ft"
+     },
+     {
+      "label": "PAINTS, OILS, LIME, SASH & DOORS ETC.; NAIL W.HO.; LUMBER W.HO.",
+      "name": "McPhee & McGinnity",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Block runs south off the sheet (continues on 200)."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "ROUND HOUSE: REPAIRING; LUMBER & HARDWARE; CARP'R; CAR SUPPLIES; WOOD-WORKING; OIL HO.",
+    "name": "Union Pacific R.R.",
+    "trade": "rail shops/roundhouse",
+    "features": "turntable; wood-working shop with 30 h.p. engine(s) and boilers; iron chimney; compressor; coal bin; 14 hydrants",
+    "near": "Union Pacific R.R. yard west of the lumber yards"
+   },
+   {
+    "label": "OIL HO.",
+    "name": "Union Pacific R.R.",
+    "trade": "oil/paint/tar",
+    "features": "",
+    "near": "U.P. yard north of roundhouse"
+   }
+  ],
+  "sheet_notes": "Union Pacific yard with roundhouse/repair shop and two large lumber yards along Blake at 26th-27th; essentially no housing."
+ }
+]

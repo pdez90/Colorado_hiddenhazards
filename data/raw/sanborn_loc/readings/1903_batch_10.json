@@ -1,0 +1,2565 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 200,
+  "image": "1903_1904_v2_00985_02_1903-0200.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "24th",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 2709,
+    "y": 1861
+   },
+   {
+    "streets": [
+     "23rd",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 2709,
+    "y": 3283
+   },
+   {
+    "streets": [
+     "24th",
+     "unlabeled street west of alley (likely Wazee)"
+    ],
+    "modern": null,
+    "x": 1838,
+    "y": 1861
+   },
+   {
+    "streets": [
+     "23rd",
+     "Gaston's Add'n west edge / UP R.R. (23rd St viaduct)"
+    ],
+    "modern": null,
+    "x": 1574,
+    "y": 3283
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "200-1",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 2096,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "LUMBER YARD; LUMBER SHEDS; OFF.",
+      "name": "The Sayre Newton Lumber Company",
+      "trade": "lumber/planing",
+      "features": "several lumber sheds, rail spur into yard, stable (iron clad)"
+     },
+     {
+      "label": "STABLE",
+      "name": "Pacific Express Co's Stable",
+      "trade": "livery/blacksmith",
+      "features": "large stable at Blake & 24th corner, 2351-2363 Blake"
+     }
+    ],
+    "faces": [],
+    "notes": "Steck's Add'n block 27 (Blake frontage, 10 D incl. rear D) and Gaston's Add'n block 3 (3 D among lumber yard). West edge is the UP rail yard; street name west not printed. Dwellings share the block directly with lumber yard and express stable."
+   },
+   {
+    "block_id": "200-2",
+    "bounded_by": {
+     "N": null,
+     "S": "24th",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 2386,
+     "y": 1096
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WARE HOUSE",
+      "name": "The American Steel and Wire Co. Ware House (McGinnity's Block)",
+      "trade": "warehouse",
+      "features": "heat stoves, electric lights, night & Sunday watchman; 2401-2461 Blake"
+     },
+     {
+      "label": "LUMBER WARE HO.",
+      "name": null,
+      "trade": "warehouse",
+      "features": "office"
+     }
+    ],
+    "faces": [],
+    "notes": "Purely commercial/industrial block north of 24th."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "LUMBER YARD; IRON CLAD LUMBER SHED",
+    "name": "McPhee and McGinnity Lumber Yard",
+    "trade": "lumber/planing",
+    "features": "long iron-clad lumber shed; night watchman",
+    "near": "rail yard west of Steel & Wire warehouse, north of 24th"
+   },
+   {
+    "label": "R.R.W.T.; OFF.; roundhouse segment",
+    "name": "Union Pacific R.R. yard",
+    "trade": "rail shops/roundhouse",
+    "features": "railroad water tank elev. 13'; part of curved roundhouse at top edge",
+    "near": "UP rail yard, west half of sheet"
+   }
+  ],
+  "sheet_notes": "Mostly Union Pacific rail yard; east edge has lumber yards, steel & wire warehouse and one mixed block (23rd-24th, Blake) where ~13 dwellings sit beside a lumber yard and express stable. 23rd St viaduct marked closed."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 201,
+  "image": "1903_1904_v2_00985_02_1903-0201.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "27th",
+     "Walnut"
+    ],
+    "modern": null,
+    "x": 1135,
+    "y": 452
+   },
+   {
+    "streets": [
+     "26th",
+     "Walnut"
+    ],
+    "modern": null,
+    "x": 1135,
+    "y": 1877
+   },
+   {
+    "streets": [
+     "25th",
+     "Walnut"
+    ],
+    "modern": null,
+    "x": 1135,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "26th",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 1877
+   },
+   {
+    "streets": [
+     "26th",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 2154,
+    "y": 1877
+   },
+   {
+    "streets": [
+     "25th",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 2154,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "26th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 1877
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "201-1",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 613,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 34,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 2. Zang Hotel (rooms, dining, bar; steam heat) at 26th & Walnut counted as other_nonres; 'Lodgings' at 2611 Walnut counted as flats. Blake-side lots 8-16 vacant, crossed by rail spur. McPhee & McGinnity lumber yard and paint factory directly across 26th."
+   },
+   {
+    "block_id": "201-2",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 613,
+     "y": 2644
+    },
+    "partial": false,
+    "dwellings": 6,
+    "flats": 0,
+    "shanties": 4,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WHOL. FURN'E; FURNITURE STORAGE; BED SPRING ROOM",
+      "name": "The Klemp-Blake Furniture Co.",
+      "trade": "warehouse",
+      "features": "elec. motor; elevator; steam heat"
+     },
+     {
+      "label": "IRON BEDSTEADS FACTORY 1ST, STORAGE 2ND",
+      "name": "The Denver Folding Bed Co.",
+      "trade": "metal working",
+      "features": "elec. motor"
+     },
+     {
+      "label": "LUMBER YARD",
+      "name": "McPhee & McGinnity Lumber Yard",
+      "trade": "lumber/planing",
+      "features": "rail spur; open lumber piles"
+     },
+     {
+      "label": "PAINT FACTORY; GRINDING 1ST, MIXING 2ND & MIXERS",
+      "name": "McPhee & McGinnity Paint Factory",
+      "trade": "oil/paint/tar",
+      "features": "elec. motor; oil house; watchman, no clock"
+     },
+     {
+      "label": "HAY STORAGE (OLD)",
+      "name": null,
+      "trade": "warehouse",
+      "features": "brick filled"
+     }
+    ],
+    "faces": [
+     {
+      "street": "26th",
+      "what": "Klemp-Blake Furniture / Denver Folding Bed Co.",
+      "dwellings_facing": 0
+     }
+    ],
+    "notes": "Block 3. 4 shanties and 2 D on Walnut side marked 'dwellings 6 ft below grade'; Blake-side dwellings (2546, 2508, 2502 x2) sit next to the paint factory and lumber yard within the same block."
+   },
+   {
+    "block_id": "201-3",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COPPERSM.",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "BICYCLE REPAIRING",
+      "name": null,
+      "trade": "other",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Block 28. Tenements at 27th & Walnut; row of 6 attached D along 26th."
+   },
+   {
+    "block_id": "201-4",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 10,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven; second oven behind store at ~2608"
+     },
+     {
+      "label": "CARPR.",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "carpenter shop"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 30 (Stout's Add'n). Larimer frontage is a commercial strip (wholesale liquor, stores, cobbler, barber) with workshops; Lawrence frontage all dwellings."
+   },
+   {
+    "block_id": "201-5",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STORAGE WARE HO.",
+      "name": "Denver Express & Transfer Co.",
+      "trade": "warehouse",
+      "features": null
+     },
+     {
+      "label": "TENT & AWNING FAC'Y",
+      "name": null,
+      "trade": "other",
+      "features": "hand power"
+     },
+     {
+      "label": "STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "small, 2520 Walnut"
+     }
+    ],
+    "faces": [],
+    "notes": "Blocks 29/56 (Platte Add'n). Rows of attached D along 26th (6) and 25th (6). Private stable with D on 2nd floor."
+   },
+   {
+    "block_id": "201-6",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 2644
+    },
+    "partial": true,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 4,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL & FEED",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Block 59 (Clark's and Curtis Add'n); German Evang. Church at 26th & Lawrence; 3 halls over stores. Block runs past 25th at south edge (offset grid)."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Dense mixed working-class blocks around 25th-27th between Blake and Lawrence. Furniture/bed factory, paint factory and lumber yard share a block with shanties and dwellings below grade; workshops (coppersmith, tin shop, bakeries) dispersed among houses."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 202,
+  "image": "1903_1904_v2_00985_02_1903-0202.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "25th",
+     "Walnut"
+    ],
+    "modern": null,
+    "x": 1135,
+    "y": 426
+   },
+   {
+    "streets": [
+     "24th",
+     "Walnut"
+    ],
+    "modern": null,
+    "x": 1135,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "23rd",
+     "Walnut (Market St. south of 23rd)"
+    ],
+    "modern": null,
+    "x": 1135,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "24th",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "25th",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 2170,
+    "y": 426
+   },
+   {
+    "streets": [
+     "24th",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 2170,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "23rd",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 2170,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "24th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 1864
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "202-1",
+    "bounded_by": {
+     "N": "25th",
+     "S": "24th",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 613,
+     "y": 1064
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 33, Mullin's Add'n. Residential only; south third vacant."
+   },
+   {
+    "block_id": "202-2",
+    "bounded_by": {
+     "N": "25th",
+     "S": "24th",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STEAM LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": "engine 22 h.p.; boiler; iron chimney 40 ft above roof; dry room"
+     },
+     {
+      "label": "LIVERY",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "iron clad"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 55, Platte Add'n. Steam laundry sits between a lodging house and a 9-unit tenement row (counted as 1 flats building)."
+   },
+   {
+    "block_id": "202-3",
+    "bounded_by": {
+     "N": "25th",
+     "S": "24th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 1064
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 9,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STUCCO WORKS",
+      "name": null,
+      "trade": "brick/stone/pottery",
+      "features": null
+     },
+     {
+      "label": "CARPR.",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "two carpenter shops on Larimer"
+     },
+     {
+      "label": "PLUMBING",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "CHINE' LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     },
+     {
+      "label": "CARPET WEAVING",
+      "name": null,
+      "trade": "other",
+      "features": null
+     },
+     {
+      "label": "CARRIAGE WORKS & PAINTING SHOP",
+      "name": null,
+      "trade": "other",
+      "features": "on Lawrence frontage among dwellings"
+     },
+     {
+      "label": "STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "small, 2458 1/2"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 60, Curtis & Clark's Add'n. Larimer side is a strip of stores and small shops; Lawrence side dwellings with a carriage works mid-block."
+   },
+   {
+    "block_id": "202-4",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 613,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": null
+     },
+     {
+      "label": "CARPR.",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "carpenter shop at 23rd & Blake corner"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 34. Primary School and 24th St. School (heat furnace) on Walnut side; row of attached D along 23rd."
+   },
+   {
+    "block_id": "202-5",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 11,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WAGON & CARRIAGE WKS: BLKSM. 1ST, WOOD WORKING, REPOSITORY, TRIMMING RM 2ND, PAINT SHOP",
+      "name": "Tempe Bros Wagon & Carriage Wks",
+      "trade": "other",
+      "features": "blacksmith forge; wood working; paint shop; engine (E)"
+     },
+     {
+      "label": "STEAM LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": "engine room with engine and boiler"
+     },
+     {
+      "label": "LIVERY",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "large stable, Larimer & 23rd"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 54, Clark's Add'n. Wagon works at Walnut & 23rd sits beside a row of 9 dwellings; Larimer side stores, restaurant, wholesale liquors, drugs."
+   },
+   {
+    "block_id": "202-6",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 7,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CHINE' LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     },
+     {
+      "label": "LIVERY",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "wooden posts; vent holes for iron ventilators"
+     },
+     {
+      "label": "COAL & WOOD",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Block 61, Davis Add'n. Larimer side stores/billiards; Lawrence side dwellings."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Six mixed blocks 23rd-25th, Blake to Lawrence. Two steam laundries with boilers, a wagon & carriage works with blacksmith and paint shop, and many small shops interleaved with dwellings and tenements; schools on Walnut."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 203,
+  "image": "1903_1904_v2_00985_02_1903-0203.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "27th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1135,
+    "y": 452
+   },
+   {
+    "streets": [
+     "26th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1135,
+    "y": 1877
+   },
+   {
+    "streets": [
+     "25th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1135,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "27th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2128,
+    "y": 452
+   },
+   {
+    "streets": [
+     "26th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2128,
+    "y": 1877
+   },
+   {
+    "streets": [
+     "25th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2128,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "26th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 1877
+   },
+   {
+    "streets": [
+     "26th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 1877
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "203-1",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 613,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 31,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven, 2626 Lawrence"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 86, Clarke's & Brown's Add'n. Row of attached D along 26th with saloon, barber, store at Arapahoe corner."
+   },
+   {
+    "block_id": "203-2",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 36,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 87, Story and Appleton's Add'n. Residential; row houses along 26th and 27th."
+   },
+   {
+    "block_id": "203-3",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 118. Trinity Memorial Church; large detached houses."
+   },
+   {
+    "block_id": "203-4",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 613,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 85, Curtis & Clarke's Add'n. Row of ~6 attached D on Arapahoe at 25th."
+   },
+   {
+    "block_id": "203-5",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 88, Pierce's Add'n. Colo. State Armory drill room at 26th & Curtis; cloth tent and wagon shed. Block runs past 25th (offset grid)."
+   },
+   {
+    "block_id": "203-6",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 117, Tappan's/Schaffenburg's Add'n. Smith's Terrace (6 attached D) along 26th."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Almost purely residential sheet (Lawrence to Champa, 25th-27th): row houses and detached dwellings, one bakery with oven, a church and the State Armory drill room. Comparison-group area."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 204,
+  "image": "1903_1904_v2_00985_02_1903-0204.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "25th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1096,
+    "y": 435
+   },
+   {
+    "streets": [
+     "24th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1096,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "23rd",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1096,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "25th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 435
+   },
+   {
+    "streets": [
+     "24th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "23rd",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "24th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "24th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 1864
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "204-1",
+    "bounded_by": {
+     "N": "25th",
+     "S": "24th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CARRIAGE WKS.",
+      "name": null,
+      "trade": "other",
+      "features": "at 24th & Lawrence corner"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 84, Davis Add'n. The Atlin Apartments (3 storeys) on Lawrence."
+   },
+   {
+    "block_id": "204-2",
+    "bounded_by": {
+     "N": "25th",
+     "S": "24th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "STABLES; CARRIAGE RMS; HAY LOFT ABOVE",
+      "name": "D. & R.G. Express Co's Stables",
+      "trade": "livery/blacksmith",
+      "features": "brick wall 5 ft high"
+     },
+     {
+      "label": "STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "small, 2450 1/2 Arapahoe"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 89, Pierce's & Tappan's Add'n. Large express stable at 24th & Arapahoe with row of 6 D directly behind it across a private alley; centre lots vacant."
+   },
+   {
+    "block_id": "204-3",
+    "bounded_by": {
+     "N": "25th",
+     "S": "24th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 2644,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 116. Church of God and Beth Hamnudrash Hagodol Synagogue (heat furnace) on Curtis."
+   },
+   {
+    "block_id": "204-4",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 29,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CIGAR BOX MFRS.",
+      "name": "Knopke Bros",
+      "trade": "lumber/planing",
+      "features": "elec. motor 3 h.p."
+     },
+     {
+      "label": "CARRIAGE RM; PAINT RM 2ND; BLKSM. & WOOD WK. RM",
+      "name": "Delaney Carriage Co.",
+      "trade": "other",
+      "features": "blacksmith forge; paint room"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 83, Steck's Add'n. Two workshops mid-block on Lawrence between dwellings."
+   },
+   {
+    "block_id": "204-5",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 36,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 90. Residential; row of 7 attached D along 23rd; small office and tool house."
+   },
+   {
+    "block_id": "204-6",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 2644,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 4,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 115. Four flats buildings at 24th & Champa; stores, restaurant, drugs at 23rd & Champa."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Mostly residential (Lawrence to Champa, 23rd-25th) with a few workshops: cigar-box factory and carriage works on Lawrence, D&RG express stables on Arapahoe; synagogue and church on Curtis."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 205,
+  "image": "1903_1904_v2_00985_02_1903-0205.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "25th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 429
+   },
+   {
+    "streets": [
+     "24th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "23rd",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "25th",
+     "California"
+    ],
+    "modern": null,
+    "x": 2135,
+    "y": 429
+   },
+   {
+    "streets": [
+     "24th",
+     "California"
+    ],
+    "modern": null,
+    "x": 2135,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "23rd",
+     "California"
+    ],
+    "modern": null,
+    "x": 2135,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "24th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "24th",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 1870
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "205-1",
+    "bounded_by": {
+     "N": "25th",
+     "S": "24th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 121. Row of 6 attached D along 25th; boarding house and flats on Stout; Champa side half vacant."
+   },
+   {
+    "block_id": "205-2",
+    "bounded_by": {
+     "N": "25th",
+     "S": "24th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 148. Residential; small green house on California; California side south half vacant."
+   },
+   {
+    "block_id": "205-3",
+    "bounded_by": {
+     "N": "25th",
+     "S": "24th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 2644,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 153. 7th Day Advent Church; boarding house; rows of attached D on Welton and 24th."
+   },
+   {
+    "block_id": "205-4",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 122. Pentecostal Mission Home on Champa; Stout side rows of attached D."
+   },
+   {
+    "block_id": "205-5",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 9,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "CARPR.",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "carpenter shop at 23rd & California"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 147. Small stores (cobbler, grocery, feed) and row houses at the corners; centre of block vacant."
+   },
+   {
+    "block_id": "205-6",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 2644,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 154 entirely vacant platted lots."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential sheet (Champa to Welton, 23rd-25th) with row houses, boarding houses, churches; only a carpenter shop as industry. Block 154 entirely vacant."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 206,
+  "image": "1903_1904_v2_00985_02_1903-0206.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "25th",
+     "Lincoln Av."
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 435
+   },
+   {
+    "streets": [
+     "24th",
+     "Lincoln Av."
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "23rd",
+     "Lincoln Av."
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "24th",
+     "Grant Av."
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "23rd",
+     "Grant Av."
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "24th",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "24th",
+     "Logan Av."
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "Washington Av.",
+     "Logan Av."
+    ],
+    "modern": null,
+    "x": 3064,
+    "y": 629
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "206-1",
+    "bounded_by": {
+     "N": "25th",
+     "S": "24th",
+     "E": "Lincoln Av.",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 37,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 182. Rows of attached D along 25th (10) and 24th (7)."
+   },
+   {
+    "block_id": "206-2",
+    "bounded_by": {
+     "N": "25th",
+     "S": "24th",
+     "E": "Grant Av.",
+     "W": "Lincoln Av."
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 187. Residential."
+   },
+   {
+    "block_id": "206-3",
+    "bounded_by": {
+     "N": "25th / Washington Av.",
+     "S": "24th",
+     "E": "Logan Av.",
+     "W": "Grant Av."
+    },
+    "centroid": {
+     "x": 2644,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "S. (PAINTS & OILS)",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": "paints & oils store, 314-318 at 25th"
+     },
+     {
+      "label": "ASSAY OFF.",
+      "name": null,
+      "trade": "chemical",
+      "features": "assay office with iron-clad shed"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 217. Corner cut by Washington Av. Assay office and paint/oil store among dwellings."
+   },
+   {
+    "block_id": "206-4",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Lincoln Av.",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 24,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven, 521"
+     },
+     {
+      "label": "BOTTLING",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "gasoline engine, 511"
+     },
+     {
+      "label": "CARPET WEAVING",
+      "name": null,
+      "trade": "other",
+      "features": "515"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 181. Small shop row along 23rd (carpet weaving, cobbler, bottling, meat, grocery) adjoining dwellings."
+   },
+   {
+    "block_id": "206-5",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Grant Av.",
+     "W": "Lincoln Av."
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 188. Half vacant."
+   },
+   {
+    "block_id": "206-6",
+    "bounded_by": {
+     "N": "24th",
+     "S": "23rd",
+     "E": "Logan Av.",
+     "W": "Grant Av."
+    },
+    "centroid": {
+     "x": 2644,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 23,
+    "flats": 8,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven, 2300 Grant / 339 23rd"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 216. The Roland Flats; row of 6 flats along 23rd; lodgings over stores on 23rd."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential (Welton to Logan, 23rd-25th), with row houses and flats; minor workshops: two bakeries with ovens, a bottling works with gasoline engine, an assay office and paint & oil store."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 207,
+  "image": "1903_1904_v2_00985_02_1903-0207.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "27th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 1338,
+    "y": 452
+   },
+   {
+    "streets": [
+     "26th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 1338,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "25th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 1338,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "27th",
+     "California"
+    ],
+    "modern": null,
+    "x": 2370,
+    "y": 452
+   },
+   {
+    "streets": [
+     "26th",
+     "California"
+    ],
+    "modern": null,
+    "x": 2370,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "25th",
+     "California"
+    ],
+    "modern": null,
+    "x": 2370,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "26th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 322,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "25th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 322,
+    "y": 3322
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "207-1",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 838,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 24,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 119, Ada's Add'n. Row of 6 attached D along 26th."
+   },
+   {
+    "block_id": "207-2",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 1854,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 29,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 150. Dense single-family housing."
+   },
+   {
+    "block_id": "207-3",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": null,
+     "W": "California"
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 1161
+    },
+    "partial": true,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 151, Park Add'n; east street not named on sheet. Row of 5 D along 27th."
+   },
+   {
+    "block_id": "207-4",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 838,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 23,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 120, Schaffenburg's Add'n."
+   },
+   {
+    "block_id": "207-5",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 1854,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 38,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 149. 1st German Society of the M.E. Church; row of ~9 attached D along 25th."
+   },
+   {
+    "block_id": "207-6",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": null,
+     "W": "California"
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 2580
+    },
+    "partial": true,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 152; row of 6 attached D along 25th; east street not named."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Entirely residential (Champa to east of California, 25th-27th); no industrial or workshop uses. Good comparison area."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 208,
+  "image": "1903_1904_v2_00985_02_1903-0208.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "27th",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 629,
+    "y": 452
+   },
+   {
+    "streets": [
+     "26th",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 645,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "25th",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 661,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "26th",
+     "Lincoln Av."
+    ],
+    "modern": null,
+    "x": 1661,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "25th",
+     "Lincoln Av."
+    ],
+    "modern": null,
+    "x": 1661,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "25th",
+     "Grant Av."
+    ],
+    "modern": null,
+    "x": 2693,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "Washington Av.",
+     "Grant Av. / 29th Av."
+    ],
+    "modern": null,
+    "x": 2677,
+    "y": 2516
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "208-1",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 339,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 12,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 9,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BOTTLING ARTESIAN WATER",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "gasoline engine 4 h.p.; artesian well & elevated tank"
+     },
+     {
+      "label": "BOTTLING",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "second bottling shed, 2649 1/2"
+     },
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Block 151, Park Add'n (same block as 207-3; east street is Welton). Commercial corner at 27th & Welton with lodgings over stores, saloon, hall; row of attached D along 26th."
+   },
+   {
+    "block_id": "208-2",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Washington Av.",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 1064,
+     "y": 1354
+    },
+    "partial": false,
+    "dwellings": 24,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 184, triangular (cut by Washington Av.). Drug store, saloon, stores; residential otherwise."
+   },
+   {
+    "block_id": "208-3",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 339,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 152 (east half; same as 207-6)."
+   },
+   {
+    "block_id": "208-4",
+    "bounded_by": {
+     "N": "26th",
+     "S": "25th",
+     "E": "Lincoln Av.",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 1161,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 183. Engine House No. 3 (fire station) at 26th & Lincoln."
+   },
+   {
+    "block_id": "208-5",
+    "bounded_by": {
+     "N": "Washington Av.",
+     "S": "25th",
+     "E": "Grant Av.",
+     "W": "Lincoln Av."
+    },
+    "centroid": {
+     "x": 2193,
+     "y": 2644
+    },
+    "partial": false,
+    "dwellings": 32,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CARPR.",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "2 storey carpenter shop, 2506 1/2"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 186, cut by Washington Av. Rows of attached D on Grant (7) and 25th (5); cobbler in corner store row."
+   },
+   {
+    "block_id": "208-6",
+    "bounded_by": {
+     "N": "Washington Av.",
+     "S": "25th",
+     "E": null,
+     "W": "Grant Av."
+    },
+    "centroid": {
+     "x": 2902,
+     "y": 3015
+    },
+    "partial": true,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 218, small triangle."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "MFR. OF BUILDING SUPPLIES; ENG. RM; SAWING SHED; STORAGE",
+    "name": "The S. H. Supply Co.",
+    "trade": "lumber/planing",
+    "features": "engine room with boilers (two 40 & 60 h.p.), asbestos-covered; fuel coal, sawdust and slabs; watchman",
+    "near": "east of Washington Av. (Volume 3 area), south of 31st St, on UP R.R. spur"
+   },
+   {
+    "label": "SCRAP IRON YARD; SCRAP IRON SHED; MACHINERY STORAGE WARE HO. NO. 2; SHEARS SHED",
+    "name": null,
+    "trade": "metal working",
+    "features": "electric motor for shears; iron clad warehouse",
+    "near": "along UP R.R. east of Washington Av."
+   },
+   {
+    "label": "ABANDONED ORE MILL; COAL HO.",
+    "name": null,
+    "trade": "smelter",
+    "features": "abandoned",
+    "near": "along UP R.R. east of Washington Av., near 25th Av."
+   }
+  ],
+  "sheet_notes": "West half residential with a commercial node at 27th & Welton (artesian-water bottling with gasoline engine, bakery, tin shop). East of Washington Av. (detail in Volume 3) lies the UP rail corridor with a building-supply mill with boilers, scrap iron yard and abandoned ore mill, scattered dwellings along 31st."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 209,
+  "image": "1903_1904_v2_00985_02_1903-0209.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "29th",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 945,
+    "y": 442
+   },
+   {
+    "streets": [
+     "28th",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 945,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "27th",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 945,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "29th",
+     "Walnut"
+    ],
+    "modern": null,
+    "x": 1974,
+    "y": 442
+   },
+   {
+    "streets": [
+     "28th",
+     "Walnut"
+    ],
+    "modern": null,
+    "x": 1974,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "27th",
+     "Walnut"
+    ],
+    "modern": null,
+    "x": 1974,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "28th",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 2999,
+    "y": 1864
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "209-1",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 629,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 5. West street not named (likely Wazee); Union Pacific R.R. yard immediately west. One D on rail ground at 1521."
+   },
+   {
+    "block_id": "209-2",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1451,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 38,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "ASBESTOS COVERING FACTORY",
+      "name": null,
+      "trade": "other",
+      "features": "1 storey, on Blake mid-block"
+     },
+     {
+      "label": "STABLE",
+      "name": "Joslin Dry Goods Co.",
+      "trade": "livery/blacksmith",
+      "features": "large stable at 29th & Walnut"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 4. 29th St. Primary School (heat stoves); asbestos covering factory adjoins rows of attached D on Blake; rows of 6 D on 28th."
+   },
+   {
+    "block_id": "209-3",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 2483,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 7,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "TOBACCO WARE HO.",
+      "name": null,
+      "trade": "warehouse",
+      "features": null
+     },
+     {
+      "label": "BICYCLE SHOP",
+      "name": null,
+      "trade": "other",
+      "features": "oven not used"
+     },
+     {
+      "label": "FEED & HAY",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "scales"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 26, Case & Ebert's Add'n. Tenements at 29th; saloons, lodgings over stores, hall."
+   },
+   {
+    "block_id": "209-4",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 613,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "SAMPLING WORKS; SLIME TABLE; CRUSHER; FURNACE",
+      "name": "Sampling Works, no name given (experimenting with ores & clay)",
+      "trade": "smelter",
+      "features": "engine 40 h.p.; engine 10 h.p.; furnace; brick chimney 45 ft; office"
+     },
+     {
+      "label": "LUMBER YARD; IRON CLAD LUMBER SHED",
+      "name": "McPhee and McGinnity Lumber Yard",
+      "trade": "lumber/planing",
+      "features": "timber piles, rail spurs, night watchman"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Blake",
+      "what": "Sampling works (ore crusher/furnace) and McPhee & McGinnity lumber yard",
+      "dwellings_facing": 13
+     }
+    ],
+    "notes": "Block 14. Wholly industrial, on UP yard edge; faces block 3 dwellings across Blake (dwellings_facing refers to 209-5)."
+   },
+   {
+    "block_id": "209-5",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1451,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 48,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CARP'R",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "carpenter shop at 27th & Walnut, beside iron-clad stable"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Blake",
+      "what": "Sampling works and McPhee & McGinnity lumber yard",
+      "dwellings_facing": 13
+     }
+    ],
+    "notes": "Block 3. Rows of 12 attached D on 28th and 8 on 27th; Blake frontage D look directly onto ore sampling works and lumber yard."
+   },
+   {
+    "block_id": "209-6",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 2483,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 10,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PRETZEL BAKE HO.",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "BAKE HO.",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven; smoke house nearby"
+     },
+     {
+      "label": "STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "along 27th"
+     },
+     {
+      "label": "PLUMBING",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "WALL PAPER & PAINTS",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "SMOKE HO.",
+      "name": null,
+      "trade": "meat packing/stockyard",
+      "features": "small smoke house"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 27. Larimer strip with saloons, lodgings, barber, drugs; bake houses with ovens among dwellings."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "UNION PACIFIC R.R. YARD",
+    "name": "Union Pacific R.R.",
+    "trade": "rail shops/roundhouse",
+    "features": "multiple tracks",
+    "near": "west edge of sheet"
+   }
+  ],
+  "sheet_notes": "27th-29th, UP yard to Larimer. An ore sampling works (crusher, furnace, 40 h.p. engine, 45 ft chimney) and big lumber yard on Blake face a block of ~48 dwellings; asbestos covering factory set among row houses. Bake houses and stores line Larimer."
+ }
+]

@@ -1,0 +1,2813 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 230,
+  "image": "1903_1904_v2_00985_02_1903-0230.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Delgany",
+     "35th"
+    ],
+    "modern": null,
+    "x": 81,
+    "y": 758
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "35th"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 758
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "35th"
+    ],
+    "modern": null,
+    "x": 2064,
+    "y": 774
+   },
+   {
+    "streets": [
+     "Wazee",
+     "35th"
+    ],
+    "modern": null,
+    "x": 3032,
+    "y": 742
+   },
+   {
+    "streets": [
+     "Delgany",
+     "34th"
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 2145
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "34th"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 2161
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "33rd"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 3580
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "230-12",
+    "bounded_by": {
+     "N": null,
+     "S": "35th",
+     "E": "Wewatta",
+     "W": "Delgany"
+    },
+    "centroid": {
+     "x": 564,
+     "y": 330
+    },
+    "partial": true,
+    "dwellings": 11,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Ironton Add'n; frame and brick dwellings, sheds."
+   },
+   {
+    "block_id": "230-6",
+    "bounded_by": {
+     "N": null,
+     "S": "35th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 330
+    },
+    "partial": true,
+    "dwellings": 10,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Wynkoop",
+      "what": "Denver Boiler & Sheet Iron Wks (rear of block 230-3, vacant Wynkoop frontage)",
+      "dwellings_facing": 2
+     }
+    ],
+    "notes": "Row of 4 attached 2-story dwellings at 3506-3516 Wewatta; stables."
+   },
+   {
+    "block_id": "230-3",
+    "bounded_by": {
+     "N": null,
+     "S": "35th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 2450,
+     "y": 330
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "BOILER SHOP; BLKSM.; STORAGE SHEDS",
+      "name": "The Denver Boiler & Sheet Iron Wks.",
+      "trade": "metal working",
+      "features": "iron clad boiler shop; engine (approx 30 h.p.); heater; steam pipe; water tank on roof; coal; no watchman, no lights, fuel coal, heat stoves"
+     },
+     {
+      "label": "PNEUMATIC TOOL WORKS",
+      "name": "C.H. Shaw Pneumatic Tool Works",
+      "trade": "machine shop",
+      "features": "iron clad"
+     }
+    ],
+    "faces": [],
+    "notes": "Wynkoop half of block vacant."
+   },
+   {
+    "block_id": "230-13",
+    "bounded_by": {
+     "N": "35th",
+     "S": "34th",
+     "E": "Wewatta",
+     "W": "Delgany"
+    },
+    "centroid": {
+     "x": 564,
+     "y": 1467
+    },
+    "partial": false,
+    "dwellings": 9,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Ironton Add'n; scattered frame dwellings, stables."
+   },
+   {
+    "block_id": "230-5",
+    "bounded_by": {
+     "N": "35th",
+     "S": "34th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 1435
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Wynkoop",
+      "what": "Atlas Coal Co. coal & wood yard",
+      "dwellings_facing": 9
+     }
+    ],
+    "notes": "Attached rows on 35th (1722-1730) and on Wynkoop (3449-3461, 6 units); 2-story store at 35th & Wewatta."
+   },
+   {
+    "block_id": "230-4",
+    "bounded_by": {
+     "N": "35th",
+     "S": "34th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 2580,
+     "y": 1450
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL & WOOD YARD; COAL SHEDS",
+      "name": "The Atlas Coal Co.",
+      "trade": "coal/wood yard",
+      "features": "portable gasoline engine & saw mill; artesian well & wind mill; water tank; iron clad sheds; open wood piles"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Wynkoop",
+      "what": "Atlas Coal Co. coal & wood yard",
+      "dwellings_facing": 0
+     }
+    ],
+    "notes": "Railroad spur runs through east side; Wynkoop half vacant."
+   },
+   {
+    "block_id": "230-unplatted",
+    "bounded_by": {
+     "N": "34th",
+     "S": "33rd",
+     "E": "Wewatta",
+     "W": "Delgany"
+    },
+    "centroid": {
+     "x": 564,
+     "y": 2900
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Wewatta",
+      "what": "The Colorado Iron Works Co. (foundry, lumber & pattern shed)",
+      "dwellings_facing": 0
+     }
+    ],
+    "notes": "Labelled 'Unplatted' / 1st Add'n; lots empty. Small hose(?) house at 1824 and dwelling 3361 Wewatta drawn near 34th St line (assigned here, uncertain)."
+   },
+   {
+    "block_id": "230-CIW",
+    "bounded_by": {
+     "N": "34th",
+     "S": "33rd",
+     "E": null,
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 1900,
+     "y": 2800
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FOUNDRY; MACHINE SHOP; BOILER SHOP; ERECTING SHOP; BLKSM.; CORE HO.; CORE OVENS; CLEANING CASTINGS; PIPE SHOP; PATTERN SHOP; PATTERN MAKER SHOP; PATTERN STORAGE; CARPR.; LIME HO.; RATTLER; DUST MILL",
+      "name": "The Colorado Iron Works Co.",
+      "trade": "foundry",
+      "features": "cupolas (2); furnaces in boiler shop; core ovens; blower; electric motors; 2 iron chimneys 15'; water tank on roof; pig iron yard; flask yard with crane track; artesian well; power steam & electric; fuel coal and coke; night watchman"
+     }
+    ],
+    "faces": [],
+    "notes": "Territory/Wynkoop vacated within plant; whole block is the iron works; drafting office included."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "ASPHALT MILL",
+    "name": "McFarlane's Asphalt Mill",
+    "trade": "oil/paint/tar",
+    "features": "rotary driers; dryer",
+    "near": "Union Pacific R.R. tracks east of Colorado Iron Works, near 33rd"
+   },
+   {
+    "label": "COLOSAW SHOP",
+    "name": null,
+    "trade": "metal working",
+    "features": "electric 15 h.p. motor; iron clad",
+    "near": "east of Colorado Iron Works, near UP tracks"
+   },
+   {
+    "label": "COAL SHEDS",
+    "name": null,
+    "trade": "coal/wood yard",
+    "features": "",
+    "near": "UP R.R. near 34th"
+   },
+   {
+    "label": "WAGON STORAGE",
+    "name": null,
+    "trade": "other",
+    "features": "",
+    "near": "south of 33rd west of Wewatta"
+   }
+  ],
+  "sheet_notes": "Ironton Addition, north Denver along the Union Pacific: the large Colorado Iron Works foundry fills the block south of 34th, Denver Boiler & Sheet Iron Wks and Atlas coal yard lie one street from rows of dwellings on Wewatta/Wynkoop. Asphalt mill with rotary driers by the UP tracks."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 231,
+  "image": "1903_1904_v2_00985_02_1903-0231.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Blake",
+     "38th"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 177
+   },
+   {
+    "streets": [
+     "Downing Av.",
+     "38th"
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 194
+   },
+   {
+    "streets": [
+     "Wazee",
+     "36th"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 2806
+   },
+   {
+    "streets": [
+     "Blake",
+     "36th"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 2806
+   },
+   {
+    "streets": [
+     "Walnut",
+     "36th"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 2806
+   },
+   {
+    "streets": [
+     "Larimer",
+     "36th"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 2774
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "231-20",
+    "bounded_by": {
+     "N": "38th",
+     "S": "36th",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 790,
+     "y": 1484
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "WORKSHOP; SHOW RM.; OFFICE",
+      "name": "Rauh Marble W'ks",
+      "trade": "brick/stone/pottery",
+      "features": "marble works with workshop and show room"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Blake",
+      "what": "Rauh Marble W'ks",
+      "dwellings_facing": 0
+     }
+    ],
+    "notes": "River Add'n; west side bounded by Union Pacific R.R. right of way (Wazee beyond); flagman and switchman shanties; one stable."
+   },
+   {
+    "block_id": "231-25",
+    "bounded_by": {
+     "N": "38th",
+     "S": "36th",
+     "E": "Downing Av.",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1596,
+     "y": 1484
+    },
+    "partial": false,
+    "dwellings": 36,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 11,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Downing Av.",
+      "what": "Burkhardt Packing Co. (slaughter house, sausage factory, stock yard)",
+      "dwellings_facing": 14
+     }
+    ],
+    "notes": "Riverside and Baldwin's Add'n; Berean Baptist Mission; row of 7 attached dwellings on 36th (1421-1435) with coal ho.; stores, drugs, saloon and office along Downing Av."
+   },
+   {
+    "block_id": "231-17",
+    "bounded_by": {
+     "N": "Downing Av.",
+     "S": "36th",
+     "E": "Downing Av.",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 2451,
+     "y": 2387
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL & FEED; OFF.; SCALES",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "scales"
+     }
+    ],
+    "faces": [],
+    "notes": "Triangular block; barber with dwelling, bicycle shop in small triangle at tip."
+   },
+   {
+    "block_id": "231-13",
+    "bounded_by": {
+     "N": "36th",
+     "S": null,
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 790,
+     "y": 3290
+    },
+    "partial": true,
+    "dwellings": 6,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BALED HAY, GRAIN & FEED WARE HO.; COAL SHED",
+      "name": "Summit Fuel & Feed Co.",
+      "trade": "coal/wood yard",
+      "features": "iron clad warehouse; coal shed by UP tracks"
+     }
+    ],
+    "faces": [],
+    "notes": "Whittier(?) Add'n; UP R.R. to west; iron clad stable; vacant old building at 1536 Wazee side."
+   },
+   {
+    "block_id": "231-14",
+    "bounded_by": {
+     "N": "36th",
+     "S": null,
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 3290
+    },
+    "partial": true,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "CARRIAGE REPOSITORY",
+      "name": null,
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "Walnut",
+      "what": "The Niederhut Carriage Co. blacksmith and wagon & paint shop",
+      "dwellings_facing": 5
+     }
+    ],
+    "notes": "Blacksmith shop between dwellings on Blake side; wine rooms and saloon on 36th."
+   },
+   {
+    "block_id": "231-15",
+    "bounded_by": {
+     "N": "36th",
+     "S": null,
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 3290
+    },
+    "partial": true,
+    "dwellings": 8,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.; WAGON & PAINT SHOP",
+      "name": "The Niederhut Carriage Co.",
+      "trade": "livery/blacksmith",
+      "features": "paint shop"
+     },
+     {
+      "label": "CIGAR FACTORY",
+      "name": null,
+      "trade": "other",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Saloon & boarding house at 3559-3563 Larimer (counted as flats); paints & oils store at 3545 Larimer; row of 4 attached dwellings 3532-3538 Walnut."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "ICE MACHINE & ENG. RM.; SAUSAGE FACT'Y; SLAUGHTER HO.; SPLIT ROOM; COLD STORAGE; SHIPPING SHED; SMOKE HO.; RENDERING TANK; STOCK YARD",
+    "name": "Burkhardt Packing Co.",
+    "trade": "meat packing/stockyard",
+    "features": "65 h.p. engine; two 12-ton ice machines; 2 iron chimneys; lard tank; rendering tank; smoke house; power & heat steam, fuel coal; artesian well; night watchman",
+    "near": "east of Downing Av. near 38th, on B.&M.R.R. siding; note says 350 ft to the fertilizer plant of the Colorado Packing & Provision Co."
+   }
+  ],
+  "sheet_notes": "Mixed working-class district at Blake/Walnut/Downing near 36th-38th: Burkhardt slaughterhouse and stockyard directly across Downing Av. from a dense row of stores and dwellings; Rauh Marble Works, coal/feed yards, blacksmiths, carriage works and a cigar factory interleaved with housing."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 232,
+  "image": "1903_1904_v2_00985_02_1903-0232.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Blake",
+     "35th"
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 742
+   },
+   {
+    "streets": [
+     "Walnut",
+     "35th"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 742
+   },
+   {
+    "streets": [
+     "Larimer",
+     "35th"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 742
+   },
+   {
+    "streets": [
+     "Blake",
+     "34th"
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 2129
+   },
+   {
+    "streets": [
+     "Walnut",
+     "34th"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 2145
+   },
+   {
+    "streets": [
+     "Larimer",
+     "34th"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 2145
+   },
+   {
+    "streets": [
+     "Blake",
+     "33rd"
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 3548
+   },
+   {
+    "streets": [
+     "Walnut",
+     "33rd"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 3548
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "232-13",
+    "bounded_by": {
+     "N": null,
+     "S": "35th",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 790,
+     "y": 322
+    },
+    "partial": true,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "West side is an alley backing onto the Union Pacific R.R. yard (Wazee beyond)."
+   },
+   {
+    "block_id": "232-14",
+    "bounded_by": {
+     "N": null,
+     "S": "35th",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1596,
+     "y": 322
+    },
+    "partial": true,
+    "dwellings": 11,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Walnut",
+      "what": "Lindquist Cracker Co.",
+      "dwellings_facing": 4
+     }
+    ],
+    "notes": "Iron-clad stable on lot 13."
+   },
+   {
+    "block_id": "232-15",
+    "bounded_by": {
+     "N": null,
+     "S": "35th",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 2612,
+     "y": 322
+    },
+    "partial": true,
+    "dwellings": 5,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WARE RM.; PACKING; OVENS; BAKE RM.; ICING RM.; STORAGE; ENG. RM.",
+      "name": "Lindquist Cracker Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "ovens; engine approx 20 h.p.; iron chimney approx 20 ft above roof; wooden posts; watchman 4 stations hourly rounds; fuel coal; lights electric; city water; no hose"
+     }
+    ],
+    "faces": [],
+    "notes": "Cracker factory occupies Walnut frontage lots 9-13; dwellings on Larimer side (3517-3523, two double houses) and one at 3522 Walnut."
+   },
+   {
+    "block_id": "232-10",
+    "bounded_by": {
+     "N": "35th",
+     "S": "34th",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 774,
+     "y": 1435
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "private alley (west)",
+      "what": "Summit Fuel & Feed Co's coal & wood yard",
+      "dwellings_facing": 13
+     }
+    ],
+    "notes": "Martinitz Hotel (heat steam, lights electric) counted as flats; barber; private alley separates the block from the coal and wood yard on railway ground."
+   },
+   {
+    "block_id": "232-9",
+    "bounded_by": {
+     "N": "35th",
+     "S": "34th",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1596,
+     "y": 1435
+    },
+    "partial": false,
+    "dwellings": 38,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL, HAY & GRAIN; SCALES",
+      "name": "The Atlas Coal Co.",
+      "trade": "coal/wood yard",
+      "features": "scales"
+     },
+     {
+      "label": "BAKE HO.; BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     }
+    ],
+    "faces": [],
+    "notes": "Whittier(?) Add'n; dense: rows of 3 and 6 attached dwellings on 35th; several old frame dwellings on 34th; bakehouse with oven among dwellings mid-block."
+   },
+   {
+    "block_id": "232-8",
+    "bounded_by": {
+     "N": "35th",
+     "S": "34th",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 2612,
+     "y": 1435
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Row of about 8 attached dwellings 3420-3430 Walnut; saloon and stores on Walnut; blacksmith at 3446 Walnut between dwellings."
+   },
+   {
+    "block_id": "232-2",
+    "bounded_by": {
+     "N": "34th",
+     "S": "33rd",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 758,
+     "y": 2870
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Case & Ebert's Add'n; entirely vacant lots beside Union Pacific R.R."
+   },
+   {
+    "block_id": "232-3",
+    "bounded_by": {
+     "N": "34th",
+     "S": "33rd",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1596,
+     "y": 2854
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "PAINT SHOP",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": ""
+     },
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Blenheim Hotel (heat steam, lights gas) at Blake & 33rd with attached row on 33rd (counted as flats + 4 D); old frame dwellings on 34th; two blacksmiths and paint shop on Walnut side; one vacated store."
+   },
+   {
+    "block_id": "232-4",
+    "bounded_by": {
+     "N": "34th",
+     "S": "33rd",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 2612,
+     "y": 2854
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BOTTLING WKS.",
+      "name": "L.C. Gilbreath Bottling Wks.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "2 h.p. gasoline engine; water tank on posts"
+     }
+    ],
+    "faces": [],
+    "notes": "Blocks 4 and 21 (Case & Ebert's Add'n); row of ~7 attached dwellings on Walnut; Bethlehem Colored Baptist Church on Larimer; drugs and saloon."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "COAL & WOOD YARD; COAL SHED; WOOD PILES",
+    "name": "Summit Fuel & Feed Co's Coal & Wood Yard",
+    "trade": "coal/wood yard",
+    "features": "coal shed; open wood piles 8-9 ft",
+    "near": "Union Pacific R.R. ground between Wazee and the private alley, 35th-34th"
+   }
+  ],
+  "sheet_notes": "Dense working-class blocks (Blake/Walnut/Larimer, 33rd-35th) with many attached rows; industry is small-scale and embedded: cracker factory, bakehouse, bottling works, three blacksmiths, a paint shop and coal yards, with the UP rail yard to the west."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 233,
+  "image": "1903_1904_v2_00985_02_1903-0233.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Larimer",
+     "35th"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 774
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "35th"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 790
+   },
+   {
+    "streets": [
+     "Larimer",
+     "34th"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 2193
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "34th"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 2193
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "34th"
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 2193
+   },
+   {
+    "streets": [
+     "Larimer",
+     "33rd"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 3580
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "33rd"
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 3580
+   },
+   {
+    "streets": [
+     "Curtis",
+     "33rd"
+    ],
+    "modern": null,
+    "x": 3160,
+    "y": 3564
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "233-7",
+    "bounded_by": {
+     "N": "35th",
+     "S": "34th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 1484
+    },
+    "partial": false,
+    "dwellings": 40,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PLUMBING",
+      "name": null,
+      "trade": "metal working",
+      "features": "plumbing shop at 3400 Larimer"
+     }
+    ],
+    "faces": [],
+    "notes": "Witter's Add'n; dense, row of 6 brick dwellings 3443-3463 Lawrence; saloon, barber, store, bicycle repair on Larimer."
+   },
+   {
+    "block_id": "233-6",
+    "bounded_by": {
+     "N": "35th",
+     "S": "34th",
+     "E": "Downing Av.",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1640,
+     "y": 1500
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Blocks 6 and 39; Galilee Baptist Church (heat furnace, lights electric) at 34th & Lawrence; old and vacant dwellings near Downing Av."
+   },
+   {
+    "block_id": "233-16",
+    "bounded_by": {
+     "N": "Downing Av.",
+     "S": "35th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2580,
+     "y": 900
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "NOVELTY WORKS",
+      "name": null,
+      "trade": "other",
+      "features": "at 3514 Larimer, attached to dwelling"
+     }
+    ],
+    "faces": [],
+    "notes": "H. Witter's Add'n triangular block; drugs and 2-story stores at 35th & Larimer and at 3509 Lawrence; row of 4 attached dwellings 1207-1219 35th; vacated pair at 3567-3569 Downing."
+   },
+   {
+    "block_id": "233-90",
+    "bounded_by": {
+     "N": "Downing Av.",
+     "S": "34th",
+     "E": "34th Av.",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 2370,
+     "y": 2000
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Small triangle with one 2-story dwelling (1027)."
+   },
+   {
+    "block_id": "233-5",
+    "bounded_by": {
+     "N": "34th",
+     "S": "33rd",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 2900
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Blocks 5 and 37, Case & Ebert's Add'n; Larimer half lots 1-9 vacant; saloon, restaurant, barber, store at 33rd & Larimer."
+   },
+   {
+    "block_id": "233-40",
+    "bounded_by": {
+     "N": "34th",
+     "S": "33rd",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1435,
+     "y": 2900
+    },
+    "partial": false,
+    "dwellings": 33,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Arapahoe",
+      "what": "The Turner Moving & Storage Co. warehouses",
+      "dwellings_facing": 12
+     }
+    ],
+    "notes": "Row of 7 attached dwellings 1100-1118 34th; Hose Co. No. 2 and Police Division 2nd Station (with repair shop, hose tower) at 33rd & Arapahoe."
+   },
+   {
+    "block_id": "233-53",
+    "bounded_by": {
+     "N": "34th",
+     "S": "33rd",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 2580,
+     "y": 2900
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WAGON HO.; WARE HO. NO. 1; WARE HO. NO. 2; SCALES",
+      "name": "The Turner Moving & Storage Co.",
+      "trade": "warehouse",
+      "features": "iron clad; no heating; lights electric; water barrels & pails; fire extinguishers"
+     },
+     {
+      "label": "CORNICE SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Storage warehouses fill the Arapahoe half south of lot 8, with dwellings directly north and on the Curtis side; cornice shop among Curtis dwellings."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential Witter's and Case & Ebert's additions (Larimer to Curtis, 33rd-35th) with few industries: Turner Moving & Storage warehouses, a cornice shop, plumbing and novelty works; two Baptist churches and a hose company/police station."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 234,
+  "image": "1903_1904_v2_00985_02_1903-0234.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Downing Av.",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Marion",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 564
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 564
+   },
+   {
+    "streets": [
+     "Marion",
+     "35th Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "35th Av."
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Marion",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 3225
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 3225
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "234-17",
+    "bounded_by": {
+     "N": "36th Av.",
+     "S": "35th Av.",
+     "E": "Marion",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 580,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Hyde Park Add'n; mostly vacant lots, stables."
+   },
+   {
+    "block_id": "234-18",
+    "bounded_by": {
+     "N": "36th Av.",
+     "S": "35th Av.",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 27,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Purely residential."
+   },
+   {
+    "block_id": "234-19",
+    "bounded_by": {
+     "N": "36th Av.",
+     "S": "35th Av.",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Large 2-story house with conservatory on lots 2-4; Humboldt half mostly vacant."
+   },
+   {
+    "block_id": "234-1",
+    "bounded_by": {
+     "N": "35th Av.",
+     "S": "34th Av.",
+     "E": "Marion",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 580,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Dense dwellings on Downing Av.; one 2-story store at 3438-3440 Downing; vacated dwelling at 3430; subdivided lots 17-19 on 34th Av."
+   },
+   {
+    "block_id": "234-2",
+    "bounded_by": {
+     "N": "35th Av.",
+     "S": "34th Av.",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Purely residential."
+   },
+   {
+    "block_id": "234-3",
+    "bounded_by": {
+     "N": "35th Av.",
+     "S": "34th Av.",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 29,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FORMERLY PLANING MILL - VACANT",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "iron chimney 20 ft above roof; vacant / not used"
+     }
+    ],
+    "faces": [],
+    "notes": "Vacant former planing mill mid-block at lot 20 off the alley, surrounded by dwellings; vacated dwelling at 3411 Humboldt; row of 3 attached on 34th Av."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Hyde Park Add'n (Downing to Humboldt, 34th-36th Avs.): an almost wholly residential comparison area; the only industrial structure is a vacant former planing mill inside block 3."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 235,
+  "image": "1903_1904_v2_00985_02_1903-0235.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Downing Av.",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 516
+   },
+   {
+    "streets": [
+     "Marion",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 516
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 516
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 516
+   },
+   {
+    "streets": [
+     "Marion",
+     "33rd Av."
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "33rd Av."
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Downing Av.",
+     "32nd Av."
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 3225
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "32nd Av."
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 3225
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "235-16",
+    "bounded_by": {
+     "N": "34th Av.",
+     "S": "33rd Av.",
+     "E": "Marion",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 580,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "GREEN HOUSES; OFFICE; STORAGE & PLANT RM.; HOT BED",
+      "name": "Curtis Park Floral Co.",
+      "trade": "other",
+      "features": "hot-water heating plant; iron chimney 30 ft above roof; glass roofs; lights electric"
+     }
+    ],
+    "faces": [],
+    "notes": "Greenhouses at 34th Av. & Downing; rest of block vacant."
+   },
+   {
+    "block_id": "235-15",
+    "bounded_by": {
+     "N": "34th Av.",
+     "S": "33rd Av.",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Almost entirely vacant."
+   },
+   {
+    "block_id": "235-14",
+    "bounded_by": {
+     "N": "34th Av.",
+     "S": "33rd Av.",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Den Norsk Danske Evang. Lutherske Immanuels Kirke with dwelling on 2nd floor; row of 10 attached dwellings 201-219 33rd Av."
+   },
+   {
+    "block_id": "235-17",
+    "bounded_by": {
+     "N": "33rd Av.",
+     "S": "32nd Av.",
+     "E": "Marion",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 580,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 9,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "2-story; oven"
+     },
+     {
+      "label": "COAL, HAY & GRAIN; STORE RM.; OFFICE",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "iron clad"
+     }
+    ],
+    "faces": [],
+    "notes": "Downing Av. frontage is a commercial strip (bakery, cobbler, drugs, 2 saloons, barber, stores); row of 6 attached dwellings on 33rd Av."
+   },
+   {
+    "block_id": "235-18",
+    "bounded_by": {
+     "N": "33rd Av.",
+     "S": "32nd Av.",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Maria Mitchell School (heat steam, eng. rm. with boilers, iron chimney 30 ft above roof, coal ho.); row of 5 attached dwellings on 33rd Av."
+   },
+   {
+    "block_id": "235-19",
+    "bounded_by": {
+     "N": "33rd Av.",
+     "S": "32nd Av.",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Only The Lotus Club (heat stoves, lights electric)."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential Curtis Park/Hyde Park edge with much vacant land; only a florist's greenhouse plant, a bakery and a coal/hay/grain dealer; Maria Mitchell School boiler plant."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 236,
+  "image": "1903_1904_v2_00985_02_1903-0236.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Humboldt",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 532
+   },
+   {
+    "streets": [
+     "Franklin",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 532
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 2129,
+    "y": 532
+   },
+   {
+    "streets": [
+     "Williams",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 532
+   },
+   {
+    "streets": [
+     "Franklin",
+     "33rd Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "33rd Av."
+    ],
+    "modern": null,
+    "x": 2129,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "32nd Av."
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 3257
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "32nd Av."
+    ],
+    "modern": null,
+    "x": 2129,
+    "y": 3257
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "236-13",
+    "bounded_by": {
+     "N": "34th Av.",
+     "S": "33rd Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 1225
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Row of 10 attached units 301-319 33rd Av. (corner unit a store); row of 4 attached on Franklin; small store/office at 312 and 320 34th Av."
+   },
+   {
+    "block_id": "236-12",
+    "bounded_by": {
+     "N": "34th Av.",
+     "S": "33rd Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 1225
+    },
+    "partial": false,
+    "dwellings": 23,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Uniform 1.5-story frame-attic houses on Franklin; 5 houses on subdivided lots 421-437 33rd Av."
+   },
+   {
+    "block_id": "236-11",
+    "bounded_by": {
+     "N": "34th Av.",
+     "S": "33rd Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 1225
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Uniform row of 13 detached brick dwellings on Gilpin; saloon at 34th Av. & Gilpin; cobbler with dwelling on Williams."
+   },
+   {
+    "block_id": "236-20",
+    "bounded_by": {
+     "N": "33rd Av.",
+     "S": "32nd Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Purely residential."
+   },
+   {
+    "block_id": "236-21",
+    "bounded_by": {
+     "N": "33rd Av.",
+     "S": "32nd Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 9,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Mostly vacant lots."
+   },
+   {
+    "block_id": "236-22",
+    "bounded_by": {
+     "N": "33rd Av.",
+     "S": "32nd Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 27,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Row of 10 attached 2-story dwellings 500-518 33rd Av. behind private alley; two stores at 32nd Av. & Gilpin."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Entirely residential sheet (Humboldt to Williams, 32nd-34th Avs.) with attached rows and a few corner stores; no industrial establishments: a clean comparison area."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 237,
+  "image": "1903_1904_v2_00985_02_1903-0237.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Humboldt",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Franklin",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 564
+   },
+   {
+    "streets": [
+     "Williams",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 3128,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Franklin",
+     "35th Av."
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "35th Av."
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 3257
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 3241
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "237-20",
+    "bounded_by": {
+     "N": "36th Av.",
+     "S": "35th Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 596,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 27,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CARP'R",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "small carpenter shop at rear of lot 16"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Franklin",
+      "what": "Denver Tramway Co's car barn",
+      "dwellings_facing": 0
+     }
+    ],
+    "notes": "Hyde Park Add'n; cobbler at 35th Av. & Humboldt; 2-story store at 3533 Franklin; iron-clad stable."
+   },
+   {
+    "block_id": "237-21",
+    "bounded_by": {
+     "N": "36th Av.",
+     "S": "35th Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CAR BARN; ENG. & DYNAMO; OIL RM.; CONDUCTORS' RM.; SAND BIN; CLUB RM.",
+      "name": "Denver Tramway Co's Car Barn",
+      "trade": "rail shops/roundhouse",
+      "features": "heating boiler with iron chimney 10 ft above roof; engine & dynamo; oil room; heat steam; lights electric; Grinnell automatic sprinklers wet and dry, 435 heads; no watchman, ADT fire alarm"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Gilpin",
+      "what": "Denver Tramway Co's car barn",
+      "dwellings_facing": 9
+     }
+    ],
+    "notes": "Car barn fills the Gilpin half; Franklin half (lots 1-15) vacant."
+   },
+   {
+    "block_id": "237-22",
+    "bounded_by": {
+     "N": "36th Av.",
+     "S": "35th Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 49,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Gilpin",
+      "what": "Denver Tramway Co's car barn",
+      "dwellings_facing": 9
+     }
+    ],
+    "notes": "Very dense: attached rows 500-518 and 520-530 on 36th Av., 521-539 on 35th Av., and 3549-3557 Williams; corner store and lunch room."
+   },
+   {
+    "block_id": "237-4",
+    "bounded_by": {
+     "N": "35th Av.",
+     "S": "34th Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 596,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     }
+    ],
+    "faces": [],
+    "notes": "Two 2-story stores at 35th Av. & Humboldt; brick-nogged attached row 301-313 34th Av.; attached row 320-338 35th Av."
+   },
+   {
+    "block_id": "237-5",
+    "bounded_by": {
+     "N": "35th Av.",
+     "S": "34th Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 31,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Apartments over drugs/barber/stores at 34th Av. & Franklin (401-405) and two 2-story flats 409-419; small boiler for baths in barber shop."
+   },
+   {
+    "block_id": "237-6",
+    "bounded_by": {
+     "N": "35th Av.",
+     "S": "34th Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Purely residential."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential Hyde Park area (Humboldt-Williams, 34th-36th Avs.) whose one large plant is the Denver Tramway car barn (boiler, engine & dynamo, oil room) facing dense attached rows across Gilpin; otherwise a bakery and a carpenter shop."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 238,
+  "image": "1903_1904_v2_00985_02_1903-0238.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Williams",
+     "38th Av."
+    ],
+    "modern": null,
+    "x": 65,
+    "y": 226
+   },
+   {
+    "streets": [
+     "High",
+     "38th Av."
+    ],
+    "modern": null,
+    "x": 1032,
+    "y": 226
+   },
+   {
+    "streets": [
+     "Williams",
+     "37th Av."
+    ],
+    "modern": null,
+    "x": 65,
+    "y": 2296
+   },
+   {
+    "streets": [
+     "High",
+     "37th Av."
+    ],
+    "modern": null,
+    "x": 1032,
+    "y": 2296
+   },
+   {
+    "streets": [
+     "Williams",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 1629,
+    "y": 580
+   },
+   {
+    "streets": [
+     "High",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 2612,
+    "y": 580
+   },
+   {
+    "streets": [
+     "Williams",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 1629,
+    "y": 3225
+   },
+   {
+    "streets": [
+     "High",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 2612,
+    "y": 3225
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "238-14/7",
+    "bounded_by": {
+     "N": "38th Av.",
+     "S": "37th Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 548,
+     "y": 1240
+    },
+    "partial": false,
+    "dwellings": 42,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Left panel of a two-panel sheet; Providence Park Add'n blocks 14 and 7 (one city block). Deering Terrace row of 6 at 3700-3716 Williams; attached rows on High."
+   },
+   {
+    "block_id": "238-15/8",
+    "bounded_by": {
+     "N": "38th Av.",
+     "S": "37th Av.",
+     "E": null,
+     "W": "High"
+    },
+    "centroid": {
+     "x": 1340,
+     "y": 1240
+    },
+    "partial": true,
+    "dwellings": 33,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "OVEN",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven in rear outbuilding of 3728 High; use uncertain"
+     }
+    ],
+    "faces": [],
+    "notes": "Park Add'n; row of 10 attached dwellings 700-718 38th Av.; Millers Terrace row of 6 at 3700-3710 High; saloon at 3746 High. East street not printed."
+   },
+   {
+    "block_id": "238-10",
+    "bounded_by": {
+     "N": "37th Av.",
+     "S": "36th Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 548,
+     "y": 2950
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Hyde Park Add'n; residential."
+   },
+   {
+    "block_id": "238-9",
+    "bounded_by": {
+     "N": "37th Av.",
+     "S": "36th Av.",
+     "E": null,
+     "W": "High"
+    },
+    "centroid": {
+     "x": 1340,
+     "y": 2950
+    },
+    "partial": true,
+    "dwellings": 7,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Carr Hotel (2-story) counted as flats."
+   },
+   {
+    "block_id": "238-23",
+    "bounded_by": {
+     "N": "36th Av.",
+     "S": "35th Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 1951,
+     "y": 1210
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Right panel; row of 10 attached 2-story dwellings 620-638 36th Av.; otherwise largely vacant."
+   },
+   {
+    "block_id": "238-24",
+    "bounded_by": {
+     "N": "36th Av.",
+     "S": "35th Av.",
+     "E": null,
+     "W": "High"
+    },
+    "centroid": {
+     "x": 2935,
+     "y": 1210
+    },
+    "partial": true,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Hyde Park Add'n."
+   },
+   {
+    "block_id": "238-7",
+    "bounded_by": {
+     "N": "35th Av.",
+     "S": "34th Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 1951,
+     "y": 2550
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Ford's Add'n; entirely vacant."
+   },
+   {
+    "block_id": "238-8",
+    "bounded_by": {
+     "N": "35th Av.",
+     "S": "34th Av.",
+     "E": null,
+     "W": "High"
+    },
+    "centroid": {
+     "x": 2935,
+     "y": 2550
+    },
+    "partial": true,
+    "dwellings": 24,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Row of 7 attached dwellings 700-718 35th Av.; attached double rows 3416-3438 High."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Two-panel sheet of Hyde Park / Providence Park / Park / Ford's additions (Williams-High, 34th-38th Avs.): residential with attached terraces and large vacant tracts; no industrial plants except an oven outbuilding of uncertain use."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 239,
+  "image": "1903_1904_v2_00985_02_1903-0239.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Downing Av.",
+     "38th St."
+    ],
+    "modern": null,
+    "x": 1420,
+    "y": 120
+   },
+   {
+    "streets": [
+     "Larimer",
+     "Ames"
+    ],
+    "modern": null,
+    "x": 2300,
+    "y": 580
+   },
+   {
+    "streets": [
+     "Downing Av.",
+     "37th Av."
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 2290
+   },
+   {
+    "streets": [
+     "Marion",
+     "37th Av."
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 2290
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "37th Av."
+    ],
+    "modern": null,
+    "x": 2160,
+    "y": 2290
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "37th Av."
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 2290
+   },
+   {
+    "streets": [
+     "Downing Av.",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 3590
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "36th Av."
+    ],
+    "modern": null,
+    "x": 2160,
+    "y": 3590
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "239-26",
+    "bounded_by": {
+     "N": "38th St.",
+     "S": null,
+     "E": null,
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 1100,
+     "y": 620
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven in basement; 2-story"
+     },
+     {
+      "label": "PAINTS & OILS",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": "paints & oils store shown as special hazard"
+     }
+    ],
+    "faces": [],
+    "notes": "Riverside Add'n triangular block on the diagonal Downing Av. grid; stores, barber, cobbler at 38th St. corner; Riverside Add'n lots 53-64 (block 31) behind are vacant."
+   },
+   {
+    "block_id": "239-31",
+    "bounded_by": {
+     "N": "38th St.",
+     "S": null,
+     "E": "Larimer",
+     "W": null
+    },
+    "centroid": {
+     "x": 1200,
+     "y": 1000
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Riverside Add'n, all vacant lots."
+   },
+   {
+    "block_id": "239-32",
+    "bounded_by": {
+     "N": "Ames",
+     "S": null,
+     "E": null,
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2550,
+     "y": 900
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Pringle's Sub.; row of 6 attached dwellings 1200-1210 Ames."
+   },
+   {
+    "block_id": "239-1",
+    "bounded_by": {
+     "N": null,
+     "S": "37th Av.",
+     "E": "Marion",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 630,
+     "y": 1700
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Hyde Park; north edge is the Riverside Add'n line; row of 5 attached (A-D) on Marion."
+   },
+   {
+    "block_id": "239-2",
+    "bounded_by": {
+     "N": null,
+     "S": "37th Av.",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1650,
+     "y": 1700
+    },
+    "partial": false,
+    "dwellings": 38,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "2-story tenements at 3700 Marion; row of 8 attached dwellings 121-139 37th Av."
+   },
+   {
+    "block_id": "239-3",
+    "bounded_by": {
+     "N": null,
+     "S": "37th Av.",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2650,
+     "y": 1700
+    },
+    "partial": false,
+    "dwellings": 33,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     }
+    ],
+    "faces": [],
+    "notes": "Annunciation Church/School/Hall (3 stories, stoves) on Humboldt; bakery at 3737 Humboldt among attached rows."
+   },
+   {
+    "block_id": "239-16",
+    "bounded_by": {
+     "N": "37th Av.",
+     "S": "36th Av.",
+     "E": "Marion",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 630,
+     "y": 2950
+    },
+    "partial": false,
+    "dwellings": 24,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PLUMBING",
+      "name": null,
+      "trade": "metal working",
+      "features": "2-story; well & elevated water tank"
+     },
+     {
+      "label": "HAND LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Plumbing shop and hand laundry on Downing Av. adjoin attached dwellings 3636-3640."
+   },
+   {
+    "block_id": "239-15",
+    "bounded_by": {
+     "N": "37th Av.",
+     "S": "36th Av.",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1650,
+     "y": 2950
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Residential."
+   },
+   {
+    "block_id": "239-14",
+    "bounded_by": {
+     "N": "37th Av.",
+     "S": "36th Av.",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2650,
+     "y": 2950
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Simpson M.E. Church (stoves)."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Hyde Park / Riverside additions where the diagonal downtown grid (Downing Av., Larimer, 38th St.) meets the avenue grid; residential with small trades: two bakeries, a paints & oils store, a plumbing shop and a hand laundry."
+ }
+]

@@ -1,0 +1,740 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 160,
+  "image": "1903_1904_v2_00985_02_1903-0160.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "17th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 1045,
+    "y": 432
+   },
+   {
+    "streets": [
+     "17th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 2078,
+    "y": 432
+   },
+   {
+    "streets": [
+     "16th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 1045,
+    "y": 1848
+   },
+   {
+    "streets": [
+     "16th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 2076,
+    "y": 1848
+   },
+   {
+    "streets": [
+     "15th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 1045,
+    "y": 3289
+   },
+   {
+    "streets": [
+     "15th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 2074,
+    "y": 3289
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "160-76",
+    "bounded_by": {
+     "N": "17th",
+     "S": "16th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1560,
+     "y": 1140
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 20,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "ICE FACTORY CAP. 12 TONS; SAUSAGE FACTORY AND LARD RENDERING (bsmt)",
+      "name": "Western Packing Co. (1633-1639 Arapahoe)",
+      "trade": "meat packing/stockyard",
+      "features": "dynamo, engine 80 h.p."
+     },
+     {
+      "label": "JEWELRY FACTORY 2ND; ENGRAVING 3RD; PHOTO MOUNT FACTORY 4TH; PRINTING AND ENGRAVING 5TH",
+      "name": "1633-1639 Arapahoe (The Market Co. 1st)",
+      "trade": "printing",
+      "features": "elec. motors 3rd-5th"
+     },
+     {
+      "label": "PRINTING 1ST (REAR); COMPOSING & BINDING 2ND; STOCK ROOM BST",
+      "name": "The Merchants Publishing Co. (1609-1615 Arapahoe)",
+      "trade": "printing",
+      "features": "elec. motors 1st-3rd"
+     },
+     {
+      "label": "UPHOLSTERING DEPT 3RD",
+      "name": "Daniels and Fisher (1609-1615 Arapahoe)",
+      "trade": "other",
+      "features": "elec. motor"
+     },
+     {
+      "label": "PAINTS & OILS BST; WARE RMS 2ND-3RD",
+      "name": "Daniels & Fisher ware rooms",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "JEWELRY FAC. 1ST",
+      "name": "New Markham Hotel bldg, 17th & Lawrence",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "TIN SHOP 4TH",
+      "name": "1645 Arapahoe",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "DEPARTMENT STORE ENGINE ROOM / BOILER RM BST",
+      "name": "Daniels and Fisher Department Store",
+      "trade": "power/electric",
+      "features": "4 engines, 4 dynamos, Laidlaw-Dunn-Gordon pump, boiler room bsmt; dressmaking 5th elec. motor"
+     }
+    ],
+    "faces": [],
+    "notes": "CBD block; New Markham Hotel and The Midland lodgings above 1st, lodgings 2nd-3rd; Daniels & Fisher dept store fills Lawrence half; paints/oils & wall paper store; several basement heating boilers. No dwellings."
+   },
+   {
+    "block_id": "160-75",
+    "bounded_by": {
+     "N": "16th",
+     "S": "15th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1560,
+     "y": 2570
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 8,
+    "shanties": 0,
+    "stores": 22,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "PRINTING OFFICE; PRESS RM B.; STEREOTYPING 2ND; COMPOSING 4TH",
+      "name": "The Republican (No. 1120 16th St.)",
+      "trade": "printing",
+      "features": "2 engines & dynamo bsmt"
+     },
+     {
+      "label": "BAKERY",
+      "name": "1522 Lawrence",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "iron oven 1st"
+     },
+     {
+      "label": "MACH. SHOP",
+      "name": "rear of 1531 Arapahoe",
+      "trade": "machine shop",
+      "features": "gasoline engine 8 h.p."
+     },
+     {
+      "label": "DYNAMO & ENG. IN B.; BLRS. BST",
+      "name": "1545 Arapahoe bldg",
+      "trade": "power/electric",
+      "features": "boilers bsmt"
+     },
+     {
+      "label": "TWO DYNAMOS & ELEV. PUMP ENGINES IN BST",
+      "name": "Continental Bldg",
+      "trade": "power/electric",
+      "features": "150 h.p. and 10 h.p."
+     }
+    ],
+    "faces": [],
+    "notes": "Continental and Union blocks: banks, drugs, saloons, billiard room, policy shop, cobbler, paints/oils & wall paper store; lodgings (incl. The Normandie 2nd & 3rd) about 8 buildings. No dwellings."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Downtown 16th St. between Lawrence and Arapahoe, wholly commercial with lodgings above stores and no dwellings. Industry is light but includes a packing-house ice/sausage/lard-rendering plant in a basement, printing plants and basement boiler/dynamo plants."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 161,
+  "image": "1903_1904_v2_00985_02_1903-0161.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "17th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1121,
+    "y": 447
+   },
+   {
+    "streets": [
+     "17th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2149,
+    "y": 447
+   },
+   {
+    "streets": [
+     "16th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1128,
+    "y": 1878
+   },
+   {
+    "streets": [
+     "16th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2153,
+    "y": 1878
+   },
+   {
+    "streets": [
+     "15th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1136,
+    "y": 3304
+   },
+   {
+    "streets": [
+     "15th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2157,
+    "y": 3304
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "161-97",
+    "bounded_by": {
+     "N": "17th",
+     "S": "16th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 1640,
+     "y": 1160
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 22,
+    "other_nonres": 2,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "DENVER POST: PAPER WARE ROOM, PRESS 1ST; PRINTING",
+      "name": "Denver Post",
+      "trade": "printing",
+      "features": "elec. motors; heating boiler asbestos covered"
+     },
+     {
+      "label": "ELECTRO-TYPE FOUNDRY 1ST",
+      "name": "Denver Post bldg",
+      "trade": "printing",
+      "features": ""
+     },
+     {
+      "label": "LIGHT MFG & OFFICES 2ND",
+      "name": "Denver Post bldg",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "SHIRT FACT'Y 2ND",
+      "name": "Riche Block",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "WHOL. HARDW.",
+      "name": "Bank Block (1648-1650 Arapahoe)",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Bank Block, Quincy Bldg, Crystal Theatre and bowling alleys (other_nonres), express companies, saloons, banks, Mills Edisonia, Jacobson and Riche blocks; several basement heating plants. No dwellings or lodgings."
+   },
+   {
+    "block_id": "161-98",
+    "bounded_by": {
+     "N": "16th",
+     "S": "15th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 1640,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 18,
+    "other_nonres": 2,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "PRINTG & BOOKBIND'G 2ND; ELECTRO TYPE FDY 2ND; PRESS ROOM B.",
+      "name": "1508-1514 Arapahoe",
+      "trade": "printing",
+      "features": "elec. motors"
+     },
+     {
+      "label": "REPAIR SHOP 4TH",
+      "name": "1528 Arapahoe",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "DYNAMO & ENGINE RM. BST",
+      "name": "Tabor Grand Opera House",
+      "trade": "power/electric",
+      "features": "boilers bsmt"
+     }
+    ],
+    "faces": [],
+    "notes": "U.S. Post Office, Custom House & court rooms (with weather observatory tower) and Tabor Grand Opera House (other_nonres); stores, saloons, barber, offices along Curtis and 15th. No dwellings."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Downtown 16th St. between Arapahoe and Curtis; commercial/civic only, no dwellings. Industry limited to Denver Post and job printing with electrotype foundries, a shirt factory and basement power plants."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 162,
+  "image": "1903_1904_v2_00985_02_1903-0162.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "17th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 1098,
+    "y": 416
+   },
+   {
+    "streets": [
+     "17th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 2111,
+    "y": 416
+   },
+   {
+    "streets": [
+     "16th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 1098,
+    "y": 1840
+   },
+   {
+    "streets": [
+     "16th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 2108,
+    "y": 1840
+   },
+   {
+    "streets": [
+     "15th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 1092,
+    "y": 3289
+   },
+   {
+    "streets": [
+     "15th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 3289
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "162-108",
+    "bounded_by": {
+     "N": "17th",
+     "S": "16th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 1600,
+     "y": 1130
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 26,
+    "other_nonres": 2,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "PRINTING & SHIRT FAC. 2ND",
+      "name": "1635 Champa",
+      "trade": "printing",
+      "features": "el. motor"
+     },
+     {
+      "label": "SHIRTWAIST FAC. 2ND",
+      "name": "1606-1610 Curtis",
+      "trade": "other",
+      "features": "el. motor"
+     },
+     {
+      "label": "STATIONERY WARE HO.",
+      "name": "rear 1653 Champa",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "BICYCLE SHOP",
+      "name": "1635-1637 Champa",
+      "trade": "machine shop",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Ernest & Cranmer Blk (offices, saloon & bowling alley bsmt, heating boilers), Novelty Theatre and billiards (other_nonres), restaurants, saloons, photo studios, storage, wall paper store, bank. The Normandie Bldg (1637-1649 Champa) is not labelled lodgings, so flats=0 (uncertain)."
+   },
+   {
+    "block_id": "162-107",
+    "bounded_by": {
+     "N": "16th",
+     "S": "15th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 1600,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 20,
+    "other_nonres": 2,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "ICE CREAM FAC. 1ST; CANDY FAC.",
+      "name": "1512 Curtis rear",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "CANDY KITCHEN",
+      "name": "1549 Champa rear",
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     },
+     {
+      "label": "FURNITURE; REPAIRING BST",
+      "name": "Lunt Co.",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "PICTURE FRAMING (two); HAND PAINTG",
+      "name": "1527 & 1549 Champa",
+      "trade": "other",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Joslin Dry Goods Co. dept store (heating plant), St. James Hotel (counted as 1 flats/lodging), I.O.O.F. Hall 2nd-3rd and undertaker; restaurants, saloons, cobbler, barbers. No dwellings."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Downtown 16th St. between Curtis and Champa; fully commercial, no dwellings. Only light trades: candy/ice-cream, printing, shirt/shirtwaist factories, furniture repairing, bicycle shop."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 163,
+  "image": "1903_1904_v2_00985_02_1903-0163.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "17th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 1200,
+    "y": 454
+   },
+   {
+    "streets": [
+     "17th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 2238,
+    "y": 454
+   },
+   {
+    "streets": [
+     "16th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 1200,
+    "y": 1885
+   },
+   {
+    "streets": [
+     "16th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 2230,
+    "y": 1885
+   },
+   {
+    "streets": [
+     "15th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 1196,
+    "y": 3326
+   },
+   {
+    "streets": [
+     "15th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 2225,
+    "y": 3326
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "163-129",
+    "bounded_by": {
+     "N": "17th",
+     "S": "16th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1720,
+     "y": 1170
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 4,
+    "shanties": 0,
+    "stores": 24,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "JEWELRY FAC. 2ND",
+      "name": "827-829 16th St.",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "CARP'R",
+      "name": "rear 1636 Champa",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "REPAIR SHOP",
+      "name": "rear 1625 Stout",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "HAT CLEANING",
+      "name": "rear 1624 Champa",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "PICTURE FRAME SHOP; TAXIDERMIST",
+      "name": "1622 & 1632 Champa",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "WARE ROOMS; PHOTO 4TH",
+      "name": "1611 Stout",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "ENGS. & DYNAMOS (bsmt)",
+      "name": "Boston Bldg",
+      "trade": "power/electric",
+      "features": "engines, dynamos, heating boilers"
+     }
+    ],
+    "faces": [],
+    "notes": "Boston Bldg and Toltec Bldg offices, Barth Block; lodgings 2nd-4th (about 4 buildings); undertaker (other_nonres), pool room, cobbler, tailors, curios; open rear lots along alley."
+   },
+   {
+    "block_id": "163-130",
+    "bounded_by": {
+     "N": "16th",
+     "S": "15th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1720,
+     "y": 2600
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 24,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CABINET SHOP",
+      "name": "A.R. Thompson",
+      "trade": "lumber/planing",
+      "features": "power: elect. motor"
+     },
+     {
+      "label": "BL'KSM. & MACHINE SHOP",
+      "name": "1521-1523 Stout rear",
+      "trade": "machine shop",
+      "features": "elec. motor 1st; heat'g blr in bsmt; iron chimney"
+     },
+     {
+      "label": "WIRE & IRON WORKS 1ST; SHIRT FACTORY 2ND",
+      "name": "1521-1523 Stout",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "SHOE FACTORY",
+      "name": "1509-1511 Stout rear",
+      "trade": "other",
+      "features": "elec. motor"
+     },
+     {
+      "label": "CANDY FAC.",
+      "name": "1515 Stout",
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     },
+     {
+      "label": "TIN SHOP (two); PAINT SHOP",
+      "name": "rear 1539 Stout, 1516 Champa, 1531 Stout",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "MACHINE REPAIRING",
+      "name": "1529 Stout",
+      "trade": "machine shop",
+      "features": ""
+     },
+     {
+      "label": "CARP'R",
+      "name": "rear 1517 Stout",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "VIOLIN FAC. 2ND",
+      "name": "The Fair (Symes Block)",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "HARNESS SHOP",
+      "name": "1514 Champa",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "(unlabelled 2-story bldg with large X: stable per legend, uncertain)",
+      "name": "rear 1532-1538 Champa",
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Symes Block / The Fair and A.T. Lewis & Sons dept stores, Commercial College 3rd (other_nonres), saloons, tailors, drugs, restaurants; alley side lined with small workshops. No dwellings or lodgings."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Downtown 16th St. between Champa and Stout; commercial, no dwellings. Block 130's alley holds the densest cluster of workshops on these sheets (blacksmith/machine, wire & iron works, tin, paint, cabinet, shoe and candy shops)."
+ }
+]

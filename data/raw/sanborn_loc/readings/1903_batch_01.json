@@ -1,0 +1,2676 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 1,
+  "image": "1903_1904_v1_00985_01_1903-0001.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th",
+     "Cherry Creek bridge (west end of 15th)"
+    ],
+    "modern": null,
+    "x": 306,
+    "y": 210
+   },
+   {
+    "streets": [
+     "14th St. Viaduct",
+     "South Platte River"
+    ],
+    "modern": null,
+    "x": 435,
+    "y": 1500
+   },
+   {
+    "streets": [
+     "15th",
+     "C.& S. R.R. siding (east sheet edge)"
+    ],
+    "modern": null,
+    "x": 3080,
+    "y": 230
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "1-1",
+    "bounded_by": {
+     "N": "15th",
+     "S": "Cherry Creek",
+     "E": null,
+     "W": "Cherry Creek"
+    },
+    "centroid": {
+     "x": 1774,
+     "y": 645
+    },
+    "partial": true,
+    "dwellings": 5,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FOUNDRY; MACHINE SHOP; PATTERN SHOP",
+      "name": "The Midland Foundry & Machine Works Co.",
+      "trade": "foundry",
+      "features": "cupola; engine 40 h.p.(?); brick chimney; heat steam; fuel coal & coke"
+     },
+     {
+      "label": "LUMBER SHEDS; LUMBER PILES; SASH, DOORS & HARDWARE WARE HO.",
+      "name": "Chicago Lumber & Timber Co.",
+      "trade": "lumber/planing",
+      "features": "open lumber piles 8-12 ft"
+     },
+     {
+      "label": "LIME, PAINTS & OILS, HARDWARE WARE HO.",
+      "name": "Chicago Lumber & Timber Co.",
+      "trade": "oil/paint/tar",
+      "features": "warehouse on platform by C.&S. siding"
+     },
+     {
+      "label": "WARE HO. & PLANING MILL (not in operation)",
+      "name": "Chicago Lumber & Timber Co.",
+      "trade": "lumber/planing",
+      "features": "engine 80 h.p.; boilers; blower on roof; coal bin; water tank 60,000 gals; brick/iron clad"
+     },
+     {
+      "label": "COAL",
+      "name": "Chicago Lumber & Timber Co.",
+      "trade": "coal/wood yard",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Dwellings (2134, 2132, 2040, 2032, 2030 15th) share the 15th St frontage with the Midland Foundry and the lumber yard; addresses on the sheet run 2030-2198."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "PUMP SHOP; LUMBER SHED; CARP'R & STORAGE; timber piles",
+    "name": "",
+    "trade": "lumber/planing",
+    "features": "scattered piles of timber",
+    "near": "Colorado & Southern Railroad Yard south of 14th St. Viaduct"
+   },
+   {
+    "label": "RAILROAD YARD",
+    "name": "Colorado & Southern Railroad Yard",
+    "trade": "rail shops/roundhouse",
+    "features": "many tracks",
+    "near": "south of 14th St. Viaduct, east of Platte River"
+   }
+  ],
+  "sheet_notes": "Riverfront industrial sheet between the South Platte and Cherry Creek: Midland Foundry, Chicago Lumber & Timber yard and planing mill on 15th, C&S rail yard south of the viaduct. Only 15th and the 14th St viaduct appear, so the street crossings are approximate."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 2,
+  "image": "1903_1904_v1_00985_01_1903-0002.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th",
+     "Chestnut"
+    ],
+    "modern": null,
+    "x": 774,
+    "y": 145
+   },
+   {
+    "streets": [
+     "15th",
+     "Delgany"
+    ],
+    "modern": null,
+    "x": 1790,
+    "y": 145
+   },
+   {
+    "streets": [
+     "15th",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 2774,
+    "y": 145
+   },
+   {
+    "streets": [
+     "14th St. Viaduct",
+     "Chestnut"
+    ],
+    "modern": null,
+    "x": 774,
+    "y": 1935
+   },
+   {
+    "streets": [
+     "14th St. Viaduct",
+     "Delgany"
+    ],
+    "modern": null,
+    "x": 1709,
+    "y": 1935
+   },
+   {
+    "streets": [
+     "13th",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 2160,
+    "y": 2050
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "2-W",
+    "bounded_by": {
+     "N": "15th",
+     "S": "Cherry Creek",
+     "E": "Chestnut",
+     "W": null
+    },
+    "centroid": {
+     "x": 355,
+     "y": 806
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "ELEC. MARBLE SHOP; STONE YARD",
+      "name": "",
+      "trade": "brick/stone/pottery",
+      "features": "electric motor; iron clad"
+     }
+    ],
+    "faces": [],
+    "notes": "West of Chestnut (Congressional Grant); 2\u00bd-story saloon at 2000 15th; unlabelled building at 2026."
+   },
+   {
+    "block_id": "2-6",
+    "bounded_by": {
+     "N": "15th",
+     "S": "Cherry Creek",
+     "E": "Delgany",
+     "W": "Chestnut"
+    },
+    "centroid": {
+     "x": 1290,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL SHEDS; LIME & COKE SHED; WOOD YARD",
+      "name": "The Citizens Coal & Coke Co.",
+      "trade": "coal/wood yard",
+      "features": "iron clad sheds; scales; well & windmill; water tank"
+     },
+     {
+      "label": "FEED MILL; HAY WARE HO.",
+      "name": "G. E. Ady & Co. Grain & Produce",
+      "trade": "flour mill/elevator",
+      "features": "power electric motor; heat stove; one oat clipper, one separator, one feed grinder"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "2-11",
+    "bounded_by": {
+     "N": "15th",
+     "S": "Cherry Creek",
+     "E": "Wewatta",
+     "W": "Delgany"
+    },
+    "centroid": {
+     "x": 2128,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "SOAP FACTORY: boiling rooms, kettles, press room",
+      "name": "The Geyserite Soap Mfg Co.",
+      "trade": "chemical",
+      "features": "engine 18 h.p.; boiler; many kettles; soda tank; 7000 gal tank on roof; no watchman, no protection"
+     },
+     {
+      "label": "WOOD WORKING, BLKSM & PAINTING",
+      "name": "The Geyserite Soap Mfg Co.",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "WARE HO.",
+      "name": "Golden Pressed & Fire Brick Co.",
+      "trade": "brick/stone/pottery",
+      "features": "warehouse"
+     },
+     {
+      "label": "LUMBER SHEDS; LUMBER PILES",
+      "name": "Alex. Matthews Lumber Yard",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "MACHINE SHOP; BLKSM.",
+      "name": "Flint-Lomax Electric & Mfg Co.",
+      "trade": "machine shop",
+      "features": "cupola; rattler; forge; power electric motor; no watchman"
+     },
+     {
+      "label": "HAY & FEED WARE HO.",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "WARE HO. (x2); iron clad sheds",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "WARE HO.",
+      "name": "Fairbanks, Morse & Co.",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "One small dwelling (lot 26) in the middle of the soap works / lumber / machine-shop block."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "STABLE (circular); HORSE SHED; CORRAL",
+    "name": "The Citizens Coal Co.",
+    "trade": "coal/wood yard",
+    "features": "",
+    "near": "C&S yard south of 14th St. Viaduct"
+   },
+   {
+    "label": "BLKSM. & HARNESS SHOP; MESS HO.",
+    "name": "",
+    "trade": "livery/blacksmith",
+    "features": "",
+    "near": "under 14th St. Viaduct by Cherry Creek"
+   },
+   {
+    "label": "COAL YARD under viaduct",
+    "name": "",
+    "trade": "coal/wood yard",
+    "features": "",
+    "near": "14th St. Viaduct by Cherry Creek"
+   },
+   {
+    "label": "COAL SHED",
+    "name": "The Western Fuel & Feed Co.",
+    "trade": "coal/wood yard",
+    "features": "",
+    "near": "rail line west of Wewatta, south of viaduct"
+   },
+   {
+    "label": "STONE CRUSHERS",
+    "name": "Colorado Paving Co.",
+    "trade": "brick/stone/pottery",
+    "features": "engine 50 h.p.; 2 stone crushers; brick chimney",
+    "near": "west of Wewatta near 12th"
+   }
+  ],
+  "sheet_notes": "Creekside industrial and railroad district: soap works with kettles, coal yards, a feed mill, a machine shop with cupola, and stone crushers. There are almost no dwellings. Wewatta's alignment changes south of the viaduct."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 3,
+  "image": "1903_1904_v1_00985_01_1903-0003.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 597,
+    "y": 484
+   },
+   {
+    "streets": [
+     "15th",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 1661,
+    "y": 484
+   },
+   {
+    "streets": [
+     "15th",
+     "Wazee"
+    ],
+    "modern": null,
+    "x": 2645,
+    "y": 484
+   },
+   {
+    "streets": [
+     "13th",
+     "Wazee"
+    ],
+    "modern": null,
+    "x": 2725,
+    "y": 2880
+   },
+   {
+    "streets": [
+     "14th St. Viaduct",
+     "Wazee"
+    ],
+    "modern": null,
+    "x": 2690,
+    "y": 2160
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "3-12",
+    "bounded_by": {
+     "N": "15th",
+     "S": "Cherry Creek",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 1064,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FOUNDRY; MACHINE SHOP; PATTERN SHOP; BLKSM; BOILER SHOP; FLASK YARD",
+      "name": "McFarlane & Co. Foundry",
+      "trade": "foundry",
+      "features": "2 cupolas; rattler; core oven; engine 40 h.p. & 6 h.p.; boiler shop iron clad brick lined; steam punch; man sleeps on premises"
+     },
+     {
+      "label": "WOOD WORKING; BLKSM.; TRACTION ENG. WARE HO.",
+      "name": "",
+      "trade": "machine shop",
+      "features": "core oven(?); water tank"
+     },
+     {
+      "label": "DRY PAINT WARE HO.",
+      "name": "",
+      "trade": "oil/paint/tar",
+      "features": ""
+     },
+     {
+      "label": "BONDED WARE HO. Nos. 2-5",
+      "name": "The Denver Transit & Ware Ho. Co.",
+      "trade": "warehouse",
+      "features": "gasoline engines 20 h.p. and 10 h.p. in basement; heat stoves; lights gas"
+     }
+    ],
+    "faces": [],
+    "notes": "Feed & sale stable included in stores count."
+   },
+   {
+    "block_id": "3-17",
+    "bounded_by": {
+     "N": "15th",
+     "S": "Cherry Creek",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 2128,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WARE HO.",
+      "name": "McCormick Machine Co.",
+      "trade": "warehouse",
+      "features": "elevator by electric motor"
+     },
+     {
+      "label": "IMPLEMENT REPAIRING, BLKSM., WOOD WORK, PAINTING",
+      "name": "Plattner Implement Co.",
+      "trade": "machine shop",
+      "features": "electric motor; 15 bbl tank on roof"
+     },
+     {
+      "label": "PUMP SHOP; BLKSM.; WOOD WORK; PAINTING",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "HARDWARE WARE HO. (x2)",
+      "name": "Geo. Tritch Hardware Co.",
+      "trade": "warehouse",
+      "features": "electric motor elevator"
+     },
+     {
+      "label": "WAGON, IMPLEMENTS; HARDWARE WARE HO.",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Lodgings over saloons at 1600-1610 15th St, next to the pump and blacksmith shops."
+   },
+   {
+    "block_id": "3-240",
+    "bounded_by": {
+     "N": "14th St. Viaduct",
+     "S": "13th",
+     "E": "Wazee",
+     "W": null
+    },
+    "centroid": {
+     "x": 2128,
+     "y": 2483
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FURNITURE, CARPET & STOVE WARE HO.",
+      "name": "Davis & Shaw",
+      "trade": "warehouse",
+      "features": "under the viaduct"
+     },
+     {
+      "label": "STONE SAWING; STONE TOOL HO.; TRAVELING CRANE",
+      "name": "Greenlee & Sons Denver Steam Cut Stone Wks",
+      "trade": "brick/stone/pottery",
+      "features": "engine; boiler; no heating; no protection"
+     },
+     {
+      "label": "STOCK YARD",
+      "name": "",
+      "trade": "meat packing/stockyard",
+      "features": "small yard by the rail platform"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "RAILROAD TRACKS (A.T.&S.F., D.&R.G., D.R.G.&U.P.)",
+    "name": "",
+    "trade": "rail shops/roundhouse",
+    "features": "",
+    "near": "along Wewatta and Wynkoop, south of Cherry Creek"
+   }
+  ],
+  "sheet_notes": "Wholesale and foundry district between Wewatta and Wazee. McFarlane & Co. Foundry (cupolas, boiler shop) and a cut-stone works under the 14th St viaduct. There are no dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 4,
+  "image": "1903_1904_v1_00985_01_1903-0004.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th",
+     "Wazee"
+    ],
+    "modern": null,
+    "x": 629,
+    "y": 484
+   },
+   {
+    "streets": [
+     "15th",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 1629,
+    "y": 484
+   },
+   {
+    "streets": [
+     "15th",
+     "Market"
+    ],
+    "modern": null,
+    "x": 2628,
+    "y": 484
+   },
+   {
+    "streets": [
+     "14th",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 1629,
+    "y": 1806
+   },
+   {
+    "streets": [
+     "14th",
+     "Market"
+    ],
+    "modern": null,
+    "x": 2628,
+    "y": 1806
+   },
+   {
+    "streets": [
+     "13th",
+     "Wazee"
+    ],
+    "modern": null,
+    "x": 693,
+    "y": 2838
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "4-18",
+    "bounded_by": {
+     "N": "15th",
+     "S": "Cherry Creek",
+     "E": "Blake",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 1097,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "CARRIAGE REPOSITORY; PACKING; STORAGE",
+      "name": "",
+      "trade": "warehouse",
+      "features": "water motor elevator"
+     },
+     {
+      "label": "IMPLEMENTS & WAGONS",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "CARRIAGE SHOP",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "WARE HO.",
+      "name": "J. I. Case Threshing Machine Co.",
+      "trade": "warehouse",
+      "features": "iron clad"
+     },
+     {
+      "label": "SALE STABLE; CORRAL",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "TIN SHOP",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "BALE TIE FACT'Y",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "MACHINE SHOP; BLKSM.",
+      "name": "The Card & Weber Machine Co.",
+      "trade": "machine shop",
+      "features": "engine 10 h.p.; iron chimney"
+     },
+     {
+      "label": "CARRIAGE SHOP; PAINTING",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "BRASS WORKS; FOUNDRY",
+      "name": "",
+      "trade": "foundry",
+      "features": "electric motor"
+     },
+     {
+      "label": "PAINT SHOP",
+      "name": "",
+      "trade": "oil/paint/tar",
+      "features": ""
+     },
+     {
+      "label": "COMM'S'N HO.",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Lodgings above the tin shop and bale tie factory; Revere Ho. hotel (dining room) on Blake beside the brass works."
+   },
+   {
+    "block_id": "4-43",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Market",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 2128,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 4,
+    "shanties": 0,
+    "stores": 9,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BRASS FOUNDRY; WOOD WORKING SHOP; PAINTING",
+      "name": "Colorado Office & Bar Fixture Co.",
+      "trade": "foundry",
+      "features": "electric motor"
+     },
+     {
+      "label": "MACHINE SHOP; PRINTING",
+      "name": "",
+      "trade": "machine shop",
+      "features": "engine 10 h.p.; iron chimney"
+     },
+     {
+      "label": "LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": "steam from printing shop"
+     },
+     {
+      "label": "TIN SHOP (x3)",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "CARRIAGE FACT'Y",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "MACHINE SHOP",
+      "name": "",
+      "trade": "machine shop",
+      "features": "gasoline engine 4 h.p."
+     },
+     {
+      "label": "ASSAY OFF.",
+      "name": "",
+      "trade": "smelter",
+      "features": "oven"
+     },
+     {
+      "label": "MACHINE SHOP; AWNING FACT'Y; CIGAR FACT'Y",
+      "name": "",
+      "trade": "other",
+      "features": "electric motors"
+     },
+     {
+      "label": "PIONEER IRON & WIRE WORKS",
+      "name": "Pioneer Iron & Wire Works",
+      "trade": "metal working",
+      "features": "electric motor"
+     },
+     {
+      "label": "BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "MACHINE SHOP; OFFICE & DRAFTING",
+      "name": "The Denver Iron & Wire Works",
+      "trade": "machine shop",
+      "features": "electric motor; heat stoves"
+     }
+    ],
+    "faces": [],
+    "notes": "Dense mixed block: lodgings (1452, Overland Ho., Lodgings 1415-1419) and one office & dwelling (1416) among foundry, machine and tin shops."
+   },
+   {
+    "block_id": "4-241W",
+    "bounded_by": {
+     "N": "Cherry Creek (viaduct approach)",
+     "S": "13th",
+     "E": "Blake",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 1160,
+     "y": 2830
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FOUNDRY; MACHINE SHOP & PATTERN; FLASK YARD",
+      "name": "Western Foundry",
+      "trade": "foundry",
+      "features": "2 cupolas; rattlers; core oven; boiler (not used); power elec.; fuel coke; no lights"
+     },
+     {
+      "label": "VINEGAR WARE HO.",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     },
+     {
+      "label": "FURN.",
+      "name": "",
+      "trade": "other",
+      "features": "small building labelled FURN. (furnace?) in flask yard; uncertain"
+     },
+     {
+      "label": "CARRIAGE TRIMMING; MACHINE SHOP; REPAIR SHOP",
+      "name": "",
+      "trade": "machine shop",
+      "features": ""
+     },
+     {
+      "label": "BLKSM.; BACK HOUSE",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Three tenement rows (lot 5; 1435-1443; 1301-1319, about 9 units) share the block with the Western Foundry's flask yard. There is a mission at 1321. The block number is printed as 241, the same as the block to the east."
+   },
+   {
+    "block_id": "4-241E",
+    "bounded_by": {
+     "N": "Cherry Creek",
+     "S": "13th",
+     "E": "W. Walnut (Market)",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1890,
+     "y": 2880
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.; CARRIAGE SHOP; PAINTING; STORAGE",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "CARP.",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "JUNK SHOP; NOVELTY SHOP",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "About 7 dwellings around 1300-1311 W. Walnut / 1401-1429 13th, next to the junk shop and Chinese laundry."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Lower downtown manufacturing near Cherry Creek: brass works, machine shops, iron and wire works, and the Western Foundry in Auraria-side 241, which stands right beside tenement rows."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 5,
+  "image": "1903_1904_v1_00985_01_1903-0005.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th",
+     "Market"
+    ],
+    "modern": null,
+    "x": 666,
+    "y": 363
+   },
+   {
+    "streets": [
+     "15th",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 1680,
+    "y": 348
+   },
+   {
+    "streets": [
+     "15th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 2679,
+    "y": 363
+   },
+   {
+    "streets": [
+     "14th",
+     "Market"
+    ],
+    "modern": null,
+    "x": 666,
+    "y": 1711
+   },
+   {
+    "streets": [
+     "14th",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 1710,
+    "y": 1726
+   },
+   {
+    "streets": [
+     "14th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 2694,
+    "y": 1726
+   },
+   {
+    "streets": [
+     "13th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 2755,
+    "y": 3145
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "5-45",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Larimer",
+     "W": "Market"
+    },
+    "centroid": {
+     "x": 1151,
+     "y": 1030
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 4,
+    "shanties": 0,
+    "stores": 14,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BOTTLING",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "uncertain reading"
+     },
+     {
+      "label": "PRINTING",
+      "name": "",
+      "trade": "printing",
+      "features": "electric motor"
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "POULTRY HO. (x2)",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     },
+     {
+      "label": "CARRIAGE FACTORY; WOOD WORKING; BLKSM.; PAINTING",
+      "name": "",
+      "trade": "other",
+      "features": "electric motor"
+     },
+     {
+      "label": "MACHINE SHOP",
+      "name": "",
+      "trade": "machine shop",
+      "features": "electric motor; engine 10 h.p.(?)"
+     },
+     {
+      "label": "LIVERY; BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "PAINTING; KNIFE GRINDING",
+      "name": "",
+      "trade": "metal working",
+      "features": "electric motor"
+     },
+     {
+      "label": "FURNITURE REPAIR SHOP; WARE ROOM & REPAIRING",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "HARNESS SHOP",
+      "name": "",
+      "trade": "other",
+      "features": "electric motor"
+     }
+    ],
+    "faces": [],
+    "notes": "Lodgings over saloons; one dwelling at lot 11 (1422\u00bd). Euclid Hall vacant."
+   },
+   {
+    "block_id": "5-70",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2210,
+     "y": 999
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 6,
+    "shanties": 0,
+    "stores": 12,
+    "other_nonres": 3,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "TELEPHONE WARE HO.",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "TENT & AWNING CO.",
+      "name": "Denver Tent & Awning Co.",
+      "trade": "other",
+      "features": "electric motor"
+     },
+     {
+      "label": "DYE WORKS; DYE HO.",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "PRINTING (x2)",
+      "name": "",
+      "trade": "printing",
+      "features": "electric motor"
+     },
+     {
+      "label": "PICTURE FRAME FACTORY",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "HAND LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "FIRE PROOF CONSTR. power plant",
+      "name": "",
+      "trade": "power/electric",
+      "features": "2 dynamos; engine 75 h.p.; boiler"
+     },
+     {
+      "label": "WHOL. GROCERIES",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "POPCORN FACTORY; BAKERY",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "iron oven"
+     },
+     {
+      "label": "TIN SHOP (x2)",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "MACHINE SHOP (x2)",
+      "name": "",
+      "trade": "machine shop",
+      "features": "electric motor"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Lawrence",
+      "what": "The Colorado Telephone Co. (power and cable room in basement)",
+      "dwellings_facing": 0
+     }
+    ],
+    "notes": "Granite Building lodgings and three more lodging houses sit among the dye works, tin shops and a printing plant; Board of Trade Building offices/auditorium at 14th & Lawrence."
+   },
+   {
+    "block_id": "5-44",
+    "bounded_by": {
+     "N": "14th",
+     "S": "Cherry Creek",
+     "E": "Larimer",
+     "W": "Market"
+    },
+    "centroid": {
+     "x": 1287,
+     "y": 1941
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 3,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "City Hall, Central Fire Station, jail."
+   },
+   {
+    "block_id": "5-242",
+    "bounded_by": {
+     "N": "Cherry Creek",
+     "S": "13th",
+     "E": "Larimer bridge",
+     "W": "W. Walnut (Market)"
+    },
+    "centroid": {
+     "x": 909,
+     "y": 2941
+    },
+    "partial": false,
+    "dwellings": 5,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 6,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FOUNDRY: MOULDING ROOM, WARE ROOM",
+      "name": "Central Foundry",
+      "trade": "foundry",
+      "features": "cupola; rattler; fuel coal & coke; night watchman"
+     },
+     {
+      "label": "BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "MINERAL WATER",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     },
+     {
+      "label": "POP CORN FAC.",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     },
+     {
+      "label": "ASSAY OFF.",
+      "name": "",
+      "trade": "smelter",
+      "features": ""
+     },
+     {
+      "label": "FEED & SALE; storage (iron clad)",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Small dwellings (lots 2, 10-11) and The Ellsworth lodgings stand beside the Central Foundry on 13th."
+   },
+   {
+    "block_id": "5-71",
+    "bounded_by": {
+     "N": "14th",
+     "S": "Cherry Creek",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2180,
+     "y": 2365
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 6,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "CHINE. LAUNDRY (x2)",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "PRINTING & LITHOGRAPHING; PRINTING (x2)",
+      "name": "",
+      "trade": "printing",
+      "features": "electric motor"
+     },
+     {
+      "label": "WHIP FAC.; UPHOLST.",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "CANDY FAC.",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "kettle"
+     },
+     {
+      "label": "STOVE SHOP; MACHINE SHOP",
+      "name": "",
+      "trade": "machine shop",
+      "features": "gasoline engine"
+     },
+     {
+      "label": "BRASS WORKS",
+      "name": "The Denver Brass Wks. Co.",
+      "trade": "foundry",
+      "features": "furnaces; iron floor"
+     },
+     {
+      "label": "COAL",
+      "name": "",
+      "trade": "coal/wood yard",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Dwellings on Lawrence (1218, 1208, 1341, 1337, 1311) and a tenement next to the creek. The Denver Brass Works furnaces are at 1303-1309, two lots from the dwelling at 1311."
+   },
+   {
+    "block_id": "5-243",
+    "bounded_by": {
+     "N": "Cherry Creek",
+     "S": "13th",
+     "E": null,
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 1862,
+     "y": 3122
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "SEWING MACHINE WARE HO.",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "JUNK; JUNK YARD",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "HAY & FEED",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Old Larimer/Market core at Cherry Creek: lodging houses mixed with shops. Two foundries (Central Foundry and the Denver Brass Works) stand south of 14th next to small dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 6,
+  "image": "1903_1904_v1_00985_01_1903-0006.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 580,
+    "y": 290
+   },
+   {
+    "streets": [
+     "15th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1612,
+    "y": 290
+   },
+   {
+    "streets": [
+     "15th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2644,
+    "y": 290
+   },
+   {
+    "streets": [
+     "14th",
+     "Lawrence"
+    ],
+    "modern": null,
+    "x": 580,
+    "y": 1693
+   },
+   {
+    "streets": [
+     "14th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1628,
+    "y": 1725
+   },
+   {
+    "streets": [
+     "14th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2628,
+    "y": 1741
+   },
+   {
+    "streets": [
+     "13th",
+     "Arapahoe"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 3144
+   },
+   {
+    "streets": [
+     "13th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 2628,
+    "y": 3128
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "6-74",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1096,
+     "y": 1032
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 8,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COFFEE MILL; JELLY FAC.; CANDY KITCHEN",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "kettles; revolving oven"
+     },
+     {
+      "label": "ENGRAVING & ELECTROTYPING; PRINTING",
+      "name": "",
+      "trade": "printing",
+      "features": "electric motor"
+     },
+     {
+      "label": "PLUMBING",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "COFFEE ROASTING",
+      "name": "W. B. Sanderson & Bros.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "roaster"
+     },
+     {
+      "label": "CAR STABLES; CAR REPAIR SHOP",
+      "name": "The Loop street car station",
+      "trade": "rail shops/roundhouse",
+      "features": ""
+     },
+     {
+      "label": "CARRIAGE FAC.: REPOSITORY, REPAIR SHOP, BLKSM., WOOD WORKING, PAINTING",
+      "name": "Robertson & Doll Carriage Fac.",
+      "trade": "other",
+      "features": "engine 25 h.p.(?)"
+     },
+     {
+      "label": "FURNITURE WARE HO.",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Salvation Army barracks; lodgings over undertaker. Fire of March 1903 at 15th & Lawrence."
+   },
+   {
+    "block_id": "6-99",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 2145,
+     "y": 1032
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 6,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "LIVERY (x2)",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "CARP'R",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "PLUMBING (x2); PIPE SHED",
+      "name": "",
+      "trade": "metal working",
+      "features": "steam heater"
+     },
+     {
+      "label": "PAINTS, OILS & ETC.",
+      "name": "",
+      "trade": "oil/paint/tar",
+      "features": ""
+     },
+     {
+      "label": "PRINTING",
+      "name": "",
+      "trade": "printing",
+      "features": "electric motor"
+     }
+    ],
+    "faces": [],
+    "notes": "Colorado Mining Stock Exchange Bldg (2 boilers, dynamos); University of Denver College of Medicine & Dentistry. Dwellings at the 14th St end, in the same block as the paints & oils store and the plumbing shops."
+   },
+   {
+    "block_id": "6-73",
+    "bounded_by": {
+     "N": "14th",
+     "S": "13th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1113,
+     "y": 2451
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WHOL. DRUGS",
+      "name": "W. A. Hoyer & Co.",
+      "trade": "chemical",
+      "features": "sprinklered; elevator by electric motor"
+     },
+     {
+      "label": "LITHOGRAPHING: PRESS RM., ENGRAVING, BINDERY",
+      "name": "The Denver Lithographing Co.",
+      "trade": "printing",
+      "features": "2 electric motors; heating boiler"
+     },
+     {
+      "label": "PRINTING & COMPOSING; BOOK BINDERY",
+      "name": "",
+      "trade": "printing",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Rows of dwellings on 13th and Arapahoe face the lithographing plant from across the alley. Tom Zinton Ho. and Boarding (1361)."
+   },
+   {
+    "block_id": "6-100",
+    "bounded_by": {
+     "N": "14th",
+     "S": "13th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 2145,
+     "y": 2451
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COUCH FAC.; MATTRESS FAC.; WOOD WORKING",
+      "name": "The Symonds Mfg Co. / The Denver Bedding Co.",
+      "trade": "other",
+      "features": "electric motor; elevator"
+     }
+    ],
+    "faces": [],
+    "notes": "University of Denver College of Music and gymnasium. Symonds Mfg at 13th & Arapahoe; dwellings line Curtis."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Edge of the downtown business district: printing, lithography, coffee and candy plants, carriage works. The blocks toward 13th are still mostly dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 7,
+  "image": "1903_1904_v1_00985_01_1903-0007.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 629,
+    "y": 419
+   },
+   {
+    "streets": [
+     "15th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 419
+   },
+   {
+    "streets": [
+     "15th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 2645,
+    "y": 435
+   },
+   {
+    "streets": [
+     "14th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 661,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "14th",
+     "Champa"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "13th",
+     "Curtis"
+    ],
+    "modern": null,
+    "x": 661,
+    "y": 3257
+   },
+   {
+    "streets": [
+     "13th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 2645,
+    "y": 3273
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "7-106",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 1129,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 4,
+    "shanties": 0,
+    "stores": 10,
+    "other_nonres": 3,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PRINTING (x4)",
+      "name": "",
+      "trade": "printing",
+      "features": "electric motors; engine & dynamo in Charles Bldg"
+     },
+     {
+      "label": "WATCH CASE MFG.",
+      "name": "The Denver Watch Case Mfg Co.",
+      "trade": "metal working",
+      "features": "electric motor"
+     },
+     {
+      "label": "BAKERY",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "CIGAR FAC.",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "BICYCLE SHOP (x3); MACHINE SHOP",
+      "name": "",
+      "trade": "machine shop",
+      "features": "electric motor"
+     },
+     {
+      "label": "PLUMBING",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Charles Building, Interocean Club, Pavilion Club, Telephone Building, The Columbia and The Gray lodgings."
+   },
+   {
+    "block_id": "7-131",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 2145,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 4,
+    "shanties": 0,
+    "stores": 8,
+    "other_nonres": 3,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "LIVERY",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "PRINTING (x2)",
+      "name": "",
+      "trade": "printing",
+      "features": "electric motor"
+     },
+     {
+      "label": "REPAIR SHOP",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "WHOL. MILL'Y",
+      "name": "Fraternal Union Bldg",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "The Piermont lodgings, boarding houses, Charity Organization Society, Physicians Building, Stout Bldg."
+   },
+   {
+    "block_id": "7-105",
+    "bounded_by": {
+     "N": "14th",
+     "S": "13th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 1129,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "IRON BED FAC.; PAINTING",
+      "name": "",
+      "trade": "metal working",
+      "features": "electric motor"
+     },
+     {
+      "label": "LAUNDRY (hospital)",
+      "name": "Denver Emergency Hospital",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Residential: De Forest Place row and Champa terraces. Iron bed factory at 921-933 13th St, beside the dwelling at 1300 Curtis."
+   },
+   {
+    "block_id": "7-132",
+    "bounded_by": {
+     "N": "14th",
+     "S": "13th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 2145,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "All residential (comparison block)."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Business district fading into a residential zone. Light industry (printing, watch cases, iron beds) sits north of 14th. South of 14th the blocks are almost wholly dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 8,
+  "image": "1903_1904_v1_00985_01_1903-0008.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 629,
+    "y": 435
+   },
+   {
+    "streets": [
+     "15th",
+     "California"
+    ],
+    "modern": null,
+    "x": 1612,
+    "y": 435
+   },
+   {
+    "streets": [
+     "15th",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 2628,
+    "y": 435
+   },
+   {
+    "streets": [
+     "14th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 629,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "14th",
+     "California"
+    ],
+    "modern": null,
+    "x": 1612,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "14th",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 2628,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "13th",
+     "Stout"
+    ],
+    "modern": null,
+    "x": 629,
+    "y": 3273
+   },
+   {
+    "streets": [
+     "13th",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 2628,
+    "y": 3273
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "8-138",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 1080,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 5,
+    "shanties": 0,
+    "stores": 8,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven in basement"
+     },
+     {
+      "label": "COFFEE GRINDING",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "electric motor"
+     },
+     {
+      "label": "SAUSAGE FAC.",
+      "name": "",
+      "trade": "meat packing/stockyard",
+      "features": "electric motor"
+     },
+     {
+      "label": "REPAIR SHOP; WARE HO.",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "COBBLER & INSTRUMENT FAC.",
+      "name": "",
+      "trade": "other",
+      "features": "electric motor"
+     },
+     {
+      "label": "BICYCLE REPAIR SHOP; BICYCLE SHOP",
+      "name": "",
+      "trade": "machine shop",
+      "features": ""
+     },
+     {
+      "label": "ICE CREAM FAC.",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Centennial Club gymnasium with boiler. The instrument factory (1428-1430 Stout) is between dwellings at 1432-1438 and 1424."
+   },
+   {
+    "block_id": "8-163",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 2112,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 6,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "ENGINE & DYNAMO PLANT",
+      "name": "Temple Court",
+      "trade": "power/electric",
+      "features": "2 engines 50 h.p. each; 2 dynamos; boilers"
+     },
+     {
+      "label": "UPHOLST'G",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "LAUNDRY",
+      "name": "St. Mary's Academy",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Temple Court, The Dorrance lodgings, bowling & pool room, St. Mary's Academy."
+   },
+   {
+    "block_id": "8-137",
+    "bounded_by": {
+     "N": "14th",
+     "S": "13th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 1080,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "ELECTRIC SHOP 2d",
+      "name": "",
+      "trade": "machine shop",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Mostly dwellings; physicians' offices on 14th."
+   },
+   {
+    "block_id": "8-164",
+    "bounded_by": {
+     "N": "14th",
+     "S": "13th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 2096,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CARP'R (x2)",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "STORAGE SHED",
+      "name": "",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Residential; Archer Place boarding."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Uptown edge, mostly residential. The industry here is small: a sausage factory, coffee grinding, an ice cream factory and an instrument factory set among rows of dwellings. Temple Court has its own engine and dynamo plant."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 9,
+  "image": "1903_1904_v1_00985_01_1903-0009.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 629,
+    "y": 419
+   },
+   {
+    "streets": [
+     "15th",
+     "Glenarm"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 419
+   },
+   {
+    "streets": [
+     "15th",
+     "Tremont"
+    ],
+    "modern": null,
+    "x": 2661,
+    "y": 419
+   },
+   {
+    "streets": [
+     "14th",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 629,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "14th",
+     "Glenarm"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "14th",
+     "Tremont"
+    ],
+    "modern": null,
+    "x": 2661,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "13th",
+     "Welton"
+    ],
+    "modern": null,
+    "x": 645,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "13th",
+     "Tremont"
+    ],
+    "modern": null,
+    "x": 2661,
+    "y": 3290
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "9-172",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Glenarm",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 1113,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 8,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "TIN SHOP",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "CARP'R",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "PLUMBING",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "El Soltero and Ghost Bldg lodgings; Woman's Club theatre."
+   },
+   {
+    "block_id": "9-197",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Tremont",
+     "W": "Glenarm"
+    },
+    "centroid": {
+     "x": 2145,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 6,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WALL PAPER, PAINTS & OILS",
+      "name": "",
+      "trade": "oil/paint/tar",
+      "features": ""
+     },
+     {
+      "label": "PAINTING",
+      "name": "",
+      "trade": "oil/paint/tar",
+      "features": ""
+     },
+     {
+      "label": "UPHOLST'G",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "STONE CUTTING",
+      "name": "",
+      "trade": "brick/stone/pottery",
+      "features": "electric motor"
+     },
+     {
+      "label": "CIGAR FAC.",
+      "name": "",
+      "trade": "other",
+      "features": "lodgings above"
+     },
+     {
+      "label": "CARP'R & BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Foster Bldg lodgings; Woodmen of the World Bldg; cooking school. The stone cutting shop is behind the 15th St stores. The carpenter & blacksmith shop is at 1414 Glenarm, next to dwellings."
+   },
+   {
+    "block_id": "9-171",
+    "bounded_by": {
+     "N": "14th",
+     "S": "13th",
+     "E": "Glenarm",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 1129,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Denver Athletic Club (boilers). Otherwise residential, with terraces on 13th and Glenarm."
+   },
+   {
+    "block_id": "9-198",
+    "bounded_by": {
+     "N": "14th",
+     "S": "13th",
+     "E": "Tremont",
+     "W": "Glenarm"
+    },
+    "centroid": {
+     "x": 2145,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 10,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "ICE HO.; GREEN HO.",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Residential comparison block."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Mostly residential. The trades (tin shop, stone cutting, cigar factory, paints) are on 15th and Glenarm, and the blocks toward 13th are almost all dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 10,
+  "image": "1903_1904_v1_00985_01_1903-0010.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th",
+     "Tremont"
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 548
+   },
+   {
+    "streets": [
+     "15th",
+     "Court Pl."
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 548
+   },
+   {
+    "streets": [
+     "15th",
+     "Cleveland Pl."
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 548
+   },
+   {
+    "streets": [
+     "14th",
+     "Tremont"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "14th",
+     "Court Pl."
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "13th",
+     "Tremont"
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 3225
+   },
+   {
+    "streets": [
+     "W. Colfax Av.",
+     "S. 14th St."
+    ],
+    "modern": null,
+    "x": 1950,
+    "y": 1900
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "10-207",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Court Pl.",
+     "W": "Tremont"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 5,
+    "shanties": 0,
+    "stores": 11,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY (x2)",
+      "name": "",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "BLKSM.(?); REPAIR SHOP",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": "uncertain reading in The Columbine"
+     },
+     {
+      "label": "TAILOR",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Lodging houses The Columbine, The Victoria, The Earl, La Marita flats and two tenements."
+   },
+   {
+    "block_id": "10-232",
+    "bounded_by": {
+     "N": "15th",
+     "S": "14th",
+     "E": "Cleveland Pl.",
+     "W": "Court Pl."
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 4,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "AUTOMOBILES REPAIR SHOP",
+      "name": "",
+      "trade": "machine shop",
+      "features": "heating boiler; water motor"
+     },
+     {
+      "label": "MACHINE SHOP",
+      "name": "",
+      "trade": "machine shop",
+      "features": ""
+     },
+     {
+      "label": "CARP'R",
+      "name": "",
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "SAND SHED",
+      "name": "",
+      "trade": "other",
+      "features": "iron clad"
+     },
+     {
+      "label": "BLKSM.",
+      "name": "",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "CHIN. LAUNDRY",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Early auto repair shop (1432-1438 Court Pl.) between dwellings at 1440 and 1428. Lodgings and boarding row on 14th."
+   },
+   {
+    "block_id": "10-243",
+    "bounded_by": {
+     "N": "15th",
+     "S": "W. Colfax Av.",
+     "E": null,
+     "W": "Cleveland Pl."
+    },
+    "centroid": {
+     "x": 2483,
+     "y": 903
+    },
+    "partial": true,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "HOT HOUSES; BOILER HO. (underground)",
+      "name": "The Gallup Floral Co.",
+      "trade": "other",
+      "features": "heat steam; iron chimney"
+     },
+     {
+      "label": "TIN SHOP",
+      "name": "",
+      "trade": "metal working",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Triangular block."
+   },
+   {
+    "block_id": "10-206",
+    "bounded_by": {
+     "N": "14th",
+     "S": "13th / W. Colfax",
+     "E": "Court Pl.",
+     "W": "Tremont"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 12,
+    "flats": 6,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "RUG FACT'Y: WEAVING RM., REPAIR SHOP",
+      "name": "",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "PRESSING CLOTHING",
+      "name": "",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "The Imperial Apartments, The Glenn, The Creighton, Hotel Colfax (Colfax Square Flats)."
+   },
+   {
+    "block_id": "10-233",
+    "bounded_by": {
+     "N": "14th",
+     "S": "W. Colfax Av.",
+     "E": "W. Colfax Av.",
+     "W": "Court Pl."
+    },
+    "centroid": {
+     "x": 1354,
+     "y": 2193
+    },
+    "partial": true,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Triangular block."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential and lodging district near Colfax, with a few small workshops (auto repair, rug factory, Gallup Floral hot houses) mixed into blocks of dwellings."
+ }
+]

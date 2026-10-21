@@ -1,0 +1,2242 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 86,
+  "image": "1903_1904_v1_00985_01_1903-0086.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "W. Alameda Av",
+     "S. Santa Fe Av"
+    ],
+    "modern": null,
+    "x": 1439,
+    "y": 151
+   },
+   {
+    "streets": [
+     "W. Alameda Av (diagonal, south)",
+     "S. Santa Fe Av"
+    ],
+    "modern": null,
+    "x": 1903,
+    "y": 1661
+   },
+   {
+    "streets": [
+     "W. Alameda Av",
+     "C. & S. R.R."
+    ],
+    "modern": null,
+    "x": 2453,
+    "y": 1840
+   },
+   {
+    "streets": [
+     "W. Alameda Av",
+     "Mill Race (wooden bridge)"
+    ],
+    "modern": null,
+    "x": 2861,
+    "y": 1817
+   },
+   {
+    "streets": [
+     "W. Alameda Av",
+     "D. & R.G. R.R."
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 2112
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "86-1",
+    "bounded_by": {
+     "N": "W. Alameda Av",
+     "S": null,
+     "E": "S. Santa Fe Av",
+     "W": null
+    },
+    "centroid": {
+     "x": 757,
+     "y": 454
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Norwood Add'n block 5. Stores at 942, 900, 906 W. Alameda. Hughes Bros Lumber Yard lies diagonally across S. Santa Fe to the SE."
+   },
+   {
+    "block_id": "86-2",
+    "bounded_by": {
+     "N": "W. Alameda Av",
+     "S": null,
+     "E": null,
+     "W": "S. Santa Fe Av"
+    },
+    "centroid": {
+     "x": 1756,
+     "y": 500
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Norwood Add'n block 4, empty; continues on sheet 85."
+   },
+   {
+    "block_id": "86-3",
+    "bounded_by": {
+     "N": null,
+     "S": "W. Alameda Av",
+     "E": "C. & S. R.R.",
+     "W": "S. Santa Fe Av"
+    },
+    "centroid": {
+     "x": 1983,
+     "y": 1136
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "LUMBER SHED; WARE HO.; LUMBER piles; WAGON SHED; OFF.",
+      "name": "Hughes Bros Lumber Yard",
+      "trade": "lumber/planing",
+      "features": "long open lumber shed along Santa Fe; two warehouses; open lumber piles 6 ft; scales; platform"
+     }
+    ],
+    "faces": [],
+    "notes": "Addresses 854-870 and 403."
+   },
+   {
+    "block_id": "86-4",
+    "bounded_by": {
+     "N": null,
+     "S": "W. Alameda Av",
+     "E": "D. & R.G. R.R.",
+     "W": "C. & S. R.R."
+    },
+    "centroid": {
+     "x": 2574,
+     "y": 1287
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "COAL BIN; COAL SHED",
+      "name": "S. T. Rush Coal Yard",
+      "trade": "coal/wood yard",
+      "features": "open coal bin on rail spur; small coal shed"
+     }
+    ],
+    "faces": [],
+    "notes": "Address 800; Mill Race crosses the east side."
+   },
+   {
+    "block_id": "86-5",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": "S. Santa Fe Av",
+     "W": "Power Race / South Platte River"
+    },
+    "centroid": {
+     "x": 1226,
+     "y": 1355
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Labelled 'Cultivated Land'; section line and 24-inch water pipe cross it. One tent at NW."
+   },
+   {
+    "block_id": "86-6",
+    "bounded_by": {
+     "N": "W. Alameda Av",
+     "S": null,
+     "E": "Mill Race",
+     "W": "C. & S. R.R."
+    },
+    "centroid": {
+     "x": 2680,
+     "y": 2517
+    },
+    "partial": true,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "CARP'R",
+      "name": null,
+      "trade": "other",
+      "features": "carpenter shop attached to large stable at 400"
+     }
+    ],
+    "faces": [],
+    "notes": "Unplatted ground: dwellings 400, 400 1/2, 400 1/3(uncertain use), 392 (east of race). Carpenter shop attached to dwelling 400."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "SEPARATOR; CRUSHERS; ROLLS; SEPARS; WILFLEY TABLES; CONCENTRATE BINS; ORE BIN; ROTARY DRYER; SETTLING TANKS; PUMP HO.",
+    "name": "The Colorado Zinc Co.",
+    "trade": "smelter",
+    "features": "ore concentrating/zinc separator mill run day and night; steam heat, coal fuel, electric lights; boiler house with brick floor and stack; 100 h.p. engine and dynamo; iron-lined dryer and ore bins; 2,000-gal water tank; settling tanks; steam jets in ore bins",
+    "near": "west of ditch, south of the section line, between South Platte River and D.&R.G.R.R."
+   },
+   {
+    "label": "OFFICE; COAL",
+    "name": null,
+    "trade": "other",
+    "features": "small office and coal shed beside D.&R.G.R.R.; one dwelling and a stable (540 1/2) nearby",
+    "near": "between ditch and D.&R.G.R.R., south of section line"
+   }
+  ],
+  "sheet_notes": "Edge-of-city sheet near W. Alameda and S. Santa Fe: one residential block (Norwood Add'n block 5) faces a lumber yard and coal yard along rail lines, with the Colorado Zinc Co. ore separator mill in open ground to the south. Two streets are labelled W. Alameda Av (one at the top and one diagonal along the section line), so the crossing coordinates for the diagonal one are approximate."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 151,
+  "image": "1903_1904_v2_00985_02_1903-0151.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th St",
+     "Bassett"
+    ],
+    "modern": null,
+    "x": 242,
+    "y": 3107
+   },
+   {
+    "streets": [
+     "16th St",
+     "Bassett"
+    ],
+    "modern": null,
+    "x": 1680,
+    "y": 3107
+   },
+   {
+    "streets": [
+     "16th St",
+     "Street not named (never opened)"
+    ],
+    "modern": null,
+    "x": 1680,
+    "y": 1666
+   },
+   {
+    "streets": [
+     "17th St",
+     "Street not named (never opened)"
+    ],
+    "modern": null,
+    "x": 3074,
+    "y": 1666
+   },
+   {
+    "streets": [
+     "17th St",
+     "Street not named (north, never opened)"
+    ],
+    "modern": null,
+    "x": 3074,
+    "y": 295
+   },
+   {
+    "streets": [
+     "15th St",
+     "South Platte River (15th St Viaduct)"
+    ],
+    "modern": null,
+    "x": 215,
+    "y": 900
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "151-42",
+    "bounded_by": {
+     "N": "South Platte River",
+     "S": null,
+     "E": "16th St",
+     "W": "15th St"
+    },
+    "centroid": {
+     "x": 984,
+     "y": 1439
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STABLE; AUCTION ROOM; CARRIAGE REPOSITORY; HORSE SHEDS; HORSE PENS; SALE STABLE",
+      "name": "Goulding & Co. Horse Dealers, City Stock Yards and Sale Stables",
+      "trade": "livery/blacksmith",
+      "features": "long horse sheds A-G, open horse pens, octagonal sale stable, horse shed along section line"
+     }
+    ],
+    "faces": [],
+    "notes": "Central Add'n block 42 plus stock-yard ground; 16th St here is a 25 ft high viaduct with plank floor."
+   },
+   {
+    "block_id": "151-1",
+    "bounded_by": {
+     "N": null,
+     "S": "Bassett",
+     "E": null,
+     "W": "15th St"
+    },
+    "centroid": {
+     "x": 606,
+     "y": 2668
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "OLD & VAC.; BL'KSM. (IRON CLAD)",
+      "name": "Formerly Rocky Mountain Fuel Co. (buildings vacant, old and dilapidated)",
+      "trade": "coal/wood yard",
+      "features": "brick chimney 70 ft; blacksmith shop iron clad at 2133-2135"
+     },
+     {
+      "label": "COAL SHED",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "coal shed at 2135 1/2 on rail spur"
+     },
+     {
+      "label": "WARE HO. No.1; OFF.; SCALES",
+      "name": null,
+      "trade": "warehouse",
+      "features": "iron clad warehouse and office at 2101/1501"
+     }
+    ],
+    "faces": [],
+    "notes": "Congressional Add'n block 1; one iron-clad dwelling at 2109 next to the old fuel-company works and rail spur."
+   },
+   {
+    "block_id": "151-40",
+    "bounded_by": {
+     "N": null,
+     "S": "Bassett",
+     "E": "16th St",
+     "W": null
+    },
+    "centroid": {
+     "x": 1287,
+     "y": 2441
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 14,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL SHED - OLD -",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "long coal shed at 1559 Bassett"
+     }
+    ],
+    "faces": [],
+    "notes": "Block labelled SHANTIES (2116-2152 16th St); shanty count approximate (+/-3); two stables at 2124 1/2 and 2124 1/3 (one iron clad) and a large stable at 1561 Bassett. Stock yards and horse sheds adjoin on the north."
+   },
+   {
+    "block_id": "151-34",
+    "bounded_by": {
+     "N": "Street not named",
+     "S": "Street not named",
+     "E": "17th St",
+     "W": "16th St"
+    },
+    "centroid": {
+     "x": 2301,
+     "y": 984
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "WARE HOUSE & LUMBER STORAGE; LUMBER SHEDS; LUMBER piles; SHINGLES; POLES & POSTS",
+      "name": "The Denver Lumber & Mfg. Co.",
+      "trade": "lumber/planing",
+      "features": "no manufacturing on premises; two men sleep in warehouse (D. 2nd floor); no city water, no hose; lumber sheds along 16th St viaduct 2213-2249"
+     }
+    ],
+    "faces": [],
+    "notes": "Most of block 34 vacant."
+   },
+   {
+    "block_id": "151-38",
+    "bounded_by": {
+     "N": "Street not named",
+     "S": null,
+     "E": "17th St",
+     "W": "16th St"
+    },
+    "centroid": {
+     "x": 2241,
+     "y": 2441
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 6,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "COAL SHED. DILAPIDATED",
+      "name": "Formerly The Atlas Coal Co., now vacant",
+      "trade": "coal/wood yard",
+      "features": "long dilapidated coal shed along rail track"
+     }
+    ],
+    "faces": [
+     {
+      "street": "16th St",
+      "what": "Block 40 shanties and old coal shed",
+      "dwellings_facing": 6
+     }
+    ],
+    "notes": "Sub. 38; most of the block is ground of the Union Terminal & Warehouse Co. Shanties labelled at 2121-2131 16th St; dwellings 2105-2119 and 2149 1/2; vacant store at 2045; stables at 2105 1/2."
+   },
+   {
+    "block_id": "151-N",
+    "bounded_by": {
+     "N": "South Platte River",
+     "S": "Street not named",
+     "E": "17th St",
+     "W": "16th St"
+    },
+    "centroid": {
+     "x": 2700,
+     "y": 200
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Empty strip along the river (2306)."
+   },
+   {
+    "block_id": "151-E",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": null,
+     "W": "17th St"
+    },
+    "centroid": {
+     "x": 3180,
+     "y": 1200
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "'As platted, not improved'; continues on sheet 152."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "FREIGHT DEPOT; FREIGHT OFFICES",
+    "name": "Atchison, Topeka & Santa Fe R.R. and Colorado & Southern R.R. Freight Depot",
+    "trade": "warehouse",
+    "features": "long freight house 1500-1562 Bassett with platforms; furnace heat, electric lights; hose",
+    "near": "south of Bassett between 15th and 16th"
+   },
+   {
+    "label": "FREIGHT SHED",
+    "name": null,
+    "trade": "warehouse",
+    "features": "",
+    "near": "rail yard south of the freight depot near 15th St"
+   },
+   {
+    "label": "TOOL HO.; STOCK PEN; TRESTLE; LIME HO.; PLATFORM",
+    "name": null,
+    "trade": "warehouse",
+    "features": "lime house beside 10 ft trestle",
+    "near": "rail yard between 16th and 17th south of block 38"
+   }
+  ],
+  "sheet_notes": "Railroad and riverfront district near 15th-17th Sts and Bassett: horse stock yards, lumber yard, old coal yards and freight depots surround two blocks of shanties and small dwellings. Most of the industry is vacant or storage rather than manufacturing."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 152,
+  "image": "1903_1904_v2_00985_02_1903-0152.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "17th St",
+     "Street not named (never opened)"
+    ],
+    "modern": null,
+    "x": 165,
+    "y": 303
+   },
+   {
+    "streets": [
+     "18th St",
+     "Street not named (never opened)"
+    ],
+    "modern": null,
+    "x": 1605,
+    "y": 303
+   },
+   {
+    "streets": [
+     "17th St",
+     "Street not named (never opened, south)"
+    ],
+    "modern": null,
+    "x": 165,
+    "y": 1696
+   },
+   {
+    "streets": [
+     "19th St",
+     "C. & S. R.R."
+    ],
+    "modern": null,
+    "x": 3119,
+    "y": 1666
+   },
+   {
+    "streets": [
+     "18th St",
+     "rail tracks (18th St given up to R.R.)"
+    ],
+    "modern": null,
+    "x": 1574,
+    "y": 3501
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "152-20",
+    "bounded_by": {
+     "N": null,
+     "S": "Street not named",
+     "E": "18th St",
+     "W": "17th St"
+    },
+    "centroid": {
+     "x": 870,
+     "y": 100
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Strip of block 20, empty."
+   },
+   {
+    "block_id": "152-17",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": "19th St",
+     "W": "18th St"
+    },
+    "centroid": {
+     "x": 1900,
+     "y": 100
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Corner of block 17, empty."
+   },
+   {
+    "block_id": "152-28",
+    "bounded_by": {
+     "N": "Street not named",
+     "S": "Street not named",
+     "E": "18th St",
+     "W": "17th St"
+    },
+    "centroid": {
+     "x": 800,
+     "y": 950
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Central Sub. block 28, entirely vacant; SE part cut off by Union Terminal & Warehouse Co. ground."
+   },
+   {
+    "block_id": "152-UT",
+    "bounded_by": {
+     "N": null,
+     "S": "C. & S. R.R.",
+     "E": "19th St",
+     "W": "17th St"
+    },
+    "centroid": {
+     "x": 1300,
+     "y": 1900
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Large vacant tract labelled Union Terminal and Warehouse Co.; '17th St proposed' along west edge."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "COAL YARD; COAL PILES 6-8 ft; COAL BINS (no roof); COAL SHED; OFFICE; SCALES; STORAGE",
+    "name": "Colorado Fuel & Iron Co. coal yard",
+    "trade": "coal/wood yard",
+    "features": "several open coal piles on railroad grounds, coal shed 2032 1/2, two storage buildings at 2100-2132 19th St",
+    "near": "railroad grounds between 18th and 19th south of C.&S.R.R., beside B.&M.R.R. yard"
+   },
+   {
+    "label": "TOOL HO.",
+    "name": null,
+    "trade": "rail shops/roundhouse",
+    "features": "small tool house 2100 1/2",
+    "near": "railroad grounds near 18th St"
+   }
+  ],
+  "sheet_notes": "Almost entirely vacant platted ground and rail yards (C.&S. and B.&M.) between 17th and 19th Sts; the only activity is the Colorado Fuel & Iron Co. open coal yard. No dwellings on this sheet."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 153,
+  "image": "1903_1904_v2_00985_02_1903-0153.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "15th St",
+     "Chestnut"
+    ],
+    "modern": null,
+    "x": 252,
+    "y": 558
+   },
+   {
+    "streets": [
+     "16th St",
+     "Chestnut"
+    ],
+    "modern": null,
+    "x": 1677,
+    "y": 558
+   },
+   {
+    "streets": [
+     "15th St",
+     "Delgany"
+    ],
+    "modern": null,
+    "x": 252,
+    "y": 1622
+   },
+   {
+    "streets": [
+     "16th St",
+     "Delgany"
+    ],
+    "modern": null,
+    "x": 1677,
+    "y": 1622
+   },
+   {
+    "streets": [
+     "15th St",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 252,
+    "y": 2651
+   },
+   {
+    "streets": [
+     "16th St",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 1677,
+    "y": 2651
+   },
+   {
+    "streets": [
+     "15th St",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 252,
+    "y": 3667
+   },
+   {
+    "streets": [
+     "17th St",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 3667
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "153-4",
+    "bounded_by": {
+     "N": null,
+     "S": "Chestnut",
+     "E": "16th St",
+     "W": "15th St"
+    },
+    "centroid": {
+     "x": 1064,
+     "y": 290
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "FREIGHT SHED; PLATFORM",
+      "name": null,
+      "trade": "warehouse",
+      "features": "rail freight shed with tracks"
+     }
+    ],
+    "faces": [],
+    "notes": "Rail tracks and platforms."
+   },
+   {
+    "block_id": "153-7",
+    "bounded_by": {
+     "N": "Chestnut",
+     "S": "Delgany",
+     "E": "16th St",
+     "W": "15th St"
+    },
+    "centroid": {
+     "x": 968,
+     "y": 1064
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "WARE HO.; HIDES, WOOL & TALLOW; STOCK YARD",
+      "name": "J. L. Brown",
+      "trade": "tannery/hides",
+      "features": "iron-clad warehouse with platform, stock yard"
+     },
+     {
+      "label": "UNLOADING; MEAT FROM REFRIGER'R CARS",
+      "name": null,
+      "trade": "meat packing/stockyard",
+      "features": "unloading shed and platform"
+     },
+     {
+      "label": "FREIGHT DEPOT; FREIGHT SHED",
+      "name": "B. & M. R.R. Freight Depot",
+      "trade": "warehouse",
+      "features": "heat stoves, electric lights, iron posts, offices 2nd floor"
+     }
+    ],
+    "faces": [],
+    "notes": "Tracks and platforms through the block; gate tower at 1932."
+   },
+   {
+    "block_id": "153-10",
+    "bounded_by": {
+     "N": "Delgany",
+     "S": "Wewatta",
+     "E": "16th St",
+     "W": "15th St"
+    },
+    "centroid": {
+     "x": 968,
+     "y": 2129
+    },
+    "partial": false,
+    "dwellings": 3,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MFR CONCENTRATORS & SLIME TABLES; WOOD-WORKING; MACHINE SHOP; PAINTING",
+      "name": "A. R. Wilfley",
+      "trade": "machine shop",
+      "features": "electric motor 15 h.p.; tar tank; no watchman; fuel coal and waste; heat stoves; no fire protection"
+     },
+     {
+      "label": "YARD (stable/sheds)",
+      "name": "Western Transfer Co's Yard",
+      "trade": "livery/blacksmith",
+      "features": "large stable"
+     },
+     {
+      "label": "STONE YARD",
+      "name": null,
+      "trade": "brick/stone/pottery",
+      "features": "open stone yard"
+     },
+     {
+      "label": "LUMBER",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "open lumber piles 6-12 ft"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Wewatta",
+      "what": "Adolph Coors-Golden Brewery beer warehouse",
+      "dwellings_facing": 1
+     }
+    ],
+    "notes": "Flats = New Toscano Hotel and hotel rooms at 1541 1/2; saloon at 1545; vacant dilapidated building at 1525; dwellings at 1518, 1520, 1561."
+   },
+   {
+    "block_id": "153-13",
+    "bounded_by": {
+     "N": "Wewatta",
+     "S": "Wynkoop",
+     "E": "16th St",
+     "W": "15th St"
+    },
+    "centroid": {
+     "x": 968,
+     "y": 3160
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BANK, BAR, OFFICE & STORE FIXTURES; PLANING; BENCH; MACHINE WORK; SETTING UP; FINISHED STOCK; PAINTING",
+      "name": "J. P. Paulson",
+      "trade": "lumber/planing",
+      "features": "100 h.p. engine; two boilers; iron chimneys 10 ft above roof; shavings vault; glue pots; ADT watchman system; fuel coal and shavings"
+     },
+     {
+      "label": "BEER WARE HO.; ICE MACH.; CONDENSERS; COLD STORAGE; WAGON SHED",
+      "name": "Adolph Coors - Golden Brewery",
+      "trade": "brewery/distillery",
+      "features": "ice machine 18 tons; 100 h.p. engine; boiler with iron chimney; coal; fuel coal; heat steam"
+     },
+     {
+      "label": "CARP'R; STORE FIXTURES",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "carpenter shops at 1510 and 1731-1739 15th St"
+     },
+     {
+      "label": "IMPLEMENT W. HO. (2); MACHINE STORAGE; CROCKERY WARE HO.; LIME HO.",
+      "name": null,
+      "trade": "warehouse",
+      "features": "lime house with office at 1700 16th St"
+     }
+    ],
+    "faces": [],
+    "notes": "Saloon at 1739 15th St; no dwellings."
+   },
+   {
+    "block_id": "153-3",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": "17th St",
+     "W": "16th St"
+    },
+    "centroid": {
+     "x": 2392,
+     "y": 227
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "TOOL HOS.; FLAG HO.",
+      "name": "C. & S. R.R. Yard",
+      "trade": "rail shops/roundhouse",
+      "features": "small tool houses"
+     }
+    ],
+    "faces": [],
+    "notes": "Rail yard."
+   },
+   {
+    "block_id": "153-8",
+    "bounded_by": {
+     "N": null,
+     "S": "Delgany",
+     "E": "17th St",
+     "W": "16th St"
+    },
+    "centroid": {
+     "x": 2419,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "FREIGHT SHED; COAL",
+      "name": "B. & M. R.R. Freight Shed and Yard",
+      "trade": "warehouse",
+      "features": "freight shed with office, platforms"
+     }
+    ],
+    "faces": [],
+    "notes": "East Denver block 8, rail yard; 16th St is an iron viaduct with wooden floor."
+   },
+   {
+    "block_id": "153-9",
+    "bounded_by": {
+     "N": "Delgany",
+     "S": "Wewatta",
+     "E": "17th St",
+     "W": "16th St"
+    },
+    "centroid": {
+     "x": 2419,
+     "y": 2096
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "COMPRESSED AIR MFG FOR CLEANING CAR CUSHIONS; COMPRESSOR; AIR TANKS; STORAGE",
+      "name": null,
+      "trade": "rail shops/roundhouse",
+      "features": "two iron chimneys (15 ft and 50 ft above roof); air tanks; coal shed"
+     },
+     {
+      "label": "CAR CLEANING YARD; TOOL HO. (2)",
+      "name": "Union Depot Yard",
+      "trade": "rail shops/roundhouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Rail yard."
+   },
+   {
+    "block_id": "153-14",
+    "bounded_by": {
+     "N": "Wewatta",
+     "S": "Wynkoop",
+     "E": "17th St",
+     "W": "16th St"
+    },
+    "centroid": {
+     "x": 2516,
+     "y": 3225
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Union Depot (baggage room, D.&R.G. express room, waiting rooms) and street car station; park in front on Wynkoop."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Lower downtown rail district from 15th to 17th St: freight depots, the Union Depot yards, a hides, wool and tallow warehouse, the Wilfley concentrator machine shop, the Paulson fixture planing mill and a Coors beer and ice warehouse. The only housing is three dwellings and two hotels in block 10."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 154,
+  "image": "1903_1904_v2_00985_02_1903-0154.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "17th St",
+     "Delgany"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 1629
+   },
+   {
+    "streets": [
+     "17th St",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 3677
+   },
+   {
+    "streets": [
+     "18th St",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 1571,
+    "y": 2670
+   },
+   {
+    "streets": [
+     "18th St",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 1571,
+    "y": 3677
+   },
+   {
+    "streets": [
+     "19th St",
+     "New Haven St"
+    ],
+    "modern": null,
+    "x": 2951,
+    "y": 1945
+   },
+   {
+    "streets": [
+     "19th St",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 2951,
+    "y": 2670
+   },
+   {
+    "streets": [
+     "19th St",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 2951,
+    "y": 3677
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "154-4",
+    "bounded_by": {
+     "N": null,
+     "S": "New Haven St",
+     "E": "19th St",
+     "W": null
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 1613
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STEAM HEAT PLANT; PUMP HO.; HEATERS; BLOWER; W. TANK",
+      "name": "The Denver City Steam Heat Co.",
+      "trade": "power/electric",
+      "features": "about five batteries of boilers; brick chimney 140 ft; iron chimney 40 ft above roof; engine 30 h.p.; two furnaces 60 ft above roof with iron jackets; walls buttressed; fuel coal; pump and well"
+     },
+     {
+      "label": "COAL YARD; COAL SHED",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "brick wall 5 ft around coal yard; coal shed and stable"
+     }
+    ],
+    "faces": [],
+    "notes": "Robinson's Addition block 4; the one dwelling is attached to the steam plant beside its office. Rail tracks on the north and west."
+   },
+   {
+    "block_id": "154-3",
+    "bounded_by": {
+     "N": "New Haven St",
+     "S": "Wewatta",
+     "E": "19th St",
+     "W": "18th St"
+    },
+    "centroid": {
+     "x": 2258,
+     "y": 2258
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PINTSCH GAS PLANT; RETORT HO.; PURIFYING TANKS; SCRUBBER RM.; GAS TANKS; GASOMETER; OLD GAS PIT",
+      "name": "Denver Gas & Electric Co.",
+      "trade": "gas works",
+      "features": "gas made for lighting railroad cars; runs night and day; heat steam, fuel coal; retort house with iron truss roof and iron chimneys; 2 engines 40 h.p. each; 4 purifying tanks; 8 gas tanks; underground tanks; gasometer"
+     },
+     {
+      "label": "GAS & ELECTRIC SUPPLIES; PIPE WARE HO.",
+      "name": "Denver Gas & Electric Co.",
+      "trade": "warehouse",
+      "features": "iron truss roof, iron-clad additions"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Wewatta",
+      "what": "Denver Gas & Electric Co. Pintsch gas plant",
+      "dwellings_facing": 0
+     }
+    ],
+    "notes": "Old stone foundation at 1824-1836 19th St. The gas plant is across Wewatta from block D's freight sheds; block D's dwellings front Wynkoop."
+   },
+   {
+    "block_id": "154-D",
+    "bounded_by": {
+     "N": "Wewatta",
+     "S": "Wynkoop",
+     "E": "19th St",
+     "W": "18th St"
+    },
+    "centroid": {
+     "x": 2290,
+     "y": 3096
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MOULDING RM.; CUPOLA; CORE OVEN; RATTLER; MACHINE SHOP; PATTERN STORAGE; CLEANING CASTINGS",
+      "name": "The Denver Iron Wks and Foundry Co.",
+      "trade": "foundry",
+      "features": "cupola flush with main roof; core oven; electric motor power; heat stoves; night watchman; no fire protection"
+     },
+     {
+      "label": "FREIGHT SHED (2); OFFICE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "freight sheds along rail spur, iron clad"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Wynkoop",
+      "what": "The Denver Iron Wks and Foundry Co. (same block, adjacent lots)",
+      "dwellings_facing": 4
+     }
+    ],
+    "notes": "Congressional / East Denver Grant. Dwellings at 1813, 1817, 1823 and 1849 Wynkoop sit next to the foundry (1827-1831). Flats = Park Hotel (1713-1719 18th St), boarding house (1855) and Germania Ho. with saloon (1726 19th St)."
+   },
+   {
+    "block_id": "154-UD",
+    "bounded_by": {
+     "N": null,
+     "S": "Wynkoop",
+     "E": "18th St",
+     "W": "17th St"
+    },
+    "centroid": {
+     "x": 645,
+     "y": 3225
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Union Depot (dining room, kitchen, mail room, express offices, 150 ft clock tower; fuel coal, heat steam), temporary baggage room and park."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "WARE HOUSE",
+    "name": "The Mine & Smelter Supply Co.",
+    "trade": "warehouse",
+    "features": "long iron-clad warehouse with 2 rows of wooden posts",
+    "near": "between rail yards north of Wewatta, 18th-19th Sts"
+   },
+   {
+    "label": "WARE HO. No.1 - ENGINES & MACHINERY",
+    "name": "Fairbanks, Morse & Co.",
+    "trade": "warehouse",
+    "features": "two rows of wooden posts; platform",
+    "near": "rail yards, 18th-19th Sts"
+   },
+   {
+    "label": "COAL SHED; COAL PILE; TOOL HOS.; GASOLINE ENG. & AIR COMPRESSOR; YARD OFFICE",
+    "name": null,
+    "trade": "coal/wood yard",
+    "features": "gasoline engine and air compressor house",
+    "near": "C.&S./B.&M. rail yards between 17th and 19th"
+   },
+   {
+    "label": "WOOD; COAL BIN; ICE HO.",
+    "name": null,
+    "trade": "coal/wood yard",
+    "features": "",
+    "near": "Delgany at 18th St"
+   },
+   {
+    "label": "CAR CLEANING YARD",
+    "name": "Union R.R. Depot Yard",
+    "trade": "rail shops/roundhouse",
+    "features": "",
+    "near": "between Delgany and Wewatta, 17th-18th"
+   }
+  ],
+  "sheet_notes": "Rail and utility district around 17th-19th Sts: a Pintsch gas plant, the Denver City Steam Heat boiler plant (140 ft stack) and the Denver Iron Works foundry. Four dwellings and three hotels or boarding houses in block D share the block with the foundry and face the gas plant across Wewatta."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 155,
+  "image": "1903_1904_v2_00985_02_1903-0155.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wynkoop",
+     "17th St"
+    ],
+    "modern": null,
+    "x": 1242,
+    "y": 413
+   },
+   {
+    "streets": [
+     "Wazee",
+     "17th St"
+    ],
+    "modern": null,
+    "x": 2235,
+    "y": 413
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "16th St"
+    ],
+    "modern": null,
+    "x": 1242,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "Wazee",
+     "16th St"
+    ],
+    "modern": null,
+    "x": 2235,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "15th St"
+    ],
+    "modern": null,
+    "x": 1242,
+    "y": 3290
+   },
+   {
+    "streets": [
+     "Wazee",
+     "15th St"
+    ],
+    "modern": null,
+    "x": 2235,
+    "y": 3290
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "155-15",
+    "bounded_by": {
+     "N": "17th St",
+     "S": "16th St",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 1725,
+     "y": 1113
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WHOL. GRO.; SHIPPING SHED",
+      "name": "The Struby-Estabrook Mercantile Co's",
+      "trade": "warehouse",
+      "features": "gas and electric lights, city steam heat, iron posts; elevators"
+     },
+     {
+      "label": "CANDY FAC.",
+      "name": "The Bowman Hall Candy Fac.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "elevator; iron-clad"
+     },
+     {
+      "label": "W. HO.",
+      "name": "The Peters Paper Co's W. Ho.",
+      "trade": "warehouse",
+      "features": "wooden posts"
+     },
+     {
+      "label": "FEED & BALED HAY (OLD); BALED HAY; OFFICE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "open sheds of baled hay"
+     }
+    ],
+    "faces": [],
+    "notes": "Hotel Oxford at 17th & Wazee (own electric lighting plant, steam heat, Fairbanks-Morse engines showroom on 1st floor). Stores: saloon and restaurant on 17th, saloon and shops at 1631-1643 16th; old vacant building at 1629."
+   },
+   {
+    "block_id": "155-16",
+    "bounded_by": {
+     "N": "16th St",
+     "S": "15th St",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 1725,
+     "y": 2564
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "WHOL. GRO.; COFFEE & SPICE MILL; ROASTERS; EXTRACT OF BAKING POWDER RM.; PRINTING & LABELING",
+      "name": "C. S. Morey Mercantile Co's",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "coffee roasters with brick chimney 40 ft above roof; elevators closed at night by iron-clad trap doors; watchman with 8 stations"
+     },
+     {
+      "label": "STOVE W. HO.; BUTCHERS SUPPLY HO.; JOSLIN D.G. CO W. HO.; PLUMBERS SUPPLIES (2); KENNICOTT-PATTERSON TRANSFER CO'S W. HO.; HURLBUT GRO. CO'S W. HO.; FLOUR WARE HO.",
+      "name": "various wholesalers",
+      "trade": "warehouse",
+      "features": "brick warehouses along Wynkoop"
+     },
+     {
+      "label": "IMPL'MT W. HO.; WHOL. SEED; IMPLEMENT W. HO.; WHOLESALE (hides, seed, paper); HEAVY HARDWARE; IMPLEMENT WARE HO.",
+      "name": "Lee-Kinsey Impl'mt Co.; Kansas City Plow Co.; L. A. Watkins; The Baum Iron Co.; Parlin & Orendorff Co.",
+      "trade": "warehouse",
+      "features": "wooden posts; hides stored at Watkins"
+     },
+     {
+      "label": "MECHANIC SHOP (hand power)",
+      "name": null,
+      "trade": "machine shop",
+      "features": "hand power only"
+     }
+    ],
+    "faces": [],
+    "notes": "Small stores, a barber and offices at 1625-1637 15th St."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Wholesale warehouse district on Wynkoop and Wazee between 15th and 17th: grocery houses, implement and hardware warehouses, a candy factory and a coffee and spice mill. No dwellings; the only lodging is the Hotel Oxford."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 156,
+  "image": "1903_1904_v2_00985_02_1903-0156.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wazee",
+     "17th St"
+    ],
+    "modern": null,
+    "x": 1064,
+    "y": 413
+   },
+   {
+    "streets": [
+     "Blake",
+     "17th St"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 413
+   },
+   {
+    "streets": [
+     "Wazee",
+     "16th St"
+    ],
+    "modern": null,
+    "x": 1064,
+    "y": 1861
+   },
+   {
+    "streets": [
+     "Blake",
+     "16th St"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 1861
+   },
+   {
+    "streets": [
+     "Wazee",
+     "15th St"
+    ],
+    "modern": null,
+    "x": 1064,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "Blake",
+     "15th St"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 3296
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "156-20",
+    "bounded_by": {
+     "N": "17th St",
+     "S": "16th St",
+     "E": "Blake",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 1145
+    },
+    "partial": false,
+    "dwellings": 6,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 14,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "COFFEE ROASTERS & MILL; BAKING POWDER & EXTRACT; WARE ROOM",
+      "name": "Nash Smith Tea & Coffee Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "coffee roaster with iron chimney 12 ft above roof; electric motor; iron posts"
+     },
+     {
+      "label": "CANDY FACTORY",
+      "name": "W. C. Nevin & Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "boiler/furnace with iron chimney 6 ft above roof"
+     },
+     {
+      "label": "WARE RM 1st; MACHINE SHOP 2nd; ELECTROTYPE FOUNDRY & ROLLER FAC. 3rd",
+      "name": "The Denver Type Foundry",
+      "trade": "foundry",
+      "features": "electric motor"
+     },
+     {
+      "label": "GLAZING 1st; PATTERN MAKING 2nd",
+      "name": null,
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "AMERICAN ANTISEPTIC CO.",
+      "name": "American Antiseptic Co.",
+      "trade": "chemical",
+      "features": ""
+     },
+     {
+      "label": "MACHINIST; SAW FILING; TIN SHOP; CARP'R SHOP",
+      "name": null,
+      "trade": "machine shop",
+      "features": "machinist with electric motor"
+     },
+     {
+      "label": "LIVERY; FARMERS CORRAL; WAGON SHED; BL'KSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "large livery stable, brick-filled stable, blacksmith shop"
+     },
+     {
+      "label": "CHINA LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "WHOL. RUBBER BELTING; WHOL. LIQUORS (2); WHOL. PAPER (2); TOBACCO WARE HO.; WHOL. CIGARS; WHOL. GRAIN & HAY",
+      "name": "various wholesalers",
+      "trade": "warehouse",
+      "features": "wooden posts, mill construction"
+     }
+    ],
+    "faces": [],
+    "notes": "Dwellings are in the 'Chinese Quarters' in the block interior behind the Wazee stores, next to the livery and coffee mill. Flats = New Union Hotel (17th & Blake) and American House (16th & Blake). Store count approximate (saloons, barbers, Chinese stores, offices, ticket office, auction, tailor)."
+   },
+   {
+    "block_id": "156-19",
+    "bounded_by": {
+     "N": "16th St",
+     "S": "15th St",
+     "E": "Blake",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 12,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STEAM LAUNDRY",
+      "name": "Denver Towel Supply Co.",
+      "trade": "laundry/dye",
+      "features": "boiler with iron chimney 11 ft above roof; steam piped across the alley to sausage factory"
+     },
+     {
+      "label": "SAUSAGE FAC. 2nd; 10-TON ICE MACHINE",
+      "name": null,
+      "trade": "meat packing/stockyard",
+      "features": "10-ton ice machine, electric motor; smoke house"
+     },
+     {
+      "label": "PAPER BOX & LABEL FACTORY 2nd",
+      "name": null,
+      "trade": "printing",
+      "features": "electric motor"
+     },
+     {
+      "label": "OFFICE & MACHINE SHOP; MACHINERY WARE HO.",
+      "name": null,
+      "trade": "machine shop",
+      "features": "electric motor"
+     },
+     {
+      "label": "BL'KSM.; HORSESHOEING & WAGON SHOP",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "WHOL. SEED (hand-power cleaning machinery 2nd)",
+      "name": "Bartledes & Co.",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "WHOL. MEATS; STEEL WARE HO.; SEED WARE HO.; DRYED FRUIT WARE HO.; PLUMBER SUPPLIES WARE HO.; WHOL. PAPER, BROOM, WOODEN WARE; WHOL. DRUGS; WHOL. GRO.; WHOL. BUTTER & EGGS; WHOL. CIGARS; WHOL. & RETAIL HARDW.",
+      "name": "various wholesalers",
+      "trade": "warehouse",
+      "features": "wooden posts"
+     }
+    ],
+    "faces": [],
+    "notes": "The Arlington Hotel at 16th & Wazee (flats). Stores, saloons and a plumber along Blake."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Dense lower-downtown wholesale blocks between Wazee and Blake: food processing (coffee mill, candy, sausage), a type foundry, steam laundry, liveries and blacksmiths beside hotels. The only dwellings are six units in the 'Chinese Quarters' inside block 20."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 157,
+  "image": "1903_1904_v2_00985_02_1903-0157.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Blake",
+     "17th St"
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 419
+   },
+   {
+    "streets": [
+     "Market",
+     "17th St"
+    ],
+    "modern": null,
+    "x": 2161,
+    "y": 419
+   },
+   {
+    "streets": [
+     "Blake",
+     "16th St"
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Market",
+     "16th St"
+    ],
+    "modern": null,
+    "x": 2161,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Blake",
+     "15th St"
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "Market",
+     "15th St"
+    ],
+    "modern": null,
+    "x": 2161,
+    "y": 3306
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "157-41",
+    "bounded_by": {
+     "N": "17th St",
+     "S": "16th St",
+     "E": "Market",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 12,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "PLUMBERS SUPPLIES; METAL WK. PLATING; MACHINE SHOP; PIPE CUTTING; WOOD WK.; PLATING & POLISHING; BRASS FOUNDRY 4th",
+      "name": "The Jos. Creswell Mfg. Co.",
+      "trade": "foundry",
+      "features": "75 h.p. engine; dynamo; brass foundry on 4th floor; supplies power to neighbouring laundry, machine shop and creamery; watchman"
+     },
+     {
+      "label": "STEAM LAUNDRY 4th; STEAM LAUNDRY (power from Creswell Mfg. Co.); LAUNDRY OFF.",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": "two laundries; boilers"
+     },
+     {
+      "label": "MACHINE SHOP; MINERS SUPPLIES",
+      "name": "Dillon Iron Wks",
+      "trade": "machine shop",
+      "features": "power from Creswell Mfg. Co."
+     },
+     {
+      "label": "WARE HO. (MINING MACHINERY)",
+      "name": "The Mine & Smelter Supply Co.",
+      "trade": "warehouse",
+      "features": "40 h.p. engine; heat steam, electric lights; watchman"
+     },
+     {
+      "label": "PAINT SHOP; PATTERN MAKER; REDFIELD DRILL CO. (hand power)",
+      "name": "Redfield Drill Co.",
+      "trade": "machine shop",
+      "features": "hand power"
+     },
+     {
+      "label": "TENT & AWNING",
+      "name": "The Brooks Tent & Awning Co.",
+      "trade": "other",
+      "features": "electric motor 1.5 h.p."
+     },
+     {
+      "label": "CREAMERY",
+      "name": "Longmont Creamery Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "electric motor 12 h.p.; heat steam"
+     },
+     {
+      "label": "WHOL. FISH & POULTRY; COMMISSION HOS.; WHOL. BUTTER & EGGS; WHOL. MEAT (3); WHOL. GRO.; WHOL. LIQUORS; WHOL. FISH",
+      "name": "various wholesalers",
+      "trade": "warehouse",
+      "features": "engine 4 h.p. (power from Creswell Mfg. Co.)"
+     }
+    ],
+    "faces": [],
+    "notes": "Flats = Occidental Ho. (Blake) and Denver Ho. (Market, 2nd-4th floors). Saloons, restaurants, cobbler, barber and offices on 17th, Blake and Market."
+   },
+   {
+    "block_id": "157-42",
+    "bounded_by": {
+     "N": "16th St",
+     "S": "15th St",
+     "E": "Market",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 1,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "COLORADO LEAD WORKS CO.; MELTING POT",
+      "name": "Colorado Lead Works Co.",
+      "trade": "metal working",
+      "features": "electric motor 30 h.p.; melting pot"
+     },
+     {
+      "label": "CANDY CO. WHOLESALE & FACTORY (all hand work)",
+      "name": "The E. M. Gale Candy Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "hand work"
+     },
+     {
+      "label": "CIGAR FACT.; WHOL. TOBACCO",
+      "name": null,
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "WARE HO.; PRINTING 4th",
+      "name": "Studebaker Bros. Mfg. Co.",
+      "trade": "warehouse",
+      "features": "watchman, two registering clocks"
+     },
+     {
+      "label": "CHINA LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "WHOL. & RETAIL HARNESS; WORKSHOP",
+      "name": null,
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "WHOL. LIQUORS; WHOL. CROCKERY & CHINA WARE; WHOL. FLOUR (2); WHOL. MEAT; CITY TRANSFER CO. STORAGE; WHOL. PRODUCE (2); WHOL. GRO. (3); WHOL. BUTTER & EGGS (3); COMM'SN HO.; LIQUOR STORAGE; COAL HO.",
+      "name": "various wholesalers",
+      "trade": "warehouse",
+      "features": "electric motor 10 h.p. at the liquor house"
+     }
+    ],
+    "faces": [],
+    "notes": "Iner Ocean Hotel at 16th & Blake (flats). U.S. Mint building at 16th & Market (other_nonres). Cobbler and stores."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Wholesale and light-industry blocks between Blake and Market, 15th-17th: a brass foundry and plating works (Creswell) that powers neighbouring shops, the Colorado Lead Works, candy and cigar factories, creamery and laundries beside hotels. No dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 158,
+  "image": "1903_1904_v2_00985_02_1903-0158.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Market",
+     "17th St"
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 432
+   },
+   {
+    "streets": [
+     "Larimer",
+     "17th St"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 432
+   },
+   {
+    "streets": [
+     "Market",
+     "16th St"
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 1880
+   },
+   {
+    "streets": [
+     "Larimer",
+     "16th St"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 1880
+   },
+   {
+    "streets": [
+     "Market",
+     "15th St"
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 3309
+   },
+   {
+    "streets": [
+     "Larimer",
+     "15th St"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 3309
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "158-47",
+    "bounded_by": {
+     "N": "17th St",
+     "S": "16th St",
+     "E": "Larimer",
+     "W": "Market"
+    },
+    "centroid": {
+     "x": 1613,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 22,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BAKE HO.; RESTAURANT & BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "bake oven"
+     },
+     {
+      "label": "PHOTOS (skylight)",
+      "name": null,
+      "trade": "other",
+      "features": "photo studio with skylight"
+     },
+     {
+      "label": "WHOL. GRO.; WHOL. FISH & OYSTERS; WHOL. FLOUR; COMMISSION HO. & WOODEN WARE STORAGE; WHOL. WOODEN WARE; COMMISSION HOS. (5)",
+      "name": "various wholesalers",
+      "trade": "warehouse",
+      "features": "electric motors 2-10 h.p.; iron-clad elevator heads; wooden posts"
+     }
+    ],
+    "faces": [],
+    "notes": "Flats = Columbia Hotel (17th & Market) and Dewey Hotel (cheap lodgings, Larimer). Larimer front is stores, saloons, restaurants, barber and a bank; pigeon house in an alley; McClintock Block at 16th & Larimer; Metropolitan Hotel at 16th & Market corner counted with the stores."
+   },
+   {
+    "block_id": "158-46",
+    "bounded_by": {
+     "N": "16th St",
+     "S": "15th St",
+     "E": "Larimer",
+     "W": "Market"
+    },
+    "centroid": {
+     "x": 1613,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 4,
+    "shanties": 0,
+    "stores": 18,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "SACHS LAWLOR MACHINE & MFG. CO. (RUBBER STAMPS)",
+      "name": "Sachs Lawlor Machine & Mfg. Co.",
+      "trade": "machine shop",
+      "features": "electric motor 2 h.p."
+     },
+     {
+      "label": "ELECT. LIGHT PLANT IN BST.; 2 DYNAMOS",
+      "name": "Railroad Bldg.",
+      "trade": "power/electric",
+      "features": "200 h.p. boilers, 2 dynamos, engine 45 h.p.; iron chimney 10 ft above roof; electric motor for printing"
+     },
+     {
+      "label": "TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "PRINTING",
+      "name": null,
+      "trade": "printing",
+      "features": "electric motor 3 h.p.; job printing"
+     },
+     {
+      "label": "COMMISSION HOS. (about 12); WHOL. & RETAIL LIQUORS; WESTERN LIQUOR & WINE CO.",
+      "name": "various wholesalers",
+      "trade": "warehouse",
+      "features": "electric motor 30 h.p. at a commission house"
+     }
+    ],
+    "faces": [],
+    "notes": "Flats = Portland Hotel (cheap lodgings), commission house with lodgings 2nd-3rd, furnished rooms (two buildings). Good Block, Railroad Bldg. and Pioneer Bldg. on Larimer."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Market Street commission-house row and Larimer Street commercial front, 15th-17th Sts: produce and wholesale warehouses, cheap lodging houses and small shops. The only power plant is the basement electric light plant in the Railroad Bldg. No dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 159,
+  "image": "1903_1904_v2_00985_02_1903-0159.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Larimer",
+     "17th St"
+    ],
+    "modern": null,
+    "x": 1161,
+    "y": 445
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "17th St"
+    ],
+    "modern": null,
+    "x": 2161,
+    "y": 445
+   },
+   {
+    "streets": [
+     "Larimer",
+     "16th St"
+    ],
+    "modern": null,
+    "x": 1161,
+    "y": 1880
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "16th St"
+    ],
+    "modern": null,
+    "x": 2161,
+    "y": 1880
+   },
+   {
+    "streets": [
+     "Larimer",
+     "15th St"
+    ],
+    "modern": null,
+    "x": 1161,
+    "y": 3309
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "15th St"
+    ],
+    "modern": null,
+    "x": 2161,
+    "y": 3309
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "159-68",
+    "bounded_by": {
+     "N": "17th St",
+     "S": "16th St",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 1677,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 4,
+    "shanties": 0,
+    "stores": 25,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "COLORADO TENT & AWNING CO. 1st; TENT & AWNING LIGHT MFG.",
+      "name": "Colorado Tent & Awning Co.",
+      "trade": "other",
+      "features": "electric motor; heating boilers"
+     },
+     {
+      "label": "JOB PRINTING 2nd",
+      "name": null,
+      "trade": "printing",
+      "features": ""
+     },
+     {
+      "label": "DYNAMO & ENGINE RM.",
+      "name": "\"The May\" Gents Furn. Store",
+      "trade": "power/electric",
+      "features": "basement dynamo and engine room; steam heaters"
+     },
+     {
+      "label": "PICTURE FRAMING; GUNSMITH",
+      "name": null,
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "WHOL. CIGARS; WHOL. SHOES; WHOL. LADIES GOODS; WHOL. LIQUORS; BEER HALL USED AS WARE RM.",
+      "name": "various wholesalers",
+      "trade": "warehouse",
+      "features": "iron posts"
+     }
+    ],
+    "faces": [],
+    "notes": "Flats = Hotel Warren (lodging above 1st), Hotel Colorado, Palmer House, The Great Northern (lodging). Cheesman Block, King Block, Essex Bldg. and Tabor Bldg. Store count approximate."
+   },
+   {
+    "block_id": "159-69",
+    "bounded_by": {
+     "N": "16th St",
+     "S": "15th St",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 1677,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 28,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WARE ROOM & STORE; PRINTING 2nd; BOOK BINDERY 3rd",
+      "name": "Kistler Stationery Co.",
+      "trade": "printing",
+      "features": "electric motor; printing on 3rd floor of the Golden Eagle annex"
+     },
+     {
+      "label": "DYNAMO & ENGINE RM.",
+      "name": "The Golden Eagle (dry goods store)",
+      "trade": "power/electric",
+      "features": "basement dynamo and engine room; boilers; stone front"
+     },
+     {
+      "label": "FURNITURE REPAIR SHOP",
+      "name": null,
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     }
+    ],
+    "faces": [],
+    "notes": "Appel Bldg. at 16th & Larimer. Furnished rooms 2nd floor over the Golden Eagle annex (flats). Saloons, barbers, restaurants and baths along Larimer and Lawrence. Store count approximate."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Larimer-Lawrence retail core, 15th-17th: stores, saloons and lodging hotels, with small trades (printing, bindery, tent and awning) and basement dynamo plants in the department stores. No dwellings and no heavy industry."
+ }
+]

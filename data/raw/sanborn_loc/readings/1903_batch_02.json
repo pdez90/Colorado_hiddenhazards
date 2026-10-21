@@ -1,0 +1,2659 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 11,
+  "image": "1903_1904_v1_00985_01_1903-0011.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wynkoop",
+     "13th"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 252
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "12th"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 1354
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "11th"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 2419
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "10th"
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 3483
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "12th"
+    ],
+    "modern": null,
+    "x": 1629,
+    "y": 1354
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "11th"
+    ],
+    "modern": null,
+    "x": 1629,
+    "y": 2419
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "11-5",
+    "bounded_by": {
+     "N": "13th",
+     "S": "12th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 2322,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "COAL YARD; COAL SHED; LUMBER SHED; COAL BIN",
+      "name": "Curtis Coal Co.",
+      "trade": "coal/wood yard",
+      "features": "scales; iron clad sheds"
+     }
+    ],
+    "faces": [],
+    "notes": "Block occupied by Denver & Rio Grande Railroad Yard tracks; no dwellings."
+   },
+   {
+    "block_id": "11-6",
+    "bounded_by": {
+     "N": "12th",
+     "S": "11th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 2322,
+     "y": 1870
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "LIME HO. (2)",
+      "name": null,
+      "trade": "warehouse",
+      "features": "lime storage sheds"
+     },
+     {
+      "label": "HAY WARE HO.; OFFICES",
+      "name": null,
+      "trade": "warehouse",
+      "features": "iron clad"
+     },
+     {
+      "label": "STONE YARD",
+      "name": "S.T. Hathaway",
+      "trade": "brick/stone/pottery",
+      "features": ""
+     },
+     {
+      "label": "ICE HO.",
+      "name": "D. & R.G. R.R. Ice Ho.",
+      "trade": "warehouse",
+      "features": "iron clad, 30' to eaves"
+     }
+    ],
+    "faces": [],
+    "notes": "Mostly D&RG and Grant/West Denver rail tracks; small office with scales."
+   },
+   {
+    "block_id": "11-35",
+    "bounded_by": {
+     "N": "11th",
+     "S": "10th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 2322,
+     "y": 2999
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "MATTRESS FACTORY; SEWING & WOOL CARDING; RAG MILL; PICKER RM; ENG. & BOILER; WOOL VAULT; WARE HO.",
+      "name": "Kent and Stuchfield Mattress Factory",
+      "trade": "other",
+      "features": "engine & boiler room; iron chimney 40' high; heat steam, fuel coal, lights electric; hay, furniture & mattress stock storage; runs nights at intervals"
+     },
+     {
+      "label": "OIL HOUSE & STORAGE",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": "railroad oil house near Wynkoop"
+     },
+     {
+      "label": "B.SM.SH.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "iron clad"
+     }
+    ],
+    "faces": [],
+    "notes": "Rest of block is railroad tracks; one stable."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "STONE YARD",
+    "name": "E. Edwards & Co.",
+    "trade": "brick/stone/pottery",
+    "features": "20 h.p. engine & boiler, iron clad; coal",
+    "near": "west side of Wewatta at 14th St viaduct, by Cherry Creek"
+   },
+   {
+    "label": "COAL POCKETS; TOOL HO.; CAR REPORTERS OFFICE",
+    "name": "Colorado and Southern Railroad Yard",
+    "trade": "rail shops/roundhouse",
+    "features": "coal pockets (locomotive coaling)",
+    "near": "C&S yard west of Wewatta, between 12th and 10th near Mill Ditch"
+   }
+  ],
+  "sheet_notes": "Entirely railroad land between Cherry Creek and Mill Ditch (D&RG and C&S yards, Grant/West Denver congressional grant); no dwellings. Main plant is Kent & Stuchfield mattress factory with boiler and 40' iron stack."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 12,
+  "image": "1903_1904_v1_00985_01_1903-0012.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wazee",
+     "13th"
+    ],
+    "modern": null,
+    "x": 1603,
+    "y": 242
+   },
+   {
+    "streets": [
+     "Wazee",
+     "12th"
+    ],
+    "modern": null,
+    "x": 1603,
+    "y": 1354
+   },
+   {
+    "streets": [
+     "Wazee",
+     "11th"
+    ],
+    "modern": null,
+    "x": 1603,
+    "y": 2419
+   },
+   {
+    "streets": [
+     "Wazee",
+     "10th"
+    ],
+    "modern": null,
+    "x": 1603,
+    "y": 3483
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "12th"
+    ],
+    "modern": "W. Walnut = Market",
+    "x": 3015,
+    "y": 1354
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "10th"
+    ],
+    "modern": "W. Walnut = Market",
+    "x": 3015,
+    "y": 3483
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "11th"
+    ],
+    "modern": null,
+    "x": 194,
+    "y": 2419
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "12-4",
+    "bounded_by": {
+     "N": "13th",
+     "S": "12th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 968,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "HARDW. & WOOD STOCK WARE HO.; TIN & HARDW. W. HO.",
+      "name": "The Moore Hardw. & Iron Co.",
+      "trade": "warehouse",
+      "features": "elevators run by water motor"
+     },
+     {
+      "label": "CASKET CO.; STOCK & SETTING UP; TRIMMING",
+      "name": "Colorado Casket Co.",
+      "trade": "other",
+      "features": "heat furnace; lights electric"
+     },
+     {
+      "label": "WARE HO.",
+      "name": "The Denver Dry Goods Co.",
+      "trade": "warehouse",
+      "features": "5 stories; elevators run by elec. motor; heat stove"
+     },
+     {
+      "label": "FREIGHT DEPOT; FREIGHT OFFICES",
+      "name": "D. & R.G. R.R. Freight Depot",
+      "trade": "warehouse",
+      "features": "iron clad; heating bldg"
+     }
+    ],
+    "faces": [],
+    "notes": "West half D&RG yard tracks and freight depot; no dwellings."
+   },
+   {
+    "block_id": "12-7",
+    "bounded_by": {
+     "N": "12th",
+     "S": "11th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 968,
+     "y": 1870
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "AGRICULTURAL IMPLEM'TS W. HO.",
+      "name": "John Deere",
+      "trade": "warehouse",
+      "features": "3 stories; elevator elec. motor"
+     },
+     {
+      "label": "COAL SHED; COAL & LIME W. HO.; OFFICE",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "scales"
+     },
+     {
+      "label": "FREIGHT DEPOT (cont.)",
+      "name": "D. & R.G. R.R. Freight Depot",
+      "trade": "warehouse",
+      "features": "wooden, iron clad"
+     }
+    ],
+    "faces": [],
+    "notes": "4 dwellings on the Wazee side share block with coal & lime warehouse."
+   },
+   {
+    "block_id": "12-34",
+    "bounded_by": {
+     "N": "11th",
+     "S": "10th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 968,
+     "y": 2967
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "BEER DEPOT; COLD STORAGE; BOTTLING",
+      "name": "Val. Blatz Brew'g Co. Beer Depot",
+      "trade": "brewery/distillery",
+      "features": "cold storage, bottling"
+     }
+    ],
+    "faces": [],
+    "notes": "West part railroad tracks, upper part vacant."
+   },
+   {
+    "block_id": "12-3",
+    "bounded_by": {
+     "N": "13th",
+     "S": "12th",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 2306,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 12,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "TRANSFER BARNS; WAGON SHED",
+      "name": "R.S. Rose Transfer Barns",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "BLKSM.; WOOD WK.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "1440-1442 13th"
+     },
+     {
+      "label": "WOOD WORK; BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "1400-1404 13th, corner of W. Walnut"
+     }
+    ],
+    "faces": [],
+    "notes": "Tremont Ho. hotel and two lodging houses counted as flats; row of 9 dwellings along 12th."
+   },
+   {
+    "block_id": "12-8",
+    "bounded_by": {
+     "N": "12th",
+     "S": "11th",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 2306,
+     "y": 1870
+    },
+    "partial": false,
+    "dwellings": 34,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.; BLKS. & ENG. SH.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "small engine/boiler room shown; 1469 11th"
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": "1121-1125 W. Walnut"
+     },
+     {
+      "label": "RAGS & JUNK; RAG HO.",
+      "name": null,
+      "trade": "other",
+      "features": "1117-1121 W. Walnut"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Wazee",
+      "what": "Coal & Lime W. Ho. / John Deere implement warehouse (block 7)",
+      "dwellings_facing": 7
+     }
+    ],
+    "notes": "Dense working-class housing incl. Tenements 1437-1445 11th; dwellings counted +/-2."
+   },
+   {
+    "block_id": "12-33",
+    "bounded_by": {
+     "N": "11th",
+     "S": "10th",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 2306,
+     "y": 2967
+    },
+    "partial": false,
+    "dwellings": 35,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "HARDW. W. HO.",
+      "name": null,
+      "trade": "warehouse",
+      "features": "1420 11th"
+     },
+     {
+      "label": "LIVERY",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "1402 11th, iron clad roof"
+     },
+     {
+      "label": "COBBLER",
+      "name": null,
+      "trade": "other",
+      "features": "small shop"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Wazee",
+      "what": "Val. Blatz Brew'g Co. Beer Depot (block 34)",
+      "dwellings_facing": 6
+     }
+    ],
+    "notes": "Dwellings counted +/-2."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Wholesale/warehouse district on Wynkoop-Wazee (D&RG freight depot, Denver Dry Goods, John Deere, casket works) directly facing dense dwelling blocks across Wazee; blacksmiths, livery, Chinese laundry and rag/junk shop mixed in."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 13,
+  "image": "1903_1904_v1_00985_01_1903-0013.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Larimer",
+     "13th"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 274
+   },
+   {
+    "streets": [
+     "Larimer",
+     "12th"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 1354
+   },
+   {
+    "streets": [
+     "Larimer",
+     "11th"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 2419
+   },
+   {
+    "streets": [
+     "Larimer",
+     "10th"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 3499
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "12th"
+    ],
+    "modern": "W. Walnut = Market",
+    "x": 194,
+    "y": 1354
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "10th"
+    ],
+    "modern": "W. Walnut = Market",
+    "x": 194,
+    "y": 3499
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "12th"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 1354
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "11th"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 2419
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "13-2",
+    "bounded_by": {
+     "N": "13th",
+     "S": "12th",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 935,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 10,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 12,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CIGAR BOX FAC.",
+      "name": "Geo. Zimmerhackel Cigar Box Fac.",
+      "trade": "lumber/planing",
+      "features": "engine & boiler; power & heat steam, fuel coal, lights electric"
+     },
+     {
+      "label": "LIVERY FEED & SALE; CORRAL; REPOSITORY; WAGON HO.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "two livery barns, corral"
+     },
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "corner 12th & W. Walnut"
+     },
+     {
+      "label": "PIANO WARE HO.",
+      "name": null,
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "BAKERY; BAKE HO.",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "CHIN. LAUNDRY; HAND LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "CIGAR FAC.",
+      "name": null,
+      "trade": "other",
+      "features": "Larimer front"
+     },
+     {
+      "label": "BICYCLE SHOP; GUNSM.",
+      "name": null,
+      "trade": "metal working",
+      "features": "small shops"
+     }
+    ],
+    "faces": [],
+    "notes": "Auction pavilion (counted other_nonres); Larimer frontage is stores; dwellings counted +/-2."
+   },
+   {
+    "block_id": "13-9",
+    "bounded_by": {
+     "N": "12th",
+     "S": "11th",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 935,
+     "y": 1887
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 16,
+    "other_nonres": 1,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BAKE HO.",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "ovens (one not used)"
+     },
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "forge; 1350-1360 12th"
+     },
+     {
+      "label": "SODA WATER FAC.",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     },
+     {
+      "label": "CIGAR FAC. (2)",
+      "name": null,
+      "trade": "other",
+      "features": "Larimer front"
+     },
+     {
+      "label": "JUNK YARD; JUNK HO.; JUNK SHED",
+      "name": null,
+      "trade": "other",
+      "features": "iron clad sheds"
+     },
+     {
+      "label": "TAMALE FAC'Y (uncertain reading)",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "1307-1309 11th"
+     }
+    ],
+    "faces": [
+     {
+      "street": "11th",
+      "what": "The Woeber Carriage Co. and rag houses (block 32)",
+      "dwellings_facing": 6
+     }
+    ],
+    "notes": "West Denver Turner Hall (other_nonres); Western Hotel, Tenements and lodgings counted as flats; water tank on posts."
+   },
+   {
+    "block_id": "13-32",
+    "bounded_by": {
+     "N": "11th",
+     "S": "10th",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 935,
+     "y": 2951
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 8,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CARRIAGE CO.: PAINT'G; BLKSM. & PAINT'G; WOOD WORK'G",
+      "name": "The Woeber Carriage Co.",
+      "trade": "other",
+      "features": "wood working 2nd floor, elec. motor; heat stoves, lights gas"
+     },
+     {
+      "label": "RAG HO.; RAG HO. (OLD)",
+      "name": null,
+      "trade": "other",
+      "features": "two rag houses"
+     },
+     {
+      "label": "BAR FIXTURE WARE HO.",
+      "name": null,
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "PUMP SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": "Larimer front"
+     }
+    ],
+    "faces": [],
+    "notes": "Milwaukee Ho. and Lindell Hotel counted as flats; row of ~8 attached dwellings on 10th."
+   },
+   {
+    "block_id": "13-1",
+    "bounded_by": {
+     "N": "13th",
+     "S": "12th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2370,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 8,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STORAGE & BOTTLING & GAS GENERATING; SYRUP MIXING",
+      "name": "The Standard Bottling Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "gas generators; engine 40 h.p.; chimney 12' above roof; heat steam, fuel coal"
+     },
+     {
+      "label": "RAGS & JUNK; JUNK YARD; WARE HO.",
+      "name": null,
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "PAINT SHOP (BASEMENT)",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": "gasoline engine & pump; gasoline tank under pavement; heater in basement"
+     },
+     {
+      "label": "HAND LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "CIGAR FAC.",
+      "name": null,
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "12th",
+      "what": "Hurlbut Gro. Co. warehouse (block 10)",
+      "dwellings_facing": 2
+     }
+    ],
+    "notes": "Knight Ho. lodgings counted as flats; water tank on roof 2000 gal."
+   },
+   {
+    "block_id": "13-10",
+    "bounded_by": {
+     "N": "12th",
+     "S": "11th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2370,
+     "y": 1887
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 9,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "HAND PRINTING",
+      "name": null,
+      "trade": "printing",
+      "features": ""
+     },
+     {
+      "label": "PLUMBING; TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": ""
+     },
+     {
+      "label": "GRO. CO.",
+      "name": "Hurlbut Gro. Co.",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "BLKSM. (2)",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "1118-1120 Larimer and 1223 11th"
+     },
+     {
+      "label": "CARP'R",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "small carpenter shop"
+     }
+    ],
+    "faces": [
+     {
+      "street": "11th",
+      "what": "Tin Shop & Cornice Works (block 31)",
+      "dwellings_facing": 2
+     }
+    ],
+    "notes": "Lawrence side is detached dwellings."
+   },
+   {
+    "block_id": "13-31",
+    "bounded_by": {
+     "N": "11th",
+     "S": "10th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2370,
+     "y": 2951
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 4,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "TIN SHOP & CORNICE WORKS",
+      "name": null,
+      "trade": "metal working",
+      "features": "storage & work shop 2nd"
+     },
+     {
+      "label": "BOTTLING",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     },
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "SMOKE HO.; SAUSAGE FAC.",
+      "name": null,
+      "trade": "meat packing/stockyard",
+      "features": "kettle, smoke house"
+     },
+     {
+      "label": "HAND LAUNDRY; CHIN. LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "frame 2nd; 1241-1245 10th"
+     }
+    ],
+    "faces": [],
+    "notes": "Washington School (heat furnace), Mission, 1st German Presbn Church, St. Andrew's Episc. Church; lodgings and tenements counted as flats."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Old Auraria/West Denver commercial core: Larimer storefronts with small workshops (cigar, bakeries, laundries, blacksmiths, tin shops) and a 40 h.p. bottling works and steam cigar-box factory interspersed with dwellings, tenements, a school and churches."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 14,
+  "image": "1903_1904_v1_00985_01_1903-0014.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Arapahoe",
+     "13th"
+    ],
+    "modern": null,
+    "x": 1516,
+    "y": 210
+   },
+   {
+    "streets": [
+     "Curtis",
+     "13th"
+    ],
+    "modern": null,
+    "x": 2548,
+    "y": 210
+   },
+   {
+    "streets": [
+     "Curtis",
+     "12th"
+    ],
+    "modern": null,
+    "x": 2548,
+    "y": 1645
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "12th"
+    ],
+    "modern": null,
+    "x": 290,
+    "y": 1983
+   },
+   {
+    "streets": [
+     "Curtis",
+     "12th"
+    ],
+    "modern": null,
+    "x": 1580,
+    "y": 2306
+   },
+   {
+    "streets": [
+     "Curtis",
+     "11th"
+    ],
+    "modern": null,
+    "x": 1419,
+    "y": 3193
+   },
+   {
+    "streets": [
+     "Champa",
+     "11th"
+    ],
+    "modern": null,
+    "x": 2806,
+    "y": 3515
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "14-72",
+    "bounded_by": {
+     "N": "13th",
+     "S": "Cherry Creek",
+     "E": "Arapahoe",
+     "W": null
+    },
+    "centroid": {
+     "x": 1064,
+     "y": 645
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CARP'R 1ST; CABINET SHOP 2D",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "elec. motor"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Arapahoe",
+      "what": "Frank Kirchof Planing Mill and B.L. James paint factory (block 101)",
+      "dwellings_facing": 8
+     }
+    ],
+    "notes": "Bounded on SW by Cherry Creek; row of attached brick dwellings on Arapahoe."
+   },
+   {
+    "block_id": "14-101",
+    "bounded_by": {
+     "N": "13th",
+     "S": "12th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 2032,
+     "y": 935
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PLANING MILL & CARP'R SHOP; PLANING MILL; LUMBER SHED; DRY STEAM HO.",
+      "name": "Frank Kirchof Planing Mill & Carp'r Shop",
+      "trade": "lumber/planing",
+      "features": "power electric; heat steam; fuel shavings; shavings vault; dry (steam) kiln"
+     },
+     {
+      "label": "PAINT FACTORY: GRINDING & MIXING; MIXING & STORAGE; PAINT WARE HOS.",
+      "name": "The B.L. James Mercantile & Mfg. Co. Paint Factory",
+      "trade": "oil/paint/tar",
+      "features": "6 mixers; elec. motor; iron clad paint warehouse"
+     }
+    ],
+    "faces": [],
+    "notes": "Planing mill and paint factory share the Arapahoe frontage with ~6 dwellings; row of 2-story dwellings on 13th; Curtis side detached dwellings, saloon, hay & feed. Lower Arapahoe lots vacant toward creek."
+   },
+   {
+    "block_id": "14-245",
+    "bounded_by": {
+     "N": null,
+     "S": "12th",
+     "E": null,
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 968,
+     "y": 1677
+    },
+    "partial": false,
+    "dwellings": 5,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STONE CUTTING; POLISHING; BLKSM.; STOCK RM.; STONE YARD",
+      "name": "The Denver Marble & Granite Co.",
+      "trade": "brick/stone/pottery",
+      "features": "elec. motor polishing"
+     },
+     {
+      "label": "BAKE HO.; MIXERS; OVENS; LOADING RM. (label reads 'MODERN STEAM LAUNDRY', uncertain)",
+      "name": "Campbell-Sell Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "ovens; heating boiler in basement; elec. motor; coal bin; heat steam, lights gas & electric"
+     },
+     {
+      "label": "COAL YARD; WOOD SHED; IRON CLAD SHED",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "scales"
+     }
+    ],
+    "faces": [],
+    "notes": "West Denver side, bounded NE by Cherry Creek. Campbell-Sell label legibly reads 'Modern Steam Laundry' but building is a bakery (bake ho., ovens, mixers)."
+   },
+   {
+    "block_id": "14-11",
+    "bounded_by": {
+     "N": "12th",
+     "S": "11th",
+     "E": "Curtis",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 855,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 33,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "12th",
+      "what": "Campbell-Sell Co. bakery and coal yard (block 245)",
+      "dwellings_facing": 10
+     }
+    ],
+    "notes": "Almost wholly residential; row of attached 2-story dwellings on 12th."
+   },
+   {
+    "block_id": "14-12",
+    "bounded_by": {
+     "N": "12th",
+     "S": "11th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 2225,
+     "y": 2838
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STABLES",
+      "name": "Denver Dry Goods Co. Stables",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "HORSE RADISH FAC.",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "1056-1058 12th"
+     },
+     {
+      "label": "CARP'R",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": ""
+     },
+     {
+      "label": "COMM'N (3)",
+      "name": null,
+      "trade": "warehouse",
+      "features": "three commission houses at 12th & Champa"
+     }
+    ],
+    "faces": [],
+    "notes": "North part of block vacant; market stalls just outside along Cherry Creek."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "MARKET STALLS",
+    "name": null,
+    "trade": "other",
+    "features": "",
+    "near": "along Cherry Creek bank NE of block 12 (12th & Champa)"
+   }
+  ],
+  "sheet_notes": "Cherry Creek splits sheet; East Denver block 101 has a planing mill (shavings fuel, dry kiln) and paint factory with 6 mixers amid dwellings; West Denver block 245 has a marble works, steam bakery and coal yard facing a solid dwelling block across 12th."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 15,
+  "image": "1903_1904_v1_00985_01_1903-0015.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Champa",
+     "13th"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 242
+   },
+   {
+    "streets": [
+     "Stout",
+     "13th"
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 242
+   },
+   {
+    "streets": [
+     "Curtis",
+     "12th"
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 1677
+   },
+   {
+    "streets": [
+     "Champa",
+     "12th"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 1683
+   },
+   {
+    "streets": [
+     "Stout",
+     "12th"
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 1683
+   },
+   {
+    "streets": [
+     "California",
+     "12th"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 1683
+   },
+   {
+    "streets": [
+     "California",
+     "B"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 3112
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "15-104",
+    "bounded_by": {
+     "N": "13th",
+     "S": "12th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 629,
+     "y": 968
+    },
+    "partial": false,
+    "dwellings": 33,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MACHINE SHOP; STORAGE 2D; BLKSM. 1ST; PATTERN SHOP 2D",
+      "name": "The J.H. Montgomery Machine Co.",
+      "trade": "machine shop",
+      "features": "engine 30 h.p.; 3000 gal. tank on roof; heat steam & stoves; fuel coal; lights gas & electric; night watchman"
+     },
+     {
+      "label": "BLKSM.; LIVERY & BOARDING",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Machine works (1220-1228 Curtis) and livery occupy the Curtis frontage between dwellings; Champa side and 13th/12th rows are dwellings."
+   },
+   {
+    "block_id": "15-133",
+    "bounded_by": {
+     "N": "13th",
+     "S": "12th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 968
+    },
+    "partial": false,
+    "dwellings": 36,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Residential; lodgings at 816 13th; saloon at Stout & 12th."
+   },
+   {
+    "block_id": "15-136",
+    "bounded_by": {
+     "N": "13th",
+     "S": "12th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 2693,
+     "y": 968
+    },
+    "partial": false,
+    "dwellings": 37,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CIGAR FAC.",
+      "name": null,
+      "trade": "other",
+      "features": "1236 Stout"
+     }
+    ],
+    "faces": [],
+    "notes": "Residential; row of 2-story dwellings on 13th."
+   },
+   {
+    "block_id": "15-103",
+    "bounded_by": {
+     "N": "12th",
+     "S": "Cherry Creek",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 629,
+     "y": 2096
+    },
+    "partial": true,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Cut off by Cherry Creek; mostly vacant lots."
+   },
+   {
+    "block_id": "15-134",
+    "bounded_by": {
+     "N": "12th",
+     "S": "Cherry Creek",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 2225
+    },
+    "partial": true,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 6,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": "1166 1/2 Champa"
+     },
+     {
+      "label": "HARNESS SHOP",
+      "name": null,
+      "trade": "other",
+      "features": "small shop by Cherry Creek"
+     }
+    ],
+    "faces": [],
+    "notes": "Bicycle shop and saloon at Stout end near creek bridge; Champa lots toward creek vacant."
+   },
+   {
+    "block_id": "15-135",
+    "bounded_by": {
+     "N": "12th",
+     "S": "B",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 2693,
+     "y": 2386
+    },
+    "partial": false,
+    "dwellings": 34,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "LAUNDRY; IRONING & DRYING 2D",
+      "name": "The Queen City Laundry",
+      "trade": "laundry/dye",
+      "features": "engine 12 h.p.; boiler & chimney; water tank on roof"
+     },
+     {
+      "label": "CHIN. LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": "716-720 12th"
+     }
+    ],
+    "faces": [],
+    "notes": "Steam laundry at B St & California corner with dwellings on the same block."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Largely residential East Denver blocks along Cherry Creek; industry limited to J.H. Montgomery Machine Co. (30 h.p. engine) on Curtis, Queen City steam laundry (12 h.p.) and small tin/cigar shops."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 16,
+  "image": "1903_1904_v1_00985_01_1903-0016.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Welton",
+     "13th"
+    ],
+    "modern": null,
+    "x": 1096,
+    "y": 242
+   },
+   {
+    "streets": [
+     "Glenarm",
+     "13th"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 242
+   },
+   {
+    "streets": [
+     "Tremont",
+     "13th"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 242
+   },
+   {
+    "streets": [
+     "California",
+     "12th"
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 1677
+   },
+   {
+    "streets": [
+     "Welton",
+     "12th"
+    ],
+    "modern": null,
+    "x": 1096,
+    "y": 1677
+   },
+   {
+    "streets": [
+     "Glenarm",
+     "12th"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 1677
+   },
+   {
+    "streets": [
+     "California",
+     "B"
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 3112
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "16-165",
+    "bounded_by": {
+     "N": "13th",
+     "S": "12th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 968
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CARPET WEAVING",
+      "name": null,
+      "trade": "other",
+      "features": "1232-1234 California, small"
+     }
+    ],
+    "faces": [],
+    "notes": "Welsh Presbyterian Church; residential."
+   },
+   {
+    "block_id": "16-170",
+    "bounded_by": {
+     "N": "13th",
+     "S": "12th",
+     "E": "Glenarm",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 968
+    },
+    "partial": false,
+    "dwellings": 41,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 2,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Glenarm",
+      "what": "Wood Work & Painting and Blksm./bicycle shop (block 199)",
+      "dwellings_facing": 5
+     }
+    ],
+    "notes": "Longfellow School (25 h.p. heating boiler, coal vault) and St. Phillips House of St. Mark's Parish; La Plata Terrace row on Glenarm; 10-unit row on 13th."
+   },
+   {
+    "block_id": "16-199",
+    "bounded_by": {
+     "N": "13th",
+     "S": null,
+     "E": "Tremont",
+     "W": "Glenarm"
+    },
+    "centroid": {
+     "x": 2516,
+     "y": 838
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "INDUSTRIAL BLDG.: CHEMISTS 1ST, 6TH & 7TH FLOORS; TENEMENTS 2,3,4,5",
+      "name": "The J.C. Millen Mfg. Co.-Chemists",
+      "trade": "chemical",
+      "features": "heating boiler; chimney 25' above roof; engine shop 1st; vault; elevator run by water; heat steam, lights electric; tenements on floors 2-5 above chemical works"
+     },
+     {
+      "label": "WOOD WORK & PAINTING",
+      "name": null,
+      "trade": "other",
+      "features": "1220-1222 Glenarm"
+     },
+     {
+      "label": "BLKSM.; BICYCLE SHOP & PAINTS 2D",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Triangular block cut by S. Tremont St.; 7-story Industrial Bldg holds chemical works and tenements in one building (counted as 1 flat)."
+   },
+   {
+    "block_id": "16-166",
+    "bounded_by": {
+     "N": "12th",
+     "S": "B",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 2386
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 6,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MFRS. INCANDESCENT LAMPS",
+      "name": "The Capital Electric Co.",
+      "trade": "other",
+      "features": "power elec. motor; steam heater boiler; heat steam, lights electric"
+     },
+     {
+      "label": "CANDY FAC'Y",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "kettle"
+     },
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven in basement"
+     },
+     {
+      "label": "WATER BOTTLING",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     },
+     {
+      "label": "JELLY FAC'Y",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     },
+     {
+      "label": "BLKSM.; WOOD WORK'G 1ST; PAINTING 2D; REPOSITORY",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "carriage shop"
+     }
+    ],
+    "faces": [],
+    "notes": "B St end of block is a cluster of small food works and lamp factory under lodgings; dwellings fill California and Welton sides."
+   },
+   {
+    "block_id": "16-169",
+    "bounded_by": {
+     "N": "12th",
+     "S": "W. Colfax Av.",
+     "E": "Glenarm",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 1451,
+     "y": 2064
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Triangular residential block; lodgings with store at W. Colfax point."
+   },
+   {
+    "block_id": "16-B St triangle",
+    "bounded_by": {
+     "N": "B",
+     "S": null,
+     "E": null,
+     "W": null
+    },
+    "centroid": {
+     "x": 258,
+     "y": 3290
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Unnumbered triangle between B St and Cherry Creek: saloon with lodgings 2nd-3rd, heater in basement."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "East Denver residential grid along W. Colfax/Cherry Creek. Notable: J.C. Millen Mfg. Co. chemists occupying floors 1, 6, 7 of an Industrial Bldg with tenements on floors 2-5; Capital Electric lamp works and candy/jelly/bottling shops in block 166."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 17,
+  "image": "1903_1904_v1_00985_01_1903-0017.jpg",
+  "intersections": [],
+  "blocks": [],
+  "outside_blocks": [
+   {
+    "label": "ENGINE SHOP; MACHINE SHOP; BOILER SHOP; RATTLERS; BLKSM.; MACHINE SHOP (K)",
+    "name": "Colorado & Southern R.R. Shops",
+    "trade": "rail shops/roundhouse",
+    "features": "steel truss roof, concrete floor; blower; rattlers; blacksmith shop with dynamo; power steam in machine shop",
+    "near": "bldgs G, I, K just north of 7th St"
+   },
+   {
+    "label": "COACH SHOP; PATTERN SHOP 2D; UPHOLST'G 2D; CARP'R 2D; DRAFT'G 2D; CARP'R SHOP; PAINT SHOP",
+    "name": "Colorado & Southern R.R. Shops",
+    "trade": "rail shops/roundhouse",
+    "features": "electric power; dynamos; raised skylights; steel truss roofs",
+    "near": "bldgs A, B, C north of transfer table"
+   },
+   {
+    "label": "BOILER HOUSE (D)",
+    "name": "Colorado & Southern R.R. Shops",
+    "trade": "power/electric",
+    "features": "4 boilers in two batteries; 2 chimneys 50' above roof; tank; steam pipe underground",
+    "near": "east end of coach/carpenter shops"
+   },
+   {
+    "label": "POWER HOUSE (H): ENG. 150 H.P.; ENG. 125 H.P. DYNAMO; ENG. 250 H.P. 2 DYNAMOS; AIR COMP.; COAL",
+    "name": "Colorado & Southern R.R. Shops",
+    "trade": "power/electric",
+    "features": "three steam engines totalling 525 h.p.; dynamos; air compressor; chimney 25' above roof; coal bin",
+    "near": "NE corner of engine/machine shop"
+   },
+   {
+    "label": "OIL & SUPPLY HO.; OFFICE (E, F)",
+    "name": "Colorado & Southern R.R. Shops",
+    "trade": "oil/paint/tar",
+    "features": "stock platform for iron castings beside it",
+    "near": "west side near 7th St"
+   },
+   {
+    "label": "LUMBER SHEDS; REPAIR TRACKS",
+    "name": "Colorado & Southern R.R. Shops",
+    "trade": "lumber/planing",
+    "features": "",
+    "near": "north part of yard by Mill Race"
+   },
+   {
+    "label": "R.R. YARD; ROUNDHOUSE (edge of sheet)",
+    "name": null,
+    "trade": "rail shops/roundhouse",
+    "features": "turntable/roundhouse partly shown",
+    "near": "east edge, toward sheet 18"
+   }
+  ],
+  "sheet_notes": "Entirely the Colorado & Southern R.R. Shops between the South Platte River/Mill Race and the R.R. yard, north of 7th St; no platted blocks or dwellings. Runs nights part of time; fuel coal and coke; 2 artesian wells 687' and 683' deep; no street crossings legible besides 7th St frontage."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 18,
+  "image": "1903_1904_v1_00985_01_1903-0018.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wewatta",
+     "10th"
+    ],
+    "modern": null,
+    "x": 1490,
+    "y": 210
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "10th"
+    ],
+    "modern": null,
+    "x": 2870,
+    "y": 210
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "9th"
+    ],
+    "modern": null,
+    "x": 1490,
+    "y": 1242
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "9th"
+    ],
+    "modern": null,
+    "x": 2870,
+    "y": 1242
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "7th"
+    ],
+    "modern": null,
+    "x": 1490,
+    "y": 3564
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "7th"
+    ],
+    "modern": null,
+    "x": 2838,
+    "y": 3564
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "18-36",
+    "bounded_by": {
+     "N": "10th",
+     "S": "9th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 2064,
+     "y": 742
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Mill Race and D&RG/B&M tracks cross the block diagonally; one dwelling (1645 9th)."
+   },
+   {
+    "block_id": "18-70",
+    "bounded_by": {
+     "N": "9th",
+     "S": "8th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 2064,
+     "y": 1870
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 6,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "WORK SHOP (ELEV'D 40')",
+      "name": null,
+      "trade": "other",
+      "features": "elevated 40'"
+     },
+     {
+      "label": "BARREL STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "likely tied to tar paper factory across unopened 8th St (uncertain)"
+     }
+    ],
+    "faces": [],
+    "notes": "Squatters' shanties (A-F, several marked D) along unopened 9th St; 9th and 8th Sts not opened."
+   },
+   {
+    "block_id": "18-71",
+    "bounded_by": {
+     "N": "8th",
+     "S": "7th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 2128,
+     "y": 2838
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "TAR PAPER FAC'Y; CARP'R SHOP; LUMBER STORAGE; TAR PAPER WARE HO.",
+      "name": "L.A. Watkins Tar Paper Fac'y",
+      "trade": "oil/paint/tar",
+      "features": "engine & boiler; iron chimney 35' above roof; tar tanks; iron tar tank 20'; pitch kiln 20'; coal bin; tar paper rolls; man sleeps on premises"
+     }
+    ],
+    "faces": [],
+    "notes": "Rail spur crosses block; south half vacant."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "GAS PLANT: WATER GAS PLANT; RETORT HO.; 4 PURIFYING TANKS; GASOMETER B (IRON); GASOMETER K CAP. ONE MILLION GAL. (IRON); CONDENSING ROOM; EXHAUSTER; METER HO.; VALVE HO.; MACHINE SHOP; BLKSM.",
+    "name": "The Denver Gas & Electric Co.'s Gas Plant",
+    "trade": "gas works",
+    "features": "boiler/engine house with engines 40, 30 & 30 h.p. and chimney 75'; coal tar tanks underground; tar tanks; purifier tank underground; traveling coke buckets; coke piles; 15000 gal. water tank on carp'r shop roof; oil house; iron clad storage sheds; runs night and day",
+    "near": "west of Wewatta between Mill Creek and 7th St"
+   },
+   {
+    "label": "RETORT; LIME HO.; AMMONIA TANKS; TANKS",
+    "name": "Colorado Ammonia Chemical Co.",
+    "trade": "chemical",
+    "features": "power from gas works; retort; ammonia tanks",
+    "near": "north end of gas works by Mill Creek, west of Wewatta near 10th"
+   },
+   {
+    "label": "COAL YARD; COAL SHEDS; WOOD YARD",
+    "name": "Independent Coal Co.'s Coal Yard",
+    "trade": "coal/wood yard",
+    "features": "scale",
+    "near": "west of gas works on 7th St"
+   },
+   {
+    "label": "PIPE SHED",
+    "name": null,
+    "trade": "warehouse",
+    "features": "",
+    "near": "gas works ground on 7th St"
+   }
+  ],
+  "sheet_notes": "Heaviest industry so far: Denver Gas & Electric coal-gas plant (retort house, two iron gasometers incl. one-million-gallon, underground coal-tar tanks) plus an ammonia chemical works, facing squatters' shanties and a tar paper factory (pitch kiln, tar tanks) across Wewatta in Grant/West Denver blocks 70-71."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 19,
+  "image": "1903_1904_v1_00985_01_1903-0019.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wazee",
+     "10th"
+    ],
+    "modern": null,
+    "x": 1612,
+    "y": 226
+   },
+   {
+    "streets": [
+     "Wazee",
+     "9th"
+    ],
+    "modern": null,
+    "x": 1629,
+    "y": 1290
+   },
+   {
+    "streets": [
+     "Wazee",
+     "8th"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 2483
+   },
+   {
+    "streets": [
+     "Wazee",
+     "7th"
+    ],
+    "modern": null,
+    "x": 1693,
+    "y": 3548
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "9th"
+    ],
+    "modern": "W. Walnut = Market",
+    "x": 3032,
+    "y": 1290
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "7th"
+    ],
+    "modern": "W. Walnut = Market",
+    "x": 3048,
+    "y": 3548
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "9th"
+    ],
+    "modern": null,
+    "x": 177,
+    "y": 1371
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "19-37",
+    "bounded_by": {
+     "N": "10th",
+     "S": "9th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 1338,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BEER WARE HO.; BOTTLING; BBL. STORAGE; WAGON SHED",
+      "name": "Anheuser Busch Brewing Ass'n",
+      "trade": "brewery/distillery",
+      "features": "engine 20 h.p.; iron chimney 25' above roof; stable"
+     },
+     {
+      "label": "WHOL. STOVES, TINWARE & METALS; TIN SHOP 3D",
+      "name": null,
+      "trade": "warehouse",
+      "features": "3 stories; elevator elec. motor; tin shop on 3rd floor"
+     }
+    ],
+    "faces": [],
+    "notes": "West half is D&RG R.R. yard."
+   },
+   {
+    "block_id": "19-38",
+    "bounded_by": {
+     "N": "10th",
+     "S": "9th",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 2338,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 40,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Wazee",
+      "what": "Anheuser Busch beer depot and wholesale stoves/tin shop (block 37)",
+      "dwellings_facing": 8
+     }
+    ],
+    "notes": "Dense dwelling block; Mill Race runs along its 9th St edge; dressmaking shop and store."
+   },
+   {
+    "block_id": "19-69",
+    "bounded_by": {
+     "N": "9th",
+     "S": "8th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 1338,
+     "y": 1870
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "COAL YARD; OFFICE; SHED",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "rail spur"
+     }
+    ],
+    "faces": [],
+    "notes": "West part D&RG yard; switch shanty."
+   },
+   {
+    "block_id": "19-68",
+    "bounded_by": {
+     "N": "9th",
+     "S": "8th",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 2338,
+     "y": 1935
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "8th",
+      "what": "Hungarian Mill & Elevator Co. flour mill (block 73)",
+      "dwellings_facing": 6
+     }
+    ],
+    "notes": "Half the lots vacant."
+   },
+   {
+    "block_id": "19-72",
+    "bounded_by": {
+     "N": "8th",
+     "S": "7th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 1338,
+     "y": 2967
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "STONE YARD",
+      "name": "Thos. M. Ekrem Stone Yard",
+      "trade": "brick/stone/pottery",
+      "features": "iron clad sheds"
+     }
+    ],
+    "faces": [],
+    "notes": "West part D&RG yard."
+   },
+   {
+    "block_id": "19-73",
+    "bounded_by": {
+     "N": "8th",
+     "S": "7th",
+     "E": "W. Walnut",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 2338,
+     "y": 2967
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MILL; ELEVATOR CAPACITY 500,000 BU.; WARE HO.; DUST HO.; COAL HO.",
+      "name": "Hungarian Mill & Elevator Co. (J.K. Mullen, Manager)",
+      "trade": "flour mill/elevator",
+      "features": "capacity 1000 bbls/24 hrs; engine 400 h.p. & dynamo; boilers; wheel pit; artesian well; Davidson pump 300 gal/min; 35 dbl rolls, reels, purifiers, dust collectors; run day-time only"
+     }
+    ],
+    "faces": [],
+    "notes": "About 19 dwellings share the block with the mill and grain elevator."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "YARD OFF.; COAL; SCALES",
+    "name": "D. & R.G. R.R. Yard",
+    "trade": "rail shops/roundhouse",
+    "features": "",
+    "near": "D&RG yard along Wynkoop"
+   }
+  ],
+  "sheet_notes": "Hungarian Mill & Elevator Co. (400 h.p., 500,000 bu. elevator) and Anheuser Busch beer depot sit amid dense Grant/West Denver dwelling blocks along Wazee and W. Walnut; D&RG yard occupies the Wynkoop side."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 20,
+  "image": "1903_1904_v1_00985_01_1903-0020.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Larimer",
+     "10th"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 252
+   },
+   {
+    "streets": [
+     "Larimer",
+     "9th"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 1354
+   },
+   {
+    "streets": [
+     "Larimer",
+     "8th"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 2483
+   },
+   {
+    "streets": [
+     "Larimer",
+     "7th"
+    ],
+    "modern": null,
+    "x": 1645,
+    "y": 3564
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "9th"
+    ],
+    "modern": "W. Walnut = Market",
+    "x": 194,
+    "y": 1354
+   },
+   {
+    "streets": [
+     "W. Walnut",
+     "7th"
+    ],
+    "modern": "W. Walnut = Market",
+    "x": 194,
+    "y": 3548
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "9th"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 1354
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "8th"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 2483
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "20-39",
+    "bounded_by": {
+     "N": "10th",
+     "S": "9th",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 903,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 9,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BREWERY: BREW HO.; BEER VAULT; MALT STORAGE; MALT HO. & DRYING FLOOR; MALT KILN; WASH HO.; BOTTLING; PITCH SHED",
+      "name": "Tivoli Union Brewing Co.",
+      "trade": "brewery/distillery",
+      "features": "boilers; chimney 125'; engines 65 & 16 h.p.; 75-ton ice machine; condensers; dynamo; mash tub, kettle, cupola; malt kiln; bottling & wash houses each with 4 h.p. engine; 6\" artesian well; runs day and night"
+     }
+    ],
+    "faces": [],
+    "notes": "West Denver Turn Halle (with beer vaults under hall) and Dance Hall counted other_nonres; Black Bear Hotel counted as flats; Larimer side stores; ~5 dwellings on W. Walnut in the brewery block."
+   },
+   {
+    "block_id": "20-40",
+    "bounded_by": {
+     "N": "10th",
+     "S": "9th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2306,
+     "y": 806
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CITY WAGON YARD; WAGON SHED; WAGON SHOP; CARP'R 1ST, STORAGE 2D; HORSE SHED",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "PAINT SHOP",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": "long shop on Lawrence"
+     },
+     {
+      "label": "MATTRESS FAC.",
+      "name": null,
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "CARP'R",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "iron clad"
+     },
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     }
+    ],
+    "faces": [],
+    "notes": "Chapel on Larimer; boarding ho. (vacant) counted as flats."
+   },
+   {
+    "block_id": "20-67",
+    "bounded_by": {
+     "N": "9th",
+     "S": "8th",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 903,
+     "y": 1935
+    },
+    "partial": false,
+    "dwellings": 9,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 8,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MACHINE SHOP; STEEL STOCK; ELECTRICAL LABORATORY; WASH RM.",
+      "name": "The E.M. Davis Iron Works Co.",
+      "trade": "machine shop",
+      "features": "dynamo; wood & steel truss roof; power steam and electric; fuel coal and coke"
+     },
+     {
+      "label": "DILAPIDATED, USED FOR STORAGE ONLY",
+      "name": null,
+      "trade": "other",
+      "features": "former plant with kettles, engine room and iron chimney; 1342-1362 9th"
+     },
+     {
+      "label": "CARP'R",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "small"
+     }
+    ],
+    "faces": [],
+    "notes": "Row of 2-story units 1314-1326 9th counted as dwellings (uncertain). Lodgings over stores on Larimer."
+   },
+   {
+    "block_id": "20-66",
+    "bounded_by": {
+     "N": "9th",
+     "S": "8th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2306,
+     "y": 1935
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "GLASS CO.: BEV'L'G 1ST; GLASS SETTING 2D; STORAGE 3D; FURN.",
+      "name": "Copeland Glass Co.",
+      "trade": "brick/stone/pottery",
+      "features": "furnace; upright boiler"
+     },
+     {
+      "label": "BRASS FOUNDRY 1ST (OLD BUILDING)",
+      "name": null,
+      "trade": "foundry",
+      "features": "2-story old building, vacant 2nd"
+     },
+     {
+      "label": "ASSAY OFFICE 1ST",
+      "name": null,
+      "trade": "chemical",
+      "features": "electric motor"
+     },
+     {
+      "label": "BLKSM.; MACH. SHOP",
+      "name": null,
+      "trade": "machine shop",
+      "features": "upright boiler 10 h.p.; gasoline engine"
+     },
+     {
+      "label": "JUNK HO. (2)",
+      "name": null,
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "MILL; FLUME; WHEEL",
+      "name": "Excelsior Milling & Elevator Co.",
+      "trade": "flour mill/elevator",
+      "features": "engine 100 h.p.; boilers; chimney 25' above roof; water wheel on tail race; capacity 300 bbls/24 hrs; run day time only"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Lawrence",
+      "what": "Excelsior Milling & Elevator Co.",
+      "dwellings_facing": 1
+     }
+    ],
+    "notes": "St. Joe Hotel (flats) with row of ~6 dwellings on 9th; Mill Race tail race crosses block."
+   },
+   {
+    "block_id": "20-74",
+    "bounded_by": {
+     "N": "8th",
+     "S": "7th",
+     "E": "Larimer",
+     "W": "W. Walnut"
+    },
+    "centroid": {
+     "x": 903,
+     "y": 2967
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "FOUNDRY: MOULDING; CUPOLA; CORE OVEN; CLEANING CASTINGS; RATTLERS; MACHINE SHOP; PATTERN SHOP & STORAGE; FLASK YARD; SCRAP YARD",
+      "name": "The E.M. Davis Iron Works Co.",
+      "trade": "foundry",
+      "features": "cupola with elec. motor blower; core oven; iron chimney 30' above roof; water tank; vault"
+     },
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "1325 7th"
+     }
+    ],
+    "faces": [],
+    "notes": "Iron works fills the 8th St half; row of ~6 small dwellings on 7th backs directly onto the foundry flask/scrap yard. Queen City Hotel counted as flats."
+   },
+   {
+    "block_id": "20-75",
+    "bounded_by": {
+     "N": "8th",
+     "S": "7th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2306,
+     "y": 2967
+    },
+    "partial": false,
+    "dwellings": 3,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "8th",
+      "what": "Copeland Glass Co. / brass foundry (block 66)",
+      "dwellings_facing": 2
+     }
+    ],
+    "notes": "Vacant hot ho. (greenhouse), old foundation; south half entirely vacant."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Most industrial of the batch's residential sheets: Tivoli Union Brewing (125' stack, ice machine), E.M. Davis Iron Works foundry and machine shops, Excelsior flour mill, glass works and brass foundry, all sharing blocks with dwellings, hotels and halls in Grant/West Denver (Auraria)."
+ }
+]

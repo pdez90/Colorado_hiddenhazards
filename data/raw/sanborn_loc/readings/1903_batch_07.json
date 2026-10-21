@@ -1,0 +1,2348 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 170,
+  "image": "1903_1904_v2_00985_02_1903-0170.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Wazee",
+     "19th"
+    ],
+    "modern": null,
+    "x": 1122,
+    "y": 426
+   },
+   {
+    "streets": [
+     "Blake",
+     "19th"
+    ],
+    "modern": null,
+    "x": 2154,
+    "y": 426
+   },
+   {
+    "streets": [
+     "Wazee",
+     "18th"
+    ],
+    "modern": null,
+    "x": 1122,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "Blake",
+     "18th"
+    ],
+    "modern": null,
+    "x": 2154,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "Wazee",
+     "17th"
+    ],
+    "modern": null,
+    "x": 1122,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "Blake",
+     "17th"
+    ],
+    "modern": null,
+    "x": 2154,
+    "y": 3306
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "170-22",
+    "bounded_by": {
+     "N": "19th",
+     "S": "18th",
+     "E": "Blake",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 1638,
+     "y": 1145
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 6,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MACHINE SHOPS 1ST, WARE HO. 2ND",
+      "name": null,
+      "trade": "machine shop",
+      "features": "elec. motor 25 h.p."
+     },
+     {
+      "label": "LUMBER YARD; LUMBER SHEDS; SASH & DOOR WARE HO.",
+      "name": "Lewis and Wheeler Mercantile Co.",
+      "trade": "lumber/planing",
+      "features": "lumber piles, lumber sheds"
+     },
+     {
+      "label": "FORGE & TOOL WKS; MACHINE SHOP",
+      "name": "C.M. Anderson",
+      "trade": "metal working",
+      "features": "forges; coal ho."
+     },
+     {
+      "label": "CORNICE WKS",
+      "name": null,
+      "trade": "metal working",
+      "features": "all hand work; iron clad"
+     },
+     {
+      "label": "BAR & OFFICE FIXTURES, WOODWORKING",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "elect. motor 5 h.p.; varnish rm."
+     },
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": null
+     },
+     {
+      "label": "Hay & Feed",
+      "name": null,
+      "trade": "warehouse",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Engine House No. 5 (fire station) on Blake side. Two small D-marked buildings near 1837-1845 Blake (uncertain). Lots 25-32 on Blake largely vacant."
+   },
+   {
+    "block_id": "170-21",
+    "bounded_by": {
+     "N": "18th",
+     "S": "17th",
+     "E": "Blake",
+     "W": "Wazee"
+    },
+    "centroid": {
+     "x": 1638,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 10,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WOOD WORK'G",
+      "name": "Rocky Mt. Sporting Goods Co.",
+      "trade": "lumber/planing",
+      "features": "elec. motor 5 h.p."
+     },
+     {
+      "label": "SCALE REPAIR SHOP",
+      "name": null,
+      "trade": "machine shop",
+      "features": "elec. motor 2 h.p."
+     },
+     {
+      "label": "FLAVORING EXTRACT MFY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "hand power"
+     },
+     {
+      "label": "MINING MACH'Y",
+      "name": null,
+      "trade": "machine shop",
+      "features": "all hand work"
+     },
+     {
+      "label": "BRASS FOUNDRY",
+      "name": null,
+      "trade": "foundry",
+      "features": "all hand work"
+     },
+     {
+      "label": "IRON FOUNDRY; STORAGE",
+      "name": null,
+      "trade": "foundry",
+      "features": "iron clad"
+     },
+     {
+      "label": "IRON FOUNDRY",
+      "name": "Enz and Orr",
+      "trade": "foundry",
+      "features": "core oven; cupola; foundry 1st, pattern rm 2nd"
+     },
+     {
+      "label": "IRON WORKS; MACHINE SHOP 1ST, WARE HO 2ND",
+      "name": "G.A. Buchanan Iron Works",
+      "trade": "machine shop",
+      "features": "erecting rm; elec. motors 25 & 12 h.p.; 16 h.p. boiler; power steam & elec."
+     },
+     {
+      "label": "MINE & MILL SUPPLIES; MACHINE SHOP 1ST, WARE HO 2ND",
+      "name": "Scott Supply & Tool Co.",
+      "trade": "machine shop",
+      "features": "el. motor 20 h.p.; steam heat"
+     },
+     {
+      "label": "SHEET METAL WKS; FORGE; BLKSM.",
+      "name": "Colorado Sheet Metal Wks",
+      "trade": "metal working",
+      "features": "forge; all hand power"
+     },
+     {
+      "label": "MACHINE SHOP",
+      "name": "Vulcan Iron Works Co.",
+      "trade": "machine shop",
+      "features": "elec. motors 10, 25 & 10 h.p.; iron tank on roof 4000 gals."
+     },
+     {
+      "label": "SHEET METAL WKS",
+      "name": "Vulcan Sheet Metal Co.",
+      "trade": "metal working",
+      "features": "elec. motor 25 h.p.; 10 h.p.; power and lights electric"
+     },
+     {
+      "label": "PATTERN SHOP; WOOD WORKING",
+      "name": "G.M. Livingstone, Pattern Maker",
+      "trade": "lumber/planing",
+      "features": "power elec. from Vulcan Iron Wks"
+     },
+     {
+      "label": "MFRS. OF MINING MACHINERY; BLKSM.",
+      "name": "Vulcan Iron Works Co.",
+      "trade": "foundry",
+      "features": "furnaces; 16 h.p. boiler; el. motor 25 h.p.; fuel coal"
+     },
+     {
+      "label": "WARE HO. (IRON CLAD)",
+      "name": "Vulcan Iron Wks.",
+      "trade": "warehouse",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Entirely commercial/industrial heavy metal-working block; no dwellings. Lots 1-4 and 12-15 on Wazee side vacant."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Wazee-Blake, 17th-19th, Congressional Grant East Denver: dense machine-shop/foundry district (Vulcan Iron Works, Enz & Orr, Buchanan) plus lumber yard; essentially no housing. Engine House No. 5 on Blake."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 171,
+  "image": "1903_1904_v2_00985_02_1903-0171.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Blake",
+     "19th"
+    ],
+    "modern": null,
+    "x": 1177,
+    "y": 426
+   },
+   {
+    "streets": [
+     "Market",
+     "19th"
+    ],
+    "modern": null,
+    "x": 2212,
+    "y": 426
+   },
+   {
+    "streets": [
+     "Blake",
+     "18th"
+    ],
+    "modern": null,
+    "x": 1177,
+    "y": 1861
+   },
+   {
+    "streets": [
+     "Market",
+     "18th"
+    ],
+    "modern": null,
+    "x": 2212,
+    "y": 1861
+   },
+   {
+    "streets": [
+     "Blake",
+     "17th"
+    ],
+    "modern": null,
+    "x": 1177,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "Market",
+     "17th"
+    ],
+    "modern": null,
+    "x": 2212,
+    "y": 3296
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "171-39",
+    "bounded_by": {
+     "N": "19th",
+     "S": "18th",
+     "E": "Market",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1700,
+     "y": 1145
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": "National Biscuit Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "revolving ovens; eng. 60 h.p.; boiler (bst.); sugar pulverizer bst.; fuel coal & coke; water tank"
+     },
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": null
+     },
+     {
+      "label": "LUMBER SHED",
+      "name": "The Leopold & Whitaker",
+      "trade": "lumber/planing",
+      "features": "iron clad"
+     },
+     {
+      "label": "PAINTS & OIL; STORAGE",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "PLANING MILL",
+      "name": "G.N. Billings",
+      "trade": "lumber/planing",
+      "features": "eng. 60 h.p.; boiler; shavings vault; dry kiln; fuel coal & shavings; no fire protection"
+     },
+     {
+      "label": "LEAD FOUNDRY; INK FAC. 2ND",
+      "name": "The Bogue Lead Co.",
+      "trade": "foundry",
+      "features": "lead furnaces; boiler & engine (eng. 50 h.p.); power elec."
+     },
+     {
+      "label": "PAINT MILL; WARE HO.",
+      "name": "The Humphrey-Jones Mercantile Co.",
+      "trade": "oil/paint/tar",
+      "features": "9 mixers; eng. 20 h.p.; boiler"
+     },
+     {
+      "label": "CABINET SHOP",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     },
+     {
+      "label": "LAUNDRY",
+      "name": "Western Laundry",
+      "trade": "laundry/dye",
+      "features": "ironing 1st & 2nd, washing 3rd"
+     },
+     {
+      "label": "PAPER BOX FAC.",
+      "name": null,
+      "trade": "printing",
+      "features": "eng. 13.5 h.p.; 2 br. chimneys 40 ft."
+     },
+     {
+      "label": "CANDY FAC'Y; PAINTS & OILS B.1",
+      "name": "The Chas. L. Sauer M'f'g Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "kettles; sugar pulverizer 2nd"
+     },
+     {
+      "label": "CANDY FAC.",
+      "name": "The Hewitt Candy Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "kettles; sugar pulverizer"
+     },
+     {
+      "label": "BISCUIT FAC.",
+      "name": "The Continental Biscuit Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "revolving ovens; paper box fac. 2nd"
+     },
+     {
+      "label": "GLASS GRINDING; GLAZING",
+      "name": null,
+      "trade": "other",
+      "features": null
+     },
+     {
+      "label": "CREAMERY; DAIRY SUPPLIES",
+      "name": "The Littleton Creamery Co.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "Con. Bis. Co. icing 3rd"
+     }
+    ],
+    "faces": [],
+    "notes": "Fully industrial block (Hallack Block on Market side; line shaft power). No dwellings."
+   },
+   {
+    "block_id": "171-40",
+    "bounded_by": {
+     "N": "18th",
+     "S": "17th",
+     "E": "Market",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1700,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 20,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CIGAR FAC.; PRINTING",
+      "name": null,
+      "trade": "printing",
+      "features": "elec. motors"
+     },
+     {
+      "label": "LIVERY",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "skylights"
+     },
+     {
+      "label": "MACHINE SHOP",
+      "name": null,
+      "trade": "machine shop",
+      "features": "elec. motor"
+     },
+     {
+      "label": "ICE HOUSE; ICE PLANT; COLD STORAGE; FREEZING TANKS",
+      "name": "The Capital Ice Co.",
+      "trade": "other",
+      "features": "boilers; condensers; eng. 125 h.p.; dynamo; cap. 95 tons/24 hrs; fuel coal"
+     },
+     {
+      "label": "ASSAY OFFICE; MACHINE SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": "furnace; elec. motor; eng. 4 h.p."
+     },
+     {
+      "label": "TIN SHOP 2ND; WARE HO.",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "COFFEE MILLS & ROASTER",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "elec. motor"
+     },
+     {
+      "label": "BAKING POWDER FACTORY 2ND",
+      "name": null,
+      "trade": "chemical",
+      "features": "elec. motor; boiler"
+     },
+     {
+      "label": "SAUSAGE FAC. & LARD RENDER'G",
+      "name": null,
+      "trade": "meat packing/stockyard",
+      "features": "boilers 18 & 15 h.p."
+     },
+     {
+      "label": "PLANING MILL; CABINET SHOPS 3RD",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "boiler"
+     },
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "forge"
+     }
+    ],
+    "faces": [],
+    "notes": "flats = St. Elmo Hotel (2nd-3rd) and a Lodgings building; two tents drawn on rear lots 20-22. Many stores/saloons/restaurants on 17th and Market."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Blake-Market, 17th-19th: food processing (National Biscuit, Continental Biscuit, candy) next to lead foundry, paint mill, planing mills, lard rendering and Capital Ice plant; only lodging/hotel housing."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 172,
+  "image": "1903_1904_v2_00985_02_1903-0172.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Market",
+     "19th"
+    ],
+    "modern": null,
+    "x": 1074,
+    "y": 426
+   },
+   {
+    "streets": [
+     "Larimer",
+     "19th"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 426
+   },
+   {
+    "streets": [
+     "Market",
+     "18th"
+    ],
+    "modern": null,
+    "x": 1074,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "Larimer",
+     "18th"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "Market",
+     "17th"
+    ],
+    "modern": null,
+    "x": 1074,
+    "y": 3290
+   },
+   {
+    "streets": [
+     "Larimer",
+     "17th"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 3290
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "172-49",
+    "bounded_by": {
+     "N": "19th",
+     "S": "18th",
+     "E": "Larimer",
+     "W": "Market"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 1145
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 18,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.; REPOSITORY",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": null
+     },
+     {
+      "label": "WOOD WORKING; PRINTING 2ND",
+      "name": null,
+      "trade": "printing",
+      "features": "elect. motor"
+     },
+     {
+      "label": "TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": "iron clad"
+     },
+     {
+      "label": "REPAIR SHOP",
+      "name": null,
+      "trade": "machine shop",
+      "features": null
+     },
+     {
+      "label": "HARNESS SHOP",
+      "name": null,
+      "trade": "tannery/hides",
+      "features": null
+     },
+     {
+      "label": "ASSAY OFFICE (in Windsor Hotel)",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "BAKE SHOP 2ND",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "HOTEL BOILER/POWER PLANT; COAL",
+      "name": "Windsor Hotel",
+      "trade": "power/electric",
+      "features": "boiler house in rear yard (4 boilers drawn); chimney 90 ft; 2 engs. & 2 dynamos bst.; fuel coal; 2 water tanks on roof"
+     }
+    ],
+    "faces": [],
+    "notes": "flats = Lodgings over saloons on 19th, Windsor Hotel (Larimer), servants' quarters. Middle of Market frontage partly vacant. Museum, wine rooms, shooting gallery, policy shop."
+   },
+   {
+    "block_id": "172-48",
+    "bounded_by": {
+     "N": "18th",
+     "S": "17th",
+     "E": "Larimer",
+     "W": "Market"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 7,
+    "shanties": 0,
+    "stores": 25,
+    "other_nonres": 1,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "SHIRTS & OVERALLS MFG; SEWING 3RD",
+      "name": "The Underhill M'f'g Co.",
+      "trade": "other",
+      "features": "elect. motor 2nd; steam from Barclay Bldg."
+     },
+     {
+      "label": "HORSE RADISH FAC.",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": null
+     },
+     {
+      "label": "POP CORN FAC.",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": null
+     },
+     {
+      "label": "LIVERY (2)",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": null
+     },
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": null
+     },
+     {
+      "label": "CREAMERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "boiler in bst.; elect. motor"
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     },
+     {
+      "label": "SAUSAGE FAC. & LARD RENDERING 2ND",
+      "name": null,
+      "trade": "meat packing/stockyard",
+      "features": "eng. 10 h.p. (uncertain); boiler"
+     },
+     {
+      "label": "HARNESS FAC. 2ND",
+      "name": null,
+      "trade": "other",
+      "features": "elect. motor"
+     },
+     {
+      "label": "CARP'R SHOP",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     },
+     {
+      "label": "GLOVE FAC.",
+      "name": null,
+      "trade": "tannery/hides",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Assembly Bldg (very old) at Market & 18th; Barclay Block at Larimer & 18th with boilers in basement. Seven lodging-house upper floors interleaved with livery, sausage/lard rendering and small factories."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Market-Larimer, 17th-19th: hotel/lodging-house and saloon district (Windsor Hotel, Barclay Block) with small factories (overalls, sausage & lard rendering, creamery, glove, harness). No single-family dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 173,
+  "image": "1903_1904_v2_00985_02_1903-0173.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Larimer",
+     "19th"
+    ],
+    "modern": null,
+    "x": 1226,
+    "y": 445
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "19th"
+    ],
+    "modern": null,
+    "x": 2225,
+    "y": 445
+   },
+   {
+    "streets": [
+     "Larimer",
+     "18th"
+    ],
+    "modern": null,
+    "x": 1226,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "18th"
+    ],
+    "modern": null,
+    "x": 2225,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "Larimer",
+     "17th"
+    ],
+    "modern": null,
+    "x": 1226,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "17th"
+    ],
+    "modern": null,
+    "x": 2225,
+    "y": 3296
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "173-66",
+    "bounded_by": {
+     "N": "19th",
+     "S": "18th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 1700,
+     "y": 1167
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 26,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL SHED",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": null
+     },
+     {
+      "label": "PLUMBER",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "PRINTING",
+      "name": null,
+      "trade": "printing",
+      "features": null
+     },
+     {
+      "label": "STEAM DYE WKS; DYE HO.",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": "upright boiler; iron chimney 80 ft (uncertain)"
+     },
+     {
+      "label": "ASSAY OFFICE",
+      "name": null,
+      "trade": "metal working",
+      "features": "furnace"
+     },
+     {
+      "label": "CIGAR FACT'Y",
+      "name": null,
+      "trade": "other",
+      "features": null
+     },
+     {
+      "label": "PAINT SHOP",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "CLEANING",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Larimer frontage: saloons, 2nd-hand stores, cobblers, pawn shop, mission, Hotel Victor at 18th (flats=1). Two D-marked rear dwellings on Lawrence side (1839, 1823 1/2). Large building on Lawrence lots 16-22 marked VACANT."
+   },
+   {
+    "block_id": "173-67",
+    "bounded_by": {
+     "N": "18th",
+     "S": "17th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 1700,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 30,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "TRUNK FACT'Y 1ST",
+      "name": null,
+      "trade": "other",
+      "features": null
+     },
+     {
+      "label": "CARP'R 1ST; REPAIRING",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     },
+     {
+      "label": "CANDY KITCHEN",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": null
+     },
+     {
+      "label": "CARP'R SHOPS (3); LUMBER WARE RM.",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     },
+     {
+      "label": "TIN SHOP BST.",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "PRINTING PRESS RM.",
+      "name": null,
+      "trade": "printing",
+      "features": "power steam; boilers bst."
+     },
+     {
+      "label": "ORE MILL",
+      "name": null,
+      "trade": "smelter",
+      "features": "furnace; elect. hammer; iron clad"
+     },
+     {
+      "label": "ASSAY OFFICE",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "LAUNDRY (STEAM)",
+      "name": "Lothrop Block laundry",
+      "trade": "laundry/dye",
+      "features": "steam"
+     },
+     {
+      "label": "WHOL. HATS; WHOL. SHOES; WHOL. NOTIONS",
+      "name": null,
+      "trade": "warehouse",
+      "features": "boilers"
+     }
+    ],
+    "faces": [],
+    "notes": "Duff Block and Battione Blk on Larimer; Lothrop Block at Lawrence & 18th. Four small rear D dwellings (1742 1/2, 1738 1/2 Larimer alley; 1739 1/2, 1735 Lawrence) beside carpenter shops, ore mill and assay furnace."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Larimer-Lawrence, 17th-19th: skid-row commercial strip (2nd-hand, saloons) with small workshops, an ore mill, assay furnaces, steam dye works; a handful of alley dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 174,
+  "image": "1903_1904_v2_00985_02_1903-0174.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Lawrence",
+     "19th"
+    ],
+    "modern": null,
+    "x": 1090,
+    "y": 452
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "19th"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 452
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "18th"
+    ],
+    "modern": null,
+    "x": 1090,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "18th"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "17th"
+    ],
+    "modern": null,
+    "x": 1090,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "17th"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 3322
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "174-78",
+    "bounded_by": {
+     "N": "19th",
+     "S": "18th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1596,
+     "y": 1167
+    },
+    "partial": false,
+    "dwellings": 3,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 18,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "LIVERY; KEYSTONE STABLES; MANSON STABLES",
+      "name": "Keystone Stables / Manson Stables",
+      "trade": "livery/blacksmith",
+      "features": "old building"
+     },
+     {
+      "label": "BLKSM. (3)",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "iron clad"
+     },
+     {
+      "label": "PRINTING",
+      "name": null,
+      "trade": "printing",
+      "features": "electric motor"
+     },
+     {
+      "label": "CLEANING & DYEING; HAND LAUNDRY; CHINE. LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     },
+     {
+      "label": "MACHINE SHOP; WOOD WORK SHOP",
+      "name": null,
+      "trade": "machine shop",
+      "features": "hand power only"
+     },
+     {
+      "label": "CARRIAGE HO. 1ST, CARRIAGE TRIMMING & PAINT'G 2ND",
+      "name": null,
+      "trade": "other",
+      "features": null
+     },
+     {
+      "label": "BRUSH FACT'Y 1ST",
+      "name": null,
+      "trade": "other",
+      "features": null
+     },
+     {
+      "label": "CARP'R SHOP (2)",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "elec. motor; old oven"
+     },
+     {
+      "label": "SIGN PAINTING",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": "iron clad"
+     }
+    ],
+    "faces": [],
+    "notes": "Wentworth Hotel on Arapahoe (flats=1). D at 1845 1/2 Arapahoe rear and two D on 18th (1107, 1105) beside carpenter shops; stables cover most of Lawrence frontage."
+   },
+   {
+    "block_id": "174-77",
+    "bounded_by": {
+     "N": "18th",
+     "S": "17th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1596,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 24,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BICYCLE SHOP (2)",
+      "name": null,
+      "trade": "machine shop",
+      "features": null
+     },
+     {
+      "label": "DYEING & CLEANING (2)",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     },
+     {
+      "label": "PAINT SHOP (2)",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "WHOL. SHOE & LEATHER",
+      "name": null,
+      "trade": "warehouse",
+      "features": "heating boiler"
+     },
+     {
+      "label": "ASSAY OFFICE; ORE MILL",
+      "name": null,
+      "trade": "smelter",
+      "features": "furnace; ore mill steam power; boiler"
+     },
+     {
+      "label": "BILL POSTER'S OFFICE & STORE RM; PASTE FAC'Y",
+      "name": null,
+      "trade": "other",
+      "features": null
+     },
+     {
+      "label": "WHOL. CIGARS (2); WHOL. MEN'S FURNISHINGS",
+      "name": null,
+      "trade": "warehouse",
+      "features": null
+     },
+     {
+      "label": "PRINTING",
+      "name": null,
+      "trade": "printing",
+      "features": "elec. motor; heating boiler underground"
+     },
+     {
+      "label": "LAUNDRY; MACHINE SHOP",
+      "name": null,
+      "trade": "machine shop",
+      "features": "elec. motor"
+     },
+     {
+      "label": "TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "ASSAY OFFICES (3); HAND PRINTING",
+      "name": null,
+      "trade": "metal working",
+      "features": "assay furnaces"
+     },
+     {
+      "label": "PAINT, OIL & GLASS; PAINTS & WALLPAPER",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "JEWELRY MFG",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "CLUB BLDG: PRINTING & BOOK BINDING 5TH; SHIRT FACTORY 6TH",
+      "name": "The Club Bldg.",
+      "trade": "printing",
+      "features": "power & light electric; heat steam"
+     },
+     {
+      "label": "WIRE ROPE CO'S W. HO. & OFF.",
+      "name": null,
+      "trade": "warehouse",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Clayton Block (Lawrence), Club Building with Y.M.C.A. hall and lodge halls (other_nonres=2), New Clifton hotel 2nd-3rd at 17th & Arapahoe (flats=1). D at 1759 Lawrence rear and 1713 Arapahoe."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Lawrence-Arapahoe, 17th-19th: downtown mixed commercial; stables, ore mill and several assay furnaces, printing, dyeing; few dwellings (5) plus two hotels."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 175,
+  "image": "1903_1904_v2_00985_02_1903-0175.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Arapahoe",
+     "19th"
+    ],
+    "modern": null,
+    "x": 1200,
+    "y": 442
+   },
+   {
+    "streets": [
+     "Curtis",
+     "19th"
+    ],
+    "modern": null,
+    "x": 2232,
+    "y": 442
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "18th"
+    ],
+    "modern": null,
+    "x": 1200,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "Curtis",
+     "18th"
+    ],
+    "modern": null,
+    "x": 2232,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "17th"
+    ],
+    "modern": null,
+    "x": 1200,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "Curtis",
+     "17th"
+    ],
+    "modern": null,
+    "x": 2232,
+    "y": 3296
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "175-95",
+    "bounded_by": {
+     "N": "19th",
+     "S": "18th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 1719,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 10,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 16,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": null
+     },
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "CARP'R (2)",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     },
+     {
+      "label": "BICYCLE REPAIRING (2)",
+      "name": null,
+      "trade": "machine shop",
+      "features": null
+     },
+     {
+      "label": "CARP'R & BLKSM. (FORMERLY CHURCH)",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": null
+     },
+     {
+      "label": "STEAM LAUNDRY; BOILER HO.",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": "eng. 35 h.p.; boiler ho.; iron chimney 50 ft.; elev. water tank"
+     },
+     {
+      "label": "LIVERY",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "iron clad 2nd"
+     },
+     {
+      "label": "TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "FURN. REPAIRING",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Curtis side is residential: 7 D (1861, 1863, 1835, 1831, 1825, 1821, 1805 1/2) plus Keeley Institute; Arapahoe side commercial with 3 rear D (1854, 1850 1/2, 1830 1/2) next to steam laundry boiler house and livery. Lots 27-28 vacant."
+   },
+   {
+    "block_id": "175-96",
+    "bounded_by": {
+     "N": "18th",
+     "S": "17th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 1719,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 18,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": null
+     },
+     {
+      "label": "TIN SHOP (2)",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "PRINTING",
+      "name": null,
+      "trade": "printing",
+      "features": "elec. motor"
+     },
+     {
+      "label": "PAINT SHOP",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "ASSAY OFF.; LABORATORY; SAMPLING ROOM",
+      "name": null,
+      "trade": "smelter",
+      "features": "assay furnace"
+     },
+     {
+      "label": "WHOL. MEN'S FURN.; SEWING 2ND",
+      "name": null,
+      "trade": "other",
+      "features": "power elec.; el. motor"
+     },
+     {
+      "label": "HARNESS WHOL. & MFG",
+      "name": "Denver Harness Co.",
+      "trade": "tannery/hides",
+      "features": "elec. motor"
+     },
+     {
+      "label": "WIRE; GLASS (WHOLESALE)",
+      "name": null,
+      "trade": "warehouse",
+      "features": null
+     },
+     {
+      "label": "PLUMBER (2)",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "HAND LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     },
+     {
+      "label": "CARP'R (2)",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     },
+     {
+      "label": "COOPER BLDG POWER PLANT; BLUE PRINT RM.",
+      "name": "Cooper Building",
+      "trade": "power/electric",
+      "features": "boilers; eng. & dynamos; 5000 gal. iron water tank on roof"
+     }
+    ],
+    "faces": [],
+    "notes": "The Tacoma (flats) on Curtis; Empire Theatre and Cooper Building bank/offices (other_nonres=2). One D at 1756 Arapahoe."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Arapahoe-Curtis, 17th-19th: transition edge; Curtis side of block 95 still single-family houses facing a steam laundry/livery across the alley; assay lab, harness factory and Empire Theatre to south."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 176,
+  "image": "1903_1904_v2_00985_02_1903-0176.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Curtis",
+     "19th"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 426
+   },
+   {
+    "streets": [
+     "Champa",
+     "19th"
+    ],
+    "modern": null,
+    "x": 2128,
+    "y": 426
+   },
+   {
+    "streets": [
+     "Curtis",
+     "18th"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "Champa",
+     "18th"
+    ],
+    "modern": null,
+    "x": 2128,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "Curtis",
+     "17th"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "Champa",
+     "17th"
+    ],
+    "modern": null,
+    "x": 2128,
+    "y": 3296
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "176-110",
+    "bounded_by": {
+     "N": "19th",
+     "S": "18th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 1629,
+     "y": 1145
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 16,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PRINTING (3); PRINTERS BLD'G",
+      "name": "Printers Bld'g",
+      "trade": "printing",
+      "features": "power elect. motor; steam heater; fire-proof construction"
+     },
+     {
+      "label": "PRINTING & ENGRAVING; PRINTING HAND POWER",
+      "name": null,
+      "trade": "printing",
+      "features": "elect. motor; boiler"
+     },
+     {
+      "label": "PAINT SHOP",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "PLUMBING",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "BICYCLE REPAIRING (2)",
+      "name": null,
+      "trade": "machine shop",
+      "features": null
+     },
+     {
+      "label": "TIN SHOP; SHOE FACTORY",
+      "name": null,
+      "trade": "tannery/hides",
+      "features": "elect. motor 1st"
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     },
+     {
+      "label": "HAY & FEED; COAL & WOOD",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Residential core: 6 D on Curtis (1832-1854) directly beside the Printers Bldg and printing/engraving plant; 12 D on Champa side next to tin shop/shoe factory. Pentecostal Union Church on Champa."
+   },
+   {
+    "block_id": "176-109",
+    "bounded_by": {
+     "N": "18th",
+     "S": "17th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 1629,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 26,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "AUTOMOBILE REPAIRING",
+      "name": null,
+      "trade": "machine shop",
+      "features": null
+     },
+     {
+      "label": "BICYCLE REPAIRING (2)",
+      "name": null,
+      "trade": "machine shop",
+      "features": null
+     },
+     {
+      "label": "SIGN PAINTING",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "PRINTING (2)",
+      "name": null,
+      "trade": "printing",
+      "features": null
+     },
+     {
+      "label": "PAINT SHOP; PAINTS & OILS",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "PLATING WORKS",
+      "name": "Doss Bros.",
+      "trade": "metal working",
+      "features": "elect. motor; iron clad; boiler with iron chimney in adjoining rear building"
+     },
+     {
+      "label": "UNDERTAKER",
+      "name": null,
+      "trade": "other",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Curtis Theatre and Business College 2nd/Lodge Room 3rd (boiler) = other_nonres 2; undertaker listed under industrial as other. Boarding house D at 1745 Champa (flats=1), one D at 1755 Champa."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Curtis-Champa, 17th-19th: northern block still largely single-family (18 D) interleaved with printing plants and small shops; southern block commercial with theatre and Doss Bros. plating works."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 177,
+  "image": "1903_1904_v2_00985_02_1903-0177.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Champa",
+     "19th"
+    ],
+    "modern": null,
+    "x": 1161,
+    "y": 442
+   },
+   {
+    "streets": [
+     "Stout",
+     "19th"
+    ],
+    "modern": null,
+    "x": 2177,
+    "y": 442
+   },
+   {
+    "streets": [
+     "Champa",
+     "18th"
+    ],
+    "modern": null,
+    "x": 1161,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "Stout",
+     "18th"
+    ],
+    "modern": null,
+    "x": 2177,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "Champa",
+     "17th"
+    ],
+    "modern": null,
+    "x": 1161,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "Stout",
+     "17th"
+    ],
+    "modern": null,
+    "x": 2177,
+    "y": 3296
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "177-127",
+    "bounded_by": {
+     "N": "19th",
+     "S": "18th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1661,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 20,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PRINTING",
+      "name": null,
+      "trade": "printing",
+      "features": null
+     },
+     {
+      "label": "CLEANING & DYEING; CLOTH CLEANING (3)",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": "boiler"
+     },
+     {
+      "label": "GLAZING; TIN SHOP; UPHOLST.",
+      "name": null,
+      "trade": "metal working",
+      "features": "el. motor"
+     },
+     {
+      "label": "BICYCLES / BICYCLE SHOP (3)",
+      "name": null,
+      "trade": "machine shop",
+      "features": null
+     },
+     {
+      "label": "PLUMBER",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "LUMBER SHED (2)",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     },
+     {
+      "label": "CANDY KITCHEN",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": null
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     },
+     {
+      "label": "CARP'R SHOP",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     },
+     {
+      "label": "HORSE SHOER",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Stout side mostly detached D (1853R, 1855 1/2, 1847, 1835, 1829) with Chinese laundry, carpenter shop and horse shoer on same frontage; Champa side commercial with Hotel La Shell (flats) and Coliseum Hall (other_nonres); D at 1850, 1844, 1810R."
+   },
+   {
+    "block_id": "177-128",
+    "bounded_by": {
+     "N": "18th",
+     "S": "17th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1661,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 18,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PRINTING, BOOK BINDERY, ELECTRO TYPE FOUNDRY, SILVERSMITH, CABINET MAKER SHOP (2ND FL.)",
+      "name": "Building 1750 Champa to 824 18th St.",
+      "trade": "printing",
+      "features": "elec. motor; heat steam"
+     },
+     {
+      "label": "ASSAY OFF. (2)",
+      "name": null,
+      "trade": "smelter",
+      "features": "assay furnaces"
+     },
+     {
+      "label": "CABINET SHOP; BRUSH FAC'Y",
+      "name": null,
+      "trade": "other",
+      "features": "elec. motor; boiler"
+     },
+     {
+      "label": "OILS, PAINTS & WALL PAPER",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "ASSAYER & CHEM'L SUPPLIES",
+      "name": null,
+      "trade": "chemical",
+      "features": "hot water heater"
+     },
+     {
+      "label": "UNDERTAKER",
+      "name": null,
+      "trade": "other",
+      "features": "heater"
+     },
+     {
+      "label": "STAMPING SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": "el. motor; boiler"
+     },
+     {
+      "label": "ELECTRIC MOTOR FAC'Y 1ST; PICTURE FRAME FAC'Y 2ND",
+      "name": null,
+      "trade": "machine shop",
+      "features": "power & lights elec."
+     },
+     {
+      "label": "STOVE SHOP; 2ND HAND FURN. & AUCTION RM",
+      "name": null,
+      "trade": "metal working",
+      "features": "cupola (roof)"
+     },
+     {
+      "label": "PLUMBER & BICYCLE SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "ASSAY OFF.",
+      "name": null,
+      "trade": "smelter",
+      "features": "furnace"
+     },
+     {
+      "label": "AUTO. & BICYCLE SHOP",
+      "name": null,
+      "trade": "machine shop",
+      "features": "heating boilers"
+     },
+     {
+      "label": "CARP'R SHOP; LUMBER SHED",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "1st Baptist Church and lodge halls (other_nonres=2); Boarding house on Stout (flats=1); D at 1717 and 1709 Stout beside carpenter shop and auto/bicycle shop. Checkered Building on 17th."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Champa-Stout, 17th-19th: small-shop downtown fringe; 10 dwellings mostly on Stout amid assay furnaces, electrotype foundry, stamping and motor works."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 178,
+  "image": "1903_1904_v2_00985_02_1903-0178.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Stout",
+     "19th"
+    ],
+    "modern": null,
+    "x": 1106,
+    "y": 426
+   },
+   {
+    "streets": [
+     "California",
+     "19th"
+    ],
+    "modern": null,
+    "x": 2128,
+    "y": 426
+   },
+   {
+    "streets": [
+     "Stout",
+     "18th"
+    ],
+    "modern": null,
+    "x": 1106,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "California",
+     "18th"
+    ],
+    "modern": null,
+    "x": 2128,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "Stout",
+     "17th"
+    ],
+    "modern": null,
+    "x": 1106,
+    "y": 3290
+   },
+   {
+    "streets": [
+     "California",
+     "17th"
+    ],
+    "modern": null,
+    "x": 2128,
+    "y": 3290
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "178-142",
+    "bounded_by": {
+     "N": "19th",
+     "S": "18th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 1622,
+     "y": 1145
+    },
+    "partial": false,
+    "dwellings": 9,
+    "flats": 4,
+    "shanties": 0,
+    "stores": 18,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "UNDERT'KR",
+      "name": null,
+      "trade": "other",
+      "features": null
+     },
+     {
+      "label": "BALED HAY & FEED",
+      "name": null,
+      "trade": "warehouse",
+      "features": null
+     },
+     {
+      "label": "PAINTER",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "CARP'R; COBBLER",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     },
+     {
+      "label": "BICYCLE SHOP",
+      "name": null,
+      "trade": "machine shop",
+      "features": "hot water heater"
+     }
+    ],
+    "faces": [],
+    "notes": "Virginia Apartments and two apartment blocks (one 'from plans') on Stout, Boarding house on California (flats=4). D at 1844, 1842, 1830 Stout and 1853, 1847, 1843, 1837, 1823, 1817 California. Lots 7-8 and 19-20 vacant."
+   },
+   {
+    "block_id": "178-141",
+    "bounded_by": {
+     "N": "18th",
+     "S": "17th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 1622,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 3,
+    "shanties": 0,
+    "stores": 16,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "UNDERT'KR; PLUMBER; BICYCLES",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "PRINTING; PRESS RM 1ST; TYPESETTING 2ND; BOOK BINDERY",
+      "name": null,
+      "trade": "printing",
+      "features": "power elec.; heating boilers"
+     },
+     {
+      "label": "PAPER WARE RM.",
+      "name": null,
+      "trade": "warehouse",
+      "features": null
+     },
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven; boilers; artesian well"
+     },
+     {
+      "label": "ELECTRIC LIGHT PLANT BST. (Albany Hotel)",
+      "name": "The Albany Hotel",
+      "trade": "power/electric",
+      "features": "own electric plant; heat steam"
+     },
+     {
+      "label": "ICE CREAM FAC'Y",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "eng."
+     },
+     {
+      "label": "CARP'R SHOP (2)",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": null
+     },
+     {
+      "label": "PRINTERS; ELECTROTYPE FOUNDRY & ENGRAVING; BOOK BINDERY",
+      "name": "The Smith Brooks Co.",
+      "trade": "printing",
+      "features": "boilers; power & lights elec.; heat steam"
+     },
+     {
+      "label": "CHEMIST & ASSAY OFFICE; ORE MILL BST.",
+      "name": null,
+      "trade": "smelter",
+      "features": "elect. motor; furnace"
+     },
+     {
+      "label": "AUTOMOBILE & BICYCLE SHOP",
+      "name": null,
+      "trade": "machine shop",
+      "features": null
+     },
+     {
+      "label": "PLUMBER & STEAM FITTER",
+      "name": null,
+      "trade": "metal working",
+      "features": "heating boiler"
+     }
+    ],
+    "faces": [],
+    "notes": "St. Nicholas Hotel (18th & Stout), Albany Hotel (17th & Stout) and The Lenox Boarding (California) = flats 3. D at 1740, 1732 Stout beside bakery boilers; D at 1759, 1755, 1749, 1723, 1719 California between Smith-Brooks printing plant and ore mill/assay office."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Stout-California, 17th-19th: apartments/hotels and ~16 detached dwellings on California and Stout interleaved with printing plants (Smith Brooks electrotype foundry), an ore mill in a basement, bakery and hotel power plant."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 179,
+  "image": "1903_1904_v2_00985_02_1903-0179.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "California",
+     "19th"
+    ],
+    "modern": null,
+    "x": 1242,
+    "y": 442
+   },
+   {
+    "streets": [
+     "Welton",
+     "19th"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 442
+   },
+   {
+    "streets": [
+     "California",
+     "18th"
+    ],
+    "modern": null,
+    "x": 1242,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "Welton",
+     "18th"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "California",
+     "17th"
+    ],
+    "modern": null,
+    "x": 1242,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "Welton",
+     "17th"
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 3296
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "179-159",
+    "bounded_by": {
+     "N": "19th",
+     "S": "18th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 1661,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 7,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "TIN & SHEET IRON WKS",
+      "name": null,
+      "trade": "metal working",
+      "features": "iron clad shed"
+     },
+     {
+      "label": "CHINE. LAUNDRY (2)",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": "old"
+     },
+     {
+      "label": "BLKSM.; BALED HAY & FEED",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": null
+     },
+     {
+      "label": "CARRIAGE HO.; STALLS; HAY LOFT 2ND",
+      "name": "The Denver Omnibus & Cab Co's Empire Stable Annex",
+      "trade": "livery/blacksmith",
+      "features": null
+     },
+     {
+      "label": "HAND LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     },
+     {
+      "label": "CABINET MAKER SHOP",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "gas eng. 8 h.p."
+     }
+    ],
+    "faces": [],
+    "notes": "California frontage is a row of 11 detached D with a tin & sheet iron works between 1854 and 1846 and blacksmith at 18th; Welton side has 5 D next to the Empire Stable Annex and cabinet shop. The Miles Apartments (flats) at 19th & Welton. One building vacant & dilapidated."
+   },
+   {
+    "block_id": "179-160",
+    "bounded_by": {
+     "N": "18th",
+     "S": "17th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 1661,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 20,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PLUMBER (2)",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     },
+     {
+      "label": "WALL PAPER & PAINTS",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": null
+     },
+     {
+      "label": "BICYCLE SHOP (2)",
+      "name": null,
+      "trade": "machine shop",
+      "features": null
+     },
+     {
+      "label": "ASSAY OFFICE",
+      "name": null,
+      "trade": "smelter",
+      "features": "furnace"
+     },
+     {
+      "label": "ORE MILL; ASSAY OFF. (printed 'One Mill Assay Off.', likely Ore Mill)",
+      "name": null,
+      "trade": "smelter",
+      "features": "furnace; elec. motor"
+     },
+     {
+      "label": "CHINE. LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     },
+     {
+      "label": "CLOTH CLEANING",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": null
+     },
+     {
+      "label": "LOCKSMITH",
+      "name": null,
+      "trade": "metal working",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Romana Apartments (California) and The Pleasanton Apartments (18th & Welton; assay mill on ground floor) = flats 2. D: 1738, 1736, 1728 California (one boarded up); 10 D on Welton (1755-1705), two boarded up."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "California-Welton, 17th-19th: predominantly residential (29 D) with tin & sheet iron works, assay furnaces/ore mill, stable annex and Chinese laundries tucked among houses."
+ }
+]

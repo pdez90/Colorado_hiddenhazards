@@ -1,0 +1,16 @@
+exposure,zone_1929,dwellings,pct_of_exposure_group
+No industry within 150 m,Other districts (residence or business),2535,85.1
+No industry within 150 m,Industrial A,324,10.9
+No industry within 150 m,Commercial,113,3.8
+No industry within 150 m,Industrial B,7,0.2
+Same block as a hazardous trade,Other districts (residence or business),897,48.8
+Same block as a hazardous trade,Industrial A,503,27.3
+Same block as a hazardous trade,Commercial,399,21.7
+Same block as a hazardous trade,Industrial B,41,2.2
+"Same block as other industry, or facing industry",Other districts (residence or business),1554,57.3
+"Same block as other industry, or facing industry",Industrial A,765,28.2
+"Same block as other industry, or facing industry",Commercial,395,14.6
+Within 150 m of a hazardous trade,Other districts (residence or business),616,72.6
+Within 150 m of a hazardous trade,Industrial A,157,18.5
+Within 150 m of a hazardous trade,Commercial,45,5.3
+Within 150 m of a hazardous trade,Industrial B,30,3.5

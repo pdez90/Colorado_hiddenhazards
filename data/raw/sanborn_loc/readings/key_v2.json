@@ -1,0 +1,1401 @@
+{
+ "image": "1903_1904_v2_00985_02_1903-0000.jpg",
+ "volume": 2,
+ "crossings": [
+  {
+   "streets": [
+    "Cline",
+    "Fisk Av."
+   ],
+   "x": 2097,
+   "y": 790,
+   "area": "West Elyria"
+  },
+  {
+   "streets": [
+    "Powell",
+    "Fisk Av."
+   ],
+   "x": 2158,
+   "y": 790,
+   "area": "West Elyria"
+  },
+  {
+   "streets": [
+    "Starr",
+    "Fisk Av."
+   ],
+   "x": 2208,
+   "y": 790,
+   "area": "West Elyria"
+  },
+  {
+   "streets": [
+    "Baldwin",
+    "Fisk Av."
+   ],
+   "x": 2260,
+   "y": 790,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "London",
+    "Fisk Av."
+   ],
+   "x": 2312,
+   "y": 790,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Nelson",
+    "Fisk Av."
+   ],
+   "x": 2363,
+   "y": 790,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Marshall",
+    "Fisk Av."
+   ],
+   "x": 2422,
+   "y": 790,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Estes",
+    "Fisk Av."
+   ],
+   "x": 2482,
+   "y": 790,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Legge",
+    "Fisk Av."
+   ],
+   "x": 2538,
+   "y": 790,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Parsons",
+    "Fisk Av."
+   ],
+   "x": 2597,
+   "y": 790,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Stallcup",
+    "Fisk Av."
+   ],
+   "x": 2657,
+   "y": 790,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Starr",
+    "Western (46th) Av."
+   ],
+   "x": 2208,
+   "y": 918,
+   "area": "West Elyria"
+  },
+  {
+   "streets": [
+    "Baldwin",
+    "Western (46th) Av."
+   ],
+   "x": 2260,
+   "y": 918,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "London",
+    "Western (46th) Av."
+   ],
+   "x": 2312,
+   "y": 918,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Nelson",
+    "Western (46th) Av."
+   ],
+   "x": 2363,
+   "y": 918,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Marshall",
+    "Western (46th) Av."
+   ],
+   "x": 2422,
+   "y": 918,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Estes",
+    "Western (46th) Av."
+   ],
+   "x": 2482,
+   "y": 918,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Legge",
+    "Western (46th) Av."
+   ],
+   "x": 2538,
+   "y": 918,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Parsons",
+    "Western (46th) Av."
+   ],
+   "x": 2597,
+   "y": 918,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Stallcup",
+    "Western (46th) Av."
+   ],
+   "x": 2657,
+   "y": 918,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Baldwin",
+    "Frank"
+   ],
+   "x": 2260,
+   "y": 665,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "London",
+    "Frank"
+   ],
+   "x": 2312,
+   "y": 665,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Nelson",
+    "Frank"
+   ],
+   "x": 2363,
+   "y": 665,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Marshall",
+    "Frank"
+   ],
+   "x": 2422,
+   "y": 665,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Estes",
+    "Frank"
+   ],
+   "x": 2482,
+   "y": 665,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Legge",
+    "Frank"
+   ],
+   "x": 2538,
+   "y": 665,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Parsons",
+    "Frank"
+   ],
+   "x": 2597,
+   "y": 665,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Marshall",
+    "Denver"
+   ],
+   "x": 2422,
+   "y": 543,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Estes",
+    "Denver"
+   ],
+   "x": 2482,
+   "y": 543,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Legge",
+    "Denver"
+   ],
+   "x": 2538,
+   "y": 543,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Parsons",
+    "Denver"
+   ],
+   "x": 2597,
+   "y": 543,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Stallcup",
+    "Denver"
+   ],
+   "x": 2657,
+   "y": 543,
+   "area": "Elyria"
+  },
+  {
+   "streets": [
+    "Delgany",
+    "44th"
+   ],
+   "x": 2172,
+   "y": 977,
+   "area": "St. Vincent Add. (West Elyria)"
+  },
+  {
+   "streets": [
+    "Race",
+    "45th"
+   ],
+   "x": 2480,
+   "y": 990,
+   "area": "South Elyria"
+  },
+  {
+   "streets": [
+    "Vine",
+    "45th"
+   ],
+   "x": 2540,
+   "y": 990,
+   "area": "South Elyria"
+  },
+  {
+   "streets": [
+    "Claude",
+    "45th"
+   ],
+   "x": 2655,
+   "y": 991,
+   "area": "South Elyria"
+  },
+  {
+   "streets": [
+    "York",
+    "45th"
+   ],
+   "x": 2705,
+   "y": 991,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Josephine",
+    "45th"
+   ],
+   "x": 2758,
+   "y": 991,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Columbine",
+    "45th"
+   ],
+   "x": 2814,
+   "y": 991,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Elizabeth",
+    "45th"
+   ],
+   "x": 2862,
+   "y": 992,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Dunham",
+    "45th"
+   ],
+   "x": 2915,
+   "y": 994,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Gaylord",
+    "44th"
+   ],
+   "x": 2594,
+   "y": 1077,
+   "area": "South Elyria"
+  },
+  {
+   "streets": [
+    "Claude",
+    "44th"
+   ],
+   "x": 2655,
+   "y": 1077,
+   "area": "South Elyria"
+  },
+  {
+   "streets": [
+    "York",
+    "44th"
+   ],
+   "x": 2705,
+   "y": 1077,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Josephine",
+    "44th"
+   ],
+   "x": 2758,
+   "y": 1078,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Columbine",
+    "44th"
+   ],
+   "x": 2814,
+   "y": 1080,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Elizabeth",
+    "44th"
+   ],
+   "x": 2862,
+   "y": 1080,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Josephine",
+    "43rd"
+   ],
+   "x": 2758,
+   "y": 1166,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Columbine",
+    "43rd"
+   ],
+   "x": 2814,
+   "y": 1166,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Elizabeth",
+    "43rd"
+   ],
+   "x": 2862,
+   "y": 1166,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Dunham",
+    "43rd"
+   ],
+   "x": 2915,
+   "y": 1166,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Second",
+    "Stevenson"
+   ],
+   "x": 2762,
+   "y": 895,
+   "area": "Swansea (Mount's Add.)"
+  },
+  {
+   "streets": [
+    "Mouat Av.",
+    "Stevenson"
+   ],
+   "x": 2817,
+   "y": 895,
+   "area": "Swansea (Ernest's Add.)"
+  },
+  {
+   "streets": [
+    "York",
+    "Western (46th) Av."
+   ],
+   "x": 2707,
+   "y": 920,
+   "area": "Swansea"
+  },
+  {
+   "streets": [
+    "Barnes",
+    "Stanton Av."
+   ],
+   "x": 477,
+   "y": 2384,
+   "area": "Platte valley (sheet 190)"
+  },
+  {
+   "streets": [
+    "Montgomery",
+    "Stanton Av."
+   ],
+   "x": 579,
+   "y": 2386,
+   "area": "Platte valley (sheet 189/190)"
+  },
+  {
+   "streets": [
+    "Corbett",
+    "Stanton Av."
+   ],
+   "x": 652,
+   "y": 2385,
+   "area": "Platte valley (sheet 191)"
+  },
+  {
+   "streets": [
+    "Argo",
+    "Stanton Av."
+   ],
+   "x": 785,
+   "y": 2385,
+   "area": "Platte valley (sheet 191)"
+  },
+  {
+   "streets": [
+    "Court",
+    "Page"
+   ],
+   "x": 786,
+   "y": 2177,
+   "area": "Platte valley (sheet 191)"
+  },
+  {
+   "streets": [
+    "River",
+    "Worth"
+   ],
+   "x": 938,
+   "y": 2107,
+   "area": "Garden Addn (sheet 192)"
+  },
+  {
+   "streets": [
+    "River",
+    "Page"
+   ],
+   "x": 938,
+   "y": 2159,
+   "area": "Garden Addn (sheet 192)"
+  },
+  {
+   "streets": [
+    "River",
+    "Sigler"
+   ],
+   "x": 938,
+   "y": 2218,
+   "area": "Garden Addn (sheet 192)"
+  },
+  {
+   "streets": [
+    "Basset",
+    "17th"
+   ],
+   "x": 390,
+   "y": 2598,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Chestnut",
+    "17th"
+   ],
+   "x": 436,
+   "y": 2644,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Delgany",
+    "17th"
+   ],
+   "x": 483,
+   "y": 2692,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "17th"
+   ],
+   "x": 576,
+   "y": 2784,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "17th"
+   ],
+   "x": 622,
+   "y": 2830,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Blake",
+    "17th"
+   ],
+   "x": 668,
+   "y": 2877,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wewatta",
+    "18th"
+   ],
+   "x": 595,
+   "y": 2677,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "18th"
+   ],
+   "x": 639,
+   "y": 2721,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "18th"
+   ],
+   "x": 685,
+   "y": 2767,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Blake",
+    "18th"
+   ],
+   "x": 732,
+   "y": 2814,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wewatta",
+    "19th"
+   ],
+   "x": 658,
+   "y": 2614,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "19th"
+   ],
+   "x": 702,
+   "y": 2658,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "19th"
+   ],
+   "x": 748,
+   "y": 2704,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Blake",
+    "19th"
+   ],
+   "x": 795,
+   "y": 2750,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wewatta",
+    "20th"
+   ],
+   "x": 722,
+   "y": 2550,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "20th"
+   ],
+   "x": 812,
+   "y": 2640,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Blake",
+    "20th"
+   ],
+   "x": 858,
+   "y": 2687,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "21st"
+   ],
+   "x": 875,
+   "y": 2577,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Blake",
+    "21st"
+   ],
+   "x": 921,
+   "y": 2624,
+   "area": "Platte valley rail area (sheets 153-155,168-170,181-183)"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "16th"
+   ],
+   "x": 524,
+   "y": 2834,
+   "area": "Platte valley rail area (sheets 153-155)"
+  },
+  {
+   "streets": [
+    "Market",
+    "17th"
+   ],
+   "x": 712,
+   "y": 2912,
+   "area": "Lower downtown"
+  },
+  {
+   "streets": [
+    "Market",
+    "18th"
+   ],
+   "x": 771,
+   "y": 2853,
+   "area": "Lower downtown"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "31st"
+   ],
+   "x": 1602,
+   "y": 2038,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "33rd"
+   ],
+   "x": 1728,
+   "y": 1912,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "35th"
+   ],
+   "x": 1855,
+   "y": 1785,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "23rd"
+   ],
+   "x": 1139,
+   "y": 2588,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "26th"
+   ],
+   "x": 1329,
+   "y": 2398,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "28th"
+   ],
+   "x": 1456,
+   "y": 2272,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "30th"
+   ],
+   "x": 1582,
+   "y": 2145,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "32nd"
+   ],
+   "x": 1709,
+   "y": 2018,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "33rd"
+   ],
+   "x": 1772,
+   "y": 1955,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "34th"
+   ],
+   "x": 1835,
+   "y": 1892,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "35th"
+   ],
+   "x": 1899,
+   "y": 1828,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "21st"
+   ],
+   "x": 1055,
+   "y": 2757,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "25th"
+   ],
+   "x": 1308,
+   "y": 2504,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "27th"
+   ],
+   "x": 1435,
+   "y": 2377,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "29th"
+   ],
+   "x": 1561,
+   "y": 2251,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "31st"
+   ],
+   "x": 1688,
+   "y": 2124,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "33rd"
+   ],
+   "x": 1814,
+   "y": 1998,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Arapahoe",
+    "28th"
+   ],
+   "x": 1540,
+   "y": 2356,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Arapahoe",
+    "31st"
+   ],
+   "x": 1730,
+   "y": 2167,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Curtis",
+    "27th"
+   ],
+   "x": 1520,
+   "y": 2462,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Curtis",
+    "31st"
+   ],
+   "x": 1773,
+   "y": 2209,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Champa",
+    "25th"
+   ],
+   "x": 1436,
+   "y": 2631,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Champa",
+    "29th"
+   ],
+   "x": 1689,
+   "y": 2378,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Blake",
+    "33rd"
+   ],
+   "x": 1684,
+   "y": 1866,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Blake",
+    "35th"
+   ],
+   "x": 1810,
+   "y": 1740,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Blake",
+    "36th"
+   ],
+   "x": 1873,
+   "y": 1677,
+   "area": "Five Points / Curtis Park"
+  },
+  {
+   "streets": [
+    "Wewatta",
+    "36th"
+   ],
+   "x": 1737,
+   "y": 1541,
+   "area": "Ironton (sheet 229)"
+  },
+  {
+   "streets": [
+    "Wewatta",
+    "38th"
+   ],
+   "x": 1864,
+   "y": 1414,
+   "area": "Ironton (sheet 229)"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "36th"
+   ],
+   "x": 1786,
+   "y": 1589,
+   "area": "Ironton (sheet 229)"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "38th"
+   ],
+   "x": 1912,
+   "y": 1462,
+   "area": "Ironton (sheet 229)"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "36th"
+   ],
+   "x": 1828,
+   "y": 1632,
+   "area": "Ironton (sheet 229)"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "38th"
+   ],
+   "x": 1955,
+   "y": 1505,
+   "area": "Ironton (sheet 229)"
+  },
+  {
+   "streets": [
+    "Franklin",
+    "40th"
+   ],
+   "x": 2222,
+   "y": 1408,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Williams",
+    "40th"
+   ],
+   "x": 2351,
+   "y": 1408,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Humboldt",
+    "38th"
+   ],
+   "x": 2157,
+   "y": 1601,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Gilpin",
+    "38th"
+   ],
+   "x": 2287,
+   "y": 1601,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "High",
+    "38th"
+   ],
+   "x": 2412,
+   "y": 1601,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Humboldt",
+    "37th"
+   ],
+   "x": 2157,
+   "y": 1720,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Humboldt",
+    "36th"
+   ],
+   "x": 2157,
+   "y": 1811,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "High",
+    "36th"
+   ],
+   "x": 2412,
+   "y": 1811,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Downing",
+    "35th"
+   ],
+   "x": 1958,
+   "y": 1900,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Marion",
+    "33rd"
+   ],
+   "x": 2026,
+   "y": 2065,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Downing",
+    "32nd"
+   ],
+   "x": 1958,
+   "y": 2146,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Humboldt",
+    "32nd"
+   ],
+   "x": 2157,
+   "y": 2146,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Lafayette",
+    "31st"
+   ],
+   "x": 2090,
+   "y": 2232,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Williams",
+    "31st"
+   ],
+   "x": 2351,
+   "y": 2232,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Downing",
+    "30th"
+   ],
+   "x": 1958,
+   "y": 2315,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "High",
+    "30th"
+   ],
+   "x": 2412,
+   "y": 2315,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Gilpin",
+    "29th"
+   ],
+   "x": 2287,
+   "y": 2397,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Downing",
+    "28th"
+   ],
+   "x": 1958,
+   "y": 2483,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Humboldt",
+    "28th"
+   ],
+   "x": 2157,
+   "y": 2483,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Race",
+    "28th"
+   ],
+   "x": 2478,
+   "y": 2483,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Franklin",
+    "27th"
+   ],
+   "x": 2222,
+   "y": 2565,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Vine",
+    "27th"
+   ],
+   "x": 2540,
+   "y": 2565,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Downing",
+    "26th"
+   ],
+   "x": 1958,
+   "y": 2652,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Williams",
+    "26th"
+   ],
+   "x": 2351,
+   "y": 2652,
+   "area": "Downing-York grid (Hyde Park / Downing's Addn)"
+  },
+  {
+   "streets": [
+    "Josephine",
+    "34th"
+   ],
+   "x": 2730,
+   "y": 1989,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Elizabeth",
+    "34th"
+   ],
+   "x": 2860,
+   "y": 1989,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Clayton",
+    "34th"
+   ],
+   "x": 2927,
+   "y": 1989,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Columbine",
+    "33rd"
+   ],
+   "x": 2794,
+   "y": 2070,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Fillmore",
+    "33rd"
+   ],
+   "x": 2992,
+   "y": 2070,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Fillmore",
+    "32nd"
+   ],
+   "x": 2992,
+   "y": 2150,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Milwaukee",
+    "32nd"
+   ],
+   "x": 3057,
+   "y": 2150,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "York",
+    "31st"
+   ],
+   "x": 2671,
+   "y": 2236,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Clayton",
+    "31st"
+   ],
+   "x": 2927,
+   "y": 2236,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Josephine",
+    "30th"
+   ],
+   "x": 2730,
+   "y": 2316,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Gaylord",
+    "29th"
+   ],
+   "x": 2606,
+   "y": 2401,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Clayton",
+    "29th"
+   ],
+   "x": 2927,
+   "y": 2401,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "York",
+    "28th"
+   ],
+   "x": 2671,
+   "y": 2486,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Josephine",
+    "28th"
+   ],
+   "x": 2730,
+   "y": 2486,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  },
+  {
+   "streets": [
+    "Columbine",
+    "27th"
+   ],
+   "x": 2794,
+   "y": 2570,
+   "area": "East (Clayton's / Berger's / McKee's Addns)"
+  }
+ ]
+}

@@ -1,0 +1,1005 @@
+{
+ "image": "1903_1904_v1_00985_01_1903-0000.jpg",
+ "volume": 1,
+ "crossings": [
+  {
+   "streets": [
+    "Walnut",
+    "10th"
+   ],
+   "x": 562,
+   "y": 477,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "9th"
+   ],
+   "x": 545,
+   "y": 518,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "8th"
+   ],
+   "x": 520,
+   "y": 565,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "7th"
+   ],
+   "x": 492,
+   "y": 615,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "10th"
+   ],
+   "x": 633,
+   "y": 507,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "9th"
+   ],
+   "x": 605,
+   "y": 540,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "8th"
+   ],
+   "x": 580,
+   "y": 585,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "7th"
+   ],
+   "x": 550,
+   "y": 638,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "9th"
+   ],
+   "x": 662,
+   "y": 565,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "8th"
+   ],
+   "x": 638,
+   "y": 610,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "7th"
+   ],
+   "x": 610,
+   "y": 658,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "10th"
+   ],
+   "x": 500,
+   "y": 422,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "9th"
+   ],
+   "x": 482,
+   "y": 480,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "8th"
+   ],
+   "x": 458,
+   "y": 530,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "7th"
+   ],
+   "x": 430,
+   "y": 582,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "10th"
+   ],
+   "x": 439,
+   "y": 400,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "9th"
+   ],
+   "x": 420,
+   "y": 450,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "8th"
+   ],
+   "x": 395,
+   "y": 500,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "11th"
+   ],
+   "x": 658,
+   "y": 452,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "12th"
+   ],
+   "x": 691,
+   "y": 396,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "13th"
+   ],
+   "x": 713,
+   "y": 352,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "10th"
+   ],
+   "x": 692,
+   "y": 520,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "11th"
+   ],
+   "x": 585,
+   "y": 428,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "12th"
+   ],
+   "x": 610,
+   "y": 380,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "13th"
+   ],
+   "x": 637,
+   "y": 313,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "6th"
+   ],
+   "x": 515,
+   "y": 692,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "5th"
+   ],
+   "x": 490,
+   "y": 738,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "4th"
+   ],
+   "x": 465,
+   "y": 782,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "3rd"
+   ],
+   "x": 445,
+   "y": 835,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "6th"
+   ],
+   "x": 455,
+   "y": 655,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "5th"
+   ],
+   "x": 425,
+   "y": 702,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "4th"
+   ],
+   "x": 394,
+   "y": 746,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "3rd"
+   ],
+   "x": 372,
+   "y": 800,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Walnut",
+    "2nd"
+   ],
+   "x": 344,
+   "y": 845,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "16th"
+   ],
+   "x": 781,
+   "y": 133,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "15th"
+   ],
+   "x": 768,
+   "y": 204,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Larimer",
+    "14th"
+   ],
+   "x": 757,
+   "y": 269,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "16th"
+   ],
+   "x": 838,
+   "y": 151,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "15th"
+   ],
+   "x": 818,
+   "y": 221,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Lawrence",
+    "14th"
+   ],
+   "x": 801,
+   "y": 283,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Arapahoe",
+    "16th"
+   ],
+   "x": 889,
+   "y": 168,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Arapahoe",
+    "15th"
+   ],
+   "x": 869,
+   "y": 238,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Arapahoe",
+    "14th"
+   ],
+   "x": 851,
+   "y": 300,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Curtis",
+    "16th"
+   ],
+   "x": 943,
+   "y": 186,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Curtis",
+    "15th"
+   ],
+   "x": 923,
+   "y": 256,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Curtis",
+    "14th"
+   ],
+   "x": 905,
+   "y": 318,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Curtis",
+    "13th"
+   ],
+   "x": 886,
+   "y": 388,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Champa",
+    "16th"
+   ],
+   "x": 992,
+   "y": 202,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Champa",
+    "15th"
+   ],
+   "x": 972,
+   "y": 272,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Champa",
+    "14th"
+   ],
+   "x": 955,
+   "y": 334,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Champa",
+    "13th"
+   ],
+   "x": 935,
+   "y": 404,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Stout",
+    "16th"
+   ],
+   "x": 1045,
+   "y": 219,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Stout",
+    "15th"
+   ],
+   "x": 1025,
+   "y": 290,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Stout",
+    "14th"
+   ],
+   "x": 1008,
+   "y": 352,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Stout",
+    "13th"
+   ],
+   "x": 988,
+   "y": 421,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "California",
+    "16th"
+   ],
+   "x": 1095,
+   "y": 236,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "California",
+    "15th"
+   ],
+   "x": 1075,
+   "y": 306,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "California",
+    "14th"
+   ],
+   "x": 1058,
+   "y": 368,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "California",
+    "13th"
+   ],
+   "x": 1039,
+   "y": 438,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Welton",
+    "16th"
+   ],
+   "x": 1143,
+   "y": 252,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Welton",
+    "15th"
+   ],
+   "x": 1123,
+   "y": 322,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Welton",
+    "14th"
+   ],
+   "x": 1106,
+   "y": 384,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Welton",
+    "13th"
+   ],
+   "x": 1086,
+   "y": 454,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "W. 13th",
+    "S. Third"
+   ],
+   "x": 564,
+   "y": 1065,
+   "area": "West Colfax / Jerome Park"
+  },
+  {
+   "streets": [
+    "W. 12th",
+    "Fourth"
+   ],
+   "x": 652,
+   "y": 1100,
+   "area": "West Colfax / Jerome Park"
+  },
+  {
+   "streets": [
+    "W. 12th",
+    "S. Third"
+   ],
+   "x": 582,
+   "y": 1118,
+   "area": "West Colfax / Jerome Park"
+  },
+  {
+   "streets": [
+    "W. 13th",
+    "Fourth"
+   ],
+   "x": 649,
+   "y": 1072,
+   "area": "West Colfax / Jerome Park"
+  },
+  {
+   "streets": [
+    "Thurman",
+    "W. 11th Av."
+   ],
+   "x": 571,
+   "y": 1255,
+   "area": "West Colfax / Jerome Park"
+  },
+  {
+   "streets": [
+    "Raven",
+    "Thurman"
+   ],
+   "x": 564,
+   "y": 1191,
+   "area": "West Colfax / Jerome Park"
+  },
+  {
+   "streets": [
+    "Holden",
+    "2nd"
+   ],
+   "x": 519,
+   "y": 1112,
+   "area": "West Colfax / Jerome Park"
+  },
+  {
+   "streets": [
+    "Center",
+    "S. 5th"
+   ],
+   "x": 710,
+   "y": 942,
+   "area": "West Colfax / Jerome Park"
+  },
+  {
+   "streets": [
+    "Mulberry",
+    "S. 2nd"
+   ],
+   "x": 646,
+   "y": 1346,
+   "area": "South Platte / Jerome Park"
+  },
+  {
+   "streets": [
+    "W. 8th Av.",
+    "S. 2nd"
+   ],
+   "x": 678,
+   "y": 1458,
+   "area": "South Platte / Jerome Park"
+  },
+  {
+   "streets": [
+    "S. 3rd",
+    "Barberry"
+   ],
+   "x": 714,
+   "y": 1374,
+   "area": "South Platte / Jerome Park"
+  },
+  {
+   "streets": [
+    "S. 3rd",
+    "W. 8th Av."
+   ],
+   "x": 732,
+   "y": 1438,
+   "area": "South Platte / Jerome Park"
+  },
+  {
+   "streets": [
+    "Anderson",
+    "W. 7th Av."
+   ],
+   "x": 698,
+   "y": 1532,
+   "area": "South Platte / Jerome Park"
+  },
+  {
+   "streets": [
+    "S. 9th",
+    "W. Fifth"
+   ],
+   "x": 1265,
+   "y": 1470,
+   "area": "South Platte / Valverde (Summers Add)"
+  },
+  {
+   "streets": [
+    "S. 9th",
+    "W. Third"
+   ],
+   "x": 1320,
+   "y": 1625,
+   "area": "South Platte / Valverde (Summers Add)"
+  },
+  {
+   "streets": [
+    "S. Eighth",
+    "W. Third"
+   ],
+   "x": 1281,
+   "y": 1645,
+   "area": "South Platte / Valverde (Summers Add)"
+  },
+  {
+   "streets": [
+    "S. Seventh",
+    "W. Third"
+   ],
+   "x": 1223,
+   "y": 1674,
+   "area": "South Platte / Valverde (Summers Add)"
+  },
+  {
+   "streets": [
+    "Santa Fe",
+    "W. Eleventh"
+   ],
+   "x": 1148,
+   "y": 932,
+   "area": "Santa Fe / W. Ninth-Eleventh"
+  },
+  {
+   "streets": [
+    "Santa Fe",
+    "W. Tenth"
+   ],
+   "x": 1195,
+   "y": 1002,
+   "area": "Santa Fe / W. Ninth-Eleventh"
+  },
+  {
+   "streets": [
+    "Santa Fe",
+    "W. Ninth"
+   ],
+   "x": 1238,
+   "y": 1082,
+   "area": "Santa Fe / W. Ninth-Eleventh"
+  },
+  {
+   "streets": [
+    "S. Broadway",
+    "Irvington Pl."
+   ],
+   "x": 1985,
+   "y": 1500,
+   "area": "South Broadway"
+  },
+  {
+   "streets": [
+    "Santa Fe",
+    "W. Alameda Av."
+   ],
+   "x": 1741,
+   "y": 1955,
+   "area": "Santa Fe / Alameda"
+  },
+  {
+   "streets": [
+    "Second",
+    "W. 7th Av."
+   ],
+   "x": 732,
+   "y": 1525,
+   "area": "South Platte / Middaugh's Add"
+  },
+  {
+   "streets": [
+    "San Francisco",
+    "W. 7th Av."
+   ],
+   "x": 774,
+   "y": 1509,
+   "area": "South Platte / Middaugh's Add"
+  },
+  {
+   "streets": [
+    "Third",
+    "W. 7th Av."
+   ],
+   "x": 820,
+   "y": 1492,
+   "area": "South Platte / Middaugh's Add"
+  },
+  {
+   "streets": [
+    "Second",
+    "W. 6th Av."
+   ],
+   "x": 783,
+   "y": 1634,
+   "area": "South Platte / Middaugh's Add"
+  },
+  {
+   "streets": [
+    "San Francisco",
+    "W. 6th Av."
+   ],
+   "x": 822,
+   "y": 1616,
+   "area": "South Platte / Middaugh's Add"
+  },
+  {
+   "streets": [
+    "Third",
+    "W. 6th Av."
+   ],
+   "x": 868,
+   "y": 1596,
+   "area": "South Platte / Middaugh's Add"
+  },
+  {
+   "streets": [
+    "San Francisco",
+    "W. 5th Av."
+   ],
+   "x": 860,
+   "y": 1702,
+   "area": "South Platte / Middaugh's Add"
+  },
+  {
+   "streets": [
+    "Third",
+    "W. 5th Av."
+   ],
+   "x": 907,
+   "y": 1680,
+   "area": "South Platte / Middaugh's Add"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "7th"
+   ],
+   "x": 362,
+   "y": 542,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wewatta",
+    "7th"
+   ],
+   "x": 290,
+   "y": 508,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wewatta",
+    "8th"
+   ],
+   "x": 306,
+   "y": 454,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "6th"
+   ],
+   "x": 408,
+   "y": 626,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "5th"
+   ],
+   "x": 382,
+   "y": 678,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "6th"
+   ],
+   "x": 345,
+   "y": 570,
+   "area": "Auraria"
+  },
+  {
+   "streets": [
+    "S. Sixth",
+    "W. Colfax Av."
+   ],
+   "x": 706,
+   "y": 764,
+   "area": "Auraria / W. Colfax"
+  },
+  {
+   "streets": [
+    "S. Seventh",
+    "W. Colfax Av."
+   ],
+   "x": 750,
+   "y": 743,
+   "area": "Auraria / W. Colfax"
+  },
+  {
+   "streets": [
+    "S. Eighth",
+    "W. Colfax Av."
+   ],
+   "x": 797,
+   "y": 721,
+   "area": "Auraria / W. Colfax"
+  },
+  {
+   "streets": [
+    "Champa",
+    "W. Colfax Av."
+   ],
+   "x": 757,
+   "y": 733,
+   "area": "Auraria / W. Colfax"
+  },
+  {
+   "streets": [
+    "Stout",
+    "W. Colfax Av."
+   ],
+   "x": 887,
+   "y": 677,
+   "area": "Auraria / W. Colfax"
+  },
+  {
+   "streets": [
+    "Market",
+    "16th"
+   ],
+   "x": 744,
+   "y": 122,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Blake",
+    "16th"
+   ],
+   "x": 697,
+   "y": 107,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "16th"
+   ],
+   "x": 645,
+   "y": 90,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Wynkoop",
+    "16th"
+   ],
+   "x": 597,
+   "y": 76,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Market",
+    "15th"
+   ],
+   "x": 722,
+   "y": 196,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Blake",
+    "15th"
+   ],
+   "x": 678,
+   "y": 174,
+   "area": "Downtown"
+  },
+  {
+   "streets": [
+    "Wazee",
+    "15th"
+   ],
+   "x": 631,
+   "y": 158,
+   "area": "Downtown"
+  }
+ ]
+}

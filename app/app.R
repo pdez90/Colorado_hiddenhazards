@@ -89,6 +89,9 @@ ur_tab <- rd_opt("urban_renewal_denver.csv"); hl_hist <- rd_opt("health_by_histo
 ctx_sum <- rd_opt("site_context_summary.csv"); hl_tr <- rd_opt("health_tracts_study.csv", colClasses = c(GEOID = "character"))
 ur_poly <- if (file.exists(dd("urban_renewal_denver.geojson"))) st_read(dd("urban_renewal_denver.geojson"), quiet = TRUE) else NULL
 ou_poly <- if (file.exists(dd("superfund_ou_study.geojson"))) st_read(dd("superfund_ou_study.geojson"), quiet = TRUE) else NULL
+sb03 <- if (file.exists(dd("sanborn_1903_sheets.geojson"))) st_read(dd("sanborn_1903_sheets.geojson"), quiet = TRUE) else NULL
+bl03 <- if (file.exists(dd("sanborn_1903_blocks.geojson"))) st_read(dd("sanborn_1903_blocks.geojson"), quiet = TRUE) else NULL
+s03_area <- rd_opt("sanborn1903_expo_area.csv"); s03_zexp <- rd_opt("sanborn1903_zexp.csv"); s03_who <- rd_opt("sanborn1903_who.csv"); s03_pers <- rd_opt("sanborn1903_persist.csv"); s03_trades <- rd_opt("sanborn1903_trades.csv")
 sb_poly <- if (file.exists(dd("sanborn_volumes.geojson"))) st_read(dd("sanborn_volumes.geojson"), quiet = TRUE) else NULL
 vb_nb <- if (file.exists(dd("vbi70_neighborhoods.geojson"))) st_read(dd("vbi70_neighborhoods.geojson"), quiet = TRUE) else NULL
 hed <- rd_opt("hedonic_models.csv"); own_size <- rd_opt("ownership_owner_size.csv"); own_conc <- rd_opt("ownership_concentration.csv"); own_types <- rd_opt("ownership_owner_types.csv"); own_site <- rd_opt("ownership_by_site_proximity.csv"); own_holc <- rd_opt("ownership_by_holc.csv"); own_assoc <- rd_opt("ownership_tract_associations.csv"); own_tr <- rd_opt("ownership_by_tract.csv", colClasses = c(GEOID = "character")); rod <- rd_opt("vbi70_rod2003_soils.csv"); ur_comp <- rd_opt("urban_renewal_composition.csv"); ur_sites <- rd_opt("urban_renewal_sites.csv")
@@ -355,6 +358,22 @@ ui <- page_navbar(id = "nav",
     card(card_header("Who lives in the tracts zoned for industry today? 2020 census, by the tract's 2023 share of land zoned industrial (housing not allowed)"), unit_note("the 147 2010 census tracts within 10 km of downtown"), tableOutput("t_ztr"),
          tags$small(class = "text-muted", "The 147 study tracts with 200+ residents in 2020; population-weighted means. A description of where people live today, not a model.")),
     ),
+  nav_panel("Before zoning: 1903",
+    card(card_header("Housing and industry before zoning: the 1903\u201304 Sanborn maps"),
+      tags$p("Denver zoned in 1925. Twenty years earlier, the Sanborn Map Company drew every building in the city for fire insurers. We read 152 sheets of the 1903\u201304 atlas held by the Library of Congress (public domain): the north side from Lower Downtown and the Platte valley to Five Points, Cole, Elyria and Swansea, and Auraria, West Denver and the South Platte corridor. For each block we counted dwellings and recorded every factory, shop and yard with its trade and equipment, then placed each sheet on today's map. On the main Map tab, the layers 'Sanborn 1903\u201304 sheets (images)' and '1903 blocks: housing & industry' show the sheets and blocks; click a sheet for its image."),
+      unit_note("city blocks on the 152 sheets read (1903\u201304); 1910 enumeration districts; 1929 zoning districts")),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("How many homes shared a block with industry?"), unit_note("dwellings (D-marked buildings, flats and shanties) on the sheets read"),
+           tableOutput("t_s03_area"),
+           tags$small(class = "text-muted", "Hazardous trades: foundries, smelters, metal and machine works, chemical and gas works, oil, paint and tar, tanneries, packing houses and stockyards, breweries, brick and pottery kilns, rail shops and power plants. Heavy trades exclude metal and machine shops and breweries. 'Facing' counts dwellings directly across a street from a plant.")),
+      card(card_header("What the 1929 zoning did with them"), unit_note("1903 blocks by the 1929 zoning district they fall in"),
+           tableOutput("t_s03_zone"),
+           tags$small(class = "text-muted", "The 1929 zoning layer distinguishes Industrial A, Industrial B and Commercial districts; everything else is residence or business districts."))),
+    layout_columns(col_widths = c(6, 6),
+      card(card_header("Who lived there"), unit_note("1910 enumeration districts, weighted by each block's dwellings (full-count census)"),
+           tableOutput("t_s03_who")),
+      card(card_header("What was there"), unit_note("blocks; establishments as labelled on the sheets"),
+           tableOutput("t_s03_trades"), tableOutput("t_s03_pers")))),
   nav_panel("Land use & freeways",
     layout_columns(col_widths = c(3, 9),
       card(card_header("What was on the ground"), unit_note("10 m cells of the USGS land-use maps, Denver study area"),
@@ -902,13 +921,22 @@ server <- function(input, output, session) {
         label = sprintf("Sanborn %s, volume %s", d$edition, d$volume),
         popup = sprintf("<b>Sanborn fire-insurance map, %s, volume %s</b> (%s)<br>%s<br><a href='%s' target='_blank'>Open</a> · <a href='https://LOC.maps.arcgis.com/apps/instant/interactivelegend/index.html?appid=5df8bc1f04d44edb8222b2ae777f3070' target='_blank'>LOC volume finder</a><br><small>Volume extents: Library of Congress, Geography &amp; Map Division</small>",
                         d$edition, d$volume, d$year, d$online, d$link)) }
+    if (!is.null(sb03)) m <- m |> addPolygons(data = sb03, color = "#7f3b08", weight = 1.2, fillOpacity = 0.03, group = "Sanborn 1903\u201304 sheets (images)", options = pathOptions(pane = "tr"),
+        label = sprintf("Sanborn 1903\u201304, vol. %s, sheet %s", sb03$volume, sb03$sheet),
+        popup = sprintf("<b>Sanborn 1903\u201304, volume %s, sheet %s</b><br><a href='%s' target='_blank'><img src='%s' style='width:240px;max-width:100%%;border:1px solid #ccc'></a><br>%s dwellings \u00b7 %s industrial or workshop establishments recorded<br><small>%s</small><br><a href='%s' target='_blank'>Full-resolution sheet (Library of Congress)</a><br><small>Public domain. Sheet placed on today's map from %s street crossings (\u00b1%s m).</small>",
+                        sb03$volume, sb03$sheet, sb03$page, sb03$thumb, sb03$dwellings, sb03$industrial, esc(sb03$notes), sb03$page, sb03$n_inliers, sb03$rmse_m))
+    if (!is.null(bl03)) { e3 <- c("Same block as a hazardous trade" = "#b2182b", "Same block as other industry, or facing industry" = "#ef8a62", "Within 150 m of a hazardous trade" = "#fddbc7", "No industry within 150 m" = "#4393c3")
+      m <- m |> addCircleMarkers(data = bl03, radius = pmax(3, sqrt(bl03$dwellings) * 1.6), stroke = TRUE, color = "#333333", weight = 0.5,
+        fillColor = unname(e3[bl03$exposure]), fillOpacity = ifelse(bl03$dwellings > 0, 0.85, 0.35), group = "1903 blocks: housing & industry", options = pathOptions(pane = "pts"),
+        popup = sprintf("<b>1903 block</b> (sheet %s)<br>%s dwellings%s<br>%s<br><small>1929 zoning: %s</small>", bl03$sheets, bl03$dwellings,
+                        ifelse(bl03$n_industrial > 0, sprintf(" \u00b7 %s industrial (%s)", bl03$n_industrial, esc(bl03$trades)), ""), esc(bl03$establishments), bl03$zone_1929)) }
     ZG <- paste("Zoning", names(ZYEARS)); for (k in seq_along(ZYEARS)) m <- add_zoning(m, ZYEARS[[k]], ZG[k], "tr", 0.45)
     LG <- paste("Land use", LU_YEARS); if (!is.null(lu_r)) for (k in seq_along(LU_YEARS)) m <- add_landuse(m, LU_YEARS[k], LG[k], 0.6)
     m |> addLayersControl(baseGroups = c("Light grey", "OpenStreetMap", "Satellite"),
-          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn maps", SB_EDS), "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), if (!is.null(lu_r)) paste("Land use", LU_YEARS), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
+          overlayGroups = c("Historical hazardous sites", "Pre-1960 hazardous trades", "Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn maps", SB_EDS), "Sanborn 1903\u201304 sheets (images)", "1903 blocks: housing & industry", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), if (!is.null(lu_r)) paste("Land use", LU_YEARS), "EnviroScreen tracts", "EPA TRI facilities", "Schools", "Hospitals", "Clinics",
                             "Residential & long-term care", CLEAN_LAYERS),
           options = layersControlOptions(collapsed = FALSE)) |>
-      hideGroup(c("Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn maps", SB_EDS), "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), paste("Land use", LU_YEARS), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
+      hideGroup(c("Industrial corridors (500 m cells)", "Aerial photo 1933", paste("Sanborn maps", SB_EDS), "Sanborn 1903\u201304 sheets (images)", "1903 blocks: housing & industry", "Petroleum releases (1986\u2013)", "Urban renewal projects", "Superfund operable units", paste("Zoning", names(ZYEARS)), paste("Land use", LU_YEARS), "Schools", "Hospitals", "Clinics", "Residential & long-term care", "Environmental covenants / land-use controls",
                   "RCRA corrective action", "Voluntary cleanup (VCUP)", "Superfund (SEMS)")) |>
       identity()
   })
@@ -1682,6 +1710,18 @@ server <- function(input, output, session) {
   output$t_own_assoc <- renderTable({ req(own_assoc); lab <- c(pct_rental_owner_20plus = "Owners of 20+ units", pct_rental_owner_100plus = "Owners of 100+ units", pct_rental_company = "Companies", pct_rental_out_of_state = "Out of state")
     data.frame(`Share of rental units held by` = lab[own_assoc$outcome], `Tract characteristic` = own_assoc$term, Difference = sprintf("%+.2f", own_assoc$estimate), p = format(own_assoc$p, digits = 2), check.names = FALSE) },
     striped = TRUE, spacing = "s")
+  output$t_s03_area <- renderTable({ req(s03_area); d <- s03_area
+    data.frame(Area = d$area, Dwellings = format(d$dwellings, big.mark = ","), `Same block, hazardous trade` = paste0(d$pct_same_block_haz, "%"), `Same block, heavy trade` = paste0(d$pct_same_block_heavy, "%"),
+               `Within 150 m of a hazardous trade` = paste0(d$pct_within_150_haz, "%"), `Facing industry` = format(d$facing_industry, big.mark = ","), check.names = FALSE) }, striped = TRUE, spacing = "s")
+  output$t_s03_zone <- renderTable({ req(s03_zexp); d <- s03_zexp
+    data.frame(`1903 situation` = d$exposure, `1929 zoning` = d$zone_1929, Dwellings = format(d$dwellings, big.mark = ","), `Share of group` = paste0(d$pct_of_exposure_group, "%"), check.names = FALSE) }, striped = TRUE, spacing = "s")
+  output$t_s03_who <- renderTable({ req(s03_who); d <- s03_who
+    data.frame(`1903 situation` = d$exposure, `Foreign-born` = paste0(d$pct_fb, "%"), Black = paste0(d$pct_black, "%"), Laborers = paste0(d$pct_laborers, "%"), `Owner households` = paste0(d$pct_owner_hh, "%"), check.names = FALSE) }, striped = TRUE, spacing = "s")
+  output$t_s03_trades <- renderTable({ req(s03_trades); d <- head(s03_trades, 12); data.frame(Trade = d$trade, Blocks = d$N) }, striped = TRUE, spacing = "s", caption = "Most common trades", caption.placement = "top")
+  output$t_s03_pers <- renderTable({ req(s03_pers); d <- s03_pers
+    data.frame(`Hazardous blocks, 1903` = d$hazardous_blocks_1903, `With a 1965-92 hazardous-sector site within 150 m` = paste0(d$pct_with_1965_92_site_150m, "%"),
+               `... on no current inventory` = paste0(d$pct_with_hidden_site_150m, "%"), `... on a current inventory` = paste0(d$pct_with_known_site_150m, "%"), check.names = FALSE) },
+    striped = TRUE, spacing = "s", caption = "Did the same places stay industrial?", caption.placement = "top")
   output$p_hedonic <- renderPlotly({ req(hed); d <- hed[hed$model == input$hd_model & hed$sample == "All residential sales" & grepl("^Hidden|^Known|^Pre-1960", hed$kind) & hed$distance %in% c("0-200 m", "200-400 m", "400-800 m"), ]
     req(nrow(d)); cols <- c("Hidden (no current inventory)" = "#c2410c", "Known (on a current inventory)" = "#1d4ed8", "Pre-1960 hazardous trade" = "#6b7280")
     p <- plot_ly()

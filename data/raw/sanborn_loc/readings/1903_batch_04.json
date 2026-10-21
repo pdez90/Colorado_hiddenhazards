@@ -1,0 +1,2227 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 31,
+  "image": "1903_1904_v1_00985_01_1903-0031.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "W. Louisiana Av.",
+     "Fremont or S. 15th St. South"
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 1645
+   },
+   {
+    "streets": [
+     "W. Louisiana Av.",
+     "S. Broadway"
+    ],
+    "modern": null,
+    "x": 1200,
+    "y": 1645
+   },
+   {
+    "streets": [
+     "W. Arkansas Av.",
+     "S. 15th St. South"
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 3709
+   },
+   {
+    "streets": [
+     "W. Arkansas Av.",
+     "S. Broadway"
+    ],
+    "modern": null,
+    "x": 1200,
+    "y": 3709
+   },
+   {
+    "streets": [
+     "W. Colfax Av.",
+     "S. 1st St."
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 387
+   },
+   {
+    "streets": [
+     "W. 14th Av.",
+     "S. 1st St."
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 1700
+   },
+   {
+    "streets": [
+     "W. 13th Av.",
+     "S. 1st St."
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 3354
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "31-1",
+    "bounded_by": {
+     "N": null,
+     "S": "W. Louisiana Av.",
+     "E": "S. Broadway",
+     "W": "Fremont or S. 15th St. South"
+    },
+    "centroid": {
+     "x": 677,
+     "y": 806
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Jerome's Broadway Sub. block 1; entirely vacant platted lots"
+   },
+   {
+    "block_id": "31-2",
+    "bounded_by": {
+     "N": "W. Louisiana Av.",
+     "S": "W. Arkansas Av.",
+     "E": "S. Broadway",
+     "W": "S. 15th St. South"
+    },
+    "centroid": {
+     "x": 677,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Overland Park Sub. block 2; row of 1.5-story frame attic dwellings on S. 15th St. South, east half vacant"
+   },
+   {
+    "block_id": "31-7/3",
+    "bounded_by": {
+     "N": "W. Colfax Av.",
+     "S": "W. 14th Av.",
+     "E": "S. 1st St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 2515,
+     "y": 1032
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 3,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM.; WOOD WORK",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "long frame shop through block at 2046"
+     },
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "2024 W. Colfax"
+     },
+     {
+      "label": "PAINTING",
+      "name": null,
+      "trade": "other",
+      "features": "paint shop 2042 1/2"
+     },
+     {
+      "label": "WARE HO.",
+      "name": null,
+      "trade": "warehouse",
+      "features": "2022 W. Colfax"
+     },
+     {
+      "label": "HAY & FEED (x2)",
+      "name": null,
+      "trade": "warehouse",
+      "features": "2020 and 2012 W. Colfax"
+     },
+     {
+      "label": "WAGON STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "2008 W. Colfax"
+     },
+     {
+      "label": "CARP'R",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "carpenter shop 2004 W. Colfax"
+     },
+     {
+      "label": "SOAP FACTORY; SHODDY MILL; SHODDY PRESS; PACKING ROOM",
+      "name": "Johnson & Bremer Soap Fac'y / The Continental Shoddy Mill",
+      "trade": "chemical",
+      "features": "engine and boiler rooms, iron chimney, tank on roof; no watchman, heat stoves, fuel coal, well water, no fire protection (soap fac'y)"
+     },
+     {
+      "label": "COAL",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "coal shed"
+     }
+    ],
+    "faces": [],
+    "notes": "Baker's Sub. block 7 (north) and Villa Sub. B block 3 (south) treated as one city block; west edge on rail line/South Platte. Congregation Zera Abraham, Rosenbaum's Bath Ho., school; 5-unit D row on S. 1st; saloon 2016; soap factory/shoddy mill at 2003 W. 14th next to dwellings 1429-1431 1/2"
+   },
+   {
+    "block_id": "31-4",
+    "bounded_by": {
+     "N": "W. 14th Av.",
+     "S": null,
+     "E": "S. 1st St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 2548,
+     "y": 1935
+    },
+    "partial": true,
+    "dwellings": 5,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "W. 14th Av.",
+      "what": "Johnson & Bremer Soap Fac'y / Continental Shoddy Mill",
+      "dwellings_facing": 3
+     }
+    ],
+    "notes": "Baker's Sub. block 4, cut diagonally by Denver Lakewood & Golden R.R.; Congregation Mogen David"
+   },
+   {
+    "block_id": "31-15",
+    "bounded_by": {
+     "N": "Centre",
+     "S": "W. 13th Av.",
+     "E": "S. 1st St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 2515,
+     "y": 2919
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "ELECTRIC LIGHT PLANT",
+      "name": "The Lacombe Electric Co.",
+      "trade": "power/electric",
+      "features": "5 engines 250 h.p. each with 13 dynamos, 690 h.p. engine with 2 dynamos, run day and night, heat from boilers, fuel coal, brick boiler & engine house, iron chimney, elevated water tank 5000 gal, open well for condensers"
+     },
+     {
+      "label": "STORAGE ELECT. SUPPLIES",
+      "name": "The Lacombe Electric Co.",
+      "trade": "warehouse",
+      "features": "iron clad"
+     },
+     {
+      "label": "COAL BIN",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": null
+     }
+    ],
+    "faces": [],
+    "notes": "Baker's Sub. block 15; west end on South Platte bank"
+   },
+   {
+    "block_id": "31-16",
+    "bounded_by": {
+     "N": "W. 13th Av.",
+     "S": null,
+     "E": null,
+     "W": null
+    },
+    "centroid": {
+     "x": 2548,
+     "y": 3580
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "LARD RENDERERS",
+      "name": null,
+      "trade": "meat packing/stockyard",
+      "features": "iron clad, small engine/boiler"
+     }
+    ],
+    "faces": [],
+    "notes": "only north edge on sheet"
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "ROUND HO.; REPAIR SHOP; TURN TABLE",
+    "name": "Denver Lakewood & Golden R.R.",
+    "trade": "rail shops/roundhouse",
+    "features": "sand dryer, two repair shops, turntable",
+    "near": "rail yard between W. 14th and Centre, east bank of South Platte"
+   },
+   {
+    "label": "COAL HO.",
+    "name": null,
+    "trade": "coal/wood yard",
+    "features": "on posts",
+    "near": "north side of Centre"
+   }
+  ],
+  "sheet_notes": "West edge of Auraria on the South Platte: vacant Jerome's Broadway lots and a row of 11 cottages in Overland Park west of S. Broadway; Baker's/Villa Sub. mixes congregations, a school and dwellings with blacksmiths, a soap factory/shoddy mill, the Lacombe Electric power plant, a lard renderer and the D.L.&G. roundhouse."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 32,
+  "image": "1903_1904_v1_00985_01_1903-0032.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "W. Colfax Av.",
+     "S. 1st St."
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 387
+   },
+   {
+    "streets": [
+     "W. 14th Av.",
+     "S. 1st St."
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 1645
+   },
+   {
+    "streets": [
+     "Center",
+     "S. 1st St."
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 2661
+   },
+   {
+    "streets": [
+     "W. 13th Av.",
+     "S. 2nd St."
+    ],
+    "modern": null,
+    "x": 1661,
+    "y": 3386
+   },
+   {
+    "streets": [
+     "W. Colfax Av.",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 387
+   },
+   {
+    "streets": [
+     "W. 14th Av.",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 1645
+   },
+   {
+    "streets": [
+     "W. 13th Av.",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 3096,
+    "y": 3386
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "32-2",
+    "bounded_by": {
+     "N": "W. Colfax Av.",
+     "S": "W. 14th Av.",
+     "E": "S. 3rd St.",
+     "W": "S. 1st St."
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 1016
+    },
+    "partial": false,
+    "dwellings": 62,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "RAG PICKING; JUNK; JUNK YARD",
+      "name": "The Continental Junk Co.",
+      "trade": "other",
+      "features": "2-story rag picking building with office, open junk yard over lots 32-35"
+     },
+     {
+      "label": "JUNK YARD",
+      "name": null,
+      "trade": "other",
+      "features": "lot 28 off W. Colfax"
+     },
+     {
+      "label": "BAKERY",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven; 1954 W. Colfax"
+     },
+     {
+      "label": "STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "small, lot 25"
+     }
+    ],
+    "faces": [],
+    "notes": "Baker's Sub. block 2 / Villa Sub. B; dense frame dwellings incl. 8-unit row on S. 3rd and 3-unit row 1981-1983; junk/rag yard sits among dwellings (1420, 1416 S. 1st adjacent)"
+   },
+   {
+    "block_id": "32-5",
+    "bounded_by": {
+     "N": "W. 14th Av.",
+     "S": "Center",
+     "E": "S. 3rd St.",
+     "W": "S. 1st St."
+    },
+    "centroid": {
+     "x": 1612,
+     "y": 2161
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL YARD; COAL BIN",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "office, coal bin on rail spur"
+     }
+    ],
+    "faces": [],
+    "notes": "Baker's Sub. block 5; Silverstine Terrace (7 attached D units) on W. 14th; rail spur along Center"
+   },
+   {
+    "block_id": "32-14",
+    "bounded_by": {
+     "N": "Center",
+     "S": "W. 13th Av.",
+     "E": "S. 2nd St.",
+     "W": "S. 1st St."
+    },
+    "centroid": {
+     "x": 838,
+     "y": 3015
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Center",
+      "what": "coal yard and rail spur (block 5)",
+      "dwellings_facing": 4
+     }
+    ],
+    "notes": "Baker's Sub. block 14"
+   },
+   {
+    "block_id": "32-13",
+    "bounded_by": {
+     "N": "Center",
+     "S": "W. 13th Av.",
+     "E": "S. 3rd St.",
+     "W": "S. 2nd St."
+    },
+    "centroid": {
+     "x": 2370,
+     "y": 3015
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "SARATOGA CHIP FACTORY",
+      "name": "Heitzman's Saratoga Chip Factory",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "iron clad, 1905 W. 13th at S. 3rd"
+     }
+    ],
+    "faces": [],
+    "notes": "Baker's Sub. block 13; green house, windmill and water tank"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential Baker's/Villa Sub. between W. Colfax and W. 13th; industry limited to a junk & rag-picking yard, bakery, coal yard on the Center St. spur and a potato-chip factory. Blocks south of W. 13th shown blank (see sheet 41)."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 33,
+  "image": "1903_1904_v1_00985_01_1903-0033.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "W. Colfax Av.",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 468,
+    "y": 387
+   },
+   {
+    "streets": [
+     "W. 14th Av.",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 468,
+    "y": 1661
+   },
+   {
+    "streets": [
+     "Center",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 468,
+    "y": 2661
+   },
+   {
+    "streets": [
+     "W. 13th Av.",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 468,
+    "y": 3386
+   },
+   {
+    "streets": [
+     "W. Colfax Av.",
+     "S. 4th St."
+    ],
+    "modern": null,
+    "x": 2774,
+    "y": 387
+   },
+   {
+    "streets": [
+     "Center",
+     "S. 4th St."
+    ],
+    "modern": null,
+    "x": 2129,
+    "y": 2661
+   },
+   {
+    "streets": [
+     "W. 13th Av.",
+     "S. 4th St."
+    ],
+    "modern": null,
+    "x": 2129,
+    "y": 3386
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "33-1",
+    "bounded_by": {
+     "N": "W. Colfax Av.",
+     "S": "W. 14th Av.",
+     "E": null,
+     "W": "S. 3rd St."
+    },
+    "centroid": {
+     "x": 900,
+     "y": 1000
+    },
+    "partial": false,
+    "dwellings": 10,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CEMENT PRODUCTS CO. BUILDING STONE FACTORY (former DENVER CITY TRAMWAY CO. power house)",
+      "name": "The Cement Products Co.",
+      "trade": "brick/stone/pottery",
+      "features": "Denver City Tramway Co. power house, not running, partly dismantled, night watchman; 2 dynamos, 120 h.p. engine, brick chimney 12' with iron stack 75'; no heat, no lights, electric motor power"
+     }
+    ],
+    "faces": [],
+    "notes": "Baker's Sub. block 1; east edge is a rail line; cement plant on lots 9-12 between the two rail lines, next to dwellings 1830/1824 W. Colfax; saloon 1839 W. 14th"
+   },
+   {
+    "block_id": "33-2",
+    "bounded_by": {
+     "N": "W. Colfax Av.",
+     "S": "W. 14th Av.",
+     "E": "S. 4th St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 2200,
+     "y": 1000
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "ICE MACHINES; FREEZING TANKS; COLD STORAGE; ICE HO.",
+      "name": "Colorado Ice & Storage Company",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "capacity 300 tons/day, runs night and day, ice machines 120, 120 and 60 tons, condensers on roof, 3 chimneys brick 20' iron 60', coal-fired steam, ice chutes for loading cars, elevator; no watchman"
+     },
+     {
+      "label": "WAGON SHED; CARP'R",
+      "name": "Colorado Ice & Storage Company",
+      "trade": "livery/blacksmith",
+      "features": "wagon shed/stable with corral, iron-clad carpenter shop, water tower"
+     }
+    ],
+    "faces": [],
+    "notes": "Baker's Sub. block 2 / Villa Sub. B, west edge on main rail lines"
+   },
+   {
+    "block_id": "33-6",
+    "bounded_by": {
+     "N": "W. 14th Av.",
+     "S": "Center",
+     "E": null,
+     "W": "S. 3rd St."
+    },
+    "centroid": {
+     "x": 950,
+     "y": 2160
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Baker's block 6, entirely vacant, cut by rail line"
+   },
+   {
+    "block_id": "33-7",
+    "bounded_by": {
+     "N": "W. 14th Av.",
+     "S": "Center",
+     "E": "S. 4th St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 1870,
+     "y": 2160
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Baker's block 7, vacant"
+   },
+   {
+    "block_id": "33-8",
+    "bounded_by": {
+     "N": "W. 14th Av.",
+     "S": "Center",
+     "E": null,
+     "W": "S. 4th St."
+    },
+    "centroid": {
+     "x": 2650,
+     "y": 2160
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Baker's block 8, vacant"
+   },
+   {
+    "block_id": "33-12",
+    "bounded_by": {
+     "N": "Center",
+     "S": "W. 13th Av.",
+     "E": null,
+     "W": "S. 3rd St."
+    },
+    "centroid": {
+     "x": 950,
+     "y": 3050
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Baker's block 12, vacant"
+   },
+   {
+    "block_id": "33-11",
+    "bounded_by": {
+     "N": "Center",
+     "S": "W. 13th Av.",
+     "E": "S. 4th St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 1870,
+     "y": 3050
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Baker's block 11, vacant"
+   },
+   {
+    "block_id": "33-10",
+    "bounded_by": {
+     "N": "Center",
+     "S": "W. 13th Av.",
+     "E": null,
+     "W": "S. 4th St."
+    },
+    "centroid": {
+     "x": 2650,
+     "y": 3050
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Baker's block 10, vacant"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Rail corridor through Baker's Sub.: Colorado Ice & Storage plant (300 tons/day) and the cement-products factory in the old tramway power house sit by the tracks on W. Colfax; everything south of W. 14th is vacant platted lots."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 49,
+  "image": "1903_1904_v1_00985_01_1903-0049.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "W. 11th Av.",
+     "S. 1st St."
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 155
+   },
+   {
+    "streets": [
+     "W. 11th Av.",
+     "Anderson"
+    ],
+    "modern": null,
+    "x": 2064,
+    "y": 155
+   },
+   {
+    "streets": [
+     "W. 11th Av.",
+     "Thurman"
+    ],
+    "modern": null,
+    "x": 2548,
+    "y": 155
+   },
+   {
+    "streets": [
+     "Mulberry",
+     "S. 1st St."
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 2725
+   },
+   {
+    "streets": [
+     "Mulberry",
+     "Anderson"
+    ],
+    "modern": null,
+    "x": 2064,
+    "y": 2725
+   },
+   {
+    "streets": [
+     "Mulberry",
+     "S. 2nd St."
+    ],
+    "modern": null,
+    "x": 3048,
+    "y": 2725
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "49-5",
+    "bounded_by": {
+     "N": "W. 11th Av.",
+     "S": "Mulberry",
+     "E": "S. 1st St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 919,
+     "y": 1419
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "REPAIR SHOP; WIND MILL FOR POWER",
+      "name": null,
+      "trade": "machine shop",
+      "features": "wind mill for power"
+     }
+    ],
+    "faces": [],
+    "notes": "First Add'n block 5; west side backs on South Platte River; Milleson Mission at W. 11th"
+   },
+   {
+    "block_id": "49-6",
+    "bounded_by": {
+     "N": "W. 11th Av.",
+     "S": "Mulberry",
+     "E": "Anderson",
+     "W": "S. 1st St."
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 1419
+    },
+    "partial": false,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STORAGE OF COOPERAGE STOCK",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "iron clad"
+     },
+     {
+      "label": "STORAGE 1ST; COOPER SHOP 2ND",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "brick 1st story"
+     }
+    ],
+    "faces": [],
+    "notes": "First Add'n / Jerome Park Add'n block 6; kindergarten at W. 11th; cooper shop amid dwellings on alley"
+   },
+   {
+    "block_id": "49-7",
+    "bounded_by": {
+     "N": "W. 11th Av.",
+     "S": null,
+     "E": "Thurman",
+     "W": "Anderson"
+    },
+    "centroid": {
+     "x": 2354,
+     "y": 1419
+    },
+    "partial": false,
+    "dwellings": 9,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Jerome Park block 7; Garfield School"
+   },
+   {
+    "block_id": "49-8",
+    "bounded_by": {
+     "N": "Mulberry",
+     "S": null,
+     "E": "S. 1st St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 919,
+     "y": 3290
+    },
+    "partial": true,
+    "dwellings": 5,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "First Add'n block 8; river on west"
+   },
+   {
+    "block_id": "49-9",
+    "bounded_by": {
+     "N": "Mulberry",
+     "S": null,
+     "E": "Anderson",
+     "W": "S. 1st St."
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 3290
+    },
+    "partial": true,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "block 9; unlabelled building at 447 on south edge"
+   },
+   {
+    "block_id": "49-10",
+    "bounded_by": {
+     "N": "Mulberry",
+     "S": null,
+     "E": null,
+     "W": "Anderson"
+    },
+    "centroid": {
+     "x": 2354,
+     "y": 3290
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "block 10, vacant"
+   },
+   {
+    "block_id": "49-A",
+    "bounded_by": {
+     "N": "Mulberry",
+     "S": null,
+     "E": "S. 2nd St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 2774,
+     "y": 3290
+    },
+    "partial": true,
+    "dwellings": 3,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Milleson's Add'n block A"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Sparse residential strip along the east bank of the South Platte (Jerome Park/First Add'n): scattered frame dwellings, Garfield School, a mission and kindergarten; only industry is a cooper shop/cooperage storage and a windmill-powered repair shop."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 50,
+  "image": "1903_1904_v1_00985_01_1903-0050.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "W. 8th Av.",
+     "S. 1st St."
+    ],
+    "modern": null,
+    "x": 1106,
+    "y": 1671
+   },
+   {
+    "streets": [
+     "W. 8th Av.",
+     "Anderson"
+    ],
+    "modern": null,
+    "x": 2006,
+    "y": 1671
+   },
+   {
+    "streets": [
+     "W. 8th Av.",
+     "S. 2nd St."
+    ],
+    "modern": null,
+    "x": 2951,
+    "y": 1671
+   },
+   {
+    "streets": [
+     "W. 7th Av.",
+     "Anderson"
+    ],
+    "modern": null,
+    "x": 1967,
+    "y": 3660
+   },
+   {
+    "streets": [
+     "W. 7th Av.",
+     "S. 2nd St."
+    ],
+    "modern": null,
+    "x": 2806,
+    "y": 3660
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "50-8",
+    "bounded_by": {
+     "N": null,
+     "S": "W. 8th Av.",
+     "E": "S. 1st St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 890,
+     "y": 800
+    },
+    "partial": true,
+    "dwellings": 10,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "First Add'n block 8; west side on South Platte River; saloon and barber in attached row 446-450"
+   },
+   {
+    "block_id": "50-9",
+    "bounded_by": {
+     "N": null,
+     "S": "W. 8th Av.",
+     "E": "Anderson",
+     "W": "S. 1st St."
+    },
+    "centroid": {
+     "x": 1500,
+     "y": 800
+    },
+    "partial": true,
+    "dwellings": 3,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "WOOD YARD",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "small upright boiler/engine (label 'UPB 10 HP', uncertain)"
+     }
+    ],
+    "faces": [],
+    "notes": "First Add'n to Jerome Park block 9"
+   },
+   {
+    "block_id": "50-10",
+    "bounded_by": {
+     "N": null,
+     "S": "W. 8th Av.",
+     "E": null,
+     "W": "Anderson"
+    },
+    "centroid": {
+     "x": 2280,
+     "y": 800
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Jerome Park block 10, vacant"
+   },
+   {
+    "block_id": "50-A",
+    "bounded_by": {
+     "N": null,
+     "S": "W. 8th Av.",
+     "E": "S. 2nd St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 2700,
+     "y": 800
+    },
+    "partial": true,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Milleson's Add'n block A; 4-unit row 857-863 S. 2nd and 3-unit row 2313-2317 W. 8th"
+   },
+   {
+    "block_id": "50-35",
+    "bounded_by": {
+     "N": "W. 8th Av.",
+     "S": "W. 7th Av.",
+     "E": "Anderson",
+     "W": null
+    },
+    "centroid": {
+     "x": 1750,
+     "y": 2600
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Fletcher's West Side Add'n block 35, vacant, west edge cut by South Platte"
+   },
+   {
+    "block_id": "50-34",
+    "bounded_by": {
+     "N": "W. 8th Av.",
+     "S": "W. 7th Av.",
+     "E": "S. 2nd St.",
+     "W": "Anderson"
+    },
+    "centroid": {
+     "x": 2390,
+     "y": 2600
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Fletcher's West Side Add'n block 34, vacant"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Thinly built residential fringe beside the South Platte south of W. 8th; Fletcher's West Side Add'n entirely vacant. Only industry a small wood yard."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 51,
+  "image": "1903_1904_v1_00985_01_1903-0051.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Mulberry",
+     "Thurman"
+    ],
+    "modern": null,
+    "x": 177,
+    "y": 2677
+   },
+   {
+    "streets": [
+     "Mulberry",
+     "S. 2nd St."
+    ],
+    "modern": null,
+    "x": 661,
+    "y": 2709
+   },
+   {
+    "streets": [
+     "Mulberry",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 1661,
+    "y": 2799
+   },
+   {
+    "streets": [
+     "Mulberry",
+     "S. 4th St."
+    ],
+    "modern": null,
+    "x": 2999,
+    "y": 2774
+   },
+   {
+    "streets": [
+     "Grape",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 1661,
+    "y": 3225
+   },
+   {
+    "streets": [
+     "Grape",
+     "S. 4th St."
+    ],
+    "modern": null,
+    "x": 2999,
+    "y": 3225
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "51-4",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": null,
+     "W": "Thurman"
+    },
+    "centroid": {
+     "x": 460,
+     "y": 650
+    },
+    "partial": true,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "1st Add'n to Jerome Park block 4"
+   },
+   {
+    "block_id": "51-W",
+    "bounded_by": {
+     "N": null,
+     "S": "Mulberry (proposed)",
+     "E": null,
+     "W": "Thurman"
+    },
+    "centroid": {
+     "x": 1200,
+     "y": 1300
+    },
+    "partial": true,
+    "dwellings": 6,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "POTTERY; KILN",
+      "name": "The American Clay W'ks",
+      "trade": "brick/stone/pottery",
+      "features": "kiln, upright boiler 10 h.p., iron chimney 30', clay washer, tile shed, water tank on roof; dwelling attached"
+     }
+    ],
+    "faces": [],
+    "notes": "unplatted ground between Thurman and the Mill Race; scattered dwellings (92, 96, 96 1/2, 1700, 262 1/2) and a tent"
+   },
+   {
+    "block_id": "51-IW",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": "S. 4th St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 2650,
+     "y": 800
+    },
+    "partial": true,
+    "dwellings": 3,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "ORNAMENTAL IRON & FENCE W'KS; ELECTRO PLATING; WIRE FENCE MACH.; BLKSM.; MACHINE SHOP",
+      "name": "The Denver Iron and Wire Works",
+      "trade": "metal working",
+      "features": "electro-plating shop with iron chimney 20', electric motors, blacksmith forges, steam heat, coal fuel; watchman lives on premises"
+     }
+    ],
+    "faces": [],
+    "notes": "between Mill Race and S. 4th St.; dwellings 1055, 1015 (in shop building) and 1037 adjoin the works; C.&S. R.R. along S. 4th"
+   },
+   {
+    "block_id": "51-UR",
+    "bounded_by": {
+     "N": null,
+     "S": "Mulberry",
+     "E": "S. 4th St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 2500,
+     "y": 2300
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BRASS FOUNDRY; MOULDING ROOM; CUPOLA; RATTLERS; BLKSM.; MACH. SHOP; PATTERN STORAGE; ROLLS; FURN.; SCRAP YARD",
+      "name": "Union Rolling Mill and Foundry Co.",
+      "trade": "foundry",
+      "features": "cupola, core oven, brass pot, furnaces, iron chimneys 50' & 30' and 25', engines 20 h.p. and 100 h.p., rolls, oil house, scrap yard and bins, coal fuel"
+     }
+    ],
+    "faces": [],
+    "notes": "dwellings 201 and 203 Mulberry on the same block, south of the mill"
+   },
+   {
+    "block_id": "51-1",
+    "bounded_by": {
+     "N": "Mulberry",
+     "S": "Grape",
+     "E": "S. 4th St.",
+     "W": "S. 3rd St."
+    },
+    "centroid": {
+     "x": 2280,
+     "y": 3000
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "Mulberry",
+      "what": "Union Rolling Mill and Foundry Co.",
+      "dwellings_facing": 1
+     }
+    ],
+    "notes": "Milleson's Add'n block 1; dwellings front Grape, rear sheds on Mulberry opposite the foundry"
+   },
+   {
+    "block_id": "51-2",
+    "bounded_by": {
+     "N": "Grape",
+     "S": null,
+     "E": "S. 4th St.",
+     "W": "S. 3rd St."
+    },
+    "centroid": {
+     "x": 2280,
+     "y": 3550
+    },
+    "partial": true,
+    "dwellings": 3,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Milleson's Add'n block 2"
+   },
+   {
+    "block_id": "51-B",
+    "bounded_by": {
+     "N": "Mulberry",
+     "S": null,
+     "E": "S. 3rd St.",
+     "W": "S. 2nd St."
+    },
+    "centroid": {
+     "x": 1200,
+     "y": 3300
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Milleson's Add'n block B, vacant, crossed by Mill Race"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Mill Race corridor west of S. 4th / C.&S. R.R.: Union Rolling Mill & Foundry (cupola, furnaces, 100 h.p. engine), Denver Iron & Wire Works with electro-plating, and the American Clay Works pottery kiln, all amid scattered cottages on largely unplatted ground."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 52,
+  "image": "1903_1904_v1_00985_01_1903-0052.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "W. 8th Av.",
+     "S. 2nd St."
+    ],
+    "modern": null,
+    "x": 381,
+    "y": 1677
+   },
+   {
+    "streets": [
+     "W. 8th Av.",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 1348,
+    "y": 1677
+   },
+   {
+    "streets": [
+     "W. 8th Av.",
+     "S. 4th St."
+    ],
+    "modern": null,
+    "x": 2774,
+    "y": 1677
+   },
+   {
+    "streets": [
+     "Barberry",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 1387,
+    "y": 710
+   },
+   {
+    "streets": [
+     "Barberry",
+     "S. 4th St."
+    ],
+    "modern": null,
+    "x": 2780,
+    "y": 710
+   },
+   {
+    "streets": [
+     "W. 7th Av.",
+     "S. 2nd St."
+    ],
+    "modern": null,
+    "x": 274,
+    "y": 3660
+   },
+   {
+    "streets": [
+     "W. 7th Av.",
+     "San Francisco"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 3660
+   },
+   {
+    "streets": [
+     "W. 7th Av.",
+     "S. 3rd St."
+    ],
+    "modern": null,
+    "x": 1990,
+    "y": 3660
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "52-B",
+    "bounded_by": {
+     "N": null,
+     "S": "W. 8th Av.",
+     "E": "S. 3rd St.",
+     "W": "S. 2nd St."
+    },
+    "centroid": {
+     "x": 850,
+     "y": 900
+    },
+    "partial": true,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Milleson's Add'n block B; east lots cut by Mill Race; 852 S. 2nd marked 1 1/2 S. Fr. Att. (store)"
+   },
+   {
+    "block_id": "52-2",
+    "bounded_by": {
+     "N": null,
+     "S": "Barberry",
+     "E": "S. 4th St.",
+     "W": "S. 3rd St."
+    },
+    "centroid": {
+     "x": 2050,
+     "y": 450
+    },
+    "partial": true,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Milleson's Add'n block 2"
+   },
+   {
+    "block_id": "52-3",
+    "bounded_by": {
+     "N": "Barberry",
+     "S": "W. 8th Av.",
+     "E": "S. 4th St.",
+     "W": "S. 3rd St."
+    },
+    "centroid": {
+     "x": 2050,
+     "y": 1200
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "PICKLE FAC'Y; PICKLE VATS; BBL. SHED",
+      "name": "McGargee & Mallen Pickle Fac'y",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "small engine (12'? 3 h.p.), upright boiler, iron chimney 25', pickle vats, iron-clad barrel shed"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Barberry",
+      "what": "McGargee & Mallen Pickle Fac'y (same block, adjoining)",
+      "dwellings_facing": 4
+     }
+    ],
+    "notes": "Milleson's Add'n block 3; pickle factory at 2010-2016 Barberry next to dwellings 2026-2040"
+   },
+   {
+    "block_id": "52-33",
+    "bounded_by": {
+     "N": "W. 8th Av.",
+     "S": "W. 7th Av.",
+     "E": "San Francisco",
+     "W": "S. 2nd St."
+    },
+    "centroid": {
+     "x": 670,
+     "y": 2650
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Fletcher's West Side Add'n block 33, vacant"
+   },
+   {
+    "block_id": "52-32",
+    "bounded_by": {
+     "N": "W. 8th Av.",
+     "S": "W. 7th Av.",
+     "E": "S. 3rd St.",
+     "W": "San Francisco"
+    },
+    "centroid": {
+     "x": 1560,
+     "y": 2650
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "block 32, vacant, crossed by Mill Race"
+   },
+   {
+    "block_id": "52-31",
+    "bounded_by": {
+     "N": "W. 8th Av.",
+     "S": "W. 7th Av.",
+     "E": null,
+     "W": "S. 3rd St."
+    },
+    "centroid": {
+     "x": 2420,
+     "y": 2650
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "VACANT MICA MILL occupied by McGARGEE & MALLEN PICKLE FAC.",
+      "name": "McGargee & Mallen (former mica mill)",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "iron chimney ~35', boiler; rail spur"
+     },
+     {
+      "label": "VACANT",
+      "name": null,
+      "trade": "other",
+      "features": "vacant 1-story building"
+     }
+    ],
+    "faces": [],
+    "notes": "block 31; east edge on C.&S. R.R. tracks"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Mostly vacant Fletcher's West Side and Milleson's lots between S. 2nd and the C.&S. R.R.; McGargee & Mallen pickle works (with a second plant in the old mica mill) beside a handful of dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 53,
+  "image": "1903_1904_v1_00985_01_1903-0053.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "W. 11th Av.",
+     "S. 7th St."
+    ],
+    "modern": null,
+    "x": 2025,
+    "y": 152
+   },
+   {
+    "streets": [
+     "W. 10th Av.",
+     "S. 7th St."
+    ],
+    "modern": null,
+    "x": 2025,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "W. 9th Av.",
+     "S. 7th St."
+    ],
+    "modern": null,
+    "x": 2032,
+    "y": 3564
+   },
+   {
+    "streets": [
+     "W. 11th Av.",
+     "S. 8th St."
+    ],
+    "modern": null,
+    "x": 3048,
+    "y": 152
+   },
+   {
+    "streets": [
+     "W. 10th Av.",
+     "S. 8th St."
+    ],
+    "modern": null,
+    "x": 3048,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "W. 9th Av.",
+     "S. 8th St."
+    ],
+    "modern": null,
+    "x": 3032,
+    "y": 3548
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "53-26",
+    "bounded_by": {
+     "N": "W. 11th Av.",
+     "S": "W. 10th Av.",
+     "E": "S. 7th St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 1700,
+     "y": 1000
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "STONE CUTTING WORKS; STONE CUTTING SHED",
+      "name": "Hamilton & Gillespie Stone Cutting Works",
+      "trade": "brick/stone/pottery",
+      "features": "15 h.p. engine, iron chimney 25', iron clad; coal fuel, no watchman"
+     },
+     {
+      "label": "STORAGE; OFFICE; TOOL HO.",
+      "name": "Denver & Rio Grande R.R.",
+      "trade": "rail shops/roundhouse",
+      "features": "iron clad office, R.R. watchman"
+     }
+    ],
+    "faces": [],
+    "notes": "Hunt's Add'n block 26; west part occupied by D.&R.G. tracks"
+   },
+   {
+    "block_id": "53-25",
+    "bounded_by": {
+     "N": "W. 11th Av.",
+     "S": "W. 10th Av.",
+     "E": "S. 8th St.",
+     "W": "S. 7th St."
+    },
+    "centroid": {
+     "x": 2550,
+     "y": 1000
+    },
+    "partial": false,
+    "dwellings": 32,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [
+     {
+      "street": "S. 7th St.",
+      "what": "Hamilton & Gillespie Stone Cutting Works / D.&R.G. yard",
+      "dwellings_facing": 17
+     }
+    ],
+    "notes": "Hunt's Add'n block 25; Mill Ditch runs diagonally through; many 2-unit frame dwellings; saloon 1000 S. 7th; brick stables"
+   },
+   {
+    "block_id": "53-27",
+    "bounded_by": {
+     "N": "W. 10th Av.",
+     "S": "W. 9th Av.",
+     "E": "S. 7th St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 1780,
+     "y": 2400
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "block 27, vacant lots against D.&R.G. tracks"
+   },
+   {
+    "block_id": "53-28",
+    "bounded_by": {
+     "N": "W. 10th Av.",
+     "S": "W. 9th Av.",
+     "E": "S. 8th St.",
+     "W": "S. 7th St."
+    },
+    "centroid": {
+     "x": 2550,
+     "y": 2700
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "NOVELTY WORKS; WOOD W'K'G SHOP",
+      "name": null,
+      "trade": "lumber/planing",
+      "features": "electric motor 1 h.p."
+     },
+     {
+      "label": "COAL OFFICE",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "1307-1309 W. 9th"
+     }
+    ],
+    "faces": [
+     {
+      "street": "S. 7th St.",
+      "what": "D.&R.G. R.R. yard (across vacant block 27)",
+      "dwellings_facing": 6
+     }
+    ],
+    "notes": "Hunt's Add'n block 28; lodging house and boarding house on S. 7th; Mill Ditch planked over; 4-unit brick-filled row 945-951"
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "CAR BUILDING SHOP; PAINT SHOP; CAR BUILDING / WHEEL DEPT. / WOOD WORKING / UPHOLSTERING; TRANSFER TABLE",
+    "name": "Denver & Rio Grande R.R. Shops",
+    "trade": "rail shops/roundhouse",
+    "features": "large frame shops with wire-glass skylights, forge, bolt house, paint house, repair supplies, dressing house, elevated water tank, dining car supplies, ice house, tool houses, yard master",
+    "near": "D.&R.G. yard west of S. 7th between W. 11th and W. 9th"
+   }
+  ],
+  "sheet_notes": "D.&R.G. car shops and yard fill the west half; Hunt's Add'n blocks east of S. 7th are densely built with frame dwellings, a lodging and boarding house, along the Mill Ditch, facing the yard and the Hamilton & Gillespie stone works."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 54,
+  "image": "1903_1904_v1_00985_01_1903-0054.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "W. 9th Av.",
+     "S. 8th St."
+    ],
+    "modern": null,
+    "x": 3015,
+    "y": 226
+   },
+   {
+    "streets": [
+     "W. 8th Av.",
+     "S. 8th St."
+    ],
+    "modern": null,
+    "x": 3015,
+    "y": 1870
+   },
+   {
+    "streets": [
+     "W. 7th Av.",
+     "S. 8th St."
+    ],
+    "modern": null,
+    "x": 2999,
+    "y": 3564
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "54-OL10",
+    "bounded_by": {
+     "N": "W. 9th Av.",
+     "S": "W. 8th Av.",
+     "E": "S. 8th St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 2650,
+     "y": 1000
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CANNING FAC'Y & WARE HO.",
+      "name": "J. T. Wilmore's Canning Fac'y & Ware Ho.",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "22 h.p. engine, iron chimney 60', iron clad; operated 2 months of year"
+     },
+     {
+      "label": "FURNITURE W. HO.",
+      "name": "E. Desserich Furniture W. Ho.",
+      "trade": "warehouse",
+      "features": "2-story frame"
+     }
+    ],
+    "faces": [],
+    "notes": "Hunt's Out Lot 10 / Hunt's Add'n; Mill Ditch crosses; west edge on D.&R.G. tracks"
+   },
+   {
+    "block_id": "54-S",
+    "bounded_by": {
+     "N": "W. 8th Av.",
+     "S": "W. 7th Av.",
+     "E": "S. 8th St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 2750,
+     "y": 2700
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "vacant block, west part cut by D.&R.G. tracks"
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "PLANING MILL & PATTERN WORK; ENGINE ROOM; BOILER RM.; DUST RM.",
+    "name": "Denver and Rio Grande Railroad Shops",
+    "trade": "lumber/planing",
+    "features": "130 h.p. engine, boilers, air compressor, brick chimney 100'",
+    "near": "north end of D.&R.G. shops near W. 9th"
+   },
+   {
+    "label": "FOUNDRY; SPRING SHOP; BLKSM. & FORGE RM.; BOILER & TUBE RM.; BOLT ROOM",
+    "name": "Denver and Rio Grande Railroad Shops",
+    "trade": "foundry",
+    "features": "core oven, brass furnace, forges, furnaces",
+    "near": "D.&R.G. shops, centre of sheet"
+   },
+   {
+    "label": "MACHINE SHOPS; TOOL RM.; AIR ROOM; BOILER HO.",
+    "name": "Denver and Rio Grande Railroad Shops",
+    "trade": "machine shop",
+    "features": "125 h.p. engine, boilers, brick chimney 100'",
+    "near": "D.&R.G. shops, centre of sheet"
+   },
+   {
+    "label": "ROUND HOUSES (11 and 14 stalls); TIN SHOP; TANK ROOM; WHEEL LATHE RM.; TRANSFER TABLE; TURN TABLES",
+    "name": "Denver and Rio Grande Railroad Shops",
+    "trade": "rail shops/roundhouse",
+    "features": "wheel lathe room 40 h.p. engine",
+    "near": "D.&R.G. shops"
+   },
+   {
+    "label": "LOCOMOTIVE PAINT SHOP",
+    "name": "Denver and Rio Grande Railroad Shops",
+    "trade": "oil/paint/tar",
+    "features": "iron clad, 20 skylights",
+    "near": "south of shops near W. 7th"
+   },
+   {
+    "label": "SUPPLY HO.; BOOK & RECORD; TIMBER SUPPLY YARD; TIMBER SHED 275' LONG",
+    "name": "Denver and Rio Grande Railroad Shops",
+    "trade": "warehouse",
+    "features": "Burnham Station adjoining",
+    "near": "west of S. 8th along W. 8th"
+   }
+  ],
+  "sheet_notes": "Almost wholly the Denver & Rio Grande Burnham shops (foundry, forges, machine shops, two roundhouses, planing mill, paint shop) beside Lake Archer; no dwellings on this sheet. Wilmore's seasonal cannery and a furniture warehouse occupy Hunt's Out Lot 10."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 1,
+  "sheet": 85,
+  "image": "1903_1904_v1_00985_01_1903-0085.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "W. Alameda Av.",
+     "S. 11th St."
+    ],
+    "modern": null,
+    "x": 935,
+    "y": 3628
+   },
+   {
+    "streets": [
+     "W. Alameda Av.",
+     "S. Santa Fe Av."
+    ],
+    "modern": null,
+    "x": 1967,
+    "y": 3628
+   },
+   {
+    "streets": [
+     "W. Bayaud",
+     "S. Santa Fe Av."
+    ],
+    "modern": null,
+    "x": 2180,
+    "y": 757
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "85-1",
+    "bounded_by": {
+     "N": null,
+     "S": "W. Alameda Av.",
+     "E": "S. 11th St.",
+     "W": null
+    },
+    "centroid": {
+     "x": 700,
+     "y": 2000
+    },
+    "partial": false,
+    "dwellings": 23,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Norwood Add'n block 1; west edge on ditch to Lake Archer; mostly 1.5-story frame attic dwellings"
+   },
+   {
+    "block_id": "85-2",
+    "bounded_by": {
+     "N": null,
+     "S": "W. Alameda Av.",
+     "E": "S. Santa Fe Av.",
+     "W": "S. 11th St."
+    },
+    "centroid": {
+     "x": 1300,
+     "y": 2300
+    },
+    "partial": false,
+    "dwellings": 33,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WARE HO.; COAL, HAY & GRAIN; COAL SHED",
+      "name": "Globe Ville Fuel & Feed Co.",
+      "trade": "coal/wood yard",
+      "features": "long frame shed on rail line, heat stoves, electric lights"
+     }
+    ],
+    "faces": [],
+    "notes": "Norwood Add'n block 2, narrows to a point at north end along A.T.&S.F. / C.&S. R.R.; 7-unit row 132-142 S. 11th close to the fuel yard; count +/-2"
+   },
+   {
+    "block_id": "85-3",
+    "bounded_by": {
+     "N": null,
+     "S": "W. Alameda Av.",
+     "E": null,
+     "W": "S. Santa Fe Av."
+    },
+    "centroid": {
+     "x": 2150,
+     "y": 3200
+    },
+    "partial": false,
+    "dwellings": 5,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Norwood block 3, triangular, east side on A.T.&S.F. / C.&S. R.R."
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "MFR. GREASE TRAPS & ASH PITS",
+    "name": "S. A. D. Holford",
+    "trade": "metal working",
+    "features": "no machinery, no watchman, no lights, well water",
+    "near": "south side of W. Bayaud east of S. Santa Fe Av. (not laid out)"
+   }
+  ],
+  "sheet_notes": "Norwood Add'n between the Lake Archer ditch and the A.T.&S.F./C.&S. tracks: a working-class street of frame cottages, with a coal/hay/grain yard on the rail line at the block tip and a small grease-trap maker across the tracks."
+ }
+]

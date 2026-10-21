@@ -1,0 +1,2537 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 220,
+  "image": "1903_1904_v2_00985_02_1903-0220.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Franklin",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 510
+   },
+   {
+    "streets": [
+     "Franklin",
+     "29th Av."
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "Franklin",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 3202
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 2080,
+    "y": 510
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "29th Av."
+    ],
+    "modern": null,
+    "x": 2080,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 2080,
+    "y": 3202
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "29th Av."
+    ],
+    "modern": null,
+    "x": 80,
+    "y": 1854
+   },
+   {
+    "streets": [
+     "Williams",
+     "29th Av."
+    ],
+    "modern": null,
+    "x": 3145,
+    "y": 1854
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "220-20",
+    "bounded_by": {
+     "N": "30th Av.",
+     "S": "29th Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 558,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 9,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "WARE HO.",
+      "name": null,
+      "trade": "warehouse",
+      "features": "small frame warehouse attached to stores at 30th Av. & Franklin corner"
+     }
+    ],
+    "faces": [],
+    "notes": "stores at 2959/2955 Franklin and corner 29th & Franklin"
+   },
+   {
+    "block_id": "220-21",
+    "bounded_by": {
+     "N": "30th Av.",
+     "S": "29th Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "220-22",
+    "bounded_by": {
+     "N": "30th Av.",
+     "S": "29th Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2596,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 3 attached D at 520-524 30th Av."
+   },
+   {
+    "block_id": "220-4",
+    "bounded_by": {
+     "N": "29th Av.",
+     "S": "28th Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 558,
+     "y": 2532
+    },
+    "partial": false,
+    "dwellings": 9,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "McMann's Add'n"
+   },
+   {
+    "block_id": "220-28",
+    "bounded_by": {
+     "N": "29th Av.",
+     "S": "28th Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 2532
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Downing's Add'n; store at 2847 Gilpin"
+   },
+   {
+    "block_id": "220-FP",
+    "bounded_by": {
+     "N": "29th Av.",
+     "S": "28th Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2628,
+     "y": 2532
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Fuller Park (public park)"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Purely residential Whittier-area blocks (Downing's/McMann's Add'ns) with frame and brick dwellings and stables; only a tiny warehouse behind corner stores at 30th & Franklin. Fuller Park occupies the SE block."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 221,
+  "image": "1903_1904_v2_00985_02_1903-0221.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "High",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 1161,
+    "y": 484
+   },
+   {
+    "streets": [
+     "High",
+     "29th Av."
+    ],
+    "modern": null,
+    "x": 1161,
+    "y": 1838
+   },
+   {
+    "streets": [
+     "High",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 1161,
+    "y": 3177
+   },
+   {
+    "streets": [
+     "Race",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 2183,
+    "y": 484
+   },
+   {
+    "streets": [
+     "Race",
+     "29th Av."
+    ],
+    "modern": null,
+    "x": 2183,
+    "y": 1838
+   },
+   {
+    "streets": [
+     "Race",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 2183,
+    "y": 3177
+   },
+   {
+    "streets": [
+     "Williams",
+     "29th Av."
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 1838
+   },
+   {
+    "streets": [
+     "Vine",
+     "29th Av."
+    ],
+    "modern": null,
+    "x": 3160,
+    "y": 1838
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "221-23",
+    "bounded_by": {
+     "N": "30th Av.",
+     "S": "29th Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 661,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 6 attached D at 622-636 30th Av."
+   },
+   {
+    "block_id": "221-24",
+    "bounded_by": {
+     "N": "30th Av.",
+     "S": "29th Av.",
+     "E": null,
+     "W": "High"
+    },
+    "centroid": {
+     "x": 1467,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "west half of High-Race strip; row of 6 attached D 710-720 30th Av.; E bound is the alley"
+   },
+   {
+    "block_id": "221-15",
+    "bounded_by": {
+     "N": "30th Av.",
+     "S": "29th Av.",
+     "E": "Race",
+     "W": null
+    },
+    "centroid": {
+     "x": 1887,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Clayton's Add'n, all lots vacant"
+   },
+   {
+    "block_id": "221-14",
+    "bounded_by": {
+     "N": "30th Av.",
+     "S": "29th Av.",
+     "E": "Vine",
+     "W": "Race"
+    },
+    "centroid": {
+     "x": 2693,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "all lots vacant"
+   },
+   {
+    "block_id": "221-26",
+    "bounded_by": {
+     "N": "29th Av.",
+     "S": "28th Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 661,
+     "y": 2499
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of ~10 attached D 620-638 29th Av.; store at 2805 High"
+   },
+   {
+    "block_id": "221-25",
+    "bounded_by": {
+     "N": "29th Av.",
+     "S": "28th Av.",
+     "E": null,
+     "W": "High"
+    },
+    "centroid": {
+     "x": 1467,
+     "y": 2499
+    },
+    "partial": false,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "west half of High-Race strip, private alley across it"
+   },
+   {
+    "block_id": "221-16",
+    "bounded_by": {
+     "N": "29th Av.",
+     "S": "28th Av.",
+     "E": "Race",
+     "W": null
+    },
+    "centroid": {
+     "x": 1887,
+     "y": 2499
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "all lots vacant"
+   },
+   {
+    "block_id": "221-17",
+    "bounded_by": {
+     "N": "29th Av.",
+     "S": "28th Av.",
+     "E": "Vine",
+     "W": "Race"
+    },
+    "centroid": {
+     "x": 2693,
+     "y": 2499
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "all lots vacant"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential only, western half built up with frame/brick dwellings and attached rows; Race-Vine and the eastern half-blocks are entirely vacant platted lots. No industry."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 222,
+  "image": "1903_1904_v2_00985_02_1903-0222.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "High",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 548
+   },
+   {
+    "streets": [
+     "High",
+     "27th Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "High",
+     "26th Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 3251
+   },
+   {
+    "streets": [
+     "Race",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Race",
+     "27th Av."
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "Race",
+     "26th Av."
+    ],
+    "modern": null,
+    "x": 2112,
+    "y": 3251
+   },
+   {
+    "streets": [
+     "Williams",
+     "27th Av."
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "Vine",
+     "27th Av."
+    ],
+    "modern": null,
+    "x": 3128,
+    "y": 1903
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "222-33",
+    "bounded_by": {
+     "N": "28th Av.",
+     "S": "27th Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 32,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 10 attached D 600-618 28th Av. and 5 attached D 622-638"
+   },
+   {
+    "block_id": "222-34",
+    "bounded_by": {
+     "N": "28th Av.",
+     "S": "27th Av.",
+     "E": null,
+     "W": "High"
+    },
+    "centroid": {
+     "x": 1387,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "west half of High-Race strip, all vacant"
+   },
+   {
+    "block_id": "222-25",
+    "bounded_by": {
+     "N": "28th Av.",
+     "S": "27th Av.",
+     "E": "Race",
+     "W": null
+    },
+    "centroid": {
+     "x": 1800,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Clayton's Add'n, vacant"
+   },
+   {
+    "block_id": "222-24",
+    "bounded_by": {
+     "N": "28th Av.",
+     "S": "27th Av.",
+     "E": "Vine",
+     "W": "Race"
+    },
+    "centroid": {
+     "x": 2612,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "vacant"
+   },
+   {
+    "block_id": "222-36",
+    "bounded_by": {
+     "N": "27th Av.",
+     "S": "26th Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 2564
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "includes strip block 7 (Schinner's Add'n) along 26th Av."
+   },
+   {
+    "block_id": "222-35",
+    "bounded_by": {
+     "N": "27th Av.",
+     "S": "26th Av.",
+     "E": null,
+     "W": "High"
+    },
+    "centroid": {
+     "x": 1387,
+     "y": 2564
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "vacant; strip block 8 along 26th"
+   },
+   {
+    "block_id": "222-26",
+    "bounded_by": {
+     "N": "27th Av.",
+     "S": "26th Av.",
+     "E": "Race",
+     "W": null
+    },
+    "centroid": {
+     "x": 1800,
+     "y": 2564
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "vacant; strip block 1 McCullough's Add'n"
+   },
+   {
+    "block_id": "222-27",
+    "bounded_by": {
+     "N": "27th Av.",
+     "S": "26th Av.",
+     "E": "Vine",
+     "W": "Race"
+    },
+    "centroid": {
+     "x": 2612,
+     "y": 2564
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "includes strip block 2 McCullough's Add'n; 2 D at 2602 Race, 2603 Vine"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential edge of development: Williams-High blocks built up with dwellings and attached rows, everything east of High vacant platted lots. No industry. Area south of 26th Av. is in Volume Three."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 223,
+  "image": "1903_1904_v2_00985_02_1903-0223.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Blake",
+     "33rd St."
+    ],
+    "modern": null,
+    "x": 968,
+    "y": 435
+   },
+   {
+    "streets": [
+     "Blake",
+     "32nd St."
+    ],
+    "modern": null,
+    "x": 968,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Blake",
+     "31st St."
+    ],
+    "modern": null,
+    "x": 968,
+    "y": 3312
+   },
+   {
+    "streets": [
+     "Walnut",
+     "33rd St."
+    ],
+    "modern": null,
+    "x": 2016,
+    "y": 435
+   },
+   {
+    "streets": [
+     "Walnut",
+     "32nd St."
+    ],
+    "modern": null,
+    "x": 2016,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Walnut",
+     "31st St."
+    ],
+    "modern": null,
+    "x": 2016,
+    "y": 3312
+   },
+   {
+    "streets": [
+     "Larimer",
+     "32nd St."
+    ],
+    "modern": null,
+    "x": 3015,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Larimer",
+     "31st St."
+    ],
+    "modern": null,
+    "x": 3015,
+    "y": 3312
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "223-10",
+    "bounded_by": {
+     "N": "33rd St.",
+     "S": "32nd St.",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 597,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BOILER HO.; ENGINE HO.; 3 DYNAMOS",
+      "name": "Denver City Tramway Co. Blake St. Power Ho.",
+      "trade": "power/electric",
+      "features": "boiler house with ~10 boilers, engines, 3 dynamos, fire pumps, iron posts, vents & skylights; coal piles 8' and 14' high on open lots; rail spur from Union Pacific; artesian water; 100,000 gal/day pump"
+     },
+     {
+      "label": "STORAGE (OLD)",
+      "name": "Denver City Tramway Co.",
+      "trade": "warehouse",
+      "features": "old storage shed by coal pile"
+     }
+    ],
+    "faces": [],
+    "notes": "W bound is Union Pacific R.R. tracks"
+   },
+   {
+    "block_id": "223-20",
+    "bounded_by": {
+     "N": "33rd St.",
+     "S": "32nd St.",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1484,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BL'KSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "blacksmith shop at 3237 Walnut"
+     },
+     {
+      "label": "FEED & SALE",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "large frame feed & sale stable, 1413-1417 32nd St."
+     },
+     {
+      "label": "COAL, HAY & FEED",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "3201-3209 Walnut, scales"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Blake",
+      "what": "Denver City Tramway Co. Blake St. Power House",
+      "dwellings_facing": 2
+     }
+    ],
+    "notes": "row of 5 attached D 1404-1412 33rd St.; saloon, wine room, barber, cobbler on Walnut"
+   },
+   {
+    "block_id": "223-22",
+    "bounded_by": {
+     "N": "33rd St.",
+     "S": "32nd St.",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 2516,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 6,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "restaurant, store, saloon on Walnut; new & 2nd hand furniture row 3201-3221 Larimer; office at 1300 33rd; row of 6 D 1307-1317 32nd St."
+   },
+   {
+    "block_id": "223-11",
+    "bounded_by": {
+     "N": "32nd St.",
+     "S": "31st St.",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 597,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "KILN (3); PACKING RM; TILE & BRICK RM; BORAX RM; BONE ASH MILL; BRICK MAKING; CRUCIBLE SHOP; CARP'R; ENG. 100 H.P.",
+      "name": "Denver Fire Clay Co.",
+      "trade": "brick/stone/pottery",
+      "features": "3 round kilns, bone furnace with 30' brick chimney, lead kettle, 100 h.p. engine & boiler, iron tanks (oil?) 30 bbl, 50 bbl water tank on 3rd floor; 'admission to buildings refused, secret process'; power steam, fuel coal"
+     },
+     {
+      "label": "GRAIN STORAGE; HAY STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "large frame grain storage and wooden-post hay storage along 32nd St. and Blake"
+     },
+     {
+      "label": "STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "3133-3137 Blake"
+     }
+    ],
+    "faces": [],
+    "notes": "W bound is Union Pacific R.R.; one dwelling at 3163 Blake beside grain storage"
+   },
+   {
+    "block_id": "223-19",
+    "bounded_by": {
+     "N": "32nd St.",
+     "S": "31st St.",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1484,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 39,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MARBLE SHOP",
+      "name": null,
+      "trade": "brick/stone/pottery",
+      "features": "iron-clad shop with engine & boiler, 3153 Walnut"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Blake",
+      "what": "Denver Fire Clay Co. (kilns, crucible shop)",
+      "dwellings_facing": 6
+     }
+    ],
+    "notes": "dense attached rows on 32nd (1426-1438) and 31st (1421-1437); counts +/-2"
+   },
+   {
+    "block_id": "223-23",
+    "bounded_by": {
+     "N": "32nd St.",
+     "S": "31st St.",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 2516,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 8,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "3128-3132 Walnut"
+     }
+    ],
+    "faces": [],
+    "notes": "stores, saloon and barbers mixed with dwellings along Walnut and Larimer"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Mixed industrial-residential Curtis Park/Five Points edge beside the Union Pacific: Denver City Tramway Blake St. power house with open coal piles and Denver Fire Clay Co. kiln works (secret process) directly across Blake from dense worker rows; blacksmith, feed stable and marble shop interspersed."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 224,
+  "image": "1903_1904_v2_00985_02_1903-0224.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Lawrence",
+     "33rd St."
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 461
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "32nd St."
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 1896
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "31st St."
+    ],
+    "modern": null,
+    "x": 1080,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "33rd St."
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 461
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "32nd St."
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 1896
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "31st St."
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "Larimer",
+     "32nd St."
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 1896
+   },
+   {
+    "streets": [
+     "Curtis",
+     "32nd St."
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 1896
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "224-36",
+    "bounded_by": {
+     "N": "33rd St.",
+     "S": "32nd St.",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 555,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "stores at 3256-3262 Larimer with dilapidated brick wall; cobbler 3226; row of ~5 attached D 3212-3222 Larimer and 5 attached D 1201-1217 32nd"
+   },
+   {
+    "block_id": "224-41",
+    "bounded_by": {
+     "N": "33rd St.",
+     "S": "32nd St.",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 4 attached D 1100-1112 33rd; 'chicken hall' outbuilding"
+   },
+   {
+    "block_id": "224-52",
+    "bounded_by": {
+     "N": "33rd St.",
+     "S": "32nd St.",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 2612,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "AMERICAN CLEANING & DYEING W'KS",
+      "name": "American Cleaning & Dyeing Wks",
+      "trade": "laundry/dye",
+      "features": "small rear-lot works on alley behind 3227 Curtis with engine & boiler, open shed (cleaning fluid hazard likely, not labelled)"
+     }
+    ],
+    "faces": [],
+    "notes": "includes strip of lots 11-20 facing 32nd St. (3 D at 1009-1031)"
+   },
+   {
+    "block_id": "224-35",
+    "bounded_by": {
+     "N": "32nd St.",
+     "S": "31st St.",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 555,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 24,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BL'KSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "3158 Larimer"
+     },
+     {
+      "label": "CHINESE LAUNDRY",
+      "name": null,
+      "trade": "laundry/dye",
+      "features": "3124 Larimer"
+     },
+     {
+      "label": "LAUNDRY; BOILER RM; ENG. RM",
+      "name": "Atlas Laundry",
+      "trade": "laundry/dye",
+      "features": "3122 Larimer, boiler room and engine room, brick chimney"
+     },
+     {
+      "label": "LAUNDRY; ENG. RM; BOILER",
+      "name": "The Metropolitan Laundry Co.",
+      "trade": "laundry/dye",
+      "features": "3112-3116 Larimer, engine room with boiler, brick chimney, iron-clad addition, cracked wall"
+     }
+    ],
+    "faces": [],
+    "notes": "three laundries and a blacksmith on the Larimer frontage, dwellings behind and along Lawrence"
+   },
+   {
+    "block_id": "224-42",
+    "bounded_by": {
+     "N": "32nd St.",
+     "S": "31st St.",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 5 attached D 1120-1136 32nd; brick wall 8' high"
+   },
+   {
+    "block_id": "224-CP",
+    "bounded_by": {
+     "N": "32nd St.",
+     "S": "31st St.",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 2612,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Curtis Park (public park)"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential Curtis Park neighbourhood; industry confined to Larimer frontage (Metropolitan and Atlas steam laundries, Chinese laundry, blacksmith) and the small American Cleaning & Dyeing Wks behind Curtis St. dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 225,
+  "image": "1903_1904_v2_00985_02_1903-0225.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Champa",
+     "33rd St."
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 435
+   },
+   {
+    "streets": [
+     "Champa",
+     "32nd St."
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "Champa",
+     "31st St."
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 3312
+   },
+   {
+    "streets": [
+     "Stout",
+     "32nd St."
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "Stout",
+     "31st St."
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 3312
+   },
+   {
+    "streets": [
+     "Curtis",
+     "32nd St."
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "California",
+     "31st St."
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 3312
+   },
+   {
+    "streets": [
+     "Curtis",
+     "33rd St."
+    ],
+    "modern": null,
+    "x": 2050,
+    "y": 1250
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "225-55",
+    "bounded_by": {
+     "N": "33rd St.",
+     "S": "32nd St.",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 6 attached D 906-920 33rd; store, bicycle shop, barber at Champa corner"
+   },
+   {
+    "block_id": "225-64",
+    "bounded_by": {
+     "N": "Downing Av.",
+     "S": "32nd St.",
+     "E": "Downing Av.",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1451,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BROOM FAC.",
+      "name": null,
+      "trade": "other",
+      "features": "small rear-lot broom factory at 823 1/2 32nd St. (alley), stone/iron-clad"
+     },
+     {
+      "label": "SMOKE HO.",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "smokehouse behind meat market at 3256 Champa"
+     }
+    ],
+    "faces": [],
+    "notes": "triangular block cut by Downing Av.; grocery and meat market at N corner; attached rows on Downing (~8 D) and 32nd St. (805-819)"
+   },
+   {
+    "block_id": "225-54",
+    "bounded_by": {
+     "N": "33rd Av.",
+     "S": "33rd St.",
+     "E": "Downing Av.",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 2419,
+     "y": 516
+    },
+    "partial": true,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Case & Ebert's Add'n triangle, single dwelling"
+   },
+   {
+    "block_id": "225-56",
+    "bounded_by": {
+     "N": "32nd St.",
+     "S": "31st St.",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 587,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "entirely vacant"
+   },
+   {
+    "block_id": "225-63",
+    "bounded_by": {
+     "N": "32nd St.",
+     "S": "31st St.",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1613,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 38,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "dense dwellings with attached rows on 31st St. (823-829) and Stout (3101-3119); several iron-clad sheds"
+   },
+   {
+    "block_id": "225-65",
+    "bounded_by": {
+     "N": "Downing Av.",
+     "S": "31st St.",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MACHINE SHOP",
+      "name": "McClear's Machine Shop",
+      "trade": "machine shop",
+      "features": "engine 10 h.p., boiler 16 h.p. (reading uncertain), iron-clad sheds; 3152 Stout"
+     }
+    ],
+    "faces": [],
+    "notes": "machine shop sits mid-block on Stout among dwellings; row of 4 attached D on Downing Av. (3023-3035)"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Dense Five Points/Curtis Park residential sheet; industry limited to McClear's small machine shop on Stout, a broom factory on an alley, and a meat smokehouse, all embedded among dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 226,
+  "image": "1903_1904_v2_00985_02_1903-0226.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Marion",
+     "32nd Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 516
+   },
+   {
+    "streets": [
+     "Marion",
+     "31st Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Marion",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 3235
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "32nd Av."
+    ],
+    "modern": null,
+    "x": 2129,
+    "y": 516
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "31st Av."
+    ],
+    "modern": null,
+    "x": 2129,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 2129,
+    "y": 3235
+   },
+   {
+    "streets": [
+     "Downing",
+     "31st Av."
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 1871
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "31st Av."
+    ],
+    "modern": null,
+    "x": 3128,
+    "y": 1871
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "226-1",
+    "bounded_by": {
+     "N": "32nd Av.",
+     "S": "31st Av.",
+     "E": "Marion",
+     "W": "Downing"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL & FEED",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "3100 Downing Av. at corner"
+     }
+    ],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "226-2",
+    "bounded_by": {
+     "N": "32nd Av.",
+     "S": "31st Av.",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1613,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 6 attached D 101-119 31st Av."
+   },
+   {
+    "block_id": "226-3",
+    "bounded_by": {
+     "N": "32nd Av.",
+     "S": "31st Av.",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2628,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Morrison Memorial M.E. Church (heat furnace, electric lights); 4 D on private alley 223-235"
+   },
+   {
+    "block_id": "226-16",
+    "bounded_by": {
+     "N": "31st Av.",
+     "S": "30th Av.",
+     "E": "Marion",
+     "W": "Downing"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKE HO.",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "rear bake house behind 3008 Downing with iron-clad sheds"
+     }
+    ],
+    "faces": [],
+    "notes": "2nd Cong'l Church at 31st & Downing; stores, barber, saloon on Downing frontage"
+   },
+   {
+    "block_id": "226-15",
+    "bounded_by": {
+     "N": "31st Av.",
+     "S": "30th Av.",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1613,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "226-14",
+    "bounded_by": {
+     "N": "31st Av.",
+     "S": "30th Av.",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2628,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "attached rows 213-219 and 223-235 30th Av."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Solidly residential Whittier blocks with two churches and a small commercial strip on Downing; only a coal & feed yard and a rear bake house."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 227,
+  "image": "1903_1904_v2_00985_02_1903-0227.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Franklin",
+     "32nd Av."
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 506
+   },
+   {
+    "streets": [
+     "Franklin",
+     "31st Av."
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "Franklin",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 3235
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "32nd Av."
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 506
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "31st Av."
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 3235
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "31st Av."
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "Williams",
+     "31st Av."
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 1864
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "227-4",
+    "bounded_by": {
+     "N": "32nd Av.",
+     "S": "31st Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 639,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Hyde Park Presby'n Church (heat furnace); row of 6 attached D 320-338 32nd Av.; 4 D on subd. lots 301-317"
+   },
+   {
+    "block_id": "227-5",
+    "bounded_by": {
+     "N": "32nd Av.",
+     "S": "31st Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1664,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "227-6",
+    "bounded_by": {
+     "N": "32nd Av.",
+     "S": "31st Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2693,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "drug store and store row 3100-3106 Gilpin and 509-519 31st Av. (barber); 6 attached 2-st D 3108-3122 Gilpin; east half mostly vacant"
+   },
+   {
+    "block_id": "227-13",
+    "bounded_by": {
+     "N": "31st Av.",
+     "S": "30th Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 639,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "5 D on subd. lots 323-339 30th Av."
+   },
+   {
+    "block_id": "227-12",
+    "bounded_by": {
+     "N": "31st Av.",
+     "S": "30th Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1664,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "VIENNA MODEL BAKERY",
+      "name": "Vienna Model Bakery",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "bake oven; 3038 1/2 Franklin, behind dwellings"
+     }
+    ],
+    "faces": [],
+    "notes": "bakery attached to rear of dwelling 3038 Franklin; 5 D 421-439 30th Av. on private alley"
+   },
+   {
+    "block_id": "227-11",
+    "bounded_by": {
+     "N": "31st Av.",
+     "S": "30th Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2693,
+     "y": 2548
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential Whittier blocks with a church, a small drug-store/barber cluster at 31st & Gilpin; only industry is the Vienna Model Bakery oven tucked behind Franklin St. dwellings."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 228,
+  "image": "1903_1904_v2_00985_02_1903-0228.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "High",
+     "34th Av."
+    ],
+    "modern": null,
+    "x": 1032,
+    "y": 500
+   },
+   {
+    "streets": [
+     "High",
+     "33rd Av."
+    ],
+    "modern": null,
+    "x": 1032,
+    "y": 1855
+   },
+   {
+    "streets": [
+     "Williams",
+     "32nd Av."
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 3210
+   },
+   {
+    "streets": [
+     "Williams",
+     "32nd Av."
+    ],
+    "modern": null,
+    "x": 1630,
+    "y": 500
+   },
+   {
+    "streets": [
+     "Williams",
+     "31st Av."
+    ],
+    "modern": null,
+    "x": 1630,
+    "y": 1855
+   },
+   {
+    "streets": [
+     "High",
+     "31st Av."
+    ],
+    "modern": null,
+    "x": 2600,
+    "y": 1855
+   },
+   {
+    "streets": [
+     "High",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 2600,
+    "y": 3210
+   },
+   {
+    "streets": [
+     "Williams",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 1630,
+    "y": 3210
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "228-10",
+    "bounded_by": {
+     "N": "34th Av.",
+     "S": "33rd Av.",
+     "E": null,
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 500,
+     "y": 1170
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "left panel; E bound is alley / mid-strip; Williams-High strip"
+   },
+   {
+    "block_id": "228-9",
+    "bounded_by": {
+     "N": "34th Av.",
+     "S": "33rd Av.",
+     "E": "High",
+     "W": null
+    },
+    "centroid": {
+     "x": 1350,
+     "y": 1170
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "left panel, mostly vacant"
+   },
+   {
+    "block_id": "228-23",
+    "bounded_by": {
+     "N": "33rd Av.",
+     "S": "32nd Av.",
+     "E": null,
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 500,
+     "y": 2530
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 5 attached D 622-638 33rd Av. and 5 attached D 3202-3210 Williams"
+   },
+   {
+    "block_id": "228-24",
+    "bounded_by": {
+     "N": "33rd Av.",
+     "S": "32nd Av.",
+     "E": "High",
+     "W": null
+    },
+    "centroid": {
+     "x": 1350,
+     "y": 2530
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 7 attached D 705-715 32nd Av. and 3200-3210 High"
+   },
+   {
+    "block_id": "228-7",
+    "bounded_by": {
+     "N": "32nd Av.",
+     "S": "31st Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 2100,
+     "y": 1170
+    },
+    "partial": false,
+    "dwellings": 40,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "right panel; very regular 1 1/2-st frame-attic cottages; long row of open sheds down centre; attached pairs on 32nd Av. and row 601-625 31st Av."
+   },
+   {
+    "block_id": "228-8",
+    "bounded_by": {
+     "N": "32nd Av.",
+     "S": "31st Av.",
+     "E": null,
+     "W": "High"
+    },
+    "centroid": {
+     "x": 2900,
+     "y": 1170
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "east of High, all vacant"
+   },
+   {
+    "block_id": "228-10b",
+    "bounded_by": {
+     "N": "31st Av.",
+     "S": "30th Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 2100,
+     "y": 2530
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 5 attached D 622-638 31st Av."
+   },
+   {
+    "block_id": "228-9b",
+    "bounded_by": {
+     "N": "31st Av.",
+     "S": "30th Av.",
+     "E": null,
+     "W": "High"
+    },
+    "centroid": {
+     "x": 2900,
+     "y": 2530
+    },
+    "partial": false,
+    "dwellings": 6,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 5 small D 703-717 30th Av."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Two-panel sheet of purely residential Whittier/Cole blocks (east of Williams/High): regular frame cottages and attached rows, much vacant land east of High; no industry. Duplicate block numbers between panels marked with 'b'."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 229,
+  "image": "1903_1904_v2_00985_02_1903-0229.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Delgany",
+     "38th"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 242
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "38th"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 242
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "38th"
+    ],
+    "modern": null,
+    "x": 2160,
+    "y": 242
+   },
+   {
+    "streets": [
+     "Wazee",
+     "38th"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 242
+   },
+   {
+    "streets": [
+     "Delgany",
+     "36th"
+    ],
+    "modern": null,
+    "x": 129,
+    "y": 2790
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "36th"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 2790
+   },
+   {
+    "streets": [
+     "Wynkoop",
+     "36th"
+    ],
+    "modern": null,
+    "x": 2160,
+    "y": 2790
+   },
+   {
+    "streets": [
+     "Wazee",
+     "36th"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 2790
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "229-40/9",
+    "bounded_by": {
+     "N": "38th",
+     "S": "36th",
+     "E": "Wewatta",
+     "W": "Delgany"
+    },
+    "centroid": {
+     "x": 640,
+     "y": 1500
+    },
+    "partial": false,
+    "dwellings": 44,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "St. Vincent's Add'n (blk 40) and blk 9 in one long block; Ironton School (heat furnace) at 36th & Delgany; row of ~8 attached D 3743-3761 Wewatta"
+   },
+   {
+    "block_id": "229-7",
+    "bounded_by": {
+     "N": "38th",
+     "S": "36th",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 1660,
+     "y": 1500
+    },
+    "partial": false,
+    "dwellings": 34,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Ironton Add'n; boarding house and saloon at 38th & Wynkoop; stores at 3609-3617 Wynkoop; paired D 3727-3749 Wynkoop"
+   },
+   {
+    "block_id": "229-2",
+    "bounded_by": {
+     "N": "38th",
+     "S": "36th",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 2660,
+     "y": 1500
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "BOILER SHOP; BL'KSM. SHOP; STORAGE; OFFICE",
+      "name": "Star Boiler & Sheet Iron W'ks",
+      "trade": "metal working",
+      "features": "brick & iron-clad boiler shop and blacksmith shop 17' to eaves, upright boiler, iron-clad shed, iron chimney 35' (reading uncertain); night watchman, fuel coal, no heating, no lights; 3601-3635 Wazee"
+     }
+    ],
+    "faces": [],
+    "notes": "rest of block (Wynkoop frontage) vacant platted lots"
+   },
+   {
+    "block_id": "229-12",
+    "bounded_by": {
+     "N": "36th",
+     "S": null,
+     "E": "Wewatta",
+     "W": "Delgany"
+    },
+    "centroid": {
+     "x": 640,
+     "y": 3300
+    },
+    "partial": true,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "saloon at 3525 Wewatta; Delgany half mostly vacant"
+   },
+   {
+    "block_id": "229-6",
+    "bounded_by": {
+     "N": "36th",
+     "S": null,
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 1660,
+     "y": 3300
+    },
+    "partial": true,
+    "dwellings": 26,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "row of 8 attached D 1724-1738 36th St. with iron-clad sheds behind; store at 1706 corner"
+   },
+   {
+    "block_id": "229-3",
+    "bounded_by": {
+     "N": "36th",
+     "S": null,
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 2660,
+     "y": 3300
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MACHINE SHOP; MAIN MACHINE SHOP; BL'KSM. SHOP; PATTERN SHOP; WARE HO.",
+      "name": "J. Geo. Leyner Engineers Works Co., M'f'rs of Air Compressors & Rock Drills",
+      "trade": "machine shop",
+      "features": "engine 50 h.p. with dynamo, air compressor, iron chimney 50', coal bin, iron racks, iron-clad warehouse; heat stoves, fuel coal, electric lights, 5 chem. extinguishers, night watchman 2 stations"
+     },
+     {
+      "label": "STOCK YARD",
+      "name": "J. Geo. Leyner Engineers Works Co. (uncertain)",
+      "trade": "meat packing/stockyard",
+      "features": "open stock yard south of warehouse at Wazee"
+     }
+    ],
+    "faces": [],
+    "notes": "Wynkoop half vacant lots; works fronts Wazee"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Ironton/Cole area east of the rail yards: worker dwellings on Delgany-Wewatta-Wynkoop blocks within one block of the Star Boiler & Sheet Iron Wks and the J. Geo. Leyner air-compressor/rock-drill works on Wazee; Wynkoop-Wazee blocks otherwise vacant."
+ }
+]

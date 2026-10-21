@@ -653,3 +653,13 @@ Rscript R/ownership_denver.R        # data/results/ownership/ and app/data/owner
 ```
 
 Residential parcels in the City and County of Denver, grouped into owners by normalised name and, more broadly, into owner families by shared mailing address. Units not occupied by their owner count as rentals. Outputs are aggregates only: owners and units by owner size, concentration (top 10/100 owners, top 1%), owner types, and shares held by large landlords, companies and out-of-state owners by tract, 1938 HOLC grade and distance to historical sites. The largest owners, with names, are written only to work/property/top_owners_private.csv for checking and are not published.
+
+## Before zoning: the 1903–04 Sanborn maps (Library of Congress)
+
+```
+Rscript R/fetch_loc_sanborn.R            # catalogue + title/index/key pages of the seven 1887-1904 volumes (public domain)
+Rscript R/fetch_loc_sanborn.R sheets     # the 152 sheets in data/raw/sanborn_loc/sheets_to_fetch.csv, into work/sanborn_loc/
+Rscript R/loc_sanborn_1903.R             # places the sheets on today's map and measures housing next to industry
+```
+
+The 152 sheets of the 1903–04 atlas covering the north side (volume 2: Lower Downtown, the Platte valley, Five Points, Ironton, Cole, Elyria, Swansea) and Auraria, West Denver and the South Platte corridor (volume 1) were transcribed block by block into `data/raw/sanborn_loc/readings/1903_batch_*.json`: street crossings in sheet pixels, and for each block the dwellings, flats, shanties and stores and every industrial or workshop establishment with its trade and drawn equipment, plus dwellings facing industry across a street. Street crossings read off each volume's key map (`key_v1.json`, `key_v2.json`) form a 1903 gazetteer for streets that have since disappeared or been renamed. Each sheet is placed by a similarity transform fitted by RANSAC to TIGER street crossings and the gazetteer, held to the atlas scale (50 ft to the inch); sheets with no street crossings (rail yards, the Grant smelter, the packing houses) remain unplaced. Outputs: `data/results/sanborn_1903/` and the app layers `sanborn_1903_sheets.geojson` (outlines with links to the Library of Congress images) and `sanborn_1903_blocks.geojson`.

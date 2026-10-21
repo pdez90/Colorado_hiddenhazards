@@ -1,0 +1,2609 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 210,
+  "image": "1903_1904_v2_00985_02_1903-0210.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Larimer",
+     "29th"
+    ],
+    "modern": null,
+    "x": 60,
+    "y": 451
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "29th"
+    ],
+    "modern": null,
+    "x": 1087,
+    "y": 451
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "29th"
+    ],
+    "modern": null,
+    "x": 2116,
+    "y": 451
+   },
+   {
+    "streets": [
+     "Curtis",
+     "29th"
+    ],
+    "modern": null,
+    "x": 3150,
+    "y": 451
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "28th"
+    ],
+    "modern": null,
+    "x": 1087,
+    "y": 1880
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "28th"
+    ],
+    "modern": null,
+    "x": 2116,
+    "y": 1880
+   },
+   {
+    "streets": [
+     "Larimer",
+     "27th"
+    ],
+    "modern": null,
+    "x": 60,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "Curtis",
+     "27th"
+    ],
+    "modern": null,
+    "x": 3150,
+    "y": 3306
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "210-32",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 1160
+    },
+    "partial": false,
+    "dwellings": 23,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 10,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "FLAVORING EXTRACT MFG",
+      "name": "flavoring extract mfg (2830 Larimer)",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "2-story"
+     },
+     {
+      "label": "BLKSM.",
+      "name": "blacksmith (2816-18 Larimer)",
+      "trade": "livery/blacksmith",
+      "features": "forge shown shaded"
+     },
+     {
+      "label": "BAKERY",
+      "name": "bakery (2800 Larimer)",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "brick oven"
+     },
+     {
+      "label": "OVEN",
+      "name": "oven at rear of 2844 Larimer store",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven; uncertain use"
+     }
+    ],
+    "faces": [],
+    "notes": "Larimer face commercial (stores, barber, blacksmith, extract mfg, bakery); Lawrence face all dwellings."
+   },
+   {
+    "block_id": "210-45",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1603,
+     "y": 1160
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 2,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Sacred Heart School auditorium and convent on Lawrence face."
+   },
+   {
+    "block_id": "210-49",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 2635,
+     "y": 1160
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Entirely residential; row of 5 dwellings 1022-1038 29th St."
+   },
+   {
+    "block_id": "210-31",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 8,
+    "other_nonres": 2,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "CITY STEAM LAUNDRY",
+      "name": "City Steam Laundry (2711-2715 Lawrence)",
+      "trade": "laundry/dye",
+      "features": "2 boilers; 35 h.p. engine; 3 tanks 10 ft above ground 150 bbls each; fuel coal; drying room"
+     },
+     {
+      "label": "CHINE LAUNDRY",
+      "name": "Chinese laundry (2716 Larimer)",
+      "trade": "laundry/dye",
+      "features": ""
+     },
+     {
+      "label": "TIN SHOP",
+      "name": "tin shop (2706 Larimer)",
+      "trade": "metal working",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "Lawrence",
+      "what": "City Steam Laundry",
+      "dwellings_facing": 4
+     }
+    ],
+    "notes": "Sacred Heart RC Church and priests' house; Larimer face stores; City Steam Laundry set amid dwellings on Lawrence face."
+   },
+   {
+    "block_id": "210-46",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1603,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 29,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "FURNITURE REPAIRING",
+      "name": "furniture repairing (2701 Arapahoe)",
+      "trade": "other",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "Lawrence",
+      "what": "City Steam Laundry",
+      "dwellings_facing": 10
+     }
+    ],
+    "notes": "One dwelling marked 'Old Vac.'."
+   },
+   {
+    "block_id": "210-48",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 2635,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 1,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": "bakery (2706 Arapahoe)",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "bake oven"
+     }
+    ],
+    "faces": [],
+    "notes": "Appleton's Add'n / Story Add'n boundary diagonal; hall over stores 2700-2704."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Five Points area, Larimer-Curtis between 27th and 29th: predominantly dwellings with Larimer St commercial strip. Main hazard City Steam Laundry with boilers and 35 h.p. engine amid dwellings on Lawrence. Map orientation taken as top=N (29th) and left=W (Larimer)."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 211,
+  "image": "1903_1904_v2_00985_02_1903-0211.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Curtis",
+     "29th"
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 484
+   },
+   {
+    "streets": [
+     "Champa",
+     "29th"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 484
+   },
+   {
+    "streets": [
+     "Stout",
+     "29th"
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 484
+   },
+   {
+    "streets": [
+     "California",
+     "29th"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 484
+   },
+   {
+    "streets": [
+     "Champa",
+     "28th"
+    ],
+    "modern": null,
+    "x": 1113,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "Stout",
+     "28th"
+    ],
+    "modern": null,
+    "x": 2145,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "Curtis",
+     "27th"
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "California",
+     "27th"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 3322
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "211-59",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 1185
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CARPENTER",
+      "name": "carpenter shop (rear 2809 Champa)",
+      "trade": "other",
+      "features": "label small; reading uncertain"
+     }
+    ],
+    "faces": [],
+    "notes": "Block numbered 59 and 6 (Case & Ebert's Add'n); vacant lots 1-5 on Curtis side."
+   },
+   {
+    "block_id": "211-60",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1638,
+     "y": 1185
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "NOT USED OVEN",
+      "name": "oven in store 2861 Stout (not used)",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven, marked not used"
+     }
+    ],
+    "faces": [],
+    "notes": "Block also numbered 7; 2844-46 Champa flats; iron-clad shed on lot 23."
+   },
+   {
+    "block_id": "211-68",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 1185
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BAKERY",
+      "name": "bakery (2832-34 Stout)",
+      "trade": "food (bakery, candy, coffee)",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Row of 5 dwellings 700-716 29th St on private alley."
+   },
+   {
+    "block_id": "211-5",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Story & Appleton's Add'n / Hunter's Add'n; entirely residential."
+   },
+   {
+    "block_id": "211-8",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1638,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Flats 2730-2738 Champa; three stores 2702-2708 Champa."
+   },
+   {
+    "block_id": "211-69",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 2612
+    },
+    "partial": false,
+    "dwellings": 38,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Rows of attached dwellings 724-734 28th and 701-719 27th; Park Add'n."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Fully residential Five Points blocks (Curtis-California, 27th-29th) with a few corner stores and one bakery; no significant industry. Top taken as N (29th), left as W (Curtis)."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 212,
+  "image": "1903_1904_v2_00985_02_1903-0212.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "California",
+     "29th"
+    ],
+    "modern": null,
+    "x": 81,
+    "y": 190
+   },
+   {
+    "streets": [
+     "Welton",
+     "29th"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 190
+   },
+   {
+    "streets": [
+     "Lincoln Av.",
+     "29th"
+    ],
+    "modern": null,
+    "x": 2138,
+    "y": 190
+   },
+   {
+    "streets": [
+     "Grant Av.",
+     "29th"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 190
+   },
+   {
+    "streets": [
+     "California",
+     "28th"
+    ],
+    "modern": null,
+    "x": 81,
+    "y": 1620
+   },
+   {
+    "streets": [
+     "Welton",
+     "28th"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 1620
+   },
+   {
+    "streets": [
+     "California",
+     "27th"
+    ],
+    "modern": null,
+    "x": 81,
+    "y": 3055
+   },
+   {
+    "streets": [
+     "Welton",
+     "27th"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 3055
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "212-71",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 903
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "212-77",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "Lincoln Av.",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 1613,
+     "y": 903
+    },
+    "partial": false,
+    "dwellings": 32,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "WALL-PAPER & PAINTING",
+      "name": "wall-paper & painting shop (2836 Welton)",
+      "trade": "oil/paint/tar",
+      "features": ""
+     },
+     {
+      "label": "CARPET CLEANING",
+      "name": "carpet cleaning (521 28th St)",
+      "trade": "laundry/dye",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Row of 5 frame-attic dwellings 502-518 29th St."
+   },
+   {
+    "block_id": "212-79",
+    "bounded_by": {
+     "N": "29th",
+     "S": "28th",
+     "E": "Grant Av.",
+     "W": "Lincoln Av."
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 903
+    },
+    "partial": false,
+    "dwellings": 23,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FEED & HAY; WAGON SHED",
+      "name": "feed & hay (417 28th St)",
+      "trade": "coal/wood yard",
+      "features": "2-story stable; wagon shed; scales"
+     }
+    ],
+    "faces": [],
+    "notes": "Row of 6 dwellings 422-438 29th St; Grant Av side mostly vacant; block cut diagonally at SE."
+   },
+   {
+    "block_id": "212-70",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 597,
+     "y": 2322
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 6,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CIGAR FAC.",
+      "name": "cigar factory (2713-15 Welton)",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "PLUMBING",
+      "name": "plumbing shop (611 27th St)",
+      "trade": "metal working",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Park Add'n diagonal; stores, drugs, cobbler at Welton/27th corner; row 623-639 27th St."
+   },
+   {
+    "block_id": "212-78",
+    "bounded_by": {
+     "N": "28th",
+     "S": "26th",
+     "E": "Lincoln Av.",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 1548,
+     "y": 2193
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "1st U.B. Church (vacant); block truncated by 26th Av diagonal."
+   },
+   {
+    "block_id": "212-83",
+    "bounded_by": {
+     "N": "28th",
+     "S": "Emerson St",
+     "E": "Emerson St",
+     "W": "Lincoln Av."
+    },
+    "centroid": {
+     "x": 2322,
+     "y": 1838
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "OLEOMARGARINE FACTORY",
+      "name": "oleomargarine factory (115-117 Emerson / 2756-60 Lincoln)",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "render kettle; gasoline engine"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Lincoln Av.",
+      "what": "Oleomargarine factory",
+      "dwellings_facing": 1
+     }
+    ],
+    "notes": "Small triangular block; factory attached to a dwelling (2756). Across Lincoln faces block 78 dwellings 2749-2761."
+   },
+   {
+    "block_id": "212-81",
+    "bounded_by": {
+     "N": "Francis Pl.",
+     "S": "26th Av.",
+     "E": "Downing Av.",
+     "W": "Grant Av."
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 3322
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Case & Howe's and Rosenfeld's Subdivisions; Case & Ebert's Add'n; all dwellings."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential Five Points blocks California-Grant, 26th-29th, with small shops; notable is an oleomargarine factory with render kettle and gasoline engine attached to a dwelling at Lincoln Av & Emerson St. Top taken as N."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 213,
+  "image": "1903_1904_v2_00985_02_1903-0213.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Blake",
+     "31st"
+    ],
+    "modern": null,
+    "x": 1122,
+    "y": 419
+   },
+   {
+    "streets": [
+     "Walnut",
+     "31st"
+    ],
+    "modern": null,
+    "x": 2154,
+    "y": 419
+   },
+   {
+    "streets": [
+     "Larimer",
+     "31st"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 419
+   },
+   {
+    "streets": [
+     "Blake",
+     "30th"
+    ],
+    "modern": null,
+    "x": 1122,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "Walnut",
+     "30th"
+    ],
+    "modern": null,
+    "x": 2154,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "Larimer",
+     "30th"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 1864
+   },
+   {
+    "streets": [
+     "Blake",
+     "29th"
+    ],
+    "modern": null,
+    "x": 1122,
+    "y": 3296
+   },
+   {
+    "streets": [
+     "Larimer",
+     "29th"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 3296
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "213-12",
+    "bounded_by": {
+     "N": "31st",
+     "S": "30th",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 822,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 3,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FOUNDRY; BLKSM.; CLEANING RM.; PATTERN RM.; MACHINE SHOPS; ERECTING SHOP; BOILER SHOP; FLANGE SHOP; MOULD & SCRAP YARD",
+      "name": "The Denver Engineering Works Co., mfrs of electric hoists, rock drills and mining & milling machy",
+      "trade": "foundry",
+      "features": "2 iron cupolas; 2 core ovens; furnaces; rattler; blower; engine room 60 h.p. engine; 2 boilers; iron chimney 30 ft above roof; power steam, lights electric; watchman no clock"
+     }
+    ],
+    "faces": [],
+    "notes": "St. Nicholas Hotel (3051-3063 Blake) with dwellings behind, directly beside the foundry; W side bounded by Union Pacific R.R. tracks."
+   },
+   {
+    "block_id": "213-13",
+    "bounded_by": {
+     "N": "30th",
+     "S": "29th",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 822,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 6,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "STORAGE; EXHIBITION RM.; BLUE PRINT RM.",
+      "name": "The Denver Engineering Works Co. (storage, exhibition rm)",
+      "trade": "machine shop",
+      "features": "iron clad; electric motor"
+     },
+     {
+      "label": "STEAM LAUNDRY",
+      "name": "steam laundry (2911-2915 Blake)",
+      "trade": "laundry/dye",
+      "features": "25 h.p. engine; boiler; iron chimney 30 ft above roof; water tank 10 ft above ground"
+     }
+    ],
+    "faces": [],
+    "notes": "Mostly vacant lots; W side bounded by U.P. R.R."
+   },
+   {
+    "block_id": "213-18",
+    "bounded_by": {
+     "N": "31st",
+     "S": "30th",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WARE HO. NO.3; WARE HO. NO.4",
+      "name": "Turner Moving & Storage Co.",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "BLKSM.",
+      "name": "blacksmith (3031 Walnut)",
+      "trade": "livery/blacksmith",
+      "features": "iron clad"
+     },
+     {
+      "label": "BAKERY",
+      "name": "bakery (3021-23 Walnut)",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven"
+     },
+     {
+      "label": "FLOUR & FEED",
+      "name": "flour & feed (3037-39 Walnut)",
+      "trade": "other",
+      "features": ""
+     }
+    ],
+    "faces": [
+     {
+      "street": "Blake",
+      "what": "The Denver Engineering Works Co.",
+      "dwellings_facing": 0
+     }
+    ],
+    "notes": "Blake frontage (facing the engineering works) is warehouses and vacant lots; dwellings and lodgings on Walnut face."
+   },
+   {
+    "block_id": "213-24",
+    "bounded_by": {
+     "N": "31st",
+     "S": "30th",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 2661,
+     "y": 1129
+    },
+    "partial": false,
+    "dwellings": 12,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 6,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "WEIGELE RIVETED STEEL PIPE WKS",
+      "name": "The Weigele Riveted Steel Pipe Wks, mfrs of smoke stacks, hydraulic pipes etc.",
+      "trade": "metal working",
+      "features": "electric motor; power and lights electric; watchman no clock"
+     },
+     {
+      "label": "PRODUCE STORAGE",
+      "name": "produce storage (3010-3012 Walnut)",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "FURNACE BELOW GRD.",
+      "name": "furnace below ground (lot 20)",
+      "trade": "other",
+      "features": "iron chimney 30 ft"
+     }
+    ],
+    "faces": [],
+    "notes": "Ice cream parlor, undertaker's chapel, saloon, stores on Larimer face; middle lots vacant."
+   },
+   {
+    "block_id": "213-17",
+    "bounded_by": {
+     "N": "30th",
+     "S": "29th",
+     "E": "Walnut",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 40,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "WARE SCREEN CO.; CARP.",
+      "name": "Ware Screen Co., mfrs window screens",
+      "trade": "lumber/planing",
+      "features": "carpenter shop; electric motor; power elec."
+     }
+    ],
+    "faces": [
+     {
+      "street": "Blake",
+      "what": "steam laundry (2911-15 Blake)",
+      "dwellings_facing": 4
+     }
+    ],
+    "notes": "Row of 10 dwellings 1420-1438 30th St (subd. of lots 1-3); dense dwellings on both faces."
+   },
+   {
+    "block_id": "213-25",
+    "bounded_by": {
+     "N": "30th",
+     "S": "29th",
+     "E": "Larimer",
+     "W": "Walnut"
+    },
+    "centroid": {
+     "x": 2661,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 24,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "LIVERY (DILAPIDATED); BLKSM.",
+      "name": "livery and blacksmith (2956-58 Walnut)",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "LIVERY",
+      "name": "livery (2955 Larimer)",
+      "trade": "livery/blacksmith",
+      "features": ""
+     },
+     {
+      "label": "STORAGE",
+      "name": "storage (2949 Larimer; 2962 Walnut old)",
+      "trade": "warehouse",
+      "features": ""
+     },
+     {
+      "label": "STEAM LAUNDRY",
+      "name": "steam laundry (2910 Walnut)",
+      "trade": "laundry/dye",
+      "features": "5 h.p. engine; upright boiler"
+     }
+    ],
+    "faces": [
+     {
+      "street": "30th",
+      "what": "Weigele Riveted Steel Pipe Wks",
+      "dwellings_facing": 1
+     }
+    ],
+    "notes": ""
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "COAL OFFICE; COAL SHED; SCALES; WEIGH MASTER",
+    "name": "coal yard on Union Pacific R.R. ground",
+    "trade": "coal/wood yard",
+    "features": "scales",
+    "near": "U.P. R.R. tracks west of Blake, 30th-31st"
+   }
+  ],
+  "sheet_notes": "Blake-Larimer, 29th-31st beside the Union Pacific yards. Major hazard: Denver Engineering Works foundry/boiler/machine shops (cupolas, core ovens, 60 h.p. engine) next to the St. Nicholas Hotel and across Blake from dwellings; two steam laundries and the Weigele steel pipe works also amid housing."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 214,
+  "image": "1903_1904_v2_00985_02_1903-0214.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Larimer",
+     "31st"
+    ],
+    "modern": null,
+    "x": 90,
+    "y": 451
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "31st"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 451
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "31st"
+    ],
+    "modern": null,
+    "x": 2119,
+    "y": 451
+   },
+   {
+    "streets": [
+     "Curtis",
+     "31st"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 451
+   },
+   {
+    "streets": [
+     "Lawrence",
+     "30th"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 1880
+   },
+   {
+    "streets": [
+     "Arapahoe",
+     "30th"
+    ],
+    "modern": null,
+    "x": 2119,
+    "y": 1880
+   },
+   {
+    "streets": [
+     "Larimer",
+     "29th"
+    ],
+    "modern": null,
+    "x": 90,
+    "y": 3306
+   },
+   {
+    "streets": [
+     "Curtis",
+     "29th"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 3306
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "214-34",
+    "bounded_by": {
+     "N": "31st",
+     "S": "30th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "DENVER BALANCE CO.",
+      "name": "Denver Balance Co., mfrs assay balances, mathematical & scientific instruments (1239 30th St)",
+      "trade": "machine shop",
+      "features": "gas engine 2 h.p."
+     }
+    ],
+    "faces": [],
+    "notes": "Briggs M.E. Church at Larimer & 30th; Chappiot restaurant and stores at Larimer & 31st; row of dwellings 1220-1226 31st."
+   },
+   {
+    "block_id": "214-43",
+    "bounded_by": {
+     "N": "31st",
+     "S": "30th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1603,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Almost entirely vacant lots (Ebert's Add'n)."
+   },
+   {
+    "block_id": "214-51",
+    "bounded_by": {
+     "N": "31st",
+     "S": "30th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 2635,
+     "y": 1161
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Private alley crosses block; row of 6 dwellings 1000-1021 30th St."
+   },
+   {
+    "block_id": "214-33",
+    "bounded_by": {
+     "N": "30th",
+     "S": "29th",
+     "E": "Lawrence",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BLKSM. & WOOD WORKING; PAINT SHOP",
+      "name": "E.E. Beal Carriage & Wagon Co. (2924-2934 Larimer)",
+      "trade": "livery/blacksmith",
+      "features": "2-story; blacksmith, wood working and paint shop"
+     },
+     {
+      "label": "GREEN HO.",
+      "name": "greenhouses (2961-63 Lawrence)",
+      "trade": "other",
+      "features": "glass roofs; hall"
+     }
+    ],
+    "faces": [],
+    "notes": "Row of 5 dwellings 1220-1228 30th St; cobbler at Larimer & 30th."
+   },
+   {
+    "block_id": "214-44",
+    "bounded_by": {
+     "N": "30th",
+     "S": "29th",
+     "E": "Arapahoe",
+     "W": "Lawrence"
+    },
+    "centroid": {
+     "x": 1603,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 27,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Rows of attached frame-attic dwellings along 29th St on private alley; residential only."
+   },
+   {
+    "block_id": "214-50",
+    "bounded_by": {
+     "N": "30th",
+     "S": "29th",
+     "E": "Curtis",
+     "W": "Arapahoe"
+    },
+    "centroid": {
+     "x": 2635,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 27,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Residential only; brick row 2926-2930 Arapahoe."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Larimer-Curtis, 29th-31st: residential blocks with vacant lots; Larimer strip has a carriage & wagon works (blacksmith, paint shop) and Denver Balance Co. instrument shop with gas engine. Top taken as N."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 215,
+  "image": "1903_1904_v2_00985_02_1903-0215.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Curtis",
+     "31st"
+    ],
+    "modern": null,
+    "x": 161,
+    "y": 451
+   },
+   {
+    "streets": [
+     "Champa",
+     "31st"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 451
+   },
+   {
+    "streets": [
+     "Stout",
+     "31st"
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 451
+   },
+   {
+    "streets": [
+     "California",
+     "31st"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 451
+   },
+   {
+    "streets": [
+     "Champa",
+     "30th"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "Stout",
+     "30th"
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 1887
+   },
+   {
+    "streets": [
+     "Curtis",
+     "29th"
+    ],
+    "modern": null,
+    "x": 161,
+    "y": 3322
+   },
+   {
+    "streets": [
+     "California",
+     "29th"
+    ],
+    "modern": null,
+    "x": 3144,
+    "y": 3322
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "215-57",
+    "bounded_by": {
+     "N": "31st",
+     "S": "30th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 639,
+     "y": 1177
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Entirely vacant platted lots."
+   },
+   {
+    "block_id": "215-62",
+    "bounded_by": {
+     "N": "31st",
+     "S": "30th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1661,
+     "y": 1177
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "215-66",
+    "bounded_by": {
+     "N": "31st",
+     "S": "30th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 1177
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Flats 3037-39 California."
+   },
+   {
+    "block_id": "215-58",
+    "bounded_by": {
+     "N": "30th",
+     "S": "29th",
+     "E": "Champa",
+     "W": "Curtis"
+    },
+    "centroid": {
+     "x": 639,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Curtis half entirely vacant."
+   },
+   {
+    "block_id": "215-61",
+    "bounded_by": {
+     "N": "30th",
+     "S": "29th",
+     "E": "Stout",
+     "W": "Champa"
+    },
+    "centroid": {
+     "x": 1661,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 26,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Residential only."
+   },
+   {
+    "block_id": "215-67",
+    "bounded_by": {
+     "N": "30th",
+     "S": "29th",
+     "E": "California",
+     "W": "Stout"
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 12,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Gilpin School (steam heat Sturtevant system, 2 fans, engine, boilers, iron chimney) occupies south half."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Sparsely built residential blocks Curtis-California, 29th-31st, with many vacant lots; no industry. Gilpin School occupies half of block 67. Top taken as N."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 216,
+  "image": "1903_1904_v2_00985_02_1903-0216.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "California",
+     "31st"
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 687
+   },
+   {
+    "streets": [
+     "California",
+     "30th"
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 2129
+   },
+   {
+    "streets": [
+     "Welton",
+     "30th"
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 2129
+   },
+   {
+    "streets": [
+     "California",
+     "29th"
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 3564
+   },
+   {
+    "streets": [
+     "Welton",
+     "29th"
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 3564
+   },
+   {
+    "streets": [
+     "Lincoln Av.",
+     "29th"
+    ],
+    "modern": null,
+    "x": 2161,
+    "y": 3564
+   },
+   {
+    "streets": [
+     "Wewatta",
+     "43rd"
+    ],
+    "modern": null,
+    "x": 2258,
+    "y": 774
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "216-74",
+    "bounded_by": {
+     "N": "Downing Av. (diagonal)",
+     "S": "31st",
+     "E": "Private alley",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 419,
+     "y": 419
+    },
+    "partial": true,
+    "dwellings": 6,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Triangular block; row of dwellings 3100-3124 California and tenements 619-625."
+   },
+   {
+    "block_id": "216-73",
+    "bounded_by": {
+     "N": "31st",
+     "S": "30th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 613,
+     "y": 1419
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": ""
+   },
+   {
+    "block_id": "216-75",
+    "bounded_by": {
+     "N": "Downing Av.",
+     "S": "30th",
+     "E": "Downing Av.",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 1451,
+     "y": 1612
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Triangular block; row of 1-1/2 story dwellings 3002-3040 Welton."
+   },
+   {
+    "block_id": "216-72",
+    "bounded_by": {
+     "N": "30th",
+     "S": "29th",
+     "E": "Welton",
+     "W": "California"
+    },
+    "centroid": {
+     "x": 613,
+     "y": 2838
+    },
+    "partial": false,
+    "dwellings": 29,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "LIVERY",
+      "name": "livery stable (2959-63 Welton)",
+      "trade": "livery/blacksmith",
+      "features": "2-story; dwelling on 2nd floor; harness room; wooden posts"
+     }
+    ],
+    "faces": [],
+    "notes": "Livery at Welton & 30th, adjoining dwellings."
+   },
+   {
+    "block_id": "216-76",
+    "bounded_by": {
+     "N": "30th",
+     "S": "29th",
+     "E": "Lincoln Av.",
+     "W": "Welton"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 2838
+    },
+    "partial": false,
+    "dwellings": 35,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 5,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [
+     {
+      "label": "BICYCLE SHOP",
+      "name": "bicycle shop (2956 Welton)",
+      "trade": "other",
+      "features": ""
+     },
+     {
+      "label": "STORAGE",
+      "name": "storage (516 30th St)",
+      "trade": "warehouse",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Tailor, cobbler, stores on Welton; row of 6 dwellings 520-530 30th St."
+   },
+   {
+    "block_id": "216-80",
+    "bounded_by": {
+     "N": "28th Av.",
+     "S": "29th",
+     "E": "Downing / Case & Hawes Subdiv.",
+     "W": "Lincoln Av."
+    },
+    "centroid": {
+     "x": 2548,
+     "y": 2903
+    },
+    "partial": false,
+    "dwellings": 33,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Villa Glenarm row (421-439 29th) and diagonal row 2735-2745; cobbler 2709."
+   },
+   {
+    "block_id": "216-14",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 2709,
+     "y": 1225
+    },
+    "partial": true,
+    "dwellings": 8,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "St. Vincent's Add'n near 43rd St; much of area 'not plotted'."
+   },
+   {
+    "block_id": "216-4",
+    "bounded_by": {
+     "N": null,
+     "S": "43rd",
+     "E": null,
+     "W": null
+    },
+    "centroid": {
+     "x": 1677,
+     "y": 516
+    },
+    "partial": true,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "St. Vincent's Add'n block 4; one dwelling and stable at 4325."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential Five Points blocks (California-Lincoln, 29th-31st) plus an inset of St. Vincent's Add'n (Wewatta/Wynkoop at 43rd, mostly unplotted). Grant Smelter ground is referenced to sheet 261 but not drawn here; only a livery and small shops on this sheet."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 217,
+  "image": "1903_1904_v2_00985_02_1903-0217.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Downing Av.",
+     "28th"
+    ],
+    "modern": null,
+    "x": 123,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Marion",
+     "28th"
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "28th"
+    ],
+    "modern": null,
+    "x": 2151,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "28th"
+    ],
+    "modern": null,
+    "x": 3128,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Marion",
+     "27th"
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "27th"
+    ],
+    "modern": null,
+    "x": 2151,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "Downing Av.",
+     "26th"
+    ],
+    "modern": null,
+    "x": 123,
+    "y": 3264
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "26th"
+    ],
+    "modern": null,
+    "x": 3128,
+    "y": 3264
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "217-5",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Marion",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 606,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKE HO.; OVEN",
+      "name": "bake house (rear 2746 Downing)",
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven; earth roof covered with tin"
+     }
+    ],
+    "faces": [],
+    "notes": "Block numbered 5 and 2 (Case & Ebert's subd.); hall over store and barber at Downing & 28th; row of 5 dwellings 22-36 28th."
+   },
+   {
+    "block_id": "217-6",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1632,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block numbered 6 and 7; residential only."
+   },
+   {
+    "block_id": "217-8",
+    "bounded_by": {
+     "N": "28th",
+     "S": "27th",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2654,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Residential only, many vacant lots."
+   },
+   {
+    "block_id": "217-3",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Marion",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 606,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Fisk's / Schinner's Add'n; row of dwellings on 27th St."
+   },
+   {
+    "block_id": "217-4",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1632,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 25,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block numbered 4 and 12; residential."
+   },
+   {
+    "block_id": "217-11",
+    "bounded_by": {
+     "N": "27th",
+     "S": "26th",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2654,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Humboldt half mostly vacant."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Purely residential blocks east of Downing (Downing-Humboldt, 26th-28th) with a small bake house; no industry. North is up on this sheet."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 218,
+  "image": "1903_1904_v2_00985_02_1903-0218.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Humboldt",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Franklin",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 2129,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Williams",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 3128,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Franklin",
+     "27th Av."
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 1919
+   },
+   {
+    "streets": [
+     "Gilpin",
+     "27th Av."
+    ],
+    "modern": null,
+    "x": 2129,
+    "y": 1919
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "26th Av."
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 3264
+   },
+   {
+    "streets": [
+     "Williams",
+     "26th Av."
+    ],
+    "modern": null,
+    "x": 3128,
+    "y": 3264
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "218-9",
+    "bounded_by": {
+     "N": "28th Av.",
+     "S": "27th Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block numbered 9 and 30 (Downing's Add'n)."
+   },
+   {
+    "block_id": "218-31",
+    "bounded_by": {
+     "N": "28th Av.",
+     "S": "27th Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1597,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 23,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Residential only."
+   },
+   {
+    "block_id": "218-32",
+    "bounded_by": {
+     "N": "28th Av.",
+     "S": "27th Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2629,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Williams half mostly vacant."
+   },
+   {
+    "block_id": "218-10",
+    "bounded_by": {
+     "N": "27th Av.",
+     "S": "26th Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 580,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MACHINE SHOP; PATTERN SHOP; BLKSM.; LABORATORY",
+      "name": "Manual Training High School shops",
+      "trade": "machine shop",
+      "features": "2 dynamos; 2 engines 50 h.p.; boilers; iron chimney; fuel coal; heat steam, lights electric; blacksmith shop 2nd fl"
+     }
+    ],
+    "faces": [],
+    "notes": "Block numbered 10 and 4 (McMann's / Schinner's Add'n). Manual Training High School (auditorium, laboratory, machine & pattern shops, bicycle house) fills Franklin half."
+   },
+   {
+    "block_id": "218-38",
+    "bounded_by": {
+     "N": "27th Av.",
+     "S": "26th Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1597,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block numbered 38 and 5; residential only."
+   },
+   {
+    "block_id": "218-37",
+    "bounded_by": {
+     "N": "27th Av.",
+     "S": "26th Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2629,
+     "y": 2596
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block numbered 37 and 6; Williams half mostly vacant."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential blocks Humboldt-Williams, 26th-28th Av.; only industrial-type use is the Manual Training High School shops (machine shop, blacksmith, 50 h.p. engines, dynamos, boilers). North up."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 219,
+  "image": "1903_1904_v2_00985_02_1903-0219.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Downing Av.",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Marion",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 2151,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "30th Av."
+    ],
+    "modern": null,
+    "x": 3128,
+    "y": 548
+   },
+   {
+    "streets": [
+     "Marion",
+     "29th Av."
+    ],
+    "modern": null,
+    "x": 1129,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "Lafayette",
+     "29th Av."
+    ],
+    "modern": null,
+    "x": 2151,
+    "y": 1903
+   },
+   {
+    "streets": [
+     "Downing Av.",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 3249
+   },
+   {
+    "streets": [
+     "Humboldt",
+     "28th Av."
+    ],
+    "modern": null,
+    "x": 3128,
+    "y": 3249
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "219-17",
+    "bounded_by": {
+     "N": "30th Av.",
+     "S": "29th Av.",
+     "E": "Marion",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 606,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Cobbler and store at Downing & 30th."
+   },
+   {
+    "block_id": "219-18",
+    "bounded_by": {
+     "N": "30th Av.",
+     "S": "29th Av.",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1632,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 28,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Residential only."
+   },
+   {
+    "block_id": "219-19",
+    "bounded_by": {
+     "N": "30th Av.",
+     "S": "29th Av.",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2654,
+     "y": 1226
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STORAGE RM.",
+      "name": "storage room (214 29th Av.)",
+      "trade": "warehouse",
+      "features": "small"
+     }
+    ],
+    "faces": [],
+    "notes": "Row of 6 dwellings 221-235 29th Av; 2 flats 2924-26 Lafayette."
+   },
+   {
+    "block_id": "219-4",
+    "bounded_by": {
+     "N": "29th Av.",
+     "S": "28th Av.",
+     "E": "Marion",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 606,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "LIVERY",
+      "name": "livery stable (lots 1-5, 29th Av & Downing)",
+      "trade": "livery/blacksmith",
+      "features": "iron clad; office"
+     }
+    ],
+    "faces": [],
+    "notes": "Block numbered 4 and 5 (Case & Ebert's / Downing's Add'n); drug store and store at Downing & 28th; row of 5 dwellings 9-19 28th Av."
+   },
+   {
+    "block_id": "219-3",
+    "bounded_by": {
+     "N": "29th Av.",
+     "S": "28th Av.",
+     "E": "Lafayette",
+     "W": "Marion"
+    },
+    "centroid": {
+     "x": 1632,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 10,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Marion half entirely vacant."
+   },
+   {
+    "block_id": "219-5",
+    "bounded_by": {
+     "N": "29th Av.",
+     "S": "28th Av.",
+     "E": "Humboldt",
+     "W": "Lafayette"
+    },
+    "centroid": {
+     "x": 2654,
+     "y": 2580
+    },
+    "partial": false,
+    "dwellings": 11,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "McMann's Add'n; small storage rm 221 28th Av; cloth tent on lot 22."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Residential blocks Downing-Humboldt, 28th-30th Av., with many vacant lots; only a livery stable and small storage rooms; no industry. North up."
+ }
+]

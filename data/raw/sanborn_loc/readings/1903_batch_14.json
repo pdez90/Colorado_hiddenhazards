@@ -1,0 +1,2414 @@
+[
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 240,
+  "image": "1903_1904_v2_00985_02_1903-0240.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "38th Av.",
+     "Franklin"
+    ],
+    "modern": null,
+    "x": 1171,
+    "y": 219
+   },
+   {
+    "streets": [
+     "38th Av.",
+     "Gilpin"
+    ],
+    "modern": null,
+    "x": 2225,
+    "y": 219
+   },
+   {
+    "streets": [
+     "37th Av.",
+     "Humboldt"
+    ],
+    "modern": null,
+    "x": 210,
+    "y": 2296
+   },
+   {
+    "streets": [
+     "37th Av.",
+     "Franklin"
+    ],
+    "modern": null,
+    "x": 1171,
+    "y": 2296
+   },
+   {
+    "streets": [
+     "37th Av.",
+     "Gilpin"
+    ],
+    "modern": null,
+    "x": 2225,
+    "y": 2296
+   },
+   {
+    "streets": [
+     "37th Av.",
+     "Williams"
+    ],
+    "modern": null,
+    "x": 3160,
+    "y": 2296
+   },
+   {
+    "streets": [
+     "36th Av.",
+     "Franklin"
+    ],
+    "modern": null,
+    "x": 1171,
+    "y": 3586
+   },
+   {
+    "streets": [
+     "36th Av.",
+     "Gilpin"
+    ],
+    "modern": null,
+    "x": 2225,
+    "y": 3586
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "240-1",
+    "bounded_by": {
+     "N": "38th Av./McClellend",
+     "S": "37th Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 650,
+     "y": 1300
+    },
+    "partial": true,
+    "dwellings": 37,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 6,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Blocks 4/11 incl. Pringle's Sub. (block 33) triangle along McClellend (~7 D); stores, cobbler, barber at 37th & Humboldt; drug store at 38th & Franklin"
+   },
+   {
+    "block_id": "240-2",
+    "bounded_by": {
+     "N": "38th Av.",
+     "S": "37th Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1490,
+     "y": 1250
+    },
+    "partial": false,
+    "dwellings": 38,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Blocks 12/5; Swedish Luth. Church at 38th Av.; boarding house 3780-82 Franklin; 2 stores at 37th & Franklin"
+   },
+   {
+    "block_id": "240-3",
+    "bounded_by": {
+     "N": "38th Av.",
+     "S": "37th Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2700,
+     "y": 1250
+    },
+    "partial": false,
+    "dwellings": 41,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Blocks 13/6; East Side Christian Church at 38th & Williams"
+   },
+   {
+    "block_id": "240-4",
+    "bounded_by": {
+     "N": "37th Av.",
+     "S": "36th Av.",
+     "E": "Franklin",
+     "W": "Humboldt"
+    },
+    "centroid": {
+     "x": 650,
+     "y": 2900
+    },
+    "partial": false,
+    "dwellings": 31,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 13; row of 7 attached D along 37th; small subdivision of 5 D south of private alley"
+   },
+   {
+    "block_id": "240-5",
+    "bounded_by": {
+     "N": "37th Av.",
+     "S": "36th Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1490,
+     "y": 2950
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 12; Hyde Park School (steam heat, electric light) fills south half; two rows of 7 D (14) on Franklin face"
+   },
+   {
+    "block_id": "240-6",
+    "bounded_by": {
+     "N": "37th Av.",
+     "S": "36th Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2700,
+     "y": 2950
+    },
+    "partial": false,
+    "dwellings": 7,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 11; west half entirely vacant"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Purely residential Clayton/Cole-area sheet (Humboldt to Williams, 36th-38th Avs): 1-1.5 story frame and brick dwellings, two churches, Hyde Park School, a few corner stores. No industrial establishments."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 241,
+  "image": "1903_1904_v2_00985_02_1903-0241.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "40th St.",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 200,
+    "y": 958
+   },
+   {
+    "streets": [
+     "40th St.",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 1248,
+    "y": 958
+   },
+   {
+    "streets": [
+     "39th St.",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 194,
+    "y": 2393
+   },
+   {
+    "streets": [
+     "39th St.",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 1248,
+    "y": 2393
+   },
+   {
+    "streets": [
+     "38th St.",
+     "Wewatta"
+    ],
+    "modern": null,
+    "x": 194,
+    "y": 3564
+   },
+   {
+    "streets": [
+     "38th St.",
+     "Wynkoop"
+    ],
+    "modern": null,
+    "x": 1248,
+    "y": 3564
+   },
+   {
+    "streets": [
+     "38th St.",
+     "Wazee"
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 3564
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "241-1",
+    "bounded_by": {
+     "N": null,
+     "S": "40th St.",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 645,
+     "y": 420
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 27, entirely vacant platted lots"
+   },
+   {
+    "block_id": "241-2",
+    "bounded_by": {
+     "N": null,
+     "S": "40th St.",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 1450,
+     "y": 600
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 28, cut diagonally by railway tracks; vacant"
+   },
+   {
+    "block_id": "241-3",
+    "bounded_by": {
+     "N": "40th St.",
+     "S": "39th St.",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 645,
+     "y": 1660
+    },
+    "partial": false,
+    "dwellings": 32,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "none",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 30; 32 uniform 1.5-story frame D (16 per face), a builder's row"
+   },
+   {
+    "block_id": "241-4",
+    "bounded_by": {
+     "N": "39th St.",
+     "S": "38th St.",
+     "E": "Wynkoop",
+     "W": "Wewatta"
+    },
+    "centroid": {
+     "x": 645,
+     "y": 2970
+    },
+    "partial": false,
+    "dwellings": 14,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 39 St. Vincent's Add'n / block 8 Ironton; row of 12 attached D on 39th St. (1726-1748)"
+   },
+   {
+    "block_id": "241-5",
+    "bounded_by": {
+     "N": "40th St.",
+     "S": "38th St.",
+     "E": "Wazee",
+     "W": "Wynkoop"
+    },
+    "centroid": {
+     "x": 1550,
+     "y": 2300
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "SAUSAGE FAC.; RENDG. KETTLE; SMOKE HO.",
+      "name": null,
+      "trade": "meat packing/stockyard",
+      "features": "small gasoline engine; rendering kettle; smoke house; behind stores at 38th & Wynkoop"
+     },
+     {
+      "label": "HAY W.HO.; WARE HO.",
+      "name": null,
+      "trade": "warehouse",
+      "features": "hay warehouse and shed; warehouse in rear of 1635-1639 38th St."
+     },
+     {
+      "label": "THE UNION ORE EXTRACTION & REDUCTION WKS.",
+      "name": "The Union Ore Extraction & Reduction Wks.",
+      "trade": "smelter",
+      "features": "settling tanks, leaching tanks, crusher, 50 h.p. engine with boiler, elevated water tank, well, coal; detached iron-clad furnace; assay furnace in office; night watchman; fuel coal"
+     },
+     {
+      "label": "WOOD YARD; COAL; SCALES",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "at 38th St. & Wazee"
+     }
+    ],
+    "faces": [],
+    "notes": "Blocks 29 (St. Vincent's) / 18 and 1 (Ironton), no 39th St. crossing east of Wynkoop; Wazee spur tracks along east side. 3 D at 3908-3912 Wynkoop, row of 4 D at 3838-3850 Wynkoop in the same block as the sausage factory, D at 1601 38th St. beside the wood yard; ore works mid-block on the Wazee side"
+   },
+   {
+    "block_id": "241-6",
+    "bounded_by": {
+     "N": null,
+     "S": "40th St.",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 2950,
+     "y": 780
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "WOOD YARD; COAL; STRAW SHED",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Block 22 Riverside Add'n north of 40th St., against UP yard"
+   },
+   {
+    "block_id": "241-7",
+    "bounded_by": {
+     "N": "40th St.",
+     "S": "38th St.",
+     "E": "Blake",
+     "W": null
+    },
+    "centroid": {
+     "x": 2903,
+     "y": 2258
+    },
+    "partial": false,
+    "dwellings": 18,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "LIVERY; Lodgings 2d",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": "lodgings on 2nd floor"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 21 Riverside Add'n; west edge is Union Pacific R.R. (no street); dwellings back onto the tracks"
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "OFFICE; SCALES",
+    "name": null,
+    "trade": "other",
+    "features": "railway scale house",
+    "near": "rail tracks north of 40th St., east of Wynkoop"
+   },
+   {
+    "label": "VIADUCT 22'",
+    "name": "40th St. viaduct",
+    "trade": "other",
+    "features": "viaduct over Union Pacific tracks",
+    "near": "over UP tracks north of 40th St."
+   }
+  ],
+  "sheet_notes": "Riverside/Ironton near UP yard (Wewatta to Blake, 38th-40th). Worker-housing rows share the Wynkoop-Wazee block with the Union Ore Extraction & Reduction Works (leaching/settling tanks, crusher, furnace) and a sausage factory with rendering kettle."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 242,
+  "image": "1903_1904_v2_00985_02_1903-0242.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "40th St.",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 968
+   },
+   {
+    "streets": [
+     "40th St.",
+     "Downing Av."
+    ],
+    "modern": null,
+    "x": 1048,
+    "y": 968
+   },
+   {
+    "streets": [
+     "38th St.",
+     "Blake"
+    ],
+    "modern": null,
+    "x": 113,
+    "y": 3564
+   },
+   {
+    "streets": [
+     "38th St.",
+     "Downing Av."
+    ],
+    "modern": null,
+    "x": 1064,
+    "y": 3564
+   },
+   {
+    "streets": [
+     "Ames",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 2064,
+    "y": 3064
+   },
+   {
+    "streets": [
+     "Ames",
+     "McClellend"
+    ],
+    "modern": null,
+    "x": 3080,
+    "y": 3064
+   },
+   {
+    "streets": [
+     "39th Av.",
+     "Larimer"
+    ],
+    "modern": null,
+    "x": 2096,
+    "y": 968
+   },
+   {
+    "streets": [
+     "38th Av.",
+     "McClellend"
+    ],
+    "modern": null,
+    "x": 3112,
+    "y": 1919
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "242-1",
+    "bounded_by": {
+     "N": null,
+     "S": "40th St.",
+     "E": "Downing Av.",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 532,
+     "y": 468
+    },
+    "partial": true,
+    "dwellings": 3,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 8,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "COAL SHED",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "along U.P.R.R. at 40th Av."
+     }
+    ],
+    "faces": [],
+    "notes": "Block 23 Riverside Add'n; Scandinavian Rooming Ho., saloon, 3 restaurants and stores on Downing (4001-4033); cut by U.P.R.R. on north"
+   },
+   {
+    "block_id": "242-2",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": null,
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 1548,
+     "y": 484
+    },
+    "partial": true,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Inset: triangle at 40th Av. & Downing (Riverside Add'n, 4033-4057 Downing): saloon, restaurant, 2 offices"
+   },
+   {
+    "block_id": "242-3",
+    "bounded_by": {
+     "N": "40th St.",
+     "S": "38th St.",
+     "E": "Downing Av.",
+     "W": "Blake"
+    },
+    "centroid": {
+     "x": 532,
+     "y": 2258
+    },
+    "partial": false,
+    "dwellings": 36,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 11,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BICYCLE SHOP",
+      "name": null,
+      "trade": "other",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Block 24; Downing face commercial (post office 40th St. station, drugs, saloons); Eureka Hotel at 38th & Downing"
+   },
+   {
+    "block_id": "242-4",
+    "bounded_by": {
+     "N": "40th St.",
+     "S": "38th St.",
+     "E": "Larimer",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 1548,
+     "y": 2258
+    },
+    "partial": false,
+    "dwellings": 44,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 11,
+    "other_nonres": 2,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PAINT SHOP",
+      "name": null,
+      "trade": "oil/paint/tar",
+      "features": ""
+     },
+     {
+      "label": "TIN SHOP",
+      "name": null,
+      "trade": "metal working",
+      "features": "under hall 2d"
+     },
+     {
+      "label": "JOB PRINTG.",
+      "name": null,
+      "trade": "printing",
+      "features": ""
+     },
+     {
+      "label": "CIGAR FAC.",
+      "name": null,
+      "trade": "other",
+      "features": "rear of 3829 Larimer"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 27; Downing face mixes D with saloons, halls 2d, cobbler, barber, office, lodgings; small workshops (paint shop lot 6, tin shop 3832-38, job printing, cigar fac. at 3829 Larimer)"
+   },
+   {
+    "block_id": "242-5",
+    "bounded_by": {
+     "N": "39th Av./Provident Park",
+     "S": "Ames",
+     "E": "McClellend",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2596,
+     "y": 2387
+    },
+    "partial": false,
+    "dwellings": 42,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 29 Pringle's Sub. incl. lots 1-3 Provident Park at 39th Av. (saloon 3964 Larimer); subdiv. lots 26-27 on Ames"
+   },
+   {
+    "block_id": "242-6",
+    "bounded_by": {
+     "N": "39th Av.",
+     "S": "38th Av.",
+     "E": "Franklin",
+     "W": "Larimer"
+    },
+    "centroid": {
+     "x": 2677,
+     "y": 1451
+    },
+    "partial": false,
+    "dwellings": 13,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 1,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 10 Provident Park strip along Franklin (3809-3855); barber, stores, lodgings, hall 2d at 38th Av. point"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Downing/Larimer near 38th-40th: dense dwellings with a Downing Av. commercial strip. Only small workshops (tin, paint, printing, cigar, bicycle) and a coal shed by the U.P.R.R."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 243,
+  "image": "1903_1904_v2_00985_02_1903-0243.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "40th Av.",
+     "Franklin"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 339
+   },
+   {
+    "streets": [
+     "40th Av.",
+     "Gilpin"
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 339
+   },
+   {
+    "streets": [
+     "39th Av.",
+     "Franklin"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 2038
+   },
+   {
+    "streets": [
+     "39th Av.",
+     "Gilpin"
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 2038
+   },
+   {
+    "streets": [
+     "39th Av.",
+     "Williams"
+    ],
+    "modern": null,
+    "x": 3128,
+    "y": 2038
+   },
+   {
+    "streets": [
+     "38th Av.",
+     "Franklin"
+    ],
+    "modern": null,
+    "x": 1145,
+    "y": 3435
+   },
+   {
+    "streets": [
+     "38th Av.",
+     "Gilpin"
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 3435
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "243-1",
+    "bounded_by": {
+     "N": null,
+     "S": "40th St.",
+     "E": "Franklin",
+     "W": "Downing Av."
+    },
+    "centroid": {
+     "x": 742,
+     "y": 1064
+    },
+    "partial": false,
+    "dwellings": 17,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 8,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "BAKERY; OVEN",
+      "name": null,
+      "trade": "food (bakery, candy, coffee)",
+      "features": "oven at rear of McGavock Block"
+     }
+    ],
+    "faces": [],
+    "notes": "Riverside Add'n block 28 + Provident Park block 1 (triangle); McGavock Block commercial row on Downing (saloon, stores, barber, 2 bakeries, several vacant units)"
+   },
+   {
+    "block_id": "243-2",
+    "bounded_by": {
+     "N": "40th Av.",
+     "S": "39th Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1677,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "PLANING MILL; DRY KILN",
+      "name": "J. R. Parr's Mill Co.",
+      "trade": "lumber/planing",
+      "features": "gas engine (h.p. illegible); steam boiler to heat dry kiln & glue boxes only; no heat, lights or watchman; wooden posts"
+     },
+     {
+      "label": "LUMBER YARD; LUMBER SHED & WARE HO.; COAL BINS",
+      "name": "The Hallack Lumber Co. (office & yards)",
+      "trade": "lumber/planing",
+      "features": "scattered lumber piles and lumber sheds over most of block; lumber shed & ware ho.; paint stored in office"
+     },
+     {
+      "label": "COAL BINS",
+      "name": null,
+      "trade": "coal/wood yard",
+      "features": "along switch track"
+     }
+    ],
+    "faces": [
+     {
+      "street": "Franklin",
+      "what": "Hallack Lumber Co. yard / J. R. Parr's Mill Co.",
+      "dwellings_facing": 2
+     }
+    ],
+    "notes": "Block 2 Provident Park; 2 D (3932, 3920 Franklin) inside the lumber yard block; U.P.R.R. switch curves through block"
+   },
+   {
+    "block_id": "243-3",
+    "bounded_by": {
+     "N": "40th Av.",
+     "S": "39th Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2693,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 3; only Denver Tramway Co. depot & lunch room"
+   },
+   {
+    "block_id": "243-4",
+    "bounded_by": {
+     "N": "39th Av.",
+     "S": "38th Av.",
+     "E": "Gilpin",
+     "W": "Franklin"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 2741
+    },
+    "partial": false,
+    "dwellings": 21,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 9; boarding house at 3854 Franklin"
+   },
+   {
+    "block_id": "243-5",
+    "bounded_by": {
+     "N": "39th Av.",
+     "S": "38th Av.",
+     "E": "Williams",
+     "W": "Gilpin"
+    },
+    "centroid": {
+     "x": 2693,
+     "y": 2741
+    },
+    "partial": false,
+    "dwellings": 19,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 8 Park"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Edge of Cole/Elyria by the U.P.R.R.: J. R. Parr's planing mill and Hallack Lumber Co. yard fill block 2 between 39th and 40th Avs., facing residential blocks across Franklin and 39th Av. Rest is residential."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 244,
+  "image": "1903_1904_v2_00985_02_1903-0244.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "40th Av.",
+     "High"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 339
+   },
+   {
+    "streets": [
+     "40th Av.",
+     "Woodie"
+    ],
+    "modern": null,
+    "x": 2064,
+    "y": 339
+   },
+   {
+    "streets": [
+     "39th Av.",
+     "Williams"
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 2052
+   },
+   {
+    "streets": [
+     "39th Av.",
+     "High"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 2052
+   },
+   {
+    "streets": [
+     "39th Av.",
+     "Race"
+    ],
+    "modern": null,
+    "x": 2080,
+    "y": 2052
+   },
+   {
+    "streets": [
+     "38th Av.",
+     "Williams"
+    ],
+    "modern": null,
+    "x": 97,
+    "y": 3435
+   },
+   {
+    "streets": [
+     "38th Av.",
+     "High"
+    ],
+    "modern": null,
+    "x": 1097,
+    "y": 3435
+   },
+   {
+    "streets": [
+     "38th Av.",
+     "Race"
+    ],
+    "modern": null,
+    "x": 2080,
+    "y": 3435
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "244-1",
+    "bounded_by": {
+     "N": "40th Av.",
+     "S": "39th Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 548,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 20,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 2,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "2-story, 3920 1/2 Williams"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 4 Park Add'n; saloon/restaurant at 40th & Williams; boarding house on High face"
+   },
+   {
+    "block_id": "244-2",
+    "bounded_by": {
+     "N": "40th Av.",
+     "S": "39th Av.",
+     "E": "Woodie",
+     "W": "High"
+    },
+    "centroid": {
+     "x": 1564,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 22,
+    "flats": 2,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 5 Park Add'n (High face) + block 1 Hodgson's Add'n (Woodie face, row of 8 attached D); Park Hotel (hall, parlor) and Chaffee Ho. lodgings with restaurant/stores"
+   },
+   {
+    "block_id": "244-3",
+    "bounded_by": {
+     "N": "40th Av.",
+     "S": "39th Av.",
+     "E": null,
+     "W": "Woodie"
+    },
+    "centroid": {
+     "x": 2322,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 10,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 2 Swansea Add'n; water tank and windmill behind 3916 Woodie (domestic)"
+   },
+   {
+    "block_id": "244-4",
+    "bounded_by": {
+     "N": "40th Av.",
+     "S": "39th Av.",
+     "E": "Vine",
+     "W": null
+    },
+    "centroid": {
+     "x": 2806,
+     "y": 1209
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Large unplatted tract west of Vine with scattered D and a tent"
+   },
+   {
+    "block_id": "244-5",
+    "bounded_by": {
+     "N": "39th Av.",
+     "S": "38th Av.",
+     "E": "High",
+     "W": "Williams"
+    },
+    "centroid": {
+     "x": 548,
+     "y": 2757
+    },
+    "partial": false,
+    "dwellings": 16,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 7 Provident Park; row of 7 attached D on High at 39th (3837-3861)"
+   },
+   {
+    "block_id": "244-6",
+    "bounded_by": {
+     "N": "39th Av.",
+     "S": "38th Av.",
+     "E": "Race",
+     "W": "High"
+    },
+    "centroid": {
+     "x": 1564,
+     "y": 2757
+    },
+    "partial": false,
+    "dwellings": 15,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 6; saloon with hall at 39th & High; east (Race) half vacant"
+   },
+   {
+    "block_id": "244-7",
+    "bounded_by": {
+     "N": "39th Av.",
+     "S": "38th Av.",
+     "E": null,
+     "W": "Race"
+    },
+    "centroid": {
+     "x": 2387,
+     "y": 2757
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Platted, entirely vacant"
+   },
+   {
+    "block_id": "244-8",
+    "bounded_by": {
+     "N": "39th Av.",
+     "S": "38th Av.",
+     "E": "Vine",
+     "W": null
+    },
+    "centroid": {
+     "x": 2790,
+     "y": 2757
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Dashed (unplatted) tract, vacant; south of 38th Av. near Vine two small D (H., J.) with tents"
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Thinly built Park/Hodgson's/Swansea additions (Williams to Vine, 38th-40th Avs). Dwellings, two lodging houses and saloons only; no industry. Woodie (north of 39th) appears to continue as Race south of 39th; modern name not printed."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 245,
+  "image": "1903_1904_v2_00985_02_1903-0245.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "40th Av.",
+     "Gilpin St."
+    ],
+    "modern": null,
+    "x": 822,
+    "y": 3500
+   },
+   {
+    "streets": [
+     "40th Av.",
+     "Williams St."
+    ],
+    "modern": null,
+    "x": 1822,
+    "y": 3500
+   },
+   {
+    "streets": [
+     "40th Av.",
+     "High St."
+    ],
+    "modern": null,
+    "x": 2854,
+    "y": 3500
+   },
+   {
+    "streets": [
+     "38th St.",
+     "Garden Lane"
+    ],
+    "modern": null,
+    "x": 2000,
+    "y": 925
+   },
+   {
+    "streets": [
+     "38th St.",
+     "Delgany"
+    ],
+    "modern": null,
+    "x": 3016,
+    "y": 925
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "245-1",
+    "bounded_by": {
+     "N": null,
+     "S": "38th St.",
+     "E": "Delgany",
+     "W": "Garden Lane"
+    },
+    "centroid": {
+     "x": 2419,
+     "y": 419
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FUSE FACTORY; POWDER HO. (3); POWDER ROLLING; SPIN HO. (COTTON); TAR & FINISHING ROOM; TAPE ROOM; GUTTA PERCHA RM.",
+      "name": "The National Fuse & Powder Co.",
+      "trade": "chemical",
+      "features": "25 h.p. engine and iron-clad boiler room; 4 h.p. engine (steam from boiler) at iron-clad powder rolling house; 3 detached powder houses; tar & finishing room; spin house (cotton); gutta percha room; night watchman; heat steam, fuel coal, lights electric"
+     }
+    ],
+    "faces": [],
+    "notes": "Inset, block 37 St. Vincent's Add'n; east of Delgany marked VACANT"
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "ROUND HOUSE & REPAIR SHOPS; MACHINE SHOP; BLKSM.; STORE ROOM",
+    "name": "Union Pacific R.R.",
+    "trade": "rail shops/roundhouse",
+    "features": "18 narrow-gauge + 2x16 standard-gauge stalls around turntable; machine shop, blacksmith, store room; 60 h.p. and 40 h.p. engines with boilers and iron chimney; heat steam, fuel coal & coke; 25 hydrants",
+    "near": "UP yard south of 38th St., west of Pullman shops"
+   },
+   {
+    "label": "COAL POCKETS; SAND HO.; SAND DRIERS; SAND BIN; R.R. W.TANK; COAL BINS; COAL & SCRAP BINS; COAL & COKE",
+    "name": "Union Pacific R.R.",
+    "trade": "coal/wood yard",
+    "features": "coal pockets on trestle; sand driers; elevated water tank",
+    "near": "UP yard, north part of sheet"
+   },
+   {
+    "label": "OIL HO.",
+    "name": "Union Pacific R.R.",
+    "trade": "oil/paint/tar",
+    "features": "stone oil house",
+    "near": "south-west of roundhouse"
+   },
+   {
+    "label": "CAR SHOPS: CASTINGS ROOM; BLKSM.; MACHINE & WHEEL SHOP; TRUCK SHOP; MACHINE, REPAIR & PAINT SHOP; TINNING; STEAM FITTING; TOOL SHOP",
+    "name": "The Pullman Co. Car Shops",
+    "trade": "rail shops/roundhouse",
+    "features": "power house: 250 h.p. engine & air compressor, dynamos, 75 h.p. engine, battery of boilers, 125 ft chimney; artesian well & pump; water tank elevated 50 ft, 47,000 gal; transfer table; castings room",
+    "near": "east of UP roundhouse, north of 40th Av."
+   },
+   {
+    "label": "GENERAL SUPPLY HO.; PAINT W.HO.; ACID & GLASS W.HO.",
+    "name": "U.P.R.R. & Pullman",
+    "trade": "warehouse",
+    "features": "paint and acid stored",
+    "near": "platform north of 40th Av. near Williams"
+   }
+  ],
+  "sheet_notes": "Almost entirely Union Pacific yard: UP roundhouse/repair shops and Pullman Co. car shops (125 ft stack, boilers, paint shop) just north of 40th Av., with an inset of the National Fuse & Powder Co. fuse factory (powder houses, tar room) at 38th & Delgany. No dwellings on the sheet; residential blocks of sheets 243/244 lie across 40th Av."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 246,
+  "image": "1903_1904_v2_00985_02_1903-0246.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "29th Av.",
+     "Elizabeth"
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 80
+   },
+   {
+    "streets": [
+     "28th Av.",
+     "Elizabeth"
+    ],
+    "modern": null,
+    "x": 1387,
+    "y": 80
+   },
+   {
+    "streets": [
+     "29th Av.",
+     "Columbine"
+    ],
+    "modern": null,
+    "x": 145,
+    "y": 1080
+   },
+   {
+    "streets": [
+     "28th Av.",
+     "Columbine"
+    ],
+    "modern": null,
+    "x": 1387,
+    "y": 1080
+   },
+   {
+    "streets": [
+     "41st Av.",
+     "York"
+    ],
+    "modern": null,
+    "x": 2838,
+    "y": 1080
+   },
+   {
+    "streets": [
+     "40th Av.",
+     "High St."
+    ],
+    "modern": null,
+    "x": 306,
+    "y": 3516
+   },
+   {
+    "streets": [
+     "40th Av.",
+     "Woodie St."
+    ],
+    "modern": null,
+    "x": 1290,
+    "y": 3516
+   },
+   {
+    "streets": [
+     "40th Av.",
+     "Vine St."
+    ],
+    "modern": null,
+    "x": 2240,
+    "y": 3516
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "246-1",
+    "bounded_by": {
+     "N": "29th Av.",
+     "S": "28th Av.",
+     "E": "Elizabeth",
+     "W": "Columbine"
+    },
+    "centroid": {
+     "x": 742,
+     "y": 790
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Inset (north arrow points left on page): block 3 Ashley's Add'n; Columbine School (steam heat, oil lights, 2nd floor unfinished); remaining lots vacant; east of 28th Av. marked VACANT"
+   },
+   {
+    "block_id": "246-2",
+    "bounded_by": {
+     "N": null,
+     "S": "41st Av.",
+     "E": "York",
+     "W": null
+    },
+    "centroid": {
+     "x": 2419,
+     "y": 613
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "MACHINE SHOP; OIL HO.; PATTERN SHED; STORAGE; IRON CLAD NAPHTHA HO.; SCRAP BIN",
+      "name": "Railway Steel Spring Co.",
+      "trade": "metal working",
+      "features": "60 h.p. engine, boiler, 75 ft chimney, dynamo; elevated water tank 30 ft, 23,000 gal; well & fire pump; iron-clad naphtha house; oil house; night watchman"
+     }
+    ],
+    "faces": [],
+    "notes": "Inset; fenced plant on siding, west side vacant"
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "PAINT SHOP (cement floor); ERECTING SHOP; EQUIPMENT DEPT; VARNISHING RM. 2d; CABINET SHOP; WOOD WORKING; MATTRESS ROOM; HAIR CUTTER; IRON CLAD DRY HO.; DRY KILN; LUMBER SHED; LUMBER PILES",
+    "name": "The Pullman Co. Car Shops",
+    "trade": "rail shops/roundhouse",
+    "features": "power steam and electric; fuel coal and shavings (metal blowers blow shavings into boiler ho.); dry kiln; varnishing room; artesian well, fire pump, water tank; 7 double hydrants; 1 day + 2 night watchmen",
+    "near": "between UP yard and 40th Av., High St. to Vine St."
+   },
+   {
+    "label": "LAUNDRY; DRY HO.; BENZINE CLEANING",
+    "name": "The Pullman Co.",
+    "trade": "laundry/dye",
+    "features": "benzine cleaning (solvent)",
+    "near": "south of erecting shop, north of 40th Av. opposite High St."
+   }
+  ],
+  "sheet_notes": "Pullman Co. car shops (woodworking, paint and varnish, benzine cleaning) directly north of 40th Av., across from the residential blocks of sheet 244 (High to Vine). Insets: Columbine School block and Railway Steel Spring Co. (naphtha house, 75 ft stack) at 41st Av. & York."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 247,
+  "image": "1903_1904_v2_00985_02_1903-0247.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "45th Av.",
+     "Race"
+    ],
+    "modern": null,
+    "x": 1064,
+    "y": 226
+   },
+   {
+    "streets": [
+     "45th Av.",
+     "Vine"
+    ],
+    "modern": null,
+    "x": 1967,
+    "y": 226
+   },
+   {
+    "streets": [
+     "44th Av.",
+     "Race"
+    ],
+    "modern": null,
+    "x": 1064,
+    "y": 1580
+   },
+   {
+    "streets": [
+     "44th Av.",
+     "Vine"
+    ],
+    "modern": null,
+    "x": 1967,
+    "y": 1580
+   },
+   {
+    "streets": [
+     "44th Av.",
+     "Gaylord"
+    ],
+    "modern": null,
+    "x": 2838,
+    "y": 1580
+   },
+   {
+    "streets": [
+     "43rd Av.",
+     "Race"
+    ],
+    "modern": null,
+    "x": 1064,
+    "y": 2935
+   },
+   {
+    "streets": [
+     "43rd Av.",
+     "Vine"
+    ],
+    "modern": null,
+    "x": 1967,
+    "y": 2935
+   },
+   {
+    "streets": [
+     "Whittsit",
+     "Legge"
+    ],
+    "modern": null,
+    "x": 1467,
+    "y": 3322
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "247-1",
+    "bounded_by": {
+     "N": "45th Av.",
+     "S": "44th Av.",
+     "E": "Race",
+     "W": null
+    },
+    "centroid": {
+     "x": 774,
+     "y": 903
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 2 Elyria; NW corner crossed by Union Pacific R.R.; Southern Pacific R.R. grounds to west"
+   },
+   {
+    "block_id": "247-2",
+    "bounded_by": {
+     "N": "45th Av.",
+     "S": "44th Av.",
+     "E": "Vine",
+     "W": "Race"
+    },
+    "centroid": {
+     "x": 1516,
+     "y": 903
+    },
+    "partial": false,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 5 Elyria"
+   },
+   {
+    "block_id": "247-3",
+    "bounded_by": {
+     "N": "45th Av.",
+     "S": "44th Av.",
+     "E": "Gaylord",
+     "W": "Vine"
+    },
+    "centroid": {
+     "x": 2403,
+     "y": 903
+    },
+    "partial": false,
+    "dwellings": 3,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 8 Elyria"
+   },
+   {
+    "block_id": "247-4",
+    "bounded_by": {
+     "N": "45th Av.",
+     "S": "44th Av.",
+     "E": null,
+     "W": "Gaylord"
+    },
+    "centroid": {
+     "x": 3064,
+     "y": 903
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Unlotted, vacant"
+   },
+   {
+    "block_id": "247-5",
+    "bounded_by": {
+     "N": "44th Av.",
+     "S": "43rd Av.",
+     "E": "Race",
+     "W": null
+    },
+    "centroid": {
+     "x": 774,
+     "y": 2274
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 3 South Elyria(?)"
+   },
+   {
+    "block_id": "247-6",
+    "bounded_by": {
+     "N": "44th Av.",
+     "S": "43rd Av.",
+     "E": "Vine",
+     "W": "Race"
+    },
+    "centroid": {
+     "x": 1516,
+     "y": 2274
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 6"
+   },
+   {
+    "block_id": "247-7",
+    "bounded_by": {
+     "N": "44th Av.",
+     "S": "43rd Av.",
+     "E": "Gaylord",
+     "W": "Vine"
+    },
+    "centroid": {
+     "x": 2403,
+     "y": 2274
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 9"
+   },
+   {
+    "block_id": "247-8",
+    "bounded_by": {
+     "N": "44th Av.",
+     "S": "43rd Av.",
+     "E": null,
+     "W": "Gaylord"
+    },
+    "centroid": {
+     "x": 3064,
+     "y": 2274
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Unlotted, vacant"
+   },
+   {
+    "block_id": "247-9",
+    "bounded_by": {
+     "N": "Whittsit",
+     "S": null,
+     "E": "Legge",
+     "W": "Estes"
+    },
+    "centroid": {
+     "x": 1032,
+     "y": 3548
+    },
+    "partial": true,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "GREEN HO.; COAL & FURNACE HO.",
+      "name": "O. J. Hurt Green Ho.",
+      "trade": "other",
+      "features": "coal & furnace house heating greenhouses; water tank 30 ft above ground"
+     }
+    ],
+    "faces": [],
+    "notes": "Inset south of Riverside Cemetery; D attached to greenhouse"
+   },
+   {
+    "block_id": "247-10",
+    "bounded_by": {
+     "N": "Whittsit",
+     "S": null,
+     "E": "Estes",
+     "W": null
+    },
+    "centroid": {
+     "x": 290,
+     "y": 3548
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "GRANITE WKS.",
+      "name": null,
+      "trade": "brick/stone/pottery",
+      "features": "boiler with iron chimney; office"
+     }
+    ],
+    "faces": [],
+    "notes": "Inset; monument granite works near cemetery"
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "PUMP HO. & BOILER ROOM USED FOR IRRIGATING CEMETERY",
+    "name": "Riverside Cemetery",
+    "trade": "power/electric",
+    "features": "iron-clad; boiler with iron chimney; beside reservoir",
+    "near": "Riverside Cemetery, west part"
+   },
+   {
+    "label": "GREEN HO.; WARE ROOM; RECEIVING VAULT; OFFICE",
+    "name": "Riverside Cemetery",
+    "trade": "other",
+    "features": "boiler in brick basement for heating; artesian well 600 ft deep under office with gas engine & steam pump; water tank",
+    "near": "Riverside Cemetery, east part"
+   }
+  ],
+  "sheet_notes": "Sparsely built Elyria blocks (Race-Gaylord, 43rd-45th Avs), mostly vacant lots, bounded west by UP/Southern Pacific railroad grounds. Insets: Riverside Cemetery with pump/boiler houses, a granite works and a greenhouse. No heavy industry on this sheet."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 248,
+  "image": "1903_1904_v2_00985_02_1903-0248.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "45th Av.",
+     "Claude"
+    ],
+    "modern": null,
+    "x": 1193,
+    "y": 226
+   },
+   {
+    "streets": [
+     "45th Av.",
+     "York"
+    ],
+    "modern": null,
+    "x": 1903,
+    "y": 226
+   },
+   {
+    "streets": [
+     "44th Av.",
+     "Gaylord"
+    ],
+    "modern": null,
+    "x": 323,
+    "y": 1580
+   },
+   {
+    "streets": [
+     "44th Av.",
+     "Claude"
+    ],
+    "modern": null,
+    "x": 1193,
+    "y": 1580
+   },
+   {
+    "streets": [
+     "44th Av.",
+     "York"
+    ],
+    "modern": null,
+    "x": 1903,
+    "y": 1580
+   },
+   {
+    "streets": [
+     "44th Av.",
+     "Josephine"
+    ],
+    "modern": null,
+    "x": 2870,
+    "y": 1580
+   },
+   {
+    "streets": [
+     "43rd Av.",
+     "Claude"
+    ],
+    "modern": null,
+    "x": 1193,
+    "y": 2935
+   },
+   {
+    "streets": [
+     "43rd Av.",
+     "York"
+    ],
+    "modern": null,
+    "x": 1903,
+    "y": 2935
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "248-1",
+    "bounded_by": {
+     "N": "45th Av.",
+     "S": "44th Av.",
+     "E": "Claude",
+     "W": "Gaylord"
+    },
+    "centroid": {
+     "x": 742,
+     "y": 903
+    },
+    "partial": false,
+    "dwellings": 2,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 1,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 11 Elyria; Salem German Ev. Church at 44th & Gaylord"
+   },
+   {
+    "block_id": "248-2",
+    "bounded_by": {
+     "N": "45th Av.",
+     "S": "44th Av.",
+     "E": "York",
+     "W": "Claude"
+    },
+    "centroid": {
+     "x": 1548,
+     "y": 903
+    },
+    "partial": false,
+    "dwellings": 3,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 14 Elyria"
+   },
+   {
+    "block_id": "248-3",
+    "bounded_by": {
+     "N": "45th Av.",
+     "S": "44th Av.",
+     "E": "Josephine",
+     "W": "York"
+    },
+    "centroid": {
+     "x": 2403,
+     "y": 903
+    },
+    "partial": false,
+    "dwellings": 4,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 2 Swansea"
+   },
+   {
+    "block_id": "248-4",
+    "bounded_by": {
+     "N": "44th Av.",
+     "S": "43rd Av.",
+     "E": "Claude",
+     "W": "Gaylord"
+    },
+    "centroid": {
+     "x": 742,
+     "y": 2258
+    },
+    "partial": false,
+    "dwellings": 6,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 12 South Elyria; row of 4 D on Gaylord, 2 D on Claude"
+   },
+   {
+    "block_id": "248-5",
+    "bounded_by": {
+     "N": "44th Av.",
+     "S": "43rd Av.",
+     "E": "York",
+     "W": "Claude"
+    },
+    "centroid": {
+     "x": 1548,
+     "y": 2258
+    },
+    "partial": false,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 15, entirely vacant"
+   },
+   {
+    "block_id": "248-6",
+    "bounded_by": {
+     "N": "44th Av.",
+     "S": "43rd Av.",
+     "E": "Josephine",
+     "W": "York"
+    },
+    "centroid": {
+     "x": 2403,
+     "y": 2258
+    },
+    "partial": false,
+    "dwellings": 8,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 3,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 3 Swansea; saloon at 43rd & York; 2 stores on Josephine (4313, 4319); well & windmill"
+   },
+   {
+    "block_id": "248-7",
+    "bounded_by": {
+     "N": "43rd Av.",
+     "S": null,
+     "E": "Josephine",
+     "W": "York"
+    },
+    "centroid": {
+     "x": 2403,
+     "y": 3274
+    },
+    "partial": true,
+    "dwellings": 1,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 72 1st Add'n to Swansea; saloon at 43rd & York"
+   },
+   {
+    "block_id": "248-8",
+    "bounded_by": {
+     "N": "43rd Av.",
+     "S": null,
+     "E": "York",
+     "W": "Claude"
+    },
+    "centroid": {
+     "x": 1548,
+     "y": 3274
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Labelled RAILROAD GROUND"
+   },
+   {
+    "block_id": "248-9",
+    "bounded_by": {
+     "N": null,
+     "S": "U.P.R.R.",
+     "E": "Josephine",
+     "W": "York"
+    },
+    "centroid": {
+     "x": 645,
+     "y": 3580
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "WOOD & COAL; COAL SHED; FEED & HAY; SCALES",
+      "name": "T. W. Casey",
+      "trade": "coal/wood yard",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Inset: south end of block 72, 1st Add'n to Swansea, along U.P.R.R."
+   }
+  ],
+  "outside_blocks": [],
+  "sheet_notes": "Thinly settled Elyria/Swansea blocks (Gaylord-Josephine, 43rd-45th Avs), mostly vacant lots; one church, two saloons. Only industry is T. W. Casey wood & coal yard on the U.P.R.R. (inset)."
+ },
+ {
+  "edition": "1903-1904",
+  "volume": 2,
+  "sheet": 249,
+  "image": "1903_1904_v2_00985_02_1903-0249.jpg",
+  "intersections": [
+   {
+    "streets": [
+     "Fisk Av.",
+     "Cline"
+    ],
+    "modern": null,
+    "x": 210,
+    "y": 187
+   },
+   {
+    "streets": [
+     "Fisk Av.",
+     "Powell"
+    ],
+    "modern": null,
+    "x": 1209,
+    "y": 187
+   },
+   {
+    "streets": [
+     "Fisk Av.",
+     "Starr"
+    ],
+    "modern": null,
+    "x": 2193,
+    "y": 187
+   },
+   {
+    "streets": [
+     "Western (46th) Av.",
+     "Cline"
+    ],
+    "modern": "46th Av.",
+    "x": 210,
+    "y": 2120
+   },
+   {
+    "streets": [
+     "Western (46th) Av.",
+     "Powell"
+    ],
+    "modern": "46th Av.",
+    "x": 1209,
+    "y": 2120
+   },
+   {
+    "streets": [
+     "Western (46th) Av.",
+     "Starr"
+    ],
+    "modern": "46th Av.",
+    "x": 2193,
+    "y": 2120
+   },
+   {
+    "streets": [
+     "Western (46th) Av.",
+     "Baldwin"
+    ],
+    "modern": "46th Av.",
+    "x": 3064,
+    "y": 2120
+   }
+  ],
+  "blocks": [
+   {
+    "block_id": "249-1",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Powell",
+     "W": "Cline"
+    },
+    "centroid": {
+     "x": 726,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 40,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "CATTLE YARD; OFFICE",
+      "name": "Western Breeders Ass'n",
+      "trade": "meat packing/stockyard",
+      "features": "cattle yard with sheds on lots 44-48 facing Cline"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 3 West Elyria; West Elyria Ho. (hotel/lodging); row of 11 attached D on Western Av.; saloon at Western & Powell; cattle yard shares block with dwellings"
+   },
+   {
+    "block_id": "249-2",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Starr",
+     "W": "Powell"
+    },
+    "centroid": {
+     "x": 1580,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 30,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [],
+    "faces": [],
+    "notes": "Block 4 Elyria; 2 saloons, store with vacant unit; Colorado & Eastern R.R. (narrow gauge) coal road (16 miles to coal fields) runs along Starr; 2 vendors"
+   },
+   {
+    "block_id": "249-3",
+    "bounded_by": {
+     "N": "Fisk Av.",
+     "S": "Western (46th) Av.",
+     "E": "Baldwin",
+     "W": "Starr"
+    },
+    "centroid": {
+     "x": 2645,
+     "y": 1193
+    },
+    "partial": false,
+    "dwellings": 32,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 4,
+    "other_nonres": 0,
+    "vacant": "some",
+    "industrial": [
+     {
+      "label": "FLOUR STORAGE",
+      "name": null,
+      "trade": "warehouse",
+      "features": "in store building at Fisk & Starr"
+     }
+    ],
+    "faces": [],
+    "notes": "Block 10 Elyria; row of 5 attached D on Baldwin; barber, saloon, stores"
+   },
+   {
+    "block_id": "249-4",
+    "bounded_by": {
+     "N": "Western (46th) Av.",
+     "S": null,
+     "E": "Delgany",
+     "W": "Garden Lane"
+    },
+    "centroid": {
+     "x": 1645,
+     "y": 2580
+    },
+    "partial": true,
+    "dwellings": 2,
+    "flats": 1,
+    "shanties": 0,
+    "stores": 1,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [
+     {
+      "label": "BLKSM.",
+      "name": null,
+      "trade": "livery/blacksmith",
+      "features": ""
+     }
+    ],
+    "faces": [],
+    "notes": "Block 2 St. Vincent's Add'n; Davenport Hotel (bar, dining room; not in operation; hot-air furnace); cobbler; blacksmith shop at 4441 Delgany"
+   },
+   {
+    "block_id": "249-5",
+    "bounded_by": {
+     "N": null,
+     "S": null,
+     "E": null,
+     "W": null
+    },
+    "centroid": {
+     "x": 500,
+     "y": 2580
+    },
+    "partial": true,
+    "dwellings": 0,
+    "flats": 0,
+    "shanties": 0,
+    "stores": 0,
+    "other_nonres": 0,
+    "vacant": "mostly",
+    "industrial": [],
+    "faces": [],
+    "notes": "Blocks 1, 3, 5, 6, 7 St. Vincent's Add'n around Garden Lane & 44th Av. (Colorado): vacant, cut by UP and Colorado & Southern R.R. switches"
+   }
+  ],
+  "outside_blocks": [
+   {
+    "label": "D; sheds",
+    "name": null,
+    "trade": "other",
+    "features": "2 dwellings and sheds on railroad grounds",
+    "near": "railroad grounds east of Starr, south of Western Av."
+   },
+   {
+    "label": "GRANT SMELTER BEYOND",
+    "name": "Grant Smelter",
+    "trade": "smelter",
+    "features": "off sheet, noted only",
+    "near": "south-west beyond the C&S switch"
+   }
+  ],
+  "sheet_notes": "Dense Elyria worker housing (Cline to Baldwin, Fisk to Western/46th Av.) with saloons and a Western Breeders Ass'n cattle yard inside block 3; south half is St. Vincent's Add'n cut by UP and C&S switches with 'Grant Smelter beyond' noted."
+ }
+]
