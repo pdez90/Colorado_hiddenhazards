@@ -1810,7 +1810,9 @@ server <- function(input, output, session) {
   output$t_rz_dir <- renderTable({ req(rz_dir); rz_dir }, striped = TRUE, spacing = "xs", caption = "Direction of change by period", caption.placement = "top")
   output$rz_note <- renderText({ req(rz_placed); paste0(sprintf("%d changes; %d placed on the map (%s by blocks or agreeing streets). ", sum(rz_placed$changes), sum(rz_placed$changes[rz_placed$placed_by != "not placed"]),
     sum(rz_placed$changes[!grepl("not placed|uncertain|^subdivision$", rz_placed$placed_by)])),
-    if (!is.null(rz_test)) sprintf("HOLC D vs A and B, share rezoned from residential to business or industry: Fisher's exact p = %s. ", format(rz_test$p_all_placed, digits = 2)) else "",
+    if (!is.null(rz_test)) { w <- rz_test[grepl("within periods", rz_test$period), ]
+      sprintf("HOLC D vs A and B, share rezoned from residential to business or industry: Fisher's exact p = %s over the whole period; but such rezonings became more common after the war, when more of D's changes came, and comparing within each period (1925-45, 1946-54, 1955-56) the odds ratio is %s, p = %s, so the pattern is suggestive rather than settled. ",
+              format(rz_test$p_all_placed[1], digits = 2), if (nrow(w)) sub(".*common odds ratio ([0-9.]+).*", "\\1", w$comparison[1]) else "?", if (nrow(w)) format(w$p_all_placed[1], digits = 2) else "?") } else "",
     "HOLC grades date from 1938, so changes before then are classed by the grade their area later received. Ordinances describe changes as written; the scans' text has errors, and a few changes could not be read or placed.") })
   output$t_s03_out <- renderTable({ req(s03_out); d <- head(s03_out, 8); data.frame(Trade = d$trade, Plants = d$plants) }, striped = TRUE, spacing = "s",
     caption = "Plants drawn on unplatted ground (rail yards, river bottoms, smelter and packing-house grounds), placed from their outlines", caption.placement = "top")

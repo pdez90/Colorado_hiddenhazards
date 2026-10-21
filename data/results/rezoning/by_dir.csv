@@ -1,6 +1,7 @@
 direction,1925-1945,1946-1954,1955-1956 (new code)
 Annexed as business or commercial,2,5,0
-Annexed as residential,5,13,0
+Annexed as industrial,0,0,2
+Annexed as residential,5,13,6
 Business or industrial to residential,44,15,2
 Business to industrial,3,0,0
 Industrial to business,7,0,0

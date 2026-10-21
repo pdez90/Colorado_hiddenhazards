@@ -1,24 +1,25 @@
 # Changes to Denver's zone map, 1925-1956
 
-266 changes in 183 ordinances (558 ordinance texts read).
+274 changes in 191 ordinances (558 ordinance texts read).
 
 ## How the changes were placed
 
 | placed_by | changes | median_spread_m | checked_both_ways | median_m_between_methods | pct |
 |---|---|---|---|---|---|
-| street crossings | 67 | 197 | 9 | 327 | 25.2 |
-| not placed | 57 |  | 0 |  | 21.4 |
-| subdivision and block (streets agree) | 41 | 0 | 41 | 173 | 15.4 |
-| uncertain: subdivision and streets disagree by over 1 km | 21 | 256 | 21 | 5101 | 7.9 |
-| subdivision and block | 68 | 0 | 0 |  | 25.6 |
-| subdivision | 12 | 516 | 0 |  | 4.5 |
+| street crossings | 69 | 197 | 9 | 327 | 25.2 |
+| not placed | 63 |  | 0 |  | 23.0 |
+| subdivision and block (streets agree) | 41 | 0 | 41 | 173 | 15.0 |
+| uncertain: subdivision and streets disagree by over 1 km | 21 | 256 | 21 | 5101 | 7.7 |
+| subdivision and block | 68 | 0 | 0 |  | 24.8 |
+| subdivision | 12 | 516 | 0 |  | 4.4 |
 
 ## Direction of change by period
 
 | direction | 1925-1945 | 1946-1954 | 1955-1956 (new code) |
 |---|---|---|---|
 | Annexed as business or commercial | 2 | 5 | 0 |
-| Annexed as residential | 5 | 13 | 0 |
+| Annexed as industrial | 0 | 0 | 2 |
+| Annexed as residential | 5 | 13 | 6 |
 | Business or industrial to residential | 44 | 15 | 2 |
 | Business to industrial | 3 | 0 | 0 |
 | Industrial to business | 7 | 0 | 0 |
@@ -49,9 +50,13 @@ Only changes placed by a block or by agreeing streets:
 | D | 34 | 55.9 | 41.2 |
 | Not graded | 63 | 34.9 | 52.4 |
 
-| comparison | p_all_placed | p_sure_placements |
-|---|---|---|
-| Share of rezonings from residential to business or industrial, HOLC D vs A and B (Fisher's exact test) | 0.00693 | 0.00979 |
+| period | comparison | p_all_placed | p_sure_placements |
+|---|---|---|---|
+| 1925-1956 | Share of rezonings from residential to business or industrial, HOLC D vs A and B (Fisher's exact test) | 0.00693 | 0.00979 |
+| 1925-1945 | Same, within the period | 0.14900 | 0.15600 |
+| 1946-1954 | Same, within the period | 1.00000 | 1.00000 |
+| 1955-1956 (new code) | Same, within the period | 0.14700 | 0.17500 |
+| 1925-1956, within periods | Same, comparing within each period (exact Mantel-Haenszel; common odds ratio 2.93, sure placements 3.39) | 0.08050 | 0.07050 |
 
 By period:
 

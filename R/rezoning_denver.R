@@ -6,7 +6,7 @@
 #
 # 1. Changes. Every "changed from <district> to <district>" in an ordinance amending the 1925 zone map (Ordinance No. 14, Series of 1925)
 #    or, from 1955, the zoning chapter of the Revised Municipal Code ("changed from R-2 to B-4"), and every newly annexed area "classified
-#    as" a district. The scans' OCR is rough ("Reshlence HA11 District", "Cormnercial"), so district words are matched allowing two wrong
+#    as" or "established as" a district. The scans' OCR is rough ("Reshlence HA11 District", "Cormnercial"), so district words are matched allowing two wrong
 #    letters, and the letter in quotes is read from the characters that follow. Text after the publisher's affidavit (the newspaper
 #    reprint of the same ordinance) is ignored, and a change repeated within an ordinance is kept once.
 # 2. Place. The description that follows each change is searched for (a) lots, blocks and subdivisions ("Block 4, West Lawn Gardens"),
@@ -45,7 +45,7 @@ parse_doc <- function(f) {
   out <- list()
   for (part in unique(c(if (cut > 0) substr(t, 1, cut - 1), t))) {
     m <- gregexpr(CHG, part, perl = TRUE, ignore.case = TRUE)[[1]]
-    a <- gregexpr("classified\\s+as\\s+an?\\s+", part, perl = TRUE, ignore.case = TRUE)[[1]]
+    a <- gregexpr("classified\\s+as\\s+an?\\s+|(?:is|be)\\s+established\\s+as\\s+(?:an?\\s+)?", part, perl = TRUE, ignore.case = TRUE)[[1]]   # land zoned for the first time (annexations)
     starts <- sort(c(if (m[1] > 0) m + attr(m, "match.length") else integer(0), if (a[1] > 0) -(a + attr(a, "match.length")) else integer(0)))
     ends <- abs(starts)
     for (k in seq_along(starts)) { s0 <- abs(starts[k]); s <- substr(part, s0, s0 + 140)
@@ -190,8 +190,17 @@ BY_HOLC_SURE <- SURE[, .(changes = .N, pct_res_to_business_or_industrial = round
                          pct_to_residential = round(100 * mean(to_group == "Residential"), 1)), by = holc][order(holc)]
 ft <- function(d) { d <- d[holc %in% c("A", "B", "D")]; if (length(unique(d$holc == "D")) < 2) return(NA_real_)
   fisher.test(table(d$holc == "D", d$direction %in% c("Residential to business", "Residential to industrial")))$p.value }
-TEST <- data.table(comparison = "Share of rezonings from residential to business or industrial, HOLC D vs A and B (Fisher's exact test)",
-                   p_all_placed = signif(ft(CH[!annexation & !is.na(holc)]), 3), p_sure_placements = signif(ft(SURE), 3))
+TEST <- rbind(data.table(period = "1925-1956", comparison = "Share of rezonings from residential to business or industrial, HOLC D vs A and B (Fisher's exact test)",
+                         p_all_placed = signif(ft(CH[!annexation & !is.na(holc)]), 3), p_sure_placements = signif(ft(SURE), 3)),
+              rbindlist(lapply(c("1925-1945", "1946-1954", "1955-1956 (new code)"), function(pp) data.table(period = pp, comparison = "Same, within the period",
+                         p_all_placed = signif(ft(CH[!annexation & !is.na(holc) & period == pp]), 3), p_sure_placements = signif(ft(SURE[period == pp]), 3)))))
+# the share of residential-to-business changes rose over time, and D areas' changes cluster late: compare within periods (Mantel-Haenszel)
+mh <- function(d) { d <- d[holc %in% c("A", "B", "D")]; tb <- table(factor(d$holc == "D", c(FALSE, TRUE)), factor(d$direction %in% c("Residential to business", "Residential to industrial"), c(FALSE, TRUE)), d$period)
+  tb <- tb[, , apply(tb, 3, function(z) all(rowSums(z) > 0)), drop = FALSE]; if (dim(tb)[3] < 1) return(c(NA, NA))
+  r <- tryCatch(mantelhaen.test(tb, exact = TRUE), error = function(e) NULL); if (is.null(r)) c(NA, NA) else c(signif(r$estimate, 3), signif(r$p.value, 3)) }
+m1 <- mh(CH[!annexation & !is.na(holc)]); m2 <- mh(SURE)
+TEST <- rbind(TEST, data.table(period = "1925-1956, within periods", comparison = sprintf("Same, comparing within each period (exact Mantel-Haenszel; common odds ratio %s, sure placements %s)", m1[1], m2[1]),
+                               p_all_placed = m1[2], p_sure_placements = m2[2]))
 BY_HOLC_PERIOD <- CH[!is.na(holc) & !annexation, .(changes = .N, res_to_business_or_industrial = sum(direction %in% c("Residential to business", "Residential to industrial")),
                                                    to_residential = sum(to_group == "Residential")), by = .(period, holc)][order(period, holc)]
 CH[, black_band := fcase(is.na(p_black), NA_character_, p_black < 1, "Under 1% Black", p_black < 10, "1-10% Black", default = "10%+ Black")]
