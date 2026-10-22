@@ -35,12 +35,12 @@ fuzzy_zone <- function(x) {                                            # first w
       rem <- sub("^\\W*(?:tt|11|1|n|u|H|\")?\\W*", "", rem, perl = TRUE); ch <- substr(rem, 1, 1)
       ch <- chartr("abcde38", "ABCDCBB", ch); return(c(names(ZW)[j], if (grepl("^[A-D]$", ch)) ch else NA)) } }   # no "E" districts in 1925; OCR reads a quoted "C" as "e"
   c(NA, NA) }
-new_code <- function(x) { m <- regmatches(x, regexpr("\\b([RBIPCM])\\s?[-~—–]\\s?([0-9OIl])", x, perl = TRUE)); if (!length(m)) return(NA_character_)
+new_code <- function(x) { m <- regmatches(x, regexpr("\\b([RBIPCM])\\s?[-~—–]{1,2}\\s?([0-9OIl])", x, perl = TRUE)); if (!length(m)) return(NA_character_)   # "R-2", OCR "R--0"
   paste0(substr(m, 1, 1), "-", chartr("OIl", "011", sub(".*[-~—–]\\s?", "", m))) }
 group_of <- function(type, code) fcase(!is.na(code) & substr(code, 1, 1) == "R", "Residential", !is.na(code) & substr(code, 1, 1) %in% c("B", "C"), "Business or commercial",
                                        !is.na(code) & substr(code, 1, 1) %in% c("I", "M"), "Industrial", !is.na(code) & substr(code, 1, 1) == "P", "Parking",
                                        !is.na(type), ZW[type], default = NA_character_)
-CHG <- "\\b\\S{0,2}(?:ha[nm]g\\S{0,3}|ch\\S{2,6}ed)\\s+(?:fr\\S{1,4}|\\.?tro\\S?|t[ro]a?m)\\s+"   # "changed from", and OCR forms such as "chaaged fror:i", "changed .troa", "changed tram"
+CHG <- "\\b\\S{0,2}(?:ha[nm]g\\S{0,3}|ch\\S{2,6}ed)\\s+(?:fr\\S{1,4}|\\.?tro\\S?|t[ro]a?m|f\\.?t?[ro]\\S{1,3})\\s+"   # "changed from", and OCR forms such as "chaaged fror:i", "changed .troa", "changed tram", "changed f.torn"
 ANX <- "classified\\s+as\\s+an?\\s+|(?:is|be)\\s+(?:hereby\\s+)?established\\s+as\\s+(?:an?\\s+)?|establish\\s+the\\s+zoning[^.;]{0,200}?\\s+as\\s+(?:an?\\s+)?"
 parse_doc <- function(f) {
   raw <- paste(readLines(f, warn = FALSE), collapse = " ")
@@ -49,18 +49,22 @@ parse_doc <- function(f) {
   # the ordinance ends where the attached papers begin: the Board of Adjustment's letter ("Gentlemen: ... Respectfully"), the owners'
   # petition, or the publisher's affidavit and newspaper reprint. Changes quoted there are proposals or repeats, not the enacted change.
   en <- regexpr("ENACTED", t); en <- if (en > 0) en else 300
-  mk <- c(regexpr("PUBLISHER'?S AFFIDAVIT|AFFIDAVIT OF PUBLICATION|Daily Journal|PUBLISHERS? AFFIDAVIT", t, ignore.case = TRUE),
-          gregexpr("Gentlemen|Respectfully|PETITION|BOARD OF ADJUSTMENT", t, ignore.case = FALSE)[[1]], gregexpr("respectfully", t)[[1]])
-  mk <- mk[mk > en]; cut <- if (length(mk)) min(mk) else -1
-  out <- list()
-  for (part in unique(c(if (cut > 0) substr(t, 1, cut - 1), t))) {
+  af <- regexpr("PUBLISHER'?S AFFIDAVIT|AFFIDAVIT OF PUBLICATION|Daily Journal|PUBLISHERS? AFFIDAVIT", t, ignore.case = TRUE)   # the newspaper reprint
+  lt <- c(gregexpr("Respectfully|PETITION|BOARD\\W+\\S{1,3}\\W+ADJU", t, perl = TRUE)[[1]],                                  # letters and petitions,
+          gregexpr("gent\\W{0,2}l?\\W{0,2}[ie]\\W{0,2}m\\W{0,2}[ae]n\\b|to the hono", t, perl = TRUE, ignore.case = TRUE)[[1]])   # OCR-tolerant
+  mk <- c(af, lt); mk <- mk[mk > en]; cut <- if (length(mk)) min(mk) else -1
+  rp <- if (af > en) { nx <- lt[lt > af]; substr(t, af, if (length(nx)) min(nx) - 1 else nchar(t)) } else ""
+  # read the ordinance itself; if it has no readable change, the newspaper reprint of it; the whole file (letters included) only if
+  # neither contains a change phrase at all
+  parts <- list(if (cut > 0) substr(t, 1, cut - 1) else t, rp, t); out <- list(); seen <- FALSE
+  for (pi in 1:3) { part <- parts[[pi]]; if (!nzchar(part) || (pi == 3 && (seen || cut <= 0))) next
     m <- gregexpr(CHG, part, perl = TRUE, ignore.case = TRUE)[[1]]
     a <- gregexpr(ANX, part, perl = TRUE, ignore.case = TRUE)[[1]]   # land zoned for the first time (annexations)
     starts <- sort(c(if (m[1] > 0) m + attr(m, "match.length") else integer(0), if (a[1] > 0) -(a + attr(a, "match.length")) else integer(0)))
     ends <- abs(starts)
     for (k in seq_along(starts)) { s0 <- abs(starts[k]); s <- substr(part, s0, s0 + 140)
-      if (starts[k] > 0) { sp <- regexpr("\\s(t[o0])\\s", s, perl = TRUE); if (sp < 0) next
-        fr <- substr(s, 1, sp - 1); to <- substr(s, sp + 4, sp + 70) } else { fr <- ""; to <- substr(s, 1, 60) }
+      if (starts[k] > 0) { sp <- regexpr("\\s(t\\.?[o0])\\s", s, perl = TRUE); if (sp < 0) next                  # "to", OCR "t.o"
+        fr <- substr(s, 1, sp - 1); to <- substr(s, sp + attr(sp, "match.length"), sp + 70) } else { fr <- ""; to <- substr(s, 1, 60) }
       fz <- if (nzchar(fr)) fuzzy_zone(fr) else c(NA, NA); tz <- fuzzy_zone(to); fc <- if (nzchar(fr)) new_code(fr) else NA; tc <- new_code(to)
       if (is.na(tz[1]) && is.na(tc)) next
       if (nzchar(fr) && is.na(fz[1]) && is.na(fc)) next
@@ -68,8 +72,7 @@ parse_doc <- function(f) {
       desc <- substr(part, s0, e); sec <- regexpr("SECTION\\s+[2-9]", desc, ignore.case = TRUE); if (sec > 200) desc <- substr(desc, 1, sec - 1)
       out[[length(out) + 1]] <- data.table(from_type = fz[1], from_letter = fz[2], from_code = fc, to_type = tz[1], to_letter = tz[2], to_code = tc,
                                            annexation = starts[k] < 0, desc = desc) }
-    if (length(out) || length(starts)) break }                           # the ordinance itself; the attached papers only if it has no change phrase at all
-                                                                         # (a change the scan made unreadable is not replaced by one quoted in a letter)
+    seen <- seen || length(starts) > 0; if (length(out)) break }
   if (!length(out)) return(NULL)
   d <- rbindlist(out); d[, ordinance := sub("\\.txt$", "", basename(f))]; d }
 CH <- rbindlist(lapply(FILES, parse_doc), fill = TRUE)
@@ -170,12 +173,15 @@ CH <- cbind(CH, PL[, !"i"])
 # dedupe: the same change repeated within an ordinance (e.g. quoted in the Board of Adjustment's letter)
 # the same change twice: same kind of change and either placed within 300 m of each other or with the same boundary text ("Beginning at ...");
 # separate areas changed in the same way by one ordinance are kept
-CH[, beg := { b <- tolower(gsub("[^A-Za-z0-9]", "", desc)); p <- regexpr("beginn", b); substr(ifelse(p > 0, substr(b, p, nchar(b)), b), 1, 80) }]
+# the same change twice = the same districts (a "?" letter matches any) and either the same boundary text ("Beginning at ..."), or one
+# copy without a readable boundary that lies within 300 m of the other or could not be placed
+CH[, has_beg := grepl("[a-z]?eginn|commenc|thence|\\bbeing\\b|\\blots?\\b|\\bblocks?\\b", tolower(substr(desc, 1, 250)))]
+CH[, beg := { b <- tolower(gsub("[^A-Za-z0-9]", "", desc)); p <- regexpr("[a-z]?eginn", b); substr(ifelse(p > 0, substr(b, p, nchar(b)), b), 1, 80) }]
+same <- function(x, y) x == y | (sub(" ?\\?$", "", x) == sub(" ?\\?$", "", y) & (grepl("\\?$", x) | grepl("\\?$", y)))
 CH[, row0 := .I]; CH <- CH[order(ordinance, row0)]
-CH[, dup := { r <- rep(FALSE, .N); if (.N > 1) for (a in 2:.N) for (b in 1:(a - 1)) if (!r[b] && from_group[a] %in% from_group[b] && to_group[a] %in% to_group[b] &&
-  ((!is.na(ux[a]) && !is.na(ux[b]) && sqrt((ux[a] - ux[b])^2 + (uy[a] - uy[b])^2) < 300) || beg[a] == beg[b])) { r[a] <- TRUE; break }; r }, by = ordinance]
+CH[, dup := { r <- rep(FALSE, .N); if (.N > 1) for (a in 2:.N) for (b in 1:(a - 1)) if (!r[b] && same(from[a], from[b]) && same(to[a], to[b]) &&
+  (beg[a] == beg[b] || ((!has_beg[a] || !has_beg[b]) && (is.na(ux[a]) || is.na(ux[b]) || sqrt((ux[a] - ux[b])^2 + (uy[a] - uy[b])^2) < 300)))) { r[a] <- TRUE; break }; r }, by = ordinance]
 # a change also mentioned in passing ("A portion of this area will be changed from ...") without its own boundary description
-CH[, has_beg := grepl("beginn|being|\\blots?\\b|\\bblocks?\\b", tolower(substr(desc, 1, 250)))]
 CH[, dup := dup | (!has_beg & any(has_beg)), by = .(ordinance, from, to)]
 CH <- CH[dup == FALSE][, c("beg", "row0", "dup", "has_beg") := NULL]
 print(CH[, .N, by = placed_by])

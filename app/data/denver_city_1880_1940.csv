@@ -1,6 +1,6 @@
 census,EDs,pop,pct_black,pct_fb,pct_fb_mexico,pct_fb_europe,pct_fb_asia,pct_hispanic,pct_foreign_parentage,pct_laborers,dissim_black,dissim_fb,dissim_hisp,dissim_laborers,geography
-1880,17,35632,2.73,24.4,0.02,20.6,0.7,0.33,25.2,6,0.407,0.135,0.381,0.337,Arapahoe County (Denver was ~90% of it)
-1900,129,133706,2.83,20,0.04,16.6,0.27,0.26,29.4,7.1,0.513,0.187,0.521,0.204,Arapahoe County (Denver was ~90% of it)
+1880,17,35632,2.73,24.4,0.02,20.6,0.7,0.33,25.2,6,0.407,0.135,0.381,0.337,"City of Denver (enumeration districts within the city, then in Arapahoe County)"
+1900,129,133706,2.83,20,0.04,16.6,0.27,0.26,29.4,7.1,0.513,0.187,0.521,0.204,"City of Denver (enumeration districts within the city, then in Arapahoe County)"
 1910,159,213444,2.54,18.8,0.11,16.4,0.42,0.34,29.4,7.2,0.531,0.217,0.469,0.332,City and County of Denver
 1920,313,258017,2.39,17,0.57,12.8,0.28,1.07,26.5,5.9,0.652,0.26,0.603,0.34,City and County of Denver
 1930,248,287832,2.5,11.5,0.5,9.8,0.19,1.4,25.8,5.8,0.765,0.212,0.659,0.265,City and County of Denver

@@ -1,3 +1,5 @@
+import os
+os.makedirs('work/txtlayer', exist_ok=True)
 import pymupdf as fitz, sys, os, glob
 src='work/pdf'
 for f in sorted(glob.glob(src+'/*.pdf')):

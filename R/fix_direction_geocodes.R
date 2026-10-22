@@ -8,6 +8,7 @@
 # Files changed in place: data/results/CO_directory_listings_1961-2002.csv, data/by_year/*.csv, app/data/{sites, site_years,
 # site_firms}.csv, and the same in data/full_inventory/ when present. The removed listings are written to
 # data/results/geocode_direction_conflicts.csv.
+for (p in c("data.table", "openxlsx", "readxl")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages(library(data.table))
 ELLS <- 39.7163; BWAY <- -104.9875; TOL <- 0.005   # baselines (Ellsworth Ave latitude, Broadway longitude); ~500 m tolerance
 dir_of <- function(street) { s <- toupper(trimws(ifelse(is.na(street), "", street)))
@@ -36,5 +37,80 @@ fix_set <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, by_year
       Y <- Y[!site_id %in% hit | paste(site_id, year) %in% paste(ly$site_id, ly$year)]; fwrite(Y, years_f) }
     if (!is.null(firms_f) && file.exists(firms_f)) { Fm <- fread(firms_f); if ("site_id" %in% names(Fm)) fwrite(Fm[!site_id %in% gone], firms_f) } }
 }
+# ---- rebuild every site that lost a listing from the listings it kept: point (mean of the remaining listings), address, years,
+# hazardous years, sectors, firm lists and counts. Sites are taken from the conflict log, so this also repairs sites patched by an
+# earlier run of this script (which only reset their first and last year). Inventory matches are left as they are: the point
+# moves by a few metres at most, within the 30 m site radius.
+rebuild <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, geojson_f = NULL, xlsx_f = NULL, label = "complete editions") {
+  of <- "data/results/geocode_direction_conflicts.csv"; if (!file.exists(listings_f) || !file.exists(of)) return(invisible(NULL))
+  lg <- fread(of, colClasses = c(site_id = "character")); hit <- unique(na.omit(lg[file == label]$site_id)); hit <- hit[nzchar(hit)]; if (!length(hit)) return(invisible(NULL))
+  L <- fread(listings_f, colClasses = c(sic = "character", zip = "character", est = "character", size = "character"))[site_id %in% hit & !is.na(lat)]
+  L[, fe := fe_hazard %in% c(TRUE, "TRUE", "True")]
+  yr <- function(y) { y <- sort(unique(y)); if (length(y) == 1) as.character(y) else paste0(min(y), "-", max(y)) }
+  firms <- function(d, sic = TRUE) { if (!nrow(d)) return(""); f <- d[, .(nm = name[1], y = yr(year), s = paste(unique(na.omit(sic[nzchar(sic)])), collapse = ","), y0 = min(year)), by = estab_id][order(y0, nm)]
+    paste(if (sic) sprintf("%s (%s%s)", f$nm, f$y, ifelse(nzchar(f$s), paste0("; SIC ", f$s), "")) else sprintf("%s (%s)", f$nm, f$y0), collapse = " | ") }
+  secs <- function(v) paste(sort(unique(unlist(strsplit(v[!is.na(v) & nzchar(v)], "\\s*;\\s*")))), collapse = "; ")
+  N <- L[, { m <- which.min((lat - mean(lat))^2 + (lon - mean(lon))^2)
+    .(lat = mean(lat), lon = mean(lon), address = toupper(street[m]), city = city[m], zip = zip[m], first_year = min(year), last_year = max(year),
+      hazard_years = paste(sort(unique(year[fe])), collapse = ";"), fe_hazard = any(fe), fe_sectors = secs(fe_sectors[fe]),
+      n_editions = uniqueN(year), n_establishments = uniqueN(estab_id), n_hazard_establishments = uniqueN(estab_id[fe]),
+      hazard_firms = firms(.SD[fe]), all_firms = firms(.SD, FALSE)) }, by = site_id]
+  gone <- setdiff(hit, N$site_id)
+  upd <- function(S) { S <- S[!site_id %in% gone]; cols <- intersect(setdiff(names(N), "site_id"), names(S)); if (!nrow(S)) return(S)
+    for (cc in cols) { v <- N[[cc]][match(S$site_id, N$site_id)]; i <- which(!is.na(match(S$site_id, N$site_id)))
+      if (length(i)) { cl <- class(S[[cc]])[1]; set(S, i, cc, switch(cl, logical = as.logical(v[i]), integer = as.integer(v[i]), numeric = as.numeric(v[i]), as.character(v[i]))) } }
+    S }
+  if (file.exists(sites_f)) { S <- fread(sites_f, colClasses = c(GEOID = "character", zip = "character", site_id = "character")); fwrite(upd(S), sites_f) }
+  if (!is.null(years_f) && file.exists(years_f)) { Y <- fread(years_f, colClasses = c(site_id = "character"))
+    NY <- L[, .(sectors = secs(fe_sectors[fe]), firms = paste(unique(name), collapse = " | ")), by = .(site_id, year)]
+    Y <- rbind(Y[!site_id %in% hit], NY[, names(Y), with = FALSE][order(site_id, year)]); setorder(Y, site_id, year); fwrite(Y, years_f) }
+  if (!is.null(firms_f) && file.exists(firms_f)) { Fm <- fread(firms_f, colClasses = c(site_id = "character")); if ("estab_id" %in% names(Fm))
+    fwrite(Fm[!site_id %in% hit | paste(site_id, estab_id) %in% paste(L$site_id, L$estab_id)], firms_f) }
+  if (!is.null(geojson_f) && file.exists(geojson_f) && requireNamespace("sf", quietly = TRUE)) {
+    G <- sf::st_read(geojson_f, quiet = TRUE); A <- as.data.table(sf::st_drop_geometry(G)); A[, site_id := as.character(site_id)]
+    keep <- !A$site_id %in% gone; A <- upd(A); k <- match(A$site_id, N$site_id)
+    xy <- sf::st_coordinates(G[keep, ]); xy[!is.na(k), 1] <- N$lon[k[!is.na(k)]]; xy[!is.na(k), 2] <- N$lat[k[!is.na(k)]]
+    out <- sf::st_as_sf(cbind(as.data.frame(A), x = xy[, 1], y = xy[, 2]), coords = c("x", "y"), crs = sf::st_crs(G))
+    file.remove(geojson_f); sf::st_write(out, geojson_f, quiet = TRUE) }
+  if (!is.null(xlsx_f) && file.exists(xlsx_f) && requireNamespace("openxlsx", quietly = TRUE) && requireNamespace("readxl", quietly = TRUE)) {
+    # the workbook is rebuilt in full (same sheets, formulas and layout as pipeline/export.py); editing it in place with openxlsx
+    # loses parts Excel needs
+    rd <- function(sh) as.data.table(readxl::read_excel(xlsx_f, sh, guess_max = 1e6, trim_ws = FALSE))   # readxl reads text exactly (openxlsx::read.xlsx mangles some)
+    SH <- c("Hidden sites", "All F&E hazardous sites", "Extended-sector sites")
+    D <- setNames(lapply(SH, function(sh) { X <- rd(sh); X[, site_id := as.character(site_id)]; X <- upd(X)
+      if (sh != "Extended-sector sites") X <- X[!site_id %in% N$site_id[!N$fe_hazard]]
+      k <- match(X$site_id, N$site_id); if ("lat" %in% names(X)) X[!is.na(k), `:=`(lat = N$lat[k[!is.na(k)]], lon = N$lon[k[!is.na(k)]])]; X }), SH)
+    RM <- rd("Read me"); CV <- rd("Coverage by edition")
+    RM[grepl("^Method", Item), Description := sub("[0-9]+ editions 1961", paste(uniqueN(CV$year), "editions 1961"), Description)]
+    wb <- openxlsx::createWorkbook(); hs <- openxlsx::createStyle(fontName = "Arial", fontSize = 10, textDecoration = "bold", fgFill = "#DDE5DD")
+    put <- function(sh, X) { openxlsx::addWorksheet(wb, sh); openxlsx::writeData(wb, sh, X, headerStyle = hs); openxlsx::freezePane(wb, sh, firstRow = TRUE)
+      openxlsx::setColWidths(wb, sh, seq_along(X), pmin(60, pmax(10, vapply(X, function(v) max(nchar(c("", as.character(head(v, 200)))), na.rm = TRUE), 1) + 2))) }
+    put("Read me", RM); openxlsx::setColWidths(wb, "Read me", 2, 120); openxlsx::addStyle(wb, "Read me", openxlsx::createStyle(wrapText = TRUE, valign = "top"), rows = 2:(nrow(RM) + 1), cols = 2)
+    RA <- c("Cleanup / contamination list", "TRI reporter", "RCRA hazardous-waste handler", "Solid waste facility", "Other EPA permit only", "Not on any list", "Total")
+    put("Summary", data.table(radar = RA, `F&E sites` = NA, share = NA, `high confidence` = NA, medium = NA, low = NA)); n <- nrow(D[["All F&E hazardous sites"]]) + 1
+    rg <- function(c) sprintf("'All F&E hazardous sites'!$%s$2:$%s$%d", c, c, n)
+    for (i in 2:7) { openxlsx::writeFormula(wb, "Summary", sprintf("COUNTIF(%s,A%d)", rg("B"), i), startCol = 2, startRow = i)
+      for (j in 1:3) openxlsx::writeFormula(wb, "Summary", sprintf("COUNTIFS(%s,$A%d,%s,\"%s\")", rg("B"), i, rg("C"), c("high", "medium", "low")[j]), startCol = 3 + j, startRow = i) }
+    for (i in 2:8) openxlsx::writeFormula(wb, "Summary", sprintf("IFERROR(B%d/$B$8,0)", i), startCol = 3, startRow = i)
+    for (j in c(2, 4:6)) openxlsx::writeFormula(wb, "Summary", sprintf("SUM(%s2:%s7)", LETTERS[j], LETTERS[j]), startCol = j, startRow = 8)
+    openxlsx::addStyle(wb, "Summary", openxlsx::createStyle(numFmt = "0.0%"), rows = 2:8, cols = 3)
+    openxlsx::writeData(wb, "Summary", "Counts recalculate from the All F&E hazardous sites sheet.", startCol = 1, startRow = 10)
+    for (sh in SH) put(sh, D[[sh]]); put("Coverage by edition", CV)
+    openxlsx::addStyle(wb, "Coverage by edition", openxlsx::createStyle(numFmt = "0%"), rows = 2:(nrow(CV) + 1), cols = 4:5, gridExpand = TRUE)
+    openxlsx::modifyBaseFont(wb, fontSize = 10, fontName = "Arial"); openxlsx::saveWorkbook(wb, xlsx_f, overwrite = TRUE)
+    # some openxlsx/zip versions leave sheet links to drawing files they did not write, which strict readers refuse: drop those links
+    td <- tempfile(); utils::unzip(xlsx_f, exdir = td)
+    for (rf in list.files(file.path(td, "xl", "worksheets", "_rels"), full.names = TRUE)) { x <- paste(readLines(rf, warn = FALSE), collapse = "")
+      rel <- regmatches(x, gregexpr("<Relationship [^>]*/>", x))[[1]]; tgt <- sub('.*Target="([^"]+)".*', "\\1", rel)
+      miss <- !file.exists(file.path(td, "xl", "worksheets", tgt)); if (any(miss)) { for (r in rel[miss]) x <- sub(r, "", x, fixed = TRUE); writeLines(x, rf) } }
+    for (sf in list.files(file.path(td, "xl", "worksheets"), "\\.xml$", full.names = TRUE)) { x <- paste(readLines(sf, warn = FALSE, encoding = "UTF-8"), collapse = "\n")
+      for (id in regmatches(x, gregexpr('<(drawing|legacyDrawing) r:id="[^"]+"/>', x))[[1]]) { rid <- sub('.*r:id="([^"]+)".*', "\\1", id)
+        rf <- file.path(td, "xl", "worksheets", "_rels", paste0(basename(sf), ".rels")); if (!file.exists(rf) || !grepl(paste0('Id="', rid, '"'), paste(readLines(rf, warn = FALSE), collapse = ""))) x <- sub(id, "", x, fixed = TRUE) }
+      writeLines(x, sf, useBytes = TRUE) }
+    f <- normalizePath(xlsx_f); file.remove(f); old <- setwd(td); utils::zip(f, list.files(".", recursive = TRUE, all.files = TRUE), flags = "-qX9"); setwd(old) }
+  message("rebuilt ", nrow(N), " sites from their remaining listings; ", length(gone), " sites with none left removed") }
 fix_set("data/results/CO_directory_listings_1961-2002.csv", "app/data/sites.csv", "app/data/site_years.csv", "app/data/site_firms.csv", "data/by_year", "complete editions")
 fix_set("data/full_inventory/CO_directory_listings_1961-2002.csv", "data/full_inventory/sites.csv", NULL, "data/full_inventory/site_firms.csv", "data/full_inventory/by_year", "full inventory")
+rebuild("data/results/CO_directory_listings_1961-2002.csv", "app/data/sites.csv", "app/data/site_years.csv", "app/data/site_firms.csv",
+        "data/results/CO_historical_industrial_sites.geojson", "data/results/CO_hazardous_sites_1961-2002.xlsx")
+rebuild("data/full_inventory/CO_directory_listings_1961-2002.csv", "data/full_inventory/sites.csv", NULL, "data/full_inventory/site_firms.csv", label = "full inventory")

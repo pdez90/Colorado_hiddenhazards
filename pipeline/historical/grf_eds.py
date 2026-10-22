@@ -28,7 +28,8 @@ ip = pd.read_csv('work/census/denver_ed_1880_1940.csv')
 
 def ipums_ed(year):
     """IPUMS ENUMDIST -> the ED label used in the GRF (and in Brown's 1880 layer); sums counts, population-weights means/medians."""
-    x = ip[(ip.YEAR == year) & (ip.COUNTYICP.isin([50, 310]))].copy()
+    x = ip[(ip.YEAR == year) & (ip.COUNTYICP == (50 if year < 1910 else 310))].copy()   # Denver was in Arapahoe County (50) until 1902; after that
+    # South Arapahoe reuses Denver's ED numbers, so pooling the two counties would add its people to Denver's EDs (as R/grf_eds.R does)
     if year == 1940:
         e = x.ENUMDIST.astype(str).str.zfill(7)
         x['ED'] = e.str[2:6].astype(int).astype(str) + e.str[6].map({'0': '', '1': 'A', '2': 'B', '3': 'C'}).fillna('')
@@ -137,6 +138,8 @@ def main():
         cov = E['pop'].notna().sum()
         print(f'{year}: {len(E)} ED polygons ({cov} with IPUMS totals, {I.ED.nunique()} EDs in IPUMS), {n_used:,} addresses used after outlier removal; median ED area {E.area_km2.median():.2f} km2')
         log.append(dict(year=year, addresses=n_addr, geocoded=n_ok, used=n_used, eds=len(E), eds_ipums=int(I.ED.nunique()), median_area_km2=round(float(E.area_km2.median()), 3)))
-    pd.DataFrame(log).to_csv(f'{OUT}/ed_geocoding.csv', index=False, mode='a', header=not os.path.exists(f'{OUT}/ed_geocoding.csv'))
+    lg = pd.DataFrame(log); f = f'{OUT}/ed_geocoding.csv'                 # replace this year's rows rather than appending duplicates
+    if os.path.exists(f): old = pd.read_csv(f); lg = pd.concat([old[~old.year.isin(lg.year.unique())] if 'year' in old and 'year' in lg else old.iloc[0:0], lg])
+    lg.to_csv(f, index=False)
 
 if __name__ == '__main__': main()

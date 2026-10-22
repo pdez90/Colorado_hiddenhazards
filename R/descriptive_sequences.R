@@ -122,8 +122,10 @@ B2 <- W2[, .(tracts = .N, pop_1970 = round(sum(pop_1970, na.rm = TRUE)), km_note
 B2[, `:=`(chg_hisp_1970_90 = pct_hisp_1990 - pct_hisp_1970, chg_black_1970_90 = pct_black_1990 - pct_black_1970, chg_poverty_1970_90 = pct_poverty_1990 - pct_poverty_1970, chg_owner_1970_90 = pct_owner_1990 - pct_owner_1970)]
 fwrite(B2, file.path(O, "tract_first_arrival_1965_1992.csv"))
 # ---------------------------------------------------------------- C. timeline of each future D area
-ca <- function(y) { e <- E[[as.character(y)]]; x <- suppressWarnings(st_intersection(e[, c("pop", "black", "hisp")], H[H$cls == "D", "area_id"])); e_a <- as.numeric(st_area(e))
-  w <- as.numeric(st_area(x)) / e_a[match(attr(x, "idx")[, 1], seq_len(nrow(e)))]; if (is.null(attr(x, "idx"))) w <- 1
+# area weighting as in aw() above: carry each district's own area through the intersection, so a piece counts area(piece) / area(district)
+#   of the district's people (st_intersection of two sf objects keeps no "idx" attribute, so it cannot be used to look the area up)
+ca <- function(y) { e <- E[[as.character(y)]]; e$src_a <- as.numeric(st_area(e)); x <- suppressWarnings(st_intersection(e[, c("pop", "black", "hisp", "src_a")], H[H$cls == "D", "area_id"]))
+  w <- as.numeric(st_area(x)) / x$src_a
   d <- as.data.table(st_drop_geometry(x))[, w := w][, .(pop = sum(pop * w), black = sum(black * w, na.rm = TRUE), hisp = sum(hisp * w, na.rm = TRUE)), by = area_id][, census := y]
   city <- as.data.table(st_drop_geometry(e))[, .(cb = sum(black, na.rm = TRUE) / sum(pop), ch = sum(hisp, na.rm = TRUE) / sum(pop))]; d[, `:=`(lq_black = (black / pop) / city$cb, lq_hisp = (hisp / pop) / city$ch)] }
 TL <- rbindlist(lapply(YRS, function(y) tryCatch(ca(y), error = function(e) NULL)))

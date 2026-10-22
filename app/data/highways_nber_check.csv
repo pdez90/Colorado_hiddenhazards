@@ -1,6 +1,6 @@
-route,nber_miles,nber_first_opened,nber_last_opened,ohm_km,ohm_first,ohm_last
-I-225,1.6,1975,1976,,,
-I-25,15.1,1958,1965,45.8,1951,2006
-I-270,,,,3.9,1968,1968
-I-70,15,1965,1968,21.2,1951,2022
-I-76,,,,0.3,1985,1985
+route,nber_miles,nber_first_opened,nber_last_opened,ohm_km,ohm_km_in_service,ohm_first,ohm_last
+I-225,1.6,1975,1976,,,,
+I-25,15.1,1958,1965,23,21,1951,2006
+I-270,,,,2.5,2.5,1968,1968
+I-70,15,1965,1968,11.3,5.3,1951,2022
+I-76,,,,0.2,0.2,1985,1985

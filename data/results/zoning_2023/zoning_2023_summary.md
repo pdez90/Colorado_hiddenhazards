@@ -23,22 +23,24 @@ Source: Denver-metro zoning, 3 Oct 2023, compiled by C. Makarewicz (CU Denver) f
 | Industrial B |  3.76 | 59.9 |  2.6 | 16.5 | 11.8 | 0.9 | 8.3 |
 
 ## Hazardous sites by 2023 zoning (% of sites)
+Sites in the study area that fall in no 2023 polygon (mostly suburban street geocodes on unzoned right-of-way) take the nearest polygon within 50 m: 126 of 1363 1965-92 sites and 1 of 320 pre-1960 trades; 0 and 0 remain unmatched and are left out.
+
 | series | where | n | Industrial (housing not allowed) | Industrial mixed use (housing allowed) | Mixed use with housing | Residential | Commercial | Open space, civic, other |
 |---|---|---|---|---|---|---|---|---
 |
-| Hazardous trades before 1960 (street level) | Denver County |  316 |  7.3 |  8.5 | 69.6 | 10.4 | 0.9 | 3.2 |
-| Hazardous trades before 1960 (street level) | Study area |  319 |  7.2 |  8.5 | 69.6 | 10.7 | 0.9 | 3.1 |
-| Hazardous-sector manufacturers 1965-1992 | Denver County |  959 | 38.9 | 13.5 | 33.6 | 11.3 | 1.1 | 1.7 |
-| Hazardous-sector manufacturers 1965-1992 | Study area | 1237 | 43.2 | 10.8 | 29.7 | 12.9 | 2.0 | 1.5 |
-| Hazardous-sector manufacturers 1965-1992 | Suburban study tracts |  278 | 57.9 |  1.8 | 16.2 | 18.3 | 5.0 | 0.7 |
+| Hazardous trades before 1960 (street level) | Denver County |  317 |  7.6 |  8.5 | 69.4 | 10.4 | 0.9 | 3.2 |
+| Hazardous trades before 1960 (street level) | Study area |  320 |  7.5 |  8.4 | 69.4 | 10.6 | 0.9 | 3.1 |
+| Hazardous-sector manufacturers 1965-1992 | Denver County |  965 | 39.1 | 13.4 | 33.6 | 11.2 | 1.1 | 1.7 |
+| Hazardous-sector manufacturers 1965-1992 | Study area | 1363 | 45.7 |  9.8 | 27.9 | 12.5 | 2.5 | 1.5 |
+| Hazardous-sector manufacturers 1965-1992 | Suburban study tracts |  398 | 61.8 |  1.3 | 14.1 | 15.8 | 5.8 | 1.3 |
 
 ## 1965-92 sites by the decade last listed
 | last_decade | n | Industrial (housing not allowed) | Industrial mixed use (housing allowed) | Mixed use with housing | Residential | Commercial | Open space, civic, other |
 |---|---|---|---|---|---|---|---
 |
-| 1965-1970 | 243 | 25.1 | 10.3 | 44.9 | 16.0 | 2.5 | 1.2 |
-| 1971-1980 | 297 | 33.0 |  7.7 | 38.7 | 16.5 | 2.7 | 1.3 |
-| 1981-1992 | 697 | 53.8 | 12.3 | 20.5 | 10.2 | 1.6 | 1.6 |
+| 1965-1970 | 251 | 25.1 | 10 | 44.6 | 15.9 | 3.2 | 1.2 |
+| 1971-1980 | 327 | 35.5 |  7 | 36.1 | 15.9 | 4.0 | 1.5 |
+| 1981-1992 | 785 | 56.6 | 11 | 19.1 | 10.1 | 1.7 | 1.7 |
 
 ## 2020 composition by the tract's 2023 industrial share (population-weighted means)
 | group | tracts | residents | pct_hispanic | pct_black | pct_white | pct_foreign_born | pct_poverty | pct_owner_occupied |

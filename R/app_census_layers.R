@@ -124,6 +124,6 @@ if (file.exists(ipf)) {
                  pct_hispanic = round(100 * sum(hisp) / sum(pop), 2), pct_foreign_parentage = round(100 * sum(foreign_parentage) / sum(pop), 1),
                  pct_laborers = round(100 * sum(laborers, na.rm = TRUE) / sum(pop), 1),
                  dissim_black = dis(black, pop - black), dissim_fb = dis(fb, pop - fb), dissim_hisp = dis(hisp, pop - hisp), dissim_laborers = dis(laborers, pop - laborers),
-                 geography = fifelse(YEAR[1] < 1910, "Arapahoe County (Denver was ~90% of it)", "City and County of Denver")), by = .(census = YEAR)][order(census)]
+                 geography = fifelse(YEAR[1] < 1910, "City of Denver (enumeration districts within the city, then in Arapahoe County)", "City and County of Denver")), by = .(census = YEAR)][order(census)]
   fwrite(city, file.path(A, "denver_city_1880_1940.csv")); print(city[, .(census, EDs, pop, pct_black, pct_fb, pct_hispanic, dissim_black, dissim_fb)])
 } else message("denver_city_1880_1940.csv skipped (run R/fetch_ipums_fullcount.R)")

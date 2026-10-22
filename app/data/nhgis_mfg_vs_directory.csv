@@ -1,37 +1,37 @@
 census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_street,ratio_haz_to_census,estab_label
-1880,005,Arapahoe,259,,,1,0,0,Number of Manufacturing Establishments
+1880,005,Arapahoe,259,,,91,0,0.35,Number of Manufacturing Establishments
 1880,065,Lake,82,,,73,0,0.89,Number of Manufacturing Establishments
-1880,013,Boulder,31,,,23,0,0.74,Number of Manufacturing Establishments
+1880,013,Boulder,31,,,22,0,0.71,Number of Manufacturing Establishments
 1880,069,Larimer,25,,,22,0,0.88,Number of Manufacturing Establishments
 1880,019,Clear Creek,23,,,34,0,1.48,Number of Manufacturing Establishments
 1880,027,Custer,22,,,6,0,0.27,Number of Manufacturing Establishments
-1880,041,El Paso,22,,,11,0,0.5,Number of Manufacturing Establishments
+1880,041,El Paso,22,,,14,0,0.64,Number of Manufacturing Establishments
 1880,059,Jefferson,22,,,33,0,1.5,Number of Manufacturing Establishments
 1880,071,Las Animas,17,,,11,0,0.65,Number of Manufacturing Establishments
 1880,047,Gilpin,12,,,23,0,1.92,Number of Manufacturing Establishments
 1880,055,Huerfano,12,,,10,0,0.83,Number of Manufacturing Establishments
 1880,043,Fremont,10,,,3,0,0.3,Number of Manufacturing Establishments
-1880,051,Gunnison,8,,,11,0,1.38,Number of Manufacturing Establishments
+1880,051,Gunnison,8,,,14,0,1.75,Number of Manufacturing Establishments
 1880,093,Park,7,,,10,0,1.43,Number of Manufacturing Establishments
 1880,015,Chaffee,6,,,11,0,1.83,Number of Manufacturing Establishments
-1880,091,Ouray,6,,,10,0,1.67,Number of Manufacturing Establishments
-1880,001,Adams,5,,,0,0,0,Number of Manufacturing Establishments
+1880,091,Ouray,6,,,12,0,2,Number of Manufacturing Establishments
 1880,039,Elbert,5,,,0,0,0,Number of Manufacturing Establishments
-1880,009,Baca,4,,,0,0,0,Number of Manufacturing Establishments
+1880,101,Pueblo,5,,,13,0,2.6,Number of Manufacturing Establishments
 1880,035,Douglas,4,,,1,0,0.25,Number of Manufacturing Establishments
 1880,053,Hinsdale,4,,,6,0,1.5,Number of Manufacturing Establishments
-1880,017,Cheyenne,3,,,0,0,0,Number of Manufacturing Establishments
-1880,005,Arapahoe,2,,,1,0,0.5,Number of Manufacturing Establishments
-1880,011,Bent,2,,,0,0,0,Number of Manufacturing Establishments
-1880,021,Conejos,2,,,0,0,0,Number of Manufacturing Establishments
+1880,109,Saguache,4,,,2,0,0.5,Number of Manufacturing Establishments
+1880,117,Summit,3,,,14,0,4.67,Number of Manufacturing Establishments
+1880,021,Conejos,2,,,5,0,2.5,Number of Manufacturing Establishments
 1880,023,Costilla,2,,,0,0,0,Number of Manufacturing Establishments
-1880,011,Bent,1,,,0,0,0,Number of Manufacturing Establishments
+1880,105,Rio Grande,2,,,11,0,5.5,Number of Manufacturing Establishments
+1880,111,San Juan,2,,,10,0,5,Number of Manufacturing Establishments
+1880,011,Bent,1,,,2,0,2,Number of Manufacturing Establishments
 1880,049,Grand,1,,,1,0,1,Number of Manufacturing Establishments
-1880,007,Archuleta,0,,,0,0,0,Number of Manufacturing Establishments
-1880,023,Costilla,0,,,0,0,0,Number of Manufacturing Establishments
 1880,067,La Plata,0,,,3,0,3,Number of Manufacturing Establishments
-1890,005,Arapahoe,781,10921,30048472,0,0,0,Number of Manufacturing Establishments Reporting
-1890,001,Adams,112,1556,3626200,0,0,0,Number of Manufacturing Establishments Reporting
+1880,107,Routt,0,,,1,0,1,Number of Manufacturing Establishments
+1880,123,Weld,0,,,5,0,5,Number of Manufacturing Establishments
+1890,005,Arapahoe,781,10921,30048472,172,21,0.22,Number of Manufacturing Establishments Reporting
+1890,101,Pueblo,112,1556,3626200,14,0,0.12,Number of Manufacturing Establishments Reporting
 1890,065,Lake,62,366,908531,3,0,0.05,Number of Manufacturing Establishments Reporting
 1890,071,Las Animas,60,483,904656,0,0,0,Number of Manufacturing Establishments Reporting
 1890,097,Pitkin,52,309,861065,7,0,0.13,Number of Manufacturing Establishments Reporting
@@ -44,19 +44,16 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1890,019,Clear Creek,18,48,84869,5,0,0.28,Number of Manufacturing Establishments Reporting
 1890,015,Chaffee,16,265,310654,3,0,0.19,Number of Manufacturing Establishments Reporting
 1890,021,Conejos,15,68,67020,2,0,0.13,Number of Manufacturing Establishments Reporting
-1890,023,Costilla,15,96,378565,1,0,0.07,Number of Manufacturing Establishments Reporting
 1890,055,Huerfano,15,43,59877,0,0,0,Number of Manufacturing Establishments Reporting
+1890,123,Weld,15,96,378565,6,0,0.4,Number of Manufacturing Establishments Reporting
 1890,051,Gunnison,12,63,240250,8,0,0.67,Number of Manufacturing Establishments Reporting
 1890,077,Mesa,11,94,139451,0,0,0,Number of Manufacturing Establishments Reporting
 1890,085,Montrose,11,63,232260,0,0,0,Number of Manufacturing Establishments Reporting
 1890,013,Boulder,10,108,431383,10,0,1,Number of Manufacturing Establishments Reporting
 1890,047,Gilpin,9,60,141650,3,0,0.33,Number of Manufacturing Establishments Reporting
-1890,013,Boulder,8,14,26573,10,0,1.25,Number of Manufacturing Establishments Reporting
-1890,021,Conejos,7,11,17426,2,0,0.29,Number of Manufacturing Establishments Reporting
+1890,113,San Miguel,8,14,26573,0,0,0,Number of Manufacturing Establishments Reporting
 1890,087,Morgan,7,20,13515,0,0,0,Number of Manufacturing Establishments Reporting
-1890,003,Alamosa,6,16,13350,1,0,0.17,Number of Manufacturing Establishments Reporting
-1890,007,Archuleta,6,30,28400,0,0,0,Number of Manufacturing Establishments Reporting
-1890,017,Cheyenne,6,31,74800,4,0,0.67,Number of Manufacturing Establishments Reporting
+1890,121,Washington,7,11,17426,2,0,0.29,Number of Manufacturing Establishments Reporting
 1890,029,Delta,6,22,20815,0,0,0,Number of Manufacturing Establishments Reporting
 1890,035,Douglas,6,59,72240,0,0,0,Number of Manufacturing Establishments Reporting
 1890,039,Elbert,6,7,7175,0,0,0,Number of Manufacturing Establishments Reporting
@@ -64,37 +61,40 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1890,063,Kit Carson,6,8,7420,0,0,0,Number of Manufacturing Establishments Reporting
 1890,089,Otero,6,118,269290,1,0,0.17,Number of Manufacturing Establishments Reporting
 1890,099,Prowers,6,9,9550,0,0,0,Number of Manufacturing Establishments Reporting
-1890,025,Crowley,5,9,8760,0,0,0,Number of Manufacturing Establishments Reporting
+1890,103,Rio Blanco,6,16,13350,1,0,0.17,Number of Manufacturing Establishments Reporting
+1890,107,Routt,6,30,28400,3,0,0.5,Number of Manufacturing Establishments Reporting
+1890,117,Summit,6,31,74800,0,0,0,Number of Manufacturing Establishments Reporting
 1890,027,Custer,5,14,17680,0,0,0,Number of Manufacturing Establishments Reporting
 1890,053,Hinsdale,5,28,41505,1,0,0.2,Number of Manufacturing Establishments Reporting
 1890,061,Kiowa,5,6,4335,0,0,0,Number of Manufacturing Establishments Reporting
-1890,005,Arapahoe,4,24,73051,0,0,0,Number of Manufacturing Establishments Reporting
+1890,125,Yuma,5,9,8760,0,0,0,Number of Manufacturing Establishments Reporting
 1890,011,Bent,4,8,12870,0,0,0,Number of Manufacturing Establishments Reporting
 1890,033,Dolores,4,10,5800,0,0,0,Number of Manufacturing Establishments Reporting
 1890,037,Eagle,4,19,29600,1,0,0.25,Number of Manufacturing Establishments Reporting
 1890,049,Grand,4,16,18380,1,0,0.25,Number of Manufacturing Establishments Reporting
-1890,009,Baca,3,16,17875,0,0,0,Number of Manufacturing Establishments Reporting
-1890,015,Chaffee,3,5,6055,3,0,1,Number of Manufacturing Establishments Reporting
-1890,023,Costilla,3,8,24874,1,0,0.33,Number of Manufacturing Establishments Reporting
+1890,105,Rio Grande,4,24,73051,1,0,0.25,Number of Manufacturing Establishments Reporting
+1890,023,Costilla,3,8,24874,2,0,0.67,Number of Manufacturing Establishments Reporting
 1890,083,Montezuma,3,16,11400,0,0,0,Number of Manufacturing Establishments Reporting
-1890,011,Bent,2,,,0,0,0,Number of Manufacturing Establishments Reporting
+1890,109,Saguache,3,16,17875,1,0,0.33,Number of Manufacturing Establishments Reporting
+1890,115,Sedgwick,3,5,6055,2,0,0.67,Number of Manufacturing Establishments Reporting
 1890,017,Cheyenne,2,,,4,0,2,Number of Manufacturing Establishments Reporting
 1890,091,Ouray,2,,,1,0,0.5,Number of Manufacturing Establishments Reporting
+1890,111,San Juan,2,,,2,0,1,Number of Manufacturing Establishments Reporting
 1890,007,Archuleta,1,,,0,0,0,Number of Manufacturing Establishments Reporting
 1890,009,Baca,1,,,0,0,0,Number of Manufacturing Establishments Reporting
 1890,073,Lincoln,1,,,0,0,0,Number of Manufacturing Establishments Reporting
 1890,075,Logan,1,,,2,0,2,Number of Manufacturing Establishments Reporting
 1890,095,Phillips,1,,,0,0,0,Number of Manufacturing Establishments Reporting
-1890,049,Grand,0,0,0,1,0,1,Number of Manufacturing Establishments Reporting
-1900,005,Arapahoe,1516,11694,44985904,0,0,0,Total Number of Manufacturing Establishments
-1900,001,Adams,245,4911,30797780,0,0,0,Total Number of Manufacturing Establishments
-1900,019,Clear Creek,216,790,2550497,0,0,0,Total Number of Manufacturing Establishments
+1890,049,Grand,0,0,0,0,0,0,Number of Manufacturing Establishments Reporting
+1900,005,Arapahoe,1516,11694,44985904,5,3,0,Total Number of Manufacturing Establishments
+1900,101,Pueblo,245,4911,30797780,0,0,0,Total Number of Manufacturing Establishments
+1900,119,Teller,216,790,2550497,0,0,0,Total Number of Manufacturing Establishments
 1900,041,El Paso,193,1152,2278789,0,0,0,Total Number of Manufacturing Establishments
 1900,013,Boulder,137,443,1372894,0,0,0,Total Number of Manufacturing Establishments
 1900,065,Lake,119,1584,8015270,1,0,0.01,Total Number of Manufacturing Establishments
 1900,071,Las Animas,106,690,1528821,0,0,0,Total Number of Manufacturing Establishments
-1900,023,Costilla,86,124,738964,0,0,0,Total Number of Manufacturing Establishments
 1900,069,Larimer,86,106,671709,0,0,0,Total Number of Manufacturing Establishments
+1900,123,Weld,86,124,738964,0,0,0,Total Number of Manufacturing Establishments
 1900,097,Pitkin,59,94,261505,0,0,0,Total Number of Manufacturing Establishments
 1900,043,Fremont,57,368,1156186,0,0,0,Total Number of Manufacturing Establishments
 1900,077,Mesa,52,255,433502,0,0,0,Total Number of Manufacturing Establishments
@@ -103,7 +103,7 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1900,019,Clear Creek,42,30,106447,0,0,0,Total Number of Manufacturing Establishments
 1900,067,La Plata,42,346,2729428,0,0,0,Total Number of Manufacturing Establishments
 1900,045,Garfield,34,105,357778,0,0,0,Total Number of Manufacturing Establishments
-1900,013,Boulder,32,68,174345,0,0,0,Total Number of Manufacturing Establishments
+1900,113,San Miguel,32,68,174345,0,0,0,Total Number of Manufacturing Establishments
 1900,059,Jefferson,30,124,485102,0,0,0,Total Number of Manufacturing Establishments
 1900,029,Delta,28,28,112117,0,0,0,Total Number of Manufacturing Establishments
 1900,051,Gunnison,27,95,283298,0,0,0,Total Number of Manufacturing Establishments
@@ -111,42 +111,42 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1900,093,Park,22,93,131686,0,0,0,Total Number of Manufacturing Establishments
 1900,099,Prowers,22,36,188384,0,0,0,Total Number of Manufacturing Establishments
 1900,087,Morgan,21,17,33748,0,0,0,Total Number of Manufacturing Establishments
-1900,007,Archuleta,20,26,55760,0,0,0,Total Number of Manufacturing Establishments
 1900,055,Huerfano,20,14,78415,0,0,0,Total Number of Manufacturing Establishments
+1900,107,Routt,20,26,55760,1,0,0.05,Total Number of Manufacturing Establishments
 1900,015,Chaffee,19,451,634798,0,0,0,Total Number of Manufacturing Establishments
-1900,005,Arapahoe,17,69,247215,0,0,0,Total Number of Manufacturing Establishments
+1900,105,Rio Grande,17,69,247215,0,0,0,Total Number of Manufacturing Establishments
 1900,011,Bent,16,18,75330,0,0,0,Total Number of Manufacturing Establishments
 1900,027,Custer,16,13,35497,0,0,0,Total Number of Manufacturing Establishments
 1900,035,Douglas,16,45,96968,0,0,0,Total Number of Manufacturing Establishments
 1900,021,Conejos,13,96,171147,0,0,0,Total Number of Manufacturing Establishments
-1900,017,Cheyenne,12,9,32423,0,0,0,Total Number of Manufacturing Establishments
 1900,053,Hinsdale,12,12,30242,0,0,0,Total Number of Manufacturing Establishments
+1900,117,Summit,12,9,32423,0,0,0,Total Number of Manufacturing Establishments
 1900,075,Logan,11,7,16697,0,0,0,Total Number of Manufacturing Establishments
 1900,091,Ouray,10,36,82676,0,0,0,Total Number of Manufacturing Establishments
-1900,011,Bent,9,24,80583,0,0,0,Total Number of Manufacturing Establishments
-1900,015,Chaffee,9,3,22734,0,0,0,Total Number of Manufacturing Establishments
 1900,039,Elbert,9,6,40088,0,0,0,Total Number of Manufacturing Establishments
-1900,003,Alamosa,8,9,35462,0,0,0,Total Number of Manufacturing Establishments
+1900,111,San Juan,9,24,80583,0,0,0,Total Number of Manufacturing Establishments
+1900,115,Sedgwick,9,3,22734,0,0,0,Total Number of Manufacturing Establishments
 1900,037,Eagle,8,47,53494,0,0,0,Total Number of Manufacturing Establishments
 1900,083,Montezuma,8,65,232555,0,0,0,Total Number of Manufacturing Establishments
+1900,103,Rio Blanco,8,9,35462,0,0,0,Total Number of Manufacturing Establishments
 1900,085,Montrose,6,23,102628,0,0,0,Total Number of Manufacturing Establishments
 1900,007,Archuleta,5,17,40248,0,0,0,Total Number of Manufacturing Establishments
-1900,009,Baca,5,8,18516,0,0,0,Total Number of Manufacturing Establishments
-1900,021,Conejos,5,8,17883,0,0,0,Total Number of Manufacturing Establishments
 1900,023,Costilla,5,15,191136,0,0,0,Total Number of Manufacturing Establishments
 1900,095,Phillips,5,8,12698,0,0,0,Total Number of Manufacturing Establishments
-1900,025,Crowley,4,2,7077,0,0,0,Total Number of Manufacturing Establishments
+1900,109,Saguache,5,8,18516,0,0,0,Total Number of Manufacturing Establishments
+1900,121,Washington,5,8,17883,0,0,0,Total Number of Manufacturing Establishments
 1900,033,Dolores,4,12,22600,0,0,0,Total Number of Manufacturing Establishments
 1900,049,Grand,4,1,2950,0,0,0,Total Number of Manufacturing Establishments
+1900,125,Yuma,4,2,7077,0,0,0,Total Number of Manufacturing Establishments
 1900,063,Kit Carson,3,3,21704,0,0,0,Total Number of Manufacturing Establishments
 1900,017,Cheyenne,2,,,0,0,0,Total Number of Manufacturing Establishments
 1900,061,Kiowa,2,,,0,0,0,Total Number of Manufacturing Establishments
 1900,073,Lincoln,2,,,0,0,0,Total Number of Manufacturing Establishments
 1900,009,Baca,0,0,0,0,0,0,Total Number of Manufacturing Establishments
 1920,031,Denver,1097,16635,125411272,170,38,0.15,Manufacturing Establishments
-1920,001,Adams,143,6585,47568936,1,0,0.01,Manufacturing Establishments
+1920,101,Pueblo,143,6585,47568936,7,3,0.05,Manufacturing Establishments
 1920,041,El Paso,141,848,4788504,9,4,0.06,Manufacturing Establishments
-1920,023,Costilla,98,794,9743802,0,0,0,Manufacturing Establishments
+1920,123,Weld,98,794,9743802,20,1,0.2,Manufacturing Establishments
 1920,013,Boulder,95,713,9660142,8,2,0.08,Manufacturing Establishments
 1920,069,Larimer,87,1013,13440084,7,2,0.08,Manufacturing Establishments
 1920,071,Las Animas,60,884,3943416,3,0,0.05,Manufacturing Establishments
@@ -161,16 +161,16 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1920,051,Gunnison,27,58,179044,2,0,0.07,Manufacturing Establishments
 1920,085,Montrose,26,96,701936,2,0,0.08,Manufacturing Establishments
 1920,005,Arapahoe,24,117,860974,1,0,0.04,Manufacturing Establishments
-1920,005,Arapahoe,24,74,673531,1,0,0.04,Manufacturing Establishments
-1920,025,Crowley,24,36,210229,0,0,0,Manufacturing Establishments
 1920,029,Delta,24,35,344786,2,0,0.08,Manufacturing Establishments
+1920,105,Rio Grande,24,74,673531,2,0,0.08,Manufacturing Establishments
+1920,125,Yuma,24,36,210229,3,0,0.12,Manufacturing Establishments
 1920,045,Garfield,23,43,333815,4,0,0.17,Manufacturing Establishments
 1920,059,Jefferson,23,220,907169,0,0,0,Manufacturing Establishments
 1920,055,Huerfano,21,36,274222,5,0,0.24,Manufacturing Establishments
 1920,015,Chaffee,20,379,3935183,3,0,0.15,Manufacturing Establishments
 1920,025,Crowley,19,139,1380221,0,0,0,Manufacturing Establishments
 1920,063,Kit Carson,19,20,146018,2,0,0.11,Manufacturing Establishments
-1920,007,Archuleta,18,150,627229,0,0,0,Manufacturing Establishments
+1920,107,Routt,18,150,627229,8,0,0.44,Manufacturing Establishments
 1920,073,Lincoln,17,34,508365,3,0,0.18,Manufacturing Establishments
 1920,083,Montezuma,16,44,184354,4,0,0.25,Manufacturing Establishments
 1920,011,Bent,15,48,317540,0,0,0,Manufacturing Establishments
@@ -181,33 +181,33 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1920,019,Clear Creek,13,31,97788,4,0,0.31,Manufacturing Establishments
 1920,093,Park,13,52,105831,1,0,0.08,Manufacturing Establishments
 1920,007,Archuleta,12,103,367853,0,0,0,Manufacturing Establishments
-1920,013,Boulder,12,34,150636,8,2,0.67,Manufacturing Establishments
-1920,003,Alamosa,10,24,126378,0,0,0,Manufacturing Establishments
-1920,009,Baca,10,72,209173,0,0,0,Manufacturing Establishments
-1920,019,Clear Creek,9,30,206129,4,0,0.44,Manufacturing Establishments
+1920,113,San Miguel,12,34,150636,5,0,0.42,Manufacturing Establishments
+1920,103,Rio Blanco,10,24,126378,0,0,0,Manufacturing Establishments
+1920,109,Saguache,10,72,209173,4,0,0.4,Manufacturing Establishments
 1920,027,Custer,9,4,12581,0,0,0,Manufacturing Establishments
+1920,119,Teller,9,30,206129,2,0,0.22,Manufacturing Establishments
 1920,009,Baca,8,16,82170,0,0,0,Manufacturing Establishments
 1920,035,Douglas,8,182,1783316,0,0,0,Manufacturing Establishments
 1920,039,Elbert,8,4,11480,1,0,0.12,Manufacturing Establishments
 1920,095,Phillips,8,17,336371,2,0,0.25,Manufacturing Establishments
-1920,021,Conejos,7,13,90591,0,0,0,Manufacturing Establishments
 1920,047,Gilpin,7,9,35093,0,0,0,Manufacturing Establishments
 1920,091,Ouray,7,26,78777,3,0,0.43,Manufacturing Establishments
-1920,011,Bent,6,7,25121,0,0,0,Manufacturing Establishments
+1920,121,Washington,7,13,90591,1,0,0.14,Manufacturing Establishments
 1920,061,Kiowa,6,8,24594,0,0,0,Manufacturing Establishments
 1920,081,Moffat,6,6,39318,0,0,0,Manufacturing Establishments
 1920,097,Pitkin,6,15,33976,2,0,0.33,Manufacturing Establishments
+1920,111,San Juan,6,7,25121,0,0,0,Manufacturing Establishments
 1920,023,Costilla,5,54,180892,0,0,0,Manufacturing Establishments
 1920,057,Jackson,5,27,92518,1,0,0.2,Manufacturing Establishments
 1920,017,Cheyenne,4,2,9975,1,0,0.25,Manufacturing Establishments
-1920,017,Cheyenne,4,1,9290,1,0,0.25,Manufacturing Establishments
 1920,037,Eagle,4,7,31016,2,0,0.5,Manufacturing Establishments
-1920,015,Chaffee,3,6,30896,3,0,1,Manufacturing Establishments
+1920,117,Summit,4,1,9290,1,0,0.25,Manufacturing Establishments
+1920,115,Sedgwick,3,6,30896,0,0,0,Manufacturing Establishments
 1930,031,Denver,781,16239,,121,26,0.15,"Manufacturing Establishments, 1929"
-1930,001,Adams,81,5831,,1,0,0.01,"Manufacturing Establishments, 1929"
+1930,101,Pueblo,81,5831,,22,7,0.27,"Manufacturing Establishments, 1929"
 1930,041,El Paso,69,933,,7,3,0.1,"Manufacturing Establishments, 1929"
-1930,023,Costilla,50,1066,,0,0,0,"Manufacturing Establishments, 1929"
 1930,069,Larimer,50,915,,1,1,0.02,"Manufacturing Establishments, 1929"
+1930,123,Weld,50,1066,,14,1,0.28,"Manufacturing Establishments, 1929"
 1930,013,Boulder,37,564,,6,3,0.16,"Manufacturing Establishments, 1929"
 1930,089,Otero,34,896,,1,0,0.03,"Manufacturing Establishments, 1929"
 1930,071,Las Animas,31,560,,14,0,0.45,"Manufacturing Establishments, 1929"
@@ -217,10 +217,10 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1930,067,La Plata,20,229,,3,0,0.15,"Manufacturing Establishments, 1929"
 1930,029,Delta,19,122,,3,0,0.16,"Manufacturing Establishments, 1929"
 1930,099,Prowers,19,203,,1,0,0.05,"Manufacturing Establishments, 1929"
-1930,007,Archuleta,17,112,,1,0,0.06,"Manufacturing Establishments, 1929"
+1930,107,Routt,17,112,,3,0,0.18,"Manufacturing Establishments, 1929"
 1930,059,Jefferson,16,210,,0,0,0,"Manufacturing Establishments, 1929"
 1930,075,Logan,15,228,,2,2,0.13,"Manufacturing Establishments, 1929"
-1930,005,Arapahoe,14,76,,3,0,0.21,"Manufacturing Establishments, 1929"
+1930,105,Rio Grande,14,76,,3,0,0.21,"Manufacturing Establishments, 1929"
 1930,051,Gunnison,13,106,,0,0,0,"Manufacturing Establishments, 1929"
 1930,003,Alamosa,12,306,,0,0,0,"Manufacturing Establishments, 1929"
 1930,005,Arapahoe,11,642,,3,0,0.27,"Manufacturing Establishments, 1929"
@@ -231,26 +231,26 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1930,011,Bent,8,40,,0,0,0,"Manufacturing Establishments, 1929"
 1930,007,Archuleta,7,49,,1,0,0.14,"Manufacturing Establishments, 1929"
 1930,073,Lincoln,7,15,,2,0,0.29,"Manufacturing Establishments, 1929"
-1930,009,Baca,5,27,,1,0,0.2,"Manufacturing Establishments, 1929"
-1930,025,Crowley,5,10,,0,0,0,"Manufacturing Establishments, 1929"
 1930,095,Phillips,5,9,,1,0,0.2,"Manufacturing Establishments, 1929"
-1930,013,Boulder,3,11,,6,3,2,"Manufacturing Establishments, 1929"
-1930,019,Clear Creek,3,13,,2,0,0.67,"Manufacturing Establishments, 1929"
+1930,109,Saguache,5,27,,1,0,0.2,"Manufacturing Establishments, 1929"
+1930,125,Yuma,5,10,,3,0,0.6,"Manufacturing Establishments, 1929"
 1930,023,Costilla,3,37,,0,0,0,"Manufacturing Establishments, 1929"
 1930,037,Eagle,3,15,,2,0,0.67,"Manufacturing Establishments, 1929"
-1940,031,Denver,620,11477,107715056,217,41,0.35,"Manufacturing Establishments, 1939"
-1940,001,Adams,72,5019,41212184,4,0,0.06,"Manufacturing Establishments, 1939"
+1930,113,San Miguel,3,11,,4,0,1.33,"Manufacturing Establishments, 1929"
+1930,119,Teller,3,13,,4,0,1.33,"Manufacturing Establishments, 1929"
+1940,031,Denver,620,11477,107715056,216,40,0.35,"Manufacturing Establishments, 1939"
+1940,101,Pueblo,72,5019,41212184,26,8,0.36,"Manufacturing Establishments, 1939"
 1940,041,El Paso,62,421,3163302,15,4,0.24,"Manufacturing Establishments, 1939"
 1940,069,Larimer,47,681,6911092,5,0,0.11,"Manufacturing Establishments, 1939"
-1940,023,Costilla,41,761,7870136,1,0,0.02,"Manufacturing Establishments, 1939"
+1940,123,Weld,41,761,7870136,9,2,0.22,"Manufacturing Establishments, 1939"
 1940,013,Boulder,32,433,3763989,6,2,0.19,"Manufacturing Establishments, 1939"
 1940,077,Mesa,32,266,1596285,4,0,0.12,"Manufacturing Establishments, 1939"
 1940,071,Las Animas,28,205,2393107,6,0,0.21,"Manufacturing Establishments, 1939"
 1940,089,Otero,27,448,3532481,1,0,0.04,"Manufacturing Establishments, 1939"
-1940,001,Adams,22,484,11656138,4,0,0.18,"Manufacturing Establishments, 1939"
+1940,001,Adams,22,484,11656138,3,0,0.14,"Manufacturing Establishments, 1939"
 1940,067,La Plata,21,140,932401,9,2,0.43,"Manufacturing Establishments, 1939"
 1940,087,Morgan,18,230,2716892,4,0,0.22,"Manufacturing Establishments, 1939"
-1940,005,Arapahoe,16,358,1752822,4,2,0.25,"Manufacturing Establishments, 1939"
+1940,005,Arapahoe,16,358,1752822,6,3,0.38,"Manufacturing Establishments, 1939"
 1940,029,Delta,16,181,1319148,2,0,0.12,"Manufacturing Establishments, 1939"
 1940,043,Fremont,16,189,1675588,1,0,0.06,"Manufacturing Establishments, 1939"
 1940,085,Montrose,16,68,467640,5,0,0.31,"Manufacturing Establishments, 1939"
@@ -258,42 +258,42 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1940,059,Jefferson,15,378,3542687,4,0,0.27,"Manufacturing Establishments, 1939"
 1940,075,Logan,12,181,2013387,4,1,0.33,"Manufacturing Establishments, 1939"
 1940,003,Alamosa,9,37,505676,2,0,0.22,"Manufacturing Establishments, 1939"
-1940,007,Archuleta,9,35,128100,0,0,0,"Manufacturing Establishments, 1939"
 1940,011,Bent,9,78,,0,0,0,"Manufacturing Establishments, 1939"
 1940,045,Garfield,9,36,176905,2,0,0.22,"Manufacturing Establishments, 1939"
 1940,049,Grand,9,53,128273,1,0,0.11,"Manufacturing Establishments, 1939"
-1940,005,Arapahoe,7,53,442761,4,2,0.57,"Manufacturing Establishments, 1939"
+1940,107,Routt,9,35,128100,4,0,0.44,"Manufacturing Establishments, 1939"
 1940,015,Chaffee,7,43,,1,0,0.14,"Manufacturing Establishments, 1939"
 1940,021,Conejos,7,24,255896,1,0,0.14,"Manufacturing Establishments, 1939"
-1940,025,Crowley,7,14,64974,0,0,0,"Manufacturing Establishments, 1939"
 1940,037,Eagle,7,31,146426,1,0,0.14,"Manufacturing Establishments, 1939"
 1940,055,Huerfano,7,29,164948,1,0,0.14,"Manufacturing Establishments, 1939"
+1940,105,Rio Grande,7,53,442761,0,0,0,"Manufacturing Establishments, 1939"
+1940,125,Yuma,7,14,64974,5,0,0.71,"Manufacturing Establishments, 1939"
 1940,007,Archuleta,6,47,106308,0,0,0,"Manufacturing Establishments, 1939"
 1940,035,Douglas,6,128,,1,0,0.17,"Manufacturing Establishments, 1939"
 1940,083,Montezuma,6,254,522195,1,0,0.17,"Manufacturing Establishments, 1939"
 1940,019,Clear Creek,5,13,47605,7,0,1.4,"Manufacturing Establishments, 1939"
 1940,025,Crowley,5,127,,0,0,0,"Manufacturing Establishments, 1939"
 1940,093,Park,5,18,20113,1,0,0.2,"Manufacturing Establishments, 1939"
-1940,003,Alamosa,4,6,,2,0,0.5,"Manufacturing Establishments, 1939"
 1940,051,Gunnison,4,46,161117,2,0,0.5,"Manufacturing Establishments, 1939"
-1940,009,Baca,3,4,,3,0,1,"Manufacturing Establishments, 1939"
-1940,015,Chaffee,3,124,,1,0,0.33,"Manufacturing Establishments, 1939"
+1940,103,Rio Blanco,4,6,,0,0,0,"Manufacturing Establishments, 1939"
 1940,033,Dolores,3,18,23580,1,0,0.33,"Manufacturing Establishments, 1939"
 1940,057,Jackson,3,96,,2,0,0.67,"Manufacturing Establishments, 1939"
 1940,065,Lake,3,198,,5,0,1.67,"Manufacturing Establishments, 1939"
 1940,081,Moffat,3,43,,3,0,1,"Manufacturing Establishments, 1939"
 1940,095,Phillips,3,6,,1,0,0.33,"Manufacturing Establishments, 1939"
-1940,019,Clear Creek,2,,,7,0,3.5,"Manufacturing Establishments, 1939"
-1940,021,Conejos,2,,,1,0,0.5,"Manufacturing Establishments, 1939"
+1940,109,Saguache,3,4,,0,0,0,"Manufacturing Establishments, 1939"
+1940,115,Sedgwick,3,124,,0,0,0,"Manufacturing Establishments, 1939"
 1940,047,Gilpin,2,,,1,0,0.5,"Manufacturing Establishments, 1939"
 1940,073,Lincoln,2,,,2,0,1,"Manufacturing Establishments, 1939"
 1940,079,Mineral,2,,,0,0,0,"Manufacturing Establishments, 1939"
 1940,091,Ouray,2,,,0,0,0,"Manufacturing Establishments, 1939"
+1940,119,Teller,2,,,4,0,2,"Manufacturing Establishments, 1939"
+1940,121,Washington,2,,,4,0,2,"Manufacturing Establishments, 1939"
 1940,009,Baca,1,,,3,0,3,"Manufacturing Establishments, 1939"
-1940,011,Bent,1,,,0,0,0,"Manufacturing Establishments, 1939"
-1940,013,Boulder,1,,,6,2,6,"Manufacturing Establishments, 1939"
 1940,023,Costilla,1,,,1,0,1,"Manufacturing Establishments, 1939"
 1940,027,Custer,1,,,0,0,0,"Manufacturing Establishments, 1939"
 1940,061,Kiowa,1,,,0,0,0,"Manufacturing Establishments, 1939"
 1940,063,Kit Carson,1,,,2,0,2,"Manufacturing Establishments, 1939"
 1940,097,Pitkin,1,,,1,0,1,"Manufacturing Establishments, 1939"
+1940,111,San Juan,1,,,0,0,0,"Manufacturing Establishments, 1939"
+1940,113,San Miguel,1,,,1,0,1,"Manufacturing Establishments, 1939"

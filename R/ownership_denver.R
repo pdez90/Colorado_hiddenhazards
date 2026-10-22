@@ -57,7 +57,11 @@ occ0 <- copy(P$owner_occ)
 unit_of <- function(x) { x <- toupper(ifelse(is.na(x), "", x)); rx <- "(#|\\bUNIT\\b|\\bAPT\\b|\\bSTE\\b|\\bSUITE\\b)"
   u <- fifelse(grepl(rx, x), sub(paste0(".*", rx, "\\s*"), "", x), ""); u <- gsub("[^A-Z0-9]", "", u); sub("^0+(?=.)", "", u, perl = TRUE) }
 P[, `:=`(own_u = unit_of(paste(OWNER_ADDRESS_LINE1, OWNER_ADDRESS_LINE2)), sit_u = unit_of(SITUS_ADDRESS_LINE1))]
-P[owner_occ & type %in% c("Condominium unit", "Rowhouse / townhouse") & own_u != "" & sit_u != "" & own_u != sit_u, owner_occ := FALSE]
+# the same unit is often written differently ("N207" / "207N", "F8" / "8F", "6-101" / "101", "204A" / "204"): only units whose numbers clearly
+# differ count, i.e. different digits where neither number ends the other (a building prefix)
+unit_differs <- function(a, b) { da <- gsub("\\D", "", a); db <- gsub("\\D", "", b); ok <- nzchar(da) & nzchar(db)
+  ok & da != db & !endsWith(da, db) & !endsWith(db, da) }
+P[owner_occ & type %in% c("Condominium unit", "Rowhouse / townhouse") & own_u != "" & sit_u != "" & unit_differs(own_u, sit_u), owner_occ := FALSE]
 # a duplex or triplex has one door (house number) per unit, but only one goes on the parcel record: an owner mailed at the other door
 # (same street and ZIP, same side of the street, house number within 4) lives in the building
 hnum <- function(k) suppressWarnings(as.integer(sub(" .*", "", k))); hstreet <- function(k) sub("^[^ ]* ?", "", k)

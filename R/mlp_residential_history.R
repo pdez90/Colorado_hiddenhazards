@@ -72,7 +72,7 @@ P[!is.na(x), `:=`(haz_500_w40 = k40$w500, haz_pct40 = pctl(k40$k))]
 ed_years <- function(yr) { yy <- as.integer(unlist(strsplit(as.character(Hs$years), "[^0-9]+"))); yy <- unique(yy[!is.na(yy)]); sort(yy[yy <= yr & yy >= yr - 9]) }
 WIN <- rbindlist(lapply(c(YRS, 1940), function(yr) data.table(census = yr, window = sprintf("%d-%d", yr - 9, yr), hazardous_sites_listed = sum(in_win(yr)),
   directory_years_with_a_denver_listing = paste(ed_years(yr), collapse = " "),
-  pct_residents_within_500m = round(100 * if (yr == 1940) mean(P[!is.na(x), haz_500_w40]) else mean(AH[year == yr, haz_500_then]), 1))))
+  pct_residents_within_500m = round(100 * if (yr == 1940) mean(P[!is.na(x), haz_500_w40]) else mean(AH[year == yr, haz_500_then], na.rm = TRUE), 1))))
 WIN[, comparable := hazardous_sites_listed >= KMIN]; GOOD <- WIN[comparable == TRUE, census]
 fwrite(WIN, file.path(O, "mlp_exposure_windows.csv")); print(WIN)
 Hh <- merge(X, AH[, year_found := year], by = c("histid_then", "year"), all.x = TRUE)

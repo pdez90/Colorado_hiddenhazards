@@ -26,7 +26,7 @@ from `build_sites`.
 | `R/` | **R re-implementation** of the geocoder, site building and inventory matching, exposures and health models, checked against the Python results (see `R/README.md`) |
 | `run_all.sh` | Runs the pipeline end to end (`./run_all.sh`), or from saved OCR (`./run_all.sh parse`) |
 | `app/` | R Shiny app (`shiny::runApp("app")`) and its prepared data |
-| `data/by_year/` | **One geocoded CSV per directory edition** (25 editions, 68,368 listings) |
+| `data/by_year/` | **One geocoded CSV per directory edition**: the 13 complete editions (41,987 listings) used throughout; all 25 editions, partial ones included, are in `data/full_inventory/` |
 | `data/geocoder/` | ZIP centroids and ZIP–town table used by the geocoder, and every address key with its geocode (for checking the R geocoder) |
 | `data/results/` | Site workbook (`CO_hazardous_sites_1961-2002.xlsx`), all sites (`.geojson`), all listings, listings that could not be street-located, geocoding validation |
 | `data/historical/` | Pre-1960 layer: hazardous-trade listings (`CO_pre1960_hazardous_listings.csv`) and firm-locations (`CO_pre1960_hazardous_sites.csv`) from the Colorado State Business Directory, 1871–1956; GNIS place gazetteer |
@@ -63,7 +63,14 @@ from `build_sites`.
    cleanup site boundary. Sites placed only approximately are searched over 250 m, and every site's radius grows by the spread of its
    member points. **"Not on any list"** = none of these.
 
-## Key results (reproduced run, 17 October 2026, after the accuracy review below)
+## Key results (the 13 complete editions, as published in `data/` and the app)
+
+* 41,987 listings in the 13 complete editions (1965–1992) → 27,491 establishments; **3,169 hazardous-sector sites** located at street level.
+* **908 (29%) are on no current federal or state inventory** (707 of them high confidence); 693 (22%) are on a cleanup or contamination
+  list; 310 report to TRI; 921 are known only as RCRA hazardous-waste handlers; 337 have only other EPA permits or solid-waste records.
+* 1,156 sites hosted two or more hazardous-sector firms over time.
+
+## Earlier results: all 25 editions (run of 17 October 2026, before partial editions were set aside; kept for reference)
 
 * 68,368 listings → 40,942 establishments; **4,312 hazardous-sector sites** located at street level.
 * **1,331 (31%) are on no current federal or state inventory** (936 of them high confidence); 860 (20%) are on a cleanup or
@@ -156,6 +163,8 @@ placing 1,846 office listings at their downtown office addresses.
 ## Do hidden hazards matter for health? (first analysis, October 2026)
 
 `pipeline/health/build_exposures.py` and `pipeline/health/health_models.py`; full results in `data/results/health_models.csv`.
+
+*Input not fetched by script:* the EnviroScreen 2.0 block-group layer (`work/health/enviroscreen_v2_blockgroups.geojson`) was downloaded by hand from CDPHE's EnviroScreen download page as a shapefile and converted to GeoJSON, which is why its fields carry shapefile-truncated names (`Prcnt_lw_` = percent low income, `Prc___` = percent people of color, `Pr_____` = percent less than high school, `Prcnt_ln_` = percent linguistically isolated, `Pp__64` = population over 64); `run_all.sh` and `R/run_all.R` skip the health step when it is absent.
 
 **Data.** Outcomes come from CDPHE Colorado EnviroScreen 2.0. Its block-group layer repeats the tract value for every health indicator,
 so outcomes vary only between tracts: the analysis uses 1,248–1,428 tracts with at least 500 residents (depending on the outcome). Asthma hospitalization, low birth weight and life
@@ -528,7 +537,7 @@ mkdir -p work && tar xzf data/ocr/dcm_ocr_output.tar.gz -C work
 
 In R: `Rscript R/run_all.R` reruns geocoding, site building and inventory matching, exposures and the health models from the
 Python hand-off files (see `R/README.md`; comparisons in `data/results/r_vs_python.md`: identical sites and statuses, geocodes identical
-to 0.0 m on all 36,615 address keys, model coefficients equal to 1e-6).
+to 0.0 m on all 36,615 address keys, model coefficients equal to 1e-6; that comparison was last run on all 25 editions, before the switch to the complete editions).
 
 The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because each step reads the previous one's output:
 `Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`

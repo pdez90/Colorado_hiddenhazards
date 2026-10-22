@@ -1,6 +1,6 @@
 grouping,owners,rental_units,top10_pct,top50_pct,top100_pct,top1pct_owners_pct,owners_20plus_pct,owners_100plus_pct,hhi
-"S1 raw name and mailing address, exact",41511,210670,3.7,12.2,20.5,52.2,70.8,55.6,8.8
-S2 cleaned names and addresses,41014,210670,3.7,12.2,20.6,52.1,71,55.8,8.8
-S3 + near-identical names (fuzzy),40397,210670,3.7,12.2,20.6,51.9,71,56,8.9
-S4 + shared mailing address (owner families),33970,210670,8.4,25.1,37.7,64,74.5,65.1,21.4
-"S5 + Colorado business registry (principal address, individual agent)",33636,210670,9.4,27.7,40.7,65.7,74.8,65.9,24.8
+"S1 raw name and mailing address, exact",40201,209345,3.7,12.3,20.7,51.8,71.3,55.9,8.9
+S2 cleaned names and addresses,39710,209345,3.7,12.3,20.7,51.7,71.4,56.2,9
+S3 + near-identical names (fuzzy),39099,209345,3.7,12.3,20.8,51.4,71.4,56.4,9
+S4 + shared mailing address (owner families),32686,209345,8.5,25.2,37.9,63.6,75,65.5,21.6
+"S5 + Colorado business registry (principal address, individual agent)",32353,209345,9.5,27.9,40.9,65.5,75.3,66.3,25.1

@@ -18,7 +18,12 @@ sf_use_s2(FALSE); W <- "work/site_fate"; O <- "data/results/site_fate"; A <- "ap
 SVC <- "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_PROP_PARCELS_A/FeatureServer/245/query"
 FLD <- c("SCHEDNUM", "PROP_CLASS", "D_CLASS", "D_CLASS_CN", "ZONE_ID", "TOT_UNITS", "RES_ORIG_YEAR_BUILT", "COM_ORIG_YEAR_BUILT", "SITUS_ADDRESS_LINE1", "OWNER_NAME", "LAND_AREA")
 # ---- 1. sites and pre-1960 trades in Denver County
-sites <- fread(file.path(A, "sites.csv"), colClasses = c(GEOID = "character"))[!is.na(lat) & fe_hazard %in% c(TRUE, "True") & substr(GEOID, 1, 5) == "08031"]
+sites <- fread(file.path(A, "sites.csv"), colClasses = c(GEOID = "character"))[!is.na(lat) & fe_hazard %in% c(TRUE, "True")]
+local({ m <- which(is.na(sites$GEOID) | !nzchar(sites$GEOID)); if (!length(m)) return()          # points on a tract edge: nearest tract within 100 m
+  TRc <- st_transform(st_read(file.path(A, "enviroscreen_tracts.geojson"), quiet = TRUE), 26913); p <- st_transform(st_as_sf(sites[m, .(lon, lat)], coords = c("lon", "lat"), crs = 4326), 26913)
+  k <- st_nearest_feature(p, TRc); d <- as.numeric(st_distance(p, TRc[k, ], by_element = TRUE))
+  sites[m[d <= 100], GEOID := as.character(TRc$GEOID[k[d <= 100]])] })
+sites <- sites[substr(GEOID, 1, 5) == "08031"]
 hist <- fread(file.path(A, "historical_sites.csv"), colClasses = c(GEOID = "character"))[!is.na(lat) & precision != "town" & fe_hazard %in% c(TRUE, "True") & toupper(town) == "DENVER"]
 PTS <- unique(rbind(sites[, .(lon, lat)], hist[, .(lon, lat)]))[, pkey := sprintf("%.6f,%.6f", lon, lat)]
 message(nrow(sites), " manufacturers' sites, ", nrow(hist), " pre-1960 trades, ", nrow(PTS), " distinct points")

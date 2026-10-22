@@ -1,6 +1,6 @@
 period,comparison,p_all_placed,p_sure_placements
-1925-1956,"Share of rezonings from residential to business or industrial, HOLC D vs A and B (Fisher's exact test)",0.00333,0.105
-1925-1945,"Same, within the period",0.0239,1
+1925-1956,"Share of rezonings from residential to business or industrial, HOLC D vs A and B (Fisher's exact test)",0.0019,0.116
+1925-1945,"Same, within the period",0.0468,1
 1946-1954,"Same, within the period",1,1
 1955-1956 (new code),"Same, within the period",0.315,0.28
-"1925-1956, within periods","Same, comparing within each period (exact Mantel-Haenszel; common odds ratio 4.3, sure placements 2.4)",0.0721,0.275
+"1925-1956, within periods","Same, comparing within each period (exact Mantel-Haenszel; common odds ratio 3.86, sure placements 2.23)",0.0847,0.297

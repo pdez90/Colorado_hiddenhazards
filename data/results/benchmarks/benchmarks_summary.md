@@ -4,23 +4,23 @@
 
 | year | CBP manufacturing estab. | directory manufacturers | ratio | CBP hazardous-sector estab. | directory hazardous | ratio |
 |---|---|---|---|---|---|---|
-| 1976 | 3,071 | 1,672 | 0.54 | 1,026 |   732 | 0.71 |
-| 1977 | 3,438 | 2,237 | 0.65 | 1,146 |   886 | 0.77 |
-| 1979 | 3,414 | 1,560 | 0.46 | 1,148 |   643 | 0.56 |
-| 1980 | 3,453 | 3,633 | 1.05 | 1,175 | 1,358 | 1.16 |
+| 1976 | 3,071 | 1,671 | 0.54 | 1,026 |   732 | 0.71 |
+| 1977 | 3,438 | 2,234 | 0.65 | 1,146 |   885 | 0.77 |
+| 1979 | 3,414 | 1,559 | 0.46 | 1,148 |   642 | 0.56 |
+| 1980 | 3,453 | 3,629 | 1.05 | 1,175 | 1,356 | 1.15 |
 | 1982 | 3,797 | 2,098 | 0.55 | 1,319 |   874 | 0.66 |
 | 1983 | 4,159 | 3,921 | 0.94 | 1,417 | 1,511 | 1.07 |
 | 1984 | 4,339 | 1,651 | 0.38 | 1,429 |   704 | 0.49 |
 | 1985 | 4,388 | 1,348 | 0.31 | 1,411 |   544 | 0.39 |
-| 1986 | 4,390 | 2,986 | 0.68 | 1,386 | 1,200 | 0.87 |
-| 1988 | 4,551 | 3,547 | 0.78 | 1,436 | 1,405 | 0.98 |
+| 1986 | 4,390 | 2,985 | 0.68 | 1,386 | 1,200 | 0.87 |
+| 1988 | 4,551 | 3,546 | 0.78 | 1,436 | 1,405 | 0.98 |
 | 1990 | 4,878 | 4,064 | 0.83 | 1,536 | 1,523 | 0.99 |
 | 1992 | 5,226 | 2,512 | 0.48 | 1,630 |   987 | 0.61 |
-| 1993 | 5,385 | 1,873 | 0.35 | 1,694 |   777 | 0.46 |
-| 1999 | 5,425 | 2,260 | 0.42 | 1,749 |   904 | 0.52 |
+| 1993 | 5,385 | 1,872 | 0.35 | 1,694 |   776 | 0.46 |
+| 1999 | 5,425 | 2,259 | 0.42 | 1,749 |   904 | 0.52 |
 | 2002 | 5,250 | 2,130 | 0.41 | 1,698 |   783 | 0.46 |
 
-County-level agreement across 15 editions and 63 counties: r = 0.85 (log manufacturers), 0.88 (log hazardous sectors); median directory/CBP ratio NA (Denver 0.77).
+County-level agreement across 15 editions and 63 counties: r = 0.85 (log manufacturers), 0.88 (log hazardous sectors); median directory/CBP ratio 0.72 (Denver 0.77).
 
 CBP counts every employer establishment with a payroll (from administrative records); the directory lists firms that answered the publisher's questionnaire or were
 copied from other lists, so it undercounts the smallest establishments and the ratio is a coverage rate. CBP has no addresses: it cannot replace the directory for siting.
@@ -30,12 +30,12 @@ Raw county files from Eckert, Fort, Schott & Yang (2021), NBER WP 26632 (github.
 
 | census | counties | census manufacturing establishments | directory hazardous trades (+/- 2 years) |
 |---|---|---|---|
-| 1880 | 31 |   599 | 304 |
-| 1890 | 56 | 1,518 |  99 |
-| 1900 | 57 | 3,570 |   1 |
-| 1920 | 60 | 2,626 | 288 |
-| 1930 | 35 | 1,452 | 196 |
-| 1940 | 59 | 1,298 | 367 |
+| 1880 | 31 |   599 | 463 |
+| 1890 | 56 | 1,518 | 282 |
+| 1900 | 57 | 3,570 |   7 |
+| 1920 | 60 | 2,626 | 323 |
+| 1930 | 35 | 1,452 | 236 |
+| 1940 | 59 | 1,298 | 391 |
 
 The business directory only lists the hazardous trades, so the ratio is a floor on its coverage of all manufacturing; the census counts every establishment above a small output threshold.
 

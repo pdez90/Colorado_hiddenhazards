@@ -172,16 +172,16 @@ Years of age at death (95% CI) unless stated; OLS with birth-year fixed effects,
 
 | people | window | exposure | hr | hr_lower | hr_upper | converged | n | e65_years | e65_lower | e65_upper |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | 1929 industrial district | 1.089 | 0.939 | 1.262 | TRUE | 6949 | -0.57 | -1.55 | 0.43 |
-| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | Industrial land within 250 m, 1937 (per 10 points) | 0.992 | 0.964 | 1.020 | TRUE | 6949 | 0.06 | -0.14 | 0.25 |
-| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | Hazardous trade within 500 m (to 1940) | 1.033 | 0.962 | 1.110 | TRUE | 6949 | -0.22 | -0.70 | 0.26 |
-| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | HOLC grade D (vs A/B) | 1.124 | 0.990 | 1.275 | TRUE | 6949 | -0.79 | -1.64 | 0.07 |
-| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | Placebo: commercial land within 250 m (per 10 points) | 1.003 | 0.989 | 1.018 | TRUE | 6949 | -0.02 | -0.12 | 0.07 |
-| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | 1929 industrial district | 1.005 | 0.854 | 1.183 | TRUE | 13376 | -0.04 | -1.22 | 1.17 |
-| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | Industrial land within 250 m, 1937 (per 10 points) | 1.011 | 0.979 | 1.045 | TRUE | 13376 | -0.08 | -0.32 | 0.16 |
-| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | Hazardous trade within 500 m (to 1940) | 1.017 | 0.944 | 1.095 | TRUE | 13376 | -0.12 | -0.67 | 0.42 |
-| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | HOLC grade D (vs A/B) | 1.098 | 0.972 | 1.241 | TRUE | 13376 | -0.68 | -1.54 | 0.20 |
-| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | Placebo: commercial land within 250 m (per 10 points) | 0.995 | 0.980 | 1.010 | TRUE | 13376 | 0.04 | -0.08 | 0.15 |
+| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | 1929 industrial district | 1.101 | 0.945 | 1.284 | TRUE | 6949 | -0.72 | -1.82 | 0.43 |
+| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | Industrial land within 250 m, 1937 (per 10 points) | 0.996 | 0.966 | 1.027 | TRUE | 6949 | 0.03 | -0.20 | 0.26 |
+| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | Hazardous trade within 500 m (to 1940) | 1.017 | 0.941 | 1.100 | TRUE | 6949 | -0.13 | -0.73 | 0.48 |
+| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | HOLC grade D (vs A/B) | 1.163 | 1.013 | 1.335 | TRUE | 6949 | -1.14 | -2.14 | -0.10 |
+| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | Placebo: commercial land within 250 m (per 10 points) | 1.000 | 0.984 | 1.016 | TRUE | 6949 | 0.00 | -0.12 | 0.12 |
+| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | 1929 industrial district | 1.001 | 0.832 | 1.205 | TRUE | 13376 | -0.01 | -1.41 | 1.45 |
+| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | Industrial land within 250 m, 1937 (per 10 points) | 1.035 | 1.002 | 1.069 | TRUE | 13376 | -0.27 | -0.52 | -0.02 |
+| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | Hazardous trade within 500 m (to 1940) | 1.008 | 0.924 | 1.101 | TRUE | 13376 | -0.06 | -0.73 | 0.61 |
+| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | HOLC grade D (vs A/B) | 0.960 | 0.827 | 1.114 | TRUE | 13376 | 0.33 | -0.85 | 1.54 |
+| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | Placebo: commercial land within 250 m (per 10 points) | 1.002 | 0.985 | 1.020 | TRUE | 13376 | -0.02 | -0.15 | 0.12 |
 
 ## 7. Highways and displacement
 

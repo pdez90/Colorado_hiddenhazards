@@ -38,14 +38,19 @@ for f in CTX['enviroscreen_tract']:
 es = gpd.GeoDataFrame(rows, crs=4326)
 for c in ['low_income', 'people_of_color', 'less_than_hs', 'linguistic_isolation', 'housing_burden', 'disability']:
     es[c] = pd.to_numeric(es[c], errors='coerce') * 100     # to percent
+tracts = es[['GEOID', 'geometry']].copy()          # full geometry for point-in-tract joins (simplified tracts leave gaps and overlaps)
 es['geometry'] = es.geometry.simplify(0.0003, preserve_topology=True)
 es.to_file('app/data/enviroscreen_tracts.geojson', driver='GeoJSON', COORDINATE_PRECISION=5)
-tracts = es[['GEOID', 'geometry']]
 
 def with_tract(df, lat='lat', lon='lon'):
     g = gpd.GeoDataFrame(df.copy(), geometry=gpd.points_from_xy(df[lon], df[lat]), crs=4326)
     j = gpd.sjoin(g, tracts, how='left', predicate='within')
     j = j[~j.index.duplicated()]
+    miss = j['GEOID'].isna() & g.geometry.notna() & ~g.geometry.is_empty    # on a tract edge: nearest tract within about 100 m
+    if miss.any():
+        nr = gpd.sjoin_nearest(g[miss], tracts, how='left', max_distance=0.001)
+        nr = nr[~nr.index.duplicated()]
+        j.loc[nr.index, 'GEOID'] = nr['GEOID']
     out = pd.DataFrame(j.drop(columns=['geometry', 'index_right'], errors='ignore'))
     return out
 

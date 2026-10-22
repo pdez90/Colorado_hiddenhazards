@@ -79,62 +79,62 @@
 
 | group | value | buildings | units | rental_units | inside_per_100_units_yr | outside_per_100_buildings_yr | pct_buildings_inside_request | pct_buildings_outside_request |
 |---|---|---|---|---|---|---|---|---|
-| Owner family size (rental units in Denver) | 5-19 units | 6165 | 24846 | 17070 | 0.28 | 7.89 | 5.2 | 27.8 |
-| Owner family size (rental units in Denver) | 2-4 units | 9568 | 29572 | 16942 | 0.19 | 7.08 | 3.2 | 25.9 |
-| Owner family size (rental units in Denver) | 1 unit | 16720 | 27098 | 18642 | 0.14 | 5.61 | 1.6 | 20.5 |
-| Owner family size (rental units in Denver) | 100-999 units | 1825 | 119468 | 118592 | 0.26 | 10.86 | 26.4 | 31.2 |
-| Owner family size (rental units in Denver) | 20-99 units | 2700 | 24354 | 21795 | 0.42 | 11.26 | 13.0 | 33.9 |
-| Owner family size (rental units in Denver) | 1,000+ units | 777 | 31249 | 31215 | 0.26 | 8.40 | 16.9 | 31.3 |
-| Owner type | Company | 13073 | 188468 | 177276 | 0.28 | 8.59 | 9.1 | 28.2 |
-| Owner type | Trust | 4225 | 12103 | 7727 | 0.15 | 5.92 | 2.2 | 21.4 |
-| Owner type | Individual | 19732 | 50135 | 33408 | 0.19 | 6.33 | 2.6 | 23.2 |
+| Owner family size (rental units in Denver) | 5-19 units | 6163 | 24796 | 16343 | 0.28 | 7.90 | 5.2 | 27.8 |
+| Owner family size (rental units in Denver) | 2-4 units | 9565 | 29663 | 16669 | 0.19 | 7.08 | 3.2 | 25.9 |
+| Owner family size (rental units in Denver) | 1 unit | 16701 | 27068 | 18464 | 0.14 | 5.61 | 1.6 | 20.5 |
+| Owner family size (rental units in Denver) | 100-999 units | 1824 | 119346 | 118554 | 0.26 | 10.86 | 26.3 | 31.1 |
+| Owner family size (rental units in Denver) | 20-99 units | 2700 | 24354 | 21689 | 0.42 | 11.26 | 13.0 | 33.9 |
+| Owner family size (rental units in Denver) | 1,000+ units | 776 | 31242 | 31212 | 0.26 | 8.41 | 16.9 | 31.3 |
+| Owner type | Company | 13070 | 187450 | 176494 | 0.28 | 8.59 | 9.0 | 28.2 |
+| Owner type | Trust | 4230 | 12392 | 7669 | 0.15 | 5.93 | 2.2 | 21.4 |
+| Owner type | Individual | 19704 | 50746 | 32923 | 0.19 | 6.33 | 2.6 | 23.2 |
 | Owner type | Public | 604 | 5191 | 5163 | 0.26 | 7.06 | 7.6 | 28.6 |
 | Owner type | Non-profit or religious | 121 | 690 | 682 | 0.40 | 3.00 | 8.3 | 16.5 |
-| Owner location | Mailing address in Colorado | 31857 | 157523 | 129061 | 0.25 | 7.03 | 4.5 | 24.9 |
-| Owner location | Mailing address out of state | 5898 | 99064 | 95195 | 0.27 | 7.25 | 7.0 | 24.2 |
+| Owner location | Mailing address in Colorado | 31822 | 157279 | 127918 | 0.25 | 7.04 | 4.5 | 24.9 |
+| Owner location | Mailing address out of state | 5907 | 99190 | 95013 | 0.27 | 7.24 | 7.0 | 24.2 |
 | Building type | Mixed-use building (homes with shops or offices) | 412 | 22663 | 22563 | 0.08 | 11.26 | 11.4 | 40.0 |
 | Building type | Single-family house | 22876 | 24127 | 22977 | 0.26 | 7.25 | 1.9 | 25.5 |
-| Building type | Rowhouse / townhouse | 5992 | 13126 | 7975 | 0.10 | 3.73 | 1.3 | 15.1 |
-| Building type | Condominium unit | 2234 | 39198 | 14370 | 0.16 | 3.92 | 10.2 | 17.4 |
+| Building type | Rowhouse / townhouse | 5989 | 13092 | 7872 | 0.10 | 3.73 | 1.3 | 15.1 |
+| Building type | Condominium unit | 2211 | 39114 | 13150 | 0.16 | 3.93 | 10.2 | 17.4 |
 | Building type | Duplex / triplex | 3164 | 6898 | 6056 | 0.32 | 8.37 | 4.6 | 29.1 |
-| Building type | Apartment building (4+ units) | 3077 | 150575 | 150315 | 0.32 | 12.61 | 30.0 | 36.9 |
-| 1938 HOLC grade | Not graded | 17320 | 147232 | 126678 | 0.25 | 6.49 | 4.5 | 22.3 |
+| Building type | Apartment building (4+ units) | 3077 | 150575 | 150313 | 0.32 | 12.61 | 30.0 | 36.9 |
+| 1938 HOLC grade | Not graded | 17311 | 147188 | 125614 | 0.25 | 6.49 | 4.5 | 22.3 |
 | 1938 HOLC grade | A | 638 | 1321 | 1272 | 0.20 | 4.29 | 2.7 | 15.8 |
-| 1938 HOLC grade | C | 11083 | 60285 | 52708 | 0.32 | 7.83 | 6.1 | 27.3 |
-| 1938 HOLC grade | D | 6195 | 41904 | 38488 | 0.20 | 7.93 | 5.1 | 28.7 |
-| 1938 HOLC grade | B | 2519 | 5845 | 5110 | 0.23 | 6.24 | 2.8 | 22.8 |
-| Historical sites | Within 400 m of a hidden site | 9148 | 76486 | 67581 | 0.20 | 8.24 | 5.0 | 27.8 |
-| Historical sites | Within 400 m of a known site | 12764 | 114144 | 103758 | 0.23 | 7.85 | 5.6 | 27.5 |
-| Historical sites | Within 400 m of a pre-1960 hazardous trade | 9179 | 101186 | 90738 | 0.20 | 7.96 | 6.5 | 28.3 |
-| Historical sites | More than 400 m from any | 18675 | 107530 | 91020 | 0.27 | 6.25 | 4.2 | 22.3 |
-| All rental buildings | all | 37755 | 256587 | 224256 | 0.26 | 7.07 | 4.9 | 24.8 |
+| 1938 HOLC grade | C | 11069 | 60221 | 52613 | 0.32 | 7.84 | 6.1 | 27.4 |
+| 1938 HOLC grade | D | 6194 | 41899 | 38458 | 0.20 | 7.94 | 5.1 | 28.7 |
+| 1938 HOLC grade | B | 2517 | 5840 | 4974 | 0.23 | 6.24 | 2.8 | 22.8 |
+| Historical sites | Within 400 m of a hidden site | 8922 | 75858 | 66936 | 0.20 | 8.27 | 4.9 | 27.8 |
+| Historical sites | Within 400 m of a known site | 12754 | 114114 | 103647 | 0.23 | 7.86 | 5.6 | 27.5 |
+| Historical sites | Within 400 m of a pre-1960 hazardous trade | 9165 | 101119 | 90628 | 0.20 | 7.97 | 6.5 | 28.4 |
+| Historical sites | More than 400 m from any | 18759 | 107718 | 90132 | 0.27 | 6.24 | 4.2 | 22.3 |
+| All rental buildings | all | 37729 | 256469 | 222931 | 0.25 | 7.07 | 4.9 | 24.8 |
 
 ## Largest 1% of owners
 
 | owners | pct_rental_units | pct_rental_buildings | pct_buildings_with_inside_request | pct_inside_requests | pct_buildings_with_outside_request |
 |---|---|---|---|---|---|
-| Largest 1% of owner families | 58.6 | 4.6 | 26.7 | 49.7 | 6.6 |
+| Largest 1% of owner families | 58.9 | 4.7 | 26.7 | 49.5 | 6.6 |
 
 ## Poisson models (incidence-rate ratios, tract fixed effects)
 
 | outcome | portfolio | term | irr | lo | hi | p | buildings |
 |---|---|---|---|---|---|---|---|
-| Requests about conditions inside the home | S3 by owner name | per doubling of the owner's Denver rental units | 1.143 | 1.045 | 1.250 | 3.33e-03 | 37713 |
-| Requests about conditions inside the home | S4 by owner family | per doubling of the owner's Denver rental units | 1.086 | 1.033 | 1.143 | 1.31e-03 | 37713 |
-| Requests about conditions inside the home | S5 by registry group | per doubling of the owner's Denver rental units | 1.073 | 1.024 | 1.125 | 3.29e-03 | 37713 |
-| Requests about the outside of the property | S3 by owner name | per doubling of the owner's Denver rental units | 1.050 | 1.023 | 1.077 | 2.17e-04 | 37713 |
-| Requests about the outside of the property | S4 by owner family | per doubling of the owner's Denver rental units | 1.043 | 1.020 | 1.066 | 1.74e-04 | 37713 |
-| Requests about the outside of the property | S5 by registry group | per doubling of the owner's Denver rental units | 1.038 | 1.016 | 1.061 | 6.94e-04 | 37713 |
-| Requests about conditions inside the home | S4 by owner family (size bands vs 1 unit) | 2-4 units | 1.598 | 1.309 | 1.951 | 4.11e-06 | 37713 |
-| Requests about conditions inside the home | S4 by owner family (size bands vs 1 unit) | 5-19 units | 2.044 | 1.615 | 2.586 | 2.71e-09 | 37713 |
-| Requests about conditions inside the home | S4 by owner family (size bands vs 1 unit) | 20-99 units | 2.661 | 2.038 | 3.475 | 6.60e-13 | 37713 |
-| Requests about conditions inside the home | S4 by owner family (size bands vs 1 unit) | 100-999 units | 2.897 | 1.934 | 4.340 | 2.46e-07 | 37713 |
-| Requests about conditions inside the home | S4 by owner family (size bands vs 1 unit) | 1,000+ units | 2.816 | 1.801 | 4.403 | 5.64e-06 | 37713 |
-| Requests about the outside of the property | S4 by owner family (size bands vs 1 unit) | 2-4 units | 1.201 | 1.113 | 1.296 | 2.37e-06 | 37713 |
-| Requests about the outside of the property | S4 by owner family (size bands vs 1 unit) | 5-19 units | 1.254 | 1.144 | 1.374 | 1.33e-06 | 37713 |
-| Requests about the outside of the property | S4 by owner family (size bands vs 1 unit) | 20-99 units | 1.531 | 1.336 | 1.754 | 8.50e-10 | 37713 |
-| Requests about the outside of the property | S4 by owner family (size bands vs 1 unit) | 100-999 units | 1.233 | 0.980 | 1.552 | 7.43e-02 | 37713 |
-| Requests about the outside of the property | S4 by owner family (size bands vs 1 unit) | 1,000+ units | 0.988 | 0.641 | 1.524 | 9.58e-01 | 37713 |
+| Requests about conditions inside the home | S3 by owner name | per doubling of the owner's Denver rental units | 1.143 | 1.046 | 1.250 | 3.13e-03 | 37687 |
+| Requests about conditions inside the home | S4 by owner family | per doubling of the owner's Denver rental units | 1.087 | 1.033 | 1.144 | 1.29e-03 | 37687 |
+| Requests about conditions inside the home | S5 by registry group | per doubling of the owner's Denver rental units | 1.074 | 1.024 | 1.126 | 3.12e-03 | 37687 |
+| Requests about the outside of the property | S3 by owner name | per doubling of the owner's Denver rental units | 1.050 | 1.023 | 1.077 | 2.14e-04 | 37687 |
+| Requests about the outside of the property | S4 by owner family | per doubling of the owner's Denver rental units | 1.043 | 1.020 | 1.066 | 1.82e-04 | 37687 |
+| Requests about the outside of the property | S5 by registry group | per doubling of the owner's Denver rental units | 1.038 | 1.016 | 1.061 | 7.07e-04 | 37687 |
+| Requests about conditions inside the home | S4 by owner family (size bands vs 1 unit) | 2-4 units | 1.646 | 1.354 | 2.000 | 5.54e-07 | 37687 |
+| Requests about conditions inside the home | S4 by owner family (size bands vs 1 unit) | 5-19 units | 2.124 | 1.689 | 2.670 | 1.15e-10 | 37687 |
+| Requests about conditions inside the home | S4 by owner family (size bands vs 1 unit) | 20-99 units | 2.749 | 2.112 | 3.580 | 5.89e-14 | 37687 |
+| Requests about conditions inside the home | S4 by owner family (size bands vs 1 unit) | 100-999 units | 2.984 | 1.990 | 4.476 | 1.25e-07 | 37687 |
+| Requests about conditions inside the home | S4 by owner family (size bands vs 1 unit) | 1,000+ units | 2.904 | 1.862 | 4.530 | 2.59e-06 | 37687 |
+| Requests about the outside of the property | S4 by owner family (size bands vs 1 unit) | 2-4 units | 1.200 | 1.112 | 1.295 | 2.56e-06 | 37687 |
+| Requests about the outside of the property | S4 by owner family (size bands vs 1 unit) | 5-19 units | 1.254 | 1.144 | 1.375 | 1.40e-06 | 37687 |
+| Requests about the outside of the property | S4 by owner family (size bands vs 1 unit) | 20-99 units | 1.530 | 1.335 | 1.753 | 8.87e-10 | 37687 |
+| Requests about the outside of the property | S4 by owner family (size bands vs 1 unit) | 100-999 units | 1.232 | 0.978 | 1.551 | 7.59e-02 | 37687 |
+| Requests about the outside of the property | S4 by owner family (size bands vs 1 unit) | 1,000+ units | 0.989 | 0.641 | 1.527 | 9.61e-01 | 37687 |
 
 ## Evictions (Eviction Lab)
 
@@ -142,30 +142,30 @@ Tract data: Eviction Lab full tract file (not the validated subset); years limit
 
 | large_owner_tercile | tracts | renter_households | filings_per_year | filing_rate | years | tract_file |
 |---|---|---|---|---|---|---|
-| lowest third | 48 | 27203 | 773 | 2.84 | 2012-2016 | Eviction Lab full tract file (not the validated subset); years limited to those validated for Denver County |
-| middle third | 47 | 49582 | 1996 | 4.03 | 2012-2016 | Eviction Lab full tract file (not the validated subset); years limited to those validated for Denver County |
-| highest third | 48 | 65063 | 4466 | 6.86 | 2012-2016 | Eviction Lab full tract file (not the validated subset); years limited to those validated for Denver County |
+| lowest third | 48 | 26804 | 752 | 2.81 | 2012-2016 | Eviction Lab full tract file (not the validated subset); years limited to those validated for Denver County |
+| middle third | 47 | 49058 | 2043 | 4.16 | 2012-2016 | Eviction Lab full tract file (not the validated subset); years limited to those validated for Denver County |
+| highest third | 48 | 65986 | 4439 | 6.73 | 2012-2016 | Eviction Lab full tract file (not the validated subset); years limited to those validated for Denver County |
 
 | model | term | estimate | se | p | tracts |
 |---|---|---|---|---|---|
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | pct_rental_owner_100plus | 0.080 | 0.012 | 2.26e-10 | 142 |
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_black | 0.197 | 0.034 | 5.27e-08 | 142 |
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_hisp | 0.103 | 0.018 | 4.85e-08 | 142 |
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_pov | -0.105 | 0.040 | 9.16e-03 | 142 |
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | any_hidden | 0.424 | 0.622 | 4.97e-01 | 142 |
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | any_known | -2.121 | 0.600 | 5.64e-04 | 142 |
-| Filing rate on share of rental units held by companies | pct_rental_company | 0.097 | 0.017 | 7.55e-08 | 142 |
-| Filing rate on share of rental units held by companies | p_black | 0.215 | 0.041 | 5.94e-07 | 142 |
-| Filing rate on share of rental units held by companies | p_hisp | 0.089 | 0.017 | 8.35e-07 | 142 |
-| Filing rate on share of rental units held by companies | p_pov | -0.046 | 0.043 | 2.93e-01 | 142 |
-| Filing rate on share of rental units held by companies | any_hidden | 0.865 | 0.686 | 2.09e-01 | 142 |
-| Filing rate on share of rental units held by companies | any_known | -1.746 | 0.649 | 8.06e-03 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | pct_rental_out_of_state | 0.079 | 0.018 | 1.89e-05 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | p_black | 0.198 | 0.038 | 7.91e-07 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | p_hisp | 0.083 | 0.014 | 4.25e-08 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | p_pov | -0.013 | 0.035 | 7.17e-01 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | any_hidden | 0.835 | 0.629 | 1.87e-01 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | any_known | -2.078 | 0.613 | 9.14e-04 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | pct_rental_owner_100plus | 0.079 | 0.011 | 1.27e-10 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_black | 0.197 | 0.034 | 5.70e-08 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_hisp | 0.103 | 0.018 | 3.97e-08 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_pov | -0.103 | 0.039 | 9.35e-03 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | any_hidden | 0.438 | 0.623 | 4.83e-01 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | any_known | -2.076 | 0.597 | 6.78e-04 | 142 |
+| Filing rate on share of rental units held by companies | pct_rental_company | 0.101 | 0.017 | 2.09e-08 | 142 |
+| Filing rate on share of rental units held by companies | p_black | 0.214 | 0.041 | 5.53e-07 | 142 |
+| Filing rate on share of rental units held by companies | p_hisp | 0.090 | 0.017 | 5.65e-07 | 142 |
+| Filing rate on share of rental units held by companies | p_pov | -0.044 | 0.043 | 3.08e-01 | 142 |
+| Filing rate on share of rental units held by companies | any_hidden | 0.867 | 0.680 | 2.05e-01 | 142 |
+| Filing rate on share of rental units held by companies | any_known | -1.667 | 0.640 | 1.03e-02 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | pct_rental_out_of_state | 0.078 | 0.018 | 2.00e-05 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | p_black | 0.199 | 0.038 | 7.87e-07 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | p_hisp | 0.083 | 0.014 | 4.23e-08 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | p_pov | -0.012 | 0.035 | 7.26e-01 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | any_hidden | 0.850 | 0.632 | 1.81e-01 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | any_known | -2.050 | 0.614 | 1.08e-03 | 142 |
 
 ## Denver County eviction filings (Eviction Lab)
 

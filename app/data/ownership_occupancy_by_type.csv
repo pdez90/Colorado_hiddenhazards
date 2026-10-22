@@ -1,7 +1,7 @@
 type,parcels,units,owner_occupied_units,rental_units,pct_owner_occupied
 Apartment building (4+ units),3184,147149,174,146975,0.1
 Single-family house,135142,135142,112114,23028,83
-Condominium unit,43078,43078,28397,14681,65.9
+Condominium unit,43078,43078,29620,13458,68.8
 Mixed-use building (homes with shops or offices),579,34870,84,34786,0.2
-Rowhouse / townhouse,31042,31042,22868,8174,73.7
+Rowhouse / townhouse,31042,31042,22970,8072,74
 Duplex / triplex,3181,6919,843,6076,12.2

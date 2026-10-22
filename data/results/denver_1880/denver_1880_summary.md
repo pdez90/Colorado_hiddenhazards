@@ -6,10 +6,10 @@ Brown's 1880 HGIS gives 34,386 Denver residents at 4,534 geocoded buildings (17 
 
 | band | residents | % foreign born | % German | % Irish | % British | % Scandinavian | % Black | % Chinese | % laborers (employed adults) | mean SEI (employed adults) |
 |---|---|---|---|---|---|---|---|---|---|---|
-| < 100 m | 10726 | 27.1 | 4.0 | 5.5 | 4.7 | 1.3 | 2.9 | 1.6 | 10.8 | 31.8 |
-| 100-250 m | 8985 | 23.7 | 2.8 | 5.1 | 4.6 | 1.7 | 4.6 | 0.4 | 11.3 | 31.3 |
-| 250-500 m | 6199 | 24.1 | 2.6 | 5.2 | 5.7 | 2.2 | 1.5 | 0.0 | 10.9 | 31.8 |
-| > 500 m | 8476 | 23.9 | 2.0 | 5.9 | 6.7 | 2.4 | 1.8 | 0.0 | 18.9 | 28.3 |
+| < 100 m | 10726 | 27.1 | 5.3 | 5.5 | 4.7 | 1.3 | 2.9 | 1.6 | 10.8 | 31.8 |
+| 100-250 m | 8985 | 23.7 | 4.4 | 5.1 | 4.6 | 1.7 | 4.6 | 0.4 | 11.3 | 31.3 |
+| 250-500 m | 6199 | 24.1 | 4.1 | 5.2 | 5.7 | 2.2 | 1.5 | 0.0 | 10.9 | 31.8 |
+| > 500 m | 8476 | 23.9 | 3.3 | 5.9 | 6.7 | 2.4 | 1.8 | 0.0 | 18.9 | 28.3 |
 
 ## Person-level models (odds ratio per log-metre of distance; building-clustered SE; > 1 = more common farther away)
 
@@ -20,12 +20,12 @@ Brown's 1880 HGIS gives 34,386 Denver residents at 4,534 geocoded buildings (17 
 | white | 1.339 | 0.077 | 0.000162 | 34386 |
 | black | 0.883 | 0.056 | 0.0273 | 34386 |
 | chinese | 0.331 | 0.165 | 2.1e-11 | 34386 |
-| german | 0.800 | 0.046 | 1.36e-06 | 34386 |
+| german | 0.870 | 0.037 | 0.000187 | 34386 |
 | irish | 1.022 | 0.043 | 0.607 | 34386 |
 | british | 1.146 | 0.035 | 0.000103 | 34386 |
 | scandinavian | 1.279 | 0.090 | 0.00626 | 34386 |
 | canadian | 0.892 | 0.043 | 0.0078 | 34386 |
-| other_fb | 0.897 | 0.032 | 0.000716 | 34386 |
+| other_fb | 0.861 | 0.034 | 1.15e-05 | 34386 |
 | laborer | 1.201 | 0.058 | 0.00149 | 15391 |
 | sei (employed adults, linear) | -1.040 | 0.344 | 0.00247 | 15391 |
 

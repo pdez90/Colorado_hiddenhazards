@@ -66,7 +66,7 @@ for (g in c("g_name", "g_family", "g_registry")) { s <- fam_tot(g); setnames(s, 
 # a building's owner: the owner family holding most of its rental units, named owners first (a condominium's parcel with no owner name
 # never stands for the building); owner type, location and portfolio come from that family's largest parcel in the building
 P[, named := owner_type != "Unknown (no name recorded)"]; P[, fam_rent := sum(rental_units), by = .(bkey, g_family)]
-P[, `:=`(ord1 = -(named & fam_rent > 0), ord2 = -named)]; setorderv(P, c("bkey", "ord1", "fam_rent", "ord2", "rental_units", "units"), c(1, 1, -1, 1, -1, -1))
+P[, `:=`(ord1 = -(named & fam_rent > 0), ord2 = -named)]; setorderv(P, c("bkey", "ord1", "fam_rent", "ord2", "rental_units", "units", "g_family", "SCHEDNUM"), c(1, 1, -1, 1, -1, -1, 1, 1))   # last two: ties broken the same way on every run
 B <- P[, .(units = sum(units), rental_units = sum(rental_units), parcels = .N, type = type[which.max(units)], owner_type = owner_type[1], out_of_state = out_of_state[1],
     owner_occ_any = any(owner_occ), scale_g_name = scale_g_name[1], scale_g_family = scale_g_family[1], g_family = g_family[1],
     scale_g_registry = scale_g_registry[1],

@@ -117,8 +117,10 @@ R6 <- rbindlist(lapply(names(FL), function(s) { d <- as.data.frame(L[src == s & 
   rbindlist(lapply(names(EXP), function(e) { ctrl <- CTRL[vapply(CTRL, function(v) length(unique(d[[v]])) > 1, TRUE)]
     f <- as.formula(paste("death_age ~", paste(c(EXP[[e]], sub("^hc_q$", "as.factor(hc_q)", ctrl)), collapse = " + "), if (s == "Numident") "+ as.factor(female)"))
     lt <- GW[[s]][1]; rt <- GW[[s]][2]
-    g <- tryCatch(if (s == "Numident") gompertztrunc::gompertz_mle(f, left_trunc = lt, right_trunc = rt, data = d, weights = w, lower_age_bound = 65)
-                  else gompertztrunc::gompertz_mle(f, left_trunc = lt, right_trunc = rt, data = d, weights = w),
+    # both CenSoc files carry weights only for deaths at ages 65-100, and L keeps weighted records only, so neither sample can contain a death
+    # before 65 or after 100: the truncation window of each cohort must say so (gompertz_mle raises each left truncation age to 65 and
+    # lowers each right truncation age to 101: an integer death age of 100 is 100-101), otherwise cohorts younger than 65 at the window's start are fitted as if early deaths were possible
+    g <- tryCatch(gompertztrunc::gompertz_mle(f, left_trunc = lt, right_trunc = rt, data = d, weights = w, lower_age_bound = 65, upper_age_bound = 101),
                   error = function(err) { message(s, " ", e, ": ", conditionMessage(err)); NULL })
     if (is.null(g)) return(NULL); r <- as.data.table(g$results)[parameter == EXP[[e]][1]]
     ex <- tryCatch(as.data.table(gompertztrunc::convert_hazards_to_ex(g$results, age = 65, use_model_estimates = TRUE))[parameter == EXP[[e]][1]], error = function(err) NULL)

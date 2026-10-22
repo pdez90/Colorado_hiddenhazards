@@ -24,7 +24,24 @@ H$start_year <- yr(H$start_date); H$end_year <- yr(H$end_date)
 H$ref_clean <- toupper(gsub("[- ]+", " ", H$ref)); H$ref_clean <- sub("^I ", "I-", H$ref_clean)
 H$kind <- ifelse(grepl("^motorway", H$highway), "Freeway", "Major road")
 H <- H[lengths(st_intersects(H, st_buffer(STUDY, 3000))) > 0, ]
-HS <- suppressWarnings(st_intersection(H, STUDY)); HS$km <- as.numeric(st_length(HS)) / 1000
+# OpenHistoricalMap draws a divided freeway as two one-way carriageways, so summing their lengths counts the road twice (I-25 in Denver
+# County: 45.8 km of ways against 24.3 km of route in the NBER/FHWA file). Each freeway way gets a weight w = 1 - f/2, where f is the
+# share of its length within 60 m of an opposite carriageway: a freeway way running the other way (bearing more than 135 degrees apart)
+# that was in service at the same time. Lengths below are length x w, i.e. km of road, not km of carriageway.
+H$w <- 1
+fw_i <- which(H$kind == "Freeway" & !grepl("_link", H$highway))
+brg <- vapply(fw_i, function(i) { xy <- st_coordinates(H[i, ])[, 1:2, drop = FALSE]; d <- xy[nrow(xy), ] - xy[1, ]; atan2(d[2], d[1]) }, 0)
+nb <- st_is_within_distance(H[fw_i, ], H[fw_i, ], 60)
+for (a in seq_along(fw_i)) { i <- fw_i[a]; cand <- setdiff(nb[[a]], a); if (!length(cand)) next
+  anti <- cos(brg[cand] - brg[a]) < cos(3 * pi / 4)
+  s1 <- H$start_year[i]; e1 <- H$end_year[i]; s2 <- H$start_year[fw_i[cand]]; e2 <- H$end_year[fw_i[cand]]
+  same_time <- (is.na(e2) | is.na(s1) | e2 > s1) & (is.na(e1) | is.na(s2) | e1 > s2)
+  cand <- cand[anti & same_time]; if (!length(cand)) next
+  inside <- suppressWarnings(st_intersection(st_geometry(H[i, ]), st_union(st_buffer(st_geometry(H[fw_i[cand], ]), 60))))
+  f <- if (length(inside)) min(1, sum(as.numeric(st_length(inside))) / as.numeric(st_length(H[i, ]))) else 0; H$w[i] <- 1 - f / 2 }
+message(sprintf("freeway ways: %.1f km of carriageway, %.1f km of road after pairing opposite carriageways",
+                sum(as.numeric(st_length(H[fw_i, ]))) / 1000, sum(H$w[fw_i] * as.numeric(st_length(H[fw_i, ]))) / 1000))
+HS <- suppressWarnings(st_intersection(H, STUDY)); HS$km <- HS$w * as.numeric(st_length(HS)) / 1000
 out <- st_transform(H[, c("name", "ref_clean", "highway", "kind", "start_year", "end_year")], 4326)
 f <- file.path(O, "highways_denver.geojson"); if (file.exists(f)) file.remove(f); st_write(out, f, quiet = TRUE)
 # ---------------------------------------------------------------- 1. km by decade
@@ -43,24 +60,24 @@ nb[, open_year := 1900 + open %/% 100]; nb[, route := paste0("I-", rte %/% 10)]
 R2 <- nb[, .(nber_miles = round(sum(seg) / 100, 1), nber_first_opened = min(open_year), nber_last_opened = max(open_year)), by = route]
 den <- st_union(st_make_valid(tr[substr(tr$GEOID, 1, 5) == "08031", ]))
 HD <- suppressWarnings(st_intersection(H[H$kind == "Freeway" & !grepl("_link", H$highway), ], den))
-oh <- as.data.table(st_drop_geometry(HD))[, km := as.numeric(st_length(HD)) / 1000][grepl("^I-", ref_clean), .(ohm_km = round(sum(km), 1), ohm_first = min(start_year, na.rm = TRUE), ohm_last = max(start_year, na.rm = TRUE)), by = .(route = sub(";.*", "", ref_clean))]
+oh <- as.data.table(st_drop_geometry(HD))[, km := w * as.numeric(st_length(HD)) / 1000][grepl("^I-", ref_clean), .(ohm_km = round(sum(km), 1), ohm_km_in_service = round(sum(km[is.na(end_year)]), 1), ohm_first = min(start_year, na.rm = TRUE), ohm_last = max(start_year, na.rm = TRUE)), by = .(route = sub(";.*", "", ref_clean))]
 R2 <- merge(R2, oh, by = "route", all = TRUE); fwrite(R2, file.path(O, "highways_nber_check.csv")); print(R2)
 # ---------------------------------------------------------------- 3. HOLC grades and 1929 zoning
 B <- FW[!is.na(FW$start_year) & FW$start_year >= 1950 & FW$start_year <= 1979, ]
 Hh <- st_make_valid(st_transform(st_read(file.path(A, "holc_denver.geojson"), quiet = TRUE), UTM)); Hh <- Hh[Hh$grade %in% c("A", "B", "C", "D"), ]
 Hh <- aggregate(Hh[, "grade"], list(grade = Hh$grade), function(x) x[1])[, "grade"]; Hh$area_km2 <- as.numeric(st_area(Hh)) / 1e6
-x <- suppressWarnings(st_intersection(B[, "start_year"], Hh)); km_g <- data.table(grade = x$grade, km = as.numeric(st_length(x)) / 1000)[, .(km_through = round(sum(km), 1)), by = grade]
+x <- suppressWarnings(st_intersection(B[, c("start_year", "w")], Hh)); km_g <- data.table(grade = x$grade, km = x$w * as.numeric(st_length(x)) / 1000)[, .(km_through = round(sum(km), 1)), by = grade]
 buf <- st_union(st_buffer(B, 250)); y <- suppressWarnings(st_intersection(Hh, buf))
 near <- data.table(grade = y$grade, near_km2 = as.numeric(st_area(y)) / 1e6)
 R3 <- merge(merge(data.table(grade = Hh$grade, area_km2 = round(Hh$area_km2, 1)), km_g, by = "grade", all.x = TRUE), near, by = "grade", all.x = TRUE)
 R3[is.na(km_through), km_through := 0]; R3[is.na(near_km2), near_km2 := 0]; R3[, `:=`(km_per_km2 = round(km_through / area_km2, 2), pct_within_250m = round(100 * near_km2 / area_km2, 1), near_km2 = NULL)]
 fwrite(R3, file.path(O, "highways_by_holc_grade.csv")); print(R3)
 Z <- st_make_valid(st_transform(st_read(file.path(A, "zoning_1929.geojson"), quiet = TRUE), UTM)); Z$cls <- ifelse(grepl("Industrial", Z$zone), "1929 industrial district", "1929 commercial district")
-zi <- suppressWarnings(st_intersection(B[, "start_year"], Z[, "cls"])); zk <- data.table(cls = zi$cls, km = as.numeric(st_length(zi)) / 1000)[, .(km = sum(km)), by = cls]
+zi <- suppressWarnings(st_intersection(B[, c("start_year", "w")], Z[, "cls"])); zk <- data.table(cls = zi$cls, km = zi$w * as.numeric(st_length(zi)) / 1000)[, .(km = sum(km)), by = cls]
 g <- fread("data/results/zoning_1929/gcp_fit.csv"); fx <- lm(X ~ px_x + px_y, g); fy <- lm(Y ~ px_x + px_y, g)
 P <- function(px, py) cbind(predict(fx, data.frame(px_x = px, px_y = py)), predict(fy, data.frame(px_x = px, px_y = py)))
 SHEET <- st_sfc(st_polygon(list(rbind(P(0, 0), P(11849, 0), P(11849, 12000), P(0, 12000), P(0, 0)))), crs = UTM)
-on <- suppressWarnings(st_intersection(B[, "start_year"], SHEET)); tot <- sum(as.numeric(st_length(on))) / 1000
+on <- suppressWarnings(st_intersection(B[, c("start_year", "w")], SHEET)); tot <- sum(on$w * as.numeric(st_length(on))) / 1000
 R4 <- rbind(zk, data.table(cls = "residence or business district (rest of the 1929 map)", km = tot - sum(zk$km)))[, `:=`(km = round(km, 1), pct = round(100 * km / tot, 1))]
 lnd <- rbind(data.table(cls = "Land on the 1929 map (km2)", km = as.numeric(st_area(SHEET)) / 1e6), data.table(cls = "1929 industrial (km2)", km = sum(as.numeric(st_area(Z[Z$cls == "1929 industrial district", ]))) / 1e6))
 R4[, share_of_land := round(100 * c(sum(as.numeric(st_area(Z[Z$cls == "1929 industrial district", ]))), sum(as.numeric(st_area(Z[Z$cls == "1929 commercial district", ]))), NA) / as.numeric(st_area(SHEET)), 1)[match(cls, c("1929 industrial district", "1929 commercial district", "x"))]]
@@ -86,7 +103,7 @@ d1k <- st_is_within_distance(core, FW2[FW2$start_year < 1990, ], 1000)
 dt <- as.numeric(st_distance(st_centroid(st_geometry(core)), st_transform(st_sfc(st_point(c(-104.9903, 39.7392)), crs = 4326), st_crs(core)))) / 1000
 E <- data.table(GEOID = core$GEOID, open_year = open_yr, near1k_pre1990 = lengths(d1k) > 0, km_downtown = round(dt, 2))
 E[, group := fifelse(!is.na(open_year) & open_year >= 1950 & open_year <= 1979, "treated", fifelse(!near1k_pre1990, "comparison", "other"))]
-E[group == "treated", base_census := 10 * floor(open_year / 10)]
+E[group == "treated", base_census := 10 * floor(open_year / 10)]   # a census year counts as before: the census was taken on 1 April
 Pa0 <- fread(file.path(A, "tract_panel.csv"), colClasses = c(GEOID = "character"))[census >= 1940 & !is.na(pop) & pop > 0]
 V <- c("p_hisp", "p_black", "p_white", "p_owner", "p_pov")
 # two comparison sets: all tracts with no freeway within 1 km, and only those as close to downtown as the treated tracts (within the treated tracts' median distance)

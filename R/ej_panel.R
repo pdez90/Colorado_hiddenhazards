@@ -17,8 +17,9 @@
 # There is no complete edition after 1992, so the within/between panel stops at 1990 (three censuses, the minimum for the design).
 # The 2000, 2010 and 2020 censuses are analysed separately as legacy-site exposure: each tract's density of hazardous establishments
 # listed 1983-1992 (the last complete decade, the window the app uses for 2000-2020), census by census (data/results/ej_panel_legacy_sites.csv).
-# Exposure is hazardous establishments (SIC 28, 29, 30, 33, 34, 35, 37) throughout; all-manufacturer density is kept as a sensitivity. Study area: tracts within the City and County of Denver plus tracts of Adams/Arapahoe/Jefferson
-# within 10 km of downtown (the historically industrial core), to avoid mixing suburbanisation with neighbourhood change.
+# Exposure is the directory's street-located establishments flagged fe_hazard (Frickel & Elliott hazardous sectors, the definition used
+# everywhere) throughout; all-manufacturer density is kept as a sensitivity. Study area: every Colorado 2010 tract whose centroid is within
+# 10 km of downtown (whatever its county; the historically industrial core), to avoid mixing suburbanisation with neighbourhood change.
 suppressPackageStartupMessages({ library(sf); library(data.table); library(spdep); library(spatialreg); library(sandwich); library(lmtest) })
 sf_use_s2(FALSE); UTM <- 26913; CDIR <- "work/census"
 MATCH <- c("1970" = 1970, "1980" = 1980, "1990" = 1990); LATE <- c(2000L, 2010L, 2020L); LAST_WIN <- c(1983L, 1992L)
@@ -100,7 +101,7 @@ fwrite(rbindlist(res_d), "data/results/ej_panel_by_decade.csv")
 pan[, `:=`(entry_next = data.table::shift(active_haz, -1) - active_haz), by = GEOID]   # net change in active hazardous establishments by the next census
 R2 <- rbindlist(lapply(OUTS, function(xv) { if (!xv %in% names(pan) || all(is.na(pan[[xv]])) || sum(!is.na(pan[[xv]])) < 60 || uniqueN(pan$census[!is.na(pan[[xv]])]) < 3) return(NULL)
   d <- pan[!is.na(entry_next) & !is.na(get(xv))]; m <- lm(as.formula(paste("entry_next ~", xv, "+ log1p(active_d) + popd_w + dist_km + factor(census)")), d)
-  cf <- summary(m)$coefficients; data.table(predictor = xv, b = cf[2, 1], se = cf[2, 2], p = cf[2, 4], n = nrow(d)) }))
+  cf <- lmtest::coeftest(m, vcov. = sandwich::vcovCL(m, cluster = d$GEOID)); data.table(predictor = xv, b = cf[2, 1], se = cf[2, 2], p = cf[2, 4], n = nrow(d)) }))   # tract-clustered SE, as in the hybrid panel
 fwrite(R2, "data/results/ej_panel_reverse.csv")
 
 # ---------------------------------------------------------------- 2000-2020: legacy-site exposure (no complete directory after 1992)

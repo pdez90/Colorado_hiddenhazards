@@ -11,7 +11,9 @@
 # Board of Adjustment records in print only), so the series has a gap between 1944 and 2023.
 # Categories: industrial (housing not allowed: 1925 Industrial A/B; today I-A, I-B and the 1956-code I-0/I-1/I-2; NZA "Industrial");
 #   industrial mixed use (Denver's I-MX districts, which allow housing; 2010 onward); commercial (1925 Commercial district; today and 2023
-#   commercial and mixed-use districts); residential; open space, civic and other; PUD (planned unit developments, custom rules; city layer
+#   commercial and mixed-use districts that allow housing: in the city layer every "Commercial Mixed Use" district does; in the 2023 NZA
+#   layer the MixedUse* categories); commercial (housing not allowed: NZA GenZone2 "Commercial", 2023 only, as in R/zoning_2023.R; kept out
+#   of the housing-allowed share); residential; open space, civic and other; PUD (planned unit developments, custom rules; city layer
 #   only). For 1929 and 1944 everything outside the industrial and commercial districts is "residence or business".
 # Geography: (a) "land mapped in 1929 and 1944": the City and County of Denver within both historical map sheets (used whenever 1929 or 1944
 #   enters a comparison); (b) the study area (Denver plus the 147 tracts within 10 km of downtown) for 2023; (c) Denver County for today.
@@ -24,7 +26,7 @@
 #   zoning_today_categories.geojson, zoning_2023_categories.geojson   category polygons (dissolved) for the site's maps
 suppressPackageStartupMessages({ library(sf); library(data.table) })
 sf_use_s2(FALSE); UTM <- 26913; O <- "data/results/zoning_over_time"; A <- "app/data"; R0 <- "data/raw/zoning_1929"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
-CATS <- c("Industrial", "Industrial mixed use", "Commercial or mixed use", "Residential", "PUD (custom district)", "Open space, civic, other", "Residence or business (1929, 1944)")
+CATS <- c("Industrial", "Industrial mixed use", "Commercial or mixed use", "Commercial (housing not allowed)", "Residential", "PUD (custom district)", "Open space, civic, other", "Residence or business (1929, 1944)")
 # ---------------------------------------------------------------- geographies
 tr <- st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM); tr$core <- as.logical(tr$core) %in% TRUE
 DEN <- st_union(st_make_valid(tr[substr(tr$GEOID, 1, 5) == "08031", ]))
@@ -48,13 +50,14 @@ city$cat <- fcase(grepl("^I-MX", city$ZONE_DISTRICT), "Industrial mixed use", ci
 city_date <- tryCatch(readLines("work/zoning_city/download_date.txt")[1], error = function(e) "today")
 nza <- st_read("work/zoning_2023/ALL_DenverMSA_10.3.23.shp", quiet = TRUE, wkt_filter = st_as_text(st_transform(st_buffer(STUDY, 100), 32613)))
 nza <- st_make_valid(st_transform(nza, UTM))
-nza$cat <- fcase(grepl("^I-MX", nza$Local_zon), "Industrial mixed use", nza$GenZone2 == "Industrial", "Industrial", nza$GenZone2 == "Commercial" | grepl("^MixedUse", nza$GenZone2), "Commercial or mixed use",
+nza$cat <- fcase(grepl("^I-MX", nza$Local_zon), "Industrial mixed use", nza$GenZone2 == "Industrial", "Industrial", grepl("^MixedUse", nza$GenZone2), "Commercial or mixed use",
+                 nza$GenZone2 == "Commercial", "Commercial (housing not allowed)",
                  grepl("^Residential|^MobileHome", nza$GenZone2), "Residential", default = "Open space, civic, other")
 diss <- function(z, clip, yr) { z <- suppressWarnings(st_intersection(z[, "cat"], clip)); z <- aggregate(z[, "cat"], list(cat = z$cat), function(x) x[1])[, "cat"]; z$year <- yr; st_make_valid(z) }
 ZT <- diss(city, DEN, "today"); Z23 <- diss(nza, STUDY, "2023")
 # ---------------------------------------------------------------- 1. land by year on the land mapped in 1929 and 1944
 land <- function(z, yr) { it <- suppressWarnings(st_intersection(z, COMMON)); d <- data.table(cat = it$cat, km2 = as.numeric(st_area(it)) / 1e6)[, .(km2 = sum(km2)), by = cat]
-  if (yr %in% c("1929", "1944")) d <- rbind(d, data.table(cat = CATS[7], km2 = common_km2 - sum(d$km2)))
+  if (yr %in% c("1929", "1944")) d <- rbind(d, data.table(cat = "Residence or business (1929, 1944)", km2 = common_km2 - sum(d$km2)))
   d[, `:=`(year = yr, pct = 100 * km2 / common_km2)] }
 R1 <- rbindlist(lapply(list(list(Z29, "1929"), list(Z44, "1944"), list(Z23, "2023"), list(ZT, "today")), function(x) land(x[[1]], x[[2]])))
 R1[, cat := factor(cat, CATS)]; R1 <- R1[order(year, cat)][, `:=`(km2 = round(km2, 2), pct = round(pct, 1))]

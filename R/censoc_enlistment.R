@@ -11,7 +11,7 @@
 # body-mass index, and years of schooling. The AGCT field is not used (it mixes weight, test scores and other codes).
 # Sample: men in Denver in 1940, born 1905-1927, who enlisted from civilian life. OLS with birth-year and enlistment-year fixed effects,
 # the same 1940 person and household controls as R/censoc_denver_1940.R, errors clustered by 1940 enumeration district; also for boys
-# aged 0-17 in 1940, whose height and weight reflect childhood conditions. Who enlisted is shown too: men rejected on health grounds never
+# aged 13-17 in 1940 (the youngest the 1905-1927 birth years allow), whose height and weight reflect childhood conditions. Who enlisted is shown too: men rejected on health grounds never
 # appear in these records, which biases the comparisons towards zero if industrial neighbourhoods produced more rejections.
 # Outputs (aggregates only): data/results/censoc/enlistment_models.csv, enlistment_shares.csv, enlistment_summary.md
 for (p in c("sandwich", "lmtest")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
@@ -47,7 +47,7 @@ fit <- function(d, yv, terms, fe = "factor(byear) + factor(enl_year)") { d <- d[
   k <- if (yv == "enlisted") 100 else 1; t <- terms[1]
   data.table(estimate = round(k * ct[t, 1], 3), lo = round(k * (ct[t, 1] - 1.96 * ct[t, 2]), 3), hi = round(k * (ct[t, 1] + 1.96 * ct[t, 2]), 3), p = signif(ct[t, 4], 3), n = nobs(m),
              outcome_mean = round(k * mean(d[[yv]]), 2)) }
-SUB <- list(`Men born 1905-1927` = quote(TRUE), `Boys aged 0-17 in 1940` = quote(AGE <= 17))
+SUB <- list(`Men born 1905-1927` = quote(TRUE), `Boys aged 13-17 in 1940` = quote(AGE <= 17))   # with births 1923-1927 only, AGE <= 17 is ages 13-17
 R <- rbindlist(lapply(names(SUB), function(s) rbindlist(lapply(names(OUT), function(o) rbindlist(lapply(names(EXP), function(e) {
   d <- if (o == "enlisted") M[eval(SUB[[s]])] else M[enlisted == 1 & source == 0][eval(SUB[[s]])]
   r <- fit(d, o, EXP[[e]], if (o == "enlisted") "factor(byear)" else "factor(byear) + factor(enl_year)")

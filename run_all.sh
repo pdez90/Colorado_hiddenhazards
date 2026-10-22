@@ -33,6 +33,7 @@ py pipeline/validate_addresspoints.py || echo "address-point check skipped (need
 py pipeline/app_inputs.py         # app/data/*
 py pipeline/app_site_firms.py     # app/data/site_firms.csv (firm details for map popups)
 py pipeline/app_industry_mix.py   # app/data/industry_mix.csv, firm_longevity.csv (Trends tab)
+echo ">> R/fix_direction_geocodes.R"; Rscript R/fix_direction_geocodes.R   # drop geocodes on the wrong side of Denver's grid; rebuild the sites they touched
 # ---- pre-1960 layer: Colorado State Business Directory (1877-1950), hazardous historical trades
 if [[ -d work/hist/pdf || -d work/hist/text ]]; then
   [[ -d work/hist/pdf ]] && bash pipeline/historical/extract_text.sh

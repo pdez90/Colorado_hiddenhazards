@@ -25,7 +25,8 @@ CP <- fread("data/results/county_panel_1880_1940.csv", colClasses = c(fips = "ch
 CP[, fips3 := substr(fips, 3, 5)]
 MINING <- c("065", "047", "019", "111", "091", "119", "117", "053", "093", "015", "113", "079")   # Lake, Gilpin, Clear Creek, San Juan, Ouray, Teller, Summit, Hinsdale, Park, Chaffee, San Miguel, Mineral
 SOUTH <- c("021", "023", "055", "071", "105", "109", "003")                                     # Conejos, Costilla, Huerfano, Las Animas, Rio Grande, Saguache, Alamosa
-CP[, region := fcase(fips3 %in% c("005", "031") & grepl("Arapahoe|Denver", name), "Denver (Arapahoe before 1902)", fips3 %in% MINING, "mining counties",
+# Arapahoe County held Denver only until 1902 (the 1880 and 1900 censuses); from 1910 Arapahoe is a suburban county and falls in "rest of Colorado"
+CP[, region := fcase(fips3 == "031" | (fips3 == "005" & census <= 1900), "Denver (Arapahoe before 1902)", fips3 %in% MINING, "mining counties",
                      fips3 == "101", "Pueblo", fips3 %in% SOUTH, "southern Hispano counties", default = "rest of Colorado")]
 R1 <- CP[!is.na(pop), .(trades = sum(firms_haz), pop = sum(pop)), by = .(census, region)][, `:=`(pct_trades = round(100 * trades / sum(trades), 1), pct_pop = round(100 * pop / sum(pop), 1)), by = census][order(census, region)]
 fwrite(R1, file.path(O, "county_regions_1880_1940.csv"))

@@ -15,7 +15,8 @@
 #   1. the study area's land by category;
 #   2. the 1929 Commercial, Industrial A and Industrial B districts (R/zoning_1925.R) by 2023 category;
 #   3. hazardous-sector sites (1965-1992 complete editions, street-located) and street-level pre-1960 hazardous trades by 2023 category,
-#      for Denver County and for the suburban study tracts, and by the decade the site was last listed;
+#      for Denver County and for the suburban study tracts, and by the decade the site was last listed (a site on unzoned street
+#      right-of-way takes the nearest polygon within 50 m; the number left unmatched is printed and stated in the summary);
 #   4. the 147 tracts: 2023 share of land in each category, and 2020 composition (population-weighted) by industrial share.
 # Outputs: data/results/zoning_2023/*.csv and zoning_2023_summary.md; copies of the summary tables in app/data.
 suppressPackageStartupMessages({ library(sf); library(data.table) })
@@ -52,11 +53,25 @@ S <- fread(file.path(A, "sites.csv"), colClasses = c(GEOID = "character"))[fe_ha
 SY <- fread(file.path(A, "site_years.csv"))[year %in% ED_OK][, .(last_listed = max(year)), by = site_id]
 S <- merge(S, SY, by = "site_id")
 H <- fread(file.path(A, "historical_sites.csv"), colClasses = c(GEOID = "character"))[fe_hazard %in% c(TRUE, "True") & precision != "town" & !is.na(lat)]
-locate <- function(d, id) { p <- st_transform(st_as_sf(d, coords = c("lon", "lat"), crs = 4326, remove = FALSE), UTM)
-  j <- st_join(p, Z[, c("zone2023", "GenZone2", "Local_zon", "jurisd")], left = FALSE); j <- j[!duplicated(j[[id]]), ]
-  r <- as.data.table(st_drop_geometry(j)); r[, where := fifelse(substr(GEOID, 1, 5) == "08031", "Denver County", "Suburban study tracts")]; r }
-SS <- locate(S, "site_id"); HH <- locate(H, "hfirm")
-fwrite(SS[, .(site_id, address, city, first_year, last_listed, fe_sectors, radar, where, jurisd, Local_zon, GenZone2, zone2023)], file.path(O, "sites_zoning_2023.csv"))
+# Sites in the study area are matched to the 2023 polygon they fall in. Street geocodes often land on the street right-of-way, which most
+# suburban jurisdictions leave unzoned (Denver zones to the centreline), so a site that falls in no polygon takes the nearest polygon
+# within NEAR_M metres (the parcel facing the street); sites with no polygon within NEAR_M stay unmatched and are counted.
+NEAR_M <- 50; MATCH <- list(); ZJ <- Z[, c("zone2023", "GenZone2", "Local_zon", "jurisd")]
+locate <- function(d, id, label) { p <- st_transform(st_as_sf(d, coords = c("lon", "lat"), crs = 4326, remove = FALSE), UTM)
+  p <- p[lengths(st_intersects(p, AREA)) > 0, ]
+  j <- st_join(p, ZJ, left = TRUE); j <- j[!duplicated(j[[id]]), ]; j$match <- ifelse(is.na(j$zone2023), NA_character_, "inside polygon")
+  u <- which(is.na(j$zone2023))
+  if (length(u)) { near <- lengths(st_is_within_distance(j[u, ], ZJ, NEAR_M)) > 0; u <- u[near]
+    if (length(u)) { nn <- st_nearest_feature(j[u, ], ZJ); for (v in c("zone2023", "GenZone2", "Local_zon", "jurisd")) j[[v]][u] <- ZJ[[v]][nn]
+      j$match[u] <- sprintf("nearest polygon within %d m", NEAR_M) } }
+  r <- as.data.table(st_drop_geometry(j)); r[, where := fifelse(substr(GEOID, 1, 5) == "08031", "Denver County", "Suburban study tracts")]
+  r[, match := fifelse(is.na(match), "unmatched", match)]
+  cat(sprintf("%s: %d sites in the study area; %d inside a 2023 polygon, %d by nearest polygon within %d m, %d unmatched (left out)\n", label, nrow(r),
+              sum(r$match == "inside polygon"), sum(grepl("^nearest", r$match)), NEAR_M, sum(r$match == "unmatched")))
+  print(r[, .N, by = .(where, match)][order(where, match)])
+  MATCH[[id]] <<- c(n_area = nrow(r), near = sum(grepl("^nearest", r$match)), unmatched = sum(r$match == "unmatched")); r[match != "unmatched"] }
+SS <- locate(S, "site_id", "Hazardous-sector manufacturers 1965-1992"); HH <- locate(H, "hfirm", "Hazardous trades before 1960 (street level)")
+fwrite(SS[, .(site_id, address, city, first_year, last_listed, fe_sectors, radar, where, jurisd, Local_zon, GenZone2, zone2023, match)], file.path(O, "sites_zoning_2023.csv"))
 SS[, series := "Hazardous-sector manufacturers 1965-1992"]; HH[, series := "Hazardous trades before 1960 (street level)"]
 B <- rbind(SS[, .(series, where, zone2023)], HH[, .(series, where, zone2023)])
 R3 <- rbind(pct_tab(B, c("series", "where")), pct_tab(B[, where := "Study area"], c("series", "where")))[n >= 20][order(series, where)]
@@ -86,6 +101,8 @@ md <- function(d) { d <- as.data.frame(d); paste(c(paste("|", paste(names(d), co
 writeLines(c("# Zoning today (2023) in the Denver study area", "",
   "Source: Denver-metro zoning, 3 Oct 2023, compiled by C. Makarewicz (CU Denver) for the National Zoning Atlas.", "",
   "## Land by 2023 category", md(R1), "", "## The 1929 districts in 2023 (% of each 1929 district's area)", md(R2), "",
-  "## Hazardous sites by 2023 zoning (% of sites)", md(R3), "", "## 1965-92 sites by the decade last listed", md(R3b), "",
+  "## Hazardous sites by 2023 zoning (% of sites)",
+  sprintf("Sites in the study area that fall in no 2023 polygon (mostly suburban street geocodes on unzoned right-of-way) take the nearest polygon within %d m: %d of %d 1965-92 sites and %d of %d pre-1960 trades; %d and %d remain unmatched and are left out.",
+          NEAR_M, MATCH$site_id[["near"]], MATCH$site_id[["n_area"]], MATCH$hfirm[["near"]], MATCH$hfirm[["n_area"]], MATCH$site_id[["unmatched"]], MATCH$hfirm[["unmatched"]]), "", md(R3), "", "## 1965-92 sites by the decade last listed", md(R3b), "",
   "## 2020 composition by the tract's 2023 industrial share (population-weighted means)", md(R4)), file.path(O, "zoning_2023_summary.md"))
 print(R1); print(R2); print(R3); print(R3b); print(R4)

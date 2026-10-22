@@ -21,10 +21,19 @@ P <- fread(bf("UTPalldat/UTP all dat/UTP matched to NAPP.dat"), sep = "\t", enco
 setnames(P, 1, "mergeID"); P <- P[citynameB == "DENVER"]
 P[, racenameB := tolower(trimws(racenameB))]; P[, seiusB := suppressWarnings(as.numeric(seiusB))]
 # occlabelB is an undocumented occupation-string id; the Duncan SEI (seiusB) is documented: 0 = no occupation, 8 = laborers n.e.c.
+# German born: Brown's birthplace labels name German states separately (the script already met "Prussia" and "Bavaria"), so every state
+# of the 1871 Empire is counted, under the spellings the census clerks and later coders used; Austria is kept, as before (Alsace-Lorraine and
+# Posen are left out: many born there before 1871 were French or Polish). The message below lists which labels were found.
+GER <- c("Germany", "Prussia", "Bavaria", "Austria", "Baden", "Hesse", "Hessen", "Hesse-Darmstadt", "Hesse-Cassel", "Hesse-Kassel", "Nassau", "Wurttemberg", "Wuerttemberg", "Württemberg", "Wurtemberg",
+         "Saxony", "Hanover", "Hannover", "Mecklenburg", "Mecklenburg-Schwerin", "Mecklenburg-Strelitz", "Oldenburg", "Brunswick", "Braunschweig", "Holstein", "Schleswig", "Schleswig-Holstein",
+         "Hamburg", "Bremen", "Lubeck", "Lübeck", "Lippe", "Lippe-Detmold", "Schaumburg-Lippe", "Waldeck", "Anhalt", "Thuringia", "Saxe-Weimar", "Saxe-Coburg", "Saxe-Coburg-Gotha", "Saxe-Meiningen",
+         "Saxe-Altenburg", "Reuss", "Schwarzburg", "Westphalia", "Rhine Province", "Pomerania", "Silesia", "East Prussia", "West Prussia", "Rhenish Prussia")
+GERx <- function(b) trimws(b) %in% GER | grepl("^(saxe|hesse|mecklenburg|schwarzburg|reuss)\\b", trimws(b), ignore.case = TRUE)
+message("birthplaces counted as German: ", paste(names(sort(table(P$BPLB[GERx(P$BPLB)]), decreasing = TRUE)), collapse = ", "))
 P[, `:=`(fb = nativityB == 5, black = racenameB %in% c("black", "mulatto"), chinese = racenameB == "chinese",
-         german = BPLB %in% c("Germany", "Prussia", "Bavaria", "Austria"), irish = BPLB == "Ireland", british = BPLB %in% c("England", "Scotland", "Wales"),
+         german = GERx(BPLB), irish = BPLB == "Ireland", british = BPLB %in% c("England", "Scotland", "Wales"),
          scandinavian = BPLB %in% c("Sweden", "Norway", "Denmark"), canadian = BPLB == "Canada", white = racenameB == "white",
-         native_white = racenameB == "white" & nativityB != 5, other_fb = nativityB == 5 & !(BPLB %in% c("Germany", "Prussia", "Bavaria", "Austria", "Ireland", "England", "Scotland", "Wales", "Sweden", "Norway", "Denmark", "Canada", "China")), laborer = !is.na(seiusB) & seiusB == 8, employed = !is.na(seiusB) & seiusB > 0, sei = ifelse(!is.na(seiusB) & seiusB > 0, seiusB, NA_real_),
+         native_white = racenameB == "white" & nativityB != 5, other_fb = nativityB == 5 & !GERx(BPLB) & !(BPLB %in% c("Ireland", "England", "Scotland", "Wales", "Sweden", "Norway", "Denmark", "Canada", "China")), laborer = !is.na(seiusB) & seiusB == 8, employed = !is.na(seiusB) & seiusB > 0, sei = ifelse(!is.na(seiusB) & seiusB > 0, seiusB, NA_real_),
          adult = !is.na(suppressWarnings(as.numeric(ageB))) & suppressWarnings(as.numeric(ageB)) >= 18)]
 P <- merge(P, data.table(match_addrB = bld$Match_addr, x = bxy[, 1], y = bxy[, 2], ed = bld$enumdist), by = "match_addrB")
 message(nrow(P), " Denver residents at geocoded buildings; foreign born ", round(100 * mean(P$fb), 1), "%, Black ", round(100 * mean(P$black), 1), "%, Chinese ", round(100 * mean(P$chinese), 1), "%"); print(head(sort(table(P$racenameB), decreasing = TRUE), 8)); print(head(sort(table(P$BPLB), decreasing = TRUE), 12))

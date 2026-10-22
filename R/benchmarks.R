@@ -69,9 +69,9 @@ for (k in c("dir_mfg", "dir_haz", "dir_all", "dir_street")) CC[is.na(get(k)), (k
 CC[, `:=`(ratio_mfg = round(dir_mfg / cbp_mfg, 2), ratio_haz = round(dir_haz / pmax(cbp_haz, 1), 2))]
 fwrite(CC, file.path(O, "cbp_vs_directory_county.csv"))
 print(CMP_state[year %in% c(1976, 1980, 1985, 1990, 1993, 1999, 2002)])
-# county-level fit in the editions with CBP
+# county-level fit in the editions with CBP (the median ratio leaves out county-years with no CBP manufacturer, where the ratio is undefined)
 fit <- CC[dir_all > 0, .(editions = uniqueN(year), counties = uniqueN(county), r_mfg = round(cor(log1p(dir_mfg), log1p(cbp_mfg)), 3), r_haz = round(cor(log1p(dir_haz), log1p(cbp_haz)), 3),
-                        median_ratio_mfg = round(median(dir_mfg / cbp_mfg), 2), denver_ratio_mfg = round(median((dir_mfg / cbp_mfg)[county == "031"]), 2))]
+                        median_ratio_mfg = round(median((dir_mfg / cbp_mfg)[cbp_mfg > 0]), 2), denver_ratio_mfg = round(median((dir_mfg / cbp_mfg)[county == "031"]), 2))]
 print(fit)
 
 # ---------------------------------------------------------------- 2. NHGIS county manufacturing 1880-1940 vs the business directory
@@ -79,7 +79,7 @@ NH <- NULL
 if (nzchar(Sys.getenv("IPUMS_API_KEY")) && requireNamespace("ipumsr", quietly = TRUE)) {
   library(ipumsr)   # ipumsr reads IPUMS_API_KEY from the environment (~/.Renviron); nothing is written there
   ds <- as.data.table(get_metadata_catalog("nhgis", metadata_type = "datasets"))
-  mf <- file.path(W, "nhgis_mfg_county_v2.csv")
+  mf <- file.path(W, "nhgis_mfg_county_v3.csv")   # v3: county codes read from the right GISJOIN characters (v2 dropped the hundreds digit)
   if (!length(Sys.glob(file.path(W, "nhgis*_csv", "*_county.csv")))) { specs <- list()
     for (dname in ds[grepl("^(1880|1890|1900|1910|1920|1930|1940)", group)]$name) {
       md <- tryCatch(get_metadata("nhgis", dataset = dname), error = function(e) NULL); if (is.null(md) || !"county" %in% md$geog_levels$name) next
@@ -96,15 +96,24 @@ if (nzchar(Sys.getenv("IPUMS_API_KEY")) && requireNamespace("ipumsr", quietly = 
       we <- v[grepl("^(Average Number of |Annual Average )?Wage Earners in Manufacturing( Industries)?(, 19\\d\\d)?$|^Average Number of Employees of All Classes", tabs)][1]
       vp <- v[grepl("^(Total )?Value of (All )?Products", tabs)][1]
       message(yr, ": establishments = ", est, " (", if (!is.na(est)) vars[[est]][1], "); wage earners = ", we, "; value of products = ", vp)
-      data.table(census = yr, county = sprintf("%03d", as.integer(substr(d$GISJOIN, 6, 8)) %/% 10), county_nhgis = d$COUNTY, mfg_estab = if (is.na(est)) NA_real_ else as.numeric(d[[est]]), wage_earners = if (is.na(we)) NA_real_ else as.numeric(d[[we]]),
+      # NHGIS county GISJOIN = "G" + state (3 digits, "080") + county (4 digits, FIPS x 10, e.g. "G0801010" = Pueblo 08101): characters 5-8 are NHGISCTY
+      data.table(census = yr, nhgis_cty = as.integer(substr(d$GISJOIN, 5, 8)), county = sprintf("%03d", as.integer(substr(d$GISJOIN, 5, 8)) %/% 10), county_nhgis = d$COUNTY, mfg_estab = if (is.na(est)) NA_real_ else as.numeric(d[[est]]), wage_earners = if (is.na(we)) NA_real_ else as.numeric(d[[we]]),
                  value_products = if (is.na(vp)) NA_real_ else as.numeric(d[[vp]]), estab_label = if (is.na(est)) NA_character_ else vars[[est]][1]) }), fill = TRUE)
     fwrite(rows, mf) }
   if (file.exists(mf)) NH <- fread(mf, colClasses = c(county = "character"))
 } else message("NHGIS step skipped: no IPUMS_API_KEY in the environment (set it in ~/.Renviron) or ipumsr not installed")
 if (!is.null(NH) && nrow(NH)) {
-  H <- fread("app/data/historical_sites.csv")[fe_hazard %in% c(TRUE, "True")]
-  HD <- rbindlist(lapply(sort(unique(NH$census)), function(cy) H[first_year <= cy + 2 & last_year >= cy - 2, .(census = cy, dir_haz = .N, dir_street = sum(precision != "town")), by = .(county_name = county)]))
-  NH[, county_name := cty_names[county]]; NB <- merge(NH[!is.na(mfg_estab)], HD, by = c("census", "county_name"), all.x = TRUE)
+  # each directory firm goes to the county in force at that census, not today's county (Denver County exists only from 1902: a Denver firm of
+  # 1880-1900 is in Arapahoe). The firms' points are placed in the census's own NHGIS county polygons (app/data/co_counties_1880_1940.geojson,
+  # written by R/county_panel_1880_1940.R; icp = NHGISCTY). 1890 has no polygons there, so it uses the 1900 ones with Teller (1899) put back in El Paso.
+  H <- fread("app/data/historical_sites.csv")[fe_hazard %in% c(TRUE, "True") & !is.na(lat)]
+  CP <- st_read("app/data/co_counties_1880_1940.geojson", quiet = TRUE)[, c("icp", "census")]; hp <- st_transform(st_as_sf(H[, .(hfirm, lon, lat)], coords = c("lon", "lat"), crs = 4326), st_crs(CP))
+  in_force <- function(cy) { by <- if (cy %in% CP$census) cy else if (cy == 1890) 1900 else CP$census[which.min(abs(CP$census - cy))]
+    S <- CP[CP$census == by, ]; k <- vapply(suppressMessages(st_intersects(hp, S)), function(i) if (length(i)) i[1] else NA_integer_, 1L)
+    v <- S$icp[k]; if (cy < 1899) v[v %in% 1190L] <- 410L; v }
+  HD <- rbindlist(lapply(sort(unique(NH$census)), function(cy) H[, nhgis_cty := in_force(cy)][!is.na(nhgis_cty) & first_year <= cy + 2 & last_year >= cy - 2,
+    .(census = cy, dir_haz = .N, dir_street = sum(precision != "town")), by = nhgis_cty]))
+  NH[, county_name := cty_names[county]]; NB <- merge(NH[!is.na(mfg_estab)], HD, by = c("census", "nhgis_cty"), all.x = TRUE)
   for (k in c("dir_haz", "dir_street")) NB[is.na(get(k)), (k) := 0L]
   NB[, ratio_haz_to_census := round(dir_haz / pmax(mfg_estab, 1), 2)]; setorder(NB, census, -mfg_estab)
   fwrite(NB[, .(census, county, county_name, mfg_estab, wage_earners, value_products, dir_haz, dir_street, ratio_haz_to_census, estab_label)], file.path(O, "nhgis_mfg_vs_directory.csv"))

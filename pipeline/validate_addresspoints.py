@@ -29,7 +29,10 @@ def query(num, core, loose=False):
             return [(a['Latitude'], a['Longitude'], a.get('County') or '', a.get('PreDir') or '') for a in (f['attributes'] for f in j.get('features', []))]
         except Exception:
             time.sleep(2)
+    FAILED.append(num)                     # the service could not be reached: counted, so the run can refuse to overwrite saved results
     return []
+
+FAILED = []
 
 def dist(la1, lo1, la2, lo2):
     return 6371000 * np.hypot(np.radians(la2 - la1), np.radians(lo2 - lo1) * np.cos(np.radians(la1)))
@@ -51,6 +54,8 @@ for i, x in enumerate(s.itertuples()):
                      status='found' if cc else 'not_found', ambiguous=len(ds) > 1 and max(ds) - min(ds) > 300,
                      dmin=min(ds) if ds else np.nan))
 R = pd.DataFrame(rows)
+if len(FAILED) > 0.05 * len(s) or not (R.status == 'found').any():
+    sys.exit(f'address-point service unreachable for {len(FAILED)} of {len(s)} queries: saved results left in place')
 R.to_csv('data/results/geocoding_validation_addresspoints.csv', index=False)
 f = R[(R.status == 'found') & ~R.ambiguous]
 print(f.groupby('level').dmin.describe(percentiles=[.5, .9]).round(0))

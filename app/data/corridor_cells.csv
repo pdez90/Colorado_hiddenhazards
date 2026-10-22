@@ -35,15 +35,15 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.99708,39.74765,"persistent, sector turnover",1965,1990,12,19,TRUE,Textiles,Printing,4,1881,22,TRUE
 -104.99708,39.75216,"persistent, sector turnover",1965,1992,13,17,TRUE,Food,Textiles,7,1884,31,TRUE
 -104.99708,39.75667,"persistent, sector turnover",1965,1992,12,4,TRUE,Fabricated metals,Printing,7,1950,3,TRUE
--104.99708,39.76117,"persistent, sector turnover",1965,1992,13,6,TRUE,Machinery,Chemicals,4,,,TRUE
+-104.99708,39.76117,persistent,1965,1992,13,6,TRUE,Chemicals,Chemicals,3,,,TRUE
 -104.99708,39.76568,persistent,1966,1990,9,2,FALSE,Lumber & wood,Food,2,,,TRUE
--104.99708,39.77018,"persistent, sector turnover",1965,1992,11,9,TRUE,Machinery,Food,5,,,TRUE
+-104.99708,39.77018,"persistent, sector turnover",1965,1992,11,7,TRUE,Printing,Food,4,,,TRUE
 -104.99708,39.77469,"persistent, sector turnover",1965,1990,12,9,TRUE,"Stone, clay & glass",Machinery,6,,,TRUE
 -104.99708,39.77919,intermittent,1970,1990,4,2,TRUE,Food,Lumber & wood,3,,,TRUE
 -104.99708,39.7837,"persistent, sector turnover",1965,1992,13,5,TRUE,Textiles,Food,7,1950,1,TRUE
 -104.99708,39.7882,former (gone by 1980s),1974,1980,2,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
 -104.99708,39.79721,intermittent,1966,1990,5,4,TRUE,Lumber & wood,Petroleum,3,1943,1,TRUE
--104.99708,39.80622,former (gone by 1980s),1968,1968,1,1,FALSE,Furniture,Furniture,1,,,TRUE
+-104.99708,39.80622,former (gone by 1980s),1968,1968,1,1,TRUE,Furniture,Furniture,1,,,TRUE
 -104.99708,39.82424,emerging,1980,1980,1,1,FALSE,,,1,,,TRUE
 -104.99708,39.83325,former (gone by 1980s),1974,1974,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
 -104.99708,39.86028,emerging,1980,1992,4,2,TRUE,Misc. manufacturing,Fabricated metals,2,,,TRUE
@@ -87,7 +87,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.99125,39.74765,"persistent, sector turnover",1965,1992,13,13,TRUE,Printing,Machinery,4,1884,18,TRUE
 -104.99125,39.75216,persistent,1965,1992,13,23,TRUE,Printing,Printing,2,1910,13,TRUE
 -104.99124,39.75666,"persistent, sector turnover",1965,1992,13,9,TRUE,Fabricated metals,Apparel,7,1913,12,TRUE
--104.99124,39.76117,intermittent,1977,1992,4,1,FALSE,Food,Food,1,,,TRUE
+-104.99124,39.76117,emerging,1990,1992,2,1,FALSE,Food,Food,1,,,TRUE
 -104.99124,39.77018,intermittent,1973,1992,7,3,TRUE,,Chemicals,4,,,TRUE
 -104.99124,39.77469,"persistent, sector turnover",1965,1992,12,5,TRUE,Machinery,Fabricated metals,4,,,TRUE
 -104.99124,39.77919,intermittent,1977,1990,5,3,TRUE,Chemicals,Fabricated metals,2,,,TRUE
@@ -119,7 +119,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.98544,39.62151,emerging,1980,1983,2,1,FALSE,Instruments,Instruments,1,,,TRUE
 -104.98544,39.62602,persistent,1967,1990,8,1,FALSE,Apparel,Apparel,1,,,TRUE
 -104.98543,39.63052,former (gone by 1980s),1966,1974,6,2,TRUE,,Furniture,4,1939,1,TRUE
--104.98543,39.63503,intermittent,1973,1983,3,1,FALSE,Printing,"Stone, clay & glass",2,,,TRUE
+-104.98543,39.63503,intermittent,1973,1983,3,1,TRUE,Printing,"Stone, clay & glass",2,,,TRUE
 -104.98543,39.63953,former (gone by 1980s),1966,1980,4,2,TRUE,,Printing,3,,,TRUE
 -104.98543,39.64404,emerging,1983,1990,2,1,FALSE,Printing,Printing,1,,,TRUE
 -104.98543,39.64854,former (gone by 1980s),1967,1968,2,1,FALSE,Printing,Printing,1,,,TRUE
@@ -138,7 +138,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.98542,39.70711,emerging,1988,1988,1,1,FALSE,Printing,Printing,1,1941,1,TRUE
 -104.98542,39.71161,intermittent,1970,1990,8,2,TRUE,"Stone, clay & glass",Printing,4,1929,1,TRUE
 -104.98542,39.71612,"persistent, sector turnover",1965,1992,13,7,TRUE,Food,,5,1917,5,TRUE
--104.98542,39.72062,persistent,1965,1992,11,4,FALSE,Printing,Printing,4,,,TRUE
+-104.98542,39.72062,persistent,1965,1992,11,4,TRUE,Printing,Printing,4,,,TRUE
 -104.98541,39.72513,"persistent, sector turnover",1965,1992,13,5,TRUE,Food,,5,1913,4,TRUE
 -104.98541,39.72963,"persistent, sector turnover",1965,1992,13,8,TRUE,Furniture,,5,,,TRUE
 -104.98541,39.73414,"persistent, sector turnover",1965,1992,12,3,TRUE,Transportation eq.,Printing,4,,,TRUE
@@ -151,15 +151,14 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.98541,39.76567,"persistent, sector turnover",1965,1992,13,4,TRUE,Lumber & wood,Misc. manufacturing,5,1956,1,TRUE
 -104.9854,39.77018,persistent,1966,1990,9,2,FALSE,Food,Food,2,,,TRUE
 -104.9854,39.77468,"persistent, sector turnover",1965,1992,13,5,TRUE,Food,,4,,,TRUE
--104.9854,39.78369,"persistent, sector turnover",1965,1990,9,2,TRUE,Misc. manufacturing,Electronics,3,,,TRUE
--104.9854,39.7882,former (gone by 1980s),1965,1965,1,2,TRUE,Leather,Leather,1,,,TRUE
+-104.9854,39.78369,persistent,1966,1990,8,2,TRUE,Machinery,Electronics,2,,,TRUE
 -104.9854,39.7927,intermittent,1966,1990,5,4,TRUE,Fabricated metals,Paper,5,,,TRUE
 -104.9854,39.79721,emerging,1990,1992,2,2,TRUE,Apparel,Rubber & plastics,2,,,TRUE
 -104.9854,39.80171,"persistent, sector turnover",1966,1992,9,3,TRUE,,Fabricated metals,5,,,TRUE
 -104.9854,39.80622,intermittent,1966,1988,7,4,TRUE,"Stone, clay & glass","Stone, clay & glass",3,,,TRUE
 -104.9854,39.81073,intermittent,1966,1992,7,5,TRUE,Lumber & wood,"Stone, clay & glass",6,,,TRUE
 -104.9854,39.81523,emerging,1983,1983,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,TRUE
--104.98539,39.82424,intermittent,1977,1992,6,6,TRUE,,Fabricated metals,5,,,TRUE
+-104.98539,39.82424,intermittent,1977,1992,6,6,TRUE,,Fabricated metals,4,,,TRUE
 -104.98539,39.83776,emerging,1988,1988,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
 -104.98537,39.91885,emerging,1983,1990,2,1,FALSE,Instruments,Instruments,1,,,TRUE
 -104.98537,39.92335,emerging,1980,1992,4,1,FALSE,Misc. manufacturing,,3,,,TRUE
@@ -167,7 +166,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.97962,39.59898,emerging,1990,1990,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
 -104.97961,39.60799,emerging,1990,1990,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
 -104.97961,39.617,former (gone by 1980s),1967,1970,3,1,FALSE,Electronics,Electronics,1,,,TRUE
--104.9796,39.65305,former (gone by 1980s),1966,1970,3,1,FALSE,,Apparel,3,,,TRUE
+-104.9796,39.65305,former (gone by 1980s),1966,1970,3,1,TRUE,,Apparel,3,,,TRUE
 -104.97959,39.68008,intermittent,1965,1990,6,2,FALSE,Food,Printing,4,,,TRUE
 -104.97959,39.68458,"persistent, sector turnover",1966,1990,10,3,TRUE,,Printing,3,1935,4,TRUE
 -104.97959,39.68909,"persistent, sector turnover",1965,1990,10,4,TRUE,Paper,Printing,6,,,TRUE
@@ -189,12 +188,12 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.97957,39.76117,"persistent, sector turnover",1965,1990,12,10,TRUE,Furniture,Printing,5,1950,1,TRUE
 -104.97957,39.76567,"persistent, sector turnover",1965,1992,13,12,TRUE,Printing,Fabricated metals,8,1916,2,TRUE
 -104.97957,39.77018,"persistent, sector turnover",1965,1992,13,13,TRUE,Lumber & wood,,5,1950,4,TRUE
--104.97957,39.77468,intermittent,1965,1990,6,2,TRUE,Machinery,Rubber & plastics,4,,,TRUE
+-104.97957,39.77468,intermittent,1967,1990,5,2,TRUE,Transportation eq.,Rubber & plastics,4,,,TRUE
 -104.97956,39.77919,"persistent, sector turnover",1965,1990,12,2,TRUE,,,4,,,TRUE
 -104.97956,39.78369,"persistent, sector turnover",1965,1992,12,4,TRUE,Rubber & plastics,Food,4,,,TRUE
 -104.97956,39.7882,"persistent, sector turnover",1965,1992,13,6,TRUE,Food,,3,,,TRUE
 -104.97956,39.7927,"persistent, sector turnover",1965,1990,10,3,TRUE,Misc. manufacturing,Chemicals,4,,,TRUE
--104.97956,39.79721,intermittent,1970,1992,9,3,TRUE,Misc. manufacturing,Printing,6,,,TRUE
+-104.97956,39.79721,intermittent,1970,1992,9,3,TRUE,Misc. manufacturing,Printing,5,,,TRUE
 -104.97956,39.80171,emerging,1983,1990,3,3,TRUE,Printing,Printing,2,,,TRUE
 -104.97956,39.80622,"persistent, sector turnover",1966,1990,10,4,TRUE,Machinery,Primary metals,5,,,TRUE
 -104.97955,39.81072,emerging,1980,1990,4,3,TRUE,Lumber & wood,Lumber & wood,3,,,TRUE
@@ -208,7 +207,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.97954,39.85577,emerging,1990,1990,1,1,FALSE,Apparel,Apparel,1,,,TRUE
 -104.97954,39.86478,former (gone by 1980s),1977,1977,1,1,TRUE,Primary metals,Primary metals,1,,,TRUE
 -104.97953,39.8783,former (gone by 1980s),1974,1977,2,1,TRUE,Chemicals,Instruments,2,,,TRUE
--104.97952,39.91434,emerging,1980,1990,4,1,FALSE,Printing,Printing,2,,,TRUE
+-104.97952,39.91434,emerging,1980,1990,4,1,TRUE,Printing,Printing,2,,,TRUE
 -104.97952,39.91884,emerging,1988,1990,2,2,TRUE,Electronics,Machinery,2,,,TRUE
 -104.97952,39.92335,emerging,1980,1992,4,1,TRUE,Machinery,Electronics,2,,,TRUE
 -104.9795,39.98642,emerging,1980,1988,3,2,TRUE,Lumber & wood,Fabricated metals,3,,,FALSE
@@ -224,15 +223,15 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.97374,39.73864,"persistent, sector turnover",1967,1992,8,2,FALSE,Printing,,3,1932,2,TRUE
 -104.97374,39.74315,"persistent, sector turnover",1965,1990,12,2,TRUE,Fabricated metals,Printing,5,1950,1,TRUE
 -104.97374,39.74765,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,TRUE
--104.97373,39.75666,emerging,1983,1983,1,1,FALSE,Leather,Leather,1,1915,1,TRUE
--104.97373,39.76117,intermittent,1965,1983,6,1,TRUE,Fabricated metals,Furniture,4,,,TRUE
+-104.97373,39.75666,emerging,1983,1983,1,1,TRUE,Leather,Leather,1,1915,1,TRUE
+-104.97373,39.76117,intermittent,1973,1983,5,1,FALSE,,Furniture,3,,,TRUE
 -104.97373,39.76567,"persistent, sector turnover",1965,1992,13,8,TRUE,Food,Lumber & wood,4,1943,2,TRUE
 -104.97373,39.77018,"persistent, sector turnover",1965,1992,13,10,TRUE,Transportation eq.,Printing,7,1910,2,TRUE
 -104.97373,39.77468,"persistent, sector turnover",1965,1992,11,3,TRUE,Printing,Paper,5,1920,1,TRUE
 -104.97373,39.77919,emerging,1983,1992,4,2,TRUE,Furniture,Lumber & wood,3,,,TRUE
 -104.97372,39.79721,intermittent,1974,1992,5,2,TRUE,Electronics,Fabricated metals,4,,,TRUE
 -104.97372,39.80171,emerging,1980,1990,4,7,TRUE,Fabricated metals,Food,3,,,TRUE
--104.97372,39.80622,emerging,1988,1990,2,2,FALSE,Food,Food,1,,,TRUE
+-104.97372,39.80622,emerging,1988,1990,2,2,TRUE,Food,Food,1,,,TRUE
 -104.97371,39.81072,intermittent,1974,1992,5,3,TRUE,Lumber & wood,,4,,,TRUE
 -104.97371,39.81523,emerging,1990,1990,1,1,FALSE,,,1,,,TRUE
 -104.97371,39.81973,emerging,1980,1992,5,2,TRUE,Printing,Printing,1,,,TRUE
@@ -321,7 +320,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.96197,39.91884,emerging,1980,1983,2,1,FALSE,Food,Food,1,,,TRUE
 -104.96197,39.92334,emerging,1980,1990,4,2,FALSE,Misc. manufacturing,Printing,2,,,TRUE
 -104.96188,40.07651,emerging,1992,1992,1,1,FALSE,,,1,,,FALSE
--104.96188,40.08552,emerging,1988,1992,3,1,FALSE,Instruments,Misc. manufacturing,3,,,FALSE
+-104.96188,40.08552,emerging,1988,1992,3,1,TRUE,Instruments,Misc. manufacturing,3,,,FALSE
 -104.95629,39.65754,former (gone by 1980s),1967,1970,3,1,FALSE,Food,Food,1,,,TRUE
 -104.95627,39.67556,former (gone by 1980s),1973,1973,1,1,FALSE,Instruments,Instruments,1,,,TRUE
 -104.95627,39.68007,former (gone by 1980s),1965,1970,4,1,FALSE,Lumber & wood,Lumber & wood,2,,,TRUE
@@ -337,12 +336,12 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.95621,39.77468,"persistent, sector turnover",1965,1992,13,7,TRUE,Food,Lumber & wood,6,1950,1,TRUE
 -104.9562,39.7927,former (gone by 1980s),1974,1977,2,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
 -104.9562,39.7972,intermittent,1966,1990,6,2,TRUE,,Paper,3,,,TRUE
--104.95616,39.85126,emerging,1988,1990,2,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
+-104.95616,39.85126,emerging,1988,1990,2,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
 -104.95616,39.86027,former (gone by 1980s),1977,1977,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
 -104.95615,39.87379,former (gone by 1980s),1973,1973,1,1,TRUE,Chemicals,Chemicals,1,,,TRUE
 -104.95611,39.92785,emerging,1988,1988,1,1,TRUE,Machinery,Machinery,1,,,TRUE
 -104.95052,39.57645,emerging,1990,1992,2,1,FALSE,Printing,Printing,1,,,TRUE
--104.9505,39.59447,emerging,1983,1983,1,1,FALSE,Electronics,Electronics,1,,,TRUE
+-104.9505,39.59447,emerging,1983,1983,1,1,TRUE,Electronics,Electronics,1,,,TRUE
 -104.9505,39.59897,emerging,1980,1983,2,1,FALSE,Printing,Printing,1,,,TRUE
 -104.95044,39.67556,former (gone by 1980s),1968,1968,1,1,FALSE,Instruments,Instruments,1,,,TRUE
 -104.95043,39.69358,emerging,1980,1990,4,1,FALSE,Instruments,Instruments,1,,,TRUE
@@ -415,7 +414,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.93859,39.89631,emerging,1983,1983,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
 -104.93841,40.09903,intermittent,1977,1992,5,2,FALSE,Printing,Printing,1,,,FALSE
 -104.93305,39.58094,intermittent,1965,1992,4,1,TRUE,Instruments,Machinery,2,,,TRUE
--104.93295,39.68006,"persistent, sector turnover",1967,1992,9,2,FALSE,Textiles,Printing,3,1956,1,TRUE
+-104.93295,39.68006,"persistent, sector turnover",1967,1992,9,2,TRUE,Textiles,Printing,3,1956,1,TRUE
 -104.93295,39.68456,former (gone by 1980s),1977,1977,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
 -104.93294,39.68907,former (gone by 1980s),1974,1980,2,1,FALSE,Printing,Printing,1,,,TRUE
 -104.93293,39.69808,intermittent,1967,1992,3,1,FALSE,Printing,"Stone, clay & glass",2,,,TRUE
@@ -436,7 +435,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.93283,39.8017,intermittent,1967,1992,5,2,TRUE,Transportation eq.,Machinery,4,,,TRUE
 -104.93283,39.8062,"persistent, sector turnover",1966,1992,12,4,TRUE,Fabricated metals,Instruments,4,,,TRUE
 -104.93282,39.81071,"persistent, sector turnover",1967,1990,7,2,TRUE,Fabricated metals,Food,3,,,TRUE
--104.93281,39.81972,persistent,1967,1990,8,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
+-104.93281,39.81972,persistent,1967,1990,8,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
 -104.93281,39.82873,emerging,1990,1990,1,1,TRUE,Transportation eq.,Transportation eq.,1,,,TRUE
 -104.9328,39.83323,intermittent,1973,1988,3,2,TRUE,Fabricated metals,Furniture,2,,,TRUE
 -104.9328,39.83774,emerging,1990,1990,1,1,TRUE,Petroleum,Petroleum,1,,,TRUE
@@ -452,9 +451,9 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.92707,39.72511,emerging,1980,1980,1,1,FALSE,Printing,Printing,1,,,TRUE
 -104.92707,39.72961,former (gone by 1980s),1966,1966,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
 -104.92706,39.73862,intermittent,1974,1983,3,1,TRUE,"Stone, clay & glass",Fabricated metals,3,,,TRUE
--104.92703,39.76565,emerging,1983,1983,1,3,FALSE,Printing,Printing,1,,,TRUE
+-104.92703,39.76565,emerging,1983,1983,1,3,TRUE,Printing,Printing,1,,,TRUE
 -104.92702,39.77016,persistent,1966,1992,12,8,TRUE,,,7,,,TRUE
--104.92702,39.77466,persistent,1965,1992,12,9,FALSE,Apparel,Apparel,4,,,TRUE
+-104.92702,39.77466,persistent,1965,1992,12,9,TRUE,Apparel,Apparel,4,,,TRUE
 -104.92702,39.77917,persistent,1966,1992,8,4,TRUE,,,5,,,TRUE
 -104.92701,39.78367,emerging,1983,1990,2,1,TRUE,Rubber & plastics,Petroleum,2,,,TRUE
 -104.92701,39.78818,emerging,1990,1990,1,1,FALSE,Paper,Paper,1,,,TRUE
@@ -467,7 +466,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.92696,39.82872,"persistent, sector turnover",1966,1992,10,4,TRUE,Food,,4,,,TRUE
 -104.92696,39.83323,emerging,1988,1990,2,1,FALSE,Printing,Printing,1,,,TRUE
 -104.92695,39.84224,emerging,1988,1988,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,TRUE
--104.92691,39.87377,former (gone by 1980s),1973,1973,1,1,FALSE,Electronics,Electronics,1,,,TRUE
+-104.92691,39.87377,former (gone by 1980s),1973,1973,1,1,TRUE,Electronics,Electronics,1,,,TRUE
 -104.92689,39.8963,intermittent,1974,1988,4,1,TRUE,Rubber & plastics,,3,,,TRUE
 -104.9222,38.86006,"persistent, sector turnover",1965,1990,9,3,TRUE,Printing,Lumber & wood,5,,,FALSE
 -104.9222,38.86456,former (gone by 1980s),1965,1980,3,1,TRUE,Food,Machinery,2,,,FALSE
@@ -493,7 +492,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.92118,39.77916,"persistent, sector turnover",1968,1992,8,3,TRUE,Machinery,Rubber & plastics,3,,,TRUE
 -104.92117,39.78367,"persistent, sector turnover",1968,1992,9,4,TRUE,Paper,Chemicals,3,,,TRUE
 -104.92116,39.79718,intermittent,1974,1992,5,1,TRUE,Fabricated metals,Rubber & plastics,2,,,TRUE
--104.92115,39.80169,emerging,1990,1992,2,2,FALSE,Furniture,"Stone, clay & glass",2,,,TRUE
+-104.92115,39.80169,emerging,1990,1992,2,2,TRUE,Furniture,"Stone, clay & glass",2,,,TRUE
 -104.92114,39.8107,"persistent, sector turnover",1966,1992,9,2,TRUE,Food,Lumber & wood,3,,,TRUE
 -104.92113,39.81971,intermittent,1970,1990,5,2,TRUE,Machinery,Fabricated metals,2,,,TRUE
 -104.92112,39.82872,former (gone by 1980s),1973,1974,2,1,FALSE,Apparel,Apparel,1,,,TRUE
@@ -503,7 +502,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.91644,38.86005,"persistent, sector turnover",1966,1990,10,3,FALSE,Food,Apparel,6,,,FALSE
 -104.9156,39.56742,emerging,1990,1990,1,1,FALSE,Instruments,Instruments,1,,,TRUE
 -104.91556,39.59895,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,TRUE
--104.91548,39.66203,emerging,1983,1983,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
+-104.91548,39.66203,emerging,1983,1983,1,1,TRUE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
 -104.91548,39.66653,emerging,1992,1992,1,1,FALSE,,,1,,,TRUE
 -104.91546,39.67554,emerging,1988,1988,1,1,FALSE,Food,Food,1,,,TRUE
 -104.91546,39.68005,"persistent, sector turnover",1966,1992,8,3,TRUE,,Food,5,,,TRUE
@@ -515,7 +514,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.91539,39.73861,"persistent, sector turnover",1966,1990,7,2,TRUE,,Printing,4,,,TRUE
 -104.91538,39.74312,emerging,1983,1988,2,1,FALSE,Food,Food,1,,,TRUE
 -104.91538,39.74762,former (gone by 1980s),1965,1965,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
--104.91536,39.76114,emerging,1983,1983,1,1,FALSE,Electronics,Electronics,1,,,TRUE
+-104.91536,39.76114,emerging,1983,1983,1,1,TRUE,Electronics,Electronics,1,,,TRUE
 -104.91535,39.76564,former (gone by 1980s),1968,1968,1,1,FALSE,Printing,Printing,1,,,TRUE
 -104.91535,39.77015,"persistent, sector turnover",1966,1992,12,7,TRUE,Food,Rubber & plastics,8,,,TRUE
 -104.91534,39.77465,"persistent, sector turnover",1966,1992,12,4,TRUE,Rubber & plastics,Paper,9,,,TRUE
@@ -563,7 +562,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.90393,39.58092,emerging,1983,1990,3,1,FALSE,Printing,Printing,1,,,TRUE
 -104.90391,39.59895,emerging,1988,1990,2,1,FALSE,,,2,,,TRUE
 -104.9039,39.60796,emerging,1983,1990,2,2,FALSE,Printing,Printing,1,,,TRUE
--104.90389,39.61697,emerging,1988,1990,2,1,FALSE,Printing,Printing,1,,,TRUE
+-104.90389,39.61697,emerging,1988,1990,2,1,TRUE,Printing,Printing,1,,,TRUE
 -104.90388,39.62147,emerging,1983,1992,3,5,TRUE,Machinery,,3,,,TRUE
 -104.90387,39.62598,former (gone by 1980s),1968,1968,1,1,FALSE,Printing,Printing,1,,,TRUE
 -104.9038,39.67553,emerging,1988,1990,2,2,FALSE,Food,,2,,,TRUE
@@ -587,7 +586,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.89809,39.59443,emerging,1990,1992,2,1,FALSE,Electronics,Printing,2,,,TRUE
 -104.89808,39.60345,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,TRUE
 -104.89807,39.60795,intermittent,1973,1990,5,1,FALSE,Printing,Printing,1,,,TRUE
--104.89807,39.61246,emerging,1990,1992,2,2,FALSE,Printing,Misc. manufacturing,2,,,TRUE
+-104.89807,39.61246,emerging,1990,1992,2,2,TRUE,Printing,Misc. manufacturing,2,,,TRUE
 -104.89805,39.62147,emerging,1988,1990,2,1,FALSE,Printing,Printing,1,,,TRUE
 -104.89805,39.62597,emerging,1980,1992,5,1,FALSE,Printing,,3,,,TRUE
 -104.89804,39.63048,emerging,1990,1990,1,2,TRUE,,,1,,,TRUE
@@ -595,7 +594,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.89801,39.6485,emerging,1988,1990,2,1,FALSE,Lumber & wood,Lumber & wood,1,,,TRUE
 -104.89801,39.653,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,TRUE
 -104.89798,39.67102,emerging,1980,1992,5,3,TRUE,Printing,Misc. manufacturing,3,,,TRUE
--104.89797,39.67553,former (gone by 1980s),1968,1970,2,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
+-104.89797,39.67553,former (gone by 1980s),1968,1970,2,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
 -104.89797,39.68003,emerging,1980,1990,2,1,FALSE,Electronics,Misc. manufacturing,2,,,TRUE
 -104.89786,39.75212,emerging,1992,1992,1,1,FALSE,,,1,,,TRUE
 -104.89783,39.77464,"persistent, sector turnover",1966,1992,9,2,TRUE,Machinery,Fabricated metals,6,,,TRUE
@@ -668,7 +667,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.87572,39.07629,emerging,1980,1990,4,1,TRUE,Primary metals,Primary metals,1,,,FALSE
 -104.8752,39.37365,emerging,1992,1992,1,1,TRUE,Petroleum,Petroleum,1,,,FALSE
 -104.87513,39.4097,emerging,1980,1980,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
--104.87481,39.58991,emerging,1983,1990,3,2,FALSE,Lumber & wood,Lumber & wood,1,,,TRUE
+-104.87481,39.58991,emerging,1983,1990,3,2,TRUE,Lumber & wood,Lumber & wood,1,,,TRUE
 -104.8748,39.59441,intermittent,1974,1992,7,4,TRUE,Textiles,Printing,2,,,TRUE
 -104.87479,39.59892,emerging,1990,1992,2,2,FALSE,,Printing,2,,,TRUE
 -104.87469,39.65298,emerging,1988,1992,3,1,FALSE,Printing,Printing,1,,,TRUE
@@ -687,7 +686,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.86994,39.07628,emerging,1980,1990,4,2,FALSE,Instruments,Instruments,2,,,FALSE
 -104.86991,39.09431,emerging,1988,1992,3,1,FALSE,Furniture,Printing,2,,,FALSE
 -104.8699,39.09881,emerging,1988,1992,3,1,TRUE,Machinery,Machinery,1,,,FALSE
--104.86939,39.37365,emerging,1990,1992,2,1,FALSE,Textiles,Textiles,1,,,FALSE
+-104.86939,39.37365,emerging,1990,1992,2,1,TRUE,Textiles,Textiles,1,,,FALSE
 -104.86938,39.37815,emerging,1988,1992,2,1,TRUE,Rubber & plastics,Electronics,2,,,FALSE
 -104.86937,39.38716,emerging,1992,1992,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -104.86934,39.40068,emerging,1992,1992,1,1,TRUE,Machinery,Machinery,1,,,FALSE
@@ -701,7 +700,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.86877,39.70253,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,TRUE
 -104.86875,39.71605,emerging,1983,1992,3,2,FALSE,Apparel,,3,,,TRUE
 -104.86873,39.72506,intermittent,1977,1992,4,2,TRUE,Transportation eq.,,3,,,TRUE
--104.86872,39.72956,emerging,1988,1988,1,1,FALSE,Printing,Printing,1,,,TRUE
+-104.86872,39.72956,emerging,1988,1988,1,1,TRUE,Printing,Printing,1,,,TRUE
 -104.86871,39.73407,emerging,1992,1992,1,1,FALSE,,,1,,,TRUE
 -104.8687,39.73857,emerging,1980,1983,2,1,FALSE,Printing,Printing,1,,,TRUE
 -104.8687,39.74308,intermittent,1973,1983,3,1,FALSE,Printing,Printing,1,,,TRUE
@@ -724,7 +723,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.8645,38.89605,intermittent,1973,1990,4,1,FALSE,Instruments,Instruments,3,,,FALSE
 -104.86449,38.90506,emerging,1983,1990,3,2,FALSE,Printing,Printing,1,,,FALSE
 -104.86359,39.37364,emerging,1983,1992,4,2,FALSE,Printing,Textiles,2,,,FALSE
--104.86358,39.37815,emerging,1983,1983,1,1,FALSE,Furniture,Furniture,1,,,FALSE
+-104.86358,39.37815,emerging,1983,1983,1,1,TRUE,Furniture,Furniture,1,,,FALSE
 -104.86357,39.38265,intermittent,1974,1990,6,2,TRUE,Machinery,Fabricated metals,2,,,FALSE
 -104.86322,39.55836,emerging,1990,1990,1,1,FALSE,Instruments,Instruments,1,,,TRUE
 -104.86321,39.56737,emerging,1980,1990,2,2,TRUE,Instruments,Machinery,2,,,TRUE
@@ -753,7 +752,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.85884,38.84648,intermittent,1966,1983,2,1,FALSE,Furniture,Printing,2,,,FALSE
 -104.85874,38.89604,emerging,1990,1990,1,1,FALSE,,,1,,,FALSE
 -104.85872,38.90505,emerging,1983,1990,2,1,TRUE,Electronics,Machinery,2,,,FALSE
--104.85778,39.37363,persistent,1966,1990,7,2,FALSE,Printing,Printing,2,,,FALSE
+-104.85778,39.37363,persistent,1966,1990,7,2,TRUE,Printing,Printing,2,,,FALSE
 -104.85777,39.37814,former (gone by 1980s),1977,1977,1,1,TRUE,Rubber & plastics,Rubber & plastics,1,,,FALSE
 -104.85742,39.54934,emerging,1988,1990,2,1,FALSE,Instruments,Instruments,1,,,TRUE
 -104.85739,39.56736,emerging,1980,1992,4,1,FALSE,Printing,,3,,,TRUE
@@ -773,15 +772,15 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.85695,39.7791,intermittent,1973,1990,6,3,TRUE,Fabricated metals,Fabricated metals,2,,,TRUE
 -104.85694,39.78361,intermittent,1973,1990,6,3,TRUE,,Printing,4,,,TRUE
 -104.85693,39.78811,intermittent,1973,1992,8,11,TRUE,Rubber & plastics,Misc. manufacturing,5,,,TRUE
--104.85692,39.79262,emerging,1990,1990,1,1,FALSE,Paper,Paper,1,,,TRUE
--104.85691,39.79712,emerging,1990,1990,1,1,FALSE,Paper,Paper,1,,,TRUE
+-104.85692,39.79262,emerging,1990,1990,1,1,TRUE,Paper,Paper,1,,,TRUE
+-104.85691,39.79712,emerging,1990,1990,1,1,TRUE,Paper,Paper,1,,,TRUE
 -104.8558,40.32869,intermittent,1973,1990,7,1,TRUE,Machinery,Machinery,2,,,FALSE
 -104.8532,38.78339,emerging,1990,1990,1,1,FALSE,Food,Food,1,,,FALSE
 -104.85317,38.80141,former (gone by 1980s),1977,1977,1,1,FALSE,Electronics,Electronics,1,,,FALSE
 -104.85315,38.81043,intermittent,1970,1988,3,1,FALSE,Printing,Printing,1,,,FALSE
 -104.85308,38.84197,emerging,1983,1992,4,2,FALSE,Apparel,,3,,,FALSE
 -104.85307,38.84647,emerging,1983,1988,2,1,FALSE,Furniture,,2,,,FALSE
--104.85297,38.89604,intermittent,1973,1990,2,1,FALSE,Electronics,Instruments,2,,,FALSE
+-104.85297,38.89604,intermittent,1973,1990,2,1,TRUE,Electronics,Instruments,2,,,FALSE
 -104.85296,38.90054,emerging,1990,1990,1,1,FALSE,Electronics,Electronics,1,,,FALSE
 -104.85199,39.36461,intermittent,1974,1992,7,1,TRUE,Rubber & plastics,Food,2,,,FALSE
 -104.85199,39.36912,former (gone by 1980s),1977,1977,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
@@ -792,7 +791,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.85115,39.76107,persistent,1967,1990,9,3,TRUE,Machinery,Fabricated metals,2,,,TRUE
 -104.85114,39.76558,emerging,1980,1990,3,2,TRUE,Machinery,Machinery,1,,,TRUE
 -104.85113,39.77008,emerging,1980,1992,5,4,TRUE,Electronics,Food,3,,,TRUE
--104.85112,39.77459,intermittent,1977,1983,3,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
+-104.85112,39.77459,intermittent,1977,1983,3,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
 -104.85111,39.7791,intermittent,1973,1992,5,1,FALSE,Leather,,2,,,TRUE
 -104.8511,39.7836,intermittent,1974,1992,6,3,TRUE,Printing,Food,4,,,TRUE
 -104.85109,39.78811,emerging,1980,1992,5,12,TRUE,Fabricated metals,Food,4,,,TRUE
@@ -830,11 +829,11 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.84037,39.37361,former (gone by 1980s),1967,1967,1,1,TRUE,Chemicals,Chemicals,1,,,FALSE
 -104.83989,39.58085,emerging,1990,1992,2,2,FALSE,Instruments,Instruments,1,,,TRUE
 -104.83988,39.58536,emerging,1988,1990,2,1,TRUE,Chemicals,Machinery,2,,,TRUE
--104.83987,39.58986,emerging,1988,1990,2,1,FALSE,Furniture,Instruments,2,,,TRUE
+-104.83987,39.58986,emerging,1988,1990,2,1,TRUE,Furniture,Instruments,2,,,TRUE
 -104.83986,39.59437,emerging,1988,1992,3,1,TRUE,Machinery,Machinery,1,,,TRUE
 -104.83985,39.59887,emerging,1990,1990,1,1,FALSE,,,1,,,TRUE
 -104.83984,39.60338,emerging,1990,1992,2,1,TRUE,Machinery,Printing,2,,,TRUE
--104.8397,39.66195,emerging,1988,1988,1,1,FALSE,Printing,Printing,1,,,TRUE
+-104.8397,39.66195,emerging,1988,1988,1,1,TRUE,Printing,Printing,1,,,TRUE
 -104.83969,39.66645,emerging,1988,1988,1,1,FALSE,,,1,,,TRUE
 -104.83967,39.67546,emerging,1983,1992,4,1,FALSE,Printing,Printing,2,,,TRUE
 -104.83946,39.76556,emerging,1990,1992,2,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
@@ -863,7 +862,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.83363,39.76556,intermittent,1977,1990,5,3,TRUE,Printing,Furniture,4,,,TRUE
 -104.83362,39.77006,intermittent,1974,1990,6,5,TRUE,Furniture,Furniture,4,,,TRUE
 -104.8333,39.90071,emerging,1980,1980,1,1,TRUE,Machinery,Machinery,1,,,TRUE
--104.83315,39.96378,emerging,1988,1990,2,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
+-104.83315,39.96378,emerging,1988,1990,2,1,TRUE,Lumber & wood,Lumber & wood,1,,,FALSE
 -104.83012,38.80589,emerging,1983,1983,1,1,TRUE,Chemicals,Chemicals,1,,,FALSE
 -104.83011,38.8104,intermittent,1974,1988,4,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,1941,1,FALSE
 -104.83009,38.81941,former (gone by 1980s),1973,1974,2,1,TRUE,Machinery,Machinery,1,,,FALSE
@@ -911,13 +910,13 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.82188,39.79257,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,TRUE
 -104.82142,39.97277,former (gone by 1980s),1973,1973,1,1,TRUE,Transportation eq.,Transportation eq.,1,,,FALSE
 -104.82139,39.98178,former (gone by 1980s),1973,1973,1,1,TRUE,Machinery,Machinery,1,,,FALSE
--104.82138,39.98628,intermittent,1970,1990,6,3,FALSE,Printing,Printing,2,,,FALSE
+-104.82138,39.98628,intermittent,1970,1990,6,3,TRUE,Printing,Printing,2,,,FALSE
 -104.82137,39.99079,persistent,1967,1990,9,3,TRUE,Printing,Food,2,,,FALSE
 -104.82134,39.9998,emerging,1990,1990,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -104.82079,40.21152,emerging,1980,1992,5,1,TRUE,Fabricated metals,Fabricated metals,2,,,FALSE
 -104.82078,40.21603,persistent,1966,1990,8,2,FALSE,Food,Food,3,,,FALSE
 -104.82073,40.23405,emerging,1988,1990,2,2,TRUE,Machinery,Machinery,1,,,FALSE
--104.82078,37.93168,intermittent,1977,1983,2,1,FALSE,Electronics,Electronics,1,,,FALSE
+-104.82078,37.93168,intermittent,1977,1983,2,1,TRUE,Electronics,Electronics,1,,,FALSE
 -104.81858,38.81488,emerging,1980,1992,3,1,TRUE,Machinery,,2,,,FALSE
 -104.81857,38.81939,"persistent, sector turnover",1966,1990,11,2,TRUE,Machinery,,4,,,FALSE
 -104.81856,38.8239,intermittent,1973,1990,5,3,TRUE,Fabricated metals,Fabricated metals,2,1956,1,FALSE
@@ -928,7 +927,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.8185,38.84642,intermittent,1970,1992,7,2,TRUE,Instruments,Fabricated metals,4,,,FALSE
 -104.81848,38.85544,former (gone by 1980s),1967,1968,2,1,TRUE,Paper,Chemicals,2,,,FALSE
 -104.81847,38.85994,former (gone by 1980s),1966,1973,3,1,TRUE,Chemicals,Chemicals,2,,,FALSE
--104.81846,38.86445,intermittent,1973,1990,6,2,FALSE,Food,Printing,2,,,FALSE
+-104.81846,38.86445,intermittent,1973,1990,6,2,TRUE,Food,Printing,2,,,FALSE
 -104.81844,38.87346,"persistent, sector turnover",1967,1990,8,2,TRUE,Fabricated metals,Machinery,6,,,FALSE
 -104.81842,38.87796,"persistent, sector turnover",1966,1992,12,6,TRUE,,Misc. manufacturing,6,,,FALSE
 -104.81841,38.88247,"persistent, sector turnover",1966,1992,12,10,TRUE,Printing,Machinery,4,1950,1,FALSE
@@ -977,7 +976,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.8103,39.75651,emerging,1983,1983,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,TRUE
 -104.81029,39.76102,emerging,1990,1990,1,1,TRUE,Rubber & plastics,Rubber & plastics,1,,,TRUE
 -104.81028,39.76552,emerging,1992,1992,1,1,FALSE,,,1,,,TRUE
--104.80969,39.97725,former (gone by 1980s),1968,1968,1,1,FALSE,Apparel,Apparel,1,,,FALSE
+-104.80969,39.97725,former (gone by 1980s),1968,1968,1,1,TRUE,Apparel,Apparel,1,,,FALSE
 -104.80967,39.98626,intermittent,1973,1990,2,1,FALSE,Printing,Printing,1,,,FALSE
 -104.80939,40.08537,intermittent,1974,1992,6,3,TRUE,Transportation eq.,Food,3,,,FALSE
 -104.80938,40.08988,intermittent,1974,1990,4,1,TRUE,Transportation eq.,Lumber & wood,3,,,FALSE
@@ -986,7 +985,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.80705,38.81937,former (gone by 1980s),1966,1980,3,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -104.80698,38.84641,intermittent,1974,1983,2,1,FALSE,Printing,Printing,1,,,FALSE
 -104.80692,38.86893,emerging,1983,1990,3,2,FALSE,Food,Electronics,2,,,FALSE
--104.80691,38.87344,intermittent,1966,1992,7,2,FALSE,Printing,Printing,2,,,FALSE
+-104.80691,38.87344,intermittent,1966,1992,7,2,TRUE,Printing,Printing,2,,,FALSE
 -104.80689,38.87795,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,FALSE
 -104.80675,38.93201,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,FALSE
 -104.80457,39.72046,emerging,1980,1980,1,1,FALSE,Food,Food,1,,,TRUE
@@ -1006,7 +1005,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.79665,40.4232,emerging,1983,1990,3,2,TRUE,Electronics,Machinery,2,,,FALSE
 -104.79664,40.42771,emerging,1990,1992,2,1,FALSE,Electronics,,2,,,FALSE
 -104.79565,38.7788,former (gone by 1980s),1974,1974,1,1,FALSE,Food,Food,1,,,FALSE
--104.79562,38.78781,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,FALSE
+-104.79562,38.78781,emerging,1990,1990,1,1,TRUE,Printing,Printing,1,,,FALSE
 -104.7956,38.79682,emerging,1983,1992,4,2,TRUE,Fabricated metals,Transportation eq.,3,,,FALSE
 -104.79559,38.80133,emerging,1980,1992,5,2,TRUE,Printing,"Stone, clay & glass",4,,,FALSE
 -104.79556,38.81034,emerging,1983,1983,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
@@ -1073,7 +1072,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.7755,39.68887,emerging,1980,1990,2,1,FALSE,Electronics,Electronics,1,,,TRUE
 -104.77534,39.73843,former (gone by 1980s),1966,1966,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
 -104.7762,37.62065,former (gone by 1980s),1973,1973,1,1,TRUE,Rubber & plastics,Rubber & plastics,1,,,FALSE
--104.77262,38.77876,emerging,1983,1990,3,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
+-104.77262,38.77876,emerging,1983,1990,3,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -104.7726,38.78777,emerging,1992,1992,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -104.77258,38.79227,intermittent,1973,1990,7,5,TRUE,Rubber & plastics,Lumber & wood,4,,,FALSE
 -104.77257,38.79678,intermittent,1977,1990,5,3,TRUE,Food,Printing,4,,,FALSE
@@ -1102,7 +1101,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.76114,38.76972,intermittent,1973,1990,5,2,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -104.76092,38.83731,emerging,1983,1992,4,2,TRUE,Rubber & plastics,Machinery,2,,,FALSE
 -104.76089,38.84632,intermittent,1977,1983,3,2,FALSE,Printing,Printing,1,,,FALSE
--104.76086,38.85533,emerging,1990,1990,1,1,FALSE,Textiles,Textiles,1,,,FALSE
+-104.76086,38.85533,emerging,1990,1990,1,1,TRUE,Textiles,Textiles,1,,,FALSE
 -104.76084,38.85984,emerging,1990,1992,2,1,FALSE,Printing,,2,,,FALSE
 -104.76078,38.87786,former (gone by 1980s),1977,1977,1,1,TRUE,Chemicals,Chemicals,1,,,FALSE
 -104.76075,38.88687,emerging,1988,1988,1,1,TRUE,Chemicals,Chemicals,1,,,FALSE
@@ -1114,7 +1113,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.75519,38.82829,emerging,1983,1983,1,1,FALSE,,,1,,,FALSE
 -104.75516,38.8373,emerging,1990,1990,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -104.75509,38.85532,intermittent,1974,1990,5,1,FALSE,Printing,Printing,1,,,FALSE
--104.75505,38.86884,former (gone by 1980s),1973,1973,1,1,FALSE,Food,Food,1,,,FALSE
+-104.75505,38.86884,former (gone by 1980s),1973,1973,1,1,TRUE,Food,Food,1,,,FALSE
 -104.75502,38.87785,emerging,1988,1990,2,1,FALSE,Leather,Leather,1,,,FALSE
 -104.75499,38.88686,emerging,1988,1988,1,1,FALSE,Printing,Printing,1,,,FALSE
 -104.75495,38.89587,emerging,1990,1990,1,1,FALSE,,,1,,,FALSE
@@ -1124,7 +1123,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.75104,40.00417,former (gone by 1980s),1968,1968,1,1,FALSE,Food,Food,1,,,FALSE
 -104.74947,40.43212,emerging,1980,1980,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -104.74871,40.63482,former (gone by 1980s),1974,1974,1,1,FALSE,Food,Food,1,,,FALSE
--104.74952,38.80124,emerging,1983,1983,1,1,FALSE,Paper,Paper,1,,,FALSE
+-104.74952,38.80124,emerging,1983,1983,1,1,TRUE,Paper,Paper,1,,,FALSE
 -104.74939,38.83728,emerging,1990,1992,2,2,FALSE,,,1,,,FALSE
 -104.74936,38.8463,intermittent,1970,1992,8,1,TRUE,Machinery,,2,,,FALSE
 -104.74927,38.87333,emerging,1988,1988,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
@@ -1178,7 +1177,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.71682,38.33254,emerging,1980,1988,2,2,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -104.71479,38.84622,emerging,1983,1990,3,2,TRUE,"Stone, clay & glass",Electronics,2,,,FALSE
 -104.71477,38.85072,intermittent,1973,1990,7,3,TRUE,Printing,"Stone, clay & glass",3,,,FALSE
--104.71476,38.85523,emerging,1988,1992,3,3,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
+-104.71476,38.85523,emerging,1988,1992,3,3,TRUE,Lumber & wood,Lumber & wood,1,,,FALSE
 -104.71472,38.86424,emerging,1980,1992,5,4,TRUE,Electronics,Apparel,3,,,FALSE
 -104.70855,40.35094,persistent,1966,1992,10,1,TRUE,Printing,Transportation eq.,2,,,FALSE
 -104.70853,40.35544,intermittent,1977,1990,5,1,FALSE,Food,Food,1,,,FALSE
@@ -1187,7 +1186,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.70826,40.41851,emerging,1983,1983,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -104.70824,40.42301,"persistent, sector turnover",1966,1992,11,4,TRUE,Rubber & plastics,"Stone, clay & glass",4,,,FALSE
 -104.7082,40.43202,emerging,1988,1988,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
--104.70779,40.52661,emerging,1980,1990,2,1,FALSE,Food,Food,1,,,FALSE
+-104.70779,40.52661,emerging,1980,1990,2,1,TRUE,Food,Food,1,,,FALSE
 -104.7111,38.33253,emerging,1983,1990,3,1,FALSE,,Printing,2,,,FALSE
 -104.70969,38.68399,emerging,1992,1992,1,1,FALSE,Furniture,Furniture,1,,,FALSE
 -104.70905,38.8417,intermittent,1977,1990,5,3,TRUE,Lumber & wood,Apparel,5,,,FALSE
@@ -1226,13 +1225,13 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.6906,40.41396,emerging,1988,1990,2,1,TRUE,Fabricated metals,Misc. manufacturing,2,,,FALSE
 -104.69058,40.41846,"persistent, sector turnover",1965,1990,10,2,TRUE,Food,Instruments,5,,,FALSE
 -104.69056,40.42297,"persistent, sector turnover",1965,1990,10,5,TRUE,Printing,Food,3,1920,3,FALSE
--104.69054,40.42747,"persistent, sector turnover",1965,1992,11,4,FALSE,Food,Lumber & wood,5,1956,1,FALSE
+-104.69054,40.42747,"persistent, sector turnover",1965,1992,11,4,TRUE,Food,Lumber & wood,5,1956,1,FALSE
 -104.69052,40.43198,"persistent, sector turnover",1965,1992,9,3,TRUE,"Stone, clay & glass",,4,,,FALSE
 -104.6905,40.43648,emerging,1988,1990,2,2,TRUE,Machinery,Machinery,1,,,FALSE
 -104.69048,40.44098,emerging,1990,1990,1,1,FALSE,Food,Food,1,,,FALSE
 -104.69227,38.7245,emerging,1983,1983,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -104.6913,38.94979,emerging,1983,1983,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
--104.68486,40.38241,emerging,1988,1990,2,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
+-104.68486,40.38241,emerging,1988,1990,2,1,TRUE,Lumber & wood,Lumber & wood,1,,,FALSE
 -104.68479,40.39592,persistent,1965,1990,10,3,TRUE,Food,Food,3,,,FALSE
 -104.68477,40.40043,"persistent, sector turnover",1965,1992,10,3,TRUE,Lumber & wood,Printing,5,,,FALSE
 -104.68473,40.40944,intermittent,1965,1992,6,2,TRUE,Chemicals,Chemicals,2,,,FALSE
@@ -1242,7 +1241,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.68465,40.42745,"persistent, sector turnover",1965,1992,8,5,TRUE,Food,Fabricated metals,4,,,FALSE
 -104.68462,40.43196,emerging,1980,1983,2,1,FALSE,Apparel,Apparel,1,,,FALSE
 -104.68456,40.44547,intermittent,1977,1983,3,1,TRUE,Machinery,Machinery,1,,,FALSE
--104.68454,40.44998,emerging,1988,1992,3,1,FALSE,Furniture,Food,2,,,FALSE
+-104.68454,40.44998,emerging,1988,1992,3,1,TRUE,Furniture,Food,2,,,FALSE
 -104.68825,38.32346,emerging,1988,1988,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -104.68587,38.87318,emerging,1990,1992,2,1,FALSE,Electronics,Electronics,1,,,FALSE
 -104.67899,40.37789,emerging,1990,1992,2,1,FALSE,Food,"Stone, clay & glass",2,,,FALSE
@@ -1260,7 +1259,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.67292,40.41391,emerging,1992,1992,1,1,TRUE,Machinery,Machinery,1,,,FALSE
 -104.67288,40.42292,emerging,1980,1990,4,1,TRUE,Instruments,Instruments,2,,,FALSE
 -104.67707,38.26484,former (gone by 1980s),1965,1965,1,1,FALSE,Food,Food,1,,,FALSE
--104.67186,39.4093,emerging,1983,1992,3,1,FALSE,Leather,Leather,1,,,FALSE
+-104.67186,39.4093,emerging,1983,1992,3,1,TRUE,Leather,Leather,1,,,FALSE
 -104.67118,39.55347,emerging,1980,1980,1,1,TRUE,Chemicals,Chemicals,1,,,FALSE
 -104.66705,40.40939,intermittent,1965,1990,5,1,TRUE,Food,"Stone, clay & glass",4,,,FALSE
 -104.67136,38.26483,former (gone by 1980s),1974,1974,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
@@ -1285,10 +1284,10 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.6486,38.24223,intermittent,1973,1983,3,1,FALSE,Apparel,Paper,2,,,FALSE
 -104.64843,38.27828,persistent,1968,1992,9,2,FALSE,Food,Food,3,,,FALSE
 -104.6481,38.34587,emerging,1988,1990,2,1,TRUE,Rubber & plastics,Rubber & plastics,1,,,FALSE
--104.643,38.21968,emerging,1983,1990,3,3,FALSE,Furniture,Apparel,2,,,FALSE
+-104.643,38.21968,emerging,1983,1990,3,3,TRUE,Furniture,Apparel,2,,,FALSE
 -104.64296,38.2287,emerging,1990,1990,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -104.64293,38.2332,intermittent,1973,1990,4,2,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
--104.64289,38.24221,intermittent,1966,1990,4,1,FALSE,,Food,2,,,FALSE
+-104.64289,38.24221,intermittent,1966,1990,4,1,TRUE,,Food,2,,,FALSE
 -104.64271,38.27826,former (gone by 1980s),1967,1967,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -104.64265,38.29178,emerging,1983,1983,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -104.64262,38.29629,intermittent,1965,1990,7,1,FALSE,"Stone, clay & glass",Lumber & wood,2,,,FALSE
@@ -1298,7 +1297,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.63688,38.30078,emerging,1990,1990,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -104.63684,38.30979,emerging,1980,1983,2,1,FALSE,Apparel,Apparel,1,,,FALSE
 -104.63085,39.47676,emerging,1988,1988,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
--104.63144,38.24668,former (gone by 1980s),1966,1973,3,1,FALSE,Lumber & wood,Printing,2,,,FALSE
+-104.63144,38.24668,former (gone by 1980s),1966,1973,3,1,TRUE,Lumber & wood,Printing,2,,,FALSE
 -104.63107,38.31878,former (gone by 1980s),1977,1977,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -104.62591,38.21062,emerging,1988,1992,2,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -104.62575,38.24216,former (gone by 1980s),1967,1980,2,1,TRUE,Fabricated metals,Lumber & wood,2,1950,1,FALSE
@@ -1307,7 +1306,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.62563,38.26469,intermittent,1966,1988,4,1,FALSE,"Stone, clay & glass",Food,3,1950,1,FALSE
 -104.62561,38.2692,former (gone by 1980s),1965,1965,1,1,FALSE,Food,Food,1,,,FALSE
 -104.6254,38.30975,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,FALSE
--104.62008,38.23313,intermittent,1977,1990,4,1,FALSE,,Misc. manufacturing,2,,,FALSE
+-104.62008,38.23313,intermittent,1977,1990,4,1,TRUE,,Misc. manufacturing,2,,,FALSE
 -104.62003,38.24214,former (gone by 1980s),1970,1977,3,1,TRUE,Fabricated metals,,2,,,FALSE
 -104.61999,38.25115,former (gone by 1980s),1966,1970,3,1,TRUE,Fabricated metals,Fabricated metals,1,1932,1,FALSE
 -104.61996,38.25566,persistent,1965,1990,8,1,TRUE,Fabricated metals,Fabricated metals,2,,,FALSE
@@ -1336,7 +1335,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.60846,38.26914,intermittent,1965,1990,7,5,FALSE,Misc. manufacturing,Paper,5,1914,10,FALSE
 -104.60844,38.27365,intermittent,1965,1992,4,2,TRUE,Fabricated metals,,3,1912,4,FALSE
 -104.60841,38.27815,intermittent,1967,1990,2,1,TRUE,Fabricated metals,Machinery,2,1917,1,FALSE
--104.60834,38.29167,persistent,1967,1992,9,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,1941,1,FALSE
+-104.60834,38.29167,persistent,1967,1992,9,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,1941,1,FALSE
 -104.60832,38.29618,former (gone by 1980s),1966,1970,3,2,FALSE,"Stone, clay & glass","Stone, clay & glass",1,1950,1,FALSE
 -104.60289,38.24209,"persistent, sector turnover",1966,1992,10,1,TRUE,Chemicals,Fabricated metals,4,,,FALSE
 -104.60284,38.2511,intermittent,1965,1990,6,1,TRUE,Fabricated metals,"Stone, clay & glass",2,,,FALSE
@@ -1347,11 +1346,11 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -104.59662,39.36401,emerging,1983,1992,4,1,FALSE,Food,Food,1,,,FALSE
 -104.59716,38.24657,former (gone by 1980s),1965,1965,1,1,FALSE,Paper,Paper,1,,,FALSE
 -104.59713,38.25108,"persistent, sector turnover",1966,1990,7,2,TRUE,Chemicals,Petroleum,3,,,FALSE
--104.59703,38.2691,former (gone by 1980s),1967,1968,2,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,1929,1,FALSE
+-104.59703,38.2691,former (gone by 1980s),1967,1968,2,1,TRUE,Misc. manufacturing,Misc. manufacturing,1,1929,1,FALSE
 -104.59701,38.27361,intermittent,1968,1983,2,1,FALSE,Food,Lumber & wood,2,,,FALSE
 -104.59681,38.30966,emerging,1990,1990,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -104.59316,38.9585,emerging,1983,1983,1,1,FALSE,Instruments,Instruments,1,,,FALSE
--104.59142,38.25106,emerging,1980,1983,2,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
+-104.59142,38.25106,emerging,1980,1983,2,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -104.59126,38.2781,former (gone by 1980s),1977,1980,2,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,1956,1,FALSE
 -104.58738,38.95848,emerging,1988,1988,1,1,FALSE,Instruments,Instruments,1,,,FALSE
 -104.58568,38.25554,emerging,1980,1988,2,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
@@ -1423,7 +1422,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -103.70923,38.05091,intermittent,1977,1983,2,1,TRUE,Machinery,Machinery,1,,,FALSE
 -103.68729,39.2627,persistent,1968,1990,7,2,TRUE,Printing,Printing,1,,,FALSE
 -103.6815,39.26263,intermittent,1973,1992,6,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
--103.68142,39.26713,emerging,1990,1992,2,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
+-103.68142,39.26713,emerging,1990,1992,2,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -103.64474,40.25778,emerging,1980,1990,3,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -103.63895,40.25321,former (gone by 1980s),1968,1968,1,1,FALSE,Food,Food,1,,,FALSE
 -103.63308,40.25314,emerging,1980,1988,2,1,TRUE,Chemicals,Chemicals,1,,,FALSE
@@ -1479,7 +1478,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -103.22448,38.06712,intermittent,1970,1988,5,1,FALSE,Printing,Printing,1,,,FALSE
 -103.21889,38.06253,emerging,1980,1980,1,1,FALSE,Printing,Printing,1,,,FALSE
 -103.21878,38.06703,intermittent,1966,1988,9,2,FALSE,Printing,Printing,1,,,FALSE
--103.21867,38.07153,former (gone by 1980s),1966,1968,3,1,FALSE,,Food,2,,,FALSE
+-103.21867,38.07153,former (gone by 1980s),1966,1968,3,1,TRUE,,Food,2,,,FALSE
 -103.06645,39.29008,"persistent, sector turnover",1968,1992,9,2,FALSE,Printing,,3,,,FALSE
 -103.06633,39.29458,emerging,1992,1992,1,1,FALSE,Food,Food,1,,,FALSE
 -103.06053,39.29449,emerging,1980,1983,2,1,FALSE,Food,Food,1,,,FALSE
@@ -1500,7 +1499,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -102.63108,38.08819,former (gone by 1980s),1966,1967,2,1,TRUE,Misc. manufacturing,Fabricated metals,2,,,FALSE
 -102.63093,38.09269,intermittent,1965,1990,5,1,FALSE,Food,Food,1,,,FALSE
 -102.62538,38.08807,former (gone by 1980s),1968,1977,3,1,FALSE,Lumber & wood,Printing,2,,,FALSE
--102.62524,38.09258,emerging,1992,1992,1,1,FALSE,Electronics,Electronics,1,,,FALSE
+-102.62524,38.09258,emerging,1992,1992,1,1,TRUE,Electronics,Electronics,1,,,FALSE
 -102.61998,38.07895,emerging,1983,1992,4,1,TRUE,Machinery,Furniture,3,,,FALSE
 -102.61968,38.08796,persistent,1965,1990,12,4,TRUE,Printing,Printing,4,,,FALSE
 -102.61954,38.09246,intermittent,1965,1988,10,4,TRUE,Food,Food,3,,,FALSE
@@ -1511,8 +1510,8 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -102.38892,40.95685,emerging,1983,1992,3,1,FALSE,Food,,2,,,FALSE
 -102.38281,40.96121,emerging,1983,1983,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -102.3089,40.58571,former (gone by 1980s),1966,1966,1,1,FALSE,,,1,,,FALSE
--102.30318,40.58108,intermittent,1966,1990,5,2,FALSE,,Apparel,4,,,FALSE
--102.303,40.58558,intermittent,1968,1990,4,1,FALSE,Printing,Food,2,,,FALSE
+-102.30318,40.58108,intermittent,1966,1990,5,2,TRUE,,Apparel,4,,,FALSE
+-102.303,40.58558,intermittent,1968,1990,4,1,TRUE,Printing,Food,2,,,FALSE
 -102.27468,40.99023,former (gone by 1980s),1967,1973,3,1,FALSE,,,2,,,FALSE
 -102.26892,40.98559,former (gone by 1980s),1966,1966,1,1,FALSE,,,1,,,FALSE
 -102.34785,38.82095,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,FALSE
@@ -1529,7 +1528,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -108.90743,37.75882,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,FALSE
 -108.90177,37.759,emerging,1992,1992,1,1,FALSE,Printing,Printing,1,,,FALSE
 -108.79802,39.25316,emerging,1988,1988,1,1,FALSE,Food,Food,1,,,FALSE
--108.75876,39.16887,emerging,1990,1992,2,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
+-108.75876,39.16887,emerging,1990,1992,2,1,TRUE,Lumber & wood,Lumber & wood,1,,,FALSE
 -108.80878,40.08592,former (gone by 1980s),1974,1974,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -108.80929,40.09491,emerging,1990,1992,2,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -108.79708,40.08631,intermittent,1974,1990,4,1,FALSE,Printing,Printing,1,,,FALSE
@@ -1541,15 +1540,15 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -108.72917,39.15631,former (gone by 1980s),1966,1966,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -108.72316,39.152,emerging,1980,1980,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -108.59314,37.35892,intermittent,1977,1983,3,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
--108.59336,37.36342,emerging,1980,1990,4,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
+-108.59336,37.36342,emerging,1980,1990,4,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -108.59379,37.37242,emerging,1983,1990,3,1,FALSE,Food,Food,1,,,FALSE
--108.67969,39.09484,emerging,1990,1992,2,1,FALSE,Furniture,Food,2,,,FALSE
+-108.67969,39.09484,emerging,1990,1992,2,1,TRUE,Furniture,Food,2,,,FALSE
 -108.58665,37.3411,former (gone by 1980s),1967,1968,2,1,TRUE,Machinery,Machinery,1,,,FALSE
 -108.58708,37.3501,"persistent, sector turnover",1965,1990,11,5,TRUE,Printing,Food,3,,,FALSE
 -108.58729,37.3546,former (gone by 1980s),1973,1973,1,1,TRUE,Machinery,Machinery,1,,,FALSE
 -108.58123,37.34577,former (gone by 1980s),1968,1968,1,1,FALSE,Leather,Leather,1,,,FALSE
 -108.58144,37.35027,persistent,1965,1992,10,2,FALSE,Printing,Printing,2,,,FALSE
--108.66838,39.0997,emerging,1988,1988,1,1,FALSE,Paper,Paper,1,,,FALSE
+-108.66838,39.0997,emerging,1988,1988,1,1,TRUE,Paper,Paper,1,,,FALSE
 -108.57538,37.34144,former (gone by 1980s),1973,1973,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -108.57581,37.35044,intermittent,1977,1983,3,1,TRUE,Rubber & plastics,Rubber & plastics,1,,,FALSE
 -108.57017,37.35061,former (gone by 1980s),1967,1973,3,1,TRUE,Chemicals,Chemicals,1,,,FALSE
@@ -1570,11 +1569,11 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -108.60124,39.02973,emerging,1983,1983,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -108.60307,39.0657,former (gone by 1980s),1968,1968,1,1,TRUE,Machinery,Machinery,1,,,FALSE
 -108.60421,39.08819,emerging,1988,1990,2,1,TRUE,Chemicals,Chemicals,1,,,FALSE
--108.59867,39.09286,emerging,1980,1983,2,1,FALSE,Instruments,Electronics,2,,,FALSE
+-108.59867,39.09286,emerging,1980,1983,2,1,TRUE,Instruments,Electronics,2,,,FALSE
 -108.59153,39.06606,"persistent, sector turnover",1966,1990,11,2,TRUE,Lumber & wood,Food,6,,,FALSE
 -108.59245,39.08405,intermittent,1977,1990,3,3,TRUE,Electronics,,3,,,FALSE
 -108.59267,39.08855,intermittent,1974,1992,7,1,TRUE,Machinery,Misc. manufacturing,4,,,FALSE
--108.5929,39.09304,emerging,1980,1980,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
+-108.5929,39.09304,emerging,1980,1980,1,1,TRUE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -108.50822,37.47409,emerging,1983,1990,3,1,FALSE,Printing,Printing,1,,,FALSE
 -108.54601,38.26574,emerging,1992,1992,1,1,FALSE,Apparel,Apparel,1,,,FALSE
 -108.54623,38.27024,emerging,1990,1992,2,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
@@ -1598,7 +1597,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -108.56846,39.06677,"persistent, sector turnover",1965,1992,12,4,TRUE,Food,Printing,4,1913,1,FALSE
 -108.56891,39.07576,"persistent, sector turnover",1966,1992,10,4,TRUE,Apparel,Food,4,,,FALSE
 -108.56914,39.08026,intermittent,1974,1990,3,1,TRUE,Machinery,Lumber & wood,3,,,FALSE
--108.56959,39.08925,emerging,1992,1992,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
+-108.56959,39.08925,emerging,1992,1992,1,1,TRUE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -108.56179,39.04896,intermittent,1974,1988,5,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -108.56224,39.05795,"persistent, sector turnover",1966,1990,7,5,TRUE,Printing,Lumber & wood,6,1915,1,FALSE
 -108.56247,39.06245,persistent,1965,1990,12,3,TRUE,Food,Food,5,,,FALSE
@@ -1632,7 +1631,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -108.53984,39.07215,persistent,1965,1990,10,2,TRUE,Electronics,Electronics,3,,,FALSE
 -108.54007,39.07664,former (gone by 1980s),1965,1965,1,1,TRUE,Transportation eq.,Transportation eq.,1,,,FALSE
 -108.54209,39.11712,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,FALSE
--108.5334,39.05883,emerging,1983,1988,2,2,FALSE,Printing,Printing,1,,,FALSE
+-108.5334,39.05883,emerging,1983,1988,2,2,TRUE,Printing,Printing,1,,,FALSE
 -108.5343,39.07682,emerging,1990,1990,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -108.5361,39.1128,emerging,1990,1990,1,1,FALSE,,,1,,,FALSE
 -108.53632,39.11729,emerging,1988,1990,2,1,TRUE,Transportation eq.,Transportation eq.,1,,,FALSE
@@ -1659,7 +1658,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -108.46017,39.09706,emerging,1990,1990,1,1,FALSE,Instruments,Instruments,1,,,FALSE
 -108.45264,39.06125,emerging,1988,1990,2,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -108.44819,39.08841,emerging,1983,1988,2,1,TRUE,Furniture,Rubber & plastics,2,,,FALSE
--108.44841,39.09291,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,FALSE
+-108.44841,39.09291,emerging,1983,1983,1,1,TRUE,Printing,Printing,1,,,FALSE
 -108.44329,39.10657,emerging,1983,1983,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -108.43109,39.09342,former (gone by 1980s),1974,1980,2,1,TRUE,Petroleum,Petroleum,1,,,FALSE
 -108.29907,37.34498,emerging,1990,1990,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
@@ -1712,8 +1711,8 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -107.87387,37.293,former (gone by 1980s),1967,1974,3,1,FALSE,Furniture,Furniture,2,,,FALSE
 -107.87404,37.29751,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,FALSE
 -107.86517,37.21212,emerging,1992,1992,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
--107.86841,37.29764,emerging,1983,1983,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
--107.86875,37.30665,emerging,1983,1983,1,1,FALSE,Apparel,Apparel,1,,,FALSE
+-107.86841,37.29764,emerging,1983,1983,1,1,TRUE,Lumber & wood,Lumber & wood,1,,,FALSE
+-107.86875,37.30665,emerging,1983,1983,1,1,TRUE,Apparel,Apparel,1,,,FALSE
 -107.91456,38.47685,emerging,1992,1992,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -107.93179,38.89985,emerging,1988,1990,2,1,TRUE,Rubber & plastics,Rubber & plastics,1,,,FALSE
 -107.86022,37.23026,emerging,1988,1990,2,1,FALSE,"Stone, clay & glass",,2,,,FALSE
@@ -1734,9 +1733,9 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -107.87985,38.4687,emerging,1983,1983,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -107.88021,38.4777,"persistent, sector turnover",1966,1992,10,4,TRUE,Printing,,5,,,FALSE
 -107.88039,38.4822,intermittent,1966,1992,5,2,FALSE,Misc. manufacturing,Printing,4,,,FALSE
--107.88057,38.4867,intermittent,1973,1992,7,1,FALSE,Electronics,Electronics,1,,,FALSE
+-107.88057,38.4867,intermittent,1973,1992,7,1,TRUE,Electronics,Electronics,1,,,FALSE
 -107.87413,38.46884,emerging,1980,1992,4,2,TRUE,Rubber & plastics,Machinery,3,,,FALSE
--107.87431,38.47334,emerging,1980,1990,3,1,FALSE,Printing,,3,,,FALSE
+-107.87431,38.47334,emerging,1980,1990,3,1,TRUE,Printing,,3,,,FALSE
 -107.87449,38.47784,intermittent,1966,1990,6,1,FALSE,Printing,Printing,1,,,FALSE
 -107.87467,38.48234,"persistent, sector turnover",1966,1992,8,2,TRUE,Machinery,Apparel,5,,,FALSE
 -107.86805,38.45998,emerging,1990,1990,1,1,FALSE,Food,Food,1,,,FALSE
@@ -1761,7 +1760,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -107.78399,39.5386,former (gone by 1980s),1974,1974,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -107.78435,39.5476,emerging,1983,1983,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -107.78453,39.5521,emerging,1992,1992,1,1,FALSE,Furniture,Furniture,1,,,FALSE
--107.77308,39.55688,emerging,1980,1980,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
+-107.77308,39.55688,emerging,1980,1980,1,1,TRUE,Lumber & wood,Lumber & wood,1,,,FALSE
 -107.66475,37.27988,emerging,1980,1983,2,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -107.71476,38.8015,former (gone by 1980s),1967,1967,1,1,FALSE,Food,Food,1,,,FALSE
 -107.66656,37.80699,emerging,1980,1983,2,1,FALSE,Printing,Printing,1,,,FALSE
@@ -1771,8 +1770,8 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -107.66868,38.02319,intermittent,1974,1990,5,1,FALSE,Printing,"Stone, clay & glass",3,,,FALSE
 -107.66885,38.02769,emerging,1980,1990,4,1,FALSE,,"Stone, clay & glass",2,,,FALSE
 -107.63079,37.11393,emerging,1980,1990,3,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
--107.60654,37.22711,emerging,1980,1983,2,3,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
--107.60091,37.22723,emerging,1988,1992,3,2,FALSE,Lumber & wood,,2,,,FALSE
+-107.60654,37.22711,emerging,1980,1983,2,3,TRUE,Lumber & wood,Lumber & wood,1,,,FALSE
+-107.60091,37.22723,emerging,1988,1992,3,2,TRUE,Lumber & wood,,2,,,FALSE
 -107.60433,37.32628,emerging,1980,1988,3,1,FALSE,Apparel,Apparel,1,,,FALSE
 -107.65629,39.54609,intermittent,1974,1990,4,1,TRUE,Lumber & wood,Furniture,3,,,FALSE
 -107.65646,39.55059,former (gone by 1980s),1966,1966,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
@@ -1791,7 +1790,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -107.54065,40.51256,intermittent,1973,1990,6,1,FALSE,"Stone, clay & glass","Stone, clay & glass",2,,,FALSE
 -107.31566,38.02617,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,FALSE
 -107.3659,39.56138,emerging,1992,1992,1,1,FALSE,Printing,Printing,1,,,FALSE
--107.36606,39.56588,emerging,1983,1983,1,1,FALSE,Electronics,Electronics,1,,,FALSE
+-107.36606,39.56588,emerging,1983,1983,1,1,TRUE,Electronics,Electronics,1,,,FALSE
 -107.34249,39.55735,emerging,1988,1992,2,1,FALSE,Food,Food,1,,,FALSE
 -107.33652,39.55297,emerging,1992,1992,1,1,FALSE,,,1,,,FALSE
 -107.33011,39.53508,former (gone by 1980s),1966,1967,2,1,FALSE,,"Stone, clay & glass",2,,,FALSE
@@ -1825,8 +1824,8 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -106.94203,38.54208,former (gone by 1980s),1977,1977,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -106.94385,38.60963,former (gone by 1980s),1977,1977,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -106.93618,38.53767,emerging,1980,1990,4,2,TRUE,Fabricated metals,Printing,2,,,FALSE
--106.9363,38.54217,former (gone by 1980s),1977,1977,1,1,FALSE,Apparel,Apparel,1,,,FALSE
--106.93057,38.54227,emerging,1980,1992,4,2,FALSE,Food,Misc. manufacturing,3,,,FALSE
+-106.9363,38.54217,former (gone by 1980s),1977,1977,1,1,TRUE,Apparel,Apparel,1,,,FALSE
+-106.93057,38.54227,emerging,1980,1992,4,2,TRUE,Food,Misc. manufacturing,3,,,FALSE
 -106.93069,38.54677,persistent,1966,1990,7,1,FALSE,Printing,Printing,1,,,FALSE
 -106.93093,38.55578,intermittent,1974,1990,5,1,FALSE,Printing,Printing,1,,,FALSE
 -106.94869,39.20874,emerging,1988,1990,2,2,FALSE,Printing,Printing,1,,,FALSE
@@ -1898,7 +1897,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -106.00102,38.53138,intermittent,1968,1990,2,1,FALSE,"Stone, clay & glass",Lumber & wood,2,,,FALSE
 -106.00115,38.54039,intermittent,1973,1983,2,1,FALSE,Lumber & wood,Printing,2,,,FALSE
 -105.99528,38.53143,former (gone by 1980s),1965,1965,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
--105.99535,38.53593,"persistent, sector turnover",1966,1992,12,2,FALSE,Food,Lumber & wood,3,,,FALSE
+-105.99535,38.53593,"persistent, sector turnover",1966,1992,12,2,TRUE,Food,Lumber & wood,3,,,FALSE
 -106.00501,39.22521,emerging,1980,1980,1,1,FALSE,,,1,,,FALSE
 -105.98955,38.53148,emerging,1980,1980,1,1,FALSE,Food,Food,1,,,FALSE
 -105.98961,38.53598,"persistent, sector turnover",1967,1992,7,3,TRUE,Food,Transportation eq.,5,,,FALSE
@@ -1936,11 +1935,11 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.52229,39.74197,former (gone by 1980s),1966,1970,4,1,TRUE,Machinery,Fabricated metals,2,,,FALSE
 -105.52232,39.74648,emerging,1983,1988,2,1,FALSE,Leather,Leather,1,,,FALSE
 -105.52713,40.37263,emerging,1983,1992,4,2,FALSE,Misc. manufacturing,,3,,,FALSE
--105.52716,40.37713,intermittent,1970,1990,7,3,FALSE,Leather,Leather,2,,,FALSE
+-105.52716,40.37713,intermittent,1970,1990,7,3,TRUE,Leather,Leather,2,,,FALSE
 -105.52723,40.38614,emerging,1988,1988,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -105.51645,39.742,"persistent, sector turnover",1966,1990,10,3,TRUE,Printing,Furniture,3,,,FALSE
 -105.52124,40.37266,"persistent, sector turnover",1966,1992,12,3,FALSE,Printing,,3,,,FALSE
--105.52127,40.37716,"persistent, sector turnover",1965,1992,12,3,FALSE,Textiles,Misc. manufacturing,4,,,FALSE
+-105.52127,40.37716,"persistent, sector turnover",1965,1992,12,3,TRUE,Textiles,Misc. manufacturing,4,,,FALSE
 -105.51062,39.74203,emerging,1980,1980,1,1,FALSE,,,1,,,FALSE
 -105.51105,39.80059,intermittent,1974,1992,5,1,FALSE,Misc. manufacturing,Printing,2,,,FALSE
 -105.50478,39.74205,"persistent, sector turnover",1966,1990,11,2,FALSE,,Misc. manufacturing,3,,,FALSE
@@ -1955,12 +1954,12 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.48523,39.4493,emerging,1990,1992,2,1,TRUE,Rubber & plastics,Electronics,2,,,FALSE
 -105.49189,40.3863,emerging,1980,1992,4,1,TRUE,Fabricated metals,Misc. manufacturing,2,,,FALSE
 -105.47072,38.13817,emerging,1980,1983,2,1,FALSE,Printing,Printing,1,,,FALSE
--105.47648,39.86831,emerging,1983,1990,2,1,FALSE,Misc. manufacturing,Printing,2,,,FALSE
+-105.47648,39.86831,emerging,1983,1990,2,1,TRUE,Misc. manufacturing,Printing,2,,,FALSE
 -105.44789,38.13826,emerging,1988,1992,3,1,FALSE,Printing,Printing,1,,,FALSE
 -105.45603,39.42689,emerging,1983,1992,3,1,FALSE,Printing,Printing,1,,,FALSE
 -105.45031,39.44043,emerging,1992,1992,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -105.42537,37.19645,emerging,1992,1992,1,1,FALSE,Printing,Printing,1,,,FALSE
--105.41895,40.0217,former (gone by 1980s),1973,1973,1,1,FALSE,Leather,Leather,1,,,FALSE
+-105.41895,40.0217,former (gone by 1980s),1973,1973,1,1,TRUE,Leather,Leather,1,,,FALSE
 -105.40398,39.46763,emerging,1988,1990,2,1,FALSE,Electronics,Electronics,1,,,FALSE
 -105.40747,40.06229,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,FALSE
 -105.39814,39.46315,emerging,1983,1983,1,1,FALSE,Electronics,Electronics,1,,,FALSE
@@ -1973,7 +1972,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.35855,39.67502,emerging,1988,1988,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -105.35178,39.49033,emerging,1992,1992,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -105.35445,40.01291,emerging,1990,1992,2,1,TRUE,Machinery,Electronics,2,,,FALSE
--105.34677,39.65253,emerging,1980,1983,2,2,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
+-105.34677,39.65253,emerging,1980,1983,2,2,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -105.32393,38.49015,emerging,1992,1992,1,1,FALSE,Leather,Leather,1,,,FALSE
 -105.32334,39.62557,emerging,1992,1992,1,2,TRUE,Chemicals,Chemicals,1,,,FALSE
 -105.31757,39.6391,emerging,1983,1992,4,2,FALSE,Printing,Printing,2,,,FALSE
@@ -2032,7 +2031,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.27329,40.22936,intermittent,1977,1983,3,1,FALSE,Instruments,Instruments,2,,,FALSE
 -105.27357,40.29693,emerging,1983,1983,1,1,FALSE,,,1,,,FALSE
 -105.26641,39.9726,emerging,1988,1990,2,2,FALSE,Printing,,2,,,FALSE
--105.26647,39.98611,intermittent,1974,1983,4,1,FALSE,Instruments,Instruments,1,,,FALSE
+-105.26647,39.98611,intermittent,1974,1983,4,1,TRUE,Instruments,Instruments,1,,,FALSE
 -105.26652,39.99963,intermittent,1973,1990,4,1,FALSE,Printing,Lumber & wood,3,,,FALSE
 -105.26654,40.00413,intermittent,1973,1983,3,1,FALSE,Printing,Printing,2,,,FALSE
 -105.26657,40.01314,emerging,1983,1983,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
@@ -2044,9 +2043,9 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.2674,40.22487,intermittent,1966,1992,6,2,TRUE,"Stone, clay & glass",,4,,,FALSE
 -105.26057,39.97712,emerging,1988,1988,1,1,FALSE,Printing,Printing,1,,,FALSE
 -105.26059,39.98162,emerging,1988,1988,1,1,FALSE,Printing,Printing,1,,,FALSE
--105.26069,40.00865,intermittent,1966,1990,5,2,FALSE,,Instruments,4,,,FALSE
+-105.26069,40.00865,intermittent,1966,1990,5,2,TRUE,,Instruments,4,,,FALSE
 -105.26071,40.01316,emerging,1983,1992,4,2,TRUE,Misc. manufacturing,"Stone, clay & glass",2,,,FALSE
--105.26073,40.01766,"persistent, sector turnover",1966,1992,12,5,FALSE,,Paper,4,,,FALSE
+-105.26073,40.01766,"persistent, sector turnover",1966,1992,12,5,TRUE,,Paper,4,,,FALSE
 -105.26075,40.02217,"persistent, sector turnover",1966,1990,11,8,TRUE,Misc. manufacturing,,7,1950,1,FALSE
 -105.26076,40.02667,intermittent,1970,1990,3,3,FALSE,Printing,Printing,1,,,FALSE
 -105.26078,40.03118,intermittent,1968,1983,5,1,TRUE,Furniture,Printing,3,,,FALSE
@@ -2054,7 +2053,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.26081,40.04019,emerging,1990,1990,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -105.2615,40.22038,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,FALSE
 -105.24915,38.41823,emerging,1990,1990,1,2,TRUE,Chemicals,Chemicals,1,,,FALSE
--105.25469,39.96812,emerging,1988,1988,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
+-105.25469,39.96812,emerging,1988,1988,1,1,TRUE,Lumber & wood,Lumber & wood,1,,,FALSE
 -105.2547,39.97263,emerging,1983,1983,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -105.25472,39.97713,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,FALSE
 -105.25479,39.99515,emerging,1990,1990,1,1,FALSE,Paper,Paper,1,,,FALSE
@@ -2091,7 +2090,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.2421,39.72037,emerging,1983,1990,2,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
 -105.2429,39.94562,emerging,1988,1988,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -105.24301,39.97716,emerging,1983,1990,2,1,TRUE,Lumber & wood,Fabricated metals,2,,,FALSE
--105.24304,39.98617,emerging,1980,1990,4,2,FALSE,Lumber & wood,Paper,2,,,FALSE
+-105.24304,39.98617,emerging,1980,1990,4,2,TRUE,Lumber & wood,Paper,2,,,FALSE
 -105.24309,39.99968,emerging,1980,1980,1,1,FALSE,Electronics,Electronics,1,,,FALSE
 -105.24315,40.0177,"persistent, sector turnover",1968,1992,9,11,TRUE,Printing,Machinery,5,,,FALSE
 -105.24317,40.0222,intermittent,1974,1992,5,2,FALSE,Printing,Printing,1,,,FALSE
@@ -2102,13 +2101,13 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.23203,38.43629,former (gone by 1980s),1977,1980,2,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -105.23204,38.4408,"persistent, sector turnover",1966,1990,7,2,TRUE,"Stone, clay & glass",Chemicals,3,,,FALSE
 -105.23205,38.44531,intermittent,1966,1992,5,1,TRUE,Food,Chemicals,3,,,FALSE
--105.23214,38.47234,emerging,1983,1983,1,1,FALSE,Paper,Paper,1,,,FALSE
+-105.23214,38.47234,emerging,1983,1983,1,1,TRUE,Paper,Paper,1,,,FALSE
 -105.2372,39.99068,emerging,1980,1983,2,1,FALSE,Apparel,Apparel,1,,,FALSE
 -105.23723,39.99969,emerging,1988,1988,1,2,TRUE,Chemicals,Chemicals,1,,,FALSE
 -105.23725,40.0042,former (gone by 1980s),1973,1974,2,1,FALSE,Electronics,,2,,,FALSE
 -105.23731,40.02222,emerging,1980,1990,4,5,TRUE,Furniture,Lumber & wood,2,,,FALSE
 -105.23732,40.02672,intermittent,1973,1992,7,3,TRUE,Electronics,,6,,,FALSE
--105.22628,38.4318,emerging,1990,1992,2,1,FALSE,Food,"Stone, clay & glass",2,,,FALSE
+-105.22628,38.4318,emerging,1990,1992,2,1,TRUE,Food,"Stone, clay & glass",2,,,FALSE
 -105.22633,38.44532,former (gone by 1980s),1966,1966,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -105.22635,38.45433,emerging,1980,1983,2,1,FALSE,Electronics,Electronics,1,,,FALSE
 -105.22988,39.55371,emerging,1980,1992,4,1,FALSE,Instruments,Instruments,1,,,FALSE
@@ -2127,7 +2126,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.2206,38.44533,intermittent,1973,1983,4,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -105.22399,39.53119,emerging,1990,1990,1,1,FALSE,,,1,,,FALSE
 -105.22408,39.55822,emerging,1980,1983,2,1,TRUE,Machinery,Machinery,1,,,FALSE
--105.22471,39.75194,emerging,1983,1988,2,1,FALSE,Printing,Electronics,2,,,TRUE
+-105.22471,39.75194,emerging,1983,1988,2,1,TRUE,Printing,Electronics,2,,,TRUE
 -105.22472,39.75645,persistent,1966,1992,9,3,TRUE,Printing,Printing,2,,,TRUE
 -105.22473,39.76095,"persistent, sector turnover",1966,1990,7,1,TRUE,Machinery,"Stone, clay & glass",3,1956,1,TRUE
 -105.22537,39.95467,emerging,1988,1990,2,1,FALSE,Apparel,Leather,2,,,FALSE
@@ -2144,7 +2143,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.21837,39.59427,emerging,1983,1983,1,1,FALSE,Electronics,Electronics,1,,,FALSE
 -105.21887,39.75195,emerging,1988,1992,2,1,FALSE,,Electronics,2,,,TRUE
 -105.21888,39.75646,intermittent,1965,1990,7,2,TRUE,Food,Chemicals,3,,,TRUE
--105.2189,39.76096,persistent,1965,1990,9,2,FALSE,Printing,Printing,2,1950,1,TRUE
+-105.2189,39.76096,persistent,1965,1990,9,2,TRUE,Printing,Printing,2,1950,1,TRUE
 -105.2197,40.01324,"persistent, sector turnover",1966,1992,11,9,TRUE,Fabricated metals,Chemicals,6,,,FALSE
 -105.21972,40.01775,intermittent,1977,1992,6,6,TRUE,Instruments,Printing,4,,,FALSE
 -105.21973,40.02225,intermittent,1974,1992,7,8,TRUE,Food,,4,,,FALSE
@@ -2213,7 +2212,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.17796,39.7295,"persistent, sector turnover",1966,1992,8,3,TRUE,,Paper,6,,,TRUE
 -105.17797,39.734,intermittent,1966,1990,4,2,FALSE,Printing,Leather,3,,,TRUE
 -105.17862,39.98628,intermittent,1974,1990,3,1,FALSE,"Stone, clay & glass",Misc. manufacturing,2,,,FALSE
--105.17863,39.99079,emerging,1988,1988,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
+-105.17863,39.99079,emerging,1988,1988,1,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -105.17866,39.9998,emerging,1983,1992,4,1,TRUE,Machinery,Machinery,2,,,FALSE
 -105.1787,40.01782,emerging,1990,1990,1,1,FALSE,,,1,,,FALSE
 -105.17873,40.02683,intermittent,1967,1990,4,1,FALSE,Electronics,Instruments,2,,,FALSE
@@ -2231,10 +2230,10 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.17272,39.96827,emerging,1990,1990,1,1,FALSE,Instruments,Instruments,1,,,FALSE
 -105.17277,39.9908,former (gone by 1980s),1973,1980,4,1,TRUE,Rubber & plastics,Instruments,3,,,FALSE
 -105.17295,40.05837,emerging,1980,1990,3,2,TRUE,Printing,Rubber & plastics,2,,,FALSE
--105.17306,40.10342,emerging,1992,1992,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
+-105.17306,40.10342,emerging,1992,1992,1,1,TRUE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -105.17376,40.3782,emerging,1988,1992,3,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -105.16321,38.40487,emerging,1983,1983,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
--105.16625,39.716,emerging,1988,1990,2,1,FALSE,Printing,Printing,1,,,TRUE
+-105.16625,39.716,emerging,1988,1990,2,1,TRUE,Printing,Printing,1,,,TRUE
 -105.16626,39.72051,emerging,1988,1992,3,1,FALSE,Printing,,2,,,TRUE
 -105.16629,39.72952,emerging,1983,1988,2,1,TRUE,Misc. manufacturing,Fabricated metals,2,,,TRUE
 -105.16631,39.73853,former (gone by 1980s),1967,1967,1,1,FALSE,Printing,Printing,1,,,TRUE
@@ -2312,7 +2311,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.13769,40.01787,emerging,1983,1990,2,1,TRUE,Machinery,Machinery,1,,,FALSE
 -105.13847,40.40528,intermittent,1974,1990,6,3,TRUE,"Stone, clay & glass",,4,,,FALSE
 -105.13848,40.40978,emerging,1980,1980,1,1,FALSE,Printing,Printing,1,,,FALSE
--105.13892,40.62149,former (gone by 1980s),1977,1977,1,1,FALSE,Furniture,Furniture,1,,,FALSE
+-105.13892,40.62149,former (gone by 1980s),1977,1977,1,1,TRUE,Furniture,Furniture,1,,,FALSE
 -105.13124,39.71154,"persistent, sector turnover",1968,1992,10,7,TRUE,Fabricated metals,Lumber & wood,6,,,TRUE
 -105.13125,39.71605,emerging,1992,1992,1,2,FALSE,,,1,,,TRUE
 -105.13126,39.72055,emerging,1990,1992,2,1,FALSE,,Misc. manufacturing,2,,,TRUE
@@ -2325,7 +2324,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.13139,39.78813,former (gone by 1980s),1973,1977,3,2,TRUE,Rubber & plastics,Lumber & wood,2,,,TRUE
 -105.1314,39.79263,emerging,1990,1992,2,1,TRUE,Fabricated metals,Machinery,2,,,TRUE
 -105.13143,39.81065,emerging,1983,1983,1,1,TRUE,Machinery,Machinery,1,,,TRUE
--105.13175,39.97734,"persistent, sector turnover",1966,1992,10,3,FALSE,Printing,,3,,,FALSE
+-105.13175,39.97734,"persistent, sector turnover",1966,1992,10,3,TRUE,Printing,,3,,,FALSE
 -105.13176,39.98184,intermittent,1968,1983,6,2,FALSE,"Stone, clay & glass",Electronics,2,,,FALSE
 -105.13182,40.01337,emerging,1980,1992,2,1,TRUE,Machinery,,2,,,FALSE
 -105.13183,40.01788,emerging,1980,1980,1,1,FALSE,Instruments,Instruments,1,,,FALSE
@@ -2355,10 +2354,10 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.12619,40.13952,emerging,1980,1992,5,2,TRUE,Rubber & plastics,Rubber & plastics,1,,,FALSE
 -105.1262,40.14402,emerging,1990,1992,2,1,TRUE,Machinery,Fabricated metals,2,,,FALSE
 -105.12621,40.14853,emerging,1983,1990,2,2,TRUE,Electronics,Machinery,2,,,FALSE
--105.12622,40.15303,emerging,1980,1980,1,1,FALSE,Electronics,Electronics,1,,,FALSE
+-105.12622,40.15303,emerging,1980,1980,1,1,TRUE,Electronics,Electronics,1,,,FALSE
 -105.12629,40.18907,emerging,1992,1992,1,1,TRUE,Rubber & plastics,Rubber & plastics,1,,,FALSE
 -105.12646,40.28367,emerging,1980,1980,1,1,TRUE,Machinery,Machinery,1,,,FALSE
--105.12669,40.40529,intermittent,1973,1992,6,1,FALSE,"Stone, clay & glass",Misc. manufacturing,2,,,FALSE
+-105.12669,40.40529,intermittent,1973,1992,6,1,TRUE,"Stone, clay & glass",Misc. manufacturing,2,,,FALSE
 -105.12703,40.58547,former (gone by 1980s),1967,1977,3,1,TRUE,Chemicals,Rubber & plastics,2,,,FALSE
 -105.11737,38.3869,intermittent,1970,1992,9,3,TRUE,Printing,"Stone, clay & glass",2,,,FALSE
 -105.11737,38.3914,former (gone by 1980s),1977,1980,2,1,TRUE,Chemicals,Misc. manufacturing,2,,,FALSE
@@ -2383,8 +2382,8 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.12034,40.14853,emerging,1980,1990,4,3,TRUE,Fabricated metals,Electronics,3,,,FALSE
 -105.12035,40.15304,emerging,1980,1992,5,7,TRUE,Fabricated metals,Machinery,4,,,FALSE
 -105.12036,40.15754,emerging,1990,1990,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
--105.12037,40.16205,emerging,1988,1988,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
--105.12037,40.16655,emerging,1988,1990,2,1,FALSE,Printing,Printing,1,,,FALSE
+-105.12037,40.16205,emerging,1988,1988,1,1,TRUE,Lumber & wood,Lumber & wood,1,,,FALSE
+-105.12037,40.16655,emerging,1988,1990,2,1,TRUE,Printing,Printing,1,,,FALSE
 -105.1204,40.18007,emerging,1988,1988,1,1,TRUE,Machinery,Machinery,1,,,FALSE
 -105.12108,40.56296,emerging,1988,1990,2,1,FALSE,Printing,Printing,1,,,FALSE
 -105.1211,40.57197,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,FALSE
@@ -2418,7 +2417,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.11452,40.17557,intermittent,1968,1990,3,1,TRUE,Machinery,Misc. manufacturing,3,,,FALSE
 -105.11452,40.18007,intermittent,1966,1990,5,1,FALSE,Instruments,,3,,,FALSE
 -105.11453,40.18458,emerging,1988,1992,3,1,TRUE,Instruments,Machinery,2,,,FALSE
--105.11454,40.18908,intermittent,1977,1992,5,1,FALSE,Printing,Misc. manufacturing,2,,,FALSE
+-105.11454,40.18908,intermittent,1977,1992,5,1,TRUE,Printing,Misc. manufacturing,2,,,FALSE
 -105.1149,40.4053,emerging,1990,1992,2,1,TRUE,Chemicals,Leather,2,,,FALSE
 -105.11514,40.54494,emerging,1983,1990,2,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -105.11515,40.54945,emerging,1988,1988,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
@@ -2431,7 +2430,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.10777,39.62146,emerging,1990,1992,2,1,FALSE,,,1,,,TRUE
 -105.10778,39.62597,emerging,1983,1983,1,1,FALSE,Apparel,Apparel,1,,,TRUE
 -105.10785,39.67102,former (gone by 1980s),1974,1980,3,1,TRUE,Chemicals,Chemicals,2,,,TRUE
--105.10786,39.67552,emerging,1990,1990,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
+-105.10786,39.67552,emerging,1990,1990,1,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
 -105.10794,39.72958,intermittent,1966,1988,6,1,TRUE,Fabricated metals,Printing,3,,,TRUE
 -105.10795,39.73859,intermittent,1974,1990,6,2,FALSE,Paper,Printing,3,,,TRUE
 -105.10796,39.7431,"persistent, sector turnover",1966,1990,8,2,TRUE,,Printing,4,,,TRUE
@@ -2468,13 +2467,13 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.10931,40.59,intermittent,1970,1990,4,1,FALSE,Printing,Printing,1,,,FALSE
 -105.10101,38.97268,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,FALSE
 -105.10191,39.59894,emerging,1988,1988,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,TRUE
--105.10193,39.60795,emerging,1992,1992,1,1,FALSE,Printing,Printing,1,,,TRUE
+-105.10193,39.60795,emerging,1992,1992,1,1,TRUE,Printing,Printing,1,,,TRUE
 -105.10197,39.63949,emerging,1992,1992,1,1,FALSE,,,1,,,TRUE
 -105.10199,39.653,former (gone by 1980s),1977,1977,1,1,FALSE,Printing,Printing,1,,,TRUE
 -105.10203,39.68003,emerging,1992,1992,1,1,TRUE,Machinery,Machinery,1,,,TRUE
 -105.10204,39.68454,former (gone by 1980s),1970,1970,1,1,FALSE,Apparel,Apparel,1,,,TRUE
 -105.10208,39.71157,emerging,1980,1992,4,1,FALSE,Printing,Printing,1,,,TRUE
--105.10211,39.73409,emerging,1988,1990,2,1,FALSE,Printing,Printing,1,,,TRUE
+-105.10211,39.73409,emerging,1988,1990,2,1,TRUE,Printing,Printing,1,,,TRUE
 -105.10212,39.7386,former (gone by 1980s),1967,1967,1,1,FALSE,,,1,,,TRUE
 -105.10213,39.74761,former (gone by 1980s),1968,1968,1,1,FALSE,,,1,,,TRUE
 -105.10218,39.77915,emerging,1988,1990,2,1,FALSE,Printing,Printing,1,,,TRUE
@@ -2487,13 +2486,13 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.10233,39.88276,emerging,1992,1992,1,1,FALSE,,,1,,,TRUE
 -105.10235,39.89177,emerging,1983,1992,4,1,TRUE,Machinery,Paper,3,,,TRUE
 -105.10239,39.92331,intermittent,1973,1990,7,6,TRUE,Chemicals,,5,,,TRUE
--105.1024,39.92781,emerging,1983,1990,3,1,FALSE,Electronics,Electronics,1,,,TRUE
--105.10247,39.97286,intermittent,1977,1990,3,1,FALSE,Paper,Paper,1,,,FALSE
+-105.1024,39.92781,emerging,1983,1990,3,1,TRUE,Electronics,Electronics,1,,,TRUE
+-105.10247,39.97286,intermittent,1977,1990,3,1,TRUE,Paper,Paper,1,,,FALSE
 -105.10251,39.99989,intermittent,1966,1988,7,1,TRUE,Food,Printing,4,,,FALSE
 -105.10251,40.00439,emerging,1990,1990,1,2,TRUE,,,1,,,FALSE
--105.10254,40.02241,emerging,1988,1992,3,1,FALSE,Instruments,Instruments,1,,,FALSE
+-105.10254,40.02241,emerging,1988,1992,3,1,TRUE,Instruments,Instruments,1,,,FALSE
 -105.10272,40.14404,former (gone by 1980s),1966,1967,2,1,TRUE,Machinery,Machinery,1,,,FALSE
--105.10274,40.15756,emerging,1980,1983,2,1,FALSE,Electronics,Lumber & wood,2,,,FALSE
+-105.10274,40.15756,emerging,1980,1983,2,1,TRUE,Electronics,Lumber & wood,2,,,FALSE
 -105.10275,40.16206,persistent,1965,1992,12,6,TRUE,Food,Food,4,,,FALSE
 -105.10276,40.16657,persistent,1965,1992,8,4,TRUE,Printing,Printing,2,,,FALSE
 -105.10276,40.17107,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,1956,1,FALSE
@@ -2504,7 +2503,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.10308,40.37829,former (gone by 1980s),1968,1970,2,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
 -105.10311,40.40081,"persistent, sector turnover",1968,1992,7,2,TRUE,Machinery,Rubber & plastics,4,,,FALSE
 -105.10312,40.40532,intermittent,1973,1990,7,2,TRUE,Lumber & wood,Lumber & wood,2,,,FALSE
--105.10335,40.55397,emerging,1992,1992,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
+-105.10335,40.55397,emerging,1992,1992,1,1,TRUE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -105.10338,40.57198,former (gone by 1980s),1967,1970,3,1,FALSE,Printing,Printing,2,,,FALSE
 -105.1034,40.5855,emerging,1988,1990,2,1,FALSE,Printing,Printing,1,,,FALSE
 -105.1034,40.59,persistent,1966,1990,9,1,TRUE,Machinery,Machinery,3,,,FALSE
@@ -2516,7 +2515,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.09629,39.74311,former (gone by 1980s),1974,1977,2,1,FALSE,Printing,Printing,1,,,TRUE
 -105.09631,39.75663,emerging,1980,1980,1,1,TRUE,Machinery,Machinery,1,,,TRUE
 -105.09633,39.77014,intermittent,1973,1983,5,1,FALSE,Printing,Printing,1,,,TRUE
--105.09634,39.77915,emerging,1992,1992,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
+-105.09634,39.77915,emerging,1992,1992,1,1,TRUE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
 -105.09635,39.78366,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,TRUE
 -105.09635,39.78816,emerging,1980,1983,2,1,FALSE,Food,Food,1,,,TRUE
 -105.09637,39.79717,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,TRUE
@@ -2538,7 +2537,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.09692,40.1891,former (gone by 1980s),1965,1965,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -105.09719,40.3828,emerging,1988,1988,1,1,FALSE,Instruments,Instruments,1,,,FALSE
 -105.09722,40.40082,emerging,1990,1990,1,1,TRUE,Machinery,Machinery,1,,,FALSE
--105.09723,40.40532,intermittent,1970,1983,2,1,FALSE,Electronics,Misc. manufacturing,2,,,FALSE
+-105.09723,40.40532,intermittent,1970,1983,2,1,TRUE,Electronics,Misc. manufacturing,2,,,FALSE
 -105.09723,40.40983,former (gone by 1980s),1965,1967,2,1,FALSE,Furniture,,2,,,FALSE
 -105.09725,40.41883,emerging,1990,1990,1,1,FALSE,,,1,,,FALSE
 -105.09725,40.42334,emerging,1990,1990,1,1,FALSE,,,1,,,FALSE
@@ -2561,7 +2560,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.09068,39.91881,intermittent,1973,1983,5,1,TRUE,Fabricated metals,Misc. manufacturing,4,,,TRUE
 -105.09069,39.92332,intermittent,1973,1992,8,3,TRUE,Machinery,Printing,3,,,TRUE
 -105.0907,39.92782,intermittent,1977,1990,5,2,TRUE,Machinery,Furniture,4,,,TRUE
--105.09071,39.94134,emerging,1992,1992,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
+-105.09071,39.94134,emerging,1992,1992,1,1,TRUE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
 -105.09073,39.95485,emerging,1988,1990,2,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
 -105.09078,39.99089,emerging,1980,1990,3,1,FALSE,Misc. manufacturing,Printing,2,,,FALSE
 -105.09079,39.99539,intermittent,1973,1992,8,4,TRUE,Fabricated metals,,3,,,FALSE
@@ -2578,12 +2577,12 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.09158,40.58551,former (gone by 1980s),1970,1973,2,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -105.09159,40.59452,intermittent,1966,1983,8,2,TRUE,,Lumber & wood,4,1956,1,FALSE
 -105.0916,40.59902,former (gone by 1980s),1977,1980,2,1,TRUE,Lumber & wood,Fabricated metals,2,,,FALSE
--105.08449,39.6395,emerging,1992,1992,1,1,FALSE,Apparel,Apparel,1,,,TRUE
+-105.08449,39.6395,emerging,1992,1992,1,1,TRUE,Apparel,Apparel,1,,,TRUE
 -105.08454,39.68005,intermittent,1974,1990,3,1,TRUE,Fabricated metals,Food,2,,,TRUE
 -105.08455,39.68906,former (gone by 1980s),1977,1977,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
 -105.08459,39.72059,emerging,1992,1992,1,2,FALSE,,,1,,,TRUE
 -105.0846,39.7251,intermittent,1966,1992,4,1,TRUE,Instruments,Rubber & plastics,3,,,TRUE
--105.08461,39.73861,"persistent, sector turnover",1966,1992,11,4,FALSE,Printing,Apparel,3,,,TRUE
+-105.08461,39.73861,"persistent, sector turnover",1966,1992,11,4,TRUE,Printing,Apparel,3,,,TRUE
 -105.08462,39.74312,intermittent,1968,1983,7,2,TRUE,Electronics,Electronics,3,,,TRUE
 -105.08463,39.75663,former (gone by 1980s),1974,1974,1,1,FALSE,Printing,Printing,1,,,TRUE
 -105.08465,39.77015,former (gone by 1980s),1968,1968,1,1,TRUE,Machinery,Machinery,1,,,TRUE
@@ -2610,7 +2609,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.08544,40.40533,emerging,1988,1988,1,1,FALSE,,,1,,,FALSE
 -105.08551,40.45939,emerging,1980,1980,1,1,TRUE,Rubber & plastics,Rubber & plastics,1,,,FALSE
 -105.08562,40.54497,emerging,1988,1990,2,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
--105.08567,40.58551,former (gone by 1980s),1977,1980,2,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
+-105.08567,40.58551,former (gone by 1980s),1977,1980,2,1,TRUE,Misc. manufacturing,Misc. manufacturing,1,,,FALSE
 -105.08569,40.60353,intermittent,1966,1990,5,2,TRUE,,Fabricated metals,3,,,FALSE
 -105.08571,40.61254,emerging,1988,1990,2,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -105.0786,39.58544,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,TRUE
@@ -2647,7 +2646,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.07897,39.90981,emerging,1988,1990,2,6,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
 -105.07898,39.91431,persistent,1966,1990,7,3,TRUE,Lumber & wood,Lumber & wood,2,,,TRUE
 -105.07898,39.91882,emerging,1980,1990,3,3,TRUE,Transportation eq.,Apparel,3,,,TRUE
--105.07899,39.92783,emerging,1992,1992,1,1,FALSE,Instruments,Instruments,1,,,TRUE
+-105.07899,39.92783,emerging,1992,1992,1,1,TRUE,Instruments,Instruments,1,,,TRUE
 -105.07908,39.99991,emerging,1980,1990,4,1,FALSE,Food,Food,1,,,FALSE
 -105.07926,40.16208,emerging,1980,1992,5,5,TRUE,Chemicals,Chemicals,3,,,FALSE
 -105.07943,40.30173,former (gone by 1980s),1968,1980,2,1,FALSE,Food,Printing,2,,,FALSE
@@ -2656,7 +2655,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.07946,40.32876,emerging,1988,1990,2,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
 -105.07947,40.33777,intermittent,1974,1983,4,1,TRUE,Food,Machinery,2,,,FALSE
 -105.07949,40.35128,former (gone by 1980s),1974,1974,1,1,TRUE,Rubber & plastics,Rubber & plastics,1,,,FALSE
--105.07952,40.37831,intermittent,1977,1990,4,1,FALSE,Lumber & wood,Misc. manufacturing,2,,,FALSE
+-105.07952,40.37831,intermittent,1977,1990,4,1,TRUE,Lumber & wood,Misc. manufacturing,2,,,FALSE
 -105.07953,40.39182,intermittent,1965,1990,6,2,TRUE,Food,Primary metals,5,,,FALSE
 -105.07954,40.39633,"persistent, sector turnover",1965,1992,10,3,TRUE,Food,,5,,,FALSE
 -105.07954,40.40083,intermittent,1970,1992,6,3,TRUE,Instruments,Instruments,3,,,FALSE
@@ -2673,7 +2672,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.07973,40.55398,emerging,1988,1992,3,2,TRUE,Printing,Printing,1,,,FALSE
 -105.07973,40.55849,emerging,1980,1980,1,1,FALSE,Printing,Printing,1,,,FALSE
 -105.07974,40.56299,"persistent, sector turnover",1968,1990,8,1,FALSE,Leather,Printing,4,,,FALSE
--105.07974,40.5675,intermittent,1973,1990,6,2,FALSE,Furniture,Furniture,3,,,FALSE
+-105.07974,40.5675,intermittent,1973,1990,6,2,TRUE,Furniture,Furniture,3,,,FALSE
 -105.07975,40.572,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,FALSE
 -105.07975,40.57651,former (gone by 1980s),1973,1977,3,1,FALSE,Leather,Apparel,2,,,FALSE
 -105.07976,40.58101,"persistent, sector turnover",1966,1990,8,4,TRUE,,Printing,4,,,FALSE
@@ -2707,7 +2706,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.07309,39.87377,former (gone by 1980s),1974,1980,3,5,TRUE,,Fabricated metals,2,,,TRUE
 -105.07312,39.90981,emerging,1980,1992,5,9,TRUE,Fabricated metals,Fabricated metals,3,,,TRUE
 -105.07313,39.91432,intermittent,1973,1990,7,2,TRUE,Misc. manufacturing,Machinery,3,,,TRUE
--105.07314,39.92783,emerging,1983,1988,2,1,FALSE,Misc. manufacturing,Printing,2,,,TRUE
+-105.07314,39.92783,emerging,1983,1988,2,1,TRUE,Misc. manufacturing,Printing,2,,,TRUE
 -105.07318,39.96387,intermittent,1973,1990,7,3,TRUE,Lumber & wood,Machinery,4,,,FALSE
 -105.0732,39.98189,emerging,1992,1992,1,1,FALSE,,,1,,,FALSE
 -105.07321,39.9909,emerging,1983,1990,3,1,TRUE,Chemicals,Chemicals,1,,,FALSE
@@ -2718,7 +2717,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.07356,40.31525,intermittent,1977,1983,2,1,TRUE,Fabricated metals,,2,,,FALSE
 -105.07356,40.31975,former (gone by 1980s),1966,1977,5,1,FALSE,Instruments,Misc. manufacturing,2,,,FALSE
 -105.0736,40.35128,intermittent,1968,1983,4,1,FALSE,Apparel,Misc. manufacturing,2,,,FALSE
--105.0736,40.35579,emerging,1980,1983,2,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
+-105.0736,40.35579,emerging,1980,1983,2,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -105.07361,40.36029,former (gone by 1980s),1965,1973,3,1,TRUE,Machinery,Fabricated metals,2,,,FALSE
 -105.07362,40.3693,emerging,1988,1988,1,1,TRUE,Machinery,Machinery,1,,,FALSE
 -105.07363,40.37831,emerging,1990,1990,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
@@ -2742,7 +2741,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.07388,40.60804,emerging,1983,1992,4,1,TRUE,Fabricated metals,Primary metals,3,,,FALSE
 -105.07388,40.61255,intermittent,1967,1992,5,1,TRUE,,Furniture,4,,,FALSE
 -105.06642,39.01326,emerging,1992,1992,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
--105.06696,39.58996,former (gone by 1980s),1970,1973,2,1,FALSE,Instruments,Instruments,1,,,TRUE
+-105.06696,39.58996,former (gone by 1980s),1970,1973,2,1,TRUE,Instruments,Instruments,1,,,TRUE
 -105.06706,39.68907,former (gone by 1980s),1966,1968,3,1,TRUE,Machinery,Machinery,1,,,TRUE
 -105.06707,39.69808,former (gone by 1980s),1966,1970,4,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
 -105.06708,39.71159,emerging,1980,1983,2,1,FALSE,Printing,Printing,1,,,TRUE
@@ -2794,7 +2793,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.06128,39.74313,former (gone by 1980s),1968,1974,3,1,FALSE,Printing,Printing,1,,,TRUE
 -105.06128,39.74764,former (gone by 1980s),1966,1970,3,1,TRUE,Machinery,,3,,,TRUE
 -105.06128,39.75214,intermittent,1966,1983,4,1,FALSE,,Printing,3,,,TRUE
--105.06129,39.75665,former (gone by 1980s),1974,1980,3,1,FALSE,Food,Food,1,,,TRUE
+-105.06129,39.75665,former (gone by 1980s),1974,1980,3,1,TRUE,Food,Food,1,,,TRUE
 -105.0613,39.76566,emerging,1980,1983,2,1,TRUE,Instruments,Machinery,2,,,TRUE
 -105.0613,39.77016,intermittent,1974,1990,3,1,TRUE,Chemicals,Printing,2,,,TRUE
 -105.0613,39.77467,emerging,1990,1990,1,1,FALSE,Printing,Printing,1,,,TRUE
@@ -2827,7 +2826,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.05537,39.66204,emerging,1983,1988,2,1,TRUE,Machinery,Fabricated metals,2,,,TRUE
 -105.05539,39.67556,emerging,1992,1992,1,1,FALSE,,,1,,,TRUE
 -105.0554,39.69809,intermittent,1974,1992,4,1,TRUE,Printing,Fabricated metals,4,,,TRUE
--105.05542,39.71611,emerging,1980,1990,3,1,FALSE,Misc. manufacturing,Printing,2,,,TRUE
+-105.05542,39.71611,emerging,1980,1990,3,1,TRUE,Misc. manufacturing,Printing,2,,,TRUE
 -105.05542,39.72061,intermittent,1973,1990,3,1,TRUE,Transportation eq.,Apparel,2,,,TRUE
 -105.05543,39.72512,intermittent,1967,1983,4,3,TRUE,,Machinery,4,,,TRUE
 -105.05543,39.72962,former (gone by 1980s),1974,1974,1,1,FALSE,Printing,Printing,1,,,TRUE
@@ -2838,7 +2837,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.05545,39.75665,emerging,1988,1988,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
 -105.05545,39.76116,emerging,1980,1983,2,1,FALSE,Printing,Lumber & wood,2,,,TRUE
 -105.05546,39.76566,intermittent,1973,1983,5,2,TRUE,Chemicals,Fabricated metals,3,,,TRUE
--105.05546,39.77017,"persistent, sector turnover",1966,1992,9,4,FALSE,,Instruments,5,,,TRUE
+-105.05546,39.77017,"persistent, sector turnover",1966,1992,9,4,TRUE,,Instruments,5,,,TRUE
 -105.05546,39.77467,former (gone by 1980s),1973,1980,4,2,FALSE,Printing,Printing,2,,,TRUE
 -105.05548,39.79269,emerging,1988,1988,1,1,TRUE,Rubber & plastics,Rubber & plastics,1,,,TRUE
 -105.05548,39.7972,emerging,1983,1983,1,4,TRUE,Machinery,Machinery,1,,,TRUE
@@ -2865,7 +2864,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.04956,39.68457,former (gone by 1980s),1965,1965,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,TRUE
 -105.04957,39.69809,"persistent, sector turnover",1965,1990,9,2,TRUE,Machinery,Food,3,,,TRUE
 -105.04958,39.71611,emerging,1983,1990,3,2,TRUE,Apparel,Apparel,1,,,TRUE
--105.04959,39.72061,former (gone by 1980s),1973,1980,3,1,FALSE,Misc. manufacturing,Apparel,2,,,TRUE
+-105.04959,39.72061,former (gone by 1980s),1973,1980,3,1,TRUE,Misc. manufacturing,Apparel,2,,,TRUE
 -105.04959,39.72962,former (gone by 1980s),1973,1973,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,TRUE
 -105.04961,39.75665,former (gone by 1980s),1965,1974,6,2,TRUE,Textiles,Fabricated metals,3,,,TRUE
 -105.04962,39.77017,emerging,1983,1990,2,1,FALSE,Lumber & wood,Apparel,2,1950,1,TRUE
@@ -2884,12 +2883,12 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.05022,40.58553,"persistent, sector turnover",1966,1992,10,11,TRUE,Rubber & plastics,Primary metals,6,,,FALSE
 -105.05022,40.59004,emerging,1980,1990,4,6,TRUE,Instruments,Printing,4,,,FALSE
 -105.04296,38.423,former (gone by 1980s),1973,1977,2,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
--105.0433,38.98173,emerging,1983,1983,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
--105.04365,39.54942,intermittent,1977,1992,4,2,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
+-105.0433,38.98173,emerging,1983,1983,1,1,TRUE,Lumber & wood,Lumber & wood,1,,,FALSE
+-105.04365,39.54942,intermittent,1977,1992,4,2,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
 -105.04365,39.55843,emerging,1980,1990,3,1,FALSE,Lumber & wood,"Stone, clay & glass",2,,,TRUE
 -105.04369,39.6215,emerging,1980,1983,2,1,FALSE,Printing,Printing,1,,,TRUE
 -105.0437,39.63502,emerging,1990,1990,1,1,FALSE,,,1,,,TRUE
--105.04373,39.68908,former (gone by 1980s),1977,1980,2,1,FALSE,"Stone, clay & glass",Printing,2,,,TRUE
+-105.04373,39.68908,former (gone by 1980s),1977,1980,2,1,TRUE,"Stone, clay & glass",Printing,2,,,TRUE
 -105.04374,39.7026,emerging,1980,1988,3,2,TRUE,Printing,Fabricated metals,2,,,TRUE
 -105.04375,39.7071,former (gone by 1980s),1965,1965,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
 -105.04375,39.72062,intermittent,1974,1983,2,1,FALSE,Apparel,Apparel,1,,,TRUE
@@ -2899,9 +2898,9 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.04378,39.75666,intermittent,1966,1990,3,1,FALSE,,Printing,2,,,TRUE
 -105.04378,39.76116,former (gone by 1980s),1965,1965,1,1,FALSE,Food,Food,1,,,TRUE
 -105.04378,39.76567,intermittent,1967,1983,3,1,FALSE,"Stone, clay & glass",Printing,2,,,TRUE
--105.04379,39.77017,persistent,1966,1990,11,5,FALSE,Food,Printing,2,,,TRUE
+-105.04379,39.77017,persistent,1966,1990,11,5,TRUE,Food,Printing,2,,,TRUE
 -105.04379,39.77468,"persistent, sector turnover",1965,1990,10,5,TRUE,Chemicals,Lumber & wood,6,,,TRUE
--105.04379,39.77918,"persistent, sector turnover",1966,1992,8,1,FALSE,,Textiles,5,,,TRUE
+-105.04379,39.77918,"persistent, sector turnover",1966,1992,8,1,TRUE,,Textiles,5,,,TRUE
 -105.0438,39.7927,emerging,1980,1990,4,5,TRUE,Machinery,Lumber & wood,3,,,TRUE
 -105.0438,39.7972,emerging,1980,1980,1,1,TRUE,Machinery,Machinery,1,,,TRUE
 -105.04381,39.80171,former (gone by 1980s),1968,1968,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
@@ -2991,7 +2990,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.02621,39.62151,emerging,1988,1988,1,1,FALSE,Printing,Printing,1,,,TRUE
 -105.02622,39.62601,former (gone by 1980s),1973,1973,1,1,TRUE,Machinery,Machinery,1,,,TRUE
 -105.02622,39.63052,former (gone by 1980s),1974,1974,1,1,TRUE,Machinery,Machinery,1,,,TRUE
--105.02622,39.63502,intermittent,1973,1988,4,1,FALSE,"Stone, clay & glass",Instruments,2,,,TRUE
+-105.02622,39.63502,intermittent,1973,1988,4,1,TRUE,"Stone, clay & glass",Instruments,2,,,TRUE
 -105.02622,39.63953,emerging,1980,1983,2,2,TRUE,Electronics,Rubber & plastics,2,,,TRUE
 -105.02622,39.64403,intermittent,1973,1992,5,2,TRUE,"Stone, clay & glass",Electronics,3,,,TRUE
 -105.02623,39.64854,intermittent,1966,1988,3,1,TRUE,,Machinery,3,,,TRUE
@@ -3015,7 +3014,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.02626,39.74765,intermittent,1967,1983,5,1,FALSE,,Apparel,3,,,TRUE
 -105.02626,39.75216,intermittent,1974,1992,6,2,TRUE,Apparel,Textiles,3,1913,1,TRUE
 -105.02627,39.75666,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,TRUE
--105.02627,39.76117,intermittent,1977,1990,5,2,FALSE,Apparel,Printing,2,,,TRUE
+-105.02627,39.76117,intermittent,1977,1990,5,2,TRUE,Apparel,Printing,2,,,TRUE
 -105.02627,39.76567,emerging,1980,1980,1,1,FALSE,Printing,Printing,1,,,TRUE
 -105.02627,39.77018,former (gone by 1980s),1974,1977,2,1,TRUE,Misc. manufacturing,Fabricated metals,2,,,TRUE
 -105.02627,39.77468,emerging,1980,1992,5,1,TRUE,Apparel,,3,,,TRUE
@@ -3023,18 +3022,18 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.02628,39.79721,intermittent,1966,1990,6,2,TRUE,Apparel,Chemicals,2,,,TRUE
 -105.02628,39.80171,intermittent,1967,1983,6,3,TRUE,,Leather,5,,,TRUE
 -105.02628,39.80622,persistent,1966,1990,8,1,TRUE,Petroleum,Food,2,,,TRUE
--105.02629,39.81072,emerging,1988,1990,2,1,FALSE,Lumber & wood,Lumber & wood,1,,,TRUE
+-105.02629,39.81072,emerging,1988,1990,2,1,TRUE,Lumber & wood,Lumber & wood,1,,,TRUE
 -105.02629,39.81523,"persistent, sector turnover",1966,1990,9,4,TRUE,Furniture,Misc. manufacturing,4,,,TRUE
 -105.02629,39.81973,intermittent,1970,1992,6,2,TRUE,Fabricated metals,Rubber & plastics,3,,,TRUE
 -105.02629,39.82424,intermittent,1974,1983,2,2,TRUE,Rubber & plastics,Chemicals,2,,,TRUE
 -105.02629,39.82874,intermittent,1974,1992,5,4,TRUE,Printing,,3,,,TRUE
--105.0263,39.83775,emerging,1988,1988,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
+-105.0263,39.83775,emerging,1988,1988,1,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
 -105.0263,39.84226,intermittent,1970,1992,2,1,TRUE,Fabricated metals,Misc. manufacturing,2,,,TRUE
 -105.0263,39.85577,emerging,1988,1988,1,2,FALSE,Food,Food,1,,,TRUE
 -105.02631,39.86478,emerging,1990,1990,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
--105.02631,39.86929,emerging,1988,1992,3,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
+-105.02631,39.86929,emerging,1988,1992,3,1,TRUE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
 -105.02636,40.00894,emerging,1990,1992,2,1,FALSE,Electronics,,2,,,FALSE
--105.02658,40.55851,emerging,1988,1990,2,1,FALSE,Paper,Instruments,2,,,FALSE
+-105.02658,40.55851,emerging,1988,1990,2,1,TRUE,Paper,Instruments,2,,,FALSE
 -105.02658,40.56302,emerging,1988,1992,3,3,FALSE,Electronics,Electronics,1,,,FALSE
 -105.02659,40.58103,intermittent,1977,1992,6,2,TRUE,Printing,"Stone, clay & glass",2,,,FALSE
 -105.02659,40.59455,emerging,1988,1990,2,1,TRUE,Fabricated metals,Fabricated metals,1,,,FALSE
@@ -3046,7 +3045,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.02038,39.59448,former (gone by 1980s),1965,1974,3,1,FALSE,Instruments,Electronics,2,,,TRUE
 -105.02038,39.60349,emerging,1983,1983,1,1,FALSE,Misc. manufacturing,Misc. manufacturing,1,,,TRUE
 -105.02039,39.6125,persistent,1965,1992,11,6,TRUE,Printing,Printing,5,,,TRUE
--105.02039,39.62601,emerging,1992,1992,1,1,FALSE,Lumber & wood,Lumber & wood,1,,,TRUE
+-105.02039,39.62601,emerging,1992,1992,1,1,TRUE,Lumber & wood,Lumber & wood,1,,,TRUE
 -105.02039,39.63052,intermittent,1967,1988,5,2,TRUE,Electronics,Chemicals,3,,,TRUE
 -105.0204,39.64403,"persistent, sector turnover",1966,1990,10,5,TRUE,,Printing,7,,,TRUE
 -105.0204,39.65305,intermittent,1973,1992,7,3,TRUE,Apparel,"Stone, clay & glass",3,,,TRUE
@@ -3103,7 +3102,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.01459,39.75666,"persistent, sector turnover",1965,1990,8,2,TRUE,"Stone, clay & glass",Electronics,5,1941,1,TRUE
 -105.01459,39.76117,"persistent, sector turnover",1965,1992,13,4,TRUE,Lumber & wood,,5,1956,1,TRUE
 -105.01459,39.76567,emerging,1990,1990,1,1,FALSE,Leather,Leather,1,,,TRUE
--105.0146,39.77468,"persistent, sector turnover",1965,1990,9,2,TRUE,Food,Furniture,4,,,TRUE
+-105.0146,39.77468,"persistent, sector turnover",1965,1990,8,2,TRUE,Food,Furniture,3,,,TRUE
 -105.0146,39.7882,emerging,1983,1983,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
 -105.0146,39.7927,former (gone by 1980s),1965,1974,5,1,TRUE,Chemicals,Paper,3,,,TRUE
 -105.0146,39.79721,emerging,1983,1983,1,2,FALSE,Textiles,Textiles,1,,,TRUE
@@ -3114,7 +3113,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.01461,39.84677,intermittent,1974,1992,6,2,FALSE,Apparel,Apparel,2,,,TRUE
 -105.01461,39.85127,emerging,1990,1990,1,1,FALSE,,,1,,,TRUE
 -105.01462,39.8738,emerging,1980,1980,1,1,FALSE,Apparel,Apparel,1,,,TRUE
--105.01473,40.40536,intermittent,1977,1983,3,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
+-105.01473,40.40536,intermittent,1977,1983,3,1,TRUE,"Stone, clay & glass","Stone, clay & glass",1,,,FALSE
 -105.00849,37.50368,former (gone by 1980s),1965,1965,1,3,TRUE,Food,Food,1,,,FALSE
 -105.00849,37.50819,intermittent,1965,1983,2,1,FALSE,Food,Printing,2,,,FALSE
 -105.00859,38.42751,intermittent,1974,1983,3,1,FALSE,Lumber & wood,Lumber & wood,1,,,FALSE
@@ -3153,7 +3152,7 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.00876,39.77018,"persistent, sector turnover",1965,1992,13,4,TRUE,Food,Printing,3,,,TRUE
 -105.00876,39.77469,former (gone by 1980s),1965,1974,5,2,TRUE,Printing,Apparel,2,,,TRUE
 -105.00876,39.77919,emerging,1983,1983,1,1,FALSE,Printing,Printing,1,,,TRUE
--105.00876,39.7837,persistent,1965,1990,10,4,TRUE,Food,Food,2,,,TRUE
+-105.00876,39.7837,persistent,1965,1990,10,2,FALSE,Food,Food,2,,,TRUE
 -105.00876,39.79271,emerging,1992,1992,1,1,FALSE,Furniture,Furniture,1,,,TRUE
 -105.00876,39.79721,"persistent, sector turnover",1966,1990,8,3,TRUE,,Instruments,4,,,TRUE
 -105.00876,39.80172,"persistent, sector turnover",1966,1992,10,3,TRUE,,,5,,,TRUE
@@ -3199,10 +3198,9 @@ lon,lat,class,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sect
 -105.00292,39.74765,"persistent, sector turnover",1965,1992,13,21,TRUE,Furniture,Machinery,7,1911,24,TRUE
 -105.00292,39.75216,"persistent, sector turnover",1965,1990,12,7,TRUE,Apparel,Food,4,1891,7,TRUE
 -105.00292,39.75667,emerging,1980,1988,3,1,FALSE,Misc. manufacturing,Printing,2,,,TRUE
--105.00292,39.76117,persistent,1965,1992,13,7,TRUE,Chemicals,Chemicals,3,,,TRUE
+-105.00292,39.76117,persistent,1965,1992,13,6,TRUE,Chemicals,Chemicals,3,,,TRUE
 -105.00292,39.76568,"persistent, sector turnover",1966,1990,11,5,TRUE,Lumber & wood,Printing,5,1914,2,TRUE
--105.00292,39.77018,"persistent, sector turnover",1965,1992,12,7,TRUE,Furniture,Printing,5,,,TRUE
--105.00292,39.77469,former (gone by 1980s),1965,1965,1,1,TRUE,Fabricated metals,Fabricated metals,1,,,TRUE
+-105.00292,39.77018,persistent,1965,1992,12,3,TRUE,Printing,Printing,5,,,TRUE
 -105.00292,39.77919,"persistent, sector turnover",1965,1992,13,7,TRUE,Food,Apparel,5,,,TRUE
 -105.00292,39.7837,"persistent, sector turnover",1966,1992,11,5,TRUE,,Lumber & wood,4,,,TRUE
 -105.00292,39.81073,emerging,1990,1990,1,1,FALSE,"Stone, clay & glass","Stone, clay & glass",1,,,TRUE
