@@ -32,12 +32,11 @@ Raw county files from Eckert, Fort, Schott & Yang (2021), NBER WP 26632 (github.
 |---|---|---|---|
 | 1880 | 31 |   599 | 463 |
 | 1890 | 56 | 1,518 | 282 |
-| 1900 | 57 | 3,570 |   7 |
 | 1920 | 60 | 2,626 | 323 |
 | 1930 | 35 | 1,452 | 236 |
 | 1940 | 59 | 1,298 | 391 |
 
-The business directory only lists the hazardous trades, so the ratio is a floor on its coverage of all manufacturing; the census counts every establishment above a small output threshold.
+1900 is left out: no directory edition was printed within two years of it (none between 1892 and 1910); 1910 has no county manufacturing table in NHGIS. The business directory only lists the hazardous trades, so the ratio is a floor on its coverage of all manufacturing; the census counts every establishment above a small output threshold.
 
 ## 1870 and 1880: Atack-Bateman-Weiss Census of Manufactures samples
 

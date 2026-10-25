@@ -16,25 +16,25 @@ Located establishments in the 13 complete editions 1965-1992: 12,655 statewide, 
 
 | sector | statewide gamma | sig. share | metro gamma | sig. share |
 |---|---|---|---|---|
-| Apparel | 0.001 | 0.42 | 0.002 | 0.42 |
+| Apparel | 0.001 | 0.42 | 0.002 | 0.33 |
 | Chemicals | 0 | 0.08 | 0 | 0.08 |
 | Electronics | 0.001 | 0.23 | 0 | 0 |
-| Fabricated metals | 0 | 0.38 | 0 | 0.46 |
+| Fabricated metals | 0 | 0.54 | 0 | 0.38 |
 | Food | 0.001 | 0.62 | 0.003 | 0.46 |
 | Furniture | 0.001 | 0.23 | 0.001 | 0.15 |
 | Instruments | 0 | 0.23 | -0.001 | 0.08 |
 | Leather | 0.003 | 0.12 | 0.006 | 0 |
-| Lumber & wood | 0.001 | 0.38 | 0.001 | 0.15 |
+| Lumber & wood | 0.001 | 0.31 | 0.001 | 0.15 |
 | Machinery | 0.001 | 0.54 | 0 | 0.46 |
 | Misc. manufacturing | 0 | 0.15 | 0.001 | 0.17 |
 | Paper | 0.002 | 0.17 | 0.001 | 0 |
 | Petroleum | 0.011 | 0.6 | 0.011 | 0.5 |
 | Primary metals | 0.001 | 0.08 | 0.001 | 0 |
-| Printing | 0.002 | 1 | 0.004 | 0.92 |
+| Printing | 0.002 | 1 | 0.004 | 1 |
 | Rubber & plastics | 0.001 | 0.42 | 0 | 0.17 |
 | Stone, clay & glass | 0.001 | 0.38 | 0.003 | 0.08 |
 | Textiles | -0.003 | 0.2 | 0.033 | 1 |
-| Transportation eq. | 0.001 | 0.15 | 0.004 | 0.09 |
+| Transportation eq. | 0.001 | 0.23 | 0.004 | 0.09 |
 
 ## Most common sector successions (dominant sector of a cell, one edition to the next, excluding no change)
 
@@ -65,13 +65,13 @@ Located establishments in the 13 complete editions 1965-1992: 12,655 statewide, 
 |---|---|---|---|---|
 | people_of_color | log1p(firm_years) | 0.893 | 0.258 | 0.000553 |
 | people_of_color | log1p(haz_firm_years) | 1.226 | 0.326 | 0.00017 |
-| people_of_color | log1p(hidden_sites) | 0.981 | 0.637 | 0.124 |
+| people_of_color | log1p(hidden_sites) | 0.994 | 0.637 | 0.119 |
 | low_income | log1p(firm_years) | 1.933 | 0.254 | 2.62e-14 |
 | low_income | log1p(haz_firm_years) | 1.809 | 0.323 | 2.11e-08 |
-| low_income | log1p(hidden_sites) | 2.392 | 0.642 | 0.000195 |
+| low_income | log1p(hidden_sites) | 2.390 | 0.642 | 0.000199 |
 | enviroscreen_pctl | log1p(firm_years) | 3.216 | 0.346 | 0 |
 | enviroscreen_pctl | log1p(haz_firm_years) | 3.043 | 0.443 | 6.24e-12 |
-| enviroscreen_pctl | log1p(hidden_sites) | 3.615 | 0.868 | 3.15e-05 |
+| enviroscreen_pctl | log1p(hidden_sites) | 3.610 | 0.869 | 3.24e-05 |
 | pollution_climate_pctl | log1p(firm_years) | 1.296 | 0.197 | 4.92e-11 |
 | pollution_climate_pctl | log1p(haz_firm_years) | 1.068 | 0.251 | 2.12e-05 |
-| pollution_climate_pctl | log1p(hidden_sites) | 1.637 | 0.485 | 0.000739 |
+| pollution_climate_pctl | log1p(hidden_sites) | 1.631 | 0.485 | 0.000779 |

@@ -177,7 +177,7 @@ CH <- cbind(CH, PL[, !"i"])
 # copy without a readable boundary that lies within 300 m of the other or could not be placed
 CH[, has_beg := grepl("[a-z]?eginn|commenc|thence|\\bbeing\\b|\\blots?\\b|\\bblocks?\\b", tolower(substr(desc, 1, 250)))]
 CH[, beg := { b <- tolower(gsub("[^A-Za-z0-9]", "", desc)); p <- regexpr("[a-z]?eginn", b); substr(ifelse(p > 0, substr(b, p, nchar(b)), b), 1, 80) }]
-same <- function(x, y) x == y | (sub(" ?\\?$", "", x) == sub(" ?\\?$", "", y) & (grepl("\\?$", x) | grepl("\\?$", y)))
+same <- function(x, y) x == y | (sub(" .*$", "", x) == sub(" .*$", "", y) & (grepl("\\?$", x) | grepl("\\?$", y)))   # "Residence ?" matches "Residence B"
 CH[, row0 := .I]; CH <- CH[order(ordinance, row0)]
 CH[, dup := { r <- rep(FALSE, .N); if (.N > 1) for (a in 2:.N) for (b in 1:(a - 1)) if (!r[b] && same(from[a], from[b]) && same(to[a], to[b]) &&
   (beg[a] == beg[b] || ((!has_beg[a] || !has_beg[b]) && (is.na(ux[a]) || is.na(ux[b]) || sqrt((ux[a] - ux[b])^2 + (uy[a] - uy[b])^2) < 300)))) { r[a] <- TRUE; break }; r }, by = ordinance]

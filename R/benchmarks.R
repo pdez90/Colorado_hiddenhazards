@@ -111,8 +111,13 @@ if (!is.null(NH) && nrow(NH)) {
   in_force <- function(cy) { by <- if (cy %in% CP$census) cy else if (cy == 1890) 1900 else CP$census[which.min(abs(CP$census - cy))]
     S <- CP[CP$census == by, ]; k <- vapply(suppressMessages(st_intersects(hp, S)), function(i) if (length(i)) i[1] else NA_integer_, 1L)
     v <- S$icp[k]; if (cy < 1899) v[v %in% 1190L] <- 410L; v }
-  HD <- rbindlist(lapply(sort(unique(NH$census)), function(cy) H[, nhgis_cty := in_force(cy)][!is.na(nhgis_cty) & first_year <= cy + 2 & last_year >= cy - 2,
+  # a census is compared only when a directory edition was printed within two years of it (none between 1892 and 1910, so 1900 is left out:
+  # a firm listed in 1892 and again in 1910 is not evidence of a 1900 listing)
+  ED_YRS <- sort(unique(as.integer(unlist(strsplit(as.character(H$years), "[^0-9]+"))))); ED_YRS <- ED_YRS[!is.na(ED_YRS)]
+  has_ed <- function(cy) any(abs(ED_YRS - cy) <= 2)
+  HD <- rbindlist(lapply(Filter(has_ed, sort(unique(NH$census))), function(cy) H[, nhgis_cty := in_force(cy)][!is.na(nhgis_cty) & first_year <= cy + 2 & last_year >= cy - 2,
     .(census = cy, dir_haz = .N, dir_street = sum(precision != "town")), by = nhgis_cty]))
+  NH <- NH[vapply(census, has_ed, TRUE)]; message("NHGIS censuses with a directory edition within two years: ", paste(sort(unique(NH$census)), collapse = " "))
   NH[, county_name := cty_names[county]]; NB <- merge(NH[!is.na(mfg_estab)], HD, by = c("census", "nhgis_cty"), all.x = TRUE)
   for (k in c("dir_haz", "dir_street")) NB[is.na(get(k)), (k) := 0L]
   NB[, ratio_haz_to_census := round(dir_haz / pmax(mfg_estab, 1), 2)]; setorder(NB, census, -mfg_estab)
@@ -157,7 +162,7 @@ md <- c("# Benchmarks: the Colorado directories against the public national manu
 if (file.exists(file.path(O, "nhgis_mfg_vs_directory.csv"))) { NBs <- fread(file.path(O, "nhgis_mfg_vs_directory.csv"))[, .(counties = .N, census_estab = sum(mfg_estab), directory_haz = sum(dir_haz)), by = census]
   md <- c(md, "## 1880-1940: census manufacturing establishments by county (NHGIS) vs the business directory's hazardous trades", "",
           "| census | counties | census manufacturing establishments | directory hazardous trades (+/- 2 years) |", "|---|---|---|---|", NBs[, sprintf("| %d | %d | %s | %s |", census, counties, format(census_estab, big.mark = ","), format(directory_haz, big.mark = ","))], "",
-          "The business directory only lists the hazardous trades, so the ratio is a floor on its coverage of all manufacturing; the census counts every establishment above a small output threshold.", "") }
+          "Censuses with no directory edition within two years are left out (1900: none between 1892 and 1910). The business directory only lists the hazardous trades, so the ratio is a floor on its coverage of all manufacturing; the census counts every establishment above a small output threshold.", "") }
 md <- c(md, "## 1870 and 1880: Atack-Bateman-Weiss Census of Manufactures samples", "",
         if (!is.null(AT) && nrow(AT)) sprintf("%d Colorado establishments in the state samples (1870: %d, 1880: %d); see atack_colorado.csv.", nrow(AT), sum(AT$year == 1870), sum(AT$year == 1880)) else "No Colorado rows found in the downloaded state samples, or the files could not be downloaded (see the run log).",
         "These are samples of surviving manuscript schedules (not a complete census) and give the county and industry of each establishment, its capital, workers and output, but no street address.",

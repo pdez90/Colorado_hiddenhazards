@@ -87,6 +87,9 @@ ctx_site <- rd_opt("site_context.csv"); pet <- rd_opt("petroleum_releases_study.
 tri_year <- rd_opt("tri_by_year.csv"); tri_holc_y <- rd_opt("tri_by_year_holc.csv"); aqs <- rd_opt("aqs_denver_by_year.csv"); aqs_mon <- rd_opt("aqs_monitors_denver.csv")
 ur_tab <- rd_opt("urban_renewal_denver.csv"); hl_hist <- rd_opt("health_by_history.csv", check.names = FALSE); pet_status <- rd_opt("petroleum_by_status.csv"); pet_use <- rd_opt("petroleum_by_use_now.csv")
 ctx_sum <- rd_opt("site_context_summary.csv"); hl_tr <- rd_opt("health_tracts_study.csv", colClasses = c(GEOID = "character"))
+CX_VARS <- c("Life expectancy at birth, 2010\u201315 (years)" = "life_expectancy", "Current asthma (% adults)" = "casthma", "COPD (% adults)" = "copd", "Coronary heart disease (% adults)" = "chd",
+               "Diabetes (% adults)" = "diabetes", "High blood pressure (% adults)" = "bphigh", "Depression (% adults)" = "depression", "Cancer, non-skin (% adults)" = "cancer",
+               "Current smoking (% adults)" = "csmoking", "Childhood lead-risk decile (CDPHE model)" = "lead_risk_decile")
 ur_poly <- if (file.exists(dd("urban_renewal_denver.geojson"))) st_read(dd("urban_renewal_denver.geojson"), quiet = TRUE) else NULL
 ou_poly <- if (file.exists(dd("superfund_ou_study.geojson"))) st_read(dd("superfund_ou_study.geojson"), quiet = TRUE) else NULL
 sb03 <- if (file.exists(dd("sanborn_1903_sheets.geojson"))) st_read(dd("sanborn_1903_sheets.geojson"), quiet = TRUE) else NULL
@@ -97,6 +100,7 @@ pl03 <- if (file.exists(dd("sanborn_1903_plants.geojson"))) st_read(dd("sanborn_
 # The 1903-04 sheet images laid on the map: each scan is drawn with its fitted rotation and scale (three corners), loaded only when
 # the layer is switched on. Library of Congress IIIF images (public domain).
 SB03_JS <- "function(el, x, d) { var map = this; if (!d || !d.url) return;
+  var add = function() { if (!map.layerManager) { setTimeout(add, 250); return; }   // a hidden map has no layer manager yet: wait, rather than throw and abort Shiny's start-up messages
   if (!L.ImageOverlay.Rot) L.ImageOverlay.Rot = L.ImageOverlay.extend({
     initialize: function (url, tl, tr, bl, o) { this._c = [L.latLng(tl), L.latLng(tr), L.latLng(bl)]; L.ImageOverlay.prototype.initialize.call(this, url, L.latLngBounds(this._c), o); },
     onAdd: function (m) { L.ImageOverlay.prototype.onAdd.call(this, m); var me = this; this._image.style.transformOrigin = '0 0'; this._image.style.width = 'auto'; this._image.style.height = 'auto';
@@ -108,7 +112,7 @@ SB03_JS <- "function(el, x, d) { var map = this; if (!d || !d.url) return;
       im.style.transform = 'matrix(' + [(p1.x - p0.x) / w, (p1.y - p0.y) / w, (p2.x - p0.x) / h, (p2.y - p0.y) / h, p0.x, p0.y].join(',') + ')'; } });
   for (var i = 0; i < d.url.length; i++) {
     var lyr = new L.ImageOverlay.Rot(d.url[i], [d.tl_lat[i], d.tl_lon[i]], [d.tr_lat[i], d.tr_lon[i]], [d.bl_lat[i], d.bl_lon[i]], { opacity: 0.85, pane: 'sbimg', interactive: false });
-    map.layerManager.addLayer(lyr, 'image', 'sb03img' + i, d.group); } }"
+    map.layerManager.addLayer(lyr, 'image', 'sb03img' + i, d.group); } }; add(); }"
 sb03_images <- function(m) { if (is.null(sb03) || !all(c("tl_lat", "overlay") %in% names(sb03))) return(m)
   d <- st_drop_geometry(sb03); htmlwidgets::onRender(m, SB03_JS, data = list(url = d$overlay, tl_lat = d$tl_lat, tl_lon = d$tl_lon, tr_lat = d$tr_lat, tr_lon = d$tr_lon,
                                                                          bl_lat = d$bl_lat, bl_lon = d$bl_lon, group = "Sanborn 1903\u201304 sheet images")) }
@@ -263,7 +267,7 @@ ui <- page_navbar(id = "nav",
   nav_panel("Map",
     layout_columns(col_widths = c(9, 3),
       card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map", height = "72vh"))),
-      card(card_header("EnviroScreen layer"),
+      card(card_header("EnviroScreen layer"), unit_note("sites and facilities as points; EnviroScreen 2020 census tracts; 500 m corridor cells; district and parcel layers as drawn"),
            selectInput("esvar", "Shade census tracts by", VARS, selected = "enviroscreen_pctl"),
            sliderInput("esop", "Opacity", 0, 1, 0.45, step = 0.05),
            hr(),
@@ -306,7 +310,7 @@ ui <- page_navbar(id = "nav",
       card(card_header("Denver by enumeration district (1880–1940) and census tract (1950–2020)"), unit_note("enumeration districts 1880–1940 (reconstructed), 2010 census tracts 1950–2020"),
            radioButtons("ed_year", "Census", choices = c(if (is.null(eds)) 1880 else sort(unique(eds$year)), if (is.null(trd)) NULL else sort(unique(trd$census))), selected = 1880, inline = TRUE),
            uiOutput("ed_unit"),
-           selectInput("ed_var", "Districts shaded by", ED_VARS, selected = "pct_fb"),
+           selectInput("ed_var", "Districts or tracts shaded by", ED_VARS, selected = "pct_fb"),
            checkboxInput("ed_firms", "Show hazardous-trade firms of the decade", TRUE),
            tags$small(class = "text-muted",
              "District boundaries are this project's reconstruction (see About the data): every household address in Brown University's Geographic Reference Files for Denver (1900–1940) ",
@@ -332,7 +336,7 @@ ui <- page_navbar(id = "nav",
            hr(), tags$b("Residents by distance to the nearest hazardous firm"), tableOutput("t_d80"),
            tags$b("Enumeration districts with vs. without a hazardous firm (Brown's ED composition)"), tableOutput("t_g80")),
       card(card_header("Person-level odds of living farther from a hazardous firm (1880)"), unit_note("individuals, by distance from their building to the nearest firm; 1880 only (not affected by the census selector)"), tableOutput("t_m80"),
-           tags$small(class = "text-muted", "Odds ratio per log-metre of distance (> 1 = more common farther away), building-clustered SE. Foreign-born (German, Canadian, other), Black and Chinese residents lived closer; native-born whites, British- and Scandinavian-born lived farther; employed adults' SEI rose with distance; unskilled laborers (SEI 8) were, on average, farther out."))),
+           tags$small(class = "text-muted", "Odds ratio per log-metre of distance (> 1 = more common farther away), building-clustered SE. Foreign-born (German, Canadian, other), Black and Chinese residents lived closer; native-born whites, British- and Scandinavian-born lived farther; employed adults' SEI fell with distance (about one point per log-metre), and unskilled laborers (SEI 8) were, on average, farther out."))),
     layout_columns(col_widths = c(6, 6),
       card(card_header(textOutput("pan_title")), unit_note("the 147 2010 census tracts within 10 km of downtown, 1940–2020 (all censuses; not affected by the selector)"), selectInput("pan_var", "Measure", PAN_VARS[PAN_VARS %in% c("p_black", "p_white", "p_hisp", "p_fb", "p_pov", "p_owner", "mval_2020", "mrent_2020")], selected = "p_hisp"), plotlyOutput("p_pan", height = 380),
            checkboxInput("pan_bal", "Same tracts throughout: only tracts with a value in every census the measure exists", TRUE),
@@ -348,7 +352,7 @@ ui <- page_navbar(id = "nav",
            checkboxGroupInput("sf_use", "Current parcel use", choices = names(USE_COL)[1:6], selected = names(USE_COL)[1:6]),
            checkboxInput("sf_sens", "Only residential, school, park or health parcels with no matching cleanup record", FALSE),
            radioButtons("sf_zyear", "Zoning drawn under the sites", c("None" = "none", ZYEARS), selected = "today"),
-           tags$small(class = "text-muted", "Each geocoded site is matched to the nearest City and County of Denver assessor parcel within 40 m (1,295 of 1,297 sites; median distance 10 m) through Denver's open-data parcel service, which gives the assessor's property class, the current zone district, dwelling units and the year the present building was built (R/site_fate.R). ",
+           tags$small(class = "text-muted", "Each geocoded site is matched to the nearest City and County of Denver assessor parcel within 40 m (984 of 986 manufacturers'-directory sites and 320 of 321 pre-1960 trades; median distance about 10 m) through Denver's open-data parcel service, which gives the assessor's property class, the current zone district, dwelling units and the year the present building was built (R/site_fate.R). ",
              "A geocoded street address can land on a neighbouring lot where parcels have been consolidated or split, so individual matches should be checked against the Sanborn sheets and reverse directories before being cited. ",
              "'No matching cleanup record' means the site matched no record in the inventories this project searched (EPA FRS/SEMS/RCRA, CDPHE VCUP, environmental covenants); it does not establish that a site was never assessed or remediated.")),
       card(full_screen = TRUE, card_body(padding = 0, leafletOutput("map_sf", height = "62vh"))),
@@ -442,7 +446,7 @@ ui <- page_navbar(id = "nav",
            tags$small(class = "text-muted", "Population-weighted means; population indexed to 1950 = 100. The census had no Hispanic measure before 1960. A description, not an estimate of what the freeways caused."))),
     layout_columns(col_widths = c(6, 6),
       card(card_header("Before and after the freeway opened: gap from comparison tracts"), unit_note("2010 census tracts within 10 km of downtown; each freeway tract lined up on the year a freeway opened within 250 m of it"),
-           selectInput("hw_ev_cmp", NULL, choices = NULL, width = "100%"), plotlyOutput("p_hw_ev", height = 360),
+           selectInput("hw_ev_cmp", NULL, choices = if (is.null(hw_ev)) NULL else unique(hw_ev$comparison), selected = if (is.null(hw_ev)) NULL else tail(unique(hw_ev$comparison), 1), width = "100%"), plotlyOutput("p_hw_ev", height = 360),
            tags$small(class = "text-muted", "Each line is the population-weighted gap, in percentage points, between tracts a freeway opened beside (1950\u20131979) and tracts with no freeway within 1 km, by decades since the opening. 0 = the last census before it opened. Hispanic origin is first counted in 1960 and poverty in 1970, so those lines start later.")),
       card(card_header("The same comparison as a table"), unit_note("2010 census tracts within 10 km of downtown"), div(style = "overflow-x:auto", tableOutput("t_hw_ev")),
            tags$small(class = "text-muted", "Population is indexed to 100 at the last census before opening. A comparison of trends, not a causal estimate: the freeways were routed through places already changing."))),
@@ -485,7 +489,7 @@ ui <- page_navbar(id = "nav",
         tags$li("The HOLC D gap shrinks to a third of a year once household circumstances are accounted for: the grade mostly reflects who lived there. Hazardous trades counted as firms, and the 1965\u201392 hidden sites, show little once circumstances are accounted for."),
         tags$li("Within a single 1940 enumeration district the industrial-land difference disappears, so it lies between neighbourhoods and could reflect something else about them. Men and women dying at 65+ in 1988\u20132005 show the same direction, much weaker."),
         tags$li("The gap for men is concentrated among those aged 15\u201329 in 1940 (about 1.6 years in an industrial district). It holds when each man's own 1940 job, or his household head's, is taken into account: hazardous-industry jobs themselves show nothing. Residents of industrial addresses were no less likely to link to a death record, or to die in the Denver area."),
-        tags$li("The survival-model check (Gompertz, deaths 1975\u20132005) points the same way for the industrial district and the D grade but is not statistically clear, and shows nothing for industrial land: treat the size of the industrial-land gradient with caution."),
+        tags$li("The survival-model check (Gompertz, deaths 1975\u20132005) points the same way for the industrial district (hazard ratio 1.10, not statistically clear) and the D grade (1.16, 1.01\u20131.34, about a year less life at 65), and shows nothing for industrial land: treat the size of the industrial-land gradient with caution."),
         tags$li("At WWII enlistment, men from industrial addresses had about half a year less schooling, and were somewhat shorter and lighter (height and weight rest on few men). Living in 1940 where a freeway was later built, or on land later cleared, shows no difference in lifespan; addresses in a later freeway's path were far more Hispanic (15%) than the rest of Denver (4%), though addresses on later-cleared land were not (2%)."),
         tags$li("People moved after 1940, only some of the population links to a death record (CenSoc's weights adjust for part of this), and the death windows are truncated. These are associations, not causal estimates.")),
       tags$small("Data: CenSoc-DMF v4 and CenSoc-Numident v3 (Breen, Osborne & Goldstein 2023, ", tags$a(href = "https://censoc.berkeley.edu", target = "_blank", "censoc.berkeley.edu"),
@@ -585,7 +589,7 @@ ui <- page_navbar(id = "nav",
              "Firm-years = establishment-editions in the complete editions 1965–1992; sites on no list = hazardous sites with no match in the searched inventories. Outcomes are CDPHE EnviroScreen indicators.")),
       card(card_header("The other graded cities"), unit_note("appraisal-map areas and 2010 census tracts in each graded city"),
            tags$p(tags$small("Mapping Inequality holds Pueblo's 1938 HOLC map (A–D) and local appraisal maps of Colorado Springs, Greeley, Fort Collins, Grand Junction, Boulder, Longmont and Fort Morgan. ",
-             "They cannot carry the Denver analysis: outside Denver the pre-1960 directory places trades only at the town, the full count has not been rebuilt into districts, and the graded areas cover 1–15 tracts. ",
+             "They cannot carry the Denver analysis: outside Denver the pre-1960 directory places trades only at the town, the full count has not been rebuilt into districts, and the graded areas cover 1–12 tracts. ",
              "The table puts every map's grades on one scale (best / middle / worst) and gives hazardous-sector manufacturers per km² per edition; with so few areas it is descriptive only.")),
            tableOutput("t_co_gc"))),
     layout_columns(col_widths = c(7, 5),
@@ -606,8 +610,8 @@ ui <- page_navbar(id = "nav",
       unit_note("varies by layer: points (releases, facilities, monitors), project and Superfund polygons, 2010 census tracts within 10 km of downtown plus the City and County of Denver")),
     layout_columns(col_widths = c(3, 9),
       card(card_header("Map"), unit_note("2010 census tracts (shading); points and polygons as listed"),
-           selectInput("cx_var", "Shade tracts by", choices = NULL, width = "100%"), sliderInput("cx_op", "Shading opacity", 0, 1, 0.6, 0.05),
-           sliderInput("cx_tri_year", "TRI year (circle size = air releases)", 1987, 2024, 1990, step = 1, sep = "", ticks = FALSE, width = "100%"),
+           selectInput("cx_var", "Shade tracts by", choices = if (is.null(hl_tr)) NULL else CX_VARS[CX_VARS %in% names(hl_tr)], width = "100%"), sliderInput("cx_op", "Shading opacity", 0, 1, 0.6, 0.05),
+           sliderInput("cx_tri_year", "TRI year (circle size = air releases)", if (is.null(tri_fy)) 1987 else min(tri_fy$year), if (is.null(tri_fy)) 2024 else max(tri_fy$year), if (is.null(tri_fy)) 1990 else min(tri_fy$year), step = 1, sep = "", ticks = FALSE, width = "100%"),
            checkboxInput("cx_aerial", "1933 aerial photograph", FALSE),
            tags$small(class = "text-muted", "Toggle layers with the control on the map. Tract health figures are model-based estimates (CDC PLACES 2024 release; life expectancy 2010\u201315, NCHS USALEEP; lead risk: CDPHE 2018 model).")),
       card(full_screen = TRUE, leafletOutput("map_cx", height = 620))),
@@ -620,7 +624,7 @@ ui <- page_navbar(id = "nav",
            tags$small(class = "text-muted", "TRI covers only facilities and chemicals above reporting thresholds; the list of chemicals and industries has grown over time, so trends mix real change and reporting rules."))),
     layout_columns(col_widths = c(6, 6),
       card(card_header("Measured air quality, Denver-metro monitors"), unit_note("EPA AQS monitors in Adams, Arapahoe, Broomfield, Denver, Douglas and Jefferson counties; annual means"),
-           selectInput("cx_pol", NULL, choices = NULL, width = "100%"), plotlyOutput("p_cx_aqs", height = 300),
+           selectInput("cx_pol", NULL, choices = if (is.null(aqs)) NULL else sort(unique(aqs$pollutant)), selected = if (!is.null(aqs) && "Lead (TSP)" %in% aqs$pollutant) "Lead (TSP)" else NULL, width = "100%"), plotlyOutput("p_cx_aqs", height = 300),
            tags$small(class = "text-muted", "Average of the annual means of the monitors operating that year; the network changed over time, so the number of monitors is shown on hover.")),
       card(card_header("Urban renewal projects in Denver"), unit_note("federal urban-renewal projects (Renewing Inequality, University of Richmond)"),
            div(style = "overflow-x:auto", tableOutput("t_cx_ur")),
@@ -716,7 +720,7 @@ ui <- page_navbar(id = "nav",
       card(card_header("The directories against the national series"),
            tags$small("No public national dataset locates individual factories: the Census Bureau's Longitudinal Business Database (1976+) does, but only inside a Federal Statistical Research Data Center, and County Business Patterns, the Census of Manufactures and the NHGIS tables publish totals for counties or states. ",
              "This tab checks the directories' coverage against those totals, county by county, and shows what the 1870–1880 establishment samples add. The sidebar filters do not apply here."),
-           hr(), selectInput("bm_year", "County comparison: edition", NULL), checkboxInput("bm_haz", "Hazardous sectors only", FALSE),
+           hr(), selectInput("bm_year", "County comparison: edition", if (is.null(bm_cty)) NULL else sort(unique(bm_cty$year), decreasing = TRUE), selected = if (!is.null(bm_cty) && 1990 %in% bm_cty$year) 1990 else NULL), checkboxInput("bm_haz", "Hazardous sectors only", FALSE),
            tags$small(class = "text-muted", "CBP: Eckert, Fort, Schott & Yang (2021) raw county files (1975–85 National Archives, 1986+ Census Bureau). NHGIS: county manufacturing tables 1880–1940 (IPUMS NHGIS). Atack–Bateman–Weiss: Census of Manufactures samples 1870, 1880 (Vanderbilt / ICPSR). Rscript R/benchmarks.R reproduces this tab.")),
       div(
         layout_columns(col_widths = c(6, 6),
@@ -772,7 +776,7 @@ ui <- page_navbar(id = "nav",
                   "(1) every distinct address is geocoded with this project's offline TIGER/Line geocoder (Denver's modern numbering dates from 1887; a few renamed streets such as Holladay \u2192 Market are translated), ",
                   "keeping street-level results only; (2) stray geocodes are dropped \u2014 farther from the district's person-weighted median centre than max(400 m, 2.5\u00d7 the median) or with fewer than 30% of their ten nearest neighbours in the same district; ",
                   "(3) a Voronoi tessellation of the remaining addresses is dissolved by district and clipped to the concave hull of all addresses, each district keeps its main body and freed ground goes to the nearest district, so the districts are space-filling like tracts; ",
-                  "(4) the IPUMS full-count totals are attached by district number. 1880 is tessellated the same way from Brown's geocoded 1880 buildings. 73% of the 1900 population is placed at street level; the geocoding log is in data/results/denver_eds/ed_geocoding.csv. ",
+                  "(4) the IPUMS full-count totals are attached by district number. 1880 is tessellated the same way from Brown's geocoded 1880 buildings. 73% of the 1900 population is placed at street level; the geocoding log is in data/results/denver_eds/ed_geocoding_R.csv. ",
                   "Boundaries are therefore approximate (a block or so at the edges) and are this project's derived product; the address files stay with the project under Brown's conditions of use. ",
                   "Reproduce with Rscript R/grf_eds.R (or python pipeline/historical/grf_eds.py) and Rscript R/denver_eds_analysis.R."),
           tags$dt("How units are harmonised over time"),
@@ -854,7 +858,7 @@ ui <- page_navbar(id = "nav",
            uiOutput("dl_zoning_btns"),
            tags$small(class = "text-muted d-block mt-1 mb-3", tags$b("How corridor cells are defined. "),
              "Every geocoded manufacturer in the complete editions (1965–1992) of the Directory of Colorado Manufacturers (street-level geocodes only) is snapped to a 500 m × 500 m grid cell (UTM zone 13N), ",
-             "and every cell with at least one manufacturer in any edition is kept (4,078 cells). For each cell the script counts establishments per edition, finds the dominant 2-digit SIC sector, ",
+             "and every cell with at least one manufacturer in any edition is kept (3,215 cells). For each cell the script counts establishments per edition, finds the dominant 2-digit SIC sector, ",
              "and computes coverage = editions with a firm ÷ editions between the cell's first and last listing. Classes: ", tags$i("persistent"), " = first listed 1968 or earlier, still listed 1990 or later, coverage ≥ 60%; ",
              tags$i("persistent, sector turnover"), " = persistent, but the dominant sector changed and three or more sectors led it over time; ", tags$i("emerging"), " = first listed 1980 or later; ",
              tags$i("former"), " = last listed 1980 or earlier; everything else ", tags$i("intermittent"), ". Each cell also records any street-level pre-1960 hazardous trade inside it. ",
@@ -867,7 +871,7 @@ ui <- page_navbar(id = "nav",
              "(2) stray geocodes are dropped — those farther from their district's person-weighted median centre than max(400 m, 2.5 × the median distance), or with fewer than 30% of their ten nearest neighbours in the same district; ",
              "(3) a Voronoi tessellation of the remaining addresses is dissolved by district, clipped to the concave hull of all addresses (ratio 0.25, buffered 120 m), each district keeps its main body (parts at least 25% of its largest piece) and freed ground goes to the nearest district, so districts are space-filling like tracts; ",
              "(4) IPUMS full-count totals (population, race, nativity, Hispanic origin, occupation, housing, 1935 residence) are attached by district number. ",
-             "1880 is tessellated the same way from Brown's geocoded 1880 buildings. About 73% of the 1900 population is placed at street level (data/results/denver_eds/ed_geocoding.csv); boundaries are approximate by a block or so at the edges. ",
+             "1880 is tessellated the same way from Brown's geocoded 1880 buildings. About 73% of the 1900 population is placed at street level (data/results/denver_eds/ed_geocoding_R.csv); boundaries are approximate by a block or so at the edges. ",
              "The address files stay with the project under Brown's conditions of use; only these derived polygons and aggregates are published. Code: R/grf_eds.R (cross-checked with pipeline/historical/grf_eds.py) and R/denver_eds_analysis.R."),
            hr(), tags$small("Each edition file lists every manufacturer with its OCR'd name and address, SIC/NAICS codes, ",
                             "sector flags, establishment and site IDs, coordinates and geocode level.")),
@@ -1217,7 +1221,7 @@ server <- function(input, output, session) {
   output$recv_sum <- renderTable({ r <- recv(); if (is.null(r) || !nrow(r)) return(data.frame(Note = "None within this distance"))
     r |> count(kind, name = "places") |> rename(Type = kind, `Within distance` = places) })
   for (o in c("rv_nsel", "nb_nsel", "recv_sum")) outputOptions(output, o, suspendWhenHidden = FALSE)   # small text/table outputs: empty spans count as hidden and would never render
-  output$t_recv <- renderDT({ r <- recv(); if (is.null(r)) return(datatable(data.frame()))
+  output$t_recv <- renderDT({ r <- recv(); if (is.null(r)) r <- data.frame(name = character(), kind = character(), detail = character(), address = character(), n_unknown_sites = integer(), nearest_m = numeric(), nearby_sites = character())
     datatable(r |> select(Name = name, Type = kind, Detail = detail, Address = address, `Unknown sites within distance` = n_unknown_sites,
                           `Nearest (m)` = nearest_m, `Nearby sites (first 3)` = nearby_sites),
               rownames = FALSE, filter = "top", options = list(pageLength = 25, scrollX = TRUE)) })
@@ -1259,7 +1263,7 @@ server <- function(input, output, session) {
     x <- if (input$co_var == "rate") ifelse(d$pop > 0, 1000 * d$firms_haz / d$pop, NA) else d[[input$co_var]]
     pal <- colorNumeric("YlOrRd", domain = x, na.color = "#eeeeee")
     lab <- names(c("Hazardous trades per 1,000 residents" = "rate", "Hispanic (%)" = "pct_hisp", "Foreign born (%)" = "pct_fb", "Black (%)" = "pct_black", "Laborers (%)" = "pct_laborers"))[c("rate", "pct_hisp", "pct_fb", "pct_black", "pct_laborers") == input$co_var]
-    leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
+    leaflet() |>                                                       # SVG renderer: the canvas one errors when this map is rebuilt on each year or variable change
       addTiles("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", options = tileOptions(maxNativeZoom = 16), attribution = "Tiles &copy; Esri") |>
       addPolygons(data = d, fillColor = pal(x), fillOpacity = 0.75, color = "#555", weight = 0.6,
                   popup = sprintf("<b>%s County, %s</b><br>Population %s<br>Hazardous trades of the decade: %s<br>Black %s%% · Hispanic %s%% · foreign born %s%% · laborers %s%%",
@@ -1354,7 +1358,7 @@ server <- function(input, output, session) {
     ch <- if (y >= 1950) TR_VARS else ED_VARS; cur <- input$ed_var
     map <- c(pct_black = "p_black", pct_hisp = "p_hisp", pct_fb = "p_fb", pct_owner_hh = "p_owner", median_rent = "mrent_2020", median_value = "mval_2020", p_black = "pct_black", p_hisp = "pct_hisp", p_fb = "pct_fb", p_owner = "pct_owner_hh", mrent_2020 = "median_rent", mval_2020 = "median_value")
     sel <- if (cur %in% ch) cur else if (!is.null(cur) && cur %in% names(map) && map[[cur]] %in% ch) map[[cur]] else ch[[1]]
-    updateSelectInput(session, "ed_var", label = if (y >= 1950) "Tracts shaded by" else "Districts shaded by", choices = ch, selected = sel) }, ignoreInit = TRUE)
+    updateSelectInput(session, "ed_var", choices = ch, selected = sel) }, ignoreInit = TRUE)
   observe({
     req(input$map_1880_zoom); y <- as.integer(input$ed_year); v <- input$ed_var
     if (!is.na(y) && y >= 1950) { if (is.null(trd) || !v %in% names(trd)) return(); d <- trd[trd$census == y, ]; x <- d[[v]]; lab <- names(TR_VARS)[TR_VARS == v]
@@ -1653,9 +1657,7 @@ server <- function(input, output, session) {
     d <- d[, c(names(d)[!vapply(d, is.numeric, TRUE)], names(d)[vapply(d, is.numeric, TRUE)]), drop = FALSE]
     names(d) <- gsub("_", " ", names(d)); for (k in names(d)) if (is.numeric(d[[k]]) && grepl("^p$", k)) d[[k]] <- ifelse(d[[k]] < 0.01, "<0.01", sprintf("%.2f", d[[k]]))
     d }, striped = TRUE, spacing = "xs", digits = 2)
-  CX_VARS <- c("Life expectancy at birth, 2010\u201315 (years)" = "life_expectancy", "Current asthma (% adults)" = "casthma", "COPD (% adults)" = "copd", "Coronary heart disease (% adults)" = "chd",
-               "Diabetes (% adults)" = "diabetes", "High blood pressure (% adults)" = "bphigh", "Depression (% adults)" = "depression", "Cancer, non-skin (% adults)" = "cancer",
-               "Current smoking (% adults)" = "csmoking", "Childhood lead-risk decile (CDPHE model)" = "lead_risk_decile")
+  # CX_VARS is defined above the UI
   observe({ req(hl_tr); ch <- CX_VARS[CX_VARS %in% names(hl_tr)]; updateSelectInput(session, "cx_var", choices = ch, selected = ch[1]) })
   observe({ req(aqs); p <- sort(unique(aqs$pollutant)); updateSelectInput(session, "cx_pol", choices = p, selected = if ("Lead (TSP)" %in% p) "Lead (TSP)" else p[1]) })
   observe({ req(tri_fy); r <- range(tri_fy$year); updateSliderInput(session, "cx_tri_year", min = r[1], max = r[2], value = r[1]) })
@@ -1872,7 +1874,7 @@ server <- function(input, output, session) {
     f <- d |> group_by(Edition = year) |> summarise(`Directory` = sum(dir), CBP = sum(cbp), Ratio = round(sum(dir) / sum(cbp), 2), `r (log counts)` = round(cor(log1p(dir), log1p(cbp)), 2), .groups = "drop") |> mutate(Edition = as.integer(Edition))
     if (!is.null(bm_state) && "pages" %in% names(bm_state)) f <- f |> left_join(bm_state |> transmute(Edition = as.integer(year), `Pages scanned` = as.integer(pages), `No code (%)` = pct_no_code), by = "Edition"); f }, striped = TRUE, spacing = "xs")
   output$bm_fit_note <- renderUI(tags$small(class = "text-muted", "Correlation across the 64 counties of log establishment counts in the same year; the ratio is directory / CBP, statewide. ",
-    "The ratio follows 'pages scanned' (about 40 listings per page in every edition): the twelve editions held only in part (see the Data & downloads tab) are the thin years, and listings without an industry code (1993: 37%) drop out of the sector counts. Edition-to-edition swings are therefore scan coverage, not industrial change."))
+    "Only the complete editions are shown. The ratio follows scan density (22\u201346 listings per page; 1988 and 1992 were scanned at the lowest density) and the share of listings printed without an industry code (1977: 25%, 1992: 14%), which drop out of the sector counts. Edition-to-edition swings are therefore largely scan coverage, not industrial change."))
   output$p_bm_cty <- renderPlotly({ if (is.null(bm_cty) || is.null(input$bm_year) || input$bm_year == "") return(NULL); h <- isTRUE(input$bm_haz)
     d <- bm_cty |> filter(year == as.integer(input$bm_year)) |> mutate(dir = if (h) dir_haz else dir_mfg, cbp = if (h) cbp_haz else cbp_mfg)
     ggplotly(ggplot(d, aes(cbp, dir, text = sprintf("%s: CBP %d, directory %d (%d at a street address)", county_name, cbp, dir, dir_street))) + geom_abline(slope = 1, intercept = 0, colour = "grey60", linetype = "dashed") + geom_point(colour = "#d1491f", alpha = 0.8, size = 2.5) +
@@ -1882,7 +1884,7 @@ server <- function(input, output, session) {
   output$t_bm_at <- renderTable({ if (is.null(bm_at)) return(NULL); bm_at |> filter(year == 1880) |> transmute(Sector = ifelse(hazardous, paste0(sector, " *"), sector), Establishments = as.integer(establishments), Workers = as.integer(workers), `Capital ($)` = format(round(capital), big.mark = ",")) }, striped = TRUE, spacing = "xs")
   output$bm_nh <- renderUI({ if (is.null(bm_nh)) return(tags$small(class = "text-muted", "Not yet built: run Rscript R/benchmarks.R with an NHGIS key to add the 1880-1940 comparison."))
     d <- bm_nh |> group_by(Census = as.integer(census)) |> summarise(Counties = n(), `Census mfg. establishments` = sum(mfg_estab, na.rm = TRUE), `Directory hazardous trades` = sum(dir_haz), `r (log)` = round(cor(log1p(mfg_estab), log1p(dir_haz)), 2), .groups = "drop")
-    renderTable(d, striped = TRUE, spacing = "xs")() })
+    HTML(renderTable(d, striped = TRUE, spacing = "xs")()) })
   output$t_holc_m <- renderTable({ if (is.null(holc_m)) return(NULL)
     holc_m |> filter(outcome == input$rl_mvar) |> mutate(star = ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", "")), Outcome = c(p_black = "Black %", p_hisp = "Hispanic %", p_pov = "Poverty %", p_owner = "Owner-occupied %", lmval = "log median home value (2020 $)")[outcome]) |>
       transmute(Outcome, Period = period, `Class (vs A)` = grade, Change = sprintf("%+.1f%s", b, star), SE = round(se, 1), Tracts = n,

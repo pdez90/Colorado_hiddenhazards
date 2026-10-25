@@ -45,27 +45,33 @@ rebuild <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, geojson
   of <- "data/results/geocode_direction_conflicts.csv"; if (!file.exists(listings_f) || !file.exists(of)) return(invisible(NULL))
   lg <- fread(of, colClasses = c(site_id = "character")); hit <- unique(na.omit(lg[file == label]$site_id)); hit <- hit[nzchar(hit)]; if (!length(hit)) return(invisible(NULL))
   L <- fread(listings_f, colClasses = c(sic = "character", zip = "character", est = "character", size = "character"))[site_id %in% hit & !is.na(lat)]
-  L[, fe := fe_hazard %in% c(TRUE, "TRUE", "True")]
+  L[, fe := fe_hazard %in% c(TRUE, "TRUE", "True")]; L[, ext := ext_hazard %in% c(TRUE, "TRUE", "True")]; L[, hz := fe | ext]   # hazardous = F&E or extended sectors, as in pipeline/build_sites.py
+  if (file.exists("R/geocode_tiger.R")) { e <- new.env(); sys.source("R/geocode_tiger.R", envir = e)              # the geocoder's address parser, for the normalised "2950 S FOX ST" form
+    norm <- function(x) vapply(x, function(a) { p <- e$parse_addr(a); if (is.na(p$num)) toupper(gsub("\\s+", " ", gsub("[.,]", " ", a))) else trimws(gsub("\\s+", " ", paste(p$num, p$pre, p$core, p$suf))) }, "", USE.NAMES = FALSE)
+  } else norm <- function(x) toupper(gsub("\\s+", " ", gsub("[.,]", " ", x)))
   yr <- function(y) { y <- sort(unique(y)); if (length(y) == 1) as.character(y) else paste0(min(y), "-", max(y)) }
   firms <- function(d, sic = TRUE) { if (!nrow(d)) return(""); f <- d[, .(nm = name[1], y = yr(year), s = paste(unique(na.omit(sic[nzchar(sic)])), collapse = ","), y0 = min(year)), by = estab_id][order(y0, nm)]
     paste(if (sic) sprintf("%s (%s%s)", f$nm, f$y, ifelse(nzchar(f$s), paste0("; SIC ", f$s), "")) else sprintf("%s (%s)", f$nm, f$y0), collapse = " | ") }
   secs <- function(v) paste(sort(unique(unlist(strsplit(v[!is.na(v) & nzchar(v)], "\\s*;\\s*")))), collapse = "; ")
   N <- L[, { m <- which.min((lat - mean(lat))^2 + (lon - mean(lon))^2)
-    .(lat = mean(lat), lon = mean(lon), address = toupper(street[m]), city = city[m], zip = zip[m], first_year = min(year), last_year = max(year),
-      hazard_years = paste(sort(unique(year[fe])), collapse = ";"), fe_hazard = any(fe), fe_sectors = secs(fe_sectors[fe]),
-      n_editions = uniqueN(year), n_establishments = uniqueN(estab_id), n_hazard_establishments = uniqueN(estab_id[fe]),
-      hazard_firms = firms(.SD[fe]), all_firms = firms(.SD, FALSE)) }, by = site_id]
-  gone <- setdiff(hit, N$site_id)
+    .(lat = mean(lat), lon = mean(lon), address = norm(street[m]), city = city[m], zip = zip[m], first_year = min(year), last_year = max(year),
+      hazard_years = paste(sort(unique(year[hz])), collapse = ";"), fe_hazard = any(fe), ext_hazard = any(ext), fe_sectors = secs(fe_sectors[fe]), ext_sectors = secs(ext_sectors[ext]),
+      n_editions = uniqueN(year), n_establishments = uniqueN(estab_id), n_hazard_establishments = uniqueN(estab_id[hz]),
+      hazard_firms = firms(.SD[hz]), all_firms = firms(.SD, FALSE)) }, by = site_id]
+  gone <- c(setdiff(hit, N$site_id), N[!fe_hazard & !ext_hazard, site_id])          # no located listing left, or none in a hazardous sector: not a hazard site any more
+  N <- N[fe_hazard | ext_hazard]
   upd <- function(S) { S <- S[!site_id %in% gone]; cols <- intersect(setdiff(names(N), "site_id"), names(S)); if (!nrow(S)) return(S)
     for (cc in cols) { v <- N[[cc]][match(S$site_id, N$site_id)]; i <- which(!is.na(match(S$site_id, N$site_id)))
       if (length(i)) { cl <- class(S[[cc]])[1]; set(S, i, cc, switch(cl, logical = as.logical(v[i]), integer = as.integer(v[i]), numeric = as.numeric(v[i]), as.character(v[i]))) } }
     S }
   if (file.exists(sites_f)) { S <- fread(sites_f, colClasses = c(GEOID = "character", zip = "character", site_id = "character")); fwrite(upd(S), sites_f) }
   if (!is.null(years_f) && file.exists(years_f)) { Y <- fread(years_f, colClasses = c(site_id = "character"))
-    NY <- L[, .(sectors = secs(fe_sectors[fe]), firms = paste(unique(name), collapse = " | ")), by = .(site_id, year)]
+    # one row per site and year with a hazardous listing (as pipeline/app_inputs.py writes it): sectors joined by ";", "Extended sectors" for the extended set
+    NY <- L[hz & site_id %in% N$site_id, .(sectors = paste(sort(unique(c(unlist(strsplit(fe_sectors[fe & nzchar(fe_sectors)], "\\s*;\\s*")), if (any(ext)) "Extended sectors"))), collapse = ";"),
+                                           firms = substr(paste(unique(name), collapse = " | "), 1, 300)), by = .(site_id, year)]
     Y <- rbind(Y[!site_id %in% hit], NY[, names(Y), with = FALSE][order(site_id, year)]); setorder(Y, site_id, year); fwrite(Y, years_f) }
   if (!is.null(firms_f) && file.exists(firms_f)) { Fm <- fread(firms_f, colClasses = c(site_id = "character")); if ("estab_id" %in% names(Fm))
-    fwrite(Fm[!site_id %in% hit | paste(site_id, estab_id) %in% paste(L$site_id, L$estab_id)], firms_f) }
+    fwrite(Fm[!site_id %in% gone & (!site_id %in% hit | paste(site_id, estab_id) %in% paste(L$site_id, L$estab_id))], firms_f) }
   if (!is.null(geojson_f) && file.exists(geojson_f) && requireNamespace("sf", quietly = TRUE)) {
     G <- sf::st_read(geojson_f, quiet = TRUE); A <- as.data.table(sf::st_drop_geometry(G)); A[, site_id := as.character(site_id)]
     keep <- !A$site_id %in% gone; A <- upd(A); k <- match(A$site_id, N$site_id)
@@ -108,7 +114,7 @@ rebuild <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, geojson
         rf <- file.path(td, "xl", "worksheets", "_rels", paste0(basename(sf), ".rels")); if (!file.exists(rf) || !grepl(paste0('Id="', rid, '"'), paste(readLines(rf, warn = FALSE), collapse = ""))) x <- sub(id, "", x, fixed = TRUE) }
       writeLines(x, sf, useBytes = TRUE) }
     f <- normalizePath(xlsx_f); file.remove(f); old <- setwd(td); utils::zip(f, list.files(".", recursive = TRUE, all.files = TRUE), flags = "-qX9"); setwd(old) }
-  message("rebuilt ", nrow(N), " sites from their remaining listings; ", length(gone), " sites with none left removed") }
+  message("rebuilt ", nrow(N), " sites from their remaining listings; ", length(gone), " sites with no hazardous listing left removed") }
 fix_set("data/results/CO_directory_listings_1961-2002.csv", "app/data/sites.csv", "app/data/site_years.csv", "app/data/site_firms.csv", "data/by_year", "complete editions")
 fix_set("data/full_inventory/CO_directory_listings_1961-2002.csv", "data/full_inventory/sites.csv", NULL, "data/full_inventory/site_firms.csv", "data/full_inventory/by_year", "full inventory")
 rebuild("data/results/CO_directory_listings_1961-2002.csv", "app/data/sites.csv", "app/data/site_years.csv", "app/data/site_firms.csv",

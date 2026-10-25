@@ -27,6 +27,7 @@ EDS <- sort(unique(L$year))
 eg <- function(cell_all, cell_sec, nperm = 499) {
   x <- table(cell_all) / length(cell_all); N <- length(cell_sec); H <- 1 / N
   g1 <- function(cs) { s <- table(factor(cs, levels = names(x))) / N; G <- sum((s - x)^2); (G - (1 - sum(x^2)) * H) / ((1 - sum(x^2)) * (1 - H)) }
+  set.seed(20261021)                                                  # the permutation p-values are then the same on every run
   obs <- g1(cell_sec); perm <- replicate(nperm, g1(sample(cell_all, N)))
   c(gamma = obs, p = (1 + sum(perm >= obs)) / (nperm + 1))
 }

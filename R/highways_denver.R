@@ -60,7 +60,11 @@ nb[, open_year := 1900 + open %/% 100]; nb[, route := paste0("I-", rte %/% 10)]
 R2 <- nb[, .(nber_miles = round(sum(seg) / 100, 1), nber_first_opened = min(open_year), nber_last_opened = max(open_year)), by = route]
 den <- st_union(st_make_valid(tr[substr(tr$GEOID, 1, 5) == "08031", ]))
 HD <- suppressWarnings(st_intersection(H[H$kind == "Freeway" & !grepl("_link", H$highway), ], den))
-oh <- as.data.table(st_drop_geometry(HD))[, km := w * as.numeric(st_length(HD)) / 1000][grepl("^I-", ref_clean), .(ohm_km = round(sum(km), 1), ohm_km_in_service = round(sum(km[is.na(end_year)]), 1), ohm_first = min(start_year, na.rm = TRUE), ohm_last = max(start_year, na.rm = TRUE)), by = .(route = sub(";.*", "", ref_clean))]
+# many OHM ways carry the route only in their name ("I-70", "Valley Highway" = I-25 before the 2000s rebuild), with no ref tag
+oh <- as.data.table(st_drop_geometry(HD))[, km := w * as.numeric(st_length(HD)) / 1000]
+oh[, route := sub(";.*", "", fifelse(!is.na(ref_clean) & nzchar(ref_clean), ref_clean, sub("^I ", "I-", toupper(gsub("[- ]+", " ", ifelse(is.na(name), "", name))))))]
+oh[route == "VALLEY HIGHWAY", route := "I-25"]
+oh <- oh[grepl("^I-[0-9]+$", route), .(ohm_km = round(sum(km), 1), ohm_km_in_service = round(sum(km[is.na(end_year)]), 1), ohm_first = min(start_year, na.rm = TRUE), ohm_last = max(start_year, na.rm = TRUE)), by = route]
 R2 <- merge(R2, oh, by = "route", all = TRUE); fwrite(R2, file.path(O, "highways_nber_check.csv")); print(R2)
 # ---------------------------------------------------------------- 3. HOLC grades and 1929 zoning
 B <- FW[!is.na(FW$start_year) & FW$start_year >= 1950 & FW$start_year <= 1979, ]

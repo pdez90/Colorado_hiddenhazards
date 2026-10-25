@@ -1,11 +1,11 @@
 site_id,address,city,first_year,last_listed,fe_sectors,radar,where,jurisd,Local_zon,GenZone2,zone2023,match
-S00001,2950 S FOX ST,DENVER,1965,1965,Industrial machinery,Other EPA permit only,Denver County,DENVER,C-MX-12,MixedUseRes_High,Mixed use with housing,inside polygon
+S00001,2953 FOX,DENVER,1965,1965,Industrial machinery,Other EPA permit only,Denver County,DENVER,C-MX-12,MixedUseRes_High,Mixed use with housing,inside polygon
 S00004,2881 S SANTE FE,DENVER,1965,1965,Industrial machinery,Cleanup / contamination list,Suburban study tracts,DENVER,I-A,Industrial,Industrial (housing not allowed),inside polygon
 S00012,2390 W DARTMOUTH,ENGLEWOOD,1965,1983,Fabricated metals; Industrial machinery,Other EPA permit only,Suburban study tracts,ENGLEWOOD,I-1,Industrial,Industrial (housing not allowed),inside polygon
 S00013,2823 S BROADWAY,DENVER,1965,1965,Industrial machinery,RCRA hazardous-waste handler,Suburban study tracts,ENGLEWOOD,MU-B-2,MixedUseRes_High,Mixed use with housing,nearest polygon within 50 m
 S00016,75 S PECOS ST,DENVER,1965,1965,Fabricated metals,Cleanup / contamination list,Denver County,DENVER,I-B,Industrial,Industrial (housing not allowed),inside polygon
 S00017,2800 S FEDERAL BLVD,DENVER,1965,1965,Fabricated metals,RCRA hazardous-waste handler,Denver County,DENVER,S-MX-3,MixedUseRes_MedHigh,Mixed use with housing,inside polygon
-S00020,3800 JASON,DENVER,1967,1983,Fabricated metals; Industrial machinery; Transportation equipment,Other EPA permit only,Denver County,DENVER,I-MX-3,MixedUseRes_MedHigh,Industrial mixed use (housing allowed),inside polygon
+S00020,3800 JASON,DENVER,1967,1983,Industrial machinery; Transportation equipment,Other EPA permit only,Denver County,DENVER,I-MX-3,MixedUseRes_MedHigh,Industrial mixed use (housing allowed),inside polygon
 S00027,1100 W 38TH AVE,DENVER,1973,1990,Fabricated metals,Other EPA permit only,Denver County,DENVER,U-MS-3,MixedUseRes_MedHigh,Mixed use with housing,inside polygon
 S00062,1601 WAZEE,DENVER,1965,1968,Fabricated metals; Industrial machinery; Transportation equipment,Cleanup / contamination list,Denver County,DENVER,D-LD,MixedUseRes_High,Mixed use with housing,inside polygon
 S00063,1732 MARION,DENVER,1965,1965,Fabricated metals,Cleanup / contamination list,Denver County,DENVER,G-RO-5,MixedUseRes_High,Mixed use with housing,inside polygon
@@ -1011,7 +1011,7 @@ S03861,12850 E 40TH AVE,DENVER,1980,1992,Chemicals; Rubber & plastics,RCRA hazar
 S03862,4100 FEDERAL BLVD,DENVER,1980,1990,Rubber & plastics,Not on any list,Denver County,DENVER,U-SU-C1,Residential_Low,Residential,inside polygon
 S03864,4999 OAKLAND ST,DENVER,1980,1983,Fabricated metals; Industrial machinery,RCRA hazardous-waste handler,Denver County,DENVER,I-A,Industrial,Industrial (housing not allowed),inside polygon
 S03866,750 W 48TH AVE,DENVER,1980,1992,Fabricated metals,Cleanup / contamination list,Denver County,DENVER,I-B,Industrial,Industrial (housing not allowed),inside polygon
-S03868,2145 S PLATTE AIV DR,DENVER,1980,1992,Chemicals; Fabricated metals,Cleanup / contamination list,Denver County,DENVER,C-MX-5,MixedUseRes_High,Mixed use with housing,inside polygon
+S03868,2533 19TH ST,DENVER,1980,1992,Chemicals; Fabricated metals,Cleanup / contamination list,Denver County,DENVER,C-MX-5,MixedUseRes_High,Mixed use with housing,inside polygon
 S03875,2120 DELGANEY,DENVER,1980,1980,Fabricated metals,Cleanup / contamination list,Denver County,DENVER,C-MX-12,MixedUseRes_High,Mixed use with housing,inside polygon
 S03877,1331 30TH ST,DENVER,1980,1988,Fabricated metals; Rubber & plastics,TRI reporter,Denver County,DENVER,I-MX-3,MixedUseRes_MedHigh,Industrial mixed use (housing allowed),inside polygon
 S03883,5070 OAKLAND ST,DENVER,1980,1992,Fabricated metals; Industrial machinery,RCRA hazardous-waste handler,Denver County,DENVER,I-A,Industrial,Industrial (housing not allowed),inside polygon

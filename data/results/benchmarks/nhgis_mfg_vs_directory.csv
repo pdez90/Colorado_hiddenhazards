@@ -86,63 +86,6 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1890,075,Logan,1,,,2,0,2,Number of Manufacturing Establishments Reporting
 1890,095,Phillips,1,,,0,0,0,Number of Manufacturing Establishments Reporting
 1890,049,Grand,0,0,0,0,0,0,Number of Manufacturing Establishments Reporting
-1900,005,Arapahoe,1516,11694,44985904,5,3,0,Total Number of Manufacturing Establishments
-1900,101,Pueblo,245,4911,30797780,0,0,0,Total Number of Manufacturing Establishments
-1900,119,Teller,216,790,2550497,0,0,0,Total Number of Manufacturing Establishments
-1900,041,El Paso,193,1152,2278789,0,0,0,Total Number of Manufacturing Establishments
-1900,013,Boulder,137,443,1372894,0,0,0,Total Number of Manufacturing Establishments
-1900,065,Lake,119,1584,8015270,1,0,0.01,Total Number of Manufacturing Establishments
-1900,071,Las Animas,106,690,1528821,0,0,0,Total Number of Manufacturing Establishments
-1900,069,Larimer,86,106,671709,0,0,0,Total Number of Manufacturing Establishments
-1900,123,Weld,86,124,738964,0,0,0,Total Number of Manufacturing Establishments
-1900,097,Pitkin,59,94,261505,0,0,0,Total Number of Manufacturing Establishments
-1900,043,Fremont,57,368,1156186,0,0,0,Total Number of Manufacturing Establishments
-1900,077,Mesa,52,255,433502,0,0,0,Total Number of Manufacturing Establishments
-1900,047,Gilpin,47,121,293157,0,0,0,Total Number of Manufacturing Establishments
-1900,089,Otero,43,356,600070,0,0,0,Total Number of Manufacturing Establishments
-1900,019,Clear Creek,42,30,106447,0,0,0,Total Number of Manufacturing Establishments
-1900,067,La Plata,42,346,2729428,0,0,0,Total Number of Manufacturing Establishments
-1900,045,Garfield,34,105,357778,0,0,0,Total Number of Manufacturing Establishments
-1900,113,San Miguel,32,68,174345,0,0,0,Total Number of Manufacturing Establishments
-1900,059,Jefferson,30,124,485102,0,0,0,Total Number of Manufacturing Establishments
-1900,029,Delta,28,28,112117,0,0,0,Total Number of Manufacturing Establishments
-1900,051,Gunnison,27,95,283298,0,0,0,Total Number of Manufacturing Establishments
-1900,079,Mineral,23,26,59708,0,0,0,Total Number of Manufacturing Establishments
-1900,093,Park,22,93,131686,0,0,0,Total Number of Manufacturing Establishments
-1900,099,Prowers,22,36,188384,0,0,0,Total Number of Manufacturing Establishments
-1900,087,Morgan,21,17,33748,0,0,0,Total Number of Manufacturing Establishments
-1900,055,Huerfano,20,14,78415,0,0,0,Total Number of Manufacturing Establishments
-1900,107,Routt,20,26,55760,1,0,0.05,Total Number of Manufacturing Establishments
-1900,015,Chaffee,19,451,634798,0,0,0,Total Number of Manufacturing Establishments
-1900,105,Rio Grande,17,69,247215,0,0,0,Total Number of Manufacturing Establishments
-1900,011,Bent,16,18,75330,0,0,0,Total Number of Manufacturing Establishments
-1900,027,Custer,16,13,35497,0,0,0,Total Number of Manufacturing Establishments
-1900,035,Douglas,16,45,96968,0,0,0,Total Number of Manufacturing Establishments
-1900,021,Conejos,13,96,171147,0,0,0,Total Number of Manufacturing Establishments
-1900,053,Hinsdale,12,12,30242,0,0,0,Total Number of Manufacturing Establishments
-1900,117,Summit,12,9,32423,0,0,0,Total Number of Manufacturing Establishments
-1900,075,Logan,11,7,16697,0,0,0,Total Number of Manufacturing Establishments
-1900,091,Ouray,10,36,82676,0,0,0,Total Number of Manufacturing Establishments
-1900,039,Elbert,9,6,40088,0,0,0,Total Number of Manufacturing Establishments
-1900,111,San Juan,9,24,80583,0,0,0,Total Number of Manufacturing Establishments
-1900,115,Sedgwick,9,3,22734,0,0,0,Total Number of Manufacturing Establishments
-1900,037,Eagle,8,47,53494,0,0,0,Total Number of Manufacturing Establishments
-1900,083,Montezuma,8,65,232555,0,0,0,Total Number of Manufacturing Establishments
-1900,103,Rio Blanco,8,9,35462,0,0,0,Total Number of Manufacturing Establishments
-1900,085,Montrose,6,23,102628,0,0,0,Total Number of Manufacturing Establishments
-1900,007,Archuleta,5,17,40248,0,0,0,Total Number of Manufacturing Establishments
-1900,023,Costilla,5,15,191136,0,0,0,Total Number of Manufacturing Establishments
-1900,095,Phillips,5,8,12698,0,0,0,Total Number of Manufacturing Establishments
-1900,109,Saguache,5,8,18516,0,0,0,Total Number of Manufacturing Establishments
-1900,121,Washington,5,8,17883,0,0,0,Total Number of Manufacturing Establishments
-1900,033,Dolores,4,12,22600,0,0,0,Total Number of Manufacturing Establishments
-1900,049,Grand,4,1,2950,0,0,0,Total Number of Manufacturing Establishments
-1900,125,Yuma,4,2,7077,0,0,0,Total Number of Manufacturing Establishments
-1900,063,Kit Carson,3,3,21704,0,0,0,Total Number of Manufacturing Establishments
-1900,017,Cheyenne,2,,,0,0,0,Total Number of Manufacturing Establishments
-1900,061,Kiowa,2,,,0,0,0,Total Number of Manufacturing Establishments
-1900,073,Lincoln,2,,,0,0,0,Total Number of Manufacturing Establishments
-1900,009,Baca,0,0,0,0,0,0,Total Number of Manufacturing Establishments
 1920,031,Denver,1097,16635,125411272,170,38,0.15,Manufacturing Establishments
 1920,101,Pueblo,143,6585,47568936,7,3,0.05,Manufacturing Establishments
 1920,041,El Paso,141,848,4788504,9,4,0.06,Manufacturing Establishments

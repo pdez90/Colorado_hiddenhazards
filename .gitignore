@@ -9,5 +9,4 @@ rsconnect/
 data/geocoder/r_vs_python.csv
 work/benchmarks/
 _to_delete/
-app/data/zoning_2023_categories.geojson
 data/results/zoning_over_time/zoning_2023_categories.geojson
