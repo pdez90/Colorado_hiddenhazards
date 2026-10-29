@@ -1,13 +1,12 @@
 series,today,sites,pct_petroleum_release_50m,pct_tank_facility_50m
-Hazardous trades before 1960 (street level),Commercial / office,170,24.1,37.1
-Hazardous trades before 1960 (street level),Residential,62,16.1,21
-Hazardous trades before 1960 (street level),Industrial / utility,37,29.7,45.9
-Hazardous trades before 1960 (street level),Vacant,28,28.6,28.6
-Hazardous trades before 1960 (street level),Park / open space,12,41.7,50
-Hazardous-sector manufacturers 1965-1992,not matched to a parcel,398,14.1,23.9
-Hazardous-sector manufacturers 1965-1992,Industrial / utility,369,19.8,28.2
-Hazardous-sector manufacturers 1965-1992,Commercial / office,247,27.9,36
-Hazardous-sector manufacturers 1965-1992,Residential,167,12.6,21
-Hazardous-sector manufacturers 1965-1992,Vacant,126,23.8,32.5
-Hazardous-sector manufacturers 1965-1992,Civic / school / health,35,14.3,14.3
-Hazardous-sector manufacturers 1965-1992,Park / open space,18,33.3,38.9
+Hazardous trades before 1960 (street level),Commercial / office,188,26.6,39.9
+Hazardous trades before 1960 (street level),Residential,55,12.7,18.2
+Hazardous trades before 1960 (street level),Industrial / utility,35,28.6,37.1
+Hazardous trades before 1960 (street level),Vacant,25,32,36
+Hazardous-sector manufacturers 1965-1992,Industrial / utility,460,18,27.2
+Hazardous-sector manufacturers 1965-1992,not matched to a parcel,389,14.1,23.9
+Hazardous-sector manufacturers 1965-1992,Commercial / office,239,31,38.9
+Hazardous-sector manufacturers 1965-1992,Residential,152,11.8,17.1
+Hazardous-sector manufacturers 1965-1992,Vacant,87,26.4,34.5
+Hazardous-sector manufacturers 1965-1992,Civic / school / health,22,13.6,13.6
+Hazardous-sector manufacturers 1965-1992,Park / open space,10,30,50

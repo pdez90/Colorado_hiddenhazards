@@ -4,15 +4,15 @@
 
 | address_1940 | census | residents_1940 | pct_linked | pct_in_denver_then_of_linked | pct_within_100m_of_1940_address | pct_within_1km | pct_near_hazardous_trade_then | pct_in_top_quarter_then |
 |---|---|---|---|---|---|---|---|---|
-| other 1940 addresses | 1910 | 114276 | 25.5 | 72.7 | 14.5 | 31.8 | 3.4 | 17.1 |
+| other 1940 addresses | 1910 | 114358 | 25.6 | 72.7 | 14.5 | 31.9 | 3.4 | 17.0 |
 | 1929 industrial district | 1910 | 6023 | 21.2 | 70.3 | 24.9 | 52.0 | 6.1 | 22.4 |
-| 10%+ industrial land within 250 m | 1910 | 7283 | 21.5 | 72.3 | 30.0 | 56.9 | 8.1 | 23.8 |
-| other 1940 addresses | 1920 | 147317 | 36.4 | 77.6 | 22.0 | 40.1 | 28.6 | 10.5 |
+| 10%+ industrial land within 250 m | 1910 | 7201 | 21.0 | 72.7 | 29.7 | 57.2 | 9.0 | 24.7 |
+| other 1940 addresses | 1920 | 147439 | 36.4 | 77.6 | 22.1 | 40.2 | 28.5 | 10.4 |
 | 1929 industrial district | 1920 | 8110 | 31.0 | 75.3 | 35.0 | 56.5 | 31.8 | 11.2 |
-| 10%+ industrial land within 250 m | 1920 | 9785 | 31.9 | 75.8 | 34.8 | 62.9 | 42.2 | 18.9 |
-| other 1940 addresses | 1930 | 179604 | 57.1 | 87.7 | 37.4 | 55.3 | 12.0 | 15.7 |
+| 10%+ industrial land within 250 m | 1920 | 9663 | 31.1 | 76.0 | 34.4 | 63.0 | 43.1 | 20.0 |
+| other 1940 addresses | 1930 | 179776 | 57.2 | 87.7 | 37.4 | 55.4 | 12.0 | 15.7 |
 | 1929 industrial district | 1930 | 10665 | 52.5 | 83.5 | 40.7 | 61.9 | 19.6 | 20.1 |
-| 10%+ industrial land within 250 m | 1930 | 12477 | 51.4 | 84.0 | 41.4 | 66.3 | 21.3 | 30.6 |
+| 10%+ industrial land within 250 m | 1930 | 12305 | 50.3 | 83.9 | 41.0 | 66.4 | 21.6 | 31.1 |
 
 ## Hazardous trades listed in each census window
 

@@ -1,80 +1,63 @@
 priority,id,series,status,name,address,first_year,last_year,use_now,sanborn_1903_volume,sanborn_1929_volume,sanborn_1951_volume,petroleum_releases_50m
 1,HF07701,Hazardous trades before 1960 (street level),pre-1960,Acme Silver Plating Works,"",1941,1941,Civic / school / health,1,1,1,0
-1,HF07230,Hazardous trades before 1960 (street level),pre-1960,Oneida Chemical Co Inc,1123 Larimer,1956,1956,Civic / school / health,1,1,1,0
-1,HF06583,Hazardous trades before 1960 (street level),pre-1960,Gillard Plastics Inc,1137 Larimer St,1950,1950,Civic / school / health,1,1,1,0
 1,HF06652,Hazardous trades before 1960 (street level),pre-1960,Overland Fndry Go Hosek Mfg Go,1251 Osage,1950,1950,Civic / school / health,1,2,2,0
+1,HF05472,Hazardous trades before 1960 (street level),pre-1960,Western Smelting Co,1304 Blake,1920,1920,Civic / school / health,1,1,1,0
+1,HF06282,Hazardous trades before 1960 (street level),pre-1960,Western Bronze & Brass Foundry Western File Service,1322 Blake,1939,1939,Civic / school / health,1,1,1,0
 1,HF05885,Hazardous trades before 1960 (street level),pre-1960,Flaherty P J,1417 Fox,1911,1929,Civic / school / health,1,2,2,1
-1,HF07725,Hazardous trades before 1960 (street level),pre-1960,Keddy Frank A,600 W Colfax,1941,1941,Civic / school / health,1,2,2,1
-1,S00076,Hazardous-sector manufacturers 1965-1992,on a current inventory,ACME SILVER PLATING WORKS (1965; SIC 3471) | REX IRON WORKS CO (1968; SIC 3591),1114 LARIMER,1965,1968,Civic / school / health,1,1,1,0
+1,HF07757,Hazardous trades before 1960 (street level),pre-1960,South Denver Sheet Metal & F u r ­ Spahn Benj J,2860 N Speer,1941,1941,Civic / school / health,4,6,6,1
+1,HF06676,Hazardous trades before 1960 (street level),pre-1960,RedfieldGun SightColWItWC Redfield Et Al,3315 Gilpin,1950,1950,Civic / school / health,2,3,3,0
+1,HF07276,Hazardous trades before 1960 (street level),pre-1960,Williams Sheet Metal W k s,524 W. Colfax,1956,1956,Civic / school / health,1,1,1,0
 1,S01823,Hazardous-sector manufacturers 1965-1992,on no current inventory,"THELCO CCRP (1968; SIC 3533,3561,3566)",1120 10TH,1968,1968,Civic / school / health,1,1,1,0
 1,S01490,Hazardous-sector manufacturers 1965-1992,on a current inventory,EVERSMAN MFG CO INC (1973; SIC 3523),1122 9TH,1967,1973,Civic / school / health,1,1,1,0
 1,S00793,Hazardous-sector manufacturers 1965-1992,on no current inventory,"CAPITOL ENGRAVING CC (1968; SIC 2793,3555)",1125 11TH ST,1966,1973,Civic / school / health,1,1,1,0
-1,S02437,Hazardous-sector manufacturers 1965-1992,on no current inventory,"O-C METAL PLATING + FOUNDRY WORKS (1973-1974; SIC 3361,3362,3471)",1125 LIPAN,1973,1974,Civic / school / health,1,2,2,0
 1,S00094,Hazardous-sector manufacturers 1965-1992,on a current inventory,"CHAPMAN BROS INC (1968-1974; SIC 3714,3621) | INSTANTWHIP-CENVER? INC (1968; SIC 2025,2893,2711)",1130 12TH,1965,1980,Civic / school / health,1,1,1,0
 1,S00208,Hazardous-sector manufacturers 1965-1992,on no current inventory,FACK ENGINEERING CC. (1965; SIC 3531),1157 10TH,1965,1965,Civic / school / health,1,1,1,0
+1,S00882,Hazardous-sector manufacturers 1965-1992,on a current inventory,"KOHLER MCLISTER PAINT CO (1966; SIC 2851) | KOHLER MCLISTEX PAINT CO. 2789 BOOKBINDING + MISC RELATED WCRK MF YALE DIST MGR (1967; SIC 2851) | KOHLER-MCLISTER PAINT CO (1973-1974; SIC 2821,2851) | KOMAG PALNT INC (1980-1983; SIC 2821,2851) | DIAMOND VOGEL PAINT (1990; SIC 2851,2821)",1201 OSAGE,1966,1990,Civic / school / health,1,2,2,0
 1,S00199,Hazardous-sector manufacturers 1965-1992,on a current inventory,RPM PLASTIC FABRICATORS» INC. (1965; SIC 3079),1230 7TH ST,1965,1974,Civic / school / health,1,1,1,0
 1,S00725,Hazardous-sector manufacturers 1965-1992,on a current inventory,B+ C METALS PRODUCTS (1966; SIC 3559) | 8B + C METALS PRODUCTS (1968-1973; SIC 3551) | DONALD PATTERN WORKS (1970-1973; SIC 3565),1242 11TH,1966,1973,Civic / school / health,1,1,1,0
-1,S00257,Hazardous-sector manufacturers 1965-1992,on a current inventory,"MARSHALL MFG. CO. (1965; SIC 3591) | MARSHALL GUN COMPANY (1966; SIC 3484) | MARSHALL MFG CO 3452 BOLTS, NUTS, SCREWS + WASFERS (1968; SIC 3591) | ZOHN MFG CO 2892 EXPLOSIVES (1970; SIC 2892)",1322 LAWRENCE ST,1965,1970,Civic / school / health,1,1,1,1
+1,S05605,Hazardous-sector manufacturers 1965-1992,on no current inventory,GREENLAWN SPRINKLER (1988; SIC 3432),1301 CHEROKEE,1988,1988,Civic / school / health,1,2,2,0
 1,S00256,Hazardous-sector manufacturers 1965-1992,on a current inventory,MARPLE*S WELDING + MACHINE SHOP (1965-1966; SIC 3591),1345 10TH,1965,1970,Civic / school / health,1,1,1,0
+1,S02964,Hazardous-sector manufacturers 1965-1992,on no current inventory,PROGRESSIVE TOOL + MACHINE (1974; SIC 3544),1420 W 46TH AVE,1974,1974,Civic / school / health,,,,0
 1,S00159,Hazardous-sector manufacturers 1965-1992,on a current inventory,"COLORACO STEEL INCORPCRATED (1974; SIC 3441,3446)",1441 7TH,1965,1974,Civic / school / health,1,1,1,0
 1,S02021,Hazardous-sector manufacturers 1965-1992,on no current inventory,"DOWDLE AIR CONDITIONING + HEATING CO (1970; SIC 3444,3870)",1604 S PEARL ST,1970,1970,Civic / school / health,3,5,5,0
 1,S01724,Hazardous-sector manufacturers 1965-1992,on a current inventory,"OEMCO INC (1968-1974; SIC 2834) | OILED TYMPAN SUPREME CHEMICAL (1988; SIC 2841,2842)",1632 E 47TH,1968,1988,Civic / school / health,2,3,3,1
-1,S02500,Hazardous-sector manufacturers 1965-1992,on no current inventory,RELIABLE SLING CO 3079 MISCELLANEOUS PLASTICS : (1973; SIC 3079),1660 11TH ST,1973,1980,Civic / school / health,1,1,1,0
 1,S01767,Hazardous-sector manufacturers 1965-1992,on a current inventory,"K C CONSTRUCTION SUPPLY CO, INC (1968-1973; SIC 3444)",1835 BRYANT E201,1968,1973,Civic / school / health,,,,0
 1,S06988,Hazardous-sector manufacturers 1965-1992,on a current inventory,LAWRENCE TOOL CO (1992; SIC 3089),2045 VAIENTIA ST,1992,1992,Civic / school / health,,,,0
-1,S00206,Hazardous-sector manufacturers 1965-1992,on no current inventory,GRABLER MFG. CO. (1965; SIC 3454),2062 BLAKE ST,1965,1965,Civic / school / health,2,1,1,0
-1,S06967,Hazardous-sector manufacturers 1965-1992,on a current inventory,ELCAR FENCE + SUPPLYCO- (1992; SIC 3496),2155 VALENTIA ST,1992,1992,Civic / school / health,,,,0
-1,S00264,Hazardous-sector manufacturers 1965-1992,on a current inventory,MCKIM WELDING + MACHINE SHOP (1965; SIC 3591) | *MC KIM WELDING + MACHINE SHOP (1966-1973; SIC 3599),242 ELATI,1965,1973,Civic / school / health,1,2,2,1
-1,S03261,Hazardous-sector manufacturers 1965-1992,on no current inventory,AMERICAN STEEL + IROM WORKS INC (1977; SIC 3443),245 FOX ST,1977,1977,Civic / school / health,1,2,2,0
-1,S00111,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ART NEON CO. (1965-1966; SIC 3553) | ote (1967; SIC 2842,3993) | GALAXY PLASTIC INDUSTRIES INC (1974; SIC 3079)",2565 CURTIS,1965,1983,Civic / school / health,2,1,1,0
-1,S00933,Hazardous-sector manufacturers 1965-1992,on no current inventory,"OLO HCMESTEAC BREAD CO (1967; SIC 2051,3461,3479)",2727 W 27TH,1966,1968,Civic / school / health,4,6,6,0
-1,S04844,Hazardous-sector manufacturers 1965-1992,on a current inventory,"SERVICES SPECTROGRAPHICS INC (1988; SIC 2675,2752,3577)",3115 E 40TH AVE 2,1983,1990,Civic / school / health,,,,0
-1,S00861,Hazardous-sector manufacturers 1965-1992,on a current inventory,"MACLEAR MFG CO (1966-1983; SIC 3599) | HURT, ARTHUR Jy + CO (1967-1970; SIC 3729,3843) | AMERICAN INSULATING WINDOW (1988-1990; SIC 3089,3442,3499) | UNIVERSAL PATTERN CO (1988-1990; SIC 3089,3544,3565)",360 S NAVAJO,1966,1990,Civic / school / health,4,7,7,0
-1,S01406,Hazardous-sector manufacturers 1965-1992,on no current inventory,"ALADDIN IRON + STEEL CORP (1967; SIC 3441,3352) | GENERATCR EXCHANGE CC INC (1968; SIC 3714)",3600 PECOS,1967,1968,Civic / school / health,4,6,6,0
+1,S02916,Hazardous-sector manufacturers 1965-1992,on a current inventory,INNERPAK ENC (1974; SIC 3589) | DIVERSIFIED MANUFACTURERS CORP (1977; SIC 3573),3532 FRANKLIN ST,1974,1983,Civic / school / health,2,3,3,0
 1,S00107,Hazardous-sector manufacturers 1965-1992,on a current inventory,"C O C CRAFTSMEN (1983; SIC 3964,3499) | SANCHEZ INTERNATIONAL (1983; SIC 3964,2387,3079)",4280 COLUMBINE,1965,1983,Civic / school / health,2,3,3,0
-1,S02006,Hazardous-sector manufacturers 1965-1992,on a current inventory,BEST QUALITY PLASTICS INC (1970-1973; SIC 3079) | 8 Q P INCUSTRIES INC (1974-1988; SIC 3079),4747 IRONTON ST,1970,1988,Civic / school / health,,,,0
 1,S00742,Hazardous-sector manufacturers 1965-1992,on a current inventory,GRANNAN SAND + GRAVEL CO (1967-1990; SIC 2951) | BRANNAN SAND + GRAVEL CO (1968; SIC 2951),4800 BRIGHTON BLVD,1966,1992,Civic / school / health,2,3,3,1
 1,S04743,Hazardous-sector manufacturers 1965-1992,on a current inventory,PUBLISHERS COUNTER TOPS LM (1988; SIC 2841) | MID AMERICA PLATING INC (1990; SIC 3471),4877 NATIONAL WESTERN DR,1983,1990,Civic / school / health,2,,,1
 1,S04810,Hazardous-sector manufacturers 1965-1992,on a current inventory,"PLASTMOLD INC (1983-1990; SIC 3079) | FRYE COPY SYSTEMS (1988; SIC 3089,3955,3500) | OMEGA MOLD INC (1988-1990; SIC 3089) | NER DATA PRODUCTS (1990; SIC 3089,3955)",5131 RACE CT,1983,1992,Civic / school / health,,,3,0
 1,S03977,Hazardous-sector manufacturers 1965-1992,on no current inventory,MAJESTIC WAX CO (1980; SIC 2842),6035 E 36TH AVE,1980,1980,Civic / school / health,,,,0
-1,S06957,Hazardous-sector manufacturers 1965-1992,on a current inventory,CENTRAL DENVER IRON WORKS INC (1992; SIC 3446),701 DECATUR ST,1992,1992,Civic / school / health,,,,0
-1,S01424,Hazardous-sector manufacturers 1965-1992,on no current inventory,CROWN TAR + CHEMICAL WORKS INC (1967-1980; SIC 2814) | CROWN TAR + CHEMICAL WORKS INC 2791 TYPESETTING (1977; SIC 2899),900 WEWATTA,1967,1980,Civic / school / health,1,1,1,0
-1,S00811,Hazardous-sector manufacturers 1965-1992,on a current inventory,sg corp (1966; SIC 3441),980 GRAPE,1966,1966,Civic / school / health,,,4,0
 2,HF07599,Hazardous trades before 1960 (street level),pre-1960,ROCKY FORD-Steward Metal Works,1004 Elm ST,1956,1956,Residential,,,4,0
-2,HF04683,Hazardous trades before 1960 (street level),pre-1960,Goulden Geo H,1060 Acoma,1935,1935,Residential,1,2,2,0
 2,HF05798,Hazardous trades before 1960 (street level),pre-1960,Mastrini John,1201 Spruce,1927,1927,Residential,,,,0
-2,HF04557,Hazardous trades before 1960 (street level),pre-1960,ABGCle mers & Dyers,1219 E Colfax,1932,1932,Residential,3,4,4,0
 2,HF04702,Hazardous trades before 1960 (street level),pre-1960,Western Iron Foundry,1320 Wazee,1935,1935,Residential,1,1,1,0
 2,HF06610,Hazardous trades before 1960 (street level),pre-1960,Hold Everything Prod Edwin Hill & Jack Kline,1334 Speer Blvd,1950,1950,Residential,1,2,2,0
 2,HF04440,Hazardous trades before 1960 (street level),pre-1960,Smelter settlement,137 E 1st av,1917,1917,Residential,3,2,2,0
-2,HF06717,Hazardous trades before 1960 (street level),pre-1960,Surplus Tools & Commodities Wm D Cox & CF Hale,1379 W Alameda,1950,1950,Residential,4,7,7,0
 2,HF03621,Hazardous trades before 1960 (street level),pre-1960,genl mgr Colorado Iron Works,140 Cook,1914,1915,Residential,,,4,0
 2,HF04687,Hazardous trades before 1960 (street level),pre-1960,Hicks Arthur G^ machine shop,1429 E 26th av,1935,1935,Residential,2,3,3,0
-2,HF04115,Hazardous trades before 1960 (street level),pre-1960,Macadam and Asphalt Rollers,1507 Blake,1916,1916,Residential,2,1,1,1
+2,HF03665,Hazardous trades before 1960 (street level),pre-1960,OHIO & COLORADO SMELTING,1451 Curtis,1915,1915,Residential,1,1,1,1
 2,HF06374,Hazardous trades before 1960 (street level),pre-1960,and ventilating,151 W 1st,1935,1939,Residential,1,2,2,0
 2,HF05461,Hazardous trades before 1960 (street level),pre-1960,United States Rubber Co,1515 Wazee,1920,1943,Residential,2,1,1,0
-2,HF02626,Hazardous trades before 1960 (street level),pre-1960,Lead Works Co,1516 Blake,1912,1912,Residential,2,1,1,1
-2,HF02924,Hazardous trades before 1960 (street level),pre-1960,ler & Iron Works Co,1516 Blake,1913,1913,Residential,2,1,1,1
-2,HF02916,Hazardous trades before 1960 (street level),pre-1960,Freund &CoGeo,1542 Blake,1913,1913,Residential,2,1,1,0
+2,HF05220,Hazardous trades before 1960 (street level),pre-1960,"Walker Thomas C., propr, Midland Foundry and Machine Works",1534 Delgany,1891,1891,Residential,2,1,1,0
 2,HF06656,Hazardous trades before 1960 (street level),pre-1960,Perfec BondingMtlCoGR & EttaV Fisher,157 S Lafayette,1950,1950,Residential,,4,4,0
+2,HF05421,Hazardous trades before 1960 (street level),pre-1960,QUEEN CITY FOUNDRY CO,1633 Blake,1884,1920,Residential,2,1,1,0
+2,HF03297,Hazardous trades before 1960 (street level),pre-1960,MINE & SMELTER SUPPLY CO,1650 Champa,1914,1914,Residential,2,1,1,0
 2,HF06223,Hazardous trades before 1960 (street level),pre-1960,Denver Grinding Ball & Foundry,1677 S Clarkson,1935,1939,Residential,3,5,5,0
+2,HF06737,Hazardous trades before 1960 (street level),pre-1960,Western Belting & Packing Co,1720 Wazee,1950,1950,Residential,2,1,1,0
 2,HF07543,Hazardous trades before 1960 (street level),pre-1960,Johnny's Boiler Shop,1725 Wabash,1956,1956,Residential,,,,0
 2,HF06518,Hazardous trades before 1960 (street level),pre-1960,Cavaleri,1735 W 35th,1950,1950,Residential,4,6,6,0
 2,HF07568,Hazardous trades before 1960 (street level),pre-1960,Longo sfieet Metal Works,1735 W. 35th,1956,1956,Residential,4,6,6,0
 2,HF07727,Hazardous trades before 1960 (street level),pre-1960,Kinzbach Win,1737 15th,1941,1941,Residential,2,1,1,2
-2,HF03925,Hazardous trades before 1960 (street level),pre-1960,Fair C W,1763 Blake,1915,1916,Residential,2,1,1,0
+2,HF06642,Hazardous trades before 1960 (street level),pre-1960,Nathan Louis B William & Jacob Goldberg,1745 Wazee,1950,1950,Residential,2,1,1,0
+2,HF06697,Hazardous trades before 1960 (street level),pre-1960,Shattuck SW Chemical Co The,1805 S Bannock,1950,1950,Residential,1,5,5,0
+2,HF05372,Hazardous trades before 1960 (street level),pre-1960,Hingley J A,1816 Blake,1914,1920,Residential,2,1,1,0
 2,HF02601,Hazardous trades before 1960 (street level),pre-1960,Denver Iron Works & Foundry DENVER MASTER PLUMBERS,1827 Wynkoop,1912,1912,Residential,2,1,1,0
 2,HF03612,Hazardous trades before 1960 (street level),pre-1960,DENVER GAS & ELECTRIC Denver IronW orks & Foundry Co,1827 Wynkoop,1915,1915,Residential,2,1,1,0
-2,HF07547,Hazardous trades before 1960 (street level),pre-1960,Sample Machine Shop,1852 Larimer ST,1956,1956,Residential,2,1,1,0
 2,HF05386,Hazardous trades before 1960 (street level),pre-1960,Leson J,1913 W 32nd av,1911,1920,Residential,4,6,6,0
 2,HF05342,Hazardous trades before 1960 (street level),pre-1960,Dawson W H,1937 Larimer,1914,1920,Residential,2,1,1,0
-2,HF06590,Hazardous trades before 1960 (street level),pre-1960,Grabler Mfg Co The,1962 Blake St,1950,1950,Residential,2,1,1,0
-2,HF06732,Hazardous trades before 1960 (street level),pre-1960,Vine Pharmacy Anthony J Joy,2039 E 13th Av,1950,1950,Residential,3,4,4,0
-2,HF07726,Hazardous trades before 1960 (street level),pre-1960,Kenyon Iron Works,2042 Larimer,1941,1941,Residential,2,1,1,0
 2,HF07253,Hazardous trades before 1960 (street level),pre-1960,Royal Oil Co Cascade Petroleum Co,2120 Delgany,1956,1956,Residential,2,1,1,1
 2,HF07636,Hazardous trades before 1960 (street level),pre-1960,Cascade Petroleum Co,2120 Delgany,1956,1956,Residential,2,1,1,1
-2,HF04264,Hazardous trades before 1960 (street level),pre-1960,Enterprise Sheet Metal Works,2233 Glenarm,1917,1917,Residential,2,1,1,0
-2,HF07273,Hazardous trades before 1960 (street level),pre-1960,Victory Auto Body & Paint Shop,2260 California,1956,1956,Residential,2,1,1,1
 2,HF07580,Hazardous trades before 1960 (street level),pre-1960,Wixson Furnace & Sheet Metal W k s,2301 W. 30th,1956,1956,Residential,4,6,6,0
 2,HF06710,Hazardous trades before 1960 (street level),pre-1960,"Square Deal Mfg Co WA. WA Jr, I, Trusella P Thomas",2344 Larimer,1950,1950,Residential,2,1,1,0
 2,HF06533,Hazardous trades before 1960 (street level),pre-1960,"Colo Standard Upholstery Co M Nierenberg M Stein, I Lande",2363 Larimer,1950,1950,Residential,2,1,1,0
@@ -84,15 +67,14 @@ priority,id,series,status,name,address,first_year,last_year,use_now,sanborn_1903
 2,HF06744,Hazardous trades before 1960 (street level),pre-1960,Wilkerson Valve Co Inc,260 S Dale Ct,1950,1950,Residential,,,7,0
 2,HF07247,Hazardous trades before 1960 (street level),pre-1960,Reliable Sheet Metal Robert J Oppelt,2685 S High,1956,1956,Residential,,,5,0
 2,HF07573,Hazardous trades before 1960 (street level),pre-1960,Reliable Sheet Metal,2685 S. High,1956,1956,Residential,,,5,0
-2,HF06613,Hazardous trades before 1960 (street level),pre-1960,Howard Flint Ink Co,2807 Blake St,1950,1950,Residential,2,1,1,0
 2,HF04795,Hazardous trades before 1960 (street level),pre-1960,Cars 11,2814 Lari,1943,1943,Residential,2,1,1,0
+2,HF07275,Hazardous trades before 1960 (street level),pre-1960,Wilkin Sheet Metal,290 S. Perry,1956,1956,Residential,,,,0
 2,HF06677,Hazardous trades before 1960 (street level),pre-1960,Reliable Pest Control Co O R Phillips & CB Morgan,3145 Tejon,1950,1950,Residential,4,6,6,0
+2,HF06553,Hazardous trades before 1960 (street level),pre-1960,De Diet Mineral Co John R Taft,3158 W Colfax,1950,1950,Residential,,7,7,0
 2,HF07692,Hazardous trades before 1960 (street level),pre-1960,Quality Sheet Metal Works,3301 W Colorado av,1941,1941,Residential,,,,0
-2,HF06676,Hazardous trades before 1960 (street level),pre-1960,RedfieldGun SightColWItWC Redfield Et Al,3315 Gilpin,1950,1950,Residential,2,3,3,0
 2,HF07269,Hazardous trades before 1960 (street level),pre-1960,United Steel & Iron Works,3609 Wynkoop,1956,1956,Residential,2,3,3,1
-2,HF03281,Hazardous trades before 1960 (street level),pre-1960,INDEPENDENT POWDER CO,3654 Navajo,1914,1914,Residential,4,6,6,0
 2,HF04558,Hazardous trades before 1960 (street level),pre-1960,auto body builders,3820 Steele,1932,1932,Residential,,,,0
-2,HF06523,Hazardous trades before 1960 (street level),pre-1960,Chromite Co of Denver The Robert S Layton,4620 E Colfax,1950,1950,Residential,,4,4,1
+2,HF07209,Hazardous trades before 1960 (street level),pre-1960,Hank's Auto Body Henry Vecch iarelli,4001 W 38th,1956,1956,Residential,,7,7,3
 2,HF06622,Hazardous trades before 1960 (street level),pre-1960,Jesmer Ralph K,4836 Bryant St,1950,1950,Residential,,,7,0
 2,HF07575,Hazardous trades before 1960 (street level),pre-1960,Smaldone Sheet Metal Works,4980 Elm,1956,1956,Residential,,,7,0
 2,HF06735,Hazardous trades before 1960 (street level),pre-1960,Wesco Corp Evergreen,531 S Vine,1950,1950,Residential,,5,5,0
@@ -107,215 +89,183 @@ priority,id,series,status,name,address,first_year,last_year,use_now,sanborn_1903
 2,S00292,Hazardous-sector manufacturers 1965-1992,on a current inventory,PETERSON HEATING AND SHEET METAL (1965; SIC 3444),1024 LIPAN,1965,1965,Residential,1,2,2,0
 2,S00841,Hazardous-sector manufacturers 1965-1992,on no current inventory,"H + H LIGHTING + MFG CO HESSLER MFG CO (1967; SIC 3642,3843,3434)",1025 21ST,1966,1967,Residential,2,1,1,2
 2,S04001,Hazardous-sector manufacturers 1965-1992,on no current inventory,POLYCRAFT CORP (1980; SIC 3079),105 HOLLY ST,1980,1980,Residential,,,,0
-2,S01519,Hazardous-sector manufacturers 1965-1992,on no current inventory,"CODE SIGN CORP OF DENVER (1973; SIC 3993,3079,2752)",1090 LIPAN ST,1967,1973,Residential,1,2,2,0
+2,S00334,Hazardous-sector manufacturers 1965-1992,on a current inventory,"SAMSCNITE CCRP (1968; SIC 3161,2514,3541) | GATES ENERGY PRODUCTS INC (1974-1980; SIC 3692) | BASBLERE NE (1988; SIC 3691,3052,3069)",1050 S BROADWAY,1965,1988,Residential,3,5,5,0
 2,S02930,Hazardous-sector manufacturers 1965-1992,on no current inventory,"CREATIVE CHEMISTRY INC (1980; SIC 2842,3999) | LINCOLN GROUP ART REPROOGCTIONS INC THE (1980; SIC 2842,3484)",1101 S MONACO PKWY,1974,1980,Residential,,,,0
-2,S06378,Hazardous-sector manufacturers 1965-1992,on a current inventory,"BOYD CORP (1990; SIC 2672,3053,3089)",11101 E 53RD AVE,1990,1990,Residential,,,,0
 2,S05554,Hazardous-sector manufacturers 1965-1992,on a current inventory,ARCTURUS SKYLIGHTS (1988-1990; SIC 3089),1111 W EXPOSITION AVE,1988,1990,Residential,,,,0
-2,S02448,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ESSCO PRODUCTS INC (1973-1988; SIC 2541,2542,3442)",1155 W 5TH AVE,1973,1990,Residential,1,2,2,0
-2,S00124,Hazardous-sector manufacturers 1965-1992,on no current inventory," (1970; SIC 3341) | NATIONAL SMELTING + REFINIAG CO (1973-1974; SIC 3341,3356)",1200 13TH,1965,1974,Residential,1,1,1,0
+2,S02437,Hazardous-sector manufacturers 1965-1992,on no current inventory,"O-C METAL PLATING + FOUNDRY WORKS (1973-1974; SIC 3361,3362,3471)",1125 LIPAN,1973,1974,Residential,1,2,2,0
+2,S02465,Hazardous-sector manufacturers 1965-1992,on no current inventory,JOBBERS SERVICE INC (1973-1974; SIC 3714),1132 SPEER BLVD,1973,1990,Residential,1,2,2,0
+2,S02068,Hazardous-sector manufacturers 1965-1992,on no current inventory,UNIVERSAL SPRINGS INC (1970; SIC 3493),1201 24TH,1970,1970,Residential,2,1,1,0
+2,S00777,Hazardous-sector manufacturers 1965-1992,on no current inventory,"STUSKA ENGINEERING CO (1968; SIC 3821,3591,3544)",1201 SPEER,1966,1988,Residential,1,2,2,1
 2,S02484,Hazardous-sector manufacturers 1965-1992,on no current inventory,"MILE-HI MACHINE ¢ MOLD (1974-1977; SIC 3544,3591)",1219 N SPEER,1973,1977,Residential,1,2,2,0
 2,S00361,Hazardous-sector manufacturers 1965-1992,on a current inventory,"VIKING METAL SPINNING CC. (1965-1967; SIC 3459) | CLC VIKING SFOP (1968; SIC 3461,2505)",1236 DELAWARE,1965,1970,Residential,1,2,2,0
 2,S03908,Hazardous-sector manufacturers 1965-1992,on no current inventory,"E + SCREW MACHINE PRODUCTS (1980-1983; SIC 3542,3599)",1300 S PATTON CT,1980,1983,Residential,,,,0
 2,S00282,Hazardous-sector manufacturers 1965-1992,on no current inventory,NATIONAL WIRE SPECIALTY CORP. (1965; SIC 3481),1301 HW CENTER AVE,1965,1965,Residential,,,,0
 2,S00149,Hazardous-sector manufacturers 1965-1992,on a current inventory,CAY AND NIGHT SIGNS (1965; SIC 3553),131 S HARRISON ST,1965,1992,Residential,,,4,0
+2,S00257,Hazardous-sector manufacturers 1965-1992,on a current inventory,"MARSHALL MFG. CO. (1965; SIC 3591) | MARSHALL GUN COMPANY (1966; SIC 3484) | MARSHALL MFG CO 3452 BOLTS, NUTS, SCREWS + WASFERS (1968; SIC 3591) | ZOHN MFG CO 2892 EXPLOSIVES (1970; SIC 2892)",1322 LAWRENCE ST,1965,1970,Residential,1,1,1,1
 2,S01777,Hazardous-sector manufacturers 1965-1992,on no current inventory,MILC NAIL COSPETIC INC (1968-1970; SIC 2844),1360 NIAGARA,1968,1970,Residential,,,4,0
+2,S00951,Hazardous-sector manufacturers 1965-1992,on a current inventory,PHILLIPS PETROLEUM CORP (1966; SIC 2879),1375 KEARNEY,1966,1966,Residential,,,4,0
 2,S04700,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ALAMEDA ORNAMENTAL IRON INCe (1983-1990; SIC 3446,2514,3442)",1383 WE ALAMEDA,1983,1990,Residential,4,7,7,0
 2,S00084,Hazardous-sector manufacturers 1965-1992,on a current inventory,"AIR SYSTEMS, INC. (1965; SIC 3444) | WIRE + METAL PRODUCTS CO INC (1970; SIC 3481,3461)",1385 INCA,1965,1992,Residential,1,2,2,0
-2,S00942,Hazardous-sector manufacturers 1965-1992,on a current inventory,"*PEARCE ORILL STEEL CORP (1966-1970; SIC 3532) | LOUIES LITTLE FORGE (1974-1988; SIC 3462,3532) | BOUIES LLTTILE FORGE (1980; SIC 3462,3423)",1400 DELGANY,1966,1988,Residential,1,1,1,0
 2,S03854,Hazardous-sector manufacturers 1965-1992,on no current inventory,AVANTI SAILBOAT CO (1980; SIC 3732),1415 S JASMINE WAY,1980,1980,Residential,,,,0
-2,S02964,Hazardous-sector manufacturers 1965-1992,on no current inventory,PROGRESSIVE TOOL + MACHINE (1974; SIC 3544),1420 W 46TH AVE,1974,1974,Residential,,,,0
+2,S01747,Hazardous-sector manufacturers 1965-1992,on a current inventory,"FIXTURES OF DENVER, INC 3591 MACHINE SHOPS, JOBBING AND REPAIR (1973; SIC 3599)",1415 WEWATTA ST,1968,1980,Residential,1,1,1,1
 2,S00943,Hazardous-sector manufacturers 1965-1992,on a current inventory,"PEERLESS ALLOY INC (1966-1990; SIC 3341) | WENSLEY METAL PRODUCTS CO (1966-1992; SIC 3356) | BuOBLETS ESA” (1988; SIC 3341,3356,3369)",1445 OSAGE,1966,1992,Residential,1,2,2,0
-2,S01527,Hazardous-sector manufacturers 1965-1992,on no current inventory,METAL STRIP DK SCURLOCK GEN EN MGR 2751 COM*L PRINTING EXCEPT PT LIT! (1967; SIC 3442),15 S CHEROKEE,1967,1967,Residential,1,2,2,0
+2,S00739,Hazardous-sector manufacturers 1965-1992,on a current inventory,BLACKWELL ELECTRONIC LABS INC (1966-1970; SIC 3599),1515 JASMINE,1966,1970,Residential,,,4,0
 2,S01515,Hazardous-sector manufacturers 1965-1992,on a current inventory,"PERMA-GRAPHIGS INC (1980-1983; SIC 3999,3079) | PLASTILAM (1980; SIC 3079,3999,3993)",1516 CLAY,1967,1983,Residential,4,7,7,0
 2,S01412,Hazardous-sector manufacturers 1965-1992,on a current inventory,"SAND + SAGE ¥FG CO (1968; SIC 2387,3564)",1523 WAZEE,1965,1990,Residential,2,1,1,0
+2,S01802,Hazardous-sector manufacturers 1965-1992,on a current inventory,"AMERICAN COSTUME CO (1988-1990; SIC 2389,2844,3931)",1530 BLAKE,1965,1992,Residential,2,1,1,0
 2,S00321,Hazardous-sector manufacturers 1965-1992,on a current inventory,"SACHS-LAWLOR CO., THE (1965-1968; SIC 3461) | SACHS-LAWLOR CO, THE (1966-1970; SIC 3469)",1543 LARIMER,1965,1970,Residential,2,1,1,0
+2,S00990,Hazardous-sector manufacturers 1965-1992,on no current inventory,WAUKESHA FOUNDRY CO (1966-1967; SIC 3369) | SERPENTIX CONVEYOR CORP (1973-1983; SIC 3535),1550 S PEARL,1966,1983,Residential,3,5,5,0
 2,S01797,Hazardous-sector manufacturers 1965-1992,on no current inventory,S + H SHEET METAL CO (1968; SIC 3444),1555 W VIRGINIA AVE,1968,1968,Residential,,,,0
-2,S02398,Hazardous-sector manufacturers 1965-1992,on a current inventory,"AOCOMOLD INC (1973-1974; SIC 3842,3079)",1558 CALIFORNIA ST,1973,1983,Residential,2,1,1,0
 2,S02897,Hazardous-sector manufacturers 1965-1992,on a current inventory,DIVERSIFIED MANUFACTURERS CORP (1974; SIC 3573),1600 E 36TH AVE,1974,1974,Residential,2,3,3,1
 2,S02402,Hazardous-sector manufacturers 1965-1992,on no current inventory,ARCHITECTURAL FORMING SYSTEMS (1980; SIC 3079) | ARCHITECTURAL FORMING SYSTEMS (1983; SIC 3079),1607 S LOCUST,1973,1983,Residential,,,,0
 2,S00309,Hazardous-sector manufacturers 1965-1992,on no current inventory,"RAHNE SHEET METAL, INC. (1965; SIC 3444)",1632 S GRAPE ST,1965,1965,Residential,,,,0
 2,S02451,Hazardous-sector manufacturers 1965-1992,on a current inventory,FABRICO MFG CO (1973; SIC 3599),1634 VALLEJO,1973,1973,Residential,,,,0
 2,S02403,Hazardous-sector manufacturers 1965-1992,on a current inventory,ALPHA LABORATORIES INC (1990; SIC 2899),1685 S FAIRFAX,1973,1990,Residential,,,,0
+2,S02463,Hazardous-sector manufacturers 1965-1992,on a current inventory,JACOBS INDUSTRIES (1973; SIC 3441),1700 FILLMORE,1973,1973,Residential,3,4,4,0
+2,S00063,Hazardous-sector manufacturers 1965-1992,on a current inventory,A B C FURNACE CO. (1965; SIC 3444),1732 MARION,1965,1965,Residential,3,3,3,0
+2,S01811,Hazardous-sector manufacturers 1965-1992,on a current inventory,"EMIGH, GEORGE F, PATTERN WORKS 2C87 FLAVORING EXTRACTS + SyRUPS N EC (1967; SIC 3565) | EMIGHs GEORGE Fy PATTERN WORKS (1968-1973; SIC 3565) | STEBBINS MFG + SUPPLY CO (1968-1974; SIC 3821,3582) | SURE SPRAY MFG CO (1973; SIC 3563,3999) | OMNI ENGINEERENG-STEBBINS MFG + SUPP CO (1980-1983; SIC 3582) | SURE SPRAY REG CO (1980; SIC 3582)",1762 BLAKE,1966,1990,Residential,2,1,1,0
 2,S00702,Hazardous-sector manufacturers 1965-1992,on no current inventory,AD INOUSTRIES (1966-1974; SIC 3079),1800 BOULDER ST,1966,1992,Residential,4,6,6,0
 2,S02502,Hazardous-sector manufacturers 1965-1992,on no current inventory,"SACHS-LAWLOR CO (1973; SIC 3479,3953,3469) | SACHS=EAWLOR CO 2421 SAWMILLS AND. PLANING MILLS, GENERAL 8 A SHAFER PRES (1974; SIC 1035)",1800 LAWRENCE,1973,1977,Residential,2,1,1,0
+2,S00220,Hazardous-sector manufacturers 1965-1992,on no current inventory,FINGLEYs J. A.) MACHINE CO. (1965-1988; SIC 3591),1818 BLAKE,1965,1992,Residential,2,1,1,0
 2,S00345,Hazardous-sector manufacturers 1965-1992,on a current inventory,CP DIVISION ST REGIS (1966; SIC 3559),1843 LAWRENCE,1965,1968,Residential,2,1,1,0
-2,S01487,Hazardous-sector manufacturers 1965-1992,on a current inventory,NATIONAL SANITARY SUPPLY CO (1967; SIC 2842),1844 LARIMER,1967,1968,Residential,2,1,1,0
 2,S03926,Hazardous-sector manufacturers 1965-1992,on no current inventory,"FRONTIER HOSE + COUPLINGS (1980; SIC 3041,3494,3568)",185 GARFIELD NO 7,1980,1980,Residential,,,4,0
-2,S00800,Hazardous-sector manufacturers 1965-1992,on no current inventory,AEON ELECTRONICS INC (1990; SIC 3577),1859 S PEARL,1966,1990,Residential,,5,5,0
 2,S00161,Hazardous-sector manufacturers 1965-1992,on no current inventory,CENVER PREFORMING CO. (1965-1967; SIC 2852),1934 WE 33RD,1965,1968,Residential,4,6,6,0
+2,S00310,Hazardous-sector manufacturers 1965-1992,on a current inventory,RAINS FLO MFG CO is (1965; SIC 3458) | 8 + N TRADE BINDERY CO (1966; SIC 3599) | *HARRY'S BEAN SPROUTS (1966; SIC 2491) | HILLIKER HYDRAULICS INC (1968-1970; SIC 3599) | RAINS-FLO MFE CO (1968; SIC 3599),1936 LAWRENCE,1965,1970,Residential,2,1,1,1
 2,S00320,Hazardous-sector manufacturers 1965-1992,on a current inventory,S + H SHEET METAL CO. (1965-1973; SIC 3444),1955 WE VIRGINIA AVE,1965,1973,Residential,,,,0
-2,S03959,Hazardous-sector manufacturers 1965-1992,on a current inventory,"KAPIT ENC (1980; SIC 3079,3291) | CUSTOM MOLDING (1983-1988; SIC 3079,3544)",200 LIPAN ST,1980,1988,Residential,1,2,2,6
-2,S00271,Hazardous-sector manufacturers 1965-1992,on no current inventory,"MORRISON - PELSUE CO. (1965; SIC 3433) | MOPECO, DIVISION OF GENERAL CABLE CORP (1970; SIC 3433,3564,3449)",2001 S BANNOCK,1965,1974,Residential,1,5,5,0
-2,S03984,Hazardous-sector manufacturers 1965-1992,on a current inventory,METAL MAGIC INC (1980; SIC 3499),2037 S FEDERAL BLVD,1980,1990,Residential,,,,0
 2,S05571,Hazardous-sector manufacturers 1965-1992,on a current inventory,"¥ J CHRISTON GRINDING CO (1988; SIC 3411) | GREENWOOD VILLAGE LANE MFG INC (1988; SIC 3523,3841)",2068 5 BANNOCK ST,1988,1988,Residential,,4,4,0
-2,S03970,Hazardous-sector manufacturers 1965-1992,on a current inventory,MCATEE BOLT CO (1990; SIC 3452),208 KALAMATH,1980,1990,Residential,1,2,2,0
 2,S00260,Hazardous-sector manufacturers 1965-1992,on a current inventory,"MASTERCRAFT, INC. (1965; SIC 2814)",2101 52ND AVE,1965,1965,Residential,,,,0
 2,S03875,Hazardous-sector manufacturers 1965-1992,on a current inventory,"COLORAOD COOPERAGE WORKS (1980; SIC 3412,2655)",2120 DELGANEY,1980,1980,Residential,2,1,1,1
 2,S00082,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ALNSWORTHs WMe INC (1970; SIC 3811,3576) | METAL PHCTO PROCESSING, INC (1974; SIC 3993,3999,3469)",2151 LAWRENCE,1965,1980,Residential,2,1,1,0
+2,S06967,Hazardous-sector manufacturers 1965-1992,on a current inventory,ELCAR FENCE + SUPPLYCO- (1992; SIC 3496),2155 VALENTIA ST,1992,1992,Residential,,,,0
+2,S04698,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ACCURATE MACHINING (1983; SIC 3599,3441) | PROGRESSIVE TOOL + DIEs INC. (1983; SIC 3544,3542)",2219 S JASON,1983,1983,Residential,,7,7,0
 2,S00215,Hazardous-sector manufacturers 1965-1992,on no current inventory,FEISTEN HEATING + SHEET METAL (1965; SIC 3444),2225 LOCUST,1965,1965,Residential,,,3,0
 2,S03849,Hazardous-sector manufacturers 1965-1992,on a current inventory,"WLUMINUM BUILOING PRODUCES, INC (1980; SIC 3442,3448,3446)",2277 S CHEROKEE,1980,1980,Residential,,,,0
-2,S02954,Hazardous-sector manufacturers 1965-1992,on a current inventory,"PPG INDUSTRIES» INC. (1974; SIC 3442,3444)",2301 S DELAWARE,1974,1992,Residential,,,,0
 2,S00286,Hazardous-sector manufacturers 1965-1992,on a current inventory,NORCEN LABCRATORIES (1965; SIC 2821) | LEYBA'S RUBBER STAMP + SEAL CO 2099 FOOD PREPARATIINSs NEC (1977; SIC 3069),2306 CHAMPA,1965,1980,Residential,2,1,1,0
-2,S00162,Hazardous-sector manufacturers 1965-1992,on no current inventory,CENVER RE-TiNNING + METALIZING CO. (1965; SIC 3479),2307 LARIMER,1965,1974,Residential,2,1,1,0
 2,S04880,Hazardous-sector manufacturers 1965-1992,on no current inventory,"YARTER-TEK CORPORATION (1983-1992; SIC 3843,3999,3533) | YARTER-TEK CORP D.B.A.-SILVER TEK (1988; SIC 3533,3843,3999)",2315 EUDORA,1983,1992,Residential,,3,3,0
-2,S02994,Hazardous-sector manufacturers 1965-1992,on a current inventory,"MANUFACTURING INDUSTRIES, NEC (1977; SIC 3079)",2326 CHAMPA,1974,1977,Residential,2,1,1,0
 2,S00145,Hazardous-sector manufacturers 1965-1992,on no current inventory,SQUARE REAL MFG. Co. (1965; SIC 2842),2363 LARIMER,1965,1990,Residential,2,1,1,0
-2,S03953,Hazardous-sector manufacturers 1965-1992,on no current inventory,"4°44 PERFORMANCG MARINE INC (1980; SIC 3799,3732)",240 S PECOS ST,1980,1980,Residential,,,,0
-2,S00115,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ATLAS CASE INC (1988; SIC 3161,2891,3543)",2433 CURTIS,1965,1990,Residential,2,1,1,0
+2,S00264,Hazardous-sector manufacturers 1965-1992,on a current inventory,MCKIM WELDING + MACHINE SHOP (1965; SIC 3591) | *MC KIM WELDING + MACHINE SHOP (1966-1973; SIC 3599),242 ELATI,1965,1973,Residential,1,2,2,1
+2,S03261,Hazardous-sector manufacturers 1965-1992,on no current inventory,AMERICAN STEEL + IROM WORKS INC (1977; SIC 3443),245 FOX ST,1977,1977,Residential,1,2,2,0
 2,S00195,Hazardous-sector manufacturers 1965-1992,on a current inventory,GASSER MFG CO. (1965; SIC 3461),249 DELAWARE ST REAR,1965,1965,Residential,1,2,2,0
+2,S03845,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ALL PACKAGING CO., INC (1980; SIC 2651,2645,3993)",250 BROADWAY,1980,1992,Residential,1,2,2,0
 2,S00386,Hazardous-sector manufacturers 1965-1992,on a current inventory,WOMPEY SHEET METAL WORKS (1965; SIC 3444),2500 15TH,1965,1965,Residential,4,6,6,0
 2,S00753,Hazardous-sector manufacturers 1965-1992,on a current inventory,"CARD, C S IRON WORKS CO, THE (1966; SIC 3321) | CARD, C S$ IRON WORKS CO» THE (1967; SIC 3532,3321) | CARD CORPORATION (1968-1977; SIC 3321,3532,3323) | HERON POMA CO (1974; SIC 3538) | INSECO INC (1980; SIC 3443,3498,3599)",2501 W 16TH AVE,1966,1980,Residential,4,6,6,0
+2,S00203,Hazardous-sector manufacturers 1965-1992,on no current inventory,GOLCBERG BROTHERS MFG. CO. (1965; SIC 3861) | EMPIRE SPRING + SHCCK SERVICE IAC (1968; SIC 3493),2535 LARIMER ST,1965,1968,Residential,2,1,1,0
 2,S01479,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ASBESTOS ROOFING cc. (1965; SIC 3444) | METAL INDUSTRIES INC ALUMINUM SCREEN OIV (1966; SIC 3441) | FABRICATORS INC (1968; SIC 3079) | MCORE, BENJAMIN, + CO (1968-1973; SIC 2851) | STYRO MATERIALS CO (1974; SIC 3079) | BENJAMIN MOORE + CO (1992; SIC 2851)",2535 WALNUT,1965,1992,Residential,2,1,1,1
-2,S02978,Hazardous-sector manufacturers 1965-1992,on no current inventory,"SPEEDI-SIGN (1974; SIC 3993,3079)",2563 15TH ST,1974,1980,Residential,4,6,6,0
 2,S01480,Hazardous-sector manufacturers 1965-1992,on no current inventory,"MORRISON-PELSUE CO (1967; SIC 3433,3564)",2601 S BANNOCK,1967,1967,Residential,,5,5,0
 2,S02506,Hazardous-sector manufacturers 1965-1992,on no current inventory,"SANCHEZ, MOSES B., ORNAMENTAL IRON WORK (1973; SIC 3446)",266 KNOX CT,1973,1973,Residential,,,7,0
-2,S00952,Hazardous-sector manufacturers 1965-1992,on a current inventory,"SPORTSMAN MFG CO (1980; SIC 3469,3499)",2705 HIGH,1966,1980,Residential,2,3,3,0
-2,S02013,Hazardous-sector manufacturers 1965-1992,on no current inventory,"DENVER BARREL + DRUM INC (1992; SIC 3412,3089,2655)",2715 17TH,1970,1992,Residential,4,6,6,0
-2,S04742,Hazardous-sector manufacturers 1965-1992,on a current inventory,"CONVEYING INDUSTRIES INC (1983; SIC 3559,3535) | ABUSES inc (1988; SIC 3538,3559)",2750 BLAKE ST,1983,1988,Residential,2,1,1,0
-2,S00017,Hazardous-sector manufacturers 1965-1992,on a current inventory,MEEHLEIS STEEL CO. (1965; SIC 3441),2800 S FEDERAL BLVD,1965,1965,Residential,,,,1
-2,S00701,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ACME SANITARY SUPPLY CO (1968-1974; SIC 2841,2842,3471) | AgMae ut RY (1988; SIC 2841,2842) | HUNTINGTON LABORATORIES ie (1990; SIC 2841)",2819 LARIMER,1966,1990,Residential,2,1,1,0
+2,S00697,Hazardous-sector manufacturers 1965-1992,on a current inventory,A + A BUILDING PRODUCTS (1966; SIC 3599),2722 W 2ND AVE,1966,1966,Residential,,,,0
 2,S02945,Hazardous-sector manufacturers 1965-1992,on a current inventory,MINING RECORD CO 2851 PAINTS AND ALLIED PRODUCTS (1977; SIC 2851),290 FILLMORE ST,1974,1977,Residential,3,4,4,0
 2,S06962,Hazardous-sector manufacturers 1965-1992,on a current inventory,"COLORADO SERUM CO (1992; SIC 2834,2867)",2950 YORK ST,1992,1992,Residential,,3,3,0
 2,S04715,Hazardous-sector manufacturers 1965-1992,on no current inventory,"8.4 S PRODUCTS (1983; SIC 3599,3452,3441) | BOB’S MACHINE SHOP D.B.A..BMS PRODUCTS CO (1988; SIC 3441,3452,3499)",2957 S SHERIDAN,1983,1988,Residential,,,,0
+2,S00236,Hazardous-sector manufacturers 1965-1992,on no current inventory,KEENELO PRODUCTS CO (1965; SIC 2841) | WESTERN SHEET METAL WORKS (1965-1977; SIC 3444),2958 ZUNI ST,1965,1983,Residential,4,6,6,0
 2,S00327,Hazardous-sector manufacturers 1965-1992,on a current inventory,SCREW MACHINE PRODUCTS CO. (1965; SIC 3451) | SCREW MACHINE PRODUCTS CO (1966-1983; SIC 3423),2985 INCA,1965,1983,Residential,2,1,1,1
 2,S05557,Hazardous-sector manufacturers 1965-1992,on a current inventory,B+C ELECTRONIC ENGINEERING INC (1990; SIC 3571),3003 ARAPAHOE ST 103,1988,1990,Residential,2,1,1,0
 2,S02394,Hazardous-sector manufacturers 1965-1992,on a current inventory,"AAAA SPECIALTIES INC (1973-1990; SIC 3496,3591,3714)",3012 HURON,1973,1990,Residential,2,1,1,0
 2,S04878,Hazardous-sector manufacturers 1965-1992,on a current inventory,VIC’S GRINDING SERVICE (1988-1992; SIC 3545),3015 ZUNI,1983,1992,Residential,4,6,6,0
-2,S01782,Hazardous-sector manufacturers 1965-1992,on a current inventory,"PERFECTION TIP CC (1968-1974; SIC 3499,3442) | ASSOCIATED ENGINEERING + MFG (1983; SIC 3589) | STEAM WAY INTERNATIONAL INC (1988; SIC 3582,3889)",3020 E 43RD AVE,1968,1988,Residential,,,,0
 2,S00804,Hazardous-sector manufacturers 1965-1992,on a current inventory,A A A PLATING INC (1988-1990; SIC 3471),3033 BLAKE,1966,1990,Residential,2,1,1,0
 2,S04512,Hazardous-sector manufacturers 1965-1992,on a current inventory,"NOW DEVICES INC. (1983; SIC 3622,3714,3674)",3041 SEKRAMERIA ST,1983,1983,Residential,,,3,0
 2,S03664,Hazardous-sector manufacturers 1965-1992,on a current inventory,ARCTURUS INDUSTRIES CORP (1980; SIC 3079),306 S VALLEJO ST,1980,1980,Residential,,,,0
-2,S01738,Hazardous-sector manufacturers 1965-1992,on no current inventory,"OUFFY*S INC (1968; SIC 2086,2087,2813)",3111 LARIMER,1968,1990,Residential,2,3,3,0
-2,S00788,Hazardous-sector manufacturers 1965-1992,on a current inventory,"COWBOY METAL PRODUCTS INC (1992; SIC 3444,3429,3792)",3120 BLAKE,1966,1992,Residential,2,3,3,0
-2,S05601,Hazardous-sector manufacturers 1965-1992,on a current inventory,"DENVER - DENVER 217 SRMBING Weta” (1988; SIC 3469,3844,3599) | FRONTIER METAL STAMPING INC (1990; SIC 3469,3544,3589)",321 W 45TH AVE,1988,1990,Residential,,,,0
+2,S01521,Hazardous-sector manufacturers 1965-1992,on no current inventory,"TCRSCHER NECN CO (1968; SIC 3993,3714)",3061 S BRYANT,1967,1970,Residential,,,,0
+2,S00780,Hazardous-sector manufacturers 1965-1992,on a current inventory,"COOKs FRANK C (1966-1973; SIC 2841) | CEARA PRODUCTS INC (1974-1990; SIC 2842) | COOK, FRANK C — DANCE WAX CO (1974-1977; SIC 2842) | NON-ILLUM GRAPHIC CEARA PRODUCTS INC (1988; SIC 2899)",3147 LARIMER,1966,1990,Residential,2,3,3,0
+2,S00735,Hazardous-sector manufacturers 1965-1992,on a current inventory,"BENNETT, A Hy CO (1966; SIC 3079)",3201 BRIGHTON BLVD,1966,1974,Residential,,,3,0
 2,S05751,Hazardous-sector manufacturers 1965-1992,on no current inventory,AUTOMOTIVE ENGINES ED ROBINSON (1988; SIC 3089),3231 S UNIVERSITY,1988,1988,Residential,,,,0
-2,S01734,Hazardous-sector manufacturers 1965-1992,on a current inventory,DENVER SCREEN PRODUCTS (1968-1970; SIC 3442),3240 WALNUT ST,1968,1970,Residential,2,3,3,0
 2,S06405,Hazardous-sector manufacturers 1965-1992,on no current inventory,DORSEY-MCCOMB INC (1990; SIC 3556),3255 S BIRCH,1990,1990,Residential,,,,0
 2,S02475,Hazardous-sector manufacturers 1965-1992,on no current inventory,"MACHENING INC (1973; SIC 3544,3799)",330 S GILPIN,1973,1973,Residential,,5,5,0
+2,S00976,Hazardous-sector manufacturers 1965-1992,on a current inventory,"SILVER ENGINEERING WURKS INC (1968-1980; SIC 3551,3591,3443) | C F + I ENGINEERS, INC (1970; SIC 3551,3591,3443) | C F + I ENGINEERS, INC (1974; SIC 3551,3443)",3309 BLAKE,1966,1990,Residential,2,3,3,3
 2,S02857,Hazardous-sector manufacturers 1965-1992,on a current inventory,ALERT POLISHING AND PLATING INC (1974-1983; SIC 3471) | IMPERIAL TUB ENCLOSURE CO (1988; SIC 3088) | ALERT POLISHING + PLATING INC (1990; SIC 3471) | AMERICAN ROOFING SHEET METAL CO (1990; SIC 3444),339 SANTA FE ORIVE,1974,1990,Residential,1,2,2,0
 2,S03976,Hazardous-sector manufacturers 1965-1992,on no current inventory,MAGNET SERVICE (1980-1990; SIC 3499),3433 S PATTON WAY,1980,1990,Residential,,,,0
 2,S01441,Hazardous-sector manufacturers 1965-1992,on a current inventory,GASSER MFG CO (1968-1970; SIC 3499),345 DELAWARE ST REAR,1967,1970,Residential,1,2,2,0
+2,S02426,Hazardous-sector manufacturers 1965-1992,on a current inventory,"COAST TO COAST MFG. CO (1973; SIC 3792,3714,3443)",345 SHERIDAN,1973,1973,Residential,,,,1
 2,S02529,Hazardous-sector manufacturers 1965-1992,on a current inventory,WESTERN RUBBER + SUPPLY» INC. (1973-1974; SIC 3069) | C-D WHEEL CO (1990; SIC 3714),3495 E 42ND AVE,1973,1990,Residential,,,,0
 2,S05174,Hazardous-sector manufacturers 1965-1992,on a current inventory,"DIAMOND STOCK SADDLE CO. (1983; SIC 3199,3429)",352 29 RD,1983,1983,Residential,2,1,1,1
-2,S02916,Hazardous-sector manufacturers 1965-1992,on a current inventory,INNERPAK ENC (1974; SIC 3589) | DIVERSIFIED MANUFACTURERS CORP (1977; SIC 3573),3532 FRANKLIN ST,1974,1983,Residential,2,3,3,0
 2,S04871,Hazardous-sector manufacturers 1965-1992,on no current inventory,WESTERN MEDIA PRODUCTS INC (1983; SIC 3573),355 MONACO,1983,1983,Residential,,,,0
-2,S01744,Hazardous-sector manufacturers 1965-1992,on a current inventory,EPCON COMPANY (1968; SIC 3593) | ANTIQUE AUTOMOTIVE ENGINEERING INC (1990; SIC 3714),3560 CHESTNUT PL,1968,1990,Residential,,,,1
-2,S00718,Hazardous-sector manufacturers 1965-1992,on a current inventory,"WATERSAVER COMPANY INC H_H WALLOWE2, JR PRESIDENT (1977; SIC 3599) | H_H WALLOWE%» JR (1977; SIC 3599)",3560 WYNKOOP ST,1966,1977,Residential,2,3,3,1
 2,S01785,Hazardous-sector manufacturers 1965-1992,on a current inventory,"PROFESSIONAL PAINTS INC (1968; SIC 2851,3561,3991)",3600 45TH EC21,1968,1968,Residential,,7,7,0
 2,S02932,Hazardous-sector manufacturers 1965-1992,on a current inventory,"MS I INDUSTRIES, INC. (1974; SIC 3532)",3600 N RACE,1974,1974,Residential,,3,3,0
+2,S01406,Hazardous-sector manufacturers 1965-1992,on no current inventory,"ALADDIN IRON + STEEL CORP (1967; SIC 3441,3352) | GENERATCR EXCHANGE CC INC (1968; SIC 3714)",3600 PECOS,1967,1968,Residential,4,6,6,0
 2,S03698,Hazardous-sector manufacturers 1965-1992,on a current inventory,ROCKY MOUNTAIN PRO CLEAN INC. (1980; SIC 2842),3602 3 JASON ST,1980,1980,Residential,,,7,0
 2,S00986,Hazardous-sector manufacturers 1965-1992,on a current inventory,UNITED STEEL + IRON WORKS (1966-1983; SIC 3441),3609 WYNKOOP,1966,1983,Residential,2,3,3,1
 2,S04697,Hazardous-sector manufacturers 1965-1992,on a current inventory,"AwZ SALES CORP. (1983; SIC 3993,3079)",3615 FOREST ST,1983,1983,Residential,,,,0
 2,S02886,Hazardous-sector manufacturers 1965-1992,on a current inventory,"CYCLO MANUFACTURING CO (1974; SIC 2842,3549,3079)",3641 EUDORA WAY,1974,1974,Residential,,,,0
-2,S06510,Hazardous-sector manufacturers 1965-1992,on a current inventory,"UNIVERSAL PLASTICS INC (1990; SIC 3089) | WESTERN DIE AND FORM (1990; SIC 2675,3089)",3650 E 41ST AVE,1990,1992,Residential,,,,0
 2,S06410,Hazardous-sector manufacturers 1965-1992,on no current inventory,EUROMATIC INC (1990; SIC 3563),3671 W UNION AVE,1990,1990,Residential,,,,0
-2,S00002,Hazardous-sector manufacturers 1965-1992,on no current inventory,AMERICAN SILICONE (1965; SIC 2869),3725 JASON ST,1977,1992,Residential,4,6,6,0
 2,S05753,Hazardous-sector manufacturers 1965-1992,on a current inventory,"RUBBER RQGKY MIN (1988; SIC 3069,2732)",375 S RARITAN,1988,1988,Residential,,,,0
 2,S03195,Hazardous-sector manufacturers 1965-1992,on a current inventory,B + E PLASTICS INC (1977-1980; SIC 3079),3760 11 WHEELING ST,1977,1980,Residential,,4,4,0
 2,S01695,Hazardous-sector manufacturers 1965-1992,on no current inventory,"AA SIGNS (1973-1974; SIC 3079,3479,3993)",390 S IVY,1968,1974,Residential,,,,0
 2,S05718,Hazardous-sector manufacturers 1965-1992,on no current inventory,"ALDERMAN TOOL+DIE (1988; SIC 3363,3544,3780)",3937 5 LIPAN,1988,1988,Residential,,,,0
 2,S01417,Hazardous-sector manufacturers 1965-1992,on a current inventory,"pecans SERUM CO (1967; SIC 2834,2633)",4 YORK,1967,1967,Residential,,5,5,0
 2,S00927,Hazardous-sector manufacturers 1965-1992,on no current inventory,MICHAELSON'S ORIGINALS INC (1966; SIC 1035) | MILE HIGH EQUIPMENT CC (1968; SIC 3585),401 SANTA FE OR,1966,1983,Residential,1,2,2,0
-2,S02534,Hazardous-sector manufacturers 1965-1992,on a current inventory,"YARTER-TEK CORPORATION (1974; SIC 3471,2899,3823) | MID AMERICA PLATING (1980; SIC 3471) | RHINO PRODUCTS CORP (1988-1990; SIC 2396,2752,3429)",4134 GARFIELD,1973,1990,Residential,,,,0
-2,S02995,Hazardous-sector manufacturers 1965-1992,on a current inventory,"WESTERN METAL PRODUCTS CO (1974; SIC 3714,3732)",4150 TEJON ST,1974,1974,Residential,4,6,6,0
-2,S00760,Hazardous-sector manufacturers 1965-1992,on a current inventory,"CHANEY PLASTIC MOLDING CO (1966; SIC 3714) | CHANEY PLASTIC MOLDING Co HJ COFFMAN PARTNER (1967; SIC 3079) | GOLOBERG BROTFERS INC, PLASTICS DIV (1968; SIC 3079) | M-W ENTERPRISES (1970-1974; SIC 3591,3714) | MARK WILLIAMS ENTERPRISES INC (1980-1983; SIC 3714,3599,3498)",4190 MADISON ST,1966,1988,Residential,,,,0
-2,S00130,Hazardous-sector manufacturers 1965-1992,on no current inventory,GASSER MFG CO (1966; SIC 3449),421 W 4TH AVE,1965,1992,Residential,1,2,2,0
-2,S02425,Hazardous-sector manufacturers 1965-1992,on a current inventory,CLARETI-MCCOY INC (1973; SIC 2842),4233 THOMPSON CT,1973,1980,Residential,,,,0
+2,S00895,Hazardous-sector manufacturers 1965-1992,on a current inventory,LEONARD MOLD # DIE WORKS (1966; SIC 3559),4200 MADISON,1966,1966,Residential,,,,0
+2,S00308,Hazardous-sector manufacturers 1965-1992,on a current inventory,CUIST FURNITURE CO. (1965; SIC 2812),4210 TENNYSON,1965,1980,Residential,,7,7,0
+2,S00186,Hazardous-sector manufacturers 1965-1992,on a current inventory,"FRANKLIN, G. Me, SERUM CO. (1965; SIC 2831)",4238 YORK,1965,1965,Residential,2,3,3,0
 2,S00103,Hazardous-sector manufacturers 1965-1992,on a current inventory,AMERICAN STEEL + IRON WORKS (1965-1988; SIC 3441) | A-RITE MFG CO (1973-1977; SIC 3544) | H + L TAG LIFT CORP (1973-1974; SIC 3714) | CONTAINER GRAPHICS CoRP (1980-1990; SIC 3544),4245 FOX SI,1965,1990,Residential,,,,0
+2,S03846,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ALP CORP (1980; SIC 3471,3479,3914) | CORP (1983; SIC 3471,3479,3914)",4245 MORRISON RD,1980,1983,Residential,,,,0
 2,S00216,Hazardous-sector manufacturers 1965-1992,on a current inventory,FENKEL MACHINE CO. (1965; SIC 3591) | BLACK + WHITE IRON CO (1970-1973; SIC 3446),425 S PECOS,1965,1973,Residential,4,7,7,0
-2,S00840,Hazardous-sector manufacturers 1965-1992,on a current inventory,H + H ENGINEERING CO (1966-1968; SIC 3549) | H # H TOOL OIVISION (1973; SIC 3544) | TELEDYNE PINES - 4 + H TOOL DIVISION (1977-1988; SIC 3544) | TELEDYNE PINES (1990; SIC 3544),430 S NAVAJO,1966,1990,Residential,,7,7,0
 2,S02471,Hazardous-sector manufacturers 1965-1992,on no current inventory,KNERL SHEET METAL INC (1973; SIC 3444),431 W 8TH AVE,1973,1973,Residential,1,2,2,0
-2,S03355,Hazardous-sector manufacturers 1965-1992,on a current inventory,"wew CERAMICS INC WEST TAPE AND LABEL Co (1977; SIC 3269,2752,3299)",4365 W FLORIDA AVE,1977,1980,Residential,,,,1
+2,S00114,Hazardous-sector manufacturers 1965-1992,on no current inventory,ATLAS HEATING AND AIR CCNDITICNING (1965; SIC 3444),444 BANNOCK,1965,1965,Residential,1,2,2,0
 2,S05611,Hazardous-sector manufacturers 1965-1992,on no current inventory,HOGAN METAL PRODUCTS (1988; SIC 3498),4464 DAVENPORT WAY,1988,1988,Residential,,,,0
-2,S00091,Hazardous-sector manufacturers 1965-1992,on a current inventory,ALLIEC HEATING + AIR CONDITIONING (1965; SIC 3444),4495 LOGAN,1965,1965,Residential,,7,7,1
 2,S01342,Hazardous-sector manufacturers 1965-1992,on no current inventory,"DARTING, B J, CO (1967; SIC 3564,3479)",460 S CLAY ST,1967,1967,Residential,,,7,0
 2,S02428,Hazardous-sector manufacturers 1965-1992,on no current inventory,"COLGRADO CERMASTONE (1973-1974; SIC 3961,3963,3369)",4730 W 3RD AVE,1973,1974,Residential,,,,0
 2,S05628,Hazardous-sector manufacturers 1965-1992,on no current inventory,CAST MOLDS LECK ENTERPRISES INC (1988; SIC 3599) | LECK ENTERPRISES INC (1990; SIC 3599),4757 W 1ST AVE,1988,1990,Residential,,,,1
+2,S01836,Hazardous-sector manufacturers 1965-1992,on a current inventory,WORTHINGTON CORP (1968; SIC 3561) | WORTHINGTGN CORP (1970; SIC 3561) | WORTHINGTON CORP (1973; SIC 3561),4758 BROADWAY,1968,1973,Residential,,7,7,0
 2,S00173,Hazardous-sector manufacturers 1965-1992,on no current inventory,ESSCO PRODUCTS (1965; SIC 3442),485 S JERSEY,1965,1965,Residential,,,,0
 2,S06456,Hazardous-sector manufacturers 1965-1992,on a current inventory,"MORSE INDUSTRIAL CORP, GEARING (1990; SIC 3566)",4850 STEELE,1990,1990,Residential,,,,0
-2,S00414,Hazardous-sector manufacturers 1965-1992,on a current inventory,BERNE MACHINE SHOP (1965; SIC 3591) | BERNE MACHINE SHOP (1968-1970; SIC 3591),4894 MORRISON RD,1965,1970,Residential,,,,0
 2,S04744,Hazardous-sector manufacturers 1965-1992,on no current inventory,"O + A MACHINE TOOL INC. (1983; SIC 3429,3599,3842)",4920 ALCOTT ST,1983,1983,Residential,,,,0
-2,S02481,Hazardous-sector manufacturers 1965-1992,on a current inventory,"MC ATEE BOLT CO (1973-1974; SIC 3452,3499)",4925 38TH AVE,1973,1974,Residential,,,,0
-2,S00867,Hazardous-sector manufacturers 1965-1992,on a current inventory,INDUSTRIAL TEXIILES CO-SKYLINE ENG (1966-1968; SIC 3079),4940 E ASBURY AVE,1966,1968,Residential,,,,0
 2,S03275,Hazardous-sector manufacturers 1965-1992,on a current inventory,"RUBBER INCORPORATED (1983-1990; SIC 2691,3559)",505 W 40TH AVE,1973,1990,Residential,,,,1
 2,S05590,Hazardous-sector manufacturers 1965-1992,on no current inventory,"DUR-O-WAL INC, COLORADO (1988; SIC 3496)",507 COLORADO BLVD,1988,1988,Residential,,,4,0
 2,S00349,Hazardous-sector manufacturers 1965-1992,on a current inventory,STANCC MANUFACTURING CO. (1965; SIC 2811),5070 STEELE ST,1965,1965,Residential,,,,0
+2,S00767,Hazardous-sector manufacturers 1965-1992,on a current inventory,"CLARKE-PACIFIC INC (1968; SIC 3621,3561,3519) | PUMP + SUPPLY» INC. (1973; SIC 3519,3561,3621) | PACIFIC PUMP * SUPPLY INC (1974; SIC 3561)",5138 E 39TH AVE,1966,1974,Residential,,,,0
 2,S04768,Hazardous-sector manufacturers 1965-1992,on no current inventory,"JTR ENTERPRISES (1988; SIC 3423,3949,3999)",5200 W PRINCETON DR,1983,1988,Residential,,,,0
 2,S01798,Hazardous-sector manufacturers 1965-1992,on a current inventory,"SARGENT WESTERNs INC (1968; SIC 3433,3564,3441)",5205 STEELE ST,1968,1968,Residential,,,,0
-2,S00716,Hazardous-sector manufacturers 1965-1992,on a current inventory,"AMERICAN WESTERN PLASTICS CORP (1966-1970; SIC 3079) | BETTS TOOL DIE + ENGINEERING CO (1966; SIC 3599) | BEAUTYBILT MOBILE HOME ACCESSORIES (1974; SIC 3079) | HEMOLINE {NC (1974; SIC 2834,3842)",5301 E 38TH AVE,1966,1990,Residential,,,,0
 2,S02863,Hazardous-sector manufacturers 1965-1992,on no current inventory,AUTOMOTIVE WEEEL WINCE CO (1974-1977; SIC 3714),5450 VALE DR,1974,1977,Residential,,,,0
 2,S06426,Hazardous-sector manufacturers 1965-1992,on a current inventory,"INDUSTRIAL SOLAR TECHNOLOGY CORP (1990-1992; SIC 3433,3829)",5775 W 52ND AVE,1990,1992,Residential,,,,0
 2,S00720,Hazardous-sector manufacturers 1965-1992,on a current inventory,ARROW PRINTING INC CORP EST-1937 INTL 20 TO $9 M FEDER = PRES (1967; SIC 3599),5909 E 38TH AVE,1966,1970,Residential,,,,0
 2,S06969,Hazardous-sector manufacturers 1965-1992,on no current inventory,"ELKINS KENNEL MANUFACTURING (1992; SIC 3069,3999)",595 E 5TH AVE,1992,1992,Residential,3,2,2,0
-2,S04787,Hazardous-sector manufacturers 1965-1992,on a current inventory,MAJESTIC WAX CO (1983-1990; SIC 2842),6035 E 38TH AVE,1983,1990,Residential,,,,0
 2,S00929,Hazardous-sector manufacturers 1965-1992,on a current inventory,"NEWLANDER MACHINE SHOP (1966-1990; SIC 3599) |  (1973; SIC 2752,3079)",615 W 14TH,1966,1990,Residential,1,2,2,1
-2,S06954,Hazardous-sector manufacturers 1965-1992,on no current inventory,"AMERICAN EXCELSIOR CO (1992; SIC 3443,2491,3086)",6191 E 38TH AVE,1992,1992,Residential,,,,0
-2,S04822,Hazardous-sector manufacturers 1965-1992,on a current inventory,RELIABLE SLING CO (1983; SIC 3496),6363 E 38TH,1983,1983,Residential,,,,1
+2,S01520,Hazardous-sector manufacturers 1965-1992,on a current inventory,"TOPF COMPANY (1967-1970; SIC 3569) | TOPF CCMPANY (1968; SIC 3569) | POLYURETHANE FOAM CARTS OF COLORADO (1988; SIC 2899,3469)",669 LIPAN ST,1967,1988,Residential,1,2,2,1
 2,S05638,Hazardous-sector manufacturers 1965-1992,on a current inventory,WINDOWS METAL SALES MFG CORP (1988; SIC 3444),711 CHEROKEE,1988,1988,Residential,1,2,2,0
 2,S01832,Hazardous-sector manufacturers 1965-1992,on no current inventory,"WESTERN SPRING SERVICE INC (1968; SIC 3493,3229)",730 W 12TH,1968,1990,Residential,1,2,2,0
-2,S06441,Hazardous-sector manufacturers 1965-1992,on no current inventory,"N S_LYNN + ASSOCIATES INC (1990; SIC 3691,3532,3443)",775 MARIPOSA,1990,1990,Residential,1,2,2,2
+2,S02983,Hazardous-sector manufacturers 1965-1992,on a current inventory,"GOLDEN LOTUS INC (1980; SIC 2844,2841)",765 S JASON,1974,1980,Residential,,,,0
 2,S02206,Hazardous-sector manufacturers 1965-1992,on no current inventory,KILGROE-ATCHISON (1973-1977; SIC 2951),78 DAHLIA,1973,1977,Residential,,,,0
+2,S01708,Hazardous-sector manufacturers 1965-1992,on no current inventory,BARRIE TYPE SETTING (1968-1970; SIC 3555),79 MEADE,1968,1970,Residential,,,,0
 2,S01451,Hazardous-sector manufacturers 1965-1992,on no current inventory,"INTERCHEMICAL CORP PRINTING INK OIV (1970; SIC 2893,2711) | INMONT CORP (1974; SIC 2893)",805 W 11TH AVE,1967,1974,Residential,1,2,2,0
 2,S04825,Hazardous-sector manufacturers 1965-1992,on no current inventory,"RAINS-FLO MANUFACTURING INC (1992; SIC 2819,3053,3569)",820 LIPAN,1983,1992,Residential,1,2,2,0
-2,S02496,Hazardous-sector manufacturers 1965-1992,on no current inventory,"RAINS-FLO MANUFACTURING INC. (1990; SIC 2819,3053,3569)",820 S LIPAN,1973,1990,Residential,,,,0
+2,S00340,Hazardous-sector manufacturers 1965-1992,on a current inventory,"DENVER MARKING PRODUCTS (1970; SIC 3953,3479)",827 14TH,1965,1970,Residential,1,1,1,0
 2,S02003,Hazardous-sector manufacturers 1965-1992,on no current inventory,"ANDERSON ENGRAVING (1970; SIC 2753,3369)",832 ACOMA,1970,1983,Residential,1,2,2,0
-2,S00160,Hazardous-sector manufacturers 1965-1992,on a current inventory,CENVER INDUSTRIAL SALES + SERVICE (1968-1990; SIC 2899),850 S LIPAN,1965,1990,Residential,,,,1
-2,S04862,Hazardous-sector manufacturers 1965-1992,on a current inventory,UNIQUE IN-COUNTERS (1983; SIC 3079),878 S LIPAN,1983,1983,Residential,,,,0
-2,S00782,Hazardous-sector manufacturers 1965-1992,on a current inventory,"COPELAND ENTERPRISES, INC (1977-1992; SIC 3499,3272)",904 S LIPAN,1966,1992,Residential,,,,0
-2,S02927,Hazardous-sector manufacturers 1965-1992,on a current inventory,"LEISURE RESEARCH INC (1980; SIC 3949,3599)",931 W 9TH AVE,1974,1992,Residential,1,2,2,1
 2,S00171,Hazardous-sector manufacturers 1965-1992,on no current inventory,"DURANC, RUSSELL (1968; SIC 3532)",935 S PATTON CT,1965,1968,Residential,,,,0
 2,S04490,Hazardous-sector manufacturers 1965-1992,on no current inventory,BETTER FLOW GUTTER INC (1983; SIC 3444),9351 E CORNELL,1983,1983,Residential,,,,0
 2,S02829,Hazardous-sector manufacturers 1965-1992,on a current inventory,RENALOE CROCKETT + KELLY BIT + SPUR INC L 1 LENOX OWNER (1974; SIC 3429),944 PEARL,1974,1974,Residential,3,2,2,0
-2,S01413,Hazardous-sector manufacturers 1965-1992,on a current inventory,"STANLEY'S PLASTICS (1965-1983; SIC 3079) | COLORADO BRASS FOUNDRY CO (1967-1973; SIC 3369,3251) | INDUSTRIAL HARD CHRCKE PLATING CO (1967-1990; SIC 3471) | COLORADO BRASS FOUNDRY CC (1974; SIC 3369) | &1 SPINNING SHOP (1980-1990; SIC 3469)",946 SANTA FE,1965,1990,Residential,1,2,2,1
 2,S04443,Hazardous-sector manufacturers 1965-1992,on no current inventory,COM MACHINE + FABRICATION CORP (1983; SIC 3599),950 NIAGARA,1983,1983,Residential,,,4,0
 2,S03991,Hazardous-sector manufacturers 1965-1992,on a current inventory,SURE SPRAY MFG CO (1983; SIC 3582),970 LINCOLN ST,1980,1990,Residential,3,2,2,0
+2,S00811,Hazardous-sector manufacturers 1965-1992,on a current inventory,sg corp (1966; SIC 3441),980 GRAPE,1966,1966,Residential,,,4,0
 3,HF06584,Hazardous trades before 1960 (street level),pre-1960,Glenshore Mfg Co Inc,"",1950,1950,Park / open space,2,1,1,0
 3,HF03656,Hazardous trades before 1960 (street level),pre-1960,MINE & SMELTER SUPPLY CO Mitchell A,1105 Stout,1915,1915,Park / open space,1,1,1,0
-3,HF05130,Hazardous trades before 1960 (street level),pre-1960,Western Chemical Works Co,1106 15th,1891,1891,Park / open space,2,1,1,0
-3,HF05126,Hazardous trades before 1960 (street level),pre-1960,"go o BACON GEORGE M., dealer in hardware, stoves, ranges and furnaces, tin and",1120 15th,1891,1891,Park / open space,2,1,1,0
-3,HF05472,Hazardous trades before 1960 (street level),pre-1960,Western Smelting Co,1304 Blake,1920,1920,Park / open space,1,1,1,0
-3,HF07569,Hazardous trades before 1960 (street level),pre-1960,Merz,1419 Morrison Rd,1956,1956,Park / open space,4,7,7,1
+3,HF06547,Hazardous trades before 1960 (street level),pre-1960,Dart Mfg & Sls Co,1246 Champa,1950,1950,Park / open space,1,1,1,0
 3,HF06712,Hazardous trades before 1960 (street level),pre-1960,Starco Prod Co,1519 Lawrence,1950,1950,Park / open space,2,1,1,0
 3,HF04892,Hazardous trades before 1960 (street level),pre-1960,Western Sheet Metal Works,1915 E 9th,1943,1943,Park / open space,,4,4,0
-3,HF03248,Hazardous trades before 1960 (street level),pre-1960,Ellsworth AutoCo,2012 Curtis,1914,1914,Park / open space,2,1,1,1
 3,HF06693,Hazardous trades before 1960 (street level),pre-1960,Scientific Supply Co,800 Water,1950,1950,Park / open space,4,6,6,1
 3,HF05190,Hazardous trades before 1960 (street level),pre-1960,Mee Robert,847 Water,1891,1891,Park / open space,4,6,6,1
-3,HF06597,Hazardous trades before 1960 (street level),pre-1960,Gunderson-Taylor Machinery Co,970 Cherokee St,1950,1950,Park / open space,1,2,2,1
 3,S00711,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ALUMINUM CO OF DENVER (1967-1970; SIC 3361,3362,3565)",1101 CHAMPA,1966,1974,Park / open space,1,1,1,0
-3,S00882,Hazardous-sector manufacturers 1965-1992,on a current inventory,"KOHLER MCLISTER PAINT CO (1966; SIC 2851) | KOHLER MCLISTEX PAINT CO. 2789 BOOKBINDING + MISC RELATED WCRK MF YALE DIST MGR (1967; SIC 2851) | KOHLER-MCLISTER PAINT CO (1973-1974; SIC 2821,2851) | KOMAG PALNT INC (1980-1983; SIC 2821,2851) | DIAMOND VOGEL PAINT (1990; SIC 2851,2821)",1201 OSAGE,1966,1990,Park / open space,1,2,2,0
 3,S00218,Hazardous-sector manufacturers 1965-1992,on no current inventory,FICKS-DENVER CO. (1965; SIC 3581),1235 STOUT,1965,1965,Park / open space,1,1,1,0
 3,S00193,Hazardous-sector manufacturers 1965-1992,on a current inventory,"GAIR + BINCERUP MACHINE SHOP CO. (1965-1974; SIC 3591) | WESTERN BRONZE BRASS FOUNDRY (1965-1974; SIC 3369) | MIUNE MFG CO (1970; SIC 3955,3079) | BRONZE + BRASS FOUNDRY SPEER BLVD AT (1970; SIC 3369) | Be eet pa ciean ames (1973; SIC 3565) | MARUGGe FRANK Py PATTERN WORKS (1974; SIC 3565)",1322 BLAKE,1965,1974,Park / open space,1,1,1,0
 3,S04765,Hazardous-sector manufacturers 1965-1992,on a current inventory,"INTERNATIONAL TECHNIFAB (1990; SIC 3053,3089,3088)",1425 W 13TH AVE,1983,1990,Park / open space,1,2,2,0
-3,S02861,Hazardous-sector manufacturers 1965-1992,on a current inventory,"CORO PLASTICS INC (1974; SIC 3079) | ERCHON Mena EQUIP (1988; SIC 3589,3821) | GEOTECH ENVIRONMENTAL EQUIPMENT INC (1990; SIC 3499,3544,3589)",1441 W 46TH AVE,1974,1990,Park / open space,,,,2
+3,S01527,Hazardous-sector manufacturers 1965-1992,on no current inventory,METAL STRIP DK SCURLOCK GEN EN MGR 2751 COM*L PRINTING EXCEPT PT LIT! (1967; SIC 3442),15 S CHEROKEE,1967,1967,Park / open space,1,2,2,0
 3,S00201,Hazardous-sector manufacturers 1965-1992,on a current inventory,"ALLEN MFG (1968; SIC 2311,2327,2899)",1642 ARAPAHOE,1965,1970,Park / open space,2,1,1,0
-3,S00351,Hazardous-sector manufacturers 1965-1992,on no current inventory,STANDARD REPRODUCTION CO (1968; SIC 3555),2010 CURTIS ST,1965,1980,Park / open space,2,1,1,1
 3,S00796,Hazardous-sector manufacturers 1965-1992,on no current inventory,"DALCO ENGINEERING CO (1966-1974; SIC 3441) | NEXUS CORP (1973-1980; SIC 3448) | DALCO INDUSTRIES: INC (1980-1983; SIC 2392,3079,2389)",2250 19TH ST,1966,1983,Park / open space,2,1,1,2
-3,S00904,Hazardous-sector manufacturers 1965-1992,on a current inventory,"LUXUREST FURNITURE MFG CO (1966-1970; SIC 3079) | PACKAGE CREATORS INC (1974; SIC 2651,2652,3079)",2263 7TH,1966,1983,Park / open space,4,6,6,1
-3,S00999,Hazardous-sector manufacturers 1965-1992,on a current inventory,"WHITTAKER CORPORATI ON POWER SOURCES DIV (1966; SIC 3599) | WHITTAKER CORPORATION POWER SCURCES CIV (1968; SIC 3691,3569) | YARDNEY ELECTRIC CORPORATION (1973-1983; SIC 3692) | REELS YARDNEY CORP (1988; SIC 3692) | WHITTAKER POWER STORAGE SYSTEMS (1990; SIC 3692)",3850 OLIVE,1966,1992,Park / open space,,,,0
-3,S02869,Hazardous-sector manufacturers 1965-1992,on a current inventory,"C M WEST INC (1974; SIC 3599,3444)",4060 DAHLIA ST,1974,1974,Park / open space,,,,0
-3,S01743,Hazardous-sector manufacturers 1965-1992,on a current inventory,ELDER TRAILER + ECDY INC (1968; SIC 3799),4800 RACE ST,1968,1968,Park / open space,2,3,3,0
-3,S05287,Hazardous-sector manufacturers 1965-1992,on a current inventory,"BEKELE (1988; SIC 3089,3479,3982)",4972 SHERIDAN BLVD,1988,1988,Park / open space,,,,0
-3,S00389,Hazardous-sector manufacturers 1965-1992,on a current inventory,YORKER + SONS (1965-1980; SIC 3079) | DISPLAYS YORKER+SONS INC (1988; SIC 3089),601 E 48TH,1965,1988,Park / open space,,7,7,0
+3,S01449,Hazardous-sector manufacturers 1965-1992,on no current inventory,"INDUSTRIAL CFEMICALS CORP (1968-1970; SIC 2851,2899,2818) | MARSHALL MFG CO] (1980; SIC 3469,3599,3411)",2300 19TH ST,1967,1980,Park / open space,4,6,6,0
 3,S02521,Hazardous-sector manufacturers 1965-1992,on a current inventory,"TIME SAVERS OF DENVER LTD (1973-1977; SIC 2599,3546,3549) | JOHNSON + HELD LTD (1990; SIC 3466,3911,3961)",788 W 8 AVE,1973,1990,Park / open space,1,2,2,1
 3,S00886,Hazardous-sector manufacturers 1965-1992,on a current inventory,"KWAL PAINTS INC (1966; SIC 2851) | SCIENTIFIC SuPPLY CO (1966-1968; SIC 2841) | FIC SUPPLY CO (1970; SIC 2841) | JOURGENSEN PAINT MFG CO (1973; SIC 2851,2899) | KWAL PAINTS INC (1973-1974; SIC 2851) | FoVe PEXLEY + ASSOC.INC (1980; SIC 3567)",800 WATER,1966,1980,Park / open space,4,6,6,1
-3,S00340,Hazardous-sector manufacturers 1965-1992,on a current inventory,"DENVER MARKING PRODUCTS (1970; SIC 3953,3479)",827 14TH,1965,1970,Park / open space,1,1,1,0
 4,S01776,Hazardous-sector manufacturers 1965-1992,on no current inventory,MERRILL ENGINEERING LABORATORIES (1968; SIC 3589),1025 WW 3RD AVE,1968,1968,Vacant,1,2,2,0
-4,S00890,Hazardous-sector manufacturers 1965-1992,on no current inventory,"LANA PLASTIC MFG INC (1966; SIC 3079) | DENVER METAL PROOUCTS. ¢ CONSTRUCTION INC (1980-1983; SIC 3446,3442) | COLORADO SHOWER DOOR INC (1990; SIC 3442)",1165 S CHEROKEE,1966,1990,Vacant,,,,1
-4,S02443,Hazardous-sector manufacturers 1965-1992,on no current inventory,"DENVER MARKING PRODUCTS S J SKULAVIK OWAER (1973; SIC 3479,3953,2753)",1249 BANNOCK ST,1973,1983,Vacant,1,2,2,0
-4,S04846,Hazardous-sector manufacturers 1965-1992,on no current inventory,STAR GUIDE CORP (1983-1992; SIC 3552),1255 W VIRGINIA AVE,1983,1992,Vacant,,,,0
-4,S06455,Hazardous-sector manufacturers 1965-1992,on no current inventory,INDUSTRIAL SUPPLY CO (1992; SIC 3599),1340 W BYERS PL,1990,1992,Vacant,,,,0
+4,S01519,Hazardous-sector manufacturers 1965-1992,on no current inventory,"CODE SIGN CORP OF DENVER (1973; SIC 3993,3079,2752)",1090 LIPAN ST,1967,1973,Vacant,1,2,2,0
+4,S00108,Hazardous-sector manufacturers 1965-1992,on no current inventory,ARMCO STEEL CCRP (1965; SIC 3444),130 E 5TH AVE,1965,1965,Vacant,3,2,2,0
+4,S01712,Hazardous-sector manufacturers 1965-1992,on no current inventory,"CHEMETRON CORP, NATIONAL CYLIANCER GAS CIV (1968; SIC 2813,3548) | CHEMETRON CORP, NATICNAL CYLINDER GAS DIV (1973; SIC 2813) | LIQUID AIR INC, INDUSTRIAL GASES OIV (1980; SIC 2813)",1450 9TH ST 8204,1968,1980,Vacant,1,1,1,0
 4,S06989,Hazardous-sector manufacturers 1965-1992,on no current inventory,METALWEST INC (1992; SIC 3499),1485 RIO CT,1992,1992,Vacant,1,2,2,1
 4,S06417,Hazardous-sector manufacturers 1965-1992,on no current inventory,G+S PLASTICS INC (1990-1992; SIC 3089),1690 S FEDERAL BIVD UNIT B,1990,1992,Vacant,,,,0
 4,S04803,Hazardous-sector manufacturers 1965-1992,on no current inventory,NESS MANUFACTURING INC. (1983-1990; SIC 3728) | LETTERPRESS NESS MFG INC (1988; SIC 3728),177 WE ALASKA PL,1983,1990,Vacant,1,5,5,3
 4,S02009,Hazardous-sector manufacturers 1965-1992,on no current inventory,THB PLASTIC INC (1973; SIC 3079),2014 MARKET,1970,1973,Vacant,2,1,1,0
-4,S01449,Hazardous-sector manufacturers 1965-1992,on no current inventory,"INDUSTRIAL CFEMICALS CORP (1968-1970; SIC 2851,2899,2818) | MARSHALL MFG CO] (1980; SIC 3469,3599,3411)",2300 19TH ST,1967,1980,Vacant,4,6,6,0
-4,S01521,Hazardous-sector manufacturers 1965-1992,on no current inventory,"TCRSCHER NECN CO (1968; SIC 3993,3714)",3061 S BRYANT,1967,1970,Vacant,,,,0
-4,S02970,Hazardous-sector manufacturers 1965-1992,on no current inventory,"RHINO PRODUCTS CORP (1977; SIC 3429,3999,2751)",3145 W ALAMEDA,1974,1983,Vacant,,,7,1
+4,S00206,Hazardous-sector manufacturers 1965-1992,on no current inventory,GRABLER MFG. CO. (1965; SIC 3454),2062 BLAKE ST,1965,1965,Vacant,2,1,1,0
+4,S01699,Hazardous-sector manufacturers 1965-1992,on no current inventory,"AMERICAN CANVAS CO . 2621 PLASTICS MATERIALS AND RESINS 2329 MEN*S AND BOYS* CLOTHING, NEC (1973; SIC 3079)",2232 LAWRENCE ST,1968,1974,Vacant,2,1,1,1
+4,S00162,Hazardous-sector manufacturers 1965-1992,on no current inventory,CENVER RE-TiNNING + METALIZING CO. (1965; SIC 3479),2307 LARIMER,1965,1974,Vacant,2,1,1,0
+4,S00906,Hazardous-sector manufacturers 1965-1992,on no current inventory,MAC'S WELDING SERVICE (1968-1970; SIC 3441),3615 BLAKE,1966,1970,Vacant,2,3,3,1
 4,S03895,Hazardous-sector manufacturers 1965-1992,on no current inventory,"DEARBORN PLASTICS, OV OF BEATRICE FOODS (1980; SIC 3039)",4199 ONEIDA ST,1980,1980,Vacant,,,,0
-4,S01753,Hazardous-sector manufacturers 1965-1992,on no current inventory,"FOX, SAM, STAINLESS STEEL CORP (1968; SIC 3461,3589,3444) | FOX METAL INDUSTRIES» INC (1970; SIC 3461,3589,3444) | TOPS UNLEMITED INC E EHLERS GEN MGR F WILDE PRES (1973; SIC 3446)",4200 KEARNEY,1968,1990,Vacant,,,,0
-4,S06393,Hazardous-sector manufacturers 1965-1992,on no current inventory,"COLORADO CONTAINER CORP (1990-1992; SIC 2653,3089)",4221 MONACO,1990,1992,Vacant,,,,0
-4,S06399,Hazardous-sector manufacturers 1965-1992,on no current inventory,COMPUTER CONSOLES INCORPORATED (1990; SIC 3571),4600 S ULSTER ST 390,1990,1990,Vacant,,,,0
-4,S05634,Hazardous-sector manufacturers 1965-1992,on no current inventory,"MAC’S WELDING INC (1988-1990; SIC 3446,2740)",50 RIO GRANDE BLVD,1988,1990,Vacant,1,2,2,0
-4,S01816,Hazardous-sector manufacturers 1965-1992,on no current inventory,STURDI MFG CC (1968; SIC 3582),744 NAVAJO,1968,1968,Vacant,1,2,2,0
 4,S00940,Hazardous-sector manufacturers 1965-1992,on no current inventory,"PANEL CORPORATION OF AMERICA (1967-1970; SIC 3729,2421) | AMERICAN FIBERGLAS CORP INC (1974; SIC 3079,3995) | STANDARD MFG CO (1974; SIC 3079)",745 S CHEROKEE,1966,1974,Vacant,,,,0
+4,S02073,Hazardous-sector manufacturers 1965-1992,on no current inventory,"YORKER # SONS» INC (1970; SIC 3079,3613,3444)",8601 E 48TH,1970,1970,Vacant,,,,0
 4,S05068,Hazardous-sector manufacturers 1965-1992,on no current inventory,METRO SCREENWORKS (1992; SIC 3442),911 S SHERIDAN,1983,1992,Vacant,,,,0

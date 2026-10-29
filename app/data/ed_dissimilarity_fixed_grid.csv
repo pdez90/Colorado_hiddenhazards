@@ -1,12 +1,12 @@
 census,cells,dissimilarity_black_vs_nonblack,black_share_pct,extent,EDs,dissimilarity_on_EDs
 1880,53,0.352,2.75,area mapped in all six censuses (1880 city),17,0.407
-1900,53,0.402,4.46,area mapped in all six censuses (1880 city),128,0.512
-1900,309,0.449,2.87,area mapped in 1900-1940 (1900 city),128,0.512
-1910,53,0.41,4.83,area mapped in all six censuses (1880 city),158,0.531
-1910,309,0.494,2.67,area mapped in 1900-1940 (1900 city),158,0.531
+1900,53,0.401,4.46,area mapped in all six censuses (1880 city),128,0.512
+1900,310,0.449,2.87,area mapped in 1900-1940 (1900 city),128,0.512
+1910,53,0.41,4.82,area mapped in all six censuses (1880 city),158,0.531
+1910,310,0.494,2.67,area mapped in 1900-1940 (1900 city),158,0.531
 1920,53,0.528,5.02,area mapped in all six censuses (1880 city),309,0.652
-1920,309,0.609,2.57,area mapped in 1900-1940 (1900 city),309,0.652
-1930,53,0.664,8.72,area mapped in all six censuses (1880 city),228,0.766
-1930,309,0.75,2.92,area mapped in 1900-1940 (1900 city),228,0.766
-1940,53,0.702,9.8,area mapped in all six censuses (1880 city),325,0.822
-1940,309,0.797,2.98,area mapped in 1900-1940 (1900 city),325,0.822
+1920,310,0.609,2.57,area mapped in 1900-1940 (1900 city),309,0.652
+1930,53,0.664,8.71,area mapped in all six censuses (1880 city),228,0.766
+1930,310,0.75,2.92,area mapped in 1900-1940 (1900 city),228,0.766
+1940,53,0.702,9.79,area mapped in all six censuses (1880 city),330,0.822
+1940,310,0.797,2.97,area mapped in 1900-1940 (1900 city),330,0.822

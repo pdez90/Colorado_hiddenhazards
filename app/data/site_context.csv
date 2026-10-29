@@ -1,6 +1,5 @@
 id,series,status,petroleum_releases_50m,open_releases_50m,first_release_year,tank_facility_50m,tri_facility_100m,urban_renewal_project,superfund_unit,sanborn
 S00001,Hazardous-sector manufacturers 1965-1992,on a current inventory,0,0,,0,FALSE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)<br>Sanborn volumes covering this address: 1929–30 vol. 1 · 1950–51 vol. 1 (ProQuest, Denver Public Library)"
-S00002,Hazardous-sector manufacturers 1965-1992,on no current inventory,0,0,,0,FALSE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)<br>Sanborn volumes covering this address: 1929–30 vol. 6 · 1950–51 vol. 6 (ProQuest, Denver Public Library)"
 S00004,Hazardous-sector manufacturers 1965-1992,on a current inventory,0,0,,0,FALSE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)"
 S00012,Hazardous-sector manufacturers 1965-1992,on a current inventory,1,0,1996,1,FALSE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)"
 S00013,Hazardous-sector manufacturers 1965-1992,on a current inventory,1,0,1998,1,FALSE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)"
@@ -212,7 +211,6 @@ S00408,Hazardous-sector manufacturers 1965-1992,on a current inventory,2,0,1994,
 S00409,Hazardous-sector manufacturers 1965-1992,on no current inventory,0,0,,0,TRUE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)"
 S00410,Hazardous-sector manufacturers 1965-1992,on a current inventory,0,0,,0,TRUE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)"
 S00412,Hazardous-sector manufacturers 1965-1992,on a current inventory,4,0,2016,1,FALSE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)"
-S00413,Hazardous-sector manufacturers 1965-1992,on no current inventory,1,0,Inf,1,FALSE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)<br>Sanborn volumes covering this address: 1929–30 vol. 3 · 1950–51 vol. 3 (ProQuest, Denver Public Library)"
 S00414,Hazardous-sector manufacturers 1965-1992,on a current inventory,0,0,,0,FALSE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)"
 S00569,Hazardous-sector manufacturers 1965-1992,on a current inventory,1,0,1994,1,FALSE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)<br>Sanborn volumes covering this address: 1929–30 vol. 1 · 1950–51 vol. 1 (ProQuest, Denver Public Library)"
 S00570,Hazardous-sector manufacturers 1965-1992,on a current inventory,2,0,1991,1,FALSE,,,"1929–1951 Sanborn editions: Denver Public Library (ProQuest Digital Sanborn Maps, library card)"

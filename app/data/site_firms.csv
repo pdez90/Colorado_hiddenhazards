@@ -417,7 +417,7 @@ S00199,E012094,GENERAL GLASS CORP GORDON NEON CO,1970,1970,1,"","","",1963,"",FA
 S00199,E012290,R Pm CORP,1970,1973,2,"wood household furniture; curtains and oraperies; household furniture, nec",2511 2391 2519,directory,1945,0-9,FALSE,""
 S00199,E016845,R PM CCRP,1974,1974,1,"wooc hcusehold furniture; curtains and draperies; househcle furniture, nec",2511 2391 2519,directory,1945,0-9,FALSE,""
 S00201,E004088,ALLEN MFG,1967,1970,3,"men's» youths's + bcys* shirts; males suits, coats, + gvercoats; mens » youths » + boys trousers; chemicals + chemical preps n e c",2321 2311 2327 2899,directory,,0-19,TRUE,Chemicals
-S00201,E004278,GLENSHORE MFC CO,1965,1968,4,"men's, youths"""""""""""""""", + bcys* sfirts; males suits, coats, + overcoats; mens » youths » + boys trousers",2221 2329 2321 2311,directory,1945,100-249,FALSE,""
+S00201,E004278,GLENSHORE MFC CO,1965,1968,4,"men's, youths"""""""""""""""""""""""""""""""", + bcys* sfirts; males suits, coats, + overcoats; mens » youths » + boys trousers",2221 2329 2321 2311,directory,1945,100-249,FALSE,""
 S00201,E007420,EP-RO MFG CO,1966,1968,2,"males suits» coats, + cvercoats; mens » youths » + bcys trousers; female + juniors clterrear n ec",2339 2311 2327,directory,1963,20-99,FALSE,""
 S00201,E012105,GLENSHORE MFG CO 3791 TRAILER COACHES + PICKUP CAMPERS,1970,1970,1,"","","",1945,"",FALSE,""
 S00203,E004283,GOLCBERG BROTHERS MFG. CO.,1965,1965,1,photographic equipment and supplies (from SIC),3861,directory,,100-249,TRUE,Photographic equipment/chemicals
@@ -523,7 +523,7 @@ S00257,E007579,MARSHALL GUN COMPANY,1966,1966,1,small arms (from SIC),3484,predi
 S00257,E010683,"MARSHALL MFG CO 3452 BOLTS, NUTS, SCREWS + WASFERS",1968,1968,1,"machine shcps, jobsing and repair 1986 s cherokee",3591,directory,1952,"",TRUE,Industrial machinery
 S00257,E012515,ZOHN MFG CO 2892 EXPLOSIVES,1970,1970,1,explosives (from SIC),2892,name_keyword,1932,"",TRUE,Chemicals
 S00257,E005675,GROSS WHOLESALE TAILORS INC,1966,1966,1,"women's and misses* outerwear, nec (from SIC)",2339,predicted,1932,100-249,FALSE,""
-S00257,E007511,IMPERIAL CAP WORKS,1966,1970,4,"men""""""""""""""""s and boys* hats anc caps; hats + caps",2352,directory,1916,20-99,FALSE,""
+S00257,E007511,IMPERIAL CAP WORKS,1966,1970,4,"men""""""""""""""""""""""""""""""""s and boys* hats anc caps; hats + caps",2352,directory,1916,20-99,FALSE,""
 S00257,E009184,C204 292-9160 MC ATEE BOLT CO,1967,1967,1,"","","",1965,"",FALSE,""
 S00257,E010889,VEGA SALKA CCMPANY A WEISS PRES,1968,1968,1,"prefabricatec wccden builcings, etc 2392 misc folse furnishings; electric housewares anc fens",2433 3634,directory,1963,"",FALSE,""
 S00257,E010910,ZOHN MFG CO,1968,1968,1,"males suits, coats. + overcoats; suits, skirts, and coats",2311 2337,directory,1932,100-249,FALSE,""
@@ -780,7 +780,7 @@ S00361,E007653,CLC VIKING SFOP,1966,1968,2,metal stampings; athave rl sse inc,27
 S00361,E012271,"",1970,1970,1,"","","",1935,"",FALSE,""
 S00362,E005587,CUSTOM-AIRE SHEET METAL,1965,1965,1,sheet metal work (from SIC),3444,directory,,1-19,TRUE,Fabricated metals
 S00362,E005941,WAGHALTER MANUFACTLRING CO.,1965,1965,1,"busch ave, 1 (aos04 (from SIC)",2285,directory,,1-19,FALSE,""
-S00362,E007242,BRAY AND COMPANY,1966,1970,3,"mens » youths » + bcys shirts; males suits» coats, + cvercoats; mens"""""""""""""""", youths*, * boys* shirts; creamery butter",2329 2321 2311 2021,directory,1879,0-19,FALSE,""
+S00362,E007242,BRAY AND COMPANY,1966,1970,3,"mens » youths » + bcys shirts; males suits» coats, + cvercoats; mens"""""""""""""""""""""""""""""""", youths*, * boys* shirts; creamery butter",2329 2321 2311 2021,directory,1879,0-19,FALSE,""
 S00362,E007800,WAGHALTER MANUFACTURING CO,1966,1966,1,"fabricated textile products, nec (from SIC)",2399,predicted,1948,0-19,FALSE,""
 S00362,E004397,WAGHALTER MANUFACTURING CC,1967,1967,1,"raincoats, waterprccf outer garments",2385,directory,1948,"",FALSE,""
 S00362,E014691,BRAY AND COMPANY C-D WHEEL CO,1973,1973,1,4men*s and boys* shirts and nightwear 3714 motor vehicle,2321,directory,1879,"",FALSE,""
@@ -1041,7 +1041,7 @@ S00587,E014375,"CHAPARRAL INOUSTREES, INC",1973,1980,2,"transportation equipment
 S00587,E016152,ARMCO RECREATICNAL PRCD INC-CHAPAREAL CIV,1974,1974,1,"valves and pipe fittings; special cies» tools, jigs + fixtlres; space vekicle eqlipment,s nec; househclo cooking equipment",3494 3544 3769 3631,directory,1939,"",TRUE,Fabricated metals; Industrial machinery; Transportation equipment
 S00588,E006928,HILLIKER HYDRAULICS,1966,1966,1,machine shop (from SIC),3599,predicted,1965,"",TRUE,Industrial machinery
 S00588,E032452,JC WOOD SPECIALTIES,1990,1990,1,tole painting products; decorative art pieces; custom wood working,2851 3999 2499,directory,1987,1-9,TRUE,Chemicals
-S00588,E006940,T V BOOTIES BY PATEE,1966,1974,5,"girls + infants clterwear n ec; girls* + infants"""""""""""""""" outerwear n e c; children's outerwear, nec",2369,directory,1960,50-99,FALSE,""
+S00588,E006940,T V BOOTIES BY PATEE,1966,1974,5,"girls + infants clterwear n ec; girls* + infants"""""""""""""""""""""""""""""""" outerwear n e c; children's outerwear, nec",2369,directory,1960,50-99,FALSE,""
 S00590,E020888,"STANLEY STRUCTURES, COLORADO STEEL",1980,1988,2,"concrete products, nec; fabricated structural metal; fabricated structural",3272 3441,directory,1952,20-49,TRUE,Fabricated metals
 S00590,E006934,PRESTRESSED CONCRETE OF COLGRADO,1966,1970,2,misc concrete products,3272,directory,1952,100-249,FALSE,""
 S00590,E018480,REIN PRINTING + OFFICE SUPPLY,1966,1966,1,"","",predicted,1954,"",FALSE,""
@@ -1228,7 +1228,7 @@ S00662,E029058,SQUASH RACKETS HELIX SEEDS,1988,1988,1,helix seeds,2099,directory
 S00663,E010361,NOROHAVEN ENTERPRISES,1968,1973,2,"special cies, tools, jigs + fixtures; special dies» toolss jigs + fixtures; machinery, except electrical» nec",3544 3599,directory,1966,0-9,TRUE,Industrial machinery
 S00663,E010369,TREANGLE ELECTRONICS,1968,1970,2,"electrcnic components n e c; machine tools, metal cutting types; machine shops, jobbing and repair; electronic components n e c",3679 3541 3591,directory,1965,50-99,TRUE,Electronic components; Industrial machinery
 S00663,E027818,LARSEN MACHINE SHOP INC,1980,1990,4,welding + machine shop; welding + machine shops metals; welding + machine shops,3599,directory,1945,1-9,TRUE,Industrial machinery
-S00663,E029080,LOGIGRAPHICS INC,1988,1988,1,"unix work stations """"""""""""""""s",3571,directory,,10-19,TRUE,Industrial machinery
+S00663,E029080,LOGIGRAPHICS INC,1988,1988,1,"unix work stations """"""""""""""""""""""""""""""""s",3571,directory,,10-19,TRUE,Industrial machinery
 S00663,E007119,"CONCRETE,GYPSUM PRODUCTS TRIANGLE ELECTRONICS",1966,1966,1,"","","",1965,1-19,FALSE,""
 S00663,E008724,"",1967,1967,1,"","","",1965,250-499,FALSE,""
 S00663,E010365,"ROBERTS, HANK, INC",1968,1973,2,"sporting + athletic goods nec; sporting and athletic goods, nec",3949,directory,1946,20-99,FALSE,""
@@ -1768,7 +1768,7 @@ S00941,E004336,SCOTT*S LIQUID GOLD INC,1966,1970,2,soap and other detergents (fr
 S00941,E010768,PLASTRONICS INC,1968,1970,2,"specialty cleaning, pclisfing, preps; misc plastics products; specialty cleaning, polishing, preps",2842 3079,directory,1968,1-9,TRUE,Chemicals; Rubber & plastics
 S00941,E018471,POSTIQUE OF COLORADO,1980,1980,1,self service postal centers; ski lockers + utelity lockers,3589 2542,directory,1974,1-9,TRUE,Industrial machinery
 S00941,E022929,JC B PRECISION TOOL ¢ MOLD INC,1980,1983,2,molos dies fixtures; molded plastic parts; custom machine work; molds dies fixtures,3544 3079 3599,directory,1978,1-9,TRUE,Industrial machinery; Rubber & plastics
-S00941,E007668,PARAGOM REPRODUCTIONS INC,1966,1970,3,"commercial printing, lithcgraphic; com""""""""""""""""l printing except lithographic; nonlithographic commercial printing",2752 2751,directory,,10-19,FALSE,""
+S00941,E007668,PARAGOM REPRODUCTIONS INC,1966,1970,3,"commercial printing, lithcgraphic; com""""""""""""""""""""""""""""""""l printing except lithographic; nonlithographic commercial printing",2752 2751,directory,,10-19,FALSE,""
 S00941,E023085,SERVICE PRINTING,1980,1980,1,commercial + envelope printing,2752,directory,1977,20-49,FALSE,""
 S00941,E029632,AMERICAN BOOK MANUFACTURING,1988,1990,2,"books, booklets, manuals; 18th st,ste 10 (eaneg",2731 2300,directory,1985,1-9,FALSE,""
 S00941,E029671,CAM COMP SYSTEM AUTOMATED BINDING CO,1988,1988,1,wire-o bookbinding,2789,directory,,1-9,FALSE,""
@@ -1893,7 +1893,7 @@ S01003,E001004,WRIGHT*'S INC,1966,1966,1,wood preserving (from SIC),2491,predict
 S01005,E010919,A +L ALUMINUM MFG CO,1966,1968,2,"metal cccrs, frames, molding + trim",3441 3442,directory,1961,1-19,TRUE,Fabricated metals
 S01005,E001065,RAY ALLEN MFG CO INC,1973,1990,6,"leather goods, nec; leather goods. nec; ophthalmic goods; brass» bronze, and copper foundries",3199 3851 3362 3911,directory,1955,10-19,TRUE,Primary metals
 S01005,E025654,ALLENs RAYs RFG COs INC,1983,1983,1,dog equipments protective clothing; nylon dog collars + leashes,3199 2399,directory,1955,1-9,FALSE,""
-S01005,E029344,"BOttEay """"""""""""""""RTH",1988,1988,1,pottery,3269,directory,1983,1-9,FALSE,""
+S01005,E029344,"BOttEay """"""""""""""""""""""""""""""""RTH",1988,1988,1,pottery,3269,directory,1983,1-9,FALSE,""
 S01005,E033819,THE CLAY PEN,1988,1990,2,stoneware pottery,3269,directory,1978,10-19,FALSE,""
 S01009,E001063,ALRWAVE HEATING CORP,1966,1973,2,sheet metal work,3444,directory,1954,0-19,TRUE,Fabricated metals
 S01010,E011017,wESTONE LABS INC,1968,1968,1,watchcases,3672,directory,1959,1-9,TRUE,Printed circuit boards
@@ -2135,7 +2135,7 @@ S01152,E008139,FORT COLLINS COLORADO PRINTING CO,1966,1970,2,nonlithographic com
 S01152,E004752,ROBINSON-WARFIELD PRINTING CO,1967,1973,2,"com*l printing except lithographic; commercial printing, lithographic; commercial printing, letterpress; typesetting",2751 2752 2791,directory,1909,10-19,FALSE,""
 S01152,E009788,FORT COLLINS COLCRACC PRINTING CO,1967,1967,1,com*l frinting except lithographic; dental equipment anc supplies,2751 3843,directory,1999,"",FALSE,""
 S01152,E000450,SPIC 'N* SPAN BAKERY,1973,1973,1,"bread, cake, anc related products",2051,directory,1962,0-19,FALSE,""
-S01156,E020284,BLUEBIRD MANUFACTURING,1977,1980,2,"special industry machinery, nec; """"""""""""""""pug mills» clay mixers, ballmells; hamnermills; automatic screens",3559 3532 3569,directory,1972,1-9,TRUE,Industrial machinery
+S01156,E020284,BLUEBIRD MANUFACTURING,1977,1980,2,"special industry machinery, nec; """"""""""""""""""""""""""""""""pug mills» clay mixers, ballmells; hamnermills; automatic screens",3559 3532 3569,directory,1972,1-9,TRUE,Industrial machinery
 S01156,E026032,BLUEBIRD MANUFACTURING,1983,1983,1,pug mills» clay mixers» ballnills,3559,directory,1972,1-9,TRUE,Industrial machinery
 S01156,E008152,"CONCRETE, GYPSUM PRODUCTS",1966,1966,1,"","","",1954,0-19,FALSE,""
 S01156,E015649,INC 1325 RIVERSIDE,1973,1973,1,"","","",1966,"",FALSE,""
@@ -4067,7 +4067,7 @@ S02389,E016508,BRAMCO MANUFACTURING CC,1973,1973,1,"motor vehicle parts and acce
 S02389,E019174,BRAMCO MANUFACTURING CO 2752 COMMERCIAL PRINTINGs LITHOGRAPHIC,1977,1977,1,"","","",1968,"",FALSE,""
 S02393,E019375,DESIGN WINDOW ING,1977,1990,3,"metal doors, sash, and trim; aluminum; aluminum storm windows + doors; patio covers + awnings",3442 3444,directory,1972,1-9,TRUE,Fabricated metals
 S02393,E017948,CHRIS CHAM CO,1980,1980,1,"fabricated metal products, nec",3499,directory,1969,1-9,TRUE,Fabricated metals
-S02393,E010456,AZTEC SOUND CORP,1968,1970,2,"radio + television receiving sets; radios, tv""""""""""""""""s, recorders, etc",3651,directory,1965,20-49,FALSE,""
+S02393,E010456,AZTEC SOUND CORP,1968,1970,2,"radio + television receiving sets; radios, tv""""""""""""""""""""""""""""""""s, recorders, etc",3651,directory,1965,20-49,FALSE,""
 S02393,E014628,A+A SANOWICH + CATERING CO,1973,1973,1,"food preparations, nec",2099,directory,1969,10-19,FALSE,""
 S02393,E032244,A+A SANDWICH CO INC,1974,1988,4,"food preparations, nec; «sandwiches; sanowiches; sandwiches",2099 2625,directory,1969,10-19,FALSE,""
 S02393,E019187,"",1977,1977,1,food preparations. nec,2099,directory,1969,10-19,FALSE,""
@@ -8105,7 +8105,7 @@ S06891,E033554,LOVELAND SCREW MACHINE LID,1992,1992,1,precision machine parts,34
 S06895,E002161,Bi INCORPORATED,1992,1992,1,computerzed dairy cattle feeder; home arrest system,3523 3669,directory,1978,"",TRUE,Industrial machinery
 S06895,E033680,PRIMA SPORTS,1992,1992,1,"skéwear,",2385,directory,,"",FALSE,""
 S06896,E033594,CHRISTMAS LETTERS,1992,1992,1,printed circut boards,3672,directory,1991,"",TRUE,Printed circuit boards
-S06904,E033667,MOUNTAIN OPTECH INC,1992,1992,1,"s0-1000- chi000 """"""""""""""""tw",3572,directory,1986,"",TRUE,Industrial machinery
+S06904,E033667,MOUNTAIN OPTECH INC,1992,1992,1,"s0-1000- chi000 """"""""""""""""""""""""""""""""tw",3572,directory,1986,"",TRUE,Industrial machinery
 S06909,E033705,TRITON ENGINEERING + MFG CO INC,1992,1992,1,"occessories; other sport equipment short run production; indian rd, boulder 80301; graphic design, advertising",3499 3732 3131 3993,directory,,"",TRUE,Fabricated metals; Rubber & plastics; Transportation equipment
 S06911,E033716,WHEELS MANUFACTURING:,1992,1992,1,bicycle tools; bicycle access; bicycle replacement parts & component,3423 3647 3751,directory,,"",TRUE,Fabricated metals; Transportation equipment
 S06915,E002372,FRONT RANGE MACHINING INC,1992,1992,1,fabricated metal products,3499,directory,,"",TRUE,Fabricated metals

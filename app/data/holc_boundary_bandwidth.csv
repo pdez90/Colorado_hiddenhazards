@@ -15,7 +15,7 @@ narrow,200,1940,districts,p_black,16,17,3.05,3.05,0.33
 narrow,400,1940,2010 tracts,p_black,3,9,9.59,6.01,0.14
 standard,400,1940,districts,p_black,36,31,5.89,2.74,0.035
 standard,800,1940,2010 tracts,p_black,13,14,6.69,4.13,0.12
-wide,800,1940,districts,p_black,72,48,11.15,4.04,0.0067
+wide,800,1940,districts,p_black,73,48,11.15,4.04,0.0067
 wide,1600,1940,2010 tracts,p_black,23,15,8.17,3.85,0.041
 narrow,400,1950,2010 tracts,p_black,3,9,15.16,8.91,0.12
 standard,800,1950,2010 tracts,p_black,13,14,10.3,6.43,0.12
@@ -56,8 +56,8 @@ wide,800,1930,districts,p_hisp,41,40,0.86,0.44,0.056
 narrow,200,1940,districts,p_hisp,16,17,1.07,0.49,0.038
 narrow,400,1940,2010 tracts,p_hisp,3,9,2.01,1.58,0.23
 standard,400,1940,districts,p_hisp,36,31,1.13,0.3,0.00044
-standard,800,1940,2010 tracts,p_hisp,13,14,3.47,1.21,0.0084
-wide,800,1940,districts,p_hisp,72,48,3.48,0.71,3.3e-06
+standard,800,1940,2010 tracts,p_hisp,13,14,3.46,1.21,0.0085
+wide,800,1940,districts,p_hisp,73,48,3.48,0.71,3.3e-06
 wide,1600,1940,2010 tracts,p_hisp,23,15,5.06,1.79,0.0076
 narrow,400,1960,2010 tracts,p_hisp,3,10,1.53,5.07,0.77
 standard,800,1960,2010 tracts,p_hisp,15,15,10.89,3.76,0.0073

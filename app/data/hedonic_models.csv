@@ -1,64 +1,64 @@
 model,sample,kind,distance,pct,lo,hi,p,estimate,se,n
-M1 base: neighbourhood x year FE,All residential sales,Hidden (no current inventory),0-200 m,-0.19,-3.2,2.91,0.903,-0.0019,0.0156,153599
-M1 base: neighbourhood x year FE,All residential sales,Hidden (no current inventory),200-400 m,-1.33,-3.63,1.03,0.27,-0.0134,0.0121,153599
-M1 base: neighbourhood x year FE,All residential sales,Hidden (no current inventory),400-800 m,-0.68,-2.78,1.47,0.535,-0.0068,0.0109,153599
-M1 base: neighbourhood x year FE,All residential sales,Known (on a current inventory),0-200 m,-0.37,-4.39,3.82,0.862,-0.0037,0.021,153599
-M1 base: neighbourhood x year FE,All residential sales,Known (on a current inventory),200-400 m,-1.45,-4.75,1.97,0.402,-0.0146,0.0174,153599
-M1 base: neighbourhood x year FE,All residential sales,Known (on a current inventory),400-800 m,-0.39,-2.46,1.72,0.714,-0.0039,0.0107,153599
-M1 base: neighbourhood x year FE,All residential sales,Pre-1960 hazardous trade,0-200 m,-1.71,-4.51,1.17,0.243,-0.0173,0.0147,153599
-M1 base: neighbourhood x year FE,All residential sales,Pre-1960 hazardous trade,200-400 m,-0.81,-2.97,1.4,0.469,-0.0082,0.0112,153599
-M1 base: neighbourhood x year FE,All residential sales,Pre-1960 hazardous trade,400-800 m,-0.84,-2.61,0.96,0.359,-0.0084,0.0092,153599
-M2 + present-day hazards,All residential sales,Hidden (no current inventory),0-200 m,0.16,-2.85,3.27,0.917,0.0016,0.0156,153599
-M2 + present-day hazards,All residential sales,Hidden (no current inventory),200-400 m,-1.22,-3.52,1.14,0.31,-0.0122,0.012,153599
-M2 + present-day hazards,All residential sales,Hidden (no current inventory),400-800 m,-0.62,-2.71,1.52,0.57,-0.0062,0.0108,153599
-M2 + present-day hazards,All residential sales,Known (on a current inventory),0-200 m,-0.3,-4.26,3.83,0.885,-0.003,0.0207,153599
-M2 + present-day hazards,All residential sales,Known (on a current inventory),200-400 m,-1.5,-4.69,1.79,0.368,-0.0151,0.0168,153599
-M2 + present-day hazards,All residential sales,Known (on a current inventory),400-800 m,-0.39,-2.46,1.71,0.713,-0.0039,0.0107,153599
-M2 + present-day hazards,All residential sales,Pre-1960 hazardous trade,0-200 m,-1.76,-4.54,1.11,0.228,-0.0177,0.0146,153599
-M2 + present-day hazards,All residential sales,Pre-1960 hazardous trade,200-400 m,-0.86,-3,1.31,0.435,-0.0087,0.0111,153599
-M2 + present-day hazards,All residential sales,Pre-1960 hazardous trade,400-800 m,-0.89,-2.63,0.88,0.325,-0.0089,0.009,153599
-M2 + present-day hazards,All residential sales,Present-day control,petro_100,0.56,-1.24,2.38,0.547,0.0056,0.0092,153599
-M2 + present-day hazards,All residential sales,Present-day control,tri_500,-2.46,-7.36,2.69,0.344,-0.025,0.0263,153599
-M2 + present-day hazards,All residential sales,Present-day control,superfund,3,-13.02,21.98,0.732,0.0296,0.0863,153599
-M2 + present-day hazards,All residential sales,Present-day control,freeway_250,-4.47,-7.29,-1.56,0.00325,-0.0458,0.0153,153599
-M2 + present-day hazards,All residential sales,Present-day control,zoned_ind,-4.25,-8.02,-0.33,0.0354,-0.0435,0.0205,153599
-M3 tract x year FE,All residential sales,Hidden (no current inventory),0-200 m,1.11,-2.73,5.1,0.578,0.011,0.0198,153622
-M3 tract x year FE,All residential sales,Hidden (no current inventory),200-400 m,-0.37,-3.83,3.21,0.836,-0.0037,0.018,153622
-M3 tract x year FE,All residential sales,Hidden (no current inventory),400-800 m,-0.3,-2.67,2.12,0.804,-0.003,0.0123,153622
-M3 tract x year FE,All residential sales,Known (on a current inventory),0-200 m,-0.86,-4.89,3.34,0.683,-0.0087,0.0212,153622
-M3 tract x year FE,All residential sales,Known (on a current inventory),200-400 m,-2.82,-5.87,0.33,0.0806,-0.0286,0.0163,153622
+M1 base: neighbourhood x year FE,All residential sales,Hidden (no current inventory),0-200 m,0.23,-2.92,3.48,0.889,0.0023,0.0163,153599
+M1 base: neighbourhood x year FE,All residential sales,Hidden (no current inventory),200-400 m,-1.21,-3.55,1.2,0.324,-0.0121,0.0123,153599
+M1 base: neighbourhood x year FE,All residential sales,Hidden (no current inventory),400-800 m,-0.58,-2.7,1.59,0.599,-0.0058,0.011,153599
+M1 base: neighbourhood x year FE,All residential sales,Known (on a current inventory),0-200 m,-0.38,-4.4,3.82,0.857,-0.0038,0.021,153599
+M1 base: neighbourhood x year FE,All residential sales,Known (on a current inventory),200-400 m,-1.46,-4.76,1.96,0.399,-0.0147,0.0174,153599
+M1 base: neighbourhood x year FE,All residential sales,Known (on a current inventory),400-800 m,-0.41,-2.48,1.7,0.701,-0.0041,0.0107,153599
+M1 base: neighbourhood x year FE,All residential sales,Pre-1960 hazardous trade,0-200 m,-1.77,-4.54,1.08,0.222,-0.0179,0.0146,153599
+M1 base: neighbourhood x year FE,All residential sales,Pre-1960 hazardous trade,200-400 m,-0.83,-2.99,1.37,0.455,-0.0084,0.0112,153599
+M1 base: neighbourhood x year FE,All residential sales,Pre-1960 hazardous trade,400-800 m,-0.84,-2.61,0.95,0.356,-0.0085,0.0092,153599
+M2 + present-day hazards,All residential sales,Hidden (no current inventory),0-200 m,0.52,-2.6,3.75,0.746,0.0052,0.0161,153599
+M2 + present-day hazards,All residential sales,Hidden (no current inventory),200-400 m,-1.09,-3.43,1.31,0.374,-0.0109,0.0122,153599
+M2 + present-day hazards,All residential sales,Hidden (no current inventory),400-800 m,-0.51,-2.62,1.64,0.639,-0.0051,0.0109,153599
+M2 + present-day hazards,All residential sales,Known (on a current inventory),0-200 m,-0.31,-4.27,3.82,0.882,-0.0031,0.0207,153599
+M2 + present-day hazards,All residential sales,Known (on a current inventory),200-400 m,-1.51,-4.7,1.78,0.365,-0.0152,0.0168,153599
+M2 + present-day hazards,All residential sales,Known (on a current inventory),400-800 m,-0.41,-2.48,1.7,0.701,-0.0041,0.0107,153599
+M2 + present-day hazards,All residential sales,Pre-1960 hazardous trade,0-200 m,-1.81,-4.57,1.03,0.211,-0.0183,0.0145,153599
+M2 + present-day hazards,All residential sales,Pre-1960 hazardous trade,200-400 m,-0.89,-3.01,1.28,0.421,-0.0089,0.011,153599
+M2 + present-day hazards,All residential sales,Pre-1960 hazardous trade,400-800 m,-0.89,-2.63,0.88,0.322,-0.009,0.009,153599
+M2 + present-day hazards,All residential sales,Present-day control,petro_100,0.55,-1.24,2.37,0.551,0.0055,0.0092,153599
+M2 + present-day hazards,All residential sales,Present-day control,tri_500,-2.5,-7.36,2.62,0.334,-0.0253,0.0261,153599
+M2 + present-day hazards,All residential sales,Present-day control,superfund,2.99,-13.13,22.1,0.735,0.0295,0.0868,153599
+M2 + present-day hazards,All residential sales,Present-day control,freeway_250,-4.46,-7.29,-1.54,0.00342,-0.0456,0.0154,153599
+M2 + present-day hazards,All residential sales,Present-day control,zoned_ind,-4.07,-7.86,-0.12,0.0452,-0.0415,0.0206,153599
+M3 tract x year FE,All residential sales,Hidden (no current inventory),0-200 m,1.58,-2.43,5.76,0.447,0.0157,0.0206,153622
+M3 tract x year FE,All residential sales,Hidden (no current inventory),200-400 m,-0.22,-3.77,3.46,0.903,-0.0022,0.0185,153622
+M3 tract x year FE,All residential sales,Hidden (no current inventory),400-800 m,-0.27,-2.65,2.16,0.825,-0.0027,0.0123,153622
+M3 tract x year FE,All residential sales,Known (on a current inventory),0-200 m,-0.88,-4.92,3.33,0.676,-0.0089,0.0212,153622
+M3 tract x year FE,All residential sales,Known (on a current inventory),200-400 m,-2.82,-5.88,0.34,0.0814,-0.0286,0.0163,153622
 M3 tract x year FE,All residential sales,Known (on a current inventory),400-800 m,-1.41,-3.42,0.64,0.179,-0.0142,0.0105,153622
-M3 tract x year FE,All residential sales,Pre-1960 hazardous trade,0-200 m,1.23,-3.13,5.79,0.587,0.0122,0.0225,153622
-M3 tract x year FE,All residential sales,Pre-1960 hazardous trade,200-400 m,1.51,-1.41,4.5,0.316,0.0149,0.0149,153622
-M3 tract x year FE,All residential sales,Pre-1960 hazardous trade,400-800 m,0.94,-1.13,3.05,0.376,0.0094,0.0106,153622
-M3 tract x year FE,All residential sales,Present-day control,petro_100,1.86,-0.41,4.18,0.111,0.0184,0.0115,153622
-M3 tract x year FE,All residential sales,Present-day control,tri_500,-0.65,-5.21,4.14,0.788,-0.0065,0.024,153622
-M3 tract x year FE,All residential sales,Present-day control,superfund,-8.78,-25.5,11.7,0.375,-0.0919,0.1033,153622
-M3 tract x year FE,All residential sales,Present-day control,freeway_250,-6.16,-8.99,-3.23,7.88e-05,-0.0635,0.0157,153622
-M3 tract x year FE,All residential sales,Present-day control,zoned_ind,-2.18,-6.85,2.72,0.378,-0.0221,0.025,153622
-M4 single-family homes (as M2),Single-family homes,Hidden (no current inventory),0-200 m,0.47,-1.35,2.32,0.617,0.0047,0.0093,90217
-M4 single-family homes (as M2),Single-family homes,Hidden (no current inventory),200-400 m,-0.21,-1.68,1.28,0.781,-0.0021,0.0076,90217
-M4 single-family homes (as M2),Single-family homes,Hidden (no current inventory),400-800 m,-0.19,-1.18,0.81,0.71,-0.0019,0.0051,90217
-M4 single-family homes (as M2),Single-family homes,Known (on a current inventory),0-200 m,-2.12,-4.14,-0.06,0.0454,-0.0214,0.0106,90217
-M4 single-family homes (as M2),Single-family homes,Known (on a current inventory),200-400 m,-1.6,-3.49,0.33,0.106,-0.0161,0.0099,90217
-M4 single-family homes (as M2),Single-family homes,Known (on a current inventory),400-800 m,-1.31,-2.66,0.06,0.0637,-0.0131,0.007,90217
-M4 single-family homes (as M2),Single-family homes,Pre-1960 hazardous trade,0-200 m,-0.16,-2.52,2.26,0.895,-0.0016,0.0122,90217
-M4 single-family homes (as M2),Single-family homes,Pre-1960 hazardous trade,200-400 m,-0.01,-1.89,1.9,0.99,-1e-04,0.0097,90217
-M4 single-family homes (as M2),Single-family homes,Pre-1960 hazardous trade,400-800 m,0.2,-1.12,1.54,0.768,0.002,0.0068,90217
-M4 single-family homes (as M2),Single-family homes,Present-day control,petro_100,-2.7,-3.63,-1.77,9.72e-08,-0.0274,0.0049,90217
-M4 single-family homes (as M2),Single-family homes,Present-day control,tri_500,-1.65,-3.27,-0.01,0.0505,-0.0166,0.0084,90217
-M4 single-family homes (as M2),Single-family homes,Present-day control,superfund,-14.4,-16.73,-11.99,7.15e-21,-0.1554,0.0141,90217
-M4 single-family homes (as M2),Single-family homes,Present-day control,freeway_250,-5.52,-8.11,-2.85,1e-04,-0.0567,0.0142,90217
-M4 single-family homes (as M2),Single-family homes,Present-day control,zoned_ind,-4.44,-8.74,0.06,0.0548,-0.0454,0.0235,90217
-M5 site counts within 400 m,All residential sales,Hidden (no current inventory),per site within 400 m,0.3,-0.65,1.27,0.537,0.003,0.0049,153599
-M5 site counts within 400 m,All residential sales,Known (on a current inventory),per site within 400 m,-0.46,-1.21,0.31,0.243,-0.0046,0.0039,153599
-M5 site counts within 400 m,All residential sales,Pre-1960 hazardous trade,per site within 400 m,-0.02,-0.51,0.47,0.931,-2e-04,0.0025,153599
-M5 site counts within 400 m,All residential sales,Present-day control,petro_100,0.75,-1.15,2.69,0.441,0.0075,0.0097,153599
-M5 site counts within 400 m,All residential sales,Present-day control,tri_500,-2,-7.14,3.43,0.464,-0.0202,0.0275,153599
-M5 site counts within 400 m,All residential sales,Present-day control,superfund,3.53,-14.09,24.77,0.716,0.0347,0.0952,153599
-M5 site counts within 400 m,All residential sales,Present-day control,freeway_250,-4.37,-7.27,-1.37,0.00515,-0.0446,0.0157,153599
-M5 site counts within 400 m,All residential sales,Present-day control,zoned_ind,-2.4,-7.11,2.54,0.337,-0.0243,0.0252,153599
-M6 within 400 m (pooled),All residential sales,Hidden (no current inventory),0-400 m,-0.44,-1.94,1.08,0.568,-0.0044,0.0077,153599
-M6 within 400 m (pooled),All residential sales,Known (on a current inventory),0-400 m,-0.96,-3.01,1.12,0.363,-0.0097,0.0106,153599
-M6 within 400 m (pooled),All residential sales,Pre-1960 hazardous trade,0-400 m,-0.31,-1.79,1.19,0.684,-0.0031,0.0076,153599
-M6 within 400 m (pooled),All residential sales,Hidden minus known,0-400 m,0.53,-2.44,3.59,0.73,0.0053,0.0153,153599
+M3 tract x year FE,All residential sales,Pre-1960 hazardous trade,0-200 m,1.15,-3.21,5.7,0.613,0.0114,0.0225,153622
+M3 tract x year FE,All residential sales,Pre-1960 hazardous trade,200-400 m,1.47,-1.44,4.47,0.326,0.0146,0.0149,153622
+M3 tract x year FE,All residential sales,Pre-1960 hazardous trade,400-800 m,0.95,-1.12,3.06,0.371,0.0095,0.0106,153622
+M3 tract x year FE,All residential sales,Present-day control,petro_100,1.85,-0.42,4.17,0.114,0.0183,0.0115,153622
+M3 tract x year FE,All residential sales,Present-day control,tri_500,-0.71,-5.22,4.02,0.765,-0.0071,0.0237,153622
+M3 tract x year FE,All residential sales,Present-day control,superfund,-8.77,-25.52,11.74,0.376,-0.0918,0.1035,153622
+M3 tract x year FE,All residential sales,Present-day control,freeway_250,-6.16,-9,-3.22,8.27e-05,-0.0635,0.0157,153622
+M3 tract x year FE,All residential sales,Present-day control,zoned_ind,-1.96,-6.56,2.86,0.42,-0.0198,0.0245,153622
+M4 single-family homes (as M2),Single-family homes,Hidden (no current inventory),0-200 m,0.76,-1.15,2.71,0.439,0.0076,0.0098,90217
+M4 single-family homes (as M2),Single-family homes,Hidden (no current inventory),200-400 m,-0.07,-1.59,1.47,0.928,-7e-04,0.0078,90217
+M4 single-family homes (as M2),Single-family homes,Hidden (no current inventory),400-800 m,-0.06,-1.1,0.98,0.908,-6e-04,0.0053,90217
+M4 single-family homes (as M2),Single-family homes,Known (on a current inventory),0-200 m,-2.15,-4.17,-0.08,0.0437,-0.0217,0.0107,90217
+M4 single-family homes (as M2),Single-family homes,Known (on a current inventory),200-400 m,-1.62,-3.52,0.31,0.102,-0.0163,0.0099,90217
+M4 single-family homes (as M2),Single-family homes,Known (on a current inventory),400-800 m,-1.33,-2.68,0.04,0.0592,-0.0134,0.007,90217
+M4 single-family homes (as M2),Single-family homes,Pre-1960 hazardous trade,0-200 m,-0.19,-2.54,2.22,0.878,-0.0019,0.0122,90217
+M4 single-family homes (as M2),Single-family homes,Pre-1960 hazardous trade,200-400 m,-0.02,-1.89,1.88,0.98,-2e-04,0.0096,90217
+M4 single-family homes (as M2),Single-family homes,Pre-1960 hazardous trade,400-800 m,0.2,-1.13,1.54,0.771,0.002,0.0068,90217
+M4 single-family homes (as M2),Single-family homes,Present-day control,petro_100,-2.71,-3.63,-1.77,8.71e-08,-0.0274,0.0049,90217
+M4 single-family homes (as M2),Single-family homes,Present-day control,tri_500,-1.66,-3.26,-0.03,0.0485,-0.0167,0.0084,90217
+M4 single-family homes (as M2),Single-family homes,Present-day control,superfund,-14.37,-16.73,-11.94,1.71e-20,-0.1551,0.0143,90217
+M4 single-family homes (as M2),Single-family homes,Present-day control,freeway_250,-5.52,-8.12,-2.86,9.92e-05,-0.0568,0.0142,90217
+M4 single-family homes (as M2),Single-family homes,Present-day control,zoned_ind,-4.44,-8.74,0.05,0.0547,-0.0455,0.0235,90217
+M5 site counts within 400 m,All residential sales,Hidden (no current inventory),per site within 400 m,0.37,-0.62,1.36,0.468,0.0036,0.005,153599
+M5 site counts within 400 m,All residential sales,Known (on a current inventory),per site within 400 m,-0.46,-1.22,0.3,0.238,-0.0046,0.0039,153599
+M5 site counts within 400 m,All residential sales,Pre-1960 hazardous trade,per site within 400 m,-0.03,-0.51,0.46,0.915,-3e-04,0.0025,153599
+M5 site counts within 400 m,All residential sales,Present-day control,petro_100,0.75,-1.15,2.69,0.442,0.0075,0.0097,153599
+M5 site counts within 400 m,All residential sales,Present-day control,tri_500,-2.04,-7.15,3.35,0.452,-0.0206,0.0274,153599
+M5 site counts within 400 m,All residential sales,Present-day control,superfund,3.55,-14.11,24.86,0.715,0.0349,0.0954,153599
+M5 site counts within 400 m,All residential sales,Present-day control,freeway_250,-4.36,-7.27,-1.36,0.00526,-0.0446,0.0158,153599
+M5 site counts within 400 m,All residential sales,Present-day control,zoned_ind,-2.31,-7.1,2.72,0.363,-0.0234,0.0256,153599
+M6 within 400 m (pooled),All residential sales,Hidden (no current inventory),0-400 m,-0.33,-1.85,1.21,0.67,-0.0033,0.0078,153599
+M6 within 400 m (pooled),All residential sales,Known (on a current inventory),0-400 m,-0.97,-3.01,1.12,0.361,-0.0098,0.0106,153599
+M6 within 400 m (pooled),All residential sales,Pre-1960 hazardous trade,0-400 m,-0.31,-1.79,1.18,0.68,-0.0031,0.0076,153599
+M6 within 400 m (pooled),All residential sales,Hidden minus known,0-400 m,0.64,-2.35,3.72,0.677,0.0064,0.0154,153599
