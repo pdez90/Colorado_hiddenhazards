@@ -32,7 +32,9 @@ def ipums_ed(year):
     # South Arapahoe reuses Denver's ED numbers, so pooling the two counties would add its people to Denver's EDs (as R/grf_eds.R does)
     if year == 1940:
         e = x.ENUMDIST.astype(str).str.zfill(7)
-        x['ED'] = e.str[2:6].astype(int).astype(str) + e.str[6].map({'0': '', '1': 'A', '2': 'B', '3': 'C'}).fillna('')
+        sfx = e.str[6].map({'0': '', '1': 'A', '2': 'B', '3': 'C', '4': 'D', '5': 'E', '6': 'F', '7': 'G'})
+        if sfx.isna().any(): raise SystemExit(f"1940: unknown ED suffix code(s) {sorted(e.str[6][sfx.isna()].unique())}")
+        x['ED'] = e.str[2:6].astype(int).astype(str) + sfx
     else:
         x['ED'] = (x.ENUMDIST % 100000).astype(str)
     avg = [c for c in x.columns if c.startswith(('mean_', 'median_'))]

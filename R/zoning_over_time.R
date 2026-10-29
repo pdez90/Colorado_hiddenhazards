@@ -44,15 +44,17 @@ hist_cat <- function(f, yr) { z <- st_make_valid(st_transform(st_read(f, quiet =
   z$cat <- ifelse(grepl("Industrial", z$zone), "Industrial", "Commercial or mixed use"); z <- aggregate(z[, "cat"], list(cat = z$cat), function(x) x[1])[, "cat"]; z$year <- yr; z }
 Z29 <- hist_cat(file.path(A, "zoning_1929.geojson"), "1929"); Z44 <- hist_cat(file.path(A, "zoning_1944.geojson"), "1944")
 city <- st_make_valid(st_transform(st_read("work/zoning_city/denver_zoning_current.geojson", quiet = TRUE), UTM))
-city$cat <- fcase(grepl("^I-MX", city$ZONE_DISTRICT), "Industrial mixed use", city$ZONE_DIST_TYPE == "Industrial", "Industrial",
-                  city$ZONE_DIST_TYPE == "Commercial Mixed Use", "Commercial or mixed use", city$ZONE_DIST_TYPE == "Residential", "Residential",
-                  city$ZONE_DIST_TYPE == "PUD", "PUD (custom district)", default = "Open space, civic, other")
+city_cat <- function(zone_district, zone_dist_type) fcase(grepl("^I-MX", zone_district), "Industrial mixed use", zone_dist_type == "Industrial", "Industrial",
+                  zone_dist_type == "Commercial Mixed Use", "Commercial or mixed use", zone_dist_type == "Residential", "Residential",
+                  zone_dist_type == "PUD", "PUD (custom district)", default = "Open space, civic, other")
+city$cat <- city_cat(city$ZONE_DISTRICT, city$ZONE_DIST_TYPE)
 city_date <- tryCatch(readLines("work/zoning_city/download_date.txt")[1], error = function(e) "today")
 nza <- st_read("work/zoning_2023/ALL_DenverMSA_10.3.23.shp", quiet = TRUE, wkt_filter = st_as_text(st_transform(st_buffer(STUDY, 100), 32613)))
 nza <- st_make_valid(st_transform(nza, UTM))
-nza$cat <- fcase(grepl("^I-MX", nza$Local_zon), "Industrial mixed use", nza$GenZone2 == "Industrial", "Industrial", grepl("^MixedUse", nza$GenZone2), "Commercial or mixed use",
-                 nza$GenZone2 == "Commercial", "Commercial (housing not allowed)",
-                 grepl("^Residential|^MobileHome", nza$GenZone2), "Residential", default = "Open space, civic, other")
+nza_cat <- function(local_zon, genzone2) fcase(grepl("^I-MX", local_zon), "Industrial mixed use", genzone2 == "Industrial", "Industrial", grepl("^MixedUse", genzone2), "Commercial or mixed use",
+                 genzone2 == "Commercial", "Commercial (housing not allowed)",
+                 grepl("^Residential|^MobileHome", genzone2), "Residential", default = "Open space, civic, other")
+nza$cat <- nza_cat(nza$Local_zon, nza$GenZone2)
 diss <- function(z, clip, yr) { z <- suppressWarnings(st_intersection(z[, "cat"], clip)); z <- aggregate(z[, "cat"], list(cat = z$cat), function(x) x[1])[, "cat"]; z$year <- yr; st_make_valid(z) }
 ZT <- diss(city, DEN, "today"); Z23 <- diss(nza, STUDY, "2023")
 # ---------------------------------------------------------------- 1. land by year on the land mapped in 1929 and 1944

@@ -58,11 +58,11 @@ def with_tract(df, lat='lat', lon='lon'):
 s = pd.read_pickle('work/inv/sites_export.pkl')
 s = s[s.fe_hazard | s.ext_hazard].copy()
 for c in s.columns:
-    if s[c].dtype == object: s[c] = s[c].apply(lambda v: re.sub(r'^[=+@\-]+\s*', '', v) if isinstance(v, str) else v)
+    if pd.api.types.is_object_dtype(s[c]) or pd.api.types.is_string_dtype(s[c]): s[c] = s[c].apply(lambda v: re.sub(r'^[=+@\-]+\s*', '', v) if isinstance(v, str) else v)
 s['known_match'] = s[['cleanup_match', 'tri_match', 'rcra_handler_match', 'solid_waste_match', 'other_epa_match']].fillna('').agg(
     lambda r: next((x for x in r if x), ''), axis=1)
 sc = ['site_id', 'lat', 'lon', 'address', 'city', 'county', 'zip', 'first_year', 'last_year', 'hazard_years', 'fe_hazard', 'ext_hazard',
-      'fe_sectors', 'ext_sectors', 'radar', 'confidence', 'geo_level', 'industry_evidence', 'n_hazard_establishments', 'hazard_firms', 'known_match']
+      'fe_sectors', 'ext_sectors', 'radar', 'match_basis', 'confidence', 'geo_level', 'industry_evidence', 'n_hazard_establishments', 'hazard_firms', 'known_match']
 S = with_tract(s[sc]); S.to_csv('app/data/sites.csv', index=False)
 df = pd.read_pickle('work/inv/records_final.pkl')
 SEC = {'28': 'Chemicals', '29': 'Petroleum refining', '30': 'Rubber & plastics', '33': 'Primary metals', '34': 'Fabricated metals',

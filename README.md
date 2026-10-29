@@ -36,7 +36,13 @@ from `build_sites`.
 
 1. **Directories.** 25 editions of the Colorado Directory of Manufacturers (1961–2002) were OCR'd (Tesseract 5.3.4, word boxes)
    and parsed with format-specific parsers (`pipeline/volumes.py` maps each volume to its year and format).
-   Columns are rebuilt from word positions. OCR digit confusions (C→0, e/€/@→8, S/$→9, B→8) are corrected using field context;
+   Columns are rebuilt from word positions: for each page the column cuts are chosen among the detected cuts and forced two- or
+   three-column splits by whichever leaves the fewest over-long lines (the October 2026 review found 10–30% of 1966–1977 pages read
+   as one column, with neighbouring columns' text interleaved), and lines are clustered on the printed line pitch rather than word
+   height (the low-resolution 1992 scan had merged adjacent lines). A street-and-phone line inside a record starts a new record, and
+   a size or "S.PROP" line without a founding year counts as a record boundary. OCR digit confusions (C→0, e/€/@→8, B→8 in codes and
+   ZIPs; S/$→5, E→1, G→0 in house numbers) are corrected using field context; a five-digit token becomes a Colorado ZIP only when the
+   result is a Colorado ZIP and the token is not the house number;
    a ZIP code that the parser left at the end of the street ("1546 GLENARM PL 0202") is moved back to the ZIP field.
 2. **Industry.** Printed SIC codes (1965, 1967–1993) or NAICS codes (1999, 2002). The 1961, 1962 and 1966 editions print only product
    descriptions; codes are inferred with a nearest-neighbour classifier trained on description–code pairs from the other editions,
@@ -55,15 +61,26 @@ from `build_sites`.
    ADDRFEAT address ranges, tolerating OCR errors (street-type and direction misreads, unit numbers, trailing junk, fuzzy street names
    ≥ 86 similarity that keep the street's own numbers, neighbouring ZIPs within 12 km). Any loosened match is `address_approx`, never
    `address`; so is an address printed without a direction when the same number exists on a directional version of the street in
-   the same town or a neighbouring ZIP ("4300 LIPAN" in Denver could be 4300 N or 4300 S Lipan; `range_interp_dirambig`, 8% of
-   address keys). Results are deterministic given the inputs. Listings within 30 m form one **site**.
+   the same town or a neighbouring ZIP ("4300 LIPAN" in Denver could be 4300 N or 4300 S Lipan). In Denver-grid towns that choice is
+   settled by the printed street type, then by the printed ZIP's own address ranges or its half of the grid (`_dirzip`, `_dirtype`,
+   derived from TIGER); an address that neither settles (`_dirambig`) keeps its street coordinate for inspection but counts as
+   unplaced (ZIP level). A prefixed address is never placed on the unprefixed street on the wrong side of the Ellsworth/Broadway
+   baselines; "SO"/"NO" and a direction letter glued to the street name are read as directions. Each point is offset 12 m from the
+   street centreline toward the side whose range held the number. Results are deterministic given the inputs. Listings within 30 m
+   form one **site**, except that numbered addresses on opposite sides of the same street are not joined directly.
 6. **Inventory matching.** Each site is compared with EPA's Facility Registry Service (Colorado state file), EPA TRI, and CDPHE
    Hazardous Materials & Waste Management Division layers. A site is "known" if a record lies within 75 m (cleanup programs),
    100 m (TRI) or 40 m (RCRA handlers, other permits), shares the firm's name within 250 m, has the same address, or lies inside a
-   cleanup site boundary. Sites placed only approximately are searched over 250 m, and every site's radius grows by the spread of its
-   member points. **"Not on any list"** = none of these.
+   cleanup site boundary; every site's radius grows by the spread of its member points (to at most 250 m). A name match needs two
+   shared informative words or a near-identical whole name, against the site's hazardous firms. **"Not on any list"** = none of these:
+   not on the searched EPA and CDPHE HMWMD lists (state petroleum-tank and release registers are reported separately). Each site also
+   records its `match_basis`: same entity (name or address), inside a cleanup boundary, or a nearby record only. The October 2026 review
+   found that most "known" sites rest on a nearby record only (often an unrelated small-quantity waste notifier within 40 m), so the
+   "on no inventory" share is a lower bound; the two definitions are reported side by side.
 
 ## Key results (the 13 complete editions, as published in `data/` and the app)
+
+*Note (26 October 2026): the parsing, geocoding and inventory-matching rules were revised after a methodological review (see the method notes above). The counts below and every downstream table are from the run before that revision and will be refreshed by the next full run (`./run_all.sh parse` and the R chain); the revised parser recovers roughly 15–35% more hazardous listings in the 1966–1977 editions and 1992.*
 
 * 41,987 listings in the 13 complete editions (1965–1992) → 27,491 establishments; **3,169 hazardous-sector sites** located at street level.
 * **908 (29%) are on no current federal or state inventory** (707 of them high confidence); 693 (22%) are on a cleanup or contamination
@@ -178,21 +195,24 @@ M2 + hazards regulators track (EnviroScreen proximity to hazardous-waste, NPL an
 M3 + historical hazardous-sector sites that are on some inventory → M4 + hidden historical sites (on no inventory).
 Placebo: non-hazardous manufacturers from the same directories (same source, same geocoding, no hazardous process).
 
-Coefficients for 1 SD more exposure, spatial error models (standard errors in parentheses; * p<0.05, ** p<0.01):
+Coefficients for 1 SD more exposure, spatial error models (standard errors in parentheses; * p<0.05, ** p<0.01; the table is
+`data/results/health_models.md`, built from `health_models.csv`):
 
 | Outcome | Hidden sites, M4 (per SD) | Known historical, M4 | Placebo (non-hazardous mfrs), M4+placebo | ΔAIC M3→M4 | LR p (M4 vs M3) |
 |---|---|---|---|---|---|
-| Asthma hospitalization rate (log) | 0.003 (0.040) | 0.076 (0.050) | 0.025 (0.041) | 2.0 | 0.934 |
-| Low birth weight (%) | 0.068 (0.159) | 0.044 (0.203) | -0.053 (0.165) | 1.8 | 0.671 |
-| Life expectancy (years) | 0.056 (0.147) | -0.435 (0.186)* | -0.379 (0.154)* | 1.9 | 0.702 |
-| Heart disease (index) | 0.588 (0.925) | -1.092 (1.127) | 2.541 (1.003)* | 1.6 | 0.525 |
-| Cancer (index) | 0.059 (0.884) | 0.178 (1.086) | 0.152 (0.952) | 1.9 | 0.947 |
-| Diabetes (index) | 0.866 (0.846) | 0.083 (1.021) | 1.080 (0.926) | 0.9 | 0.306 |
-| Poor mental health (%) | -0.145 (0.086) | 0.093 (0.107) | -0.023 (0.090) | -0.9 | 0.0896 |
+| Asthma hospitalization rate (log) | -0.025 (0.037) | 0.104 (0.048)* | 0.007 (0.041) | 1.6 | 0.505 |
+| Low birth weight (%) | 0.029 (0.150) | 0.065 (0.194) | -0.041 (0.166) | 2.0 | 0.845 |
+| Life expectancy (years) | 0.080 (0.138) | -0.436 (0.179)* | -0.414 (0.155)** | 1.7 | 0.564 |
+| Heart disease (index) | 0.601 (0.871) | -1.509 (1.090) | 2.285 (0.995)* | 1.5 | 0.49 |
+| Cancer (index) | -0.232 (0.832) | 0.092 (1.050) | -0.190 (0.946) | 1.9 | 0.781 |
+| Diabetes (index) | 0.718 (0.796) | -0.257 (0.990) | 1.614 (0.917) | 1.1 | 0.368 |
+| Poor mental health (%) | -0.187 (0.081)* | 0.171 (0.103) | -0.043 (0.090) | -3.4 | 0.0202 |
 
 **Reading.** Unadjusted, tracts with more hidden sites have more asthma hospitalizations, lower life expectancy and more heart disease
 and diabetes. Most of that goes away with SES and demographics, and the rest goes away once regulated hazards (above all
-cleanup-site density) are in the model: hidden sites add no explanatory power for any outcome (likelihood-ratio p ≥ 0.09). The
+cleanup-site density) are in the model: hidden sites add explanatory power for one of the seven outcomes, poor mental health, and
+there with a protective sign (−0.19 points per SD, LR p = 0.02), which is what chance would produce across 7 outcomes × 5 nested
+tests; for the other six the likelihood-ratio p is 0.37 or more. The
 placebo is as strong as or stronger than the hidden sites (life expectancy, heart disease). So at the tract level, with these outcomes,
 the association is with industrial land use generally, not specifically with unregulated hazardous sites. This does not show hidden
 hazards are harmless: tract averages and modelled outcomes are blunt, and many cleanup sites are themselves former hidden sites
@@ -206,6 +226,9 @@ Negative binomial models with county fixed effects and tract-clustered standard 
 its square, % under 5), density and PM2.5. Rate ratios per 1 SD of log site density (95% CI):
 
 Block groups: 3439, natural-cause deaths 2015-2019: 158,758
+
+*This table is from the run on all 25 editions (17 October 2026); it is refreshed by `python3 pipeline/health/mortality_bg.py`, which
+needs the restricted death counts, and stands as is until that rerun.*
 
 | Outcome | Model | Hidden sites RR per SD | Known historical | Placebo (non-hazardous) | Cleanup sites | AIC |
 |---|---|---|---|---|---|---|
@@ -239,63 +262,70 @@ soil and indoor-air vapor intrusion, specific cancers from the Colorado Central 
 
 `R/corridors.R` (runs from the repository's own data; outputs in `data/results/corridors/`):
 
-* **Formation and persistence.** 500 m grid cells with any located manufacturer, 1961–2002, classed as persistent (listed from the
+* **Formation and persistence.** 500 m grid cells with any located manufacturer in the 13 complete editions 1965–1992, classed as persistent (listed from the
   1960s to the 1990s in ≥ 60% of the editions between), emerging (first listed 1980 or later), former (none after 1980) or intermittent;
   "persistent, sector turnover" when the dominant two-digit sector changed at least twice. Pre-1960 street-level firms extend a cell's
-  history where they exist (Denver 1891+). Denver metro (25 km of downtown): 1,765 cells, of which 256 persistent (225 with sector
-  turnover), 822 emerging, 191 former.
+  history where they exist (Denver 1891+). Denver metro (25 km of downtown): 1,453 cells, of which 290 persistent (231 with sector
+  turnover), 633 emerging, 242 former (`corridors_summary.md`).
 * **Clustering.** Ellison–Glaeser γ per sector and edition on 1 km cells, measured against the distribution of *all* located manufacturers
   that year (so it asks whether a sector is more concentrated than manufacturing in general), with a random-relabelling p-value.
-  Printing (92% of editions significant), petroleum products and machinery cluster beyond general manufacturing; chemicals, primary
+  Printing (significant in every edition), petroleum products and machinery (about half) cluster beyond general manufacturing; chemicals, primary
   metals and transportation equipment do not, statewide or in the metro. γ is on the Ellison–Glaeser scale with equal plant weights.
 * **Succession.** Transition counts of a cell's dominant sector between successive editions (`sector_transitions.csv`) and from first to
   last listing (`sector_first_to_last.csv`). Machinery ↔ fabricated metals and food ↔ printing are the common exchanges.
 * **Do old industrial areas attract new industry?** Entries (first listing) per cell and edition against the cell's stock and its
-  neighbours' stock in the previous edition and distance to downtown: pooled Poisson elasticity 0.96 for own stock, 0.26 for
-  neighbours; within-cell (demeaned) 0.07 per log-unit. Persistence of location, not an explanation of it (no rail, river or zoning
+  neighbours' stock in the previous edition and distance to downtown: pooled Poisson elasticity 0.99 for own stock, 0.30 for
+  neighbours; within-cell (demeaned) 0.12 per log-unit (`entry_models.csv`). The standard errors are iid Poisson on repeated
+  observations of the same cells, so read these as descriptive. Persistence of location, not an explanation of it (no rail, river or zoning
   controls yet).
-* **Present-day legacy.** Tract spatial error models: a tract's cumulative manufacturing history (firm-years 1961–2002, hazardous-sector
+* **Present-day legacy.** Tract spatial error models: a tract's cumulative manufacturing history (firm-years in the complete editions 1965–1992, hazardous-sector
   firm-years, or hidden sites) predicts today's EnviroScreen score, low income and people of color (all p < 0.01 except hidden sites
   for people of color). Associations, with density as the only control.
 
 `R/ej_panel.R` — the "how did it develop" design of Marlow, Frickel & Elliott (2020): a tract panel for the Denver core (Denver County
-plus the inner parts of Adams, Arapahoe and Jefferson), 1970–2010, matched to the 1970, 1980, 1990, 1999 and 2002 directories, with
-active-site density (within-tract change), legacy-site density (sites listed earlier but no longer active) and the reverse model
-(composition at t → entries by t+1). It needs census extracts that are not redistributed here: the Longitudinal Tract Data Base
+plus the inner parts of Adams, Arapahoe and Jefferson), matched to the censuses with a complete directory edition in the same year
+(1970, 1980, 1990), with active-site density (within-tract change), legacy-site density (sites listed earlier but no longer active) and
+the reverse model (composition at t → net change in active establishments by t+1). It needs census extracts that are not redistributed here: the Longitudinal Tract Data Base
 (Brown University, free) in 2010 tract boundaries, and optionally NHGIS 1940–1960 tract tables and boundaries (areal-interpolated to
 2010 tracts as counts, then percentages) and Brown's 1880 enumeration districts for a cross-section against the 1879–1885 directories.
 `R/fetch_census.R` downloads them through the NHGIS API (`ipumsr`): standardized-to-2010 tract time series 1970–2020 for
 Colorado (population, race, Hispanic origin, nativity, poverty), the 2010 tract boundaries, and the 1940–1960 Denver tract tables
 and boundaries; it writes `work/census/denver_tract_panel.csv`, which `ej_panel.R` reads. You need an NHGIS account and an API key
 (https://account.ipums.org/api_keys) in the environment variable `IPUMS_API_KEY`; the key is never stored.
-**First results (Denver core, 185 tracts in 2010 boundaries, 17 October 2026; `data/results/ej_panel_models.csv`, `ej_panel_reverse.csv`).**
-Census years 1940–2020 from NHGIS (1940–1980 area-weighted from their own tracts onto 2010 tracts), matched to the 1970, 1980,
-1990, 1999 and 2002 directories; "active" = establishments listed in the matched directory, "legacy" = sites listed in earlier
-directories but no longer active at the first panel year. Hybrid model with tract-clustered SE; coefficients are percentage points
-per log-unit of site density.
+**Results (Denver core: the 147 tracts in 2010 boundaries within 10 km of downtown; censuses 1970, 1980 and 1990, the three with a
+complete directory edition in the same year; 437 tract-years; `data/results/ej_panel_models.csv`, `ej_panel_reverse.csv`).**
+Census years from NHGIS (1970–1980 area-weighted from their own tracts onto 2010 tracts); "active" = hazardous-sector establishments
+listed in the matched directory, "legacy" = sites listed in earlier directories but no longer active at the first panel year. Hybrid
+model with tract-clustered SE; coefficients are percentage points (log points for home value) per log-unit of establishment density.
+The reverse model regresses the net change in a tract's active hazardous establishments by the next census on its composition
+(tract density, population, distance and year controlled; tract-clustered SE; 290 tract-years).
 
-| Outcome | Within-tract change in active density | Between-tract active density | Legacy density (1970) | Reverse: composition → later entries |
+| Outcome | Within-tract change in active density | Between-tract active density | Legacy density (1970) | Reverse: composition → net change in establishments |
 |---|---|---|---|---|
-| % Hispanic | **+4.4 (SE 1.1, p < 0.001)** | **+11.1 (4.0, p = 0.006)** | −0.1 (n.s.) | +0.01 (n.s.) |
-| % Black | +0.2 (n.s.) | +1.4 (n.s.) | −0.8 (n.s.) | +0.004 (n.s.) |
-| % foreign born (1970–80 only) | 0.0 (n.s.) | −0.1 (n.s.) | +0.7 (0.36, p = 0.05) | **−0.25 (0.12, p = 0.04)** |
-| % in poverty (1970–80 only) | +1.2 (n.s.) | **+5.2 (1.7, p = 0.002)** | +2.2 (1.4, p = 0.11) | +0.08 (0.045, p = 0.10) |
+| % Hispanic | −0.8 (SE 1.2, p = 0.53) | **+17.6 (3.9, p < 0.001)** | −1.6 (n.s.) | **+0.052 (0.014, p = 0.0001)** |
+| % Black | −0.6 (n.s.) | +1.8 (n.s.) | −2.6 (n.s.) | +0.007 (0.004, p = 0.10) |
+| % White | −3.6 (n.s.) | **−10.4 (3.5, p = 0.003)** | +1.5 (n.s.) | −0.005 (n.s.) |
+| % foreign born | +0.8 (n.s.) | +0.1 (n.s.) | +0.9 (0.5, p = 0.08) | **−0.128 (0.054, p = 0.019)** |
+| % in poverty | +1.4 (n.s.) | **+5.8 (1.6, p < 0.001)** | +2.0 (n.s.) | **+0.087 (0.035, p = 0.013)** |
+| log home value | −0.06 (n.s.) | **−0.22 (0.04, p < 0.001)** | 0.00 (n.s.) | **−1.6 (0.77, p = 0.04)** |
 
-Reading: in Denver the tracts that gained manufacturing between censuses gained Hispanic residents, and the historically industrial
-tracts are the Hispanic and the poor tracts — the Latinx pattern Marlow, Frickel & Elliott found in Providence. Black settlement does
-not track industry at tract scale (Denver's Black neighbourhoods, Five Points and Whittier, were shaped by covenants rather than by
-the industrial Platte corridor). In the reverse direction, neither Black nor Hispanic share predicts where industry entered next;
-poorer tracts attracted slightly more entries and tracts with more immigrants slightly fewer. Foreign-born and poverty rest on
-only two panels so far (1970, 1980) because NHGIS's standardized 1990+ tables carry neither; the next step is to add them from the
-nominal 1990 and 2000 tract tables, and to extend the panel back to 1940–1960 against the business directories.
+Reading: within a tract, a rise or fall in hazardous-establishment density between 1970 and 1990 was not followed by a change in
+Hispanic share, poverty or any other outcome in the same decade — nothing is significant within tracts. The association is between
+places: tracts with dense industry had larger Hispanic shares, smaller White shares, more poverty and lower home values, and the
+same places still differ in 2000, 2010 and 2020. Black share is not associated with industry at the tract scale (Denver's Black
+neighbourhoods, Five Points and Whittier, were shaped by covenants rather than by the industrial Platte corridor). In the reverse
+direction, tracts with higher Hispanic and poverty shares and lower home values gained hazardous establishments by the next census,
+and tracts with more immigrants lost them. With three censuses the reverse models are indicative; an association between places in
+both directions is consistent with industry and disadvantaged residents each drawing the other to cheap land rather than with either
+causing the other. The next step is to extend the panel back to 1940–1960 against the business directories.
 
 `R/fetch_ipums_fullcount.R` takes the period before tracts (1880–1940) from the IPUMS USA 100% census files, Colorado only, and
 aggregates them to enumeration districts (population, Black, foreign born by region, Hispanic, labourers); the ED boundaries to map
 them come from Brown University's Urban Transition HGIS (1880 for Denver; 1900–1940 street-and-ED reference files), which is free
 but asks for an e-mail and acceptance of its conditions of use. Denver is IPUMS `CITY` 1710 (the City and County of Denver exists only
 from 1902; in 1880 and 1900 Denver is Arapahoe County, `COUNTYICP` 50, whose EDs 1–17 are the city). City totals 1880–1940 and the
-dissimilarity index across EDs (`app/data/denver_city_1880_1940.csv`): Black residents were 2.4–2.6% of Denver throughout, but their
-segregation across enumeration districts rose from 0.41 (1880) to 0.53 (1900), 0.65 (1920) and 0.82 (1940); the foreign-born share fell
+dissimilarity index across EDs (`app/data/denver_city_1880_1940.csv`): Black residents were 2.4–2.8% of Denver throughout, but their
+segregation across enumeration districts rose from 0.41 (1880) to 0.51 (1900), 0.65 (1920) and 0.82 (1940); the foreign-born share fell
 from 24% to 8% while its dissimilarity stayed at 0.13–0.26; the Hispanic share (IPUMS HISPAN) was under 1.5% until 1930 and 4.6% in 1940.
 
 ### Denver 1880: who lived next to the hazardous trades? (`R/denver_1880.R`)
@@ -309,15 +339,15 @@ their conditions of use):
 
 | band | residents | % foreign born | % German | % Black | % Chinese | % laborers (employed adults) | mean SEI (employed adults) |
 |---|---|---|---|---|---|---|---|
-| < 100 m | 10,726 | 27.1 | 4.0 | 2.9 | 1.6 | 10.8 | 31.8 |
-| 100–250 m | 8,985 | 23.7 | 2.8 | 4.6 | 0.4 | 11.3 | 31.3 |
-| 250–500 m | 6,199 | 24.1 | 2.6 | 1.5 | 0.0 | 10.9 | 31.8 |
-| > 500 m | 8,476 | 23.9 | 2.0 | 1.8 | 0.0 | 18.9 | 28.3 |
+| < 100 m | 10,726 | 27.1 | 5.3 | 2.9 | 1.6 | 10.8 | 31.8 |
+| 100–250 m | 8,985 | 23.7 | 4.4 | 4.6 | 0.4 | 11.3 | 31.3 |
+| 250–500 m | 6,199 | 24.1 | 4.1 | 1.5 | 0.0 | 10.9 | 31.8 |
+| > 500 m | 8,476 | 23.9 | 3.3 | 1.8 | 0.0 | 18.9 | 28.3 |
 
 Person-level models (odds ratio per log-metre of distance, building-clustered SE; < 1 = lived closer): foreign born 0.945 (p = 0.03),
-Black 0.883 (p = 0.03), Chinese 0.33 (p < 1e-10), German-born 0.80 (p < 1e-5), Irish 1.02 (n.s.); employed adults' SEI rose by 1.0 per
-log-metre (p = 0.002), while unskilled laborers (Duncan SEI 8) were more common farther out (OR 1.20), in the cheap land beyond the
-built-up core. In 1880 the hazardous trades were concentrated in the lower-downtown districts (ED 10 alone holds 22 of the 60 placed firms) where the foreign-born and Black shares were highest; the `laborer`
+Black 0.883 (p = 0.03), Chinese 0.33 (p < 1e-10), German-born 0.87 (p = 0.0002), Irish 1.02 (n.s.); employed adults' SEI fell by 1.0 per
+log-metre (p = 0.002), and unskilled laborers (Duncan SEI 8) were more common farther out (OR 1.20), in the cheap land beyond the
+built-up core. In 1880 the hazardous trades were concentrated in the lower-downtown districts (ED 10 alone holds 22 of the 60 firms placed at a building or house number) where the foreign-born and Black shares were highest; the `laborer`
 pattern is the opposite of what the later tract panel shows for poverty, a reminder that "far from industry" meant the undeveloped
 fringe in a 35,000-person city. `occlabelB` in Brown's microdata is an undocumented occupation-string id; SEI (`seiusB`, 0 = no
 occupation) is the documented measure and is used for both the laborer flag and the SEI results.
@@ -343,13 +373,13 @@ Boundaries are approximate (a block or so at the edges). The Python and R versio
 come from sf (GEOS ≥ 3.11).
 
 **All fields (IPUMS extract with 43 variables, 64 measures per district; `ed_year_groups.csv`, `ed_distance_models.csv`).** The
-housing market reads the hazard exactly as expected: owner-occupancy rises 18–20 points per log-metre from the nearest firm in every
-census 1900–1940 (pooled +18.5, p < 1e-100), mean SEI of employed residents rises 2–4 points, and non-relatives in the household
-(boarders, lodgers, servants) fall by 8–17 points; districts with a firm had 13–30% owner households against 31–48% elsewhere, and in
-1940 a median rent of $17 against $49. Recent immigrants (arrived within ten years) concentrate near industry 1900–1930; illiteracy
-is higher there; and in 1940, 80% of residents of the firm districts had moved house since 1935 against 72% elsewhere (−7 points per
-log-metre, p < 1e-14) — the industrial districts were the city's high-turnover rental belt. Employment in the hazardous industries
-themselves shows no gradient (7–10% of workers everywhere), so the people living next to the plants were not, for the most part,
+housing market reads the hazard exactly as expected: owner-occupancy rises 11.5 (1900) to 21.0 (1940) points per log-metre from the
+nearest firm in every census 1900–1940 (pooled +18.9, p < 1e-100), mean SEI of employed residents rises 2.3–5.2 points, and
+non-relatives in the household (boarders, lodgers, servants) fall by 3.8–16.1 points; districts with a firm had 13–28% owner households
+against 30–47% elsewhere, and in 1940 a median rent of $17 against $52. Recent immigrants (arrived within ten years) concentrate near
+industry 1900–1930; illiteracy is higher there; and in 1940, 80% of residents of the firm districts had moved house since 1935 against
+72% elsewhere (−7.6 points per log-metre, p < 1e-14) — the industrial districts were the city's high-turnover rental belt. Employment
+in the hazardous industries themselves shows no gradient (7–11% of workers everywhere), so the people living next to the plants were not, for the most part,
 their workforce.
 
 `R/county_panel_1880_1940.R` gives the statewide counterpart: the full count by county on each census's county boundaries (NHGIS
@@ -362,16 +392,21 @@ mortgage-risk map; no FHA map survives for Denver, so here the 1938 HOLC grades 
 appraisers' area-description forms and the crosswalk to 2010 tracts) are read against what preceded them — the reconstructed
 1930/1940 districts and the firms of 1921–40 — and what followed (the 1940–2020 tract panel), together with the 730 located racial
 covenants of 1931–35 from Denver Public Library's Mapping Prejudice pilot (public domain; `data/covenants/`). Results
-(`data/results/holc/`): no A or B area held a hazardous firm in 1921–40; 6 of 16 D areas did, and 8 D-area descriptions cite
-industry, railroads, smoke or odours. In 1930 the future D areas were already 7.8% Black (vs 0.4–1.1% elsewhere), 1.6% Hispanic
-and 7.1% laborers; by 1940 their Hispanic share was 9.5% (0.7% elsewhere). Afterwards the D tracts went to 39% Hispanic in 1970
-and 57% in 2000, with poverty 18 points above A tracts by 1980 (1940 baseline, 1940 % Black and 1931–40 firms controlled,
-p < 1e-5) and a further +16 points Hispanic 1980–2010 (p = 0.03); Black share did not differ by grade once the 1940 baseline is
-controlled. 27 of the covenant deeds also bar business or manufacturing use. HOLC also outlined ungraded "Industrial" and "Commercial"
+(`data/results/holc/`): no A or B area held a hazardous firm in 1921–40; 4 of 16 D areas did (and 5 of 20 C areas), and 8 D-area
+descriptions cite industry, railroads, smoke or odours. In 1930 the future D areas were already 8.3% Black (vs 0.5–1.1% elsewhere),
+1.6% Hispanic and 7.2% laborers; by 1940 their Hispanic share was 9.9% (0.5–0.7% elsewhere). Afterwards the D tracts went to 37%
+Hispanic in 1970 and 57% in 2000. In the change models (`holc_tract_models.csv`; A = reference, 1940 baseline, 1940 % Black and
+1931–40 firms controlled), D tracts gained 38 points Hispanic 1940–80 (SE 5.7, HC1 p < 1e-8; Conley 2 km p < 1e-7) and a further
++14.0 points 1980–2010 (7.8, p = 0.079; Conley p = 0.19); poverty rose 4.4 points more in D than in A tracts 1970–80 (2.1, p = 0.038;
+Conley p = 0.013) and 9.6 points 1980–2010 (3.8, p = 0.013; Conley p = 0.045); log home value fell 0.58 more 1940–80 (0.17, p = 0.001;
+Conley p = 0.001). Black share did not differ by grade once the 1940 baseline is controlled. Classes with fewer than five tracts are
+dropped from these models and the A reference class has four tracts, so the estimates are fragile; only the D estimates for the
+Hispanic share and home value hold under classical, HC1 and Conley errors.
+27 of the covenant deeds also bar business or manufacturing use. HOLC also outlined ungraded "Industrial" and "Commercial"
 zones, and that is where the pre-1938 industry sat: 64% of the street-level hazardous trades listed before the map were in
-Commercial zones and 12% in Industrial ones, 15% in D areas and none in A or B (`holc_facility_shares.csv`). Classing the 1930
-districts by the HOLC class that covers them (`ed_holc_classes.csv`): the D districts, 8.6% Black in 1930, held 3 hazardous
-firms per 10,000 residents before the map and 43 hazardous-sector sites per 10,000 in 1961–2002, against 7–8 per 10,000 in A–C —
+Commercial zones and 14% in Industrial ones, 15% in D areas and none in A or B (`holc_facility_shares.csv`). Classing the 1930
+districts by the HOLC class that covers them (`ed_holc_classes.csv`): the D districts, 7.3% Black in 1930, held 2.4 hazardous
+firms per 10,000 residents before the map and 45 hazardous-sector sites per 10,000 in 1965–92, against 5.6 per 10,000 in A–C —
 the post-war industrial growth went into the redlined and industrial districts. The app's Redlining tab shows the 1930
 districts by class, covenants, composition and firms before/after the map, and the share of each era's facilities by HOLC class.
 
@@ -380,9 +415,11 @@ D-minus-C gap census by census from 1900 (reconstructed districts area-weighted 
 to 2020 (2010 tracts), both for all C vs all D areas and within a boundary band (district centroids within 400 m, tract centroids within
 800 m, of both a C and a D area), with population-weighted HC1 standard errors (`holc_boundary.csv`, `holc_gaps.csv`); and hazardous
 firms per km² of each grade in six periods from 1891 to 2002 (`holc_industry_periods.csv`). At the C–D boundaries the Black-share gap
-was nil in 1900–1920, 4 points by 1930 and 5 by 1940 — before the map — then 10–18 points in 1950–1970 before converging after 1980;
-the Hispanic gap opens only in 1940 and after. Industry in D areas was already 3–4× C's density before 1938 and became 7–8× in
-1961–2002. Reading: the appraisers ratified a divergence already under way, which then accelerated. Railways and the 1925 zoning
+was nil in 1900–1920, 4 points by 1930 and 6 by 1940 — before the map — then 10–18 points in 1950–1970 before converging after 1980;
+the Hispanic gap opens only in 1940 and after. Hazardous firms per km² per directory edition in D areas against C areas
+(`holc_industry_periods.csv`): 6.4× in 1906–20 (but on 13 firms in D against 3 in C), 1.7× in 1921–37 (8 against 9 firms) and 2.1×
+in 1938–56 (37 against 27), then 13.6× in 1965–80 (286 against 49) and 16.8× in 1981–92 (228 against 28); the pre-1938 ratios rest on a
+handful of street-level listings. Reading: the appraisers ratified a divergence already under way, which then accelerated. Railways and the 1925 zoning
 ordinance are not controlled, and Fishback, Rose, Snowden & Storrs (2024) show that FHA practice, not the HOLC map, governed lending,
 so the post-1938 acceleration cannot be attributed to the map alone. Two controls address this: the distance of each unit to the
 nearest rail line (TIGER rails; `gap_rail`), and the share of each unit zoned industrial under Denver's first zoning ordinance
@@ -397,8 +434,8 @@ Denver zoned in February 1925, thirteen years before the HOLC map. The Denver Pu
 to January 1929 (CG4314 .D4 G44 1929) is a monochrome hatched map; a texture classifier run on the 11,849 × 12,000-pixel scan labels
 32-pixel cells as Industrial A ("/" hatch with no lot lines), Industrial B ("\" hatch) or Commercial (dense cross-hatch), with the
 result drawn over the scan in `data/raw/zoning_1929/zone_classification_overlay.jpg` and the cells in `zone_cells_1929.csv`. The
-script georeferences the scan from 16 control points (street intersections and park corners read off the scan, resolved to TIGER
-road intersections with `tigris`; affine fit in UTM 13N, RMSE printed) and writes the zoned districts (`zoning_1929.geojson`) and the
+script georeferences the scan from 16 candidate control points (street intersections and park corners read off the scan), 13 of which
+resolve to TIGER road intersections with `tigris` (affine fit in UTM 13N, RMSE 25 m; `data/results/zoning_1929/gcp_fit.csv`) and writes the zoned districts (`zoning_1929.geojson`) and the
 industrially and commercially zoned share of every HOLC area, enumeration district and 2010 tract (`zoning_shares_*.csv`), which
 `holc_covenants.R` then uses as a control in the boundary gaps and the change models. Residence E (apartments) and Industrial A share a
 hatch and are separated only by the absence of lot lines, so a few platted Industrial A blocks and the unplatted land north-east of
@@ -502,7 +539,9 @@ composition 1940-1990 inside each project, plus the sites and petroleum releases
 
 ### What became of the sites (`R/site_fate.R`)
 Every geocoded Denver site (1965–92 manufacturers' directory, hazardous sectors; street-level pre-1960 hazardous trades) is matched to
-the nearest assessor parcel within 40 m through Denver's open-data parcel service (property class, current and pre-2010 zone district,
+the assessor parcel within 40 m whose situs address matches the directory address (same number and street; else same street and side,
+nearest number; else same street; else the nearest parcel, the rule being recorded in `parcel_match` and the agreement rate in
+`site_fate_parcel_match.csv`), through Denver's open-data parcel service (property class, current and pre-2010 zone district,
 dwelling units, year built), cached in `work/site_fate/parcels_by_point.csv`. Outputs in `data/results/site_fate/` and `app/data/`:
 current use by series and by decade of last listing, the share still zoned industrial, the share rebuilt since the last listing, and the
 residential/school/park conversions with no cleanup record (`site_fate_sensitive.csv`).
@@ -551,6 +590,21 @@ twelve of the 25 manufacturers' directory editions are partial scans that stop p
 Network inputs change over time (FRS, TRI, CDPHE layers are live); the published results used downloads of 16 October 2026.
 OCR output can differ slightly across Tesseract versions, which is why the OCR output is saved in `data/ocr/`.
 
+## Tests
+
+```bash
+pip install -r requirements-test.txt     # pandas, geopandas, rapidfuzz, pytest, pyyaml, openpyxl (+ playwright for the app test)
+tests/run_tests.sh                        # all suites; --fast skips the Shiny app smoke test
+```
+
+`tests/digitization` and `tests/geocoding` (pytest) cover the parser and the TIGER geocoder, `tests/r` (testthat) the
+R re-implementation, and `tests/outputs` the published files: `test_consistency.py` checks that `app/data`,
+`data/results`, the site workbook, the listings and the tract panel agree with each other, `test_claims.py` checks every
+number quoted in this README, in the app's text and in the `data/results/*/summary.md` files against the data
+(`tests/outputs/claims.yml` is the registry; a rerun that changes a number fails the test until the text is updated),
+and `test_app_smoke.py` starts the app and opens every tab in a headless browser. `.github/workflows/tests.yml` runs the
+Python and R suites on every push. Details and the list of known inconsistencies in `tests/README.md`.
+
 ## Before 1960: Colorado State Business Directory, 1871–1956
 
 The manufacturers' directory starts in 1961, but Colorado's smelters, foundries, assay offices and gas works go back to the 1870s.
@@ -595,41 +649,48 @@ shiny::runApp("app")
 ```
 
 * **Map** – historical hazardous sites coloured by current regulatory status or by **persistence** (years between first and last hazardous
-  listing, extended back to the pre-1960 directories where a precursor is found), filtered by years listed (1871–2002), sector, status and confidence;
+  listing, extended back to the pre-1960 directories where a precursor is found), filtered by years listed (1871–1992), sector, status and confidence;
   each site's popup lists **every firm at the address**: years listed, what the directory says it made, year established, employment
   class, hazardous-sector firms shaded (all of it downloadable in Data & downloads);
   a **radium & uranium** layer (yellow);
   a **pre-1960 layer** (brown; firms placed only at a town centre share one marker per town whose popup lists them all, black ring = firm or address still listed after 1960);
   layers for EPA TRI facilities, schools, hospitals, clinics, residential care, brownfields, voluntary cleanup, Superfund, RCRA corrective
-  action and land-use controls; census tracts shaded by any EnviroScreen indicator.
-  An **industrial corridors** layer draws every 500 m cell with a manufacturer in 1961–2002, coloured by persistence class
+  action and land-use controls; census tracts shaded by any EnviroScreen indicator; the 1933 aerial survey, Sanborn volume extents and the
+  1903–04 sheet images and blocks, zone-map changes 1925–1956, petroleum releases, urban-renewal projects, Superfund operable units, the
+  zoning maps of 1929, 1944, 2023 and today, and the USGS land-use maps of 1937–1997.
+  An **industrial corridors** layer draws every 500 m cell with a manufacturer in the complete editions 1965–1992, coloured by persistence class
   (persistent, sector turnover, intermittent, former, emerging), sized by peak firms, with the pre-1960 trades in the cell in the popup.
-* **Trends** – sites per edition by sector and by status; share on no inventory; **phases of Colorado manufacturing** (share of all
-  listed firms by industry, every edition); how long firms stayed listed, hazardous vs other; pre-1960 hazardous-trade firms per edition.
-  **Clustering** (Ellison–Glaeser γ by sector and edition, metro or statewide, filled points significant) and **succession** (the most
-  common changes of a cell's dominant sector).
-* **Census tracts over time** – all 1,249 Colorado tracts (2010 boundaries; Denver only before 1960, the big metros from 1960, the
-  whole state from 1990) shaded by % Black, % Hispanic, % foreign born, % poverty, population, hazardous firms active in the decade or
-  legacy firms, for each decennial census 1940–2020 (radio buttons; a line says how many tracts have data and which variables exist
-  that year), with the firms of that decade overlaid; Colorado or Denver-core view; population-weighted composition of tracts with an
-  active hazardous firm, legacy-only and never, by census; the hybrid panel models and the reverse ("who predicts where industry
-  goes") model for the Denver core.
-* **Redlining & covenants** – the 1938 HOLC map with each area's appraisal form in the popup, the 1931–35 racial covenants (orange
-  where the deed also bars manufacturing), the firms of 1921–40 and the 1930 districts; areas by grade; 1940–2020 trajectories of
-  2010 tracts by dominant grade; the change-by-grade models.
-* **Denver 1880–1940** – the reconstructed enumeration districts of every census 1880–1940 (radio buttons) shaded by % Black,
-  foreign born, Mexican-born, Hispanic, laborers, foreign parentage, firms or distance to the nearest firm, with the hazardous trades of
-  the decade; districts with vs without a firm; the distance models; dissimilarity 1880–1940; and the 1880 building-level results.
-  The **Census tracts over time** tab adds 1880–1930 as counties statewide when `co_counties_1880_1940.geojson` is present.
-* **Neighborhoods** – distributions of EnviroScreen and socioeconomic indicators for tracts with vs. without hazardous sites,
-  with potentially unknown sites vs. all others, unknown vs. known-only, and TRI vs. non-TRI tracts; medians, population-weighted means,
-  Wilcoxon tests.
-* **Nearby schools & health care** – schools and health facilities within a chosen distance of potentially unknown sites.
-* **About the data** – what each layer is and where it comes from, including what an environmental covenant / land-use control means.
-* **Data & downloads** – per-edition geocoded CSVs, filtered sites, firms at the filtered sites, pre-1960 firms, corridor cells,
-  Denver 1880 EDs and firms, the tract panel, geocoding validation.
+* **Trends** – both directory series on one timeline; sites per edition by sector and by status; share on no inventory; pre-1960
+  hazardous-trade firms per edition; **clustering** in the Denver metro (Ellison–Glaeser γ by sector and edition, filled points significant).
+* **Historical change** (menu):
+  * **Denver 1880–2020** – the reconstructed enumeration districts of every census 1880–1940 and the 147 study tracts (2010 boundaries)
+    1950–2020, shaded by composition, firms or distance to the nearest firm, with the hazardous trades of the decade; units with vs without
+    a firm; the distance models; dissimilarity 1880–1940; the 1880 building-level results; population-weighted composition of tracts with an
+    active hazardous firm, legacy-only and never, by census 1940–2020; the hybrid panel models and the reverse ("who predicts where industry
+    goes") model for the Denver core. The underlying `app/data/tract_panel.csv` holds all 1,249 Colorado tracts (2010 boundaries; Denver only
+    before 1960, the big metros from 1960, the whole state from 1990); the app shows and downloads the 147 study tracts.
+  * **What became of the sites** – Denver sites on today's assessor parcels, and zoning 1929 → 1944 → 2023 → today.
+  * **Before zoning: 1903** – housing next to industry on the 1903–04 Sanborn sheets, and the zone-map changes of 1925–1956.
+  * **Land use & freeways** – the USGS land-use maps, freeways by decade and HOLC grade, the freeway event study, urban-renewal case studies.
+  * **Lifespan of 1940 residents** – CenSoc age at death and WWII enlistment by 1940 address (aggregates only).
+  * **Redlining & covenants** – the 1938 HOLC map with each area's appraisal form in the popup, the 1931–35 racial covenants (orange
+    where the deed also bars manufacturing), the firms of 1871–1956 and the 1930 districts; areas by grade; 1900–2020 trajectories by grade;
+    the D–C boundary gaps; the change-by-grade models; HMDA lending today; the 1925 ordinance and its 1944 revision by grade.
+* **Colorado trends** – the statewide counterpart: counties 1880–1940, regional shares 1965–1992, tract associations 1990–2020, the legacy
+  models, the other graded cities, **phases of Colorado manufacturing** (share of all listed firms by industry), how long firms stayed
+  listed, statewide clustering and **succession** (the most common changes of a cell's dominant sector).
+* **Explore more** (menu): **Contamination & health** (petroleum releases, TRI, air quality, urban renewal, Superfund soils, health by
+  industrial history, the hedonic model), **Who owns rental housing**, **Neighborhoods** (distributions of EnviroScreen and socioeconomic
+  indicators for tracts with vs. without hazardous sites, with potentially unknown sites vs. all others, unknown vs. known-only, and TRI vs.
+  non-TRI tracts; medians, population-weighted means, Wilcoxon tests) and **Nearby schools & health care** (schools and health facilities
+  within a chosen distance of potentially unknown sites).
+* **Methods & downloads** (menu): **Benchmarks** (the directories against CBP, NHGIS and the Atack–Bateman–Weiss samples), **About the
+  data** (what each layer is and where it comes from, including what an environmental covenant / land-use control means) and **Data &
+  downloads** (per-edition geocoded CSVs, filtered sites, firms at the filtered sites, pre-1960 firms, corridor cells, Denver 1880–1940
+  districts and firms, the zoning, redlining and site-fate files, the study-area tract panel, edition coverage, geocoding validation).
 
-To deploy (e.g. shinyapps.io), copy `data/by_year/` into `app/data/by_year/` so the app folder is self-contained.
+`app/data/by_year/` is a committed copy of `data/by_year/` (the 13 complete editions), so the app folder is self-contained for deployment
+(Posit Connect Cloud deploys from GitHub: anything `.gitignore`d never reaches the server; `app/manifest.json` lists every file).
 
 ## Sources
 

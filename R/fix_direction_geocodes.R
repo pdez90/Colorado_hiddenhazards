@@ -8,7 +8,7 @@
 # Files changed in place: data/results/CO_directory_listings_1961-2002.csv, data/by_year/*.csv, app/data/{sites, site_years,
 # site_firms}.csv, and the same in data/full_inventory/ when present. The removed listings are written to
 # data/results/geocode_direction_conflicts.csv.
-for (p in c("data.table", "openxlsx", "readxl")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
+if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) for (p in c("data.table", "openxlsx", "readxl")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages(library(data.table))
 ELLS <- 39.7163; BWAY <- -104.9875; TOL <- 0.005   # baselines (Ellsworth Ave latitude, Broadway longitude); ~500 m tolerance
 dir_of <- function(street) { s <- toupper(trimws(ifelse(is.na(street), "", street)))
@@ -95,8 +95,9 @@ rebuild <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, geojson
     RA <- c("Cleanup / contamination list", "TRI reporter", "RCRA hazardous-waste handler", "Solid waste facility", "Other EPA permit only", "Not on any list", "Total")
     put("Summary", data.table(radar = RA, `F&E sites` = NA, share = NA, `high confidence` = NA, medium = NA, low = NA)); n <- nrow(D[["All F&E hazardous sites"]]) + 1
     rg <- function(c) sprintf("'All F&E hazardous sites'!$%s$2:$%s$%d", c, c, n)
+    cf <- LETTERS[match("confidence", names(D[["All F&E hazardous sites"]]))]   # confidence column letter (D since match_basis was added after radar)
     for (i in 2:7) { openxlsx::writeFormula(wb, "Summary", sprintf("COUNTIF(%s,A%d)", rg("B"), i), startCol = 2, startRow = i)
-      for (j in 1:3) openxlsx::writeFormula(wb, "Summary", sprintf("COUNTIFS(%s,$A%d,%s,\"%s\")", rg("B"), i, rg("C"), c("high", "medium", "low")[j]), startCol = 3 + j, startRow = i) }
+      for (j in 1:3) openxlsx::writeFormula(wb, "Summary", sprintf("COUNTIFS(%s,$A%d,%s,\"%s\")", rg("B"), i, rg(cf), c("high", "medium", "low")[j]), startCol = 3 + j, startRow = i) }
     for (i in 2:8) openxlsx::writeFormula(wb, "Summary", sprintf("IFERROR(B%d/$B$8,0)", i), startCol = 3, startRow = i)
     for (j in c(2, 4:6)) openxlsx::writeFormula(wb, "Summary", sprintf("SUM(%s2:%s7)", LETTERS[j], LETTERS[j]), startCol = j, startRow = 8)
     openxlsx::addStyle(wb, "Summary", openxlsx::createStyle(numFmt = "0.0%"), rows = 2:8, cols = 3)
@@ -115,8 +116,10 @@ rebuild <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, geojson
       writeLines(x, sf, useBytes = TRUE) }
     f <- normalizePath(xlsx_f); file.remove(f); old <- setwd(td); utils::zip(f, list.files(".", recursive = TRUE, all.files = TRUE), flags = "-qX9"); setwd(old) }
   message("rebuilt ", nrow(N), " sites from their remaining listings; ", length(gone), " sites with no hazardous listing left removed") }
-fix_set("data/results/CO_directory_listings_1961-2002.csv", "app/data/sites.csv", "app/data/site_years.csv", "app/data/site_firms.csv", "data/by_year", "complete editions")
-fix_set("data/full_inventory/CO_directory_listings_1961-2002.csv", "data/full_inventory/sites.csv", NULL, "data/full_inventory/site_firms.csv", "data/full_inventory/by_year", "full inventory")
-rebuild("data/results/CO_directory_listings_1961-2002.csv", "app/data/sites.csv", "app/data/site_years.csv", "app/data/site_firms.csv",
-        "data/results/CO_historical_industrial_sites.geojson", "data/results/CO_hazardous_sites_1961-2002.xlsx")
-rebuild("data/full_inventory/CO_directory_listings_1961-2002.csv", "data/full_inventory/sites.csv", NULL, "data/full_inventory/site_firms.csv", label = "full inventory")
+if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {   # the run; tests/geocoding source the functions above with TESTING defined
+  fix_set("data/results/CO_directory_listings_1961-2002.csv", "app/data/sites.csv", "app/data/site_years.csv", "app/data/site_firms.csv", "data/by_year", "complete editions")
+  fix_set("data/full_inventory/CO_directory_listings_1961-2002.csv", "data/full_inventory/sites.csv", NULL, "data/full_inventory/site_firms.csv", "data/full_inventory/by_year", "full inventory")
+  rebuild("data/results/CO_directory_listings_1961-2002.csv", "app/data/sites.csv", "app/data/site_years.csv", "app/data/site_firms.csv",
+          "data/results/CO_historical_industrial_sites.geojson", "data/results/CO_hazardous_sites_1961-2002.xlsx")
+  rebuild("data/full_inventory/CO_directory_listings_1961-2002.csv", "data/full_inventory/sites.csv", NULL, "data/full_inventory/site_firms.csv", label = "full inventory")
+}

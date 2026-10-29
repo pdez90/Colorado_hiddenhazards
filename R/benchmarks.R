@@ -20,6 +20,11 @@ suppressPackageStartupMessages({ library(data.table); library(sf) })
 sf_use_s2(FALSE); W <- "work/benchmarks"; O <- "data/results/benchmarks"; A <- "app/data"
 for (d in c(W, file.path(W, "cbp"), file.path(W, "atack"), O)) dir.create(d, showWarnings = FALSE, recursive = TRUE)
 HAZ_SIC <- c("28", "29", "30", "33", "34", "35", "37"); HAZ_NAICS <- c("325", "324", "326", "331", "332", "333", "336")
+# NHGIS county GISJOIN = "G" + state (3 digits, "080") + county (4 digits, FIPS x 10, e.g. "G0801010" = Pueblo 08101): characters 5-8 are NHGISCTY
+gisjoin_county <- function(g) sprintf("%03d", as.integer(substr(g, 5, 8)) %/% 10)
+# a census is compared only when a directory edition was printed within two years of it (none between 1892 and 1910, so 1900 is left out:
+# a firm listed in 1892 and again in 1910 is not evidence of a 1900 listing)
+has_edition <- function(cy, ed_yrs, within = 2) any(abs(ed_yrs - cy) <= within)
 cty_names <- c("001"="Adams","003"="Alamosa","005"="Arapahoe","007"="Archuleta","009"="Baca","011"="Bent","013"="Boulder","014"="Broomfield","015"="Chaffee","017"="Cheyenne","019"="Clear Creek","021"="Conejos","023"="Costilla","025"="Crowley","027"="Custer","029"="Delta","031"="Denver","033"="Dolores","035"="Douglas","037"="Eagle","039"="Elbert","041"="El Paso","043"="Fremont","045"="Garfield","047"="Gilpin","049"="Grand","051"="Gunnison","053"="Hinsdale","055"="Huerfano","057"="Jackson","059"="Jefferson","061"="Kiowa","063"="Kit Carson","065"="Lake","067"="La Plata","069"="Larimer","071"="Las Animas","073"="Lincoln","075"="Logan","077"="Mesa","079"="Mineral","081"="Moffat","083"="Montezuma","085"="Montrose","087"="Morgan","089"="Otero","091"="Ouray","093"="Park","095"="Phillips","097"="Pitkin","099"="Prowers","101"="Pueblo","103"="Rio Blanco","105"="Rio Grande","107"="Routt","109"="Saguache","111"="San Juan","113"="San Miguel","115"="Sedgwick","117"="Summit","119"="Teller","121"="Washington","123"="Weld","125"="Yuma")
 
 # ---------------------------------------------------------------- directory 1961-2002 by county and edition
@@ -96,8 +101,7 @@ if (nzchar(Sys.getenv("IPUMS_API_KEY")) && requireNamespace("ipumsr", quietly = 
       we <- v[grepl("^(Average Number of |Annual Average )?Wage Earners in Manufacturing( Industries)?(, 19\\d\\d)?$|^Average Number of Employees of All Classes", tabs)][1]
       vp <- v[grepl("^(Total )?Value of (All )?Products", tabs)][1]
       message(yr, ": establishments = ", est, " (", if (!is.na(est)) vars[[est]][1], "); wage earners = ", we, "; value of products = ", vp)
-      # NHGIS county GISJOIN = "G" + state (3 digits, "080") + county (4 digits, FIPS x 10, e.g. "G0801010" = Pueblo 08101): characters 5-8 are NHGISCTY
-      data.table(census = yr, nhgis_cty = as.integer(substr(d$GISJOIN, 5, 8)), county = sprintf("%03d", as.integer(substr(d$GISJOIN, 5, 8)) %/% 10), county_nhgis = d$COUNTY, mfg_estab = if (is.na(est)) NA_real_ else as.numeric(d[[est]]), wage_earners = if (is.na(we)) NA_real_ else as.numeric(d[[we]]),
+      data.table(census = yr, nhgis_cty = as.integer(substr(d$GISJOIN, 5, 8)), county = gisjoin_county(d$GISJOIN), county_nhgis = d$COUNTY, mfg_estab = if (is.na(est)) NA_real_ else as.numeric(d[[est]]), wage_earners = if (is.na(we)) NA_real_ else as.numeric(d[[we]]),
                  value_products = if (is.na(vp)) NA_real_ else as.numeric(d[[vp]]), estab_label = if (is.na(est)) NA_character_ else vars[[est]][1]) }), fill = TRUE)
     fwrite(rows, mf) }
   if (file.exists(mf)) NH <- fread(mf, colClasses = c(county = "character"))
@@ -111,10 +115,8 @@ if (!is.null(NH) && nrow(NH)) {
   in_force <- function(cy) { by <- if (cy %in% CP$census) cy else if (cy == 1890) 1900 else CP$census[which.min(abs(CP$census - cy))]
     S <- CP[CP$census == by, ]; k <- vapply(suppressMessages(st_intersects(hp, S)), function(i) if (length(i)) i[1] else NA_integer_, 1L)
     v <- S$icp[k]; if (cy < 1899) v[v %in% 1190L] <- 410L; v }
-  # a census is compared only when a directory edition was printed within two years of it (none between 1892 and 1910, so 1900 is left out:
-  # a firm listed in 1892 and again in 1910 is not evidence of a 1900 listing)
   ED_YRS <- sort(unique(as.integer(unlist(strsplit(as.character(H$years), "[^0-9]+"))))); ED_YRS <- ED_YRS[!is.na(ED_YRS)]
-  has_ed <- function(cy) any(abs(ED_YRS - cy) <= 2)
+  has_ed <- function(cy) has_edition(cy, ED_YRS)   # see has_edition above: a directory edition within two years of the census
   HD <- rbindlist(lapply(Filter(has_ed, sort(unique(NH$census))), function(cy) H[, nhgis_cty := in_force(cy)][!is.na(nhgis_cty) & first_year <= cy + 2 & last_year >= cy - 2,
     .(census = cy, dir_haz = .N, dir_street = sum(precision != "town")), by = nhgis_cty]))
   NH <- NH[vapply(census, has_ed, TRUE)]; message("NHGIS censuses with a directory edition within two years: ", paste(sort(unique(NH$census)), collapse = " "))

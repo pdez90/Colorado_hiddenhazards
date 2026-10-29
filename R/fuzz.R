@@ -16,3 +16,5 @@ fz_token_set_ratio <- function(a, b) {
   if (sect_len == 0) return(res)
   max(res, 100 * (1 - (sect_ab - sect_len) / (sect_len + sect_ab)), 100 * (1 - (sect_ba - sect_len) / (sect_len + sect_ba)))
 }
+# number of distinct tokens two strings share (for the "at least two shared informative words" rule in build_sites)
+fz_shared_tokens <- function(a, b) length(intersect(unique(toks(a)), unique(toks(b))))

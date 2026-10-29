@@ -31,15 +31,17 @@ P <- fread(file.path(D, "owners.csv"), colClasses = "character")
 P <- P[!duplicated(SCHEDNUM)]
 message(nrow(P), " parcels; property classes:"); print(P[, .N, by = D_CLASS_CN][order(-N)][1:min(.N, 40)])
 # ---------------------------------------------------------------- residential parcels and units
-P[, type := fcase(grepl("^RESIDENTIAL[- ]CONDO", D_CLASS_CN), "Condominium unit", grepl("^RESIDENTIAL-ROWHOUSE", D_CLASS_CN), "Rowhouse / townhouse",
-                  grepl("^RESIDENTIAL-(DUPLEX|TRIPLEX)", D_CLASS_CN), "Duplex / triplex",
-                  grepl("^RESIDENTIAL-(APARTMENT|4 TO 8 UNITS|MULTI UNIT)", D_CLASS_CN), "Apartment building (4+ units)",
-                  grepl("^RESIDENTIAL-SENIOR CITIZEN APT", D_CLASS_CN) & num(TOT_UNITS) > 0, "Apartment building (4+ units)",
-                  grepl("W/MIXED USE$", D_CLASS_CN) & !grepl("HOTEL|MOTEL", D_CLASS_CN) & num(TOT_UNITS) > 0, "Mixed-use building (homes with shops or offices)",   # hotel units are rooms, not homes
-                  grepl("^SFR", D_CLASS_CN), "Single-family house", default = NA_character_)]   # Assessor classes; commercial condominiums, land and mixed-use buildings without homes excluded
+parcel_type <- function(cls, tot) fcase(grepl("^RESIDENTIAL[- ]CONDO", cls), "Condominium unit", grepl("^RESIDENTIAL-ROWHOUSE", cls), "Rowhouse / townhouse",
+                  grepl("^RESIDENTIAL-(DUPLEX|TRIPLEX)", cls), "Duplex / triplex",
+                  grepl("^RESIDENTIAL-(APARTMENT|4 TO 8 UNITS|MULTI UNIT)", cls), "Apartment building (4+ units)",
+                  grepl("^RESIDENTIAL-SENIOR CITIZEN APT", cls) & num(tot) > 0, "Apartment building (4+ units)",
+                  grepl("W/MIXED USE$", cls) & !grepl("HOTEL|MOTEL", cls) & num(tot) > 0, "Mixed-use building (homes with shops or offices)",   # hotel units are rooms, not homes
+                  grepl("^SFR", cls), "Single-family house", default = NA_character_)   # Assessor classes; commercial condominiums, land and mixed-use buildings without homes excluded
+P[, type := parcel_type(D_CLASS_CN, TOT_UNITS)]
 P <- P[!is.na(type)]
 # condominium master parcels: no owner name and the building's total units; the units are their own parcels, so the master would count twice
-P <- P[!(type == "Condominium unit" & !nzchar(trimws(OWNER_NAME)) & !is.na(num(TOT_UNITS)) & num(TOT_UNITS) > 1)]
+is_condo_master <- function(type, owner_name, tot) type == "Condominium unit" & !nzchar(trimws(owner_name)) & !is.na(num(tot)) & num(tot) > 1
+P <- P[!is_condo_master(type, OWNER_NAME, TOT_UNITS)]
 P[, units := num(TOT_UNITS)]; P[is.na(units) | units < 1, units := fcase(type == "Duplex / triplex", 2, type == "Apartment building (4+ units)", 4, default = 1)]
 P[type %in% c("Single-family house", "Condominium unit", "Rowhouse / townhouse"), units := pmin(units, 1)]
 # ---------------------------------------------------------------- owner-occupancy (owner's mailing address = the property)
@@ -65,8 +67,9 @@ P[owner_occ & type %in% c("Condominium unit", "Rowhouse / townhouse") & own_u !=
 # a duplex or triplex has one door (house number) per unit, but only one goes on the parcel record: an owner mailed at the other door
 # (same street and ZIP, same side of the street, house number within 4) lives in the building
 hnum <- function(k) suppressWarnings(as.integer(sub(" .*", "", k))); hstreet <- function(k) sub("^[^ ]* ?", "", k)
-P[type == "Duplex / triplex" & !owner_occ & own_zip != "" & own_zip == sit_zip & hstreet(sit_k) != "" & hstreet(own_k) == hstreet(sit_k) &
-  !is.na(hnum(own_k)) & !is.na(hnum(sit_k)) & abs(hnum(own_k) - hnum(sit_k)) <= 4 & hnum(own_k) %% 2L == hnum(sit_k) %% 2L, owner_occ := TRUE]
+other_door <- function(own_k, sit_k, own_zip, sit_zip) own_zip != "" & own_zip == sit_zip & hstreet(sit_k) != "" & hstreet(own_k) == hstreet(sit_k) &
+  !is.na(hnum(own_k)) & !is.na(hnum(sit_k)) & abs(hnum(own_k) - hnum(sit_k)) <= 4 & hnum(own_k) %% 2L == hnum(sit_k) %% 2L
+P[type == "Duplex / triplex" & !owner_occ & other_door(own_k, sit_k, own_zip, sit_zip), owner_occ := TRUE]
 message(sprintf("owner-occupancy: %d condominium/rowhouse parcels mailed to another unit now rentals; %d duplex/triplex parcels mailed to the other door now owner-occupied",
                 sum(occ0 & !P$owner_occ), sum(!occ0 & P$owner_occ)))
 P[, rental_units := fifelse(owner_occ, pmax(units - 1, 0), units)]

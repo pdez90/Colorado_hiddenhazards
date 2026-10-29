@@ -119,14 +119,19 @@ xw6 <- as.data.table(st_drop_geometry(X))[, cls := ifelse(grade %in% c("A", "B",
 dom6 <- xw6[, .(cls = cls[which.max(share)], covered6 = sum(share)), by = GEOID][covered6 >= 0.4]
 if (file.mtime("app/data/tract_panel.csv") < file.mtime("work/census/denver_tract_panel.csv")) stop("app/data/tract_panel.csv is older than the census panel: run Rscript R/app_census_layers.R first, then this script")
 pan <- fread("app/data/tract_panel.csv", colClasses = c(GEOID = "character")); pan <- merge(pan, dom, by = "GEOID")
+# 1940 tract Hispanic share from the districts: a tract gets a value only when at least MIN_POP40 residents lie behind it (the same
+# 200-resident floor as every other tract measure), and only where the panel has none (no tract table carries Hispanic origin before 1960)
+MIN_POP40 <- 200
+fill_hisp_1940 <- function(pan, h40) { h40 <- h40[pop40 >= MIN_POP40]
+  pan <- merge(pan, h40, by = "GEOID", all.x = TRUE); pan[census == 1940 & is.na(p_hisp) & !is.na(hisp40), p_hisp := 100 * hisp40 / pop40]; pan[, c("pop40", "hisp40") := NULL]; pan }
 f40 <- "data/results/denver_eds/denver_eds_1940.geojson"
 if (file.exists(f40) && "census" %in% names(pan)) {   # 1940 tract Hispanic share from the full count (no tract table has it before 1960): districts area-weighted into 2010 tracts
   E40 <- st_make_valid(st_transform(st_read(f40, quiet = TRUE), UTM)); E40 <- E40[!is.na(E40$pop), ]; E40$a <- as.numeric(st_area(E40))
   T40 <- st_make_valid(st_transform(st_read("app/data/co_tracts_2010.geojson", quiet = TRUE), UTM)); T40 <- T40[T40$GEOID %in% pan$GEOID, "GEOID"]
   ov <- suppressWarnings(st_intersection(E40[, c("a", "pop", "hisp", "black")], T40)); ov$w <- as.numeric(st_area(ov)) / ov$a
-  h40 <- as.data.table(st_drop_geometry(ov))[, .(pop40 = sum(pop * w), hisp40 = sum(hisp * w)), by = GEOID][pop40 >= 50]
-  pan <- merge(pan, h40, by = "GEOID", all.x = TRUE); pan[census == 1940 & is.na(p_hisp) & !is.na(hisp40), p_hisp := 100 * hisp40 / pop40]; pan[, c("pop40", "hisp40") := NULL]
-  message("1940 tract Hispanic share filled from the 1940 districts for ", sum(pan$census == 1940 & !is.na(pan$p_hisp)), " tracts") }
+  h40 <- as.data.table(st_drop_geometry(ov))[, .(pop40 = sum(pop * w), hisp40 = sum(hisp * w)), by = GEOID]
+  pan <- fill_hisp_1940(pan, h40)
+  message("1940 tract Hispanic share filled from the 1940 districts (IPUMS HISPAN, a different definition from the 1960+ tract measures) for ", sum(pan$census == 1940 & !is.na(pan$p_hisp)), " tracts") }
 for (k in c("p_owner", "mval_2020", "mrent_2020")) if (!k %in% names(pan)) pan[[k]] <- NA_real_
 TR <- pan[!is.na(pop) & pop > 0, .(tracts = .N, p_black = weighted.mean(p_black, pop, na.rm = TRUE), p_hisp = weighted.mean(p_hisp, pop, na.rm = TRUE), p_fb = weighted.mean(p_fb, pop, na.rm = TRUE), p_pov = weighted.mean(p_pov, pop, na.rm = TRUE),
                                    p_owner = weighted.mean(p_owner, pop, na.rm = TRUE), mval_2020 = weighted.mean(mval_2020, pop, na.rm = TRUE), mrent_2020 = weighted.mean(mrent_2020, pop, na.rm = TRUE),
@@ -248,16 +253,28 @@ W <- merge(W, dom6[, .(GEOID, cls)], by = "GEOID", all.x = TRUE); W[is.na(cls), 
 W <- merge(W, if (is.null(ZS_T)) data.table(GEOID = W$GEOID, ind29 = NA_real_) else ZS_T[, .(GEOID, ind29 = share_industrial_1929)], by = "GEOID", all.x = TRUE)
 W <- merge(W, tb[, .(GEOID, lat, lon, ind29s)], by = "GEOID", all.x = TRUE)
 M <- list()
-for (v in c("p_black", "p_hisp", "p_pov", "p_owner", "lmval")) for (per in (if (v == "p_pov") list(c(1970, 1980), c(1980, 2010), c(1970, 2010)) else list(c(1940, 1980), c(1980, 2010), c(1940, 2010)))) {   # poverty is first measured in 1970, so its change is 1970-2010
+# poverty is first measured in 1970, so its change is 1970-2010; the Hispanic share changes definition between 1940 (full-count HISPAN from the
+# districts), 1960 (Spanish surname) and 1970 (Spanish language or surname), so its changes also start at 1970
+change_periods <- function(v) if (v %in% c("p_pov", "p_hisp")) list(c(1970, 1980), c(1980, 2010), c(1970, 2010)) else list(c(1940, 1980), c(1980, 2010), c(1940, 2010))
+# a class with fewer than MIN_CLS tracts is dropped: with one or two tracts its dummy fits them exactly and the HC1 error collapses to nothing.
+# The reference class (A, four tracts in Denver) is never dropped: it carries no dummy of its own, and without it no model could run
+MIN_CLS <- 5
+drop_small_classes <- function(d, min_n = MIN_CLS, ref = "A") { keep_cls <- union(ref, names(which(table(d$grade) >= min_n))); d <- d[grade %in% keep_cls]; d$grade <- droplevels(d$grade); d }
+# the change model: HC1 errors (ct) and, for comparison, classical errors (ct0)
+change_model <- function(d) { m <- lm(dy ~ grade + base + black40 + firms40, d); list(m = m, ct = coeftest(m, vcov. = vcovHC(m, type = "HC1")), ct0 = coeftest(m)) }
+for (v in c("p_black", "p_hisp", "p_pov", "p_owner", "lmval")) for (per in change_periods(v)) {
   y0 <- paste0(v, "_", per[1]); y1 <- paste0(v, "_", per[2]); if (!all(c(y0, y1) %in% names(W))) next
   d <- W[!is.na(W[[y1]]) & !is.na(W[[y0]])]; d$base <- d[[y0]]
   d$dy <- d[[y1]] - d$base; d$grade <- factor(d$cls, c("A", "B", "C", "D", "Industrial", "Commercial")); d$black40 <- d$p_black_1940; d$firms40 <- log1p(d$firms_haz_1940)
-  d <- d[is.finite(dy) & is.finite(base) & !is.na(grade)]; if (nrow(d) < 30 || length(unique(d$grade)) < 3) next
-  m <- lm(dy ~ grade + base + black40 + firms40, d); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
+  d <- d[is.finite(dy) & is.finite(base) & !is.na(grade)]
+  d <- drop_small_classes(d)
+  if (nrow(d) < 30 || length(unique(d$grade)) < 3 || !"A" %in% levels(d$grade)) next
+  cm <- change_model(d); m <- cm$m; ct <- cm$ct; ct0 <- cm$ct0
   cz <- if (sum(!is.na(d$ind29)) >= 30 && sd(d$ind29, na.rm = TRUE) > 0) { mz <- lm(dy ~ grade + base + black40 + firms40 + ind29, d[!is.na(ind29)]); coeftest(mz, vcov. = vcovHC(mz, type = "HC1")) } else NULL
   czs <- if ("ind29s" %in% names(d) && sum(!is.na(d$ind29s)) >= 30 && sd(d$ind29s, na.rm = TRUE) > 0) { mzs <- lm(dy ~ grade + base + black40 + firms40 + ind29s, d[!is.na(ind29s)]); coeftest(mzs, vcov. = vcovHC(mzs, type = "HC1")) } else NULL
   cc <- if (HAS_FIXEST && all(c("lat", "lon") %in% names(d))) tryCatch({ mf <- fixest::feols(dy ~ grade + base + black40 + firms40, data = d); fixest::coeftable(mf, vcov = fixest::vcov_conley(mf, lat = "lat", lon = "lon", cutoff = 2)) }, error = function(e) NULL) else NULL
-  for (g in c("B", "C", "D", "Industrial", "Commercial")) if (paste0("grade", g) %in% rownames(ct)) M[[length(M) + 1]] <- data.table(outcome = v, period = paste(per, collapse = "-"), grade = g, b = ct[paste0("grade", g), 1], se = ct[paste0("grade", g), 2], p = ct[paste0("grade", g), 4], n = nrow(d),
+  for (g in c("B", "C", "D", "Industrial", "Commercial")) if (paste0("grade", g) %in% rownames(ct)) M[[length(M) + 1]] <- data.table(outcome = v, period = paste(per, collapse = "-"), grade = g, b = ct[paste0("grade", g), 1], se = ct[paste0("grade", g), 2], p = ct[paste0("grade", g), 4], n = nrow(d), n_class = sum(d$grade == g), n_ref = sum(d$grade == "A"),
+    se_classical = ct0[paste0("grade", g), 2], p_classical = ct0[paste0("grade", g), 4],
     b_zone = if (!is.null(cz) && paste0("grade", g) %in% rownames(cz)) cz[paste0("grade", g), 1] else NA_real_, se_zone = if (!is.null(cz) && paste0("grade", g) %in% rownames(cz)) cz[paste0("grade", g), 2] else NA_real_, p_zone = if (!is.null(cz) && paste0("grade", g) %in% rownames(cz)) cz[paste0("grade", g), 4] else NA_real_,
     b_ind29 = if (!is.null(cz)) cz["ind29", 1] else NA_real_, p_ind29 = if (!is.null(cz)) cz["ind29", 4] else NA_real_,
     b_zone_strict = if (!is.null(czs) && paste0("grade", g) %in% rownames(czs)) czs[paste0("grade", g), 1] else NA_real_, p_zone_strict = if (!is.null(czs) && paste0("grade", g) %in% rownames(czs)) czs[paste0("grade", g), 4] else NA_real_,

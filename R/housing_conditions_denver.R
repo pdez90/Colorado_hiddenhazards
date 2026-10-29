@@ -65,8 +65,9 @@ HAVE_S5 <- P[, uniqueN(g_family), by = g_registry][, any(V1 > 1)]
 for (g in c("g_name", "g_family", "g_registry")) { s <- fam_tot(g); setnames(s, c(g, paste0("scale_", g))); P <- merge(P, s, by = g, all.x = TRUE) }
 # a building's owner: the owner family holding most of its rental units, named owners first (a condominium's parcel with no owner name
 # never stands for the building); owner type, location and portfolio come from that family's largest parcel in the building
-P[, named := owner_type != "Unknown (no name recorded)"]; P[, fam_rent := sum(rental_units), by = .(bkey, g_family)]
-P[, `:=`(ord1 = -(named & fam_rent > 0), ord2 = -named)]; setorderv(P, c("bkey", "ord1", "fam_rent", "ord2", "rental_units", "units", "g_family", "SCHEDNUM"), c(1, 1, -1, 1, -1, -1, 1, 1))   # last two: ties broken the same way on every run
+order_building_parcels <- function(P) { P[, named := owner_type != "Unknown (no name recorded)"]; P[, fam_rent := sum(rental_units), by = .(bkey, g_family)]
+  P[, `:=`(ord1 = -(named & fam_rent > 0), ord2 = -named)]; setorderv(P, c("bkey", "ord1", "fam_rent", "ord2", "rental_units", "units", "g_family", "SCHEDNUM"), c(1, 1, -1, 1, -1, -1, 1, 1)); P }   # last two: ties broken the same way on every run
+P <- order_building_parcels(P)
 B <- P[, .(units = sum(units), rental_units = sum(rental_units), parcels = .N, type = type[which.max(units)], owner_type = owner_type[1], out_of_state = out_of_state[1],
     owner_occ_any = any(owner_occ), scale_g_name = scale_g_name[1], scale_g_family = scale_g_family[1], g_family = g_family[1],
     scale_g_registry = scale_g_registry[1],
@@ -103,8 +104,9 @@ if (length(ri)) { m <- compat(R[ri, .(i = ri, num, dir, sname, stype, zip)], BK)
   R[m$i, `:=`(bkey = m$bkey, how = "address (only one building fits; ZIP, direction or street type missing on one side)")] }
 # the request's own address is a non-residential parcel (vacant land, shop, office, church, school): not linked, and kept out of the
 # nearest-number step below, which would otherwise hand it to the house next door
-NR <- P0[!SCHEDNUM %in% P$SCHEDNUM]; NR <- cbind(addr_parts(NR$SITUS_ADDRESS_LINE1), zip = z5(NR$SITUS_ZIP))[num != "" & sname != ""]
-NR <- unique(NR[!paste(akey_of(NR), zip) %in% P$bkey])                                   # addresses shared with a residential parcel stay residential
+nonres_addresses <- function(P0, P) { NR <- P0[!SCHEDNUM %in% P$SCHEDNUM]; NR <- cbind(addr_parts(NR$SITUS_ADDRESS_LINE1), zip = z5(NR$SITUS_ZIP))[num != "" & sname != ""]
+  unique(NR[!paste(akey_of(NR), zip) %in% P$bkey]) }                                     # addresses shared with a residential parcel stay residential
+NR <- nonres_addresses(P0, P)
 ri <- R[is.na(how) & akey != "", which = TRUE]
 if (length(ri)) { m <- unique(compat(R[ri, .(i = ri, num, dir, sname, stype, zip)], NR)$i); R[m, how := "the request's address is a non-residential parcel (not linked)"] }
 # a building with several street numbers on one parcel: the nearest house number on the same street and side (same parity), within 10

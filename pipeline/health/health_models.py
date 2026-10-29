@@ -44,7 +44,8 @@ def fit(y, X, spatial=True):
     res = dict(n=len(d), ols=ols)
     if spatial:
         g = tr.set_index('GEOID').loc[d.tract].reset_index()
-        w = libpysal.weights.Queen.from_dataframe(g, use_index=False, silence_warnings=True)
+        # the app tracts were simplified one by one, so shared edges no longer match exactly: a 2 m buffer restores the adjacencies
+        w = libpysal.weights.fuzzy_contiguity(g.to_crs(26913), buffering=True, buffer=2, silence_warnings=True)
         # islands keep zero rows; row-standardise
         w.transform = 'r'
         m = spreg.ML_Error(d[[y]].values, d[X].values, w=w, name_y=y, name_x=X)

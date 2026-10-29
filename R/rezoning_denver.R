@@ -175,15 +175,18 @@ CH <- cbind(CH, PL[, !"i"])
 # separate areas changed in the same way by one ordinance are kept
 # the same change twice = the same districts (a "?" letter matches any) and either the same boundary text ("Beginning at ..."), or one
 # copy without a readable boundary that lies within 300 m of the other or could not be placed
-CH[, has_beg := grepl("[a-z]?eginn|commenc|thence|\\bbeing\\b|\\blots?\\b|\\bblocks?\\b", tolower(substr(desc, 1, 250)))]
-CH[, beg := { b <- tolower(gsub("[^A-Za-z0-9]", "", desc)); p <- regexpr("[a-z]?eginn", b); substr(ifelse(p > 0, substr(b, p, nchar(b)), b), 1, 80) }]
 same <- function(x, y) x == y | (sub(" .*$", "", x) == sub(" .*$", "", y) & (grepl("\\?$", x) | grepl("\\?$", y)))   # "Residence ?" matches "Residence B"
-CH[, row0 := .I]; CH <- CH[order(ordinance, row0)]
-CH[, dup := { r <- rep(FALSE, .N); if (.N > 1) for (a in 2:.N) for (b in 1:(a - 1)) if (!r[b] && same(from[a], from[b]) && same(to[a], to[b]) &&
-  (beg[a] == beg[b] || ((!has_beg[a] || !has_beg[b]) && (is.na(ux[a]) || is.na(ux[b]) || sqrt((ux[a] - ux[b])^2 + (uy[a] - uy[b])^2) < 300)))) { r[a] <- TRUE; break }; r }, by = ordinance]
-# a change also mentioned in passing ("A portion of this area will be changed from ...") without its own boundary description
-CH[, dup := dup | (!has_beg & any(has_beg)), by = .(ordinance, from, to)]
-CH <- CH[dup == FALSE][, c("beg", "row0", "dup", "has_beg") := NULL]
+DUP_M <- 300
+dedupe_changes <- function(CH) { CH <- copy(CH)
+  CH[, has_beg := grepl("[a-z]?eginn|commenc|thence|\\bbeing\\b|\\blots?\\b|\\bblocks?\\b", tolower(substr(desc, 1, 250)))]
+  CH[, beg := { b <- tolower(gsub("[^A-Za-z0-9]", "", desc)); p <- regexpr("[a-z]?eginn", b); substr(ifelse(p > 0, substr(b, p, nchar(b)), b), 1, 80) }]
+  CH[, row0 := .I]; CH <- CH[order(ordinance, row0)]
+  CH[, dup := { r <- rep(FALSE, .N); if (.N > 1) for (a in 2:.N) for (b in 1:(a - 1)) if (!r[b] && same(from[a], from[b]) && same(to[a], to[b]) &&
+    (beg[a] == beg[b] || ((!has_beg[a] || !has_beg[b]) && (is.na(ux[a]) || is.na(ux[b]) || sqrt((ux[a] - ux[b])^2 + (uy[a] - uy[b])^2) < DUP_M)))) { r[a] <- TRUE; break }; r }, by = ordinance]
+  # a change also mentioned in passing ("A portion of this area will be changed from ...") without its own boundary description
+  CH[, dup := dup | (!has_beg & any(has_beg)), by = .(ordinance, from, to)]
+  CH[dup == FALSE][, c("beg", "row0", "dup", "has_beg") := NULL] }
+CH <- dedupe_changes(CH)
 print(CH[, .N, by = placed_by])
 # ---------------------------------------------------------------- 3. context at the place
 CH[, direction := fcase(annexation, paste("Annexed as", tolower(to_group)),
@@ -214,7 +217,8 @@ BY_DIR <- dcast(CH[, .N, by = .(period, direction)], direction ~ period, value.v
 BY_HOLC <- CH[!is.na(holc) & !annexation, .(changes = .N, pct_res_to_business_or_industrial = round(100 * mean(direction %in% c("Residential to business", "Residential to industrial")), 1),
                                             pct_to_industrial = round(100 * mean(to_group == "Industrial"), 1), pct_to_residential = round(100 * mean(to_group == "Residential"), 1)), by = holc][order(holc)]
 # the same, keeping only changes placed by a named subdivision block, or by street crossings that a named subdivision confirms
-SURE <- CH[!annexation & !is.na(holc) & (grepl("^subdivision and block", placed_by) | (placed_by == "street crossings" & !is.na(m_between_methods)))]
+sure_changes <- function(d) d[!annexation & !is.na(holc) & (grepl("^subdivision and block", placed_by) | (placed_by == "street crossings" & !is.na(m_between_methods)))]
+SURE <- sure_changes(CH)
 BY_HOLC_SURE <- SURE[, .(changes = .N, pct_res_to_business_or_industrial = round(100 * mean(direction %in% c("Residential to business", "Residential to industrial")), 1),
                          pct_to_residential = round(100 * mean(to_group == "Residential"), 1)), by = holc][order(holc)]
 ft <- function(d) { d <- d[holc %in% c("A", "B", "D")]; if (length(unique(d$holc == "D")) < 2) return(NA_real_)

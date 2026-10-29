@@ -106,7 +106,13 @@ B1 <- merge(B1, cityT, by = "census")[, `:=`(lq_black = round(pct_black / 100 / 
 for (v in grep("^pct_", names(B1), value = TRUE)) set(B1, j = v, value = round(B1[[v]], 2)); B1[is.nan(lq_hisp), lq_hisp := NA]
 setorder(B1, cls, census); fwrite(B1, file.path(O, "tract_location_quotients_1940_2020.csv"))
 # B2 first arrival within the manufacturers' directory: complete editions 1965-68, 1970 = "before"; first listing 1973-1980 = "arrival"
-st <- fread("app/data/sites.csv", colClasses = c(GEOID = "character"))[fe_hazard %in% c(TRUE, "True") & !is.na(GEOID)]
+# sites.csv's GEOID is the EnviroScreen (2020) tract, not a 2010 tract: sites are placed in the 2010 tracts by their coordinates
+st <- fread("app/data/sites.csv", colClasses = c(GEOID = "character"))[fe_hazard %in% c(TRUE, "True") & !is.na(lat)]
+TR10 <- st_make_valid(st_transform(st_read("app/data/co_tracts_2010.geojson", quiet = TRUE), UTM))
+sp <- st_transform(st_as_sf(st[, .(lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM)
+k <- vapply(st_within(sp, TR10), function(i) if (length(i)) i[1] else NA_integer_, 1L)
+miss <- which(is.na(k)); if (length(miss)) { nn <- st_nearest_feature(sp[miss, ], TR10); d <- as.numeric(st_distance(sp[miss, ], TR10[nn, ], by_element = TRUE)); k[miss[d <= 100]] <- nn[d <= 100] }   # on a simplified edge
+st[, GEOID := TR10$GEOID[k]]; st <- st[!is.na(GEOID)]
 sy <- fread("app/data/site_years.csv"); ED_OK <- c(1965:1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990, 1992); sy <- sy[year %in% ED_OK & site_id %in% st$site_id]
 sy <- merge(sy, st[, .(site_id, GEOID)], by = "site_id")
 tf <- sy[, .(first = min(year)), by = GEOID]; tb <- sy[year <= 1970, .N, by = GEOID]

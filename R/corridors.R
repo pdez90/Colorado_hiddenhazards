@@ -107,7 +107,8 @@ TT <- merge(merge(TT, hist_t, by = "GEOID", all.x = TRUE), hid, by = "GEOID", al
 for (v in c("firm_years", "haz_firm_years", "firms", "hidden_sites")) TT[is.na(get(v)), (v) := 0]
 TT[, area_km2 := as.numeric(st_area(tr)) / 1e6]; TT[, log_density := log1p(population / area_km2)]
 TT <- TT[population >= 500]
-w <- nb2listw(poly2nb(tr[match(TT$GEOID, as.character(tr$GEOID)), ], queen = TRUE), style = "W", zero.policy = TRUE)
+queen_listw <- function(g, snap = 2) nb2listw(poly2nb(g, queen = TRUE, snap = snap), style = "W", zero.policy = TRUE)   # snap 2 m (UTM): simplified outlines
+w <- queen_listw(tr[match(TT$GEOID, as.character(tr$GEOID)), ])
 LEG <- list()
 for (yv in c("people_of_color", "low_income", "enviroscreen_pctl", "pollution_climate_pctl")) for (xv in c("log1p(firm_years)", "log1p(haz_firm_years)", "log1p(hidden_sites)")) {
   fo <- as.formula(paste(yv, "~", xv, "+ log_density"))

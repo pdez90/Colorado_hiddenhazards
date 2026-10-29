@@ -30,12 +30,13 @@ bf <- function(f) { p <- c(file.path(B, f), file.path(B, basename(f))); p <- p[f
 ipums_ed <- function(year) {
   x <- ip[YEAR == year & COUNTYICP == (if (year < 1910) 50 else 310)]   # Denver lay in Arapahoe County (ICP 50) until 1902 and is its own county
   # (ICP 310) from 1910; South Arapahoe (ICP 50 after 1902) reuses ED numbers, so the two must never be pooled by ED label
-  if (year == 1940) { e <- sprintf("%07d", x$ENUMDIST); x[, ED := paste0(as.integer(substr(e, 3, 6)), c("0" = "", "1" = "A", "2" = "B", "3" = "C")[substr(e, 7, 7)])]
+  if (year == 1940) { e <- sprintf("%07d", x$ENUMDIST); sfx <- c("0" = "", "1" = "A", "2" = "B", "3" = "C", "4" = "D", "5" = "E", "6" = "F", "7" = "G")[substr(e, 7, 7)]
+    if (anyNA(sfx)) stop("1940: unknown ED suffix code ", paste(unique(substr(e, 7, 7)[is.na(sfx)]), collapse = " ")); x[, ED := paste0(as.integer(substr(e, 3, 6)), sfx)]
   } else x[, ED := as.character(ENUMDIST %% 100000)]
+  if (uniqueN(x$ENUMDIST) != uniqueN(x$ED)) stop(year, ": two IPUMS districts map to one ED label")
   cnt <- setdiff(names(x)[vapply(x, is.numeric, TRUE)], c("YEAR", "COUNTYICP", "ENUMDIST", "denver_city", grep("^(mean_|median_)", names(x), value = TRUE)))
   avg <- grep("^(mean_|median_)", names(x), value = TRUE)
   out <- x[, c(lapply(.SD, function(v) if (all(is.na(v))) NA_real_ else sum(v, na.rm = TRUE)), list(dummy = 0)), by = ED, .SDcols = cnt][, dummy := NULL]
-  if (anyDuplicated(out$ED)) stop(year, ": duplicate ED labels after aggregation")
   if (length(avg)) out <- merge(out, x[, lapply(.SD, function(v) if (all(is.na(v))) NA_real_ else weighted.mean(v, pop, na.rm = TRUE)), by = ED, .SDcols = avg], by = "ED")
   out
 }

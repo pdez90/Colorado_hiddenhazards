@@ -38,11 +38,14 @@ message(nrow(tr), " tracts in the Denver core")
 # ---------------------------------------------------------------- census panel (NHGIS, 2010 boundaries)
 cen <- fread(nhgis_panel, colClasses = c(GEOID = "character"))[census %in% c(as.integer(names(MATCH)), LATE)]
 cen <- cen[GEOID %in% tr$GEOID]
-if (!"nhwht" %in% names(cen) && "white" %in% names(cen)) cen[, nhwht := white]   # NHGIS panel: race white (incl. most Hispanic residents before 1980); LTDB: non-Hispanic white
-for (v in c("nhwht", "fb", "ppov", "fb_den", "ppov_den", "own", "rentocc", "mval_2020", "mrent_2020")) if (!v %in% names(cen)) set(cen, j = v, value = NA_real_)
-cen[, `:=`(p_black = 100 * nhblk / pop, p_hisp = 100 * hisp / pop, p_white = 100 * nhwht / pop, p_fb = 100 * fb / fifelse(is.na(fb_den) | fb_den <= 0, pop, fb_den), p_owner = 100 * own / (own + rentocc),
-           lmval = fifelse(is.finite(mval_2020) & mval_2020 > 0, log(mval_2020), NA_real_), lmrent = fifelse(is.finite(mrent_2020) & mrent_2020 > 0, log(mrent_2020), NA_real_))]
-cen[, ppov := 100 * ppov / fifelse(is.na(ppov_den) | ppov_den <= 0, pop, ppov_den)]   # persons below poverty over the poverty universe (total population in 1970)
+add_shares <- function(cen) {
+  if (!"nhwht" %in% names(cen) && "white" %in% names(cen)) cen[, nhwht := white]   # NHGIS panel: race white (incl. most Hispanic residents before 1980); LTDB: non-Hispanic white
+  for (v in c("nhwht", "fb", "ppov", "fb_den", "ppov_den", "own", "rentocc", "mval_2020", "mrent_2020")) if (!v %in% names(cen)) set(cen, j = v, value = NA_real_)
+  cen[, `:=`(p_black = 100 * nhblk / pop, p_hisp = 100 * hisp / pop, p_white = 100 * nhwht / pop, p_fb = 100 * fb / fifelse(is.na(fb_den) | fb_den <= 0, pop, fb_den), p_owner = 100 * own / (own + rentocc),
+             lmval = fifelse(is.finite(mval_2020) & mval_2020 > 0, log(mval_2020), NA_real_), lmrent = fifelse(is.finite(mrent_2020) & mrent_2020 > 0, log(mrent_2020), NA_real_))]
+  cen[, ppov := 100 * ppov / fifelse(is.na(ppov_den) | ppov_den <= 0, pop, ppov_den)]   # persons below poverty over the poverty universe (total population in 1970)
+  cen }
+cen <- add_shares(cen)
 
 # ---------------------------------------------------------------- industrial presence per tract per census year
 L <- fread("data/results/CO_directory_listings_1961-2002.csv", colClasses = c(sic = "character"))

@@ -19,11 +19,12 @@ OUT <- c(log_asthma = "Asthma hospitalization rate (log)", low_birth_wt = "Low b
 tr <- st_read("app/data/enviroscreen_tracts.geojson", quiet = TRUE)[, "GEOID"]
 tr$GEOID <- formatC(as.character(tr$GEOID), width = 11, flag = "0")
 
+queen_listw <- function(g, snap = 2e-5) nb2listw(poly2nb(g, queen = TRUE, snap = snap), style = "W", zero.policy = TRUE)   # snap ~2 m (degrees): the app tracts were simplified one by one, so shared edges no longer match exactly
 fit <- function(y, X) {
   d <- na.omit(A[, c(y, X, "tract"), with = FALSE]); fo <- reformulate(X, y)
   ols <- lm(fo, d); ct <- coeftest(ols, vcov. = vcovHC(ols, type = "HC3"))
   g <- tr[match(d$tract, tr$GEOID), ]
-  w <- nb2listw(poly2nb(g, queen = TRUE), style = "W", zero.policy = TRUE)
+  w <- queen_listw(g)
   sem <- errorsarlm(fo, data = d, listw = w, zero.policy = TRUE, method = "eigen")
   list(n = nrow(d), ols = ols, ct = ct, sem = sem, ss = summary(sem)$Coef)
 }

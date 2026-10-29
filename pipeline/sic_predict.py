@@ -1,7 +1,13 @@
 import pickle, re, collections
-M=pickle.load(open('work/inv/sic_clf.pkl','rb'))
 from sic_classifier_norm import norm
+M=None
+def load(path='work/inv/sic_clf.pkl'):
+    """Load the description->SIC model (trained by sic_classifier.py); loaded on first use so the module imports cleanly."""
+    global M
+    M=pickle.load(open(path,'rb'))
+    return M
 def predict(texts):
+    if M is None: load()
     X=M['vec'].transform([norm(t) for t in texts])
     D,I=M['nn'].kneighbors(X)
     out=[]

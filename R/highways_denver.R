@@ -28,17 +28,21 @@ H <- H[lengths(st_intersects(H, st_buffer(STUDY, 3000))) > 0, ]
 # County: 45.8 km of ways against 24.3 km of route in the NBER/FHWA file). Each freeway way gets a weight w = 1 - f/2, where f is the
 # share of its length within 60 m of an opposite carriageway: a freeway way running the other way (bearing more than 135 degrees apart)
 # that was in service at the same time. Lengths below are length x w, i.e. km of road, not km of carriageway.
-H$w <- 1
+PAIR_M <- 60
+carriageway_weights <- function(H, dist = PAIR_M) {   # H: sf lines (UTM) with kind, highway, start_year, end_year; returns one weight per row
+  w <- rep(1, nrow(H)); fw_i <- which(H$kind == "Freeway" & !grepl("_link", H$highway)); if (!length(fw_i)) return(w)
+  brg <- vapply(fw_i, function(i) { xy <- st_coordinates(H[i, ])[, 1:2, drop = FALSE]; d <- xy[nrow(xy), ] - xy[1, ]; atan2(d[2], d[1]) }, 0)
+  nb <- st_is_within_distance(H[fw_i, ], H[fw_i, ], dist)
+  for (a in seq_along(fw_i)) { i <- fw_i[a]; cand <- setdiff(nb[[a]], a); if (!length(cand)) next
+    anti <- cos(brg[cand] - brg[a]) < cos(3 * pi / 4)
+    s1 <- H$start_year[i]; e1 <- H$end_year[i]; s2 <- H$start_year[fw_i[cand]]; e2 <- H$end_year[fw_i[cand]]
+    same_time <- (is.na(e2) | is.na(s1) | e2 > s1) & (is.na(e1) | is.na(s2) | e1 > s2)
+    cand <- cand[anti & same_time]; if (!length(cand)) next
+    inside <- suppressWarnings(st_intersection(st_geometry(H[i, ]), st_union(st_buffer(st_geometry(H[fw_i[cand], ]), dist))))
+    f <- if (length(inside)) min(1, sum(as.numeric(st_length(inside))) / as.numeric(st_length(H[i, ]))) else 0; w[i] <- 1 - f / 2 }
+  w }
+H$w <- carriageway_weights(H)
 fw_i <- which(H$kind == "Freeway" & !grepl("_link", H$highway))
-brg <- vapply(fw_i, function(i) { xy <- st_coordinates(H[i, ])[, 1:2, drop = FALSE]; d <- xy[nrow(xy), ] - xy[1, ]; atan2(d[2], d[1]) }, 0)
-nb <- st_is_within_distance(H[fw_i, ], H[fw_i, ], 60)
-for (a in seq_along(fw_i)) { i <- fw_i[a]; cand <- setdiff(nb[[a]], a); if (!length(cand)) next
-  anti <- cos(brg[cand] - brg[a]) < cos(3 * pi / 4)
-  s1 <- H$start_year[i]; e1 <- H$end_year[i]; s2 <- H$start_year[fw_i[cand]]; e2 <- H$end_year[fw_i[cand]]
-  same_time <- (is.na(e2) | is.na(s1) | e2 > s1) & (is.na(e1) | is.na(s2) | e1 > s2)
-  cand <- cand[anti & same_time]; if (!length(cand)) next
-  inside <- suppressWarnings(st_intersection(st_geometry(H[i, ]), st_union(st_buffer(st_geometry(H[fw_i[cand], ]), 60))))
-  f <- if (length(inside)) min(1, sum(as.numeric(st_length(inside))) / as.numeric(st_length(H[i, ]))) else 0; H$w[i] <- 1 - f / 2 }
 message(sprintf("freeway ways: %.1f km of carriageway, %.1f km of road after pairing opposite carriageways",
                 sum(as.numeric(st_length(H[fw_i, ]))) / 1000, sum(H$w[fw_i] * as.numeric(st_length(H[fw_i, ]))) / 1000))
 HS <- suppressWarnings(st_intersection(H, STUDY)); HS$km <- HS$w * as.numeric(st_length(HS)) / 1000
@@ -61,9 +65,10 @@ R2 <- nb[, .(nber_miles = round(sum(seg) / 100, 1), nber_first_opened = min(open
 den <- st_union(st_make_valid(tr[substr(tr$GEOID, 1, 5) == "08031", ]))
 HD <- suppressWarnings(st_intersection(H[H$kind == "Freeway" & !grepl("_link", H$highway), ], den))
 # many OHM ways carry the route only in their name ("I-70", "Valley Highway" = I-25 before the 2000s rebuild), with no ref tag
+route_of <- function(ref_clean, name) { r <- sub(";.*", "", fifelse(!is.na(ref_clean) & nzchar(ref_clean), ref_clean, sub("^I ", "I-", toupper(gsub("[- ]+", " ", ifelse(is.na(name), "", name))))))
+  r[r == "VALLEY HIGHWAY"] <- "I-25"; r }
 oh <- as.data.table(st_drop_geometry(HD))[, km := w * as.numeric(st_length(HD)) / 1000]
-oh[, route := sub(";.*", "", fifelse(!is.na(ref_clean) & nzchar(ref_clean), ref_clean, sub("^I ", "I-", toupper(gsub("[- ]+", " ", ifelse(is.na(name), "", name))))))]
-oh[route == "VALLEY HIGHWAY", route := "I-25"]
+oh[, route := route_of(ref_clean, name)]
 oh <- oh[grepl("^I-[0-9]+$", route), .(ohm_km = round(sum(km), 1), ohm_km_in_service = round(sum(km[is.na(end_year)]), 1), ohm_first = min(start_year, na.rm = TRUE), ohm_last = max(start_year, na.rm = TRUE)), by = route]
 R2 <- merge(R2, oh, by = "route", all = TRUE); fwrite(R2, file.path(O, "highways_nber_check.csv")); print(R2)
 # ---------------------------------------------------------------- 3. HOLC grades and 1929 zoning

@@ -16,7 +16,7 @@ def parse(vol, tsvdir, year):
     recs=[]; city=None; county=None
     for p in sorted(glob.glob(f"{tsvdir}/{vol}/p*.tsv")):
         pg=int(os.path.basename(p)[1:4])
-        L,cuts=page_lines(p)
+        L,cuts=page_lines(p,adaptive=(2,))   # 2-column pages; forced split when the gutter is missed
         if not L: continue
         top=min(l['y'] for l in L)
         i=0

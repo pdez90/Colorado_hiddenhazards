@@ -1,0 +1,10 @@
+# Python packages needed to run tests/ (pip install -r requirements-test.txt)
+pandas
+numpy
+shapely
+geopandas
+rapidfuzz
+pytest
+pyyaml
+openpyxl
+# tests/outputs/test_app_smoke.py (marked slow) also needs: playwright  (then: playwright install chromium)

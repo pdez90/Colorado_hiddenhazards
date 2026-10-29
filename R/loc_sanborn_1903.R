@@ -169,6 +169,7 @@ HEAVY <- c("foundry", "smelter", "chemical", "gas works", "oil/paint/tar", "oil/
            "rail shops/roundhouse", "power/electric")
 HAZ <- c("foundry", "smelter", "metal working", "machine shop", "chemical", "gas works", "oil/paint/tar", "oil/paint", "tannery/hides", "meat packing/stockyard",
          "brewery/distillery", "brick/stone/pottery", "brick/stone", "rail shops/roundhouse", "power/electric")
+streets_label <- function(bb) { v <- st_base(bb); paste(sort(unique(v[!is.na(v) & nzchar(v)])), collapse = "/") }   # unnamed sides give "", not a street
 BL <- rbindlist(lapply(seq_along(SH), function(k) { s <- SH[[k]]; if (!ok[k]) return(NULL); f <- FITS[[k]]
   rbindlist(lapply(s$blocks, function(b) { c0 <- b$centroid; if (is.null(c0$x) || is.null(c0$y)) return(NULL); g <- to_geo(f, as.numeric(c0$x), as.numeric(c0$y))
     tr <- vapply(b$industrial, function(i) tolower(nz(i$trade, "other")), ""); lab <- vapply(b$industrial, function(i) paste(na.omit(c(nz(i$name, NA), nz(i$label, NA))), collapse = " – "), "")
@@ -177,7 +178,7 @@ BL <- rbindlist(lapply(seq_along(SH), function(k) { s <- SH[[k]]; if (!ok[k]) re
     bn <- vapply(c("N", "S", "E", "W"), function(d) { v <- nz(b$bounded_by[[d]], NA); if (is.na(v)) "" else st_base(v) }, "")
     data.table(volume = s$volume, sheet = s$sheet, block_id = nz(b$block_id, ""), x = g[1], y = g[2], partial = isTRUE(b$partial),
                nN = bn[["N"]], nS = bn[["S"]], nE = bn[["E"]], nW = bn[["W"]],
-               streets = { v <- st_base(bb); paste(sort(unique(v[!is.na(v) & nzchar(v)])), collapse = "/") },   # unnamed sides give "", not a street
+               streets = streets_label(bb),
                dwellings = sum(as.numeric(c(nz(b$dwellings, 0), nz(b$flats, 0), nz(b$shanties, 0))), na.rm = TRUE), shanties = as.numeric(nz(b$shanties, 0)),
                stores = as.numeric(nz(b$stores, 0)), n_industrial = length(tr), n_hazardous = sum(tr %in% HAZ), n_heavy = sum(tr %in% HEAVY), trades = paste(unique(tr), collapse = "; "),
                establishments = paste(lab[nzchar(lab)], collapse = "; "), dwellings_facing_industry = fac) })) }))
@@ -230,11 +231,14 @@ dmin <- function(which_blocks, which_plants) {
   for (j in which(!is.na(own))) D[own[j], j] <- Inf                    # a block's own trades are counted as "same block"
   apply(D, 1, min) }
 B[, `:=`(d_haz_m = round(dmin(B$n_hazardous > 0, if (nrow(OP)) OP$hazardous else logical(0))), d_heavy_m = round(dmin(B$n_heavy > 0, if (nrow(OP)) OP$heavy else logical(0))))]
-B[, `:=`(near_haz_150 = d_haz_m <= 150, near_heavy_150 = d_heavy_m <= 150 | n_heavy > 0, across_haz = d_haz_m <= 30)]
+ACROSS_M <- 30   # block edges within 30 m: the next block over a street, not diagonally across a crossing
+exposure_of <- function(mixed_haz, dwellings, across_haz, dwellings_facing_industry, n_industrial, near_haz_150)
+  fcase(mixed_haz, "Same block as a hazardous trade", dwellings > 0 & across_haz, "Across the street from a hazardous trade",
+        dwellings_facing_industry > 0 | (dwellings > 0 & n_industrial > 0), "Same block as other industry, or facing industry",
+        near_haz_150, "Within 150 m of a hazardous trade", default = "No hazardous trade within 150 m")
+B[, `:=`(near_haz_150 = d_haz_m <= 150, near_heavy_150 = d_heavy_m <= 150 | n_heavy > 0, across_haz = d_haz_m <= ACROSS_M)]
 B[, `:=`(mixed = dwellings > 0 & n_industrial > 0, mixed_haz = dwellings > 0 & n_hazardous > 0)]
-B[, exposure := fcase(mixed_haz, "Same block as a hazardous trade", dwellings > 0 & across_haz, "Across the street from a hazardous trade",
-                      dwellings_facing_industry > 0 | (dwellings > 0 & n_industrial > 0), "Same block as other industry, or facing industry",
-                      near_haz_150, "Within 150 m of a hazardous trade", default = "No hazardous trade within 150 m")]
+B[, exposure := exposure_of(mixed_haz, dwellings, across_haz, dwellings_facing_industry, n_industrial, near_haz_150)]
 # 1929 zoning
 Z29 <- st_transform(st_make_valid(st_read(file.path(A, "zoning_1929.geojson"), quiet = TRUE)), UTM)
 B[, zone_1929 := { w <- st_within(BS, Z29); vapply(w, function(i) if (length(i)) as.character(Z29$zone[i[1]]) else "Other districts (residence or business)", "") }]

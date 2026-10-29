@@ -37,7 +37,17 @@ def find_columns(W, pw, mingap=None):
     lo,hi=np.percentile(xs,1),np.percentile(xe,99)
     cuts=[(a+b)//2 for a,b in gaps if a>lo+0.12*(hi-lo) and b<hi-0.12*(hi-lo)]
     return cuts
-def lines_by_column(W, cuts, mh):
+def line_threshold(W, mh):
+    """How close two word centres must be (vertically) to sit on the same printed line. The median word height alone is
+    a poor yardstick on low-resolution scans (1992: word boxes ~30 px tall on a 12-16 px line pitch), where it merged
+    neighbouring lines and interleaved their words; the 25th-percentile height tracks the x-height and is robust to
+    that. (A line-pitch estimate from word tops was tried and rejected: the 1970 layout offsets half-lines, so the
+    estimate collapses and split every line.)"""
+    hs=[w['h'] for w in W if w['h']>5]
+    if not hs: return 0.55*mh
+    return max(3.0, 0.55*min(mh,float(np.percentile(hs,25))))
+
+def lines_by_column(W, cuts, mh, thr=None):
     cols=[[] for _ in range(len(cuts)+1)]
     for w in W:
         cx=w['l']+w['w']/2
@@ -45,11 +55,12 @@ def lines_by_column(W, cuts, mh):
         cols[k].append(w)
     out=[]
     for ci,ws in enumerate(cols):
+        cthr=thr if thr is not None else (line_threshold(ws,mh) if len(ws)>=30 else 0.55*mh)
         ws.sort(key=lambda w:(w['t'],w['l']))
         lines=[]
         for w in ws:
             cy=w['t']+w['h']/2
-            if lines and abs(cy-lines[-1]['cy'])<0.55*mh:
+            if lines and abs(cy-lines[-1]['cy'])<cthr:
                 L=lines[-1]; L['ws'].append(w); L['cy']=(L['cy']*(len(L['ws'])-1)+cy)/len(L['ws'])
             else:
                 lines.append(dict(cy=cy,ws=[w]))
@@ -69,15 +80,33 @@ def forced_cuts(W,pw,n):
         a,b=int(c-r),int(c+r)
         seg=cov[a:b]; cuts.append(a+int(np.argmin(seg)))
     return cuts
-def page_lines(path, pw=None, ncols=None):
+def adaptive_cuts(W, pw, mh, cands=(3,2)):
+    """Pick the column split that leaves the fewest over-long lines. find_columns misses a gutter on 10-30% of the
+    1966-1986 pages (words bleeding across a narrow gutter), and a page read as one column interleaves the three
+    columns word by word ('4556 TENNYSON 80212 455-4705 DENVER 80223 935-2485'). A directory column is never more
+    than ~45 characters wide, so lines longer than that mean merged columns; a cut through text produces 1-2
+    character fragments, which count against a forced split."""
+    options=[find_columns(W,pw)]+[forced_cuts(W,pw,n) for n in cands if len(W)>=20]
+    best=None
+    for cuts in options:
+        L=lines_by_column(W,cuts,mh)
+        score=3*sum(1 for l in L if len(l['text'])>48)+sum(1 for l in L if len(l['text'])<=2)
+        if best is None or score<best[0]: best=(score,cuts)
+    return best[1]
+
+def page_lines(path, pw=None, ncols=None, adaptive=None):
+    """ncols forces that many columns when the gutters are not found; adaptive=(3,2) tries forced 3- and 2-column
+    splits against the automatic one and keeps whichever leaves the fewest merged lines (see adaptive_cuts)."""
     W=load_words(path)
     if not W: return [],[]
     if pw is None: pw=max(w['l']+w['w'] for w in W)+5
     hs=[w['h'] for w in W if w['h']>5]; mh=statistics.median(hs) if hs else 20
     # drop giant junk boxes
     W=[w for w in W if w['h']<5*mh]
-    cuts=find_columns(W,pw)
-    if ncols and len(cuts)!=ncols-1: cuts=forced_cuts(W,pw,ncols)
+    if adaptive: cuts=adaptive_cuts(W,pw,mh,adaptive)
+    else:
+        cuts=find_columns(W,pw)
+        if ncols and len(cuts)!=ncols-1: cuts=forced_cuts(W,pw,ncols)
     return lines_by_column(W,cuts,mh),cuts
 if __name__=='__main__':
     L,cuts=page_lines(sys.argv[1])

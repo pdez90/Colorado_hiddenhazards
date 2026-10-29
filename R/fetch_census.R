@@ -216,10 +216,16 @@ if (length(csv_a)) { D <- as.data.table(read_ipums_agg(csv_a[1], verbose = FALSE
 tr10 <- Sys.glob(file.path(W, "*", "*tract_2010*.shp")); if (!length(tr10)) stop("2010 tract shapefile not found under work/census")
 T10 <- st_make_valid(st_transform(st_read(tr10[1], quiet = TRUE), UTM)); T10 <- T10[substr(T10$GISJOIN, 1, 3) == "G08", ]; T10$GEOID <- gj(T10$GISJOIN)
 CNT <- c("pop", "nhblk", "white", "hisp", "fb", "ppov", "fb_den", "ppov_den", "own", "rentocc"); MED <- c("mval", "mrent")      # counts are split by area; medians are averaged weighting by occupied units x area
-interp <- function(M) { for (k in c(CNT, MED)) if (!k %in% names(M)) M[[k]] <- NA_real_
+# medians: the 1940-2000 tables print 0 where a median was not published (too few units), so 0 is missing, not a value; each median
+# is averaged over the source tracts' pieces weighted by the units it describes (owner-occupied for value, renter-occupied for rent)
+# times the overlap, and a 2010 tract gets a median only if at least MIN_U such units lie behind it
+MIN_U <- 10
+interp <- function(M) { for (k in c(CNT, MED)) if (!k %in% names(M)) set(M, j = k, value = NA_real_)
   M[, hu := fifelse(is.na(own) & is.na(rentocc), pop, fifelse(is.na(own), 0, own) + fifelse(is.na(rentocc), 0, rentocc))]
+  M[, `:=`(wv = fifelse(is.na(own), hu, own), wr = fifelse(is.na(rentocc), hu, rentocc))]
   out <- M[, lapply(.SD, function(v) if (all(is.na(v))) NA_real_ else sum(v * w, na.rm = TRUE)), by = .(GEOID, census), .SDcols = CNT]
-  med <- M[, lapply(.SD, function(v) { ok <- !is.na(v) & hu * w > 0; if (!any(ok)) NA_real_ else sum(v[ok] * hu[ok] * w[ok]) / sum(hu[ok] * w[ok]) }), by = .(GEOID, census), .SDcols = MED]
+  wmed <- function(v, u, w) { ok <- !is.na(v) & v > 0 & u * w > 0; if (!any(ok) || sum(u[ok] * w[ok]) < MIN_U) NA_real_ else sum(v[ok] * u[ok] * w[ok]) / sum(u[ok] * w[ok]) }
+  med <- M[, .(mval = wmed(mval, wv, w), mrent = wmed(mrent, wr, w)), by = .(GEOID, census)]
   merge(out, med, by = c("GEOID", "census")) }
 for (yr in c(1940, 1950, 1960, 1970, 1980)) {
   csvs <- Sys.glob(file.path(W, "*", sprintf("*_%d_tract.csv", yr))); shpf <- Sys.glob(file.path(W, "*", sprintf("*tract_%d*.shp", yr)))

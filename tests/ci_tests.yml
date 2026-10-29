@@ -1,0 +1,60 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python:
+    name: Python tests (digitization, geocoding, outputs)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-test.txt
+      - name: Run pytest
+        env:
+          LANG: C.UTF-8
+          LC_ALL: C.UTF-8
+        # tests that need work/ data skip themselves when it is absent (pytest.mark.skipif on the path);
+        # the Shiny app smoke test is marked slow and is not run in CI
+        # one pytest process per suite (each has its own conftest.py; see tests/run_tests.sh)
+        run: |
+          rc=0
+          for d in tests/digitization tests/geocoding tests/outputs; do
+            python -m pytest "$d" -m "not slow" -ra || rc=1
+          done
+          exit $rc
+
+  r:
+    name: R tests (testthat)
+    runs-on: ubuntu-latest
+    env:
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+      R_KEEP_PKG_SOURCE: no
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::data.table
+            any::sf
+            any::testthat
+            any::jsonlite
+            any::Matrix
+            any::sandwich
+            any::lmtest
+            any::spdep
+            any::fixest
+      - name: Run testthat
+        run: Rscript -e 'testthat::test_dir("tests/r")'

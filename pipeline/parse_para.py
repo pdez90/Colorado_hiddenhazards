@@ -6,7 +6,7 @@
 import re, sys, os, glob, json
 sys.path.insert(0, os.path.dirname(__file__))
 from segment import page_lines
-from parse_block import fix_street, norm_digits
+from parse_block import fix_street, norm_digits, street_like
 from geoctx import heading
 
 def is_name(t):
@@ -32,13 +32,16 @@ def parse_text_record(name, text, year, vol, page, col):
     m=ADDR.search(t_nomail)
     if not m:
         m=ADDR2.search(t_nomail)
+    raw_addr=''   # the street as printed (house number first), so the SIC scan can skip the house number
     if not m:
         m3=re.search(r"(?<![\d\-])(\d{1,6}[A-Z]?\s+[A-Za-z0-9][^,]{2,50}?)(?:,\s*(?:Ste|Suite|Unit|No|#)[^,]{0,12})?,\s*([8&B][0O1][0-9OIlS]{3})(?:-\d{4})?\b",t_nomail)
         if m3:
+            raw_addr=m3.group(1)
             r['street']=fix_street(m3.group(1)); z=norm_digits(m3.group(2)); z='8'+z[1:]
             if z.isdigit(): r['zip']=z
             r['addr_raw']=m3.group(0)
     if m:
+        raw_addr=m.group(1)
         r['street']=fix_street(m.group(1)); r['city_ctx']=re.sub(r"(\s+(CO|CC|C0|CQ))?\W*$","",m.group(2).strip().upper()).strip()
         z=norm_digits(m.group(3)); z='8'+z[1:]
         if z.isdigit(): r['zip']=z
@@ -52,6 +55,11 @@ def parse_text_record(name, text, year, vol, page, col):
     mo=re.search(r"(Private corporation|Public corporation|Sole proprietorship|Proprietorship|Partnership|Cooperative|Subsidiary|Division)",t)
     if mo: r['org']=mo.group(1)
     for c,d in re.findall(r"(?<!Began )(?<!in )\b(\d{4})\s*(?:\((?:[a-z]+)\)\s*)?([a-z][^\.]{2,80})",t):
+        # a 'mining' code 1000-1499 followed by street words is a house number ('1145 ithaca Dr, Boulder'), not an ore mill
+        if 1000<=int(c)<=1499 and street_like(d): continue
+        # the firm's own house number followed by a lower-case street ('3000 ist Ave' = 3000 1st Ave) or the employee count
+        # ('2000 employees') is not a code: SIC 3000 would have made the firm a rubber & plastics maker
+        if raw_addr.lower().startswith((c+' '+d.strip()[:3]).lower()) or re.match(r"(?i)(?:employees|people|persons?)\b",d.strip()): continue
         if (2000<=int(c)<=3999 or 1000<=int(c)<=1499) and c not in r['sic']: r['sic'].append(c); r['sic_desc'].append(d.strip())
     for c,d in re.findall(r"\b(\d{5,6})\s?[:\-]\s?([A-Za-z][^,\.]{2,70})",t):
         if c[:2] in ('31','32','33','21','11','42','54','56','81','22'): r['naics'].append(c); r['sic_desc'].append(d.strip())

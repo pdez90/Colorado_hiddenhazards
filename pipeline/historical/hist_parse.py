@@ -106,7 +106,7 @@ def town_events(lines):
     return ev
 
 ENTRY_SPLIT = re.compile(r"(?:(?<=[a-z]{2}\.)|(?<=[a-z]\.\))|(?<=\d\.))\s+(?=(?:[A-Z][a-zA-Z'’\-]+|[A-Z]\.?)(?:,| &| and| [A-Z][a-z]+,| [A-Z]\.?,| [A-Z][a-z]+ [A-Z]))")
-ADDR = re.compile(r"\b(\d{1,5})\s+((?:[NSEW]\.?\s+)?(?:\d{1,3}(?:st|nd|rd|th|d)|[A-Z][a-z]+)(?:\s+(?:st|av|ave|avenue|street|blvd|pl|ct|way|rd))?)\.?", re.I)
+ADDR = re.compile(r"\b(\d{1,5})(?:-\d{1,4})?\s+((?:[NSEW]\.?\s+)?(?:\d{1,3}(?:st|nd|rd|th|d)|[A-Z][a-z]+)(?:\s+(?:st|av|ave|avenue|street|blvd|pl|ct|way|rd))?)\.?", re.I)   # '125-7 S Weber' -> 125
 
 def entries(text):
     text = re.sub(r"[­­]\s*\n\s*", "", text)        # soft-hyphen line breaks
@@ -209,7 +209,8 @@ def parse_volume(path, year, vol, mode=None):
                 if EXCLUDE.search(e[:120]) and not re.search(r"works|mfr|manufactur|foundry|smelt|shop|assay", e, re.I): continue
                 if OUT_OF_STATE.search(e): continue
                 if len(e) > 200 or NARRATIVE.search(e) or re.match(r"^\W*\d", name): continue
-                name = name[:90].strip(' ,.;')
+                name = name.replace('"', '')[:90].strip(' ,.;')   # OCR quote noise; see consolidate.strip_quotes
+                e = e.replace('"', '')
                 if len(name) < 3: continue
                 t, src = cur, 'heading'
                 if not t:

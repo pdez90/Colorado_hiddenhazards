@@ -63,15 +63,15 @@ Located establishments in the 13 complete editions 1965-1992: 12,655 statewide, 
 
 | outcome | predictor | b | SE | p |
 |---|---|---|---|---|
-| people_of_color | log1p(firm_years) | 0.893 | 0.258 | 0.000553 |
-| people_of_color | log1p(haz_firm_years) | 1.226 | 0.326 | 0.00017 |
-| people_of_color | log1p(hidden_sites) | 0.994 | 0.637 | 0.119 |
-| low_income | log1p(firm_years) | 1.933 | 0.254 | 2.62e-14 |
-| low_income | log1p(haz_firm_years) | 1.809 | 0.323 | 2.11e-08 |
-| low_income | log1p(hidden_sites) | 2.390 | 0.642 | 0.000199 |
-| enviroscreen_pctl | log1p(firm_years) | 3.216 | 0.346 | 0 |
-| enviroscreen_pctl | log1p(haz_firm_years) | 3.043 | 0.443 | 6.24e-12 |
-| enviroscreen_pctl | log1p(hidden_sites) | 3.610 | 0.869 | 3.24e-05 |
-| pollution_climate_pctl | log1p(firm_years) | 1.296 | 0.197 | 4.92e-11 |
-| pollution_climate_pctl | log1p(haz_firm_years) | 1.068 | 0.251 | 2.12e-05 |
-| pollution_climate_pctl | log1p(hidden_sites) | 1.631 | 0.485 | 0.000779 |
+| people_of_color | log1p(firm_years) | 0.900 | 0.259 | 0.000508 |
+| people_of_color | log1p(haz_firm_years) | 1.237 | 0.326 | 0.000151 |
+| people_of_color | log1p(hidden_sites) | 1.011 | 0.638 | 0.113 |
+| low_income | log1p(firm_years) | 1.937 | 0.254 | 2.4e-14 |
+| low_income | log1p(haz_firm_years) | 1.813 | 0.323 | 2e-08 |
+| low_income | log1p(hidden_sites) | 2.395 | 0.642 | 0.000193 |
+| enviroscreen_pctl | log1p(firm_years) | 3.222 | 0.346 | 0 |
+| enviroscreen_pctl | log1p(haz_firm_years) | 3.048 | 0.442 | 5.52e-12 |
+| enviroscreen_pctl | log1p(hidden_sites) | 3.610 | 0.867 | 3.16e-05 |
+| pollution_climate_pctl | log1p(firm_years) | 1.296 | 0.197 | 4.74e-11 |
+| pollution_climate_pctl | log1p(haz_firm_years) | 1.067 | 0.251 | 2.12e-05 |
+| pollution_climate_pctl | log1p(hidden_sites) | 1.623 | 0.485 | 0.000808 |
