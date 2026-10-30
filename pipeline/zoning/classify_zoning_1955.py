@@ -2,11 +2,14 @@
 
     python3 pipeline/zoning/classify_zoning_1955.py            # features, classifier, cells (about two minutes)
     python3 pipeline/zoning/classify_zoning_1955.py sheets     # also draw the random check sheets (work/zoning/check_1955_*.png)
+    python3 pipeline/zoning/classify_zoning_1955.py web        # only redraw the two web images in app/www from zone_cells_1955.csv
 
 Scan (History Colorado, Stephen H. Hart Research Center; licensed to the author for this publication, NOT redistributed):
     "Zone map, City and County of Denver", prepared by the Department of Zoning Administration, July 1, 1955
     (call number rG4314 .D4G44 1955 .D4; 600 dpi, 6,000 x 5,847 px). Place it as work/zoning/zone_map_1955_history_colorado.tif.
-Credit line required by the use agreement: History Colorado-Denver, Colorado.
+Citation (History Colorado's format): Zone map, City and County of Denver, July 1, 1955. History Colorado. rG4314 .D4G44 1955 .D4.
+The use agreement covers this publication and its website; the website shows the whole sheet at 1,800 px (app/www/zoning_1955_scan.jpg)
+and the same image with the classified industrial districts drawn over it (app/www/zoning_1955_classified.jpg).
 
 The map shows 15 zone districts as black-and-white patterns (R-0 to R-4, B-1 to B-5, I-0 to I-2, O-1, P-1). Industrial land is
 printed without lot lines, as vertical dashes (I-1) or rings of dots (I-2); no I-0 district was found on the sheet.
@@ -148,8 +151,22 @@ def sheets(keep, seed):
     sh.save(os.path.join(W, f"check_1955_{seed}.png")); json.dump(key, open(os.path.join(W, f"check_1955_{seed}.json"), "w"), indent=0)
 
 
+def web(width=1800):
+    """The whole sheet at web size, and the same with the industrial districts (I-1 orange, I-2 red) drawn over it."""
+    im = Image.open(SCAN).convert("RGB"); Wd, H = im.size; h = round(H * width / Wd)
+    sm = im.resize((width, h), Image.LANCZOS); www = os.path.join(ROOT, "app", "www")
+    sm.save(os.path.join(www, "zoning_1955_scan.jpg"), quality=85, optimize=True)
+    ov = np.zeros((H // C, Wd // C, 4), np.uint8)
+    for r in csv.DictReader(open(os.path.join(RAW, "zone_cells_1955.csv"))):
+        ov[int(r["row"]), int(r["col0"]):int(r["col1"]) + 1] = (230, 120, 0, 120) if r["zone"] == "I-1" else (200, 0, 0, 120)
+    o = Image.fromarray(ov).resize((ov.shape[1] * C * width // Wd, ov.shape[0] * C * width // Wd), Image.NEAREST)
+    sm.paste(o, (0, 0), o); sm.save(os.path.join(www, "zoning_1955_classified.jpg"), quality=85, optimize=True)
+
+
 if __name__ == "__main__":
     if not os.path.exists(SCAN): sys.exit(f"place the History Colorado scan at {SCAN}")
+    if "web" in sys.argv[1:]:
+        web(); sys.exit(0)
     g = np.asarray(Image.open(SCAN).convert("L"), dtype=np.float32)
     ink = binarise(g); del g
     X = features(ink); del ink
@@ -158,3 +175,4 @@ if __name__ == "__main__":
     write_runs(keep, zone)
     if "sheets" in sys.argv[1:]:
         for s in (1, 2): sheets(keep, s)
+    web()

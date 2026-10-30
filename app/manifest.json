@@ -2543,7 +2543,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "bd247273df6f84325437019f14d1f5cc"
+      "checksum": "84b82ed004755d52eadf7016f52962bb"
     },
     "data/aqs_denver_by_year.csv": {
       "checksum": "3cf11657a17f261f9902ec39853a4cde"
@@ -3210,6 +3210,12 @@
     },
     "www/zoning_1929_scan.jpg": {
       "checksum": "905829c93eac9777dbbb2068020fa862"
+    },
+    "www/zoning_1955_classified.jpg": {
+      "checksum": "58dac020adbcf734db89a3636531426a"
+    },
+    "www/zoning_1955_scan.jpg": {
+      "checksum": "59c2e1f14745b2d918418e47e5ce7635"
     }
   },
   "users": null

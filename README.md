@@ -469,12 +469,13 @@ sites and the 147 study tracts by 2023 zoning category (industrial without housi
 with housing, residential, commercial, other) into `data/results/zoning_2023/`.
 
 ### Zoning in 1955 (`pipeline/zoning/classify_zoning_1955.py`, `R/zoning_1955.R`)
-*Zone map, City and County of Denver*, prepared by the Department of Zoning Administration, 1 July 1955 (History Colorado, Stephen H.
-Hart Research Center, rG4314 .D4G44 1955 .D4; credit line: History Colorado-Denver, Colorado). It is the map of the comprehensive
+Zone map, City and County of Denver, July 1, 1955. History Colorado. rG4314 .D4G44 1955 .D4. (prepared by the Department of Zoning
+Administration; History Colorado's Stephen H. Hart Research Center). It is the map of the comprehensive
 ordinance that replaced the 1925 one (Ordinance No. 16, Series of 1955, itself replaced in 1956 by Ordinance No. 392, the code today's
 city map calls "Former Chapter 59"), with fifteen districts printed as black-and-white patterns (R-0 to R-4, B-1 to B-5, I-0 to I-2,
-O-1, P-1). The 600-dpi scan (6,000 × 5,847 px) is licensed for this publication only and is **not** in the repository: place it as
-`work/zoning/zone_map_1955_history_colorado.tif`. `python3 pipeline/zoning/classify_zoning_1955.py` labels 16-px cells (about 46 m)
+O-1, P-1). The 600-dpi scan (6,000 × 5,847 px) is licensed for this publication and its website only and is **not** in the repository: place it as
+`work/zoning/zone_map_1955_history_colorado.tif`. The website shows the whole sheet at 1,800 px with permission (`app/www/zoning_1955_scan.jpg`,
+and `zoning_1955_classified.jpg` with the industrial districts drawn over it; `python3 pipeline/zoning/classify_zoning_1955.py web`). `python3 pipeline/zoning/classify_zoning_1955.py` labels 16-px cells (about 46 m)
 with a random forest trained on hand-drawn boxes of known pattern (`data/raw/zoning_1955/training_boxes_1955.csv`; features: ink
 share, dots, rings, vertical and horizontal dashes, connected networks, gradient orientation and the spectrum of the 64-px window) and
 keeps the industrial districts, I-1 (vertical dashes) and I-2 (rings of dots); the map shows no I-0 land. Clusters under 100 cells

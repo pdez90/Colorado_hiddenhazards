@@ -1,7 +1,7 @@
 # Denver's industrial zone districts on the zone map of 1 July 1955
 #   Rscript R/zoning_1955.R      (after pipeline/zoning/classify_zoning_1955.py; then Rscript R/zoning_over_time.R)
-# Source: "Zone map, City and County of Denver", prepared by the Department of Zoning Administration, July 1, 1955 (History Colorado,
-# Stephen H. Hart Research Center, rG4314 .D4G44 1955 .D4; credit: History Colorado-Denver, Colorado). The scan is licensed for this
+# Source: Zone map, City and County of Denver, July 1, 1955. History Colorado. rG4314 .D4G44 1955 .D4. (prepared by the Department of
+# Zoning Administration; History Colorado, Stephen H. Hart Research Center). The scan is licensed for this
 # publication only and is not in the repository; the classified cells (data/raw/zoning_1955/zone_cells_1955.csv) are.
 # The map is the first after the 1925 ordinance's Building Zone Map (1929, 1944 revisions) and shows the I-0, I-1 and I-2 industrial
 # districts of the zoning code in force in 1955; only I-1 and I-2 districts appear. Cells come from the texture classifier in
