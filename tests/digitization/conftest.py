@@ -55,7 +55,10 @@ def extract_volumes(vols):
         prefixes = tuple(f'tsv/{v}/' for v in todo)
         with tarfile.open(OCR_TAR) as tf:
             members = [m for m in tf.getmembers() if m.name.startswith(prefixes)]
-            tf.extractall(WS / 'work', members=members, filter='data')
+            try:
+                tf.extractall(WS / 'work', members=members, filter='data')
+            except TypeError:   # Python < 3.9.17 has no extraction filters; the tarball is the project's own file
+                tf.extractall(WS / 'work', members=members)
         _extracted.update(todo)
     return WS / 'work' / 'tsv'
 

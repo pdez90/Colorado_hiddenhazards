@@ -1,0 +1,24 @@
+tier,band,N,pct_of_proximity_only
+cleanup,0-10 m,5,0.4
+cleanup,10-25 m,34,2.9
+cleanup,25-40 m,28,2.4
+cleanup,40-75 m,35,3
+cleanup,over 75 m,4,0.3
+other_epa,0-10 m,33,2.8
+other_epa,10-25 m,215,18.4
+other_epa,25-40 m,153,13.1
+other_epa,40-75 m,20,1.7
+rcra_handler,0-10 m,39,3.3
+rcra_handler,10-25 m,308,26.4
+rcra_handler,25-40 m,177,15.2
+rcra_handler,40-75 m,31,2.7
+solid_waste,0-10 m,1,0.1
+solid_waste,10-25 m,3,0.3
+solid_waste,25-40 m,4,0.3
+solid_waste,40-75 m,5,0.4
+solid_waste,over 75 m,1,0.1
+tri,0-10 m,3,0.3
+tri,10-25 m,19,1.6
+tri,25-40 m,12,1
+tri,40-75 m,20,1.7
+tri,over 75 m,18,1.5

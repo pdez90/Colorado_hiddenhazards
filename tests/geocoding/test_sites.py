@@ -176,3 +176,31 @@ def test_geo_level_and_placed_loose_series():
     q = pd.Series(['range_interp', 'range_interp_dirambig', 'fuzzy_range_interp', 'street_nearest', 'zip_centroid', None])
     assert list(bs.geo_level(q)) == ['address', 'zip_centroid', 'address_approx', 'address_approx', 'zip_centroid', 'none']
     assert list(bs.placed_loose(q)) == [False, False, True, True, False, False]
+
+def test_per_tier_evidence_columns():
+    """Each tier records its strongest evidence ({tier}_basis: entity > boundary > prox > '') and the distance to the nearest
+    differently named record inside the tier's radius ({tier}_prox_m), so the known/hidden sensitivity analysis
+    (R/known_hidden_sensitivity.R) can vary the proximity rule without re-running the match."""
+    M = run([site()], [reg('Corner Pharmacy', 'rcra_handler', LAT0 + dlat(35), LON0),
+                       reg('Acme Plating Works Inc', 'tri', LAT0 + dlat(90), LON0),
+                       reg('Car Wash', 'other_epa', LAT0 + dlat(60), LON0)])
+    r = M.iloc[0]
+    assert r.rcra_handler_basis == 'prox' and r.rcra_handler_prox_m == 35
+    assert r.tri_basis == 'entity' and np.isnan(r.tri_prox_m)            # the only TRI record is the firm itself
+    assert r.other_epa_basis == '' and np.isnan(r.other_epa_prox_m)      # 60 m is outside the 40 m radius
+    assert r.cleanup_basis == '' and r.solid_waste_basis == ''
+    poly = f'POLYGON(({LON0 - 0.001} {LAT0 - 0.001}, {LON0 + 0.001} {LAT0 - 0.001}, {LON0 + 0.001} {LAT0 + 0.001}, {LON0 - 0.001} {LAT0 + 0.001}, {LON0 - 0.001} {LAT0 - 0.001}))'
+    r = run([site()], [reg('Old Smelter Site', 'cleanup', None, None, source='CDPHE_VCUP', geom=poly)]).iloc[0]
+    assert r.cleanup_basis == 'boundary'
+    r = run([site()], [reg('Something Else LLC', 'tri', None, None, address='450 Kalamath Street', zip5='80204')]).iloc[0]
+    assert r.tri_basis == 'entity'
+
+def test_county_from_tracts_overrides_zip_county():
+    """export.county_from_tracts: a site takes the county of the 2020 tract its point lies in (ZIPs cross county lines, and the ZIP
+    table built from FRS facilities even carries a 'PORTABLE SOURCE' county); a point in no tract keeps its ZIP county."""
+    import export, geopandas as gpd
+    from shapely.geometry import box
+    T = gpd.GeoDataFrame({'GEOID': ['08031000100', '08001000100'], 'County': ['Denver County', 'Adams County']},
+                         geometry=[box(-105.0, 39.7, -104.9, 39.8), box(-104.9, 39.7, -104.8, 39.8)], crs=4326)
+    s = pd.DataFrame({'lat': [39.75, 39.75, 40.5], 'lon': [-104.95, -104.85, -104.95], 'county': ['Adams', 'Portable Source', 'Weld']})
+    assert export.county_from_tracts(s, T).tolist() == ['Denver', 'Adams', 'Weld']

@@ -26,3 +26,12 @@ test_that("conflict: wrong side of Ellsworth / Broadway, Denver, street level on
   expect_false(conflict("4000 S KALAMATH", "DENVER", 39.77, -105.0, "zip_centroid"))     # not a street-level point
   expect_false(conflict("4000 S KALAMATH", "DENVER", NA_real_, NA_real_, "address"))
 })
+
+test_that("rd(): reading strips OCR quote characters, so a read-write round trip is stable (fread misreads fields that start or end with escaped quotes)", {
+  f <- tempfile(fileext = ".csv")
+  writeLines(c("site_id,hazard_firms,n", 'S1,"8.""""""""""""""""""""""""""""""""""""""""""" S$ PRODUC (1984)",1', 'S2,"ELM LUBRICANTS INC """"COAT (1976)",2', 'S3,PLAIN CO (1970),3'), f)
+  a <- rd(f); expect_false(any(grepl('"', a$hazard_firms, fixed = TRUE))); expect_equal(a$n, 1:3)
+  fwrite(a, f); b <- rd(f); expect_equal(a, b)
+  fwrite(b, f); expect_equal(rd(f), a)
+  unlink(f)
+})

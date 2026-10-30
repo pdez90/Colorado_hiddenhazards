@@ -1,7 +1,7 @@
 name,type,grades,address,district,lat,lon,GEOID
 Lutheran High School,Non-public school,9-12,"11249 Newlin Gulch Blvd, Parker",Douglas County Re 1,39.513153,-104.805908,08035014006
 Montessori-Washington Park,Non-public school,PK-K,"320 South Sherman Street, Denver",Denver County 1,39.710972,-104.985138,08031002901
-Montessori School of Denver,Non-public school,PK-8,"1460 South Holly Street, Denver",Denver County 1,39.690033,-104.922256,
+Montessori School of Denver,Non-public school,PK-8,"1460 South Holly Street, Denver",Denver County 1,39.690033,-104.922256,08031005200
 Mullen High School,Non-public school,9-12,"3601 South Lowell Boulevard, Denver",Denver County 1,39.650768,-105.034714,08031005502
 Hilltop Baptist School,Non-public school,K-12,"6915 Palmer Park Boulevard, Colorado Springs",District 49,38.857891,-104.700089,08041005110
 Waldorf School on the Roaring Fork,Non-public school,PK-8,"16543 Old Highway 82, Carbondale",Roaring Fork RE-1,39.405582,-107.138802,08045951804
@@ -148,7 +148,7 @@ Valley Christian Academy,Non-public school,PK-5,"3685 New Center Pt., Colorado S
 FWC Academy,Non-public school,6-12,"3800 Parker Blvd., Pueblo",Pueblo City 60,38.311169,-104.654732,08101002901
 Kindercare Learning Center at UCAR,Non-public school,PK-PK,"3050 34Th Street, Boulder",Boulder Valley Re 2,40.02948,-105.24929,08013012207
 Washington Street Community Center,Non-public school,PK-PK,"809 South Washington Street, Denver",Denver County 1,39.701801,-104.979347,08031002902
-ABC at Union Colony,Non-public school,PK-PK,"1051 29Th St Rd, Evans",Greeley 6,40.389416,-104.696899,
+ABC at Union Colony,Non-public school,PK-PK,"1051 29Th St Rd, Evans",Greeley 6,40.389416,-104.696899,08123001004
 Anchor Center for Blind Children,Non-public school,PK-PK,"2550 Roslyn St, Denver",Denver County 1,39.754044,-104.900444,08031004112
 Cottage School South,Non-public school,PK-PK,"1301 North St, Boulder",Boulder Valley Re 2,40.024555,-105.280464,08013012106
 L'Ecole de Denver,Non-public school,PK-8,"2280 East 16Th Ave, Denver",Denver County 1,39.74157,-104.959885,08031003102
@@ -270,10 +270,10 @@ St John's Lutheran,Non-public school,PK-8,"700 South Franklin Street, Denver",De
 Trinity Lutheran School,Non-public school,PK-8,"4740 North State Highway 83, Franktown",Douglas County Re 1,39.431889,-104.760201,08035013909
 The Colorado Springs School,Non-public school,PK-12,"21 Broadmoor Avenue, Colorado Springs",Cheyenne Mountain 12,38.791134,-104.841377,08041003100
 St Stephen Catholic School,Non-public school,PK-8,"414 S Hyland Park, Glenwood Springs",Roaring Fork RE-1,39.535645,-107.3228,08045951702
-Kindercare Kipling Parkway,Non-public school,PK-K,"975 South Kipling Parkway, Lakewood",Jefferson County R-1,39.698318,-105.111015,
+Kindercare Kipling Parkway,Non-public school,PK-K,"975 South Kipling Parkway, Lakewood",Jefferson County R-1,39.698318,-105.111015,08059011701
 Fort Collins Christian School,Non-public school,K-8,"2040 Nancy Gray Ave, Fort Collins",Poudre R-1,40.558086,-105.040642,08069001605
 Eagles' Nest Learning Center,Non-public school,PK-PK,"10655 Highway 119, Black Hawk",Gilpin County RE-1,39.834412,-105.516792,08047013801
-Steamboat Mountain School,Non-public school,K-12,"42605 Routt County Road 36, Steamboat Springs",Steamboat Springs RE-2,40.5269070000001,-106.822813,08107000100
+Steamboat Mountain School,Non-public school,K-12,"42605 Routt County Road 36, Steamboat Springs",Steamboat Springs RE-2,40.5269070000001,-106.822813,08107000500
 Ave Maria Catholic School,Non-public school,PK-8,"9056 East Parker Road, Parker",Douglas County Re 1,39.520367,-104.716988,08035013911
 Early Learning Center,Non-public school,PK-PK,"215 North Garmisch, Aspen",Aspen 1,39.192692,-106.822472,08097000404
 Brighton Adventist Academy,Non-public school,PK-11,"820 South 5Th Avenue, Brighton",School District 27J,39.973808,-104.816673,08001008606
@@ -389,7 +389,7 @@ Cherry Hills Christian,Non-public school,PK-8,"3900 East Grace Boulevard, Highla
 Rocky Mountain Lutheran High School,Non-public school,9-12,"10391 Luther Court, Commerce City",School District 27J,39.8845030000001,-104.797971,08001008538
 Concordia Lutheran Preschool,Non-public school,PK-K,"13371 West Alameda Parkway, Lakewood",Jefferson County R-1,39.693134,-105.148849,08059011720
 Evangelical Christian Academy,Non-public school,PK-12,"2511 North Logan, Colorado Springs",Colorado Springs 11,38.86853,-104.797394,08041000400
-Ascension Children's Learning Center,Non-public school,PK-5,"2505 North Circle Drive, Colorado Springs",Colorado Springs 11,38.868458,-104.784531,
+Ascension Children's Learning Center,Non-public school,PK-5,"2505 North Circle Drive, Colorado Springs",Colorado Springs 11,38.868458,-104.784531,08041000600
 Sunflower Montessori School,Non-public school,PK-PK,"11624 West Belleview Ave, Littleton",Jefferson County R-1,39.624142,-105.129852,08059012043
 Tiny Hearts Academy - Lakewood,Non-public school,PK-PK,"12755 West Cedar Drive, Lakewood",Jefferson County R-1,39.71228,-105.141693,08059011733
 Statheros Academy,Non-public school,PK-12,"1730 Chapel Hills Dr #100, Colorao Springs",Academy 20,38.945259,-104.791817,08041003906
@@ -421,7 +421,7 @@ Littleton Montessori School,Non-public school,PK-K,"6653 West Chatfield Avenue, 
 Resurrection Christian,Non-public school,PK-12,"6502 East Crossroads Blvd, Loveland",Thompson R2-J,40.435822,-104.981865,08069001714
 Day One Learning Center,Non-public school,PK-PK,"1403 Willow Street, Denver",Denver County 1,39.738796,-104.888252,08031004404
 Hope Center,Non-public school,PK-PK,"3400 Elizabeth Street, Denver",Denver County 1,39.764549,-104.956032,08031003602
-Creative Play Center,Non-public school,PK-PK,"3580 North Carefree Circle, Colorado Springs",Colorado Springs 11,38.88203,-104.753983,08041005700
+Creative Play Center,Non-public school,PK-PK,"3580 North Carefree Circle, Colorado Springs",Colorado Springs 11,38.88203,-104.753983,08041005502
 Gethsemane Lutheran School,Non-public school,PK-8,"10675 North Washington Street, Northglenn",Adams 12 Five Star Schools,39.890202,-104.977837,08001008505
 Bright Horizons at Seven Oaks West,Non-public school,PK-PK,"3513 Richmond Drive, Fort Collins",Poudre R-1,40.538944,-105.098541,08069001107
 Spring Creek School,Non-public school,PK-6,"1900 Remington, Fort Collins",Poudre R-1,40.561798,-105.075401,08069000901
@@ -434,7 +434,7 @@ La Petite Academy,Non-public school,PK-5,"2760 Purgatory Drive, Colorado Springs
 Rainbow Preschool,Non-public school,PK-PK,"538 West Colorado Ave, Telluride",Telluride R-1,37.938538,-107.816376,08113968101
 Shepherd of the Hills Lutheran School,Non-public school,PK-PK,"950 43Rd Avenue, Greeley",Greeley 6,40.422726,-104.7481,08123001413
 Mount Olive Lutheran ECEC,Non-public school,PK-K,"11500 East Iliff Avenue, Aurora",Cherry Creek 5,39.674675,-104.855156,08005080300
-Countryside Montessori School,Non-public school,PK-K,"5524 Baseline Road, Boulder",Boulder Valley Re 2,40.000053,-105.224495,
+Countryside Montessori School,Non-public school,PK-K,"5524 Baseline Road, Boulder",Boulder Valley Re 2,40.000053,-105.224495,08013012501
 Kindercare Mesa,Non-public school,PK-6,"1204 Mesa Road, Colorado Springs",Colorado Springs 11,38.849045,-104.838264,08041001302
 Meadowlark Preschool,Non-public school,PK-PK,"2650 Table Mesa Dr, Boulder",Boulder Valley Re 2,39.980347,-105.261284,08013012505
 Temple Shalom Preschool,Non-public school,PK-7,"1523 East Monument, Colorado Springs",Colorado Springs 11,38.842922,-104.797615,08041001800
@@ -449,7 +449,7 @@ Southern Ute Indian Montessori Academy,Non-public school,PK-8,"275 Mouache Circl
 Life Academy,Non-public school,PK-12,"636 29 Road, Grand Junction",Mesa County Valley 51,39.096592,-108.515129,08077001103
 Breckenridge Montessori,Non-public school,PK-PK,"Po Box 1508 318 North Main Street, Breckenridge",Summit RE-1,39.4859790292153,-106.045938449388,08117000405
 Family of Christ CDC,Non-public school,PK-K,"675 Baptist Road, Colorado Springs",Academy 20,39.0564920000001,-104.840622,08041007203
-Vail Christian Academy,Non-public school,PK-8,"31621 Highway 6, Avon",Eagle County RE 50,39.658401,-106.638252,08037000402
+Vail Christian Academy,Non-public school,PK-8,"31621 Highway 6, Avon",Eagle County RE 50,39.658401,-106.638252,08037000401
 The Denver School East,Non-public school,9-12,"1585 Kingston Street, Aurora",Adams-Arapahoe 28J,39.741711,-104.858833,08001007802
 Holy Love Preschool and Kindergarten,Non-public school,PK-K,"4210 South Chamnbers Road, Aurora",Cherry Creek 5,39.640659,-104.810051,08005084700
 Kids 4 Real Inc,Non-public school,PK-1,"1525 East 30Th Avenue, Denver",Denver County 1,39.759552,-104.968903,08031002300
@@ -506,7 +506,7 @@ Graland Country Day School,Non-public school,PK-8,"55 Clermont St, Denver",Denve
 Jewish Community Center,Non-public school,PK-K,"350 South Dahlia, Denver",Denver County 1,39.709949,-104.93148,08031015300
 Kindercare Denver,Non-public school,PK-K,"2200 South Holly Street, Denver",Denver County 1,39.677082,-104.922195,08031006902
 High Valley Christian School,Non-public school,K-8,"45461 Co Rd E, P O Box 905, Center",Center 26 JT,37.8075710000001,-106.285782,08109977700
-Vail Christian High School,Non-public school,9-12,"31621 Highway 6, Edwards",Eagle County RE 50,39.658401,-106.638252,08037000402
+Vail Christian High School,Non-public school,9-12,"31621 Highway 6, Edwards",Eagle County RE 50,39.658401,-106.638252,08037000401
 Golden Mountain Montessori,Non-public school,PK-K,"306 West Brookside Street, Colorado Springs",Colorado Springs 11,38.812706,-104.833557,08041003001
 Alpine Valley School,Non-public school,K-12,"4501 Parfet Street, Wheat Ridge",Jefferson County R-1,39.779903,-105.121109,08059010403
 Heritage Christian Academy,Non-public school,K-12,"2506 Zurich Drive, Fort Collins",Poudre R-1,40.589397,-105.03212,08069001306
@@ -516,7 +516,7 @@ Mount Sopris Montessori School,Non-public school,PK-PK,"879 Euclid Avenue, Carbo
 "Bayfield Early Education Program, Inc",Non-public school,PK-PK,"645 Foxfarm Circle, Bayfield",Bayfield 10 Jt-R,37.225227,-107.596588,08067970602
 Mercy Child Care Center,Non-public school,PK-PK,"1010 Three Springs Blvd., Durango",Durango 9-R,37.235138,-107.824814,08067970703
 Renaissance Children's Center,Non-public school,PK-PK,"1797 Kendall Street, Lakewood",Jefferson County R-1,39.745296,-105.066208,08059011402
-Noah's Ark Preschool,Non-public school,PK-K,"3501 West 104Th Avenue, Westminster",Adams 12 Five Star Schools,39.885227,-105.031448,
+Noah's Ark Preschool,Non-public school,PK-K,"3501 West 104Th Avenue, Westminster",Adams 12 Five Star Schools,39.885227,-105.031448,08001009409
 Ruth Washburn Coop Nursery School,Non-public school,PK-PK,"914 North 19Th Street, Colorado Springs",Colorado Springs 11,38.851749,-104.849815,08041001302
 Bright Horizons Montessori at Greenwood Plaza,Non-public school,PK-K,"5889 Greenwood Plaza Blvd #100, Englewood",Cherry Creek 5,39.610935,-104.899666,08005006712
 Willows Child Learning Center,Non-public school,PK-K,"6865 South Quebec Street, Centennial",Cherry Creek 5,39.592213,-104.90435,08005006706
@@ -594,7 +594,7 @@ River Mist Preschool,Non-public school,PK-PK,"2441 Cr 225, Durango",Durango 9-R,
 Silverton Family Learning Center,Non-public school,PK-PK,"195 E 16Th, Silverton",Silverton 1,37.813969,-107.659637,08111972600
 Treehouse Learning Center,Non-public school,PK-PK,"300 N Elm  Street, Cortez",Montezuma-Cortez RE-1,37.351933,-108.587822,08083969301
 Kids Campus,Non-public school,PK-PK,"315 East 6Th St., Ordway",Crowley County RE-1-J,38.221584,-103.753258,08025969602
-Holy Apostles Preschool,Non-public school,PK-PK,"4925 North Carefree Circle, Colorado Springs",Colorado Springs 11,38.885658,-104.737549,08041005601
+Holy Apostles Preschool,Non-public school,PK-PK,"4925 North Carefree Circle, Colorado Springs",Colorado Springs 11,38.885658,-104.737549,08041005800
 Mackintosh Academy: Boulder Campus,Non-public school,PK-8,"6717 South Boulder Road, Boulder",Boulder Valley Re 2,39.98653,-105.196976,08013012710
 Boulder Country Day School,Non-public school,PK-8,"4820 Nautilus Court North, Boulder",Boulder Valley Re 2,40.06242,-105.203255,08013012705
 Mapleton Montessori School,Non-public school,PK-K,"3121 29Th Street, Boulder",Boulder Valley Re 2,40.031673,-105.256668,08013012208
@@ -621,7 +621,7 @@ Temple Grandin School,Non-public school,6-12,"3131 Indian Rd, Boulder",Boulder V
 ABC Scott,Non-public school,PK-PK,"3000 13Th St, Greeley",Greeley 6,40.418301,-104.728958,08123001201
 The Applewood School,Non-public school,PK-PK,"1690 Simms Street, Lakewood",Jefferson County R-1,39.743523,-105.128136,08059015800
 The Logan School for Creative Learning,Non-public school,K-8,"1005 Yosemite Street, Denver",Denver County 1,39.731327,-104.884865,08031004407
-First United Methodist Co-op Preschool,Non-public school,PK-PK,"1005 Stover Street, Fort Collins",Poudre R-1,40.574123,-105.066635,08069000801
+First United Methodist Co-op Preschool,Non-public school,PK-PK,"1005 Stover Street, Fort Collins",Poudre R-1,40.574123,-105.066635,08069000700
 Linden Early Learning Center,Non-public school,PK-PK,"4770 Eliot St, Denver",Denver County 1,39.783398,-105.023895,08031000202
 Sacred Heart Academy,Non-public school,K-12,"228 11Th Street, Burlington",Burlington RE-6J,39.302616,-102.264,08063962100
 Eagle Rock School and Professional Development,Non-public school,9-12,"2750 Notaiah Rd, Estes Park",Estes Park R-3,40.403233,-105.470901,08069002801
@@ -650,7 +650,7 @@ UCCS Family Development Center,Non-public school,PK-K,"1425 Austin Bluffs Parkwa
 Bloom Montessori School,Non-public school,PK-PK,"701 James Street, Longmont",St Vrain Valley RE1J,40.151394,-105.109123,08013013210
 BRAVE Academy,Non-public school,K-12,"3651 S Colorado Blvd, Englewood",Cherry Creek 5,39.650135,-104.940773,08005006704
 Venture for Success Preparatory Learning Center,Non-public school,PK-PK,"12900 Albrook Drive, Denver",Denver County 1,39.780258,-104.841324,08031008312
-Little Harvard Academy,Non-public school,PK-PK,"6381 West Alameda Ave, Lakewood",Jefferson County R-1,39.711174,-105.066795,
+Little Harvard Academy,Non-public school,PK-PK,"6381 West Alameda Ave, Lakewood",Jefferson County R-1,39.711174,-105.066795,08059011806
 Lord of Life Lutheran School,Non-public school,K-8,"12021 Northaven Circle, Thornton",Adams 12 Five Star Schools,39.914837,-104.933769,08001008547
 Creative Options Center for Early Ed,Non-public school,PK-PK,"801 Yosemite Street, Denver",Adams-Arapahoe 28J,39.728146,-104.887512,08031004407
 ABC Ault,Non-public school,PK-PK,"102 Alpine Ave, Ault",Ault-Highland RE-9,40.582985,-104.738258,08123002300
@@ -751,7 +751,7 @@ Antonito Middle/High School,Public school,6-12,"620 Pine Street, Antonito",South
 Heath Middle School,Public school,6-8,"2223  16Th Street, Greeley",Greeley 6,40.413914,-104.71563,08123000402
 Meeker Elementary School,Public school,PK-5,"2221  28Th Avenue, Greeley",Greeley 6,40.402008,-104.727631,08123001100
 Twombly Elementary School,Public school,K-5,"1600 Ninth Street, Fort Lupton",Weld Re-8 Schools,40.087284,-104.79995,08123001905
-Fairview High School,Public school,9-12,"1515 Greenbriar Boulevard, Boulder",Boulder Valley Re 2,39.973347,-105.241432,08013012510
+Fairview High School,Public school,9-12,"1515 Greenbriar Boulevard, Boulder",Boulder Valley Re 2,39.973347,-105.241432,08013012509
 Delta High School,Public school,9-12,"1400 Pioneer Road, Delta",Delta County 50(J),38.728249,-108.050522,08029964900
 Valdez Elementary School,Public school,PK-5,"2525 West 29Th  Avenue, Denver",Denver County 1,39.758499,-105.018692,08031000404
 Columbine Elementary School,Public school,PK-5,"2540 East 29Th Ave, Denver",Denver County 1,39.758175,-104.955872,08031003603
@@ -967,7 +967,7 @@ Mesa Elementary School,Public school,K-5,"400 Camino Del Rey, Fountain",Fountain
 John H. Amesse Elementary,Public school,PK-5,"5440 Scranton Street, Denver",Denver County 1,39.794182,-104.842148,08031008304
 College View Elementary School,Public school,PK-5,"2675 South Decatur Street, Denver",Denver County 1,39.669006,-105.022797,08031015600
 Eagleton Elementary School,Public school,PK-5,"880 N Hooker Street, Denver",Denver County 1,39.730747,-105.028595,08031000905
-Warren Tech,Public school,11-12,"13300 West 2Nd Place, Lakewood",Jefferson County R-1,39.716064,-105.147598,08059011733
+Warren Tech,Public school,11-12,"13300 West 2Nd Place, Lakewood",Jefferson County R-1,39.716064,-105.147598,08059011732
 Prairie Hills Elementary School,Public school,K-5,"13801 Garfield Place, Thornton",Adams 12 Five Star Schools,39.947212,-104.943901,08001008544
 Soaring Eagles Community School,Public school,PK-8,"4710 Harrier Ridge Drive, Colorado Springs",Harrison 2,38.784416,-104.737953,08041006502
 Benjamin Eaton Elementary School,Public school,K-5,"100 South Mountain View Drive, Eaton",Eaton RE-2,40.522774,-104.730721,08123001500
@@ -1195,7 +1195,7 @@ Rocky Ford Elementary School,Public school,K-6,"901 South 11Th Street, Rocky For
 Cheraw School,Public school,PK-12,"110 Lakeview Avenue, Cheraw",Cheraw 31,38.109138,-103.51049,08089968500
 Cheyenne Wells Junior/High School,Public school,7-12,"325 West 4Th North, Cheyenne Wells",Cheyenne County Re-5,38.823166,-102.353317,08017960600
 Colfax Elementary School,Public school,PK-5,"1526 Tennyson Street, Denver",Denver County 1,39.740925,-105.043968,08031000703
-Littleton Academy,Public school,K-8,"1200 West Mineral Avenue, Littleton",Littleton 6,39.573406,-105.003258,
+Littleton Academy,Public school,K-8,"1200 West Mineral Avenue, Littleton",Littleton 6,39.573406,-105.003258,08005005634
 Altura Elementary School,Public school,PK-5,"1650 Altura Blvd, Aurora",Adams-Arapahoe 28J,39.743042,-104.814667,08001008308
 Kenton Elementary School,Public school,PK-5,"1255 Kenton St, Aurora",Adams-Arapahoe 28J,39.734901,-104.860054,08005007400
 Bear Creek Elementary School,Public school,PK-6,"1330 Creekside Drive, Monument",Lewis-Palmer 38,39.066341,-104.840424,08041007301
@@ -1435,7 +1435,7 @@ Bridges,Public school,9-12,"455 South 3Rd Street, Carbondale",Roaring Fork RE-1,
 Edith Teter Elementary School,Public school,PK-5,"640 Hathaway Street, Fairplay",Park County RE-2,39.223625,-105.998291,08093000300
 Holyoke Senior High School,Public school,7-12,"545 E Hale Street, Holyoke",Holyoke Re-1J,40.581486,-102.29586,08095967600
 Lamar Middle School,Public school,6-8,"104 West Park, Lamar",Lamar Re-2,38.082996,-102.619629,08099000300
-Cottonwood Creek Elementary School,Public school,PK-5,"11200 East Orchard Avenue, Englewood",Cherry Creek 5,39.609661,-104.85878,08005006808
+Cottonwood Creek Elementary School,Public school,PK-5,"11200 East Orchard Avenue, Englewood",Cherry Creek 5,39.609661,-104.85878,08005006861
 Dakota Valley Elementary School,Public school,PK-5,"3950 South Kirk Way, Aurora",Cherry Creek 5,39.645466,-104.746529,08005083201
 Glenwood Springs Elementary School,Public school,PK-5,"915 School Street, Glenwood Springs",Roaring Fork RE-1,39.545288,-107.327499,08045951702
 West Grand Elementary School,Public school,K-6,"715 Kinsey Avenue, Kremmling",West Grand 1-JT,40.060787,-106.38623,08049000100
@@ -1490,7 +1490,7 @@ Dual Immersion Academy School,Public school,PK-5,"552 A West Main Street, Grand 
 La Veta Junior-Senior High School,Public school,6-12,"126 East Garland, La Veta",La Veta Re-2,37.504593,-105.008499,08055960902
 Lake County Intermediate School,Public school,3-6,"1000 West 6Th Street, Leadville",Lake County R-1,39.245892,-106.305153,08065961702
 Lakewood High School,Public school,9-12,"9700 West 8Th Avenue, Lakewood",Jefferson County R-1,39.729179,-105.108398,08059011101
-Thunder Ridge Middle School,Public school,6-8,"5250 South Picadilly Street, Aurora",Cherry Creek 5,39.62085,-104.738579,
+Thunder Ridge Middle School,Public school,6-8,"5250 South Picadilly Street, Aurora",Cherry Creek 5,39.62085,-104.738579,08005086001
 Timnath Elementary School,Public school,PK-5,"3909 Main Street, Timnath",Poudre R-1,40.532696,-104.982307,08069002506
 Trinidad High School,Public school,9-12,"816 West Street, Trinidad",Trinidad 1,37.169556,-104.517494,08071000200
 Highline Academy Southeast,Public school,K-8,"2170 South Dahlia Street, Denver",Denver County 1,39.677586,-104.931549,08031006902
@@ -1594,7 +1594,7 @@ Foster Dual Language PK-8,Public school,PK-8,"5300 Saulsbury Court, Arvada",Jeff
 The Yampah Mountain High School Nursery,Public school,PK-PK,"695 Red Mt Drive, Glenwood Springs",Colorado River BOCES,39.547543,-107.333794,08045951701
 Kit Carson Elementary School,Public school,PK-5,"102  W. 5Th Avenue, Kit Carson",Kit Carson R-1,38.766357,-102.79245,08017960600
 Custer County High School,Public school,9-12,"709 Main Street, Westcliffe",Custer County School District C-1,38.135963,-105.461792,08027970101
-Ellicott Elementary School,Public school,PK-5,"399 South Ellicott Highway, Ellicott",Ellicott 22,38.825394,-104.386879,
+Ellicott Elementary School,Public school,PK-5,"399 South Ellicott Highway, Ellicott",Ellicott 22,38.825394,-104.386879,08041004602
 Antelope Trails Elementary School,Public school,PK-5,"15280 Jessie Drive, Colorado Springs",Academy 20,39.053787,-104.826134,08041007203
 Coyote Creek Elementary School,Public school,PK-6,"2861 Baneberry Court, Highlands Ranch",Douglas County Re 1,39.527901,-105.022743,08035014124
 D51 Early Childhood Center,Public school,PK-PK,"543 28 3/4 Road, Grand Junction",Mesa County Valley 51,39.078487,-108.518723,08077000602
@@ -1706,7 +1706,7 @@ Ignacio Elementary School,Public school,K-5,"85 County Road 320, Ignacio",Ignaci
 Talbott STEAM Innovation School,Public school,K-5,"401 Dean Drive, Colorado Springs",Widefield 3,38.734848,-104.72039,08041004506
 Strasburg Elementary School,Public school,PK-5,"56729 East Colorado Avenue, Strasburg",Strasburg 31J,39.742733,-104.322334,08001008402
 Strasburg High School,Public school,9-12,"56729 East Colorado Avenue, Strasburg",Strasburg 31J,39.742733,-104.322334,08001008402
-Strawberry Park Elementary School,Public school,PK-5,"39620 Amethyst Drive, Steamboat Springs",Steamboat Springs RE-2,40.496174,-106.817505,08107000500
+Strawberry Park Elementary School,Public school,PK-5,"39620 Amethyst Drive, Steamboat Springs",Steamboat Springs RE-2,40.496174,-106.817505,08107000600
 Pritchett Middle School,Public school,6-8,"533 Irving Street, Pritchett",Pritchett RE-3,37.37207,-102.861389,08009964600
 John Wesley Powell Middle School,Public school,6-8,"8000 South Corona Way, Littleton",Littleton 6,39.572735,-104.978256,08005005632
 Peakview School,Public school,PK-6,"375 West Pine Street, Walsenburg",Huerfano Re-1,37.632542,-104.792007,08055960600
@@ -1826,7 +1826,7 @@ Madison Elementary School,Public school,PK-5,"4120 Constitution Avenue, Colorado
 Ralston Valley Senior High School,Public school,9-12,"13355 West 80Th Avenue, Arvada",Jefferson County R-1,39.84169,-105.149765,08059009836
 Elk Creek Elementary,Public school,PK-5,"804 West Main Street, New Castle",Garfield Re-2,39.571484,-107.539856,08045951902
 Inspire Elementary,Public school,PK-5,"5650 N Elmira Ct, Denver",Denver County 1,39.7996707712295,-104.869880382096,08031004109
-Summit High School,Public school,9-12,"16201 U S Highway 9, Breckenridge",Summit RE-1,39.565395,-106.052559,08117000404
+Summit High School,Public school,9-12,"16201 U S Highway 9, Breckenridge",Summit RE-1,39.565395,-106.052559,08117000406
 Steamboat Springs High School,Public school,9-12,"45 East Maple Street, Steamboat Springs",Steamboat Springs RE-2,40.486649,-106.823395,08107000500
 Stober Elementary School,Public school,K-5,"2300 Urban Street, Lakewood",Jefferson County R-1,39.751751,-105.133568,08059010801
 Dolores High School,Public school,9-12,"1301 Central Avenue, Dolores",Dolores RE-4A,37.475605,-108.493263,08083969000
@@ -1868,7 +1868,7 @@ Highlands Ranch High School,Public school,9-12,"9375 Cresthill Lane, Highlands R
 Platte River Charter Academy,Public school,PK-8,"4085 Lark Sparrow St., Highlands Ranch",Douglas County Re 1,39.550278,-104.94133,08035014139
 Saddle Ranch Elementary School,Public school,PK-6,"805 West English Sparrow Trail, Highlands Ranch",Douglas County Re 1,39.531319,-104.997162,08035014129
 University Schools,Public school,K-12,"6525 18Th Street, Greeley",Greeley 6,40.41013,-104.787331,08123001412
-McLain Community High School,Public school,7-12,"13600 West 2Nd Place, Lakewood",Jefferson County R-1,39.716492,-105.150696,
+McLain Community High School,Public school,7-12,"13600 West 2Nd Place, Lakewood",Jefferson County R-1,39.716492,-105.150696,08059011732
 Franklin School of Innovation,Public school,K-5,"1315 Horseshoe Drive, Pueblo",Pueblo City 60,38.28978,-104.587967,08101000902
 Bennett Elementary School,Public school,K-2,"462 8Th Street, Bennett",Bennett 29J,39.758507,-104.423645,08001008401
 Berthoud Elementary School,Public school,PK-5,"560 Bunyan Avenue, Berthoud",Thompson R2-J,40.312592,-105.082565,08069002700
@@ -1917,7 +1917,7 @@ Community Montessori School,Public school,PK-6,"805 Gillaspie Dr, Boulder",Bould
 Louisville Middle School,Public school,6-8,"1341 Main Street, Louisville",Boulder Valley Re 2,39.983711,-105.13224,08013013005
 New Vista High School,Public school,9-12,"700 20Th Street, Boulder",Boulder Valley Re 2,40.000149,-105.267693,08013012401
 Arvada High School,Public school,9-12,"7951 West 65Th Avenue, Arvada",Jefferson County R-1,39.814739,-105.085381,08059010211
-Bell Middle School,Public school,6-8,"1001 Ulysses Street, Golden",Jefferson County R-1,39.733341,-105.193924,
+Bell Middle School,Public school,6-8,"1001 Ulysses Street, Golden",Jefferson County R-1,39.733341,-105.193924,08059010001
 Jefferson Academy Coal Creek Canyon,Public school,PK-8,"11719 Ranch Elsie Road, Golden",Jefferson County R-1,39.902836,-105.356415,08059009858
 Devinny Elementary School,Public school,K-5,"1725 South Wright Street, Lakewood",Jefferson County R-1,39.684959,-105.137573,08059011712
 Marsh Elementary School,Public school,PK-1,"215 Lyell, Monte Vista",Monte Vista C-8,37.579525,-106.138374,08105976700
@@ -1986,7 +1986,7 @@ Monterey Elementary School,Public school,PK-5,"2311 Monterey Road, Colorado Spri
 Yampah Mountain School,Public school,9-12,"695 Red Mountain Drive, Glenwood Springs",Colorado River BOCES,39.547543,-107.333794,08045951701
 Namaqua Elementary School,Public school,K-5,"209 North County Road 19E, Loveland",Thompson R2-J,40.39484,-105.125175,08069001808
 Mountain View High School,Public school,9-12,"3500 Mountain Lion Drive, Loveland",Thompson R2-J,40.406189,-105.025642,08069001711
-Legacy High School,Public school,9-12,"2701 West 136Th Street, Broomfield",Adams 12 Five Star Schools,39.94323,-105.018143,
+Legacy High School,Public school,9-12,"2701 West 136Th Street, Broomfield",Adams 12 Five Star Schools,39.94323,-105.018143,08014031000
 Patriot Elementary School,Public school,K-5,"7010 Harr Avenue, Fort Carson",Fountain 8,38.732862,-104.804154,08041004405
 Olathe Elementary School,Public school,PK-5,"326 North 3Rd Street, Olathe",Montrose County RE-1J,38.611073,-107.983315,08085966202
 Paonia K-8,Public school,PK-8,"430 Box Elder, Paonia",Delta County 50(J),38.87056,-107.594276,08029964600
@@ -2085,7 +2085,7 @@ Wildflower Montessori Public School of Colorado Aurora North,Public school,PK-3,
 Bayfield High School,Public school,9-12,"800 Co Rd 501, Bayfield",Bayfield 10 Jt-R,37.242458,-107.601715,08067970602
 Cache La Poudre Middle School,Public school,6-8,"3515 W Cr 54G, Laporte",Poudre R-1,40.627754,-105.143585,08069001301
 Briggsdale Elementary School,Public school,PK-5,"515 Leslie Street, Briggsdale",Briggsdale RE-10,40.633492,-104.326012,08123002501
-Rocky Mountain School of Expeditionary Learning,Public school,K-12,"1700 South Holly Street, Denver",Expeditionary BOCES,39.685772,-104.922218,
+Rocky Mountain School of Expeditionary Learning,Public school,K-12,"1700 South Holly Street, Denver",Expeditionary BOCES,39.685772,-104.922218,08031005200
 Fremont Elementary School,Public school,K-5,"6420 Urban, Arvada",Jefferson County R-1,39.81377,-105.133896,08059009841
 Munroe Elementary School,Public school,PK-5,"3440 West Virginia Avenue, Denver",Denver County 1,39.707623,-105.032211,08031004505
 Steele Elementary School,Public school,K-5,"320 South Marion Parkway, Denver",Denver County 1,39.710712,-104.972137,08031003401
@@ -2145,7 +2145,7 @@ Delta Middle School,Public school,6-8,"910 Grand Avenue, Delta",Delta County 50(
 Dove Creek High School,Public school,6-12,"525 North Main Street, Dove Creek",Dolores County RE No.2,37.766647,-108.903938,08033000100
 Dos Rios Elementary School,Public school,K-5,"2201 34Th Street, Evans",Greeley 6,40.381218,-104.714241,08123001006
 Douglas County High School,Public school,9-12,"2842 Front Street, Castle Rock",Douglas County Re 1,39.386681,-104.858795,08035014503
-Cherokee Trail Elementary School,Public school,PK-6,"17302 Clarke Farms Drive, Parker",Douglas County Re 1,39.525917,-104.787758,08035014010
+Cherokee Trail Elementary School,Public school,PK-6,"17302 Clarke Farms Drive, Parker",Douglas County Re 1,39.525917,-104.787758,08035014009
 Kohl Elementary School,Public school,PK-5,"1000 West 10Th Avenue, Broomfield",Boulder Valley Re 2,39.928768,-105.081787,08014030100
 Ryan Elementary School,Public school,PK-5,"1405 Centaur Village Drive, Lafayette",Boulder Valley Re 2,39.980392,-105.109665,08013060900
 La Veta Elementary School,Public school,PK-5,"126 East Garland, La Veta",La Veta Re-2,37.504593,-105.008499,08055960902
@@ -2158,7 +2158,7 @@ East Middle School,Public school,6-8,"1275 Fraser St, Aurora",Adams-Arapahoe 28J
 Erie Middle School,Public school,6-8,"650 Main Street, Erie",St Vrain Valley RE1J,40.050892,-105.052826,08123002007
 Ken Caryl Middle School,Public school,6-8,"6509 West Ken Caryl Avenue, Littleton",Jefferson County R-1,39.580807,-105.069176,08059012051
 Eisenhower Elementary School,Public school,PK-5,"1220 Eisenhower Drive, Boulder",Boulder Valley Re 2,40.00769,-105.234711,08013012603
-Ellicott Senior High School,Public school,9-12,"375 South Ellicott Highway, Ellicott",Ellicott 22,38.826271,-104.386894,
+Ellicott Senior High School,Public school,9-12,"375 South Ellicott Highway, Ellicott",Ellicott 22,38.826271,-104.386894,08041004602
 Erie Elementary School,Public school,PK-5,"4137 E County Line Rd., Erie",St Vrain Valley RE1J,40.050503,-105.055557,08013012802
 Evergreen Middle School,Public school,6-8,"2059 Hiwan Drive, Evergreen",Jefferson County R-1,39.679115,-105.361755,08059009847
 Buena Vista High School,Public school,9-12,"559 Railroad, Buena Vista",Buena Vista R-31,38.837055,-106.128197,08015000402
@@ -2281,7 +2281,7 @@ Crested Butte Elementary School,Public school,K-5,"818 Red Lady Avenue, Crested 
 Preschool on Poze,Public school,PK-PK,"2410 Poze Blvd, Thornton",Mapleton 1,39.863064,-104.957893,08001009101
 Wm E Bishop Elementary School,Public school,K-6,"3100 S Elati St, Englewood",Englewood 1,39.660378,-104.993431,08005005702
 The Village ECE,Public school,PK-PK,"711 E Euclid Ave, Centennial",Littleton 6,39.597061,-104.979591,08005005611
-New Summit Charter Academy,Public school,K-8,"7899 Lexington Drive, Colorado Springs",Academy 20,38.946289,-104.767303,08041006802
+New Summit Charter Academy,Public school,K-8,"7899 Lexington Drive, Colorado Springs",Academy 20,38.946289,-104.767303,08041006801
 Performing Arts School on Broadway,Public school,7-12,"7350 North Broadway Suite 200, Denver",Mapleton 1,39.828884,-104.986969,08001009307
 Wilder Elementary School,Public school,K-5,"4300 West Ponds Circle, Littleton",Littleton 6,39.602596,-105.042946,08005005621
 Vail Ski and Snowboard Academy (VSSA),Public school,6-12,"1 Academy Loop, Minturn",Eagle County RE 50,39.564,-106.413337,08037000600
@@ -2395,7 +2395,7 @@ Dalton Elementary School,Public school,PK-5,"17401 East Dartmouth Ave, Aurora",A
 Crystal River Elementary School,Public school,PK-4,"160 Snowmass Drive, Carbondale",Roaring Fork RE-1,39.398914,-107.206604,08045951804
 Glenwood Springs High School,Public school,9-12,"1521 Grand Avenue, Glenwood Springs",Roaring Fork RE-1,39.537643,-107.325104,08045951702
 Gardner Valley School,Public school,PK-8,"25421 Highway 69, Gardner",Huerfano Re-1,37.7835240000001,-105.167474,08055960901
-Swallows Charter Academy,Public school,K-8,"278 South Mcculloch Boulevard, Pueblo West",Pueblo County 70,38.323582,-104.74453,
+Swallows Charter Academy,Public school,K-8,"278 South Mcculloch Boulevard, Pueblo West",Pueblo County 70,38.323582,-104.74453,08101002914
 Dolores Middle School,Public school,6-8,"1301 Central Avenue, Dolores",Dolores RE-4A,37.475605,-108.493263,08083969000
 High Peaks Elementary School,Public school,K-5,"3995 East Aurora Avenue, Boulder",Boulder Valley Re 2,40.003792,-105.243813,08013012608
 Columbine Hills Elementary School,Public school,PK-5,"6005 West Canyon Avenue, Littleton",Jefferson County R-1,39.575504,-105.061813,08059012053
@@ -2408,7 +2408,7 @@ Green Mountain High School,Public school,9-12,"13175 W Green Mountain Drive, Lak
 Lone Star Elementary School,Public school,K-6,"44940 County Road 54, Otis",Lone Star 101,40.351505,-102.8153,08121924100
 Hoff Elementary School,Public school,PK-5,"7558 Wcr 59, Keenesburg",Weld County School District RE-3J,40.109915,-104.508892,08123002502
 Nikola Tesla Education Opportunity Center,Public school,6-12,"3302 Alpine Place, Colorado Springs",Colorado Springs 11,38.864071,-104.765556,08041000102
-Elizabeth Middle School,Public school,6-8,"34427 County Road 13, Elizabeth",Elizabeth School District,39.368462,-104.606865,08039961207
+Elizabeth Middle School,Public school,6-8,"34427 County Road 13, Elizabeth",Elizabeth School District,39.368462,-104.606865,08039961206
 New Emerson School at Columbus,Public school,K-5,"2660 Unaweep Ave, Grand Junction",Mesa County Valley 51,39.048542,-108.557098,08077001304
 Windsor High School,Public school,9-12,"1100 West Main Street, Windsor",Weld RE-4,40.479774,-104.91703,08123002206
 Martinez Elementary School,Public school,PK-5,"341  14Th Avenue, Greeley",Greeley 6,40.429783,-104.701637,08123000501
@@ -2468,7 +2468,7 @@ Mount View Core Knowledge Charter School,Public school,PK-8,"809 Field Avenue, C
 Windsor Charter Academy Elementary School,Public school,K-5,"680 Academy Court, Windsor",Weld RE-4,40.471458,-104.881096,08123002203
 Sky View Middle School,Public school,6-8,"1047 Camino De Bravo, Pueblo West",Pueblo County 70,38.304783,-104.77919,08101002911
 Pioneer Elementary School,Public school,1-5,"415 South Spruce Street, Fort Morgan",Fort Morgan Re-3,40.243031,-103.797295,08087000600
-Pomona Junior/Senior High School,Public school,6-12,"8101 West Pomona Drive, Arvada",Jefferson County R-1,39.845428,-105.090393,
+Pomona Junior/Senior High School,Public school,6-12,"8101 West Pomona Drive, Arvada",Jefferson County R-1,39.845428,-105.090393,08059009834
 Rocky Ford Junior/Senior High School,Public school,7-12,"100 West Washington, Rocky Ford",Rocky Ford R-2,38.04414,-103.734909,08089968200
 Roosevelt High School,Public school,9-12,"3349 Roosevelt Parkway, Johnstown",Johnstown-Milliken RE-5J,40.324448,-104.946335,08123002107
 Running Creek Elementary School,Public school,K-5,"900 South Elbert Street, Elizabeth",Elizabeth School District,39.354965,-104.598907,08039961208
@@ -2498,7 +2498,7 @@ West Ridge Academy,Public school,K-8,"6905 8Th St, Greeley",Greeley 6,40.423641,
 Cloverleaf Home Education,Public school,K-12,"3737 New Hope Way, Castle Rock",Douglas County Re 1,39.400299,-104.884109,08035014410
 Rocky Mountain Prep Sunnyside,Public school,6-8,"4735 Pecos St, Denver",Denver County 1,39.781754,-105.006592,08031000202
 Mountain Vista Elementary School,Public school,PK-5,"22200 East Radcliff Parkway, Centennial",Cherry Creek 5,39.633808,-104.728149,08005085900
-Union Colony Elementary School,Public school,K-5,"1051 29Th Street Rd, Evans",Greeley 6,40.389416,-104.696899,
+Union Colony Elementary School,Public school,K-5,"1051 29Th Street Rd, Evans",Greeley 6,40.389416,-104.696899,08123001004
 Swigert International School,Public school,PK-5,"3480 Syracuse Street, Denver",Denver County 1,39.764973,-104.898811,08031004113
 Rocky Mountain Prep Creekside,Public school,PK-5,"7808 Cherry Creek South Dr #3-300, Denver",Denver County 1,39.679035,-104.896782,08031007013
 Addenbrooke Classical Academy,Public school,9-12,"3605 S Teller Street, Lakewood",Jefferson County R-1,39.649704,-105.076645,08059011904
@@ -2509,7 +2509,7 @@ Excel Academy,Public school,9-12,"1825 S. Federal Blvd., Denver",Denver County 1
 Montbello Career and Technical High School,Public school,9-12,"4501 Airport Way, Denver",Denver County 1,39.775177,-104.795509,08031008388
 Kenneth Homyak PK-8,Public school,PK-8,"3927 York Street, Dacono",Weld Re-8 Schools,40.098827,-104.961006,08123002013
 Brantner Elementary School,Public school,PK-5,"7800 E. 133Rd Avenue, Thornton",School District 27J,39.938686,-104.897224,08001008540
-Colorado International Language Academy,Public school,K-5,"303 Austin Bluffs Parkway, Colorado Springs",Charter School Institute,38.897709,-104.814293,08041007802
+Colorado International Language Academy,Public school,K-5,"303 Austin Bluffs Parkway, Colorado Springs",Charter School Institute,38.897709,-104.814293,08041000203
 Leman Classical Academy,Public school,PK-8,"19560 Stroh Road, Parker",Douglas County Re 1,39.478603,-104.76149,08035013907
 Compass Academy,Public school,6-8,"2285 S Federal Blvd, Denver",Denver County 1,39.67522,-105.025208,08031004603
 Venetucci Elementary School,Public school,K-5,"405 Willis Drive, Colorado Springs",Widefield 3,38.741707,-104.728447,08041004300

@@ -8,3 +8,5 @@ pytest
 pyyaml
 openpyxl
 # tests/outputs/test_app_smoke.py (marked slow) also needs: playwright  (then: playwright install chromium)
+scikit-learn
+tabulate

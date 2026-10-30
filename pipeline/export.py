@@ -5,6 +5,25 @@ from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
 O='data/results/'
 import re
+def county_from_tracts(s, tracts):
+    """County of the 2020 tract each site point lies in ('Denver County' -> 'Denver'); a point in no tract keeps s.county.
+    ZIP-based counties are wrong for about 7% of Front Range sites (ZIPs cross county lines), and the ZIP table built from FRS
+    facilities carries a 'PORTABLE SOURCE' county."""
+    import geopandas as gpd
+    g = gpd.GeoDataFrame(s[['lat', 'lon']].copy(), geometry=gpd.points_from_xy(s.lon, s.lat), crs=4326)
+    j = gpd.sjoin(g, tracts[['County', 'geometry']], how='left', predicate='within')
+    j = j[~j.index.duplicated()]
+    c = j['County'].str.replace(' County', '', regex=False).str.strip()
+    return c.where(c.notna() & (c != ''), s.county).reindex(s.index)
+
+def load_tracts(path='work/reg/context_layers.json'):
+    """2020 tracts (EnviroScreen 2.0 layer, full geometry) with their County names, or None when the layer is absent."""
+    import os, geopandas as gpd
+    from shapely.geometry import shape
+    if not os.path.exists(path): return None
+    F = json.load(open(path))['enviroscreen_tract']
+    return gpd.GeoDataFrame({'County': [f['properties'].get('County') for f in F]}, geometry=[shape(f['geometry']) for f in F], crs=4326)
+
 status_label={'1 Cleanup / contamination list':'Cleanup / contamination list','2 TRI reporter':'TRI reporter','3 RCRA hazardous-waste handler':'RCRA hazardous-waste handler','4 Solid waste facility':'Solid waste facility','5 Other EPA permit only':'Other EPA permit only','6 Not on any list':'Not on any list'}
 def main():
     s=pd.read_pickle('work/inv/sites_final.pkl'); df=pd.read_pickle('work/inv/records_final.pkl')
@@ -16,6 +35,8 @@ def main():
     if m.any():
         _,ix=t.query(np.radians(s.loc[m,['lat','lon']].values),k=1); s.loc[m,'county']=[zmap.get(zc.zip5.iloc[i[0]],'') for i in ix]
     s['county']=s.county.str.replace(' COUNTY','',regex=False).str.title()
+    T=load_tracts()
+    if T is not None: s['county']=county_from_tracts(s,T)
     s['radar']=s.radar_status.map(status_label)
     cols=['site_id','radar','match_basis','confidence','address','city','county','zip','lat','lon','geo_level','fe_sectors','ext_sectors','first_year','last_year','hazard_years','n_editions','n_establishments','n_hazard_establishments','earliest_est','hazard_firms','all_firms','industry_evidence',
           'cleanup_match','tri_match','rcra_handler_match','solid_waste_match','other_epa_match','cleanup_nearest','cleanup_nearest_m','tri_nearest','tri_nearest_m','rcra_handler_nearest','rcra_handler_nearest_m']

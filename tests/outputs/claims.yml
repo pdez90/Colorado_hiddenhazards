@@ -10,69 +10,69 @@
 # ------------------------------------------------------------------ README: key results
 - id: readme_listings_complete_editions
   file: README.md
-  text: "41,987 listings in the 13 complete editions (1965–1992)"
+  text: "44,808 listings in the 13 complete editions (1965–1992)"
   check: "[len(listings()), listings().year.nunique()]"
-  expect: [41987, 13]
+  expect: [44808, 13]
 
 - id: readme_establishments
   file: README.md
-  text: "→ 27,491 establishments"
+  text: "→ 24,079 establishments"
   check: "listings().estab_id.nunique()"
-  expect: 27491
+  expect: 24079
 
 - id: readme_sites_total
   file: README.md
-  text: "**3,169 hazardous-sector sites** located at street level"
+  text: "**3,482 hazardous-sector sites** located at street level"
   check: "len(fe_sites())"
-  expect: 3169
+  expect: 3482
 
 - id: readme_hidden_sites
   file: README.md
-  text: "**908 (29%) are on no current federal or state inventory**"
+  text: "**1,285 (37%) are on no current federal or state inventory**"
   check: "[len(hidden_sites()), 100 * len(hidden_sites()) / len(fe_sites())]"
-  expect: [908, 29]
+  expect: [1285, 37]
 
 - id: readme_hidden_high_confidence
   file: README.md
-  text: "(707 of them high confidence)"
+  text: "(920 of them high confidence)"
   check: "(hidden_sites().confidence == 'high').sum()"
-  expect: 707
+  expect: 920
 
 - id: readme_cleanup_sites
   file: README.md
-  text: "693 (22%) are on a cleanup or contamination"
+  text: "645 (19%) are on a cleanup or contamination"
   check: "[(fe_sites().radar == 'Cleanup / contamination list').sum(), 100 * (fe_sites().radar == 'Cleanup / contamination list').mean()]"
-  expect: [693, 22]
+  expect: [645, 19]
 
 - id: readme_tri_sites
   file: README.md
-  text: "310 report to TRI"
+  text: "286 report to TRI"
   check: "(fe_sites().radar == 'TRI reporter').sum()"
-  expect: 310
+  expect: 286
 
 - id: readme_rcra_sites
   file: README.md
-  text: "921 are known only as RCRA hazardous-waste handlers"
+  text: "886 are known only as RCRA hazardous-waste handlers"
   check: "(fe_sites().radar == 'RCRA hazardous-waste handler').sum()"
-  expect: 921
+  expect: 886
 
 - id: readme_other_permit_sites
   file: README.md
-  text: "337 have only other EPA permits or solid-waste records"
+  text: "380 have only other EPA permits or solid-waste records"
   check: "fe_sites().radar.isin(['Other EPA permit only', 'Solid waste facility']).sum()"
-  expect: 337
+  expect: 380
 
 - id: readme_multi_firm_sites
   file: README.md
-  text: "1,156 sites hosted two or more hazardous-sector firms over time"
+  text: "1,287 sites hosted two or more hazardous-sector firms over time"
   check: "(fe_sites().n_hazard_establishments.astype(int) >= 2).sum()"
-  expect: 1156
+  expect: 1287
 
 - id: readme_workbook_hidden_sheet
   file: README.md
   text: "Site workbook (`CO_hazardous_sites_1961-2002.xlsx`)"
   check: "[len(load('data/results/CO_hazardous_sites_1961-2002.xlsx', sheet='Hidden sites')), len(load('data/results/CO_hazardous_sites_1961-2002.xlsx', sheet='All F&E hazardous sites'))]"
-  expect: [908, 3169]
+  expect: [1285, 3482]
 
 # ------------------------------------------------------------------ README: all-25-edition run (data/full_inventory)
 - id: readme_full_inventory_listings
@@ -245,6 +245,7 @@
   text: "**−1.6 (0.77, p = 0.04)**"
   check: "(lambda r: [r.b, r.se, r.p])((lambda d: d[d.predictor == 'lmval'].iloc[0])(load('app/data/ej_panel_reverse.csv')))"
   expect: [-1.6, 0.77, 0.04]
+  stale: "uses the site inventory; the README value predates the 28 October R rerun, and the 29 October inventory rebuild moves it again: update after the R chain reruns"
 
 - id: readme_study_tracts_147
   file: README.md
@@ -329,9 +330,9 @@
 
 - id: readme_ed_movers_1940
   file: README.md
-  text: "(−7.6 points per log-metre, p < 1e-14)"
+  text: "(−7.5 points per log-metre, p < 1e-14)"
   check: "(lambda d: [d[(d.census == 1940) & (d.outcome == 'pct_movers')].b_per_log_m.iloc[0], d[(d.census == 1940) & (d.outcome == 'pct_movers')].p.iloc[0] < 1e-14])(load('app/data/ed_distance_models.csv'))"
-  expect: [-7.6, 1]
+  expect: [-7.5, 1]
 
 # ------------------------------------------------------------------ README: HOLC and covenants
 - id: readme_holc_d_1930_composition
@@ -348,36 +349,35 @@
   check: "(lambda t: [t[(t.grade == 'D') & (t.census == 1970)].p_hisp.iloc[0], t[(t.grade == 'D') & (t.census == 2000)].p_hisp.iloc[0]])(load('app/data/trajectories_by_grade.csv'))"
   expect: [37, 57]
 
-- id: readme_holc_change_model_hispanic_1940_1980
+- id: readme_holc_change_model_hispanic_1970_1980
   file: README.md
-  text: "D tracts gained 38 points Hispanic 1940–80 (SE 5.7, HC1 p < 1e-8"
-  # the HC1 p in holc_tract_models.csv is 1.05e-8, i.e. "< 1e-8" only after rounding; only b and SE are checked
-  check: "(lambda r: [r.b, r.se])((lambda m: m[(m.outcome == 'p_hisp') & (m.period == '1940-1980') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [38, 5.7]
+  text: "Hispanic share rose 3.6 points more than the A tracts' 1970–80 (SE 3.1, HC1 p = 0.25)"
+  check: "(lambda r: [r.b, r.se, r.p])((lambda m: m[(m.outcome == 'p_hisp') & (m.period == '1970-1980') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
+  expect: [3.6, 3.1, 0.25]
 
 - id: readme_holc_change_model_hispanic_1980_2010
   file: README.md
-  text: "+14.0 points 1980–2010 (7.8, p = 0.079"
+  text: "14.0 points more 1980–2010\n(7.7, p = 0.075; Conley 2 km p = 0.18)"
   check: "(lambda r: [r.b, r.se, r.p])((lambda m: m[(m.outcome == 'p_hisp') & (m.period == '1980-2010') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [14.0, 7.8, 0.079]
+  expect: [14.0, 7.7, 0.075]
 
 - id: readme_holc_change_model_poverty
   file: README.md
-  text: "poverty rose 4.4 points more in D than in A tracts 1970–80 (2.1, p = 0.038"
+  text: "poverty rose 4.4 points more in D than in A tracts 1970–80 (2.1, p = 0.037"
   check: "(lambda r: [r.b, r.se, r.p])((lambda m: m[(m.outcome == 'p_pov') & (m.period == '1970-1980') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [4.4, 2.1, 0.038]
+  expect: [4.4, 2.1, 0.037]
 
 - id: readme_holc_change_model_poverty_1980_2010
   file: README.md
-  text: "9.6 points 1980–2010 (3.8, p = 0.013"
+  text: "11.0 points 1980–2010 (3.8, p = 0.005"
   check: "(lambda r: [r.b, r.se, r.p])((lambda m: m[(m.outcome == 'p_pov') & (m.period == '1980-2010') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [9.6, 3.8, 0.013]
+  expect: [11.0, 3.8, 0.005]
 
 - id: readme_holc_change_model_home_value
   file: README.md
-  text: "log home value fell 0.58 more 1940–80 (0.17, p = 0.001"
+  text: "log home value fell 0.54 more 1940–80 (0.17, p = 0.003"
   check: "(lambda r: [-r.b, r.se, r.p])((lambda m: m[(m.outcome == 'lmval') & (m.period == '1940-1980') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [0.58, 0.17, 0.001]
+  expect: [0.54, 0.17, 0.003]
 
 - id: readme_covenants_located_and_industry
   file: README.md
@@ -408,6 +408,7 @@
     for v in (d[(d.period == per) & (d.grade == 'D')].dc_ratio_within_period.iloc[0],
     d[(d.period == per) & (d.grade == 'D')].firms.iloc[0], d[(d.period == per) & (d.grade == 'C')].firms.iloc[0])])(load('app/data/holc_industry_periods.csv'))
   expect: [6.4, 13, 3, 1.7, 8, 9, 2.1, 37, 27, 13.6, 286, 49, 16.8, 228, 28]
+  stale: "uses the site inventory; the README value predates the 28 October R rerun, and the 29 October inventory rebuild moves it again: update after the R chain reruns"
 
 - id: readme_holc_industry_ratio_recomputed
   file: README.md
@@ -643,9 +644,9 @@
 
 - id: sanborn_persistence_blocks
   file: data/results/sanborn_1903/summary.md
-  text: "| Blocks with a hazardous trade | 177 | 88.1 | 49.2 | 83.1 |"
+  text: "| Blocks with a hazardous trade | 177 | 87.6 | 48.6 | 83.1 |"
   check: "(lambda p: (lambda r: [r.n, r.pct_with_1965_92_site_150m, r.pct_with_hidden_site_150m, r.pct_with_known_site_150m])(p[p.what == 'Blocks with a hazardous trade'].iloc[0]))(load('app/data/sanborn1903_persist.csv'))"
-  expect: [177, 88.1, 49.2, 83.1]
+  expect: [177, 87.6, 48.6, 83.1]
 
 - id: sanborn_hazardous_blocks_count
   file: data/results/sanborn_1903/summary.md
@@ -738,7 +739,7 @@
 
 - id: evictions_model_large_owner_share
   file: data/results/housing_conditions/summary.md
-  text: "| pct_rental_owner_100plus | 0.079 | 0.011 | 1.27e-10 | 142 |"
+  text: "| pct_rental_owner_100plus | 0.079 | 0.011 | 1.35e-10 | 142 |"
   check: "(lambda r: [r.estimate, r.se, r.tracts])((lambda m: m[m.term == 'pct_rental_owner_100plus'].iloc[0])(load('app/data/conditions_evictions_models.csv')))"
   expect: [0.079, 0.011, 142]
 
@@ -1043,11 +1044,11 @@
 
 - id: app_dissimilarity_unit_counts
   file: app/app.R
-  text: "(17 districts in 1880, 325 in 1940, 97 tracts in 1950 and 144\u2013147 from 1960)"
+  text: "(17 districts in 1880, 330 in 1940, 97 tracts in 1950 and 144\u2013147 from 1960)"
   check: >-
     (lambda e, t: [e[e.census == 1880].EDs.iloc[0], e[e.census == 1940].EDs.iloc[0], t[t.census == 1950].EDs.iloc[0], t[t.census >= 1960].EDs.min(), t[t.census >= 1960].EDs.max()])(
     (lambda d: d[d.group.str.startswith('dissim')])(load('app/data/ed_year_groups.csv')), (lambda d: d[d.group.str.startswith('dissim')])(load('app/data/denver_tracts_groups.csv')))
-  expect: [17, 325, 97, 144, 147]
+  expect: [17, 330, 97, 144, 147]
 
 - id: app_ed_geocoding_1900
   file: app/app.R
@@ -1175,3 +1176,36 @@
   # the four map rasters are 20 m (checked by name here; terra reads the resolution in the R suite)
   check: "len([f for f in ('landuse_1937_20m.tif', 'landuse_1957_20m.tif', 'landuse_1977_20m.tif', 'landuse_1997_20m.tif') if (REPO / 'app' / 'data' / f).is_file()])"
   expect: 4
+
+# ------------------------------------------------------------------ README: known vs hidden sensitivity (R/known_hidden_sensitivity.R)
+- id: readme_sensitivity_proximity_only
+  file: README.md
+  text: "1,168 of the 2,197 known sites (53%) are known only because a differently named record lies within the tier's radius"
+  check: "(lambda s: [(s.match_basis == 'nearby record only').sum(), (s.radar != 'Not on any list').sum(), 100 * (s.match_basis == 'nearby record only').sum() / (s.radar != 'Not on any list').sum()])((lambda s: s[s.fe_hazard.astype(str).str.upper() == 'TRUE'])(load('app/data/sites.csv')))"
+  expect: [1168, 2197, 53]
+
+- id: readme_sensitivity_proximity_tiers_distance
+  file: README.md
+  text: "for 48% of\n  them the nearest such record is an RCRA hazardous-waste handler and for 36% another EPA permit, and 82% lie 10–40 m away"
+  check: "(lambda p: [p[p.tier == 'rcra_handler'].pct_of_proximity_only.sum(), p[p.tier == 'other_epa'].pct_of_proximity_only.sum(), p[p.band.isin(['10-25 m', '25-40 m'])].pct_of_proximity_only.sum()])(load('data/results/known_hidden/proximity_only_by_tier_distance.csv'))"
+  expect: [48, 36, 82]
+
+- id: readme_sensitivity_counts
+  file: README.md
+  text: "2,453 sites (70%) are on no inventory; counting proximity\n  only within 25 m, 1,793 (51%); counting proximity only to cleanup and TRI records, 2,110 (61%); with every radius doubled,\n  738 (21%)"
+  check: "(lambda c: sum([[r.n_hidden, r.pct_hidden] for r in [c[(c.rule == k) & (c.sites.str.startswith('F&E hazardous'))].iloc[0] for k in ['strict', 'prox25', 'cleanup_tri_prox', 'wider']]], []))(load('data/results/known_hidden/sensitivity_counts.csv'))"
+  expect: [2453, 70, 1793, 51, 2110, 61, 738, 21]
+
+- id: readme_sensitivity_tracts
+  file: README.md
+  text: "(medians 61–63 vs 42 in tracts with no\n  hazardous-sector site), more low-income residents (24.5–25.0% vs 18.2%) and more adults without a high-school diploma (5.7–5.9% vs\n  4.4%), all p < 1e-5"
+  check: "(lambda t: [t[t.measure == m].median_hidden.min() for m in ['EnviroScreen percentile', 'Low income (%)', 'Less than high school (%)']] + [t[t.measure == m].median_hidden.max() for m in ['EnviroScreen percentile', 'Low income (%)', 'Less than high school (%)']] + [t[t.measure == m].median_no_site.iloc[0] for m in ['EnviroScreen percentile', 'Low income (%)', 'Less than high school (%)']] + [int(t[t.measure != 'People of color (%)'].p_hidden_vs_no_site.max() < 1e-5)])(load('data/results/known_hidden/tract_comparison_enviroscreen.csv'))"
+  expect: [61, 24.5, 5.7, 63, 25.0, 5.9, 42, 18.2, 4.4, 1]
+  tol: [1, 0.05, 0.05, 1, 0.05, 0.05, 0.5, 0.05, 0.05, 0]
+
+- id: readme_sensitivity_tracts_poc_and_known_only
+  file: README.md
+  text: "similar shares of people of color (27–28% vs 26%, p = 0.03–0.08); and they do not differ from tracts\n  with only known sites on any of the four measures (all p ≥ 0.37)"
+  check: "(lambda t: [t[t.measure == 'People of color (%)'].median_hidden.min(), t[t.measure == 'People of color (%)'].median_hidden.max(), t[t.measure == 'People of color (%)'].median_no_site.iloc[0], t[t.measure == 'People of color (%)'].p_hidden_vs_no_site.min(), t[t.measure == 'People of color (%)'].p_hidden_vs_no_site.max(), t.p_hidden_vs_known_only.min()])(load('data/results/known_hidden/tract_comparison_enviroscreen.csv'))"
+  expect: [27, 28, 26, 0.03, 0.08, 0.37]
+  tol: [0.9, 0.5, 0.5, 0.005, 0.005, 0.005]

@@ -160,6 +160,11 @@ def match_inventory(sites,reg):
             if nm or am_t.get(tier): basis.add('entity')
             if tier=='cleanup' and inpoly: basis.add('boundary')
             if prox: basis.add('prox')
+            # per-tier evidence for the sensitivity analysis (R/known_hidden_sensitivity.R): strongest basis in this tier and the
+            # distance to the nearest differently named record inside the tier's radius
+            nm_ids={x for x,_ in nm}; pd_other=[d for j,d in prox if j not in nm_ids]
+            rec[f'{tier}_basis']=('entity' if (nm or am_t.get(tier)) else 'boundary' if (tier=='cleanup' and inpoly) else 'prox' if pd_other else '')
+            rec[f'{tier}_prox_m']=round(min(pd_other)) if pd_other else np.nan
             rec[f'{tier}_match']=' | '.join(dict.fromkeys(hits))[:400]
             rec[f'{tier}_nearest_m']=round(cand[0][1]) if cand else np.nan
             rec[f'{tier}_nearest']=R.at[cand[0][0],'name'] if cand else ''

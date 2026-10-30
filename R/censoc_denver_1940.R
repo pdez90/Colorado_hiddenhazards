@@ -153,3 +153,5 @@ kab <- function(x) { x <- as.data.frame(x); c(paste("|", paste(names(x), collaps
 md <- c("# Denver residents of 1940 and their age at death (CenSoc)", "", "## Linkage", "", kab(LK), "", "## Age at death (years) per unit of exposure at the 1940 address", "",
         kab(R[, .(file, model, exposure, years, ci = sprintf("%.2f to %.2f", lo, hi), p, n)]), "", "## Mean age at death, net of birth year and sex (groups of 20+)", "", kab(GR))
 writeLines(md, file.path(O, "censoc_summary.md")); message("wrote ", O)
+# the app reads copies of the aggregate tables (aggregates only; no person-level rows)
+file.copy(file.path(O, c("censoc_linkage.csv", "censoc_models.csv", "censoc_groups.csv")), A, overwrite = TRUE)

@@ -46,7 +46,7 @@ if [ $RUN_PY -eq 1 ]; then
     # one pytest process per suite: each has its own conftest.py (same module name) and the
     # digitization suite chdirs into a scratch workspace, so they must not share a process
     for d in "${PY_DIRS[@]}"; do
-      run_suite "python ($d)" python3 -m pytest "$d" "${MARK[@]}" -p no:cacheprovider "${PYTEST_EXTRA[@]}" || overall=1
+      run_suite "python ($d)" python3 -m pytest "$d" ${MARK[@]+"${MARK[@]}"} -p no:cacheprovider ${PYTEST_EXTRA[@]+"${PYTEST_EXTRA[@]}"} || overall=1
     done
   fi
 fi

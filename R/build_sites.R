@@ -126,6 +126,11 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
       if (any(nmok) || length(a)) basis <- c(basis, "entity")
       if (tier == "cleanup" && length(inside[[k]])) basis <- c(basis, "boundary")
       if (any(!nmok & cd <= r_eff)) basis <- c(basis, "prox")
+      # per-tier evidence for R/known_hidden_sensitivity.R (same as pipeline/build_sites.py): strongest basis in this tier and the
+      # distance to the nearest differently named record inside the tier's radius
+      po <- cd[!nmok & cd <= r_eff]
+      rec[[paste0(tier, "_basis")]] <- if (any(nmok) || length(a)) "entity" else if (tier == "cleanup" && length(inside[[k]])) "boundary" else if (length(po)) "prox" else ""
+      rec[[paste0(tier, "_prox_m")]] <- if (length(po)) round(min(po)) else NA_real_
       rec[[paste0(tier, "_match")]] <- substr(paste(unique(hits), collapse = " | "), 1, 400)
       rec[[paste0(tier, "_nearest_m")]] <- if (length(cj)) round(cd[1]) else NA_real_
     }

@@ -76,16 +76,27 @@ from `build_sites`.
    not on the searched EPA and CDPHE HMWMD lists (state petroleum-tank and release registers are reported separately). Each site also
    records its `match_basis`: same entity (name or address), inside a cleanup boundary, or a nearby record only. The October 2026 review
    found that most "known" sites rest on a nearby record only (often an unrelated small-quantity waste notifier within 40 m), so the
-   "on no inventory" share is a lower bound; the two definitions are reported side by side.
+   "on no inventory" share is near the low end of what reasonable rules give; `R/known_hidden_sensitivity.R` reports the counts and
+   the tract comparison under six rules, from radii doubled to strict (same firm or cleanup boundary only).
 
 ## Key results (the 13 complete editions, as published in `data/` and the app)
 
-*Note (26 October 2026): the parsing, geocoding and inventory-matching rules were revised after a methodological review (see the method notes above). The counts below and every downstream table are from the run before that revision and will be refreshed by the next full run (`./run_all.sh parse` and the R chain); the revised parser recovers roughly 15–35% more hazardous listings in the 1966–1977 editions and 1992.*
+*Note (29 October 2026): the inventory below (listings, establishments, sites and their inventory matches) is from the run of 29 October with the revised parsing, geocoding and matching rules (see the method notes above). Results further down that use the sites (EJ panel, HOLC industry ratios, Sanborn persistence, health and mortality models, corridors, site fate) are from the R chain of 28 October, which ran on the earlier inventory, and are refreshed by the next run of the R chain.*
 
-* 41,987 listings in the 13 complete editions (1965–1992) → 27,491 establishments; **3,169 hazardous-sector sites** located at street level.
-* **908 (29%) are on no current federal or state inventory** (707 of them high confidence); 693 (22%) are on a cleanup or contamination
-  list; 310 report to TRI; 921 are known only as RCRA hazardous-waste handlers; 337 have only other EPA permits or solid-waste records.
-* 1,156 sites hosted two or more hazardous-sector firms over time.
+* 44,808 listings in the 13 complete editions (1965–1992) → 24,079 establishments; **3,482 hazardous-sector sites** located at street level.
+* **1,285 (37%) are on no current federal or state inventory** (920 of them high confidence); 645 (19%) are on a cleanup or contamination
+  list; 286 report to TRI; 886 are known only as RCRA hazardous-waste handlers; 380 have only other EPA permits or solid-waste records.
+* 1,287 sites hosted two or more hazardous-sector firms over time.
+* **How much "hidden" depends on the matching rule** (`R/known_hidden_sensitivity.R`; `data/results/known_hidden/summary.md`).
+  1,168 of the 2,197 known sites (53%) are known only because a differently named record lies within the tier's radius: for 48% of
+  them the nearest such record is an RCRA hazardous-waste handler and for 36% another EPA permit, and 82% lie 10–40 m away.
+  Counting only the same firm (by name or address) or a cleanup boundary, 2,453 sites (70%) are on no inventory; counting proximity
+  only within 25 m, 1,793 (51%); counting proximity only to cleanup and TRI records, 2,110 (61%); with every radius doubled,
+  738 (21%). The published 37% sits toward the low end of that range. The tract comparison does not depend on the rule: under each of the six
+  rules, 2020 tracts that hold a hidden site have higher EnviroScreen 2.0 percentiles (medians 61–63 vs 42 in tracts with no
+  hazardous-sector site), more low-income residents (24.5–25.0% vs 18.2%) and more adults without a high-school diploma (5.7–5.9% vs
+  4.4%), all p < 1e-5, but similar shares of people of color (27–28% vs 26%, p = 0.03–0.08); and they do not differ from tracts
+  with only known sites on any of the four measures (all p ≥ 0.37).
 
 ## Earlier results: all 25 editions (run of 17 October 2026, before partial editions were set aside; kept for reference)
 
@@ -378,7 +389,7 @@ nearest firm in every census 1900–1940 (pooled +18.9, p < 1e-100), mean SEI of
 non-relatives in the household (boarders, lodgers, servants) fall by 3.8–16.1 points; districts with a firm had 13–28% owner households
 against 30–47% elsewhere, and in 1940 a median rent of $17 against $52. Recent immigrants (arrived within ten years) concentrate near
 industry 1900–1930; illiteracy is higher there; and in 1940, 80% of residents of the firm districts had moved house since 1935 against
-72% elsewhere (−7.6 points per log-metre, p < 1e-14) — the industrial districts were the city's high-turnover rental belt. Employment
+72% elsewhere (−7.5 points per log-metre, p < 1e-14) — the industrial districts were the city's high-turnover rental belt. Employment
 in the hazardous industries themselves shows no gradient (7–11% of workers everywhere), so the people living next to the plants were not, for the most part,
 their workforce.
 
@@ -396,12 +407,14 @@ covenants of 1931–35 from Denver Public Library's Mapping Prejudice pilot (pub
 descriptions cite industry, railroads, smoke or odours. In 1930 the future D areas were already 8.3% Black (vs 0.5–1.1% elsewhere),
 1.6% Hispanic and 7.2% laborers; by 1940 their Hispanic share was 9.9% (0.5–0.7% elsewhere). Afterwards the D tracts went to 37%
 Hispanic in 1970 and 57% in 2000. In the change models (`holc_tract_models.csv`; A = reference, 1940 baseline, 1940 % Black and
-1931–40 firms controlled), D tracts gained 38 points Hispanic 1940–80 (SE 5.7, HC1 p < 1e-8; Conley 2 km p < 1e-7) and a further
-+14.0 points 1980–2010 (7.8, p = 0.079; Conley p = 0.19); poverty rose 4.4 points more in D than in A tracts 1970–80 (2.1, p = 0.038;
-Conley p = 0.013) and 9.6 points 1980–2010 (3.8, p = 0.013; Conley p = 0.045); log home value fell 0.58 more 1940–80 (0.17, p = 0.001;
+1931–40 firms controlled; the Hispanic-share models start in 1970, the first census that identifies Hispanic residents comparably),
+the D tracts' Hispanic share rose 3.6 points more than the A tracts' 1970–80 (SE 3.1, HC1 p = 0.25) and 14.0 points more 1980–2010
+(7.7, p = 0.075; Conley 2 km p = 0.18); poverty rose 4.4 points more in D than in A tracts 1970–80 (2.1, p = 0.037; Conley p = 0.007)
+and 11.0 points 1980–2010 (3.8, p = 0.005; Conley p = 0.024); log home value fell 0.54 more 1940–80 (0.17, p = 0.003;
 Conley p = 0.001). Black share did not differ by grade once the 1940 baseline is controlled. Classes with fewer than five tracts are
-dropped from these models and the A reference class has four tracts, so the estimates are fragile; only the D estimates for the
-Hispanic share and home value hold under classical, HC1 and Conley errors.
+dropped from these models (the A reference class, four tracts, is kept), so the estimates are fragile; the D estimates for poverty
+1980–2010 and 1970–2010 and for home value 1940–80 and 1940–2010 hold under classical, HC1 and Conley errors, the Hispanic-share
+estimates do not reach p < 0.05 under HC1 or Conley errors.
 27 of the covenant deeds also bar business or manufacturing use. HOLC also outlined ungraded "Industrial" and "Commercial"
 zones, and that is where the pre-1938 industry sat: 64% of the street-level hazardous trades listed before the map were in
 Commercial zones and 14% in Industrial ones, 15% in D areas and none in A or B (`holc_facility_shares.csv`). Classing the 1930
@@ -581,7 +594,7 @@ to 0.0 m on all 36,615 address keys, model coefficients equal to 1e-6; that comp
 The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because each step reads the previous one's output:
 `Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`
 (Denver districts) → `Rscript R/denver_eds_analysis.R` → `Rscript R/county_panel_1880_1940.R` → `Rscript R/ej_panel.R` → `Rscript R/fetch_hmda.R` →
-`Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
+`Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/known_hidden_sensitivity.R` (known vs hidden under six matching rules) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
 `Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` → `Rscript R/landuse_1937_1997.R` → `Rscript R/fetch_highways.R` → `Rscript R/highways_denver.R` → `Rscript R/mortality_block.R` (restricted data; analyst's machine) → `Rscript R/mortality_redevelopment.R` (same) → `Rscript R/censoc_denver_1940.R` (after downloading CenSoc) → `Rscript R/censoc_extensions.R` → `Rscript R/censoc_enlistment.R` → `Rscript R/fetch_ipums_mlp.R` → `Rscript R/mlp_residential_history.R` → `Rscript R/fetch_context_layers.R` → `Rscript R/context_layers.R` →
 `Rscript R/benchmarks.R` (CBP, NHGIS county manufacturing and the Atack samples; needs network and the NHGIS key) →
 `Rscript R/edition_coverage.R` (per-edition pages, listings, hazardous firms and completeness for both directory series → app/data/edition_coverage.csv;

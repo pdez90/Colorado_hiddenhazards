@@ -166,3 +166,5 @@ writeLines(c("# CenSoc: further analyses of Denver's 1940 residents", "", "Years
              "## 6. Gompertz hazard ratios (and change in life expectancy at 65, years)", "", kab(R6), "",
              "## 7. Highways and displacement", "", kab(R7s), "", kab(R7)), file.path(O, "censoc_extensions_summary.md"))
 message("wrote ", O)
+# the app reads copies of the aggregate tables (aggregates only; no person-level rows)
+file.copy(list.files(O, "^censoc_ext_.*\\.csv$", full.names = TRUE), "app/data", overwrite = TRUE)

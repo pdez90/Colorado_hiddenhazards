@@ -36,14 +36,14 @@ Intermountain Health Lutheran Hospital,Hospital,Short Term,"12911 W 40TH AVE, WH
 Hca Healthone Mountain Ridge,Hospital,Short Term,"9191 GRANT ST, THORNTON, CO 80229",39.8642984365214,-104.984782121933,08001009203
 Denver Health Medical Center,Hospital,Short Term,"777 BANNOCK ST, DENVER, CO 80204",39.7281404174186,-104.990267107296,08031001800
 Adventhealth Littleton,Hospital,Short Term,"7700 S BROADWAY, LITTLETON, CO 80122",39.5764913966092,-104.988429089344,08005005632
-University Of Colorado Health Memorial Hospital Central,Hospital,Short Term,"1400 E BOULDER ST, COLORADO SPRINGS, CO 80909",38.838873306018,-104.800012963461,
+University Of Colorado Health Memorial Hospital Central,Hospital,Short Term,"1400 E BOULDER ST, COLORADO SPRINGS, CO 80909",38.838873306018,-104.800012963461,08041001800
 Penrose Hospital,Hospital,Short Term,"2222 N NEVADA AVE, COLORADO SPRINGS, CO 80907",38.8656453084709,-104.820199971025,08041001000
 St. Thomas More Hospital,Hospital,Critical Access Hospitals,"1338 PHAY AVE, CANON CITY, CO 81212",38.4556982232712,-105.230067021036,08043978500
 "Parkview Medical Center, Inc.",Hospital,Short Term,"400 W 16TH ST, PUEBLO, CO 81003",38.2816302385196,-104.612230860977,08101000500
 Heart Of The Rockies Regional Medical Center,Hospital,Critical Access Hospitals,"1000 RUSH DR, SALIDA, CO 81201",38.5429141842191,-106.007617206738,08015000200
 St. Mary-Corwin Hospital,Hospital,Short Term,"1008 MINNEQUA AVE, PUEBLO, CO 81004",38.2332712308384,-104.622880858418,08101002300
 Mt San Rafael Hospital,Hospital,Critical Access Hospitals,"410 BENEDICTA AVE, TRINIDAD, CO 81082",37.1730220834295,-104.488519722186,08071000500
-Spanish Peaks Regional Health Center,Hospital,Critical Access Hospitals,"23500 US HIGHWAY 160, WALSENBURG, CO 81089",37.6076221272269,-104.819818840361,
+Spanish Peaks Regional Health Center,Hospital,Critical Access Hospitals,"23500 US HIGHWAY 160, WALSENBURG, CO 81089",37.6076221272269,-104.819818840361,08055960902
 Middle Park Medical Center,Hospital,Critical Access Hospitals,"214 S 4TH ST, KREMMLING, CO 80459",40.0573713632236,-106.391184466345,08049000100
 "Memorial Hospital, The",Hospital,Critical Access Hospitals,"750 HOSPITAL LOOP, CRAIG, CO 81625",40.5183593365014,-107.578715789035,08081000300
 Valley View Hospital Association,Hospital,Short Term,"1906 BLAKE AVE, GLENWOOD SPRINGS, CO 81601",39.5327862279428,-107.322733611835,08045951702
@@ -65,8 +65,8 @@ Montrose Regional Health,Hospital,Short Term,"800 S 3RD ST, MONTROSE, CO 81401",
 Southwest Memorial Hospital,Hospital,Critical Access Hospitals,"1311 N MILDRED RD, CORTEZ, CO 81321",37.3620778542654,-108.572817646068,08083969301
 Mercy Hospital,Hospital,Short Term,"1010 THREE SPRINGS BLVD, DURANGO, CO 81301",37.2351438847231,-107.824824472665,08067970703
 Children'S Hospital Colorado - North Campus,Hospital,Childrens,"469 STATE HIGHWAY 7, BROOMFIELD, CO 80023",40.0003874546392,-104.992236139713,08014031402
-University Of Colorado Health At Memorial Hospital North,Hospital,Licensed General,"4050 BRIARGATE PKWY, COLORADO SPRINGS, CO 80920",38.9660253268141,-104.758157967669,
-Children'S Hospital Colorado - Colorado Springs,Hospital,Childrens,"4090 BRIARGATE PKWY, COLORADO SPRINGS, CO 80920",38.9660173268271,-104.757944967619,
+University Of Colorado Health At Memorial Hospital North,Hospital,Licensed General,"4050 BRIARGATE PKWY, COLORADO SPRINGS, CO 80920",38.9660253268141,-104.758157967669,08041007104
+Children'S Hospital Colorado - Colorado Springs,Hospital,Childrens,"4090 BRIARGATE PKWY, COLORADO SPRINGS, CO 80920",38.9660173268271,-104.757944967619,08041007104
 Medical Center Of The Rockies,Hospital,Short Term,"2500 ROCKY MOUNTAIN AVE, LOVELAND, CO 80538",40.4151215103291,-105.001460191778,08069001715
 Hca Healthone Sky Ridge,Hospital,Short Term,"10101 RIDGEGATE PKWY, LONE TREE, CO 80124",39.5282813978504,-104.87309505717,08035014125
 Children'S Hospital Colorado - South Campus,Hospital,Childrens,"1811 PLAZA DR, HIGHLANDS RANCH, CO 80129",39.5557623923592,-105.008509091597,08035014131
@@ -78,7 +78,7 @@ Intermountain Health Good Samaritan Hospital,Hospital,Short Term,"200 EXEMPLA CI
 "Middle Park Medical Center, Granby",Hospital,Critical Access Hospitals,"1000 GRANBY PARK DR S, GRANBY, CO 80446",40.0758373989142,-105.925262362937,08049000205
 Adventhealth Parker,Hospital,Short Term,"9395 CROWN CREST BLVD, PARKER, CO 80138",39.5496504078946,-104.769946035739,08035013912
 Parkview Pueblo West,Hospital,Licensed General,"899 E INDUSTRIAL BLVD, PUEBLO, CO 81007",38.3275782394107,-104.70104488623,08101002923
-Uchealth Pikes Peak Regional Hospital,Hospital,Critical Access Hospitals,"16420 W US HIGHWAY 24, WOODLAND PARK, CO 80863",38.975745306937,-105.075709041866,
+Uchealth Pikes Peak Regional Hospital,Hospital,Critical Access Hospitals,"16420 W US HIGHWAY 24, WOODLAND PARK, CO 80863",38.975745306937,-105.075709041866,08119010111
 Banner Fort Collins Medical Center,Hospital,Short Term,"4700 LADY MOON DR, FORT COLLINS, CO 80528",40.5211475239513,-105.010821206959,08069001605
 Adventhealth Castle Rock,Hospital,Short Term,"2350 MEADOWS BLVD, CASTLE ROCK, CO 80109",39.4036093796183,-104.886065045973,08035014410
 "Animas Surgical Hospital, Llc",Hospital,Short Term,"575 RIVERGATE LN  UNIT 100, DURANGO, CO 81301",37.2486328836712,-107.87072248393,08067971100
@@ -107,7 +107,7 @@ Denver Health Winter Park Medical Center,Clinic,Community Clinic/Emergency,"145 
 Emergency & Urgent Care Golden,Hospital,Freestanding Emergency Department,"760 WARNER DR, GOLDEN, CO 80401",39.7284914021659,-105.210764158183,08059009855
 Adventhealth Er & Urgent Care Southmoor,Hospital,Freestanding Emergency Department,"7000 E HAMPDEN AVE, DENVER, CO 80224",39.6529944127474,-104.907816079531,08031006815
 "Hca Healthone Belmar Er, A Part Of Swedish",Hospital,Freestanding Emergency Department,"260 S WADSWORTH BLVD, LAKEWOOD, CO 80226",39.7121874089107,-105.081332126464,08059011602
-Emergency Care 84Th Avenue,Hospital,Freestanding Emergency Department,"2551 W 84TH AVE, WESTMINSTER, CO 80031",39.849070432084,-105.018466127933,
+Emergency Care 84Th Avenue,Hospital,Freestanding Emergency Department,"2551 W 84TH AVE, WESTMINSTER, CO 80031",39.849070432084,-105.018466127933,08001009320
 Emergency & Urgent Care Lakewood,Hospital,Freestanding Emergency Department,"3280 S WADSWORTH BLVD, LAKEWOOD, CO 80227",39.6559934011823,-105.081233119924,08059011904
 Gunnison Valley Health Mountain Clinic,Clinic,Community Clinic/Emergency,"12 SNOWMASS RD STE 100, MOUNT CRESTED BUTTE, CO 81225",38.8981351682906,-106.966395460075,08051963800
 Emergency & Urgent Care Arvada,Hospital,Freestanding Emergency Department,"16320 W 64TH AVE, ARVADA, CO 80007",39.8125824156674,-105.182253161447,08059009842
@@ -122,7 +122,7 @@ Uchealth Harmony Road Er,Hospital,Freestanding Emergency Department,"4630 SNOW M
 Uchealth Emergency Room - Green Valley Ranch,Hospital,Freestanding Emergency Department,"18610 GREEN VALLEY RANCH BLVD, DENVER, CO 80249",39.7835914403902,-104.769160062552,08031008390
 Intermountain Health Saint Joseph Hospital Emergency-Northglenn,Hospital,Freestanding Emergency Department,"11900 GRANT ST, NORTHGLENN, CO 80233",39.9117614429333,-104.986178127837,08001008506
 East Morgan County Hospital,Hospital,Critical Access Hospitals,"2400 W EDISON ST, BRUSH, CO 80723",40.2547635836955,-103.649286855196,08087000700
-Family Health West Hospital,Hospital,Critical Access Hospitals,"300 W OTTLEY AVE, FRUITA, CO 81521",39.1642900804546,-108.735995876635,08077001503
+Family Health West Hospital,Hospital,Critical Access Hospitals,"300 W OTTLEY AVE, FRUITA, CO 81521",39.1642900804546,-108.735995876635,08077001504
 Elderhaus,Residential & long-term care,Adult Day,"6813 S COLLEGE AVE, FORT COLLINS, CO 80525",40.4910455151279,-105.077387218696,08069001813
 Rocky Mountain Multiple Sclerosis Center,Residential & long-term care,Adult Day,"8845 WAGNER STREET, WESTMINSTER, CO 80031",39.8570544311163,-105.048052135706,08001009407
 Limon Correctional Facility,Clinic,Doc Clinic,"49030 STATE HWY 71 S, LIMON, CO 80826",39.2155364332651,-103.695680747286,08073961700
@@ -345,7 +345,7 @@ Crestmoor Care Center,Residential & long-term care,Snf/Nf Distinct Part,"895 S M
 Life Care Center Of Aurora,Residential & long-term care,Snf/Nf Dual Cert,"14101 E EVANS AVE, AURORA, CO 80014",39.6781264220839,-104.822909062782,08005081400
 Village Care And Rehabilitation Center (The),Residential & long-term care,Snf/Nf Dual Cert,"9221 WADSWORTH PKWY, WESTMINSTER, CO 80021",39.8638864295053,-105.084559144939,08059009828
 Beth Israel At Shalom Park,Residential & long-term care,Snf/Nf Distinct Part,"14800 E BELLEVIEW DR, AURORA, CO 80015",39.622683414935,-104.815150054591,08005083700
-Life Care Center Of Littleton,Residential & long-term care,Snf/Nf Dual Cert,"1500 W MINERAL AVE, LITTLETON, CO 80120",39.5734163950421,-105.005015092818,
+Life Care Center Of Littleton,Residential & long-term care,Snf/Nf Dual Cert,"1500 W MINERAL AVE, LITTLETON, CO 80120",39.5734163950421,-105.005015092818,08005005634
 Life Care Center Of Westminster,Residential & long-term care,Snf/Nf Dual Cert,"7751 ZENOBIA CT, WESTMINSTER, CO 80030",39.8369624281242,-105.051455134134,08001009603
 Brookdale Greenwood Village,Residential & long-term care,Snf Only,"6450 S BOSTON ST, GREENWOOD VILLAGE, CO 80111",39.5997574072455,-104.880694067124,08005006860
 Liberty Heights,Residential & long-term care,Snf Only,"12205 GUNSTOCK DR, COLORADO SPRINGS, CO 80921",39.0079863303222,-104.794382980638,08041007206
@@ -356,7 +356,7 @@ Springs Village Care Center,Residential & long-term care,Snf/Nf Distinct Part,"1
 Sundance Skilled Nursing And Rehabilitation,Residential & long-term care,Snf/Nf Dual Cert,"2612 W CUCHARRAS ST, COLORADO SPRINGS, CO 80904",38.8477313029321,-104.86534397948,08041001301
 "Kiowa Hills Rehabilitation And Nursing, Llc",Residential & long-term care,Snf/Nf Dual Cert,"924 W KIOWA ST, COLORADO SPRINGS, CO 80905",38.836787303072,-104.839914972432,08041001500
 Fountain View Rehabilitation And Nursing Llc,Residential & long-term care,Snf/Nf Dual Cert,"2438 E FOUNTAIN BLVD, COLORADO SPRINGS, CO 80910",38.8174163039827,-104.784807957627,08041002802
-Colonial Rehabilitation And Nursing Llc,Residential & long-term care,Snf/Nf Dual Cert,"1340 E FILLMORE ST, COLORADO SPRINGS, CO 80907",38.8737623109092,-104.800828967442,08041000400
+Colonial Rehabilitation And Nursing Llc,Residential & long-term care,Snf/Nf Dual Cert,"1340 E FILLMORE ST, COLORADO SPRINGS, CO 80907",38.8737623109092,-104.800828967442,08041000301
 Mountain View Post Acute,Residential & long-term care,Snf/Nf Dual Cert,"835 TENDERFOOT HILL RD, COLORADO SPRINGS, CO 80906",38.7938142988594,-104.811548961236,08041003303
 Medallion Post Acute Rehabilitation,Residential & long-term care,Snf/Nf Distinct Part,"1719 E BIJOU ST, COLORADO SPRINGS, CO 80909",38.8357453059006,-104.795099961988,08041002700
 Falcon Heights Rehabilitation And Nursing Llc,Residential & long-term care,Snf/Nf Distinct Part,"1795 MONTEREY RD, COLORADO SPRINGS, CO 80910",38.8061353028576,-104.777620954748,08041005300
@@ -380,7 +380,7 @@ Skyline Ridge Nursing & Rehabilitation Center,Residential & long-term care,Snf/N
 Columbine Manor Care Center,Residential & long-term care,Snf/Nf Dual Cert,"530 W 16TH ST, SALIDA, CO 81201",38.5266141818765,-106.008723205233,08015000200
 Rock Canyon Respiratory And Rehabilitation Center,Residential & long-term care,Snf/Nf Dual Cert,"2515 PITMAN PL, PUEBLO, CO 81004",38.2396612305751,-104.64132186333,08101002600
 Trinidad Rehabilitation And Healthcare Center,Residential & long-term care,Snf/Nf Dual Cert,"409 BENEDICTA AVE, TRINIDAD, CO 81082",37.1728350833988,-104.488565722178,08071000500
-Spanish Peaks Veterans Community Living Center,Residential & long-term care,Nf Only,"23500 US HIGHWAY 160, WALSENBURG, CO 81089",37.6076221272269,-104.819818840361,
+Spanish Peaks Veterans Community Living Center,Residential & long-term care,Nf Only,"23500 US HIGHWAY 160, WALSENBURG, CO 81089",37.6076221272269,-104.819818840361,08055960902
 Casey'S Pond Senior Living,Residential & long-term care,Snf/Nf Dual Cert,"2855 OWL HOOT TRAIL, STEAMBOAT SPRINGS, CO 80487",40.4530133844386,-106.813059610065,08107000701
 Heritage Park Care Center,Residential & long-term care,Snf/Nf Dual Cert,"1200 VILLAGE RD, CARBONDALE, CO 81623",39.4102612190159,-107.220446574849,08045951803
 Colorado State Veterans Nursing Home - Rifle,Residential & long-term care,Snf/Nf Dual Cert,"851 E 5TH ST, RIFLE, CO 81650",39.5332891961582,-107.772669710958,08045952004
@@ -443,7 +443,7 @@ Aviva At Fitzsimons,Residential & long-term care,Snf Only,"13525 E 23RD AVE, AUR
 "Center At Lincoln, Llc, The",Residential & long-term care,Snf Only,"12230 LIONESS WAY, PARKER, CO 80134",39.5352124006223,-104.846720051862,08035014011
 The Center At Cordera,Residential & long-term care,Snf/Nf Dual Cert,"9208 GRAND CORDERA PKWY, COLORADO SPRINGS, CO 80924",38.9620003280844,-104.730592960861,08041007106
 Coal Creek Post Acute & Assisted Living,Residential & long-term care,Snf/Nf Dual Cert,"329 EXEMPLA CIR, LAFAYETTE, CO 80026",39.9723494442636,-105.085574157971,08013060801
-"Healthcare Resort Of Colorado Springs, The",Residential & long-term care,Snf/Nf Dual Cert,"2818 GRAND VISTA CIR, COLORADO SPRINGS, CO 80904",38.8725803070996,-104.855569979932,08041007900
+"Healthcare Resort Of Colorado Springs, The",Residential & long-term care,Snf/Nf Dual Cert,"2818 GRAND VISTA CIR, COLORADO SPRINGS, CO 80904",38.8725803070996,-104.855569979932,08041001104
 "Accel At Longmont Health And Rehab, Llc",Residential & long-term care,Snf/Nf Dual Cert,"1960 S FORDHAM ST, LONGMONT, CO 80503",40.1361954627114,-105.140292190145,08013013212
 "Center At Foresight Llc, The",Residential & long-term care,Snf Only,"606 FORESIGHT CIR E, GRAND JUNCTION, CO 81505",39.0930540818455,-108.586169836176,08077001002
 Castle Peak Senior Life And Rehabilitation,Residential & long-term care,Snf/Nf Dual Cert,"195 FREESTONE RD, EAGLE, CO 81631",39.6391322767158,-106.830294514938,08037000405
@@ -524,7 +524,7 @@ Bob And Judy Charles Smart Home,Residential & long-term care,Residential Treatme
 Soda Creek Apartments,Residential & long-term care,Residential Treatment,"445 8TH ST, STEAMBOAT SPRINGS, CO 80487",40.4892493877653,-106.831576618768,08107000500
 Village Lane Group Home,Residential & long-term care,Residential Treatment,"1054 VILLAGE LN, STEAMBOAT SPRINGS, CO 80487",40.4935933880874,-106.834834620046,08107000500
 Colorado Group Home,Residential & long-term care,Residential Treatment,"2112 COLORADO AVE, LA JUNTA, CO 81050",37.9684012605695,-103.543008580393,08089968600
-Inner City Health Center,Clinic,Federally Qhc,"3800 YORK STREET, DENVER, CO 80205",39.7693664252169,-104.959689105026,08031003601
+Inner City Health Center,Clinic,Federally Qhc,"3800 YORK STREET, DENVER, CO 80205",39.7693664252169,-104.959689105026,08031003602
 Family Health Center At Mitchel High School,Clinic,Federally Qhc,"4041 EAST SAN MIGUEL STREET, COLORADO SPRINGS, CO 80909",38.8506683110108,-104.750024953209,08041006000
 M C P N - Pine Tree Clinic,Clinic,Federally Qhc,"17866 COTTONWOOD DRIVE, PARKER, CO 80134",39.5578224082386,-104.781504039352,08035014015
 Pueblco Community Health Center Inc,Clinic,Federally Qhc,"1008 NORTH GRAND AVENUE, PUEBLO, CO 81003",38.2764692378114,-104.611642860305,08101000600
@@ -669,7 +669,7 @@ Premier Assisted Living Of Keenesburg,Residential & long-term care,Alr/Acf,"15 S
 "Gardens Care Homes - Coyote Creek Assisted Living, The",Residential & long-term care,Alr Only,"1150 4TH ST, FT LUPTON, CO 80621",40.0832274790701,-104.805590106275,08123001905
 Brookdale Fort Collins Al (Co),Residential & long-term care,Alr Only,"1002 RULE DR, FORT COLLINS, CO 80525",40.5187905201671,-105.059145217882,08069001009
 "Peaks Assisted Living Center, The",Residential & long-term care,Alr/Acf,"1440 COFFMAN STREET, LONGMONT, CO 80501",40.1838554717715,-105.103610187393,08013013308
-Balfour Cherrywood Village,Residential & long-term care,Alr Only,"282 MCCASLIN BLVD, LOUISVILLE, CO 80027",39.9521814359434,-105.164980173912,
+Balfour Cherrywood Village,Residential & long-term care,Alr Only,"282 MCCASLIN BLVD, LOUISVILLE, CO 80027",39.9521814359434,-105.164980173912,08013060601
 Country Home,Residential & long-term care,Alr/Acf,"1425 DEBBIE CIR, PARKER, CO 80138",39.4879864085315,-104.634935997397,08039961204
 Prairie Creeks Living Center,Residential & long-term care,Alr/Acf,"56175 SUNSET AVE, STRASBURG, CO 80136",39.7454784654584,-104.329286955697,08001008402
 Manto Homes Llc,Residential & long-term care,Alr/Acf,"7465 W 69TH PL, ARVADA, CO 80003",39.823748424297,-105.080378139263,08059010208
@@ -699,7 +699,7 @@ Bear Creek Retirement Community,Residential & long-term care,Alr Only,"3151 S. W
 Just For Seniors Living Center I,Residential & long-term care,Alr/Acf,"1395 VRAIN ST, DENVER, CO 80204",39.7383564149286,-105.046458121461,08031000704
 Helping Hands Homecare Ltd Liability Co,Residential & long-term care,Alr/Acf,"11503 W BERRY PL, LITTLETON, CO 80127",39.6158133924335,-105.127726125993,08059012042
 Cherry Creek Retirement Village,Residential & long-term care,Alr Only,"14555 E HAMPDEN AVE, AURORA, CO 80014",39.6532164188612,-104.81960505914,08005081600
-"Gardens Care Homes - Indian Tree, The",Residential & long-term care,Alr Only,"7319 CARR ST, ARVADA, CO 80005",39.8287264242372,-105.091029142305,
+"Gardens Care Homes - Indian Tree, The",Residential & long-term care,Alr Only,"7319 CARR ST, ARVADA, CO 80005",39.8287264242372,-105.091029142305,08059010210
 Nightingale Suites,Residential & long-term care,Alr Only,"12825 W 65TH WAY, ARVADA, CO 80004",39.8142954187291,-105.1416951523,08059009840
 Learning Services - Glenn Dee,Residential & long-term care,Alr Only,"1555 GLEN DEE DR, LAKEWOOD, CO 80215",39.7417244118094,-105.098071133762,08059011000
 Libby Bortz Assisted Living Center,Residential & long-term care,Alr Only,"5844 S  CURTICE ST, LITTLETON, CO 80120",39.6113423993655,-105.018351100261,08005006501
@@ -824,7 +824,7 @@ Dorothy'S Soft Touch Iv,Residential & long-term care,Alr Only,"790 UVALDA ST, AU
 Pearl Assisted Living,Residential & long-term care,Alr/Acf,"350 S PEARL ST, ELIZABETH, CO 80107",39.3583703924172,-104.604913975765,08039961208
 Rose Bloom Assisted Living House,Residential & long-term care,Alr Only,"17495 E WEAVER DRIVE, AURORA, CO 80016",39.5998214138691,-104.784510044865,08005085100
 Prairie Pines Assisted Living Community,Residential & long-term care,Alr/Acf,"101 E LOWELL ST, EADS, CO 81036",38.4766103845282,-102.781679452143,08061960100
-Assisted Living At Pueblo Llc,Residential & long-term care,Alr/Acf,"544 E ABRIENDO AVE, PUEBLO, CO 81004",38.254946234491,-104.614862858815,
+Assisted Living At Pueblo Llc,Residential & long-term care,Alr/Acf,"544 E ABRIENDO AVE, PUEBLO, CO 81004",38.254946234491,-104.614862858815,08101001400
 Villa Pueblo Assisted Living,Residential & long-term care,Alr Only,"855 HUNTER DR, PUEBLO, CO 81001",38.2888402404571,-104.598360858527,08101000904
 Hyland Hills Senior Living,Residential & long-term care,Alr Only,"9560 SHERIDAN BLVD, WESTMINSTER, CO 80031",39.8696084324892,-105.053034138331,08001009410
 Assured Senior Living 32,Residential & long-term care,Alr Only,"5286 W PORTLAND DR., LITTLETON, CO 80128",39.5900183939806,-105.053736105967,08005005621
@@ -842,7 +842,7 @@ Spruce House,Residential & long-term care,Alr/Bisl,"2535 BRADY DRIVE, COLORADO S
 A Wildflower Assisted Living And Care Home Inc,Residential & long-term care,Alr/Acf,"1355 AMMONS ST, LAKEWOOD, CO 80214",39.7377494120075,-105.087351130826,08059011102
 Flourish Supportive Living At Owens,Residential & long-term care,Alr/Acf,"1975 OWENS CT, LAKEWOOD, CO 80215",39.7468474109415,-105.120699139576,08059015800
 Wheat Ridge Assisted Living,Residential & long-term care,Alr Only,"7850 W 44TH AVE, WHEAT RIDGE, CO 80033",39.7765684175476,-105.084353134661,08059010502
-Friendship House At The Home,Residential & long-term care,Alr/Acf,"1020 N 15TH ST, CANON CITY, CO 81212",38.4551492233788,-105.227236020331,08043978500
+Friendship House At The Home,Residential & long-term care,Alr/Acf,"1020 N 15TH ST, CANON CITY, CO 81212",38.4551492233788,-105.227236020331,08043978300
 "Gardens Care Homes - Memorial Park Memory Care 2, The",Residential & long-term care,Alr Only,"1715 32ND ST, EVANS, CO 80620",40.3842225270944,-104.707263119585,08123001006
 Applewood Our House Assisted Living Llc,Residential & long-term care,Alr Only,"1365 YANK ST, GOLDEN, CO 80401",39.7376734080424,-105.144305143948,08059010901
 Assisted Living Of Aurora Inc,Residential & long-term care,Alr/Acf,"21 DELMAR CIR, AURORA, CO 80011",39.723953426519,-104.850474074472,08005007703
@@ -872,7 +872,7 @@ Roaring Fork Senior Living,Residential & long-term care,Alr Only,"2800 MIDLAND A
 "Gardens Care Homes - Coyote Creek Memory Care, The",Residential & long-term care,Alr Only,"1102 4TH ST, FT LUPTON, CO 80621",40.083224479022,-104.806269106433,08123001905
 Peakview Assisted Living And Memory Care,Residential & long-term care,Alr Only,"6021 S LIVERPOOL ST, AURORA, CO 80016",39.60692141758,-104.744868036492,08005085200
 Bethesda Gardens Loveland,Residential & long-term care,Alr Only,"1875 FALL RIVER DR, LOVELAND, CO 80538",40.412028509412,-105.008456193023,08069001715
-Rocky Mountain Assisted Living Quincy Avenue Memory Care Facilities,Residential & long-term care,Alr Only,"7985 W QUINCY AVE, LAKEWOOD, CO 80123",39.6388083985201,-105.085490118917,
+Rocky Mountain Assisted Living Quincy Avenue Memory Care Facilities,Residential & long-term care,Alr Only,"7985 W QUINCY AVE, LAKEWOOD, CO 80123",39.6388083985201,-105.085490118917,08059015900
 Wheat Ridge Memory Care,Residential & long-term care,Alr Only,"7860 W 44TH AVE, WHEAT RIDGE, CO 80033",39.7765684175417,-105.084437134681,08059010502
 Morningstar Of Boulder,Residential & long-term care,Alr Only,"575 TANTRA DR, BOULDER, CO 80305",39.9850454351754,-105.239649195023,08013012508
 S&S Memory Care Assisted Living Llc,Residential & long-term care,Alr/Acf,"7741 E EASTER PL, CENTENNIAL, CO 80112",39.5874354042769,-104.899020069946,08005006707
@@ -899,7 +899,7 @@ Curavistas,Residential & long-term care,Alr/Acf,"1640 S QUEBEC WAY, DENVER, CO 8
 "Residence At Village Green Llc, The",Residential & long-term care,Alr/Acf,"3455 N CAREFREE CIR, COLORADO SPRINGS, CO 80917",38.8823073149152,-104.758806958676,08041000104
 Assured Senior Living 6,Residential & long-term care,Alr Only,"4837 WAGON TRAIL CT, PARKER, CO 80134",39.432436391151,-104.775935023774,08035014013
 "Gardens Care Homes - Meadow Hills, The",Residential & long-term care,Alr Only,"3828 S EAGLE ST, AURORA, CO 80014",39.6476044182585,-104.817065057905,08005083800
-Lakewood Littleton Assisted Living,Residential & long-term care,Alr Only,"7975 W QUINCY AVE, LAKEWOOD, CO 80123",39.6388153985375,-105.085253118863,
+Lakewood Littleton Assisted Living,Residential & long-term care,Alr Only,"7975 W QUINCY AVE, LAKEWOOD, CO 80123",39.6388153985375,-105.085253118863,08059015900
 Keystone Place At Legacy Ridge Assisted Living,Residential & long-term care,Alr/Acf,"11150 IRVING DR, WESTMINSTER, CO 80031",39.8983904381686,-105.02816213597,08001009409
 A Wildflower Assisted Living And Care Home Inc,Residential & long-term care,Alr/Acf,"6197 W 83RD WAY, ARVADA, CO 80003",39.8492384287957,-105.065966138925,08059009833
 Abundant Blessings And Care Assisted Livng-Eastman,Residential & long-term care,Alr Only,"6461 E EASTMAN AVE, DENVER, CO 80222",39.6588124131575,-104.913531081525,08005015100
@@ -1158,7 +1158,7 @@ Eben Ezer Lutheran Care Center Holly Dr,Residential & long-term care,Alr Only,"7
 "Manor On Sycamore Street, The",Residential & long-term care,Alr/Acf,"6365 S SYCAMORE ST, LITTLETON, CO 80120",39.6009013981219,-105.015467098393,08005006502
 Rock Creek Assisted Living At Somerset Village,Residential & long-term care,Alr/Acf,"1109 S RIFLE ST, AURORA, CO 80017",39.6959674272295,-104.784152055863,08005082700
 Healing Hands Health & Wellness Assisted Living,Residential & long-term care,Alr/Acf,"6550 S ADDISON WAY, AURORA, CO 80016",39.5971474183304,-104.714159028248,08005086600
-"Healthcare Resort Of Colorado Springs, The",Residential & long-term care,Alr Only,"2818 GRAND VISTA CIR, COLORADO SPRINGS, CO 80904",38.8725803070996,-104.855569979932,08041007900
+"Healthcare Resort Of Colorado Springs, The",Residential & long-term care,Alr Only,"2818 GRAND VISTA CIR, COLORADO SPRINGS, CO 80904",38.8725803070996,-104.855569979932,08041001104
 Abundant Blessings And Care-Marion Way,Residential & long-term care,Alr Only,"6203 S MARION WAY, CENTENNIAL, CO 80121",39.6038344016658,-104.969927088217,08005005611
 "Peaks At Old Laramie Trail, The",Residential & long-term care,Alr Only,"660 OLD LARAMIE TR, LAFAYETTE, CO 80026",39.9819824447439,-105.09746816186,08013060900
 "Belleview Senior Living, The",Residential & long-term care,Alr Only,"3555 S CLARKSON ST, ENGLEWOOD, CO 80113",39.6523004077837,-104.97833509575,08005005951
@@ -1213,9 +1213,9 @@ Casey'S Pond Senior Living,Residential & long-term care,Alr Only,"2855 OWL HOOT 
 Loving Touch Elderly Assistant Care Inc,Residential & long-term care,Alr/Acf,"280 E STERNE BLVD, CENTENNIAL, CO 80122",39.594530399364,-104.984660090548,08005005625
 Balfour At Lavender Farms,Residential & long-term care,Alr Only,"1800 PLAZA DR., LOUISVILLE, CO 80027",39.9890084438997,-105.123148168624,08013012904
 Icare Assisted Living Facility-Ulster Llc,Residential & long-term care,Alr/Acf,"7208 S ULSTER ST, CENTENNIAL, CO 80112",39.5856694042679,-104.895594068951,08005006707
-"Aberdeen Ridge, Inc",Residential & long-term care,Alr Only,"2744 GRAND VISTA CIRCLE, COLORADO SPRINGS, CO 80904",38.8725463070978,-104.855524979918,08041007900
+"Aberdeen Ridge, Inc",Residential & long-term care,Alr Only,"2744 GRAND VISTA CIRCLE, COLORADO SPRINGS, CO 80904",38.8725463070978,-104.855524979918,08041001104
 "Thrivecare Chase, Llc",Residential & long-term care,Alr Only,"6398 S CHASE CT, LITTLETON, CO 80123",39.5994863949807,-105.058192108085,08059012049
-"Haven Home, The",Residential & long-term care,Alr Only,"1368 FINN AVE, LONE TREE, CO 80124",39.5218873943669,-104.910937065186,
+"Haven Home, The",Residential & long-term care,Alr Only,"1368 FINN AVE, LONE TREE, CO 80124",39.5218873943669,-104.910937065186,08035014140
 Morningstar At Observatory Park,Residential & long-term care,Alr Only,"2100 S JOSEPHINE ST, DENVER, CO 80210",39.6783284127922,-104.957858094029,08031004006
 Flourish Supportive Living At Floyd,Residential & long-term care,Alr/Acf,"2330 E FLOYD AVE, ENGLEWOOD, CO 80113",39.656687409633,-104.960330092097,08005005952
 Assisted Living Of Denver Ne Llc,Residential & long-term care,Alr/Acf,"4827 LISBON ST, DENVER, CO 80249",39.7817824418443,-104.744555056631,08031008389
@@ -1264,7 +1264,7 @@ South Denver Recovery Care Center,Residential & long-term care,Convalescent Cent
 North Metro Surgery Center Convalescent Center,Residential & long-term care,Convalescent Center,"9005 GRANT ST STE 300, THORNTON, CO 80229",39.8599004360492,-104.98289712098,08001009203
 Tender Gifts Birth & Wellness Center Grand Valley,Clinic,Birth Centers,"360 W PARK DR STE 105, GRAND JUNCTION, CO 81501",39.0909600824294,-108.574000833316,08077000400
 Tender Gifts Midwifery,Clinic,Birth Centers,"1817 JESSUP DR, FORT COLLINS, CO 80525",40.5621405275378,-105.037631218239,08069001605
-Colorado Birth And Wellness,Clinic,Birth Centers,"8111 E LOWRY BLVD  STE 230, DENVER, CO 80230",39.7182414227343,-104.893778083835,08031004407
+Colorado Birth And Wellness,Clinic,Birth Centers,"8111 E LOWRY BLVD  STE 230, DENVER, CO 80230",39.7182414227343,-104.893778083835,08031004406
 Boulder Birth & Holistic Health Llc,Clinic,Birth Centers,"2800 FOLSOM ST, BOULDER, CO 80304",40.0281204393811,-105.263049205541,08013012107
 Birth Center Of Denver,Clinic,Birth Centers,"1830 N FRANKLIN ST #330, DENVER, CO 80218",39.7452304212896,-104.968386104227,08031003102
 "Beginnings Birth Center, Llc",Clinic,Birth Centers,"9475 BRIAR VILLAGE PT  STE 100, COLORADO SPRINGS, CO 80920",38.968600325478,-104.783616973829,08041007104
@@ -1297,7 +1297,7 @@ M C P N - Chambers Clinic At Aumhc,Clinic,Federally Qhc,"791 CHAMBERS ROAD, AURO
 "Olathe Community Clinic, Inc",Clinic,Federally Qhc,"320 NORTH THIRD STREET, OLATHE, CO 81425",38.6110790605463,-107.983408651366,08085966202
 Sheridan Health Services School-Based Health Cente,Clinic,Federally Qhc,"4107 SOUTH FEDERAL BOULEVARD, #B, ENGLEWOOD, CO 80110",39.6409294029611,-105.025439105311,08005005553
 Jeffco Family Health Services Clinic,Clinic,Federally Qhc,"7495 W 29TH AVE, LAKEWOOD, CO 80033",39.7585204153932,-105.07969113148,08059010701
-Plains Medical Center - Strasburg,Clinic,Federally Qhc,"55981 EAST COLFAX AVENUE, POB 1219, STRASBURG, CO 80136",39.7383644642598,-104.332262955572,08005007101
+Plains Medical Center - Strasburg,Clinic,Federally Qhc,"55981 EAST COLFAX AVENUE, POB 1219, STRASBURG, CO 80136",39.7383644642598,-104.332262955572,08001008402
 M C P N - Jeffco Clinic,Clinic,Federally Qhc,"8500 WEST COLFAX AVENUE, LAKEWOOD, CO 80215",39.7401304120221,-105.091853132142,08059011101
 Peak Vista C H C - Hc At 350 Printers Parkway,Clinic,Federally Qhc,"350 PRINTERS PARKWAY, COLORADO SPRINGS, CO 80910",38.8271393052433,-104.786607959096,08041002101
 V W H S - Alamosa Family Medical Clinic,Clinic,Federally Qhc,"1710 FIRST STREET, ALAMOSA, CO 81101",37.4728680410692,-105.881167067722,08003960202
@@ -1340,7 +1340,7 @@ V W H S - Guadalupe Health Center,Clinic,Federally Qhc,"10TH & DAHLIA  PO BOX 60
 Sunrise Monfort Family Clinic,Clinic,Federally Qhc,"2930 11TH AVENUE, EVANS, CO 80620",40.3898345286016,-104.696795117826,08123001004
 C C H - Stout Street Clinic,Clinic,Federally Qhc,"2100 BROADWAY, DENVER, CO 80205",39.7507124207329,-104.987299109236,08031002405
 Plan De Salud Del Valle - New Horizons,Clinic,Federally Qhc,"1115 SECOND ST, FT LUPTON, CO 80621",40.0815304788345,-104.805636106084,08123001905
-C C F H S - Clinica Campesina Family Health,Clinic,Federally Qhc,"8990 NORTH WASHINGTON, THORNTON, CO 80229",39.8599574364111,-104.977816119812,
+C C F H S - Clinica Campesina Family Health,Clinic,Federally Qhc,"8990 NORTH WASHINGTON, THORNTON, CO 80229",39.8599574364111,-104.977816119812,08001009202
 Mountain Family Health Center,Clinic,Federally Qhc,"1905 BLAKE AVENUE, SUITE 101, GLENWOOD SPRINGS, CO 81601",39.5327972279339,-107.322878611868,08045951702
 C C H - Quigg Newton Clinic,Clinic,Federally Qhc,"4513 MARIPOSA WAY, DENVER, CO 80211",39.7790244235403,-105.002978116159,08031000202
 Pueblo Community Health Center,Clinic,Federally Qhc,"310 COLORADO AVENUE, PUEBLO, CO 81004",38.2573952342502,-104.624093861197,08101001900

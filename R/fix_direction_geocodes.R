@@ -15,27 +15,31 @@ dir_of <- function(street) { s <- toupper(trimws(ifelse(is.na(street), "", stree
   m <- regmatches(s, regexec("^[0-9]+[A-Z]?\\s+(SOUTH|NORTH|EAST|WEST|S|N|E|W)\\.?\\s", s)); vapply(m, function(x) if (length(x) == 2) substr(x[2], 1, 1) else "", "") }
 conflict <- function(street, city, lat, lon, level) { d <- dir_of(street); den <- toupper(trimws(ifelse(is.na(city), "", city))) == "DENVER" & !is.na(lat) & level %in% c("address", "address_approx")   # street-level points only
   den & ((d == "S" & lat > ELLS + TOL) | (d == "N" & lat < ELLS - TOL) | (d == "W" & lon > BWAY + TOL) | (d == "E" & lon < BWAY - TOL)) }
+# every file is read through rd(): OCR quote characters are stripped from text columns. data.table::fread misreads a field that begins
+# or ends with escaped quotes and each fread/fwrite round trip doubled them, so this script was not idempotent on such fields; the
+# pipeline now strips quotes at source (pipeline/consolidate.py), and rd() cleans files written before that.
+rd <- function(f, ...) { D <- fread(f, ...); for (j in names(D)) if (is.character(D[[j]])) set(D, j = j, value = gsub('"', "", D[[j]], fixed = TRUE)); D }
 fix_set <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, by_year_dir = NULL, label = "") {
   if (!file.exists(listings_f)) return(invisible(NULL))
-  L <- fread(listings_f, colClasses = c(sic = "character", zip = "character", est = "character", size = "character"))
+  L <- rd(listings_f, colClasses = c(sic = "character", zip = "character", est = "character", size = "character"))
   bad <- conflict(L$street, L$city, L$lat, L$lon, L$geo_level); message(label, ": ", sum(bad), " listings with a direction conflict")
   if (!any(bad)) return(invisible(NULL))
   out <- L[bad, .(year, name, street, city, lat, lon, site_id, fe_hazard)][, file := label]
-  of <- "data/results/geocode_direction_conflicts.csv"; fwrite(if (file.exists(of)) unique(rbind(fread(of), out, fill = TRUE)) else out, of)
+  of <- "data/results/geocode_direction_conflicts.csv"; fwrite(if (file.exists(of)) unique(rbind(rd(of), out, fill = TRUE)) else out, of)
   hit <- unique(L$site_id[bad & !is.na(L$site_id) & nzchar(L$site_id)])
   L[bad, `:=`(lat = NA_real_, lon = NA_real_, site_id = NA_character_, geo_level = "none")]; fwrite(L, listings_f)
   if (!is.null(by_year_dir) && dir.exists(by_year_dir)) for (f in list.files(by_year_dir, "\\.csv$", full.names = TRUE)) {
-    B <- fread(f, colClasses = c(zip = "character", sic_codes = "character")); b <- conflict(B$street_address, B$city, B$latitude, B$longitude, if ("geocode_level" %in% names(B)) B$geocode_level else rep("address", nrow(B)))
+    B <- rd(f, colClasses = c(zip = "character", sic_codes = "character")); b <- conflict(B$street_address, B$city, B$latitude, B$longitude, if ("geocode_level" %in% names(B)) B$geocode_level else rep("address", nrow(B)))
     if (any(b)) { B[b, `:=`(latitude = NA_real_, longitude = NA_real_, site_id = NA_character_)]; if ("geocode_level" %in% names(B)) B[b, geocode_level := "none"]; fwrite(B, f) } }
   if (file.exists(sites_f) && length(hit)) {
-    S <- fread(sites_f, colClasses = c(GEOID = "character", zip = "character")); keep_years <- L[site_id %in% hit, .(yrs = list(sort(unique(year)))), by = site_id]
+    S <- rd(sites_f, colClasses = c(GEOID = "character", zip = "character")); keep_years <- L[site_id %in% hit, .(yrs = list(sort(unique(year)))), by = site_id]
     gone <- setdiff(hit, keep_years$site_id); message(label, ": ", length(gone), " sites dropped (no located listing left), ", nrow(keep_years), " sites keep other years")
     S <- S[!site_id %in% gone]
     for (i in seq_len(nrow(keep_years))) { id <- keep_years$site_id[i]; y <- keep_years$yrs[[i]]; S[site_id == id, `:=`(first_year = min(y), last_year = max(y))] }
     fwrite(S, sites_f)
-    if (!is.null(years_f) && file.exists(years_f)) { Y <- fread(years_f); ly <- unique(L[site_id %in% hit, .(site_id, year)])
+    if (!is.null(years_f) && file.exists(years_f)) { Y <- rd(years_f); ly <- unique(L[site_id %in% hit, .(site_id, year)])
       Y <- Y[!site_id %in% hit | paste(site_id, year) %in% paste(ly$site_id, ly$year)]; fwrite(Y, years_f) }
-    if (!is.null(firms_f) && file.exists(firms_f)) { Fm <- fread(firms_f); if ("site_id" %in% names(Fm)) fwrite(Fm[!site_id %in% gone], firms_f) } }
+    if (!is.null(firms_f) && file.exists(firms_f)) { Fm <- rd(firms_f); if ("site_id" %in% names(Fm)) fwrite(Fm[!site_id %in% gone], firms_f) } }
 }
 # ---- rebuild every site that lost a listing from the listings it kept: point (mean of the remaining listings), address, years,
 # hazardous years, sectors, firm lists and counts. Sites are taken from the conflict log, so this also repairs sites patched by an
@@ -43,8 +47,8 @@ fix_set <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, by_year
 # moves by a few metres at most, within the 30 m site radius.
 rebuild <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, geojson_f = NULL, xlsx_f = NULL, label = "complete editions") {
   of <- "data/results/geocode_direction_conflicts.csv"; if (!file.exists(listings_f) || !file.exists(of)) return(invisible(NULL))
-  lg <- fread(of, colClasses = c(site_id = "character")); hit <- unique(na.omit(lg[file == label]$site_id)); hit <- hit[nzchar(hit)]; if (!length(hit)) return(invisible(NULL))
-  L <- fread(listings_f, colClasses = c(sic = "character", zip = "character", est = "character", size = "character"))[site_id %in% hit & !is.na(lat)]
+  lg <- rd(of, colClasses = c(site_id = "character")); hit <- unique(na.omit(lg[file == label]$site_id)); hit <- hit[nzchar(hit)]; if (!length(hit)) return(invisible(NULL))
+  L <- rd(listings_f, colClasses = c(sic = "character", zip = "character", est = "character", size = "character"))[site_id %in% hit & !is.na(lat)]
   L[, fe := fe_hazard %in% c(TRUE, "TRUE", "True")]; L[, ext := ext_hazard %in% c(TRUE, "TRUE", "True")]; L[, hz := fe | ext]   # hazardous = F&E or extended sectors, as in pipeline/build_sites.py
   if (file.exists("R/geocode_tiger.R")) { e <- new.env(); sys.source("R/geocode_tiger.R", envir = e)              # the geocoder's address parser, for the normalised "2950 S FOX ST" form
     norm <- function(x) vapply(x, function(a) { p <- e$parse_addr(a); if (is.na(p$num)) toupper(gsub("\\s+", " ", gsub("[.,]", " ", a))) else trimws(gsub("\\s+", " ", paste(p$num, p$pre, p$core, p$suf))) }, "", USE.NAMES = FALSE)
@@ -64,13 +68,13 @@ rebuild <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, geojson
     for (cc in cols) { v <- N[[cc]][match(S$site_id, N$site_id)]; i <- which(!is.na(match(S$site_id, N$site_id)))
       if (length(i)) { cl <- class(S[[cc]])[1]; set(S, i, cc, switch(cl, logical = as.logical(v[i]), integer = as.integer(v[i]), numeric = as.numeric(v[i]), as.character(v[i]))) } }
     S }
-  if (file.exists(sites_f)) { S <- fread(sites_f, colClasses = c(GEOID = "character", zip = "character", site_id = "character")); fwrite(upd(S), sites_f) }
-  if (!is.null(years_f) && file.exists(years_f)) { Y <- fread(years_f, colClasses = c(site_id = "character"))
+  if (file.exists(sites_f)) { S <- rd(sites_f, colClasses = c(GEOID = "character", zip = "character", site_id = "character")); fwrite(upd(S), sites_f) }
+  if (!is.null(years_f) && file.exists(years_f)) { Y <- rd(years_f, colClasses = c(site_id = "character"))
     # one row per site and year with a hazardous listing (as pipeline/app_inputs.py writes it): sectors joined by ";", "Extended sectors" for the extended set
     NY <- L[hz & site_id %in% N$site_id, .(sectors = paste(sort(unique(c(unlist(strsplit(fe_sectors[fe & nzchar(fe_sectors)], "\\s*;\\s*")), if (any(ext)) "Extended sectors"))), collapse = ";"),
                                            firms = substr(paste(unique(name), collapse = " | "), 1, 300)), by = .(site_id, year)]
     Y <- rbind(Y[!site_id %in% hit], NY[, names(Y), with = FALSE][order(site_id, year)]); setorder(Y, site_id, year); fwrite(Y, years_f) }
-  if (!is.null(firms_f) && file.exists(firms_f)) { Fm <- fread(firms_f, colClasses = c(site_id = "character")); if ("estab_id" %in% names(Fm))
+  if (!is.null(firms_f) && file.exists(firms_f)) { Fm <- rd(firms_f, colClasses = c(site_id = "character")); if ("estab_id" %in% names(Fm))
     fwrite(Fm[!site_id %in% gone & (!site_id %in% hit | paste(site_id, estab_id) %in% paste(L$site_id, L$estab_id))], firms_f) }
   if (!is.null(geojson_f) && file.exists(geojson_f) && requireNamespace("sf", quietly = TRUE)) {
     G <- sf::st_read(geojson_f, quiet = TRUE); A <- as.data.table(sf::st_drop_geometry(G)); A[, site_id := as.character(site_id)]
@@ -81,12 +85,12 @@ rebuild <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, geojson
   if (!is.null(xlsx_f) && file.exists(xlsx_f) && requireNamespace("openxlsx", quietly = TRUE) && requireNamespace("readxl", quietly = TRUE)) {
     # the workbook is rebuilt in full (same sheets, formulas and layout as pipeline/export.py); editing it in place with openxlsx
     # loses parts Excel needs
-    rd <- function(sh) as.data.table(readxl::read_excel(xlsx_f, sh, guess_max = 1e6, trim_ws = FALSE))   # readxl reads text exactly (openxlsx::read.xlsx mangles some)
+    rdx <- function(sh) as.data.table(readxl::read_excel(xlsx_f, sh, guess_max = 1e6, trim_ws = FALSE))   # readxl reads text exactly (openxlsx::read.xlsx mangles some)
     SH <- c("Hidden sites", "All F&E hazardous sites", "Extended-sector sites")
-    D <- setNames(lapply(SH, function(sh) { X <- rd(sh); X[, site_id := as.character(site_id)]; X <- upd(X)
+    D <- setNames(lapply(SH, function(sh) { X <- rdx(sh); X[, site_id := as.character(site_id)]; X <- upd(X)
       if (sh != "Extended-sector sites") X <- X[!site_id %in% N$site_id[!N$fe_hazard]]
       k <- match(X$site_id, N$site_id); if ("lat" %in% names(X)) X[!is.na(k), `:=`(lat = N$lat[k[!is.na(k)]], lon = N$lon[k[!is.na(k)]])]; X }), SH)
-    RM <- rd("Read me"); CV <- rd("Coverage by edition")
+    RM <- rdx("Read me"); CV <- rdx("Coverage by edition")
     RM[grepl("^Method", Item), Description := sub("[0-9]+ editions 1961", paste(uniqueN(CV$year), "editions 1961"), Description)]
     wb <- openxlsx::createWorkbook(); hs <- openxlsx::createStyle(fontName = "Arial", fontSize = 10, textDecoration = "bold", fgFill = "#DDE5DD")
     put <- function(sh, X) { openxlsx::addWorksheet(wb, sh); openxlsx::writeData(wb, sh, X, headerStyle = hs); openxlsx::freezePane(wb, sh, firstRow = TRUE)

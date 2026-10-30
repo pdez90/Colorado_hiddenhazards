@@ -64,6 +64,11 @@ s['known_match'] = s[['cleanup_match', 'tri_match', 'rcra_handler_match', 'solid
 sc = ['site_id', 'lat', 'lon', 'address', 'city', 'county', 'zip', 'first_year', 'last_year', 'hazard_years', 'fe_hazard', 'ext_hazard',
       'fe_sectors', 'ext_sectors', 'radar', 'match_basis', 'confidence', 'geo_level', 'industry_evidence', 'n_hazard_establishments', 'hazard_firms', 'known_match']
 S = with_tract(s[sc]); S.to_csv('app/data/sites.csv', index=False)
+# per-tier inventory evidence for the same sites, for R/known_hidden_sensitivity.R (no names: basis codes and distances only)
+TIERS = ['cleanup', 'tri', 'rcra_handler', 'solid_waste', 'other_epa']
+ev = s[['site_id', 'spread_m'] + [f'{t}_{k}' for t in TIERS for k in ('basis', 'prox_m', 'nearest_m')]].copy()
+os.makedirs('data/results/known_hidden', exist_ok=True)
+ev.to_csv('data/results/known_hidden/site_match_evidence.csv', index=False)
 df = pd.read_pickle('work/inv/records_final.pkl')
 SEC = {'28': 'Chemicals', '29': 'Petroleum refining', '30': 'Rubber & plastics', '33': 'Primary metals', '34': 'Fabricated metals',
        '35': 'Industrial machinery', '37': 'Transportation equipment'}
