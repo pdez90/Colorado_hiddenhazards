@@ -2543,7 +2543,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "d5fd32c1ccacf19737fe7b6d51539cf6"
+      "checksum": "bd247273df6f84325437019f14d1f5cc"
     },
     "data/aqs_denver_by_year.csv": {
       "checksum": "3cf11657a17f261f9902ec39853a4cde"
@@ -2781,6 +2781,9 @@
     },
     "data/firm_longevity.csv": {
       "checksum": "82c14a2d91ff7f3618f5a0d8fed8435c"
+    },
+    "data/gcp_fit_1955.csv": {
+      "checksum": "197c6118827cfe113c8946254df8039f"
     },
     "data/geocoding_validation_frs.csv": {
       "checksum": "460a892b8095528551157ec444139604"
@@ -3157,6 +3160,12 @@
     "data/zoning_1944.geojson": {
       "checksum": "9df5e00b13cfeccfdd795573cdabb174"
     },
+    "data/zoning_1955.geojson": {
+      "checksum": "6040b0011a14b65afc3ab47a94fc92d6"
+    },
+    "data/zoning_1955_km2.csv": {
+      "checksum": "919622b779ad3c31966da9743a710320"
+    },
     "data/zoning_2023_categories.geojson": {
       "checksum": "3fdc6ae6e5621a5e81e184069d330fdb"
     },
@@ -3164,7 +3173,7 @@
       "checksum": "daf2f3a0a2b0ff186e6d074fab0e1197"
     },
     "data/zoning_by_holc_grade_years.csv": {
-      "checksum": "211f3713ae6305e1efb77292e97cc849"
+      "checksum": "30144665a06141665365aced397754af"
     },
     "data/zoning_change_by_holc_grade.csv": {
       "checksum": "9d4da57c2f646f523cdf3df503765d4c"
@@ -3173,7 +3182,7 @@
       "checksum": "ce9868045d89b063a865f9d0ab2668cd"
     },
     "data/zoning_land_by_year.csv": {
-      "checksum": "c7927051c80f8b1970c7a2b958a8fa06"
+      "checksum": "657b768d45c40eae45bfb8bbd7aa19c2"
     },
     "data/zoning_over_time_notes.txt": {
       "checksum": "2eb983490ca7065f67e1240b73d66ffb"
@@ -3185,7 +3194,7 @@
       "checksum": "c4bab02a2a7323414c98e674320627e5"
     },
     "data/zoning_sites_by_year.csv": {
-      "checksum": "bb809a0d489cf32cecb97d45612f8784"
+      "checksum": "a7b5e6f8ca6e2dc7a827875abf45a6e5"
     },
     "data/zoning_today_categories.geojson": {
       "checksum": "2de5b1db6e35ec04fc170565536c1a90"

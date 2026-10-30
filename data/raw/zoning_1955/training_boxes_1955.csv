@@ -1,0 +1,34 @@
+cls,x0,y0,x1,y1,where
+I2,3740,600,4130,710,north of 46th Ave west of Holly
+I2,4150,600,4490,850,north of Smith Rd
+I2,1530,1800,1770,2200,Platte valley west of Union Station
+I2,2850,860,3000,985,Globeville east of Brighton Blvd
+I2,3740,545,3925,868,east of Colorado Blvd at 46th Ave
+I1,4000,895,4500,1130,between 38th Ave and Smith Rd
+I1,3525,545,3725,720,west of Colorado Blvd at 46th Ave
+I1,2630,880,2870,1100,Brighton Blvd
+O1,3745,885,3985,1255,Park Hill golf course
+O1,4850,2850,5100,3100,Lowry Air Force Base
+O1,4790,1115,4905,1410,Stapleton
+O1,4925,1115,5100,1400,Stapleton
+O1,2000,4250,2200,4520,Overland Park golf course
+R1,2660,4100,2800,4800,east of Pennsylvania St south of Louisiana Ave
+R1,3450,4586,3719,4780,west of Colorado Blvd south of Evans Ave
+R1,5000,1975,5375,2194,west of Yosemite St north of 16th Ave
+R2,4000,1150,4500,1280,south of 38th Ave
+R2,2380,4100,2640,4500,east of Broadway south of Louisiana Ave
+R3,2490,2300,2790,2680,Capitol Hill
+R3,2369,3192,2600,3330,east of Broadway south of Ellsworth Ave
+R4,2410,1990,2800,2100,north of 17th Ave east of Lincoln St
+R4,2410,2150,2800,2270,south of 17th Ave east of Lincoln St
+B4,2000,2290,2390,2500,Civic Center
+B4,2330,4100,2370,4800,South Broadway
+B4,3450,2244,3719,2287,East Colfax Ave
+B5,1980,1930,2390,2260,downtown
+X,160,2000,380,2400,outside the city west of Sheridan Blvd
+X,2100,5110,2600,5320,outside the city south of Yale Ave
+X,5420,1990,5600,2200,outside the city east of Yosemite St
+R1,3360,2510,3650,2700,east of Fillmore St between 6th and 9th Ave
+R1,1760,3720,1930,3940,curving streets west of Pecos St at Tennessee Ave
+I1,1945,3740,2050,3940,east of Pecos St at Tennessee Ave
+I1,1900,4600,1990,4800,south of Evans Ave east of Pecos St

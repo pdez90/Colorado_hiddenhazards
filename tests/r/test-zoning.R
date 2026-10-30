@@ -40,3 +40,14 @@ test_that("zoning_over_time city_cat(): the city layer's districts", {
   expect_equal(EOT$city_cat(c("I-MX-3", "I-A", "C-MX-5", "E-SU-D", "PUD-G 1", "OS-A"), c("Industrial", "Industrial", "Commercial Mixed Use", "Residential", "PUD", "Open Space")),
                c("Industrial mixed use", "Industrial", "Commercial or mixed use", "Residential", "PUD (custom district)", "Open space, civic, other"))
 })
+
+test_that("zoning 1955 inputs: industrial cell runs are disjoint I-1/I-2 runs on the scan's 16-px grid, and the 23 control points fit to within 20 m", {
+  cl <- fread(file.path(ROOT, "data/raw/zoning_1955/zone_cells_1955.csv"))
+  expect_setequal(unique(cl$zone), c("I-1", "I-2")); expect_true(all(cl$col1 >= cl$col0))
+  expect_true(all(cl$row >= 0 & cl$row < 5847 %/% 16 & cl$col1 < 6000 %/% 16))
+  ov <- cl[, .(c = unlist(Map(seq, col0, col1))), by = row][, .N, by = .(row, c)]; expect_true(all(ov$N == 1))   # no cell in two runs
+  g <- fread(file.path(ROOT, "data/raw/zoning_1955/gcps_1955.csv")); expect_equal(nrow(g), 23L)
+  fx <- lm(X ~ px_x + px_y + I(px_x^2) + I(px_x * px_y) + I(px_y^2), g); fy <- lm(Y ~ px_x + px_y + I(px_x^2) + I(px_x * px_y) + I(px_y^2), g)
+  expect_lt(sqrt(mean(residuals(fx)^2 + residuals(fy)^2)), 20)
+  ck <- fread(file.path(ROOT, "data/raw/zoning_1955/check_sample_1955.csv")); expect_equal(nrow(ck), 60L); expect_gte(mean(ck$predicted == ck$judged), 0.95)
+})

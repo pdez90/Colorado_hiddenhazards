@@ -468,13 +468,35 @@ Denver-metro zoning of 3 October 2023 compiled by Carrie Makarewicz (University 
 sites and the 147 study tracts by 2023 zoning category (industrial without housing, Denver's I-MX industrial mixed use, other mixed use
 with housing, residential, commercial, other) into `data/results/zoning_2023/`.
 
+### Zoning in 1955 (`pipeline/zoning/classify_zoning_1955.py`, `R/zoning_1955.R`)
+*Zone map, City and County of Denver*, prepared by the Department of Zoning Administration, 1 July 1955 (History Colorado, Stephen H.
+Hart Research Center, rG4314 .D4G44 1955 .D4; credit line: History Colorado-Denver, Colorado). It is the map of the comprehensive
+ordinance that replaced the 1925 one (Ordinance No. 16, Series of 1955, itself replaced in 1956 by Ordinance No. 392, the code today's
+city map calls "Former Chapter 59"), with fifteen districts printed as black-and-white patterns (R-0 to R-4, B-1 to B-5, I-0 to I-2,
+O-1, P-1). The 600-dpi scan (6,000 × 5,847 px) is licensed for this publication only and is **not** in the repository: place it as
+`work/zoning/zone_map_1955_history_colorado.tif`. `python3 pipeline/zoning/classify_zoning_1955.py` labels 16-px cells (about 46 m)
+with a random forest trained on hand-drawn boxes of known pattern (`data/raw/zoning_1955/training_boxes_1955.csv`; features: ink
+share, dots, rings, vertical and horizontal dashes, connected networks, gradient orientation and the spectrum of the 64-px window) and
+keeps the industrial districts, I-1 (vertical dashes) and I-2 (rings of dots); the map shows no I-0 land. Clusters under 100 cells
+are dropped (the two largest were park drawings). Business districts are not used: on a random check, cells predicted as business on
+the edges of the narrow B-4 strips were mostly residential. Of 60 random cells, 30 predicted industrial and 30 predicted not industrial
+within about 550 m of an industrial district, 58 were right when judged by eye on the scan, and I-1 against I-2 agreed for 26 of 28
+(`data/raw/zoning_1955/check_sample_1955.csv`). The cells (`zone_cells_1955.csv`, runs of industrial cells) are placed by
+`Rscript R/zoning_1955.R` with 23 street intersections read off the scan and located on TIGER/Line 2023 address features
+(`gcps_1955.csv`): a second-order polynomial fits them with RMSE 13 m (leave-one-out 17 m; affine 21 m). Result: 15.5 km² of I-1 and
+17.3 km² of I-2 (`data/results/zoning_1955/`). On the land both earlier sheets cover, industrial zoning grew from 27.8 km² (1944) to
+32.5 km² (1955): 22.3 km² industrial in both years, 10.2 km² added and 5.5 km² dropped (part of each is edge misregistration: the two
+maps are each placed to within 20–30 m, which along the districts' boundaries (86 km for 1955) amounts to a few km²). Of the added land, 2.7 km² lay in HOLC D areas; C areas lost
+almost all of their small industrial share (1.6% → 0.1%).
+
 ### Zoning, 1929 to today (`R/fetch_zoning_city.R`, `R/zoning_over_time.R`)
-Every Denver zoning map available in digital form, on one geography and one set of categories: 1929 and 1944 (above), the 2023
+Every Denver zoning map available in digital form, on one geography and one set of categories: 1929, 1944 and 1955 (above), the 2023
 National Zoning Atlas layer, and the city's official zoning map today (`Rscript R/fetch_zoning_city.R` downloads it from Denver's open
-data, layer CCD_Zoning/27, into `work/zoning_city/`; each district carries the year of the ordinance that last zoned it). The 1956
-ordinance's map and later citywide maps before 2010 are not digitised (Denver Public Library holds them in print). `Rscript
+data, layer CCD_Zoning/27, into `work/zoning_city/`; each district carries the year of the ordinance that last zoned it). Citywide
+maps between 1955 and 2010 are not digitised (Denver Public Library holds them in print). `Rscript
 R/zoning_over_time.R` writes to `data/results/zoning_over_time/`: industrial land by year and by HOLC grade on the 202 km² of Denver
-County covered by both historical sheets (14.0% → 13.8% → 10.6% → 10.4%; D land 16.3% → 12.2%); what the 1929 industrial land is zoned
+County covered by both 1929/1944 sheets (1929, 1944, 1955, 2023, today: 14.0% → 13.8% → 16.1% → 10.6% → 10.4%; D land 16.3% → 16.1%
+→ 21.3% → 12.4% → 12.2%); what the 1929 industrial land is zoned
 today and the year of its last zoning ordinance (an upper bound on when it left industrial zoning, since earlier rezonings are not
 recorded); the share of sites in industrial districts each year; tracts industrial in 1929 and/or today with their 1970–2020
 composition; and dissolved category polygons for the site's maps.
@@ -595,7 +617,7 @@ The census chain (NHGIS/IPUMS keys in `~/.Renviron`) runs in this order, because
 `Rscript R/fetch_census.R` (NHGIS extracts, tract panel 1940-2020) → `Rscript R/fetch_ipums_fullcount.R` and `Rscript R/grf_eds.R 1900 1910 1920 1930 1940`
 (Denver districts) → `Rscript R/denver_eds_analysis.R` → `Rscript R/county_panel_1880_1940.R` → `Rscript R/ej_panel.R` → `Rscript R/fetch_hmda.R` →
 `Rscript R/app_census_layers.R` (writes `app/data/tract_panel.csv`) → `Rscript R/known_hidden_sensitivity.R` (known vs hidden under six matching rules) → `Rscript R/holc_covenants.R` (reads it; stops if it is stale) →
-`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` → `Rscript R/landuse_1937_1997.R` → `Rscript R/fetch_highways.R` → `Rscript R/highways_denver.R` → `Rscript R/mortality_block.R` (restricted data; analyst's machine) → `Rscript R/mortality_redevelopment.R` (same) → `Rscript R/censoc_denver_1940.R` (after downloading CenSoc) → `Rscript R/censoc_extensions.R` → `Rscript R/censoc_enlistment.R` → `Rscript R/fetch_ipums_mlp.R` → `Rscript R/mlp_residential_history.R` → `Rscript R/fetch_context_layers.R` → `Rscript R/context_layers.R` →
+`Rscript R/zoning_1925.R` (1929 zoning shares; then `Rscript R/holc_covenants.R` again for the zoning-adjusted gaps) → `Rscript R/zoning_1944.R` → `python3 pipeline/zoning/classify_zoning_1955.py` (needs the licensed 1955 scan; its output is committed) → `Rscript R/zoning_1955.R` → `Rscript R/denver_tracts_1950_2020.R` → `Rscript R/site_fate.R` → `Rscript R/zoning_2023.R` → `Rscript R/fetch_zoning_city.R` → `Rscript R/zoning_over_time.R` → `Rscript R/landuse_1937_1997.R` → `Rscript R/fetch_highways.R` → `Rscript R/highways_denver.R` → `Rscript R/mortality_block.R` (restricted data; analyst's machine) → `Rscript R/mortality_redevelopment.R` (same) → `Rscript R/censoc_denver_1940.R` (after downloading CenSoc) → `Rscript R/censoc_extensions.R` → `Rscript R/censoc_enlistment.R` → `Rscript R/fetch_ipums_mlp.R` → `Rscript R/mlp_residential_history.R` → `Rscript R/fetch_context_layers.R` → `Rscript R/context_layers.R` →
 `Rscript R/benchmarks.R` (CBP, NHGIS county manufacturing and the Atack samples; needs network and the NHGIS key) →
 `Rscript R/edition_coverage.R` (per-edition pages, listings, hazardous firms and completeness for both directory series → app/data/edition_coverage.csv;
 twelve of the 25 manufacturers' directory editions are partial scans that stop part-way through the geographic section — complete: 1965–68, 1970, 1973–74, 1977, 1980, 1983, 1988, 1990, 1992 — flagged on the Trends and Data tabs; the complete editions are the ones that match CBP best).
@@ -670,7 +692,7 @@ shiny::runApp("app")
   layers for EPA TRI facilities, schools, hospitals, clinics, residential care, brownfields, voluntary cleanup, Superfund, RCRA corrective
   action and land-use controls; census tracts shaded by any EnviroScreen indicator; the 1933 aerial survey, Sanborn volume extents and the
   1903–04 sheet images and blocks, zone-map changes 1925–1956, petroleum releases, urban-renewal projects, Superfund operable units, the
-  zoning maps of 1929, 1944, 2023 and today, and the USGS land-use maps of 1937–1997.
+  zoning maps of 1929, 1944, 1955 (industrial districts), 2023 and today, and the USGS land-use maps of 1937–1997.
   An **industrial corridors** layer draws every 500 m cell with a manufacturer in the complete editions 1965–1992, coloured by persistence class
   (persistent, sector turnover, intermittent, former, emerging), sized by peak firms, with the pre-1960 trades in the cell in the popup.
 * **Trends** – both directory series on one timeline; sites per edition by sector and by status; share on no inventory; pre-1960
@@ -682,7 +704,7 @@ shiny::runApp("app")
     active hazardous firm, legacy-only and never, by census 1940–2020; the hybrid panel models and the reverse ("who predicts where industry
     goes") model for the Denver core. The underlying `app/data/tract_panel.csv` holds all 1,249 Colorado tracts (2010 boundaries; Denver only
     before 1960, the big metros from 1960, the whole state from 1990); the app shows and downloads the 147 study tracts.
-  * **What became of the sites** – Denver sites on today's assessor parcels, and zoning 1929 → 1944 → 2023 → today.
+  * **What became of the sites** – Denver sites on today's assessor parcels, and zoning 1929 → 1944 → 1955 → 2023 → today.
   * **Before zoning: 1903** – housing next to industry on the 1903–04 Sanborn sheets, and the zone-map changes of 1925–1956.
   * **Land use & freeways** – the USGS land-use maps, freeways by decade and HOLC grade, the freeway event study, urban-renewal case studies.
   * **Lifespan of 1940 residents** – CenSoc age at death and WWII enlistment by 1940 address (aggregates only).

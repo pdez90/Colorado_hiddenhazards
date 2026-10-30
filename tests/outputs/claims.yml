@@ -430,16 +430,35 @@
 
 - id: readme_zoning_industrial_land_over_time
   file: README.md
-  text: "(14.0% → 13.8% → 10.6% → 10.4%; D land 16.3% → 12.2%)"
+  text: "14.0% → 13.8% → 16.1% → 10.6% → 10.4%; D land 16.3% → 16.1%\n→ 21.3% → 12.4% → 12.2%)"
   check: >-
-    (lambda z, g: [z[(z.cat == 'Industrial') & (z.year.astype(str) == y)].pct.iloc[0] for y in ('1929', '1944', '2023', 'today')] +
-    [g[(g.grade == 'D') & (g.year.astype(str) == '1929')].pct_industrial.iloc[0], g[(g.grade == 'D') & (g.year.astype(str) == 'today')].pct_industrial.iloc[0]])(
+    (lambda z, g: [z[(z.cat == 'Industrial') & (z.year.astype(str) == y)].pct.iloc[0] for y in ('1929', '1944', '1955', '2023', 'today')] +
+    [g[(g.grade == 'D') & (g.year.astype(str) == y)].pct_industrial.iloc[0] for y in ('1929', '1944', '1955', '2023', 'today')])(
     load('app/data/zoning_land_by_year.csv'), load('app/data/zoning_by_holc_grade_years.csv'))
-  expect: [14.0, 13.8, 10.6, 10.4, 16.3, 12.2]
+  expect: [14.0, 13.8, 16.1, 10.6, 10.4, 16.3, 16.1, 21.3, 12.4, 12.2]
+
+- id: readme_zoning_1955_districts
+  file: README.md
+  text: "15.5 km² of I-1 and\n17.3 km² of I-2"
+  check: "(lambda z: [z[z.zone == 'I-1'].km2.iloc[0], z[z.zone == 'I-2'].km2.iloc[0]])(load('app/data/zoning_1955_km2.csv'))"
+  expect: [15.5, 17.3]
+
+- id: readme_zoning_1955_check_sample
+  file: README.md
+  text: "Of 60 random cells, 30 predicted industrial and 30 predicted not industrial"
+  check: "(lambda d: [len(d), int((d.predicted == d.judged).sum())])(load('data/raw/zoning_1955/check_sample_1955.csv'))"
+  expect: [60, 58]
+
+- id: readme_zoning_1955_gcp_fit
+  file: README.md
+  text: "RMSE 13 m (leave-one-out 17 m; affine 21 m)"
+  check: "(lambda g: [len(g), (g.residual_poly2_m ** 2).mean() ** 0.5, (g.loo_poly2_m ** 2).mean() ** 0.5, (g.residual_affine_m ** 2).mean() ** 0.5])(load('app/data/gcp_fit_1955.csv'))"
+  expect: [23, 13, 17, 21]
+  tol: 0.5
 
 - id: readme_zoning_202_km2
   file: README.md
-  text: "on the 202 km² of Denver\nCounty covered by both historical sheets"
+  text: "on the 202 km² of Denver\nCounty covered by both 1929/1944 sheets"
   check: "(lambda z: z[z.year.astype(str) == '1929'].km2.sum())(load('app/data/zoning_land_by_year.csv'))"
   expect: 202
 

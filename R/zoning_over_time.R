@@ -3,12 +3,14 @@
 # Maps:
 #   1929   1925 ordinance as amended to 1 Jan 1929 (DPL scan; R/zoning_1925.R). Only industrial and commercial districts were classified.
 #   1944   the same map as amended to 1 Apr 1944 (DPL scan; R/zoning_1944.R).
+#   1955   zone map of 1 Jul 1955, Department of Zoning Administration (History Colorado scan; R/zoning_1955.R). Only the industrial
+#          districts (I-1, I-2) were classified.
 #   2023   Denver-metro zoning of 3 Oct 2023, C. Makarewicz (CU Denver) for the National Zoning Atlas, harmonised categories (R/zoning_2023.R).
 #   today  City and County of Denver official zoning (CCD_Zoning layer 27, downloaded by R/fetch_zoning_city.R); every district carries
 #          the year of the ordinance that last zoned it (ORD_YEAR) and the code it falls under (2010 Denver Zoning Code, or the 1956 code,
 #          "Former Chapter 59", where land was never remapped).
-# The 1956 ordinance's own map, and any later citywide map before 2010, have not been digitised (DPL holds zoning maps and the 1925-69
-# Board of Adjustment records in print only), so the series has a gap between 1944 and 2023.
+# No citywide map between 1955 and 2010 has been digitised (DPL holds zoning maps and the 1925-69 Board of Adjustment records in print
+# only), so the series has a gap between 1955 and 2023.
 # Categories: industrial (housing not allowed: 1925 Industrial A/B; today I-A, I-B and the 1956-code I-0/I-1/I-2; NZA "Industrial");
 #   industrial mixed use (Denver's I-MX districts, which allow housing; 2010 onward); commercial (1925 Commercial district; today and 2023
 #   commercial and mixed-use districts that allow housing: in the city layer every "Commercial Mixed Use" district does; in the 2023 NZA
@@ -26,7 +28,7 @@
 #   zoning_today_categories.geojson, zoning_2023_categories.geojson   category polygons (dissolved) for the site's maps
 suppressPackageStartupMessages({ library(sf); library(data.table) })
 sf_use_s2(FALSE); UTM <- 26913; O <- "data/results/zoning_over_time"; A <- "app/data"; R0 <- "data/raw/zoning_1929"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
-CATS <- c("Industrial", "Industrial mixed use", "Commercial or mixed use", "Commercial (housing not allowed)", "Residential", "PUD (custom district)", "Open space, civic, other", "Residence or business (1929, 1944)")
+CATS <- c("Industrial", "Industrial mixed use", "Commercial or mixed use", "Commercial (housing not allowed)", "Residential", "PUD (custom district)", "Open space, civic, other", "Residence or business (1929, 1944)", "Other districts (1955)")
 # ---------------------------------------------------------------- geographies
 tr <- st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM); tr$core <- as.logical(tr$core) %in% TRUE
 DEN <- st_union(st_make_valid(tr[substr(tr$GEOID, 1, 5) == "08031", ]))
@@ -43,6 +45,8 @@ message(sprintf("Land mapped in 1929 and 1944 within Denver County: %.1f km2 (of
 hist_cat <- function(f, yr) { z <- st_make_valid(st_transform(st_read(f, quiet = TRUE), UTM))
   z$cat <- ifelse(grepl("Industrial", z$zone), "Industrial", "Commercial or mixed use"); z <- aggregate(z[, "cat"], list(cat = z$cat), function(x) x[1])[, "cat"]; z$year <- yr; z }
 Z29 <- hist_cat(file.path(A, "zoning_1929.geojson"), "1929"); Z44 <- hist_cat(file.path(A, "zoning_1944.geojson"), "1944")
+Z55 <- st_make_valid(st_transform(st_read(file.path(A, "zoning_1955.geojson"), quiet = TRUE), UTM)); Z55$cat <- "Industrial"
+Z55 <- aggregate(Z55[, "cat"], list(cat = Z55$cat), function(x) x[1])[, "cat"]; Z55$year <- "1955"
 city <- st_make_valid(st_transform(st_read("work/zoning_city/denver_zoning_current.geojson", quiet = TRUE), UTM))
 city_cat <- function(zone_district, zone_dist_type) fcase(grepl("^I-MX", zone_district), "Industrial mixed use", zone_dist_type == "Industrial", "Industrial",
                   zone_dist_type == "Commercial Mixed Use", "Commercial or mixed use", zone_dist_type == "Residential", "Residential",
@@ -60,17 +64,18 @@ ZT <- diss(city, DEN, "today"); Z23 <- diss(nza, STUDY, "2023")
 # ---------------------------------------------------------------- 1. land by year on the land mapped in 1929 and 1944
 land <- function(z, yr) { it <- suppressWarnings(st_intersection(z, COMMON)); d <- data.table(cat = it$cat, km2 = as.numeric(st_area(it)) / 1e6)[, .(km2 = sum(km2)), by = cat]
   if (yr %in% c("1929", "1944")) d <- rbind(d, data.table(cat = "Residence or business (1929, 1944)", km2 = common_km2 - sum(d$km2)))
+  if (yr == "1955") d <- rbind(d, data.table(cat = "Other districts (1955)", km2 = common_km2 - sum(d$km2)))
   d[, `:=`(year = yr, pct = 100 * km2 / common_km2)] }
-R1 <- rbindlist(lapply(list(list(Z29, "1929"), list(Z44, "1944"), list(Z23, "2023"), list(ZT, "today")), function(x) land(x[[1]], x[[2]])))
+R1 <- rbindlist(lapply(list(list(Z29, "1929"), list(Z44, "1944"), list(Z55, "1955"), list(Z23, "2023"), list(ZT, "today")), function(x) land(x[[1]], x[[2]])))
 R1[, cat := factor(cat, CATS)]; R1 <- R1[order(year, cat)][, `:=`(km2 = round(km2, 2), pct = round(pct, 1))]
 fwrite(R1, file.path(O, "zoning_land_by_year.csv")); print(dcast(R1, cat ~ year, value.var = "pct", fill = 0))
 # ---------------------------------------------------------------- 2. HOLC grades
 H <- st_make_valid(st_transform(st_read(file.path(A, "holc_denver.geojson"), quiet = TRUE), UTM)); H <- H[H$grade %in% c("A", "B", "C", "D"), "grade"]
 HC <- suppressWarnings(st_intersection(H, COMMON)); ga <- data.table(grade = HC$grade, km2 = as.numeric(st_area(HC)) / 1e6)[, .(grade_km2 = sum(km2)), by = grade]
-R2 <- rbindlist(lapply(list(list(Z29, "1929"), list(Z44, "1944"), list(Z23, "2023"), list(ZT, "today")), function(x) {
+R2 <- rbindlist(lapply(list(list(Z29, "1929"), list(Z44, "1944"), list(Z55, "1955"), list(Z23, "2023"), list(ZT, "today")), function(x) {
   it <- suppressWarnings(st_intersection(x[[1]][x[[1]]$cat %in% c("Industrial", "Industrial mixed use"), ], HC))
   data.table(grade = it$grade, cat = it$cat, km2 = as.numeric(st_area(it)) / 1e6)[, .(industrial = sum(km2[cat == "Industrial"]), industrial_mx = sum(km2)), by = grade][, year := x[[2]]] }))
-R2 <- merge(CJ(grade = ga$grade, year = c("1929", "1944", "2023", "today")), R2, by = c("grade", "year"), all.x = TRUE)
+R2 <- merge(CJ(grade = ga$grade, year = c("1929", "1944", "1955", "2023", "today")), R2, by = c("grade", "year"), all.x = TRUE)
 for (v in c("industrial", "industrial_mx")) set(R2, which(is.na(R2[[v]])), v, 0)
 R2 <- merge(R2, ga, by = "grade")[, `:=`(pct_industrial = round(100 * industrial / grade_km2, 1), pct_industrial_incl_imx = round(100 * industrial_mx / grade_km2, 1))]
 R2 <- R2[, .(grade, year, grade_km2 = round(grade_km2, 1), pct_industrial, pct_industrial_incl_imx)][order(grade, year)]
@@ -95,10 +100,10 @@ Hs <- fread(file.path(A, "historical_sites.csv"), colClasses = c(GEOID = "charac
 pts <- function(d, lab) { p <- st_transform(st_as_sf(d, coords = c("lon", "lat"), crs = 4326), UTM); p <- p[lengths(st_intersects(p, COMMON)) > 0, ]; p$series <- lab; p[, "series"] }
 SP <- rbind(pts(S, "Hazardous-sector manufacturers 1965-1992"), pts(Hs, "Hazardous trades before 1960 (street level)"))
 zon_at <- function(z) { j <- st_join(SP[, "series"], z[, "cat"], left = TRUE); j <- j[!duplicated(attr(j, "row.names") %/% 1), ]; j$cat }
-R4 <- rbindlist(lapply(list(list(Z29, "1929"), list(Z44, "1944"), list(Z23, "2023"), list(ZT, "today")), function(x) {
+R4 <- rbindlist(lapply(list(list(Z29, "1929"), list(Z44, "1944"), list(Z55, "1955"), list(Z23, "2023"), list(ZT, "today")), function(x) {
   k <- st_intersects(SP, x[[1]]); cat <- vapply(k, function(i) if (length(i)) x[[1]]$cat[i[1]] else NA_character_, "")
   data.table(series = SP$series, cat = cat)[, .(sites = .N, pct_industrial = round(100 * mean(cat %in% "Industrial"), 1), pct_industrial_incl_imx = round(100 * mean(cat %in% c("Industrial", "Industrial mixed use")), 1),
-                                                pct_housing_allowed = if (x[[2]] %in% c("1929", "1944")) NA_real_ else round(100 * mean(cat %in% c("Industrial mixed use", "Commercial or mixed use", "Residential")), 1)), by = series][, year := x[[2]]] }))
+                                                pct_housing_allowed = if (x[[2]] %in% c("1929", "1944", "1955")) NA_real_ else round(100 * mean(cat %in% c("Industrial mixed use", "Commercial or mixed use", "Residential")), 1)), by = series][, year := x[[2]]] }))
 fwrite(R4, file.path(O, "zoning_sites_by_year.csv")); print(R4)
 # ---------------------------------------------------------------- 5. tracts: industrial in 1929 and today
 core <- tr[tr$core, "GEOID"]; core$km2 <- as.numeric(st_area(core)) / 1e6
