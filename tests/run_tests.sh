@@ -6,9 +6,11 @@
 #   tests/run_tests.sh --python   # Python suites only;  --r : R suite only
 #
 # Exit status is non-zero if any suite fails. Extra arguments after `--` go to pytest.
+# The Python suites use $PYTHON if set (e.g. PYTHON=/opt/miniconda3/bin/python3 tests/run_tests.sh), else python3.
 set -u
 cd "$(dirname "$0")/.." || exit 2
 export LANG=C.UTF-8 LC_ALL=C.UTF-8
+PY="${PYTHON:-python3}"
 
 FAST=0; RUN_PY=1; RUN_R=1; PYTEST_EXTRA=()
 while [ $# -gt 0 ]; do
@@ -17,7 +19,7 @@ while [ $# -gt 0 ]; do
     --python) RUN_R=0 ;;
     --r) RUN_PY=0 ;;
     --) shift; PYTEST_EXTRA=("$@"); break ;;
-    -h|--help) sed -n '2,9p' "$0"; exit 0 ;;
+    -h|--help) sed -n '2,10p' "$0"; exit 0 ;;
     *) echo "unknown option: $1" >&2; exit 2 ;;
   esac
   shift
@@ -46,7 +48,7 @@ if [ $RUN_PY -eq 1 ]; then
     # one pytest process per suite: each has its own conftest.py (same module name) and the
     # digitization suite chdirs into a scratch workspace, so they must not share a process
     for d in "${PY_DIRS[@]}"; do
-      run_suite "python ($d)" python3 -m pytest "$d" ${MARK[@]+"${MARK[@]}"} -p no:cacheprovider ${PYTEST_EXTRA[@]+"${PYTEST_EXTRA[@]}"} || overall=1
+      run_suite "python ($d)" "$PY" -m pytest "$d" ${MARK[@]+"${MARK[@]}"} -p no:cacheprovider ${PYTEST_EXTRA[@]+"${PYTEST_EXTRA[@]}"} || overall=1
     done
   fi
 fi
