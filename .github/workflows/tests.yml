@@ -48,6 +48,7 @@ jobs:
         with:
           packages: |
             any::data.table
+            any::RANN
             any::sf
             any::testthat
             any::jsonlite
