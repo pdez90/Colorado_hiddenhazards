@@ -178,74 +178,73 @@
 # ------------------------------------------------------------------ README: corridors
 - id: readme_corridor_cells
   file: README.md
-  text: "1,453 cells, of which 290 persistent (231 with sector"
+  text: "1,509 cells, of which 332 persistent (241 with sector"
   check: >-
     (lambda m: [len(m), m['class'].str.startswith('persistent').sum(), (m['class'] == 'persistent, sector turnover').sum(),
     (m['class'] == 'emerging').sum(), m['class'].str.startswith('former').sum()])((lambda c: c[c.metro])(load('app/data/corridor_cells.csv')))
-  expect: [1453, 290, 231, 633, 242]
+  expect: [1509, 332, 241, 592, 280]
 
 - id: readme_corridor_emerging_former
   file: README.md
-  text: "633 emerging, 242 former"
+  text: "592 emerging, 280 former"
   check: "(lambda m: [(m['class'] == 'emerging').sum(), m['class'].str.startswith('former').sum()])((lambda c: c[c.metro])(load('app/data/corridor_cells.csv')))"
-  expect: [633, 242]
+  expect: [592, 280]
 
 - id: readme_entry_model_elasticities
   file: README.md
-  text: "pooled Poisson elasticity 0.99 for own stock, 0.30 for"
+  text: "pooled Poisson elasticity 0.95 for own stock, 0.29 for"
   check: >-
     (lambda e: [e[e.term == 'log1p(stock_lag)'].estimate.iloc[0], e[e.term == 'log1p(nb_lag)'].estimate.iloc[0], e[e.term == 's_dm'].estimate.iloc[0]])(load('data/results/corridors/entry_models.csv'))
-  expect: [0.99, 0.30, 0.12]
+  expect: [0.95, 0.29, 0.12]
 
 # ------------------------------------------------------------------ README: EJ panel
 - id: readme_ej_panel_hispanic_between
   file: README.md
-  text: "**+17.6 (3.9, p < 0.001)**"
+  text: "**+16.8 (3.5, p < 0.001)**"
   check: "(lambda e: (lambda r: [r.b, r.se, r.n])(e[(e.outcome == 'p_hisp') & (e.term == 'act_b') & e.model.str.startswith('hybrid')].iloc[0]))(load('app/data/ej_panel_models.csv'))"
-  expect: [17.6, 3.9, 437]
+  expect: [16.8, 3.5, 437]
 
 - id: readme_ej_panel_white_between
   file: README.md
-  text: "**−10.4 (3.5, p = 0.003)**"
+  text: "**−8.7 (4.2, p = 0.039)**"
   check: "(lambda e: (lambda r: [r.b, r.se, r.p])(e[(e.outcome == 'p_white') & (e.term == 'act_b') & e.model.str.startswith('hybrid')].iloc[0]))(load('app/data/ej_panel_models.csv'))"
-  expect: [-10.4, 3.5, 0.003]
+  expect: [-8.7, 4.2, 0.039]
 
 - id: readme_ej_panel_poverty_between
   file: README.md
-  text: "**+5.8 (1.6, p < 0.001)**"
+  text: "**+5.3 (1.7, p = 0.002)**"
   check: "(lambda e: (lambda r: [r.b, r.se])(e[(e.outcome == 'ppov') & (e.term == 'act_b') & e.model.str.startswith('hybrid')].iloc[0]))(load('app/data/ej_panel_models.csv'))"
-  expect: [5.8, 1.6]
+  expect: [5.3, 1.7]
 
 - id: readme_ej_panel_home_value_between
   file: README.md
-  text: "**−0.22 (0.04, p < 0.001)**"
+  text: "**−0.24 (0.04, p < 0.001)**"
   check: "(lambda e: (lambda r: [r.b, r.se])(e[(e.outcome == 'lmval') & (e.term == 'act_b') & e.model.str.startswith('hybrid')].iloc[0]))(load('app/data/ej_panel_models.csv'))"
-  expect: [-0.22, 0.04]
+  expect: [-0.24, 0.04]
 
 - id: readme_ej_reverse_hispanic
   file: README.md
-  text: "**+0.052 (0.014, p = 0.0001)**"
+  text: "**+0.048 (0.013, p = 0.0001)**"
   check: "(lambda r: [r.b, r.se, r.p, r.n])((lambda d: d[d.predictor == 'p_hisp'].iloc[0])(load('app/data/ej_panel_reverse.csv')))"
-  expect: [0.052, 0.014, 0.0001, 290]
+  expect: [0.048, 0.013, 0.0001, 290]
 
 - id: readme_ej_reverse_foreign_born
   file: README.md
-  text: "**−0.128 (0.054, p = 0.019)**"
+  text: "**−0.113 (0.054, p = 0.039)**"
   check: "(lambda r: [r.b, r.se, r.p])((lambda d: d[d.predictor == 'p_fb'].iloc[0])(load('app/data/ej_panel_reverse.csv')))"
-  expect: [-0.128, 0.054, 0.019]
+  expect: [-0.113, 0.054, 0.039]
 
 - id: readme_ej_reverse_poverty
   file: README.md
-  text: "**+0.087 (0.035, p = 0.013)**"
+  text: "**+0.072 (0.036, p = 0.045)**"
   check: "(lambda r: [r.b, r.se, r.p])((lambda d: d[d.predictor == 'ppov'].iloc[0])(load('app/data/ej_panel_reverse.csv')))"
-  expect: [0.087, 0.035, 0.013]
+  expect: [0.072, 0.036, 0.045]
 
 - id: readme_ej_reverse_home_value
   file: README.md
-  text: "**−1.6 (0.77, p = 0.04)**"
+  text: "**−2.6 (0.84, p = 0.002)**"
   check: "(lambda r: [r.b, r.se, r.p])((lambda d: d[d.predictor == 'lmval'].iloc[0])(load('app/data/ej_panel_reverse.csv')))"
-  expect: [-1.6, 0.77, 0.04]
-  stale: "uses the site inventory; the README value predates the 28 October R rerun, and the 29 October inventory rebuild moves it again: update after the R chain reruns"
+  expect: [-2.6, 0.84, 0.002]
 
 - id: readme_study_tracts_147
   file: README.md
@@ -393,28 +392,27 @@
 
 - id: readme_ed_holc_classes_d_districts
   file: README.md
-  text: "the D districts, 7.3% Black in 1930, held 2.4 hazardous\nfirms per 10,000 residents before the map and 45 hazardous-sector sites per 10,000 in 1965–92, against 5.6 per 10,000 in A–C"
+  text: "the D districts, 7.3% Black in 1930, held 2.4 hazardous\nfirms per 10,000 residents before the map and 50 hazardous-sector sites per 10,000 in 1965–92, against 6.4 per 10,000 in A–C"
   check: >-
     (lambda d: (lambda D, ac: [(D.pct_black * D.population).sum() / D.population.sum(), 1e4 * D.firms_pre1938.sum() / D.population.sum(),
     1e4 * D.firms_1961_2002.sum() / D.population.sum(), 1e4 * ac.firms_1961_2002.sum() / ac.population.sum()])(
     d[(d.census == 1930) & (d.grade == 'D')], d[(d.census == 1930) & d.grade.isin(['A', 'B', 'C'])]))(load('app/data/ed_holc_classes.csv'))
-  expect: [7.3, 2.4, 45, 5.6]
+  expect: [7.3, 2.4, 50, 6.4]
 
 - id: readme_holc_industry_period_ratios
   file: README.md
-  text: "6.4× in 1906–20 (but on 13 firms in D against 3 in C), 1.7× in 1921–37 (8 against 9 firms) and 2.1×\nin 1938–56 (37 against 27), then 13.6× in 1965–80 (286 against 49) and 16.8× in 1981–92 (228 against 28)"
+  text: "6.4× in 1906–20 (but on 13 firms in D against 3 in C), 1.7× in 1921–37 (8 against 9 firms) and 2.1×\nin 1938–56 (37 against 27), then 13.8× in 1965–80 (318 against 52) and 18.2× in 1981–92 (234 against 31)"
   check: >-
     (lambda d: [v for per in ('1906-1920', '1921-1937', '1938-1956', '1965-1980', '1981-1992')
     for v in (d[(d.period == per) & (d.grade == 'D')].dc_ratio_within_period.iloc[0],
     d[(d.period == per) & (d.grade == 'D')].firms.iloc[0], d[(d.period == per) & (d.grade == 'C')].firms.iloc[0])])(load('app/data/holc_industry_periods.csv'))
-  expect: [6.4, 13, 3, 1.7, 8, 9, 2.1, 37, 27, 13.6, 286, 49, 16.8, 228, 28]
-  stale: "uses the site inventory; the README value predates the 28 October R rerun, and the 29 October inventory rebuild moves it again: update after the R chain reruns"
+  expect: [6.4, 13, 3, 1.7, 8, 9, 2.1, 37, 27, 13.8, 318, 52, 18.2, 234, 31]
 
 - id: readme_holc_industry_ratio_recomputed
   file: README.md
-  text: "then 13.6× in 1965–80 (286 against 49)"
+  text: "then 13.8× in 1965–80 (318 against 52)"
   check: "(lambda d: (lambda D, Cc: D.per_km2_per_edition.iloc[0] / Cc.per_km2_per_edition.iloc[0])(d[(d.period == '1965-1980') & (d.grade == 'D')], d[(d.period == '1965-1980') & (d.grade == 'C')]))(load('app/data/holc_industry_periods.csv'))"
-  expect: 13.6
+  expect: 13.8
   tol: 0.1
 
 # ------------------------------------------------------------------ README: zoning 1929/1944/today
@@ -477,9 +475,9 @@
 
 - id: app_site_fate_parcel_matches
   file: app/app.R
-  text: "984 of 986 manufacturers'-directory sites and 320 of 321 pre-1960 trades"
+  text: "1,112 of 1,112 manufacturers'-directory sites and 320 of 321 pre-1960 trades"
   check: "(lambda s, h: [(s.use_now != 'No parcel match').sum(), len(s), (h.use_now != 'No parcel match').sum(), len(h)])(load('app/data/site_fate_denver.csv'), load('app/data/site_fate_denver_pre1960.csv'))"
-  expect: [984, 986, 320, 321]
+  expect: [1112, 1112, 320, 321]
 
 - id: app_zoning_tract_paths_still_industrial
   file: app/app.R
@@ -644,9 +642,9 @@
 
 - id: sanborn_persistence_blocks
   file: data/results/sanborn_1903/summary.md
-  text: "| Blocks with a hazardous trade | 177 | 87.6 | 48.6 | 83.1 |"
+  text: "| Blocks with a hazardous trade | 177 | 91.5 | 58.2 | 84.2 |"
   check: "(lambda p: (lambda r: [r.n, r.pct_with_1965_92_site_150m, r.pct_with_hidden_site_150m, r.pct_with_known_site_150m])(p[p.what == 'Blocks with a hazardous trade'].iloc[0]))(load('app/data/sanborn1903_persist.csv'))"
-  expect: [177, 87.6, 48.6, 83.1]
+  expect: [177, 91.5, 58.2, 84.2]
 
 - id: sanborn_hazardous_blocks_count
   file: data/results/sanborn_1903/summary.md
@@ -752,18 +750,18 @@
 # ------------------------------------------------------------------ data/results/zoning_2023/zoning_2023_summary.md
 - id: zoning2023_denver_county_sites_row
   file: data/results/zoning_2023/zoning_2023_summary.md
-  text: "| Hazardous-sector manufacturers 1965-1992 | Denver County |  965 | 39.1 | 13.4 | 33.6 | 11.2 | 1.1 | 1.7 |"
+  text: "| Hazardous-sector manufacturers 1965-1992 | Denver County | 1108 | 39.7 | 15.0 | 33.0 | 10.5 | 0.6 | 1.2 |"
   check: >-
     (lambda r: [r.n, r['Industrial (housing not allowed)'], r['Industrial mixed use (housing allowed)'], r['Mixed use with housing'], r['Residential'], r['Commercial'], r['Open space, civic, other']])(
     (lambda z: z[z.series.str.startswith('Hazardous-sector') & (z['where'] == 'Denver County')].iloc[0])(load('app/data/sites_by_zoning_2023.csv')))
-  expect: [965, 39.1, 13.4, 33.6, 11.2, 1.1, 1.7]
+  expect: [1108, 39.7, 15.0, 33.0, 10.5, 0.6, 1.2]
 
 - id: zoning2023_suburban_sites_row
   file: data/results/zoning_2023/zoning_2023_summary.md
-  text: "| Hazardous-sector manufacturers 1965-1992 | Suburban study tracts |  398 | 61.8 |"
+  text: "| Hazardous-sector manufacturers 1965-1992 | Suburban study tracts |  450 | 67.3 |"
   check: >-
     (lambda r: [r.n, r['Industrial (housing not allowed)']])((lambda z: z[z.series.str.startswith('Hazardous-sector') & (z['where'] == 'Suburban study tracts')].iloc[0])(load('app/data/sites_by_zoning_2023.csv')))
-  expect: [398, 61.8]
+  expect: [450, 67.3]
 
 - id: zoning2023_sites_rows_sum_to_100
   file: data/results/zoning_2023/zoning_2023_summary.md
@@ -939,26 +937,26 @@
 
 - id: readme_eg_significance_shares
   file: README.md
-  text: "Printing (significant in every edition), petroleum products and machinery (about half) cluster beyond general manufacturing"
+  text: "Printing (significant in every edition), machinery (about three-quarters of editions) and petroleum products (under a third) cluster beyond general manufacturing"
   check: >-
     (lambda e: [(e[(e.scope == 'statewide') & (e.sector == 'Printing')].p < 0.05).mean(), (e[(e.scope == 'Denver metro') & (e.sector == 'Printing')].p < 0.05).mean(),
     (e[(e.scope == 'statewide') & (e.sector == 'Petroleum')].p < 0.05).mean(), (e[(e.scope == 'statewide') & (e.sector == 'Machinery')].p < 0.05).mean()])(load('app/data/corridor_eg.csv'))
-  expect: [1, 1, 0.5, 0.5]
+  expect: [1, 1, 0.3, 0.77]
   tol: [0.001, 0.001, 0.15, 0.15]
 
 - id: corridors_summary_persistence_table
   file: data/results/corridors/corridors_summary.md
-  text: "| emerging | 633 | 241 | 8 |\n| intermittent | 288 | 200 | 15 |\n| former (gone by 1980s) | 242 | 113 | 11 |\n| persistent, sector turnover | 231 | 218 | 73 |\n| persistent | 59 | 48 | 16 |"
+  text: "| emerging | 592 | 224 | 6 |\n| intermittent | 305 | 211 | 16 |\n| former (gone by 1980s) | 280 | 129 | 11 |\n| persistent, sector turnover | 241 | 227 | 66 |\n| persistent | 91 | 73 | 25 |"
   check: >-
     (lambda m: [v for k in ('emerging', 'intermittent', 'former (gone by 1980s)', 'persistent, sector turnover', 'persistent')
     for v in ((m['class'] == k).sum(), m[m['class'] == k].ever_haz.sum(), m[m['class'] == k].pre1960_first.notna().sum())])((lambda c: c[c.metro])(load('app/data/corridor_cells.csv')))
-  expect: [633, 241, 8, 288, 200, 15, 242, 113, 11, 231, 218, 73, 59, 48, 16]
+  expect: [592, 224, 6, 305, 211, 16, 280, 129, 11, 241, 227, 66, 91, 73, 25]
 
 - id: corridors_summary_located_establishments
   file: data/results/corridors/corridors_summary.md
-  text: "500 m cells with any manufacturer: 3215 (1453 metro)"
+  text: "500 m cells with any manufacturer: 3333 (1509 metro)"
   check: "(lambda c: [len(c), c.metro.sum()])(load('app/data/corridor_cells.csv'))"
-  expect: [3215, 1453]
+  expect: [3333, 1509]
 
 # README: Denver 1880, enumeration districts, HOLC
 - id: readme_1880_firms_placed_detail
@@ -1086,9 +1084,9 @@
 
 - id: app_corridor_cells_statewide
   file: app/app.R
-  text: "every cell with at least one manufacturer in any edition is kept (3,215 cells)"
+  text: "every cell with at least one manufacturer in any edition is kept (3,333 cells)"
   check: "len(load('app/data/corridor_cells.csv'))"
-  expect: 3215
+  expect: 3333
 
 - id: app_censoc_industrial_district_years
   file: app/app.R

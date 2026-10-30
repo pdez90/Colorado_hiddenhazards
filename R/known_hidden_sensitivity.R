@@ -134,9 +134,10 @@ main <- function() {
   fwrite(PT, file.path(O, "proximity_only_by_tier_distance.csv"))
 
   # 3. tract comparison, 2020 tracts with EnviroScreen 2.0
-  es_path <- "work/reg/context_layers.json"
+  # pipeline/fetch_inputs.py writes the layer to work/reg/; a copy kept with the other reference downloads is used when that is absent
+  es_path <- Filter(file.exists, c("work/reg/context_layers.json", "work/hist/other/reference_data/context_layers.json"))[1]
   TC <- NULL
-  if (file.exists(es_path)) {
+  if (!is.na(es_path)) {
     es <- read_enviroscreen(es_path)
     vars <- c(ES_S_ = "EnviroScreen percentile", Prcnt_lw_ = "Low income (%)", Pr_____ = "Less than high school (%)", Prc___ = "People of color (%)")
     T <- as.data.table(st_drop_geometry(es))[, c("GEOID", names(vars)), with = FALSE]
@@ -148,7 +149,7 @@ main <- function() {
       cls <- tract_classes(tr, pts[[paste0("known_", d)]], T$GEOID)
       cbind(data.table(rule = d, rule_label = DEF_LABELS[[d]]), compare_classes(T, cls, vars)) }))
     fwrite(TC, file.path(O, "tract_comparison_enviroscreen.csv"))
-  } else cat("work/reg/context_layers.json not found: tract comparison skipped\n")
+  } else stop("context_layers.json (EnviroScreen 2.0 tracts) not found in work/reg/ or work/hist/other/reference_data/: the tract comparison needs it")
 
   # 4. HOLC grades of Denver's sites
   HG <- NULL

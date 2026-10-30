@@ -81,7 +81,7 @@ from `build_sites`.
 
 ## Key results (the 13 complete editions, as published in `data/` and the app)
 
-*Note (29 October 2026): the inventory below (listings, establishments, sites and their inventory matches) is from the run of 29 October with the revised parsing, geocoding and matching rules (see the method notes above). Results further down that use the sites (EJ panel, HOLC industry ratios, Sanborn persistence, health and mortality models, corridors, site fate) are from the R chain of 28 October, which ran on the earlier inventory, and are refreshed by the next run of the R chain.*
+*Note (29 October 2026): the inventory below (listings, establishments, sites and their inventory matches) is from the run of 29 October with the revised parsing, geocoding and matching rules (see the method notes above). The analyses further down that use the sites (EJ panel, HOLC industry ratios, Sanborn persistence, corridors, site fate, zoning, hedonic and CenSoc models) were rerun on this inventory on 29 October. The tract health models and the block-group and block mortality models are still from the earlier inventory: their inputs (EnviroScreen block groups, Colorado death records) are not on the machine that ran the chain.*
 
 * 44,808 listings in the 13 complete editions (1965–1992) → 24,079 establishments; **3,482 hazardous-sector sites** located at street level.
 * **1,285 (37%) are on no current federal or state inventory** (920 of them high confidence); 645 (19%) are on a cleanup or contamination
@@ -276,16 +276,16 @@ soil and indoor-air vapor intrusion, specific cancers from the Colorado Central 
 * **Formation and persistence.** 500 m grid cells with any located manufacturer in the 13 complete editions 1965–1992, classed as persistent (listed from the
   1960s to the 1990s in ≥ 60% of the editions between), emerging (first listed 1980 or later), former (none after 1980) or intermittent;
   "persistent, sector turnover" when the dominant two-digit sector changed at least twice. Pre-1960 street-level firms extend a cell's
-  history where they exist (Denver 1891+). Denver metro (25 km of downtown): 1,453 cells, of which 290 persistent (231 with sector
-  turnover), 633 emerging, 242 former (`corridors_summary.md`).
+  history where they exist (Denver 1891+). Denver metro (25 km of downtown): 1,509 cells, of which 332 persistent (241 with sector
+  turnover), 592 emerging, 280 former (`corridors_summary.md`).
 * **Clustering.** Ellison–Glaeser γ per sector and edition on 1 km cells, measured against the distribution of *all* located manufacturers
   that year (so it asks whether a sector is more concentrated than manufacturing in general), with a random-relabelling p-value.
-  Printing (significant in every edition), petroleum products and machinery (about half) cluster beyond general manufacturing; chemicals, primary
+  Printing (significant in every edition), machinery (about three-quarters of editions) and petroleum products (under a third) cluster beyond general manufacturing; chemicals, primary
   metals and transportation equipment do not, statewide or in the metro. γ is on the Ellison–Glaeser scale with equal plant weights.
 * **Succession.** Transition counts of a cell's dominant sector between successive editions (`sector_transitions.csv`) and from first to
   last listing (`sector_first_to_last.csv`). Machinery ↔ fabricated metals and food ↔ printing are the common exchanges.
 * **Do old industrial areas attract new industry?** Entries (first listing) per cell and edition against the cell's stock and its
-  neighbours' stock in the previous edition and distance to downtown: pooled Poisson elasticity 0.99 for own stock, 0.30 for
+  neighbours' stock in the previous edition and distance to downtown: pooled Poisson elasticity 0.95 for own stock, 0.29 for
   neighbours; within-cell (demeaned) 0.12 per log-unit (`entry_models.csv`). The standard errors are iid Poisson on repeated
   observations of the same cells, so read these as descriptive. Persistence of location, not an explanation of it (no rail, river or zoning
   controls yet).
@@ -313,12 +313,12 @@ The reverse model regresses the net change in a tract's active hazardous establi
 
 | Outcome | Within-tract change in active density | Between-tract active density | Legacy density (1970) | Reverse: composition → net change in establishments |
 |---|---|---|---|---|
-| % Hispanic | −0.8 (SE 1.2, p = 0.53) | **+17.6 (3.9, p < 0.001)** | −1.6 (n.s.) | **+0.052 (0.014, p = 0.0001)** |
-| % Black | −0.6 (n.s.) | +1.8 (n.s.) | −2.6 (n.s.) | +0.007 (0.004, p = 0.10) |
-| % White | −3.6 (n.s.) | **−10.4 (3.5, p = 0.003)** | +1.5 (n.s.) | −0.005 (n.s.) |
-| % foreign born | +0.8 (n.s.) | +0.1 (n.s.) | +0.9 (0.5, p = 0.08) | **−0.128 (0.054, p = 0.019)** |
-| % in poverty | +1.4 (n.s.) | **+5.8 (1.6, p < 0.001)** | +2.0 (n.s.) | **+0.087 (0.035, p = 0.013)** |
-| log home value | −0.06 (n.s.) | **−0.22 (0.04, p < 0.001)** | 0.00 (n.s.) | **−1.6 (0.77, p = 0.04)** |
+| % Hispanic | −1.4 (SE 1.2, p = 0.24) | **+16.8 (3.5, p < 0.001)** | −1.7 (n.s.) | **+0.048 (0.013, p = 0.0001)** |
+| % Black | −0.4 (n.s.) | +0.4 (n.s.) | −1.7 (n.s.) | +0.006 (n.s.) |
+| % White | +1.4 (n.s.) | **−8.7 (4.2, p = 0.039)** | +0.7 (n.s.) | −0.008 (n.s.) |
+| % foreign born | +1.0 (n.s.) | +0.5 (n.s.) | +0.5 (n.s.) | **−0.113 (0.054, p = 0.039)** |
+| % in poverty | +0.7 (n.s.) | **+5.3 (1.7, p = 0.002)** | +2.2 (n.s.) | **+0.072 (0.036, p = 0.045)** |
+| log home value | −0.02 (n.s.) | **−0.24 (0.04, p < 0.001)** | +0.04 (n.s.) | **−2.6 (0.84, p = 0.002)** |
 
 Reading: within a tract, a rise or fall in hazardous-establishment density between 1970 and 1990 was not followed by a change in
 Hispanic share, poverty or any other outcome in the same decade — nothing is significant within tracts. The association is between
@@ -419,7 +419,7 @@ estimates do not reach p < 0.05 under HC1 or Conley errors.
 zones, and that is where the pre-1938 industry sat: 64% of the street-level hazardous trades listed before the map were in
 Commercial zones and 14% in Industrial ones, 15% in D areas and none in A or B (`holc_facility_shares.csv`). Classing the 1930
 districts by the HOLC class that covers them (`ed_holc_classes.csv`): the D districts, 7.3% Black in 1930, held 2.4 hazardous
-firms per 10,000 residents before the map and 45 hazardous-sector sites per 10,000 in 1965–92, against 5.6 per 10,000 in A–C —
+firms per 10,000 residents before the map and 50 hazardous-sector sites per 10,000 in 1965–92, against 6.4 per 10,000 in A–C —
 the post-war industrial growth went into the redlined and industrial districts. The app's Redlining tab shows the 1930
 districts by class, covenants, composition and firms before/after the map, and the share of each era's facilities by HOLC class.
 
@@ -431,7 +431,7 @@ firms per km² of each grade in six periods from 1891 to 2002 (`holc_industry_pe
 was nil in 1900–1920, 4 points by 1930 and 6 by 1940 — before the map — then 10–18 points in 1950–1970 before converging after 1980;
 the Hispanic gap opens only in 1940 and after. Hazardous firms per km² per directory edition in D areas against C areas
 (`holc_industry_periods.csv`): 6.4× in 1906–20 (but on 13 firms in D against 3 in C), 1.7× in 1921–37 (8 against 9 firms) and 2.1×
-in 1938–56 (37 against 27), then 13.6× in 1965–80 (286 against 49) and 16.8× in 1981–92 (228 against 28); the pre-1938 ratios rest on a
+in 1938–56 (37 against 27), then 13.8× in 1965–80 (318 against 52) and 18.2× in 1981–92 (234 against 31); the pre-1938 ratios rest on a
 handful of street-level listings. Reading: the appraisers ratified a divergence already under way, which then accelerated. Railways and the 1925 zoning
 ordinance are not controlled, and Fishback, Rose, Snowden & Storrs (2024) show that FHA practice, not the HOLC map, governed lending,
 so the post-1938 acceleration cannot be attributed to the map alone. Two controls address this: the distance of each unit to the
