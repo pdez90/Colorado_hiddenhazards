@@ -95,3 +95,10 @@ def test_empty_names_never_link():
     df = listings([(1967, '', '1 A ST', '80202', 'DENVER'), (1977, '', '1 A ST', '80202', 'DENVER'), (1983, 'X Y', '1 A ST', '80202', 'DENVER')])
     out = link.link(df)
     assert out.estab_id.nunique() == 3
+
+
+def test_norm_street_drops_half_house_numbers():
+    # '525 1/2 MAIN ST' used to become '525 1 2 MAIN ST', which the geocoder read as a different street ('1ST 2ND')
+    assert norm_street('525 1/2 Main Street') == '525 MAIN ST'
+    assert norm_street('1448 1/2 Emporia St.') == '1448 EMPORIA ST'
+    assert norm_street('2050 W 6th Ave') == '2050 W 6TH AVE'

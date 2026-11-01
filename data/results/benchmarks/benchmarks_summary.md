@@ -4,23 +4,23 @@
 
 | year | CBP manufacturing estab. | directory manufacturers | ratio | CBP hazardous-sector estab. | directory hazardous | ratio |
 |---|---|---|---|---|---|---|
-| 1976 | 3,071 | 1,671 | 0.54 | 1,026 |   732 | 0.71 |
-| 1977 | 3,438 | 2,234 | 0.65 | 1,146 |   885 | 0.77 |
-| 1979 | 3,414 | 1,559 | 0.46 | 1,148 |   642 | 0.56 |
-| 1980 | 3,453 | 3,629 | 1.05 | 1,175 | 1,356 | 1.15 |
-| 1982 | 3,797 | 2,098 | 0.55 | 1,319 |   874 | 0.66 |
-| 1983 | 4,159 | 3,921 | 0.94 | 1,417 | 1,511 | 1.07 |
-| 1984 | 4,339 | 1,651 | 0.38 | 1,429 |   704 | 0.49 |
-| 1985 | 4,388 | 1,348 | 0.31 | 1,411 |   544 | 0.39 |
-| 1986 | 4,390 | 2,985 | 0.68 | 1,386 | 1,200 | 0.87 |
-| 1988 | 4,551 | 3,546 | 0.78 | 1,436 | 1,405 | 0.98 |
-| 1990 | 4,878 | 4,064 | 0.83 | 1,536 | 1,523 | 0.99 |
-| 1992 | 5,226 | 2,512 | 0.48 | 1,630 |   987 | 0.61 |
-| 1993 | 5,385 | 1,872 | 0.35 | 1,694 |   776 | 0.46 |
-| 1999 | 5,425 | 2,259 | 0.42 | 1,749 |   904 | 0.52 |
-| 2002 | 5,250 | 2,130 | 0.41 | 1,698 |   783 | 0.46 |
+| 1976 | 3,071 | 1,862 | 0.61 | 1,026 |   803 | 0.78 |
+| 1977 | 3,438 | 3,358 | 0.98 | 1,146 | 1,279 | 1.12 |
+| 1979 | 3,414 | 2,106 | 0.62 | 1,148 |   826 | 0.72 |
+| 1980 | 3,453 | 3,813 | 1.10 | 1,175 | 1,407 | 1.20 |
+| 1982 | 3,797 | 2,306 | 0.61 | 1,319 |   949 | 0.72 |
+| 1983 | 4,159 | 4,276 | 1.03 | 1,417 | 1,622 | 1.14 |
+| 1984 | 4,339 | 2,179 | 0.50 | 1,429 |   868 | 0.61 |
+| 1985 | 4,388 | 1,729 | 0.39 | 1,411 |   655 | 0.46 |
+| 1986 | 4,390 | 3,092 | 0.70 | 1,386 | 1,231 | 0.89 |
+| 1988 | 4,551 | 3,567 | 0.78 | 1,436 | 1,412 | 0.98 |
+| 1990 | 4,878 | 4,100 | 0.84 | 1,536 | 1,535 | 1.00 |
+| 1992 | 5,226 | 2,970 | 0.57 | 1,630 | 1,124 | 0.69 |
+| 1993 | 5,385 | 1,887 | 0.35 | 1,694 |   779 | 0.46 |
+| 1999 | 5,425 | 2,279 | 0.42 | 1,749 |   911 | 0.52 |
+| 2002 | 5,250 | 2,134 | 0.41 | 1,698 |   785 | 0.46 |
 
-County-level agreement across 15 editions and 63 counties: r = 0.85 (log manufacturers), 0.88 (log hazardous sectors); median directory/CBP ratio 0.72 (Denver 0.77).
+County-level agreement across 15 editions and 63 counties: r = 0.84 (log manufacturers), 0.88 (log hazardous sectors); median directory/CBP ratio 0.81 (Denver 0.94).
 
 CBP counts every employer establishment with a payroll (from administrative records); the directory lists firms that answered the publisher's questionnaire or were
 copied from other lists, so it undercounts the smallest establishments and the ratio is a coverage rate. CBP has no addresses: it cannot replace the directory for siting.
@@ -36,7 +36,7 @@ Raw county files from Eckert, Fort, Schott & Yang (2021), NBER WP 26632 (github.
 | 1930 | 35 | 1,452 | 236 |
 | 1940 | 59 | 1,298 | 391 |
 
-1900 is left out: no directory edition was printed within two years of it (none between 1892 and 1910); 1910 has no county manufacturing table in NHGIS. The business directory only lists the hazardous trades, so the ratio is a floor on its coverage of all manufacturing; the census counts every establishment above a small output threshold.
+Censuses with no directory edition within two years are left out (1900: none between 1892 and 1910). The business directory only lists the hazardous trades, so the ratio is a floor on its coverage of all manufacturing; the census counts every establishment above a small output threshold.
 
 ## 1870 and 1880: Atack-Bateman-Weiss Census of Manufactures samples
 

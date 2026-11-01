@@ -37,6 +37,7 @@ def norm_name(s):
     return re.sub(r"\s+"," ",s).strip()
 def norm_street(s):
     s=(s or '').upper()
+    s=re.sub(r"^(\s*\d+[A-Z]?)\s*1/2\b", r"\1", s)   # '525 1/2 MAIN ST' -> '525 MAIN ST' (the half number has no address range of its own)
     s=re.sub(r"[^A-Z0-9 ]"," ",s)
     rep={'STREET':'ST','AVENUE':'AVE','AV':'AVE','BOULEVARD':'BLVD','ROAD':'RD','DRIVE':'DR','PLACE':'PL','COURT':'CT','NORTH':'N','SOUTH':'S','EAST':'E','WEST':'W','HIGHWAY':'HWY','PARKWAY':'PKWY','CIRCLE':'CIR','LANE':'LN'}
     s=' '.join(rep.get(t,t) for t in s.split())

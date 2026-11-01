@@ -19,12 +19,23 @@ suppressPackageStartupMessages({ library(sf); library(data.table) })
 sf_use_s2(FALSE); UTM <- 26913; R0 <- "data/raw/zoning_1929"; O <- "data/results/zoning_1929"; A <- "app/data"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
 cells <- fread(file.path(R0, "zone_cells_1929.csv")); gc <- fread(file.path(R0, "gcps_1929.csv"))
 # ---- 1. control points: TIGER road intersections
-if (!requireNamespace("tigris", quietly = TRUE)) stop("install.packages('tigris')")
-options(tigris_use_cache = TRUE)
-RD <- do.call(rbind, lapply(c("Denver", "Jefferson", "Adams", "Arapahoe"), function(cty) tryCatch(tigris::roads("CO", cty, year = 2023, progress_bar = FALSE)[, "FULLNAME"], error = function(e) NULL)))
+RD <- NULL
+if (requireNamespace("tigris", quietly = TRUE)) { options(tigris_use_cache = TRUE)
+  RD <- do.call(rbind, lapply(c("Denver", "Jefferson", "Adams", "Arapahoe"), function(cty) tryCatch(tigris::roads("CO", cty, year = 2023, progress_bar = FALSE)[, "FULLNAME"], error = function(e) NULL))) }
+if (is.null(RD) || !nrow(RD)) {   # offline: the geocoder's TIGER/Line 2023 address-range files carry the same street geometry and names
+  af <- file.path("work/tiger", sprintf("tl_2023_08%s_addrfeat.shp", c("001", "005", "031", "059"))); af <- af[file.exists(af)]; if (!length(af)) stop("no TIGER roads: install tigris with internet access, or place the ADDRFEAT files in work/tiger (R/geocode_tiger.R)")
+  RD <- do.call(rbind, lapply(af, function(f) st_read(f, quiet = TRUE)[, "FULLNAME"])); message("TIGER roads from work/tiger ADDRFEAT files") }
 RD <- st_transform(RD, UTM)
-xy <- function(s1, s2) { a <- RD[RD$FULLNAME == s1, ]; b <- RD[RD$FULLNAME == s2, ]; if (!nrow(a) || !nrow(b)) return(NULL)
-  p <- suppressWarnings(st_intersection(st_union(a), st_union(b))); p <- st_cast(p, "POINT"); if (!length(p)) NULL else st_coordinates(p) }
+# TIGER names Denver's streets with their grid prefix south of Ellsworth Avenue and east of Broadway ("S Broadway", "E Colfax Ave");
+# a control point written without the prefix is looked up with "S "/"N "/"E "/"W " as a fallback
+xy <- function(s1, s2) { a <- RD[RD$FULLNAME == s1, ]; b <- RD[RD$FULLNAME == s2, ]
+  pre <- function(s) RD[RD$FULLNAME %in% paste(c("S", "N", "E", "W"), s), ]
+  if (!nrow(a)) a <- pre(s1); if (!nrow(b)) b <- pre(s2); if (!nrow(a) || !nrow(b)) return(NULL)
+  ua <- st_union(a); ub <- st_union(b); p <- suppressWarnings(st_intersection(ua, ub)); p <- st_cast(p, "POINT")
+  if (length(p)) return(st_coordinates(p))
+  # divided roads whose centrelines stop short of each other in the address-range files: take the midpoint of the closest approach when it is within 40 m
+  np <- st_nearest_points(ua, ub); if (as.numeric(st_length(np)) > 40) return(NULL)
+  matrix(colMeans(st_coordinates(st_cast(np, "POINT"))[, 1:2]), nrow = 1) }
 P <- lapply(seq_len(nrow(gc)), function(i) xy(gc$street1[i], gc$street2[i]))
 miss <- which(vapply(P, is.null, TRUE)); if (length(miss)) message("no TIGER intersection for: ", paste(sprintf("%s & %s", gc$street1[miss], gc$street2[miss]), collapse = "; "))
 # first pass on the unambiguous (single-point) control points, then pick the nearest candidate for the rest

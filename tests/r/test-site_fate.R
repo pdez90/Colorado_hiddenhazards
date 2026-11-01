@@ -43,4 +43,5 @@ test_that("pick(): the type decides between streets of one name (Larimer St vs L
 test_that("broad(): assessor classes to broad uses", {
   expect_equal(E$broad(c("SINGLE FAMILY-RANCH", "INDUSTRIAL-WAREHOUSE", "EXEMPT-SCHOOL", "EXEMPT-PARK", "VACANT LAND", "COMMERCIAL-OFFICE", NA, "FARM"), "I-A"),
                c("Residential", "Industrial / utility", "Civic / school / health", "Park / open space", "Vacant", "Commercial / office", "No parcel match", "Other"))
+  expect_equal(E$broad("VACANT LAND / GENERAL COMMON ELEMENTS", "C-MX-5"), "Residential")   # a condominium's common-element parcel is not vacant land
 })

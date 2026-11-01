@@ -97,9 +97,15 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
   R <- reg[!is.na(lat) & !is.na(lon)][order(lat)]
   sf_use_s2(FALSE)
   PG <- reg[!is.na(geom_wkt)]
-  PGs <- if (nrow(PG)) suppressWarnings(st_buffer(st_as_sfc(PG$geom_wkt, crs = 4326), 0.0004)) else NULL   # ~40 m, planar degrees as in Python
-  spts <- st_as_sfc(lapply(seq_len(nrow(S)), function(i) st_point(c(S$lon[i], S$lat[i]))), crs = 4326)
+  # cleanup boundaries in metres (UTM 13N), as in Python: inside = the point lies in the polygon; near = within 40 m of a polygon that
+  # does not contain it (counted as a nearby record at that distance)
+  NEAR_BOUNDARY_M <- 40
+  PGs <- if (nrow(PG)) st_transform(st_make_valid(st_as_sfc(PG$geom_wkt, crs = 4326)), 26913) else NULL
+  spts <- st_transform(st_as_sfc(lapply(seq_len(nrow(S)), function(i) st_point(c(S$lon[i], S$lat[i]))), crs = 4326), 26913)
   inside <- if (!is.null(PGs)) suppressMessages(st_within(spts, PGs)) else replicate(nrow(S), integer(), simplify = FALSE)
+  near_b <- if (!is.null(PGs)) { w <- suppressMessages(st_is_within_distance(spts, PGs, NEAR_BOUNDARY_M))
+    lapply(seq_along(w), function(k) { j <- setdiff(w[[k]], inside[[k]]); if (!length(j)) return(list(j = integer(), m = numeric()))
+      list(j = j, m = as.numeric(st_distance(spts[k], PGs[j]))[seq_along(j)]) }) } else replicate(nrow(S), list(j = integer(), m = numeric()), simplify = FALSE)
   RULES <- c(cleanup = 75, tri = 100, rcra_handler = 40, other_epa = 40, solid_waste = 75)
   key_zip <- paste(reg$street_n, reg$zip5, sep = "|"); key_city <- paste(reg$street_n, reg$city_u, sep = "|")
   dl <- 250 / RE * 180 / pi
@@ -122,13 +128,15 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
       hits <- c(sprintf("%s [%s; name match, %d m]", R$name[cj[nmok]], src_lab(R$source[cj[nmok]]), as.integer(cd[nmok])),
                 sprintf("%s [%s; %d m]", R$name[cj[!nmok & cd <= r_eff]], src_lab(R$source[cj[!nmok & cd <= r_eff]]), as.integer(cd[!nmok & cd <= r_eff])))
       a <- am[reg$tier[am] == tier]; hits <- c(hits, if (length(a)) sprintf("%s [%s] (address match)", reg$name[a], src_lab(reg$source[a])))
+      nb <- if (tier == "cleanup") near_b[[k]] else list(j = integer(), m = numeric())
       if (tier == "cleanup" && length(inside[[k]])) hits <- c(hits, sprintf("%s [%s] (inside site boundary)", PG$name[inside[[k]]], sub("CDPHE_", "CDPHE ", PG$source[inside[[k]]])))
+      if (length(nb$j)) hits <- c(hits, sprintf("%s [%s]; %d m from site boundary", PG$name[nb$j], sub("CDPHE_", "CDPHE ", PG$source[nb$j]), as.integer(nb$m)))
       if (any(nmok) || length(a)) basis <- c(basis, "entity")
       if (tier == "cleanup" && length(inside[[k]])) basis <- c(basis, "boundary")
-      if (any(!nmok & cd <= r_eff)) basis <- c(basis, "prox")
+      if (any(!nmok & cd <= r_eff) || length(nb$j)) basis <- c(basis, "prox")
       # per-tier evidence for R/known_hidden_sensitivity.R (same as pipeline/build_sites.py): strongest basis in this tier and the
-      # distance to the nearest differently named record inside the tier's radius
-      po <- cd[!nmok & cd <= r_eff]
+      # distance to the nearest differently named record inside the tier's radius (a boundary within 40 m counts at its distance)
+      po <- c(cd[!nmok & cd <= r_eff], nb$m)
       rec[[paste0(tier, "_basis")]] <- if (any(nmok) || length(a)) "entity" else if (tier == "cleanup" && length(inside[[k]])) "boundary" else if (length(po)) "prox" else ""
       rec[[paste0(tier, "_prox_m")]] <- if (length(po)) round(min(po)) else NA_real_
       rec[[paste0(tier, "_match")]] <- substr(paste(unique(hits), collapse = " | "), 1, 400)

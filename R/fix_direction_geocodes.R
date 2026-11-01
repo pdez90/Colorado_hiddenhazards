@@ -23,9 +23,13 @@ fix_set <- function(listings_f, sites_f, years_f = NULL, firms_f = NULL, by_year
   if (!file.exists(listings_f)) return(invisible(NULL))
   L <- rd(listings_f, colClasses = c(sic = "character", zip = "character", est = "character", size = "character"))
   bad <- conflict(L$street, L$city, L$lat, L$lon, L$geo_level); message(label, ": ", sum(bad), " listings with a direction conflict")
-  if (!any(bad)) return(invisible(NULL))
+  # the log holds this run's conflicts only: site ids are re-assigned by every build, so rows from an earlier run would point rebuild()
+  # at unrelated sites. Rows of other labels (the other edition set) are kept.
+  of <- "data/results/geocode_direction_conflicts.csv"
+  old <- if (file.exists(of)) rd(of)[file != label] else NULL
   out <- L[bad, .(year, name, street, city, lat, lon, site_id, fe_hazard)][, file := label]
-  of <- "data/results/geocode_direction_conflicts.csv"; fwrite(if (file.exists(of)) unique(rbind(rd(of), out, fill = TRUE)) else out, of)
+  if (nrow(out) || !is.null(old)) { allr <- rbind(old, out, fill = TRUE); if (nrow(allr)) fwrite(allr, of) else if (file.exists(of)) file.remove(of) }
+  if (!any(bad)) return(invisible(NULL))
   hit <- unique(L$site_id[bad & !is.na(L$site_id) & nzchar(L$site_id)])
   L[bad, `:=`(lat = NA_real_, lon = NA_real_, site_id = NA_character_, geo_level = "none")]; fwrite(L, listings_f)
   if (!is.null(by_year_dir) && dir.exists(by_year_dir)) for (f in list.files(by_year_dir, "\\.csv$", full.names = TRUE)) {
@@ -126,4 +130,9 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {   # the run; t
   rebuild("data/results/CO_directory_listings_1961-2002.csv", "app/data/sites.csv", "app/data/site_years.csv", "app/data/site_firms.csv",
           "data/results/CO_historical_industrial_sites.geojson", "data/results/CO_hazardous_sites_1961-2002.xlsx")
   rebuild("data/full_inventory/CO_directory_listings_1961-2002.csv", "data/full_inventory/sites.csv", NULL, "data/full_inventory/site_firms.csv", label = "full inventory")
+  # the site files are published as this script leaves them: round-trip them through fread/fwrite whether or not anything was rebuilt,
+  # so that logical columns are always written TRUE/FALSE (Python writes True/False) and the committed format does not depend on
+  # whether a conflict was found
+  for (f in c("app/data/sites.csv", "app/data/site_firms.csv", "data/full_inventory/sites.csv", "data/full_inventory/site_firms.csv", "data/full_inventory/CO_directory_listings_1961-2002.csv"))
+    if (file.exists(f)) fwrite(rd(f, colClasses = c(GEOID = "character", zip = "character", sic = "character", est = "character", size = "character")[intersect(c("GEOID", "zip", "sic", "est", "size"), names(fread(f, nrows = 0)))]), f)
 }

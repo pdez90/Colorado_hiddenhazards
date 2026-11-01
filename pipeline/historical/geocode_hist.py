@@ -31,9 +31,13 @@ def hist_street(street, entry=''):
     return st
 
 def street_level(q):
-    """Street level when the number was interpolated on a segment of the right street; a direction settled by the ZIP or the street type
-    (_dirzip, _dirtype) counts, an unresolved direction (_dirambig) does not; fuzzy street names never do."""
-    return bool(q) and q.startswith('range_interp') and 'dirambig' not in q and 'fuzzy' not in q
+    """Street level only when the number was interpolated on a segment of the exact street in the stated town (or one of its ZIPs):
+    `range_interp` and `range_interp_cityzips`, optionally with a direction settled by the ZIP or the street type (_dirzip, _dirtype).
+    Loosened matches (_dirloose, _sufloose, _trim, _nearzips, fuzzy names) and an unresolved direction (_dirambig) never count: a
+    nineteenth-century address must not be carried to a different street or town by an OCR-tolerant match."""
+    if not q or not q.startswith('range_interp'): return False
+    parts = set(q.split('_')[2:])          # suffixes after 'range_interp'
+    return parts <= {'cityzips', 'dirzip', 'dirtype'}
 
 def main():
     df = pd.read_csv('work/hist/hist_hazard_entries.csv', dtype={'street': str})

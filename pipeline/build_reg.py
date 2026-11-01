@@ -5,10 +5,9 @@ f=f[f.STATE_CODE=='CO']
 f['lat']=pd.to_numeric(f.LATITUDE83,errors='coerce'); f['lon']=pd.to_numeric(f.LONGITUDE83,errors='coerce')
 f.loc[f.lon>0,'lon']=-f.loc[f.lon>0,'lon']
 pg=f.PGM_SYS_ACRNMS.fillna('')
-CONTAM={'SEMS','ACRES','RCRAINFO','LUST-ARRA','BRAC','FFEP','FFDOCKET','TSCA','STATE'}
 def progs(s): return sorted({p.split(':')[0].strip() for p in s.split(',') if p.strip()})
 f['programs']=pg.apply(lambda s:'|'.join(progs(s)))
-CLEAN={'SEMS','ACRES','BRAC','FFEP','FFDOCKET','LUST-ARRA','STATE'}
+CLEAN={'SEMS','ACRES','BRAC','FFEP','FFDOCKET','LUST-ARRA'}   # FRS 'STATE' only holds a state programme id (stormwater, enforcement), not a cleanup: it stays in other_epa
 def cat(s):
     P=set(s.split('|'))
     if P&CLEAN: return 'cleanup'

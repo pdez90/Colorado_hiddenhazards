@@ -1,10 +1,10 @@
 """Write data/results/*: the sites workbook, GeoJSON and listing CSVs. The sheet/column layout is under main()."""
-import pandas as pd, numpy as np, json
+import os, re, json
+import pandas as pd, numpy as np
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
 O='data/results/'
-import re
 def county_from_tracts(s, tracts):
     """County of the 2020 tract each site point lies in ('Denver County' -> 'Denver'); a point in no tract keeps s.county.
     ZIP-based counties are wrong for about 7% of Front Range sites (ZIPs cross county lines), and the ZIP table built from FRS
@@ -48,18 +48,21 @@ def main():
     hidden=H[H.radar=='Not on any list'].sort_values(['confidence','county','first_year'],key=lambda c: c.map({'high':0,'medium':1,'low':2}) if c.name=='confidence' else c)
     cov=df.groupby('year').agg(listings=('name','size'),fe_hazard_listings=('fe_hazard','sum'),with_zip=('zip5',lambda z:(z.str.match(r'^8[01]\d{3}$')).mean()),located=('located','mean')).reset_index()
     vols=df.groupby('year').vol.agg(lambda v:', '.join(sorted(set(v)))).reset_index(); cov=cov.merge(vols,on='year')
+    import json; ED=json.load(open('config/editions.json')) if os.path.exists('config/editions.json') else {'mode':'all'}
+    yrs=sorted(df.year.unique()); ed_txt=(f"the {len(yrs)} complete editions of the Colorado Directory of Manufacturers ({yrs[0]}–{yrs[-1]}; the partial editions are set aside, see config/editions.json)"
+            if ED.get('mode')=='complete' else f"the Colorado Directory of Manufacturers, {len(yrs)} editions {yrs[0]}–{yrs[-1]}")
     readme=[
      ['Colorado historical hazardous industrial sites, 1961–2002',''],
-     ['Method','Frickel & Elliott (Sites Unseen, 2018) relic-site approach applied to the Colorado Directory of Manufacturers, 25 editions 1961–2002.'],
+     ['Method',f'Frickel & Elliott (Sites Unseen, 2018) relic-site approach applied to {ed_txt}.'],
      ['Hazardous sectors (F&E)','SIC 28 chemicals, 29 petroleum refining, 30 rubber & plastics, 33 primary metals, 34 fabricated metals, 35 industrial machinery, 37 transportation equipment (NAICS 325, 324, 326, 331, 332, 333, 336 for 1999–2002).'],
      ['Extended sectors','Not in F&E but commonly contaminating: wood preserving 2491, leather tanning 3111, electronic components & circuit boards 3671–3679, batteries 3691–3692, photographic chemicals 3861, metal mining / ore milling 10xx.'],
      ['Site','All directory listings geocoded to street level within 30 m of each other, across all years.'],
      ['radar','Best match to a current inventory: Cleanup / contamination list (EPA SEMS/Superfund, ACRES brownfields, FRS state/federal cleanup programs; CDPHE VCUP, brownfields, Superfund, RCRA corrective action, institutional controls, UMTRA, federal facilities) — matched if within 75 m, inside the site boundary, or same name within 250 m or same address. TRI reporter (100 m or name/address). RCRA hazardous-waste handler (40 m or name/address). Other EPA permit only (40 m or name/address). Not on any list = not on the searched EPA and CDPHE HMWMD lists (FRS, TRI, SEMS/Superfund, RCRA, CDPHE cleanup, VCUP, brownfields, covenants); state petroleum-tank and release registers are shown separately on the Contamination & health tab of the app.'],
-     ['match_basis','What the radar match rests on, strongest first: same entity (name or address) = an inventory record carries the hazardous firm\'s name (two shared informative words, or the whole name up to word order and OCR noise) or the site\'s street address; inside a cleanup boundary = the point lies in a mapped CDPHE cleanup-site polygon; nearby record only = a differently named record lies within the tier\'s radius (40–100 m) and nothing else links it to the site, so the record may belong to another occupant of the block (a pharmacy\'s RCRA notification, a car wash\'s permit); none = Not on any list.'],
+     ['match_basis','What the radar match rests on, strongest first: same entity (name or address) = an inventory record carries the hazardous firm\'s name (two shared informative words, or the whole name up to word order and OCR noise) or the site\'s street address; inside a cleanup boundary = the point lies in a mapped CDPHE cleanup-site polygon (a point within 40 m of one counts as a nearby record); nearby record only = a differently named record lies within the tier\'s radius (40–100 m) and nothing else links it to the site, so the record may belong to another occupant of the block (a pharmacy\'s RCRA notification, a car wash\'s permit); none = Not on any list.'],
      ['confidence','high = street-level geocode AND industry code printed in the directory; medium = one of the two; low = neither (inferred industry and approximate location).'],
      ['geo_level','address = number interpolated on the matching TIGER/Line 2023 street segment; address_approx = OCR-tolerant street match, neighbouring ZIP, or nearest segment end (verify before field work).'],
      ['Sources','Colorado Directory of Manufacturers (scans supplied by user); US EPA Facility Registry Service state file for Colorado (downloaded 16 Oct 2026); EPA TRI facility table (Envirofacts, 16 Oct 2026); CDPHE HMWMD layers, geodata.colorado.gov (16 Oct 2026); US Census TIGER/Line 2023 ADDRFEAT.'],
-     ['Limits','OCR errors in names, numbers and ZIPs; 1961–1965 editions have no ZIP codes; 2002 covers only the second half of the alphabet of places (part 1 missing); 1971 and 1985 volumes appear partial; renumbered historical streets fall back to ZIP centroids (listed separately). A site absent from regulatory lists is a candidate for review, not evidence of contamination.'],
+     ['Limits','OCR errors in names, numbers and ZIPs; 1965 has no ZIP codes; twelve editions (1961, 1962, 1971, 1976, 1979, 1982, 1984, 1985, 1986, 1993, 1999, 2002) are partial scans and are set aside from the published set; renumbered historical streets fall back to ZIP centroids (listed separately). A site absent from regulatory lists is a candidate for review, not evidence of contamination.'],
     ]
     with pd.ExcelWriter(O+'CO_hazardous_sites_1961-2002.xlsx',engine='openpyxl') as w:
         pd.DataFrame(readme,columns=['Item','Description']).to_excel(w,sheet_name='Read me',index=False)

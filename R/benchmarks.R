@@ -137,6 +137,7 @@ for (y in c(1870, 1880)) { f <- file.path(W, "atack", sprintf("%dStateSamples.xl
     sv <- as.character(d[[sc]]); co <- d[grepl("colorado|^co$", sv, ignore.case = TRUE) | sv %in% c("8", "08", "62")]   # name, FIPS 08 or ICPSR state code 62 (the samples use ICPSR codes)
     if (!nrow(co)) { message("Atack ", y, ": no Colorado rows (state column '", sc, "', values e.g. ", paste(head(unique(d[[sc]]), 8), collapse = ", "), ")"); next }
     co[, year := y]; AT <- rbindlist(list(AT, co), fill = TRUE) } }
+if ((is.null(AT) || !nrow(AT)) && file.exists(file.path(O, "atack_colorado.csv"))) { AT <- fread(file.path(O, "atack_colorado.csv")); message("Atack samples: download unavailable, using the saved ", file.path(O, "atack_colorado.csv")) }
 if (!is.null(AT) && nrow(AT)) { fwrite(AT, file.path(O, "atack_colorado.csv")); message("Atack samples: ", nrow(AT), " Colorado establishments written to ", file.path(O, "atack_colorado.csv"))
   # by 2-digit industry (the samples carry SIC-style industry codes), against the business directory's hazardous trades listed 1878-1885 statewide
   ic <- names(AT)[grepl("^industry$", names(AT), ignore.case = TRUE)][1]

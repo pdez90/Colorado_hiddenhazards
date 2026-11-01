@@ -91,6 +91,9 @@ def test_street_level_codes():
         and gh.street_level('range_interp_dirtype')
     assert not gh.street_level('range_interp_dirambig_cityzips') and not gh.street_level('fuzzy_range_interp') \
         and not gh.street_level('street_nearest') and not gh.street_level('zip_centroid') and not gh.street_level(None)
+    # loosened matches never count as street level (README: 'only exact address-range match')
+    assert not gh.street_level('range_interp_cityzips_dirloose') and not gh.street_level('range_interp_sufloose_dirloose') \
+        and not gh.street_level('range_interp_cityzips_trim') and not gh.street_level('range_interp_nearzips')
 
 def test_hist_street_through_the_geocoder(geocoder):
     """A pre-1960 Denver listing goes through the same geocoder with town only (no ZIP)."""

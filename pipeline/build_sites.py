@@ -124,8 +124,13 @@ def match_inventory(sites,reg):
     addr_city_ix=reg.groupby(['street_n','city_u']).indices
     # polygons for containment
     polys=reg[reg.geom_wkt.notna()] if 'geom_wkt' in reg else reg.iloc[0:0]
-    PG=[_w.loads(x).buffer(0.0004) for x in polys.geom_wkt]  # ~40 m buffer
+    # polygons and site points in metres (UTM 13N): a site counts as inside a cleanup boundary only when its point is inside the
+    # polygon; a point within 40 m of a boundary (geocoding error, or the firm's lot next to the mapped one) counts as a nearby record
+    from pyproj import Transformer; from shapely.ops import transform as _tf
+    _to_utm=Transformer.from_crs('EPSG:4326','EPSG:26913',always_xy=True).transform
+    PG=[_tf(_to_utm,_w.loads(x)) for x in polys.geom_wkt]
     ptree=STRtree(PG) if PG else None
+    NEAR_BOUNDARY_M=40
     out=[]
     for k,(i,s) in enumerate(sites.iterrows()):
         ii,dd=ind[k],dist[k]*6371000.0
@@ -135,10 +140,15 @@ def match_inventory(sites,reg):
         if not am: am=list(addr_city_ix.get((s.address, str(s.city or '').upper().strip()),[]))     # blank ZIP: match on street + city
         am_t=collections.defaultdict(list)
         for j in am: am_t[reg.iloc[j]['tier']].append(f"{reg.iloc[j]['name']} [{reg.iloc[j]['source'].replace('EPA_','').replace('CDPHE_','CDPHE ')}]")
-        inpoly=[]
+        inpoly=[]; nearpoly=[]   # (label, distance m) for boundaries within NEAR_BOUNDARY_M but not containing the point
         if ptree is not None:
-            for j in ptree.query(Point(s.lon,s.lat)):
-                if PG[j].contains(Point(s.lon,s.lat)): inpoly.append(f"{polys.iloc[j]['name']} [{polys.iloc[j]['source'].replace('CDPHE_','CDPHE ')}]")
+            pu=_tf(_to_utm,Point(s.lon,s.lat))
+            for j in ptree.query(pu.buffer(NEAR_BOUNDARY_M)):
+                lab=f"{polys.iloc[j]['name']} [{polys.iloc[j]['source'].replace('CDPHE_','CDPHE ')}]"
+                if PG[j].contains(pu): inpoly.append(lab)
+                else:
+                    dm=PG[j].distance(pu)
+                    if dm<=NEAR_BOUNDARY_M: nearpoly.append((lab,dm))
         basis=set()   # evidence behind every hit, over all tiers: 'entity' (name or address), 'boundary', 'prox'
         for tier,rad in RULES.items():
             cand=[(j,d) for j,d in zip(ii,dd) if R.at[j,'tier']==tier]
@@ -156,13 +166,13 @@ def match_inventory(sites,reg):
             for j,d in prox:
                 if j not in [x for x,_ in nm]: hits.append(f"{R.at[j,'name']} [{R.at[j,'source'].replace('EPA_','').replace('CDPHE_','CDPHE ')}; {int(d)} m]")
             hits+= [h+' (address match)' for h in am_t.get(tier,[])]
-            if tier=='cleanup': hits+= [h+' (inside site boundary)' for h in inpoly]
+            if tier=='cleanup': hits+= [h+' (inside site boundary)' for h in inpoly]+[f"{h}; {int(dm)} m from site boundary" for h,dm in nearpoly]
             if nm or am_t.get(tier): basis.add('entity')
             if tier=='cleanup' and inpoly: basis.add('boundary')
-            if prox: basis.add('prox')
+            if prox or (tier=='cleanup' and nearpoly): basis.add('prox')
             # per-tier evidence for the sensitivity analysis (R/known_hidden_sensitivity.R): strongest basis in this tier and the
-            # distance to the nearest differently named record inside the tier's radius
-            nm_ids={x for x,_ in nm}; pd_other=[d for j,d in prox if j not in nm_ids]
+            # distance to the nearest differently named record inside the tier's radius (a boundary within 40 m counts at its distance)
+            nm_ids={x for x,_ in nm}; pd_other=[d for j,d in prox if j not in nm_ids]+([dm for _,dm in nearpoly] if tier=='cleanup' else [])
             rec[f'{tier}_basis']=('entity' if (nm or am_t.get(tier)) else 'boundary' if (tier=='cleanup' and inpoly) else 'prox' if pd_other else '')
             rec[f'{tier}_prox_m']=round(min(pd_other)) if pd_other else np.nan
             rec[f'{tier}_match']=' | '.join(dict.fromkeys(hits))[:400]

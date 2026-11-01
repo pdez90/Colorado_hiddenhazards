@@ -86,7 +86,11 @@ pick <- function(d, acol) {   # d: one row per site with pkey and the address co
                     same_street & !is.na(n_a) & !is.na(n_p) & n_a %% 2L == n_p %% 2L, 2L,
                     same_street, 3L, default = 4L)]
   X[, numdiff := fifelse(rule == 2L, abs(n_a - n_p), NA_integer_)]
-  setorderv(X, c("rid", "rule", "numdiff", "dist_m"), na.last = TRUE); X <- X[!duplicated(rid)]
+  # a condominium's "general common elements" parcel (the land under the units, classed VACANT LAND / GENERAL COMMON ELEMENTS, with no
+  # units or year built of its own) is not vacant land: within a rule, prefer any other candidate parcel, so the site takes a unit parcel
+  # or the neighbouring building instead
+  X[, common := grepl("COMMON ELEMENT", toupper(ifelse(is.na(D_CLASS_CN), "", D_CLASS_CN)))]
+  setorderv(X, c("rid", "rule", "common", "numdiff", "dist_m"), na.last = TRUE); X <- X[!duplicated(rid)]
   out <- merge(d, X[, .(rid, SCHEDNUM, PROP_CLASS, D_CLASS_CN, ZONE_ID, ZONE_10, TOT_UNITS, year_built, SITUS_ADDRESS_LINE1, LAND_AREA, parcel_dist_m = dist_m, rule)], by = "rid", all.x = TRUE)   # owner names stay in the work/ cache only
   out[, parcel_match := PM[fifelse(is.na(rule), 5L, rule)]]; out[, c("rid", "rule", "a_num", "a_dir", "a_sname", "a_stype") := NULL]; out[] }
 # ---- 3. broad classes
@@ -96,13 +100,14 @@ broad <- function(cls, zone) { cls <- toupper(ifelse(is.na(cls), "", cls)); zone
         grepl("PARK$|^DENVER PARK|OPEN SPACE|GOLF|CEMETERY|RECREATION", cls), "Park / open space",
         grepl("STADIUM|STOCK SHOW|JAIL|COURTHOUSE|FIRE STATION|POLICE|LIBRARY|MUSEUM|GOVERNMENT|SCHOOL|CHURCH|HOSPITAL|RELIGIOUS|CHARIT|EDUCATION|UNIVERSITY|COLLEGE", cls), "Civic / school / health",
         grepl("INDUSTRIAL|WAREHOUSE|UTILIT|RAILROAD|MANUFACTUR", cls), "Industrial / utility",
+        grepl("COMMON ELEMENT", cls), "Residential",   # condominium common-element parcel left as the only candidate: the units above it are homes
         grepl("VACANT", cls), "Vacant",
         grepl("EXEMPT", cls) & grepl("PARK|OPEN SPACE|CEMETERY|RECREATION", cls), "Park / open space",
         grepl("EXEMPT|SCHOOL|CHURCH|HOSPITAL|RELIGIOUS|GOVERNMENT|CHARIT|EDUCATION", cls), "Civic / school / health",
         grepl("COMMERCIAL|OFFICE|RETAIL|STORE|HOTEL|MOTEL|RESTAURANT|PARKING|GARAGE|SERVICE|BANK|THEATER|SHOPPING", cls), "Commercial / office",
         default = "Other") }
 score <- function(d, acol) { d <- pick(d[, pkey := sprintf("%.6f,%.6f", lon, lat)], acol)
-  d[, use_now := broad(D_CLASS_CN, ZONE_ID)]; d[, zone_industrial := grepl("^I-?(A|B|MX)", toupper(ZONE_ID))]   # I-A, I-B, I-MX-* and the former-code IA/IB districts
+  d[, use_now := broad(D_CLASS_CN, ZONE_ID)]; d[, zone_industrial := grepl("^I-?(A|B|MX)|^M-IMX", toupper(ZONE_ID))]   # I-A, I-B, I-MX-*, M-IMX-* and the former-code IA/IB districts
   d[, redeveloped := !is.na(year_built) & year_built > last_year]; d[, last_decade := paste0(floor(last_year / 10) * 10, "s")]; d[, pkey := NULL]; d[] }
 S <- score(sites[, .(site_id, address, first_year, last_year, radar, fe_sectors, lat, lon)], "address")
 H <- score(hist[, .(hfirm, name, street, first_year, last_year, sectors, persists_to_1961plus, lat, lon)], "street")

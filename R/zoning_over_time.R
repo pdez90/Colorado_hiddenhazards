@@ -12,7 +12,7 @@
 # No citywide map between 1955 and 2010 has been digitised (DPL holds zoning maps and the 1925-69 Board of Adjustment records in print
 # only), so the series has a gap between 1955 and 2023.
 # Categories: industrial (housing not allowed: 1925 Industrial A/B; today I-A, I-B and the 1956-code I-0/I-1/I-2; NZA "Industrial");
-#   industrial mixed use (Denver's I-MX districts, which allow housing; 2010 onward); commercial (1925 Commercial district; today and 2023
+#   industrial mixed use (Denver's I-MX and M-IMX districts, which allow housing; 2010 onward); commercial (1925 Commercial district; today and 2023
 #   commercial and mixed-use districts that allow housing: in the city layer every "Commercial Mixed Use" district does; in the 2023 NZA
 #   layer the MixedUse* categories); commercial (housing not allowed: NZA GenZone2 "Commercial", 2023 only, as in R/zoning_2023.R; kept out
 #   of the housing-allowed share); residential; open space, civic and other; PUD (planned unit developments, custom rules; city layer
@@ -41,21 +41,22 @@ if (nrow(off)) { op <- st_sfc(lapply(seq_len(nrow(off)), function(i) { c0 <- off
   st_polygon(list(rbind(P(c0, r0), P(c1, r0), P(c1, r1), P(c0, r1), P(c0, r0)))) }), crs = UTM); SHEET <- st_difference(SHEET, st_union(op)) }
 COMMON <- st_make_valid(st_intersection(SHEET, DEN)); common_km2 <- as.numeric(st_area(COMMON)) / 1e6
 message(sprintf("Land mapped in 1929 and 1944 within Denver County: %.1f km2 (of %.1f)", common_km2, as.numeric(st_area(DEN)) / 1e6))
-# ---------------------------------------------------------------- the four maps as category polygons
+# ---------------------------------------------------------------- the five maps as category polygons
 hist_cat <- function(f, yr) { z <- st_make_valid(st_transform(st_read(f, quiet = TRUE), UTM))
   z$cat <- ifelse(grepl("Industrial", z$zone), "Industrial", "Commercial or mixed use"); z <- aggregate(z[, "cat"], list(cat = z$cat), function(x) x[1])[, "cat"]; z$year <- yr; z }
 Z29 <- hist_cat(file.path(A, "zoning_1929.geojson"), "1929"); Z44 <- hist_cat(file.path(A, "zoning_1944.geojson"), "1944")
 Z55 <- st_make_valid(st_transform(st_read(file.path(A, "zoning_1955.geojson"), quiet = TRUE), UTM)); Z55$cat <- "Industrial"
 Z55 <- aggregate(Z55[, "cat"], list(cat = Z55$cat), function(x) x[1])[, "cat"]; Z55$year <- "1955"
 city <- st_make_valid(st_transform(st_read("work/zoning_city/denver_zoning_current.geojson", quiet = TRUE), UTM))
-city_cat <- function(zone_district, zone_dist_type) fcase(grepl("^I-MX", zone_district), "Industrial mixed use", zone_dist_type == "Industrial", "Industrial",
+city_cat <- function(zone_district, zone_dist_type) fcase(grepl("^(I-MX|M-IMX)", zone_district), "Industrial mixed use", zone_dist_type == "Industrial", "Industrial",
+                  grepl("^(DIA|CMP-|H-1|P-1)", zone_district), "Open space, civic, other",   # airport, campus, hospital and parking districts: the city layer files them under Commercial Mixed Use
                   zone_dist_type == "Commercial Mixed Use", "Commercial or mixed use", zone_dist_type == "Residential", "Residential",
                   zone_dist_type == "PUD", "PUD (custom district)", default = "Open space, civic, other")
 city$cat <- city_cat(city$ZONE_DISTRICT, city$ZONE_DIST_TYPE)
 city_date <- tryCatch(readLines("work/zoning_city/download_date.txt")[1], error = function(e) "today")
 nza <- st_read("work/zoning_2023/ALL_DenverMSA_10.3.23.shp", quiet = TRUE, wkt_filter = st_as_text(st_transform(st_buffer(STUDY, 100), 32613)))
 nza <- st_make_valid(st_transform(nza, UTM))
-nza_cat <- function(local_zon, genzone2) fcase(grepl("^I-MX", local_zon), "Industrial mixed use", genzone2 == "Industrial", "Industrial", grepl("^MixedUse", genzone2), "Commercial or mixed use",
+nza_cat <- function(local_zon, genzone2) fcase(grepl("^(I-MX|M-IMX)", local_zon), "Industrial mixed use", genzone2 == "Industrial", "Industrial", grepl("^MixedUse", genzone2), "Commercial or mixed use",
                  genzone2 == "Commercial", "Commercial (housing not allowed)",
                  grepl("^Residential|^MobileHome", genzone2), "Residential", default = "Open space, civic, other")
 nza$cat <- nza_cat(nza$Local_zon, nza$GenZone2)

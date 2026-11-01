@@ -22,33 +22,33 @@
 
 - id: readme_sites_total
   file: README.md
-  text: "**3,482 hazardous-sector sites** located at street level"
+  text: "**3,487 hazardous-sector sites** located at street level"
   check: "len(fe_sites())"
-  expect: 3482
+  expect: 3487
 
 - id: readme_hidden_sites
   file: README.md
-  text: "**1,285 (37%) are on no current federal or state inventory**"
+  text: "**1,287 (37%) are on no current federal or state inventory**"
   check: "[len(hidden_sites()), 100 * len(hidden_sites()) / len(fe_sites())]"
-  expect: [1285, 37]
+  expect: [1287, 37]
 
 - id: readme_hidden_high_confidence
   file: README.md
-  text: "(920 of them high confidence)"
+  text: "(922 of them high confidence)"
   check: "(hidden_sites().confidence == 'high').sum()"
-  expect: 920
+  expect: 922
 
 - id: readme_cleanup_sites
   file: README.md
-  text: "645 (19%) are on a cleanup or contamination"
+  text: "642 (18%) are on a cleanup or contamination"
   check: "[(fe_sites().radar == 'Cleanup / contamination list').sum(), 100 * (fe_sites().radar == 'Cleanup / contamination list').mean()]"
-  expect: [645, 19]
+  expect: [642, 18]
 
 - id: readme_tri_sites
   file: README.md
-  text: "286 report to TRI"
+  text: "290 report to TRI"
   check: "(fe_sites().radar == 'TRI reporter').sum()"
-  expect: 286
+  expect: 290
 
 - id: readme_rcra_sites
   file: README.md
@@ -58,47 +58,46 @@
 
 - id: readme_other_permit_sites
   file: README.md
-  text: "380 have only other EPA permits or solid-waste records"
+  text: "382 have only other EPA permits or solid-waste records"
   check: "fe_sites().radar.isin(['Other EPA permit only', 'Solid waste facility']).sum()"
-  expect: 380
+  expect: 382
 
 - id: readme_multi_firm_sites
   file: README.md
-  text: "1,287 sites hosted two or more hazardous-sector firms over time"
+  text: "1,289 sites hosted two or more hazardous-sector firms over time"
   check: "(fe_sites().n_hazard_establishments.astype(int) >= 2).sum()"
-  expect: 1287
+  expect: 1289
 
 - id: readme_workbook_hidden_sheet
   file: README.md
   text: "Site workbook (`CO_hazardous_sites_1961-2002.xlsx`)"
   check: "[len(load('data/results/CO_hazardous_sites_1961-2002.xlsx', sheet='Hidden sites')), len(load('data/results/CO_hazardous_sites_1961-2002.xlsx', sheet='All F&E hazardous sites'))]"
-  expect: [1285, 3482]
+  expect: [1287, 3487]
 
 # ------------------------------------------------------------------ README: all-25-edition run (data/full_inventory)
 - id: readme_full_inventory_listings
   file: README.md
-  text: "68,368 listings → 40,942 establishments"
+  text: "72,317 listings → 35,657 establishments"
   check: "[len(load('data/full_inventory/CO_directory_listings_1961-2002.csv', as_str=True)), load('data/full_inventory/CO_directory_listings_1961-2002.csv', as_str=True).estab_id.nunique()]"
-  expect: [68368, 40942]
+  expect: [72317, 35657]
 
 - id: readme_full_inventory_sites
   file: README.md
-  text: "**4,312 hazardous-sector sites** located at street level"
+  text: "**4,669 hazardous-sector sites** located at street level"
   check: "(load('data/full_inventory/sites.csv', as_str=True).fe_hazard == 'TRUE').sum()"
-  expect: 4312
-  stale: "data/full_inventory/sites.csv holds 4,297 F&E sites (1,329 hidden, 934 high confidence); the README's 17 October run was re-exported afterwards"
+  expect: 4669
 
 - id: readme_full_inventory_tri
   file: README.md
-  text: "389 report to TRI"
+  text: "365 report to TRI"
   check: "((s := load('data/full_inventory/sites.csv', as_str=True))[s.fe_hazard == 'TRUE'].radar == 'TRI reporter').sum()"
-  expect: 389
+  expect: 365
 
 - id: readme_full_inventory_other_permits
   file: README.md
-  text: "494 have only other EPA permits or"
+  text: "525 have only other EPA permits or"
   check: "((s := load('data/full_inventory/sites.csv', as_str=True))[s.fe_hazard == 'TRUE'].radar.isin(['Other EPA permit only', 'Solid waste facility'])).sum()"
-  expect: 494
+  expect: 525
 
 # ------------------------------------------------------------------ README: health models (data/results/health_models.csv)
 - id: readme_health_mental_health_row
@@ -465,12 +464,11 @@
 # ------------------------------------------------------------------ README: pre-1960 layer and radium
 - id: readme_pre1960_counts
   file: README.md
-  text: "8,203 hazardous-trade listings → 7,305 firm-locations; 805 at a street address; 356 link to the 1961–2002 directory,\ngiving 222 later sites"
+  text: "8,199 hazardous-trade listings → 7,301 firm-locations; 664 at a street address; 266 link to the 1961–2002 directory,\ngiving 168 later sites"
   check: >-
     (lambda L, H: [len(L), len(H), H.precision.str.startswith('street').sum(), H.persists_to_1961plus.astype(str).str.upper().eq('TRUE').sum(), H.dcm_site.nunique()])(
     load('data/historical/CO_pre1960_hazardous_listings.csv'), load('data/historical/CO_pre1960_hazardous_sites.csv'))
-  expect: [8203, 7305, 805, 356, 222]
-  stale: "data/historical gives 8,199 listings, 7,301 firm-locations, 545 at a street address, 214 linked, 135 later sites (the complete-editions run links to fewer sites)"
+  expect: [8199, 7301, 664, 266, 168]
 
 - id: readme_radium_business_directory_firms
   file: README.md
@@ -480,10 +478,9 @@
 
 - id: readme_radium_manufacturers_directory_firms
   file: README.md
-  text: "31 from the\nmanufacturers' directory"
+  text: "6 from the\n13 complete editions of the manufacturers' directory"
   check: "(load('app/data/radium_firms.csv').source == 'Directory of Colorado Manufacturers').sum()"
-  expect: 31
-  stale: "app/data/radium_firms.csv holds 8 manufacturers'-directory firms (complete editions only); 31 was the all-25-edition count"
+  expect: 6
 
 # ------------------------------------------------------------------ app/app.R static text
 - id: app_complete_editions_list
@@ -514,15 +511,17 @@
 
 - id: app_1965_edition_denver_share
   file: app/app.R
-  text: "The 1965 edition places 73% in Denver"
-  check: "(lambda d: d[d.region == 'Denver']['1965'].iloc[0])(load('app/data/regional_shares_1965_1992.csv'))"
-  expect: 73
+  text: "Denver's share falls from about half in 1965–1970 to 29% in 1992"
+  check: "(lambda d: [d[d.region == 'Denver'][y].iloc[0] for y in ('1965', '1970', '1992')])(load('app/data/regional_shares_1965_1992.csv'))"
+  expect: [50, 50, 29]
+  tol: [3, 3, 0.5]
 
 - id: app_no_code_share_1977_1992
   file: app/app.R
-  text: "the share of listings printed without an industry code (1977: 25%, 1992: 14%)"
-  check: "(lambda e: [e[e.year == 1977].no_code_pct.iloc[0], e[e.year == 1992].no_code_pct.iloc[0]])((lambda d: d[d.series.str.contains('Manufacturers')])(load('app/data/edition_coverage.csv')))"
-  expect: [25, 14]
+  text: "the share of listings printed without an industry code (1966: 18%, 1992: 13%; under 5% in most other complete editions)"
+  check: "(lambda e: [e[e.year == 1966].no_code_pct.iloc[0], e[e.year == 1992].no_code_pct.iloc[0], (e[e.complete.astype(str).str.upper().eq('TRUE') & ~e.year.isin([1966, 1992])].no_code_pct < 5).mean()])((lambda d: d[d.series.str.contains('Manufacturers')])(load('app/data/edition_coverage.csv')))"
+  expect: [18, 13, 1]
+  tol: [0.5, 0.5, 0.3]
 
 - id: app_sanborn_sheets_read
   file: app/app.R
@@ -816,47 +815,44 @@
 # README: all-25-edition run (stale alongside readme_full_inventory_sites)
 - id: readme_full_inventory_hidden_cleanup
   file: README.md
-  text: "**1,331 (31%) are on no current federal or state inventory** (936 of them high confidence); 860 (20%) are on a cleanup or"
+  text: "**1,819 (39%) are on no current federal or state inventory** (1,170 of them high confidence); 801 (17%) are on a cleanup or"
   check: >-
     (lambda f: [(f.radar == 'Not on any list').sum(), 100 * (f.radar == 'Not on any list').mean(), ((f.radar == 'Not on any list') & (f.confidence == 'high')).sum(),
     (f.radar == 'Cleanup / contamination list').sum(), 100 * (f.radar == 'Cleanup / contamination list').mean()])((lambda s: s[s.fe_hazard == 'TRUE'])(load('data/full_inventory/sites.csv', as_str=True)))
-  expect: [1331, 31, 936, 860, 20]
-  stale: "data/full_inventory/sites.csv (re-exported after the 17 October run) gives 1,329 hidden (934 high confidence) and 853 on a cleanup list"
+  expect: [1819, 39, 1170, 801, 17]
 
 - id: readme_full_inventory_rcra
   file: README.md
-  text: "1,238 are known only as RCRA hazardous-waste handlers"
+  text: "1,159 are known only as RCRA hazardous-waste handlers"
   check: "((s := load('data/full_inventory/sites.csv', as_str=True))[s.fe_hazard == 'TRUE'].radar == 'RCRA hazardous-waste handler').sum()"
-  expect: 1238
-  stale: "data/full_inventory/sites.csv gives 1,232"
+  expect: 1159
 
 - id: readme_full_inventory_multi_firm
   file: README.md
-  text: "1,642 sites hosted two or more hazardous-sector firms over time"
+  text: "1,749 sites hosted two or more hazardous-sector firms over time"
   check: "((s := load('data/full_inventory/sites.csv', as_str=True))[s.fe_hazard == 'TRUE'].n_hazard_establishments.astype(int) >= 2).sum()"
-  expect: 1642
-  stale: "data/full_inventory/sites.csv gives 1,638"
+  expect: 1749
 
 - id: readme_full_inventory_tract_medians
   file: README.md
-  text: "(median percentile 61.8 vs 43.5 for other tracts),\n  more low-income residents (24.7% vs 19.1%) and lower educational attainment (5.8% vs 4.5% without a high-school diploma)"
+  text: "(median percentile 60.1 vs 43.2 for other tracts),\n  more low-income residents (23.6% vs 19.0%) and lower educational attainment (5.7% vs 4.5% without a high-school diploma)"
   # tracts containing a hidden F&E site of the all-25-edition inventory vs every other EnviroScreen tract (medians; the test statistics need scipy)
   check: >-
     (lambda t, unk: [v for col in ('enviroscreen_pctl', 'low_income', 'less_than_hs') for v in (t[t.GEOID.isin(unk)][col].median(), t[~t.GEOID.isin(unk)][col].median())])(
     load('app/data/enviroscreen_tracts.geojson').assign(GEOID=lambda d: d.GEOID.astype(str)),
     set((lambda s: s[(s.fe_hazard == 'TRUE') & (s.radar == 'Not on any list')])(load('data/full_inventory/sites.csv', as_str=True)).GEOID) - {''})
-  expect: [61.8, 43.5, 24.7, 19.1, 5.8, 4.5]
+  expect: [60.1, 43.2, 23.6, 19.0, 5.7, 4.5]
 
 - id: readme_full_inventory_tract_people_of_color_and_known_only
   file: README.md
-  text: "(27.8% vs 26.4%, p = 0.06). Tracts with unknown sites have the same\n  EnviroScreen scores as tracts with only known sites (61.8 vs 60.4, p = 0.57)"
+  text: "(27.2% vs 26.9%, p = 0.18). Tracts with unknown sites have the same\n  EnviroScreen scores as tracts with only known sites (60.1 vs 59.8, p = 0.93)"
   check: >-
     (lambda t, unk, anyg: [t[t.GEOID.isin(unk)].people_of_color.median(), t[~t.GEOID.isin(unk)].people_of_color.median(),
     t[t.GEOID.isin(unk)].enviroscreen_pctl.median(), t[t.GEOID.isin(anyg) & ~t.GEOID.isin(unk)].enviroscreen_pctl.median()])(
     load('app/data/enviroscreen_tracts.geojson').assign(GEOID=lambda d: d.GEOID.astype(str)),
     set((lambda s: s[(s.fe_hazard == 'TRUE') & (s.radar == 'Not on any list')])(load('data/full_inventory/sites.csv', as_str=True)).GEOID) - {''},
     set((lambda s: s[s.fe_hazard == 'TRUE'])(load('data/full_inventory/sites.csv', as_str=True)).GEOID) - {''})
-  expect: [27.8, 26.4, 61.8, 60.4]
+  expect: [27.2, 26.9, 60.1, 59.8]
 
 # README: geocoding validation
 - id: readme_addresspoints_address_row
@@ -887,25 +883,23 @@
   file: README.md
   text: "address level n = 131 compared,\nmedian 67 m, 88% within 250 m, 3.8% (5 sites) over 1 km; approximate n = 32, median 97 m, 75% within 250 m, 12.5% over 1 km"
   check: >-
-    (lambda d: [v for lv in ('address', 'address_approx') for x in [d[(d.level == lv) & (d.status == 'found')].dmin]
+    (lambda d: [v for lv in ('address', 'address_approx') for x in [d[(d.level == lv) & (d.status == 'found') & ~d.ambiguous.astype(bool)].dmin]
     for v in ((len(x), x.median(), 100 * (x <= 250).mean(), 100 * (x > 1000).mean(), (x > 1000).sum()) if lv == 'address' else (len(x), x.median(), 100 * (x <= 250).mean(), 100 * (x > 1000).mean()))])(
     load('data/results/geocoding_validation_addresspoints_recheck.csv'))
   expect: [131, 67, 88, 3.8, 5, 32, 97, 75, 12.5]
-  stale: "geocoding_validation_addresspoints_recheck.csv now holds 133 address-level comparisons (median 66 m, 88%, 3.8%, 5 sites) and 34 approximate (median 109 m, 74% within 250 m, 14.7% over 1 km)"
 
 - id: readme_frs_validation
   file: README.md
-  text: "address level n = 1,841, median 48 m, 88% within 250 m, 2.7% over 1 km"
+  text: "address level n = 1,225, median 48 m, 88% within 250 m, 2.9% over 1 km"
   check: "(lambda r: [r.n, r.median_m, 100 * r.within_250m, 100 * r.over_1km])((lambda d: d[d.geocode_level == 'address'].iloc[0])(load('app/data/geocoding_validation_frs.csv')))"
-  expect: [1841, 48, 88, 2.7]
-  stale: "geocoding_validation_frs.csv / geocoding_validation.md give n = 1,672, median 50 m, 87.6% within 250 m, 2.7% over 1 km (the README's run predates the committed file)"
+  expect: [1225, 48, 88, 2.9]
 
 - id: readme_geocode_coverage_range
   file: README.md
-  text: "22–76% of listings geocode at address level"
-  check: "(lambda d: [100 * d.address.min(), 100 * d.address.max()])(load('data/results/geocoding_coverage_by_year.csv'))"
-  expect: [22, 76]
-  stale: "geocoding_coverage_by_year.csv gives 17.5% (1965) to 68.8% (1999) at address level (24.7–81.3% with address_approx)"
+  text: "22–65% of listings geocode at address level (34–77% including approximate placements)"
+  check: "(lambda d: [100 * d.address.min(), 100 * d.address.max(), 100 * (d.address + d.address_approx).min(), 100 * (d.address + d.address_approx).max()])(load('data/results/geocoding_coverage_by_year.csv'))"
+  expect: [22, 65, 34, 77]
+  tol: 0.5
 
 - id: readme_pre1960_town_share
   file: README.md
@@ -946,12 +940,12 @@
 # README: benchmarks and corridors
 - id: readme_cbp_coverage
   file: README.md
-  text: "covers 30–100% of CBP manufacturing\nestablishments depending on the edition (median ratio in Denver 0.77), with county counts correlating at r = 0.85 (log) and the\nhazardous sectors at r = 0.88"
+  text: "covers 35–110% of CBP manufacturing\nestablishments depending on the edition (median ratio in Denver 0.94), with county counts correlating at r = 0.84 (log) and the\nhazardous sectors at r = 0.88"
   check: >-
     (lambda s, c, d: [100 * s.ratio_mfg.min(), 100 * s.ratio_mfg.max(), (d.dir_mfg / d.cbp_mfg).median(),
     np.corrcoef(np.log1p(c.dir_mfg), np.log1p(c.cbp_mfg))[0, 1], np.corrcoef(np.log1p(c.dir_haz), np.log1p(c.cbp_haz))[0, 1]])(
     load('app/data/cbp_vs_directory_state.csv'), (c := (lambda b: b[b.dir_all > 0])(load('app/data/cbp_vs_directory_county.csv'))), c[c.county_name.str.contains('Denver')])
-  expect: [30, 100, 0.77, 0.85, 0.88]
+  expect: [35, 110, 0.94, 0.84, 0.88]
   tol: [5, 6, 0.005, 0.005, 0.005]
 
 - id: readme_eg_significance_shares
@@ -1175,11 +1169,11 @@
 
 - id: app_benchmark_scan_density
   file: app/app.R
-  text: "(22\\u201346 listings per page; 1988 and 1992 were scanned at the lowest density)"
+  text: "(22\\u201348 listings per page; 1988 and 1992 were scanned at the lowest density)"
   check: >-
     (lambda m: (lambda pp: [pp.min(), pp.max()] + sorted(m.year[pp.nsmallest(2).index].tolist()))(m.listings / m.pages))(
     (lambda e: e[e.series.str.contains('Manufacturers') & e.complete.astype(str).str.upper().eq('TRUE')])(load('app/data/edition_coverage.csv')))
-  expect: [22, 46, 1988, 1992]
+  expect: [22, 48, 1988, 1992]
 
 - id: app_covenants_located
   file: app/app.R
@@ -1197,32 +1191,32 @@
 # ------------------------------------------------------------------ README: known vs hidden sensitivity (R/known_hidden_sensitivity.R)
 - id: readme_sensitivity_proximity_only
   file: README.md
-  text: "1,168 of the 2,197 known sites (53%) are known only because a differently named record lies within the tier's radius"
+  text: "1,219 of the 2,200 known sites (55%) are known only because a differently named record lies within the tier's radius"
   check: "(lambda s: [(s.match_basis == 'nearby record only').sum(), (s.radar != 'Not on any list').sum(), 100 * (s.match_basis == 'nearby record only').sum() / (s.radar != 'Not on any list').sum()])((lambda s: s[s.fe_hazard.astype(str).str.upper() == 'TRUE'])(load('app/data/sites.csv')))"
-  expect: [1168, 2197, 53]
+  expect: [1219, 2200, 55]
 
 - id: readme_sensitivity_proximity_tiers_distance
   file: README.md
-  text: "for 48% of\n  them the nearest such record is an RCRA hazardous-waste handler and for 36% another EPA permit, and 82% lie 10–40 m away"
+  text: "for 46% of them the nearest such record is an RCRA hazardous-waste handler and for 35% another EPA permit, and\n  81% lie 10–40 m away"
   check: "(lambda p: [p[p.tier == 'rcra_handler'].pct_of_proximity_only.sum(), p[p.tier == 'other_epa'].pct_of_proximity_only.sum(), p[p.band.isin(['10-25 m', '25-40 m'])].pct_of_proximity_only.sum()])(load('data/results/known_hidden/proximity_only_by_tier_distance.csv'))"
-  expect: [48, 36, 82]
+  expect: [46, 35, 81]
 
 - id: readme_sensitivity_counts
   file: README.md
-  text: "2,453 sites (70%) are on no inventory; counting proximity\n  only within 25 m, 1,793 (51%); counting proximity only to cleanup and TRI records, 2,110 (61%); with every radius doubled,\n  738 (21%)"
+  text: "2,506 sites (72%) are on no inventory;\n  counting proximity only within 25 m, 1,805 (52%); counting proximity only to cleanup and TRI records, 2,114 (61%); with every radius\n  doubled, 740 (21%)"
   check: "(lambda c: sum([[r.n_hidden, r.pct_hidden] for r in [c[(c.rule == k) & (c.sites.str.startswith('F&E hazardous'))].iloc[0] for k in ['strict', 'prox25', 'cleanup_tri_prox', 'wider']]], []))(load('data/results/known_hidden/sensitivity_counts.csv'))"
-  expect: [2453, 70, 1793, 51, 2110, 61, 738, 21]
+  expect: [2506, 72, 1805, 52, 2114, 61, 740, 21]
 
 - id: readme_sensitivity_tracts
   file: README.md
-  text: "(medians 61–63 vs 42 in tracts with no\n  hazardous-sector site), more low-income residents (24.5–25.0% vs 18.2%) and more adults without a high-school diploma (5.7–5.9% vs\n  4.4%), all p < 1e-5"
+  text: "(medians 61–63 vs 42 in tracts with no\n  hazardous-sector site), more low-income residents (24.5–25.4% vs 18.2%) and more adults without a high-school diploma (5.7–5.8% vs\n  4.4%), all p < 1e-5"
   check: "(lambda t: [t[t.measure == m].median_hidden.min() for m in ['EnviroScreen percentile', 'Low income (%)', 'Less than high school (%)']] + [t[t.measure == m].median_hidden.max() for m in ['EnviroScreen percentile', 'Low income (%)', 'Less than high school (%)']] + [t[t.measure == m].median_no_site.iloc[0] for m in ['EnviroScreen percentile', 'Low income (%)', 'Less than high school (%)']] + [int(t[t.measure != 'People of color (%)'].p_hidden_vs_no_site.max() < 1e-5)])(load('data/results/known_hidden/tract_comparison_enviroscreen.csv'))"
-  expect: [61, 24.5, 5.7, 63, 25.0, 5.9, 42, 18.2, 4.4, 1]
+  expect: [61, 24.5, 5.7, 63, 25.4, 5.8, 42, 18.2, 4.4, 1]
   tol: [1, 0.05, 0.05, 1, 0.05, 0.05, 0.5, 0.05, 0.05, 0]
 
 - id: readme_sensitivity_tracts_poc_and_known_only
   file: README.md
-  text: "similar shares of people of color (27–28% vs 26%, p = 0.03–0.08); and they do not differ from tracts\n  with only known sites on any of the four measures (all p ≥ 0.37)"
+  text: "similar shares of people of color (27–28% vs 26%, p = 0.03–0.08); and they do not differ from tracts\n  with only known sites on any of the four measures (all p ≥ 0.32"
   check: "(lambda t: [t[t.measure == 'People of color (%)'].median_hidden.min(), t[t.measure == 'People of color (%)'].median_hidden.max(), t[t.measure == 'People of color (%)'].median_no_site.iloc[0], t[t.measure == 'People of color (%)'].p_hidden_vs_no_site.min(), t[t.measure == 'People of color (%)'].p_hidden_vs_no_site.max(), t.p_hidden_vs_known_only.min()])(load('data/results/known_hidden/tract_comparison_enviroscreen.csv'))"
-  expect: [27, 28, 26, 0.03, 0.08, 0.37]
+  expect: [27, 28, 26, 0.03, 0.08, 0.32]
   tol: [0.9, 0.5, 0.5, 0.005, 0.005, 0.005]

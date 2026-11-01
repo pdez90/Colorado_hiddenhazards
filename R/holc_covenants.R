@@ -266,7 +266,7 @@ for (v in c("p_black", "p_hisp", "p_pov", "p_owner", "lmval")) for (per in chang
   y0 <- paste0(v, "_", per[1]); y1 <- paste0(v, "_", per[2]); if (!all(c(y0, y1) %in% names(W))) next
   d <- W[!is.na(W[[y1]]) & !is.na(W[[y0]])]; d$base <- d[[y0]]
   d$dy <- d[[y1]] - d$base; d$grade <- factor(d$cls, c("A", "B", "C", "D", "Industrial", "Commercial")); d$black40 <- d$p_black_1940; d$firms40 <- log1p(d$firms_haz_1940)
-  d <- d[is.finite(dy) & is.finite(base) & !is.na(grade)]
+  d <- d[is.finite(dy) & is.finite(base) & !is.na(grade) & !is.na(black40) & is.finite(firms40)]   # the controls too, so n and the class counts are the estimation sample
   d <- drop_small_classes(d)
   if (nrow(d) < 30 || length(unique(d$grade)) < 3 || !"A" %in% levels(d$grade)) next
   cm <- change_model(d); m <- cm$m; ct <- cm$ct; ct0 <- cm$ct0

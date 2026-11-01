@@ -195,7 +195,7 @@ def test_full_inventory_internally_consistent():
     bad = [sid for sid, (mn, mx) in yrs.items() if sid in m.index and (int(m.at[sid, "first_year"]), int(m.at[sid, "last_year"])) != (mn, mx)]
     assert not bad, bad[:5]
     assert not ((s.fe_hazard == "FALSE") & (s.ext_hazard == "FALSE")).any()
-    assert len(L) == 68368
+    assert len(L) == 72317
     by = sorted((fi / "by_year").glob("*.csv"))
     assert len(by) == 25
 
@@ -293,8 +293,6 @@ def test_n_hazard_establishments_matches_site_firms():
     assert not bad, bad[:5]
 
 
-@pytest.mark.xfail(strict=True, reason="known: 4 non-hazardous site ids used in the listings (S00002, S00010, S00413, S03310) "
-                                      "are missing from CO_historical_industrial_sites.geojson")
 def test_every_listing_site_id_is_in_geojson():
     L, g = listings(), _geojson_sites()
     missing = set(L[L.site_id != ""].site_id) - set(g.site_id)
@@ -624,10 +622,17 @@ def test_manifest_lists_no_missing_file():
     assert not missing, missing
 
 
-@pytest.mark.xfail(strict=True, reason="known: app/data/mlp_exposure_windows.csv is on disk but not in app/manifest.json")
 def test_manifest_lists_every_file_under_app():
     extra = sorted(_app_disk_files() - _manifest_files())
     assert not extra, extra
+
+
+def test_manifest_checksums_match_the_files():
+    """Posit Connect deploys the files the manifest lists; a stale checksum means the deployed app differs from the repository."""
+    import hashlib
+    man = json.load(open(REPO / "app" / "manifest.json"))["files"]
+    bad = sorted(f for f, v in man.items() if (REPO / "app" / f).exists() and v.get("checksum") != hashlib.md5((REPO / "app" / f).read_bytes()).hexdigest())
+    assert not bad, f"{len(bad)} manifest checksums differ from the files on disk (regenerate app/manifest.json): {bad[:10]}"
 
 
 def test_manifest_covers_everything_app_R_reads():

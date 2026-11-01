@@ -123,10 +123,15 @@ ev <- function(cmp_ids, label) {
   setnames(cmp, V, paste0("c_", V))
   Tr <- merge(Pa[group == "treated"], cmp, by = "census"); Tr[, event := (census - base_census) / 10]; Tr <- Tr[event >= -2 & event <= 4]
   Tr <- merge(Tr, Tr[event == 0, .(GEOID, pop0 = pop, c_pop0 = c_pop)], by = "GEOID")
-  g <- function(a, b, w) { x <- weighted.mean(a - b, w, na.rm = TRUE); if (is.nan(x)) NA_real_ else round(x, 1) }
+  # each outcome's path is traced over the same tracts at every event time: those whose outcome is observed at event 0 (the last
+  # census before the opening). Hispanic share and poverty are measured only from 1970, so tracts whose freeway opened in the 1950s
+  # have no pre-opening value and are left out of those two paths rather than entering them part-way through.
+  ok <- lapply(V, function(v) Tr[event == 0 & !is.na(get(v)) & !is.na(get(paste0("c_", v))), GEOID]); names(ok) <- V
+  g <- function(v, d) { d <- d[GEOID %in% ok[[v]]]; if (!nrow(d)) return(NA_real_); x <- weighted.mean(d[[v]] - d[[paste0("c_", v)]], d$pop, na.rm = TRUE); if (is.nan(x)) NA_real_ else round(x, 1) }
   Tr[, .(comparison = label, tracts = uniqueN(GEOID), pop_index = round(100 * sum(pop) / sum(pop0), 1), comparison_pop_index = round(100 * mean(c_pop / c_pop0), 1),
-         gap_hispanic = g(p_hisp, c_p_hisp, pop), gap_black = g(p_black, c_p_black, pop), gap_white = g(p_white, c_p_white, pop),
-         gap_owner = g(p_owner, c_p_owner, pop), gap_poverty = g(p_pov, c_p_pov, pop)), by = .(decades_since_opening = event)][order(decades_since_opening)] }
+         gap_hispanic = g("p_hisp", .SD), tracts_hispanic = uniqueN(GEOID[GEOID %in% ok$p_hisp]), gap_black = g("p_black", .SD), gap_white = g("p_white", .SD),
+         gap_owner = g("p_owner", .SD), gap_poverty = g("p_pov", .SD), tracts_poverty = uniqueN(GEOID[GEOID %in% ok$p_pov])),
+     by = .(decades_since_opening = event), .SDcols = c("GEOID", "pop", V, paste0("c_", V))][order(decades_since_opening)] }
 R6 <- rbind(ev(E[group == "comparison", GEOID], "All tracts with no freeway within 1 km"),
             ev(E[group == "comparison" & km_downtown <= dmax, GEOID], sprintf("Same, within %.1f km of downtown", dmax)))
 fwrite(R6, file.path(O, "highways_event_study.csv")); print(R6, nrows = 50); print(E[, .N, by = group]); print(E[group == "comparison" & km_downtown <= dmax, .N])

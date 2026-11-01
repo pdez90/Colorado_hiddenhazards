@@ -14,7 +14,7 @@ every suite has a `conftest.py` with the same module name, and the digitization 
 directory into a scratch workspace while it runs.
 Python dependencies: `pip install -r requirements-test.txt` (plus `playwright` and
 `playwright install chromium` for the smoke test). R: `testthat` and the packages the R code uses
-(`data.table`, `sf`, `jsonlite`, `Matrix`, `sandwich`, `lmtest`, `spdep`, `fixest`).
+(`data.table`, `sf`, `jsonlite`, `Matrix`, `sandwich`, `lmtest`, `spdep`, `fixest`, `RANN`).
 CI (`.github/workflows/tests.yml`) runs the Python suites with `-m "not slow"` and the R suite on
 every push and pull request; tests that need `work/` inputs skip themselves when those are absent.
 
@@ -36,9 +36,9 @@ All of these read only files that are in the repository (`app/data`, `data/resul
   `data/results/**` (same name, or `rezoning_`/`sanborn1903_`/`ownership_`/`conditions_` prefix →
   the matching results folder) is byte-identical; the 20 m land-use `.tif` rasters are binary and are
   compared by size only; `app/data/by_year/*.csv` equals `data/by_year/*.csv`, whose 13 files hold the
-  same 41,987 listings as `data/results/CO_directory_listings_1961-2002.csv`.
-* **Sites.** `app/data/sites.csv` (3,318 hazardous sites: 3,169 F&E + 149 extended-sector only),
-  `data/results/CO_historical_industrial_sites.geojson` (7,143 located sites, hazardous or not) and the
+  same 44,808 listings as `data/results/CO_directory_listings_1961-2002.csv`.
+* **Sites.** `app/data/sites.csv` (3,657 hazardous sites: 3,487 F&E + 170 extended-sector only),
+  `data/results/CO_historical_industrial_sites.geojson` (7,973 located sites, hazardous or not) and the
   three site sheets of `CO_hazardous_sites_1961-2002.xlsx` agree on ids, coordinates, years,
   `hazard_years`, status, confidence and the fe/ext flags; the workbook's coverage sheet matches the
   listings; `data/full_inventory` (the all-25-edition run, with its own site numbering) is internally
@@ -76,9 +76,10 @@ documented and the marker must be removed when the data are fixed:
 
 | Test | What is wrong |
 |---|---|
-| `test_every_listing_site_id_is_in_geojson` | 4 non-hazardous site ids used in the listings (S00002, S00010, S00413, S03310) are missing from `CO_historical_industrial_sites.geojson` |
 | `test_tract_panel_values_positive_or_na` | `mval_2020` is 0 instead of NA in 3 tract-years (08001008545 1980, also `mrent_2020`; 08041004402 1980 and 2000) |
-| `test_manifest_lists_every_file_under_app` | `app/data/mlp_exposure_windows.csv` is on disk but not in `app/manifest.json` (and not read by `app.R`) |
+
+`test_manifest_checksums_match_the_files` fails whenever `app/manifest.json` is older than the files it lists: regenerate it
+(`rsconnect::writeManifest("app")`, or update the md5 checksums) before pushing, since Posit Connect deploys what the manifest describes.
 
 ### `test_claims.py` + `claims.yml` — the numbers in the text are what the data say (~3 s)
 
@@ -88,13 +89,8 @@ documented and the marker must be removed when the data are fixed:
 `fisher_exact_p()`, `mh_conditional_or()` …) and `expect` (the quoted number(s)). The test fails if the
 text is gone **or** the data no longer give the quoted value, so a rerun that changes a number is caught
 until the text is updated. Tolerance defaults to half a unit of the last printed decimal; `tol`
-overrides it. A claim with `stale: reason` is a known out-of-date statement (strict xfail): currently
-the README's pre-1960 counts (8,203 / 7,305 / 805 / 356 / 222 vs 8,199 / 7,301 / 545 / 214 / 135 in
-`data/historical`), its "31 radium firms from the manufacturers' directory" (8 in the complete editions),
-the all-25-edition "4,312 hazardous-sector sites" and the hidden / cleanup / RCRA / multi-firm counts of that run
-(4,297 / 1,329 / 934 / 853 / 1,232 / 1,638 in `data/full_inventory`), the address-point re-check and FRS validation
-figures (the committed `geocoding_validation_*` files hold a later run: 133 / 34 compared, FRS n = 1,672) and the
-"22–76%" address-level geocoding coverage range (17.5–68.8% in `geocoding_coverage_by_year.csv`).
+overrides it. A claim with `stale: reason` is a known out-of-date statement (strict xfail); after the 31 October audit rerun
+none is marked stale.
 
 To add a claim: copy the sentence or table row verbatim into `text`, write a `check` that recomputes it
 from the committed data (not from the file the text was generated from, where possible), run
