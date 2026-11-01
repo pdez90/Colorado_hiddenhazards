@@ -7,8 +7,8 @@ Source: Denver-metro zoning, 3 Oct 2023, compiled by C. Makarewicz (CU Denver) f
 |---|---|---
 |
 | Industrial (housing not allowed) |  62.0 | 11.9 |
-| Industrial mixed use (housing allowed) |   5.9 |  1.1 |
-| Mixed use with housing |  75.8 | 14.6 |
+| Industrial mixed use (housing allowed) |   7.7 |  1.5 |
+| Mixed use with housing |  74.0 | 14.2 |
 | Residential | 218.7 | 42.0 |
 | Commercial | 118.3 | 22.7 |
 | Open space, civic, other |  39.7 |  7.6 |
@@ -18,27 +18,27 @@ Source: Denver-metro zoning, 3 Oct 2023, compiled by C. Makarewicz (CU Denver) f
 | zone1929 | km2_1929 | Industrial (housing not allowed) | Industrial mixed use (housing allowed) | Mixed use with housing | Residential | Commercial | Open space, civic, other |
 |---|---|---|---|---|---|---|---
 |
-| Commercial |  3.58 |  7.3 |  1.7 | 64.3 | 18.9 | 1.2 | 6.5 |
-| Industrial A | 24.57 | 50.7 | 11.8 | 23.8 |  6.3 | 0.2 | 7.3 |
-| Industrial B |  3.76 | 59.9 |  2.6 | 16.5 | 11.8 | 0.9 | 8.3 |
+| Commercial |  3.60 |  7.4 |  1.6 | 64.4 | 19.1 | 1.2 | 6.3 |
+| Industrial A | 24.63 | 50.7 | 12.1 | 23.4 |  6.3 | 0.1 | 7.4 |
+| Industrial B |  3.77 | 60.4 |  2.4 | 16.4 | 11.7 | 0.9 | 8.3 |
 
 ## Hazardous sites by 2023 zoning (% of sites)
-Sites in the study area that fall in no 2023 polygon (mostly suburban street geocodes on unzoned right-of-way) take the nearest polygon within 50 m: 53 of 1558 1965-92 sites and 1 of 320 pre-1960 trades; 0 and 0 remain unmatched and are left out.
+Sites in the study area that fall in no 2023 polygon (mostly suburban street geocodes on unzoned right-of-way) take the nearest polygon within 50 m: 53 of 1558 1965-92 sites and 0 of 407 pre-1960 trades; 0 and 0 remain unmatched and are left out.
 
 | series | where | n | Industrial (housing not allowed) | Industrial mixed use (housing allowed) | Mixed use with housing | Residential | Commercial | Open space, civic, other |
 |---|---|---|---|---|---|---|---|---
 |
-| Hazardous trades before 1960 (street level) | Denver County |  317 |  7.6 |  8.5 | 69.4 | 10.4 | 0.9 | 3.2 |
-| Hazardous trades before 1960 (street level) | Study area |  320 |  7.5 |  8.4 | 69.4 | 10.6 | 0.9 | 3.1 |
-| Hazardous-sector manufacturers 1965-1992 | Denver County | 1108 | 39.7 | 15.0 | 33.0 | 10.5 | 0.6 | 1.2 |
-| Hazardous-sector manufacturers 1965-1992 | Study area | 1558 | 47.7 | 10.7 | 27.5 | 11.0 | 1.9 | 1.2 |
+| Hazardous trades before 1960 (street level) | Denver County |  402 |  5.7 |  8.5 | 75.9 |  8.2 | 0.2 | 1.5 |
+| Hazardous trades before 1960 (street level) | Study area |  407 |  6.4 |  8.4 | 75.4 |  8.1 | 0.2 | 1.5 |
+| Hazardous-sector manufacturers 1965-1992 | Denver County | 1108 | 39.7 | 15.1 | 32.9 | 10.5 | 0.6 | 1.2 |
+| Hazardous-sector manufacturers 1965-1992 | Study area | 1558 | 47.7 | 10.7 | 27.4 | 11.0 | 1.9 | 1.2 |
 | Hazardous-sector manufacturers 1965-1992 | Suburban study tracts |  450 | 67.3 |  0.0 | 13.8 | 12.4 | 5.1 | 1.3 |
 
 ## 1965-92 sites by the decade last listed
 | last_decade | n | Industrial (housing not allowed) | Industrial mixed use (housing allowed) | Mixed use with housing | Residential | Commercial | Open space, civic, other |
 |---|---|---|---|---|---|---|---
 |
-| 1965-1970 | 289 | 25.3 | 10.4 | 42.6 | 16.6 | 3.8 | 1.4 |
+| 1965-1970 | 289 | 25.3 | 10.7 | 42.2 | 16.6 | 3.8 | 1.4 |
 | 1971-1980 | 415 | 39.3 |  9.2 | 33.5 | 13.5 | 2.7 | 1.9 |
 | 1981-1992 | 854 | 59.4 | 11.5 | 19.4 |  8.0 | 0.9 | 0.8 |
 

@@ -420,9 +420,9 @@ dropped from these models (the A reference class, four tracts, is kept), so the 
 1980–2010 and 1970–2010 and for home value 1940–80 and 1940–2010 hold under classical, HC1 and Conley errors, the Hispanic-share
 estimates do not reach p < 0.05 under HC1 or Conley errors.
 27 of the covenant deeds also bar business or manufacturing use. HOLC also outlined ungraded "Industrial" and "Commercial"
-zones, and that is where the pre-1938 industry sat: 64% of the street-level hazardous trades listed before the map were in
-Commercial zones and 14% in Industrial ones, 15% in D areas and none in A or B (`holc_facility_shares.csv`). Classing the 1930
-districts by the HOLC class that covers them (`ed_holc_classes.csv`): the D districts, 7.3% Black in 1930, held 2.4 hazardous
+zones, and that is where the pre-1938 industry sat: 69% of the street-level hazardous trades listed before the map were in
+Commercial zones and 13% in Industrial ones, 11% in D areas and none in A or B (`holc_facility_shares.csv`). Classing the 1930
+districts by the HOLC class that covers them (`ed_holc_classes.csv`): the D districts, 7.3% Black in 1930, held 2.7 hazardous
 firms per 10,000 residents before the map and 50 hazardous-sector sites per 10,000 in 1965–92, against 6.4 per 10,000 in A–C —
 the post-war industrial growth went into the redlined and industrial districts. The app's Redlining tab shows the 1930
 districts by class, covenants, composition and firms before/after the map, and the share of each era's facilities by HOLC class.
@@ -434,9 +434,9 @@ to 2020 (2010 tracts), both for all C vs all D areas and within a boundary band 
 firms per km² of each grade in six periods from 1891 to 2002 (`holc_industry_periods.csv`). At the C–D boundaries the Black-share gap
 was nil in 1900–1920, 4 points by 1930 and 6 by 1940 — before the map — then 10–18 points in 1950–1970 before converging after 1980;
 the Hispanic gap opens only in 1940 and after. Hazardous firms per km² per directory edition in D areas against C areas
-(`holc_industry_periods.csv`): 6.4× in 1906–20 (but on 13 firms in D against 3 in C), 1.7× in 1921–37 (8 against 9 firms) and 2.1×
-in 1938–56 (37 against 27), then 13.8× in 1965–80 (318 against 52) and 18.2× in 1981–92 (234 against 31); the pre-1938 ratios rest on a
-handful of street-level listings. Reading: the appraisers ratified a divergence already under way; the step from 2.1× to 13.8× between
+(`holc_industry_periods.csv`): 5.4× in 1906–20 (but on 13 firms in D against 4 in C), 1.3× in 1921–37 (8 against 11 firms) and 1.8×
+in 1938–56 (34 against 28), then 13.8× in 1965–80 (318 against 52) and 18.2× in 1981–92 (234 against 31); the pre-1938 ratios rest on a
+handful of street-level listings. Reading: the appraisers ratified a divergence already under way; the step from 1.8× to 13.8× between
 1938–56 and 1965–80 is a change of source (business directory to manufacturers' directory), not a measured acceleration, and within
 the manufacturers' directory the ratio rose from 13.8× to 18.2×. Railways and the 1925 zoning
 ordinance are not controlled, and Fishback, Rose, Snowden & Storrs (2024) show that FHA practice, not the HOLC map, governed lending,
@@ -453,8 +453,8 @@ Denver zoned in February 1925, thirteen years before the HOLC map. The Denver Pu
 to January 1929 (CG4314 .D4 G44 1929) is a monochrome hatched map; a texture classifier run on the 11,849 × 12,000-pixel scan labels
 32-pixel cells as Industrial A ("/" hatch with no lot lines), Industrial B ("\" hatch) or Commercial (dense cross-hatch), with the
 result drawn over the scan in `data/raw/zoning_1929/zone_classification_overlay.jpg` and the cells in `zone_cells_1929.csv`. The
-script georeferences the scan from 16 candidate control points (street intersections and park corners read off the scan), 13 of which
-resolve to TIGER road intersections with `tigris` (affine fit in UTM 13N, RMSE 25 m; `data/results/zoning_1929/gcp_fit.csv`) and writes the zoned districts (`zoning_1929.geojson`) and the
+script georeferences the scan from 16 control points (street intersections and park corners read off the scan), all of which
+resolve to TIGER road intersections with `tigris` (affine fit in UTM 13N, RMSE 26 m; `data/results/zoning_1929/gcp_fit.csv`) and writes the zoned districts (`zoning_1929.geojson`) and the
 industrially and commercially zoned share of every HOLC area, enumeration district and 2010 tract (`zoning_shares_*.csv`), which
 `holc_covenants.R` then uses as a control in the boundary gaps and the change models. Residence E (apartments) and Industrial A share a
 hatch and are separated only by the absence of lot lines, so a few platted Industrial A blocks and the unplatted land north-east of
@@ -464,8 +464,8 @@ affine fit (`affine_1944_to_1929_px.csv`, RMSE ≈ 32 m) and compared cell by ce
 `Rscript R/zoning_1944.R`): one random forest trained on the 1929 labels is applied to both scans resampled to a common frame; clusters
 where the two years disagree (226) are candidates, every one of a block or more (118) was inspected on side-by-side binarised crops, and
 only visibly redrawn districts were accepted (`changes_1944_review.csv`, 9 accepted, 8 distinct areas). `zone_cells_1944.csv` is the
-1929 layer with those changes applied. Result: no industrial district added 1929–44; 0.47 km² of Industrial A (2%) redrawn as
-commercial, business or apartment districts; D land zoned industrial 16.2% → 15.9% on the land both sheets cover. Changes smaller than
+1929 layer with those changes applied. Result: no industrial district added 1929–44; 0.48 km² of Industrial A (2%) redrawn as
+commercial, business or apartment districts; D land zoned industrial 16.1% → 15.9% on the land both sheets cover. Changes smaller than
 a block and the hand-coloured amendments on the 1944 copy are not included.
 
 ### Zoning today (`R/zoning_2023.R`)
@@ -502,7 +502,7 @@ National Zoning Atlas layer, and the city's official zoning map today (`Rscript 
 data, layer CCD_Zoning/27, into `work/zoning_city/`; each district carries the year of the ordinance that last zoned it). Citywide
 maps between 1955 and 2010 are not digitised (Denver Public Library holds them in print). `Rscript
 R/zoning_over_time.R` writes to `data/results/zoning_over_time/`: industrial land by year and by HOLC grade on the 202 km² of Denver
-County covered by both 1929/1944 sheets (1929, 1944, 1955, 2023, today: 14.0% → 13.8% → 16.1% → 10.6% → 10.4%; D land 16.3% → 16.1%
+County covered by both 1929/1944 sheets (1929, 1944, 1955, 2023, today: 14.0% → 13.8% → 16.1% → 10.6% → 10.3%; D land 16.3% → 16.0%
 → 21.3% → 12.4% → 12.2%); what the 1929 industrial land is zoned
 today and the year of its last zoning ordinance (an upper bound on when it left industrial zoning, since earlier rezonings are not
 recorded); the share of sites in industrial districts each year; tracts industrial in 1929 and/or today with their 1970–2020
