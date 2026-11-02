@@ -22,6 +22,7 @@
 # Outputs (data/results/zoning_over_time/; copies in app/data):
 #   zoning_land_by_year.csv            km2 and % of each category, each year, on geography (a)
 #   zoning_by_holc_grade_years.csv     % of each HOLC grade zoned industrial (and industrial incl. I-MX) in each year, geography (a)
+#   zoning_1944_1955_change.csv        km2 industrial in both 1944 and 1955, added and dropped, all land and by HOLC grade, geography (a)
 #   zoning_1929_industrial_fate.csv    what the 1929 industrial land is zoned today, and when the ordinance that last zoned it passed
 #   zoning_sites_by_year.csv           share of hazardous sites standing in an industrial district in each year
 #   zoning_tract_paths.csv             the 147 tracts by industrial zoning in 1929 and today, with their composition 1970-2020
@@ -81,6 +82,15 @@ for (v in c("industrial", "industrial_mx")) set(R2, which(is.na(R2[[v]])), v, 0)
 R2 <- merge(R2, ga, by = "grade")[, `:=`(pct_industrial = round(100 * industrial / grade_km2, 1), pct_industrial_incl_imx = round(100 * industrial_mx / grade_km2, 1))]
 R2 <- R2[, .(grade, year, grade_km2 = round(grade_km2, 1), pct_industrial, pct_industrial_incl_imx)][order(grade, year)]
 fwrite(R2, file.path(O, "zoning_by_holc_grade_years.csv")); print(dcast(R2, grade ~ year, value.var = "pct_industrial"))
+# 1944 -> 1955: industrial land kept, added and dropped on geography (a), and how much of each lay in each HOLC grade
+ind <- function(z) st_make_valid(st_intersection(st_union(z[z$cat == "Industrial", ]), COMMON))
+I44 <- ind(Z44); I55 <- ind(Z55); km <- function(g) if (length(g) == 0) 0 else as.numeric(sum(st_area(g))) / 1e6
+both <- st_make_valid(st_intersection(I44, I55)); added <- st_make_valid(st_difference(I55, I44)); dropped <- st_make_valid(st_difference(I44, I55))
+bygrade <- function(g, lab) { it <- suppressWarnings(st_intersection(HC, g)); d <- data.table(grade = it$grade, km2 = as.numeric(st_area(it)) / 1e6)[, .(km2 = round(sum(km2), 2)), by = grade]
+  rbind(data.table(grade = "all", km2 = round(km(g), 2)), d)[, change := lab][] }
+R2b <- rbind(bygrade(both, "industrial in 1944 and 1955"), bygrade(added, "added by 1955"), bygrade(dropped, "dropped by 1955"))
+R2b <- dcast(R2b, grade ~ change, value.var = "km2", fill = 0)[order(grade != "all", grade)]
+fwrite(R2b, file.path(O, "zoning_1944_1955_change.csv")); print(R2b)
 # ---------------------------------------------------------------- 3. what became of the 1929 industrial land, and when
 I29 <- st_make_valid(st_intersection(st_union(Z29[Z29$cat == "Industrial", ]), DEN)); i29_km2 <- as.numeric(st_area(I29)) / 1e6
 cz <- suppressWarnings(st_intersection(city[, c("cat", "ORD_YEAR", "ZCODE_VERSION")], I29))

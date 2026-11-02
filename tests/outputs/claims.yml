@@ -1440,3 +1440,22 @@
   check: "(lambda r: [r.no_shared_token, r.newly_hidden_published_rule, round(100 * r.hidden_now / r.fe_hazard_sites), r.hidden_published_pct])(load('data/results/known_hidden/address_only_name_check.csv').iloc[0])"
   expect: [490, 100, 35, 38]
   tol: [5, 10, 0.5, 0.5]
+
+- id: paper_zoning_1944_1955_change
+  file: paper/Before_and_After_the_Map_manuscript.md
+  text: "22.5 km² was industrial in 1944 and 1955 alike, 10.0 km² was added and 5.3 km² dropped; part of each is boundary misregistration between two maps placed to within 20–30 m, but the net gain of 4.7 km² is not. Of the added land, 2.6 km² lay in areas graded D in 1938"
+  check: "(lambda d: (lambda a, D: [a['industrial in 1944 and 1955'], a['added by 1955'], a['dropped by 1955'], a['added by 1955'] - a['dropped by 1955'], D['added by 1955']])(d.set_index('grade').loc['all'], d.set_index('grade').loc['D']))(load('data/results/zoning_over_time/zoning_1944_1955_change.csv'))"
+  expect: [22.5, 10.0, 5.3, 4.7, 2.6]
+
+- id: paper_freeway_1950s_cohort_hispanic_gap
+  file: paper/Before_and_After_the_Map_manuscript.md
+  text: "The 35 tracts whose freeway opened in the 1950s have no pre-opening Hispanic count; they were already 11 points more Hispanic than the inner comparison tracts in 1960 and 28 points by 2000 (12 and 21 points against all tracts with no nearby freeway)."
+  check: "(lambda d: (lambda c: [c[(c.comparison.str.startswith('Same') & (c.census == 1960))].treated_tracts.iloc[0], c[(c.comparison.str.startswith('Same') & (c.census == 1960))].gap_hispanic.iloc[0], c[(c.comparison.str.startswith('Same') & (c.census == 2000))].gap_hispanic.iloc[0], c[(c.comparison.str.startswith('All') & (c.census == 1960))].gap_hispanic.iloc[0], c[(c.comparison.str.startswith('All') & (c.census == 2000))].gap_hispanic.iloc[0]])(d[d.cohort == 'opened 1950-59']))(load('data/results/highways/highways_cohort_hispanic.csv'))"
+  expect: [35, 11, 28, 12, 21]
+  tol: [0.5, 0.5, 0.5, 0.5, 0.5]
+
+- id: readme_zoning_1944_1955_change
+  file: README.md
+  text: "22.5 km² was industrial in both years, 10.0 km² was added and 5.3 km² dropped, 2.6 km² of the added land in D areas"
+  check: "(lambda d: (lambda a, D: [a['industrial in 1944 and 1955'], a['added by 1955'], a['dropped by 1955'], D['added by 1955']])(d.set_index('grade').loc['all'], d.set_index('grade').loc['D']))(load('data/results/zoning_over_time/zoning_1944_1955_change.csv'))"
+  expect: [22.5, 10.0, 5.3, 2.6]

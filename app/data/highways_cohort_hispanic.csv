@@ -1,0 +1,43 @@
+cohort,comparison,census,treated_tracts,treated_pct_hispanic,comparison_tracts,comparison_pct_hispanic,gap_hispanic
+all treated,All tracts with no freeway within 1 km,1960,48,14,70,4.4,9.6
+all treated,All tracts with no freeway within 1 km,1970,47,25.8,72,10,15.8
+all treated,All tracts with no freeway within 1 km,1980,48,28.5,73,11.7,16.7
+all treated,All tracts with no freeway within 1 km,1990,46,33.9,73,16,17.9
+all treated,All tracts with no freeway within 1 km,2000,46,43.3,73,24.5,18.9
+all treated,All tracts with no freeway within 1 km,2010,48,40.4,73,27.5,12.9
+all treated,All tracts with no freeway within 1 km,2020,48,31.2,73,25.7,5.5
+opened 1950-59,All tracts with no freeway within 1 km,1960,35,16,70,4.4,11.6
+opened 1950-59,All tracts with no freeway within 1 km,1970,35,29.4,72,10,19.4
+opened 1950-59,All tracts with no freeway within 1 km,1980,35,32.5,73,11.7,20.7
+opened 1950-59,All tracts with no freeway within 1 km,1990,34,37.3,73,16,21.3
+opened 1950-59,All tracts with no freeway within 1 km,2000,34,45.7,73,24.5,21.2
+opened 1950-59,All tracts with no freeway within 1 km,2010,35,40.2,73,27.5,12.8
+opened 1950-59,All tracts with no freeway within 1 km,2020,35,30,73,25.7,4.2
+opened 1960-79,All tracts with no freeway within 1 km,1960,13,6.5,70,4.4,2.1
+opened 1960-79,All tracts with no freeway within 1 km,1970,12,15.6,72,10,5.6
+opened 1960-79,All tracts with no freeway within 1 km,1980,13,17.3,73,11.7,5.6
+opened 1960-79,All tracts with no freeway within 1 km,1990,12,24,73,16,8
+opened 1960-79,All tracts with no freeway within 1 km,2000,12,36.6,73,24.5,12.1
+opened 1960-79,All tracts with no freeway within 1 km,2010,13,40.8,73,27.5,13.3
+opened 1960-79,All tracts with no freeway within 1 km,2020,13,34.5,73,25.7,8.7
+all treated,"Same, within 5.8 km of downtown",1960,48,14,34,5.4,8.5
+all treated,"Same, within 5.8 km of downtown",1970,47,25.8,34,11.2,14.6
+all treated,"Same, within 5.8 km of downtown",1980,48,28.5,34,11.7,16.8
+all treated,"Same, within 5.8 km of downtown",1990,46,33.9,34,14.7,19.3
+all treated,"Same, within 5.8 km of downtown",2000,46,43.3,34,18.2,25.2
+all treated,"Same, within 5.8 km of downtown",2010,48,40.4,34,15.6,24.8
+all treated,"Same, within 5.8 km of downtown",2020,48,31.2,34,14.8,16.5
+opened 1950-59,"Same, within 5.8 km of downtown",1960,35,16,34,5.4,10.6
+opened 1950-59,"Same, within 5.8 km of downtown",1970,35,29.4,34,11.2,18.2
+opened 1950-59,"Same, within 5.8 km of downtown",1980,35,32.5,34,11.7,20.8
+opened 1950-59,"Same, within 5.8 km of downtown",1990,34,37.3,34,14.7,22.6
+opened 1950-59,"Same, within 5.8 km of downtown",2000,34,45.7,34,18.2,27.5
+opened 1950-59,"Same, within 5.8 km of downtown",2010,35,40.2,34,15.6,24.6
+opened 1950-59,"Same, within 5.8 km of downtown",2020,35,30,34,14.8,15.2
+opened 1960-79,"Same, within 5.8 km of downtown",1960,13,6.5,34,5.4,1.1
+opened 1960-79,"Same, within 5.8 km of downtown",1970,12,15.6,34,11.2,4.3
+opened 1960-79,"Same, within 5.8 km of downtown",1980,13,17.3,34,11.7,5.6
+opened 1960-79,"Same, within 5.8 km of downtown",1990,12,24,34,14.7,9.3
+opened 1960-79,"Same, within 5.8 km of downtown",2000,12,36.6,34,18.2,18.4
+opened 1960-79,"Same, within 5.8 km of downtown",2010,13,40.8,34,15.6,25.2
+opened 1960-79,"Same, within 5.8 km of downtown",2020,13,34.5,34,14.8,19.7

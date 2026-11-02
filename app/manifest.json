@@ -2824,6 +2824,9 @@
     "data/highways_by_zoning_1929.csv": {
       "checksum": "1480eccd3584f73ca287afb926ce3d53"
     },
+    "data/highways_cohort_hispanic.csv": {
+      "checksum": "bb97ef8984189bfe55f858765fe2032e"
+    },
     "data/highways_denver.geojson": {
       "checksum": "3352d059b231861ae640c9203c084660"
     },

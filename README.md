@@ -501,7 +501,8 @@ within about 550 m of an industrial district, 58 were right when judged by eye o
 `Rscript R/zoning_1955.R` with 23 street intersections read off the scan and located on TIGER/Line 2023 address features
 (`gcps_1955.csv`): a second-order polynomial fits them with RMSE 13 m (leave-one-out 17 m; affine 21 m). Result: 15.5 km² of I-1 and
 17.3 km² of I-2 (`data/results/zoning_1955/`). On the land both earlier sheets cover, industrial zoning grew from 27.9 km² (1944) to
-32.5 km² (1955) (`zoning_over_time/zoning_land_by_year.csv`; the two maps are each placed to within 20–30 m, so a few km² of the gross
+32.5 km² (1955): 22.5 km² was industrial in both years, 10.0 km² was added and 5.3 km² dropped, 2.6 km² of the added land in D areas
+(`zoning_over_time/zoning_land_by_year.csv`, `zoning_1944_1955_change.csv`; the two maps are each placed to within 20–30 m, so a few km² of the gross
 change along district boundaries is misregistration); D land zoned industrial went from 16.0% to 21.3%, and C areas lost almost all of their
 small industrial share (1.8% → 0.1%) (`zoning_by_holc_grade_years.csv`).
 

@@ -136,4 +136,19 @@ R6 <- rbind(ev(E[group == "comparison", GEOID], "All tracts with no freeway with
             ev(E[group == "comparison" & km_downtown <= dmax, GEOID], sprintf("Same, within %.1f km of downtown", dmax)))
 fwrite(R6, file.path(O, "highways_event_study.csv")); print(R6, nrows = 50); print(E[, .N, by = group]); print(E[group == "comparison" & km_downtown <= dmax, .N])
 fwrite(E[, .(GEOID, group, open_year, km_downtown)], file.path(O, "highways_tract_groups.csv"))
-file.copy(file.path(O, c("highways_event_study.csv", "highways_tract_groups.csv")), A, overwrite = TRUE)
+# Hispanic share by census for the treated tracts by opening decade (the 1950s cohort has no pre-opening Hispanic count, so it is
+# absent from the event study above) against both comparison sets: population-weighted means and their gap, in percentage points.
+Ph <- merge(Pa0[census >= 1960 & !is.na(p_hisp)], E[, .(GEOID, group, open_year, km_downtown)], by = "GEOID")
+Ph[, cohort := fifelse(group == "treated", fifelse(open_year < 1960, "opened 1950-59", "opened 1960-79"), NA_character_)]
+coh <- function(ids, lab) {
+  cm <- Ph[GEOID %in% ids, .(comparison_tracts = .N, comparison_pct_hispanic = weighted.mean(p_hisp, pop)), by = census]
+  tr <- rbind(Ph[group == "treated", .(cohort, census, p_hisp, pop, GEOID)], Ph[group == "treated", .(cohort = "all treated", census, p_hisp, pop, GEOID)])
+  tr <- tr[, .(treated_tracts = uniqueN(GEOID), treated_pct_hispanic = weighted.mean(p_hisp, pop)), by = .(cohort, census)]
+  x <- merge(tr, cm, by = "census"); x[, comparison := lab]
+  x[, `:=`(treated_pct_hispanic = round(treated_pct_hispanic, 1), comparison_pct_hispanic = round(comparison_pct_hispanic, 1),
+           gap_hispanic = round(treated_pct_hispanic - comparison_pct_hispanic, 1))]
+  setcolorder(x, c("cohort", "comparison", "census")); x[order(cohort, census)] }
+R7 <- rbind(coh(E[group == "comparison", GEOID], "All tracts with no freeway within 1 km"),
+            coh(E[group == "comparison" & km_downtown <= dmax, GEOID], sprintf("Same, within %.1f km of downtown", dmax)))
+fwrite(R7, file.path(O, "highways_cohort_hispanic.csv")); print(R7[cohort == "opened 1950-59"])
+file.copy(file.path(O, c("highways_event_study.csv", "highways_tract_groups.csv", "highways_cohort_hispanic.csv")), A, overwrite = TRUE)
