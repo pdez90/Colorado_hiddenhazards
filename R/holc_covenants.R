@@ -85,7 +85,7 @@ SH <- rbind(data.table(layer = "Land area of HOLC areas", t(as.vector(tapply(gr$
             data.table(layer = "Hazardous trades before the map (1871-1937)", t(as.vector(cnt(hp[hp$first_year <= 1937, ])))),
             data.table(layer = "Hazardous trades after the map (1938-1956)", t(as.vector(cnt(hp[hp$first_year <= 1956 & hp$last_year >= 1938, ])))),
             data.table(layer = "Hazardous-sector manufacturers 1965-1992 (complete editions)", t(as.vector(cnt(pt(sites[fe_hazard %in% c(TRUE, "True")]))))),
-            data.table(layer = "Sites with no match in searched inventories (1965-1992)", t(as.vector(cnt(pt(sites[radar == "Not on any list"]))))),
+            data.table(layer = "Hazardous-sector sites with no match in searched inventories (1965-1992)", t(as.vector(cnt(pt(sites[fe_hazard %in% c(TRUE, "True") & radar == "Not on any list"]))))),
             data.table(layer = "EPA TRI facilities (today)", t(as.vector(cnt(pt(tri))))),
             data.table(layer = "Cleanup / contamination sites (today)", t(as.vector(cnt(pt(cln))))))
 setnames(SH, c("layer", CLS)); SH[is.na(SH)] <- 0; SH[, total := A + B + C + D + Industrial + Commercial]
@@ -181,7 +181,8 @@ in_ed <- function(a, b) rbindlist(lapply(ed_years(a, b), function(y) { if (a >= 
 PE <- rbindlist(lapply(PER, function(pr) { x <- in_ed(pr[1], pr[2]); if (!nrow(x)) return(NULL); ne <- uniqueN(x$edition)
   x[!is.na(grade), .(firms_per_edition = .N / ne), by = grade][, `:=`(period = sprintf("%d-%d", pr[1], pr[2]), editions = ne)] }))
 IND <- merge(IND, PE, by = c("period", "grade"), all.x = TRUE); IND[is.na(firms_per_edition), firms_per_edition := 0]; IND[, per_km2_per_edition := round(firms_per_edition / km2, 3)]
-IND[, dc_ratio_within_period := { r <- per_km2_per_edition[grade == "D"] / per_km2_per_edition[grade == "C"]; if (length(r) && is.finite(r)) round(r, 1) else NA_real_ }, by = period]
+# the ratio from the unrounded densities (the printed per_km2_per_edition is rounded to 3 decimals)
+IND[, dc_ratio_within_period := { r <- (firms_per_edition[grade == "D"] / km2[grade == "D"]) / (firms_per_edition[grade == "C"] / km2[grade == "C"]); if (length(r) && is.finite(r)) round(r, 1) else NA_real_ }, by = period]
 setorder(IND, start, grade); fwrite(IND, file.path(O, "holc_industry_periods.csv")); file.copy(file.path(O, "holc_industry_periods.csv"), A, overwrite = TRUE)
 print(dcast(IND, period ~ grade, value.var = "per_km2"))
 # B. boundary comparison, census by census: units whose centroid lies within 400 m (districts) / 800 m (tracts) of both a C and a D area

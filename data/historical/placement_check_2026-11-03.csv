@@ -1,0 +1,61 @@
+hfirm,name,street,years,verdict,note
+HF05163,"LEYNER J GEORGE, manufacturing and jobbing",1613 Wazee,1891,correct,own listing: 'manufacturing and jobbing machinist ... 1613 Wazee'
+HF06614,WM. E. GEER SEC & GEN MGR. FREDERICK Mile High Paint Co,915 S York,1950,wrong address,915 S York is Mile High Paint Co's; codes 12-29/30/43 belong to Midwest Steel & Iron Works ad (25 Larimer)
+HF04304,RELIABLE EMPLOYMENT RetaliaJL,1743 Champa,1917,correct,"tinner 'Retalia J L, tinner, 1743 Champa'; name prefixed by neighbour 'Reliable Employment Bureau'"
+HF07550,Western Foundries,2000 E. 40th,1956,correct,"own listing 'Western Foundries, 2000 E. 40th'"
+HF02893,DicksonEA,925 21st,1913,correct,"own listing 'Dickson E A, machinist, 925 21st'"
+HF06622,Nat'l Cash Register Co The,1725 Welton,1950,doubtful,"Nat'l Cash Register branch, code 12-15; Denver works not shown (likely sales office)"
+HF06636,"Perry Don & Co G Napp, Bertha Meyers & Eva Flaks",1750 Arapahoe,1950,correct,own coded listing '1750 Arapahoe 12-15'; nothing indicates non-works
+HF05178,"Co. Pa Neuman & Caldwell, (G. A. Neuman and A. P. Caldwell,)",1115 8th av,1891,wrong address,"printed '1115 8th av. w.'; W dropped, geocoded on E 8th Ave"
+HF06528,Davis Power Tools John W Davis & Leona B Graham,3362 Larimer,1950,doubtful,'Davis Power Tools' 12-6 with 'Power Tool Rental Serv' at same address; dealer vs shop unclear
+HF05419,Schlitter Iron Foundry,3924 Wynkoop,1920 1932 1943,correct,"own listing 'Schlitter Iron Foundry, 3924 Wynkoop' (1920, 1943)"
+HF06592,Howard Flint Ink Co,2807 Blake St,1950,doubtful,"Howard Flint Ink (Detroit maker) branch, 12-2; works vs depot not shown"
+HF05408,Republic Rubber Co,1645 Tremont pl,1915 1916 1920,wrong firm,"branch selling 'tires, tubes and mechanical goods'; not a rubber works"
+HF04798,Schmidt G A Auto Body Co,1630 Platte,1943,wrong address,firm is at '2042 W Colfax'; 1630 Platte is neighbour Schreffler Steel & Supply
+HF05932,Wiles) machine shop,1012 8th av,1929,out of town,"Automotive Machine Co (F S Wiles), 1012 8th av is in Greeley (1929 p693 Greeley section)"
+HF06518,Continental Can Co Inc QCC Po Box,241 S Cherokee,1950,doubtful,"Continental Can Co branch, 'PO Box 4180 241 S Cherokee' 12-7; plant vs office not shown"
+HF03613,Fish A E,1932 Curtis,1915,correct,"own listing 'Fish A E, machinist, 1932 Curtis'"
+HF07515,Johnny's Boiler Shop,1725 Wabash,1956,out of town,listed under PUEBLO in 1956 town-ordered machine-shop list; 1725 Wabash is Richard's Machine Shop
+HF04779,Cars 11,2814 Lari,1943,correct,"'Cox Tolbert G, tinner, 2814 Larimer'; name garbled by hotel ad ('Cars 11')"
+HF01909,"Dowell, chanc, 14th &Arap Denver Steam Laundry Co, Denver Variety Machine Shop",1819 Welton,1892,wrong address,"1819 Welton is Denver Steam Laundry's; Variety Machine Shops 'Thomas Crow, prop, 2462-74 Blake'"
+HF03225,Deline & Co,1517 Stout,1914,wrong firm,"name is neighbour 'Deline & Co, novelty works'; 1517 Stout is Dencolo Chemical Co's"
+HF06613,Midstate Mfg Co,1131 S Bannock,1950,correct,own coded listing 'Midstate Mfg Co 1131 S Bannock 12-7'
+HF06573,Great Western Exterminating Co,4536 E Colfax Av,1950,wrong firm,"exterminating (pest control) service, code 12-2; not a chemical works"
+HF05133,DENVER TYPE FOUNDRY,1616 Blake,1891,correct,own listing 'DENVER TYPE FOUNDRY ... 1616-1622 Blake'
+HF07229,Ruedy Fertilizer Plant Charles F Leppla Jr,5600 Franklin,1956,correct,"'Ruedy Fertilizer Plant ... 5600 Franklin 10-7' (columns interleaved, address its own)"
+HF07177,Dunn Sheet Metal & Mfg. C o,350 W. Evans,1956,correct,own listing 'Dunn Sheet Metal & Mfg Co ... 350 W. Evans'
+HF02934,ScottWE,1520 18th,1913,correct,"own listing 'Scott W E, machinist, 1520 18th'"
+HF06261,Western Bronze & Brass Foundry Western File Service,1322 Blake,1939,correct,column order gives 'Western Bronze & Brass Foundry (Wm Schneider) 1322 Blake'
+HF06551,Economy Forms Corp,2863 Walnut,1950,doubtful,"Economy Forms Corp (Des Moines forms maker) branch, 12-7; works vs rental yard not shown"
+HF06590,Horning Martha K,783 S Wash,1950,doubtful,"individual 'Horning Martha K 783 S Wash 12-7', residential street; nature unclear"
+HF05421,Schmitt W C,1551 Blake,1914 1916 1917 1920,correct,"own listing 'Schmitt W C, tinner, 1551 Blake' (1914-17)"
+HF03274,Kobe! G F,1927 Arapahoe,1914,correct,"own listing 'Kobel G F, tinner, 1927 Arapahoe'"
+HF05154,Lead Works,2747 Blake,1891,correct,"'Hughes & Harkison ... proprs, Colo. Lead Works, 2747 Blake'"
+HF06689,"Square Deal Mfg Co WA. WA Jr, I, Trusella P Thomas",2344 Larimer,1950,correct,own coded listing 'Square Deal Mfg Co ... 2344 Larimer 12-2'
+HF06703,Triangle Western Sls & Supply Co,2255 S Delaware,1950,wrong firm,'Triangle Western Sls & Supply Co' 12-15: sales/supply house
+HF05325,Dawson W H,1937 Larimer,1914 1915 1920,correct,"own listing 'Dawson W H, sheet metal works, 1937 Larimer' (1914)"
+HF05852,pres,1320 8th,1929,correct,"'Card L J & Son, Inc, L J Card pres, machine shop, 1320 8th'; name parsed as 'pres'"
+HF02952,Type Foundry,1621 Blake,1913,correct,"'Willoughby L F, mgr Denver Type Foundry, 1621 Blake'; foundry address via manager's line"
+HF05301,Brickham Henry,1820 Market,1891 1920,correct,"own listing 'Brickham Henry, sheet metal wks 1820 Market' (1920)"
+HF04260,Fortner L A,3492 W 38th,1914 1915 1916 1917,correct,"own listing 'Fortner L A, tinner, 3492 W 38th'"
+HF06519,Cook Frank C Co,3147 Larimer,1950,correct,own coded listing 'Cook Frank C Co 3147 Larimer 12-15'
+HF06563,Glenshore Mfg Co Inc,1622 Arapahoe St,1950,correct,own coded listing 'Glenshore Mfg Co Inc 1622 Arapahoe St 12-15'
+HF04214,civil,521 14th,1917,correct,"'Barry Silver Plating Works, rear 521 14th'; name parsed as 'civil'"
+HF06664,4801 W 38th,4801 W 38th,1950,wrong firm,"listing is 'Rogers Hdwe & Variety Store ... 4801 W 38th 5-5, 10-1': hardware retailer"
+HF03234,Ellsworth AutoCo,2012 Curtis,1914,wrong firm,"name is neighbour 'Ellsworth Auto Co'; 2012 Curtis is 'Emery & Schultze, machine shop'"
+HF02480,Denver.FAlR CORNICE WORKS C W,1433 Lawrence,1911,wrong address,Fair Cornice Works is at '2217-31 Market'; 1433 Lawrence is Denver Rubber Co
+HF02602,FoxM,933 15th,1912,wrong address,"'Fox M, tinner, 2625 W Colfax av'; 933 15th is Ford Hat Co"
+HF05308,CARD C S IRON WORKS CO THE,1607 Wazee,1910 1912 1920,correct,"own listing 'Card Iron Works Co C S, 1607 Wazee' (1912)"
+HF05701,NIELSEN'S Since 1898,1844 Wazee,1927,wrong firm,name is neighbour 'Nielsen's' furriers; 1844-50 Wazee is Nock & Garside Elevator Co
+HF03597,DENVER GAS & ELECTRIC Denver IronW orks & Foundry Co,1827 Wynkoop,1915,correct,"'Denver Iron Works & Foundry Co, 1827 Wynkoop'; name prefixed by 'Denver Gas & Electric'"
+HF06561,Genera Machinery I< Supply Co,3434 Brighton Blvd,1950,wrong firm,'General Machinery & Supply Co' 12-6: machinery dealer/supply house
+HF06729,Wyeth Inc,1252 Arapahoe,1950,doubtful,Wyeth Inc (pharmaceutical maker) branch '1252-54 Arapahoe 12-2'; works not shown
+HF05390,Peerless Alloy Co,1409 Blake,1916 1920,correct,"own listing 'Peerless Alloy Co, smelters, 1409 Blake' (1920)"
+HF04656,I™ § Denver Rubber Goods,1643 Arapahoe,1935,wrong address,Denver Steel & Iron Works is at '2027 W Colfax av'; 1643 Arapahoe is Denver Rubber Goods
+HF07692,Keddy Frank A,600 W Colfax,1941,wrong firm,"name is neighbour 'Keddy Frank A, barber'; 600 W Colfax is 'Keller G E, auto body reprs'"
+HF06696,Surplus Tools & Commodities Wm D Cox & CF Hale,1379 W Alameda,1950,wrong firm,'Surplus Tools & Commodities' 12-6: surplus dealer
+HF04904,ASPHALTUM,1727 California,1913 1935 1943,wrong firm,"'Blanc Victor, 1727 California' is in the Assayers column beside ASPHALTUM heading; name is the heading"
+HF07707,Nichols Carl J,227 Josephine,1941,wrong address,"'Nichols Carl J, machine shop, 2833 Larimer'; 227 Josephine is Newlander Floral Co"
+HF06182,derson ) machine shop,1849 Champa,1939,wrong address,Anderson R Mfg Co machine shop is '12[4]1 California'; 1849 Champa is neighbour's
+HF03650,OHIO & COLORADO SMELTING,1451 Curtis,1915,wrong address,"1451 Curtis is Odeon Hotel's; smelting co office '822 Foster bldg, works Salida'"
+HF04234,Cox & Son Thos,621 16th,1911 1914 1916 1917,wrong address,Cox & Son foundry is '1345 13th'; 621 16th is Cottrell Clothing Co

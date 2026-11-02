@@ -119,9 +119,9 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
     if (length(ii)) { d <- hav(s$lat, s$lon, R$lat[ii], R$lon[ii]); keep <- d <= 250; ii <- ii[keep]; d <- d[keep]; o2 <- order(d); ii <- ii[o2]; d <- d[o2] } else d <- numeric()
     names <- nn(unlist(s$names_n))
     am <- if (!is.na(s$zip) && nzchar(s$zip)) which(key_zip == paste(s$akey, s$zip, sep = "|")) else integer()
-    if (!length(am)) {   # blank ZIP: street + city, but only a record within 250 m (or without a point), as in Python
-      am <- which(key_city == paste(s$akey, toupper(trimws(ifelse(is.na(s$city), "", s$city))), sep = "|"))
-      if (length(am)) am <- am[is.na(reg$lat[am]) | hav(s$lat, s$lon, reg$lat[am], reg$lon[am]) <= 250] }
+    if (!length(am)) am <- which(key_city == paste(s$akey, toupper(trimws(ifelse(is.na(s$city), "", s$city))), sep = "|"))   # blank ZIP: street + city
+    # either way, only a record within 250 m (or without a point), as in Python: the key drops the street type ('DOVER DR' = 'DOVER RD')
+    if (length(am)) am <- am[is.na(reg$lat[am]) | hav(s$lat, s$lon, reg$lat[am], reg$lon[am]) <= 250]
     rec <- list(); basis <- character()   # evidence behind every hit, over all tiers: 'entity' (name or address), 'boundary', 'prox'
     for (tier in names(RULES)) {
       ct <- R$tier[ii] == tier; cj <- ii[ct]; cd <- d[ct]

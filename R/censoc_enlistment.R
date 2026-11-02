@@ -57,7 +57,9 @@ SH <- M[, .(men_1940 = .N, pct_enlisted = round(100 * mean(enlisted), 1), mean_h
             mean_weight = round(mean(weight[source %in% 0], na.rm = TRUE), 1), mean_school_years = round(mean(educ_years[source %in% 0], na.rm = TRUE), 2),
             with_height = sum(!is.na(height) & source %in% 0)),
         by = .(address_1940 = fcase(zone29 == "industrial", "1929 industrial district", !is.na(ind37) & ind37 >= 10, "10%+ industrial land within 250 m", default = "other addresses"))]
-fwrite(R, file.path(O, "enlistment_models.csv")); fwrite(SH, file.path(O, "enlistment_shares.csv")); print(SH); print(R[, .(sample = substr(sample, 1, 6), outcome = substr(outcome, 1, 14), exposure = substr(exposure, 1, 28), estimate, lo, hi, p, n)])
+fwrite(R, file.path(O, "enlistment_models.csv")); fwrite(SH, file.path(O, "enlistment_shares.csv"));
+file.copy(file.path(O, c("enlistment_models.csv", "enlistment_shares.csv")), "app/data", overwrite = TRUE)   # the app reads byte-identical copies
+ print(SH); print(R[, .(sample = substr(sample, 1, 6), outcome = substr(outcome, 1, 14), exposure = substr(exposure, 1, 28), estimate, lo, hi, p, n)])
 kab <- function(x) { x <- as.data.frame(x); c(paste("|", paste(names(x), collapse = " | "), "|"), paste0(strrep("|---", ncol(x)), "|"),
   apply(x, 1, function(r) paste("|", paste(ifelse(is.na(r), "", trimws(r)), collapse = " | "), "|"))) }
 writeLines(c("# WWII Army enlistment records: Denver men of 1940", "", "## By 1940 address", "", kab(SH), "",

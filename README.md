@@ -83,39 +83,40 @@ from `build_sites`.
 
 ## Key results (the 13 complete editions, as published in `data/` and the app)
 
-*Note (1 November 2026): the inventory below (listings, establishments, sites and their inventory matches, the pre-1960 layer and the all-editions files) is from the run of 1 November, after two audits: half house numbers ("525 1/2 Main") are parsed, cleanup boundaries are tested in metres, the FRS `STATE` programme no longer counts as a cleanup, the pre-1960 layer is placed by the current geocoder with exact matches only and an address is taken only from the firm's own listing, and the "same address" test between a directory address and an inventory record ignores the street type and any unit ("230 YUMA" = "230 YUMA ST STE 4"), which the 31 October run did not — that last change moved 75 sites from hidden to known. The 1929 zoning map's control points were corrected on 31 October (three southern points now resolve) and 1 November (a mis-identified City Park corner dropped). The HOLC, tract, site-fate, zoning, land-use and freeway analyses were rerun on 1 November; the EJ panel, Sanborn persistence, corridors, hedonic and CenSoc models still rest on the inventory of 29 October and are being rerun. The tract health models and the block-group and block mortality models are still from the earlier inventory: their inputs (EnviroScreen block groups, Colorado death records) are not on the machine that ran the chain.*
+*Note (3 November 2026): every file below was regenerated after a third audit and after a hand review of every pre-1960 street-level placement against the page text (`data/historical/street_review.csv`; Denver street-level hazardous-sector firm-locations 370 → 267), on the inventory and pre-1960 layer of that day (`bash rerun_results.sh` reruns the result scripts in order). Changes in that audit: a same-address match to an inventory record more than 250 m away is no longer counted (it was a geocoding error, not the same lot); the pre-1960 parser no longer reads lodges, union halls and depots as works, keeps 1950 entries that print two addresses at town level, and moves 1956 out-of-town listings to their town; condominium parcels are classed by use; DIA, campus and hospital districts are civic in the 2023 zoning layer; and the mortality models are restricted to Denver County. Only the tract health models and the block-group mortality model (`pipeline/health/*.py`, `R/mortality_bg.R`) are older: their inputs (EnviroScreen block groups built from restricted records) are not on the machine that ran the chain.*
+
 
 * 44,808 listings in the 13 complete editions (1965–1992) → 24,079 establishments; **3,487 hazardous-sector sites** located at street level.
-* **1,212 (35%) are on no current federal or state inventory** (856 of them high confidence); 646 (19%) are on a cleanup or contamination
-  list; 296 report to TRI; 945 are known only as RCRA hazardous-waste handlers; 388 have only other EPA permits or solid-waste records.
+* **1,242 (36%) are on no current federal or state inventory** (882 of them high confidence); 641 (18%) are on a cleanup or contamination
+  list; 289 report to TRI; 927 are known only as RCRA hazardous-waste handlers; 388 have only other EPA permits or solid-waste records.
 * 1,289 sites hosted two or more hazardous-sector firms over time.
 * **How much "hidden" depends on the matching rule** (`R/known_hidden_sensitivity.R`; `data/results/known_hidden/summary.md`).
-  1,008 of the 2,275 known sites (44%) are known only because a differently named record lies within the tier's radius (or a cleanup
+  1,025 of the 2,245 known sites (46%) are known only because a differently named record lies within the tier's radius (or a cleanup
   boundary within 40 m): for 46% of them the nearest such record is an RCRA hazardous-waste handler and for 35% another EPA permit, and
-  80% lie 10–40 m away. Counting only a record with the same name or at the same address, or a cleanup boundary, 2,220 sites (64%) are on
-  no inventory; counting proximity only within 25 m, 1,658 (48%); counting proximity only to cleanup and TRI records, 1,899 (54%); with
-  every radius doubled, 715 (21%). The published 35% sits toward the low end of that range. An address match to a differently named
-  record is counted as the same entity (the contamination belongs to the lot): about 490 sites are known by address only, to a record whose
-  name shares no informative word with any firm listed there, but most of them also have a differently named record within the radius; counting
-  the roughly 100 that do not as hidden would raise the published share to about 38%, and counting all 490 hidden would raise the strict rule to about 77%
+  79% lie 10–40 m away. Counting only a record with the same name or at the same address, or a cleanup boundary, 2,267 sites (65%) are on
+  no inventory; counting proximity only within 25 m, 1,698 (49%); counting proximity only to cleanup and TRI records, 1,940 (56%); with
+  every radius doubled, 734 (21%). The published 36% sits toward the low end of that range. An address match to a differently named
+  record is counted as the same entity (the contamination belongs to the lot): about 520 sites are known by address only, to a record whose
+  name shares no informative word with the hazardous firms listed there, but most of them also have a differently named record within the radius; counting
+  the roughly 90 that do not as hidden would raise the published share to about 38%, and counting all 520 hidden would raise the strict rule to about 79%
   (`python3 pipeline/address_only_name_check.py` → `known_hidden/address_only_name_check.csv`). The tract
   comparison does not depend on the rule: under each of the six rules, 2020 tracts that hold a hidden site have higher EnviroScreen 2.0
-  percentiles (medians 61–63 vs 42 in tracts with no hazardous-sector site), more low-income residents (24.6–25.5% vs 18.2%) and more
+  percentiles (medians 61–63 vs 42 in tracts with no hazardous-sector site), more low-income residents (24.5–25.5% vs 18.2%) and more
   adults without a high-school diploma (5.7–5.9% vs 4.4%), all p < 1e-4, but similar shares of people of color (27–28% vs 26%,
-  p = 0.02–0.07); and they do not differ from tracts with only known sites on any of the four measures (all p ≥ 0.20; a low-powered
-  comparison on 50–251 known-only tracts).
+  p = 0.03–0.07); and they do not differ from tracts with only known sites on any of the four measures (all p ≥ 0.22; a low-powered
+  comparison on 45–245 known-only tracts).
 
-## All 25 editions, partial ones included (`data/full_inventory/`, regenerated 31 October 2026 with the current pipeline; kept for reference)
+## All 25 editions, partial ones included (`data/full_inventory/`, regenerated 2 November 2026 with the current pipeline; kept for reference)
 
 * 72,317 listings → 35,657 establishments; **4,669 hazardous-sector sites** located at street level.
-* **1,727 (37%) are on no current federal or state inventory** (1,093 of them high confidence); 806 (17%) are on a cleanup or
-  contamination list; 375 report to TRI; 1,232 are known only as RCRA hazardous-waste handlers; 529 have only other EPA permits or
+* **1,770 (38%) are on no current federal or state inventory** (1,129 of them high confidence); 797 (17%) are on a cleanup or
+  contamination list; 366 report to TRI; 1,211 are known only as RCRA hazardous-waste handlers; 525 have only other EPA permits or
   solid-waste records.
 * 1,749 sites hosted two or more hazardous-sector firms over time.
-* Census tracts containing a potentially unknown site have higher EnviroScreen scores (median percentile 60.1 vs 43.1 for other tracts),
-  more low-income residents (23.6% vs 19.2%) and lower educational attainment (5.7% vs 4.5% without a high-school diploma); all p < 0.001.
-  The difference in people of color is small and not significant (27.5% vs 26.8%). Tracts with unknown sites have the same
-  EnviroScreen scores as tracts with only known sites (60.1 vs 60.1), consistent with Frickel & Elliott's finding that relic
+* Census tracts containing a potentially unknown site have higher EnviroScreen scores (median percentile 59.7 vs 43.3 for other tracts),
+  more low-income residents (23.6% vs 19.2%) and lower educational attainment (5.6% vs 4.6% without a high-school diploma); all p < 0.001.
+  The difference in people of color is small and not significant (27.3% vs 26.9%). Tracts with unknown sites have the same
+  EnviroScreen scores as tracts with only known sites (59.7 vs 60.5), consistent with Frickel & Elliott's finding that relic
   sites are widespread rather than concentrated where regulators look.
 
 ## Accuracy review (17 October 2026)
@@ -136,7 +137,7 @@ An independent code review and a re-check of every stage changed the following. 
 | An address printed without its direction placed on the plain street when a directional street also holds that number (Denver's 4300 LIPAN → 4300 N Lipan, but the firm was at 4300 S Lipan, 15 km away) | about 1 in 25 "exact" points on the wrong side of town | flagged `dirambig` and left unplaced (ZIP level) unless the printed ZIP or street type settles the side (`_dirzip`, `_dirtype`) |
 | Pre-1960: a trade word from the next listing in an interleaved line ("Goldhammer S, phys, 312 17th. GOODRICH RUBBER CO") | physicians, grocers etc. listed as hazardous trades; addresses of neighbours | 350 entries dropped, 732 streets corrected |
 
-Net effect of the October 2026 fixes on the all-editions run: hazardous-sector sites 4,458 → 4,669, sites on no list 1,842 → 1,709, and high-confidence hidden sites 1,168 → 1,083. A random check of 50 "not on any list" sites
+Net effect of the October 2026 fixes on the all-editions run: hazardous-sector sites 4,458 → 4,669, sites on no list 1,842 → 1,770, and high-confidence hidden sites 1,168 → 1,129 (2 November run). A random check of 50 "not on any list" sites
 against the directory text still found about 1 in 10 with a doubtful industry code (a bookbinder coded as metal stamping, a jeweller
 whose 1984 code was misread as tires): treat each site as a lead to check, not a finding. Town headings are sometimes wrong in the
 1961, 1962 and 1965 editions (e.g. Boulder pages filed under Allenspark); those listings fail the geocoder's 15 km town check and stay
@@ -356,7 +357,7 @@ from 24% to 8% while its dissimilarity stayed at 0.13–0.26; the Hispanic share
 Brown University's Urban Transition HGIS geocoded the full 1880 census of Denver to buildings and drew the 17 enumeration districts and
 the 1880 street grid. `R/denver_1880.R` places the 108 hazardous-trade firms of the 1878–1885 business directories (smelters, foundries,
 powder agents, gas works, assay offices…) on that grid by their printed house numbers — the same pre-1887 numbering Brown used, so this
-does not depend on today's streets — and measures every resident's distance to the nearest one. 69 firms are placed (60 at the building
+does not depend on today's streets — and measures every resident's distance to the nearest one. 68 firms are placed (60 at the building
 or within a few house numbers). Results (`data/results/denver_1880/`, aggregates only; Brown's files stay in `work/census/brown/` under
 their conditions of use):
 
@@ -396,13 +397,13 @@ Boundaries are approximate (a block or so at the edges). The Python and R versio
 come from sf (GEOS ≥ 3.11).
 
 **All fields (IPUMS extract with 43 variables, 64 measures per district; `ed_year_groups.csv`, `ed_distance_models.csv`).** The
-housing market reads the hazard exactly as expected: owner-occupancy rises 11.5 (1900) to 21.0 (1940) points per log-metre from the
-nearest firm in every census 1900–1940 (pooled +18.9, p < 1e-100), mean SEI of employed residents rises 2.3–5.2 points, and
-non-relatives in the household (boarders, lodgers, servants) fall by 3.8–16.1 points; districts with a firm had 13–28% owner households
-against 30–47% elsewhere, and in 1940 a median rent of $17 against $52. Recent immigrants (arrived within ten years) concentrate near
-industry 1900–1930; illiteracy is higher there; and in 1940, 80% of residents of the firm districts had moved house since 1935 against
-72% elsewhere (−7.5 points per log-metre, p < 1e-14) — the industrial districts were the city's high-turnover rental belt. Employment
-in the hazardous industries themselves shows no gradient (7–11% of workers everywhere), so the people living next to the plants were not, for the most part,
+housing market reads the hazard exactly as expected: owner-occupancy rises 11.0 (1900) to 20.7 (1940) points per log-metre from the
+nearest firm in every census 1900–1940 (pooled +18.7, p < 1e-100), mean SEI of employed residents rises 3.7–5.6 points, and
+non-relatives in the household (boarders, lodgers, servants) fall by 3.3–16.8 points; districts with a firm had 11–22% owner households
+against 31–47% elsewhere, and in 1940 a median rent of $14 against $51. Recent immigrants (arrived within ten years) concentrate near
+industry 1900–1930; illiteracy is higher there; and in 1940, 81% of residents of the firm districts had moved house since 1935 against
+72% elsewhere (−7.1 points per log-metre, p < 1e-14) — the industrial districts were the city's high-turnover rental belt. Employment
+in the hazardous industries themselves shows no gradient without a control for distance to downtown (7–12% of workers everywhere); with that control they lived closer to the plants (−0.70 points per log-metre pooled, p = 0.014), so it cannot be said that the people living next to the plants were not, for the most part,
 their workforce.
 
 `R/county_panel_1880_1940.R` gives the statewide counterpart: the full count by county on each census's county boundaries (NHGIS
@@ -415,22 +416,22 @@ mortgage-risk map; no FHA map survives for Denver, so here the 1938 HOLC grades 
 appraisers' area-description forms and the crosswalk to 2010 tracts) are read against what preceded them — the reconstructed
 1930/1940 districts and the firms of 1921–40 — and what followed (the 1940–2020 tract panel), together with the 730 located racial
 covenants of 1931–35 from Denver Public Library's Mapping Prejudice pilot (public domain; `data/covenants/`). Results
-(`data/results/holc/`): no A or B area held a hazardous firm in 1921–40; 4 of 16 D areas did (and 5 of 20 C areas), and 8 D-area
+(`data/results/holc/`): no A or B area held a hazardous firm in 1921–40; 3 of 16 D areas did (and 2 of 20 C areas), and 8 D-area
 descriptions cite industry, railroads, smoke or odours. In 1930 the future D areas were already 8.3% Black (vs 0.5–1.1% elsewhere),
 1.6% Hispanic and 7.2% laborers; by 1940 their Hispanic share was 9.9% (0.5–0.7% elsewhere). Afterwards the D tracts went to 37%
 Hispanic in 1970 and 57% in 2000. In the change models (`holc_tract_models.csv`; A = reference, 1940 baseline, 1940 % Black and
 1931–40 firms controlled; the Hispanic-share models start in 1970, the first census that identifies Hispanic residents comparably),
-the D tracts' Hispanic share rose 3.6 points more than the A tracts' 1970–80 (SE 3.1, HC1 p = 0.25) and 14.0 points more 1980–2010
-(7.7, p = 0.075; Conley 2 km p = 0.18); poverty rose 4.4 points more in D than in A tracts 1970–80 (2.1, p = 0.037; Conley p = 0.007)
-and 11.0 points 1980–2010 (3.8, p = 0.005; Conley p = 0.024); log home value fell 0.54 more 1940–80 (0.17, p = 0.003;
+the D tracts' Hispanic share rose 3.4 points more than the A tracts' 1970–80 (SE 3.0, HC1 p = 0.25) and 11.5 points more 1980–2010
+(6.8, p = 0.099; Conley 2 km p = 0.20); poverty rose 4.4 points more in D than in A tracts 1970–80 (2.0, p = 0.034; Conley p = 0.003)
+and 10.9 points 1980–2010 (3.7, p = 0.005; Conley p = 0.022); log home value fell 0.53 more 1940–80 (0.17, p = 0.003;
 Conley p = 0.001). Black share did not differ by grade once the 1940 baseline is controlled. Classes with fewer than five tracts are
 dropped from these models (the A reference class, four tracts, is kept), so the estimates are fragile; the D estimates for poverty
-1980–2010 and 1970–2010 and for home value 1940–80 and 1940–2010 hold under classical, HC1 and Conley errors, the Hispanic-share
-estimates do not reach p < 0.05 under HC1 or Conley errors.
+1970–2010 and 1980–2010 and for home value 1940–80 and 1940–2010 hold under classical, HC1 and Conley errors (poverty 1980–2010 most
+narrowly: classical p = 0.040), and the Hispanic-share estimates do not reach p < 0.05 under any of the three.
 27 of the covenant deeds also bar business or manufacturing use. HOLC also outlined ungraded "Industrial" and "Commercial"
-zones, and that is where the pre-1938 industry sat: 71% of the street-level hazardous trades listed before the map were in
-Commercial zones and 13% in Industrial ones, 11% in D areas and none in A or B (`holc_facility_shares.csv`). Classing the 1930
-districts by the HOLC class that covers them (`ed_holc_classes.csv`): the D districts, 7.3% Black in 1930, held 2.4 hazardous
+zones, and that is where the pre-1938 industry sat: 75% of the street-level hazardous trades listed before the map were in
+Commercial zones and 15% in Industrial ones, 8% in D areas and none in A or B (`holc_facility_shares.csv`). Classing the 1930
+districts by the HOLC class that covers them (`ed_holc_classes.csv`): the D districts, 7.3% Black in 1930, held 1.2 hazardous
 firms per 10,000 residents before the map and 50 hazardous-sector sites per 10,000 in 1965–92, against 6.4 per 10,000 in A–C —
 the post-war industrial growth went into the redlined and industrial districts. The app's Redlining tab shows the 1930
 districts by class, covenants, composition and firms before/after the map, and the share of each era's facilities by HOLC class.
@@ -442,9 +443,9 @@ to 2020 (2010 tracts), both for all C vs all D areas and within a boundary band 
 firms per km² of each grade in six periods from 1891 to 2002 (`holc_industry_periods.csv`). At the C–D boundaries the Black-share gap
 was nil in 1900–1920, 4 points by 1930 and 6 by 1940 — before the map — then 10–18 points in 1950–1970 before converging after 1980;
 the Hispanic gap opens only in 1940 and after. Hazardous firms per km² per directory edition in D areas against C areas
-(`holc_industry_periods.csv`): 4.9× in 1906–20 (but on 11 firms in D against 3 in C), 1.7× in 1921–37 (8 against 9 firms) and 1.9×
-in 1938–56 (33 against 27), then 13.8× in 1965–80 (318 against 52) and 18.2× in 1981–92 (234 against 31); the pre-1938 ratios rest on a
-handful of street-level listings. Reading: the appraisers ratified a divergence already under way; the step from 1.9× to 13.8× between
+(`holc_industry_periods.csv`): 3.8× in 1906–20 (but on 6 firms in D against 1 in C), 5.3× in 1921–37 (6 against 2 firms) and 2.7×
+in 1938–56 (22 against 13), then 13.8× in 1965–80 (318 against 52) and 18.2× in 1981–92 (234 against 31); the pre-1938 ratios rest on a
+handful of street-level listings. Reading: the appraisers ratified a divergence already under way; the step from 2.7× to 13.8× between
 1938–56 and 1965–80 is a change of source (business directory to manufacturers' directory), not a measured acceleration, and within
 the manufacturers' directory the ratio rose from 13.8× to 18.2×. Railways and the 1925 zoning
 ordinance are not controlled, and Fishback, Rose, Snowden & Storrs (2024) show that FHA practice, not the HOLC map, governed lending,
@@ -565,7 +566,7 @@ unzipped into `work/censoc/`). Each person gets their 1940 street address from B
 1940 person and household controls, errors clustered by ED, and a version with ED fixed effects. Writes aggregates only to
 `data/results/censoc/`; the linked person file stays in `work/censoc/`. The app's "Lifespan of 1940 residents" tab (under Historical change) reads copies of
 `censoc_models.csv`, `censoc_groups.csv` and `censoc_linkage.csv` in `app/data/`.
-CenSoc documents the DMF as reliable for deaths in 1975–2005 (the window its weights are built for); `Rscript R/censoc_denver_1940.R --dmf-window=1975-2005`
+The DMF's coverage is best for deaths in 1975–2005 (CenSoc's weights, version 4, span 1975–2020 and ages 65–100; the Gompertz check uses 1975–2005); `Rscript R/censoc_denver_1940.R --dmf-window=1975-2005`
 re-estimates the DMF models on that window and writes `censoc_models_dmf1975_2005.csv`, `censoc_groups_dmf1975_2005.csv` and
 `censoc_summary_dmf1975_2005.md` beside the main files, without touching the app copies or the linked person file.
 
@@ -632,6 +633,15 @@ mkdir -p work && tar xzf data/ocr/dcm_ocr_output.tar.gz -C work
 ./run_all.sh parse
 ```
 
+After the inventory and pre-1960 chains, `bash rerun_results.sh` reruns every result script that reads them, in dependency order
+(the census, zoning, HOLC, tract, site-fate, land-use, freeway, corridor, mortality and CenSoc scripts; each step's inputs are listed in
+the script), then `python3 pipeline/address_only_name_check.py`, `python3 paper/make_tables.py` and `python3 paper/si/make_si.py`
+regenerate the address-only check and the manuscript's and SI's tables, and `tests/run_tests.sh` checks everything against the text.
+The 1944 and 1955 zone-map classifiers (`pipeline/zoning/classify_zoning_1944.py`, `classify_zoning_1955.py`), the 1929 cell
+classification (`data/raw/zoning_1929/zone_cells_1929.csv`, made by a texture classifier kept with the licensed scan; see `R/zoning_1925.R`) and
+the district reconstruction (`pipeline/historical/grf_eds.py`, `R/grf_eds.R`) need the scans and census files in `work/` and are rerun
+only when those change; their outputs are committed.
+
 In R: `Rscript R/run_all.R` reruns geocoding, site building and inventory matching, exposures and the health models from the
 Python hand-off files (see `R/README.md`; comparisons in `data/results/r_vs_python.md`: identical sites and statuses, geocodes identical
 to 0.0 m on all 36,615 address keys, model coefficients equal to 1e-6; that comparison was last run on all 25 editions, before the switch to the complete editions).
@@ -682,12 +692,10 @@ The manufacturers' directory starts in 1961, but Colorado's smelters, foundries,
 4. **Links firms** across editions (fuzzy names within a town) and to the 1961–2002 directory, by name in the same city or by a street
    address within 40 m of a later hazardous site.
 
-Result: 8,199 hazardous-trade listings → 7,300 firm-locations; 644 at a street address; 260 link to the 1961–2002 directory,
-giving 165 later sites (of the 13 complete editions) a documented pre-1960 hazardous precursor. The street-level layer is the weakest
+Result: 7,409 hazardous-trade listings → 6,546 firm-locations; 421 at a street address; 220 link to the 1961–2002 directory,
+giving 149 later sites (of the 13 complete editions) a documented pre-1960 hazardous precursor. The street-level layer is the weakest
 part of the pre-1960 data: the 1900+ volumes' text layers interleave two columns, so an entry often runs into its neighbour's, and a
-spot check of 25 Denver street-level placements (1 November 2026) found 6 whose address or name belongs to the neighbouring listing
-despite the `NEXT`-listing cut in `run_hist.py`. Treat pre-1960 street-level counts as indicative (roughly one placement in five may be
-a neighbour's) and the town-level counts as sound. The whole chain (`run_hist.py` → `geocode_hist.py` → `link_hist.py` → `app_hist.py`)
+random check of 60 of the then 370 Denver street-level hazardous-trade placements (3 November 2026, seed 20261103; `data/historical/placement_check_2026-11-03.csv`) found 29 correct, 11 with a neighbouring listing's address or a garbled one, 11 whose firm is a neighbour's or not a works (sales branches, dealers), 2 from another town's section and 7 doubtful (all 1950, where the trade codes cover dealers as well as works): 24 of 60 clearly wrong (40%, 95% interval 29–53%), 20 of 60 (33%) if only location errors count. Every street-level placement (667 listings, 465 in Denver) was then read against the page text and corrected or dropped (`data/historical/street_review.csv`, applied in `pipeline/historical/geocode_hist.py`): 122 dropped as not works, 88 addresses and 58 names corrected, 20 moved to another town, and 41 doubtful kept with `review = doubtful`. The remaining street layer (267 Denver hazardous-sector firm-locations, 24 of them doubtful) is hand-verified, not estimated. The town-level counts still rest on trade words and codes: coal mines and dealers under the 1950 codes, and gas-company offices, advertisements and post-1930 distributors, are removed by rule in `run_hist.py` (manufactured gas 550 → 89 listings), but the town-level layer has not been checked against the pages and its counts are approximate. The whole chain (`run_hist.py` → `geocode_hist.py` → `link_hist.py` → `app_hist.py`)
 must be rerun from `run_hist.py` after any parser change: the 31 October run reused a parse from 18 October, which is why its
 street-level counts (664; Denver 408) were higher than the current ones.
 

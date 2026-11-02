@@ -1,4 +1,4 @@
-# Did living near a former hazardous site matter until the site was rebuilt? Block mortality 2000-2019 in the Denver study area.
+# Did living near a former hazardous site matter until the site was rebuilt? Block mortality 2000-2019 in the City and County of Denver.
 #   Rscript R/mortality_redevelopment.R                      (CO_HIA folder at ~/Downloads/CO_HIA)
 #   Rscript R/mortality_redevelopment.R /path/to/CO_HIA
 # Restricted inputs stay on this machine and are read in place, never copied into the project (as R/mortality_block.R):
@@ -30,8 +30,11 @@ args <- commandArgs(trailingOnly = TRUE); HIA <- path.expand(if (length(args)) a
 stopifnot(file.exists(file.path(HIA, "co_deaths_official.csv")), file.exists(file.path(HIA, "block_noyr.gpkg")))
 O <- "data/results/health"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
 # ---------------------------------------------------------------- 1. study-area blocks, yearly population and deaths
-den_tr <- st_read("app/data/co_tracts_2010.geojson", quiet = TRUE); den_tr <- den_tr$GEOID[as.logical(den_tr$core) %in% TRUE | substr(den_tr$GEOID, 1, 5) == "08031"]
-B <- st_read(file.path(HIA, "block_noyr.gpkg"), quiet = TRUE); B$bck <- formatC(as.character(B$bck), width = 15, flag = "0")
+# the City and County of Denver only: the rebuilt-site dates come from Denver's assessor parcels (R/site_fate.R), so suburban blocks would
+# see none of their own nearby sites and would enter as unexposed controls
+den_tr <- st_read("app/data/co_tracts_2010.geojson", quiet = TRUE); den_tr <- den_tr$GEOID[substr(den_tr$GEOID, 1, 5) == "08031"]
+pad15 <- function(x) { x <- as.character(x); paste0(strrep("0", pmax(0, 15 - nchar(x))), x) }
+B <- st_read(file.path(HIA, "block_noyr.gpkg"), quiet = TRUE); B$bck <- pad15(B$bck)
 B <- B[substr(B$bck, 1, 11) %in% den_tr, ]; B <- st_transform(st_make_valid(B), UTM)
 CXY <- st_coordinates(st_point_on_surface(st_geometry(B)))
 BD <- as.data.table(st_drop_geometry(B))[, c("bck", paste0("pop_", YRS), paste0("pm_", YRS)), with = FALSE]
@@ -39,15 +42,15 @@ PN <- melt(BD, id.vars = "bck", measure.vars = list(paste0("pop_", YRS), paste0(
 PN[, year := YRS[as.integer(k)]][, k := NULL]
 X <- fread(file.path(HIA, "co_deaths_official.csv"), colClasses = "character", select = c("yr", "fipscoor", "tract", "bgroup", "block", "all_cause", "natural_cause"))
 X <- X[as.integer(yr) %in% YRS]; X[, `:=`(bck = paste0("08", fipscoor, tract, bgroup, block), year = as.integer(yr))]
-allb <- formatC(as.character(st_read(file.path(HIA, "block_noyr.gpkg"), quiet = TRUE, query = "SELECT bck FROM block_noyr")$bck), width = 15, flag = "0")
+allb <- pad15(st_read(file.path(HIA, "block_noyr.gpkg"), quiet = TRUE, query = "SELECT bck FROM block_noyr")$bck); stopifnot(all(nchar(allb) == 15))
 MR <- X[, .(deaths = .N, pct_matched = round(100 * mean(bck %in% allb), 1)), by = year][order(year)]
 KEEPY <- MR[pct_matched >= 90, year]; message("years kept (90%+ of deaths on a 2010 block): ", paste(range(KEEPY), collapse = "-"), "; dropped: ", paste(setdiff(YRS, KEEPY), collapse = " "))
 DE <- X[bck %in% B$bck, .(deaths_all = sum(all_cause == "1"), deaths_nat = sum(natural_cause == "1")), by = .(bck, year)]
 PN <- merge(PN[year %in% KEEPY], DE, by = c("bck", "year"), all.x = TRUE); PN[is.na(deaths_all), deaths_all := 0L]; PN[is.na(deaths_nat), deaths_nat := 0L]
 PN <- PN[!is.na(pop) & pop >= 1]; PN[, tract := substr(bck, 1, 11)]
 # ---------------------------------------------------------------- 2. sites and when they were rebuilt
-rb <- function(d, grp) { d <- d[!is.na(lat) & !is.na(lon) & !is.na(year_built)]
-  d[, .(group = grp, lon, lat, rebuilt = fifelse(year_built > last_year, as.numeric(year_built), Inf))] }
+rb <- function(d, grp) { d <- d[!is.na(lat) & !is.na(lon)]   # a site whose parcel has no year built counts as standing throughout
+  d[, .(group = grp, lon, lat, rebuilt = fifelse(!is.na(year_built) & year_built > last_year, as.numeric(year_built), Inf))] }
 SF <- fread("data/results/site_fate/site_fate_denver.csv")
 S <- rbind(rb(SF[radar == "Not on any list"], "hidden"), rb(SF[radar != "Not on any list"], "known"),
            rb(fread("data/results/site_fate/site_fate_denver_pre1960.csv"), "pre1960"))
@@ -78,7 +81,8 @@ R <- rbindlist(R)[term != "pm25"]
 R[, term := sub("standing_", "", term)]; fwrite(R, file.path(O, "mortality_redevelopment_models.csv")); print(R)
 # ---------------------------------------------------------------- 4. event study around the first rebuild within 400 m
 near <- W[d <= 400]
-ev <- near[rebuilt >= 2003 & rebuilt <= 2016, .(event = min(rebuilt)), by = bck]
+# the first rebuild in the whole window; blocks whose first rebuild falls outside 2003-2016 (too close to either end to see both sides) are left out
+ev <- near[rebuilt >= min(KEEPY) & rebuilt <= max(KEEPY), .(event = min(rebuilt)), by = bck][event >= 2003 & event <= 2016]
 ctl <- setdiff(near[rebuilt > max(KEEPY), unique(bck)], near[rebuilt >= min(KEEPY) & rebuilt <= max(KEEPY), unique(bck)])
 E <- merge(PN[bck %in% c(ev$bck, ctl)], ev, by = "bck", all.x = TRUE)
 E[, rel := fifelse(is.na(event), -1000, year - event)]
@@ -89,7 +93,7 @@ ES <- list()
 for (y in c("deaths_nat", "deaths_all")) { m <- fepois(as.formula(paste(y, "~ i(evb, ref = '-1') + pm25 | bck + year")), E, offset = ~log(pop), cluster = ~tract)
   ES[[y]] <- tidy(m, "Event study: first rebuild within 400 m", y)[grepl("evb", term)][, years_since_rebuild := sub("evb::", "", term)] }
 ES <- rbindlist(ES)[, .(outcome, years_since_rebuild, rr, lo, hi, p, n_obs)]
-ES[, `:=`(rebuilt_blocks = uniqueN(E[!is.na(event), bck]), comparison_blocks = length(ctl))]
+ES[, `:=`(rebuilt_blocks = uniqueN(E[!is.na(event), bck]), comparison_blocks = uniqueN(E[is.na(event), bck]))]
 fwrite(ES, file.path(O, "mortality_redevelopment_event.csv")); print(ES)
 # ---------------------------------------------------------------- 5. summary
 kab <- function(x) { x <- as.data.frame(x); c(paste("|", paste(names(x), collapse = " | "), "|"), paste0(strrep("|---", ncol(x)), "|"),

@@ -28,29 +28,29 @@
 
 - id: readme_hidden_sites
   file: README.md
-  text: "**1,212 (35%) are on no current federal or state inventory**"
+  text: "**1,242 (36%) are on no current federal or state inventory**"
   check: "[len(hidden_sites()), 100 * len(hidden_sites()) / len(fe_sites())]"
-  expect: [1212, 35]
+  expect: [1242, 36]
 - id: readme_hidden_high_confidence
   file: README.md
-  text: "(856 of them high confidence)"
+  text: "(882 of them high confidence)"
   check: "(hidden_sites().confidence == 'high').sum()"
-  expect: [856]
+  expect: [882]
 - id: readme_cleanup_sites
   file: README.md
-  text: "646 (19%) are on a cleanup or contamination"
+  text: "641 (18%) are on a cleanup or contamination"
   check: "[(fe_sites().radar == 'Cleanup / contamination list').sum(), 100 * (fe_sites().radar == 'Cleanup / contamination list').mean()]"
-  expect: [646, 19]
+  expect: [641, 18]
 - id: readme_tri_sites
   file: README.md
-  text: "296 report to TRI"
+  text: "289 report to TRI"
   check: "(fe_sites().radar == 'TRI reporter').sum()"
-  expect: [296]
+  expect: [289]
 - id: readme_rcra_sites
   file: README.md
-  text: "945 are known only as RCRA hazardous-waste handlers"
+  text: "927 are known only as RCRA hazardous-waste handlers"
   check: "(fe_sites().radar == 'RCRA hazardous-waste handler').sum()"
-  expect: [945]
+  expect: [927]
 - id: readme_other_permit_sites
   file: README.md
   text: "388 have only other EPA permits or solid-waste records"
@@ -66,7 +66,7 @@
   file: README.md
   text: "Site workbook (`CO_hazardous_sites_1961-2002.xlsx`)"
   check: "[len(load('data/results/CO_hazardous_sites_1961-2002.xlsx', sheet='Hidden sites')), len(load('data/results/CO_hazardous_sites_1961-2002.xlsx', sheet='All F&E hazardous sites'))]"
-  expect: [1212, 3487]
+  expect: [1242, 3487]
 - id: readme_full_inventory_listings
   file: README.md
   text: "72,317 listings → 35,657 establishments"
@@ -81,14 +81,14 @@
 
 - id: readme_full_inventory_tri
   file: README.md
-  text: "375 report to TRI"
+  text: "366 report to TRI"
   check: "((s := load('data/full_inventory/sites.csv', as_str=True))[s.fe_hazard == 'TRUE'].radar == 'TRI reporter').sum()"
-  expect: [375]
+  expect: [366]
 - id: readme_full_inventory_other_permits
   file: README.md
-  text: "529 have only other EPA permits or"
+  text: "525 have only other EPA permits or"
   check: "((s := load('data/full_inventory/sites.csv', as_str=True))[s.fe_hazard == 'TRUE'].radar.isin(['Other EPA permit only', 'Solid waste facility'])).sum()"
-  expect: [529]
+  expect: [525]
 - id: readme_health_mental_health_row
   file: README.md
   text: "| Poor mental health (%) | -0.187 (0.081)* | 0.171 (0.103) | -0.043 (0.090) | -3.4 | 0.0202 |"
@@ -302,24 +302,24 @@
 
 - id: readme_1880_firms_placed
   file: README.md
-  text: "69 firms are placed"
+  text: "68 firms are placed"
   check: "len(load('app/data/denver_1880_firms.csv'))"
-  expect: 69
+  expect: [68]
 
 # ------------------------------------------------------------------ README: enumeration-district gradients 1900-1940
 - id: readme_ed_owner_occupancy_gradient
   file: README.md
-  text: "owner-occupancy rises 11.5 (1900) to 21.0 (1940) points per log-metre"
+  text: "owner-occupancy rises 11.0 (1900) to 20.7 (1940) points per log-metre"
   check: >-
     (lambda d: [d[(d.census == 1900) & (d.outcome == 'pct_owner_hh')].b_per_log_m.iloc[0], d[(d.census == 1940) & (d.outcome == 'pct_owner_hh')].b_per_log_m.iloc[0],
     d[(d.census == 0) & (d.outcome == 'pct_owner_hh')].b_per_log_m.iloc[0]])(load('app/data/ed_distance_models.csv'))
-  expect: [11.5, 21.0, 18.9]
+  expect: [11.0, 20.7, 18.7]
 
 - id: readme_ed_movers_1940
   file: README.md
-  text: "(−7.5 points per log-metre, p < 1e-14)"
+  text: "(−7.1 points per log-metre, p < 1e-14)"
   check: "(lambda d: [d[(d.census == 1940) & (d.outcome == 'pct_movers')].b_per_log_m.iloc[0], d[(d.census == 1940) & (d.outcome == 'pct_movers')].p.iloc[0] < 1e-14])(load('app/data/ed_distance_models.csv'))"
-  expect: [-7.5, 1]
+  expect: [-7.1, 1]
 
 # ------------------------------------------------------------------ README: HOLC and covenants
 - id: readme_holc_d_1930_composition
@@ -338,33 +338,33 @@
 
 - id: readme_holc_change_model_hispanic_1970_1980
   file: README.md
-  text: "Hispanic share rose 3.6 points more than the A tracts' 1970–80 (SE 3.1, HC1 p = 0.25)"
+  text: "Hispanic share rose 3.4 points more than the A tracts' 1970–80 (SE 3.0, HC1 p = 0.25)"
   check: "(lambda r: [r.b, r.se, r.p])((lambda m: m[(m.outcome == 'p_hisp') & (m.period == '1970-1980') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [3.6, 3.1, 0.25]
+  expect: [3.4, 3.0, 0.25]
 
 - id: readme_holc_change_model_hispanic_1980_2010
   file: README.md
-  text: "14.0 points more 1980–2010\n(7.7, p = 0.075; Conley 2 km p = 0.18)"
+  text: "11.5 points more 1980–2010\n(6.8, p = 0.099; Conley 2 km p = 0.20)"
   check: "(lambda r: [r.b, r.se, r.p])((lambda m: m[(m.outcome == 'p_hisp') & (m.period == '1980-2010') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [14.0, 7.7, 0.075]
+  expect: [11.5, 6.8, 0.099]
 
 - id: readme_holc_change_model_poverty
   file: README.md
-  text: "poverty rose 4.4 points more in D than in A tracts 1970–80 (2.1, p = 0.037"
+  text: "poverty rose 4.4 points more in D than in A tracts 1970–80 (2.0, p = 0.034"
   check: "(lambda r: [r.b, r.se, r.p])((lambda m: m[(m.outcome == 'p_pov') & (m.period == '1970-1980') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [4.4, 2.1, 0.037]
+  expect: [4.4, 2.0, 0.034]
 
 - id: readme_holc_change_model_poverty_1980_2010
   file: README.md
-  text: "11.0 points 1980–2010 (3.8, p = 0.005"
+  text: "10.9 points 1980–2010 (3.7, p = 0.005"
   check: "(lambda r: [r.b, r.se, r.p])((lambda m: m[(m.outcome == 'p_pov') & (m.period == '1980-2010') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [11.0, 3.8, 0.005]
+  expect: [10.9, 3.7, 0.005]
 
 - id: readme_holc_change_model_home_value
   file: README.md
-  text: "log home value fell 0.54 more 1940–80 (0.17, p = 0.003"
+  text: "log home value fell 0.53 more 1940–80 (0.17, p = 0.003"
   check: "(lambda r: [-r.b, r.se, r.p])((lambda m: m[(m.outcome == 'lmval') & (m.period == '1940-1980') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [0.54, 0.17, 0.003]
+  expect: [0.53, 0.17, 0.003]
 
 - id: readme_covenants_located_and_industry
   file: README.md
@@ -374,27 +374,27 @@
 
 - id: readme_holc_facility_shares_pre1938
   file: README.md
-  text: "71% of the street-level hazardous trades listed before the map were in\nCommercial zones and 13% in Industrial ones, 11% in D areas and none in A or B"
+  text: "75% of the street-level hazardous trades listed before the map were in\nCommercial zones and 15% in Industrial ones, 8% in D areas and none in A or B"
   check: "(lambda r: [r.share_Commercial, r.share_Industrial, r.share_D, r.A + r.B])((lambda d: d[d.layer.str.startswith('Hazardous trades before the map')].iloc[0])(load('app/data/holc_facility_shares.csv')))"
-  expect: [71, 13, 11, 0]
+  expect: [75, 15, 8, 0]
 
 - id: readme_ed_holc_classes_d_districts
   file: README.md
-  text: "the D districts, 7.3% Black in 1930, held 2.4 hazardous\nfirms per 10,000 residents before the map and 50 hazardous-sector sites per 10,000 in 1965–92, against 6.4 per 10,000 in A–C"
+  text: "the D districts, 7.3% Black in 1930, held 1.2 hazardous\nfirms per 10,000 residents before the map and 50 hazardous-sector sites per 10,000 in 1965–92, against 6.4 per 10,000 in A–C"
   check: >-
     (lambda d: (lambda D, ac: [(D.pct_black * D.population).sum() / D.population.sum(), 1e4 * D.firms_pre1938.sum() / D.population.sum(),
     1e4 * D.firms_1961_2002.sum() / D.population.sum(), 1e4 * ac.firms_1961_2002.sum() / ac.population.sum()])(
     d[(d.census == 1930) & (d.grade == 'D')], d[(d.census == 1930) & d.grade.isin(['A', 'B', 'C'])]))(load('app/data/ed_holc_classes.csv'))
-  expect: [7.3, 2.4, 50, 6.4]
+  expect: [7.3, 1.2, 50, 6.4]
 
 - id: readme_holc_industry_period_ratios
   file: README.md
-  text: "4.9× in 1906–20 (but on 11 firms in D against 3 in C), 1.7× in 1921–37 (8 against 9 firms) and 1.9×\nin 1938–56 (33 against 27), then 13.8× in 1965–80 (318 against 52) and 18.2× in 1981–92 (234 against 31)"
+  text: "3.8× in 1906–20 (but on 6 firms in D against 1 in C), 5.3× in 1921–37 (6 against 2 firms) and 2.7×\nin 1938–56 (22 against 13), then 13.8× in 1965–80 (318 against 52) and 18.2× in 1981–92 (234 against 31)"
   check: >-
     (lambda d: [v for per in ('1906-1920', '1921-1937', '1938-1956', '1965-1980', '1981-1992')
     for v in (d[(d.period == per) & (d.grade == 'D')].dc_ratio_within_period.iloc[0],
     d[(d.period == per) & (d.grade == 'D')].firms.iloc[0], d[(d.period == per) & (d.grade == 'C')].firms.iloc[0])])(load('app/data/holc_industry_periods.csv'))
-  expect: [4.9, 11, 3, 1.7, 8, 9, 1.9, 33, 27, 13.8, 318, 52, 18.2, 234, 31]
+  expect: [3.8, 6, 1, 5.3, 6, 2, 2.7, 22, 13, 13.8, 318, 52, 18.2, 234, 31]
 
 - id: readme_holc_industry_ratio_recomputed
   file: README.md
@@ -453,11 +453,11 @@
 # ------------------------------------------------------------------ README: pre-1960 layer and radium
 - id: readme_pre1960_counts
   file: README.md
-  text: "8,199 hazardous-trade listings → 7,300 firm-locations; 644 at a street address; 260 link to the 1961–2002 directory,\ngiving 165 later sites"
+  text: "7,409 hazardous-trade listings → 6,546 firm-locations; 421 at a street address; 220 link to the 1961–2002 directory,\ngiving 149 later sites"
   check: >-
     (lambda L, H: [len(L), len(H), H.precision.str.startswith('street').sum(), H.persists_to_1961plus.astype(str).str.upper().eq('TRUE').sum(), H.dcm_site.nunique()])(
     load('data/historical/CO_pre1960_hazardous_listings.csv'), load('data/historical/CO_pre1960_hazardous_sites.csv'))
-  expect: [8199, 7300, 644, 260, 165]
+  expect: [7409, 6546, 421, 220, 149]
 
 - id: readme_radium_business_directory_firms
   file: README.md
@@ -480,9 +480,9 @@
 
 - id: app_site_fate_parcel_matches
   file: app/app.R
-  text: "1,112 of 1,112 manufacturers'-directory sites and 394 of 395 pre-1960 trades"
+  text: "1,112 of 1,112 manufacturers'-directory sites and all 267 pre-1960 trades"
   check: "(lambda s, h: [(s.use_now != 'No parcel match').sum(), len(s), (h.use_now != 'No parcel match').sum(), len(h)])(load('app/data/site_fate_denver.csv'), load('app/data/site_fate_denver_pre1960.csv'))"
-  expect: [1112, 1112, 394, 395]
+  expect: [1112, 1112, 267, 267]
 
 - id: app_zoning_tract_paths_still_industrial
   file: app/app.R
@@ -520,11 +520,11 @@
 
 - id: app_censoc_gompertz
   file: app/app.R
-  text: "(Gompertz, deaths 1975\\u20132005) points the same way for the industrial district (hazard ratio 1.10, not statistically clear) and the D grade (1.16, 1.01\\u20131.34"
+  text: "(Gompertz, deaths 1975\\u20132005) points the same way for the industrial district (hazard ratio 1.12, not statistically clear) and the D grade (1.16, 1.01\\u20131.34"
   check: >-
     (lambda g: (lambda m: [m[m.exposure == '1929 industrial district'].hr.iloc[0], m[m.exposure.str.startswith('HOLC grade D')].hr.iloc[0],
     m[m.exposure.str.startswith('HOLC grade D')].hr_lower.iloc[0], m[m.exposure.str.startswith('HOLC grade D')].hr_upper.iloc[0]])(g[g.people.str.startswith('Men,')]))(load('app/data/censoc_ext_gompertz.csv'))
-  expect: [1.10, 1.16, 1.01, 1.34]
+  expect: [1.12, 1.16, 1.01, 1.34]
 
 - id: app_censoc_displacement_hispanic_shares
   file: app/app.R
@@ -604,13 +604,13 @@
 
 - id: rezoning_by_race_under_1pct
   file: data/results/rezoning/summary.md
-  text: "| Under 1% Black | 152 | 38.2 | 3.3 | 55.3 | 0.3 |"
+  text: "| Under 1% Black | 152 | 38.2 | 3.3 | 55.3 | 0.1 |"
   check: >-
     (lambda r: [len(r), 100 * r.direction.isin(['Residential to business', 'Residential to industrial']).mean(),
     100 * r.direction.isin(['Residential to industrial', 'Business to industrial']).mean(),
     100 * r.direction.isin(['Business or industrial to residential', 'Within residential districts']).mean(), r.haz_trades_400m.mean()])(
     (lambda c: c[(~c.annexation.astype(bool)) & (c.p_black < 1)])(load('data/results/rezoning/changes.csv')))
-  expect: [152, 38.2, 3.3, 55.3, 0.3]
+  expect: [152, 38.2, 3.3, 55.3, 0.1]
 
 # ------------------------------------------------------------------ data/results/sanborn_1903/summary.md
 - id: sanborn_sheets_blocks_dwellings
@@ -744,9 +744,9 @@
 
 - id: evictions_model_large_owner_share
   file: data/results/housing_conditions/summary.md
-  text: "| pct_rental_owner_100plus | 0.079 | 0.011 | 1.35e-10 | 142 |"
+  text: "| pct_rental_owner_100plus | 0.084 | 0.012 | 7.65e-11 | 142 |"
   check: "(lambda r: [r.estimate, r.se, r.tracts])((lambda m: m[m.term == 'pct_rental_owner_100plus'].iloc[0])(load('app/data/conditions_evictions_models.csv')))"
-  expect: [0.079, 0.011, 142]
+  expect: [0.084, 0.012, 142]
 
 - id: evictions_denver_county_2016
   file: data/results/housing_conditions/summary.md
@@ -757,11 +757,11 @@
 # ------------------------------------------------------------------ data/results/zoning_2023/zoning_2023_summary.md
 - id: zoning2023_denver_county_sites_row
   file: data/results/zoning_2023/zoning_2023_summary.md
-  text: "| Hazardous-sector manufacturers 1965-1992 | Denver County | 1108 | 39.7 | 15.1 | 32.9 | 10.5 | 0.6 | 1.2 |"
+  text: "| Hazardous-sector manufacturers 1965-1992 | Denver County | 1108 | 39.7 | 15.1 | 30.8 | 10.5 | 0.6 | 3.3 |"
   check: >-
     (lambda r: [r.n, r['Industrial (housing not allowed)'], r['Industrial mixed use (housing allowed)'], r['Mixed use with housing'], r['Residential'], r['Commercial'], r['Open space, civic, other']])(
     (lambda z: z[z.series.str.startswith('Hazardous-sector') & (z['where'] == 'Denver County')].iloc[0])(load('app/data/sites_by_zoning_2023.csv')))
-  expect: [1108, 39.7, 15.1, 32.9, 10.5, 0.6, 1.2]
+  expect: [1108, 39.7, 15.1, 30.8, 10.5, 0.6, 3.3]
 
 - id: zoning2023_suburban_sites_row
   file: data/results/zoning_2023/zoning_2023_summary.md
@@ -780,11 +780,11 @@
 
 - id: zoning2023_industrial_a_row
   file: data/results/zoning_2023/zoning_2023_summary.md
-  text: "| Industrial A | 24.69 | 51.2 | 12.1 | 23.0 |  6.0 | 0.1 | 7.6 |"
+  text: "| Industrial A | 24.69 | 51.2 | 12.1 | 21.8 |  6.0 | 0.1 |  8.8 |"
   check: >-
     (lambda r: [r.km2_1929, r['Industrial (housing not allowed)'], r['Industrial mixed use (housing allowed)'], r['Mixed use with housing'], r['Residential'], r['Commercial'], r['Open space, civic, other']])(
     (lambda z: z[z.zone1929 == 'Industrial A'].iloc[0])(load('app/data/zoning_1929_to_2023.csv')))
-  expect: [24.69, 51.2, 12.1, 23.0, 6.0, 0.1, 7.6]
+  expect: [24.69, 51.2, 12.1, 21.8, 6.0, 0.1, 8.8]
 
 - id: zoning2023_tract_composition_20pct_row
   file: data/results/zoning_2023/zoning_2023_summary.md
@@ -804,16 +804,16 @@
 # README: all-25-edition run (stale alongside readme_full_inventory_sites)
 - id: readme_full_inventory_hidden_cleanup
   file: README.md
-  text: "**1,727 (37%) are on no current federal or state inventory** (1,093 of them high confidence); 806 (17%) are on a cleanup or"
+  text: "**1,770 (38%) are on no current federal or state inventory** (1,129 of them high confidence); 797 (17%) are on a cleanup or"
   check: >-
     (lambda f: [(f.radar == 'Not on any list').sum(), 100 * (f.radar == 'Not on any list').mean(), ((f.radar == 'Not on any list') & (f.confidence == 'high')).sum(),
     (f.radar == 'Cleanup / contamination list').sum(), 100 * (f.radar == 'Cleanup / contamination list').mean()])((lambda s: s[s.fe_hazard == 'TRUE'])(load('data/full_inventory/sites.csv', as_str=True)))
-  expect: [1727, 37, 1093, 806, 17]
+  expect: [1770, 38, 1129, 797, 17]
 - id: readme_full_inventory_rcra
   file: README.md
-  text: "1,232 are known only as RCRA hazardous-waste handlers"
+  text: "1,211 are known only as RCRA hazardous-waste handlers"
   check: "((s := load('data/full_inventory/sites.csv', as_str=True))[s.fe_hazard == 'TRUE'].radar == 'RCRA hazardous-waste handler').sum()"
-  expect: [1232]
+  expect: [1211]
 - id: readme_full_inventory_multi_firm
   file: README.md
   text: "1,749 sites hosted two or more hazardous-sector firms over time"
@@ -822,22 +822,22 @@
 
 - id: readme_full_inventory_tract_medians
   file: README.md
-  text: "(median percentile 60.1 vs 43.1 for other tracts),\n  more low-income residents (23.6% vs 19.2%) and lower educational attainment (5.7% vs 4.5% without a high-school diploma)"
+  text: "(median percentile 59.7 vs 43.3 for other tracts),\n  more low-income residents (23.6% vs 19.2%) and lower educational attainment (5.6% vs 4.6% without a high-school diploma)"
   check: >-
     (lambda t, unk: [v for col in ('enviroscreen_pctl', 'low_income', 'less_than_hs') for v in (t[t.GEOID.isin(unk)][col].median(), t[~t.GEOID.isin(unk)][col].median())])(
     load('app/data/enviroscreen_tracts.geojson').assign(GEOID=lambda d: d.GEOID.astype(str)),
     set((lambda s: s[(s.fe_hazard == 'TRUE') & (s.radar == 'Not on any list')])(load('data/full_inventory/sites.csv', as_str=True)).GEOID) - {''})
-  expect: [60.1, 43.1, 23.6, 19.2, 5.7, 4.5]
+  expect: [59.7, 43.3, 23.6, 19.2, 5.6, 4.6]
 - id: readme_full_inventory_tract_people_of_color_and_known_only
   file: README.md
-  text: "(27.5% vs 26.8%). Tracts with unknown sites have the same\n  EnviroScreen scores as tracts with only known sites (60.1 vs 60.1)"
+  text: "(27.3% vs 26.9%). Tracts with unknown sites have the same\n  EnviroScreen scores as tracts with only known sites (59.7 vs 60.5)"
   check: >-
     (lambda t, unk, anyg: [t[t.GEOID.isin(unk)].people_of_color.median(), t[~t.GEOID.isin(unk)].people_of_color.median(),
     t[t.GEOID.isin(unk)].enviroscreen_pctl.median(), t[t.GEOID.isin(anyg) & ~t.GEOID.isin(unk)].enviroscreen_pctl.median()])(
     load('app/data/enviroscreen_tracts.geojson').assign(GEOID=lambda d: d.GEOID.astype(str)),
     set((lambda s: s[(s.fe_hazard == 'TRUE') & (s.radar == 'Not on any list')])(load('data/full_inventory/sites.csv', as_str=True)).GEOID) - {''},
     set((lambda s: s[s.fe_hazard == 'TRUE'])(load('data/full_inventory/sites.csv', as_str=True)).GEOID) - {''})
-  expect: [27.5, 26.8, 60.1, 60.1]
+  expect: [27.3, 26.9, 59.7, 60.5]
 - id: readme_addresspoints_address_row
   file: README.md
   text: "| address | 679 | 455 | 49 m | 171 m | 79% | 94% | 0.9% |"
@@ -942,11 +942,11 @@
 
 - id: corridors_summary_persistence_table
   file: data/results/corridors/corridors_summary.md
-  text: "| emerging | 591 | 224 | 6 |\n| intermittent | 304 | 210 | 18 |\n| former (gone by 1980s) | 279 | 129 | 13 |\n| persistent, sector turnover | 242 | 228 | 64 |\n| persistent | 91 | 73 | 27 |"
+  text: "| emerging | 591 | 224 | 2 |\n| intermittent | 304 | 210 | 9 |\n| former (gone by 1980s) | 279 | 129 | 5 |\n| persistent, sector turnover | 242 | 228 | 48 |\n| persistent | 91 | 73 | 20 |"
   check: >-
     (lambda m: [v for k in ('emerging', 'intermittent', 'former (gone by 1980s)', 'persistent, sector turnover', 'persistent')
     for v in ((m['class'] == k).sum(), m[m['class'] == k].ever_haz.sum(), m[m['class'] == k].pre1960_first.notna().sum())])((lambda c: c[c.metro])(load('app/data/corridor_cells.csv')))
-  expect: [591, 224, 6, 304, 210, 18, 279, 129, 13, 242, 228, 64, 91, 73, 27]
+  expect: [591, 224, 2, 304, 210, 9, 279, 129, 5, 242, 228, 48, 91, 73, 20]
 
 - id: corridors_summary_located_establishments
   file: data/results/corridors/corridors_summary.md
@@ -957,9 +957,9 @@
 # README: Denver 1880, enumeration districts, HOLC
 - id: readme_1880_firms_placed_detail
   file: README.md
-  text: "69 firms are placed (60 at the building\nor within a few house numbers)"
+  text: "68 firms are placed (60 at the building\nor within a few house numbers)"
   check: "(lambda f: [len(f), f.how.isin(['building', 'nearest number on street']).sum()])(load('app/data/denver_1880_firms.csv'))"
-  expect: [69, 60]
+  expect: [68, 60]
 
 - id: readme_1880_ed10_firms
   file: README.md
@@ -969,33 +969,33 @@
 
 - id: readme_ed_sei_boarders_gradients
   file: README.md
-  text: "mean SEI of employed residents rises 2.3–5.2 points, and\nnon-relatives in the household (boarders, lodgers, servants) fall by 3.8–16.1 points"
+  text: "mean SEI of employed residents rises 3.7–5.6 points, and\nnon-relatives in the household (boarders, lodgers, servants) fall by 3.3–16.8 points"
   check: >-
     (lambda m: [m[(m.outcome == 'mean_sei') & (m.census >= 1900)].b_per_log_m.min(), m[(m.outcome == 'mean_sei') & (m.census >= 1900)].b_per_log_m.max(),
     -m[(m.outcome == 'pct_boarders') & (m.census >= 1900)].b_per_log_m.max(), -m[(m.outcome == 'pct_boarders') & (m.census >= 1900)].b_per_log_m.min()])(load('app/data/ed_distance_models.csv'))
-  expect: [2.3, 5.2, 3.8, 16.1]
+  expect: [3.7, 5.6, 3.3, 16.8]
 
 - id: readme_ed_owner_households_and_rent
   file: README.md
-  text: "districts with a firm had 13–28% owner households\nagainst 30–47% elsewhere, and in 1940 a median rent of $17 against $52"
+  text: "districts with a firm had 11–22% owner households\nagainst 31–47% elsewhere, and in 1940 a median rent of $14 against $51"
   check: >-
     (lambda g, w, o: [w.pct_owner_hh.min(), w.pct_owner_hh.max(), o.pct_owner_hh.min(), o.pct_owner_hh.max(), w[w.census == 1940].median_rent.iloc[0], o[o.census == 1940].median_rent.iloc[0]])(
     (g := load('app/data/ed_year_groups.csv')), g[g.group == 'EDs with hazardous firms'], g[g.group == 'EDs without'])
-  expect: [13, 28, 30, 47, 17, 52]
+  expect: [11, 22, 31, 47, 14, 51]
 
 - id: readme_ed_movers_1940_shares
   file: README.md
-  text: "80% of residents of the firm districts had moved house since 1935 against\n72% elsewhere"
+  text: "81% of residents of the firm districts had moved house since 1935 against\n72% elsewhere"
   check: "(lambda g: [g[(g.census == 1940) & (g.group == 'EDs with hazardous firms')].pct_movers.iloc[0], g[(g.census == 1940) & (g.group == 'EDs without')].pct_movers.iloc[0]])(load('app/data/ed_year_groups.csv'))"
-  expect: [80, 72]
+  expect: [81, 72]
 
 - id: readme_holc_areas_with_firms_1921_40
   file: README.md
-  text: "no A or B area held a hazardous firm in 1921–40; 4 of 16 D areas did (and 5 of 20 C areas), and 8 D-area\ndescriptions cite industry"
+  text: "no A or B area held a hazardous firm in 1921–40; 3 of 16 D areas did (and 2 of 20 C areas), and 8 D-area\ndescriptions cite industry"
   check: >-
     (lambda h: [(h[h.grade.isin(['A', 'B'])].firms_1921_1940 > 0).sum(), (h[h.grade == 'D'].firms_1921_1940 > 0).sum(), (h.grade == 'D').sum(),
     (h[h.grade == 'C'].firms_1921_1940 > 0).sum(), (h.grade == 'C').sum(), h[h.grade == 'D'].mentions_industry.astype(str).str.upper().eq('TRUE').sum()])(load('app/data/holc_denver.geojson'))
-  expect: [0, 4, 16, 5, 20, 8]
+  expect: [0, 3, 16, 2, 20, 8]
 
 - id: readme_holc_1940_hispanic_elsewhere
   file: README.md
@@ -1033,9 +1033,9 @@
 # app/app.R static text (continued)
 - id: app_1880_residents_and_firms
   file: app/app.R
-  text: "34,386 residents, 69 firms placed (30 at the building itself, 30 at the nearest house number on the same street, 9 on the street only)"
+  text: "34,386 residents, 68 firms placed (30 at the building itself, 30 at the nearest house number on the same street, 8 on the street only)"
   check: "(lambda d, f: [d.residents.sum(), len(f), (f.how == 'building').sum(), (f.how == 'nearest number on street').sum(), (f.how == 'street only').sum()])(load('app/data/denver_1880_distance.csv'), load('app/data/denver_1880_firms.csv'))"
-  expect: [34386, 69, 30, 30, 9]
+  expect: [34386, 68, 30, 30, 8]
 
 - id: app_dissimilarity_unit_counts
   file: app/app.R
@@ -1055,11 +1055,11 @@
 
 - id: app_holc_ungraded_zone_shares
   file: app/app.R
-  text: "holding 16% of HOLC's land area and 15% of the 1940 population but 84% of the pre-map hazardous trades (the Industrial zone alone: 12% of the land, 6% of the population)"
+  text: "holding 16% of HOLC's land area and 15% of the 1940 population but 90% of the pre-map hazardous trades (the Industrial zone alone: 12% of the land, 6% of the population)"
   check: >-
     (lambda s: (lambda land, pop, pre: [land.share_Industrial + land.share_Commercial, pop.share_Industrial + pop.share_Commercial, pre.share_Industrial + pre.share_Commercial, land.share_Industrial, pop.share_Industrial])(
     s[s.layer == 'Land area of HOLC areas'].iloc[0], s[s.layer == 'Population 1940'].iloc[0], s[s.layer.str.startswith('Hazardous trades before the map')].iloc[0]))(load('app/data/holc_facility_shares.csv'))
-  expect: [16, 15, 84, 12, 6]
+  expect: [16, 15, 90, 12, 6]
 
 - id: app_holc_trajectory_tract_counts
   file: app/app.R
@@ -1175,33 +1175,33 @@
 # ------------------------------------------------------------------ README: known vs hidden sensitivity (R/known_hidden_sensitivity.R)
 - id: readme_sensitivity_proximity_only
   file: README.md
-  text: "1,008 of the 2,275 known sites (44%) are known only because a differently named record lies within the tier's radius"
+  text: "1,025 of the 2,245 known sites (46%) are known only because a differently named record lies within the tier's radius"
   check: "(lambda s: [(s.match_basis == 'nearby record only').sum(), (s.radar != 'Not on any list').sum(), 100 * (s.match_basis == 'nearby record only').sum() / (s.radar != 'Not on any list').sum()])((lambda s: s[s.fe_hazard.astype(str).str.upper() == 'TRUE'])(load('app/data/sites.csv')))"
-  expect: [1008, 2275, 44]
+  expect: [1025, 2245, 46]
 - id: readme_sensitivity_proximity_tiers_distance
   file: README.md
-  text: "for 46% of them the nearest such record is an RCRA hazardous-waste handler and for 35% another EPA permit, and\n  80% lie 10–40 m away"
+  text: "for 46% of them the nearest such record is an RCRA hazardous-waste handler and for 35% another EPA permit, and\n  79% lie 10–40 m away"
   check: "(lambda p: [p[p.tier == 'rcra_handler'].pct_of_proximity_only.sum(), p[p.tier == 'other_epa'].pct_of_proximity_only.sum(), p[p.band.isin(['10-25 m', '25-40 m'])].pct_of_proximity_only.sum()])(load('data/results/known_hidden/proximity_only_by_tier_distance.csv'))"
-  expect: [46, 35, 80]
+  expect: [46, 35, 79]
 
 - id: readme_sensitivity_counts
   file: README.md
-  text: "2,220 sites (64%) are on\n  no inventory; counting proximity only within 25 m, 1,658 (48%); counting proximity only to cleanup and TRI records, 1,899 (54%); with\n  every radius doubled, 715 (21%)"
+  text: "2,267 sites (65%) are on\n  no inventory; counting proximity only within 25 m, 1,698 (49%); counting proximity only to cleanup and TRI records, 1,940 (56%); with\n  every radius doubled, 734 (21%)"
   check: "(lambda c: sum([[r.n_hidden, r.pct_hidden] for r in [c[(c.rule == k) & (c.sites.str.startswith('F&E hazardous'))].iloc[0] for k in ['strict', 'prox25', 'cleanup_tri_prox', 'wider']]], []))(load('data/results/known_hidden/sensitivity_counts.csv'))"
-  expect: [2220, 64, 1658, 48, 1899, 54, 715, 21]
+  expect: [2267, 65, 1698, 49, 1940, 56, 734, 21]
 - id: readme_sensitivity_tracts
   file: README.md
-  text: "(medians 61–63 vs 42 in tracts with no hazardous-sector site), more low-income residents (24.6–25.5% vs 18.2%) and more\n  adults without a high-school diploma (5.7–5.9% vs 4.4%), all p < 1e-4"
+  text: "(medians 61–63 vs 42 in tracts with no hazardous-sector site), more low-income residents (24.5–25.5% vs 18.2%) and more\n  adults without a high-school diploma (5.7–5.9% vs 4.4%), all p < 1e-4"
   check: "(lambda t: [t[t.measure == m].median_hidden.min() for m in ['EnviroScreen percentile', 'Low income (%)', 'Less than high school (%)']] + [t[t.measure == m].median_hidden.max() for m in ['EnviroScreen percentile', 'Low income (%)', 'Less than high school (%)']] + [t[t.measure == m].median_no_site.iloc[0] for m in ['EnviroScreen percentile', 'Low income (%)', 'Less than high school (%)']] + [int(t[t.measure != 'People of color (%)'].p_hidden_vs_no_site.max() < 1e-4)])(load('data/results/known_hidden/tract_comparison_enviroscreen.csv'))"
-  expect: [61, 24.6, 5.7, 63, 25.5, 5.9, 42, 18.2, 4.4, 1]
+  expect: [61, 24.5, 5.7, 63, 25.5, 5.9, 42, 18.2, 4.4, 1]
   tol: [1, 0.05, 0.05, 1, 0.05, 0.05, 0.5, 0.05, 0.05, 0]
 
 - id: readme_sensitivity_tracts_poc_and_known_only
   file: README.md
-  text: "similar shares of people of color (27–28% vs 26%,\n  p = 0.02–0.07); and they do not differ from tracts with only known sites on any of the four measures (all p ≥ 0.20"
+  text: "similar shares of people of color (27–28% vs 26%,\n  p = 0.03–0.07); and they do not differ from tracts with only known sites on any of the four measures (all p ≥ 0.22"
   check: "(lambda t: [t[t.measure == 'People of color (%)'].median_hidden.min(), t[t.measure == 'People of color (%)'].median_hidden.max(), t[t.measure == 'People of color (%)'].median_no_site.iloc[0], t[t.measure == 'People of color (%)'].p_hidden_vs_no_site.min(), t[t.measure == 'People of color (%)'].p_hidden_vs_no_site.max(), t.p_hidden_vs_known_only.min()])(load('data/results/known_hidden/tract_comparison_enviroscreen.csv'))"
-  expect: [27, 28, 26, 0.02, 0.07, 0.2]
-  tol: [0.9, 0.5, 0.5, 0.005, 0.005, 0.005]
+  expect: [27, 28, 26, 0.03, 0.07, 0.22]
+  tol: [0.9, 0.5, 0.5, 0.005, 0.005, 0.01]   # the last is a lower bound ('all p >= 0.22'; smallest is 0.227)
 
 # ------------------------------------------------------------------ second-pass review additions (1 Nov 2026)
 - id: readme_linking_counts
@@ -1241,19 +1241,19 @@
 # ------------------------------------------------------------------ README: ED hazardous-industry employment
 - id: readme_ed_haz_industry_employment_range
   file: README.md
-  text: "shows no gradient (7–11% of workers everywhere)"
+  text: "shows no gradient without a control for distance to downtown (7–12% of workers everywhere)"
   check: "(lambda g: [g.pct_haz_industry.min(), g.pct_haz_industry.max()])((lambda d: d[d.group.str.startswith('EDs')])(load('app/data/ed_year_groups.csv')))"
-  expect: [7, 11]
+  expect: [7, 12]
   tol: 0.6
 
 # ------------------------------------------------------------------ README: HOLC change models, Conley p-values and robustness statement
 - id: readme_holc_change_model_conley_p
   file: README.md
-  text: "(7.7, p = 0.075; Conley 2 km p = 0.18); poverty rose 4.4 points more in D than in A tracts 1970–80 (2.1, p = 0.037; Conley p = 0.007)"
+  text: "(6.8, p = 0.099; Conley 2 km p = 0.20); poverty rose 4.4 points more in D than in A tracts 1970–80 (2.0, p = 0.034; Conley p = 0.003)\nand 10.9 points 1980–2010 (3.7, p = 0.005; Conley p = 0.022); log home value fell 0.53 more 1940–80 (0.17, p = 0.003;\nConley p = 0.001)"
   check: >-
     (lambda m: [m[(m.outcome == 'p_hisp') & (m.period == '1980-2010') & (m.grade == 'D')].p_conley2km.iloc[0], m[(m.outcome == 'p_pov') & (m.period == '1970-1980') & (m.grade == 'D')].p_conley2km.iloc[0],
     m[(m.outcome == 'p_pov') & (m.period == '1980-2010') & (m.grade == 'D')].p_conley2km.iloc[0], m[(m.outcome == 'lmval') & (m.period == '1940-1980') & (m.grade == 'D')].p_conley2km.iloc[0]])(load('data/results/holc/holc_tract_models.csv'))
-  expect: [0.18, 0.007, 0.024, 0.001]
+  expect: [0.2, 0.003, 0.022, 0.001]
 
 - id: readme_holc_change_model_sample
   file: README.md
@@ -1263,14 +1263,11 @@
 
 - id: readme_holc_robust_estimates
   file: README.md
-  text: "the D estimates for poverty\n1980–2010 and 1970–2010 and for home value 1940–80 and 1940–2010 hold under classical, HC1 and Conley errors, the Hispanic-share\nestimates do not reach p < 0.05 under HC1 or Conley errors"
+  text: "the D estimates for poverty\n1970–2010 and 1980–2010 and for home value 1940–80 and 1940–2010 hold under classical, HC1 and Conley errors (poverty 1980–2010 most\nnarrowly: classical p = 0.040), and the Hispanic-share estimates do not reach p < 0.05 under any of the three"
   check: >-
-    (lambda m: (lambda r: [int(((r.p_classical < 0.05) & (r.p < 0.05) & (r.p_conley2km < 0.05)).sum() == 4), len(r),
-    int(m[(m.grade == 'D') & (m.outcome == 'p_hisp')][['p', 'p_conley2km']].min().min() >= 0.05)])(
-    m[(m.grade == 'D') & (((m.outcome == 'p_pov') & m.period.isin(['1980-2010', '1970-2010'])) | ((m.outcome == 'lmval') & m.period.isin(['1940-1980', '1940-2010'])))]))(load('data/results/holc/holc_tract_models.csv'))
-  expect: [1, 4, 1]
-
-# ------------------------------------------------------------------ README: HOLC boundary band and known-only tract counts
+    (lambda m: (lambda D: [int(sum(((r.p_classical < 0.05) and (r.p < 0.05) and (r.p_conley2km < 0.05)) for r in D[((D.outcome == 'p_pov') & D.period.isin(['1970-2010', '1980-2010'])) | ((D.outcome == 'lmval') & D.period.isin(['1940-1980', '1940-2010']))].itertuples())),
+    D[(D.outcome == 'p_pov') & (D.period == '1980-2010')].p_classical.iloc[0], int(D[D.outcome == 'p_hisp'][['p', 'p_classical', 'p_conley2km']].min().min() >= 0.05)])(m[m.grade == 'D']))(load('data/results/holc/holc_tract_models.csv'))
+  expect: [4, 0.040, 1]
 - id: readme_holc_boundary_tracts_per_side
   file: app/app.R
   text: "only ~15 tracts lie on each side"
@@ -1280,9 +1277,9 @@
 
 - id: readme_sensitivity_known_only_tract_range
   file: README.md
-  text: "a low-powered\n  comparison on 50–251 known-only tracts"
+  text: "a low-powered\n  comparison on 45–245 known-only tracts"
   check: "(lambda t: [t.n_known_only_tracts.min(), t.n_known_only_tracts.max()])(load('data/results/known_hidden/tract_comparison_enviroscreen.csv'))"
-  expect: [50, 251]
+  expect: [45, 245]
 - id: readme_zoning_1944_review_counts
   file: README.md
   text: "where the two years disagree (226) are candidates, every one of a block or more (118) was inspected"
@@ -1347,10 +1344,10 @@
   tol: [0.5, 1]
 - id: app_site_fate_parcel_median_distance
   file: app/app.R
-  text: "median distance about 4 m for both"
+  text: "median distance 4–7 m"
   check: "[load('app/data/site_fate_denver.csv').parcel_dist_m.median(), load('app/data/site_fate_denver_pre1960.csv').parcel_dist_m.median()]"
-  expect: [4, 4]
-  tol: 0.6
+  expect: [4, 7]
+  tol: 0.5
 
 - id: app_sanborn_two_blocks_in_five_circles
   file: app/app.R
@@ -1372,9 +1369,9 @@
 
 - id: app_holc_change_hispanic_not_significant_any_se
   file: app/app.R
-  text: "the Hispanic-share estimates do not reach p < 0.05 under HC1 or Conley errors (1970–2010: classical p = 0.0495, HC1 p = 0.059, Conley p = 0.15)"
-  check: "(lambda r: [r.p, r.p_conley2km, int(r.p_classical < 0.05)])((lambda m: m[(m.outcome == 'p_hisp') & (m.period == '1970-2010') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [0.059, 0.15, 1]
+  text: "the Hispanic-share estimates do not reach p < 0.05 under any of them (1970–2010: classical p = 0.069, HC1 p = 0.077, Conley p = 0.19)"
+  check: "(lambda r: [r.p_classical, r.p, r.p_conley2km])((lambda m: m[(m.outcome == 'p_hisp') & (m.period == '1970-2010') & (m.grade == 'D')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
+  expect: [0.069, 0.077, 0.19]
 
 - id: app_zoning_1944_review_text
   file: app/app.R
@@ -1403,9 +1400,9 @@
 
 - id: app_known_hidden_denver_row
   file: data/results/known_hidden/summary.md
-  text: "| Published rule (name, address, boundary, or any record within the tier radius) | 1,212 (34.8%) | 856 (30.3%) | 301 (27.1%) |"
+  text: "| Published rule (name, address, boundary, or any record within the tier radius) | 1,242 (35.6%) | 882 (31.2%) | 303 (27.2%) |"
   check: "(lambda f: (lambda d, hc: [(f.radar == 'Not on any list').sum(), 100 * (f.radar == 'Not on any list').mean(), (hc.radar == 'Not on any list').sum(), 100 * (hc.radar == 'Not on any list').mean(), (d.radar == 'Not on any list').sum(), 100 * (d.radar == 'Not on any list').mean()])(f[f.county == 'Denver'], f[f.confidence == 'high']))(fe_sites())"
-  expect: [1212, 34.8, 856, 30.3, 301, 27.1]
+  expect: [1242, 35.6, 882, 31.2, 303, 27.2]
 - id: corridors_located_establishments
   file: data/results/corridors/corridors_summary.md
   text: "Located establishments in the 13 complete editions 1965-1992: 13,254 statewide"
@@ -1429,17 +1426,17 @@
 
 - id: readme_address_only_name_check
   file: README.md
-  text: "about 490 sites are known by address only, to a record whose\n  name shares no informative word with any firm listed there, but most of them also have a differently named record within the radius; counting\n  the roughly 100 that do not as hidden would raise the published share to about 38%, and counting all 490 hidden would raise the strict rule to about 77%"
+  text: "about 520 sites are known by address only, to a record whose\n  name shares no informative word with the hazardous firms listed there, but most of them also have a differently named record within the radius; counting\n  the roughly 90 that do not as hidden would raise the published share to about 38%, and counting all 520 hidden would raise the strict rule to about 79%"
   check: "(lambda r: [r.no_shared_token, r.newly_hidden_published_rule, r.hidden_published_pct, r.hidden_strict_pct])(load('data/results/known_hidden/address_only_name_check.csv').iloc[0])"
-  expect: [490, 100, 38, 77]
+  expect: [520, 90, 38, 79]
   tol: [5, 10, 0.5, 0.5]
 
 - id: paper_address_only_name_check
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "about 490 sites are matched only by address, to a record whose name shares no informative word with any firm listed there, but most of them also have a differently named record within the radius, and counting the roughly 100 that do not as unmatched would raise the 35% to about 38%"
-  check: "(lambda r: [r.no_shared_token, r.newly_hidden_published_rule, round(100 * r.hidden_now / r.fe_hazard_sites), r.hidden_published_pct])(load('data/results/known_hidden/address_only_name_check.csv').iloc[0])"
-  expect: [490, 100, 35, 38]
-  tol: [5, 10, 0.5, 0.5]
+  text: "about 520 sites are matched only by address, to a record whose name shares no informative word with any firm listed there, but most of them also have a differently named record within the radius, and counting the roughly 90 that do not as unmatched would raise the 35.6% to about 38%"
+  check: "(lambda r: [r.no_shared_token, r.newly_hidden_published_rule, round(100 * r.hidden_now / r.fe_hazard_sites, 1), r.hidden_published_pct])(load('data/results/known_hidden/address_only_name_check.csv').iloc[0])"
+  expect: [520, 90, 35.6, 38]
+  tol: [5, 10, 0.05, 0.5]
 
 - id: paper_zoning_1944_1955_change
   file: paper/Before_and_After_the_Map_manuscript.md

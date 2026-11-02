@@ -1,105 +1,105 @@
 sample,outcome,model,term,rr,lo,hi,p,blocks,tracts,aic
 "Colorado, all blocks with 100+ person-years",natural causes,"M2 + regulated (TRI, cleanup)",tri,1.0285,1.0073,1.0501,0.00824,59293,1241,205000.4
 "Colorado, all blocks with 100+ person-years",natural causes,"M2 + regulated (TRI, cleanup)",cleanup,1.0211,0.9904,1.0527,0.181,59293,1241,205000.4
-"Colorado, all blocks with 100+ person-years",natural causes,M3 + known historical,known_hist,1.0505,1.0151,1.0871,0.00485,59293,1241,204978.5
-"Colorado, all blocks with 100+ person-years",natural causes,M3 + known historical,tri,1.0082,0.9832,1.0338,0.525,59293,1241,204978.5
-"Colorado, all blocks with 100+ person-years",natural causes,M3 + known historical,cleanup,1,0.9687,1.0323,0.999,59293,1241,204978.5
-"Colorado, all blocks with 100+ person-years",natural causes,M4 + hidden,hidden,1.0258,0.9959,1.0565,0.0914,59293,1241,204971.8
-"Colorado, all blocks with 100+ person-years",natural causes,M4 + hidden,known_hist,1.0356,0.9968,1.076,0.0726,59293,1241,204971.8
-"Colorado, all blocks with 100+ person-years",natural causes,M4 + hidden,tri,1.0099,0.9851,1.0353,0.437,59293,1241,204971.8
-"Colorado, all blocks with 100+ person-years",natural causes,M4 + hidden,cleanup,0.9964,0.9654,1.0284,0.824,59293,1241,204971.8
-"Colorado, all blocks with 100+ person-years",natural causes,M4 hidden high-confidence,hidden_hiconf,0.9996,0.9709,1.029,0.976,59293,1241,204980.5
-"Colorado, all blocks with 100+ person-years",natural causes,M4 hidden high-confidence,known_hist,1.0507,1.0125,1.0904,0.00889,59293,1241,204980.5
-"Colorado, all blocks with 100+ person-years",natural causes,M4 hidden high-confidence,tri,1.0082,0.9834,1.0336,0.523,59293,1241,204980.5
-"Colorado, all blocks with 100+ person-years",natural causes,M4 hidden high-confidence,cleanup,1,0.9689,1.0322,0.998,59293,1241,204980.5
-"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,hidden,1.0465,1.0158,1.078,0.00272,59293,1241,204911.1
-"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,known_hist,1.0476,1.0088,1.0879,0.0157,59293,1241,204911.1
-"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,pre1960,0.9358,0.901,0.972,0.000602,59293,1241,204911.1
-"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,tri,1.0114,0.9874,1.036,0.353,59293,1241,204911.1
-"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,cleanup,1.0137,0.983,1.0453,0.387,59293,1241,204911.1
-"Colorado, all blocks with 100+ person-years",natural causes,Placebo: non-hazardous manufacturers,placebo,1.0383,1.0033,1.0744,0.0314,59293,1241,204986.8
-"Colorado, all blocks with 100+ person-years",natural causes,Placebo: non-hazardous manufacturers,tri,1.0275,1.0065,1.0489,0.0101,59293,1241,204986.8
-"Colorado, all blocks with 100+ person-years",natural causes,Placebo: non-hazardous manufacturers,cleanup,1.0033,0.9702,1.0374,0.849,59293,1241,204986.8
-"Colorado, all blocks with 100+ person-years",natural causes,M4 + placebo,hidden,1.0211,0.9918,1.0514,0.16,59293,1241,204970.7
-"Colorado, all blocks with 100+ person-years",natural causes,M4 + placebo,known_hist,1.0319,0.9919,1.0734,0.12,59293,1241,204970.7
-"Colorado, all blocks with 100+ person-years",natural causes,M4 + placebo,placebo,1.0186,0.9823,1.0562,0.32,59293,1241,204970.7
-"Colorado, all blocks with 100+ person-years",natural causes,M4 + placebo,tri,1.0116,0.9866,1.0373,0.366,59293,1241,204970.7
-"Colorado, all blocks with 100+ person-years",natural causes,M4 + placebo,cleanup,0.9911,0.9583,1.025,0.602,59293,1241,204970.7
+"Colorado, all blocks with 100+ person-years",natural causes,M3 + known historical,known_hist,1.0493,1.0138,1.086,0.00613,59293,1241,204979.7
+"Colorado, all blocks with 100+ person-years",natural causes,M3 + known historical,tri,1.0087,0.9836,1.0345,0.501,59293,1241,204979.7
+"Colorado, all blocks with 100+ person-years",natural causes,M3 + known historical,cleanup,1.0003,0.9689,1.0326,0.987,59293,1241,204979.7
+"Colorado, all blocks with 100+ person-years",natural causes,M4 + hidden,hidden,1.0281,0.9984,1.0586,0.0641,59293,1241,204971.5
+"Colorado, all blocks with 100+ person-years",natural causes,M4 + hidden,known_hist,1.0328,0.9941,1.0731,0.0975,59293,1241,204971.5
+"Colorado, all blocks with 100+ person-years",natural causes,M4 + hidden,tri,1.0105,0.9855,1.0361,0.413,59293,1241,204971.5
+"Colorado, all blocks with 100+ person-years",natural causes,M4 + hidden,cleanup,0.9967,0.9656,1.0288,0.839,59293,1241,204971.5
+"Colorado, all blocks with 100+ person-years",natural causes,M4 hidden high-confidence,hidden_hiconf,1.0013,0.9728,1.0306,0.93,59293,1241,204981.7
+"Colorado, all blocks with 100+ person-years",natural causes,M4 hidden high-confidence,known_hist,1.0485,1.0103,1.0881,0.0124,59293,1241,204981.7
+"Colorado, all blocks with 100+ person-years",natural causes,M4 hidden high-confidence,tri,1.0088,0.9838,1.0344,0.494,59293,1241,204981.7
+"Colorado, all blocks with 100+ person-years",natural causes,M4 hidden high-confidence,cleanup,1.0001,0.9689,1.0323,0.995,59293,1241,204981.7
+"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,hidden,1.0443,1.0136,1.076,0.00439,59293,1241,204929.8
+"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,known_hist,1.0452,1.0059,1.086,0.0237,59293,1241,204929.8
+"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,pre1960,0.9503,0.9169,0.9849,0.0052,59293,1241,204929.8
+"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,tri,1.0123,0.9881,1.0371,0.323,59293,1241,204929.8
+"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,cleanup,1.0061,0.9755,1.0378,0.698,59293,1241,204929.8
+"Colorado, all blocks with 100+ person-years",natural causes,Placebo: non-hazardous manufacturers,placebo,1.0389,1.0042,1.0748,0.0276,59293,1241,204986.4
+"Colorado, all blocks with 100+ person-years",natural causes,Placebo: non-hazardous manufacturers,tri,1.0275,1.0065,1.049,0.00996,59293,1241,204986.4
+"Colorado, all blocks with 100+ person-years",natural causes,Placebo: non-hazardous manufacturers,cleanup,1.0029,0.9702,1.0368,0.862,59293,1241,204986.4
+"Colorado, all blocks with 100+ person-years",natural causes,M4 + placebo,hidden,1.0233,0.994,1.0535,0.119,59293,1241,204970.3
+"Colorado, all blocks with 100+ person-years",natural causes,M4 + placebo,known_hist,1.0291,0.9892,1.0706,0.156,59293,1241,204970.3
+"Colorado, all blocks with 100+ person-years",natural causes,M4 + placebo,placebo,1.0189,0.9826,1.0564,0.312,59293,1241,204970.3
+"Colorado, all blocks with 100+ person-years",natural causes,M4 + placebo,tri,1.0123,0.9871,1.0382,0.342,59293,1241,204970.3
+"Colorado, all blocks with 100+ person-years",natural causes,M4 + placebo,cleanup,0.9913,0.9586,1.025,0.609,59293,1241,204970.3
 "Colorado, all blocks with 100+ person-years",all causes,"M2 + regulated (TRI, cleanup)",tri,1.0305,1.0099,1.0515,0.00349,59293,1241,217564.7
 "Colorado, all blocks with 100+ person-years",all causes,"M2 + regulated (TRI, cleanup)",cleanup,1.0286,0.9994,1.0587,0.0551,59293,1241,217564.7
-"Colorado, all blocks with 100+ person-years",all causes,M3 + known historical,known_hist,1.0569,1.023,1.0919,0.000866,59293,1241,217534
-"Colorado, all blocks with 100+ person-years",all causes,M3 + known historical,tri,1.0078,0.9833,1.0328,0.537,59293,1241,217534
-"Colorado, all blocks with 100+ person-years",all causes,M3 + known historical,cleanup,1.0045,0.9748,1.0352,0.768,59293,1241,217534
-"Colorado, all blocks with 100+ person-years",all causes,M4 + hidden,hidden,1.0269,0.9981,1.0566,0.0676,59293,1241,217525.8
-"Colorado, all blocks with 100+ person-years",all causes,M4 + hidden,known_hist,1.0412,1.004,1.0798,0.0297,59293,1241,217525.8
-"Colorado, all blocks with 100+ person-years",all causes,M4 + hidden,tri,1.0095,0.9853,1.0344,0.444,59293,1241,217525.8
-"Colorado, all blocks with 100+ person-years",all causes,M4 + hidden,cleanup,1.0008,0.9713,1.0312,0.96,59293,1241,217525.8
-"Colorado, all blocks with 100+ person-years",all causes,M4 hidden high-confidence,hidden_hiconf,1.0031,0.9751,1.032,0.829,59293,1241,217535.9
-"Colorado, all blocks with 100+ person-years",all causes,M4 hidden high-confidence,known_hist,1.055,1.0181,1.0932,0.00322,59293,1241,217535.9
-"Colorado, all blocks with 100+ person-years",all causes,M4 hidden high-confidence,tri,1.0079,0.9837,1.0328,0.525,59293,1241,217535.9
-"Colorado, all blocks with 100+ person-years",all causes,M4 hidden high-confidence,cleanup,1.0041,0.9744,1.0346,0.791,59293,1241,217535.9
-"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,hidden,1.0438,1.0142,1.0743,0.00354,59293,1241,217483.6
-"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,known_hist,1.051,1.0136,1.0898,0.00715,59293,1241,217483.6
-"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,pre1960,0.9481,0.9149,0.9824,0.00334,59293,1241,217483.6
-"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,tri,1.0108,0.9871,1.035,0.375,59293,1241,217483.6
-"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,cleanup,1.0148,0.9855,1.0451,0.326,59293,1241,217483.6
-"Colorado, all blocks with 100+ person-years",all causes,Placebo: non-hazardous manufacturers,placebo,1.0416,1.0079,1.0764,0.0151,59293,1241,217547
-"Colorado, all blocks with 100+ person-years",all causes,Placebo: non-hazardous manufacturers,tri,1.0295,1.0091,1.0502,0.00434,59293,1241,217547
-"Colorado, all blocks with 100+ person-years",all causes,Placebo: non-hazardous manufacturers,cleanup,1.0091,0.9777,1.0416,0.573,59293,1241,217547
-"Colorado, all blocks with 100+ person-years",all causes,M4 + placebo,hidden,1.022,0.9939,1.0509,0.127,59293,1241,217524.1
-"Colorado, all blocks with 100+ person-years",all causes,M4 + placebo,known_hist,1.0372,0.999,1.077,0.0567,59293,1241,217524.1
-"Colorado, all blocks with 100+ person-years",all causes,M4 + placebo,placebo,1.0198,0.9853,1.0555,0.264,59293,1241,217524.1
-"Colorado, all blocks with 100+ person-years",all causes,M4 + placebo,tri,1.0114,0.9869,1.0365,0.364,59293,1241,217524.1
-"Colorado, all blocks with 100+ person-years",all causes,M4 + placebo,cleanup,0.9951,0.9638,1.0274,0.762,59293,1241,217524.1
+"Colorado, all blocks with 100+ person-years",all causes,M3 + known historical,known_hist,1.0561,1.0221,1.0912,0.00107,59293,1241,217535.1
+"Colorado, all blocks with 100+ person-years",all causes,M3 + known historical,tri,1.0081,0.9836,1.0333,0.52,59293,1241,217535.1
+"Colorado, all blocks with 100+ person-years",all causes,M3 + known historical,cleanup,1.0046,0.9749,1.0353,0.763,59293,1241,217535.1
+"Colorado, all blocks with 100+ person-years",all causes,M4 + hidden,hidden,1.0286,1,1.0581,0.0504,59293,1241,217525.7
+"Colorado, all blocks with 100+ person-years",all causes,M4 + hidden,known_hist,1.0392,1.002,1.0778,0.0388,59293,1241,217525.7
+"Colorado, all blocks with 100+ person-years",all causes,M4 + hidden,tri,1.0099,0.9855,1.035,0.428,59293,1241,217525.7
+"Colorado, all blocks with 100+ person-years",all causes,M4 + hidden,cleanup,1.001,0.9714,1.0314,0.949,59293,1241,217525.7
+"Colorado, all blocks with 100+ person-years",all causes,M4 hidden high-confidence,hidden_hiconf,1.0044,0.9766,1.0331,0.758,59293,1241,217536.8
+"Colorado, all blocks with 100+ person-years",all causes,M4 hidden high-confidence,known_hist,1.0533,1.0164,1.0916,0.00431,59293,1241,217536.8
+"Colorado, all blocks with 100+ person-years",all causes,M4 hidden high-confidence,tri,1.0084,0.9839,1.0334,0.505,59293,1241,217536.8
+"Colorado, all blocks with 100+ person-years",all causes,M4 hidden high-confidence,cleanup,1.004,0.9743,1.0346,0.793,59293,1241,217536.8
+"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,hidden,1.0414,1.0119,1.0718,0.00574,59293,1241,217499
+"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,known_hist,1.049,1.0111,1.0882,0.0109,59293,1241,217499
+"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,pre1960,0.9613,0.9303,0.9933,0.0182,59293,1241,217499
+"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,tri,1.0113,0.9874,1.0358,0.356,59293,1241,217499
+"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,cleanup,1.0084,0.9792,1.0386,0.576,59293,1241,217499
+"Colorado, all blocks with 100+ person-years",all causes,Placebo: non-hazardous manufacturers,placebo,1.0422,1.0087,1.0768,0.0131,59293,1241,217546.5
+"Colorado, all blocks with 100+ person-years",all causes,Placebo: non-hazardous manufacturers,tri,1.0295,1.0092,1.0503,0.00427,59293,1241,217546.5
+"Colorado, all blocks with 100+ person-years",all causes,Placebo: non-hazardous manufacturers,cleanup,1.0088,0.9776,1.0411,0.585,59293,1241,217546.5
+"Colorado, all blocks with 100+ person-years",all causes,M4 + placebo,hidden,1.0235,0.9955,1.0524,0.101,59293,1241,217523.9
+"Colorado, all blocks with 100+ person-years",all causes,M4 + placebo,known_hist,1.0352,0.9969,1.0749,0.0719,59293,1241,217523.9
+"Colorado, all blocks with 100+ person-years",all causes,M4 + placebo,placebo,1.0201,0.9856,1.0558,0.256,59293,1241,217523.9
+"Colorado, all blocks with 100+ person-years",all causes,M4 + placebo,tri,1.0119,0.9872,1.0372,0.347,59293,1241,217523.9
+"Colorado, all blocks with 100+ person-years",all causes,M4 + placebo,cleanup,0.9952,0.9641,1.0273,0.765,59293,1241,217523.9
 Denver study area,natural causes,"M2 + regulated (TRI, cleanup)",tri,1.0176,0.9742,1.0629,0.434,10395,184,37039.3
 Denver study area,natural causes,"M2 + regulated (TRI, cleanup)",cleanup,0.9952,0.9318,1.0629,0.885,10395,184,37039.3
-Denver study area,natural causes,M3 + known historical,known_hist,1.0755,1.0067,1.149,0.0309,10395,184,37033.8
-Denver study area,natural causes,M3 + known historical,tri,0.984,0.9326,1.0382,0.555,10395,184,37033.8
-Denver study area,natural causes,M3 + known historical,cleanup,0.9724,0.9124,1.0363,0.388,10395,184,37033.8
-Denver study area,natural causes,M4 + hidden,hidden,1.0146,0.9565,1.0763,0.63,10395,184,37035.3
-Denver study area,natural causes,M4 + hidden,known_hist,1.0638,0.9731,1.1629,0.173,10395,184,37035.3
-Denver study area,natural causes,M4 + hidden,tri,0.9859,0.9341,1.0406,0.607,10395,184,37035.3
-Denver study area,natural causes,M4 + hidden,cleanup,0.9702,0.9109,1.0334,0.347,10395,184,37035.3
-Denver study area,natural causes,M4 hidden high-confidence,hidden_hiconf,0.9856,0.9367,1.037,0.577,10395,184,37035.3
-Denver study area,natural causes,M4 hidden high-confidence,known_hist,1.0859,1.0006,1.1785,0.0483,10395,184,37035.3
-Denver study area,natural causes,M4 hidden high-confidence,tri,0.9838,0.9322,1.0382,0.551,10395,184,37035.3
-Denver study area,natural causes,M4 hidden high-confidence,cleanup,0.9738,0.9138,1.0377,0.413,10395,184,37035.3
-Denver study area,natural causes,M5 + pre-1960 trades,hidden,1.0285,0.9646,1.0967,0.39,10395,184,37034.1
-Denver study area,natural causes,M5 + pre-1960 trades,known_hist,1.0671,0.976,1.1668,0.154,10395,184,37034.1
-Denver study area,natural causes,M5 + pre-1960 trades,pre1960,0.9577,0.8827,1.0391,0.299,10395,184,37034.1
-Denver study area,natural causes,M5 + pre-1960 trades,tri,0.9905,0.9391,1.0446,0.724,10395,184,37034.1
-Denver study area,natural causes,M5 + pre-1960 trades,cleanup,0.9806,0.9231,1.0417,0.526,10395,184,37034.1
-Denver study area,natural causes,Placebo: non-hazardous manufacturers,placebo,1.0721,0.9991,1.1505,0.0532,10395,184,37030.2
-Denver study area,natural causes,Placebo: non-hazardous manufacturers,tri,1.013,0.9701,1.0577,0.559,10395,184,37030.2
-Denver study area,natural causes,Placebo: non-hazardous manufacturers,cleanup,0.9763,0.9077,1.0501,0.519,10395,184,37030.2
-Denver study area,natural causes,M4 + placebo,hidden,0.9953,0.9394,1.0545,0.872,10395,184,37030.1
-Denver study area,natural causes,M4 + placebo,known_hist,1.0599,0.9682,1.1603,0.208,10395,184,37030.1
-Denver study area,natural causes,M4 + placebo,placebo,1.0631,0.9843,1.1481,0.119,10395,184,37030.1
-Denver study area,natural causes,M4 + placebo,tri,0.9877,0.9363,1.042,0.651,10395,184,37030.1
-Denver study area,natural causes,M4 + placebo,cleanup,0.9624,0.9004,1.0287,0.26,10395,184,37030.1
+Denver study area,natural causes,M3 + known historical,known_hist,1.0757,1.0068,1.1492,0.0306,10395,184,37033.8
+Denver study area,natural causes,M3 + known historical,tri,0.9841,0.9327,1.0382,0.556,10395,184,37033.8
+Denver study area,natural causes,M3 + known historical,cleanup,0.9722,0.9122,1.0361,0.385,10395,184,37033.8
+Denver study area,natural causes,M4 + hidden,hidden,1.0153,0.9578,1.0761,0.61,10395,184,37035.3
+Denver study area,natural causes,M4 + hidden,known_hist,1.0635,0.9733,1.162,0.174,10395,184,37035.3
+Denver study area,natural causes,M4 + hidden,tri,0.9859,0.9343,1.0404,0.605,10395,184,37035.3
+Denver study area,natural causes,M4 + hidden,cleanup,0.97,0.9107,1.0332,0.344,10395,184,37035.3
+Denver study area,natural causes,M4 hidden high-confidence,hidden_hiconf,0.9853,0.9364,1.0368,0.569,10395,184,37035.3
+Denver study area,natural causes,M4 hidden high-confidence,known_hist,1.0864,1.0007,1.1795,0.0481,10395,184,37035.3
+Denver study area,natural causes,M4 hidden high-confidence,tri,0.9839,0.9324,1.0382,0.553,10395,184,37035.3
+Denver study area,natural causes,M4 hidden high-confidence,cleanup,0.9735,0.9136,1.0374,0.408,10395,184,37035.3
+Denver study area,natural causes,M5 + pre-1960 trades,hidden,1.0243,0.9612,1.0916,0.459,10395,184,37035.9
+Denver study area,natural causes,M5 + pre-1960 trades,known_hist,1.0678,0.9766,1.1675,0.15,10395,184,37035.9
+Denver study area,natural causes,M5 + pre-1960 trades,pre1960,0.9756,0.9054,1.0512,0.516,10395,184,37035.9
+Denver study area,natural causes,M5 + pre-1960 trades,tri,0.9892,0.9379,1.0432,0.688,10395,184,37035.9
+Denver study area,natural causes,M5 + pre-1960 trades,cleanup,0.9737,0.9163,1.0347,0.39,10395,184,37035.9
+Denver study area,natural causes,Placebo: non-hazardous manufacturers,placebo,1.0703,0.9975,1.1484,0.0587,10395,184,37030.7
+Denver study area,natural causes,Placebo: non-hazardous manufacturers,tri,1.0131,0.9701,1.058,0.556,10395,184,37030.7
+Denver study area,natural causes,Placebo: non-hazardous manufacturers,cleanup,0.9768,0.9088,1.0498,0.523,10395,184,37030.7
+Denver study area,natural causes,M4 + placebo,hidden,0.9961,0.9416,1.0539,0.893,10395,184,37030.7
+Denver study area,natural causes,M4 + placebo,known_hist,1.0593,0.9679,1.1593,0.211,10395,184,37030.7
+Denver study area,natural causes,M4 + placebo,placebo,1.0606,0.9821,1.1454,0.134,10395,184,37030.7
+Denver study area,natural causes,M4 + placebo,tri,0.9881,0.9368,1.0422,0.66,10395,184,37030.7
+Denver study area,natural causes,M4 + placebo,cleanup,0.9628,0.9012,1.0285,0.26,10395,184,37030.7
 Denver study area,all causes,"M2 + regulated (TRI, cleanup)",tri,1.0241,0.9818,1.0682,0.269,10395,184,39382.2
 Denver study area,all causes,"M2 + regulated (TRI, cleanup)",cleanup,1.0029,0.944,1.0655,0.925,10395,184,39382.2
-Denver study area,all causes,M3 + known historical,known_hist,1.0791,1.0119,1.1508,0.0203,10395,184,39375.3
-Denver study area,all causes,M3 + known historical,tri,0.9892,0.9378,1.0434,0.69,10395,184,39375.3
-Denver study area,all causes,M3 + known historical,cleanup,0.9784,0.9225,1.0378,0.469,10395,184,39375.3
-Denver study area,all causes,M4 + hidden,hidden,1.0209,0.9643,1.0808,0.478,10395,184,39376.2
-Denver study area,all causes,M4 + hidden,known_hist,1.0623,0.9732,1.1595,0.176,10395,184,39376.2
-Denver study area,all causes,M4 + hidden,tri,0.992,0.9397,1.0472,0.771,10395,184,39376.2
-Denver study area,all causes,M4 + hidden,cleanup,0.9754,0.9199,1.0342,0.404,10395,184,39376.2
-Denver study area,all causes,M4 hidden high-confidence,hidden_hiconf,0.9937,0.9451,1.0447,0.804,10395,184,39377.1
-Denver study area,all causes,M4 hidden high-confidence,known_hist,1.0838,0.9995,1.1752,0.0515,10395,184,39377.1
-Denver study area,all causes,M4 hidden high-confidence,tri,0.9891,0.9374,1.0435,0.688,10395,184,39377.1
-Denver study area,all causes,M4 hidden high-confidence,cleanup,0.9791,0.9231,1.0384,0.481,10395,184,39377.1
-Denver study area,all causes,M5 + pre-1960 trades,hidden,1.0274,0.9654,1.0934,0.394,10395,184,39377.4
-Denver study area,all causes,M5 + pre-1960 trades,known_hist,1.064,0.9746,1.1616,0.166,10395,184,39377.4
-Denver study area,all causes,M5 + pre-1960 trades,pre1960,0.98,0.9085,1.057,0.6,10395,184,39377.4
-Denver study area,all causes,M5 + pre-1960 trades,tri,0.9941,0.9423,1.0487,0.828,10395,184,39377.4
-Denver study area,all causes,M5 + pre-1960 trades,cleanup,0.9803,0.9259,1.0378,0.494,10395,184,39377.4
-Denver study area,all causes,Placebo: non-hazardous manufacturers,placebo,1.0739,1.0023,1.1507,0.0428,10395,184,39371.6
-Denver study area,all causes,Placebo: non-hazardous manufacturers,tri,1.0194,0.9774,1.0632,0.37,10395,184,39371.6
-Denver study area,all causes,Placebo: non-hazardous manufacturers,cleanup,0.9836,0.9196,1.052,0.629,10395,184,39371.6
-Denver study area,all causes,M4 + placebo,hidden,1.0019,0.9482,1.0586,0.948,10395,184,39370.7
-Denver study area,all causes,M4 + placebo,known_hist,1.0587,0.969,1.1567,0.207,10395,184,39370.7
-Denver study area,all causes,M4 + placebo,placebo,1.0618,0.9859,1.1435,0.113,10395,184,39370.7
-Denver study area,all causes,M4 + placebo,tri,0.9937,0.942,1.0482,0.816,10395,184,39370.7
-Denver study area,all causes,M4 + placebo,cleanup,0.9678,0.9098,1.0295,0.3,10395,184,39370.7
+Denver study area,all causes,M3 + known historical,known_hist,1.0795,1.0122,1.1512,0.0198,10395,184,39375.2
+Denver study area,all causes,M3 + known historical,tri,0.9892,0.9379,1.0433,0.689,10395,184,39375.2
+Denver study area,all causes,M3 + known historical,cleanup,0.9782,0.9223,1.0376,0.464,10395,184,39375.2
+Denver study area,all causes,M4 + hidden,hidden,1.0211,0.9652,1.0804,0.467,10395,184,39376.1
+Denver study area,all causes,M4 + hidden,known_hist,1.0624,0.9737,1.1591,0.174,10395,184,39376.1
+Denver study area,all causes,M4 + hidden,tri,0.9918,0.9397,1.0468,0.765,10395,184,39376.1
+Denver study area,all causes,M4 + hidden,cleanup,0.9752,0.9197,1.034,0.401,10395,184,39376.1
+Denver study area,all causes,M4 hidden high-confidence,hidden_hiconf,0.9933,0.9447,1.0445,0.794,10395,184,39377.1
+Denver study area,all causes,M4 hidden high-confidence,known_hist,1.0844,0.9997,1.1763,0.051,10395,184,39377.1
+Denver study area,all causes,M4 hidden high-confidence,tri,0.9891,0.9376,1.0435,0.688,10395,184,39377.1
+Denver study area,all causes,M4 hidden high-confidence,cleanup,0.9788,0.9229,1.0382,0.476,10395,184,39377.1
+Denver study area,all causes,M5 + pre-1960 trades,hidden,1.0228,0.962,1.0875,0.471,10395,184,39378
+Denver study area,all causes,M5 + pre-1960 trades,known_hist,1.0632,0.9738,1.1608,0.172,10395,184,39378
+Denver study area,all causes,M5 + pre-1960 trades,pre1960,0.9955,0.9308,1.0648,0.896,10395,184,39378
+Denver study area,all causes,M5 + pre-1960 trades,tri,0.9924,0.9407,1.0469,0.78,10395,184,39378
+Denver study area,all causes,M5 + pre-1960 trades,cleanup,0.9759,0.922,1.0329,0.4,10395,184,39378
+Denver study area,all causes,Placebo: non-hazardous manufacturers,placebo,1.0725,1.0011,1.149,0.0464,10395,184,39372
+Denver study area,all causes,Placebo: non-hazardous manufacturers,tri,1.0196,0.9775,1.0635,0.368,10395,184,39372
+Denver study area,all causes,Placebo: non-hazardous manufacturers,cleanup,0.9839,0.9205,1.0517,0.633,10395,184,39372
+Denver study area,all causes,M4 + placebo,hidden,1.0022,0.9495,1.0578,0.937,10395,184,39371.1
+Denver study area,all causes,M4 + placebo,known_hist,1.0584,0.969,1.1562,0.208,10395,184,39371.1
+Denver study area,all causes,M4 + placebo,placebo,1.0598,0.984,1.1414,0.125,10395,184,39371.1
+Denver study area,all causes,M4 + placebo,tri,0.9939,0.9425,1.0482,0.823,10395,184,39371.1
+Denver study area,all causes,M4 + placebo,cleanup,0.9682,0.9106,1.0294,0.301,10395,184,39371.1

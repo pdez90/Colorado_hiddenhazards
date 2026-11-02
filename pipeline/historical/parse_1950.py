@@ -41,6 +41,9 @@ def parse(path):
                     if (g, it) == (12, 6) and not re.search(r"(?i)mach|mfg|works|tool|foundry|engine|manufactur", entry): continue
                     if (g, it) == (9, 1) and not re.search(r"(?i)\bgas\b", entry): continue
                     a = ADDR.search(entry)
+                    # a run of listings whose own codes were not read ends in this code: the code belongs to the LAST listing, so the
+                    # first address may be a neighbour's. Keep the firm at town level when the entry holds two or more addresses.
+                    if len(ADDR.findall(entry)) >= 2: a = None
                     name = re.split(r"\s\d{1,5}[-\s]", entry)[0]
                     out.append(dict(vol='narv_dir_coloradoBus_1950', year=1950, page=pg, town=town or '', town_src='heading' if town else '',
                                     name=name[:90], entry=entry[:240], trade=f'code {g}-{it}', sector=sec, fe_group=grp,

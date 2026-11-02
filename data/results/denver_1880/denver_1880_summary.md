@@ -1,6 +1,6 @@
 # Denver 1880: residents of the hazardous-trade neighbourhoods
 
-Brown's 1880 HGIS gives 34,386 Denver residents at 4,534 geocoded buildings (17 EDs). The 1878-1885 business directories list 108 hazardous-trade firms in Denver with a street; 69 were placed on the 1880 map (60 at the building or within a few house numbers, 9 at the street only).
+Brown's 1880 HGIS gives 34,386 Denver residents at 4,534 geocoded buildings (17 EDs). The 1878-1885 business directories list 107 hazardous-trade firms in Denver with a street; 68 were placed on the 1880 map (60 at the building or within a few house numbers, 8 at the street only).
 
 ## Residents by distance to the nearest hazardous-trade firm (building-level placements)
 

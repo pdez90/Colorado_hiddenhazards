@@ -104,3 +104,33 @@ def test_hist_street_through_the_geocoder(geocoder):
     la, lo, q = geocoder.geocode(gh.hist_street('450 S Kalamath'), 'DENVER', '')
     assert gh.street_level(q) and la == pytest.approx(39.712 - 50 / 98 * 0.0015, abs=1e-9)
     assert not gh.street_level(geocoder.geocode(gh.hist_street('450 Kalamath'), 'DENVER', '')[2])     # plain vs S: ambiguous without a ZIP
+
+
+# ---- hand review of street placements (data/historical/street_review.csv, 3 Nov 2026)
+def test_apply_review_verdicts():
+    df = pd.DataFrame(dict(year=[1913] * 6, town=['DENVER'] * 6, nkey=list('ABCDEF'), sector=['Foundry'] * 6,
+                           name=['A Co', 'B Co', 'C Xx', 'D Co', 'E Co', 'F Co'], town_src=[''] * 6,
+                           street=['1 Blake', '2 Blake', '3 Blake', '4 Blake', '5 Blake', '6 Blake']))
+    rv = pd.DataFrame(dict(year=[1913] * 5, town=['DENVER'] * 5, nkey=list('ABCDE'), sector=['Foundry'] * 5,
+                           verdict=['ok', 'fix_address', 'fix_name', 'not_works', 'other_town'],
+                           street_fix=['', '22 Wazee', '', '', ''], town_fix=['', '', '', '', 'GREELEY'], name_fix=['', '', 'C Co', '', '']))
+    out = gh.apply_review(df, rv).set_index('nkey')
+    assert 'D' not in out.index                                       # not a works: dropped
+    assert out.loc['A', 'street'] == '1 Blake' and out.loc['A', 'review'] == 'ok'
+    assert out.loc['B', 'street'] == '22 Wazee'
+    assert out.loc['C', 'name'] == 'C Co'
+    assert out.loc['E', 'town'] == 'GREELEY' and out.loc['E', 'street'] == '5 Blake'
+    assert out.loc['F', 'review'] == ''                               # no review row
+
+
+def test_every_street_placement_was_reviewed():
+    """A parser change that creates new street-level placements must be followed by a review of them (or the review file
+    no longer matches the listings): every street-level listing in the committed layer carries a verdict."""
+    import pathlib
+    p = pathlib.Path(__file__).resolve().parents[2] / 'data/historical/CO_pre1960_hazardous_listings.csv'
+    L = pd.read_csv(p, low_memory=False, dtype={'review': str})
+    st = L[L.precision == 'street']
+    assert 'review' in L.columns
+    missing = st[st.review.fillna('') == '']
+    assert missing.empty, f"{len(missing)} street-level listings have no review verdict, e.g. {missing[['year', 'town', 'name', 'street']].head(5).values.tolist()}"
+    assert not st.review.eq('not_works').any()

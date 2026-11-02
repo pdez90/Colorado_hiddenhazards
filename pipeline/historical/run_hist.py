@@ -85,6 +85,48 @@ def main():
     df.loc[RAD, 'street'] = ''   # their addresses are offices or belong to the neighbouring listing: place radium firms at the town only
     df = df[~(RAD & (nm.reindex(df.index).isna() | df.entry.str.match(r"\s*(?:At |largest|of |outschools|[a-z])")))]
     df = df[~df.is_person]
+    # lodges, unions, depots and similar organisations that the trade words pick up are not works (third audit, 2 Nov 2026)
+    NONWORKS = (r"(?i)(\blodge\b|\bI\.\s?O\.\s?O\.\s?F|\bA\.\s?F\.\s?(?:\\\s)?&\s?A\.\s?M|mercantile union|union depot|joint committee|\bbrotherhood\b"
+                r"|\bwrkrs\b|\bworkers\b|\blocal\s+(?:no\.?\s*)?\d+|\binternational\s+(?:union|brotherhood|ass(?:n|ociation)|wrkrs|workers)|atomic\s+w)")
+    nw = df.name.fillna('').str.contains(NONWORKS) | df.entry.fillna('').str.contains(r"(?i)\b(?:wrkrs|workers)\s+(?:international|union)|\bunion\s+(?:no\.?\s*)?\d+")
+    print('dropped as organisations, not works:', int(nw.sum()))
+    df = df[~nw]
+    # 1950 edition (third audit, 3 Nov 2026): its codes cover "manufacturing and trading or jobbing", and three of them are broader
+    # than the sector they are mapped to: 12-8 is "minerals, assayers, coal mines" (keep only assayers, samplers and mills), 12-2 takes
+    # in pest control, and 12-10/12-15/12-17 take in dealers. Drop exterminators, and names of dealers, supply houses and services
+    # unless the name also says the firm makes something.
+    y50 = df.year == 1950
+    nm50 = df.name.fillna('')
+    mines = y50 & (df.sector == 'Assay office') & ~nm50.str.contains(r"(?i)assay|sampl|\bmill|smelt|reduction|refin")
+    pests = y50 & nm50.str.contains(r"(?i)pest\b|exterminat|fumigat|terminix")
+    deal = y50 & nm50.str.contains(r"(?i)\b(?:supply|supplies|sls|sales|distrib\w*|distr|serv|service|sta|station|bottled|l-?p gas|butane|propane|lumber|dealers?|jobbers?)\b") \
+           & ~nm50.str.contains(r"(?i)\bmfg\b|manufactur|\bworks\b|\bwks\b|foundry|machine shop|mach shop|\bplant\b")
+    print('1950: dropped mines', int(mines.sum()), 'exterminators', int(pests.sum()), 'dealers/services', int((deal & ~mines & ~pests).sum()))
+    df = df[~(mines | pests | deal)]
+    # Manufactured gas (third audit, 3 Nov 2026): a town's gas company before about 1930 usually ran a coal-gas works and is kept; the
+    # trade words also pick up a running "Denver Gas & Electric" advertisement printed in other towns' sections, addresses in the
+    # Gas & Electric building, hotel advertisements ("gas lights and steam heat"), oil-and-gas producers and, once the towns took
+    # piped natural gas (from about 1930), distributors and pipeline companies. Drop those; keep gas works at any date.
+    gas = df.sector == 'Manufactured gas'
+    txt = df.name.fillna('') + ' ' + df.entry.fillna('')
+    gas_drop = gas & (
+        (txt.str.contains(r"(?i)denver\s+gas\s*(?:&|and)\s*electric") & (df.town != 'DENVER'))
+        | txt.str.contains(r"(?i)gas\s*(?:&|and)\s*electric\s+(?:bldg|building)|gas\s+lights?\s+and\s+steam|steam\s+heat|waterproof")
+        | txt.str.contains(r"(?i)\boil\s*(?:&|and)\s*gas\b|natural\s+gas|interstate\s+gas|helium|tire\s*(?:&|and)\s*gas|rural\s+gas|utilities\b")
+        | ((df.year >= 1930) & ~df.trade.fillna('').str.contains(r"(?i)gas\s+works|gas\s+plant"))
+        # the firm itself must be a gas company: not a coal or land company, a fixtures dealer, an officer or worker, or a building
+        | ~df.name.fillna('').str.contains(r"(?i)\bgas\s*(?:co\b|company|light|works|&|and|plant)")
+        | df.name.fillna('').str.contains(r"(?i)\bbld\w*|fixtures|stoker|fireman|\bmgr\b|\bsec\b|\bpres\b|\bcoal\b|\bfuel\b"))
+    print('manufactured gas: dropped', int(gas_drop.sum()), 'of', int(gas.sum()))
+    df = df[~gas_drop]
+    # 1956 classified pages: out-of-town listings are printed under the Denver heading as 'TOWN-Firm name' ('PUEBLO-Fountain Foundry'):
+    # move them to the named town (their street is in that town, not in Denver)
+    _gn = set(pd.read_csv('data/historical/gnis_places_co.csv').name.str.upper())
+    pre = df.name.fillna('').str.extract(r"^([A-Z][A-Z .']{2,}?)\s?-\s?(\S.*)$")
+    tp = pre[0].str.strip().where(pre[0].str.strip().isin(_gn))
+    mv = (df.year == 1956) & tp.notna() & (tp != df.town)
+    print('1956 classified listings moved to the town in their prefix:', int(mv.sum()))
+    df.loc[mv, 'town'] = tp[mv]; df.loc[mv, 'town_src'] = 'name prefix'; df.loc[mv, 'name'] = pre.loc[mv, 1].str.strip()
     df = df[~df.name.str.contains(NONIND) | (df.sector == 'Radium & uranium')]   # radium-cure hotels/baths are kept on purpose
     distinct = df.name.str.replace(GENERIC, ' ', regex=True).str.replace(r'[^A-Za-z]', '', regex=True)
     df = df[distinct.str.len() >= 3]

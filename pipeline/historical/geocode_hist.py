@@ -39,8 +39,43 @@ def street_level(q):
     parts = set(q.split('_')[2:])          # suffixes after 'range_interp'
     return parts <= {'cityzips', 'dirzip', 'dirtype'}
 
+REVIEW = 'data/historical/street_review.csv'
+REVIEW_KEY = ['year', 'town', 'nkey', 'sector']
+
+def apply_review(df, rv):
+    """Apply the hand review of street placements (data/historical/street_review.csv, 3 November 2026): every listing that the
+    previous run placed at a street address was read against the OCR text of its page. Verdicts:
+      ok           keep as parsed
+      fix_address  the firm's own printed address replaces the parsed one (empty street_fix: placed at the town only)
+    (any verdict but not_works: a non-empty street_fix / name_fix replaces the parsed street / name; street_fix 'none' places
+    the listing at its town only)
+      fix_name     the true firm name replaces the parsed one
+      not_works    dropped (a sales branch, dealer, office, residence or service, or the trade word belonged to a neighbour)
+      other_town   moved to town_fix (and street_fix when given)
+      doubtful     kept, flagged in the `review` column
+    Rows are matched on (year, town, nkey, sector) as written by run_hist.py; a listing with no review row gets review = ''."""
+    rv = rv.fillna('')
+    df = df.copy(); df['review'] = ''
+    key = lambda d: list(zip(d.year.astype(int), d.town.fillna(''), d.nkey.fillna(''), d.sector.fillna('')))
+    idx = dict(zip(key(df), df.index))
+    drop = []
+    for r, k in zip(rv.itertuples(), key(rv)):
+        i = idx.get(k)
+        if i is None: continue
+        v = r.verdict; df.at[i, 'review'] = v
+        if v == 'not_works': drop.append(i); continue
+        if v == 'fix_address' or r.street_fix:                                       # fix_address with no street_fix, or 'none': town only
+            df.at[i, 'street'] = '' if r.street_fix == 'none' else r.street_fix
+        if r.name_fix: df.at[i, 'name'] = r.name_fix
+        if v == 'other_town': df.at[i, 'town'] = r.town_fix; df.at[i, 'town_src'] = 'review'
+    return df.drop(index=drop)
+
 def main():
     df = pd.read_csv('work/hist/hist_hazard_entries.csv', dtype={'street': str})
+    if os.path.exists(REVIEW):
+        rv = pd.read_csv(REVIEW, dtype=str); rv['year'] = rv.year.astype(int)
+        n0 = len(df); df = apply_review(df, rv)
+        print('street review:', rv.verdict.value_counts().to_dict(), '- dropped', n0 - len(df))
     G = pd.read_csv('data/historical/gnis_places_co.csv')
     G['rank'] = G.feature_class.map({'Populated Place': 0, 'Census': 1, 'Civil': 2})
     G = G.sort_values('rank').drop_duplicates('name')

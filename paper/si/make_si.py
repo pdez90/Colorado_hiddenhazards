@@ -41,16 +41,16 @@ H("S1. The directory inventory and its coverage")
 # old[3]: 34 business-directory editions 1871–1956 — agrees with the manuscript §2; unchanged.
 P(old[3]['text'])
 # Listing and site counts: data/results/edition_coverage.csv (listings by edition, complete flag), README "Key results"
-# (3,487 F&E sites; 1,212 hidden; all-editions 72,317 listings / 4,669 sites) and manuscript §2 (1,112 Denver sites;
+# (3,487 F&E sites; 1,242 hidden; all-editions 72,317 listings / 4,669 sites) and manuscript §2 (1,112 Denver sites;
 # the 34 mis-placed listings, 25 of them 1965, were an earlier build; the current check finds none).
 ec = pd.read_csv(R + 'edition_coverage.csv'); mf = ec[ec.series == 'Directory of Colorado Manufacturers']
 complete = {1965, 1966, 1967, 1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990, 1992}
 chk(set(mf[mf.complete == True].year) == complete, 'complete editions')
 n_list_complete = int(mf[mf.complete == True].listings.sum()); n_list_all = int(mf.listings.sum())
 chk(n_list_complete == 44808 and n_list_all == 72317, f'listing totals {n_list_complete} {n_list_all}')
-sites_co = 3487; sites_denver = 1112; sites_all_editions = 4669; hidden = 1212
+sites_co = 3487; sites_denver = 1112; sites_all_editions = 4669; hidden = 1242
 sf = pd.read_csv(R + 'site_fate/site_fate_denver.csv'); chk(len(sf) == sites_denver, 'Denver 1965-92 sites')
-kh = open(R + 'known_hidden/summary.md').read(); chk('3,487 F&E' in kh and '1,212 (34.8%)' in kh, 'known_hidden summary')
+kh = open(R + 'known_hidden/summary.md').read(); chk('3,487 F&E' in kh and '1,242 (35.6%)' in kh, 'known_hidden summary')
 P(f"The Directory of Colorado Manufacturers (Business Research Division, University of Colorado, 1961–2002) was scanned from library copies in 25 editions. "
   f"Twelve of the scans stop part-way through the geographic section or have missing pages (1961, 1962, 1971, 1976, 1979, 1982, 1984, 1985, 1986, 1993, 1999, 2002) and are excluded everywhere; "
   f"the thirteen complete editions are 1965, 1966, 1967, 1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990 and 1992. "
@@ -138,27 +138,27 @@ T("Table S3. Control points for the 1929 zone map and their residuals from the a
 # ------------------------------------------------------------------------------------------------ S4
 H("S4. Parcel matching, regulatory status and the archival check")
 # Parcel matching: data/results/site_fate/site_fate_denver.csv (1,112 sites, all with a parcel; median 4.3 m),
-# site_fate_denver_pre1960.csv (395 trades, 394 matched), site_fate_parcel_match.csv (match stages; situs agreement 45.8% / 19.7%).
-# Regulatory inventories and radii: manuscript §2 Instruments; hidden share: known_hidden/summary.md (1,212 of 3,487, 34.8%).
+# site_fate_denver_pre1960.csv (370 trades, all matched), site_fate_parcel_match.csv (match stages; situs agreement 45.8% / 19.2%).
+# Regulatory inventories and radii: manuscript §2 Instruments; hidden share: known_hidden/summary.md (1,242 of 3,487, 35.6%).
 pre = pd.read_csv(R + 'site_fate/site_fate_denver_pre1960.csv')
 chk(sf.SCHEDNUM.notna().all() and (sf.parcel_dist_m <= 40).all(), 'all 1965-92 sites matched within 40 m')
-chk(len(pre) == 395 and pre.SCHEDNUM.notna().sum() == 394, 'pre-1960 parcel matches')
+chk(len(pre) == (lambda S: ((S.town == 'DENVER') & (S.precision == 'street') & (S.fe_hazard == True)).sum())(pd.read_csv(A + 'data/historical/CO_pre1960_hazardous_sites.csv', low_memory=False)), 'pre-1960 parcel matches: one row per Denver street-level F&E trade')
 med = sf.parcel_dist_m.median(); chk(round(med) == 4, f'median distance {med}')
 pm = pd.read_csv(R + 'site_fate/site_fate_parcel_match.csv'); ag = pm[pm.parcel_match.str.startswith('agreement')].set_index('series').pct
 ag_mfg = ag["Manufacturers' directory sites 1965-1992"]; ag_pre = ag['Business-directory hazardous trades 1891-1956']
 t = old[12]['text']
 t = t.replace("Each geocoded Denver site was matched to the nearest City and County of Denver assessor parcel within 40 m (1,256 of 1,258 distinct coordinates; median distance 10 m).",
-              f"Each geocoded Denver site was matched to the City and County of Denver assessor parcel within 40 m whose situs address matches the directory address, else the parcel on the same street and side with the nearest house number, else the nearest parcel on the same street, else the nearest parcel. All {len(sf):,} manufacturers' sites of 1965–92 and {int(pre.SCHEDNUM.notna().sum())} of the {len(pre)} pre-1960 trades have a parcel within 40 m; the median distance is {med:.0f} m, and the situs address matches the directory address outright for {ag_mfg:.0f}% of the manufacturers' sites and {ag_pre:.0f}% of the pre-1960 trades.")
+              f"Each geocoded Denver site was matched to the City and County of Denver assessor parcel within 40 m whose situs address matches the directory address, else the parcel on the same street and side with the nearest house number, else the nearest parcel on the same street, else the nearest parcel. All {len(sf):,} manufacturers' sites of 1965–92 and {('all ' + str(len(pre))) if pre.SCHEDNUM.notna().all() else (str(int(pre.SCHEDNUM.notna().sum())) + ' of the ' + str(len(pre)))} pre-1960 street-located trades have a parcel within 40 m; the median distance is {med:.0f} m, and the situs address matches the directory address outright for {ag_mfg:.0f}% of the manufacturers' sites and {ag_pre:.0f}% of the pre-1960 trades.")
 t = t.replace("Regulatory status was assigned from EPA's Facility Registry Service, TRI, SEMS and RCRA and from Colorado's voluntary-cleanup and environmental-covenant registers by location (40–75 m), address or name; a geocoding error",
-              f"Regulatory status was assigned from EPA's Facility Registry Service, TRI, SEMS, ACRES brownfields and RCRA (handlers and corrective action) and from Colorado's cleanup, Superfund, brownfield, voluntary-cleanup, UMTRA, solid-waste and environmental-covenant registers, matched by location (40–100 m by inventory, grown by the site's spread up to 250 m), by a record at the same address (street type and unit ignored) or by name; under this rule {hidden:,} of the {sites_co:,} Colorado sites (35%) match no record. A geocoding error")
-chk('median distance is 4 m' in t and '1,212 of the 3,487' in t, 'S4 edits applied')
+              f"Regulatory status was assigned from EPA's Facility Registry Service, TRI, SEMS, ACRES brownfields and RCRA (handlers and corrective action) and from Colorado's cleanup, Superfund, brownfield, voluntary-cleanup, UMTRA, solid-waste and environmental-covenant registers, matched by location (40–100 m by inventory, grown by the site's spread up to 250 m), by a record at the same address (street type and unit ignored) or by name; under this rule {hidden:,} of the {sites_co:,} Colorado sites (36%) match no record. A geocoding error")
+chk('median distance is 4 m' in t and '1,242 of the 3,487' in t, 'S4 edits applied')
 P(t)
-# Residential sites: site_fate_denver.csv (184 residential; built in or before last listing 119, later 47, no date 18;
-# 97 on no inventory, of which 76 built in or before) — as manuscript §6.
+# Residential sites: site_fate_denver.csv (171 residential; built in or before last listing 108, later 45, no date 18;
+# 96 on no inventory, of which 75 built in or before) — as manuscript §6.
 res = sf[sf.use_now == 'Residential']; n_res = len(res)
 before = int((res.year_built <= res.last_year).sum()); later = int((res.year_built > res.last_year).sum()); nodate = int(res.year_built.isna().sum())
 nr = res[res.radar == 'Not on any list']; n_nr = len(nr); nr_before = int((nr.year_built <= nr.last_year).sum())
-chk((n_res, before, later, nodate, n_nr, nr_before) == (184, 119, 47, 18, 97, 76), f'residential counts {(n_res, before, later, nodate, n_nr, nr_before)}')
+chk((n_res, before, later, nodate, n_nr, nr_before) == (171, 108, 45, 18, 96, 75), f'residential counts {(n_res, before, later, nodate, n_nr, nr_before)}')
 P(f"For {before} of the {n_res} residential sites of 1965–92 the present building was built in or before the site's last listing year; {later} were built later and {nodate} have no date. Most residential sites are therefore small firms in or beside dwellings, or geocodes that fell on a neighbouring dwelling, rather than conversions. Of the {n_nr} residential sites with no record in the searched inventories, {nr_before} are of this kind.")
 sb = pd.read_csv(R + 'site_fate/archival_check_sanborn_1887_1904.csv'); chk(len(sb) == 20, 'Sanborn check rows')
 rows = [["Firm", "Address", "Sector", "Listed", "1890 sheet", "Use shown on the sheet", "Matches geocode"]]
@@ -206,7 +206,13 @@ for o, per, lab in sel:
         r = r.iloc[0]; d = 2 if o == 'lmval' else 1
         rows.append([lab, per.replace('-', '–'), gr, f(r.b, d), f(r.se, d, False), pv(r.p), f(r.se_conley2km, d, False), pv(r.p_conley2km), f(r.b_zone, d), f(r.b_zone_strict, d), pv(r.p_zone_strict), int(r.n)])
 T("Table S9. Change in tract outcomes by 1938 class, relative to A tracts: main estimates, Conley (2 km) standard errors, and estimates controlling for the 1929 industrial-zoned share (full and strict layers)", rows)
-P("The strict zoning layer drops the 43% of industrial cells classified only by the platted thick-hatch rule. The Hispanic-share models start in 1970, the first census that identifies Hispanic residents comparably on tracts; the ungraded Industrial and Commercial zones (four tracts each) are dropped with the other classes of fewer than five tracts. No B estimate differs from A in any specification.")
+bsel = pd.concat([tm[(tm.outcome == o) & (tm.period == per) & (tm.grade == 'B')] for o, per, _ in sel])
+bx = bsel[(bsel[['p', 'p_conley2km', 'p_zone_strict']] < 0.05).any(axis=1)]
+chk((bsel[['p', 'p_zone', 'p_zone_strict']] >= 0.05).all().all(), 'B estimates under HC1 and strict zoning')
+labs = {o: l for o, _, l in sel}
+bnote = ("No B estimate in the table differs from A under HC1 standard errors or with the zoning controls" +
+         ("." if not len(bx) else "; with Conley standard errors " + "; ".join(f"the B estimate for {labs[r.outcome]} {r.period.replace('-', '–')} ({f(r.b, 1)}) has p = {pv(r.p_conley2km)}" for _, r in bx.iterrows()) + "."))
+P("The strict zoning layer drops the 43% of industrial cells classified only by the platted thick-hatch rule. The Hispanic-share models start in 1970, the first census that identifies Hispanic residents comparably on tracts; the ungraded Industrial and Commercial zones (four tracts each) are dropped with the other classes of fewer than five tracts. " + bnote)
 
 # ------------------------------------------------------------------------------------------------ S6
 H("S6. Tract analyses on fixed tract sets")

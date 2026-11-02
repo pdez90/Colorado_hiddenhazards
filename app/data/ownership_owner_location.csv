@@ -5,10 +5,10 @@ group,value,rental_units,pct_lives_on_the_property,pct_elsewhere_in_denver,pct_d
 1938 HOLC grade,D,33622,3.4,36.7,16,4.1,36.1,3.7,18.6,5.7,100455,88816,40.1,63.5,57.2
 1938 HOLC grade,Not graded,118465,2.5,28.5,13,2.7,46.9,6.4,603.6,9.5,106383,87096,44.9,63.5,54.7
 All private rental units,all,209345,2.8,34.1,14.7,4.1,39.8,4.5,22.6,8.3,104494,88966,40,64.6,60.7
-Historical sites,More than 400 m from any,87883,3,32.7,15.4,3.8,39.9,5.3,22.3,9,106039,89663,40.6,64.5,57.9
-Historical sites,Within 400 m of a hidden site,60085,2.6,33.8,13.4,3.9,41.8,4.6,32,8.2,104024,88368,41.2,65.1,61.5
-Historical sites,Within 400 m of a known site,93218,2.7,31.6,13.5,3.8,43.5,4.9,47.1,8,105321,88477,42.1,64.2,60.3
-Historical sites,Within 400 m of a pre-1960 hazardous trade,82084,2.9,33.4,12.7,4,42.6,4.3,31.8,8.2,105288,89617,41.8,64.3,65
+Historical sites,More than 400 m from any,90515,2.9,33.7,16.1,3.9,38.2,5.2,18.3,9.1,105136,89857,39.6,65.1,59
+Historical sites,Within 400 m of a hidden site,80199,2.4,32.5,13.7,3.9,43.4,4.2,48.3,7.6,104304,89099,40.2,64.5,62.7
+Historical sites,Within 400 m of a known site,93234,2.9,33.3,13.4,4.2,41.6,4.5,33.5,7.9,106431,88647,42.4,64.7,61.3
+Historical sites,Within 400 m of a pre-1960 hazardous trade,57626,2.2,30.1,10.6,3.5,47.6,6.1,988.1,9.3,108521,89888,45.7,63.8,61.6
 Owner family size (rental units in Denver),1 unit,24343,3,37,28.6,10.6,20.1,0.7,15.1,7.2,102162,91709,32.4,65.4,59.7
 Owner family size (rental units in Denver),"1,000+ units",25071,0,40.7,7.6,0,47.1,4.6,18.6,4.6,107004,86491,47.4,66.7,61.6
 Owner family size (rental units in Denver),100-999 units,111984,2.7,28,7.9,1.3,53.5,6.6,1234.8,8,105071,88614,42,62.8,60.7

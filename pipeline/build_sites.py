@@ -151,10 +151,11 @@ def match_inventory(sites,reg):
         rec={}
         ak=addr_key(s.address)
         am=list(addr_ix.get((ak, s.zip),[])) if s.zip else []
-        if not am:   # blank ZIP: match on street + city, but only a record within 250 m (or without a point), so that an undirected
-                     # Denver address ('450 KALAMATH') cannot claim a record on the other half of the grid (450 S Kalamath vs 450 Kalamath)
-            am=[j for j in addr_city_ix.get((ak, str(s.city or '').upper().strip()),[])
-                if pd.isna(reg.lat.iat[j]) or hav(s.lat,s.lon,reg.lat.iat[j],reg.lon.iat[j])<=250]
+        if not am:   # blank ZIP: match on street + city
+            am=list(addr_city_ix.get((ak, str(s.city or '').upper().strip()),[]))
+        # either way, only a record within 250 m (or without a point): the key drops the street type, so '230 DOVER DR' and '230 DOVER RD'
+        # share it, and an undirected Denver address ('450 KALAMATH') would otherwise claim a record on the other half of the grid
+        am=[j for j in am if pd.isna(reg.lat.iat[j]) or hav(s.lat,s.lon,reg.lat.iat[j],reg.lon.iat[j])<=250]
         am_t=collections.defaultdict(list)
         for j in am: am_t[reg.iloc[j]['tier']].append(f"{reg.iloc[j]['name']} [{reg.iloc[j]['source'].replace('EPA_','').replace('CDPHE_','CDPHE ')}]")
         inpoly=[]; nearpoly=[]   # (label, distance m) for boundaries within NEAR_BOUNDARY_M but not containing the point

@@ -1,25 +1,25 @@
 rule,rule_label,sites,n_sites,n_hidden,pct_hidden
-wider,Looser: every radius doubled (at most 250 m),F&E hazardous-sector sites (headline),3487,715,20.5
-wider,Looser: every radius doubled (at most 250 m),All hazardous-sector sites (F&E + extended),3657,766,20.9
-wider,Looser: every radius doubled (at most 250 m),"F&E sites, high confidence",2825,468,16.6
-wider,Looser: every radius doubled (at most 250 m),F&E sites in the City and County of Denver,1112,126,11.3
-published,"Published rule (name, address, boundary, or any record within the tier radius)",F&E hazardous-sector sites (headline),3487,1212,34.8
-published,"Published rule (name, address, boundary, or any record within the tier radius)",All hazardous-sector sites (F&E + extended),3657,1278,34.9
-published,"Published rule (name, address, boundary, or any record within the tier radius)","F&E sites, high confidence",2825,856,30.3
-published,"Published rule (name, address, boundary, or any record within the tier radius)",F&E sites in the City and County of Denver,1112,301,27.1
-cleanup_tri_prox,Proximity counts only for cleanup and TRI records,F&E hazardous-sector sites (headline),3487,1899,54.5
-cleanup_tri_prox,Proximity counts only for cleanup and TRI records,All hazardous-sector sites (F&E + extended),3657,1988,54.4
-cleanup_tri_prox,Proximity counts only for cleanup and TRI records,"F&E sites, high confidence",2825,1404,49.7
-cleanup_tri_prox,Proximity counts only for cleanup and TRI records,F&E sites in the City and County of Denver,1112,514,46.2
-prox25,Proximity counts only within 25 m,F&E hazardous-sector sites (headline),3487,1658,47.5
-prox25,Proximity counts only within 25 m,All hazardous-sector sites (F&E + extended),3657,1745,47.7
-prox25,Proximity counts only within 25 m,"F&E sites, high confidence",2825,1242,44
-prox25,Proximity counts only within 25 m,F&E sites in the City and County of Denver,1112,482,43.3
-prox10,Proximity counts only within 10 m,F&E hazardous-sector sites (headline),3487,2140,61.4
-prox10,Proximity counts only within 10 m,All hazardous-sector sites (F&E + extended),3657,2241,61.3
-prox10,Proximity counts only within 10 m,"F&E sites, high confidence",2825,1625,57.5
-prox10,Proximity counts only within 10 m,F&E sites in the City and County of Denver,1112,646,58.1
-strict,"Strict: a record with the same name or at the same address, or inside a cleanup boundary",F&E hazardous-sector sites (headline),3487,2220,63.7
-strict,"Strict: a record with the same name or at the same address, or inside a cleanup boundary",All hazardous-sector sites (F&E + extended),3657,2324,63.5
-strict,"Strict: a record with the same name or at the same address, or inside a cleanup boundary","F&E sites, high confidence",2825,1683,59.6
-strict,"Strict: a record with the same name or at the same address, or inside a cleanup boundary",F&E sites in the City and County of Denver,1112,669,60.2
+wider,Looser: every radius doubled (at most 250 m),F&E hazardous-sector sites (headline),3487,734,21
+wider,Looser: every radius doubled (at most 250 m),All hazardous-sector sites (F&E + extended),3657,785,21.5
+wider,Looser: every radius doubled (at most 250 m),"F&E sites, high confidence",2825,483,17.1
+wider,Looser: every radius doubled (at most 250 m),F&E sites in the City and County of Denver,1112,127,11.4
+published,"Published rule (name, address, boundary, or any record within the tier radius)",F&E hazardous-sector sites (headline),3487,1242,35.6
+published,"Published rule (name, address, boundary, or any record within the tier radius)",All hazardous-sector sites (F&E + extended),3657,1309,35.8
+published,"Published rule (name, address, boundary, or any record within the tier radius)","F&E sites, high confidence",2825,882,31.2
+published,"Published rule (name, address, boundary, or any record within the tier radius)",F&E sites in the City and County of Denver,1112,303,27.2
+cleanup_tri_prox,Proximity counts only for cleanup and TRI records,F&E hazardous-sector sites (headline),3487,1940,55.6
+cleanup_tri_prox,Proximity counts only for cleanup and TRI records,All hazardous-sector sites (F&E + extended),3657,2030,55.5
+cleanup_tri_prox,Proximity counts only for cleanup and TRI records,"F&E sites, high confidence",2825,1440,51
+cleanup_tri_prox,Proximity counts only for cleanup and TRI records,F&E sites in the City and County of Denver,1112,516,46.4
+prox25,Proximity counts only within 25 m,F&E hazardous-sector sites (headline),3487,1698,48.7
+prox25,Proximity counts only within 25 m,All hazardous-sector sites (F&E + extended),3657,1786,48.8
+prox25,Proximity counts only within 25 m,"F&E sites, high confidence",2825,1278,45.2
+prox25,Proximity counts only within 25 m,F&E sites in the City and County of Denver,1112,484,43.5
+prox10,Proximity counts only within 10 m,F&E hazardous-sector sites (headline),3487,2185,62.7
+prox10,Proximity counts only within 10 m,All hazardous-sector sites (F&E + extended),3657,2287,62.5
+prox10,Proximity counts only within 10 m,"F&E sites, high confidence",2825,1666,59
+prox10,Proximity counts only within 10 m,F&E sites in the City and County of Denver,1112,648,58.3
+strict,"Strict: a record with the same name or at the same address, or inside a cleanup boundary",F&E hazardous-sector sites (headline),3487,2267,65
+strict,"Strict: a record with the same name or at the same address, or inside a cleanup boundary",All hazardous-sector sites (F&E + extended),3657,2372,64.9
+strict,"Strict: a record with the same name or at the same address, or inside a cleanup boundary","F&E sites, high confidence",2825,1725,61.1
+strict,"Strict: a record with the same name or at the same address, or inside a cleanup boundary",F&E sites in the City and County of Denver,1112,671,60.3

@@ -6,11 +6,11 @@ Located establishments in the 13 complete editions 1965-1992: 13,254 statewide, 
 
 | class | cells | ever hazardous | with a pre-1960 street-level firm |
 |---|---|---|---|
-| emerging | 591 | 224 | 6 |
-| intermittent | 304 | 210 | 18 |
-| former (gone by 1980s) | 279 | 129 | 13 |
-| persistent, sector turnover | 242 | 228 | 64 |
-| persistent | 91 | 73 | 27 |
+| emerging | 591 | 224 | 2 |
+| intermittent | 304 | 210 | 9 |
+| former (gone by 1980s) | 279 | 129 | 5 |
+| persistent, sector turnover | 242 | 228 | 48 |
+| persistent | 91 | 73 | 20 |
 
 ## Clustering (Ellison-Glaeser gamma vs. all manufacturing, 1 km cells; median over editions, share of editions with p < 0.05)
 
@@ -65,13 +65,13 @@ Located establishments in the 13 complete editions 1965-1992: 13,254 statewide, 
 |---|---|---|---|---|
 | people_of_color | log1p(firm_years) | 0.791 | 0.250 | 0.00157 |
 | people_of_color | log1p(haz_firm_years) | 1.129 | 0.306 | 0.000223 |
-| people_of_color | log1p(hidden_sites) | 1.120 | 0.568 | 0.0487 |
+| people_of_color | log1p(hidden_sites) | 1.182 | 0.564 | 0.036 |
 | low_income | log1p(firm_years) | 1.813 | 0.246 | 1.61e-13 |
 | low_income | log1p(haz_firm_years) | 1.778 | 0.303 | 4.28e-09 |
-| low_income | log1p(hidden_sites) | 2.342 | 0.572 | 4.18e-05 |
+| low_income | log1p(hidden_sites) | 2.451 | 0.566 | 1.52e-05 |
 | enviroscreen_pctl | log1p(firm_years) | 3.178 | 0.334 | 0 |
 | enviroscreen_pctl | log1p(haz_firm_years) | 2.845 | 0.414 | 6.62e-12 |
-| enviroscreen_pctl | log1p(hidden_sites) | 2.991 | 0.774 | 0.000112 |
+| enviroscreen_pctl | log1p(hidden_sites) | 3.167 | 0.768 | 3.7e-05 |
 | pollution_climate_pctl | log1p(firm_years) | 1.226 | 0.191 | 1.23e-10 |
 | pollution_climate_pctl | log1p(haz_firm_years) | 1.011 | 0.235 | 1.66e-05 |
-| pollution_climate_pctl | log1p(hidden_sites) | 1.552 | 0.432 | 0.000324 |
+| pollution_climate_pctl | log1p(hidden_sites) | 1.590 | 0.428 | 0.000206 |

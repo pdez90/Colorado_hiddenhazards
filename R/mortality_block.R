@@ -44,7 +44,7 @@ if (!file.exists(AGEF)) {
 AGE <- fread(AGEF, colClasses = c(bck = "character"))
 # ---------------------------------------------------------------- 2. blocks, deaths
 B <- st_read(file.path(HIA, "block_noyr.gpkg"), quiet = TRUE)
-B$bck <- formatC(as.character(B$bck), width = 15, flag = "0"); B <- st_transform(st_make_valid(B), UTM)
+B$bck <- (function(x) { x <- as.character(x); paste0(strrep("0", pmax(0, 15 - nchar(x))), x) })(B$bck); stopifnot(all(nchar(B$bck) == 15)); B <- st_transform(st_make_valid(B), UTM)
 BD <- as.data.table(st_drop_geometry(B))[, c("bck", paste0("pop_", YRS), paste0("pm_", YRS)), with = FALSE]
 BD[, `:=`(pyears = rowSums(.SD[, paste0("pop_", YRS), with = FALSE], na.rm = TRUE), pm25 = rowMeans(.SD[, paste0("pm_", YRS), with = FALSE], na.rm = TRUE))]
 BD[, area_km2 := as.numeric(st_area(B)) / 1e6]
@@ -69,8 +69,10 @@ D[, study_area := tract %in% den_tr$GEOID]
 pts <- function(d) { d <- d[!is.na(lat) & !is.na(lon)]; st_coordinates(st_transform(st_as_sf(d, coords = c("lon", "lat"), crs = 4326), UTM)) }
 S0 <- fread("app/data/sites.csv"); S <- S0[fe_hazard %in% c(TRUE, "True") & geo_level %in% c("address", "address_approx")]
 H <- fread("app/data/historical_sites.csv")[fe_hazard %in% c(TRUE, "True") & precision != "town"]
-L <- fread("data/results/CO_directory_listings_1961-2002.csv", select = c("lat", "lon", "geo_level", "fe_hazard", "ext_hazard", "site_id"))
-nh <- L[geo_level == "address" & !(fe_hazard %in% c(TRUE, "True") | ext_hazard %in% c(TRUE, "True")) & !(site_id %in% S0$site_id)][!duplicated(paste(round(lat, 4), round(lon, 4)))]
+L <- fread("data/results/CO_directory_listings_1961-2002.csv", select = c("lat", "lon", "geo_level", "fe_hazard", "ext_hazard", "site_id", "sic"), colClasses = list(character = "sic"))
+# placebo: manufacturers (SIC 20-39) outside the hazardous sectors; listings with no SIC or a non-manufacturing SIC are left out
+nh <- L[geo_level == "address" & !(fe_hazard %in% c(TRUE, "True") | ext_hazard %in% c(TRUE, "True")) & !(site_id %in% S0$site_id) &
+        as.integer(substr(sic, 1, 2)) %between% c(20L, 39L)][!duplicated(paste(round(lat, 4), round(lon, 4)))]
 SX <- pts(S); NX <- pts(nh); far <- vapply(seq_len(nrow(NX)), function(i) min(sqrt((SX[, 1] - NX[i, 1])^2 + (SX[, 2] - NX[i, 2])^2)) > 100, TRUE); NX <- NX[far, , drop = FALSE]
 groups <- list(hidden = pts(S[radar == "Not on any list"]), hidden_hiconf = pts(S[radar == "Not on any list" & confidence == "high"]), known_hist = pts(S[radar != "Not on any list"]),
                pre1960 = pts(H), tri = pts(fread("app/data/tri_facilities.csv")), cleanup = pts(fread("app/data/cleanup_sites.csv")), placebo = NX)
@@ -95,7 +97,9 @@ fit_set <- function(DD, label, fe = TRUE) {
              "M4 + placebo" = paste0(base, REG, " + z_known_hist + z_hidden + z_placebo"))
   rows <- list()
   for (y in c("deaths_nat", "deaths_all")) {
-    th <- tryCatch(glm.nb(as.formula(paste(y, "~", specs[["M4 + placebo"]], "+ offset(log_py)")), data = DD, control = glm.control(maxit = 100))$theta, error = function(e) 1)
+    # one dispersion parameter per outcome and sample, estimated on the fullest model and held fixed so the AICs are comparable
+    th <- glm.nb(as.formula(paste(y, "~", specs[["M4 + placebo"]], "+ offset(log_py)")), data = DD, control = glm.control(maxit = 100))$theta
+    message(label, " ", y, ": theta = ", round(th, 3))
     for (nm in names(specs)) {
       m <- glm(as.formula(paste(y, "~", specs[[nm]], "+ offset(log_py)")), data = DD, family = negative.binomial(th))
       ct <- coeftest(m, vcov. = vcovCL(m, cluster = DD$tract, type = "HC1"))

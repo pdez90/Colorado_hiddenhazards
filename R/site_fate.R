@@ -103,6 +103,8 @@ pick <- function(d, acol) {   # d: one row per site with pkey and the address co
 # ---- 3. broad classes
 broad <- function(cls, zone) { cls <- toupper(ifelse(is.na(cls), "", cls)); zone <- toupper(ifelse(is.na(zone), "", zone))
   fcase(cls == "", "No parcel match",
+        grepl("^COMMERCIAL-CONDO|^OFFICE.*CONDO", cls), "Commercial / office",   # commercial condominium units are shops and offices, not homes
+        grepl("^INDUSTRIAL-CONDO", cls), "Industrial / utility",
         grepl("SINGLE FAM|^SFR|DUPLEX|TRIPLEX|ROWHOUSE|TOWNHOUSE|CONDO|APARTMENT|MULTI|RESIDENTIAL|MOBILE|MIXED USE.*RES", cls), "Residential",
         grepl("PARK$|^DENVER PARK|OPEN SPACE|GOLF|CEMETERY|RECREATION", cls), "Park / open space",
         grepl("STADIUM|STOCK SHOW|JAIL|COURTHOUSE|FIRE STATION|POLICE|LIBRARY|MUSEUM|GOVERNMENT|SCHOOL|CHURCH|HOSPITAL|RELIGIOUS|CHARIT|EDUCATION|UNIVERSITY|COLLEGE", cls), "Civic / school / health",

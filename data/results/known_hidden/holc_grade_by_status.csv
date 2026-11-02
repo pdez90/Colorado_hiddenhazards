@@ -1,56 +1,56 @@
 rule,status,grade,N,pct
 wider,hidden,A,2,1.6
-wider,hidden,B,7,5.6
-wider,hidden,C,13,10.3
-wider,hidden,D,42,33.3
-wider,hidden,Outside the 1938 map,62,49.2
+wider,hidden,B,7,5.5
+wider,hidden,C,13,10.2
+wider,hidden,D,42,33.1
+wider,hidden,Outside the 1938 map,63,49.6
 wider,known,A,1,0.1
 wider,known,B,10,1
 wider,known,C,38,3.9
 wider,known,D,287,29.1
-wider,known,Outside the 1938 map,650,65.9
+wider,known,Outside the 1938 map,649,65.9
 published,hidden,A,3,1
 published,hidden,B,10,3.3
-published,hidden,C,28,9.3
-published,hidden,D,99,32.9
-published,hidden,Outside the 1938 map,161,53.5
+published,hidden,C,28,9.2
+published,hidden,D,99,32.7
+published,hidden,Outside the 1938 map,163,53.8
 published,known,B,7,0.9
 published,known,C,23,2.8
 published,known,D,230,28.4
-published,known,Outside the 1938 map,551,67.9
+published,known,Outside the 1938 map,549,67.9
 cleanup_tri_prox,hidden,A,3,0.6
 cleanup_tri_prox,hidden,B,12,2.3
 cleanup_tri_prox,hidden,C,40,7.8
-cleanup_tri_prox,hidden,D,183,35.6
-cleanup_tri_prox,hidden,Outside the 1938 map,276,53.7
+cleanup_tri_prox,hidden,D,183,35.5
+cleanup_tri_prox,hidden,Outside the 1938 map,278,53.9
 cleanup_tri_prox,known,B,5,0.8
 cleanup_tri_prox,known,C,11,1.8
-cleanup_tri_prox,known,D,146,24.4
-cleanup_tri_prox,known,Outside the 1938 map,436,72.9
+cleanup_tri_prox,known,D,146,24.5
+cleanup_tri_prox,known,Outside the 1938 map,434,72.8
 prox25,hidden,A,3,0.6
 prox25,hidden,B,13,2.7
-prox25,hidden,C,36,7.5
-prox25,hidden,D,153,31.7
-prox25,hidden,Outside the 1938 map,277,57.5
+prox25,hidden,C,36,7.4
+prox25,hidden,D,153,31.6
+prox25,hidden,Outside the 1938 map,279,57.6
 prox25,known,B,4,0.6
 prox25,known,C,15,2.4
-prox25,known,D,176,27.9
-prox25,known,Outside the 1938 map,435,69
+prox25,known,D,176,28
+prox25,known,Outside the 1938 map,433,68.9
 prox10,hidden,A,3,0.5
 prox10,hidden,B,15,2.3
-prox10,hidden,C,43,6.7
-prox10,hidden,D,208,32.2
-prox10,hidden,Outside the 1938 map,377,58.4
+prox10,hidden,C,43,6.6
+prox10,hidden,D,208,32.1
+prox10,hidden,Outside the 1938 map,379,58.5
 prox10,known,B,2,0.4
 prox10,known,C,8,1.7
-prox10,known,D,121,26
-prox10,known,Outside the 1938 map,335,71.9
+prox10,known,D,121,26.1
+prox10,known,Outside the 1938 map,333,71.8
 strict,hidden,A,3,0.4
 strict,hidden,B,16,2.4
 strict,hidden,C,44,6.6
-strict,hidden,D,213,31.8
-strict,hidden,Outside the 1938 map,393,58.7
+strict,hidden,D,213,31.7
+strict,hidden,Outside the 1938 map,395,58.9
 strict,known,B,1,0.2
 strict,known,C,7,1.6
-strict,known,D,116,26.2
-strict,known,Outside the 1938 map,319,72
+strict,known,D,116,26.3
+strict,known,Outside the 1938 map,317,71.9

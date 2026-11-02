@@ -57,7 +57,9 @@ city$cat <- city_cat(city$ZONE_DISTRICT, city$ZONE_DIST_TYPE)
 city_date <- tryCatch(readLines("work/zoning_city/download_date.txt")[1], error = function(e) "today")
 nza <- st_read("work/zoning_2023/ALL_DenverMSA_10.3.23.shp", quiet = TRUE, wkt_filter = st_as_text(st_transform(st_buffer(STUDY, 100), 32613)))
 nza <- st_make_valid(st_transform(nza, UTM))
-nza_cat <- function(local_zon, genzone2) fcase(grepl("^(I-MX|M-IMX)", local_zon), "Industrial mixed use", genzone2 == "Industrial", "Industrial", grepl("^MixedUse", genzone2), "Commercial or mixed use",
+nza_cat <- function(local_zon, genzone2) fcase(grepl("^(I-MX|M-IMX)", local_zon), "Industrial mixed use", genzone2 == "Industrial", "Industrial",
+                 grepl("^(DIA|CMP-|H-[12]|P-1)", local_zon), "Open space, civic, other",   # airport, campus, hospital, parking: as in the city layer
+                 grepl("^MixedUse", genzone2), "Commercial or mixed use",
                  genzone2 == "Commercial", "Commercial (housing not allowed)",
                  grepl("^Residential|^MobileHome", genzone2), "Residential", default = "Open space, civic, other")
 nza$cat <- nza_cat(nza$Local_zon, nza$GenZone2)

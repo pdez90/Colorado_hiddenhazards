@@ -29,7 +29,21 @@ import yaml
 import outputs_helpers as C
 
 HERE = Path(__file__).resolve().parent
-CLAIMS = yaml.safe_load((HERE / "claims.yml").read_text(encoding="utf-8"))
+
+
+class _Num(float):
+    """A float that remembers how it was written in claims.yml, so '1.10' keeps its two decimals (the default tolerance
+    is half a unit of the last WRITTEN decimal; a plain float would turn 1.10 into 1.1 and widen the tolerance tenfold)."""
+    def __new__(cls, value, written):
+        o = float.__new__(cls, value); o.written = written; return o
+
+
+class _Loader(yaml.SafeLoader):
+    pass
+
+
+_Loader.add_constructor("tag:yaml.org,2002:float", lambda loader, node: _Num(loader.construct_yaml_float(node), node.value))
+CLAIMS = yaml.load((HERE / "claims.yml").read_text(encoding="utf-8"), Loader=_Loader)
 
 NAMESPACE = {
     "load": C.load, "text": C.text, "listings": C.listings, "sites": C.sites, "fe_sites": C.fe_sites,
@@ -52,7 +66,7 @@ def _default_tol(v):
         return 0.5
     if isinstance(v, int):
         return 0.5
-    s = repr(float(v))
+    s = getattr(v, "written", None) or repr(float(v))
     if "e" in s or "E" in s:
         return abs(float(v)) * 0.005 + 1e-12
     dec = len(s.split(".")[1]) if "." in s else 0

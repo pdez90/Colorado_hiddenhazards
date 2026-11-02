@@ -73,12 +73,11 @@ def agg(g):
                           town=r.town, county=r.county, street=r.street if len(st) else '', lat=r.lat, lon=r.lon, precision=r.precision,
                           sectors='; '.join(sorted(g.sector.unique())), fe_hazard=bool((g.fe_group != 'EXT').any()),
                           first_year=yrs[0], last_year=yrs[-1], editions=len(yrs), years=' '.join(map(str, yrs)),
-                          example=g.entry.iloc[0][:200], name_quality='ok' if (g.name_quality == 'ok').any() else 'poor'))
+                          example=g.entry.iloc[0][:200], name_quality='ok' if (g.name_quality == 'ok').any() else 'poor',
+                          review=(r.get('review', '') if len(st) and isinstance(r.get('review', ''), str) else '')))
 F = H.groupby('hfirm').apply(agg, include_groups=False).reset_index().merge(L, on='hfirm', how='left')
-# if the firm reappears in the 1961-2002 directory at an address, use that more precise location
-use = (F.precision == 'town') & F.dcm_level.eq('address') & F.dcm_lat.notna()
-F.loc[use, ['lat', 'lon']] = F.loc[use, ['dcm_lat', 'dcm_lon']].values
-F.loc[use, 'precision'] = 'street (via later directory)'
+# a town-level firm that reappears in the 1961-2002 directory keeps its town location: its later address (dcm_lat/dcm_lon) is a
+# different, later place, and the pre-1960 layer places firms only at addresses printed in their own listings
 F['persists_to_1961plus'] = F.link.notna()
 F.to_csv('data/historical/CO_pre1960_hazardous_sites.csv', index=False)
 H.to_csv('data/historical/CO_pre1960_hazardous_listings.csv', index=False)

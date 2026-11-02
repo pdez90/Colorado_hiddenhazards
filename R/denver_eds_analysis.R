@@ -30,6 +30,8 @@ hist <- fread("app/data/historical_sites.csv")[precision != "town" & !is.na(lat)
 CBD <- st_sfc(st_point(c(500250, 4399500)), crs = 26913)   # downtown point used in every script
 hp <- st_transform(st_as_sf(hist[, .(hfirm, name, first_year, last_year, sectors, lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM)
 f80 <- fread("data/results/denver_1880/firms_1878_1885_placed.csv")[how != "street only"]
+# the same Frickel & Elliott definition as every later census: assay offices, ore milling and manufactured gas are extended trades
+f80 <- f80[!sector %in% c("Assay office", "Ore milling & sampling", "Manufactured gas", "Coke works", "Tannery", "Wood preserving", "Batteries", "Radium & uranium")]
 all_E <- list(); all_F <- list(); groups <- list(); models <- list(); shares <- list()
 for (yr in c(1880, 1900, 1910, 1920, 1930, 1940)) {
   f <- file.path(O, sprintf("denver_eds_%d.geojson", yr)); if (!file.exists(f)) { message(yr, ": no ED polygons yet"); next }

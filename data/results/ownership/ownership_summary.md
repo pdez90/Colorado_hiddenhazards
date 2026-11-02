@@ -69,10 +69,10 @@
 | 1938 HOLC grade | D | 33622 | 3.4 | 36.7 | 16.0 | 4.1 | 36.1 | 3.7 | 18.6 | 5.7 | 100455 | 88816 | 40.1 | 63.5 | 57.2 |
 | 1938 HOLC grade | Not graded | 118465 | 2.5 | 28.5 | 13.0 | 2.7 | 46.9 | 6.4 | 603.6 | 9.5 | 106383 | 87096 | 44.9 | 63.5 | 54.7 |
 | All private rental units | all | 209345 | 2.8 | 34.1 | 14.7 | 4.1 | 39.8 | 4.5 | 22.6 | 8.3 | 104494 | 88966 | 40.0 | 64.6 | 60.7 |
-| Historical sites | More than 400 m from any | 87883 | 3.0 | 32.7 | 15.4 | 3.8 | 39.9 | 5.3 | 22.3 | 9.0 | 106039 | 89663 | 40.6 | 64.5 | 57.9 |
-| Historical sites | Within 400 m of a hidden site | 60085 | 2.6 | 33.8 | 13.4 | 3.9 | 41.8 | 4.6 | 32.0 | 8.2 | 104024 | 88368 | 41.2 | 65.1 | 61.5 |
-| Historical sites | Within 400 m of a known site | 93218 | 2.7 | 31.6 | 13.5 | 3.8 | 43.5 | 4.9 | 47.1 | 8.0 | 105321 | 88477 | 42.1 | 64.2 | 60.3 |
-| Historical sites | Within 400 m of a pre-1960 hazardous trade | 82084 | 2.9 | 33.4 | 12.7 | 4.0 | 42.6 | 4.3 | 31.8 | 8.2 | 105288 | 89617 | 41.8 | 64.3 | 65.0 |
+| Historical sites | More than 400 m from any | 90515 | 2.9 | 33.7 | 16.1 | 3.9 | 38.2 | 5.2 | 18.3 | 9.1 | 105136 | 89857 | 39.6 | 65.1 | 59.0 |
+| Historical sites | Within 400 m of a hidden site | 80199 | 2.4 | 32.5 | 13.7 | 3.9 | 43.4 | 4.2 | 48.3 | 7.6 | 104304 | 89099 | 40.2 | 64.5 | 62.7 |
+| Historical sites | Within 400 m of a known site | 93234 | 2.9 | 33.3 | 13.4 | 4.2 | 41.6 | 4.5 | 33.5 | 7.9 | 106431 | 88647 | 42.4 | 64.7 | 61.3 |
+| Historical sites | Within 400 m of a pre-1960 hazardous trade | 57626 | 2.2 | 30.1 | 10.6 | 3.5 | 47.6 | 6.1 | 988.1 | 9.3 | 108521 | 89888 | 45.7 | 63.8 | 61.6 |
 | Owner family size (rental units in Denver) | 1 unit | 24343 | 3.0 | 37.0 | 28.6 | 10.6 | 20.1 | 0.7 | 15.1 | 7.2 | 102162 | 91709 | 32.4 | 65.4 | 59.7 |
 | Owner family size (rental units in Denver) | 1,000+ units | 25071 | 0.0 | 40.7 | 7.6 | 0.0 | 47.1 | 4.6 | 18.6 | 4.6 | 107004 | 86491 | 47.4 | 66.7 | 61.6 |
 | Owner family size (rental units in Denver) | 100-999 units | 111984 | 2.7 | 28.0 | 7.9 | 1.3 | 53.5 | 6.6 | 1234.8 | 8.0 | 105071 | 88614 | 42.0 | 62.8 | 60.7 |
@@ -98,38 +98,38 @@
 
 | area | parcels | units | rental_units | pct_rental | pct_rental_owner_20plus | pct_rental_owner_100plus | pct_rental_company | pct_rental_out_of_state | pct_rental_public |
 |---|---|---|---|---|---|---|---|---|---|
-| Within 400 m of a hidden site (1965-92, no inventory) | 46689 | 104537 | 70769 | 67.7 | 80.7 | 71.6 | 70.2 | 39.4 | 3.3 |
-| Within 400 m of a known site (1965-92, on an inventory) | 58545 | 151787 | 110687 | 72.9 | 83.0 | 73.4 | 70.8 | 40.7 | 3.1 |
-| Within 400 m of a pre-1960 hazardous trade | 44860 | 129370 | 98413 | 76.1 | 84.4 | 74.8 | 70.9 | 39.2 | 2.7 |
-| More than 400 m from any historical site | 123703 | 190157 | 91349 | 48.0 | 72.4 | 63.9 | 73.4 | 43.5 | 1.2 |
+| Within 400 m of a hidden site (1965-92, no inventory) | 61212 | 137990 | 93521 | 67.8 | 80.8 | 71.1 | 71.9 | 40.8 | 3.2 |
+| Within 400 m of a known site (1965-92, on an inventory) | 54817 | 148172 | 110179 | 74.4 | 83.3 | 72.8 | 71.4 | 39.1 | 3.2 |
+| Within 400 m of a pre-1960 hazardous trade | 27273 | 89173 | 70738 | 79.3 | 86.7 | 79.8 | 71.0 | 43.7 | 3.5 |
+| More than 400 m from any historical site | 127316 | 195608 | 93978 | 48.0 | 72.2 | 63.6 | 73.2 | 41.8 | 0.9 |
 | All of Denver | 216206 | 398200 | 232395 | 58.4 | 77.1 | 67.4 | 71.7 | 39.9 | 2.3 |
 
 | area | parcels | units | rental_units | pct_rental | pct_rental_owner_20plus | pct_rental_owner_100plus | pct_rental_company | pct_rental_out_of_state | pct_rental_public |
 |---|---|---|---|---|---|---|---|---|---|
-| Houses, condos, rowhouses, duplexes within 400 m of any historical site | 89989 | 92351 | 25542 | 27.7 | 9.4 | 4.0 | 30.0 | 15.9 | 1.4 |
-| Houses, condos, rowhouses, duplexes farther away | 122454 | 123830 | 25092 | 20.3 | 10.2 | 4.3 | 30.3 | 16.8 | 1.2 |
+| Houses, condos, rowhouses, duplexes within 400 m of any historical site | 86459 | 88792 | 24801 | 27.9 | 10.0 | 4.0 | 30.9 | 15.7 | 1.4 |
+| Houses, condos, rowhouses, duplexes farther away | 125984 | 127389 | 25833 | 20.3 | 9.7 | 4.3 | 29.5 | 16.9 | 1.3 |
 
 ## Tract associations (weighted by rental units; tracts with 50+ rental units)
 
 | outcome | term | estimate | se | p | tracts |
 |---|---|---|---|---|---|
-| pct_rental_owner_20plus | Black residents (per point of %) | 0.443 | 0.210 | 0.03690 | 143 |
-| pct_rental_owner_20plus | Hispanic residents (per point of %) | -0.271 | 0.099 | 0.00669 | 143 |
-| pct_rental_owner_20plus | Poverty rate (per point of %) | 0.326 | 0.207 | 0.11800 | 143 |
-| pct_rental_owner_20plus | Tract has a hidden 1965-92 site | 7.097 | 3.548 | 0.04740 | 143 |
-| pct_rental_owner_20plus | Tract has a known 1965-92 site | -0.181 | 3.748 | 0.96200 | 143 |
-| pct_rental_owner_100plus | Black residents (per point of %) | 0.767 | 0.247 | 0.00229 | 143 |
-| pct_rental_owner_100plus | Hispanic residents (per point of %) | -0.310 | 0.116 | 0.00834 | 143 |
-| pct_rental_owner_100plus | Poverty rate (per point of %) | 0.271 | 0.243 | 0.26700 | 143 |
-| pct_rental_owner_100plus | Tract has a hidden 1965-92 site | 9.682 | 4.169 | 0.02170 | 143 |
-| pct_rental_owner_100plus | Tract has a known 1965-92 site | 0.009 | 4.405 | 0.99800 | 143 |
-| pct_rental_company | Black residents (per point of %) | 0.429 | 0.169 | 0.01230 | 143 |
-| pct_rental_company | Hispanic residents (per point of %) | -0.181 | 0.079 | 0.02380 | 143 |
-| pct_rental_company | Poverty rate (per point of %) | -0.453 | 0.166 | 0.00727 | 143 |
-| pct_rental_company | Tract has a hidden 1965-92 site | 2.683 | 2.854 | 0.34900 | 143 |
-| pct_rental_company | Tract has a known 1965-92 site | -6.034 | 3.016 | 0.04740 | 143 |
-| pct_rental_out_of_state | Black residents (per point of %) | 0.620 | 0.233 | 0.00866 | 143 |
-| pct_rental_out_of_state | Hispanic residents (per point of %) | -0.175 | 0.109 | 0.11200 | 143 |
-| pct_rental_out_of_state | Poverty rate (per point of %) | -0.709 | 0.229 | 0.00242 | 143 |
-| pct_rental_out_of_state | Tract has a hidden 1965-92 site | 3.580 | 3.935 | 0.36500 | 143 |
-| pct_rental_out_of_state | Tract has a known 1965-92 site | -2.938 | 4.157 | 0.48100 | 143 |
+| pct_rental_owner_20plus | Black residents (per point of %) | 0.512 | 0.214 | 0.01830 | 143 |
+| pct_rental_owner_20plus | Hispanic residents (per point of %) | -0.257 | 0.099 | 0.01010 | 143 |
+| pct_rental_owner_20plus | Poverty rate (per point of %) | 0.263 | 0.208 | 0.20700 | 143 |
+| pct_rental_owner_20plus | Tract has a hidden 1965-92 site | 1.792 | 3.740 | 0.63300 | 143 |
+| pct_rental_owner_20plus | Tract has a known 1965-92 site | 6.383 | 3.855 | 0.10000 | 143 |
+| pct_rental_owner_100plus | Black residents (per point of %) | 0.822 | 0.254 | 0.00151 | 143 |
+| pct_rental_owner_100plus | Hispanic residents (per point of %) | -0.293 | 0.117 | 0.01340 | 143 |
+| pct_rental_owner_100plus | Poverty rate (per point of %) | 0.222 | 0.246 | 0.36900 | 143 |
+| pct_rental_owner_100plus | Tract has a hidden 1965-92 site | 2.513 | 4.429 | 0.57100 | 143 |
+| pct_rental_owner_100plus | Tract has a known 1965-92 site | 6.862 | 4.564 | 0.13500 | 143 |
+| pct_rental_company | Black residents (per point of %) | 0.485 | 0.175 | 0.00631 | 143 |
+| pct_rental_company | Hispanic residents (per point of %) | -0.179 | 0.080 | 0.02790 | 143 |
+| pct_rental_company | Poverty rate (per point of %) | -0.512 | 0.169 | 0.00299 | 143 |
+| pct_rental_company | Tract has a hidden 1965-92 site | -0.026 | 3.048 | 0.99300 | 143 |
+| pct_rental_company | Tract has a known 1965-92 site | -0.979 | 3.142 | 0.75600 | 143 |
+| pct_rental_out_of_state | Black residents (per point of %) | 0.591 | 0.238 | 0.01420 | 143 |
+| pct_rental_out_of_state | Hispanic residents (per point of %) | -0.173 | 0.110 | 0.11700 | 143 |
+| pct_rental_out_of_state | Poverty rate (per point of %) | -0.694 | 0.231 | 0.00314 | 143 |
+| pct_rental_out_of_state | Tract has a hidden 1965-92 site | -0.560 | 4.156 | 0.89300 | 143 |
+| pct_rental_out_of_state | Tract has a known 1965-92 site | -1.357 | 4.283 | 0.75200 | 143 |

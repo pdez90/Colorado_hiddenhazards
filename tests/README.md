@@ -71,25 +71,21 @@ All of these read only files that are in the repository (`app/data`, `data/resul
   `.git/info/exclude` plays no part); every `dd("…")` and `rd_opt("…")` literal in `app.R` exists under
   `app/data` (except the one `file.exists()`-guarded read).
 
-**Known inconsistencies in the current commit** are kept as `xfail(strict=True)` tests, so they are
-documented and the marker must be removed when the data are fixed:
-
-| Test | What is wrong |
-|---|---|
-| `test_tract_panel_values_positive_or_na` | `mval_2020` is 0 instead of NA in 3 tract-years (08001008545 1980, also `mrent_2020`; 08041004402 1980 and 2000) |
+**Known inconsistencies** would be kept as `xfail(strict=True)` tests, so that they are documented and the marker must be removed
+when the data are fixed; there are none at present (the tract-panel zeros once recorded here were fixed in the panel).
 
 `test_manifest_checksums_match_the_files` fails whenever `app/manifest.json` is older than the files it lists: regenerate it
 (`rsconnect::writeManifest("app")`, or update the md5 checksums) before pushing, since Posit Connect deploys what the manifest describes.
 
 ### `test_claims.py` + `claims.yml` — the numbers in the text are what the data say (~3 s)
 
-`claims.yml` is a registry of 150+ claims. Each has `file` (README.md, app/app.R or a
+`claims.yml` is a registry of 200+ claims. Each has `file` (README.md, app/app.R or a
 `data/results/*/summary.md`), `text` (an exact substring that must be present in that file), `check`
 (a Python expression over the data files, using `load(path)`, `listings()`, `sites()`, `fe_sites()`,
 `fisher_exact_p()`, `mh_conditional_or()` …) and `expect` (the quoted number(s)). The test fails if the
 text is gone **or** the data no longer give the quoted value, so a rerun that changes a number is caught
 until the text is updated. Tolerance defaults to half a unit of the last printed decimal; `tol`
-overrides it. A claim with `stale: reason` is a known out-of-date statement (strict xfail); after the 31 October audit rerun
+overrides it; the decimals are taken as the number is WRITTEN in claims.yml, so write `1.10`, not `1.1`, for a number printed with two. A claim with `stale: reason` is a known out-of-date statement (strict xfail); after the 31 October audit rerun
 none is marked stale.
 
 To add a claim: copy the sentence or table row verbatim into `text`, write a `check` that recomputes it

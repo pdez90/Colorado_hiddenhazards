@@ -25,7 +25,9 @@ SHP <- "work/zoning_2023/ALL_DenverMSA_10.3.23.shp"
 if (!file.exists(SHP)) stop("Place the 2023 Denver-metro zoning shapefile in work/zoning_2023/ (see the header).")
 ED_OK <- c(1965:1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990, 1992)
 CATS <- c("Industrial (housing not allowed)", "Industrial mixed use (housing allowed)", "Mixed use with housing", "Residential", "Commercial", "Open space, civic, other")
-cat_of <- function(g, code) factor(fcase(grepl("^(I-MX|M-IMX)", code), CATS[2], g == "Industrial", CATS[1], grepl("^MixedUse", g), CATS[3],
+cat_of <- function(g, code) factor(fcase(grepl("^(I-MX|M-IMX)", code), CATS[2], g == "Industrial", CATS[1],
+                                         grepl("^(DIA|CMP-|H-[12]|P-1)", code), CATS[6],   # airport, campus, hospital, parking districts (as R/zoning_over_time.R)
+                                         grepl("^MixedUse", g), CATS[3],
                                          grepl("^Residential|^MobileHome", g), CATS[4], g == "Commercial", CATS[5], default = CATS[6]), levels = CATS)
 pct_tab <- function(d, by) { r <- d[, .N, by = c(by, "zone2023")]; r[, pct := round(100 * N / sum(N), 1), by = by]
   w <- dcast(r, as.formula(paste(paste(by, collapse = " + "), "~ zone2023")), value.var = "pct", fill = 0)

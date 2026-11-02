@@ -1,20 +1,20 @@
 period,grade,km2,firms,firms_band,start,per_km2,source,firms_per_edition,editions,per_km2_per_edition,dc_ratio_within_period
-1891-1905,A,5.7,0,0,1891,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,6.2
-1891-1905,B,13.4,0,0,1891,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,6.2
-1891-1905,C,41.2,1,0,1891,0.02,"Colorado State Business Directory (hazardous trades, street level)",0.5,2,0.012,6.2
-1891-1905,D,27.2,4,0,1891,0.15,"Colorado State Business Directory (hazardous trades, street level)",2,2,0.074,6.2
-1906-1920,A,5.7,0,0,1906,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,4.9
-1906-1920,B,13.4,0,0,1906,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,4.9
-1906-1920,C,41.2,3,2,1906,0.07,"Colorado State Business Directory (hazardous trades, street level)",0.666666666666667,9,0.016,4.9
-1906-1920,D,27.2,11,3,1906,0.4,"Colorado State Business Directory (hazardous trades, street level)",2.11111111111111,9,0.078,4.9
-1921-1937,A,5.7,0,0,1921,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,1.7
-1921-1937,B,13.4,0,0,1921,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,1.7
-1921-1937,C,41.2,9,3,1921,0.22,"Colorado State Business Directory (hazardous trades, street level)",1.6,5,0.039,1.7
-1921-1937,D,27.2,8,3,1921,0.29,"Colorado State Business Directory (hazardous trades, street level)",1.8,5,0.066,1.7
-1938-1956,A,5.7,0,0,1938,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,1.9
-1938-1956,B,13.4,10,0,1938,0.75,"Colorado State Business Directory (hazardous trades, street level)",2,5,0.149,1.9
-1938-1956,C,41.2,27,10,1938,0.65,"Colorado State Business Directory (hazardous trades, street level)",5.4,5,0.131,1.9
-1938-1956,D,27.2,33,12,1938,1.21,"Colorado State Business Directory (hazardous trades, street level)",6.8,5,0.25,1.9
+1891-1905,A,5.7,0,0,1891,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,
+1891-1905,B,13.4,0,0,1891,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,
+1891-1905,C,41.2,0,0,1891,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,
+1891-1905,D,27.2,1,0,1891,0.04,"Colorado State Business Directory (hazardous trades, street level)",0.5,2,0.018,
+1906-1920,A,5.7,0,0,1906,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,3.8
+1906-1920,B,13.4,0,0,1906,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,3.8
+1906-1920,C,41.2,1,0,1906,0.02,"Colorado State Business Directory (hazardous trades, street level)",0.444444444444444,9,0.011,3.8
+1906-1920,D,27.2,6,1,1906,0.22,"Colorado State Business Directory (hazardous trades, street level)",1.11111111111111,9,0.041,3.8
+1921-1937,A,5.7,0,0,1921,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,5.3
+1921-1937,B,13.4,0,0,1921,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,5.3
+1921-1937,C,41.2,2,1,1921,0.05,"Colorado State Business Directory (hazardous trades, street level)",0.4,5,0.01,5.3
+1921-1937,D,27.2,6,2,1921,0.22,"Colorado State Business Directory (hazardous trades, street level)",1.4,5,0.051,5.3
+1938-1956,A,5.7,0,0,1938,0,"Colorado State Business Directory (hazardous trades, street level)",0,,0,2.7
+1938-1956,B,13.4,4,0,1938,0.3,"Colorado State Business Directory (hazardous trades, street level)",0.8,5,0.06,2.7
+1938-1956,C,41.2,13,5,1938,0.32,"Colorado State Business Directory (hazardous trades, street level)",2.6,5,0.063,2.7
+1938-1956,D,27.2,22,9,1938,0.81,"Colorado State Business Directory (hazardous trades, street level)",4.6,5,0.169,2.7
 1965-1980,A,5.7,2,0,1965,0.35,Directory of Colorado Manufacturers (hazardous sectors),0.222222222222222,9,0.039,13.8
 1965-1980,B,13.4,13,2,1965,0.97,Directory of Colorado Manufacturers (hazardous sectors),2.66666666666667,9,0.199,13.8
 1965-1980,C,41.2,52,15,1965,1.26,Directory of Colorado Manufacturers (hazardous sectors),11.1111111111111,9,0.27,13.8

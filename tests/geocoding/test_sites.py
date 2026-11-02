@@ -204,3 +204,12 @@ def test_county_from_tracts_overrides_zip_county():
                          geometry=[box(-105.0, 39.7, -104.9, 39.8), box(-104.9, 39.7, -104.8, 39.8)], crs=4326)
     s = pd.DataFrame({'lat': [39.75, 39.75, 40.5], 'lon': [-104.95, -104.85, -104.95], 'county': ['Adams', 'Portable Source', 'Weld']})
     assert export.county_from_tracts(s, T).tolist() == ['Denver', 'Adams', 'Weld']
+
+
+def test_address_match_same_zip_far_away_is_not_entity():
+    # the address key drops the street type ('450 KALAMATH DR' and '450 KALAMATH ST' share it): a same-ZIP record more than 250 m
+    # from the site is a different place, not the same entity (third audit, 2 Nov 2026)
+    M = run([site()], [reg('Other Name', 'tri', LAT0 + dlat(2000), LON0, address='450 KALAMATH DR', zip5='80204')])
+    assert M.iloc[0].match_basis == 'none'
+    M = run([site()], [reg('Other Name', 'tri', LAT0 + dlat(200), LON0, address='450 KALAMATH DR', zip5='80204')])
+    assert M.iloc[0].match_basis == 'same entity (name or address)'

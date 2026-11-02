@@ -1,0 +1,668 @@
+year,town,nkey,sector,name,street,verdict,street_fix,town_fix,name_fix,note
+1891,DENVER,GINNITYSELUMBERFIEDENVERDIRECTORYFILFIELDINGTHOMASBKKPRLAFLINRAND,Explosives,"GINNITY, -S ^E - LUMBER F IE DENVER DIRECTORY. F IL Fielding Thomas, bkkpr, Laflin & Rand",1316 18th,not_works,,,,"1316 18th is agency office (Emanuel mgr Fraser & Chalmers, Rand Drill, Laflin & Rand Powder); bookkeeper line"
+1891,DENVER,GAFFORTOTTO,Machine shop / machinery,Gaffort Otto,1728 35th,not_works,,,,"employee residence: machinist at Hendey & Meyer, ""r. 1728 35th"""
+1891,DENVER,COPANEUMANCALDWELLGANEUMANANDAPCALDWELL,Metal working,"Co. Pa Neuman & Caldwell, (G. A. Neuman and A. P. Caldwell,)",1115 8th av,fix_address,1115 W 8th av,,,"printed ""1115 8th av. w.""; W dropped"
+1891,DENVER,OBYRNEJOHNJ,Machine shop / machinery,O’Byrne John J,1518 Arapahoe,ok,,,,"own listing ""O'Byrne John J., machinist, 1518 Arapahoe"""
+1891,DENVER,GOOBACONGEORGEMDEALERINHARDWARESTOVESRANGESANDFURNACESTINAND,Metal working,"go o BACON GEORGE M., dealer in hardware, stoves, ranges and furnaces, tin and",1120 15th,ok,,,,"""tin and sheet iron worker, shop rear 1120 15th"""
+1891,DENVER,HEALEGEORGEHB,Metal working,Heale George H. B,1422 Larimer,ok,,,,"own listing ""tinner, rear 1422 Larimer"""
+1891,DENVER,WESTERNCHEMICALWORKSCO,Chemicals,Western Chemical Works Co,1106 15th,fix_address,,,Western Chemical Works Co,"1106 15th is Bengtson P A tailor; Western Chemical Works at Valverde Add. (office 1120 15th), no street printed"
+1891,DENVER,LEADWORKS,Smelting & refining,Lead Works,2747 Blake,ok,,,,"""Hughes & Harkison ... proprs, Colo. Lead Works, 2747 Blake"""
+1891,DENVER,MCPHEEMCGINNITYCRYRGDLUMBERRUTDENVERDIRECTORYRYARUTERCHARLESVICEPRESTA,Ore milling & sampling,"Mcphee &mcginnity, c°r-yr =,gdlumber RUT DENVERDIRECTORY. RYA Ruter Charles, vice*pres’t a",1310 18th,fix_address,S 9th cor 5th av,,Union Ore Sampling Co,"1310 18th is office; classified ""works, S. 9th, cor. 5th av."""
+1891,DENVER,BUTTONFLAHERTYCEBURTONANDDJFLAHERTYPROPRSQUEENCITYCORNICEWORKS,Metal working,"Button & Flaherty, (C. E. Burton and D. J. Flah erty,) proprs, Queen City Cornice Works",418 15th,ok,,,,"own listing ""Queen City Cornice Works, 418 15th"""
+1891,DENVER,KARTHCHARLESF,Metal working,? Karth Charles F,1330 26th,not_works,,,,"employee residence: tinner at Woodward & Scherrer Hardware, ""r. 1330 26th"""
+1891,DENVER,SNIDERR,Metal working,Snider R,1342 12th,fix_address,,,,"""Snider R., tinner, Burton & Flaherty"" has no address; 1342-44 12th is Snider Stone and Lime Co (employer is Queen City Cornice Works, 418 15th, row 10)"
+1891,DENVER,PLATINGWORKSJAMESRUSSELPROPRGOLDSILVERNICKELCOPPERBRONZEBRASSANDZINC,Metal working,"PLATING WORKS, James Russel, propr, gold, silver, nickel, copper, bronze, brass and zinc",1511 18th,ok,,,,"own listing ""Colorado Plating Works ... 1511 18th"""
+1891,DENVER,COLEAVYWILLIAM,Metal working,CO Leavy William,2114 Arapahoe,not_works,,,,"employee residence: tinner at Hynes & Keating, ""r. 2114 Arapahoe"""
+1891,DENVER,LEYNERJGEORGEMANUFACTURINGANDJOBBING,Machine shop / machinery,"LEYNER J GEORGE, manufacturing and jobbing",1613 Wazee,ok,,,,"own listing ""manufacturing and jobbing machinist ... 1613 Wazee"""
+1891,DENVER,LINCOLNEDGARR,Machine shop / machinery,Lincoln Edgar R,1120 16th,ok,,,,"machinist at A S Carter & Co novelty works/job printing, 1120 16th (employer works address)"
+1891,DENVER,DENVERELECTROTYPEANDSTEREOTYPE,Foundry,Denver Electrotype and Stereotype,1616 Blake,ok,,,,"""Denver Electrotype and Stereotype Foundry, 1616-1622 Blake"""
+1891,DENVER,COTAUBMANANDY,Metal working,CO Taubman Andy,224 16th,ok,,,,"tinner at Hinds & Andrus (Standard Heating Co, 224-226 16th); employer shop address"
+1891,DENVER,DENVERTYPEFOUNDRY,Foundry,DENVER TYPE FOUNDRY,1616 Blake,ok,,,,"own listing ""DENVER TYPE FOUNDRY ... 1616-1622 Blake"""
+1891,DENVER,IRONWORKSEVERDECKBERGEBURKHARDTANDGWINTERMANUFACTURERSOFWIREIRONAND,Foundry,"IRON WORKS, (E. Verdeckberg, E. Burkhardt and G. Winter,) manufacturers of wire, iron and",612 17th,ok,,,,"""Denver Wire and Iron Works ... 612-614 17th"""
+1891,DENVER,WALKERTHOMASCPROPRMIDLANDFOUNDRYANDMACHINEWORKS,Foundry,"Walker Thomas C., propr, Midland Foundry and Machine Works",1534 Delgany,ok,,,,"""propr, Midland Foundry and Machine Works, 1534 Delgany"""
+1891,DENVER,MEEROBERT,Machine shop / machinery,Mee Robert,847 Water,not_works,,,,"employee residence: machinist D&RG RR, ""r. 847 Water"""
+1891,DENVER,COWELCHAUSTINJ,Metal working,CO Welch Austin J,224 16th,ok,,,,"tinner at Hinds & Andrus (Standard Heating Co, 224-226 16th); employer shop address"
+1892,DENVER,AKERERATAILORI8I2CHAMPADAMSMRSMARIEEJMUAKRONCARRIAGEWORKS,Transportation equipment,"Akerer, A,tailor, i8i2Champ Adams, Mrs Marie E J, mu­ Akron Carriage Works",1937 Curtis,ok,,,,"""Akron Carriage Works, M A Brak prop, 1937-43 Curtis""; name prefixed by neighbours"
+1892,DENVER,AUSTINPERCYATTY26GOODBLKBACONGEOMFURNACESAND,Metal working,"Austin, Percy,atty, 26Goodblk Bacon, Geo M, furnaces and",1544 Stout,ok,,,,"""Bacon, Geo M, furnaces and tinner, 1544 Stout""; name prefixed by Austin Percy"
+1892,DENVER,BOELLERTMATHBLACKSMITHBLAKEFO,Petroleum refining & asphalt,"Boellert, Math, blacksmith, Blake, FO",1909 Blake,not_works,,,,"1909 Blake is ""Boellert, Math, blacksmith""; asphalt is Blake F O dealer ""asphalt, coal, iron, 2 Patterson & Thomas blk"""
+1892,DENVER,CLEARYPJBOILERSHOP,Machine shop / machinery,"Cleary, P J boiler shop",722 14th,fix_address,5th & Wazee,,Cleary P J,"""Cleary, P J, boiler shops, 5th and Wazee""; 722 14th is Clough A A physician"
+1892,DENVER,WILSONCOPRPS1135LARDENVERCONSOLIDATEDGASCO,Manufactured gas,"Wilson&Co, pr’ ps, 1135Lar Denver Consolidated Gas Co",506 16th,fix_address,,,Denver Consolidated Gas Co,"506 16th is Denver Candy Co; gas co lists only office ""F P McManus sec, 515 17th"", works not printed"
+1892,DENVER,DOWELLCHANC14THARAPDENVERSTEAMLAUNDRYCODENVERVARIETYMACHINESHOP,Machine shop / machinery,"Dowell, chanc, 14th &Arap Denver Steam Laundry Co, Denver Variety Machine Shop",1819 Welton,fix_address,2462 Blake,,Denver Variety Machine Shops,"1819 Welton is Denver Steam Laundry; Variety Machine Shops ""Thomas Crow, prop, 2462-74 Blake"""
+1892,DENVER,GOTTLIEBJOSEPHREALESTATEREPAIRSCHEMICALCO,Chemicals,"Gottlieb, Joseph, real estate, REPAIRS CHEMICAL CO",1330 17th,not_works,,,,"1330 17th is Gottlieb Joseph real estate; ""...CHEMICAL CO."" is fragment of Atlas Powder agent ad (W C Matthews)"
+1892,DENVER,ANDORECONCENTRATINGGRAVESVINTONCO,Ore milling & sampling,and ore concentrating Graves & Vinton Co,1745 Blake,doubtful,,,Grainger A P,"1745 Blake is ""Grainger, A P, dry stamping and ore concentrating machinery"" (Graves & Vinton are bank agents); maker vs dealer not shown"
+1892,DENVER,COLLECTIONSCOLOREDLEAD,Paint & varnish,COLLECTIONS ColoredL ead,1525 Platte St,not_works,,,,"L A Richards & Co ad: wall paper, paints, oils, glass, ""wholesale and retail"" dealer"
+1892,DENVER,MAYNELONGLLOYDWMLLOYDWMBLORD0ALOBACHEBCOLLECTIONSCOLOREDLEAD,Paint & varnish,"& Mayne, Long, Lloyd, Wm, Lloyd, Wm B, Lord, 0 A, Lobach, E B, COLLECTIONS Colored Lead",1525 Platte St,not_works,,,,"L A Richards & Co ad repeated: paint/wall paper dealer, wholesale and retail"
+1892,DENVER,LYNCHCOWHGRAINANDMCCLASKEYRCARRIAGEANDWAGONWORKS,Transportation equipment,"Lynch & Co, wh grain and McClaskey, R, carriage and wagon works",1245 10th,ok,,,,"""McClaskey, R, carriage and wagon works, 1245 10th""; name prefixed by Lynch & Co"
+1892,DENVER,MAGINNEJ,Transportation equipment,"Maginn, EJ",1516 Wewatta,ok,,,,"own listing ""Maginn, EJ, carriage maker, 1516 Wewatta"""
+1892,DENVER,S3NOCKGARSIDE,Machine shop / machinery,{S3 Nock &Garside,1415 18th,ok,,,,"own listing ""Nock & Garside, machinists, 1415 18th"""
+1892,DENVER,ESTABLISHEDILRAVENSCROFTFRANKC,Machine shop / machinery,"Established il Ravenscroft, Frank C",1605 15th,ok,,,,"own listing ""Ravenscroft, Frank C, machinist, 1605 15th""; ad fragment prefix"
+1910,BOULDER,WATTSHUGHF,Assay office,Watts Hugh F,923 Pearl,ok,,,,"own listing ""Watts Hugh F, assayer, 923 Pearl"""
+1910,COLORADO SPRINGS,HASSELLIRONWORKSCO,Iron & steel works,Hassell Iron Works Co,15 S Tejon,fix_address,,,,15 S Tejon is Hayner Fred G jeweler; Hassell Iron Works address not printed in 1910 (1911: 331 W Cimarron)
+1910,DENVER,SUPTTHEDENVERGASELECTRICBARRWB,Manufactured gas,supt The Denver Gas & Electric BARR W B,405 17th,not_works,,,,405-15 17th is Denver Gas & Electric general office (officers' lines); gas works not at this address; name junk (Barr W B)
+1910,DENVER,COLORADOMODERNGASCO,Manufactured gas,COLORADO MODERN GAS CO,1734 Welton,doubtful,,,,"1734 Welton is Colorado Land Headquarters (Wantland, Shelton); Colorado Modern Gas Co line cut, address and nature not shown"
+1910,DENVER,VERGASELECTRICCO,Manufactured gas,ver Gas & Electric Co,405 17th,not_works,,,,405 17th is Denver Gas & Electric general office (pres Doherty line); not the gas works
+1911,BOULDER,WATTSHUGHF,Assay office,Watts Hugh F,923 Pearl,ok,,,,"own listing ""Watts Hugh F, assayer, 923 Pearl"""
+1911,COLORADO SPRINGS,PRES,Metal working,pres,210 N Tejon,fix_name,,,Engel Fred,"""Engel Fred, tinner, rear 210 N Tejon""; name parsed as ""pres"" (El Paso Club officers)"
+1911,DENVER,THEWESTERNCHEMICALCO,Chemicals,The Western Chemical Co,2701 Welton,fix_address,S Pecos & W Bayaud av,,The Western Chemical Co,"2701 Welton is Atlas Drug Co; Western Chemical Co (F R Ashley pres) at ""S Pecos and W Bayaud av"""
+1911,DENVER,ANCECO,Manufactured gas,ance Co,1524 Market,not_works,,,,"1524 Market is Barkley Comm Co; ""Gas & Electric"" is Bankers Intl Life Assurance Co's building address"
+1911,DENVER,BURLINGAMECOEE,Assay office,Burlingame & Co E E,1736 Lawrence,ok,,,,"own listing ""Burlingame & Co E E, assayers, 1736 Lawrence"""
+1911,DENVER,DONALDSONSECASSAYERS,Assay office,Donaldson sec; assayers,507 14th,not_works,,,,"507 14th is Denver Decorating Co; ""assayers, chemists and school supplies"" is Denver Fire Clay Co supply house, 1742-46 Champa"
+1911,DENVER,GENLMGR,Metal working,genl mgr,1710 Welton,fix_address,2217 Market,,Fair Cornice Works Co The C W,"1710 Welton is Evans Coal & Land Co; Fair Cornice Works ""mfrs galvanized iron cornice ... 2217-31 Market"""
+1911,DENVER,FLAHERTYPJ,Metal working,Flaherty P J,1417 Fox,ok,,,,"own listing ""Flaherty P J, tinner, 1417 Fox"""
+1911,DENVER,GOLDBERGBROS,Metal working,Goldberg Bros,1842 Calif,fix_address,1431 Lawrence,,,"""Goldberg Bros, sheet metal wks, 1431 Lawrence""; 1842 Calif is Globe Printing Co"
+1911,DENVER,GLOBESHEETMETALWORKS1413,Metal working,Globe Sheet Metal Works 1413,1509 Market,fix_address,1413 Platte,,Globe Sheet Metal Works,"""Globe Sheet Metal Works, 1413 Platte""; 1509 Market is Goldberg & Berger commission"
+1911,DENVER,NENMANALLENCHEMICALCO1434,Chemicals,Nenman-Allen Chemical Co. 1434,536 15th,fix_address,1434 Glenarm,,Neuman-Allen Chemical Co,"""Neuman-Allen Chemical Co, 1434 Glenarm""; 536 15th is New Home Sewing Machine Co"
+1911,DENVER,NOCKGARSIDE,Machine shop / machinery,NOCK & GARSIDE,2330 15th,fix_address,1844 Wazee,,,"""Nock & Garside, machinists, mfrs elevators, 1844-50 Wazee""; 2330 15th is North Denver Hdw & Htg Co"
+1911,DENVER,QUEENCITYBRASSWORKS,Foundry,Queen City Brass Works,1431 Blake,ok,,,,"own listing ""Queen City Brass Works, 1431 Blake"""
+1911,DENVER,RICHARDSJW,Assay office,Richards J W,1118 19th,ok,,,,"own listing ""Richards J W, assay, 1118 19th"""
+1911,DENVER,SILVERSTATEPLATINGCO,Metal working,Silver State Plating Co,1562 14th,ok,,,,"own listing ""Silver State Plating Co, 1562 14th"" (same in 1912)"
+1911,DENVER,SOMERVILLEBRASSFOUNDRY,Foundry,Somerville Brass Foundry,1749 S Broadway,fix_address,1749 Blake,,,"""Somerville Brass Foundry, 1749 Blake""; 1749 S Broadway is a merge with Snively A D ""482 S Broadway"""
+1911,DENVER,SOUTHDENVERICECO,Metal working,South DenverIceCo,1019 19th,fix_name,,,Spangelberger R A,"""Spangelberger R A, tinner, 1019 19th""; name is neighbour South Denver Ice Co"
+1911,DENVER,VONSCHULTZLOW,Assay office,Von Schultz & Low,1746 Champa,ok,,,,"own listing ""Von Schultz & Low, assayers, 1746 Champa"""
+1911,DENVER,GASELECTRICBLCTG,Manufactured gas,Gas & Electric blctg,600 16th,not_works,,,,"600 16th is Western Dry Goods Co; ""Gas & Electric bldg"" is Western Detective Agency's address"
+1911,DENVER,TYPEFOUNDRY,Foundry,Type Foundry,1621 Blake,ok,,,,"""Willoughby L F, mgr Denver Type Foundry, 1621 Blake"""
+1911,FORT COLLINS,FORTCOLLINSRUBBERWORKS,Rubber,Fort Collins Rubber Works,120 W Oak,ok,,,,"own listing ""Fort Collins Rubber Works, 120 W Oak"""
+1911,FORT COLLINS,POUDREVALLEYGASCO,Manufactured gas,Poudre Valley Gas Co,115 Remington,ok,,,,"own listing ""Poudre Valley Gas Co, B F Hottel mgr, 115 Remington"""
+1911,DENVER,OGDENASSAYCO,Assay office,OGDEN ASSAY CO,1536 Court Pl,ok,,,,"own ad ""OGDEN ASSAY CO., 1536 Court Place"""
+1911,DENVER,ELECTROPLATING,Metal working,ELECTROPLATING,608 14th,fix_name,,,Jones Wm,"classified ELECTROPLATING: ""Denver, Jones Wm, 608 14th""; name is the heading"
+1911,DENVER,LEADWORKS,Smelting & refining,LEAD WORKS,1422 Curtis,fix_address,1809 Blake,,Bogue Lead Co,"1422 Curtis is Denver Gas Lamp & Mantel Co; under LEAD WORKS heading ""Bogue Lead Co, 1809-15 Blake"""
+1911,BOULDER,TAYLBRBRUNTONSAMPLINGWORKS,Ore milling & sampling,“ Taylbr & Brunton Sampling Works,814 Pearl,fix_name,,,Chamberlain-Dillingham Ore Co,classified sampling works: Taylor & Brunton is the Aspen entry; Boulder entry at 814 Pearl is Chamberlain-Dillingham Ore Co
+1911,DENVER,DENVERFALRCORNICEWORKSCW,Metal working,Denver.FAlR CORNICE WORKS C W,1433 Lawrence,fix_address,2217 Market,,Fair Cornice Works Co The C W,"1433 Lawrence is Denver Rubber Co; Fair Cornice Works ""2217-31 Market"""
+1912,BOULDER,DEVELINEFOUNDRY,Foundry,DEVELINE FOUNDRY,902 Pearl,ok,,,,"own listing ""Develine Foundry, William Euler Jr mgr, 902-906 Pearl"""
+1912,BOULDER,AWATTSHUGHF,Assay office,a Watts Hugh F,923 Pearl,ok,,,,"own listing ""Watts Hugh F, assayer, 923 Pearl"""
+1912,PUEBLO,FAIRVIEWTANNERY,Tannery,FAIRVIEW TANNERY,622 N Main,ok,,,,"own listing ""Fairview Tannery, W F Doertenbach prop, 622 N Main"""
+1912,PUEBLO,PNEBLOMACHINEWORKS,Machine shop / machinery,Pneblo Machine Works,107 N Victoria,ok,,,,"own listing ""Pueblo Machine Works, J E McFeely prop, 107 N Victoria"""
+1912,PUEBLO,PUEBLOSHEETMETALWORKS,Metal working,Pueblo Sheet Metal Works,116 S Union,ok,,,,"own listing ""Pueblo Sheet Metal Works, J F Long & Carnahan props, 116 S Union"""
+1912,DENVER,CARDIRONWORKSCOCS,Iron & steel works,Card Iron Works Co C S,1607 Wazee,ok,,,,"own listing ""Card Iron Works Co C S, 1607 Wazee"""
+1912,DENVER,DEGENHARDTJA,Transportation equipment,Degenhardt J A,1406 16th,fix_address,1408 Wazee,,,"""Degenhardt J A, wagon maker, 1408 Wazee"" (1911/13/14 same); 1406 16th is Dayton Moneyweight Scales Co"
+1912,DENVER,DENVERIRONWORKSFOUNDRYDENVERMASTERPLUMBERS,Foundry,Denver Iron Works & Foundry DENVER MASTER PLUMBERS,1827 Wynkoop,ok,,,,"""Denver Iron Works & Foundry Co, 1827 Wynkoop""; name merged with Denver Master Plumbers Assn"
+1912,DENVER,ELBESG,Foundry,ELBE S G,600 17th av,not_works,,,,"""Elbe S G, machinery, foundry supplies, concrete mixers"": dealer; 600 17th av is Edwards Drug Co"
+1912,DENVER,FLAHERTYPJ,Metal working,Flaherty P J,1417 Fox,ok,,,,"own listing ""Flaherty P J, tinner, 1417 Fox"""
+1912,DENVER,FOXM,Metal working,FoxM,933 15th,fix_address,2625 W Colfax av,,Fox M,"""Fox M, tinner, 2625 W Colfax av""; 933 15th is Ford Hat Co"
+1912,DENVER,FROSTOSCARJ,Assay office,Frost Oscar J,511 18th,ok,,,,"own listing ""Frost Oscar J, assayer, 511 18th"""
+1912,DENVER,GOLDBERGBROS,Metal working,GOLDBERG BROS,434 17th,fix_address,1431 Lawrence,,,"""Goldberg Bros, sheet metal workers, 1431 Lawrence""; 434 17th is Globe Inv Co"
+1912,DENVER,GUTTAPERCHARUBBERMFGCO,Rubber,Gutta Percha & Rubber Mfg Co,800 19th av,not_works,,,,"Gutta Percha & Rubber Mfg Co (NY maker) branch, ""506 Tramway B""; 800 19th av is Groves Bros grocers"
+1912,DENVER,LEADWORKSCO,Smelting & refining,Lead Works Co,1516 Blake,ok,,,,"own listing ""Colorado Lead Works Co, Thos P Hughes pres ... 1516 Blake"""
+1912,DENVER,OBRIENDL,Metal working,O ’Brien D L,3827 Walnut,ok,,,,"own listing ""O'Brien D L, tinner, 3827 Walnut"""
+1912,DENVER,SILVERSTATEPLATINGCO,Metal working,Silver State Plating Co,1562 14th,ok,,,,"own listing ""Silver State Plating Co, 1562 14th"""
+1912,DENVER,FINISHINGANDCOPPERPLATING,Metal working,finishing and copper plating,1638 Blake,fix_name,,,Slack-Horner Brass Mfg Co The,"""Slack-Horner Brass Mfg Co ... brass finishing and copper plating, 1638 Blake""; name is a text fragment"
+1912,DENVER,USALEBYTHEGAZETTEERPUBLISHSPANGELBERGERGARDELL,Metal working,u sale by The Gazetteer Publish­ Spangelberger & Gardell,1019 19th,ok,,,,"own listing ""Spangelberger & Gardell, tinners, 1019 19th""; ad fragment prefix"
+1913,DENVER,ASPHALTUM,Petroleum refining & asphalt,ASPHALTUM,1727 California,not_works,,,,"""Blanc Victor, 1727 California"" is in the Assayers column beside ASPHALTUM heading; name is the heading"
+1913,DENVER,DIAMONDRUBBERCO,Rubber,“ Diamond Rubber Co,1633 Court,not_works,,,,"Diamond Rubber Co (Akron tire maker) branch under AUTO TIRES, ""1633 Court Pl"": sales branch"
+1913,DENVER,MANDYER,Assay office,Mandy E R,115 E 5th,other_town,,LEADVILLE,,"page 116 is the Leadville section (""Harrison av"", ""Leadville Novelty""); ""Mandy E R, assayer, 115 E 5th"""
+1913,DENVER,MIDLANDCOALCOKECO,Coke works,Midland Coal & Coke Co,129 W 8th,not_works,,,,"Leadville section; Midland Coal & Coke Co (Lofgren mgr, Chestnut & Spruce) is a fuel dealer; 129 W 8th is New Emmet Mines Co"
+1913,BOULDER,HWANGELINPRESTREAS,Foundry,H Wangelin pres-treas,902 Pearl,fix_name,,,Develine Foundry,"""Develine Foundry, William Euler Jr mgr, 902-06 Pearl""; name is Daily Herald officers"
+1913,BOULDER,VELINEFOUNDRY,Foundry,veline Foundry,902 Pearl,ok,,,,"own listing ""[De]veline Foundry, 902-06 Pearl"""
+1913,BOULDER,FEDERALGASCO,Manufactured gas,Federal Gas Co,1230 Walnut,ok,,,,"own listing ""Federal Gas Co, 1230 Walnut"""
+1913,BOULDER,TREBILCOCKHAROLDW,Assay office,Trebilcock Harold W,923 Pearl,fix_name,,,Watts Hugh F,"""Watts Hugh F, assayer and chemist, 923 Pearl""; Trebilcock is draftsman, 1136 Spruce"
+1913,COLORADO SPRINGS,BOAKRUBBERCO,Rubber,Boak Rubber Co,17 S Cascade av,not_works,,,,Boak Rubber Co listed under RUBBER TIRES classified: tire dealer
+1913,PUEBLO,FAIRVIEWTANNERY,Tannery,Fairview Tannery,622 N Main,ok,,,,"own listing ""Fairview Tannery, W F Doertenbach prop, 622 N Main"""
+1913,PUEBLO,IRONCITYTOWELLINENSUPPLY,Metal working,Iron City Towel & Linen Supply,1329 E 7th,fix_name,,,Joxen Wm,"""Joxen Wm, wire works, rear 1329 E 7th""; name is neighbour Iron City Towel & Linen Supply"
+1913,PUEBLO,MAPESCHAS,Metal working,Mapes Chas,206 S Union,ok,,,,"own listing ""Mapes Chas, tinner, 206 S Union"""
+1913,DENVER,ARTHUREDWINF,Iron & steel works,Arthur Edwin F,1325 24th,fix_name,,,Atlas Wire & Iron Works Co,"""Atlas Wire & Iron Works Co, 1325 24th""; Arthur Edwin F is Continental Audit Co, 712 Continental bldg"
+1913,DENVER,BROTHERTONCA,Metal working,Brotherton C A,1319 20th,ok,,,,"own listing ""Brotherton C A, tinner, 1319 20th"""
+1913,DENVER,BROWNEIRONWORKSCO,Iron & steel works,Browne Iron Works Co,25 Lari,ok,,,,"own listing ""Browne Iron Works Co, 25 Larimer"""
+1913,DENVER,DICKSONEA,Machine shop / machinery,DicksonEA,925 21st,ok,,,,"own listing ""Dickson E A, machinist, 925 21st"""
+1913,DENVER,DORRCYANIDEMACHINERY,Chemicals,DORR CYANIDE MACHINERY,626 17th,not_works,,,,"Dorr Cyanide Machinery Co office ""733-34 First Nat Bank B""; 626 17th is Dorr Optical Co"
+1913,DENVER,FREUNDCOGEO,Metal working,Freund &CoGeo,1542 Blake,ok,,,,"own listing ""Freund & Co Geo, tinner, 1542 Blake"""
+1913,DENVER,FROSTOSCARJ,Assay office,FrostOscarJ,511 18th,ok,,,,"own listing ""Frost Oscar J, assayer, 511 18th"""
+1913,DENVER,HEINSHONAE,Machine shop / machinery,HeinshonAE,1621 Blake,ok,,,,"own listing ""Heinshon A E, machinist, 1621 Blake"""
+1913,DENVER,LERIRONWORKSCO,Iron & steel works,ler & Iron Works Co,1516 Blake,fix_address,3d & W Colfax av,,Denver Boiler & Iron Works Co,"""Denver Boiler & Iron Works Co, cor 3d st & W Colfax av""; 1516 Blake is Hug Water Wheel Co"
+1913,DENVER,THEDENVERGASELECTRICLIGHTCOMPANY,Manufactured gas,The Denver Gas & Electric Light Com pany,3024 W 22d av,fix_address,,,Crown Tar Factory (Denver Gas & Electric Light Co),"Crown Tar Factory ad, factory address not printed; 3024 W 22d av is McFadden & Son C L"
+1913,DENVER,RICHARDSJW,Assay office,RichardsJW,1118 19th,ok,,,,"own listing ""Richards J W, assayer, 1118 19th"""
+1913,DENVER,SCHERERFRANK,Metal working,SchererFrank,726 14th,fix_address,1261 Curtis,,,"""Scherer Frank, tinner, 1261 Curtis""; 726 14th is Scherrer E A physician"
+1913,DENVER,SCHMITTWC,Metal working,SchmittWC,1422 16th,ok,,,,"own listing ""Schmitt W C, tinner, 1422 16th"""
+1913,DENVER,SCOTTWE,Machine shop / machinery,ScottWE,1520 18th,ok,,,,"own listing ""Scott W E, machinist, 1520 18th"""
+1913,DENVER,SHANKAHEARN,Machine shop / machinery,Shank &Ahearn,1417 18th,ok,,,,"own listing ""Shank & Ahearn, machinists, 1417 18th"""
+1913,DENVER,WALTERLOUISH,Metal working,WALTER LOUIS H,1822 Welton,fix_address,1426 Blake,,,"""Walter Louis H, galvanized iron and copper cornice ... 1426 Blake""; 1822 Welton is Ward Furniture & Auction Co"
+1913,DENVER,WESTERNSHOERUBBERCO,Rubber,Western Shoe & Rubber Co,1437 Lawrence,not_works,,,,"""Western Shoe & Rubber Co, wh shoes, 1437 Lawrence"": wholesale shoe house"
+1913,DENVER,WESTERNSMELTINGWORKS,Smelting & refining,WESTERN SMELTING WORKS,1558 Wazee,fix_address,1420 Blake,,,"""Western Smelting Works, mfrs solder, lead and zinc, 1420 Blake""; 1558 Wazee is Western Wheeled Scraper Co"
+1913,DENVER,TYPEFOUNDRY,Foundry,Type Foundry,1621 Blake,ok,,,,"""Willoughby L F, mgr Denver Type Foundry, 1621 Blake"""
+1913,DENVER,WOODHE,Assay office,Wood H E,1734 Arapa,ok,,,,"own listing ""Wood H E, assayer, 1734 Arapahoe"""
+1914,BOULDER,COLORADOSANITARIUMFOODCO,Machine shop / machinery,Colorado Sanitarium Food Co,959 Walnut,fix_name,,,Craig Clarence H,"interleaved cols: 'Craig Clarence H, machine shop, 959 Walnut'; Colorado Sanitarium Food Co is at 4th & Maxwell"
+1914,BOULDER,NATLSTATEFEDERALGASCO,Manufactured gas,Natl State Federal Gas Co,1230 Walnut,doubtful,,,Federal Gas Co,"gas co at downtown 1230 Walnut, no works stated; office vs gas works not shown"
+1914,BOULDER,LINEFOUNDRY,Foundry,line Foundry,902 Pearl,ok,,,,"own listing 'Develine Foundry, 902-06 Pearl' (name truncated)"
+1914,COLORADO SPRINGS,HONEYVERNON,Metal working,Honey Vernon,130 N Tejon,ok,,,,"alternating cols: 'Honey Vernon, sheet metal works, 130 N Tejon'"
+1914,COLORADO SPRINGS,KESTERROBBINS,Metal working,Kester & Robbins,107 E Kiowa,ok,,,,"own listing 'sheet metal works, rear 107 E Kiowa'"
+1914,DENVER,AINSWORTHSONSWM,Assay office,Ainsworth & Sons Wm,2151 Lawrence,not_works,,,,"listed under ASSAY BALANCES (1917): balance/instrument maker, not an assay office"
+1914,DENVER,BANNERCHEMICALCO,Chemicals,Banner Chemical Co,2301 15th,ok,,,,"own listing 'Banner Chemical Co, 2301 15th'"
+1914,DENVER,IBROWNLB,Iron & steel works,© i £ BROWN L B,25 Lari,fix_name,,,Browne Iron Works Co,"'Browne Iron Works Co, 25 Larimer' (classified p1369); L B Brown is neighbour"
+1914,DENVER,COLLIERSONPF,Foundry,COLLIER & SON P F,1434 Blake,fix_name,,,Colorado Brass Foundry Co,"'Colorado Brass Foundry Co, 1434 Blake'; P F Collier & Son is neighbour publisher"
+1914,DENVER,DAWSONWH,Metal working,Dawson W H,1937 Larimer,ok,,,,"own listing 'sheet metal works, 1937 Larimer'"
+1914,DENVER,DELINECO,Chemicals,Deline & Co,1517 Stout,fix_name,,,Dencolo Chemical Co,1517 Stout is 'Dencolo Chemical Co'; Deline & Co (novelty works) is neighbour
+1914,DENVER,ELLSWORTHAUTOCO,Machine shop / machinery,Ellsworth AutoCo,2012 Curtis,fix_name,,,Emery & Schultze,"'Emery & Schultze, machine shop, 2012 Curtis'; Ellsworth Auto Co is neighbour"
+1914,DENVER,FORTNERLA,Metal working,Fortner L A,3492 W 38th,ok,,,,"own listing 'Fortner L A, tinner, 3492 W 38th'"
+1914,DENVER,GARTMANCE,Machine shop / machinery,Gartman C E,1414 15th,ok,,,,"own listing 'Gartman C E, machinist, 1414 15th'"
+1914,DENVER,GLOBESHEETMETALWORKS,Metal working,GLOBE SHEET METAL WORKS,2262 Glenarm,ok,,,,"own listing 'Globe Sheet Metal Works, 2262 Glenarm pl'"
+1914,DENVER,HILDEBRANDE,Metal working,Hildebrand E,634 18th,ok,,,,"own listing 'Hildebrand E, tinner, 634 18th'"
+1914,DENVER,HINGLEYJA,Machine shop / machinery,Hingley J A,1816 Blake,ok,,,,"own listing 'Hingley J A, machinist, 1816 Blake'"
+1914,DENVER,INDEPENDENTPOWDERCO,Explosives,INDEPENDENT POWDER CO,3654 Navajo,not_works,,,,3654 Navajo is Ideal Theatre; Independent Powder Co of Mo is a dist mgr office in Railway Exchange
+1914,DENVER,HERFM,Foundry,Her F M,242 W Florida,ok,,,,"own listing 'foundry, 242 W Florida' (name likely Iler F M)"
+1914,DENVER,KOBEGF,Metal working,Kobe! G F,1927 Arapahoe,ok,,,,"own listing 'Kobel G F, tinner, 1927 Arapahoe'"
+1914,DENVER,LOBACHEB,Metal working,Lobach E B,1219 17th,ok,,,,"own listing 'tinner, rear 1219 17th'"
+1914,DENVER,JOLOWITHIRONWORKSCO,Iron & steel works,jo Lowith Iron Works Co,1 Larimer,ok,,,,"own listing 'Lowith Iron Works Co, 1 Larimer' (also classified p1369)"
+1914,DENVER,NOOKGARSIDE,Machine shop / machinery,NOOK & GARSIDE,1844 Wazee,ok,,,,"own listing 'Nock & Garside, machinists, mfrs elevators, 1844-50 Wazee'"
+1914,DENVER,NOCKGARSIDE,Machine shop / machinery,NOCK & GARSIDE,1844 Wazee,ok,,,,"own listing 'Nock & Garside, machinists, mfrs elevators, 1844-50 Wazee'"
+1914,DENVER,QUEENCITYBRASSWORKS,Foundry,Queen City Brass Works,1431 Blake,ok,,,,"own listing 'Queen City Brass Works, 1431 Blake'"
+1914,DENVER,QUEENCITYFOUNDRYCO,Foundry,QUEEN CITY FOUNDRY CO,1633 Blake,fix_address,4th & Wazee,,,Queen City Foundry Co is at '4th & Wazee'; 1633 Blake is Colorado Plumbing Supply Co
+1914,DENVER,REGENTRUBBERCO,Rubber,Regent Rubber Co,1320 Lawrence,not_works,,,,"listed under AUTOMOBILE TIRES dealers (1518 Court pl); tire dealer, not a rubber works"
+1914,DENVER,RICEWE,Manufactured gas,Rice W E,435 15th,not_works,,,,Rice W E sells gas & electric fixtures (1623 Market); 435 15th is Rettig-Rogers Co poultry
+1914,DENVER,SCHMITTWC,Metal working,Schmitt W C,1551 Blake,ok,,,,"own listing 'Schmitt W C, tinner, 1551 Blake'"
+1914,DENVER,FINISHINGANDCOPPERPLATING,Metal working,finishing and copper plating,1638 Blake,fix_name,,,Slack-Horner Brass Mfg Co The,"'Slack-Horner Brass Mfg Co ... brass finishing and copper plating, 1638 Blake'"
+1914,DENVER,SOMERVILLEBRASSFOUNDRY,Foundry,Somerville Brass Foundry,1132 15th,fix_address,1749 Blake,,,"'Somerville Brass Foundry, 1749 Blake'; 1132 15th is Snyder Mrs L A, hairdresser"
+1914,DENVER,WESTERNSMELTINGWORKS,Smelting & refining,WESTERN SMELTING WORKS,933 16th,fix_address,1420 Blake,,,"'Western Smelting Works, mfrs solder, lead and zinc, 1420 Blake'; 933 16th is Western Millinery Co"
+1914,DENVER,WHITEBROS,Metal working,White Bros,1827 Arapa,ok,,,,"own listing 'White Bros, tinners, 1827 Arapahoe'"
+1914,DENVER,WOODHE,Assay office,Wood H E,1734 Arapa,ok,,,,"own listing 'Wood H E, assayer, 1734 Arapahoe'"
+1914,GRAND JUNCTION,SLOPEFOUNDRYCO,Foundry,Slope Foundry Co,119 S 4th,fix_address,1st av bet 7th & 8th,,Western Slope Foundry Co,"'Slope Foundry Co, 1st av bet 7th & 8th'; 119 S 4th is Western Union Tel Co"
+1914,GREELEY,COOFNEWYORK,Machine shop / machinery,CO OF NEW YORK,906 8th av,fix_address,917 6th av,,DeBolt W R,"'DeBolt W R, machine shop, 917 6th av'; 906 8th av is Continental Insurance agts"
+1914,GREELEY,HOMEGASELECTRICCO,Manufactured gas,Home Gas & Electric Co,619 8th av,doubtful,,,,"utility listing 'C A Fitch sec-mgr, 619 8th av'; office vs gas works not shown"
+1914,PUEBLO,MAPESCHAS,Metal working,Mapes Chas,206 S Union,ok,,,,"own listing 'Mapes Chas, tinner, 206 S Union'"
+1914,PUEBLO,CHINERY,Metal working,chinery,104 E 4th,fix_address,S Santa Fe av near D & R G tracks,,Pueblo Foundry & Machine Co,"'Pueblo Foundry & Machine Co ... boiler and sheet iron work, east side of S Santa Fe av'; 104 E 4th is Pueblo Motor Co"
+1914,BOULDER,BOULDEI,Iron & steel works,Bouldei*,945 Walnut,fix_name,,,Boulder Iron Works Co,"classified 'Boulder, Boulder Iron Works Co, 945 Walnut'; name is the town prefix"
+1914,DENVER,ATLASWIREIRONWORKSCO,Iron & steel works,“ Atlas Wire & Iron Works Co,1325 24th,ok,,,,"classified 'Atlas Wire & Iron Works Co, 1325 24th'"
+1915,DENVER,SPRIGGSONZT,Machine shop / machinery,Sprigg & Son Z T,1942 Arapahoe,ok,,,,"own listing 'Sprigg & Son Z T, machine shop, 1942 Arapahoe'"
+1915,FORT COLLINS,GARBEWF,Foundry,Garbe W F,135 W Mountain av,ok,,,,"own listing 'foundry and machine shop, 135 W Mountain av'"
+1915,BOULDER,COXCOWL,Machine shop / machinery,Cox & Co W L,1002 Pearl,ok,,,,"own listing 'machine shop, garage, 1002 Pearl'"
+1915,BOULDER,WATTSHUGHF,Assay office,Watts Hugh F,923 Pearl,ok,,,,"own listing 'Watts Hugh F, assayer, 923 Pearl'"
+1915,CANON CITY,CALDWELLJAS,Manufactured gas,Caldwell Jas,114 N 5th,doubtful,,,Canon Gas Co,"114 N 5th is 'Canon Gas Co' (Caldwell Jas is shoe shining, 5th & Main); office vs gas works not shown"
+1915,COLORADO SPRINGS,HASSELLIRONWORKSCO,Iron & steel works,► Hassell Iron Works Co,1432 Wood av,fix_address,519 Sierra Madre,,,"'Hassell Iron Works Co, W W Hassell pres ..., 519 Sierra Madre'; 1432 Wood av is Heizer & Son real estate"
+1915,COLORADO SPRINGS,WAGONMFR,Transportation equipment,wagon mfr,125 S Weber,fix_name,,,Schmitt Jacob,"'Schmitt Jacob, carriage and wagon mfr, auto repairs, 125-7 S Weber'"
+1915,DENVER,BOETTOB,Metal working,Boetto B,824 16th,fix_address,2533 19th,,,"'Boetto B, tinner, 2533 19th'; 824 16th is Bloom Jewelry Co"
+1915,DENVER,BOSSRUBBERCO,Rubber,BOSS RUBBER CO,2835 Welton,not_works,,,,"'G & J tires and accessories, wholesale and retail, tire repairing, 1548-52 Broadway'; 2835 Welton is Bond A F"
+1915,DENVER,DAVISCHEMICALCO,Chemicals,Davis Chemical Co,1340 Law,ok,,,,"own listing 'Davis Chemical Co, 1340-46 Lawrence'"
+1915,DENVER,DENVERGASELECTRICDENVERIRONWORKSFOUNDRYCO,Foundry,DENVER GAS & ELECTRIC Denver IronW orks & Foundry Co,1827 Wynkoop,ok,,,,"'Denver Iron Works & Foundry Co, 1827 Wynkoop'; name prefixed by Denver Gas & Electric"
+1915,DENVER,FISHAE,Machine shop / machinery,Fish A E,1932 Curtis,ok,,,,"own listing 'Fish A E, machinist, 1932 Curtis'"
+1915,DENVER,FLAHERTYPJ,Metal working,Flaherty P J,1417 Fox,ok,,,,"own listing 'Flaherty P J, tinner, 1417 Fox'"
+1915,DENVER,FOXP,Metal working,Fox P,2752 W Colfax,ok,,,,"own listing 'Fox P, tinner, 2752 W Colfax'"
+1915,DENVER,FROSTOJ,Assay office,< Frost O J,511 18th,ok,,,,"own listing 'Frost O J, assayer, 511 18th'"
+1915,DENVER,GREUBELTC,Metal working,Greubel T C,1628 Court,ok,,,,"own listing 'Greubel T C, tinner, 1628 Court'"
+1915,DENVER,MASSSOL,Metal working,Mass Sol,825 19th,ok,,,,"own listing 'Mass Sol, tinner, 825 19th'"
+1915,PUEBLO,AMERICANSMELTINGRE,Smelting & refining,AMERICAN SMELTING* & RE­,609 N Main,fix_address,,,,ASARCO Pueblo Plant gives only 'P O Box 744'; 609 N Main is a confectioner/ice cream mfr
+1915,DENVER,OHIOCOLORADOSMELTING,Smelting & refining,OHIO & COLORADO SMELTING,1451 Curtis,other_town,none,SALIDA,,"Denver office '822 Foster bldg, works Salida'; 1451 Curtis is Odeon Hotel"
+1915,TRINIDAD,RAILWAYGASCO,Manufactured gas,Railway & Gas Co,219 W Main,doubtful,,,,"'Railway & Gas Co ... Wood genl mgr, 219 W Main'; utility office vs gas works not shown"
+1915,TRINIDAD,TRINIDADSHEETMETALWORKS,Metal working,Trinidad Sheet Metal Works,116 E Plum,ok,,,,"own listing 'Neal Clifford prop, 116 E Plum'"
+1915,GRAND JUNCTION,BOILERIRONGRANDJUNCTION,Machine shop / machinery,BOILER & IRON Grand Junction,914 S 5th,fix_name,,,Pioneer Boiler Works,"'Grand Junction, Pioneer Boiler Works, 914 S 5th'; name is Denver Boiler & Iron Works ad"
+1916,BOULDER,WCURRANTHEATRE,Foundry,w Curran Theatre,902 Pearl,fix_name,,,Develine Foundry,"'Develine Foundry, Wm Euler mgr, 902-906 Pearl'; Curran Theatre is neighbour"
+1916,BOULDER,WATTSHUGHF,Assay office,Watts Hugh F,923 Pearl,ok,,,,"own listing 'Watts Hugh F, assayer, 923 Pearl'"
+1916,DENVER,BANNERCHEMICALCO,Chemicals,Banner Chemical Co,2301 15th,ok,,,,"own listing 'Banner Chemical Co, 2301 15th'"
+1916,DENVER,BARRYSILVERPLATINGWORKS,Metal working,Barry Silver Plating Works,521 14th,ok,,,,"own listing 'Barry Silver Plating Works, rear 521 14th'"
+1916,DENVER,BENNIETIRERUBBERCOBA,Rubber,Bennie Tire & Rubber Co B A,1548 Glenarm,not_works,,,,listed under AUTOMOBILE TIRES dealers in 1917 (1555 Broadway); tire dealer
+1916,DENVER,COXSONTHOS,Foundry,Cox & Son Thos,621 16th,fix_address,1345 13th,,,"'Cox & Son Thos, iron foundry, 1345 13th'; 621 16th is Cottrell Clothing Co"
+1916,DENVER,GENLMGR,Foundry,genl mgr,1827 Wynkoop,fix_name,,,Denver Iron Works & Foundry Co The,"'Denver Iron Works & Foundry Co The, 1827 Wynkoop'; name parsed as 'genl mgr'"
+1916,DENVER,DORRINGTONWH,Metal working,Dorrington W H,1449 Court,fix_address,1746 Arapahoe,,,"'Dorrington W H, tinner, 1746 Arapahoe'; 1449 Court pl is Doig & Co E M"
+1916,DENVER,ERMLIEHGJ,Assay office,Ermlieh G J,1721 Stout,ok,,,,"own listing 'Ermlich G J, assayer, 1721 Stout'"
+1916,DENVER,FAIRCW,Metal working,Fair C W,1763 Blake,ok,,,,"own listing 'Fair C W, tinner, 1763 Blake'"
+1916,DENVER,FLAHERTYPJ,Metal working,Flaherty P J,1417 Fox,ok,,,,"own listing 'Flaherty P J, tinner, 1417 Fox'"
+1916,DENVER,FORTNERLA,Metal working,Fortner L A,3492 W 38th,ok,,,,"own listing 'Fortner L A, tinner, 3492 W 38th'"
+1916,DENVER,GARDELLJG,Machine shop / machinery,GARDELL J G,1414 15th,fix_name,,,Gartman C E,"'Gartman C E, machinist, 1414 15th'; Gardell J G is neighbour"
+1916,DENVER,GOLDBERGBROS,Metal working,Goldberg Bros,1431 Law,ok,,,,"own listing 'Goldberg Bros, tinners, 1431 Lawrence'"
+1916,DENVER,JOHNSONBALL,Metal working,Johnson &Ball,2439 15th,ok,,,,"own listing 'Johnson & Ball, tinners, 2439 15th'"
+1916,DENVER,LEONARDROOT,Assay office,Leo nard & Root,1615 31st av,fix_address,1744 Broadway,,,"'Leonard & Root, assayers, 1744 Broadway'; 1615 31st av is Levitt M, tailor"
+1916,DENVER,RETALIAJL,Metal working,Retalia J L,1752 Welton,ok,,,,"own listing 'Retalia J L, tinner, 1752 Welton'"
+1916,DENVER,SCHMITTWC,Metal working,Schmitt W C,1551 Blake,ok,,,,"own listing 'Schmitt W C, tinner, 1551 Blake'"
+1916,DENVER,FINISHINGANDCOPPERPLATING,Metal working,finishing and copper plating,1638 Blake,fix_name,,,Slack-Horner Brass Mfg Co,"'Slack-Horner Brass Mfg Co, 1638 Blake'; name is fragment 'finishing and copper plating'"
+1916,DENVER,VONSCHULZLOW,Assay office,Von Schulz & Low,1746 Stout,ok,,,,"own listing 'Von Schulz & Low, assayers, 1746 Stout'"
+1916,PUEBLO,CHEMICALLABORATORY,Chemicals,CHEMICAL LABORATORY,520 W Northern av,fix_address,217 N Victoria,,Pueblo Assay Office and Chemical Laboratory,"'Pueblo Assay Office and Chemical Laboratory, J G Schnell prop, 217 N Victoria'; 520 W Northern av is Powell W W groc"
+1916,TRINIDAD,TRINIDADSHEETMETALWORKS,Metal working,Trinidad Sheet Metal Works,116 E Plum,ok,,,,"own listing 'Neal Clifford prop, 116 E Plum'"
+1916,PUEBLO,WESTERNBRASSWORKS,Foundry,“ Western Brass Works,1440 Blake,other_town,,DENVER,,"classified Denver entry ditto 'Western Brass Works, 1440 Blake'; Pueblo begins after it"
+1916,DENVER,CRUSHERS,Petroleum refining & asphalt,Crushers,3262 Blake,not_works,,,,"CONTRACTORS list 'Denver & Pueblo Construction Co, 3262 Blake'; asphalt from machinery ad"
+1916,DENVER,MACADAMANDASPHALTROLLERS,Petroleum refining & asphalt,Macadam and Asphalt Rollers,1507 Blake,not_works,,,,"CONTRACTORS list 'Osner J A, 1507 Blake'; asphalt from machinery ad"
+1916,DENVER,REXIRONWORKSCOTHE,Iron & steel works,Rex Iron Works Co The,1232 Larimer,ok,,,,"classified 'Rex Iron Works Co The, 1232-34 Larimer'"
+1917,BOULDER,DEVELINEFOUNDRY,Foundry,DEVELINE FOUNDRY,902 Pearl,ok,,,,"own listing 'Develine Foundry, Wm Euler mgr, 902-906 Pearl'"
+1917,COLORADO SPRINGS,HASSELIRONWORKSCOTHE,Iron & steel works,Hassel Iron Works Co The,113 S Tejon,fix_address,519 Sierra Madre,,,"'Hassel Iron Works Co, C B Ailing supt, 519 Sierra Madre'; 113 S Tejon and 1201 N Weber is Hemenway Grocery Co"
+1917,DENVER,AUSTGENRUBBERCO,Rubber,Austgen Rubber Co,19 S Bdway,not_works,,,,"listed under AUTOMOBILE TIRES dealers ('Augsten Rubber Co, 19 S Broadway')"
+1917,DENVER,ATLASWIREIRONWORKS,Iron & steel works,Atlas Wire & Iron Works,1325 24th,ok,,,,"own listing 'Atlas Wire & Iron Works, 1325 24th'"
+1917,DENVER,CIVIL,Metal working,civil,521 14th,ok,,,,"'Barry Silver Plating Works, rear 521 14th'; name parsed as 'civil'"
+1917,DENVER,BECKTIRERUBBERCO,Rubber,Beck Tire & Rubber Co,619 14th,not_works,,,,"listed under AUTOMOBILE TIRES dealers ('Beck Tire & Rubber Co, 619 14th')"
+1917,DENVER,CLARKMAGNESSMFGCO,Soap,Clark-Magness Mfg Co,928 19th,ok,,,,"own listing 'Clark-Magness Mfg Co, soap mfrs, 928 19th'"
+1917,DENVER,DENVERTOURISTPUBLICITYBURDENVERSHEETMETALWORKSCO,Metal working,Denver Tourist & Publicity BurDenver Sheet Metal Works Co,632 17th,fix_address,1242 11th,,,"'Denver Sheet Metal Works Co, 1242 11th'; 632 17th is Denver Tourist & Publicity Bureau"
+1917,DENVER,ENTERPRISESHEETMETALWORKS,Metal working,Enterprise Sheet Metal Works,2233 Glenarm,ok,,,,"own listing 'Enterprise Sheet Metal Works, 2233 Glenarm'"
+1917,DENVER,EMPIREBOTTLINGCO,Foundry,EMPIRE BOTTLING CO,1749 Blake,fix_name,,,Enz Iron Foundry Co,"'Enz Iron Foundry Co, 1749 Blake'; Empire Bottling Co is neighbour (2432-36 17th)"
+1917,DENVER,HOOVERCHEMICALLABORATORY,Chemicals,Hoover Chemical Laboratory,2042 Champa,ok,,,,"own listing 'Hoover Chemical Laboratory, 2042 Champa'"
+1917,DENVER,JOHNSONAF,Metal working,Johnson A F,2439 15th,ok,,,,"own listing 'Johnson A F, tinner, 2439 15th'"
+1917,DENVER,LESONJ,Metal working,Leson J,1913 W 32nd av,ok,,,,"own listing 'Leson J, sheet metal works, 1913 W 32nd av'"
+1917,DENVER,JOBBERSSTOVE,Foundry,jobbers stove,1331 Lawrence,fix_address,4th & Wazee,,Queen City Foundry Co,"'Queen City Foundry Co, castings ..., 4th & Wazee'; 1331-33 Lawrence is a stove repair co"
+1917,DENVER,RELIABLEEMPLOYMENTRETALIAJL,Metal working,RELIABLE EMPLOYMENT RetaliaJL,1743 Champa,ok,,,,"'Retalia J L, tinner, 1743 Champa'; name prefixed by Reliable Employment Bureau"
+1917,DENVER,RICHARDSJW,Assay office,Richards J W,1118 19th,ok,,,,"own listing 'Richards J W, assayer, 1118 19th'"
+1917,DENVER,SCHMITTWC,Metal working,Schmitt W C,1551 Blake,ok,,,,"own listing 'Schmitt W C, tinner, 1551 Blake'"
+1917,DENVER,SWIGERTBROSOPTICALCO,Tannery,SWIGERT BROS OPTICAL CO,1821 Arapahoe,not_works,,,,"1821 Arapahoe is 'Tanner-Reed Saw & Knife Works'; 'tanner' is from the name, not a tannery"
+1917,DENVER,VONSCHULZLOW,Assay office,Von Schulz & Low,1746 Champa,ok,,,,"own listing 'Von Schulz & Low, assayers and chemists, 1746 Champa'"
+1917,DENVER,WESTERNBRASSWORKS,Foundry,Western Brass Works,1440 Blake,ok,,,,"own listing 'Western Brass Works, 1440 Blake'"
+1917,DENVER,WESTERNWIREWORKS,Metal working,WESTERN WIRE WORKS,205 15th,fix_address,1125 California,,,"'Western Wire Works, mfrs wire designs ..., 1125 California'; 205 15th is Whaite & Co carpet cleaning"
+1917,DENVER,WOODHE,Assay office,Wood H E,1734 Arapa,ok,,,,"own listing 'Wood H E, assayer, 1734 Arapahoe'"
+1917,DENVER,CIDENTINS,Manufactured gas,cident ins,2101 York,not_works,,,,2101 York is Woodward Drug Co; 'Gas & Electric' is a neighbour's bldg address
+1917,GRAND JUNCTION,CLARKFJ,Metal working,Clark F J,621 2nd,ok,,,,"own listing 'Clark F J, sheet metal works, 621 2nd'"
+1917,PUEBLO,SOAPMFRS,Soap,soap mfrs,222 S Union av,fix_name,,,Kimble Mfg Co,"'Kimble Mfg Co, E A Kimble mgr, soap mfrs, 222 S Union av'"
+1917,PUEBLO,PUEBLORENDERINGCO,Fertilizer & rendering,Pueblo Rendering Co,411 N Santa,fix_address,,,,Pueblo Rendering Co is at 'Wiley & Chamberlain's Addn' (no street); 411 N Santa Fe is Pueblo Wholesale Drug Co
+1917,DENVER,PHILBINWL,Assay office,Philbin W L,150 W 1st,other_town,,SALIDA,,"page is in the SALIDA section (classified 'Salida, Philbin W L')"
+1917,TRINIDAD,TRINIDADSHEETMETALWORKS,Metal working,Trinidad Sheet Metal Works,410 N Commercial,fix_address,116 E Plum,,,"'Trinidad Sheet Metal Works, Neal Clifford prop, 116 E Plum'; 410 N Commercial is Walker Brokerage"
+1917,DENVER,COLOASSAYINGCO,Assay office,“ Colo Assaying Co,1854 California,ok,,,,"ASSAYERS list 'Colo Assaying Co, 1854 California'"
+1917,DENVER,SEEASSAYERSANDCHEMISTS,Assay office,(See Assayers and Chemists.),1714 Market,not_works,,,,"'Gilmore Jno, 1714 Market' under CHEESE FACTORIES (wh cheese); cross-reference text belongs to Chemists heading"
+1917,PUEBLO,SALVOFRANK,Smelting & refining,Salvo Frank,111 W 14th,not_works,,,,"GROCERS list 'Salvo Frank, east of Pueblo Smelter'; smelter is a location"
+1920,BOULDER,BOULDERORESAMPLINGCO,Ore milling & sampling,Boulder Ore Sampling Co,814 Pearl,ok,,,,"own listing 'Boulder Ore Sampling Co, ..., 814 Pearl'"
+1920,BOULDER,DRYMACHINEWORKS,Machine shop / machinery,dry & Machine Works,902 Pearl,ok,,,,"own listing 'Develine Foundry & Machine Works, 902-906 Pearl'"
+1920,COLORADO SPRINGS,DILTSSMAUTOCARRIAGEWORKS,Transportation equipment,Dilts S M Auto & Carriage Works,21 W Colo,ok,,,,"own listing 'Dilts S M Auto & Carriage Works, 21 W Colo'"
+1920,COLORADO SPRINGS,HARTFRANK,Metal working,Hart Frank,2425 W Colo av,ok,,,,"own listing 'Hart Frank, sheet metal works, 2425 W Colo av'"
+1920,COLORADO SPRINGS,LOESCHH,Transportation equipment,Loesch H,8 Cascade,fix_address,23 S Cascade,,,"printed 'carriage mfr, 23 S Cascade' (S read as 8)"
+1920,COLORADO SPRINGS,ROBBINSBROS,Metal working,Robbins Bros,113 E Kiowa,ok,,,,"own listing 'Robbins Bros, sheet metal works, 113 E Kiowa'"
+1920,DENVER,ALBERTLEAGASLIGHTCO,Manufactured gas,Albert Lea Gas Light Co,2053 Welton,doubtful,,,,"'Albert Lea Gas Light Co, 2053-57 Welton' with no trade; not Denver's gas utility, nature unclear"
+1920,DENVER,ARMSTRONGA,Machine shop / machinery,Armstrong A,1812 Arapahoe,ok,,,,"own listing 'Armstrong A, machine shop, 1812 Arapahoe'"
+1920,DENVER,BIOPHARMCHEMICALCO,Chemicals,Bio-Pharm Chemical Co,613 22d,ok,,,,"own listing 'Bio-Pharm Chemical Co, 613 22d'"
+1920,DENVER,BRICKHAMHENRY,Metal working,Brickham Henry,1820 Market,ok,,,,"own listing 'Brickham Henry, sheet metal wks 1820 Market'"
+1920,DENVER,BURLINGAMEWE,Assay office,Burlingame W E,1736 Lawrence,ok,,,,"own listing 'Burlingame W E, assayer, 1736 Lawrence'"
+1920,DENVER,EAENAEMACHINESHOP,Machine shop / machinery,eae N aE: machine shop,1022 19th,ok,,,,"own listing 'machine shop, 1022 19th'; name OCR-illegible (between Chantes and Chaplin)"
+1920,DENVER,SOLORADOSHEETMETAL,Metal working,SOLORADO SHEET METAL,1739 Blake,ok,,,,"own listing 'Colorado Sheet Metal Works, ..., 1739-43 Blake'"
+1920,DENVER,GARNETTKLATORCHEMICALCO,Chemicals,Garnett-Klator Chemical Co,2019 Champa,ok,,,,"own listing 'Garnett-Klator Chemical Co, 2019 Champa'"
+1920,DENVER,GATESRUBBERCO,Rubber,Gates Rubber Co,999 S Bdwy,ok,,,,"own listing 'Gates Rubber Co, 999 S Bdwy' (factory)"
+1920,DENVER,GREUBELTC,Metal working,Greubel T C,1628 Court pl,ok,,,,"own listing 'Greubel T C, tinner, 1628 Court pl'"
+1920,DENVER,GUNTHERSONS,Tannery,GUNTHER & SONS,152 Cook,ok,,,,"own listing 'Gunther & Sons, tanners and fur dressers, 152 Cook'"
+1920,DENVER,HINGLEYJA,Machine shop / machinery,Hingley J A,1816 Blake,ok,,,,"own listing 'Hingley J A, machine shop, 1816 Blake'"
+1920,DENVER,PAINTS,Paint & varnish,paints,1224 Arapahoe,fix_name,,,James B L,"'James B L, mfr and dealer in paints, white lead ..., 1224-1226 Arapahoe'"
+1920,DENVER,JESSEH,Metal working,Jesse H,2212 Larimer,ok,,,,"own listing 'Jesse H, tinner, 2212 Larimer'"
+1920,DENVER,JOSNSONAF,Metal working,Josnson A F,2439 15th,ok,,,,"own listing 'Johnson A F, tinner, 2439 15th'"
+1920,DENVER,KOBELCF,Metal working,Kobel C F,1927 Arapahoe,ok,,,,"own listing 'Kobel C F, tinner, 1927 Arapahoe'"
+1920,DENVER,LANGHAESTINNER,Metal working,Lang Haes tinner,1165 Welton,ok,,,,"own listing 'Lang H, tinner, 1165 Welton'"
+1920,DENVER,LESONJ,Metal working,Leson J,1913 Lawrence,ok,,,,"own listing 'Leson J, tinner, 1913 Lawrence'"
+1920,DENVER,MORELLMFGCO,Soap,Morell Mfg Co,1024 18th,ok,,,,"own listing 'Morell Mfg Co, soap mfrs, 1024 18th'"
+1920,DENVER,MUTUALCHEMICALCO,Chemicals,Mutual Chemical Co,1424 W Colfax av,ok,,,,"own listing 'Mutual Chemical Co, 1424 W Colfax av'"
+1920,DENVER,NATIONALSMELTINGREFININGCO,Smelting & refining,National Smelting & Refining Co,25 Larimer,ok,,,,"own listing 'National Smelting & Refining Co, 25 Larimer'"
+1920,DENVER,PEERLESSALLOYCO,Smelting & refining,Peerless Alloy Co,1409 Blake,ok,,,,"own listing 'Peerless Alloy Co, smelters, 1409 Blake'"
+1920,DENVER,PEKRULIRONWORKS,Iron & steel works,Pekrul Iron Works,1348 12th,ok,,,,"own listing 'Pekrul Iron Works, 1348 12th'"
+1920,DENVER,PIERCERUBBERCO,Rubber,Pierce Rubber Co,9 S Broadway,not_works,,,,listed under AUTOMOBILE TIRES dealers (1920 classified); tire dealer
+1920,DENVER,PIERSWL,Assay office,Piers W L,428 18th,ok,,,,"own listing 'Piers W L, assayer, 428 18th'"
+1920,DENVER,QUEENCITYTIRERUBBERCO,Rubber,Queen City Tire & Rubber Co,215 16th,not_works,,,,listed under AUTOMOBILE TIRES dealers (1920 classified); tire dealer
+1920,DENVER,REPUBLICRUBBERCO,Rubber,REPUBLIC RUBBER CO,1645 Tremont pl,not_works,,,,"branch selling 'tires, tubes and mechanical goods'; not a rubber works"
+1920,DENVER,RETALIAJL,Metal working,Retalia J L,933 14th,ok,,,,"own listing 'Retalia J L, tinner, 933 14th'"
+1920,DENVER,RICHARDSJW,Assay office,Richards J W,1118 19th,ok,,,,"own listing 'Richards J W, assayer, 1118 19th'"
+1920,DENVER,RICKARD,Assay office,Rickard §,1740 Glenarm,ok,,,,"own listing 'Rickard S, assayer, 1740 Glenarm'"
+1920,DENVER,SANFORDALBERTB,Assay office,Sanford Albert B,716 18th,ok,,,,"own listing 'Sanford Albert B, assayer, 716 18th'"
+1920,DENVER,SCHLITTERIRONFOUNDRY,Foundry,Schlitter Iron Foundry,3924 Wynkoop,ok,,,,"own listing 'Schlitter Iron Foundry, 3924 Wynkoop'"
+1920,DENVER,RIAGEANDWAGONMAKER,Transportation equipment,riage and wagon maker,46 W Colfax av,fix_address,2040 W Colfax av,,Schmidt G A,"'Schmidt G A, auto bodies, carriage and wagon maker, 2040-46 W Colfax av'; number read as 46"
+1920,DENVER,SIGAFOOSTR,Machine shop / machinery,Sigafoos T R,1101 18th,ok,,,,"own listing 'Sigafoos T R, machine shop, 1101 18th'"
+1920,DENVER,STILESGEORGEA,Machine shop / machinery,Stiles George A,1416 Blake,ok,,,,"own listing 'Stiles George A, machine shop, 1416 Blake'"
+1920,DENVER,STONECHEMICALCO,Chemicals,Stone Chemical Co,1016 18th  St,ok,,,,"own listing 'Stone Chemical Co, 1016 18th'"
+1920,DENVER,FOUNDERSANDMACHINISTS,Machine shop / machinery,founders and machinists,2156 15th,fix_name,,,Walker Manufacturing Co,"'Walker Manufacturing Co, founders and machinists, 2156-64 15th'"
+1920,DENVER,ATION,Chemicals,ATION,514 18th,fix_name,,,Western Research Corporation,"'Western Research Corporation, ore testing, chemical ... engineering, 514-516 18th'"
+1920,DENVER,WESTERNSHOERUBBERCO,Rubber,Western Shoe & Rubber Co,1437 Lawrence,not_works,,,,"shoe and rubber footwear house, listed under RUBBER GOODS with dealers' branches; not a works"
+1920,DENVER,WESTERNSMELTINGCO,Smelting & refining,Western Smelting Co,1304 Blake,not_works,,,,"'Western Smelting Co, junk, 1304 Blake': junk dealer, not a smelter"
+1920,FORT COLLINS,CAREYLESTER,Metal working,Carey Lester,158 Linden,ok,,,,"own listing 'Carey Lester, sheet metal works, 158 Linden'"
+1920,FORT COLLINS,HEATING,Metal working,heating,226 Walnut,fix_name,,,Diercks H G,"'Diercks H G, sanitary plumbing, heating, sheet metal work, ..., 226 Walnut'"
+1920,GREELEY,GREELEYRENDERINGPLANT,Fertilizer & rendering,Greeley Rendering Plant,319 9th,ok,,,,own listing 'Greeley Rendering Plant (Silvey & Runner) 319 9th'
+1920,PUEBLO,MAPESCHAS,Metal working,Mapes Chas,213 N Santa,ok,,,,"own listing 'Mapes Chas, sheet metal work, 213 N Santa Fe av'"
+1920,PUEBLO,NORCROSSCHEMICALCO,Chemicals,Norcross Chemical Co,621 S Union av,ok,,,,"own listing 'Norcross Chemical Co, 621 S Union av'"
+1920,DENVER,FURRIERTAXIDERMISTTANNER,Tannery,Furrier—Taxidermist—Tanner,408 16th St,fix_name,,,Miles Jack C,"ad and list 'Miles Jack C, Furrier-Taxidermist-Tanner, 408 16th'"
+1927,DENVER,NIELSENSSINCE1898,Machine shop / machinery,NIELSEN'S Since 1898,1844 Wazee,fix_name,,,Nock & Garside Elevator Co,"1844-50 Wazee is 'Nock & Garside Elevator Co, machinists, mfrs elevators'; name is neighbour Nielsen's furriers"
+1927,COLORADO SPRINGS,GATESRUBBERCO,Rubber,Gates Rubber Co,210 Elm,not_works,,,,Trinidad tire branch under auto tops/tires heading (also in Trinidad section 1927); Gates works is 999 S Bdway Denver
+1927,DENVER,MASTRINIJOHN,Smelting & refining,Mastrini John,1201 Spruce,not_works,,,,"'Mastrini John, groc, 604 Smelter av' (Pueblo); 'smelter' is the street name; 1201 Spruce is Prutch Carl"
+1929,COLORADO SPRINGS,TANNERMERCGO,Tannery,Tanner MercGo,231 W Colorado av,not_works,,,,"'Tanner Merc Co, S T Redman mgr, genl mdse': general store; Tanner is a name"
+1929,COLORADO SPRINGS,HASSELLIRONWORKS,Iron & steel works,Hassell Iron Works,520 Sahwatch,ok,,,,"own listing 'Hassell Iron Works ... pres & mgr, 520 Sahwatch'"
+1929,DENVER,ABBOTTINVESTMENTCO,Paint & varnish,ABBOTTINVESTMENTCO,2601 Walnut,fix_name,,,Acme Paint Works Inc,"interleaved: 'Acme Paint Works, Inc, M H Deacon mgr, 2601 Walnut'; Abbott Investment Co is neighbour (real estate)"
+1929,DENVER,CAPITOLFOUNDRYMFGCO,Foundry,Capitol Foundry & Mfg Co,1320 8th,fix_address,1800 W Colfax,,,"'Capitol Foundry & Mfg Co, J F Lipp pres & mgr, 1800 W Colfax'; 1320 8th is Card L J & Son machine shop"
+1929,DENVER,PRES,Machine shop / machinery,pres,1320 8th,fix_name,,,Card L J & Son Inc,"'Card L J & Son, Inc, L J Card pres, machine shop, 1320 8th'; name parsed as 'pres'"
+1929,DENVER,COLORADOCOMPRESSEDGASCO,Manufactured gas,Colorado Compressed Gas Co,2101 Blake,ok,,,,"own listing 'Colorado Compressed Gas Co, Ph D Gleason mgr, 2101 Blake' (Colorado Fruit Co is other column, 1963 Market)"
+1929,DENVER,CRITESEB,Metal working,Crites E B,258 S Bdway,ok,,,,"own listing 'Crites E B, sheet metal works, 258 S Bdway'"
+1929,DENVER,GENERALMETALSFOUNDRYGO,Foundry,General Metals Foundry Go,1260 5th,ok,,,,"own listing 'General Metals Foundry Co, 1260 5th'"
+1929,DENVER,GOLDBERGSIMON,Metal working,Goldberg Simon,2717 W Colfax,ok,,,,"own listing 'Goldberg Simon, tinner, 2717 W Colfax'"
+1929,DENVER,IDEALCHEMICALPICTUREGO,Chemicals,Ideal Chemical & Picture Go,415 17th,not_works,,,,415 17th is Improved Order of Red Men (lodge); Ideal Chemical & Picture Co sells 'reproducing fluid' at Home Public Market
+1929,DENVER,MIDWESTMACHINESHOP,Machine shop / machinery,Midwest Machine Shop,329 16th,fix_address,1744 Lawrence,,,"'Midwest Machine Shop (A P Lane) steam engine & compressor, 1744 Lawrence'; 329 16th is Miles Jack C Fur Co"
+1929,DENVER,DERMISTS,Tannery,dermists,329 16th,fix_name,,,Miles Jack C Fur Co,"'Miles Jack C Fur Co, taxidermists, tanners and furriers, 329 16th'; name parsed as 'dermists'"
+1929,DENVER,INCHARGE,Manufactured gas,in charge,614 27th,not_works,,,,"Public Service Co (Securities Dept) office, 436 Gas & Electric bldg; 614 27th is Puritas Water Co"
+1929,DENVER,COPPERPLATING,Metal working,copper plating,1638 Blake,fix_name,,,Slack-Horner Brass Mfg Co The,"'Slack-Horner Brass Mfg Co The ... castings, brass finishing and copper plating ... 1638 Blake'"
+1929,DURANGO,CHITWOODAJ,Manufactured gas,Chitwood A J,969 Main av,not_works,,,,969 Main av is Chitwood A J soft drinks; Durango Basin Oil & Gas Co is an office in Strater Hotel bldg
+1929,FORT COLLINS,GIDDINGSPRES,Machine shop / machinery,Giddings pres,116 W Mountain av,fix_address,Willow cor Pine,,Giddings Manufacturing Co,"'Giddings Manufacturing Co, F D Giddings pres, machine shop, Willow cor Pine'; 116 W Mountain av is Harger W D (corner address)"
+1929,DENVER,WILESMACHINESHOP,Machine shop / machinery,Wiles) machine shop,1012 8th av,other_town,,GREELEY,Automotive Machine Co,"Greeley section p693: 'Automotive Machine Co (F S Wiles) machine shop, 1012 8th av'"
+1929,DENVER,GREELEYRENDERINGPLANT,Fertilizer & rendering,Greeley Rendering Plant,1129 5th,other_town,,GREELEY,,"Greeley section p700: 'Greeley Rendering Plant (J G Silvey, R R Runner) 1129 5th'"
+1929,GREELEY,HOMEGASELECTRICGO,Manufactured gas,Home Gas & Electric Go,1117 8th av,not_works,,,,"Home Gas & Electric Co (F Norcross mgr, 810 9th) is a utility/appliance office; 1117 8th av is Johnson E J Inc autos"
+1929,PUEBLO,MAPESGHAS,Metal working,Mapes Ghas,109 W 2d,ok,,,,"own listing 'Mapes Chas, tinner, 109 W 2d'"
+1929,PUEBLO,PUEBLOMACHINEWORKS,Machine shop / machinery,Pueblo Machine Works,302 E 8th,ok,,,,own listing 'Pueblo Machine Works (J E McFeely) 302 E 8th'
+1929,DENVER,SPARRHJ,Metal working,Sparr H J,112 E 5th,other_town,,PUEBLO,,"Pueblo section p929 (Abriendo av, Northern av): 'Sparr H J, tinner, 112 E 5th'"
+1929,DENVER,SPECHTJOHNF,Metal working,Specht John F,1715 E 13th,other_town,,PUEBLO,,"page headed PUEBLO: 'Specht John F, tinner, 1715 E 13th'"
+1929,STERLING,STERLINGSHEETMETALROOFING,Metal working,Sterling Sheet Metal & Roofing,110 Poplar,ok,,,,own listing 'Sterling Sheet Metal & Roofing Co (G W Piper) 110 Poplar'
+1929,DENVER,BATTERYMANUFACTURERS,Batteries,BATTERY MANUFACTURERS,1809 Blake,fix_name,,,Mascot Battery Mfg Co,"under BATTERY MANUFACTURERS: 'Denver, Mascot Battery Mfg Co, 1809 Blake'; name is the heading"
+1929,DENVER,ELECTROPLATERS,Metal working,ELECTROPLATERS,1844 Wazee,fix_name,,,Nock & Garside Elevator Co,"under ELECTROPLATERS: 'Denver, Nock & Garside Elevator Co, 1844-50 Wazee'; name is the heading"
+1929,PUEBLO,PAINTSASPHALT,Petroleum refining & asphalt,PAINTS— ASPHALT,1205 Lake,not_works,,,,"'Austin Wm J, painter, 1205 Lake av' (Pueblo): painting service, not an asphalt works"
+1932,BOULDER,ALLENDELEE,Metal working,Allen De Lee,1913 4th,ok,,,,"own listing 'Allen De Lee, tinner, 1913 4th'"
+1932,BOULDER,AMERICANMINESSMELTINGGO,Smelting & refining,American Mines & Smelting Go,2962 11th,not_works,,,,"mining co office 'J G Clark pres & genl mgr, 1406 Pearl'; 2962 11th is Austin Wm B contr; no works shown"
+1932,DENVER,ABGCLEMERSDYERS,Metal working,ABGCle mers & Dyers,1219 E Colfax,fix_address,1858 Lawrence,,A-C Motors & Metal Works,"'A-C Motors & Metal Works, auto body builders ... 1858 Lawrence'; 1219 E Colfax is ABC Cleaners & Dyers"
+1932,DENVER,AUTOBODYBUILDERS,Transportation equipment,auto body builders,3820 Steele,not_works,,,,"3820 Steele is ABC Coal Co; 'auto body builders' is A-C Motors (1858 Lawrence, placed via ABC Cleaners row)"
+1932,DENVER,JOHNSONJA,Metal working,Johnson J A,709 E 6th,fix_address,709 E 6th av,,,"'Johnson J A, tinner, 709 E 6th av' ('av' split by column; 1929/1933 confirm E 6th av)"
+1932,DENVER,METALSPINNINGPLATINGWORKSMEYERBROKERAGEGO,Metal working,Metal Spinning & Plating Works Meyer Brokerage Go,1417 15th,ok,,,,'Metal Spinning & Plating Works (Albert Barone) 1417 15th'; Meyer Brokerage is neighbour (1626 19th)
+1932,DENVER,QUEENCITYBRASSWORKS,Foundry,Queen City Brass Works,2412 W 44th av,fix_address,1431 Blake,,,'Queen City Brass Works (J A Finnie) 1431 Blake'; 2412 W 44th av is neighbour (Purdie/Quedens)
+1932,DENVER,GUARDSWHEELGUARDSORNAMENTALIRON,Iron & steel works,GUARDS :WHEEL GUARDS :ORNAMENTAL IRON,1416 Blake St,fix_name,,,Stiles Manufacturing Co The,ad 'THE STILES MANUFACTURING CO. : 1416-18 Blake Street' ornamental iron; name is ad text
+1932,DENVER,ANDALLKINDSOFELECTROPLATING,Metal working,andall kindsof electroplat ing,1444 Blake,fix_name,,,Silver State Plating Co,"'Silver State Plating Co, O H Evans pres, chromium and all kinds of electroplating, 1444 Blake'"
+1932,DENVER,COPPERPLATING,Metal working,copper plating,1638 Blake,fix_name,,,Slack-Horner Brass Mfg Co The,'Slack-Horner Brass Mfg Co The ... copper plating ... 1638 Blake'
+1932,PUEBLO,LITTELLAUTOBODYWORKS,Transportation equipment,LITTELL AUTO BODYWORKS,302 Jefferson,fix_address,409 W 5th,,,"'Littell Auto Body Works ... manufacturing and repairing, 409-411 W 5th'; 302 Jefferson is Lutheran Church (Tabor)"
+1932,STERLING,STERLINGSHEETMETALROOFINGWALLISBABATTERYIGNITION,Metal working,Sterling Sheet Metal &RoofingWa llisBABa ttery &Ign ition,109 S 3d,fix_address,110 Poplar,,Sterling Sheet Metal & Roofing Co,'Sterling Sheet Metal & Roofing Co (G W Piper) 110 Poplar'; 109 S 3d is Wallis B A Battery & Ignition Co
+1932,PUEBLO,POWERIRONWORKS,Iron & steel works,— Power Iron Works,808 W 8th,ok,,,,"classified Iron Works 'Power Iron Works, 808 W 8th' (Pueblo)"
+1932,PUEBLO,PUEBLOIRONWIREWORKS,Metal working,— Pueblo Iron & Wire Works,314 S Main,ok,,,,"classified 'Pueblo Iron & Wire Works, 314 S Main'"
+1932,DENVER,DENVERSHEETMETALWORKS,Metal working,—Denver Sheet MetalWorks,1115 7th,ok,,,,"classified Sheet Metal 'Denver Sheet Metal Works, 1115 7th'"
+1933,PUEBLO,THESTITF0CHININGFINISHINGANDELECTROPLATING,Metal working,theSTitf0CHINING’ FINISHING and ELECTROPLATING,1416 Blake St,other_town,,DENVER,Stiles Manufacturing Co The,Stiles Mfg Co ad '1416-18 Blake Street : DENVER' printed in Pueblo pages
+1933,DENVER,KESSLERFRED,Metal working,KesslerFred,2706 Lari,ok,,,,"own listing 'Kessler Fred, tinner, 2706 Larimer' (hyphenated Lari-)"
+1933,DENVER,BERRYMACHINISTS,Machine shop / machinery,Berry )machinists,820 21st,ok,,,,"'Nelson & Berry (R A Nelson, P J Berry) machinists, 820 21st'"
+1933,DENVER,WHIPPLEGHASI,Metal working,Whipple GhasI,915 19th,ok,,,,"own listing 'Whipple Chas I, tinner, 915 19th'"
+1933,FORT COLLINS,SIMON0F,Metal working,Simon 0F,130 S Mason,fix_address,226 Walnut,,,"'Simon O F, sheet metal works, 226 Walnut'; 130 S Mason is State Highway Dept resident eng"
+1933,GREELEY,WORKOFALLKINDS,Metal working,workofallkinds,1601 11th,fix_address,815 11th,,Couzens & Day Co,"'Couzens & Day Co, G E Day mgr, sheet metal work ... galvanized iron ... 815 11th'; 1601 11th is Drewes L W hatchery"
+1935,PUEBLO,CLASBYFREDOMACHINEWORKS,Machine shop / machinery,Clasby Fred O Machine Works,322 W 4th,ok,,,,"own listing 'Clasby Fred O Machine Works, garage, 322 W 4th'"
+1935,PUEBLO,LYNCHPETROLEUMCO,Petroleum refining & asphalt,Lynch Petroleum Co,900 W 4th,not_works,,,,"'Lynch Petroleum Co ... whol oils, gas, 900 W 4th': wholesale distributor"
+1935,DENVER,ANDVENTILATING,Metal working,and ventilating,151 W 1st,other_town,121 E 2d,SALIDA,Tucker E W,"Salida section: 'Tucker E W, plumbing, heating and ventilating, sheet metal work ... 121 E 2d'; 151 W 1st is Sherman Coffee Shoppe"
+1935,STERLING,STERLINGSHEETMETALROOFING,Metal working,Sterling Sheet Metal & Roofing,615 N 3d St,fix_address,110 Poplar,,,'Sterling Sheet Metal & Roofing Co (G W Piper) 110 Poplar'; 615 N 3d is Sterling Auction Co (Hegemeier prop)
+1935,DENVER,SCOTTAUTOMOBILEBODYCO,Transportation equipment,— Scott Automobile Body Co,631 E 18th av,ok,,,,"classified 'Scott Automobile Body Co, 631 E 18th av'"
+1935,PUEBLO,OGLEAUTOBODYCO,Transportation equipment,— Ogle Auto Body Co,226 W 4th,ok,,,,"classified 'Ogle Auto Body Co, 226 W 4th' (Pueblo)"
+1935,DENVER,MACHINESHOPGOBATTIMFGGO,Machine shop / machinery,MACHINE SHOPGOBATTI MFG. GO,503 W. 4th,other_town,,PUEBLO,Gobatti Manufacturing Co,"ad 'Gobatti Mfg Co, 503 W 4th ... Pueblo, Colo' machine shop"
+1935,DENVER,IDENVERRUBBERGOODS,Iron & steel works,I™ § Denver Rubber Goods,1643 Arapahoe,fix_address,2027 W Colfax av,,Denver Steel & Iron Works Co,"'Denver Steel & Iron Works Co, John A Crook pres, 2027 W Colfax av'; 1643 Arapahoe is Denver Rubber Goods"
+1935,DENVER,DILFSOAPMFRS,Soap,DilF soap mfrs,451 Acoma,ok,,,,"'Dill Cleansing Products Co (T L Dill) soap mfrs, 451 Acoma'; Distillers Distributing is other column"
+1935,DENVER,FOXAJ,Metal working,Fox A J,720 19th,ok,,,,"own listing 'Fox A J, tinner, 720 19th'"
+1935,DENVER,GOULDENGEOH,Machine shop / machinery,Goulden Geo H,1060 Acoma,ok,,,,"'Goulden Geo H, machine shop, rear 1060 Acoma' (Granada/Granberry in other column)"
+1935,DENVER,HARNERCD,Machine shop / machinery,Harner C D,221 W 10th av,ok,,,,"own listing 'Harner C D, machine shop, 221 W 10th av'"
+1935,DENVER,HICKSARTHURGMACHINESHOP,Machine shop / machinery,Hicks Arthur G^ machine shop,1429 E 26th av,fix_address,2221 W 38th av,,,"'Hicks Arthur G, machine shop, 2221 W 38th av'; 1429 E 26th av is Highway Safety Signal Co"
+1935,DENVER,ASSAYERSBALANCES,Assay office,assayers’ balances,808 20th,not_works,,,,Thompson Balance Co makes 'assayers' balances' (instruments); not an assay works
+1935,DENVER,THOMPSONHAYWARDCHEMICALCO,Chemicals,Thompson-Hayward Chemical Co,2228 Blake,doubtful,,,,"Thompson-Hayward Chemical Co (Kansas City house) 'K K Dunham mgr, 2228 Blake': branch; works vs depot not shown"
+1935,DENVER,PIONEERIRONWIREWORKS,Metal working,— Pioneer Iron & Wire Works,1435 Market,ok,,,,"columns interleaved: 'Pioneer Iron & Wire Works Co, 1435 Market'; Burkhardt line continues at 869 S Broadway"
+1935,ENGLEWOOD,BRANCHBOX2184,Iron & steel works,Branch: Box 2184,600 W Bates,fix_name,,,General Iron Works Co,"ad 'General Iron Works ... Englewood', general listing 'General Iron Works Co, T B Stearns pres, 600 W Bates'"
+1935,DENVER,WESTERNCHEMICALGO,Chemicals,Western Chemical Go,1700 16th,ok,,,,"own listing 'Western Chemical Co, cleansing compounds, 1700 16th'"
+1935,DENVER,WESTERNIRONFOUNDRY,Foundry,Western Iron Foundry,1320 Wazee,ok,,,,"own listing 'Western Iron Foundry, J Ernest Higson pres, 1320 Wazee'"
+1935,DURANGO,DURANGONATURALGASCO,Manufactured gas,Durango Natural Gas Co,1025 Main av,not_works,,,,"Durango Natural Gas Co 'Harold S Doty mgr, 1025 Main av': utility office"
+1935,FORT COLLINS,FORTCOLLINSHIDE,Metal working,Fort Collins Hide,257 N College,fix_address,226 Walnut,,Fort Collins Sheet Metal Works,"'Fort Collins Sheet Metal Works (E F Woodworth) 226 Walnut'; 257 N College is Fort Collins Hide, Wool & Junk Co"
+1935,DENVER,MACHINING,Metal working,M A CH IN ING,1416 Blake St,fix_name,,,Stiles Manufacturing Co The,"ad 'machining, finishing and electroplating THE STILES MANUFACTURING CO. : 1416-18 Blake'"
+1935,DENVER,UNITEDSTATESRUBBERCO,Rubber,— United States Rubber Co,1515 Wazee,not_works,,,,"under ROOFING MATERIALS; US Rubber Co branch (1943 'br mgr, 1513 Wazee')"
+1939,DURANGO,IAMERICANSMELTINGANDREIIISFININGCO,Smelting & refining,"I,.. AMERICAN SMELTING AND ·REIi.i S FINING CO",170 E 7th,fix_address,,,American Smelting & Refining Co,"ASARCO 'Durango Plant', R P Raynolds mgr; plant address not printed; 170 E 7th is Barker Transfer"
+1939,DURANGO,DURANGONATURALGASCO,Manufactured gas,Durango Natural Gas Co,140 E 8th,not_works,,,,"Durango Natural Gas Co 'W J Wilson vice-pres, 140 E 8th': utility office"
+1939,DURANGO,ELLIOTTASSAYERS,Assay office,Ell iott) assayers,1139 Main av,fix_name,,,Root & Norton,"'Root & Norton (A P Root Jr, W C Elliott) assayers, 1139 Main av'"
+1939,ENGLEWOOD,IBRUNTONLUCINS,Machine shop / machinery,iBrunton Lucins,4783 S Bdway,ok,,,,"'Brunton Lucius, machine shop, 4783 S Bdway'; Coleman Broom Works is other column (705 W Dartmouth)"
+1939,PUEBLO,MODELRAILWAYMACHINEWORKS,Machine shop / machinery,Model Railway & Machine Works,501 W 5th,ok,,,,own listing 'Model Railway & Machine Works (Wm L Daney) 501 W 5th'
+1939,PUEBLO,RHEUFFELECTRICCO,Transportation equipment,Rheuff Electric Co,410 N Santa,fix_address,417 W 5th,,Robbe Clarence A,"'Robbe Clarence A, auto body mfr, 417 W 5th'; 410 N Santa Fe av is Rheuff Electric Co"
+1939,DENVER,COMMERCIALCHEMICALCORP,Chemicals,Commercial Chemical Corp,1612 Blake,ok,,,,"own listing 'Commercial Chemical Corp, J Q Harrison pres, 1612 Blake'"
+1939,DENVER,DENVERGRINDINGBALLFOUNDRY,Foundry,Denver Grinding Ball & Foundry,1677 S Clarkson,fix_address,1835 W Colfax,,,'Denver Grinding Ball & Foundry Co (M A Tenenbaum) 1835 W Colfax'; 1677 S Clarkson is Denver Forestry & Landscape Co
+1939,DENVER,DUNNSHEETMETALWKS,Metal working,Dunn Sheet Metal Wks,1890 Market,ok,,,,own listing 'Dunn Sheet Metal Wks (Burton B Dunn) 1890 Market'
+1939,DENVER,FOXSEC,Machine shop / machinery,Fox sec,1326 Larimer,fix_address,1901 Arapahoe,,Fox & Co Inc,"'Fox & Co Inc, L S Fox pres, S E Fox sec, sheet metal works, machinists' supplies, 1901 Arapahoe'; 1326 Larimer is Foss M L Inc"
+1939,DENVER,IRRIGALIONGATES,Machine shop / machinery,irrigalion gates,221 W 10th av,fix_name,,,Harner Chas D,"'Harner Chas D, machine shop, 221 W 10th av'; name is neighbour culvert co text"
+1939,DENVER,HERCULESPOWDERCO,Explosives,Hercu les Powder Co,1822 California,not_works,,,,"Hercules Powder Co 'Geo T Kearns mgr, 1822 California': sales office, no plant"
+1939,DENVER,ANDGALVANIZEDIRONWORKOFALLDELANEYJM,Metal working,and galvanized iron work of all Delan ey J M,1531 11th,other_town,815 11th,GREELEY,Couzens & Day Co,Greeley page: 'Couzens & Day Co ... galvanized iron work ... 815 1/2 11th'; 1531 11th is Delaney J M ins
+1939,BOULDER,COLEMANTERWILLIGER,Machine shop / machinery,Coleman & T e rwillige r,1002 Pearl,fix_name,,,Cox Garage & Machine Shop,'Cox Garage & Machine Shop (W L Cox) 1002 Pearl'; Coleman & Terwilliger is other column
+1939,PUEBLO,OGLEAUTOBODYCO,Transportation equipment,-Ogle Auto Body Co,226 W 6th,ok,,,,"'Ogle Auto Body Co, 226 W 6th' (general listing 1939 agrees)"
+1939,ENGLEWOOD,ENGLEWOOD,Transportation equipment,Englewoo d,3141 S Bdway,fix_name,,,Englewood Auto Body Service,"'Englewood, Englewood Auto Body Service, 3141 S Bdway'; name parsed as town"
+1939,DENVER,PEKRULIRONWORKS,Iron & steel works,Pekrul Iron Works,1348 12th,ok,,,,own listing 'Pekrul Iron Works (Leo P Pekrul) 1348-52 12th'
+1939,COLORADO SPRINGS,AUTOBODYREPRS,Transportation equipment,auto body reprs,310 S Tejon,fix_name,,,Chase & Newton,"'Chase & Newton (Harry C Chase ...) auto body reprs, 310 S Tejon'"
+1939,DENVER,ROCKYMOUNTAINCHROMIUMPLATINGCO,Metal working,Rocky Mountain Chromium Plating Co,1417 15th,ok,,,,own listing 'Rocky Mountain Chromium Plating Co ... 1417 15th'
+1939,DENVER,CHEMISTSANDASSAYERS,Assay office,chem ists and assayers,1631 Tremont,fix_address,1306 E 17th av,,Root & Simpson Inc,"'Root & Simpson Inc ... metallurgical chemists and assayers, 1306-08 E 17th av'; 1631 Tremont is neighbour"
+1939,DENVER,PASTE,Machine shop / machinery,~:!: paste,2447 Larimer ST,fix_name,,,Square Deal Manufacturing Co,"'Square Deal Manufacturing Co, mfrs bluing, ammonia ... laundry soap, machinist soap, 2447 Larimer' (soap/chemical works, not machinist)"
+1939,COLORADO SPRINGS,METALS,Iron & steel works,metals,10 S Weber,not_works,,,,10 S Weber is Whitman Hotel Co; trade text is a second-hand machinery/scrap dealer (102 W Cucharras)
+1939,DENVER,OFLUMBER,Machine shop / machinery,of lumber,331 W Colfax,fix_name,,,Stewart Fred H,"'Stewart Fred H, machine shop, 331 W Colfax'; name is lumber wholesaler text"
+1939,DENVER,TMTRANSPORTATIONCO,Tannery,T &M TransportationCo,2156 Blake,not_works,,,,"'T & M Transportation Co, R E Tanner ...': trucking; Tanner is a name"
+1939,DENVER,WESTERNBRONZEBRASSFOUNDRYWESTERNFILESERVICE,Foundry,Western Bronze & Brass Foundry Western File Service,1322 Blake,ok,,,,column order gives 'Western Bronze & Brass Foundry (Wm Schneider) 1322 Blake'
+1939,DENVER,ACMOTORSMETALWORKS,Metal working,A-C MOTORS & METAL WORKS,1 S Santa,fix_address,1110 Speer blvd,,,'A-C Motors & Metal Works ... auto body building ... 1110 Speer Blvd'; 2241 S Santa Fe is Acacia Tourist Court
+1939,DENVER,TORCO,Iron & steel works,tor Co,1344 12th,not_works,,,,"'Ainlay Centrifugal Gold Separator Co, Pekrul Iron Works agts': agency; Pekrul works at 1348-52 12th"
+1939,DENVER,DERSONMACHINESHOP,Machine shop / machinery,derson ) machine shop,1849 Champa,fix_address,1241 California,,Anderson R Mfg Co,"'Anderson R Mfg Co (Russell Anderson) machine shop, 1241 California'; 1849 Champa is neighbour"
+1941,DENVER,GUNTHERSONS,Tannery,GUNTHER & SONS,517 23d,fix_address,156 Cook,,,"'Gunther & Sons, tanners, taxidermists, fur dressers, 156 Cook'; 517 23d is Haas Ludwig J shoe repr"
+1941,PUEBLO,HOLMESORVILLE,Soap,Holmes Orville,221 W 3d,fix_name,,,Howell Grace D,"'Howell Grace D, soap mfr, 221 W 3d'; Holmes Orville is other column (230 E 4th)"
+1941,DENVER,KEDDYFRANKA,Transportation equipment,Keddy Frank A,600 W Colfax,fix_name,,,Keller G E,"'Keller G E, auto body reprs, 600 W Colfax'; name is neighbour Keddy (barber)"
+1941,PUEBLO,LYNCHPETROLEUMCO,Petroleum refining & asphalt,Lynch Petroleum Co,620 W 4th,not_works,,,,"Lynch Petroleum Co: wholesale oils/gas distributor (1935 'whol oils, gas')"
+1941,DENVER,KENYONIRONWORKS,Iron & steel works,Kenyon Iron Works,2042 Larimer,fix_address,1400 Delgany,,,'Kenyon Iron Works (A D Kenyon) 1400 Delgany'; 2042 Larimer is Keystone Hotel
+1941,DENVER,KINZBACHWIN,Machine shop / machinery,Kinzbach Win,1737 15th,ok,,,,"own listing 'Kinzbach Wm, machine shop, 1737 15th'"
+1941,PUEBLO,UQIPUEBLOMACHINEWORKS,Machine shop / machinery,UQ £i Pueblo Machine Works,302 E 8th,ok,,,,'Pueblo Machine Works (M Feely Jr) 302 E 8th'
+1941,PUEBLO,SPARRSHEETMETALWORKS,Metal working,Sparr Sheet Metal Works,107 E 24th,fix_address,112 E 5th,,,"'Sparr Sheet Metal Works, Albert B Sparr prop, 112 E 5th'; 107 E 24th is neighbour fire-brick ad"
+1941,DENVER,MACKEYJEROMEE,Petroleum refining & asphalt,Mackey Jerome E,3535 Walnut,ok,,,,"own listing 'Mackey Jerome E, oil refinery, 3535 Walnut'"
+1941,DENVER,MCPHERSONEDWB,Foundry,McPherson Edw B,1218 Elati,ok,,,,"own listing 'McPherson Edw B, brass foundry, 1218 Elati'"
+1941,DENVER,FRANKSECTREAS,Machine shop / machinery,Frank sec-treas,1744 Lawrence,fix_name,,,Midwest Machine Shop,'Midwest Machine Shop (Arthur P Lane) 1744 Lawrence'; name is bank officer fragment
+1941,DENVER,TUSANDSUPPLIES,Assay office,tus and supplies,515 17th,not_works,,,,assayers' and chemists' supplies house (17th cor Blake); 515 17th is Missouri Pacific Lines
+1941,DENVER,NICHOLSCARLJ,Machine shop / machinery,Nichols Carl J,227 Josephine,fix_address,2833 Larimer,,,"'Nichols Carl J, machine shop, 2833 Larimer'; 227 Josephine is Newlander Floral Co"
+1941,DENVER,PERRYABNERJ,Transportation equipment,Perry Abner J,486 S Bdway,ok,,,,"own listing 'Perry Abner J, auto body works, 486 S Bdway'"
+1941,DENVER,ANDALLKINDSOFELECTROPLAT,Metal working,andall kindsof electroplat­,1444 Blake,fix_name,,,Silver State Plating Co,"'Silver State Plating Co, O H Evans pres ... electroplating, 1444 Blake'"
+1941,DENVER,WHEELERROBTF,Transportation equipment,Wheeler Robt F,2747 N Speer,ok,,,,"'Wheeler Robt F, auto body repr, 2747 N Speer'; White House Cleaners is 773 Kalamath"
+1941,COLORADO SPRINGS,BIRTSAUTOBODYSHOP,Transportation equipment,Birt’s Auto Body Shop,119 S 26th,ok,,,,'Birt's Auto Body Shop (J E Birt) 119 S 26th'; Blunt Mortuary is 2229 W Colorado av
+1941,DURANGO,NORTONSHEETMETALWORKS,Metal working,Norton Sheet Metal Works,135 E 8th,ok,,,,own listing 'Norton Sheet Metal Works (W R Norton) 135 E 8th'
+1941,DENVER,QUALITYSHEETMETALWORKS,Metal working,Quality Sheet Metal Works,3301 W Colorado av,other_town,405 S Tejon,COLORADO SPRINGS,,Colorado Springs page: 'Quality Sheet Metal Works (C F & L F York) 405 S Tejon'; 3301 W Colorado av is Red Rock Inn
+1941,DENVER,GENERALTIRERUBBERCO,Rubber,— General Tire & Rubber Co,107 E 7th av,not_works,,,,under 'Automobile Tires—Wholesale': tire distributor branch
+1941,DENVER,ARSCOTTSEJR,Petroleum refining & asphalt,Arscott S E Jr,1422 Law,doubtful,1422 Lawrence,,Asphalt Products Co,"'Asphalt Products Co (Malcolm R Payne) roofing, 1422 Lawrence'; maker vs roofing dealer/contractor unclear"
+1941,GREELEY,GREELEYGASFUELGO,Metal working,GreeleyGas & FuelGo,1000 9th,fix_address,728 6th,,Greeley Sheet Metal Works,"'Greeley Sheet Metal Works (John Achziger Jr, Sam Brungard) 728 6th'; 1000 9th av is Greeley Gas & Fuel Co"
+1941,DENVER,STANTONWE,Machine shop / machinery,Stanton W E,1210 8th av,other_town,,GREELEY,,"Greeley section p339: 'Stanton W E, machine shop, 1210 8th av'"
+1941,COLORADO SPRINGS,COMMERCIALFEEDS,Fertilizer & rendering,commercial feeds,20 W Ramona av,not_works,,,,Cunningham's Hatchery under Chick Hatcheries; 'fertilizers' is chemist Nice Paul S ad text
+1941,STERLING,STERLINGSHEETMETALROOFING,Metal working,— Sterling Sheet Metal & Roofin g,118 N 4th,ok,,,,"classified 'Sterling Sheet Metal & Roofing Co, 118 N 4th'"
+1943,DENVER,WILFLEYBRIBACH,Assay office,Wilfley & Bribach,1848 Larimer,fix_address,1948 Broadway,,Bribach Oscar N,"'Bribach Oscar N, successor to Wilfley & Bribach, assayers ... 1948 Broadway'; 1848 Larimer is Bristol Hotel"
+1943,DENVER,OTTO,Transportation equipment,Otto,3500 Larimer,fix_name,,,Burns Auto Body Shop,'Burns Auto Body Shop (Peter Burns) 3500 Larimer'; name is Burkhardt partner fragment
+1943,DENVER,ERICKSONDISTMGR,Soap,Erickson dist mgr,620 E 17th av,not_works,,,,"Colgate-Palmolive-Peet Co 'F M Erickson dist mgr ... 503, 1863 Wazee': district office; 620 E 17th av is Cohn & Cohn groc"
+1943,DENVER,CARS11,Metal working,Cars 11,2814 Lari,fix_name,,,Cox Tolbert G,"'Cox Tolbert G, tinner, 2814 Larimer'; name is hotel ad 'Cars 11'"
+1943,DENVER,DOWDLESHEETMETALFURNACE,Metal working,Dowdle Sheet Metal & Furnace,1804 S Pearl,ok,,,,own listing 'Dowdle Sheet Metal & Furnace Co (W R Dowdle) 1804 S Pearl'
+1943,DENVER,AMERICANSMELTINGREFINING,Smelting & refining,American Smelting & Refining,2627 W 8th,not_works,,,,"Federated Metals Div of ASARCO 'dist mgr, 729 U S Natl Bank Bldg' office; 2627 W 8th av is Feder & Hoffman junk"
+1943,DENVER,SCHLITTERIRONFOUNDRY,Foundry,Schlitter Iron Foundry,3924 Wynkoop,ok,,,,own listing 'Schlitter Iron Foundry (T P McBreen) 3924 Wynkoop'
+1943,DENVER,SCHMIDTGAAUTOBODYCO,Transportation equipment,Schmidt G A Auto Body Co,1630 Platte,fix_address,2042 W Colfax,,,'Schmidt G A Auto Body Co (Mrs Minnie Lind) 2042 W Colfax'; 1630 Platte is Schreffler Steel & Supply
+1943,DENVER,STEWARTFREDH,Machine shop / machinery,Stewart Fred H,331 13th,ok,,,,"own listing 'Stewart Fred H, machine shop, 331 13th'"
+1943,DENVER,UNITEDSTATESRUBBERCO,Rubber,United States Rubber Co,331 14th,not_works,,,,"US Rubber Co 'H B Pixley br mgr, 1513 Wazee': branch; 331 14th is employment-agency ad"
+1943,DENVER,VOSSPRES,Machine shop / machinery,Voss pres,1329 Walnut,fix_name,,,Wagner Curtis R,"'Wagner Curtis R, machine shop, 1329 Walnut'; name is Voss Bros Bakeries"
+1943,COLORADO SPRINGS,GIDDINGSFD,Machine shop / machinery,Giddings F D,401 Pine,other_town,,FORT COLLINS,,"Fort Collins section p625 (Mountain av, College av): 'Giddings F D, machine shop, 401 Pine'"
+1943,GRAND JUNCTION,GOODYEARTIRERUBBERCO,Rubber,Goodyear Tire & Rubber Co,401 White av,not_works,,,,"Goodyear Tire & Rubber Co 'W Adams mgr, 401 White av' Grand Junction branch/store"
+1943,GREELEY,HOMEGASELECTRICCO,Manufactured gas,Home Gas & Electric Co,810 9th,not_works,,,,"Home Gas & Electric Co 'Luke Storey mgr, electl appliances, 810 9th': appliance/utility office"
+1943,DENVER,WESTERNSHEETMETALWORKS,Metal working,Western Sheet Metal Works,1915 E 9th,other_town,201 Central Main,PUEBLO,,Pueblo section p922: 'Western Sheet Metal Works (B E Mitchell) 201 Central Main'; 1915 E 9th is Wayne Distributing (C W Raymond)
+1943,STERLING,KAEPERNIKHENRY,Machine shop / machinery,Kaepernik Henry,115 N 3d,fix_address,1105 Sidney av,,,"'Kaepernik Henry, machine shop, rear 1105 Sidney av'; 115 N 3d phone 190 is Hotel Graham"
+1943,TRINIDAD,RAILWAYGASCO,Manufactured gas,Railway & Gas Co,231 W Main,not_works,,,,"Trinidad Electric Transmission Railway & Gas Co 'genl mgr, 231 W Main': utility office"
+1943,DENVER,METALWORKSINC,Metal working,METALWORKS INC,1413 S Bdway,fix_name,,,South Denver Sheet Metal & Furnace Co,"classified 'South Denver Sheet Metal & Furnace Co, 1413 S Bdway'; name is Heyse Sheet Metal Works (Colo Springs) fragment"
+1943,PUEBLO,PUEBLOSHEETMETALWORKS,Metal working,— Pueblo Sheet Metal Works,416 N Santa,ok,,,,"classified 'Pueblo Sheet Metal Works, 416 N Santa Fe av'"
+1950,BOULDER,ARAPAHOECHEMICALSINC,Chemicals,A r apahoe Chemicals Inc,2800 Pearl,ok,,,,own coded listing 'Arapahoe Chemicals Inc 2800 Pearl 12-2'
+1950,BOULDER,CARLSONSBOTTLEDGASMRMRSHUGOCARLSON,Petroleum refining & asphalt,• Carlson's Bottled Gas Mr • Mrs Hugo Carlson,3093 Bdwy,not_works,,,,"'Carlson's Bottled Gas Mr & Mrs Hugo Carlson' 12-10: retail bottled-gas dealer, not a refinery"
+1950,BOULDER,CONSOLIDATEDCARIBONSILVERMINESINC,Assay office,Consolidated Caribon Silver Mines Inc,1406 Pearl,not_works,,,,"'Consolidated Caribon Silver Mines Inc 1406 Pearl 12-8': mining company office, not an assay/mineral works"
+1950,BOULDER,MACKHWMOWERSAWSHOP,Machine shop / machinery,Mack H W Mower & Saw Shop,2103 Pine,ok,,,,own listing 'Mack H W Mower & Saw Shop 2103 Pine 10-1' (repair shop)
+1950,BOULDER,NELSONSBLACKSMITHSHOPROBERTENELSONMEDICALCENTERPHARMACYBOULDERMEDICAL,Machine shop / machinery,Nelson•s Blacksmith Shop Robert E Nelson Medical Center Pharmacy-Boulder Medical,2545 Spruce,ok,,,,'Nelson's Blacksmith Shop Robert E Nelson ... 2545 Spruce 10-1'; name interleaved with Medical Center Pharmacy
+1950,BOULDER,WEICOMEINNEMANUELHORST,Plastics,Wei-Come Inn Emanuel Horst,1843 Bdwy,not_works,,,,"1843 Bdwy is Wel-Come Inn (3-6 cafe); 12-15 belongs to 'Weldon Nellie Lbr Yd ... 26th & Pearl', a lumber yard"
+1950,CANON CITY,BROOKCANONCOALMINENICKJMOSCHETTITOMPOKASJR,Assay office,Brook Canon Coal Mine Nick J Moschetti & Tom Pokas Jr,812 N 5th,not_works,,,,"'Brook Canon Coal Mine ... 812 N 5th 12-8': coal mine operator's town address, not an assay/mineral works"
+1950,CANON CITY,CANONWELDINGWORKSCLYDEJMERRISROBERTEKILLION,Machine shop / machinery,Canon Welding Works Cl yde J Mer ris & Robert E Killion,320 Macon,ok,,,,own listing 'Canon Welding Works ... 320 Macon 10-1'
+1950,CANON CITY,CHANDLERCREEKMINEGRIFFITHSCOALMININGCO,Assay office,Chandler Creek Mine Griffiths Coal Mining Co,1024 Greenwood,not_works,,,,"'Chandler Creek Mine Griffiths Coal Mining Co 1024 Greenwood 12-8': coal mining co office, not an assay works"
+1950,COLORADO SPRINGS,ACMEPESTCONTROLMJMSGILLEN,Chemicals,Acme Pest Control M J & MS Gillen,1111 Cheyenne,not_works,,,,'Acme Pest Control' 12-2: pest-control service
+1950,COLORADO SPRINGS,CASEYWELDINGWORLSCWCASEYMMCASEY,Machine shop / machinery,Casey Welding Worls C W Casey & MM Casey,212 S Cascade,ok,,,,own listing 'Casey Welding Works ... 212-216 S Cascade 10-1'
+1950,COLORADO SPRINGS,COLOSPGSCAPITOLPACKINGCO,Soap,Colo Spgs Capitol Packing Co,119 S Cascade,doubtful,,,,'Colo Spgs Capitol Packing Co 119 S Cascade 12-17': packing-co branch downtown; soap/vet works not shown
+1950,COLORADO SPRINGS,UNITEDGASCO,Manufactured gas,United Gas Co,3709 N Nevada,doubtful,,,,'United Gas Co 3709 N Nevada 9-1': gas utility listing; gas works vs office/LP dealer not shown
+1950,DENVER,BORAXCONSOLIDATEDLTD,Chemicals,Borax Consolidated Ltd,2016 Blake,doubtful,,,,"Borax Consolidated Ltd (British borax maker) branch '2016 Blake 12-2', shares address with Turco Prod; works not shown"
+1950,DENVER,BUCKSGUNSHOPBRUCEFJACKSON,Plastics,Buck'sGun Shop BruceF Jackson,3945 Race,not_works,,,,"3945 Race is Buck's Gun Shop (5-9 retail); 12-15 belongs to 'Buda Engine Sls & Serv Inc 1013-23rd', a sales/service branch"
+1950,DENVER,CAVALERI,Metal working,Cavaleri,1735 W 35th,fix_name,,,C & C Iron Wks,columns interleaved: 'C & C Iron Wks Milton Calabra & James Cavaleri 1735 W 35th 12-7'
+1950,DENVER,CHROMITECOOFDENVERTHEROBERTSLAYTON,Metal working,Chromite Co of Denver The Robert S Layton,4620 E Colfax,ok,,,,own coded listing 'Chromite Co of Denver ... 4620 E Colfax 12-7'
+1950,DENVER,COLOFUMIGATINGTEXTERMINATINGCO,Chemicals,Colo Fumigating &t Exterminating Co,1754 S Bdwy,not_works,,,,'Colo Fumigating & Exterminating Co' 12-2: pest-control service
+1950,DENVER,COLOGEARCO,Machine shop / machinery,Colo Gear Co,2724 Walnut,ok,,,,own coded listing 'Colo Gear Co 2724 Walnut 10-1'
+1950,DENVER,COLOSANITARYWIPINGCLOTHCOPHILIPSAFFIL,Plastics,Colo Sanitary Wiping Cloth Co Philip Saffil,2637 W 13th Av,not_works,,,,"'Colo Sanitary Wiping Cloth Co' 12-15: wiping-cloth (rag laundering) supplier, not a plastics works"
+1950,DENVER,COLOSERUMCO,Chemicals,Colo Serum Co,4950 York,ok,,,,own coded listing 'Colo Serum Co 4950 York 12-2' (serum/biologicals plant)
+1950,DENVER,COLOSTANDARDUPHOLSTERYCOMNIERENBERGMSTEINILANDE,Plastics,"Colo Standard Upholstery Co M Nierenberg M Stein, I Lande",2363 Larimer,ok,,,,own coded listing 'Colo Standard Upholstery Co ... 2363 Larimer 12-15'
+1950,DENVER,COLOTOOLDIECOAJGIEST,Machine shop / machinery,Colo Tool & Die Co A J Giest,2211 Champa,ok,,,,own coded listing 'Colo Tool & Die Co ... 2211 Champa 12-6'
+1950,DENVER,COLOTOROCO,Machine shop / machinery,Colo Toro Co,693 E Speer Blvd,doubtful,,,,'Colo Toro Co 693 E Speer Blvd 10-1': likely Toro mower distributor/repair; works vs dealer unclear
+1950,DENVER,CONTINENTALCANCOINCQCCPOBOX,Metal working,Continental Can Co Inc QCC Po Box,241 S Cherokee,doubtful,,,,"Continental Can Co branch, 'PO Box 4180 241 S Cherokee 12-7'; plant vs office not shown"
+1950,DENVER,COOKFRANKCCO,Plastics,Cook Frank C Co,3147 Larimer,ok,,,,own coded listing 'Cook Frank C Co 3147 Larimer 12-15'
+1950,DENVER,COOKROBERTAMACHSLSROBERTACOOKIRJWJOHNSON,Machine shop / machinery,Cook RobertA MachSls RobertA CookIrJ W Johnson,963 Lafayette,not_works,,,,'Cook Robert A Mach Sls' 12-6 at 963 Lafayette (residential): machinery sales
+1950,DENVER,CROSTACAINC,Metal working,Crosta CA Inc,1830 Mkt St,ok,,,,own coded listing 'Crosta C A Inc 1830 Mkt St 12-7'
+1950,DENVER,CRUCIBLESTEELCOOFAMERICA,Metal working,Crucible Steel Co of America,2635 Walnut,doubtful,,,,Crucible Steel Co of America (Pittsburgh maker) branch '2635 Walnut 12-7'; works vs warehouse not shown
+1950,DENVER,DARTMFGSLSCO,Plastics,Dart Mfg & Sls Co,1246 Champa,ok,,,,own coded listing 'Dart Mfg & Sls Co 1246 Champa 12-15'; Mfg in name
+1950,DENVER,DAVISPOWERTOOLSJOHNWDAVISLEONABGRAHAM,Machine shop / machinery,Davis Power Tools John W Davis & Leona B Graham,3362 Larimer,doubtful,,,,'Davis Power Tools' 12-6 with 'Davis Power Tool Rental Serv' at same address; dealer vs shop unclear
+1950,DENVER,DEBRASSCOPPERCOFRANKLBEESONFERNBEESON,Metal working,De Brass & Copper Co Frank L Beeson & Fern Beeson,4023 E Colfax,ok,,,,own coded listing 'Denver Brass & Copper Co ... 4023 E Colfax 12-7'
+1950,DENVER,DEDIETMINERALCOJOHNRTAFT,Soap,De Diet Mineral Co John R Taft,3158 W Colfax,doubtful,,,,"'Denver Diet Mineral Co John R Taft 3158 W Colfax 12-17': diet/vet mineral supplements, not soap; maker vs supplier unclear"
+1950,DENVER,DEMETALSFNDRYJAMESRENALDE,Machine shop / machinery,De Metals Fndry James Renalde,1525 18th St,ok,,,,own coded listing 'Denver Metals Fndry James Renalde 1525 18th St 10-1'
+1950,DENVER,DEPESTCONTROLSERVLAB,Chemicals,De Pest Control & Serv Lab,754 S Bdwy,not_works,,,,"'Denver Pest Control & Serv Lab 1754 S Bdwy 12-2': pest-control service (street also misread, printed 1754)"
+1950,DENVER,DERUBBERPRODCOSUECTITUS,Rubber,De Rubber Prod Co Sue C Titus,1734 Lawrence,ok,,,,own coded listing 'Denver Rubber Prod Co ... 1734 Lawrence 12-12'
+1950,DENVER,EATONMTLPRODCO,Metal working,Eaton Mtl Prod Co,4800 York,ok,,,,own coded listing 'Eaton Mtl Prod Co 4800 York 12-7'
+1950,DENVER,ECONOMYFORMSCORP,Metal working,Economy Forms Corp,2863 Walnut,doubtful,,,,Economy Forms Corp (Des Moines forms maker) branch '2863 Walnut 12-7'; works vs rental yard not shown
+1950,DENVER,FLEXOVEYORMFGCOGCPENNECHORNEITJAMESSHIELDS,Machine shop / machinery,"FlexoveyorMfgCoGC Penn, EC HorneIt James Shields",1220 S Acoma St,ok,,,,own coded listing 'Flexoveyor Mfg Co ... 1220 S Acoma St 12-6'
+1950,DENVER,GALGASINC,Petroleum refining & asphalt,Gal Gas.Inc,5604 E Colfax Av,doubtful,,,,'Gal Gas Inc 5604 E Colfax Ave 12-10': likely LP/bottled-gas dealer; no refinery shown
+1950,DENVER,GENERALCHEMICALDIVALLIEDCHEMICALIDYECORP,Chemicals,"General Chemical Div Allied Chemical I, Dye Corp",1271 W Bayaud Av,ok,,,,"'General Chemical Div Allied Chemical & Dye Corp 1271 W Bayaud Ave 12-2': industrial Platte-valley site, chemical works"
+1950,DENVER,GENERALLEADMFGCO,Assay office,General Lead Mfg Co,2130 Mkt St,ok,,,,own coded listing 'General Lead Mfg Co 2130 Mkt St 12-8'
+1950,DENVER,GENERAMACHINERYISUPPLYCO,Machine shop / machinery,Genera Machinery I< Supply Co,3434 Brighton Blvd,not_works,,,,'General Machinery & Supply Co' 12-6: machinery dealer/supply house
+1950,DENVER,GILLARDPLASTICSINC,Plastics,Gillard Plastics Inc,1137 Larimer St,ok,,,,own coded listing 'Gillard Plastics Inc 1137 Larimer St 12-15'
+1950,DENVER,GLENSHOREMFGCOINC,Plastics,Glenshore Mfg Co Inc,1622 Arapahoe St,ok,,,,own coded listing 'Glenshore Mfg Co Inc 1622 Arapahoe St 12-15'
+1950,DENVER,GOODRICHBFCO,Rubber,Goodrich BF Co,53 S Bdwy,doubtful,,,,"B F Goodrich Co (Akron maker) '53 S Bdwy 12-12, K-8', one of three Denver outlets; likely tire store, works not shown"
+1950,DENVER,GOURMETSHOPROYBSIMONSINAESIMONSGOODRICHBFCO,Rubber,Gourmet Shop Roy B Simons & Ina E Simons Goodrich BF Co,2625 Walnut St,doubtful,,,,"2625 Walnut is 'Goodrich BF Co ... 12-12, K-8' (Gourmet Shop is 421 E 17th); Goodrich branch, works not shown"
+1950,DENVER,GRABLERMFGCOTHE,Metal working,Grabler Mfg Co The,1962 Blake St,ok,,,,own coded listing 'Grabler Mfg Co The 1962 Blake St 12-7'
+1950,DENVER,GRADENCOALCOTHE,Assay office,Graden Coal Co The,318 Walnut St,not_works,,,,"'Graden Coal Co The 318 Walnut St 12-8': coal company/dealer, not an assay/mineral works"
+1950,DENVER,GREATWESTERNEXTERMINATINGCO,Chemicals,Great Western Exterminating Co,4536 E Colfax Av,not_works,,,,'Great Western Exterminating Co' 12-2: pest-control service
+1950,DENVER,GRIMESPIPEASUPPLYCOTHEDAJGRIMES,Metal working,Grimes Pipe a. Supply Co The D a. J Grimes,1300 Larimer St,not_works,,,,"'Grimes Pipe & Supply Co' 2-7, 12-7: pipe supply house"
+1950,DENVER,GUNDERSONTAYLORMACHINERYCO,Machine shop / machinery,Gunderson-Taylor Machinery Co,970 Cherokee St,doubtful,,,,'Gunderson-Taylor Machinery Co 970 Cherokee St 12-6': probably machinery dealer; shop not shown
+1950,DENVER,HAVERGLOVERSERV,Soap,Haver-Glover Serv,1411 Mkt St,doubtful,,,,'Haver-Glover Serv 1411 Mkt St 12-17': service depot of Kansas City vet-biologicals maker; works not shown
+1950,DENVER,HEINSOHNAEPRINTINGIRMACHINERYIRSUPPLIESAEHEINSOHN,Machine shop / machinery,Heinsohn A E Printing Ir Machinery Ir Supplies A E Heinsohn,1443 Blake St,not_works,,,,'Heinsohn A E Printing & Machinery & Supplies' 12-6: printing machinery and supply dealer
+1950,DENVER,HIGHLANDINDUSTRIESINC,Metal working,Highland Industries Inc,2255 S Delaware,ok,,,,own coded listing 'Highland Industries Inc 2255 S Delaware 12-7' (shares address with Triangle Western Sls & Supply)
+1950,DENVER,HOLDEVERYTHINGPRODEDWINHILLJACKKLINE,Plastics,Hold Everything Prod Edwin Hill & Jack Kline,1334 Speer Blvd,ok,,,,own coded listing 'Hold Everything Prod ... 1334 Speer Blvd 12-15'
+1950,DENVER,HORNINGMARTHAK,Metal working,Horning Martha K,783 S Wash,doubtful,,,,"individual 'Horning Martha K 783 S Wash 12-7', residential street; nature unclear"
+1950,DENVER,HOWARDFLINTINKCO,Chemicals,Howard Flint Ink Co,2807 Blake St,doubtful,,,,Howard Flint Ink (Detroit maker) branch '2807 Blake St 12-2'; works vs depot not shown
+1950,DENVER,PUEBLOCOLORADOHUNTMINERALCOJCNEUDIGATETRUSTEE,Assay office,"Pueblo, Colorado Hunt Mineral Co J C Neudigate, Tru stee",1033 W 14th Av,doubtful,,,,"'Hunt Mineral Co J C Neudigate, Trustee 1033 W 14th Ave 12-8' (Denver; 'Pueblo, Colorado' is an ad fragment); trustee-held mineral co, works not shown"
+1950,DENVER,HURLEYCOTHE,Plastics,Hurley Co The,2140 Mkt St,ok,,,,own coded listing 'Hurley Co The 2140 Mkt St 12-15'
+1950,DENVER,DENVERLNTERNATLPRINTINGINKDIVFINTERCHEMICALCORP,Chemicals,Denver lnternat'l Printing Ink Div ~f InterChemical Corp,1824 Curtis,doubtful,,,,International Printing Ink Div of InterChemical Corp (NY maker) branch '1824 Curtis 12-2'; works not shown
+1950,DENVER,MIDSTATEMFGCO,Metal working,Midstate Mfg Co,1131 S Bannock,ok,,,,own coded listing 'Midstate Mfg Co 1131 S Bannock 12-7'
+1950,DENVER,WMEGEERSECGENMGRFREDERICKMILEHIGHPAINTCO,Iron & steel works,WM. E. GEER SEC & GEN MGR. FREDERICK Mile High Paint Co,915 S York,fix_address,25 Larimer,,Midwest Steel & Iron Works Co,915 S York is Mile High Paint Co's (7-1); codes 12-29/30/43 belong to 'MIDWEST STEEL & IRON WORKS CO. 25 LARIMER' ad
+1950,DENVER,MORTONPEABODYINC,Machine shop / machinery,Morton & Peabody Inc,1925 W 13th,ok,,,,own coded listing 'Morton & Peabody Inc 1925 W 13th 10-1'
+1950,DENVER,NATHANLOUISBWILLIAMJACOBGOLDBERG,Metal working,Nathan Louis B William & Jacob Goldberg,1745 Wazee,ok,,,,own coded listing 'Nathan Louis B William & Jacob Goldberg 1745 Wazee 12-7'
+1950,DENVER,NATLCASHREGISTERCOTHE,Plastics,Nat'l Cash Register Co The,1725 Welton,doubtful,,,,"Nat'l Cash Register branch, code 12-15; Denver works not shown (likely sales office)"
+1950,DENVER,NATLLEADCO,Metal working,· Nat'l Lead Co,2945 Blake,ok,,,,own coded listing 'Nat'l Lead Co 2945 Blake 12-7' (industrial site; sales office listed separately at 1932 Bdwy)
+1950,DENVER,OVERLANDFNDRYGOHOSEKMFGGO,Plastics,Overland Fndry Go Hosek Mfg Go,1251 Osage,ok,,,,own coded listing 'Overland Fndry Co Hosek Mfg Co 1251 Osage 12-15'
+1950,DENVER,K1PACIFICSTATESGASTIRONPIPEGO,Metal working,K-1 • Pacific States Gast Iron Pipe Go,1921 Blake,doubtful,,,,"Pacific States Cast Iron Pipe Co (Utah maker) '1921 Blake 12-7'; likely sales office, works not shown"
+1950,DENVER,PERFECBONDINGMTLCOGRETTAVFISHER,Machine shop / machinery,Perfec BondingMtlCoGR & EttaV Fisher,157 S Lafayette,ok,,,,own coded listing 'Perfec Bonding Mtl Co ... 157 S Lafayette 10-1'
+1950,DENVER,PERRYDONCOGNAPPBERTHAMEYERSEVAFLAKS,Plastics,"Perry Don & Co G Napp, Bertha Meyers & Eva Flaks",1750 Arapahoe,ok,,,,own coded listing '1750 Arapahoe 12-15'; nothing indicates non-works
+1950,DENVER,PIERSWL,Assay office,Piers W ·L,1925 Arapahoe,ok,,,,own coded listing 'Piers W L 1925 Arapahoe 12-8' (assayer)
+1950,DENVER,PLASTICSCENTERCFPEARSONEDSAMBORSKI,Plastics,Plastics CenterCF Pearson •ED Samborski,427 E 19th,ok,,,,own coded listing 'Plastics Center C F Pearson & E D Samborski 427 E 19th 12-15'
+1950,DENVER,POWEREQUIPCOINC,Machine shop / machinery,Power Equip Co Inc,3440 Brighton Blvd,doubtful,,,,'Power Equip Co Inc 3440 Brighton Blvd 10-1' beside General Machinery & Supply; likely equipment dealer
+1950,DENVER,PYRAMIDPETROLEUMCO,Petroleum refining & asphalt,Pyramid Petroleum Co,400 W Bayaud Av,ok,,,,own coded listing 'Pyramid Petroleum Co 400 W Bayaud Ave 12-10'
+1950,DENVER,QUICKWAYTRKSHOVELCOPOBOX,Assay office,Quick Way Trk Shovel Co PO Box,4150 Josephine,ok,,,,"own coded listing 'Quick Way Trk Shovel Co PO Box 1800 4150 Josephine 12-8' (truck-shovel maker; coded 12-8, not an assay office)"
+1950,DENVER,RAINSFLOMFGCOROBERTHRAINS,Plastics,Rains Flo Mfg Co Robert H Rains,1913 Lawrence,ok,,,,own coded listing 'Rains Flo Mfg Co ... 1913 Lawrence 12-15'
+1950,DENVER,REDDOTLPGASCO,Petroleum refining & asphalt,Red Dot L-P Gas Co,2910 Huron,doubtful,,,,"'Red Dot L-P Gas Co 2910 Huron 12-10' (also 3801 E 56th 9-1, Red Dot Oil Co 2984 Huron): LP distributor, no refinery shown"
+1950,DENVER,REDFIELDGUNSIGHTCOLWITWCREDFIELDETAL,Plastics,RedfieldGun SightColWItWC Redfield Et Al,3315 Gilpin,ok,,,,own coded listing 'Redfield Gun Sight Co ... 3315 Gilpin 12-15'
+1950,DENVER,RELIABLEPESTCONTROLCOORPHILLIPSCBMORGAN,Chemicals,Reliable Pest Control Co O R Phillips & CB Morgan,3145 Tejon,not_works,,,,'Reliable Pest Control Co' 12-2: pest-control service
+1950,DENVER,ROBVONCORPTHE,Metal working,Robvon Corp The,2440 Larimer,ok,,,,own coded listing 'Robvon Corp The 2440 Larimer 12-7'
+1950,DENVER,4801W38TH,Machine shop / machinery,4801 W 38th,4801 W 38th,not_works,,,,"listing is 'Rogers Hdwe & Variety Store ... 4801 W 38th 5-5, 10-1': hardware retailer"
+1950,DENVER,SCIENTIFICSUPPLYCO,Chemicals,Scientific Supply Co,800 Water,not_works,,,,'Scientific Supply Co 800 Water' 12-2: laboratory supply house
+1950,DENVER,SEVENTHAVECAFEWEDEVRIES233E7THSEIBERLINGRUBBERCO,Rubber,SeventhAve CafeWE DeVries 233E 7th Seiberling Rubber Co,2101 Blake,doubtful,,,,"2101 Blake is 'Seiberling Rubber Co ... 12-12' (Seventh Ave Cafe is 233 E 7th); Akron maker's branch, works not shown"
+1950,DENVER,SHATTUCKSWCHEMICALCOTHE,Chemicals,Shattuck SW Chemical Co The,1805 S Bannock,ok,,,,own coded listing 'Shattuck S W Chemical Co The 1805 S Bannock 12-2'
+1950,DENVER,SMITHERENNCOINCGREATWESTERNDIV,Chemicals,Smitherenn Co Inc Great Western Div,4536 E Colfax,not_works,,,,'Smitherenn Co Inc Great Western Div 4536 E Colfax' = Great Western Exterminating: pest-control service
+1950,DENVER,SNOWWHITEPRODCO,Soap,Snow White Prod Co,1951 Mkt,ok,,,,own coded listing 'Snow White Prod Co 1951 Mkt 12-17'
+1950,DENVER,SNYDERMETALEQUIPDAVIDSNYDER,Metal working,Snyder Metal Equip David Snyder,2706 Larimer,doubtful,,,,'Snyder Metal Equip David Snyder 2706 Larimer 12-7': metal/equipment dealer vs shop unclear
+1950,DENVER,SQUAREDEALMFGCOWAWAJRITRUSELLAPTHOMAS,Chemicals,"Square Deal Mfg Co WA. WA Jr, I, Trusella P Thomas",2344 Larimer,ok,,,,own coded listing 'Square Deal Mfg Co ... 2344 Larimer 12-2'
+1950,DENVER,STARCOPRODCO,Chemicals,Starco Prod Co,1519 Lawrence,ok,,,,own coded listing 'Starco Prod Co 1519 Lawrence 12-2'
+1950,DENVER,STAYPUTCLAMPITCOUPLINGCO,Metal working,Stayput Clamp It Coupling Co,3975 York,ok,,,,own coded listing 'Stayput Clamp & Coupling Co 3975 York 12-7'
+1950,DENVER,SUNVALLEYELECMFGCOAMCAMPBELLWRHARN,Machine shop / machinery,Sun Valley ElecMfgCoAM Campbell &W R Harn,710 W Colfax,ok,,,,own coded listing 'Sun Valley Elec Mfg Co ... 710 W Colfax 12-6'
+1950,DENVER,SURPLUSTOOLSCOMMODITIESWMDCOXCFHALE,Machine shop / machinery,Surplus Tools & Commodities Wm D Cox & CF Hale,1379 W Alameda,not_works,,,,'Surplus Tools & Commodities' 12-6: surplus dealer
+1950,DENVER,TEMPLEPAULN,Chemicals,Temple Paul N,1925 Blake,ok,,,,own coded listing 'Temple Paul N 1925 Blake 12-2'
+1950,DENVER,THOMPSONPIPESTEELCO,Metal working,Thompson Pipe & Steel Co,3001 Larimer,ok,,,,own coded listing 'Thompson Pipe & Steel Co 3001 Larimer ... 12-7'
+1950,DENVER,TIBBSVETERINARYSUPPLYGRANTRORTIBBS,Soap,Tibbs Veterinary Supply Grant R & OR Tibbs,1110 E 18th Av,not_works,,,,'Tibbs Veterinary Supply' 12-17: veterinary supply house
+1950,DENVER,TRIANGLEWESTERNSLSSUPPLYCO,Plastics,Triangle Western Sls & Supply Co,2255 S Delaware,not_works,,,,'Triangle Western Sls & Supply Co' 12-15: sales/supply house
+1950,DENVER,TRIPLOILREFININGCOOTISAMOS,Petroleum refining & asphalt,Triploil Refining Co Otis Amos,3345 Brighton Blvd,ok,,,,own coded listing 'Triploil Refining Co Otis Amos 3345 Brighton Blvd 12-10'
+1950,DENVER,TURCOPRODINC,Chemicals,Turco Prod Inc,2016 Blake,doubtful,,,,"Turco Prod Inc (Los Angeles maker) '2016 Blake 12-2', same address as Borax Consolidated; likely depot"
+1950,DENVER,UNIONWELDINGLEEWULRICH,Machine shop / machinery,Union Welding Lee W Ulrich,3425 Lipan St,ok,,,,own coded listing 'Union Welding Lee W Ulrich 3425 Lipan St 10-1'
+1950,DENVER,WESCOCORPEVERGREEN,Plastics,Wesco Corp Evergreen,531 S Vine,not_works,,,,'Wesco Corp Evergreen 531 S Vine': office address shared with Colo General Agcy (insurance) and Puterbaugh F J
+1950,DENVER,WESTERNBELTINGPACKINGCO,Rubber,Western Belting & Packing Co,1720 Wazee,doubtful,,,,"'Western Belting & Packing Co 1720 Wazee 7-5, 12-12': belting/packing jobber vs rubber works unclear"
+1950,DENVER,WESTERNFNDRYJERNESTJAMESLHIGSON,Metal working,Western Fndry J Ernest & James L Higson,2000 E 40th Av,ok,,,,own coded listing 'Western Fndry ... 2000 E 40th Ave 12-7'
+1950,DENVER,WILKERSONVALVECOINC,Metal working,Wilkerson Valve Co Inc,260 S Dale Ct,ok,,,,own coded listing 'Wilkerson Valve Co Inc 260 S Dale Ct 12-7' (distributor listed separately at 925 S Pearl)
+1950,DENVER,WYETHINC,Chemicals,Wyeth Inc,1252 Arapahoe,doubtful,,,,Wyeth Inc (pharmaceutical maker) branch '1252-54 Arapahoe 12-2'; works not shown
+1950,DURANGO,MORNINGSTARCOALCOFRANKJRFRANKSRREALSTINSHOPJAMESBREAL,Assay office,Morning Star Coal Co Frank Jr & Frank Sr Real's Tin Shop James B Real,1251 Main,not_works,,,,columns interleaved: 12-8 is 'Morning Star Coal Co ... 635-2nd Ave' (coal co); 1251 Main is Real's Tin Shop (7-6)
+1950,ENGLEWOOD,ARAPAHOEMFGCO,Metal working,Arapahoe Mfg Co,1366 W Oxford,ok,,,,own coded listing 'Arapahoe Mfg Co 1366 W Oxford 12-7'
+1950,FORT COLLINS,RICHARDSONGDSONMFGCOGDRICHARDSONTRICHARDSON,Plastics,RichardsonGDSonMfgCoGD Richardson & T Richardson,400 Jefferson,ok,,,,own coded listing 'Richardson G D Son Mfg Co ... 400 Jefferson 12-15'
+1950,GOLDEN,PARANCORPIPELINEPROTECTIONCO,Plastics,Parancor Pipeline Protection Co,902 Archer St,ok,,,,own coded listing 'Parancor Pipeline Protection Co 902 Archer St 12-15'
+1950,GRAND JUNCTION,EMERSONSCH,Machine shop / machinery,Emerson Sch,930 Ute Av,fix_address,,,Epperson & Pierce Mfg & Retailers,930 Ute Ave is Emerson Sch (14-9); 12-6 is 'Epperson & Pierce Mfg & Retailers ... RR2' (no street)
+1950,GRAND JUNCTION,GRANDSERVTHESTANDARDOILCO,Petroleum refining & asphalt,Grand Serv The Standard Oil Co,110 S 7th,not_works,,,,"'Grand Serv The Standard Oil Co 110 S 7th 12-10': Standard Oil service/agency, not a refinery"
+1950,GRAND JUNCTION,PATTERICKSWHOLESALEDISTRCOCECHPATTERICK,Petroleum refining & asphalt,Patterick's Wholesale DistrCoCE &CH Patterick,1685 Gunnison Blvd,not_works,,,,'Patterick's Wholesale Distr Co' 12-10: wholesale distributor
+1950,LA JUNTA,BECHTOLDHENRYL,Plastics,Bechtold Henry L,510 Hayes Av,doubtful,,,,"individual 'Bechtold Henry L 510 Hayes Ave 12-15', residential street; 12-15 also covers well drilling, nature unclear"
+1950,PUEBLO,ARKANSASVALLEYWELDERSSUPPLYJFDAMMANNDANMILLSON,Machine shop / machinery,Arkansas Valle y Welder s Supply J F Dammann & Dan Millson,308 N Grand,not_works,,,,'Arkansas Valley Welders Supply' 10-1: welding supply house
+1950,PUEBLO,BIFFMFGCO,Chemicals,Biff Mfg Co,310 N Santa,fix_address,310 N Santa Fe,,,own listing 'Biff Mfg Co 310 N Santa Fe 12-2'; 'Fe' dropped
+1950,PUEBLO,COCHRANOILCO6LFW19TH,Petroleum refining & asphalt,"Cochran Oil Co 6lf, W 19th &",115 N Grand,doubtful,,,,'Cochran Oil Co 61? W 19th & 115 N Grand 12-10': oil dealer with two outlets; no refinery shown
+1950,PUEBLO,COLOINTERSTATEGASCO,Manufactured gas,Colo Interstate Gas Co,2701 N Santa,doubtful,2701 N Santa Fe,,,"'Colo Interstate Gas Co 2701 N Santa Fe 9-1': natural-gas pipeline co, gas works not shown; 'Fe' dropped"
+1950,PUEBLO,COLOTERMINIXSERV,Chemicals,Colo Terminix Serv,310 S Main,not_works,,,,'Colo Terminix Serv' 12-2: pest-control service
+1950,PUEBLO,DALUBRICANTCOINC,Petroleum refining & asphalt,D-A Lubricant Co Inc,132 S Main,doubtful,,,,'D-A Lubricant Co Inc 132 S Main 12-10': Indianapolis lubricant maker's branch/dealer; no works shown
+1950,PUEBLO,FOUNTAINIRONBRASSFNDRYCARLHSPANNANS,Metal working,Fountain Iron & Brass Fndry Carl H Spannans,1815 W 14th,ok,,,,own coded listing 'Fountain Iron & Brass Fndry ... 1815 W 14th 12-7'
+1950,PUEBLO,TABOR8Z41LYNNSGUNWELDSHOPROBERTDANIELLYNNJRSR,Machine shop / machinery,Tabor 8Z41 Lynn's Gun & Weld Shop Rober.t Daniel Lynn Jr & Sr,2825 Lake,ok,,,,own listing 'Lynn's Gun & Weld Shop ... 2825 Lake 10-1'; name prefixed by phone 'Tabor 8241'
+1950,PUEBLO,MACFARLANEHENRYHIGHWAYSUPTMACHINESHOPMARSHALLDHOFFMAN,Machine shop / machinery,MacFarlane Henry Highway supt Machine Shop Marshall D Hoffman,1302 Carteret,ok,,,,'Machine Shop Marshall D Hoffman 1302 Carteret 10-1'; name prefixed by neighbour MacFarlane Henry
+1950,PUEBLO,EARLMARTIN,Chemicals,Earl Martin,687 S Union,doubtful,,,Pueblo Fire Equip Co,line continues 'Pueblo Fire Equip Co E G Colglazier & J Earl Martin 687 S Union 12-2': fire-extinguisher dealer/service vs works unclear
+1950,PUEBLO,PUEBLONOVELTYWORKSGEORGEADABPUEBLOFIXTUREEXCHTHEESTEINZZZNSANBERGER,Metal working,Pueblo Novelty -Works George & Ada B Pueblo Fixture Exch The E Stein ZZZ N SanBerger,113 E 5th,ok,,,,"columns interleaved: 'Pueblo Novelty Works George & Ada B Berger 113 E 5th 7-6, 12-7'; Fixture Exch is 222 N Santa Fe"
+1950,PUEBLO,RICHARDSMACHSHOPIRRICHARDS,Machine shop / machinery,Richards• Mach Shop I R Richards,1725 Wabash,ok,,,,own listing 'Richards Mach Shop I R Richards 1725 Wabash 10-1'
+1950,ROCKY FORD,BRANDTGBLACKSMITHSHOP,Machine shop / machinery,Brandt G Blacksmith Shop,400 N 1st,ok,,,,"own listing 'Brandt G Blacksmith Shop 400 N 1st 7-3, 10-1'"
+1950,STERLING,FOSTERMACHSHOPGARAGECEFOSTERHENRYGOBLE,Machine shop / machinery,Foster Mach Shop & Garage C E Foster & Henry Goble,902 Sidney,ok,,,,own listing 'Foster Mach Shop & Garage ... 902 Sidney 10-1'
+1950,STERLING,SPELTSGARAGEMACHINESHOPWMSPELTS,Machine shop / machinery,Spelts Garage & Machine Shop W M Spelts,701 N 3rd,ok,,,,own listing 'Spelts Garage & Machine Shop ... 701 N 3rd 10-1'
+1950,STERLING,STERLINGMFGCOTHEPOBOX,Machine shop / machinery,Sterling Mfg Co The PO Box,8 N 3rd,fix_address,202 N 3rd,,,"printed 'PO Box 8-202 N 3rd 12-6': street is 202 N 3rd, PO box number taken as house number"
+1950,STERLING,STEWARTWILLIAM,Plastics,Stewart William,503 Douglas,not_works,,,,same man as 'Stewart Well Supplies William M Stewart 503 Douglas 10-15'; 12-15 here is well drilling/supply
+1950,TRINIDAD,BALDYCOALCOEWMEGGISON,Assay office,Baldy Coal Co E W Meggison,633 Tillotson St,not_works,,,,"'Baldy Coal Co E W Meggison 633 Tillotson St 12-8': coal company, not an assay/mineral works"
+1950,TRINIDAD,BRONZALPLATINGCODDCOSTIGAN,Metal working,Bronzal Plating Co D D Costigan,1415 Arizona Av,ok,,,,own coded listing 'Bronzal Plating Co D D Costigan 1415 Arizona Ave 12-31'
+1956,BOULDER,BROWNSHEETMETALWORKSGARAGE,Metal working,Brown Sheet Metal Works &Garage,814 Pearl,ok,,,,"own listing 'Brown Sheet Metal Works & Garage ... 814 Pearl St., 7-6'; Chef Joni's is 1318 Pearl"
+1956,BOULDER,MOBILESHEETMETALWORKS,Metal working,Mobile Sheet Metal Works,1525 18th,fix_address,516 College Av,,,"interleaved: Mobile Sheet Metal Works '516 College Ave., 7-6'; 1525 18th is Crockett Bit & Spur Co (5-9)"
+1956,BOULDER,JENSENSHEETMETAL,Metal working,Jensen Sheet Metal,260 Pearl,ok,,,,"own listing 'Jensen Sheet Metal ... 260 Pearl St., 7-6'"
+1956,BOULDER,LARSENMACHINESHOP,Machine shop / machinery,Larsen Machine Shop,959 Walnut,ok,,,,"own listing 'Larsen Machine Shop ... 959 Walnut, 7-6'"
+1956,COLORADO SPRINGS,RENDERINGWORKS,Fertilizer & rendering,Rendering Works,400 S 16th,fix_address,,,,'Colo Spgs Hide & Tallow Co Fountain Rd Rendering Works' (no house no.); 400 S 16th is Colo Spgs Iron & Metal Co
+1956,COLORADO SPRINGS,COOPERJIMHEATINGGASSHEETMETALJAMESL,Metal working,Cooper Jim Heating Gas & Sheet Metal Jam es L,431 W Colo Av,ok,,,,own listing 'Cooper Jim Heating Gas & Sheet Metal ... 431 W Colo Ave 7-6'
+1956,COLORADO SPRINGS,LEMLESROUNDHOUSEWAYNEELEMLEBX430,Transportation equipment,Lemle’ s Roundhouse Wayne E Lemle Bx 430,2410 N Nevada,not_works,,,,"'Lemle's Roundhouse' 5-10 is a business name (retail/eating place), not a railroad roundhouse"
+1956,DENVER,DENVERMACHINESHOPEFWHITEPTSCHONSTROM,Machine shop / machinery,Denver Machine ShopEF White &PT Schonstrom,1409 Blake St,ok,,,,own listing 'Denver Machine Shop ... 1409 Blake St 12-6'
+1956,DENVER,DENVERMETALSFOUNDRYJAMESRENALDE,Foundry,Denver Metals Foundry Jam es Renalde,1525 18th St,ok,,,,own listing 'Denver Metals Foundry James Renalde 1525 18th St 10-1' (also classified p990)
+1956,DENVER,DENVERPROPANEGASCO,Manufactured gas,Denver Propane Gas Co,4701 E Evans,not_works,,,,"Denver Propane Gas Co under 'Gas Co': bottled-gas distributor, not a gas works"
+1956,DENVER,DOWDLESHEETMETALCO,Metal working,Dowdle Sheet Metal C o,1804 S. Pearl,ok,,,,"own listing 'Dowdle Sheet Metal Co., Inc., 1804 S. Pearl St., 7-6'"
+1956,DENVER,DUNNSHEETMETALMFGCO,Metal working,Dunn Sheet Metal & Mfg. C o,350 W. Evans,ok,,,,"own listing 'Dunn Sheet Metal & Mfg. Co ... 350 W. Evans, 7-6'"
+1956,ENGLEWOOD,ENGLEWOODIRONWORKSJOHNPBOYDHOFFHINES1065,Iron & steel works,Englewood Iron Works John P & Boyd Hoffhines 1065,1065 W Hampden,ok,,,,own listing 'Englewood Iron Works ... 1065 W Hampden 10-1'
+1956,DENVER,GATESRUBBERCO,Rubber,Gates Rubber Co,999 S Bdwy,ok,,,,"own listing 'Gates Rubber Co 999 S Bdwy 7-7, 2-1'"
+1956,DENVER,HANKSAUTOBODYHENRYVECCHIARELLI,Transportation equipment,Hank's Auto Body Henry Vecch iarelli,4001 W 38th,ok,,,,own listing 'Hank's Auto Body ... 4001 W 38th Av'
+1956,DENVER,HIAWATHAOILGASCO,Manufactured gas,Hiawatha Oil & Gas Co,1636 Welton,not_works,,,,'Hiawatha Oil & Gas Co 1636 Welton Oil Prod': oil producer's downtown office
+1956,DENVER,MINESMELTERSUPPLYCO,Smelting & refining,Mine &Smelter SupplyCo,1422 17th,not_works,,,,"'Mine & Smelter Supply Co' 2-7, 12-6: supply house, not a smelter"
+1956,DENVER,STATESASPHALTCO,Petroleum refining & asphalt,States Asphalt Co,5201 Bannock,ok,,,,"own listing 'Mtn. States Asphalt Co., 5201 Bannock, 12-13'; name lacks 'Mtn.'"
+1956,DENVER,MOYLESSHEETMETALFURNACE,Metal working,Moyle's Sheet Metal & Furnace,1240 S. Bannock,ok,,,,"own listing 'Moyle's Sheet Metal & Furnace ... 1240 S. Bannock, 7-6'"
+1956,DENVER,NATIONALASSOCIATEDPETROLEUMCOMIDLANDSVGSB,Petroleum refining & asphalt,National Associated Petroleum Co Midland Svgs b,100 S Santa,not_works,,,,'National Associated Petroleum Co Midland Svgs bldg': office; 100 S Santa Fe is National Auto & Parts Co
+1956,DENVER,NEEDHAMRBOILGASCO,Manufactured gas,Needham R B Oil & Gas Co,3108 Brighton,not_works,,,,"Needham R B Oil & Gas Co 12-10, listed under 'Gas & Oil Distributors' (p901): distributor"
+1956,DENVER,NEWLANDERAMACHINEWORKS,Machine shop / machinery,Newlander A Machine Works,615 W 14th av,ok,,,,"own listing 'Newlander A Machine Works 615 W 14th av' (codes 2-7, 10-1 in next column)"
+1956,DENVER,ONEIDACHEMICALCOINC,Chemicals,Oneida Chemical Co Inc,1123 Larimer,ok,,,,own listing 'Oneida Chemical Co Inc 1123 Larimer 12-2'
+1956,DENVER,PIERSWLASSAYER,Assay office,PiersWL assayer,1914 Lawrence,ok,,,,own listing 'Piers W L assayer 1914 Lawrence'
+1956,DENVER,PYRAMIDPETROLEUMCO,Petroleum refining & asphalt,Pyramid Petroleum Co,500 W Bayaud,not_works,,,,Pyramid Petroleum Co 12-10 with numbered service stations: petroleum distributor/jobber
+1956,DENVER,REFFELJWMETALSFOUNDRYJOHNREFFEL1950S,Foundry,ReffelJW Metals Foundry John Reffel 1950S,609 15th,fix_address,1950 S Cherokee,,,interleaved: 'Reffel J W Metals Foundry John Reffel 1950 S Cherokee 12-6'; 609 15th is Reliable Sewing Machine Co
+1956,DENVER,RELIABLESHEETMETALROBERTJOPPELT,Metal working,Reliable Sheet Metal Robert J Oppelt,2685 S High,ok,,,,own listing 'Reliable Sheet Metal Robert J Oppelt 2685 S High 7-6' (also p989)
+1956,DENVER,ROYALAUTOBODYRICHARDSJONESVERNONL,Transportation equipment,Royal Auto Body Richard S Jones & Vernon L,1158 S Broadway,ok,,,,own listing 'Royal Auto Body ... 1158 S Broadway 2-4'
+1956,DENVER,ROYALOILCOCASCADEPETROLEUMCO,Petroleum refining & asphalt,Royal Oil Co Cascade Petroleum Co,2120 Delgany,not_works,,,,"'Royal Oil Co Cascade Petroleum Co 2120 Delgany', also listed among service stations (p1111): oil distributor"
+1956,DENVER,RUEDYFERTILIZERPLANTCHARLESFLEPPLAJR,Fertilizer & rendering,Ruedy Fertilizer Plant Charles F Leppla Jr,5600 Franklin,ok,,,,"'Ruedy Fertilizer Plant ... 5600 Franklin 10-7' (columns interleaved, address its own)"
+1956,DENVER,SINCLAIROILGASCO,Manufactured gas,Sinclair Oil & Gas Co,634 W. 4th,not_works,,,,"'Sinclair Oil & Gas Co., Denver Club B.': office; 634 W. 4th is Sinclair Plumbing Co (7-6)"
+1956,DENVER,UNITEDSTEELIRONWORKS,Iron & steel works,United Steel & Iron Works,3609 Wynkoop,ok,,,,"own listing 'United Steel & Iron Works, Co 3609 Wynkoop'"
+1956,DENVER,VICTORYAUTOBODYPAINTSHOP,Transportation equipment,Victory Auto Body & Paint Shop,2260 California,ok,,,,"own listing 'Victory Auto Body & Paint Shop, Inc., 2260 California, 2-4'"
+1956,DENVER,WILKINSHEETMETAL,Metal working,Wilkin Sheet Metal,290 S. Perry,ok,,,,"own listing 'Wilkin Sheet Metal ... 290 S. Perry, 7-6'"
+1956,DENVER,WILLIAMSSHEETMETALWKS,Metal working,Williams Sheet Metal W k s,524 W. Colfax,ok,,,,own listing 'Williams Sheet Metal Wks ... 524 W. Colfax'
+1956,DENVER,WIXSONFURNACESHEETMETALWKS,Metal working,Wixson Furnace & Sheet Metal W k s,2301 W. 30th,ok,,,,"own listing 'Wixson Furnace & Sheet Metal Wks ... 2301 W. 30th, 7-6'"
+1956,DENVER,WOEBERAUTOBODYMFGCO,Transportation equipment,Woeber Auto Body & Mfg. C o,4950 Jackson,ok,,,,"own listing 'Woeber Auto Body & Mfg. Co., 4950 Jackson, 2-5'"
+1956,DURANGO,OLIGERSHEETMETALLOUISJOLIGER,Metal working,Oliger Sheet Metal Louis J Oliger,1474 Main,ok,,,,own listing 'Oliger Sheet Metal Louis J Oliger 1474 Main ... 7-6'
+1956,DURANGO,TELLURIDEIRONWORKSCO,Iron & steel works,Telluride Iron Works Co,400 Main Av,ok,,,,own listing 'Telluride Iron Works Co 400 Main Av 10-1' (also p947 Durango)
+1956,DURANGO,THREESTATESNATLGASCO,Manufactured gas,Three States Nat'l Gas Co,93 Riverview,not_works,,,,"Three States Nat'l Gas Co 93 Riverview Dr: natural-gas company office, no gas works"
+1956,DURANGO,SOUTHERNUNIONGASCOMPANY,Manufactured gas,Southern Union Gas Company,738 Main Av,not_works,,,,'Southern Union Gas Company 738 Main Av 4-6': gas utility office/appliance store
+1956,FORT COLLINS,FORTCOLLINSSHEETMETALWKS,Metal working,Fort Collins Sheet MetalW ks,226 Walnut,ok,,,,"own listing 'Fort Collins Sheet Metal Wks., 226 Walnut, 2-10, 12-7'"
+1956,GOLDEN,BEERCHEMICALSCIENTIFICPORCELAIN,Chemicals,BEER CHEMICAL & SCIENTIFIC PORCELAIN,600 9th st,fix_name,,,Coors Porcelain Co,name is ad header ('Beer Chemical & Scientific Porcelain'); '600 9th st' is Adolph Coors Co / Coors Porcelain Co
+1956,GREELEY,ECCOE,Chemicals,Ecco E,825 7th St,not_works,,,,'Ecco E ... Chemicals Whol' is a wholesaler; 825 7th St is neighbour 'Eckhardt B A' 12-6
+1956,GREELEY,GREELEYGASCOMPANY,Manufactured gas,Greeley Gas Company,1000 9th Av,not_works,,,,"'Greeley Gas Company 1000 9th Ave 7-4, 9-1': gas utility office/appliances, no gas works"
+1956,GREELEY,GREELEYSHEETMETALWORKSSAMBRUNGARD,Metal working,Greeley Sheet Metal Works Sam Brungard &,2506 8th Av,ok,,,,own listing 'Greeley Sheet Metal Works ... 2506 8th Ave 7-6'
+1956,GREELEY,HORTONSHEETMETALEDWARDGKERN,Metal working,Horton Sheet Metal Edward G Kern,712 8th,ok,,,,own listing 'Horton Sheet Metal Edward G Kern 712 8th 7-6'
+1956,GREELEY,WILESMACHINESHOPFSWILES,Machine shop / machinery,Wiles Machine Shop F S Wiles,1012 8th Av,ok,,,,own listing 'Wiles Machine Shop F S Wiles 1012 8th Ave 7-9' (Greeley)
+1956,LONGMONT,LEMANMACHINESHOPTNLEMAN,Machine shop / machinery,Leman Machine Shop T N Lem an,245 3rd Av,ok,,,,own listing 'Leman Machine Shop T N Leman 245 3rd Av 2-7'
+1956,LONGMONT,LONGMONTRENDERINGCOEOFLONGMONTRNDRNG,Fertilizer & rendering,Longmont Rendering Co Eof Longmont Rndrng,730 Kimbark,fix_address,,,,'Longmont Rendering Co E of Longmont Rndrng' (no street); 730 Kimbark is Milady's Beauty Shop
+1956,LONGMONT,WESTERNFOUNDRIESJAMESLCAMILLESJUDY,Foundry,Western Foundries James L. Cam ille S & Judy,538 Bross,fix_address,100 Martin St,,,interleaved: 'Western Foundries ... M Higson 100 Martin St 12-7' (also p990); 538 Bross is Sullivan's Delivery Service
+1956,PUEBLO,BISHOPSTINSHOP,Metal working,Bishop's Tin Shop,1721 Beulah Av,ok,,,,"own listing 'Bishop's Tin Shop ... 1721 Beulah Ave., 7-6'"
+1956,PUEBLO,BROCKSFURNACESHEETMETAL,Metal working,Brock's Furnace & Sheet Metal,317 Colorado Av,ok,,,,"own listing 'Brock's Furnace & Sheet Metal ... 317 Colorado Ave., 8-3 & 7-6'"
+1956,PUEBLO,FOUNTAINFOUNDRY,Foundry,Fountain Foundry,1815 W. 14th,ok,,,,"own listing 'Fountain Foundry ... 1815 W. 14th, 12-7'"
+1956,PUEBLO,PUEBLOCHEMICALCO,Chemicals,Pueblo Chemical C o,1219 E. 11th St,ok,,,,"own listing 'Pueblo Chemical Co ... 1219 E. 11th St., 12-2'"
+1956,PUEBLO,RICHARDSMACHINESHOP,Machine shop / machinery,Richards Machine Shop,1725 Wabash Av,ok,,,,"own listing 'Richards Machine Shop ... 1725 Wabash Ave., 2-7, & 10-1'"
+1956,PUEBLO,ROCKWOOLINSULATINGCO,Smelting & refining,Rock Wool Insulating Co,3903 Carlile Av,not_works,,,,"trade word is street '600 Smelter' of Rock Wool Insulating Co (7-6, insulation contractor); 3903 Carlile is Rockrest Convalescent Home"
+1956,PUEBLO,TECKSORNAMENTALIRONSHOP,Iron & steel works,Teck's Ornamental Iron Shop,2309 Lake,ok,,,,own listing 'Teck's Ornamental Iron Shop ... 2309 Lake 12-7'
+1956,PUEBLO,VETERANSGASSERVICE,Tannery,Veterans Gas & Service,824 W. 4th,not_works,,,,"'tanner' is partner Stephen W. Tanner; Veterans Gas & Service 4-6 is a gas/service station, not a tannery"
+1956,ROCKY FORD,KLINDTMACHINEWORKS,Machine shop / machinery,Klindt Machine Works,521 N. 6th,ok,,,,"own listing 'Klindt Machine Works, Fred Klindt, 521 N. 6th'"
+1956,ROCKY FORD,ROSSMACHINESHOP,Machine shop / machinery,Ross Machine Shop,810 Elm,ok,,,,"own listing 'Ross Machine Shop, Art Ross, 810 Elm, 2-4'"
+1956,STERLING,FILKNERGARAGEMACHINESHOPFEFELKNER,Machine shop / machinery,Filkner Garage & Machine Shop F E Felkner,202 N 2nd Av,ok,,,,"own listing 'Filkner Garage & Machine Shop ... 202 N 2nd Av 2-11, 2-4'"
+1956,STERLING,MAXWELLSHEETMETALKENNETHGMAXWELL111,Metal working,Maxwell Sheet Metal Kenneth G Maxwell 111,111 N Front,ok,,,,own listing 'Maxwell Sheet Metal Kenneth G Maxwell 111 N Front 7-6'
+1956,STERLING,NAVYGASCOSOFSTERLINGOILSWHOL,Manufactured gas,Navy Gas Co Sof Sterling Oils Whol,620 N 2nd,not_works,,,,'Navy Gas Co S of Sterling Oils Whol': oil wholesaler; 620 N 2nd is Neff Trucking Co
+1956,TRINIDAD,CHEMICALPRODSISCOJASDCAHILLJR637,Chemicals,Chemical ProdSisCoJasD CahillJr 637,637 Park,not_works,,,,'Chemical Prod Sls Co' 12-2: chemical products sales firm
+1956,DENVER,CLYDESAUTOBODYREPAIR,Transportation equipment,Clyde's Auto Body Repair,415 S Bannock,ok,,,,"own listing 'Clyde's Auto Body Repair 415 S Bannock' (classified Auto Accessories, Denver)"
+1956,DENVER,BUFFALODENVERFOUNDRY,Foundry,Buffalo Denver Foundry,426 18th,ok,,,,"own listing 'DENVER-Buffalo Denver Foundry, Inc 426 18th' (classified under Contractors-Patio)"
+1956,FORT COLLINS,SELBYSAUTOBODY,Transportation equipment,Selby's Auto Body,1023 Main St,other_town,,LONGMONT,,"classified Garage & Repair Shops, listed under LONGMONT (p897), not Fort Collins"
+1956,FORT COLLINS,ROSSMACHINESHOP,Machine shop / machinery,Ross Machine Shop,810 Elm,other_town,,ROCKY FORD,,classified Garage & Repair Shops under ROCKY FORD (p898); same as Rocky Ford alpha listing '810 Elm'
+1956,FORT COLLINS,TRINIDADBROWNPROPANEGASCO,Manufactured gas,TRIN ID AD -Brow n Propane Gas Co,206 Pine,not_works,,,,"'TRINIDAD-Brown Propane Gas Co 206 Pine' under Gas Companies: propane distributor, Trinidad"
+1956,FORT COLLINS,MILLERPETROLEUMCO,Petroleum refining & asphalt,Mille r Petroleum Co,947 Main St,not_works,,,,"'Miller Petroleum Co 947 Main St' under Gas & Oil Distributors, MONTROSE section"
+1956,DENVER,MILTSIRONWORKS,Iron & steel works,Milt's Iron Works,1735 W. 35th,ok,,,,"own classified listing 'DENVER-Milt's Iron Works, 1735 W. 35th'"
+1956,DENVER,JOHNNYSBOILERSHOP,Machine shop / machinery,Johnny's Boiler Shop,1725 Wabash,other_town,none,PUEBLO,,listed under PUEBLO; own address garbled '303.& ...' (place at town); 1725 Wabash is Richard's Machine Shop
+1956,DENVER,SAMPLEMACHINESHOP,Machine shop / machinery,Sample Machine Shop,1852 Larimer ST,fix_address,,,,"own address truncated 'Sample Machine Shop, 3355 S.'; 1852 Larimer is H & M Magazine Exch"
+1956,DENVER,ALAMEDASHEETMETALHARDWARE,Metal working,Alameda Sheet Metal & Hardware,4965 Jackson,fix_address,,,,'Alameda Sheet Metal & Hardware' prints no address; 4965 Jackson is Allen Bearings Co
+1956,DENVER,DOWDIESHEETMETALCO,Metal working,Dow die Sheet Metal C o,1804 S. Pearl,ok,,,,"own classified listing 'Dowdle Sheet Metal Co., Inc., 1804 S. Pearl'"
+1956,DENVER,KINCANNONSHEETMETAL,Metal working,Kincannon Sheet Metal,1029 S. Federal,ok,,,,"own classified listing 'Kincannon Sheet Metal, Inc., 1029 S. Federal' (alpha 7-6)"
+1956,DENVER,LONGOSFIEETMETALWORKS,Metal working,Longo sfieet Metal Works,1735 W. 35th,ok,,,,"own classified listing 'Longo Sheet Metal Works, 1735 W. 35th' (same address as Milt's Iron Works)"
+1956,DENVER,MERZ,Foundry,Merz,1419 Morrison Rd,ok,,,,"own listing 'Merz, M. G., Aluminum Foundry & Mfg. 1419 Morrison Rd' (alpha agrees)"
+1956,DENVER,MIDWESTSTEELIRONWORKSCO,Iron & steel works,Midwest Steel & Iron Works C o,25 Larimer St,ok,,,,"own listing 'Midwest Steel & Iron Works Co., The, 25 Larimer St.'"
+1956,DENVER,OBRIENSHEETMETALFURNACEWORKS,Metal working,O'Brien Sheet Metal & Furnace Works,3512 E. 12th,fix_address,2541 Larimer,,,"own address '25[41] Larimer' (alpha: 'O'Brien 2541 Larimer 8-2, 7-6'); 3512 E. 12th is O K Plating Shop"
+1956,DENVER,RELIABLESHEETMETAL,Metal working,Reliable Sheet Metal,2685 S. High,ok,,,,"own classified listing 'Reliable Sheet Metal, 2685 S. High'"
+1956,DENVER,SMALDONESHEETMETALWORKS,Metal working,Smaldone Sheet Metal Works,4980 Elm,fix_address,4980 Elm Ct,,,"printed '4980 Elm Ct' (alpha 'Smaldone Sheet Metal Wks ... 4980 Elm Ct., 7-6'); 'Ct' dropped"
+1956,DENVER,SOUTHDENVERSHEETMETALFURNACEWORL,Metal working,South Denver Sheet Metal & Furnace Worl,1413 S. Bdwy,ok,,,,own listing 'South Denver Sheet Metal & Furnace Works 1413 S. Bdwy'
+1956,DENVER,WESTERNFOUNDRIES,Foundry,Western Foundries,2000 E. 40th,ok,,,,"own listing 'Western Foundries, 2000 E. 40th'"
+1956,DENVER,WIXSONFURNACESHEETMETALWORKS,Metal working,Wixson Furnace & Sheet Metal Works,2301 W. 30th,ok,,,,"own classified listing 'Wixson Furnace & Sheet Metal Works, 2301 W. 30th'"
+1956,DENVER,WOMPEYSHEETMETALWORKS,Metal working,Wompey Sheet Metal Works,2500 15th,ok,,,,"own classified listing 'Wompey Sheet Metal Works, 2500 15th'"
+1956,DENVER,FORTCOLLINSSHEETMETALWORKS,Metal working,Fort Collins Sheet Metal Works,226 Walnut,other_town,,FORT COLLINS,,"classified Metal Products under FORT COLLINS (p990), not Denver; duplicate of Fort Collins listing"
+1956,DENVER,CITYCOUNTYWIREWORKS,Metal working,City & County Wire Works,320 Josephine,ok,,,,"own classified listing 'City & County Wire Works, 320 Josephine'"
+1956,DENVER,DENVERMETALSFOUNDRY,Foundry,Denver Metals Foundry,1525 18th,ok,,,,"own classified listing 'Denver Metals Foundry, 1525 18th' (alpha agrees)"
+1956,GRAND JUNCTION,WESTERNSLOPERENDERINGCO,Fertilizer & rendering,Western Slope Rendering Co,622 S 5th St,ok,,,,own listing 'GRAND JUNCTION-Western Slope Rendering Co. 622 S 5th St.'
+1956,LOVELAND,LOVELANDRENDERINGCO,Fertilizer & rendering,Loveland Rendering C o,1209 E. 3rd,ok,,,,own listing 'LOVELAND-Loveland Rendering Co. 1209 E. 3rd'
+1956,DENVER,CASCADEPETROLEUMCO,Petroleum refining & asphalt,Cascade Petroleum Co,2120 Delgany,not_works,,,,"Cascade Petroleum Co 2120 Delgany listed among service stations (p1111): oil distributor, not refinery"
+1956,GREELEY,GREELEYSHEETMETALWRKS,Metal working,Greeley Sheet Metal Wrks,2506 8th Av,ok,,,,own listing 'Greeley Sheet Metal Wrks 2506 8th Ave' (classified Sheet Metal Works)
+1956,GREELEY,HORTONSHEETMETAL,Metal working,Horton Sheet Metal,712 8th Av,ok,,,,own listing 'Horton Sheet Metal 712 8th Ave' (classified Sheet Metal Works)
+1956,GREELEY,MINESMELTERSUPPLYCO,Smelting & refining,Mine & Smelter Supply Co,1422 17th,not_works,,,,"'Mine & Smelter Supply Co. 1422 17th' in Denver steel list: supply house, not a smelter"
+1956,DURANGO,DURANGODURANGOSHEETMETALWORKS,Metal working,DURANGO-Durango Sheet Metal Works,144 W 10th,ok,,,,own listing 'DURANGO-Durango Sheet Metal Works 144 W 10th' (name has town prefix)

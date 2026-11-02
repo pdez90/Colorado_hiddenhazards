@@ -48,7 +48,8 @@ def main():
     strict_hidden = int(m.group(1).replace(",", "")) if m else None
     ent = fe[fe.match_basis == "same entity (name or address)"]
     rows = []
-    for variant, use_all in [("all firm names at the site", True), ("hazardous firm names only", False)]:
+    # first row: the hazardous firms' names, the names the inventory name match itself uses (pipeline/build_sites.py names_n)
+    for variant, use_all in [("hazardous firm names only", False), ("all firm names at the site", True)]:
         n_addr = n_notok = n_pub = n_strict = 0
         for _, r in ent.iterrows():
             hh = hits(r)
