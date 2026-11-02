@@ -87,10 +87,18 @@ pick <- function(d, acol) {   # d: one row per site with pkey and the address co
                     same_street, 3L, default = 4L)]
   X[, numdiff := fifelse(rule == 2L, abs(n_a - n_p), NA_integer_)]
   # a condominium's "general common elements" parcel (the land under the units, classed VACANT LAND / GENERAL COMMON ELEMENTS, with no
-  # units or year built of its own) is not vacant land: within a rule, prefer any other candidate parcel, so the site takes a unit parcel
-  # or the neighbouring building instead
+  # units or year built of its own) is not vacant land. When it is the chosen parcel, a unit parcel of the same condominium (same situs
+  # address, not itself a common element) stands in for it; otherwise it is kept and broad() classes it by its zone district, so a
+  # site is never moved to a different lot just to avoid a common-element parcel
   X[, common := grepl("COMMON ELEMENT", toupper(ifelse(is.na(D_CLASS_CN), "", D_CLASS_CN)))]
-  setorderv(X, c("rid", "rule", "common", "numdiff", "dist_m"), na.last = TRUE); X <- X[!duplicated(rid)]
+  setorderv(X, c("rid", "rule", "numdiff", "dist_m"), na.last = TRUE); X <- X[!duplicated(rid)]
+  cm <- X[common == TRUE, .(rid, SITUS_ADDRESS_LINE1)]
+  if (nrow(cm)) {
+    U <- merge(cm, merge(d[, .(rid, a_num, a_dir, a_sname, a_stype, pkey)], PC[!is.na(SCHEDNUM)], by = "pkey", allow.cartesian = TRUE)[
+      !grepl("COMMON ELEMENT", toupper(ifelse(is.na(D_CLASS_CN), "", D_CLASS_CN)))], by = c("rid", "SITUS_ADDRESS_LINE1"))
+    if (nrow(U)) { setorderv(U, c("rid", "dist_m")); U <- U[!duplicated(rid)]; U[, `:=`(rule = X[match(U$rid, rid), rule], common = FALSE)]
+      X <- rbind(X[!rid %in% U$rid], U[, names(X), with = FALSE]) }
+  }
   out <- merge(d, X[, .(rid, SCHEDNUM, PROP_CLASS, D_CLASS_CN, ZONE_ID, ZONE_10, TOT_UNITS, year_built, SITUS_ADDRESS_LINE1, LAND_AREA, parcel_dist_m = dist_m, rule)], by = "rid", all.x = TRUE)   # owner names stay in the work/ cache only
   out[, parcel_match := PM[fifelse(is.na(rule), 5L, rule)]]; out[, c("rid", "rule", "a_num", "a_dir", "a_sname", "a_stype") := NULL]; out[] }
 # ---- 3. broad classes
@@ -100,7 +108,8 @@ broad <- function(cls, zone) { cls <- toupper(ifelse(is.na(cls), "", cls)); zone
         grepl("PARK$|^DENVER PARK|OPEN SPACE|GOLF|CEMETERY|RECREATION", cls), "Park / open space",
         grepl("STADIUM|STOCK SHOW|JAIL|COURTHOUSE|FIRE STATION|POLICE|LIBRARY|MUSEUM|GOVERNMENT|SCHOOL|CHURCH|HOSPITAL|RELIGIOUS|CHARIT|EDUCATION|UNIVERSITY|COLLEGE", cls), "Civic / school / health",
         grepl("INDUSTRIAL|WAREHOUSE|UTILIT|RAILROAD|MANUFACTUR", cls), "Industrial / utility",
-        grepl("COMMON ELEMENT", cls), "Residential",   # condominium common-element parcel left as the only candidate: the units above it are homes
+        grepl("COMMON ELEMENT", cls) & grepl("^I-?(A|B|MX)|^M-IMX", zone), "Industrial / utility",   # industrial condominium: the units are workshops
+        grepl("COMMON ELEMENT", cls), "Residential",   # condominium common-element parcel with no unit parcel at its address: the units above it are homes
         grepl("VACANT", cls), "Vacant",
         grepl("EXEMPT", cls) & grepl("PARK|OPEN SPACE|CEMETERY|RECREATION", cls), "Park / open space",
         grepl("EXEMPT|SCHOOL|CHURCH|HOSPITAL|RELIGIOUS|GOVERNMENT|CHARIT|EDUCATION", cls), "Civic / school / health",

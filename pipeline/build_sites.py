@@ -6,6 +6,17 @@ sys.path.insert(0,'pipeline'); sys.path.insert(0,os.path.dirname(os.path.abspath
 from sklearn.neighbors import BallTree
 from rapidfuzz import fuzz
 from tiger_geocode import parse_addr
+def hav(lat1,lon1,lat2,lon2):
+    a=np.radians([lat1,lon1,lat2,lon2]); d=np.sin((a[2]-a[0])/2)**2+np.cos(a[0])*np.cos(a[2])*np.sin((a[3]-a[1])/2)**2
+    return 2*6371000.0*np.arcsin(np.sqrt(d))
+
+def addr_key(street_n):
+    """'230 YUMA ST STE 4' -> '230 YUMA'; '1145 S 5TH AVE' -> '1145 S 5TH': house number, direction and street name, without the street
+    type or a unit, so that a directory address (which rarely prints the type) keys to the same string as an inventory address."""
+    num,core,pre,suf=parse_addr(str(street_n or ''))
+    if num is None: return str(street_n or '').strip()
+    return ' '.join(x for x in (str(num),pre,core) if x)
+
 def norm_street(s):
     from consolidate import norm_street as _ns   # consolidate -> sic_predict loads work/inv/sic_clf.pkl at import; keep it out of import time
     return _ns(s)
@@ -114,14 +125,16 @@ def match_inventory(sites,reg):
     from shapely.strtree import STRtree
     reg=reg.copy()
     reg['nn']=reg.name.apply(nn); reg['street_n']=reg.address.fillna('').apply(norm_street); reg['zip5']=reg.zip.fillna('').astype(str).str[:5]
+    # the address key drops the street type and any unit: directories print '230 YUMA', the inventories '230 YUMA ST' / '230 YUMA ST STE 4'
+    reg['akey']=reg.street_n.apply(addr_key)
     R=reg.dropna(subset=['lat','lon']).reset_index(drop=True)
     if len(R):
         rt=BallTree(np.radians(R[['lat','lon']].values),metric='haversine')
         ind,dist=rt.query_radius(np.radians(sites[['lat','lon']].values),r=250/6371000.0,return_distance=True,sort_results=True)
     else: ind=[np.array([],dtype=int)]*len(sites); dist=[np.array([])]*len(sites)
-    addr_ix=reg.groupby(['street_n','zip5']).indices
+    addr_ix=reg.groupby(['akey','zip5']).indices
     reg['city_u']=reg.city.fillna('').astype(str).str.upper().str.strip() if 'city' in reg else ''
-    addr_city_ix=reg.groupby(['street_n','city_u']).indices
+    addr_city_ix=reg.groupby(['akey','city_u']).indices
     # polygons for containment
     polys=reg[reg.geom_wkt.notna()] if 'geom_wkt' in reg else reg.iloc[0:0]
     # polygons and site points in metres (UTM 13N): a site counts as inside a cleanup boundary only when its point is inside the
@@ -136,8 +149,12 @@ def match_inventory(sites,reg):
         ii,dd=ind[k],dist[k]*6371000.0
         names=[nn(x) for x in s.names_n] if isinstance(s.names_n,list) else []
         rec={}
-        am=list(addr_ix.get((s.address, s.zip),[])) if s.zip else []
-        if not am: am=list(addr_city_ix.get((s.address, str(s.city or '').upper().strip()),[]))     # blank ZIP: match on street + city
+        ak=addr_key(s.address)
+        am=list(addr_ix.get((ak, s.zip),[])) if s.zip else []
+        if not am:   # blank ZIP: match on street + city, but only a record within 250 m (or without a point), so that an undirected
+                     # Denver address ('450 KALAMATH') cannot claim a record on the other half of the grid (450 S Kalamath vs 450 Kalamath)
+            am=[j for j in addr_city_ix.get((ak, str(s.city or '').upper().strip()),[])
+                if pd.isna(reg.lat.iat[j]) or hav(s.lat,s.lon,reg.lat.iat[j],reg.lon.iat[j])<=250]
         am_t=collections.defaultdict(list)
         for j in am: am_t[reg.iloc[j]['tier']].append(f"{reg.iloc[j]['name']} [{reg.iloc[j]['source'].replace('EPA_','').replace('CDPHE_','CDPHE ')}]")
         inpoly=[]; nearpoly=[]   # (label, distance m) for boundaries within NEAR_BOUNDARY_M but not containing the point

@@ -2543,7 +2543,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "7cbdfb6e006ef771351f1c2648d25761"
+      "checksum": "d92c68cf34c165192e58f44baa0211f9"
     },
     "data/aqs_denver_by_year.csv": {
       "checksum": "3cf11657a17f261f9902ec39853a4cde"
@@ -2555,43 +2555,43 @@
       "checksum": "085904d86900896ea4e481fefb3e936d"
     },
     "data/by_year/CO_DCM_1965_geocoded.csv": {
-      "checksum": "d60f970e8364da86786913396ec04290"
+      "checksum": "c68bf1c5eedba4936569f3b24d411a92"
     },
     "data/by_year/CO_DCM_1966_geocoded.csv": {
-      "checksum": "0717e19048cb2a716c93d69f8b01ddee"
+      "checksum": "9c369e5d43aa41e6ff88f127922f5449"
     },
     "data/by_year/CO_DCM_1967_geocoded.csv": {
-      "checksum": "1042b773c9552c455e473d077100d4c7"
+      "checksum": "2dbde904ab58e8d91ca0d4729266e4c0"
     },
     "data/by_year/CO_DCM_1968_geocoded.csv": {
-      "checksum": "8e6162e8f117c84c6dc98f03cae4a54d"
+      "checksum": "1e9d9933f2050fd1dd26390180c5629a"
     },
     "data/by_year/CO_DCM_1970_geocoded.csv": {
-      "checksum": "1bac0133d0012bed7b798beb94dc2130"
+      "checksum": "0ac62007702defdbbead1312e60b2601"
     },
     "data/by_year/CO_DCM_1973_geocoded.csv": {
-      "checksum": "9fce4252b3cbcc5fafe39fb3949eba64"
+      "checksum": "030fa2e0539662aff2d99a438355315d"
     },
     "data/by_year/CO_DCM_1974_geocoded.csv": {
-      "checksum": "3314d090f1375a002e5492f3eacf0085"
+      "checksum": "adffc7419e88a3fd3a7bec568fd2d9d8"
     },
     "data/by_year/CO_DCM_1977_geocoded.csv": {
-      "checksum": "87ee14e7b3fb3c8a8f1f2330a24a50e3"
+      "checksum": "58f8adeac4cb1e096f91bd05d55ac6e0"
     },
     "data/by_year/CO_DCM_1980_geocoded.csv": {
-      "checksum": "7b968a1887c7dbb8b1f1377ef5be4f54"
+      "checksum": "2b0f54a75550b76144ad458de0a8fae1"
     },
     "data/by_year/CO_DCM_1983_geocoded.csv": {
-      "checksum": "c3bb8dd5710598c47972570188772f4f"
+      "checksum": "36f6778de43530713c15baef51a9fe99"
     },
     "data/by_year/CO_DCM_1988_geocoded.csv": {
-      "checksum": "3189f366031d0fe6fa4be0d5ebcd3e78"
+      "checksum": "12bbe1cd1dd67a0a143a3167e922f6d8"
     },
     "data/by_year/CO_DCM_1990_geocoded.csv": {
-      "checksum": "0f322a75df43ca6fa8f09b04b4aeb105"
+      "checksum": "a0d7fb856c617152cc4a1e260caa83de"
     },
     "data/by_year/CO_DCM_1992_geocoded.csv": {
-      "checksum": "f244ff84cf67e93e765f3169d9af6eba"
+      "checksum": "85487e30210c3364e5edb6f8737ffdef"
     },
     "data/cbp_vs_directory_county.csv": {
       "checksum": "66fc0d7f9ebc00dfde106971ad3bf4d1"
@@ -2843,7 +2843,7 @@
       "checksum": "5324a594328d754b033bb388e567ee73"
     },
     "data/historical_sites.csv": {
-      "checksum": "ba1e48e0ceecf2ddc11cd051b4c43559"
+      "checksum": "de815fcab53d0aa186cb6d72e6aecb89"
     },
     "data/hmda_by_grade.csv": {
       "checksum": "2b9b85cfed0397c34391649e4eb98d78"
@@ -3077,13 +3077,13 @@
       "checksum": "29a9b24c4dae768d33d8ad559140a0a2"
     },
     "data/site_precursors.csv": {
-      "checksum": "b8c338159ba85c6d38bd55042fc8b216"
+      "checksum": "1f51e3bc3b3f8117e02594039c968953"
     },
     "data/site_years.csv": {
       "checksum": "2d272f2dfaee2ac01b73cac0d345bb14"
     },
     "data/sites.csv": {
-      "checksum": "ea87fb422cc9966cd7f4facf986369d4"
+      "checksum": "788b119927afe050bbcaa182065d287a"
     },
     "data/sites_by_zoning_2023.csv": {
       "checksum": "4a73170912d9dd9fdf0aa9f47fc52b26"

@@ -20,6 +20,10 @@ AUDITED = [
     ("Linquist Peter, lab, Globe smelter, r. 1234 Washington", 'smelter', 'Linquist Peter', '1234 Washington', True, True),   # a worker at his residence
     ("Cain Patrick, stoker, Denver Gas Co, 1700 Wazee", 'gas co', 'Cain Patrick', '1700 Wazee', True, True),                  # occupation between name and employer
     ("Denver Gas Co, gas works, 1700 Wazee", 'gas works', 'Denver Gas Co', '1700 Wazee', True, False),                        # the works itself
+    # (second audit, 1 Nov) the trade word inside the name must not pick up the preceding listing's address
+    ("Axelrood Mrs V, dry goods, 1325 24th. Atlas Wire & Iron Works, 1733 Wazee", 'iron works', 'Atlas Wire & Iron Works', '1733 Wazee', True, False),
+    ("Axelrood Mrs V, dry goods, 1325 24th. Atlas Wire & Iron Works", 'iron works', 'Atlas Wire & Iron Works', '', True, False),
+    ("Groves Bros, groc, 800 19th av. Gutta Percha & Rubber Mfg Co", 'rubber', 'Gutta Percha & Rubber Mfg Co', '', True, False),
 ]
 
 @pytest.mark.parametrize('entry,trade,name,street,own,person', AUDITED)

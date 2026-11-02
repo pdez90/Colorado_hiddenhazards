@@ -49,7 +49,7 @@ Z55 <- st_make_valid(st_transform(st_read(file.path(A, "zoning_1955.geojson"), q
 Z55 <- aggregate(Z55[, "cat"], list(cat = Z55$cat), function(x) x[1])[, "cat"]; Z55$year <- "1955"
 city <- st_make_valid(st_transform(st_read("work/zoning_city/denver_zoning_current.geojson", quiet = TRUE), UTM))
 city_cat <- function(zone_district, zone_dist_type) fcase(grepl("^(I-MX|M-IMX)", zone_district), "Industrial mixed use", zone_dist_type == "Industrial", "Industrial",
-                  grepl("^(DIA|CMP-|H-1|P-1)", zone_district), "Open space, civic, other",   # airport, campus, hospital and parking districts: the city layer files them under Commercial Mixed Use
+                  grepl("^(DIA|CMP-|H-[12]|P-1)", zone_district), "Open space, civic, other",   # airport, campus, hospital and parking districts: the city layer files them under Commercial Mixed Use
                   zone_dist_type == "Commercial Mixed Use", "Commercial or mixed use", zone_dist_type == "Residential", "Residential",
                   zone_dist_type == "PUD", "PUD (custom district)", default = "Open space, civic, other")
 city$cat <- city_cat(city$ZONE_DISTRICT, city$ZONE_DIST_TYPE)

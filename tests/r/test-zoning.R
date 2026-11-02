@@ -40,8 +40,8 @@ test_that("zoning_over_time city_cat(): the city layer's districts", {
   expect_equal(EOT$city_cat(c("I-MX-3", "I-A", "C-MX-5", "E-SU-D", "PUD-G 1", "OS-A"), c("Industrial", "Industrial", "Commercial Mixed Use", "Residential", "PUD", "Open Space")),
                c("Industrial mixed use", "Industrial", "Commercial or mixed use", "Residential", "PUD (custom district)", "Open space, civic, other"))
   # M-IMX is industrial mixed use too; the airport, campus, hospital and parking districts the city files under Commercial Mixed Use are not housing land
-  expect_equal(EOT$city_cat(c("M-IMX-8", "DIA", "CMP-H", "H-1-A", "P-1"), rep("Commercial Mixed Use", 5)),
-               c("Industrial mixed use", rep("Open space, civic, other", 4)))
+  expect_equal(EOT$city_cat(c("M-IMX-8", "DIA", "CMP-H", "H-1-A", "H-2", "P-1"), rep("Commercial Mixed Use", 6)),
+               c("Industrial mixed use", rep("Open space, civic, other", 5)))
   expect_equal(EOT$nza_cat(c("M-IMX-5"), c("MixedUse_High")), "Industrial mixed use")
   expect_equal(as.character(E23$cat_of(c("MixedUse_High"), c("M-IMX-12"))), E23$CATS[2])
 })

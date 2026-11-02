@@ -4,30 +4,30 @@
 
 | Rule | Hidden F&E sites | High confidence | Denver |
 |---|---|---|---|
-| Looser: every radius doubled (at most 250 m) | 740 (21.2%) | 488 (17.3%) | 131 (11.8%) |
-| Published rule (name, address, boundary, or any record within the tier radius) | 1,287 (36.9%) | 922 (32.6%) | 317 (28.5%) |
-| Proximity counts only for cleanup and TRI records | 2,114 (60.6%) | 1,604 (56.8%) | 582 (52.3%) |
-| Proximity counts only within 25 m | 1,805 (51.8%) | 1,378 (48.8%) | 523 (47.0%) |
-| Proximity counts only within 10 m | 2,406 (69.0%) | 1,871 (66.2%) | 733 (65.9%) |
-| Strict: same firm (name or address) or inside a cleanup boundary | 2,506 (71.9%) | 1,948 (69.0%) | 760 (68.3%) |
+| Looser: every radius doubled (at most 250 m) | 715 (20.5%) | 468 (16.6%) | 126 (11.3%) |
+| Published rule (name, address, boundary, or any record within the tier radius) | 1,212 (34.8%) | 856 (30.3%) | 301 (27.1%) |
+| Proximity counts only for cleanup and TRI records | 1,899 (54.5%) | 1,404 (49.7%) | 514 (46.2%) |
+| Proximity counts only within 25 m | 1,658 (47.5%) | 1,242 (44.0%) | 482 (43.3%) |
+| Proximity counts only within 10 m | 2,140 (61.4%) | 1,625 (57.5%) | 646 (58.1%) |
+| Strict: a record with the same name or at the same address, or inside a cleanup boundary | 2,220 (63.7%) | 1,683 (59.6%) | 669 (60.2%) |
 
-Under the published rule 1,219 F&E sites are known through a nearby record only (55.4% of known F&E sites). The nearest such record is:
+Under the published rule 1,008 F&E sites are known through a nearby record only (44.3% of known F&E sites). The nearest such record is:
 
 | Inventory | Sites | % |
 |---|---|---|
-| rcra_handler | 564 | 46.3 |
-| other_epa | 427 | 35.0 |
-| cleanup | 140 | 11.5 |
-| tri |  74 |  6.1 |
-| solid_waste |  14 |  1.1 |
+| rcra_handler | 465 | 46.1 |
+| other_epa | 352 | 34.9 |
+| cleanup | 122 | 12.1 |
+| tri |  61 |  6.1 |
+| solid_waste |   8 |  0.8 |
 
 | Distance | Sites | % |
 |---|---|---|
-| 0-10 m | 100 |  8.2 |
-| 10-25 m | 601 | 49.3 |
-| 25-40 m | 383 | 31.4 |
-| 40-75 m | 112 |  9.2 |
-| over 75 m |  23 |  1.9 |
+| 0-10 m |  80 |  7.9 |
+| 10-25 m | 482 | 47.8 |
+| 25-40 m | 319 | 31.6 |
+| 40-75 m | 105 | 10.4 |
+| over 75 m |  22 |  2.2 |
 
 ## Tracts (2020, EnviroScreen 2.0): medians, tracts holding a hidden site vs only known sites vs no site
 
@@ -35,37 +35,37 @@ Under the published rule 1,219 F&E sites are known through a nearby record only 
 
 | Measure | Hidden-site tracts | Known-only tracts | No-site tracts | p vs no site | p vs known only |
 |---|---|---|---|---|---|
-| EnviroScreen percentile | 61.2 (n=537) | 62.2 (n=131) | 42.0 (n=775) | 1.6e-19 | 0.45 |
-| Low income (%) | 24.9 (n=537) | 23.5 (n=131) | 18.2 (n=775) | 2.3e-13 | 0.62 |
-| Less than high school (%) | 5.8 (n=537) | 5.6 (n=131) | 4.4 (n=775) | 2.2e-06 | 0.75 |
-| People of color (%) | 27.1 (n=537) | 29.6 (n=131) | 26.3 (n=775) | 8.4e-02 | 0.34 |
+| EnviroScreen percentile | 61.2 (n=522) | 62.6 (n=146) | 42.0 (n=775) | 1.6e-19 | 0.62 |
+| Low income (%) | 25.1 (n=522) | 23.1 (n=146) | 18.2 (n=775) | 1.4e-13 | 0.38 |
+| Less than high school (%) | 5.8 (n=522) | 5.7 (n=146) | 4.4 (n=775) | 2.5e-06 | 0.74 |
+| People of color (%) | 27.3 (n=522) | 29.5 (n=146) | 26.3 (n=775) | 7.3e-02 | 0.50 |
 
 **Proximity counts only for cleanup and TRI records**
 
 | Measure | Hidden-site tracts | Known-only tracts | No-site tracts | p vs no site | p vs known only |
 |---|---|---|---|---|---|
-| EnviroScreen percentile | 61.9 (n=609) | 58.0 (n=59) | 42.0 (n=775) | 5.0e-22 | 1.00 |
-| Low income (%) | 24.6 (n=609) | 25.0 (n=59) | 18.2 (n=775) | 2.1e-13 | 0.47 |
-| Less than high school (%) | 5.8 (n=609) | 4.5 (n=59) | 4.4 (n=775) | 4.4e-07 | 0.41 |
-| People of color (%) | 27.8 (n=609) | 29.4 (n=59) | 26.3 (n=775) | 3.6e-02 | 0.91 |
+| EnviroScreen percentile | 61.5 (n=599) | 60.4 (n=69) | 42.0 (n=775) | 4.5e-22 | 0.76 |
+| Low income (%) | 24.8 (n=599) | 23.7 (n=69) | 18.2 (n=775) | 1.8e-13 | 0.74 |
+| Less than high school (%) | 5.9 (n=599) | 4.5 (n=69) | 4.4 (n=775) | 3.5e-07 | 0.28 |
+| People of color (%) | 28.0 (n=599) | 28.1 (n=69) | 26.3 (n=775) | 3.2e-02 | 0.94 |
 
 **Proximity counts only within 25 m**
 
 | Measure | Hidden-site tracts | Known-only tracts | No-site tracts | p vs no site | p vs known only |
 |---|---|---|---|---|---|
-| EnviroScreen percentile | 61.9 (n=580) | 60.1 (n=88) | 42.0 (n=775) | 1.4e-21 | 0.80 |
-| Low income (%) | 24.7 (n=580) | 24.3 (n=88) | 18.2 (n=775) | 7.7e-14 | 0.76 |
-| Less than high school (%) | 5.8 (n=580) | 5.7 (n=88) | 4.4 (n=775) | 2.0e-06 | 0.90 |
-| People of color (%) | 27.3 (n=580) | 29.7 (n=88) | 26.3 (n=775) | 5.1e-02 | 0.60 |
+| EnviroScreen percentile | 61.9 (n=567) | 60.4 (n=101) | 42.0 (n=775) | 1.2e-21 | 0.62 |
+| Low income (%) | 24.8 (n=567) | 23.4 (n=101) | 18.2 (n=775) | 6.6e-14 | 0.57 |
+| Less than high school (%) | 5.8 (n=567) | 5.6 (n=101) | 4.4 (n=775) | 1.7e-06 | 0.76 |
+| People of color (%) | 27.6 (n=567) | 29.4 (n=101) | 26.3 (n=775) | 4.3e-02 | 0.82 |
 
-**Strict: same firm (name or address) or inside a cleanup boundary**
+**Strict: a record with the same name or at the same address, or inside a cleanup boundary**
 
 | Measure | Hidden-site tracts | Known-only tracts | No-site tracts | p vs no site | p vs known only |
 |---|---|---|---|---|---|
-| EnviroScreen percentile | 61.9 (n=629) | 56.9 (n=39) | 42.0 (n=775) | 6.2e-23 | 0.57 |
-| Low income (%) | 24.5 (n=629) | 26.0 (n=39) | 18.2 (n=775) | 1.2e-13 | 0.35 |
-| Less than high school (%) | 5.8 (n=629) | 6.5 (n=39) | 4.4 (n=775) | 7.9e-07 | 0.79 |
-| People of color (%) | 28.1 (n=629) | 27.9 (n=39) | 26.3 (n=775) | 2.5e-02 | 0.61 |
+| EnviroScreen percentile | 61.7 (n=618) | 58.7 (n=50) | 42.0 (n=775) | 5.7e-23 | 0.36 |
+| Low income (%) | 24.6 (n=618) | 25.4 (n=50) | 18.2 (n=775) | 1.1e-13 | 0.63 |
+| Less than high school (%) | 5.8 (n=618) | 5.1 (n=50) | 4.4 (n=775) | 6.6e-07 | 0.55 |
+| People of color (%) | 28.1 (n=618) | 27.9 (n=50) | 26.3 (n=775) | 2.4e-02 | 0.58 |
 
 p: Wilcoxon rank-sum test. Sites are placed in 2020 tracts by their coordinates.
 
@@ -73,10 +73,10 @@ p: Wilcoxon rank-sum test. Sites are placed in 2020 tracts by their coordinates.
 
 | rule | hidden | known |
 |---|---|---|
-| Looser: every radius doubled (at most 250 m) | 32.1 | 29.3 |
-| Published rule (name, address, boundary, or any record within the tier radius) | 31.5 | 28.8 |
-| Proximity counts only for cleanup and TRI records | 34.4 | 24.3 |
-| Proximity counts only within 25 m | 31.4 | 28.0 |
-| Proximity counts only within 10 m | 31.0 | 26.9 |
-| Strict: same firm (name or address) or inside a cleanup boundary | 30.7 | 27.3 |
+| Looser: every radius doubled (at most 250 m) | 33.3 | 29.1 |
+| Published rule (name, address, boundary, or any record within the tier radius) | 32.9 | 28.4 |
+| Proximity counts only for cleanup and TRI records | 35.6 | 24.4 |
+| Proximity counts only within 25 m | 31.7 | 27.9 |
+| Proximity counts only within 10 m | 32.2 | 26.0 |
+| Strict: a record with the same name or at the same address, or inside a cleanup boundary | 31.8 | 26.2 |
 

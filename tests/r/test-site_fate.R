@@ -45,3 +45,9 @@ test_that("broad(): assessor classes to broad uses", {
                c("Residential", "Industrial / utility", "Civic / school / health", "Park / open space", "Vacant", "Commercial / office", "No parcel match", "Other"))
   expect_equal(E$broad("VACANT LAND / GENERAL COMMON ELEMENTS", "C-MX-5"), "Residential")   # a condominium's common-element parcel is not vacant land
 })
+
+test_that("broad(): an industrial condominium's common-element parcel is industrial, not residential", {
+  expect_equal(E$broad("VACANT LAND / GENERAL COMMON ELEMENTS", "I-B"), "Industrial / utility")
+  expect_equal(E$broad("VACANT LAND / GENERAL COMMON ELEMENTS", "I-MX-3"), "Industrial / utility")
+  expect_equal(E$broad("VACANT LAND / GENERAL COMMON ELEMENTS", "U-MX-3"), "Residential")
+})

@@ -38,7 +38,10 @@ def own_listing(r):
     head = e[:m.start()]
     if not in_name and ADDR.search(head) and not re.search(r"(?i)\b(?:mfrs?|manufactur|works|shop)\b", head): return pd.Series([False, ''])
     rest = e[m.end():]; cut = NEXT.search(rest); rest = rest[:cut.start()] if cut else rest
-    a = ADDR.search(rest) or (ADDR.search(head) if in_name else None)
+    # when the trade word is part of the firm's name ('Atlas Wire & Iron Works'), an address may precede it only within the firm's own
+    # listing: the text before the last sentence break belongs to the neighbouring listing ('Axelrood Mrs V, dry goods, 1325 24th. Atlas ...')
+    head_own = re.split(r"(?<=[a-z0-9]\.)\s+(?=[A-Z])", head)[-1]
+    a = ADDR.search(rest) or (ADDR.search(head_own) if in_name else None)
     return pd.Series([True, (a.group(1) + ' ' + a.group(2)) if a else ''])
 # listings whose name is plainly not an industrial firm (column-interleaving in the 1950 coded volume attaches codes to neighbours)
 NONIND = r"(?i)\b(groc\w*|grocery|club|fruit|cafe|caf[eé]|store|hotel|motel|assn|association|church|school|bank|tavern|bar|restaurant|beauty|barber|insurance|realty|sales|calculating|florist|house|saloon|bakery|dairy|drug\w*|press club)\b"

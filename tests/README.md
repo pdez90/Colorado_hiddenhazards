@@ -22,7 +22,7 @@ every push and pull request; tests that need `work/` inputs skip themselves when
 |---|---|
 | `tests/digitization` | parsing / OCR digitization (pytest) |
 | `tests/geocoding` | the TIGER geocoder (pytest) |
-| `tests/outputs` | the committed outputs and the text that describes them (pytest; this document) |
+| `tests/outputs` | the committed outputs and the text that describes them, including the manuscript's tables (pytest; this document) |
 | `tests/r` | the R re-implementation (testthat) |
 
 ## tests/outputs
@@ -95,6 +95,15 @@ none is marked stale.
 To add a claim: copy the sentence or table row verbatim into `text`, write a `check` that recomputes it
 from the committed data (not from the file the text was generated from, where possible), run
 `pytest tests/outputs/test_claims.py -k <id>`.
+
+### `test_paper_tables.py` + `paper/make_tables.py` — the manuscript's tables are what the data say (~1 s)
+
+`paper/make_tables.py` rebuilds all 23 tables of the manuscript from the committed result files (`python3 paper/make_tables.py`
+writes them to `paper/tables_generated.md`, each with a comment naming its source files). The test imports the same builders and
+asserts that every generated data row appears verbatim in `paper/Before_and_After_the_Map_manuscript.md`, the Markdown export of the
+manuscript Doc that is committed next to the .docx. A rerun that moves a table cell fails the test until the Doc is updated and
+re-exported; a Doc edit that changes a number fails it until the data agree. Prose numbers in the manuscript are not yet covered (add
+them to `claims.yml` with `file: paper/Before_and_After_the_Map_manuscript.md`).
 
 ### `test_app_smoke.py` — the Shiny app runs (slow, ~2.5 min)
 

@@ -92,6 +92,9 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
   # ---- regulatory comparison
   reg <- fread("work/inv/reg.csv", colClasses = c(zip = "character"), na.strings = "")
   reg$nn <- nn(reg$name); reg$street_n <- norm_street(reg$address); reg$zip5 <- substr(ifelse(is.na(reg$zip), "", reg$zip), 1, 5)
+  # the address key drops the street type and any unit ('230 YUMA ST STE 4' -> '230 YUMA'), as in Python: directories rarely print the type
+  addr_key <- function(x) vapply(x, function(s) { a <- e$parse_addr(s); if (is.na(a$num)) trimws(s) else trimws(gsub("\\s+", " ", paste(a$num, a$pre, a$core))) }, "", USE.NAMES = FALSE)
+  reg$akey <- addr_key(reg$street_n); S$akey <- addr_key(S$address)
   reg$city_u <- toupper(trimws(ifelse(is.na(reg$city), "", reg$city)))
   src_lab <- function(x) sub("CDPHE_", "CDPHE ", sub("EPA_", "", x))
   R <- reg[!is.na(lat) & !is.na(lon)][order(lat)]
@@ -107,7 +110,7 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
     lapply(seq_along(w), function(k) { j <- setdiff(w[[k]], inside[[k]]); if (!length(j)) return(list(j = integer(), m = numeric()))
       list(j = j, m = as.numeric(st_distance(spts[k], PGs[j]))[seq_along(j)]) }) } else replicate(nrow(S), list(j = integer(), m = numeric()), simplify = FALSE)
   RULES <- c(cleanup = 75, tri = 100, rcra_handler = 40, other_epa = 40, solid_waste = 75)
-  key_zip <- paste(reg$street_n, reg$zip5, sep = "|"); key_city <- paste(reg$street_n, reg$city_u, sep = "|")
+  key_zip <- paste(reg$akey, reg$zip5, sep = "|"); key_city <- paste(reg$akey, reg$city_u, sep = "|")
   dl <- 250 / RE * 180 / pi
   res <- vector("list", nrow(S))
   for (k in seq_len(nrow(S))) {
@@ -115,8 +118,10 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
     ii <- if (hi_i >= lo_i) lo_i:hi_i else integer()
     if (length(ii)) { d <- hav(s$lat, s$lon, R$lat[ii], R$lon[ii]); keep <- d <= 250; ii <- ii[keep]; d <- d[keep]; o2 <- order(d); ii <- ii[o2]; d <- d[o2] } else d <- numeric()
     names <- nn(unlist(s$names_n))
-    am <- if (!is.na(s$zip) && nzchar(s$zip)) which(key_zip == paste(s$address, s$zip, sep = "|")) else integer()
-    if (!length(am)) am <- which(key_city == paste(s$address, toupper(trimws(ifelse(is.na(s$city), "", s$city))), sep = "|"))
+    am <- if (!is.na(s$zip) && nzchar(s$zip)) which(key_zip == paste(s$akey, s$zip, sep = "|")) else integer()
+    if (!length(am)) {   # blank ZIP: street + city, but only a record within 250 m (or without a point), as in Python
+      am <- which(key_city == paste(s$akey, toupper(trimws(ifelse(is.na(s$city), "", s$city))), sep = "|"))
+      if (length(am)) am <- am[is.na(reg$lat[am]) | hav(s$lat, s$lon, reg$lat[am], reg$lon[am]) <= 250] }
     rec <- list(); basis <- character()   # evidence behind every hit, over all tiers: 'entity' (name or address), 'boundary', 'prox'
     for (tier in names(RULES)) {
       ct <- R$tier[ii] == tier; cj <- ii[ct]; cd <- d[ct]

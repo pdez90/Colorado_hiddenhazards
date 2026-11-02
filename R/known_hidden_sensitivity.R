@@ -28,7 +28,7 @@ DEF_LABELS <- c(wider = "Looser: every radius doubled (at most 250 m)",
                 cleanup_tri_prox = "Proximity counts only for cleanup and TRI records",
                 prox25 = "Proximity counts only within 25 m",
                 prox10 = "Proximity counts only within 10 m",
-                strict = "Strict: same firm (name or address) or inside a cleanup boundary")
+                strict = "Strict: a record with the same name or at the same address, or inside a cleanup boundary")
 
 # known (TRUE) / hidden (FALSE) for every site under rule `def`. E: one row per site with radar, match_basis, spread_m and, per
 # tier t, t_basis ('entity', 'boundary', 'prox' or ''), t_prox_m (nearest differently named record inside the radius) and
