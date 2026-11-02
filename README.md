@@ -31,6 +31,7 @@ from `build_sites`.
 | `data/results/` | Site workbook (`CO_hazardous_sites_1961-2002.xlsx`), all sites (`.geojson`), all listings, listings that could not be street-located, geocoding validation |
 | `data/historical/` | Pre-1960 layer: hazardous-trade listings (`CO_pre1960_hazardous_listings.csv`) and firm-locations (`CO_pre1960_hazardous_sites.csv`) from the Colorado State Business Directory, 1871–1956; GNIS place gazetteer |
 | `data/ocr/` | Saved Tesseract output for every page (lets anyone rerun everything after OCR without the scans) |
+| `paper/` | The manuscript (Markdown export of the working Doc and `.docx`), `make_tables.py` (rebuilds its 23 tables from `data/results/`), and `si/` (`make_si.py` + `build_si.js` rebuild the Supplementary Information `.docx` from `data/results/`); both are under test (`tests/README.md`) |
 
 ## Method in brief
 
@@ -94,8 +95,10 @@ from `build_sites`.
   80% lie 10–40 m away. Counting only a record with the same name or at the same address, or a cleanup boundary, 2,220 sites (64%) are on
   no inventory; counting proximity only within 25 m, 1,658 (48%); counting proximity only to cleanup and TRI records, 1,899 (54%); with
   every radius doubled, 715 (21%). The published 35% sits toward the low end of that range. An address match to a differently named
-  record is counted as the same entity (the contamination belongs to the lot): 269 of the sites known by address share no name token
-  with the matched record; counting them hidden would raise the published share to about 38% and the strict rule to about 72%. The tract
+  record is counted as the same entity (the contamination belongs to the lot): about 490 sites are known by address only, to a record whose
+  name shares no informative word with any firm listed there, but most of them also have a differently named record within the radius; counting
+  the roughly 100 that do not as hidden would raise the published share to about 38%, and counting all 490 hidden would raise the strict rule to about 77%
+  (`python3 pipeline/address_only_name_check.py` → `known_hidden/address_only_name_check.csv`). The tract
   comparison does not depend on the rule: under each of the six rules, 2020 tracts that hold a hidden site have higher EnviroScreen 2.0
   percentiles (medians 61–63 vs 42 in tracts with no hazardous-sector site), more low-income residents (24.6–25.5% vs 18.2%) and more
   adults without a high-school diploma (5.7–5.9% vs 4.4%), all p < 1e-4, but similar shares of people of color (27–28% vs 26%,
@@ -298,7 +301,9 @@ soil and indoor-air vapor intrusion, specific cancers from the Colorado Central 
   controls yet).
 * **Present-day legacy.** Tract spatial error models: a tract's cumulative manufacturing history (firm-years in the complete editions 1965–1992, hazardous-sector
   firm-years, or hidden sites) predicts today's EnviroScreen score, low income and people of color (all p < 0.01 except hidden sites
-  for people of color). Associations, with density as the only control.
+  for people of color). Associations, with density as the only control. The composite EnviroScreen score counts proximity to hazardous-waste,
+  Superfund and TRI facilities, many of which are former manufacturing sites, so part of its association with firm-years is the same places
+  counted twice; the low-income and people-of-color outcomes do not share that overlap.
 
 `R/ej_panel.R` — the "how did it develop" design of Marlow, Frickel & Elliott (2020): a tract panel for the Denver core (Denver County
 plus the inner parts of Adams, Arapahoe and Jefferson), matched to the censuses with a complete directory edition in the same year
@@ -559,6 +564,9 @@ unzipped into `work/censoc/`). Each person gets their 1940 street address from B
 1940 person and household controls, errors clustered by ED, and a version with ED fixed effects. Writes aggregates only to
 `data/results/censoc/`; the linked person file stays in `work/censoc/`. The app's "Lifespan of 1940 residents" tab (under Historical change) reads copies of
 `censoc_models.csv`, `censoc_groups.csv` and `censoc_linkage.csv` in `app/data/`.
+CenSoc documents the DMF as reliable for deaths in 1975–2005 (the window its weights are built for); `Rscript R/censoc_denver_1940.R --dmf-window=1975-2005`
+re-estimates the DMF models on that window and writes `censoc_models_dmf1975_2005.csv`, `censoc_groups_dmf1975_2005.csv` and
+`censoc_summary_dmf1975_2005.md` beside the main files, without touching the app copies or the linked person file.
 
 ### CenSoc follow-ups (`R/censoc_extensions.R`, `R/censoc_enlistment.R`, `R/mlp_residential_history.R`)
 All three run after `R/censoc_denver_1940.R`, which also saves every 1940 resident with their address exposures to

@@ -33,6 +33,9 @@ test_that("censoc rd(): reads a CenSoc file, keeps conservative links, derives d
   expect_match(x$file[1], "^DMF")
   f2 <- file.path(tempdir(), "censoc_numident_test.csv"); fwrite(data.table(histid = "b1", byear = 1900, bmonth = 1, dyear = 1990, dmonth = 1, death_age = 90, sex = 2, weight = 2), f2)
   y <- EC$rd(f2); expect_match(y$file, "^Numident"); expect_equal(y$death_age, 90); expect_equal(y$sex, 2)
+  z <- EC$rd(f, win = c(1975, 1985)); expect_equal(z$histid, c("A1", "A2")); expect_match(z$file[1], "^DMF \\(men, deaths 1975-1985\\)")
+  z2 <- EC$rd(f, win = c(1985, 2005)); expect_equal(nrow(z2), 0)
+  expect_equal(nrow(EC$rd(f2, win = c(1975, 1985))), 1)   # the window applies to the DMF only
 })
 
 test_that("censoc HAZ_IND covers the Frickel & Elliott industries (IND1950 codes)", {

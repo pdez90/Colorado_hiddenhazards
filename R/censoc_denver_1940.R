@@ -1,6 +1,8 @@
 # Where Denver's residents lived in 1940 and how long they lived: the 1940 census linked to Social Security death records (CenSoc).
 #
 #   Rscript R/censoc_denver_1940.R
+#   Rscript R/censoc_denver_1940.R --dmf-window=1975-2005   # restrict the DMF deaths to the years CenSoc documents as reliable;
+#                                                            # writes censoc_models_dmf1975_2005.csv / censoc_groups_... / censoc_summary_... beside the main files
 #
 # Inputs (all stay in work/, which git ignores; none of the person-level files is redistributed):
 #   work/censoc/*.csv     CenSoc-Numident (men and women, deaths 1988-2005) and/or CenSoc-DMF (men, deaths 1975-2020), free from the
@@ -28,6 +30,9 @@ suppressPackageStartupMessages({ library(data.table); library(sf); library(terra
 sf_use_s2(FALSE); UTM <- 26913; W <- "work/censoc"; O <- "data/results/censoc"; A <- "app/data"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
 cs <- Sys.glob(file.path(W, "*.csv")); cs <- cs[!grepl("demo|geography|codebook|sib", basename(cs), ignore.case = TRUE)]
 cs <- cs[grepl("numident|dmf", basename(cs), ignore.case = TRUE)]
+dw <- sub("^--dmf-window=", "", grep("^--dmf-window=", commandArgs(trailingOnly = TRUE), value = TRUE))
+DMF_WIN <- if (length(dw)) as.integer(strsplit(dw[1], "-")[[1]]) else NULL   # e.g. c(1975, 2005); NULL = all DMF deaths (1975 on)
+SUF <- if (is.null(DMF_WIN)) "" else sprintf("_dmf%d_%d", DMF_WIN[1], DMF_WIN[2])
 if (!length(cs)) stop("put the CenSoc-Numident and/or CenSoc-DMF csv files in work/censoc/ (https://dataverse.harvard.edu/dataverse/censoc)")
 # ---------------------------------------------------------------- 1. the 1940 census: Denver residents with HISTID and household traits
 ddis <- rev(sort(Sys.glob("work/ipums/*.xml"))); use <- NULL
@@ -96,20 +101,21 @@ P <- merge(P, U, by = c("x", "y"), all.x = TRUE)
 P[, `:=`(haz_job = as.numeric(LABFORCE == 2 & IND1950 %in% HAZ_IND), manuf_job = as.numeric(LABFORCE == 2 & IND1950 >= 306 & IND1950 <= 499))]
 saveRDS(P, file.path(W, "denver_1940_residents.rds"))   # every 1940 resident with the address exposures (for R/censoc_extensions.R; stays on this machine)
 # ---------------------------------------------------------------- 4. CenSoc links
-rd <- function(f) { h <- names(fread(f, nrows = 0)); keep <- intersect(h, c("HISTID", "histid", "byear", "bmonth", "dyear", "dmonth", "death_age", "sex", "weight", "link_abe_exact_conservative"))
+rd <- function(f, win = if (exists("DMF_WIN")) DMF_WIN else NULL) { h <- names(fread(f, nrows = 0)); keep <- intersect(h, c("HISTID", "histid", "byear", "bmonth", "dyear", "dmonth", "death_age", "sex", "weight", "link_abe_exact_conservative"))
   x <- fread(f, select = keep, colClasses = list(character = intersect(keep, c("HISTID", "histid")))); setnames(x, tolower(names(x))); x[, histid := toupper(trimws(histid))]
   if ("link_abe_exact_conservative" %in% names(x)) x <- x[link_abe_exact_conservative == 1]
   if (!"death_age" %in% names(x)) x[, death_age := dyear - byear - (dmonth < bmonth)]
   if (!"sex" %in% names(x)) x[, sex := 1]
-  x[, file := if (grepl("numident", basename(f), ignore.case = TRUE)) "Numident (men and women, deaths 1988-2005)" else "DMF (men, deaths 1975 on)"]; x }
+  if (!grepl("numident", basename(f), ignore.case = TRUE) && !is.null(win)) x <- x[dyear >= win[1] & dyear <= win[2]]
+  x[, file := if (grepl("numident", basename(f), ignore.case = TRUE)) "Numident (men and women, deaths 1988-2005)" else if (is.null(win)) "DMF (men, deaths 1975 on)" else sprintf("DMF (men, deaths %d-%d)", win[1], win[2])]; x }
 CS <- rbindlist(lapply(cs, rd), fill = TRUE)
 L <- merge(CS, P, by.x = "histid", by.y = "HISTID")
 L[, female := as.numeric(sex == 2)]
-saveRDS(L, file.path(W, "censoc_denver_1940_linked.rds"))
+if (SUF == "") saveRDS(L, file.path(W, "censoc_denver_1940_linked.rds"))
 LK <- L[, .(linked = .N, with_address_point = sum(!is.na(x)), min_dyear = min(dyear), max_dyear = max(dyear), median_death_age = as.numeric(median(death_age)),
             median_age_1940 = as.numeric(median(AGE))), by = file]
 LK <- rbind(data.table(file = "1940 census, Denver residents", linked = nrow(P), with_address_point = sum(!is.na(P$x))), LK, fill = TRUE)
-fwrite(LK, file.path(O, "censoc_linkage.csv")); print(LK)
+fwrite(LK, file.path(O, paste0("censoc_linkage", SUF, ".csv"))); print(LK)
 # ---------------------------------------------------------------- 5. models of age at death
 L <- L[!is.na(x) & !is.na(byear) & !is.na(death_age) & gq == 0]
 L[, `:=`(hc_q = factor(fifelse(is.na(hc_q), 0L, hc_q)), h_hs_m = as.numeric(is.na(h_hs)), h_hs = fifelse(is.na(h_hs), 0, h_hs),
@@ -140,18 +146,18 @@ for (fl in unique(L$file)) { d <- L[file == fl]
     if (e != "HOLC grade D (vs A/B)" && e != "1929 industrial district") R[[length(R) + 1]] <- fit(d, paste(rhs, "+", CTRL), t[1], e, "M3: + 1940 ED fixed effects", TRUE) }
   R[[length(R) + 1]] <- fit(d, paste("haz_kz + ind10 + com10 +", CTRL), "haz_kz", "Hazardous trades kernel, with industrial and commercial land", "M2 joint", FALSE)
   R[[length(R) + 1]] <- fit(d, paste("haz_kz + ind10 + com10 +", CTRL), "ind10", "Industrial land, with hazardous trades and commercial land", "M2 joint", FALSE) }
-R <- rbindlist(R); fwrite(R, file.path(O, "censoc_models.csv")); print(R[, .(file = substr(file, 1, 8), model = substr(model, 1, 3), exposure = substr(exposure, 1, 40), years, lo, hi, p, n)])
+R <- rbindlist(R); fwrite(R, file.path(O, paste0("censoc_models", SUF, ".csv"))); print(R[, .(file = substr(file, 1, 8), model = substr(model, 1, 3), exposure = substr(exposure, 1, 40), years, lo, hi, p, n)])
 # ---------------------------------------------------------------- 6. mean age at death by 1940 address, net of birth year (and sex)
 L[, resid := residuals(lm(death_age ~ factor(byear) + female, data = .SD, weights = w)) + weighted.mean(death_age, w), by = file]
 grp <- function(v, lab) { L[, g_ := as.character(get(v))]; r <- L[, .(n = .N, adj_mean_age_at_death = round(weighted.mean(resid, w), 2)), by = .(file, group = g_)]; r[, measure := lab]; setcolorder(r, c("file", "measure")); r }
 L[, `:=`(haz500_g = fifelse(haz_500 == 1, "hazardous trade within 500 m", "none within 500 m"), ind_g = fifelse(ind37 >= 10, "10%+ industrial within 250 m", "under 10%"))]
 GR <- rbind(grp("holc", "1938 HOLC grade"), grp("zone29", "1929 zoning district"), grp("haz500_g", "Hazardous trades to 1940"), grp("ind_g", "Industrial land 1937"))
-GR <- GR[n >= 20][order(file, measure, group)]; fwrite(GR, file.path(O, "censoc_groups.csv")); print(GR)
+GR <- GR[n >= 20][order(file, measure, group)]; fwrite(GR, file.path(O, paste0("censoc_groups", SUF, ".csv"))); print(GR)
 # ---------------------------------------------------------------- 7. summary
 kab <- function(x) { x <- as.data.frame(x); c(paste("|", paste(names(x), collapse = " | "), "|"), paste0(strrep("|---", ncol(x)), "|"),
   apply(x, 1, function(r) paste("|", paste(ifelse(is.na(r), "", trimws(r)), collapse = " | "), "|"))) }
 md <- c("# Denver residents of 1940 and their age at death (CenSoc)", "", "## Linkage", "", kab(LK), "", "## Age at death (years) per unit of exposure at the 1940 address", "",
         kab(R[, .(file, model, exposure, years, ci = sprintf("%.2f to %.2f", lo, hi), p, n)]), "", "## Mean age at death, net of birth year and sex (groups of 20+)", "", kab(GR))
-writeLines(md, file.path(O, "censoc_summary.md")); message("wrote ", O)
+writeLines(md, file.path(O, paste0("censoc_summary", SUF, ".md"))); message("wrote ", O)
 # the app reads copies of the aggregate tables (aggregates only; no person-level rows)
-file.copy(file.path(O, c("censoc_linkage.csv", "censoc_models.csv", "censoc_groups.csv")), A, overwrite = TRUE)
+if (SUF == "") file.copy(file.path(O, c("censoc_linkage.csv", "censoc_models.csv", "censoc_groups.csv")), A, overwrite = TRUE)

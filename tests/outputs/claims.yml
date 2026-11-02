@@ -1426,3 +1426,17 @@
   check: "(lambda r: [r.z_hidden_hiconf_rr, r.z_hidden_hiconf_lo, r.z_hidden_hiconf_hi, r.z_known_hist_rr, r.z_cleanup_rr, r.aic])((lambda m: m[(m.outcome == 'deaths_nat') & (m.model == 'M4 hidden high-confidence only')].iloc[0])(load('data/results/mortality_bg_models.csv')))"
   expect: [1.007, 0.974, 1.042, 1.040, 1.005, 30733.9]
 
+
+- id: readme_address_only_name_check
+  file: README.md
+  text: "about 490 sites are known by address only, to a record whose\n  name shares no informative word with any firm listed there, but most of them also have a differently named record within the radius; counting\n  the roughly 100 that do not as hidden would raise the published share to about 38%, and counting all 490 hidden would raise the strict rule to about 77%"
+  check: "(lambda r: [r.no_shared_token, r.newly_hidden_published_rule, r.hidden_published_pct, r.hidden_strict_pct])(load('data/results/known_hidden/address_only_name_check.csv').iloc[0])"
+  expect: [490, 100, 38, 77]
+  tol: [5, 10, 0.5, 0.5]
+
+- id: paper_address_only_name_check
+  file: paper/Before_and_After_the_Map_manuscript.md
+  text: "about 490 sites are matched only by address, to a record whose name shares no informative word with any firm listed there, but most of them also have a differently named record within the radius, and counting the roughly 100 that do not as unmatched would raise the 35% to about 38%"
+  check: "(lambda r: [r.no_shared_token, r.newly_hidden_published_rule, round(100 * r.hidden_now / r.fe_hazard_sites), r.hidden_published_pct])(load('data/results/known_hidden/address_only_name_check.csv').iloc[0])"
+  expect: [490, 100, 35, 38]
+  tol: [5, 10, 0.5, 0.5]

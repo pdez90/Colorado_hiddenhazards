@@ -105,6 +105,14 @@ manuscript Doc that is committed next to the .docx. A rerun that moves a table c
 re-exported; a Doc edit that changes a number fails it until the data agree. Prose numbers in the manuscript are not yet covered (add
 them to `claims.yml` with `file: paper/Before_and_After_the_Map_manuscript.md`).
 
+### `test_si_blocks.py` + `paper/si/make_si.py` — the Supplementary Information is what the data say (~1 s)
+
+`paper/si/make_si.py` builds every paragraph and table of the SI from the committed result files into `paper/si/si_blocks.json`
+(hard-coded figures are checked against their source inside the script; unchanged prose is reused from `paper/si/si_prose_base.json`),
+and `node paper/si/build_si.js` (npm package `docx`) renders it as `paper/Before_and_After_the_Map_SI.docx`. The test rebuilds the
+blocks in a temporary copy and asserts they equal the committed `si_blocks.json`, so a rerun that moves an SI number fails until both
+files are rebuilt.
+
 ### `test_app_smoke.py` — the Shiny app runs (slow, ~2.5 min)
 
 Starts `Rscript -e 'shiny::runApp("app", port=8790, launch.browser=FALSE)'` with `LANG=C.UTF-8`,
