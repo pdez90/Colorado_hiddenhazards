@@ -6,34 +6,34 @@ Years of age at death (95% CI) unless stated; OLS with birth-year fixed effects,
 
 | term | years | lo | hi | p | n | age_in_1940 | exposure | people |
 |---|---|---|---|---|---|---|---|---|
-| zone_ind | -0.339 | -1.982 | 1.304 | 6.86e-01 | 1559 | 0-14 in 1940 | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
+| zone_ind | 0.063 | -1.587 | 1.712 | 9.41e-01 | 1559 | 0-14 in 1940 | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
 | ind10 | -0.176 | -0.499 | 0.147 | 2.84e-01 | 1559 | 0-14 in 1940 | Industrial land within 250 m, 1937 (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| haz_500 | -0.465 | -1.481 | 0.550 | 3.69e-01 | 1559 | 0-14 in 1940 | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| haz_500 | -0.388 | -1.411 | 0.635 | 4.58e-01 | 1559 | 0-14 in 1940 | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
 | holc_D | 0.406 | -1.318 | 2.130 | 6.44e-01 | 1559 | 0-14 in 1940 | HOLC grade D (vs A/B) | Men, deaths 1975-2020 (CenSoc-DMF) |
 | com10 | 0.175 | -0.047 | 0.396 | 1.22e-01 | 1559 | 0-14 in 1940 | Placebo: commercial land within 250 m (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| zone_ind | -1.618 | -3.091 | -0.144 | 3.15e-02 | 3181 | 15-29 in 1940 | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
+| zone_ind | -1.335 | -2.865 | 0.196 | 8.74e-02 | 3181 | 15-29 in 1940 | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
 | ind10 | -0.485 | -0.711 | -0.258 | 2.91e-05 | 3181 | 15-29 in 1940 | Industrial land within 250 m, 1937 (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| haz_500 | -1.010 | -1.977 | -0.043 | 4.07e-02 | 3181 | 15-29 in 1940 | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| haz_500 | -0.936 | -1.911 | 0.040 | 6.02e-02 | 3181 | 15-29 in 1940 | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
 | holc_D | -0.300 | -2.200 | 1.600 | 7.57e-01 | 3181 | 15-29 in 1940 | HOLC grade D (vs A/B) | Men, deaths 1975-2020 (CenSoc-DMF) |
 | com10 | 0.072 | -0.117 | 0.262 | 4.53e-01 | 3181 | 15-29 in 1940 | Placebo: commercial land within 250 m (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| zone_ind | -0.958 | -1.972 | 0.055 | 6.40e-02 | 3650 | 30+ in 1940 | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
+| zone_ind | -0.796 | -1.850 | 0.257 | 1.38e-01 | 3650 | 30+ in 1940 | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
 | ind10 | 0.064 | -0.130 | 0.258 | 5.17e-01 | 3650 | 30+ in 1940 | Industrial land within 250 m, 1937 (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| haz_500 | 0.127 | -0.407 | 0.662 | 6.41e-01 | 3650 | 30+ in 1940 | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| haz_500 | -0.198 | -0.748 | 0.351 | 4.79e-01 | 3650 | 30+ in 1940 | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
 | holc_D | -0.730 | -1.554 | 0.094 | 8.28e-02 | 3650 | 30+ in 1940 | HOLC grade D (vs A/B) | Men, deaths 1975-2020 (CenSoc-DMF) |
 | com10 | 0.010 | -0.100 | 0.119 | 8.61e-01 | 3650 | 30+ in 1940 | Placebo: commercial land within 250 m (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| zone_ind | 0.174 | -0.250 | 0.598 | 4.21e-01 | 3327 | 0-14 in 1940 | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| zone_ind | 0.061 | -0.342 | 0.464 | 7.68e-01 | 3327 | 0-14 in 1940 | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 | ind10 | -0.024 | -0.125 | 0.077 | 6.37e-01 | 3327 | 0-14 in 1940 | Industrial land within 250 m, 1937 (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| haz_500 | 0.049 | -0.228 | 0.326 | 7.29e-01 | 3327 | 0-14 in 1940 | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| haz_500 | 0.077 | -0.214 | 0.369 | 6.04e-01 | 3327 | 0-14 in 1940 | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 | holc_D | -0.346 | -0.900 | 0.207 | 2.20e-01 | 3327 | 0-14 in 1940 | HOLC grade D (vs A/B) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 | com10 | -0.003 | -0.069 | 0.063 | 9.30e-01 | 3327 | 0-14 in 1940 | Placebo: commercial land within 250 m (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| zone_ind | 0.194 | -0.415 | 0.802 | 5.33e-01 | 8202 | 15-29 in 1940 | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| zone_ind | 0.384 | -0.083 | 0.851 | 1.07e-01 | 8202 | 15-29 in 1940 | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 | ind10 | -0.092 | -0.209 | 0.024 | 1.21e-01 | 8202 | 15-29 in 1940 | Industrial land within 250 m, 1937 (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| haz_500 | 0.015 | -0.276 | 0.306 | 9.18e-01 | 8202 | 15-29 in 1940 | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| haz_500 | 0.021 | -0.274 | 0.317 | 8.88e-01 | 8202 | 15-29 in 1940 | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 | holc_D | -0.488 | -0.921 | -0.055 | 2.73e-02 | 8202 | 15-29 in 1940 | HOLC grade D (vs A/B) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 | com10 | 0.008 | -0.043 | 0.060 | 7.56e-01 | 8202 | 15-29 in 1940 | Placebo: commercial land within 250 m (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| zone_ind | -0.178 | -1.231 | 0.875 | 7.40e-01 | 1847 | 30+ in 1940 | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| zone_ind | -0.486 | -1.579 | 0.606 | 3.83e-01 | 1847 | 30+ in 1940 | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 | ind10 | 0.161 | -0.117 | 0.438 | 2.57e-01 | 1847 | 30+ in 1940 | Industrial land within 250 m, 1937 (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| haz_500 | -0.159 | -0.628 | 0.310 | 5.06e-01 | 1847 | 30+ in 1940 | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| haz_500 | -0.103 | -0.591 | 0.384 | 6.78e-01 | 1847 | 30+ in 1940 | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 | holc_D | 0.085 | -0.759 | 0.929 | 8.43e-01 | 1847 | 30+ in 1940 | HOLC grade D (vs A/B) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 | com10 | 0.012 | -0.082 | 0.107 | 7.96e-01 | 1847 | 30+ in 1940 | Placebo: commercial land within 250 m (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 
@@ -41,25 +41,25 @@ Years of age at death (95% CI) unless stated; OLS with birth-year fixed effects,
 
 | group | people | pct_died_denver_metro | pct_died_denver_county | pct_died_colorado |
 |---|---|---|---|---|
-| other 1940 addresses | 10720 | 52.8 | 27.0 | 60.7 |
-| 1940 address in a 1929 industrial district | 697 | 56.5 | 26.6 | 62.9 |
-| 10%+ industrial land within 250 m | 734 | 54.1 | 23.3 | 61.2 |
+| other 1940 addresses | 10717 | 52.8 | 27.0 | 60.7 |
+| 1940 address in a 1929 industrial district | 705 | 56.5 | 27.1 | 63.2 |
+| 10%+ industrial land within 250 m | 729 | 53.6 | 23.2 | 61.3 |
 
 | exposure | analysis | years | lo | hi | p | n | term |
 |---|---|---|---|---|---|---|---|
-| 1929 industrial district | Died in the Denver metro (percentage points) | 0.540 | -4.980 | 6.050 | 0.8490 | 12151 |  |
+| 1929 industrial district | Died in the Denver metro (percentage points) | 0.380 | -4.230 | 4.990 | 0.8720 | 12151 |  |
 | Industrial land within 250 m, 1937 (per 10 points) | Died in the Denver metro (percentage points) | -0.520 | -1.370 | 0.320 | 0.2220 | 12151 |  |
-| Hazardous trade within 500 m (to 1940) | Died in the Denver metro (percentage points) | 1.190 | -1.490 | 3.860 | 0.3840 | 12151 |  |
+| Hazardous trade within 500 m (to 1940) | Died in the Denver metro (percentage points) | 0.980 | -1.740 | 3.710 | 0.4800 | 12151 |  |
 | HOLC grade D (vs A/B) | Died in the Denver metro (percentage points) | 4.250 | -0.320 | 8.810 | 0.0681 | 12151 |  |
 | Placebo: commercial land within 250 m (per 10 points) | Died in the Denver metro (percentage points) | -0.490 | -1.110 | 0.130 | 0.1250 | 12151 |  |
-| 1929 industrial district | Age at death, people who died in the Denver metro | 0.131 | -0.451 | 0.713 | 0.6580 | 6253 | zone_ind |
+| 1929 industrial district | Age at death, people who died in the Denver metro | 0.194 | -0.318 | 0.705 | 0.4570 | 6253 | zone_ind |
 | Industrial land within 250 m, 1937 (per 10 points) | Age at death, people who died in the Denver metro | 0.025 | -0.061 | 0.112 | 0.5670 | 6253 | ind10 |
-| Hazardous trade within 500 m (to 1940) | Age at death, people who died in the Denver metro | -0.016 | -0.350 | 0.318 | 0.9240 | 6253 | haz_500 |
+| Hazardous trade within 500 m (to 1940) | Age at death, people who died in the Denver metro | 0.068 | -0.277 | 0.413 | 0.6990 | 6253 | haz_500 |
 | HOLC grade D (vs A/B) | Age at death, people who died in the Denver metro | -0.218 | -0.765 | 0.329 | 0.4360 | 6253 | holc_D |
 | Placebo: commercial land within 250 m (per 10 points) | Age at death, people who died in the Denver metro | 0.003 | -0.069 | 0.074 | 0.9450 | 6253 | com10 |
-| 1929 industrial district | Age at death, people who died elsewhere | 0.120 | -0.600 | 0.839 | 0.7440 | 5898 | zone_ind |
+| 1929 industrial district | Age at death, people who died elsewhere | -0.135 | -0.793 | 0.523 | 0.6880 | 5898 | zone_ind |
 | Industrial land within 250 m, 1937 (per 10 points) | Age at death, people who died elsewhere | -0.062 | -0.237 | 0.112 | 0.4840 | 5898 | ind10 |
-| Hazardous trade within 500 m (to 1940) | Age at death, people who died elsewhere | -0.266 | -0.598 | 0.066 | 0.1160 | 5898 | haz_500 |
+| Hazardous trade within 500 m (to 1940) | Age at death, people who died elsewhere | -0.242 | -0.583 | 0.099 | 0.1640 | 5898 | haz_500 |
 | HOLC grade D (vs A/B) | Age at death, people who died elsewhere | -0.008 | -0.659 | 0.643 | 0.9810 | 5898 | holc_D |
 | Placebo: commercial land within 250 m (per 10 points) | Age at death, people who died elsewhere | -0.017 | -0.082 | 0.047 | 0.5990 | 5898 | com10 |
 
@@ -67,92 +67,92 @@ Years of age at death (95% CI) unless stated; OLS with birth-year fixed effects,
 
 | term | years | lo | hi | p | n | analysis | model | people |
 |---|---|---|---|---|---|---|---|---|
-| own job: hazardous industry | 0.232 | -0.577 | 1.041 | 0.57400 | 5725 | Own job in a hazardous industry (men in the 1940 labour force) | job only | Men, deaths 1975-2020 (CenSoc-DMF) |
-| own job: manufacturing | -0.288 | -0.912 | 0.336 | 0.36500 | 5725 | Own job in manufacturing (men in the 1940 labour force) | job only | Men, deaths 1975-2020 (CenSoc-DMF) |
-| 1929 industrial district | -0.845 | -1.909 | 0.219 | 0.12000 | 5725 | Men in the 1940 labour force: address and own job together | zone_ind | Men, deaths 1975-2020 (CenSoc-DMF) |
-| own job: hazardous industry | 0.248 | -0.554 | 1.051 | 0.54400 | 5725 | Men in the 1940 labour force: address and own job together | zone_ind | Men, deaths 1975-2020 (CenSoc-DMF) |
-| industrial land within 250 m (per 10 points) | -0.230 | -0.441 | -0.019 | 0.03230 | 5725 | Men in the 1940 labour force: address and own job together | ind10 | Men, deaths 1975-2020 (CenSoc-DMF) |
-| own job: hazardous industry | 0.275 | -0.537 | 1.086 | 0.50700 | 5725 | Men in the 1940 labour force: address and own job together | ind10 | Men, deaths 1975-2020 (CenSoc-DMF) |
-| hazardous trade within 500 m | -0.794 | -1.318 | -0.269 | 0.00303 | 5725 | Men in the 1940 labour force: address and own job together | haz_500 | Men, deaths 1975-2020 (CenSoc-DMF) |
-| own job: hazardous industry | 0.195 | -0.617 | 1.007 | 0.63800 | 5725 | Men in the 1940 labour force: address and own job together | haz_500 | Men, deaths 1975-2020 (CenSoc-DMF) |
-| head's job: hazardous industry | -0.606 | -1.437 | 0.226 | 0.15400 | 8390 | Household head in a hazardous industry (everyone) | job only | Men, deaths 1975-2020 (CenSoc-DMF) |
-| 1929 industrial district | -0.950 | -1.840 | -0.060 | 0.03650 | 8390 | Everyone: address and household head's job together | zone_ind | Men, deaths 1975-2020 (CenSoc-DMF) |
-| head's job: hazardous industry | -0.567 | -1.402 | 0.269 | 0.18400 | 8390 | Everyone: address and household head's job together | zone_ind | Men, deaths 1975-2020 (CenSoc-DMF) |
-| industrial land within 250 m (per 10 points) | -0.224 | -0.376 | -0.072 | 0.00395 | 8390 | Everyone: address and household head's job together | ind10 | Men, deaths 1975-2020 (CenSoc-DMF) |
-| head's job: hazardous industry | -0.524 | -1.359 | 0.310 | 0.21800 | 8390 | Everyone: address and household head's job together | ind10 | Men, deaths 1975-2020 (CenSoc-DMF) |
-| hazardous trade within 500 m | -0.505 | -1.049 | 0.039 | 0.06880 | 8390 | Everyone: address and household head's job together | haz_500 | Men, deaths 1975-2020 (CenSoc-DMF) |
-| head's job: hazardous industry | -0.619 | -1.453 | 0.215 | 0.14600 | 8390 | Everyone: address and household head's job together | haz_500 | Men, deaths 1975-2020 (CenSoc-DMF) |
-| own job: hazardous industry | 0.210 | -0.552 | 0.973 | 0.58900 | 2796 | Own job in a hazardous industry (men in the 1940 labour force) | job only | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| own job: manufacturing | 0.241 | -0.304 | 0.785 | 0.38600 | 2796 | Own job in manufacturing (men in the 1940 labour force) | job only | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| 1929 industrial district | -0.115 | -1.326 | 1.097 | 0.85300 | 2796 | Men in the 1940 labour force: address and own job together | zone_ind | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| own job: hazardous industry | 0.210 | -0.551 | 0.972 | 0.58800 | 2796 | Men in the 1940 labour force: address and own job together | zone_ind | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| industrial land within 250 m (per 10 points) | -0.046 | -0.277 | 0.185 | 0.69900 | 2796 | Men in the 1940 labour force: address and own job together | ind10 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| own job: hazardous industry | 0.221 | -0.537 | 0.980 | 0.56700 | 2796 | Men in the 1940 labour force: address and own job together | ind10 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| hazardous trade within 500 m | -0.278 | -0.735 | 0.179 | 0.23300 | 2796 | Men in the 1940 labour force: address and own job together | haz_500 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| own job: hazardous industry | 0.201 | -0.563 | 0.964 | 0.60700 | 2796 | Men in the 1940 labour force: address and own job together | haz_500 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| head's job: hazardous industry | -0.084 | -0.415 | 0.246 | 0.61700 | 13376 | Household head in a hazardous industry (everyone) | job only | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| 1929 industrial district | 0.101 | -0.390 | 0.592 | 0.68600 | 13376 | Everyone: address and household head's job together | zone_ind | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| head's job: hazardous industry | -0.085 | -0.415 | 0.246 | 0.61600 | 13376 | Everyone: address and household head's job together | zone_ind | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| industrial land within 250 m (per 10 points) | -0.007 | -0.096 | 0.082 | 0.87900 | 13376 | Everyone: address and household head's job together | ind10 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| head's job: hazardous industry | -0.083 | -0.414 | 0.247 | 0.62100 | 13376 | Everyone: address and household head's job together | ind10 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| hazardous trade within 500 m | -0.049 | -0.264 | 0.166 | 0.65800 | 13376 | Everyone: address and household head's job together | haz_500 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| head's job: hazardous industry | -0.087 | -0.417 | 0.244 | 0.60800 | 13376 | Everyone: address and household head's job together | haz_500 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| own job: hazardous industry | 0.232 | -0.577 | 1.041 | 0.574000 | 5725 | Own job in a hazardous industry (men in the 1940 labour force) | job only | Men, deaths 1975-2020 (CenSoc-DMF) |
+| own job: manufacturing | -0.288 | -0.912 | 0.336 | 0.365000 | 5725 | Own job in manufacturing (men in the 1940 labour force) | job only | Men, deaths 1975-2020 (CenSoc-DMF) |
+| 1929 industrial district | -0.716 | -1.744 | 0.313 | 0.173000 | 5725 | Men in the 1940 labour force: address and own job together | zone_ind | Men, deaths 1975-2020 (CenSoc-DMF) |
+| own job: hazardous industry | 0.243 | -0.563 | 1.049 | 0.555000 | 5725 | Men in the 1940 labour force: address and own job together | zone_ind | Men, deaths 1975-2020 (CenSoc-DMF) |
+| industrial land within 250 m (per 10 points) | -0.230 | -0.441 | -0.019 | 0.032300 | 5725 | Men in the 1940 labour force: address and own job together | ind10 | Men, deaths 1975-2020 (CenSoc-DMF) |
+| own job: hazardous industry | 0.275 | -0.537 | 1.086 | 0.507000 | 5725 | Men in the 1940 labour force: address and own job together | ind10 | Men, deaths 1975-2020 (CenSoc-DMF) |
+| hazardous trade within 500 m | -0.886 | -1.393 | -0.379 | 0.000624 | 5725 | Men in the 1940 labour force: address and own job together | haz_500 | Men, deaths 1975-2020 (CenSoc-DMF) |
+| own job: hazardous industry | 0.192 | -0.618 | 1.002 | 0.642000 | 5725 | Men in the 1940 labour force: address and own job together | haz_500 | Men, deaths 1975-2020 (CenSoc-DMF) |
+| head's job: hazardous industry | -0.606 | -1.437 | 0.226 | 0.154000 | 8390 | Household head in a hazardous industry (everyone) | job only | Men, deaths 1975-2020 (CenSoc-DMF) |
+| 1929 industrial district | -0.688 | -1.520 | 0.145 | 0.105000 | 8390 | Everyone: address and household head's job together | zone_ind | Men, deaths 1975-2020 (CenSoc-DMF) |
+| head's job: hazardous industry | -0.580 | -1.413 | 0.253 | 0.172000 | 8390 | Everyone: address and household head's job together | zone_ind | Men, deaths 1975-2020 (CenSoc-DMF) |
+| industrial land within 250 m (per 10 points) | -0.224 | -0.376 | -0.072 | 0.003950 | 8390 | Everyone: address and household head's job together | ind10 | Men, deaths 1975-2020 (CenSoc-DMF) |
+| head's job: hazardous industry | -0.524 | -1.359 | 0.310 | 0.218000 | 8390 | Everyone: address and household head's job together | ind10 | Men, deaths 1975-2020 (CenSoc-DMF) |
+| hazardous trade within 500 m | -0.544 | -1.100 | 0.011 | 0.054900 | 8390 | Everyone: address and household head's job together | haz_500 | Men, deaths 1975-2020 (CenSoc-DMF) |
+| head's job: hazardous industry | -0.616 | -1.452 | 0.221 | 0.149000 | 8390 | Everyone: address and household head's job together | haz_500 | Men, deaths 1975-2020 (CenSoc-DMF) |
+| own job: hazardous industry | 0.210 | -0.552 | 0.973 | 0.589000 | 2796 | Own job in a hazardous industry (men in the 1940 labour force) | job only | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| own job: manufacturing | 0.241 | -0.304 | 0.785 | 0.386000 | 2796 | Own job in manufacturing (men in the 1940 labour force) | job only | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| 1929 industrial district | 0.067 | -1.063 | 1.198 | 0.907000 | 2796 | Men in the 1940 labour force: address and own job together | zone_ind | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| own job: hazardous industry | 0.209 | -0.554 | 0.971 | 0.592000 | 2796 | Men in the 1940 labour force: address and own job together | zone_ind | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| industrial land within 250 m (per 10 points) | -0.046 | -0.277 | 0.185 | 0.699000 | 2796 | Men in the 1940 labour force: address and own job together | ind10 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| own job: hazardous industry | 0.221 | -0.537 | 0.980 | 0.567000 | 2796 | Men in the 1940 labour force: address and own job together | ind10 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| hazardous trade within 500 m | -0.138 | -0.598 | 0.322 | 0.557000 | 2796 | Men in the 1940 labour force: address and own job together | haz_500 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| own job: hazardous industry | 0.207 | -0.556 | 0.971 | 0.595000 | 2796 | Men in the 1940 labour force: address and own job together | haz_500 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| head's job: hazardous industry | -0.084 | -0.415 | 0.246 | 0.617000 | 13376 | Household head in a hazardous industry (everyone) | job only | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| 1929 industrial district | 0.096 | -0.324 | 0.517 | 0.653000 | 13376 | Everyone: address and household head's job together | zone_ind | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| head's job: hazardous industry | -0.085 | -0.416 | 0.245 | 0.612000 | 13376 | Everyone: address and household head's job together | zone_ind | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| industrial land within 250 m (per 10 points) | -0.007 | -0.096 | 0.082 | 0.879000 | 13376 | Everyone: address and household head's job together | ind10 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| head's job: hazardous industry | -0.083 | -0.414 | 0.247 | 0.621000 | 13376 | Everyone: address and household head's job together | ind10 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| hazardous trade within 500 m | -0.026 | -0.250 | 0.198 | 0.819000 | 13376 | Everyone: address and household head's job together | haz_500 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| head's job: hazardous industry | -0.085 | -0.416 | 0.245 | 0.613000 | 13376 | Everyone: address and household head's job together | haz_500 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 
 ## 4. Groups
 
 | term | years | lo | hi | p | n | group | exposure | people |
 |---|---|---|---|---|---|---|---|---|
-| zone_ind | -0.184 | -2.634 | 2.265 | 0.88300 | 310 | Hispanic | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
-| ind10 | -0.296 | -0.686 | 0.094 | 0.13800 | 310 | Hispanic | Industrial land within 250 m, 1937 (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| haz_500 | -0.033 | -2.020 | 1.955 | 0.97400 | 310 | Hispanic | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| holc_D | -0.137 | -6.283 | 6.009 | 0.96500 | 310 | Hispanic | HOLC grade D (vs A/B) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| com10 | 0.331 | 0.031 | 0.631 | 0.03170 | 310 | Hispanic | Placebo: commercial land within 250 m (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| zone_ind | -1.169 | -2.080 | -0.259 | 0.01180 | 7969 | White, not Hispanic | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
-| ind10 | -0.259 | -0.423 | -0.095 | 0.00200 | 7969 | White, not Hispanic | Industrial land within 250 m, 1937 (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| haz_500 | -0.592 | -1.160 | -0.024 | 0.04120 | 7969 | White, not Hispanic | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| holc_D | -0.228 | -1.204 | 0.747 | 0.64600 | 7969 | White, not Hispanic | HOLC grade D (vs A/B) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| com10 | 0.045 | -0.057 | 0.147 | 0.38500 | 7969 | White, not Hispanic | Placebo: commercial land within 250 m (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| zone_ind | -0.536 | -1.744 | 0.672 | 0.38500 | 4502 | Renting household | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
-| ind10 | -0.254 | -0.451 | -0.057 | 0.01140 | 4502 | Renting household | Industrial land within 250 m, 1937 (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| haz_500 | -0.515 | -1.129 | 0.100 | 0.10100 | 4502 | Renting household | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| holc_D | -0.639 | -1.840 | 0.563 | 0.29800 | 4502 | Renting household | HOLC grade D (vs A/B) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| com10 | 0.086 | -0.031 | 0.203 | 0.15000 | 4502 | Renting household | Placebo: commercial land within 250 m (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| zone_ind | -1.796 | -3.022 | -0.571 | 0.00409 | 3888 | Owner household | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
-| ind10 | -0.204 | -0.429 | 0.020 | 0.07410 | 3888 | Owner household | Industrial land within 250 m, 1937 (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| haz_500 | -0.617 | -1.524 | 0.291 | 0.18300 | 3888 | Owner household | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| holc_D | 0.128 | -1.411 | 1.668 | 0.87000 | 3888 | Owner household | HOLC grade D (vs A/B) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| com10 | -0.007 | -0.215 | 0.201 | 0.94500 | 3888 | Owner household | Placebo: commercial land within 250 m (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
-| zone_ind | 1.599 | 0.260 | 2.939 | 0.01970 | 477 | Hispanic | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| ind10 | 0.094 | -0.158 | 0.346 | 0.46300 | 477 | Hispanic | Industrial land within 250 m, 1937 (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| haz_500 | -0.889 | -2.017 | 0.238 | 0.12300 | 477 | Hispanic | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| holc_D | -0.791 | -5.923 | 4.341 | 0.76300 | 477 | Hispanic | HOLC grade D (vs A/B) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| com10 | 0.000 | -0.256 | 0.257 | 0.99800 | 477 | Hispanic | Placebo: commercial land within 250 m (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| zone_ind | -0.174 | -0.691 | 0.343 | 0.50900 | 12687 | White, not Hispanic | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| ind10 | -0.033 | -0.132 | 0.066 | 0.51800 | 12687 | White, not Hispanic | Industrial land within 250 m, 1937 (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| haz_500 | -0.026 | -0.243 | 0.191 | 0.81600 | 12687 | White, not Hispanic | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| holc_D | -0.227 | -0.597 | 0.142 | 0.22800 | 12687 | White, not Hispanic | HOLC grade D (vs A/B) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| com10 | -0.004 | -0.045 | 0.037 | 0.83900 | 12687 | White, not Hispanic | Placebo: commercial land within 250 m (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| zone_ind | 0.180 | -0.399 | 0.760 | 0.54200 | 7344 | Renting household | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| ind10 | -0.004 | -0.118 | 0.110 | 0.94400 | 7344 | Renting household | Industrial land within 250 m, 1937 (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| haz_500 | -0.077 | -0.336 | 0.183 | 0.56300 | 7344 | Renting household | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| holc_D | 0.066 | -0.425 | 0.558 | 0.79200 | 7344 | Renting household | HOLC grade D (vs A/B) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| com10 | 0.003 | -0.043 | 0.049 | 0.89800 | 7344 | Renting household | Placebo: commercial land within 250 m (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| zone_ind | 0.026 | -0.812 | 0.864 | 0.95100 | 6032 | Owner household | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| ind10 | 0.001 | -0.146 | 0.147 | 0.99400 | 6032 | Owner household | Industrial land within 250 m, 1937 (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| haz_500 | 0.000 | -0.382 | 0.383 | 0.99800 | 6032 | Owner household | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| holc_D | -0.471 | -1.071 | 0.129 | 0.12400 | 6032 | Owner household | HOLC grade D (vs A/B) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
-| com10 | 0.029 | -0.076 | 0.134 | 0.58300 | 6032 | Owner household | Placebo: commercial land within 250 m (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| zone_ind | -1.002 | -3.229 | 1.226 | 0.3790 | 310 | Hispanic | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
+| ind10 | -0.296 | -0.686 | 0.094 | 0.1380 | 310 | Hispanic | Industrial land within 250 m, 1937 (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| haz_500 | -0.060 | -2.062 | 1.942 | 0.9530 | 310 | Hispanic | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| holc_D | -0.137 | -6.283 | 6.009 | 0.9650 | 310 | Hispanic | HOLC grade D (vs A/B) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| com10 | 0.331 | 0.031 | 0.631 | 0.0317 | 310 | Hispanic | Placebo: commercial land within 250 m (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| zone_ind | -0.745 | -1.564 | 0.073 | 0.0744 | 7969 | White, not Hispanic | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
+| ind10 | -0.259 | -0.423 | -0.095 | 0.0020 | 7969 | White, not Hispanic | Industrial land within 250 m, 1937 (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| haz_500 | -0.623 | -1.207 | -0.040 | 0.0364 | 7969 | White, not Hispanic | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| holc_D | -0.228 | -1.204 | 0.747 | 0.6460 | 7969 | White, not Hispanic | HOLC grade D (vs A/B) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| com10 | 0.045 | -0.057 | 0.147 | 0.3850 | 7969 | White, not Hispanic | Placebo: commercial land within 250 m (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| zone_ind | -0.425 | -1.625 | 0.775 | 0.4870 | 4502 | Renting household | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
+| ind10 | -0.254 | -0.451 | -0.057 | 0.0114 | 4502 | Renting household | Industrial land within 250 m, 1937 (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| haz_500 | -0.636 | -1.246 | -0.026 | 0.0410 | 4502 | Renting household | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| holc_D | -0.639 | -1.840 | 0.563 | 0.2980 | 4502 | Renting household | HOLC grade D (vs A/B) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| com10 | 0.086 | -0.031 | 0.203 | 0.1500 | 4502 | Renting household | Placebo: commercial land within 250 m (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| zone_ind | -1.217 | -2.315 | -0.120 | 0.0298 | 3888 | Owner household | 1929 industrial district | Men, deaths 1975-2020 (CenSoc-DMF) |
+| ind10 | -0.204 | -0.429 | 0.020 | 0.0741 | 3888 | Owner household | Industrial land within 250 m, 1937 (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| haz_500 | -0.531 | -1.453 | 0.391 | 0.2590 | 3888 | Owner household | Hazardous trade within 500 m (to 1940) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| holc_D | 0.128 | -1.411 | 1.668 | 0.8700 | 3888 | Owner household | HOLC grade D (vs A/B) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| com10 | -0.007 | -0.215 | 0.201 | 0.9450 | 3888 | Owner household | Placebo: commercial land within 250 m (per 10 points) | Men, deaths 1975-2020 (CenSoc-DMF) |
+| zone_ind | 1.574 | 0.238 | 2.910 | 0.0214 | 477 | Hispanic | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| ind10 | 0.094 | -0.158 | 0.346 | 0.4630 | 477 | Hispanic | Industrial land within 250 m, 1937 (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| haz_500 | -0.796 | -2.016 | 0.424 | 0.2020 | 477 | Hispanic | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| holc_D | -0.791 | -5.923 | 4.341 | 0.7630 | 477 | Hispanic | HOLC grade D (vs A/B) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| com10 | 0.000 | -0.256 | 0.257 | 0.9980 | 477 | Hispanic | Placebo: commercial land within 250 m (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| zone_ind | -0.160 | -0.571 | 0.252 | 0.4470 | 12687 | White, not Hispanic | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| ind10 | -0.033 | -0.132 | 0.066 | 0.5180 | 12687 | White, not Hispanic | Industrial land within 250 m, 1937 (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| haz_500 | 0.005 | -0.222 | 0.232 | 0.9660 | 12687 | White, not Hispanic | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| holc_D | -0.227 | -0.597 | 0.142 | 0.2280 | 12687 | White, not Hispanic | HOLC grade D (vs A/B) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| com10 | -0.004 | -0.045 | 0.037 | 0.8390 | 12687 | White, not Hispanic | Placebo: commercial land within 250 m (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| zone_ind | 0.161 | -0.452 | 0.773 | 0.6070 | 7344 | Renting household | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| ind10 | -0.004 | -0.118 | 0.110 | 0.9440 | 7344 | Renting household | Industrial land within 250 m, 1937 (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| haz_500 | -0.107 | -0.379 | 0.164 | 0.4370 | 7344 | Renting household | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| holc_D | 0.066 | -0.425 | 0.558 | 0.7920 | 7344 | Renting household | HOLC grade D (vs A/B) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| com10 | 0.003 | -0.043 | 0.049 | 0.8980 | 7344 | Renting household | Placebo: commercial land within 250 m (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| zone_ind | 0.031 | -0.551 | 0.613 | 0.9170 | 6032 | Owner household | 1929 industrial district | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| ind10 | 0.001 | -0.146 | 0.147 | 0.9940 | 6032 | Owner household | Industrial land within 250 m, 1937 (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| haz_500 | 0.123 | -0.263 | 0.510 | 0.5320 | 6032 | Owner household | Hazardous trade within 500 m (to 1940) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| holc_D | -0.471 | -1.071 | 0.129 | 0.1240 | 6032 | Owner household | HOLC grade D (vs A/B) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
+| com10 | 0.029 | -0.076 | 0.134 | 0.5830 | 6032 | Owner household | Placebo: commercial land within 250 m (per 10 points) | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) |
 
 ## 5. Who is linked (share of 1940 residents with a death record in the window)
 
 | grp | people | n_1940 | pct_linked_dmf | pct_linked_numident |
 |---|---|---|---|---|
-| other addresses | Men aged 0-50 in 1940 | 76408 | 10.71 | 7.92 |
-| 1929 industrial district | Men aged 0-50 in 1940 | 5525 | 9.38 | 8.11 |
-| 10%+ industrial land within 250 m | Men aged 0-50 in 1940 | 6006 | 10.59 | 7.74 |
-| other addresses | Women aged 0-50 in 1940 | 83603 |  | 8.16 |
-| 1929 industrial district | Women aged 0-50 in 1940 | 5547 |  | 7.99 |
-| 10%+ industrial land within 250 m | Women aged 0-50 in 1940 | 6031 |  | 7.38 |
+| other addresses | Men aged 0-50 in 1940 | 76466 | 10.71 | 7.92 |
+| 1929 industrial district | Men aged 0-50 in 1940 | 5447 | 9.34 | 8.22 |
+| 10%+ industrial land within 250 m | Men aged 0-50 in 1940 | 6026 | 10.67 | 7.68 |
+| other addresses | Women aged 0-50 in 1940 | 83663 |  | 8.15 |
+| 1929 industrial district | Women aged 0-50 in 1940 | 5467 |  | 8.19 |
+| 10%+ industrial land within 250 m | Women aged 0-50 in 1940 | 6051 |  | 7.27 |
 | HOLC C | Everyone aged 0-50 in 1940 | 78388 |  | 8.05 |
 | HOLC B | Everyone aged 0-50 in 1940 | 26328 |  | 8.14 |
 | HOLC D | Everyone aged 0-50 in 1940 | 55197 |  | 8.09 |
@@ -161,25 +161,25 @@ Years of age at death (95% CI) unless stated; OLS with birth-year fixed effects,
 
 | outcome | term | pct_points | lo | hi | p | n |
 |---|---|---|---|---|---|---|
-| linked_dmf | zone_ind | -0.814 | -2.079 | 0.450 | 0.20700 | 87939 |
-| linked_dmf | ind10 | 0.166 | -0.154 | 0.486 | 0.31000 | 87939 |
-| linked_dmf | haz_500 | -0.420 | -1.218 | 0.377 | 0.30200 | 87939 |
-| linked_num | zone_ind | 0.136 | -0.768 | 1.041 | 0.76800 | 183120 |
-| linked_num | ind10 | 0.042 | -0.140 | 0.225 | 0.65100 | 183120 |
-| linked_num | haz_500 | -0.659 | -1.132 | -0.185 | 0.00639 | 183120 |
+| linked_dmf | zone_ind | -0.882 | -2.050 | 0.287 | 0.139000 | 87939 |
+| linked_dmf | ind10 | 0.166 | -0.154 | 0.486 | 0.310000 | 87939 |
+| linked_dmf | haz_500 | -0.583 | -1.404 | 0.239 | 0.164000 | 87939 |
+| linked_num | zone_ind | 0.313 | -0.567 | 1.194 | 0.486000 | 183120 |
+| linked_num | ind10 | 0.042 | -0.140 | 0.225 | 0.651000 | 183120 |
+| linked_num | haz_500 | -0.847 | -1.327 | -0.367 | 0.000548 | 183120 |
 
 ## 6. Gompertz hazard ratios (and change in life expectancy at 65, years)
 
 | people | window | exposure | hr | hr_lower | hr_upper | converged | n | e65_years | e65_lower | e65_upper |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | 1929 industrial district | 1.101 | 0.945 | 1.284 | TRUE | 6949 | -0.72 | -1.82 | 0.43 |
+| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | 1929 industrial district | 1.117 | 0.962 | 1.297 | TRUE | 6949 | -0.84 | -1.93 | 0.30 |
 | Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | Industrial land within 250 m, 1937 (per 10 points) | 0.997 | 0.966 | 1.028 | TRUE | 6949 | 0.03 | -0.21 | 0.26 |
-| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | Hazardous trade within 500 m (to 1940) | 1.017 | 0.941 | 1.100 | TRUE | 6949 | -0.13 | -0.73 | 0.48 |
+| Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | Hazardous trade within 500 m (to 1940) | 1.048 | 0.970 | 1.133 | TRUE | 6949 | -0.37 | -0.96 | 0.24 |
 | Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | HOLC grade D (vs A/B) | 1.163 | 1.013 | 1.335 | TRUE | 6949 | -1.14 | -2.14 | -0.10 |
 | Men, deaths 1975-2020 (CenSoc-DMF) | 1975-2005 | Placebo: commercial land within 250 m (per 10 points) | 1.003 | 0.987 | 1.020 | TRUE | 6949 | -0.03 | -0.15 | 0.10 |
-| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | 1929 industrial district | 1.001 | 0.832 | 1.205 | TRUE | 13376 | -0.01 | -1.41 | 1.45 |
+| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | 1929 industrial district | 1.097 | 0.922 | 1.306 | TRUE | 13376 | -0.71 | -2.02 | 0.64 |
 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | Industrial land within 250 m, 1937 (per 10 points) | 1.016 | 0.980 | 1.054 | TRUE | 13376 | -0.13 | -0.41 | 0.16 |
-| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | Hazardous trade within 500 m (to 1940) | 1.008 | 0.924 | 1.101 | TRUE | 13376 | -0.06 | -0.73 | 0.61 |
+| Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | Hazardous trade within 500 m (to 1940) | 0.998 | 0.912 | 1.091 | TRUE | 13376 | 0.02 | -0.67 | 0.72 |
 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | HOLC grade D (vs A/B) | 0.960 | 0.827 | 1.114 | TRUE | 13376 | 0.33 | -0.85 | 1.54 |
 | Men and women, deaths at 65+ 1988-2005 (CenSoc-Numident) | 1988-2005 | Placebo: commercial land within 250 m (per 10 points) | 0.998 | 0.980 | 1.015 | TRUE | 13376 | 0.02 | -0.12 | 0.16 |
 

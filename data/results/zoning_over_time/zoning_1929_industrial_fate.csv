@@ -1,15 +1,15 @@
 part,group,km2,pct
-1929 industrial land in Denver County,all,28.37,100
-zoned today,Industrial,14.53,51.3
-zoned today,Commercial or mixed use,4.24,15
-zoned today,"Open space, civic, other",3.13,11
+1929 industrial land in Denver County,all,28.36,100
+zoned today,Industrial,14.64,51.7
+zoned today,Commercial or mixed use,4.17,14.7
+zoned today,"Open space, civic, other",3.17,11.2
 zoned today,Industrial mixed use,3.12,11
-zoned today,Residential,2.87,10.1
+zoned today,Residential,2.77,9.8
 zoned today,PUD (custom district),0.45,1.6
 no longer industrial: year of the ordinance that last zoned it,ordinance 1956-1969,0,0
 no longer industrial: year of the ordinance that last zoned it,1980s,0.05,0.4
 no longer industrial: year of the ordinance that last zoned it,1990s,0.26,1.9
-no longer industrial: year of the ordinance that last zoned it,2000-2009,1.71,12.4
-no longer industrial: year of the ordinance that last zoned it,2010 (citywide new code),7.3,52.9
-no longer industrial: year of the ordinance that last zoned it,2011-2019,3.29,23.9
-no longer industrial: year of the ordinance that last zoned it,2020 or later,1.18,8.6
+no longer industrial: year of the ordinance that last zoned it,2000-2009,1.65,12.1
+no longer industrial: year of the ordinance that last zoned it,2010 (citywide new code),7.25,53
+no longer industrial: year of the ordinance that last zoned it,2011-2019,3.28,24
+no longer industrial: year of the ordinance that last zoned it,2020 or later,1.18,8.7

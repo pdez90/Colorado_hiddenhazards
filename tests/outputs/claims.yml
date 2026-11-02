@@ -166,17 +166,17 @@
 # ------------------------------------------------------------------ README: corridors
 - id: readme_corridor_cells
   file: README.md
-  text: "1,509 cells, of which 332 persistent (241 with sector"
+  text: "1,507 cells, of which 333 persistent (242 with sector"
   check: >-
     (lambda m: [len(m), m['class'].str.startswith('persistent').sum(), (m['class'] == 'persistent, sector turnover').sum(),
     (m['class'] == 'emerging').sum(), m['class'].str.startswith('former').sum()])((lambda c: c[c.metro])(load('app/data/corridor_cells.csv')))
-  expect: [1509, 332, 241, 592, 280]
+  expect: [1507, 333, 242, 591, 279]
 
 - id: readme_corridor_emerging_former
   file: README.md
-  text: "592 emerging, 280 former"
+  text: "591 emerging, 279 former"
   check: "(lambda m: [(m['class'] == 'emerging').sum(), m['class'].str.startswith('former').sum()])((lambda c: c[c.metro])(load('app/data/corridor_cells.csv')))"
-  expect: [592, 280]
+  expect: [591, 279]
 
 - id: readme_entry_model_elasticities
   file: README.md
@@ -374,27 +374,27 @@
 
 - id: readme_holc_facility_shares_pre1938
   file: README.md
-  text: "69% of the street-level hazardous trades listed before the map were in\nCommercial zones and 13% in Industrial ones, 11% in D areas and none in A or B"
+  text: "71% of the street-level hazardous trades listed before the map were in\nCommercial zones and 13% in Industrial ones, 11% in D areas and none in A or B"
   check: "(lambda r: [r.share_Commercial, r.share_Industrial, r.share_D, r.A + r.B])((lambda d: d[d.layer.str.startswith('Hazardous trades before the map')].iloc[0])(load('app/data/holc_facility_shares.csv')))"
-  expect: [69, 13, 11, 0]
+  expect: [71, 13, 11, 0]
 
 - id: readme_ed_holc_classes_d_districts
   file: README.md
-  text: "the D districts, 7.3% Black in 1930, held 2.7 hazardous\nfirms per 10,000 residents before the map and 50 hazardous-sector sites per 10,000 in 1965–92, against 6.4 per 10,000 in A–C"
+  text: "the D districts, 7.3% Black in 1930, held 2.4 hazardous\nfirms per 10,000 residents before the map and 50 hazardous-sector sites per 10,000 in 1965–92, against 6.4 per 10,000 in A–C"
   check: >-
     (lambda d: (lambda D, ac: [(D.pct_black * D.population).sum() / D.population.sum(), 1e4 * D.firms_pre1938.sum() / D.population.sum(),
     1e4 * D.firms_1961_2002.sum() / D.population.sum(), 1e4 * ac.firms_1961_2002.sum() / ac.population.sum()])(
     d[(d.census == 1930) & (d.grade == 'D')], d[(d.census == 1930) & d.grade.isin(['A', 'B', 'C'])]))(load('app/data/ed_holc_classes.csv'))
-  expect: [7.3, 2.7, 50, 6.4]
+  expect: [7.3, 2.4, 50, 6.4]
 
 - id: readme_holc_industry_period_ratios
   file: README.md
-  text: "5.4× in 1906–20 (but on 13 firms in D against 4 in C), 1.3× in 1921–37 (8 against 11 firms) and 1.8×\nin 1938–56 (34 against 28), then 13.8× in 1965–80 (318 against 52) and 18.2× in 1981–92 (234 against 31)"
+  text: "4.9× in 1906–20 (but on 11 firms in D against 3 in C), 1.7× in 1921–37 (8 against 9 firms) and 1.9×\nin 1938–56 (33 against 27), then 13.8× in 1965–80 (318 against 52) and 18.2× in 1981–92 (234 against 31)"
   check: >-
     (lambda d: [v for per in ('1906-1920', '1921-1937', '1938-1956', '1965-1980', '1981-1992')
     for v in (d[(d.period == per) & (d.grade == 'D')].dc_ratio_within_period.iloc[0],
     d[(d.period == per) & (d.grade == 'D')].firms.iloc[0], d[(d.period == per) & (d.grade == 'C')].firms.iloc[0])])(load('app/data/holc_industry_periods.csv'))
-  expect: [5.4, 13, 4, 1.3, 8, 11, 1.8, 34, 28, 13.8, 318, 52, 18.2, 234, 31]
+  expect: [4.9, 11, 3, 1.7, 8, 9, 1.9, 33, 27, 13.8, 318, 52, 18.2, 234, 31]
 
 - id: readme_holc_industry_ratio_recomputed
   file: README.md
@@ -412,18 +412,18 @@
 
 - id: readme_zoning_1944_d_land
   file: README.md
-  text: "D land zoned industrial 16.1% → 15.9%"
+  text: "D land zoned industrial 16.0% → 15.8%"
   check: "(lambda r: [r.pct_1929, r.pct_1944])((lambda z: z[(z.grade == 'D') & (z.cls == 'industrial')].iloc[0])(load('app/data/zoning_change_by_holc_grade.csv')))"
-  expect: [16.1, 15.9]
+  expect: [16.0, 15.8]
 
 - id: readme_zoning_industrial_land_over_time
   file: README.md
-  text: "14.0% → 13.8% → 16.1% → 10.6% → 10.3%; D land 16.3% → 16.0%\n→ 21.3% → 12.4% → 12.2%)"
+  text: "14.0% → 13.8% → 16.1% → 10.6% → 10.3%; D land 16.2% → 16.0%\n→ 21.3% → 12.4% → 12.2%)"
   check: >-
     (lambda z, g: [z[(z.cat == 'Industrial') & (z.year.astype(str) == y)].pct.iloc[0] for y in ('1929', '1944', '1955', '2023', 'today')] +
     [g[(g.grade == 'D') & (g.year.astype(str) == y)].pct_industrial.iloc[0] for y in ('1929', '1944', '1955', '2023', 'today')])(
     load('app/data/zoning_land_by_year.csv'), load('app/data/zoning_by_holc_grade_years.csv'))
-  expect: [14.0, 13.8, 16.1, 10.6, 10.3, 16.3, 16.0, 21.3, 12.4, 12.2]
+  expect: [14.0, 13.8, 16.1, 10.6, 10.3, 16.2, 16.0, 21.3, 12.4, 12.2]
 
 - id: readme_zoning_1955_districts
   file: README.md
@@ -446,9 +446,9 @@
 
 - id: readme_zoning_202_km2
   file: README.md
-  text: "on the 202 km² of Denver\nCounty covered by both 1929/1944 sheets"
+  text: "on the 203 km² of Denver\nCounty covered by both 1929/1944 sheets"
   check: "(lambda z: z[z.year.astype(str) == '1929'].km2.sum())(load('app/data/zoning_land_by_year.csv'))"
-  expect: 202
+  expect: 203
 
 # ------------------------------------------------------------------ README: pre-1960 layer and radium
 - id: readme_pre1960_counts
@@ -480,9 +480,9 @@
 
 - id: app_site_fate_parcel_matches
   file: app/app.R
-  text: "1,112 of 1,112 manufacturers'-directory sites and 407 of 408 pre-1960 trades"
+  text: "1,112 of 1,112 manufacturers'-directory sites and 394 of 395 pre-1960 trades"
   check: "(lambda s, h: [(s.use_now != 'No parcel match').sum(), len(s), (h.use_now != 'No parcel match').sum(), len(h)])(load('app/data/site_fate_denver.csv'), load('app/data/site_fate_denver_pre1960.csv'))"
-  expect: [1112, 1112, 407, 408]
+  expect: [1112, 1112, 394, 395]
 
 - id: app_zoning_tract_paths_still_industrial
   file: app/app.R
@@ -548,9 +548,9 @@
 
 - id: app_zoning_sheets_202_km2
   file: app/app.R
-  text: "(202 km²; half the county, the city as built by 1944)"
+  text: "(203 km²; half the county, the city as built by 1944)"
   check: "(lambda z: z[z.year.astype(str) == '1944'].km2.sum())(load('app/data/zoning_land_by_year.csv'))"
-  expect: 202
+  expect: 203
 
 - id: app_rezoning_layer_colours_exist
   file: app/app.R
@@ -649,9 +649,9 @@
 
 - id: sanborn_persistence_blocks
   file: data/results/sanborn_1903/summary.md
-  text: "| Blocks with a hazardous trade | 177 | 91.5 | 58.2 | 84.2 |"
+  text: "| Blocks with a hazardous trade | 177 | 91.5 | 57.1 | 84.2 |"
   check: "(lambda p: (lambda r: [r.n, r.pct_with_1965_92_site_150m, r.pct_with_hidden_site_150m, r.pct_with_known_site_150m])(p[p.what == 'Blocks with a hazardous trade'].iloc[0]))(load('app/data/sanborn1903_persist.csv'))"
-  expect: [177, 91.5, 58.2, 84.2]
+  expect: [177, 91.5, 57.1, 84.2]
 
 - id: sanborn_hazardous_blocks_count
   file: data/results/sanborn_1903/summary.md
@@ -780,11 +780,11 @@
 
 - id: zoning2023_industrial_a_row
   file: data/results/zoning_2023/zoning_2023_summary.md
-  text: "| Industrial A | 24.63 | 50.7 | 12.1 | 23.4 |  6.3 | 0.1 | 7.4 |"
+  text: "| Industrial A | 24.69 | 51.2 | 12.1 | 23.0 |  6.0 | 0.1 | 7.6 |"
   check: >-
     (lambda r: [r.km2_1929, r['Industrial (housing not allowed)'], r['Industrial mixed use (housing allowed)'], r['Mixed use with housing'], r['Residential'], r['Commercial'], r['Open space, civic, other']])(
     (lambda z: z[z.zone1929 == 'Industrial A'].iloc[0])(load('app/data/zoning_1929_to_2023.csv')))
-  expect: [24.63, 50.7, 12.1, 23.4, 6.3, 0.1, 7.4]
+  expect: [24.69, 51.2, 12.1, 23.0, 6.0, 0.1, 7.6]
 
 - id: zoning2023_tract_composition_20pct_row
   file: data/results/zoning_2023/zoning_2023_summary.md
@@ -933,26 +933,26 @@
 
 - id: readme_eg_significance_shares
   file: README.md
-  text: "Printing (significant in every edition), machinery (about three-quarters of editions) and petroleum products (under a third) cluster beyond general manufacturing"
+  text: "Printing (significant in every edition), machinery (about three-quarters of editions) and petroleum products (about half) cluster beyond general manufacturing"
   check: >-
     (lambda e: [(e[(e.scope == 'statewide') & (e.sector == 'Printing')].p < 0.05).mean(), (e[(e.scope == 'Denver metro') & (e.sector == 'Printing')].p < 0.05).mean(),
     (e[(e.scope == 'statewide') & (e.sector == 'Petroleum')].p < 0.05).mean(), (e[(e.scope == 'statewide') & (e.sector == 'Machinery')].p < 0.05).mean()])(load('app/data/corridor_eg.csv'))
-  expect: [1, 1, 0.3, 0.77]
+  expect: [1, 1, 0.5, 0.77]
   tol: [0.001, 0.001, 0.15, 0.15]
 
 - id: corridors_summary_persistence_table
   file: data/results/corridors/corridors_summary.md
-  text: "| emerging | 592 | 224 | 6 |\n| intermittent | 305 | 211 | 16 |\n| former (gone by 1980s) | 280 | 129 | 11 |\n| persistent, sector turnover | 241 | 227 | 66 |\n| persistent | 91 | 73 | 25 |"
+  text: "| emerging | 591 | 224 | 6 |\n| intermittent | 304 | 210 | 18 |\n| former (gone by 1980s) | 279 | 129 | 13 |\n| persistent, sector turnover | 242 | 228 | 64 |\n| persistent | 91 | 73 | 27 |"
   check: >-
     (lambda m: [v for k in ('emerging', 'intermittent', 'former (gone by 1980s)', 'persistent, sector turnover', 'persistent')
     for v in ((m['class'] == k).sum(), m[m['class'] == k].ever_haz.sum(), m[m['class'] == k].pre1960_first.notna().sum())])((lambda c: c[c.metro])(load('app/data/corridor_cells.csv')))
-  expect: [592, 224, 6, 305, 211, 16, 280, 129, 11, 241, 227, 66, 91, 73, 25]
+  expect: [591, 224, 6, 304, 210, 18, 279, 129, 13, 242, 228, 64, 91, 73, 27]
 
 - id: corridors_summary_located_establishments
   file: data/results/corridors/corridors_summary.md
-  text: "500 m cells with any manufacturer: 3333 (1509 metro)"
+  text: "500 m cells with any manufacturer: 3332 (1507 metro)"
   check: "(lambda c: [len(c), c.metro.sum()])(load('app/data/corridor_cells.csv'))"
-  expect: [3333, 1509]
+  expect: [3332, 1507]
 
 # README: Denver 1880, enumeration districts, HOLC
 - id: readme_1880_firms_placed_detail
@@ -1017,7 +1017,6 @@
   check: "(lambda g: [len(g), math.sqrt((g.residual_m ** 2).mean())])(load('data/results/zoning_1929/gcp_fit.csv'))"
   expect: [15, 19]
   tol: [0.5, 1]
-  stale: "gcp_fit.csv is from the 16-point fit; rerun Rscript R/zoning_1925.R (needs tigris) and remove this marker"
 
 - id: readme_zoning_1944_areas
   file: README.md
@@ -1056,11 +1055,11 @@
 
 - id: app_holc_ungraded_zone_shares
   file: app/app.R
-  text: "holding 16% of HOLC's land area and 15% of the 1940 population but 82% of the pre-map hazardous trades (the Industrial zone alone: 12% of the land, 6% of the population)"
+  text: "holding 16% of HOLC's land area and 15% of the 1940 population but 84% of the pre-map hazardous trades (the Industrial zone alone: 12% of the land, 6% of the population)"
   check: >-
     (lambda s: (lambda land, pop, pre: [land.share_Industrial + land.share_Commercial, pop.share_Industrial + pop.share_Commercial, pre.share_Industrial + pre.share_Commercial, land.share_Industrial, pop.share_Industrial])(
     s[s.layer == 'Land area of HOLC areas'].iloc[0], s[s.layer == 'Population 1940'].iloc[0], s[s.layer.str.startswith('Hazardous trades before the map')].iloc[0]))(load('app/data/holc_facility_shares.csv'))
-  expect: [16, 15, 82, 12, 6]
+  expect: [16, 15, 84, 12, 6]
 
 - id: app_holc_trajectory_tract_counts
   file: app/app.R
@@ -1082,17 +1081,17 @@
 
 - id: app_corridor_cells_statewide
   file: app/app.R
-  text: "every cell with at least one manufacturer in any edition is kept (3,333 cells)"
+  text: "every cell with at least one manufacturer in any edition is kept (3,332 cells)"
   check: "len(load('app/data/corridor_cells.csv'))"
-  expect: 3333
+  expect: 3332
 
 - id: app_censoc_industrial_district_years
   file: app/app.R
-  text: "died about 1.6 years younger than other Denver men born the same year, and about a year younger once their own and their household's 1940 circumstances are taken into account. More industrial land within 250 m of the home went with shorter lives (about 0.2 years per 10 percentage points)"
+  text: "died about 1.3 years younger than other Denver men born the same year, and about 0.7 years younger once their own and their household's 1940 circumstances are taken into account (an estimate too imprecise to rule out no difference). More industrial land within 250 m of the home went with shorter lives (about 0.2 years per 10 percentage points)"
   check: >-
     (lambda m: [-m[(m.term == 'zone_ind') & m.model.str.startswith('M1')].years.iloc[0], -m[(m.term == 'zone_ind') & m.model.str.startswith('M2')].years.iloc[0], -m[(m.term == 'ind10') & m.model.str.startswith('M2')].years.iloc[0]])(
     (lambda d: d[d.file.str.startswith('DMF')])(load('app/data/censoc_models.csv')))
-  expect: [1.6, 1.0, 0.2]
+  expect: [1.3, 0.7, 0.2]
   tol: [0.1, 0.1, 0.05]
 
 - id: app_censoc_holc_d_third_of_a_year
@@ -1104,9 +1103,9 @@
 
 - id: app_censoc_aged_15_29
   file: app/app.R
-  text: "concentrated among those aged 15\\u201329 in 1940 (about 1.6 years in an industrial district)"
+  text: "concentrated among those aged 15\\u201329 in 1940 (about 1.3 years in an industrial district"
   check: "(lambda d: -d[(d.term == 'zone_ind') & (d.age_in_1940 == '15-29 in 1940') & d.people.str.startswith('Men,')].years.iloc[0])(load('app/data/censoc_ext_childhood.csv'))"
-  expect: 1.6
+  expect: 1.3
   tol: 0.05
 
 - id: app_enlistment_counts_and_schooling
@@ -1340,19 +1339,17 @@
   text: "georeferenced it from 15 street intersections and park corners resolved to TIGER road intersections (affine fit, RMSE about 19 m)"
   check: "(lambda g: [len(g), math.sqrt((g.residual_m ** 2).mean())])(load('data/results/zoning_1929/gcp_fit.csv'))"
   expect: [15, 19]
-  stale: "gcp_fit.csv is from the 16-point fit; rerun Rscript R/zoning_1925.R (needs tigris) and remove this marker"
 - id: app_zoning_1929_gcps_layer_text
   file: app/app.R
   text: "georeferenced from 15 street intersections and park corners (RMSE 19 m)"
   check: "(lambda g: [len(g), math.sqrt((g.residual_m ** 2).mean())])(load('data/results/zoning_1929/gcp_fit.csv'))"
   expect: [15, 19]
   tol: [0.5, 1]
-  stale: "gcp_fit.csv is from the 16-point fit; rerun Rscript R/zoning_1925.R (needs tigris) and remove this marker"
 - id: app_site_fate_parcel_median_distance
   file: app/app.R
-  text: "median distance about 5 m for both"
+  text: "median distance about 4 m for both"
   check: "[load('app/data/site_fate_denver.csv').parcel_dist_m.median(), load('app/data/site_fate_denver_pre1960.csv').parcel_dist_m.median()]"
-  expect: [5, 5]
+  expect: [4, 4]
   tol: 0.6
 
 - id: app_sanborn_two_blocks_in_five_circles
@@ -1387,9 +1384,9 @@
 
 - id: app_zoning_1944_industrial_a_text
   file: app/app.R
-  text: "about 0.5 km² of Industrial A (2%) was redrawn as commercial, business or residence districts, and the share of D land zoned industrial went from 16.1% to 15.9%"
+  text: "about 0.5 km² of Industrial A (2%) was redrawn as commercial, business or residence districts, and the share of D land zoned industrial went from 16.0% to 15.8%"
   check: "(lambda z, g: [-z[z.zone == 'Industrial A'].change_km2.iloc[0], -100 * z[z.zone == 'Industrial A'].change_km2.iloc[0] / z[z.zone == 'Industrial A'].km2_1929.iloc[0], g[(g.grade == 'D') & (g.cls == 'industrial')].pct_1929.iloc[0], g[(g.grade == 'D') & (g.cls == 'industrial')].pct_1944.iloc[0]])(load('app/data/zoning_1929_vs_1944.csv'), load('app/data/zoning_change_by_holc_grade.csv'))"
-  expect: [0.5, 2, 16.1, 15.9]
+  expect: [0.5, 2, 16.0, 15.8]
   tol: [0.05, 0.5, 0.05, 0.05]
 
 - id: app_graded_cities_tract_range
@@ -1411,9 +1408,9 @@
   expect: [1212, 34.8, 856, 30.3, 301, 27.1]
 - id: corridors_located_establishments
   file: data/results/corridors/corridors_summary.md
-  text: "Located establishments in the 13 complete editions 1965-1992: 13,235 statewide"
+  text: "Located establishments in the 13 complete editions 1965-1992: 13,254 statewide"
   check: "(lambda l: l[l.geo_level.isin(['address', 'address_approx'])].estab_id.nunique())(listings())"
-  expect: 13235
+  expect: 13254
   tol: 25
   # 13,254 establishments have at least one street-located listing; the script's own count is 13,235 (definition not re-derived)
 

@@ -51,3 +51,18 @@ test_that("broad(): an industrial condominium's common-element parcel is industr
   expect_equal(E$broad("VACANT LAND / GENERAL COMMON ELEMENTS", "I-MX-3"), "Industrial / utility")
   expect_equal(E$broad("VACANT LAND / GENERAL COMMON ELEMENTS", "U-MX-3"), "Residential")
 })
+
+test_that("pick(): a common-element parcel is replaced by a unit parcel at the same situs address, else kept (never moved to another lot)", {
+  PC2 <- data.table(pkey = "q", SCHEDNUM = c("CE", "U1", "U2", "NB"), PROP_CLASS = "x",
+                    D_CLASS_CN = c("VACANT LAND / GENERAL COMMON ELEMENTS", "CONDOMINIUM UNIT", "CONDOMINIUM UNIT", "VACANT LAND"),
+                    ZONE_ID = "C-MX-5", ZONE_10 = "C-MX-5", TOT_UNITS = c(0, 1, 1, 0), year_built = c(NA, 2005, 2005, NA), LAND_AREA = 1000,
+                    SITUS_ADDRESS_LINE1 = c("1200 LARIMER ST", "1200 LARIMER ST", "1200 LARIMER ST", "1204 LARIMER ST"), SITUS_ADDR_NBR = NA_character_, dist_m = c(3, 8, 9, 6))
+  PC2[, c("p_num", "p_dir", "p_sname", "p_stype") := E$addr_parts(SITUS_ADDRESS_LINE1)]
+  old <- E$PC; E$PC <- PC2; on.exit(E$PC <- old)
+  s <- E$pick(data.table(site_id = 1L, address = "1200 Larimer St", last_year = 1970, lat = 39.75, lon = -104.99, pkey = "q"), "address")
+  expect_equal(s$SCHEDNUM, "U1"); expect_equal(s$parcel_match, "same address")          # the nearest unit parcel of the same condominium
+  E$PC <- PC2[SCHEDNUM != "U1" & SCHEDNUM != "U2"]
+  s2 <- E$pick(data.table(site_id = 1L, address = "1200 Larimer St", last_year = 1970, lat = 39.75, lon = -104.99, pkey = "q"), "address")
+  expect_equal(s2$SCHEDNUM, "CE")                                                         # no unit parcel: the common element stays, not the neighbour's vacant lot
+  expect_equal(E$broad(s2$D_CLASS_CN, s2$ZONE_ID), "Residential")
+})

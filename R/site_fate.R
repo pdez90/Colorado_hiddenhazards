@@ -91,12 +91,11 @@ pick <- function(d, acol) {   # d: one row per site with pkey and the address co
   # address, not itself a common element) stands in for it; otherwise it is kept and broad() classes it by its zone district, so a
   # site is never moved to a different lot just to avoid a common-element parcel
   X[, common := grepl("COMMON ELEMENT", toupper(ifelse(is.na(D_CLASS_CN), "", D_CLASS_CN)))]
-  setorderv(X, c("rid", "rule", "numdiff", "dist_m"), na.last = TRUE); X <- X[!duplicated(rid)]
-  cm <- X[common == TRUE, .(rid, SITUS_ADDRESS_LINE1)]
+  setorderv(X, c("rid", "rule", "numdiff", "dist_m"), na.last = TRUE); X0 <- copy(X); X <- X[!duplicated(rid)]
+  cm <- X[common == TRUE, .(rid, SITUS_ADDRESS_LINE1, rule0 = rule)]
   if (nrow(cm)) {
-    U <- merge(cm, merge(d[, .(rid, a_num, a_dir, a_sname, a_stype, pkey)], PC[!is.na(SCHEDNUM)], by = "pkey", allow.cartesian = TRUE)[
-      !grepl("COMMON ELEMENT", toupper(ifelse(is.na(D_CLASS_CN), "", D_CLASS_CN)))], by = c("rid", "SITUS_ADDRESS_LINE1"))
-    if (nrow(U)) { setorderv(U, c("rid", "dist_m")); U <- U[!duplicated(rid)]; U[, `:=`(rule = X[match(U$rid, rid), rule], common = FALSE)]
+    U <- merge(X0[common == FALSE], cm, by = c("rid", "SITUS_ADDRESS_LINE1"))   # unit parcels of the same condominium (same situs address)
+    if (nrow(U)) { setorderv(U, c("rid", "dist_m")); U <- U[!duplicated(rid)]; U[, rule := rule0]; U[, rule0 := NULL]
       X <- rbind(X[!rid %in% U$rid], U[, names(X), with = FALSE]) }
   }
   out <- merge(d, X[, .(rid, SCHEDNUM, PROP_CLASS, D_CLASS_CN, ZONE_ID, ZONE_10, TOT_UNITS, year_built, SITUS_ADDRESS_LINE1, LAND_AREA, parcel_dist_m = dist_m, rule)], by = "rid", all.x = TRUE)   # owner names stay in the work/ cache only

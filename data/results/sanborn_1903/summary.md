@@ -58,31 +58,29 @@
 
 | zone_1929 | blocks | dwellings | blocks_with_hazardous_trade | blocks_with_heavy_trade | blocks_mixed_with_hazardous_trade | dwellings_on_heavy_blocks | pct_of_hazard_blocks | pct_of_mixed_blocks | pct_of_dwellings |
 |---|---|---|---|---|---|---|---|---|---|
-| Industrial A | 168 | 1648 | 61 | 41 | 37 | 240 | 34.5 | 26.8 | 20.0 |
-| Other districts (residence or business) | 372 | 5602 | 80 | 50 | 70 | 445 | 45.2 | 50.7 | 68.1 |
-| Commercial | 63 | 904 | 34 | 18 | 30 | 153 | 19.2 | 21.7 | 11.0 |
-| Industrial B | 12 | 78 | 2 | 2 | 1 | 41 | 1.1 | 0.7 | 0.9 |
+| Industrial B | 10 | 47 | 3 | 3 | 2 | 45 | 1.7 | 1.4 | 0.6 |
+| Other districts (residence or business) | 376 | 5733 | 82 | 51 | 72 | 451 | 46.3 | 52.2 | 69.6 |
+| Industrial A | 168 | 1634 | 57 | 38 | 33 | 220 | 32.2 | 23.9 | 19.8 |
+| Commercial | 61 | 818 | 35 | 19 | 31 | 163 | 19.8 | 22.5 | 9.9 |
 
 | exposure | zone_1929 | dwellings | pct_of_exposure_group |
 |---|---|---|---|
-| Across the street from a hazardous trade | Other districts (residence or business) | 1413 | 59.1 |
-| Across the street from a hazardous trade | Industrial A | 610 | 25.5 |
-| Across the street from a hazardous trade | Commercial | 336 | 14.1 |
-| Across the street from a hazardous trade | Industrial B | 30 | 1.3 |
-| No hazardous trade within 150 m | Other districts (residence or business) | 1466 | 90.8 |
-| No hazardous trade within 150 m | Industrial A | 145 | 9.0 |
-| No hazardous trade within 150 m | Industrial B | 3 | 0.2 |
-| Same block as a hazardous trade | Other districts (residence or business) | 897 | 49.8 |
-| Same block as a hazardous trade | Industrial A | 464 | 25.8 |
-| Same block as a hazardous trade | Commercial | 399 | 22.2 |
-| Same block as a hazardous trade | Industrial B | 41 | 2.3 |
-| Same block as other industry, or facing industry | Other districts (residence or business) | 738 | 70.2 |
+| Across the street from a hazardous trade | Other districts (residence or business) | 1470 | 61.5 |
+| Across the street from a hazardous trade | Industrial A | 646 | 27.0 |
+| Across the street from a hazardous trade | Commercial | 273 | 11.4 |
+| No hazardous trade within 150 m | Other districts (residence or business) | 1441 | 89.3 |
+| No hazardous trade within 150 m | Industrial A | 171 | 10.6 |
+| No hazardous trade within 150 m | Industrial B | 2 | 0.1 |
+| Same block as a hazardous trade | Other districts (residence or business) | 930 | 51.6 |
+| Same block as a hazardous trade | Industrial A | 426 | 23.7 |
+| Same block as a hazardous trade | Commercial | 400 | 22.2 |
+| Same block as a hazardous trade | Industrial B | 45 | 2.5 |
+| Same block as other industry, or facing industry | Other districts (residence or business) | 747 | 71.0 |
 | Same block as other industry, or facing industry | Industrial A | 225 | 21.4 |
-| Same block as other industry, or facing industry | Commercial | 89 | 8.5 |
-| Within 150 m of a hazardous trade | Other districts (residence or business) | 1088 | 79.1 |
-| Within 150 m of a hazardous trade | Industrial A | 204 | 14.8 |
-| Within 150 m of a hazardous trade | Commercial | 80 | 5.8 |
-| Within 150 m of a hazardous trade | Industrial B | 4 | 0.3 |
+| Same block as other industry, or facing industry | Commercial | 80 | 7.6 |
+| Within 150 m of a hazardous trade | Other districts (residence or business) | 1145 | 83.2 |
+| Within 150 m of a hazardous trade | Industrial A | 166 | 12.1 |
+| Within 150 m of a hazardous trade | Commercial | 65 | 4.7 |
 
 ## Who lived there (1910 enumeration districts, dwelling-weighted means)
 
@@ -98,8 +96,8 @@
 
 | what | n | pct_with_1965_92_site_150m | pct_with_hidden_site_150m | pct_with_known_site_150m |
 |---|---|---|---|---|
-| Blocks with a hazardous trade | 177 | 91.5 | 58.2 | 84.2 |
-| Hazardous plants on unplatted ground | 27 | 51.9 | 29.6 | 40.7 |
+| Blocks with a hazardous trade | 177 | 91.5 | 57.1 | 84.2 |
+| Hazardous plants on unplatted ground | 27 | 51.9 | 29.6 | 44.4 |
 
 ## Plants on unplatted ground (placed from their outlines)
 

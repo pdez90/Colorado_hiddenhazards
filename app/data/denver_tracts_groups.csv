@@ -1,6 +1,6 @@
 group,EDs,population,p_white,p_black,p_hisp,p_fb,p_pov,p_owner,mval_2020,mrent_2020,census
-Tracts with hazardous firms,41,210080,98.01,1.04,,5.96,,48,98727.61,438.74,1950
-Tracts without,56,198974,92.96,6.46,,4.83,,57.86,103991.4,497.33,1950
+Tracts with hazardous firms,40,205712,97.98,1.06,,6.01,,47.42,98620.49,437.35,1950
+Tracts without,57,203342,93.1,6.33,,4.8,,58.24,103981.04,497.48,1950
 dissimilarity (all tracts),97,409054,,0.78,,,,,,,1950
 Tracts with hazardous firms,27,143281,91.48,6.8,19.82,5.8,,46.76,90238.18,617.53,1960
 Tracts without,117,443755,94.62,4.67,4.57,4,,65.21,125853.92,827.55,1960

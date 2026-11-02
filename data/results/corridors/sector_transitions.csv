@@ -1,355 +1,356 @@
 from,to,N,share_of_from
-Printing,Printing,1568,0.717291857273559
-Food,Food,1115,0.696004993757803
-Fabricated metals,Fabricated metals,585,0.555028462998103
-Machinery,Machinery,405,0.50625
-Lumber & wood,Lumber & wood,379,0.594043887147335
-"Stone, clay & glass","Stone, clay & glass",370,0.640138408304498
-Misc. manufacturing,Misc. manufacturing,237,0.530201342281879
-Furniture,Furniture,213,0.488532110091743
-Apparel,Apparel,192,0.478802992518703
-Chemicals,Chemicals,159,0.454285714285714
+Printing,Printing,1568,0.715981735159817
+Food,Food,1111,0.695679398872887
+Fabricated metals,Fabricated metals,586,0.554924242424242
+Machinery,Machinery,406,0.5075
+Lumber & wood,Lumber & wood,378,0.592476489028213
+"Stone, clay & glass","Stone, clay & glass",368,0.638888888888889
+Misc. manufacturing,Misc. manufacturing,238,0.528888888888889
+Furniture,Furniture,216,0.490909090909091
+Apparel,Apparel,192,0.477611940298507
+Chemicals,Chemicals,159,0.455587392550143
 Rubber & plastics,Rubber & plastics,158,0.468842729970326
 Electronics,Electronics,154,0.493589743589744
-Food,Printing,141,0.0880149812734083
-Printing,,113,0.0516925892040256
-Instruments,Instruments,112,0.4375
-Printing,Food,98,0.0448307410795974
-Transportation eq.,Transportation eq.,73,0.419540229885057
-Machinery,Fabricated metals,69,0.08625
-,Printing,67,0.193083573487032
-Fabricated metals,Printing,67,0.0635673624288425
-Fabricated metals,Machinery,63,0.0597722960151803
+Food,Printing,140,0.0876643706950532
+Printing,,114,0.052054794520548
+Instruments,Instruments,112,0.43921568627451
+Printing,Food,99,0.0452054794520548
+Transportation eq.,Transportation eq.,73,0.417142857142857
+Machinery,Fabricated metals,70,0.0875
+,Printing,69,0.198275862068966
+Fabricated metals,Printing,67,0.0634469696969697
+Fabricated metals,Machinery,63,0.0596590909090909
 Petroleum,Petroleum,62,0.673913043478261
 Machinery,Printing,62,0.0775
-Printing,Apparel,60,0.0274473924977127
+Printing,Apparel,60,0.0273972602739726
 Paper,Paper,54,0.331288343558282
 Primary metals,Primary metals,54,0.514285714285714
-Printing,Fabricated metals,53,0.0242451967063129
-,Food,52,0.14985590778098
-Food,,50,0.031210986267166
-,,49,0.141210374639769
-Printing,Machinery,49,0.0224153705397987
-Misc. manufacturing,Printing,47,0.105145413870246
-Apparel,Printing,46,0.114713216957606
-Furniture,Printing,45,0.103211009174312
-Printing,Misc. manufacturing,45,0.0205855443732845
-Food,Fabricated metals,45,0.0280898876404494
-Fabricated metals,Food,39,0.0370018975332068
-Fabricated metals,Lumber & wood,39,0.0370018975332068
+Printing,Fabricated metals,53,0.0242009132420091
+,Food,52,0.149425287356322
+Food,,50,0.0313087038196619
+,,49,0.140804597701149
+Misc. manufacturing,Printing,49,0.108888888888889
+Printing,Machinery,49,0.0223744292237443
+Apparel,Printing,46,0.114427860696517
+Printing,Misc. manufacturing,46,0.0210045662100457
+Furniture,Printing,45,0.102272727272727
+Food,Fabricated metals,45,0.0281778334376957
+Fabricated metals,Food,39,0.0369318181818182
+Fabricated metals,Lumber & wood,39,0.0369318181818182
 Lumber & wood,Printing,38,0.0595611285266458
-Instruments,Printing,37,0.14453125
-Printing,Lumber & wood,37,0.0169258920402562
+Instruments,Printing,37,0.145098039215686
+Printing,Lumber & wood,37,0.0168949771689498
 Lumber & wood,Fabricated metals,35,0.054858934169279
-Food,Lumber & wood,35,0.0218476903870162
+Food,Lumber & wood,35,0.0219160926737633
 Machinery,Food,34,0.0425
-Printing,Furniture,33,0.015096065873742
+Printing,Furniture,33,0.0150684931506849
 Machinery,,32,0.04
-Fabricated metals,"Stone, clay & glass",32,0.0303605313092979
-,Fabricated metals,31,0.0893371757925072
-Fabricated metals,,31,0.0294117647058824
-"Stone, clay & glass",Printing,30,0.0519031141868512
-Misc. manufacturing,Food,30,0.0671140939597315
-Fabricated metals,Rubber & plastics,28,0.0265654648956357
-Food,Apparel,28,0.017478152309613
-Food,Furniture,28,0.017478152309613
+Fabricated metals,"Stone, clay & glass",32,0.0303030303030303
+,Fabricated metals,31,0.089080459770115
+Fabricated metals,,31,0.0293560606060606
+"Stone, clay & glass",Printing,30,0.0520833333333333
+Misc. manufacturing,Food,30,0.0666666666666667
+Fabricated metals,Rubber & plastics,28,0.0265151515151515
+Food,Apparel,28,0.0175328741390106
+Food,Furniture,28,0.0175328741390106
 Leather,Leather,27,0.45
 Machinery,Electronics,26,0.0325
 Rubber & plastics,Printing,26,0.0771513353115727
 Lumber & wood,Machinery,26,0.0407523510971787
-Machinery,Lumber & wood,25,0.03125
-Fabricated metals,Chemicals,25,0.023719165085389
-"Stone, clay & glass",Fabricated metals,25,0.0432525951557093
+Textiles,Textiles,26,0.481481481481482
+Fabricated metals,Chemicals,25,0.0236742424242424
+"Stone, clay & glass",Fabricated metals,25,0.0434027777777778
 Lumber & wood,,25,0.0391849529780564
 Electronics,Machinery,24,0.0769230769230769
 Machinery,Rubber & plastics,24,0.03
-Fabricated metals,Apparel,24,0.0227703984819734
-Food,"Stone, clay & glass",24,0.0149812734082397
-Furniture,Fabricated metals,24,0.055045871559633
-Chemicals,Food,24,0.0685714285714286
-Food,Chemicals,24,0.0149812734082397
-Furniture,Lumber & wood,24,0.055045871559633
-Textiles,Textiles,24,0.470588235294118
-Furniture,Food,23,0.0527522935779817
+Fabricated metals,Apparel,24,0.0227272727272727
+Food,"Stone, clay & glass",24,0.0150281778334377
+Machinery,Lumber & wood,24,0.03
+Printing,"Stone, clay & glass",24,0.010958904109589
+Furniture,Fabricated metals,24,0.0545454545454545
+Chemicals,Food,24,0.0687679083094556
+Food,Chemicals,24,0.0150281778334377
+Furniture,Lumber & wood,24,0.0545454545454545
 Lumber & wood,Furniture,23,0.0360501567398119
-Apparel,Fabricated metals,23,0.057356608478803
-Chemicals,Printing,23,0.0657142857142857
-Chemicals,Fabricated metals,23,0.0657142857142857
-Fabricated metals,Furniture,23,0.0218216318785579
-Printing,"Stone, clay & glass",23,0.0105215004574565
-Food,Misc. manufacturing,23,0.0143570536828964
-Food,Machinery,23,0.0143570536828964
-"Stone, clay & glass",,23,0.0397923875432526
-,Machinery,22,0.0634005763688761
-Printing,Instruments,22,0.010064043915828
-Apparel,Furniture,22,0.0548628428927681
-Misc. manufacturing,Fabricated metals,22,0.0492170022371365
+Apparel,Fabricated metals,23,0.0572139303482587
+Chemicals,Fabricated metals,23,0.0659025787965616
+Fabricated metals,Furniture,23,0.021780303030303
+Food,Misc. manufacturing,23,0.0144020037570445
+Food,Machinery,23,0.0144020037570445
+Apparel,Furniture,23,0.0572139303482587
+"Stone, clay & glass",,23,0.0399305555555556
+Furniture,Food,22,0.05
+,Machinery,22,0.0632183908045977
+Chemicals,Printing,22,0.0630372492836676
+Printing,Instruments,22,0.0100456621004566
+Misc. manufacturing,Fabricated metals,22,0.0488888888888889
 Rubber & plastics,Machinery,21,0.0623145400593472
-Misc. manufacturing,,21,0.0469798657718121
-Instruments,Machinery,21,0.08203125
-Food,Rubber & plastics,21,0.0131086142322097
-"Stone, clay & glass",Food,21,0.0363321799307959
-Furniture,Machinery,20,0.0458715596330275
-Fabricated metals,Misc. manufacturing,20,0.0189753320683112
-,"Stone, clay & glass",20,0.0576368876080692
+Fabricated metals,Misc. manufacturing,21,0.0198863636363636
+Misc. manufacturing,,21,0.0466666666666667
+Instruments,Machinery,21,0.0823529411764706
+Food,Rubber & plastics,21,0.013149655604258
+"Stone, clay & glass",Food,21,0.0364583333333333
+Furniture,Machinery,20,0.0454545454545455
 Machinery,Furniture,20,0.025
-Chemicals,Paper,20,0.0571428571428571
-Misc. manufacturing,Apparel,20,0.0447427293064877
-Apparel,Food,20,0.0498753117206983
+Chemicals,Paper,20,0.0573065902578797
+Misc. manufacturing,Apparel,20,0.0444444444444444
+Apparel,Food,20,0.0497512437810945
 Electronics,Instruments,20,0.0641025641025641
+,"Stone, clay & glass",19,0.0545977011494253
 Rubber & plastics,,18,0.0534124629080119
-Transportation eq.,Fabricated metals,18,0.103448275862069
+Transportation eq.,Fabricated metals,18,0.102857142857143
 Electronics,Fabricated metals,18,0.0576923076923077
-Apparel,,17,0.0423940149625935
+Apparel,,17,0.0422885572139304
 Lumber & wood,Food,17,0.0266457680250784
-Instruments,,17,0.06640625
-Printing,Rubber & plastics,17,0.00777676120768527
-"Stone, clay & glass",Machinery,17,0.0294117647058824
+Instruments,,17,0.0666666666666667
+Printing,Rubber & plastics,17,0.00776255707762557
+"Stone, clay & glass",Machinery,17,0.0295138888888889
 Electronics,Printing,17,0.0544871794871795
-Food,Paper,17,0.0106117353308365
+Food,Paper,17,0.010644959298685
 Rubber & plastics,Food,17,0.0504451038575668
-Machinery,Misc. manufacturing,16,0.02
+Furniture,Apparel,16,0.0363636363636364
 Machinery,Chemicals,16,0.02
-Printing,Chemicals,16,0.00731930466605673
+Printing,Chemicals,16,0.00730593607305936
 Lumber & wood,Misc. manufacturing,16,0.0250783699059561
-Furniture,Apparel,15,0.0344036697247706
-Chemicals,Machinery,15,0.0428571428571429
+Machinery,Misc. manufacturing,15,0.01875
+Chemicals,Machinery,15,0.0429799426934097
 Machinery,Transportation eq.,15,0.01875
-Fabricated metals,Transportation eq.,15,0.0142314990512334
-Instruments,Electronics,15,0.05859375
+Fabricated metals,Transportation eq.,15,0.0142045454545455
+Instruments,Electronics,15,0.0588235294117647
 Paper,Chemicals,15,0.0920245398773006
 Electronics,,15,0.0480769230769231
-Fabricated metals,Primary metals,15,0.0142314990512334
-Misc. manufacturing,Machinery,14,0.0313199105145414
+Fabricated metals,Primary metals,15,0.0142045454545455
+Misc. manufacturing,Machinery,14,0.0311111111111111
 Rubber & plastics,Lumber & wood,14,0.0415430267062315
-Chemicals,,14,0.04
-Furniture,Chemicals,14,0.0321100917431193
-,Apparel,14,0.0403458213256484
-Printing,Electronics,14,0.00640439158279963
-Fabricated metals,Paper,14,0.0132827324478178
-Transportation eq.,Machinery,14,0.0804597701149425
+Chemicals,,14,0.0401146131805158
+Furniture,Chemicals,14,0.0318181818181818
+,Apparel,14,0.0402298850574713
+Printing,Electronics,14,0.00639269406392694
+Fabricated metals,Paper,14,0.0132575757575758
+Transportation eq.,Machinery,14,0.08
 Rubber & plastics,Fabricated metals,13,0.0385756676557864
-"Stone, clay & glass",Misc. manufacturing,13,0.0224913494809689
+"Stone, clay & glass",Misc. manufacturing,13,0.0225694444444444
 Machinery,"Stone, clay & glass",13,0.01625
-Transportation eq.,Lumber & wood,13,0.0747126436781609
+Transportation eq.,Lumber & wood,13,0.0742857142857143
 Lumber & wood,Apparel,13,0.0203761755485893
-Apparel,Machinery,13,0.0324189526184539
-Furniture,,13,0.0298165137614679
+Apparel,Machinery,13,0.0323383084577114
+Furniture,,13,0.0295454545454545
 Paper,Food,13,0.0797546012269939
-,Lumber & wood,13,0.037463976945245
-,Misc. manufacturing,13,0.037463976945245
-Fabricated metals,Electronics,13,0.0123339658444023
+,Lumber & wood,13,0.0373563218390805
+,Misc. manufacturing,13,0.0373563218390805
+Fabricated metals,Electronics,13,0.0123106060606061
 Primary metals,Fabricated metals,13,0.123809523809524
-"Stone, clay & glass",Lumber & wood,13,0.0224913494809689
-Apparel,Lumber & wood,12,0.029925187032419
+"Stone, clay & glass",Lumber & wood,13,0.0225694444444444
+Apparel,Lumber & wood,12,0.0298507462686567
 Lumber & wood,Rubber & plastics,12,0.0188087774294671
 Paper,Printing,12,0.0736196319018405
-Misc. manufacturing,Lumber & wood,12,0.0268456375838926
-Apparel,Misc. manufacturing,12,0.029925187032419
-,Rubber & plastics,12,0.0345821325648415
-Fabricated metals,Instruments,12,0.0113851992409867
-Printing,Paper,12,0.00548947849954254
+Misc. manufacturing,Lumber & wood,12,0.0266666666666667
+Apparel,Misc. manufacturing,12,0.0298507462686567
+,Rubber & plastics,12,0.0344827586206897
+Fabricated metals,Instruments,12,0.0113636363636364
+Transportation eq.,Printing,12,0.0685714285714286
+Printing,Paper,12,0.00547945205479452
 Lumber & wood,Paper,12,0.0188087774294671
-"Stone, clay & glass",Chemicals,12,0.0207612456747405
-Chemicals,Lumber & wood,11,0.0314285714285714
+"Stone, clay & glass",Chemicals,12,0.0208333333333333
+Chemicals,Lumber & wood,11,0.0315186246418338
 Machinery,Instruments,11,0.01375
-,Electronics,11,0.031700288184438
-Chemicals,Rubber & plastics,11,0.0314285714285714
-Transportation eq.,Printing,11,0.0632183908045977
+,Electronics,11,0.0316091954022989
+Chemicals,Rubber & plastics,11,0.0315186246418338
 Rubber & plastics,Chemicals,11,0.0326409495548961
 Electronics,Rubber & plastics,11,0.0352564102564103
-Chemicals,Furniture,11,0.0314285714285714
+Chemicals,Furniture,11,0.0315186246418338
 Lumber & wood,"Stone, clay & glass",11,0.0172413793103448
-Misc. manufacturing,Rubber & plastics,11,0.0246085011185682
-Printing,Transportation eq.,11,0.005032021957914
+Misc. manufacturing,Rubber & plastics,11,0.0244444444444444
+Printing,Transportation eq.,11,0.00502283105022831
 Rubber & plastics,Apparel,10,0.029673590504451
-,Chemicals,10,0.0288184438040346
-Instruments,Fabricated metals,10,0.0390625
-,Paper,10,0.0288184438040346
+,Furniture,10,0.028735632183908
+Instruments,Fabricated metals,10,0.0392156862745098
+,Paper,10,0.028735632183908
 Paper,Fabricated metals,10,0.0613496932515337
-Apparel,Rubber & plastics,9,0.0224438902743142
-"Stone, clay & glass",Apparel,9,0.0155709342560554
+Apparel,Rubber & plastics,9,0.0223880597014925
+"Stone, clay & glass",Apparel,9,0.015625
 Machinery,Paper,9,0.01125
-,Furniture,9,0.0259365994236311
+,Chemicals,9,0.0258620689655172
 Electronics,Lumber & wood,9,0.0288461538461538
-Furniture,Misc. manufacturing,9,0.0206422018348624
+Furniture,Misc. manufacturing,9,0.0204545454545455
 Paper,Rubber & plastics,9,0.0552147239263804
-Transportation eq.,,9,0.0517241379310345
-Chemicals,"Stone, clay & glass",9,0.0257142857142857
+Transportation eq.,,9,0.0514285714285714
+Chemicals,"Stone, clay & glass",9,0.0257879656160458
 Electronics,Food,9,0.0288461538461538
-Textiles,Apparel,8,0.156862745098039
+Textiles,Apparel,8,0.148148148148148
 Electronics,Chemicals,8,0.0256410256410256
+Furniture,Transportation eq.,8,0.0181818181818182
 Paper,"Stone, clay & glass",8,0.049079754601227
-Instruments,Misc. manufacturing,8,0.03125
+Instruments,Misc. manufacturing,8,0.0313725490196078
 Paper,Lumber & wood,8,0.049079754601227
 Machinery,Apparel,8,0.01
 Machinery,Primary metals,8,0.01
 Rubber & plastics,Electronics,8,0.0237388724035608
-"Stone, clay & glass",Rubber & plastics,8,0.013840830449827
+"Stone, clay & glass",Rubber & plastics,8,0.0138888888888889
 Rubber & plastics,Furniture,7,0.0207715133531157
-"Stone, clay & glass",Furniture,7,0.0121107266435986
-Food,Transportation eq.,7,0.00436953807740325
+"Stone, clay & glass",Furniture,7,0.0121527777777778
+Food,Transportation eq.,7,0.00438321853475266
 Lumber & wood,Chemicals,7,0.0109717868338558
 Lumber & wood,Electronics,7,0.0109717868338558
 Lumber & wood,Transportation eq.,7,0.0109717868338558
-Apparel,Chemicals,7,0.0174563591022444
-Transportation eq.,Food,7,0.0402298850574713
-Furniture,Transportation eq.,7,0.0160550458715596
-Misc. manufacturing,"Stone, clay & glass",7,0.0156599552572707
-Chemicals,Electronics,7,0.02
-"Stone, clay & glass",Transportation eq.,7,0.0121107266435986
+Apparel,Chemicals,7,0.0174129353233831
+Transportation eq.,Food,7,0.04
+Misc. manufacturing,"Stone, clay & glass",7,0.0155555555555556
+Chemicals,Electronics,7,0.0200573065902579
+"Stone, clay & glass",Transportation eq.,7,0.0121527777777778
 Rubber & plastics,Misc. manufacturing,7,0.0207715133531157
-Furniture,Rubber & plastics,6,0.0137614678899083
+Furniture,Rubber & plastics,6,0.0136363636363636
 Rubber & plastics,"Stone, clay & glass",6,0.0178041543026706
 Primary metals,Apparel,6,0.0571428571428571
-Printing,Primary metals,6,0.00274473924977127
-Misc. manufacturing,Instruments,6,0.0134228187919463
+Printing,Primary metals,6,0.00273972602739726
+Misc. manufacturing,Instruments,6,0.0133333333333333
 Electronics,Apparel,6,0.0192307692307692
-Furniture,Instruments,6,0.0137614678899083
-,Instruments,6,0.0172910662824208
-Instruments,"Stone, clay & glass",6,0.0234375
-Food,Instruments,6,0.00374531835205993
-Instruments,Lumber & wood,6,0.0234375
-Transportation eq.,Misc. manufacturing,6,0.0344827586206897
-Apparel,"Stone, clay & glass",6,0.0149625935162095
+Furniture,Instruments,6,0.0136363636363636
+,Instruments,6,0.0172413793103448
+Instruments,"Stone, clay & glass",6,0.0235294117647059
+Food,Instruments,6,0.00375704445835942
+Transportation eq.,Misc. manufacturing,6,0.0342857142857143
+Apparel,"Stone, clay & glass",6,0.0149253731343284
 Petroleum,Food,6,0.0652173913043478
 Rubber & plastics,Primary metals,6,0.0178041543026706
 Paper,,5,0.0306748466257669
-Misc. manufacturing,Furniture,5,0.0111856823266219
+Misc. manufacturing,Furniture,5,0.0111111111111111
 Electronics,Paper,5,0.016025641025641
-Furniture,Electronics,5,0.0114678899082569
-Transportation eq.,Apparel,5,0.028735632183908
+Furniture,Electronics,5,0.0113636363636364
+Transportation eq.,Apparel,5,0.0285714285714286
 Paper,Furniture,5,0.0306748466257669
-"Stone, clay & glass",Instruments,5,0.00865051903114187
-Chemicals,Petroleum,5,0.0142857142857143
-Food,Petroleum,5,0.0031210986267166
+"Stone, clay & glass",Instruments,5,0.00868055555555556
+Instruments,Lumber & wood,5,0.0196078431372549
+Chemicals,Petroleum,5,0.0143266475644699
+Food,Petroleum,5,0.00313087038196619
 Paper,Electronics,5,0.0306748466257669
 Primary metals,Machinery,5,0.0476190476190476
 Machinery,Petroleum,5,0.00625
 Petroleum,Machinery,5,0.0543478260869565
-"Stone, clay & glass",Primary metals,5,0.00865051903114187
-Apparel,Electronics,5,0.0124688279301746
+"Stone, clay & glass",Primary metals,5,0.00868055555555556
+Apparel,Electronics,5,0.0124378109452736
 Electronics,Misc. manufacturing,5,0.016025641025641
-Furniture,"Stone, clay & glass",5,0.0114678899082569
+Furniture,"Stone, clay & glass",5,0.0113636363636364
 Primary metals,Lumber & wood,5,0.0476190476190476
+Lumber & wood,Primary metals,5,0.00783699059561129
 Paper,Instruments,5,0.0306748466257669
-Instruments,Paper,5,0.01953125
-Food,Electronics,5,0.0031210986267166
-"Stone, clay & glass",Electronics,5,0.00865051903114187
+Instruments,Paper,5,0.0196078431372549
+Food,Electronics,5,0.00313087038196619
+"Stone, clay & glass",Electronics,5,0.00868055555555556
 Rubber & plastics,Instruments,5,0.0148367952522255
-Apparel,Textiles,5,0.0124688279301746
-Instruments,Chemicals,4,0.015625
+Apparel,Textiles,5,0.0124378109452736
+Instruments,Chemicals,4,0.0156862745098039
 Paper,Misc. manufacturing,4,0.0245398773006135
 Paper,Apparel,4,0.0245398773006135
-Chemicals,Misc. manufacturing,4,0.0114285714285714
+Chemicals,Misc. manufacturing,4,0.0114613180515759
 Leather,Food,4,0.0666666666666667
-Textiles,Printing,4,0.0784313725490196
-"Stone, clay & glass",Paper,4,0.0069204152249135
-Chemicals,Instruments,4,0.0114285714285714
-Textiles,Food,4,0.0784313725490196
+Textiles,Printing,4,0.0740740740740741
+"Stone, clay & glass",Paper,4,0.00694444444444444
+Chemicals,Instruments,4,0.0114613180515759
+Textiles,Food,4,0.0740740740740741
 Petroleum,Chemicals,4,0.0434782608695652
 Electronics,Transportation eq.,4,0.0128205128205128
-Chemicals,Leather,4,0.0114285714285714
-Apparel,Leather,4,0.00997506234413965
+Chemicals,Leather,4,0.0114613180515759
+Apparel,Leather,4,0.0099502487562189
 Primary metals,Rubber & plastics,4,0.0380952380952381
-Printing,Textiles,4,0.00182982616651418
-Lumber & wood,Primary metals,4,0.00626959247648903
+Printing,Textiles,4,0.00182648401826484
 Leather,,4,0.0666666666666667
 Paper,Machinery,4,0.0245398773006135
 Leather,Fabricated metals,4,0.0666666666666667
-Fabricated metals,Textiles,4,0.00379506641366224
-Misc. manufacturing,Paper,3,0.00671140939597315
-Fabricated metals,Leather,3,0.00284629981024668
-Misc. manufacturing,Chemicals,3,0.00671140939597315
-Food,Leather,3,0.00187265917602996
-Transportation eq.,Instruments,3,0.0172413793103448
+Fabricated metals,Textiles,4,0.00378787878787879
+Misc. manufacturing,Paper,3,0.00666666666666667
+Fabricated metals,Leather,3,0.00284090909090909
+Misc. manufacturing,Chemicals,3,0.00666666666666667
+Food,Leather,3,0.00187852222917971
+Transportation eq.,Instruments,3,0.0171428571428571
 Leather,Printing,3,0.05
-Instruments,Furniture,3,0.01171875
+Instruments,Furniture,3,0.0117647058823529
 Electronics,"Stone, clay & glass",3,0.00961538461538462
 Electronics,Primary metals,3,0.00961538461538462
 Primary metals,Furniture,3,0.0285714285714286
-Transportation eq.,Paper,3,0.0172413793103448
+Transportation eq.,Paper,3,0.0171428571428571
 Petroleum,Printing,3,0.0326086956521739
 Primary metals,"Stone, clay & glass",3,0.0285714285714286
 Leather,"Stone, clay & glass",3,0.05
-Instruments,Food,3,0.01171875
+Instruments,Food,3,0.0117647058823529
 Rubber & plastics,Paper,3,0.00890207715133531
-Furniture,Paper,3,0.00688073394495413
-Instruments,Apparel,3,0.01171875
-Transportation eq.,Furniture,3,0.0172413793103448
-"Stone, clay & glass",Petroleum,3,0.00519031141868512
-Printing,Leather,3,0.00137236962488564
-,Petroleum,3,0.00864553314121038
+Furniture,Paper,3,0.00681818181818182
+Instruments,Apparel,3,0.0117647058823529
+Transportation eq.,Furniture,3,0.0171428571428571
+"Stone, clay & glass",Petroleum,3,0.00520833333333333
+Printing,Leather,3,0.00136986301369863
+,Petroleum,3,0.00862068965517241
 Primary metals,Chemicals,3,0.0285714285714286
-Transportation eq.,Electronics,3,0.0172413793103448
-Instruments,Primary metals,3,0.01171875
-,Textiles,3,0.00864553314121038
-Apparel,Instruments,3,0.00748129675810474
-Misc. manufacturing,Electronics,3,0.00671140939597315
-Furniture,Textiles,2,0.00458715596330275
-Textiles,Lumber & wood,2,0.0392156862745098
+Transportation eq.,Electronics,3,0.0171428571428571
+Instruments,Primary metals,3,0.0117647058823529
+,Textiles,3,0.00862068965517241
+Apparel,Instruments,3,0.00746268656716418
+Misc. manufacturing,Electronics,3,0.00666666666666667
+Furniture,Textiles,2,0.00454545454545455
+Textiles,Lumber & wood,2,0.037037037037037
 Lumber & wood,Petroleum,2,0.00313479623824451
-Textiles,,2,0.0392156862745098
+Textiles,,2,0.037037037037037
 Leather,Misc. manufacturing,2,0.0333333333333333
 Leather,Lumber & wood,2,0.0333333333333333
-Fabricated metals,Petroleum,2,0.00189753320683112
+Fabricated metals,Petroleum,2,0.00189393939393939
 Petroleum,,2,0.0217391304347826
-Misc. manufacturing,Petroleum,2,0.00447427293064877
+Misc. manufacturing,Petroleum,2,0.00444444444444444
 Leather,Electronics,2,0.0333333333333333
 Rubber & plastics,Textiles,2,0.00593471810089021
-Chemicals,Apparel,2,0.00571428571428571
+Chemicals,Apparel,2,0.00573065902578797
 Petroleum,Misc. manufacturing,2,0.0217391304347826
-Transportation eq.,Primary metals,2,0.0114942528735632
+Transportation eq.,Primary metals,2,0.0114285714285714
 Petroleum,Rubber & plastics,2,0.0217391304347826
-Chemicals,Primary metals,2,0.00571428571428571
-Misc. manufacturing,Transportation eq.,2,0.00447427293064877
-Printing,Petroleum,2,0.000914913083257091
+Chemicals,Primary metals,2,0.00573065902578797
+Misc. manufacturing,Transportation eq.,2,0.00444444444444444
+Printing,Petroleum,2,0.00091324200913242
 Rubber & plastics,Petroleum,2,0.00593471810089021
 Leather,Chemicals,2,0.0333333333333333
 Primary metals,,2,0.0190476190476191
-Apparel,Transportation eq.,2,0.00498753117206983
-Furniture,Leather,2,0.00458715596330275
-Textiles,Misc. manufacturing,2,0.0392156862745098
-Transportation eq.,"Stone, clay & glass",2,0.0114942528735632
+Apparel,Transportation eq.,2,0.00497512437810945
+Furniture,Leather,2,0.00454545454545455
+Textiles,Misc. manufacturing,2,0.037037037037037
+Transportation eq.,"Stone, clay & glass",2,0.0114285714285714
 Lumber & wood,Instruments,2,0.00313479623824451
 Petroleum,"Stone, clay & glass",2,0.0217391304347826
-Chemicals,Transportation eq.,2,0.00571428571428571
+Chemicals,Transportation eq.,2,0.00573065902578797
 Primary metals,Electronics,2,0.0190476190476191
-Textiles,Fabricated metals,2,0.0392156862745098
+Textiles,Fabricated metals,2,0.037037037037037
 Leather,Apparel,2,0.0333333333333333
 Rubber & plastics,Leather,2,0.00593471810089021
-,Transportation eq.,2,0.00576368876080692
+,Transportation eq.,2,0.00574712643678161
 Petroleum,Fabricated metals,2,0.0217391304347826
-Instruments,Rubber & plastics,2,0.0078125
+Instruments,Rubber & plastics,2,0.00784313725490196
 Primary metals,Printing,2,0.0190476190476191
-Apparel,Primary metals,2,0.00498753117206983
+Apparel,Primary metals,2,0.00497512437810945
 Paper,Leather,1,0.00613496932515337
-Transportation eq.,Chemicals,1,0.00574712643678161
-Instruments,Transportation eq.,1,0.00390625
+Transportation eq.,Chemicals,1,0.00571428571428571
+Instruments,Transportation eq.,1,0.00392156862745098
 Primary metals,Transportation eq.,1,0.00952380952380953
-Food,Textiles,1,0.000624219725343321
+Food,Textiles,1,0.000626174076393237
 Primary metals,Food,1,0.00952380952380953
-Textiles,Furniture,1,0.0196078431372549
+Textiles,Furniture,1,0.0185185185185185
 Leather,Instruments,1,0.0166666666666667
 Lumber & wood,Textiles,1,0.00156739811912226
 Leather,Machinery,1,0.0166666666666667
 Electronics,Furniture,1,0.00320512820512821
-Misc. manufacturing,Primary metals,1,0.00223713646532438
+Misc. manufacturing,Primary metals,1,0.00222222222222222
+Textiles,"Stone, clay & glass",1,0.0185185185185185
 Machinery,Textiles,1,0.00125
 Lumber & wood,Leather,1,0.00156739811912226
-Misc. manufacturing,Leather,1,0.00223713646532438
-Food,Primary metals,1,0.000624219725343321
+Misc. manufacturing,Leather,1,0.00222222222222222
+Food,Primary metals,1,0.000626174076393237
 Machinery,Leather,1,0.00125
 Leather,Furniture,1,0.0166666666666667
 Leather,Rubber & plastics,1,0.0166666666666667
-Textiles,Instruments,1,0.0196078431372549
-Apparel,Petroleum,1,0.00249376558603491
+Textiles,Instruments,1,0.0185185185185185
+Apparel,Petroleum,1,0.00248756218905473
 Leather,Transportation eq.,1,0.0166666666666667
-Transportation eq.,Petroleum,1,0.00574712643678161
+Transportation eq.,Petroleum,1,0.00571428571428571
 Petroleum,Leather,1,0.0108695652173913
-"Stone, clay & glass",Leather,1,0.00173010380622837
+"Stone, clay & glass",Leather,1,0.00173611111111111
 Petroleum,Lumber & wood,1,0.0108695652173913
-Textiles,Primary metals,1,0.0196078431372549
+Textiles,Primary metals,1,0.0185185185185185
 Rubber & plastics,Transportation eq.,1,0.0029673590504451
 Primary metals,Paper,1,0.00952380952380953
 Paper,Primary metals,1,0.00613496932515337
