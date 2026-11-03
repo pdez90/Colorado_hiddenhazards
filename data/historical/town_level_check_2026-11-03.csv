@@ -1,0 +1,121 @@
+row,vol,page,year,town,name,sector,verdict,correct_town,note
+1,Narvdir_coloradoBus1935_part2,11,1935,PRYOR,and successful brick plants,Foundry,not_a_firm,,"Town description of Pueblo ('brick plants, foundries, machine shops'), filed under Pryor"
+2,Narvdir_coloradoBus1935_part2,29,1935,PUEBLO,and tanks,Metal working,correct,,"Hardesty Mfg Co, Pueblo: 'welded pipe and tanks, sheet metal products'; name is a fragment"
+3,narv-dir_coloradoBus1884,214,1884,HOWARD,"Teats, E. H",Assay office,wrong_town,HORTENSE,Continues Hortense listing from p.213 ('HOT'/'HOW' are running heads)
+4,narv-dir_coloradoBus1884,246,1884,LEADVILLE,"and 7th. 8 8* Rose & Gueck, fire and life Schweninger, J",Transportation equipment,correct,,Schweninger J. 'wagon maker' Leadville; name mixed with Rose & Gueck (insurance)
+5,narv_dir_coloradoBus1877,64,1877,ALMA,Chlorination Works,Ore milling & sampling,correct,,"'Chlorination Works, mouth of Buckskin Gulch' in Alma list"
+6,narv_dir_coloradoBus1877,108,1877,CARIBOU,Oriental,Explosives,wrong_town,"BOSTON, MASS. (out of state)","Advert: Oriental Powder Mills 'Office ... Broad Street, Boston'"
+7,narv_dir_coloradoBus1877,164,1877,GEORGETOWN,M cClellan Hall,Assay office,wrong_sector,,McClellan Hall is under 'Amusements'; 'Assayers' heading follows it
+8,narv_dir_coloradoBus1877,186,1877,IDAHO SPRINGS,"Blundell, H. Tyroff, A. W",Tannery,wrong_sector,,Blundell/Tyroff under 'Tailor'; 'Tanneries' heading follows; block is Greeley not Idaho Springs
+9,narv_dir_coloradoBus1877_c2,197,1877,GREELEY,"Bennett, R",Tannery,correct,,First name under 'Tanneries' in Greeley list (Olmstead robe tanner ad follows)
+10,narv_dir_coloradoBus1878,89,1878,COLORADO SPRINGS,"White, L",Machine shop / machinery,correct,,"Under 'Machinists' heading, Colorado Springs"
+11,narv_dir_coloradoBus1878,153,1878,GOLDEN,"GOLDENFOUNDRY, S. Bertenshaw",Foundry,correct,,"'Foundry. GOLDEN FOUNDRY, S. Bertenshaw'"
+12,narv_dir_coloradoBus1878,186,1878,PUEBLO,Pueblo Reduction Works Co,Smelting & refining,correct,,"Under 'Smelting Works' heading, Pueblo"
+13,narv_dir_coloradoBus1879,138,1879,FAIRPLAY,"REMLIN, WM., Bootsand",Assay office,wrong_sector,,"Two columns interleaved: Reichencker is 'Assayer, Drugs'; Remlin is 'Boots and Shoes'"
+14,narv_dir_coloradoBus1880_6th,60,1880,BOULDER,"DEVELINE, E. W",Foundry,correct,,"'Foundry. DEVELINE, E. W.' Boulder"
+15,narv_dir_coloradoBus1880_6th,109,1880,GRANITE,"RUTTER, J. G., Gen’l Mdse",Assay office,wrong_sector,,Rutter is 'Gen'l Mdse'; assayer is the line above (Roberts J. S.)
+16,narv_dir_coloradoBus1880_6th,338,1880,LEADVILLE,"Steen, J. B. &Co",Smelting & refining,doubtful,,Steen & Co sits between smelter list and 'Smelters' Supplies' heading; cannot tell which
+17,narv_dir_coloradoBus1881_7th,181,1881,FORT COLLINS,"Metzger, J. M",Transportation equipment,correct,,"'Metzger, J. M., wagon maker' Fort Collins"
+18,narv_dir_coloradoBus1881_7th,189,1881,GEORGETOWN,"Learned, S. J., manager, Far- Peabody, W. L., hay, grain and coal. well Reduction Works",Smelting & refining,not_a_firm,,"Person line: Learned S. J. 'manager, Farwell Reduction Works'"
+19,narv_dir_coloradoBus1881_7th,260,1881,OURAY,Silver Link Mining Co. Star Milling dt Smelting Co,Smelting & refining,correct,,Star Milling & Smelting Co in Ouray list
+20,narv_dir_coloradoBus1881_7th,395,1881,BLACK HAWK,Pacific Iron Works,Iron & steel works,wrong_town,LEADVILLE,"State blacksmith list: 'Pacific Iron Works, Leadville'"
+21,narv_dir_coloradoBus1882,161,1882,DENVER,"Williams, W. H., physician, Wolcott, H., R-, acting man375 Lawrence. ager B. & C Smelting",Smelting & refining,not_a_firm,,Person line: Wolcott H. R. 'acting manager B. & C. Smelting Co.'
+22,narv_dir_coloradoBus1882,168,1882,DURANGO,"D. & R. G. R.R. James, W. W",Assay office,correct,,"'James, W. W., assayer' Durango"
+23,narv_dir_coloradoBus1882,200,1882,HANCOCK,"Godwin & Magee, engineers &",Assay office,correct,,"'Godwin & Magee, engineers & assayers' Hancock"
+24,narv_dir_coloradoBus1882,402,1882,GEORGETOWN,"g Engines, MiningPumps, Engines, Boilers and Saw Mills Cor. 8th and Larimer Sts., DENVER F",Foundry,wrong_town,DENVER,"Avery ad in state Foundries list: 'Cor. 8th and Larimer Sts., DENVER'"
+25,narv_dir_coloradoBus1883,127,1883,DENVER,"Cook, Jr., & Co., J. real es­ Cox & Son, Thos foundry",Foundry,correct,,"'Cox & Son, Thos., foundry, 446 Wynkoop' Denver (name mixed with Cook)"
+26,narv_dir_coloradoBus1883,191,1883,GARFIELD,"Hope, G. W. D",Assay office,correct,,"'Hope, G. W. D. assayer' in Garfield list"
+27,narv_dir_coloradoBus1883,506,1883,DENVER,"t, West, Northand South. 504 EDITORIAL NOTICES. ED ITO RIAL NOTES. LEADING EASTERN FIRMS",Machine shop / machinery,not_a_firm,,Editorial notice text 'LEADING EASTERN FIRMS. MINING MACHINERY'
+28,narv_dir_coloradoBus1887,268,1887,MEEKER,"MountainHouse, Frank Fariso, propr, Stevens R. P. physician Trickey M. M. livery BeachJas",Assay office,wrong_town,MINERAL POINT,"Listed under 'MINERAL POINT. San Juan County', not Meeker"
+29,narv_dir_coloradoBus1910_1,295,1910,CRIPPLE CREEK,Simpson Co C J,Machine shop / machinery,correct,,"'Simpson Co C J, machinists, 408 E Myers av' Cripple Creek"
+30,narv_dir_coloradoBus1910_1,358,1910,DENVER,Cedar Hill Coal & Coke Co,Coke works,wrong_sector,,"Coal & coke company office in Denver ('823 ...'), no coke works"
+31,narv_dir_coloradoBus1910_1,400,1910,DENVER,Dotv & Son E C,Machine shop / machinery,correct,,"'Doty & Son E C, machine shop, 1416 13th'"
+32,narv_dir_coloradoBus1910_1,459,1910,DENVER,JacobiPlatingCo,Metal working,correct,,"'Jacobi Plating Co, electroplating, 1434 Blake'"
+33,narv_dir_coloradoBus1911,36,1911,DENVER,and Lap,Metal working,wrong_sector,,Crosta Bros ad: 'Tinners' Supply House ... JOBBERS'; trade word is merchandise
+34,narv_dir_coloradoBus1911,550,1911,DENVER,Southard & Fish,Machine shop / machinery,correct,,"'Southard & Fish, machinists, 1932 Curtis'"
+35,narv_dir_coloradoBus1911,948,1911,MONTE VISTA,Schall Iron Works,Iron & steel works,correct,,"'Schall Iron Works, J L Schall prop' Monte Vista"
+36,narv_dir_coloradoBus1911,1197,1911,DENVER,John M,Assay office,wrong_town,VICTOR,"'Vincent John M, assayer, 121 N 4th' on Victor page"
+37,narv_dir_coloradoBus1911,1388,1911,BOULDER,“ QUEEN CITY FOUNDRY CO,Foundry,wrong_town,DENVER,"Classified foundry list: 'QUEEN CITY FOUNDRY CO, 4th and Wazee' (Denver); 'Boulder' is fruit assn"
+38,narv_dir_coloradoBus1912_38th_1,93,1912,ARICKAREE,The Queen City Iron & Wire Works Co. Qo™^V£:?c:L£m,Metal working,not_a_firm,,Page-foot advert for Queen City Iron & Wire Works repeated across towns
+39,narv_dir_coloradoBus1912_38th_2,105,1912,DENVER,Avery C M,Metal working,wrong_town,LA JUNTA,"'Avery C M, tinner' on La Junta page"
+40,narv_dir_coloradoBus1912_38th_2,245,1912,OLATHE,Wortman C C,Machine shop / machinery,correct,,"'Wortman C C, machine shop' Olathe"
+41,narv_dir_coloradoBus1912_38th_2,443,1912,TRINIDAD,John Segna Trinidad Sheet Metal Works,Metal working,correct,,Trinidad Sheet Metal Works (Clifford prop); name mixed with hotel owner Segna
+42,narv_dir_coloradoBus1913_39th_1,407,1913,DENVER,HavensBrosMfgCo,Machine shop / machinery,correct,,"'Havens Bros Mfg Co, machinists, 1622 Wazee'"
+43,narv_dir_coloradoBus1913_39th_3,10,1913,MIDLAND,Midland Assay Office,Assay office,wrong_town,VICTOR,Midland Assay Office is on the Victor page (alphabetical M)
+44,narv_dir_coloradoBus1913_39th_3,308,1913,ANTLERS,“ Hartenstein-Peacock Iron Works Antlers,Iron & steel works,wrong_town,DENVER,"Classified iron works list: 'Hartenstein-Peacock Iron Works Co, 1055 Shoshone' Denver"
+45,narv_dir_coloradoBus1913_39th_3,464,1913,VULCAN,“ Vulcan Sheet Metal Co,Metal working,wrong_town,DENVER,"Classified Denver list: 'Vulcan Sheet Metal Co, 1401 Osage'"
+46,narv_dir_coloradoBus1914,240,1914,DENVER,Flt Creosote Oil,Wood preserving,not_a_firm,,"Repeated Denver Gas & Electric tar-products advert ('Creosote Oil, Tar Paints') on C Springs page"
+47,narv_dir_coloradoBus1914,418,1914,DENVER,de Nemours Powder Co,Explosives,not_a_firm,,"Person line: 'HOWARD W C, mgr E I Du Pont de Nemours Powder Co, suite 903'"
+48,narv_dir_coloradoBus1914,760,1914,LA BOCA,The Queen City Iron & Wire Works Co a,Metal working,not_a_firm,,Page-foot advert for Queen City Iron & Wire Works repeated across towns
+49,narv_dir_coloradoBus1914,824,1914,LOUVIERS,flrcQilectorai,Iron & steel works,not_a_firm,,Page-foot advert for Queen City Iron & Wire Works repeated across towns
+50,narv_dir_coloradoBus1914,861,1914,MESSEX,St John J J,Metal working,correct,,"'St John J J, tinner'; UP RR agent, elevator: Messex list (Minturn heading is interleaved)"
+51,narv_dir_coloradoBus1914,1518,1914,SHEEPHORN,“ STARBO ILER &SHEET IRON,Metal working,wrong_town,DENVER,"Classified sheet-metal list: 'STAR BOILER & SHEET IRON WORKS, 3601-21 Wazee'"
+52,narv_dir_coloradoBus1915_41st_1-458,263,1915,BENNETT,Strout F McL,Assay office,wrong_town,CRIPPLE CREEK,"'Strout F McL, assayer, 371 E Bennett av' on Cripple Creek page"
+53,narv_dir_coloradoBus1915_41st_1-458,274,1915,DELTA,Delta Foundry & Machine Shop,Foundry,correct,,"'Delta Foundry & Machine Shop, G M Cochran prop'"
+54,narv_dir_coloradoBus1915_41st_1-458,330,1915,DENVER,Dawson W H,Metal working,correct,,"'Dawson W H, tinner, 850 Santa Fe Drive'"
+55,narv_dir_coloradoBus1916_CombinedPDF_opt,225,1916,COLORADO SPRINGS,Crown Tarred Felt,Wood preserving,not_a_firm,,Repeated Denver Gas & Electric 'Crown Tar Factory' advert on C Springs page
+56,narv_dir_coloradoBus1916_CombinedPDF_opt,344,1916,DENVER,mite,Explosives,wrong_sector,,du Pont sales office: 'W C Howard mgr ... suite 900 Central Savings'
+57,narv_dir_coloradoBus1916_CombinedPDF_opt,353,1916,DENVER,Fish & Co A E,Machine shop / machinery,correct,,"'Fish & Co A E, machinists, 1932 Curtis'"
+58,narv_dir_coloradoBus1916_CombinedPDF_opt,535,1916,EL MORO,El Moro Coke Ovens,Coke works,correct,,"'El Moro Coke Ovens, C F & I Co.' under El Moro"
+59,narv_dir_coloradoBus1916_CombinedPDF_opt,669,1916,HILLROSE,Swier Sam,Assay office,wrong_town,HIGHO,"Interleaved columns: Swier sits in Higho's A-W run (Berquist postmaster), not Hillrose's"
+60,narv_dir_coloradoBus1916_CombinedPDF_opt,1044,1916,LEWIS,Piers Lewis,Assay office,wrong_town,WALSENBURG,"'Piers Lewis, assayer' in Walsenburg list; town taken from name"
+61,narv_dir_coloradoBus1916_CombinedPDF_opt,1144,1916,CARBONDALE,Tw Products,Wood preserving,not_a_firm,,"Repeated Denver Gas & Electric tar-products advert, Carbondale page"
+62,narv_dir_coloradoBus1917,344,1917,DENVER,Denison John H,Foundry,wrong_sector,,"'Denison John H, judge District Court'; brass works is the next column"
+63,narv_dir_coloradoBus1917,360,1917,DENVER,Ermlich G J,Assay office,correct,,"'Ermlich G J, assayer, 1721 Stout'"
+64,narv_dir_coloradoBus1917,1031,1917,TELLURIDE,TELLURIDE IRON WORKS CO,Iron & steel works,correct,,'TELLURIDE IRON WORKS CO ... foundry and machine shop'
+65,narv_dir_coloradoBus1917,1041,1917,TRINIDAD,SHEET METAL WORKS AND TIN SHOP,Metal working,correct,,Isador Corradino 'Sheet Metal Works and Tin Shop ... Trinidad' (single local ad)
+66,narv_dir_coloradoBus1932,103,1932,EVERETT,Reyman C C,Metal working,wrong_town,ALAMOSA,"'Reyman C C, sheet metal wks' on Alamosa page; 'Everett' is a theatre manager"
+67,narv_dir_coloradoBus1932,499,1932,DENVER,Scherer Frank & Son Sheet Metal,Metal working,correct,,"'Scherer Frank & Son Sheet Metal Works, 1261 Curtis'"
+68,narv_dir_coloradoBus1932,992,1932,TIFFANY,WhitmanEH,Assay office,wrong_town,TIGER,"With 'Tiger Public Library', 'White Swan Mining Co': Tiger (Summit Co) list"
+69,narv_dir_coloradoBus1932,1422,1932,ASPEN,— Banner Iron & Wire Works Go,Metal working,wrong_town,DENVER,"'Banner Iron & Wire Works Co, 3430 Brighton blvd' (Denver dash); 'Aspen' is Lewis Hardware"
+70,narv_dir_coloradoBus1943,225,1943,ANDRIX,OTHER ELECTROPLATED,Metal working,not_a_firm,,Slack-Horner 'CHROMIUM PLATING' header ad repeated on ~70 pages; Andrix unrelated
+71,narv_dir_coloradoBus1943,869,1943,PUEBLO,Engineers,Machine shop / machinery,correct,,"Gobatti Mfg Co 'Machinists ... 503 West Fourth, Pueblo' ad (also on 3 other pages)"
+72,narv_dir_coloradoBus1943,1010,1943,WALSENBURG,Uhl H F,Metal working,correct,,"'Uhl H F, sheet metal wks' Walsenburg"
+73,narv_dir_coloradoBus1943,1068,1943,BURNS,— Burns Auto Body Shop,Transportation equipment,wrong_town,DENVER,"Classified auto body list, Denver dashes: '3500 Larimer'; Burns is the firm name"
+74,narv_dir_coloradoBus_1885_ocr,315,1885,DEL NORTE,"irex Glayx Gompany,x! MANUFACTURERS OF FIRE BRICK, MUFFLES, CRUCIBLES, &C, — Dealers in",Chemicals,wrong_sector,,"Denver Fire Clay ad: 'Dealers in Chemicals ... Assayers' Supplies', 411 Larimer Denver"
+75,narv_dir_coloradoBus_1885_ocr,553,1885,GOLDEN,Golden Smelting Co,Smelting & refining,correct,,"'Golden Smelting Co, R. Koenig, mgr'"
+76,narv_dir_coloradoBus_1891_Part2,210,1891,DENVER,Hitzler Christian J,Metal working,not_a_firm,,"Worker line: 'tinner, Denver Stamping Co., r. Wentworth Hotel'"
+77,narv_dir_coloradoBus_1920_ocr,859,1920,DENVER,QUEEN CITY BRASS WORKS,Foundry,correct,,"'QUEEN CITY BRASS WORKS, brass founders, 1429-31 Blake'"
+78,narv_dir_coloradoBus_1920_ocr,883,1920,DENVER,rare Frank,Metal working,correct,,"'[Sche]rer Frank, tinner, 1261 Curtis' (same shop as row 67)"
+79,narv_dir_coloradoBus_1920_ocr,1113,1920,FORT MORGAN,Excelsior Machine Shop,Machine shop / machinery,correct,,"Excelsior Machine Shop, Fort Morgan"
+80,narv_dir_coloradoBus_1920_ocr,1187,1920,DENVER,ARCHITECTURAL SHEET METAL WORKS,Metal working,wrong_town,GRAND JUNCTION,"James H. Lane ad: 'Architectural Sheet Metal Works ... 451 Rood Avenue, Grand Junction'"
+81,narv_dir_coloradoBus_1920_ocr,2755,1920,MINERAL HOT SPRINGS,—Gilt Edge Mines & Smelting Co,Smelting & refining,wrong_sector,,"Mining company office ('920 Equitable bldg', Denver) in mining cos list"
+82,narv_dir_coloradoBus_1927,304,1927,FORT MORGAN,dynamite,Explosives,wrong_sector,,"du Pont 'powder, dynamite, explosives' sales office on Denver page; name is fragment"
+83,narv_dir_coloradoBus_1927,730,1927,LONGMONT,"&,i,;- ~Longmont Sheet Metal",Metal working,correct,,'Longmont Sheet Metal Works' Longmont
+84,narv_dir_coloradoBus_1927,1510,1927,PUEBLO,Farriers and Tanners --1,Tannery,wrong_town,DENVER,"Jonas Bros ad 'Taxidermists, Furriers and Tanners ... 1037 Broadway, Denver'"
+85,narv_dir_coloradoBus_1929,150,1929,EATON,Diedrichs F A,Machine shop / machinery,wrong_town,BRIGHTON,"'Diedrichs F A, machine shop' on Brighton page; 'Eaton' is a neighbour's name"
+86,narv_dir_coloradoBus_1929,376,1929,DENVER,Midwest Steel & Iron Works,Iron & steel works,correct,,"'Midwest Steel & Iron Works Co, 25 Larimer' Denver"
+87,narv_dir_coloradoBus_1929,425,1929,DENVER,ing and repairng,Metal working,correct,,"Kelley James M 'sheet metal and tin work, 1929 Champa'; name is a fragment"
+88,narv_dir_coloradoBus_1929,945,1929,DENVER,Butcheck J R,Machine shop / machinery,wrong_town,RIFLE,"'Butcheck J R, machine shop' in Rifle list (town clerk, Hallenbeck ad)"
+89,narv_dir_coloradoBus_1933,1409,1933,DENVER,Graig,Petroleum refining & asphalt,wrong_town,CRAIG,"Oil refineries list: 'Craig, Texas Co Refinery'; Denver starts next line"
+90,narv_dir_coloradoBus_1939_part1,240,1939,DENVER,V'rl Qu een Cottage Camp,Petroleum refining & asphalt,wrong_sector,,"'Refinery Service, Earl F Wood mgr, auto serv sta' (C Springs page)"
+91,narv_dir_coloradoBus_1939_part4,140,1939,PARRISH,North Side Machine Shop,Machine shop / machinery,wrong_town,YUMA,Page is Yuma (Yuma Chamber of Commerce etc.); Parrish is a neighbour's name
+92,narv_dir_coloradoBus_1950,262,1950,DENVER,Corn States Serum Co The,Soap,wrong_sector,,"Corn States Serum Co, code 12-17 = 'Vet Supplies, Soap Products': vet serum, not soap"
+93,narv_dir_coloradoBus_1950,267,1950,DENVER,DavisOilCoRA McGilvrey 400S Federal,Petroleum refining & asphalt,wrong_sector,,Davis Oil Co coded 2-3 (filling station) + 12-10: oil jobber/station
+94,narv_dir_coloradoBus_1950,313,1950,DENVER,Jarman· Oil Co W Jarman,Petroleum refining & asphalt,doubtful,,"Jarman Oil Co, 12-10 'Petroleum Products' covers jobbers; no sign of refinery"
+95,narv_dir_coloradoBus_1950,377,1950,DENVER,Industrie s Inc,Metal working,wrong_sector,,"SKF Industries (bearings) branch at 1420 18th, 12-7: sales office"
+96,narv_dir_coloradoBus_1950,385,1950,DENVER,Siegel Oil Co The Ben Siegel,Petroleum refining & asphalt,doubtful,,"Siegel Oil Co, 12-10 covers jobbers; no sign of refinery"
+97,narv_dir_coloradoBus_1950,437,1950,EAST CANON,Ingraham Repair Shop C E Ingraham,Machine shop / machinery,correct,,"'Ingraham Repair Shop' 10-1 (blacksmith-machine shop), East Canon"
+98,narv_dir_coloradoBus_1950,692,1950,PUEBLO,"VineJ,,nd Blacksmith Shop Ri c h ard Mayes WatsonRA BroomMfgCoRA Watson",Machine shop / machinery,correct,,"Vineland Blacksmith Shop 10-1 (blacksmith-machine shops), Pueblo rural route"
+99,narv_dir_coloradoBus_1950,695,1950,RANGELY,Powell Leslie,Machine shop / machinery,correct,,'Powell Leslie 10-1' Rangely
+100,narv_dir_coloradoBus_1950,717,1950,SHERIDAN LAKE,LewisWe lding Shop Richard Lewis,Machine shop / machinery,correct,,'Lewis Welding Shop Richard Lewis 10-1' Sheridan Lake
+101,narv_dir_coloradoBus_1950,735,1950,STERLING,Trinidad Bean & Elevator Co The,Plastics,wrong_sector,,Bean & elevator company; code 12-15 (plastics/oil drilling) is misread
+102,narv_dir_coloradoBus_1956,65,1956,AURORA,Altura Auto Body,Transportation equipment,correct,,"'Altura Auto Body ... 15611 E. Colfax, 2-4' Aurora"
+103,narv_dir_coloradoBus_1956,133,1956,COLORADO SPRINGS,Dieken Ornamental Iron Lawrence Dieken 3001,Iron & steel works,correct,,"'Dieken Ornamental Iron ... 3001 E Hiway 24, 12-7'"
+104,narv_dir_coloradoBus_1956,471,1956,GOLDEN,Armstrong Chemical Co,Chemicals,doubtful,,"Armstrong Chemical Co, 12-2 covers jobbers & pest control; maker not shown"
+105,narv_dir_coloradoBus_1956,486,1956,GRAND JUNCTION,Leggett Sheet Metal Clifford E Leggett 510^ 28,Metal working,correct,,'Leggett Sheet Metal ... 7-6' Grand Junction
+106,narv_dir_coloradoBus_1956,489,1956,GRAND JUNCTION,Platt Sheet Metal Works Donald K Platt 1748,Metal working,correct,,'Platt Sheet Metal Works ... 1748 Palmer Ave 7-6'
+107,narv_dir_coloradoBus_1956,727,1956,MONTROSE,FO RT MORGAN-Ft Morgan Body & Paint Works,Paint & varnish,wrong_sector,,"Auto body & paint repair shop (classified auto repair), not paint maker; also Fort Morgan"
+108,narv_dir_coloradoBus_1956,744,1956,DENVER,Englewood Iron Works,Iron & steel works,wrong_town,ENGLEWOOD,'Englewood Iron Works 1065 W Hampden' is in Englewood (Arapahoe Co)
+109,narv_dir_coloradoBus_1956,890,1956,FORT COLLINS,Warren Garage & Machine Shop Bx 157,Machine shop / machinery,wrong_town,CALHAN,Classified 'CALHAN- ... Warren Garage & Machine Shop Bx 157'
+110,narv_dir_coloradoBus_1956,984,1956,DENVER,GOLEN MACHINE WORKS,Machine shop / machinery,wrong_town,GRAND JUNCTION,Under 'GRAND JUNCTION-' in machine shops classified ('839 South 8th')
+111,narv_dir_coloradoBus_1956,1111,1956,DENVER,Pyramid Petroleum Co Serv Sta #5 3901,Petroleum refining & asphalt,wrong_sector,,'Pyramid Petroleum Co Serv Sta #5' filling station
+112,narv_dir_coloradoBus_1956,1122,1956,LAMAR,Frey’s Sheet Metal Works,Metal working,correct,,'LAMAR- Frey's Sheet Metal Works 123 N Main'
+113,narv_dir_coloradoBus_1956,1142,1956,MANCOS,M ANCQS-Mancos Sheet Metal Shop Railroad Av,Metal working,correct,,'MANCOS-Mancos Sheet Metal Shop Railroad Av'
+114,narvdir_coloradoBus1941_part3,1,1941,PAONIA,lating,Metal working,correct,,"Paonia Plumbing & Heating Shop 'sheet metal work, furnaces'; name fragment"
+115,narvdir_coloradoBus1941_part4,25,1941,DENVER,STEEL & IRON WORKSCO,Iron & steel works,correct,,"Burkhardt E & Sons Steel & Iron Works Co, 869 S Broadway Denver"
+116,user_colorado_1875,56,1875,ALPINE,"Chrysolite Co., Commonwealth",Ore milling & sampling,wrong_sector,,"Chrysolite, Mary Murphy, Yankee Boy etc. are mining cos; works is Campbell Bros"
+117,user_colorado_1875,59,1875,BLACK HAWK,"LIVESAY, JAS. McD. Blacksmiths A",Transportation equipment,wrong_sector,,Livesay is under 'Attorneys'; 'Blacksmiths & Wagon makers' heading follows
+118,user_colorado_1875,59,1875,BLACK HAWK,"BRUNK, JOHN. HAIGHT, MRS. LANGLAN, J. SMITH, NELSON Boiler Works",Machine shop / machinery,wrong_sector,,Names are under 'Boarding Houses'; 'Boiler Works' heading follows
+119,user_csbd_gaze_1877,439,1877,SILVERTON,Shank & Co. Hudson & Taft,Smelting & refining,wrong_sector,,"Shank & Co, Hudson & Taft under 'Forwarding and Commission'; heading follows"
+120,user_rockymountaindir_1871,465,1871,CENTRAL,"Boyd Douglass, miner, P. O. Central",Machine shop / machinery,not_a_firm,,"Resident line 'Boyd Douglass, miner'; 'machinist' belongs to another line"

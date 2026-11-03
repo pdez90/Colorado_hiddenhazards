@@ -1,9 +1,9 @@
 from,to,group,cells,pop,pct_black_before,pct_hisp_before,pct_fb_before,pct_laborers_before,pct_owner_before,km_to_downtown,chg_black,chg_hisp,chg_fb,chg_owner
-1900,1910,no hazardous trade by the next census,298,112873,2.72,0.24,19.05,6.73,30.73,2.55,-0.15,0.09,-0.94,4.43
-1900,1910,first hazardous trade arrives in the next decade,1,1009,2.21,0.19,30.88,13.3,30.92,3.21,2.78,-0.04,-7.79,-0.52
+1900,1910,no hazardous trade by the next census,297,111758,2.7,0.24,19.01,6.72,30.82,2.56,-0.12,0.08,-0.9,4.54
+1900,1910,first hazardous trade arrives in the next decade,2,2124,3.47,0.09,26.88,10.03,26.46,2.03,-0.39,0.2,-6.89,-4.31
 1910,1920,no hazardous trade by the next census,279,144695,2.17,0.31,17.39,5.87,38.7,3.02,0.33,0.31,-2.74,1.59
-1910,1920,first hazardous trade arrives in the next decade,19,26028,4.8,0.45,22.1,8.8,15.51,1.33,-0.91,2.06,-0.35,-1.87
+1910,1920,first hazardous trade arrives in the next decade,18,24182,5,0.46,22.37,8.96,15.24,1.36,-0.93,2.13,-0.31,-1.95
 1920,1930,no hazardous trade by the next census,276,163299,2.5,0.59,14.67,4.1,40.87,2.93,0.64,0.47,-3.57,4.39
 1920,1930,first hazardous trade arrives in the next decade,3,5095,2.4,1.28,14.18,5.09,22.67,1.88,-1.38,0.66,-4.16,-1.01
-1930,1940,no hazardous trade by the next census,270,184072,3.26,1.09,11.17,4.97,46.05,3.23,0.1,3.35,-3.36,-8.33
-1930,1940,first hazardous trade arrives in the next decade,6,7533,0.33,0.34,9.54,6.09,27.18,2.24,-0.18,1.79,-2.82,-9.43
+1930,1940,no hazardous trade by the next census,269,182920,3.27,1.1,11.17,4.93,46.45,3.25,0.11,3.36,-3.38,-8.46
+1930,1940,first hazardous trade arrives in the next decade,7,8684,0.34,0.34,9.78,6.71,22.63,1.93,-0.18,1.9,-2.63,-5.91

@@ -12,11 +12,11 @@ sample,outcome,model,term,rr,lo,hi,p,blocks,tracts,aic
 "Colorado, all blocks with 100+ person-years",natural causes,M4 hidden high-confidence,known_hist,1.0485,1.0103,1.0881,0.0124,59293,1241,204981.7
 "Colorado, all blocks with 100+ person-years",natural causes,M4 hidden high-confidence,tri,1.0088,0.9838,1.0344,0.494,59293,1241,204981.7
 "Colorado, all blocks with 100+ person-years",natural causes,M4 hidden high-confidence,cleanup,1.0001,0.9689,1.0323,0.995,59293,1241,204981.7
-"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,hidden,1.0443,1.0136,1.076,0.00439,59293,1241,204929.8
-"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,known_hist,1.0452,1.0059,1.086,0.0237,59293,1241,204929.8
-"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,pre1960,0.9503,0.9169,0.9849,0.0052,59293,1241,204929.8
-"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,tri,1.0123,0.9881,1.0371,0.323,59293,1241,204929.8
-"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,cleanup,1.0061,0.9755,1.0378,0.698,59293,1241,204929.8
+"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,hidden,1.0443,1.0136,1.0759,0.00443,59293,1241,204929.8
+"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,known_hist,1.0452,1.0059,1.0859,0.0237,59293,1241,204929.8
+"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,pre1960,0.9503,0.917,0.9849,0.00514,59293,1241,204929.8
+"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,tri,1.0123,0.988,1.0371,0.324,59293,1241,204929.8
+"Colorado, all blocks with 100+ person-years",natural causes,M5 + pre-1960 trades,cleanup,1.0061,0.9755,1.0377,0.699,59293,1241,204929.8
 "Colorado, all blocks with 100+ person-years",natural causes,Placebo: non-hazardous manufacturers,placebo,1.0389,1.0042,1.0748,0.0276,59293,1241,204986.4
 "Colorado, all blocks with 100+ person-years",natural causes,Placebo: non-hazardous manufacturers,tri,1.0275,1.0065,1.049,0.00996,59293,1241,204986.4
 "Colorado, all blocks with 100+ person-years",natural causes,Placebo: non-hazardous manufacturers,cleanup,1.0029,0.9702,1.0368,0.862,59293,1241,204986.4
@@ -38,11 +38,11 @@ sample,outcome,model,term,rr,lo,hi,p,blocks,tracts,aic
 "Colorado, all blocks with 100+ person-years",all causes,M4 hidden high-confidence,known_hist,1.0533,1.0164,1.0916,0.00431,59293,1241,217536.8
 "Colorado, all blocks with 100+ person-years",all causes,M4 hidden high-confidence,tri,1.0084,0.9839,1.0334,0.505,59293,1241,217536.8
 "Colorado, all blocks with 100+ person-years",all causes,M4 hidden high-confidence,cleanup,1.004,0.9743,1.0346,0.793,59293,1241,217536.8
-"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,hidden,1.0414,1.0119,1.0718,0.00574,59293,1241,217499
-"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,known_hist,1.049,1.0111,1.0882,0.0109,59293,1241,217499
-"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,pre1960,0.9613,0.9303,0.9933,0.0182,59293,1241,217499
-"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,tri,1.0113,0.9874,1.0358,0.356,59293,1241,217499
-"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,cleanup,1.0084,0.9792,1.0386,0.576,59293,1241,217499
+"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,hidden,1.0413,1.0118,1.0718,0.0058,59293,1241,217499.1
+"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,known_hist,1.0489,1.0111,1.0882,0.0109,59293,1241,217499.1
+"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,pre1960,0.9614,0.9304,0.9933,0.0182,59293,1241,217499.1
+"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,tri,1.0113,0.9874,1.0357,0.357,59293,1241,217499.1
+"Colorado, all blocks with 100+ person-years",all causes,M5 + pre-1960 trades,cleanup,1.0084,0.9792,1.0385,0.577,59293,1241,217499.1
 "Colorado, all blocks with 100+ person-years",all causes,Placebo: non-hazardous manufacturers,placebo,1.0422,1.0087,1.0768,0.0131,59293,1241,217546.5
 "Colorado, all blocks with 100+ person-years",all causes,Placebo: non-hazardous manufacturers,tri,1.0295,1.0092,1.0503,0.00427,59293,1241,217546.5
 "Colorado, all blocks with 100+ person-years",all causes,Placebo: non-hazardous manufacturers,cleanup,1.0088,0.9776,1.0411,0.585,59293,1241,217546.5
@@ -64,11 +64,11 @@ Denver study area,natural causes,M4 hidden high-confidence,hidden_hiconf,0.9853,
 Denver study area,natural causes,M4 hidden high-confidence,known_hist,1.0864,1.0007,1.1795,0.0481,10395,184,37035.3
 Denver study area,natural causes,M4 hidden high-confidence,tri,0.9839,0.9324,1.0382,0.553,10395,184,37035.3
 Denver study area,natural causes,M4 hidden high-confidence,cleanup,0.9735,0.9136,1.0374,0.408,10395,184,37035.3
-Denver study area,natural causes,M5 + pre-1960 trades,hidden,1.0243,0.9612,1.0916,0.459,10395,184,37035.9
+Denver study area,natural causes,M5 + pre-1960 trades,hidden,1.0244,0.9613,1.0917,0.458,10395,184,37035.9
 Denver study area,natural causes,M5 + pre-1960 trades,known_hist,1.0678,0.9766,1.1675,0.15,10395,184,37035.9
-Denver study area,natural causes,M5 + pre-1960 trades,pre1960,0.9756,0.9054,1.0512,0.516,10395,184,37035.9
-Denver study area,natural causes,M5 + pre-1960 trades,tri,0.9892,0.9379,1.0432,0.688,10395,184,37035.9
-Denver study area,natural causes,M5 + pre-1960 trades,cleanup,0.9737,0.9163,1.0347,0.39,10395,184,37035.9
+Denver study area,natural causes,M5 + pre-1960 trades,pre1960,0.9754,0.9054,1.0509,0.513,10395,184,37035.9
+Denver study area,natural causes,M5 + pre-1960 trades,tri,0.9892,0.9379,1.0433,0.688,10395,184,37035.9
+Denver study area,natural causes,M5 + pre-1960 trades,cleanup,0.9738,0.9164,1.0348,0.391,10395,184,37035.9
 Denver study area,natural causes,Placebo: non-hazardous manufacturers,placebo,1.0703,0.9975,1.1484,0.0587,10395,184,37030.7
 Denver study area,natural causes,Placebo: non-hazardous manufacturers,tri,1.0131,0.9701,1.058,0.556,10395,184,37030.7
 Denver study area,natural causes,Placebo: non-hazardous manufacturers,cleanup,0.9768,0.9088,1.0498,0.523,10395,184,37030.7
@@ -90,11 +90,11 @@ Denver study area,all causes,M4 hidden high-confidence,hidden_hiconf,0.9933,0.94
 Denver study area,all causes,M4 hidden high-confidence,known_hist,1.0844,0.9997,1.1763,0.051,10395,184,39377.1
 Denver study area,all causes,M4 hidden high-confidence,tri,0.9891,0.9376,1.0435,0.688,10395,184,39377.1
 Denver study area,all causes,M4 hidden high-confidence,cleanup,0.9788,0.9229,1.0382,0.476,10395,184,39377.1
-Denver study area,all causes,M5 + pre-1960 trades,hidden,1.0228,0.962,1.0875,0.471,10395,184,39378
-Denver study area,all causes,M5 + pre-1960 trades,known_hist,1.0632,0.9738,1.1608,0.172,10395,184,39378
-Denver study area,all causes,M5 + pre-1960 trades,pre1960,0.9955,0.9308,1.0648,0.896,10395,184,39378
-Denver study area,all causes,M5 + pre-1960 trades,tri,0.9924,0.9407,1.0469,0.78,10395,184,39378
-Denver study area,all causes,M5 + pre-1960 trades,cleanup,0.9759,0.922,1.0329,0.4,10395,184,39378
+Denver study area,all causes,M5 + pre-1960 trades,hidden,1.0228,0.962,1.0875,0.47,10395,184,39378
+Denver study area,all causes,M5 + pre-1960 trades,known_hist,1.0632,0.9738,1.1609,0.172,10395,184,39378
+Denver study area,all causes,M5 + pre-1960 trades,pre1960,0.9954,0.9308,1.0645,0.894,10395,184,39378
+Denver study area,all causes,M5 + pre-1960 trades,tri,0.9924,0.9407,1.047,0.78,10395,184,39378
+Denver study area,all causes,M5 + pre-1960 trades,cleanup,0.9759,0.922,1.033,0.4,10395,184,39378
 Denver study area,all causes,Placebo: non-hazardous manufacturers,placebo,1.0725,1.0011,1.149,0.0464,10395,184,39372
 Denver study area,all causes,Placebo: non-hazardous manufacturers,tri,1.0196,0.9775,1.0635,0.368,10395,184,39372
 Denver study area,all causes,Placebo: non-hazardous manufacturers,cleanup,0.9839,0.9205,1.0517,0.633,10395,184,39372

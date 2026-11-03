@@ -2,9 +2,10 @@
 #   Rscript R/health_models.R     (after R/build_exposures.R)  -> data/results/health_models_R.csv
 # M1 SES -> M2 +regulated hazards -> M3 +known historical sites -> M4 +hidden sites; placebo = non-hazardous manufacturers.
 suppressPackageStartupMessages({ library(sf); library(data.table); library(spdep); library(spatialreg); library(sandwich); library(lmtest) })
+zpad <- function(x, n) { x <- as.character(x); x <- paste0(strrep("0", pmax(0, n - nchar(x))), x); stopifnot(all(nchar(x) == n)); x }   # zero-pad codes as text (C-style zero flags pad text with spaces on some platforms)
 sf_use_s2(FALSE)   # planar contiguity, as libpysal (some tract rings are invalid on the sphere)
 f_in <- if (file.exists("work/health/tract_analysis_R.csv")) "work/health/tract_analysis_R.csv" else "work/health/tract_analysis.csv"
-A <- fread(f_in, colClasses = c(tract = "character")); A[, tract := formatC(tract, width = 11, flag = "0")]
+A <- fread(f_in, colClasses = c(tract = "character")); A[, tract := zpad(tract, 11)]
 A <- A[population >= 500]
 for (c in c("asthma_hosp", "low_birth_wt", "life_exp")) A[get(c) <= 0, (c) := NA]   # 0 = suppressed small numbers
 A[, log_asthma := log(asthma_hosp)]; A[, log_density := log1p(pop_density)]
@@ -17,7 +18,7 @@ REG <- c("z_prox_hazwaste", "z_prox_npl", "z_prox_rmp", "z_tri", "z_cleanup")
 OUT <- c(log_asthma = "Asthma hospitalization rate (log)", low_birth_wt = "Low birth weight (%)", life_exp = "Life expectancy (years)",
          heart_dis = "Heart disease (index)", cancer = "Cancer (index)", diabetes = "Diabetes (index)", mental_health = "Poor mental health (%)")
 tr <- st_read("app/data/enviroscreen_tracts.geojson", quiet = TRUE)[, "GEOID"]
-tr$GEOID <- formatC(as.character(tr$GEOID), width = 11, flag = "0")
+tr$GEOID <- zpad(tr$GEOID, 11)
 
 queen_listw <- function(g, snap = 2e-5) nb2listw(poly2nb(g, queen = TRUE, snap = snap), style = "W", zero.policy = TRUE)   # snap ~2 m (degrees): the app tracts were simplified one by one, so shared edges no longer match exactly
 fit <- function(y, X) {

@@ -30,7 +30,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1000 8794,1965,1992,13,7,TRUE,20,"",4,,,TRUE,1,"persistent, sector turnover"
 1000 8795,1966,1992,12,11,TRUE,27,23,6,,,TRUE,1,"persistent, sector turnover"
 1000 8796,1965,1992,13,15,TRUE,27,"",2,,,TRUE,1,persistent
-1000 8797,1965,1990,12,6,TRUE,27,35,3,1911,7,TRUE,1,"persistent, sector turnover"
+1000 8797,1965,1990,12,6,TRUE,27,35,3,1910,7,TRUE,1,"persistent, sector turnover"
 1000 8798,1965,1988,11,16,TRUE,27,27,1,1914,4,TRUE,1,intermittent
 1000 8799,1965,1990,12,20,TRUE,22,27,4,1881,17,TRUE,1,"persistent, sector turnover"
 1000 8800,1965,1992,13,20,TRUE,22,23,8,1891,38,TRUE,1,"persistent, sector turnover"
@@ -72,14 +72,14 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1001 8782,1965,1992,13,4,TRUE,22,37,8,,,TRUE,1,"persistent, sector turnover"
 1001 8783,1965,1992,13,12,TRUE,34,24,5,1950,1,TRUE,1,"persistent, sector turnover"
 1001 8784,1965,1992,13,16,TRUE,34,27,4,1956,2,TRUE,1,"persistent, sector turnover"
-1001 8785,1966,1992,12,5,TRUE,37,34,9,1950,1,TRUE,1,"persistent, sector turnover"
+1001 8785,1966,1992,12,5,TRUE,37,34,9,1927,1,TRUE,1,"persistent, sector turnover"
 1001 8786,1965,1992,13,7,TRUE,34,32,8,1914,1,TRUE,1,"persistent, sector turnover"
 1001 8787,1965,1992,13,10,TRUE,35,34,4,1950,2,TRUE,1,"persistent, sector turnover"
 1001 8788,1967,1992,11,6,TRUE,33,39,6,1950,1,TRUE,1,"persistent, sector turnover"
 1001 8789,1966,1990,11,3,TRUE,24,28,4,,,TRUE,1,"persistent, sector turnover"
 1001 8790,1965,1992,5,3,TRUE,35,34,3,1956,1,TRUE,0.384615384615385,intermittent
 1001 8791,1965,1992,13,7,TRUE,20,27,7,1950,1,TRUE,1,"persistent, sector turnover"
-1001 8792,1965,1990,12,3,TRUE,27,27,2,1932,1,TRUE,1,persistent
+1001 8792,1965,1990,12,3,TRUE,27,27,2,1950,1,TRUE,1,persistent
 1001 8793,1965,1992,13,8,TRUE,27,20,3,,,TRUE,1,"persistent, sector turnover"
 1001 8794,1965,1992,13,7,TRUE,27,30,5,1935,1,TRUE,1,"persistent, sector turnover"
 1001 8795,1966,1990,11,7,TRUE,"",27,2,,,TRUE,1,persistent
@@ -134,7 +134,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1002 8783,1970,1988,4,1,FALSE,25,26,4,,,TRUE,0.571428571428571,intermittent
 1002 8784,1965,1990,11,3,TRUE,27,23,6,,,TRUE,0.916666666666667,"persistent, sector turnover"
 1002 8785,1965,1990,12,3,FALSE,27,27,3,,,TRUE,1,persistent
-1002 8786,1965,1992,10,2,TRUE,34,27,4,1941,1,TRUE,0.769230769230769,"persistent, sector turnover"
+1002 8786,1965,1992,10,2,TRUE,34,27,4,1935,1,TRUE,0.769230769230769,"persistent, sector turnover"
 1002 8787,1965,1992,13,3,TRUE,24,32,6,1956,1,TRUE,1,"persistent, sector turnover"
 1002 8788,1965,1990,11,4,TRUE,20,30,5,1920,2,TRUE,0.916666666666667,"persistent, sector turnover"
 1002 8789,1965,1990,11,4,TRUE,28,39,6,,,TRUE,0.916666666666667,"persistent, sector turnover"
@@ -173,7 +173,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1003 8770,1967,1970,3,1,FALSE,36,36,1,,,TRUE,1,former (gone by 1980s)
 1003 8778,1965,1970,4,2,FALSE,20,23,2,,,TRUE,0.8,former (gone by 1980s)
 1003 8784,1965,1990,6,2,FALSE,20,27,3,,,TRUE,0.5,intermittent
-1003 8785,1966,1990,11,3,TRUE,34,27,3,1943,3,TRUE,1,"persistent, sector turnover"
+1003 8785,1966,1990,11,3,TRUE,34,27,3,1941,3,TRUE,1,"persistent, sector turnover"
 1003 8786,1965,1992,13,4,TRUE,22,27,5,,,TRUE,1,"persistent, sector turnover"
 1003 8787,1965,1992,7,1,TRUE,19,39,5,,,TRUE,0.538461538461538,intermittent
 1003 8788,1965,1983,7,4,FALSE,27,27,4,,,TRUE,0.7,intermittent
@@ -186,13 +186,13 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1003 8795,1977,1983,3,3,FALSE,20,27,2,,,TRUE,1,intermittent
 1003 8796,1965,1980,3,2,TRUE,37,20,2,,,TRUE,0.333333333333333,former (gone by 1980s)
 1003 8797,1966,1988,9,3,FALSE,"",27,3,,,TRUE,0.9,intermittent
-1003 8798,1968,1992,7,2,TRUE,38,23,5,1929,1,TRUE,0.7,"persistent, sector turnover"
+1003 8798,1968,1992,7,2,TRUE,38,23,5,1927,1,TRUE,0.7,"persistent, sector turnover"
 1003 8799,1970,1992,8,2,FALSE,27,"",2,1950,1,TRUE,0.888888888888889,intermittent
 1003 8800,1967,1983,5,1,FALSE,31,27,3,,,TRUE,0.625,intermittent
 1003 8801,1965,1990,11,2,TRUE,20,20,1,,,TRUE,0.916666666666667,persistent
 1003 8802,1965,1990,12,10,TRUE,25,27,5,1950,1,TRUE,1,"persistent, sector turnover"
 1003 8803,1965,1992,13,13,TRUE,32,34,6,1950,1,TRUE,1,"persistent, sector turnover"
-1003 8804,1965,1992,13,13,TRUE,24,"",4,1950,3,TRUE,1,"persistent, sector turnover"
+1003 8804,1965,1992,13,13,TRUE,24,"",4,1943,3,TRUE,1,"persistent, sector turnover"
 1003 8805,1967,1990,5,1,TRUE,37,30,4,,,TRUE,0.5,intermittent
 1003 8806,1965,1992,13,3,TRUE,19,34,4,,,TRUE,1,"persistent, sector turnover"
 1003 8807,1965,1992,12,4,TRUE,30,20,3,,,TRUE,0.923076923076923,"persistent, sector turnover"
@@ -228,7 +228,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1004 8794,1980,1990,4,2,TRUE,35,27,2,,,TRUE,1,emerging
 1004 8795,1977,1988,2,1,TRUE,34,27,2,,,TRUE,0.5,intermittent
 1004 8797,1967,1992,8,3,FALSE,27,27,2,,,TRUE,0.727272727272727,persistent
-1004 8798,1966,1990,10,4,TRUE,12,27,6,1939,1,TRUE,0.909090909090909,"persistent, sector turnover"
+1004 8798,1966,1990,10,4,TRUE,12,27,6,1920,1,TRUE,0.909090909090909,"persistent, sector turnover"
 1004 8799,1968,1968,1,1,TRUE,34,34,1,,,TRUE,1,former (gone by 1980s)
 1004 8801,1983,1983,1,1,TRUE,31,31,1,,,TRUE,1,emerging
 1004 8802,1973,1983,5,1,FALSE,20,25,2,,,TRUE,1,intermittent
@@ -389,7 +389,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1009 8805,1966,1992,12,8,TRUE,20,"",5,,,TRUE,1,"persistent, sector turnover"
 1009 8806,1965,1992,13,8,TRUE,20,"",4,,,TRUE,1,"persistent, sector turnover"
 1009 8807,1966,1992,12,2,TRUE,20,28,3,,,TRUE,1,"persistent, sector turnover"
-1009 8808,1965,1992,13,8,TRUE,37,30,7,1956,1,TRUE,1,"persistent, sector turnover"
+1009 8808,1965,1992,13,8,TRUE,37,30,7,1916,1,TRUE,1,"persistent, sector turnover"
 1009 8809,1965,1988,11,3,TRUE,34,34,3,,,TRUE,1,intermittent
 1009 8810,1977,1992,4,2,TRUE,34,"",2,,,TRUE,0.666666666666667,intermittent
 1009 8813,1974,1974,1,1,FALSE,39,39,1,,,TRUE,1,former (gone by 1980s)
@@ -921,7 +921,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1030 8594,1965,1990,6,2,TRUE,20,"",5,,,FALSE,0.5,intermittent
 1030 8595,1965,1990,12,5,TRUE,35,27,6,1939,2,FALSE,1,"persistent, sector turnover"
 1030 8596,1965,1992,10,3,TRUE,20,27,3,1920,4,FALSE,0.769230769230769,"persistent, sector turnover"
-1030 8597,1965,1992,13,7,TRUE,20,"",4,1911,4,FALSE,1,"persistent, sector turnover"
+1030 8597,1965,1992,13,7,TRUE,20,"",4,1910,4,FALSE,1,"persistent, sector turnover"
 1030 8598,1966,1990,9,2,TRUE,25,25,2,,,FALSE,0.818181818181818,persistent
 1030 8599,1968,1990,5,1,FALSE,20,27,2,,,FALSE,0.555555555555556,intermittent
 1030 8600,1965,1965,1,1,TRUE,34,34,1,,,FALSE,1,former (gone by 1980s)
@@ -1263,7 +1263,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1052 8945,1974,1974,1,1,FALSE,25,25,1,,,FALSE,1,former (gone by 1980s)
 1052 8946,1967,1967,1,1,TRUE,20,20,1,,,FALSE,1,former (gone by 1980s)
 1052 8947,1988,1992,3,1,TRUE,34,39,2,,,FALSE,1,emerging
-1052 8948,1965,1990,10,2,TRUE,20,38,4,1935,1,FALSE,0.833333333333333,"persistent, sector turnover"
+1052 8948,1965,1990,10,2,TRUE,20,38,4,1929,1,FALSE,0.833333333333333,"persistent, sector turnover"
 1052 8949,1965,1990,11,5,TRUE,20,20,3,1929,2,FALSE,0.916666666666667,persistent
 1052 8950,1965,1990,10,6,TRUE,20,27,3,1914,3,FALSE,0.833333333333333,"persistent, sector turnover"
 1052 8951,1966,1992,10,3,TRUE,20,"",3,,,FALSE,0.833333333333333,"persistent, sector turnover"
@@ -1366,7 +1366,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1067 8468,1965,1965,1,1,FALSE,20,20,1,,,FALSE,1,former (gone by 1980s)
 1067 8469,1983,1990,3,1,TRUE,34,34,2,,,FALSE,1,emerging
 1067 8470,1965,1992,13,11,TRUE,28,20,3,1912,5,FALSE,1,"persistent, sector turnover"
-1067 8471,1966,1990,8,5,TRUE,"",27,6,1935,2,FALSE,0.727272727272727,"persistent, sector turnover"
+1067 8471,1966,1990,8,5,TRUE,"",27,6,1932,2,FALSE,0.727272727272727,"persistent, sector turnover"
 1067 8472,1965,1992,13,6,TRUE,39,38,6,1932,3,FALSE,1,"persistent, sector turnover"
 1067 8473,1965,1992,6,2,TRUE,34,24,3,,,FALSE,0.461538461538462,intermittent
 1067 8477,1968,1988,2,1,FALSE,20,39,2,,,FALSE,0.25,intermittent
@@ -1377,8 +1377,8 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1068 8468,1966,1974,6,3,TRUE,"",33,4,,,FALSE,1,former (gone by 1980s)
 1068 8469,1965,1992,13,3,TRUE,39,20,5,,,FALSE,1,"persistent, sector turnover"
 1068 8470,1967,1980,5,3,TRUE,28,28,2,1943,2,FALSE,0.714285714285714,former (gone by 1980s)
-1068 8471,1965,1990,11,5,FALSE,39,26,6,1911,6,FALSE,0.916666666666667,"persistent, sector turnover"
-1068 8472,1966,1992,5,2,TRUE,20,"",4,1912,5,FALSE,0.416666666666667,intermittent
+1068 8471,1965,1990,11,5,FALSE,39,26,6,1911,5,FALSE,0.916666666666667,"persistent, sector turnover"
+1068 8472,1966,1992,5,2,TRUE,20,"",4,1913,4,FALSE,0.416666666666667,intermittent
 1068 8473,1967,1990,2,1,TRUE,34,35,2,,,FALSE,0.2,intermittent
 1068 8476,1965,1992,12,2,TRUE,35,32,2,,,FALSE,0.923076923076923,persistent
 1068 8477,1966,1977,6,2,FALSE,32,32,1,,,FALSE,0.857142857142857,former (gone by 1980s)
@@ -1462,7 +1462,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1217 8461,1973,1990,5,1,FALSE,27,27,1,,,FALSE,0.714285714285714,intermittent
 1223 8425,1966,1968,2,1,TRUE,35,35,1,,,FALSE,0.666666666666667,former (gone by 1980s)
 1224 8424,1965,1977,8,3,TRUE,34,20,2,,,FALSE,1,former (gone by 1980s)
-1224 8425,1966,1990,10,3,TRUE,"",27,3,1956,3,FALSE,0.909090909090909,"persistent, sector turnover"
+1224 8425,1966,1990,10,3,TRUE,"",27,3,1956,2,FALSE,0.909090909090909,"persistent, sector turnover"
 1224 8426,1974,1980,3,1,TRUE,34,34,1,,,FALSE,1,former (gone by 1980s)
 1224 8694,1968,1973,2,1,TRUE,29,20,2,,,FALSE,0.666666666666667,former (gone by 1980s)
 1225 8424,1966,1990,11,1,TRUE,35,34,3,,,FALSE,1,"persistent, sector turnover"
@@ -1509,7 +1509,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 1302 8997,1968,1992,8,2,FALSE,23,20,3,1956,1,FALSE,0.8,"persistent, sector turnover"
 1303 8893,1968,1980,3,1,FALSE,20,20,1,,,FALSE,0.5,former (gone by 1980s)
 1303 8996,1965,1983,8,2,TRUE,27,35,4,1956,1,FALSE,0.8,intermittent
-1303 8997,1965,1992,13,2,TRUE,24,27,3,1929,1,FALSE,1,"persistent, sector turnover"
+1303 8997,1965,1992,13,2,TRUE,24,27,3,1920,1,FALSE,1,"persistent, sector turnover"
 1303 8998,1970,1992,8,2,FALSE,27,27,2,1950,1,FALSE,0.888888888888889,intermittent
 1304 8893,1966,1992,9,2,TRUE,27,20,2,,,FALSE,0.75,persistent
 1304 8894,1966,1977,6,1,FALSE,32,32,2,,,FALSE,0.857142857142857,former (gone by 1980s)
@@ -1649,8 +1649,8 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 382 8663,1977,1990,3,1,FALSE,36,24,3,,,FALSE,0.6,intermittent
 382 8665,1992,1992,1,1,TRUE,39,39,1,,,FALSE,1,emerging
 383 8656,1973,1988,6,1,TRUE,34,34,1,,,FALSE,1,intermittent
-383 8658,1965,1990,10,6,TRUE,35,24,6,1914,1,FALSE,0.833333333333333,"persistent, sector turnover"
-383 8659,1965,1992,13,5,TRUE,20,20,3,1956,1,FALSE,1,persistent
+383 8658,1965,1990,10,6,TRUE,35,24,6,,,FALSE,0.833333333333333,"persistent, sector turnover"
+383 8659,1965,1992,13,5,TRUE,20,20,3,1950,1,FALSE,1,persistent
 383 8660,1965,1992,12,6,TRUE,36,27,4,,,FALSE,0.923076923076923,"persistent, sector turnover"
 383 8662,1966,1990,9,2,FALSE,24,20,3,,,FALSE,0.818181818181818,"persistent, sector turnover"
 383 8663,1967,1973,3,1,TRUE,34,34,1,,,FALSE,0.75,former (gone by 1980s)
@@ -1658,7 +1658,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 383 8665,1973,1992,8,3,TRUE,38,38,2,,,FALSE,1,intermittent
 384 8307,1990,1990,1,1,FALSE,20,20,1,,,FALSE,1,emerging
 384 8658,1965,1992,12,7,TRUE,28,33,8,,,FALSE,0.923076923076923,"persistent, sector turnover"
-384 8659,1965,1992,8,2,TRUE,25,24,4,1917,1,FALSE,0.615384615384615,"persistent, sector turnover"
+384 8659,1965,1992,8,2,TRUE,25,24,4,1912,1,FALSE,0.615384615384615,"persistent, sector turnover"
 384 8660,1966,1990,7,1,TRUE,25,39,4,,,FALSE,0.636363636363636,"persistent, sector turnover"
 384 8661,1968,1973,2,1,TRUE,30,28,2,,,FALSE,0.666666666666667,former (gone by 1980s)
 384 8662,1965,1992,11,2,TRUE,35,39,5,,,FALSE,0.846153846153846,"persistent, sector turnover"
@@ -2087,7 +2087,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 952 8856,1966,1968,3,2,FALSE,23,39,2,,,FALSE,1,former (gone by 1980s)
 952 8857,1973,1990,7,3,TRUE,27,27,2,,,FALSE,1,intermittent
 952 8858,1966,1992,8,2,TRUE,"",27,4,,,FALSE,0.666666666666667,"persistent, sector turnover"
-952 8859,1966,1992,12,8,TRUE,20,"",3,1913,1,FALSE,1,"persistent, sector turnover"
+952 8859,1966,1992,12,8,TRUE,20,"",3,1912,1,FALSE,1,"persistent, sector turnover"
 952 8860,1966,1992,12,3,TRUE,28,"",5,,,FALSE,1,"persistent, sector turnover"
 952 8863,1967,1974,5,1,TRUE,37,37,1,,,FALSE,1,former (gone by 1980s)
 952 8866,1990,1990,1,1,FALSE,27,27,1,,,FALSE,1,emerging
@@ -2838,7 +2838,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 987 8981,1965,1990,8,2,TRUE,31,25,3,,,FALSE,0.666666666666667,"persistent, sector turnover"
 987 8984,1988,1990,2,2,FALSE,24,24,1,,,FALSE,1,emerging
 987 8985,1965,1992,12,4,TRUE,27,27,3,1911,1,FALSE,0.923076923076923,persistent
-987 8986,1965,1990,12,10,TRUE,32,20,6,1920,8,FALSE,1,"persistent, sector turnover"
+987 8986,1965,1990,12,10,TRUE,32,20,6,1912,8,FALSE,1,"persistent, sector turnover"
 987 8988,1965,1990,7,1,FALSE,20,39,2,,,FALSE,0.583333333333333,intermittent
 987 8989,1965,1992,6,2,TRUE,24,24,3,,,FALSE,0.461538461538462,intermittent
 987 8990,1965,1992,9,2,TRUE,32,33,4,,,FALSE,0.692307692307692,"persistent, sector turnover"
@@ -3310,7 +3310,7 @@ cell,first,last,editions,max_n,ever_haz,first_sector,last_sector,n_sectors,pre19
 999 8796,1965,1990,10,3,TRUE,20,20,3,1950,1,TRUE,0.833333333333333,persistent
 999 8797,1965,1992,13,5,TRUE,32,33,4,1920,1,TRUE,1,"persistent, sector turnover"
 999 8798,1965,1974,7,13,TRUE,35,20,3,1892,1,TRUE,1,former (gone by 1980s)
-999 8799,1965,1992,13,28,TRUE,25,28,8,1911,21,TRUE,1,"persistent, sector turnover"
+999 8799,1965,1992,13,28,TRUE,25,28,8,1911,20,TRUE,1,"persistent, sector turnover"
 999 8800,1965,1990,12,10,TRUE,23,20,3,1891,7,TRUE,1,"persistent, sector turnover"
 999 8801,1973,1988,5,1,FALSE,24,27,3,,,TRUE,0.833333333333333,intermittent
 999 8802,1965,1992,13,6,TRUE,24,26,4,,,TRUE,1,"persistent, sector turnover"

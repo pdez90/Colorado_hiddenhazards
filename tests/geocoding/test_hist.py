@@ -118,7 +118,7 @@ def test_apply_review_verdicts():
     assert 'D' not in out.index                                       # not a works: dropped
     assert out.loc['A', 'street'] == '1 Blake' and out.loc['A', 'review'] == 'ok'
     assert out.loc['B', 'street'] == '22 Wazee'
-    assert out.loc['C', 'name'] == 'C Co'
+    assert out.loc['CCO', 'name'] == 'C Co'                          # the corrected name also gives the key
     assert out.loc['E', 'town'] == 'GREELEY' and out.loc['E', 'street'] == '5 Blake'
     assert out.loc['F', 'review'] == ''                               # no review row
 
@@ -134,3 +134,46 @@ def test_every_street_placement_was_reviewed():
     missing = st[st.review.fillna('') == '']
     assert missing.empty, f"{len(missing)} street-level listings have no review verdict, e.g. {missing[['year', 'town', 'name', 'street']].head(5).values.tolist()}"
     assert not st.review.eq('not_works').any()
+
+
+def test_apply_review_sector_fix_and_second_pass_keeps_first_verdicts():
+    df = pd.DataFrame(dict(year=[1880, 1880, 1880], town=['LEADVILLE'] * 3, nkey=['A', 'B', 'C'], sector=['Foundry', 'Assay office', 'Foundry'],
+                           fe_group=['33', 'EXT', '33'], name=['A', 'B', 'C'], town_src=[''] * 3, street=[''] * 3))
+    street = pd.DataFrame(dict(year=[1880], town=['LEADVILLE'], nkey=['A'], sector=['Foundry'], verdict=['ok'], street_fix=[''], town_fix=[''], name_fix=['']))
+    town = pd.DataFrame(dict(year=[1880, 1880], town=['LEADVILLE'] * 2, nkey=['B', 'C'], sector=['Assay office', 'Foundry'], verdict=['other_sector', 'other_town'],
+                             town_fix=['', 'DENVER'], sector_fix=['Smelting & refining', ''], name_fix=['', '']))
+    out = gh.apply_review(gh.apply_review(df, street), town).set_index('nkey')
+    assert out.loc['A', 'review'] == 'ok'                                       # the street verdict survives the town pass
+    assert out.loc['B', 'sector'] == 'Smelting & refining' and out.loc['B', 'fe_group'] == '33'
+    assert out.loc['C', 'town'] == 'DENVER' and out.loc['C', 'review'] == 'other_town'
+
+
+def test_town_review_keeps_the_printed_address_but_never_places_at_it():
+    df = pd.DataFrame(dict(year=[1880, 1880], town=['DENVER', 'LEADVILLE'], nkey=['A', 'B'], sector=['Foundry'] * 2, fe_group=['33'] * 2,
+                           name=['A', 'B'], town_src=[''] * 2, street=['17 Blake', '5 Harrison']))
+    town = pd.DataFrame(dict(year=[1880, 1880], town=['DENVER', 'LEADVILLE'], nkey=['A', 'B'], sector=['Foundry'] * 2, verdict=['ok', 'other_town'],
+                             town_fix=['', 'DENVER'], sector_fix=[''] * 2, name_fix=[''] * 2))
+    out = gh.apply_review(df, town, town_level=True).set_index('nkey')
+    assert out.loc['A', 'street'] == '17 Blake' and out.loc['A', 'town_only']      # kept for R/denver_1880.R, not geocoded
+    assert out.loc['B', 'street'] == '' and out.loc['B', 'town'] == 'DENVER'       # a moved listing loses the other town's address
+
+
+def test_apply_review_drops_copies_created_by_a_correction():
+    df = pd.DataFrame(dict(year=[1912, 1912], town=['DENVER', 'ARLINGTON'], nkey=['QUEENCITY', 'QUEENCITY'], sector=['Metal working'] * 2,
+                           fe_group=['34'] * 2, name=['Queen City'] * 2, town_src=[''] * 2, street=[''] * 2))
+    town = pd.DataFrame(dict(year=[1912], town=['ARLINGTON'], nkey=['QUEENCITY'], sector=['Metal working'], verdict=['other_town'],
+                             town_fix=['DENVER'], sector_fix=[''], name_fix=['']))
+    assert len(gh.apply_review(df, town)) == 1
+
+
+def test_every_listing_was_reviewed_once_the_town_review_exists():
+    """With data/historical/town_review.csv committed, every pre-1960 listing (street or town level) carries a verdict, and none is
+    'not_works' (those are dropped)."""
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parents[2]
+    if not (root / 'data/historical/town_review.csv').exists():
+        pytest.skip('town review not yet committed')
+    L = pd.read_csv(root / 'data/historical/CO_pre1960_hazardous_listings.csv', low_memory=False, dtype={'review': str})
+    missing = L[L.review.fillna('') == '']
+    assert missing.empty, f"{len(missing)} listings have no review verdict, e.g. {missing[['year', 'town', 'name']].head(5).values.tolist()}"
+    assert not L.review.eq('not_works').any()

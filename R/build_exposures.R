@@ -4,10 +4,11 @@
 # app/data/tri_facilities.csv, app/data/cleanup_sites.csv, app/data/historical_sites.csv, app/data/enviroscreen_tracts.geojson,
 # data/results/CO_directory_listings_1961-2002.csv (for the non-hazardous placebo manufacturers).
 suppressPackageStartupMessages({ library(sf); library(data.table) })
+zpad <- function(x, n) { x <- as.character(x); x <- paste0(strrep("0", pmax(0, n - nchar(x))), x); stopifnot(all(nchar(x) == n)); x }   # zero-pad codes as text (C-style zero flags pad text with spaces on some platforms)
 UTM <- 26913; SIG <- 500; CUT <- 2000
 
 bg <- st_transform(st_read("work/health/enviroscreen_v2_blockgroups.geojson", quiet = TRUE), UTM)
-bg$GEOID <- formatC(as.character(bg$GEOID), width = 12, flag = "0"); bg$tract <- substr(bg$GEOID, 1, 11)
+bg$GEOID <- zpad(bg$GEOID, 12); bg$tract <- substr(bg$GEOID, 1, 11)
 cent <- st_coordinates(suppressWarnings(st_point_on_surface(st_geometry(bg))))
 
 xy <- function(df) { df <- df[!is.na(df$lat) & !is.na(df$lon), ]
@@ -18,9 +19,11 @@ args <- commandArgs(trailingOnly = TRUE)
 sites_f <- if (length(args) >= 1) args[1] else "app/data/sites.csv"
 recs_f <- if (length(args) >= 2) args[2] else "data/results/CO_directory_listings_1961-2002.csv"
 S0 <- fread(sites_f); S <- S0[fe_hazard == TRUE]
-L <- fread(recs_f)
+L <- suppressWarnings(fread(recs_f, colClasses = list(character = "sic")))   # SIC as text: "0291" must not read as 291
 hz_ids <- S0$site_id
 nh <- L[geo_level == "address" & !(fe_hazard | ext_hazard) & !(site_id %in% hz_ids)]
+# placebo: manufacturers (SIC 20-39) outside the hazardous sectors, as in R/mortality_block.R; listings with no SIC or a non-manufacturing SIC are left out
+if ("sic" %in% names(nh)) nh <- nh[suppressWarnings(as.integer(substr(as.character(sic), 1, 2))) %between% c(20L, 39L)]
 nh <- nh[!duplicated(paste0(sprintf("%.4f", lat), sprintf("%.4f", lon)))]
 Pn <- xy(as.data.frame(nh)); Hx <- xy(as.data.frame(S))
 dmin <- apply(Pn, 1, function(p) sqrt(min((Hx[, 1] - p[1])^2 + (Hx[, 2] - p[2])^2)))
@@ -57,7 +60,7 @@ O <- O[, lapply(.SD, `[`, 1), by = tract]                      # identical withi
 mcols <- setdiff(names(out), c("GEOID", "tract", "area_km2"))
 X <- out[, c(lapply(.SD, mean), list(area_km2 = sum(area_km2), n_bg = .N)), by = tract, .SDcols = mcols]
 TT <- st_drop_geometry(st_read("app/data/enviroscreen_tracts.geojson", quiet = TRUE))[, c("GEOID", "population", "county")]
-TT$tract <- formatC(as.character(TT$GEOID), width = 11, flag = "0"); TT$GEOID <- NULL
+TT$tract <- zpad(TT$GEOID, 11); TT$GEOID <- NULL
 A <- merge(merge(O, X, by = "tract"), as.data.table(TT), by = "tract", all.x = TRUE)
 A$pop_density <- A$population / A$area_km2
 fwrite(A, "work/health/tract_analysis_R.csv")

@@ -1,5 +1,4 @@
 priority,id,series,status,name,address,first_year,last_year,use_now,sanborn_1903_volume,sanborn_1929_volume,sanborn_1951_volume,petroleum_releases_50m
-1,HF06196,Hazardous trades before 1960 (street level),pre-1960,Turco Prod Inc,2016 Blake,1950,1950,Civic / school / health,2,1,1,1
 1,S04728,Hazardous-sector manufacturers 1965-1992,on a current inventory,GC POWER PRANSITUGE (1980-1983; SIC 3535) | TRANSLOGIC CORP (1990; SIC 3535),10825 E 47TH,1980,1990,Civic / school / health,,,,0
 1,S01908,Hazardous-sector manufacturers 1965-1992,on no current inventory,"THELCC CORP (1967; SIC 3533) | THELCO CCRP (1968; SIC 3533,3561,3566)",1120 10TH,1967,1970,Civic / school / health,1,1,1,0
 1,S00995,Hazardous-sector manufacturers 1965-1992,on no current inventory,"CAPITOL ENGRAVING CC (1968; SIC 2793,3555)",1125 11TH ST,1966,1973,Civic / school / health,1,1,1,0
@@ -21,9 +20,9 @@ priority,id,series,status,name,address,first_year,last_year,use_now,sanborn_1903
 1,S01877,Hazardous-sector manufacturers 1965-1992,on a current inventory,"REN ELECTRONICS, DENVER DIVISION (1967; SIC 3679) | CMI/CHAMPION (1973; SIC 3531)",5600 E 39TH AVE,1967,1973,Civic / school / health,,,,0
 1,S06446,Hazardous-sector manufacturers 1965-1992,on a current inventory,"PORTADRILL INC (1988; SIC 3533,2752) | PORT-A-DRILL (1990-1992; SIC 3533)",5800 E 39TH AVE,1968,1992,Civic / school / health,,,,0
 1,S03931,Hazardous-sector manufacturers 1965-1992,on a current inventory,AMERICAN CAN CO (1977; SIC 3411),801 E 46TH AVE,1977,1977,Civic / school / health,,7,7,0
-2,HF06515,Hazardous trades before 1960 (street level),pre-1960,Dowdle Sheet Metal C o,1804 S. Pearl,1956,1956,Residential,3,5,5,0
-2,HF06965,Hazardous trades before 1960 (street level),pre-1960,Nichols Carl J,2833 Larimer,1941,1941,Residential,2,1,1,0
-2,HF06971,Hazardous trades before 1960 (street level),pre-1960,Perry Abner J,486 S Bdway,1941,1941,Residential,,5,5,1
+2,HF03999,Hazardous trades before 1960 (street level),pre-1960,Starco Prod Co,1519 Lawrence,1950,1950,Residential,2,1,1,0
+2,HF04486,Hazardous trades before 1960 (street level),pre-1960,Denver Metals Foundry,1525 18th,1935,1956,Residential,2,1,1,0
+2,HF02404,Hazardous trades before 1960 (street level),pre-1960,Barry Silver Plating Works,521 14th,1916,1916,Residential,1,1,1,0
 2,S01871,Hazardous-sector manufacturers 1965-1992,on a current inventory,"si INDUSTRIES INC (1967; SIC 2992,3272,2899)",1 W EVANS AVE,1967,1967,Residential,1,5,5,0
 2,S03575,Hazardous-sector manufacturers 1965-1992,on no current inventory,"THERMC TECH INCORPORATED (1974; SIC 3599,3769)",1001 TEJON,1974,1974,Residential,,,,0
 2,S01223,Hazardous-sector manufacturers 1965-1992,on a current inventory,*PETERSON HEATING + SHEET METAL (1966; SIC 3441),1024 LIPAN,1966,1966,Residential,1,2,2,0

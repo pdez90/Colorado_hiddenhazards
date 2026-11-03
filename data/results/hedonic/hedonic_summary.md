@@ -42,9 +42,9 @@
 | M4 single-family homes (as M2) | Single-family homes | Pre-1960 hazardous trade | 0-200 m | 0.64 | -2.48 | 3.85 | 0.6930 | 0.0063 | 0.0160 | 90217 |
 | M4 single-family homes (as M2) | Single-family homes | Pre-1960 hazardous trade | 200-400 m | 0.90 | -1.17 | 3.01 | 0.3980 | 0.0090 | 0.0106 | 90217 |
 | M4 single-family homes (as M2) | Single-family homes | Pre-1960 hazardous trade | 400-800 m | 0.55 | -0.94 | 2.07 | 0.4710 | 0.0055 | 0.0076 | 90217 |
-| M5 site counts within 400 m | All residential sales | Hidden (no current inventory) | per site within 400 m | 0.02 | -0.76 | 0.81 | 0.9560 | 0.0002 | 0.0040 | 153599 |
-| M5 site counts within 400 m | All residential sales | Known (on a current inventory) | per site within 400 m | -0.37 | -0.94 | 0.21 | 0.2120 | -0.0037 | 0.0029 | 153599 |
-| M5 site counts within 400 m | All residential sales | Pre-1960 hazardous trade | per site within 400 m | -0.01 | -0.62 | 0.59 | 0.9630 | -0.0001 | 0.0031 | 153599 |
+| M5 site counts within 400 m | All residential sales | Hidden (no current inventory) | per site within 400 m | 0.02 | -0.76 | 0.81 | 0.9550 | 0.0002 | 0.0040 | 153599 |
+| M5 site counts within 400 m | All residential sales | Known (on a current inventory) | per site within 400 m | -0.37 | -0.94 | 0.21 | 0.2150 | -0.0037 | 0.0030 | 153599 |
+| M5 site counts within 400 m | All residential sales | Pre-1960 hazardous trade | per site within 400 m | -0.02 | -0.61 | 0.58 | 0.9600 | -0.0002 | 0.0031 | 153599 |
 | M6 within 400 m (pooled) | All residential sales | Hidden (no current inventory) | 0-400 m | -0.64 | -1.91 | 0.64 | 0.3260 | -0.0064 | 0.0065 | 153599 |
 | M6 within 400 m (pooled) | All residential sales | Known (on a current inventory) | 0-400 m | -0.20 | -1.51 | 1.11 | 0.7610 | -0.0020 | 0.0067 | 153599 |
 | M6 within 400 m (pooled) | All residential sales | Pre-1960 hazardous trade | 0-400 m | 1.04 | -0.43 | 2.53 | 0.1700 | 0.0103 | 0.0075 | 153599 |

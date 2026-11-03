@@ -3,9 +3,10 @@
 #   work/health/deaths_bg_year.csv (bg, year, natural_cause, deaths), work/health/bgroup_noyr.gpkg (2010 BGs, pop_YYYY, pm_YYYY).
 #   Rscript R/mortality_bg.R   -> data/results/mortality_bg_models_R.csv (rate ratios only; no small-area counts)
 suppressPackageStartupMessages({ library(sf); library(data.table); library(MASS); library(sandwich); library(lmtest) })
+zpad <- function(x, n) { x <- as.character(x); x <- paste0(strrep("0", pmax(0, n - nchar(x))), x); stopifnot(all(nchar(x) == n)); x }   # zero-pad codes as text (C-style zero flags pad text with spaces on some platforms)
 UTM <- 26913; Y0 <- 2015; Y1 <- 2019; yrs <- Y0:Y1
 g <- st_transform(st_read("work/health/bgroup_noyr.gpkg", quiet = TRUE), UTM)
-g$bg <- formatC(as.character(g$bg), width = 12, flag = "0")
+g$bg <- zpad(g$bg, 12)
 G <- as.data.table(st_drop_geometry(g))
 g$pyears <- rowSums(G[, paste0("pop_", yrs), with = FALSE]); g$pm25 <- rowMeans(G[, paste0("pm_", yrs), with = FALSE])
 d <- fread("work/health/deaths_bg_year.csv", colClasses = c(bg = "character"))[year >= Y0 & year <= Y1]
@@ -29,8 +30,10 @@ CP <- st_coordinates(suppressWarnings(st_point_on_surface(st_geometry(g))))
 xy <- function(df) { df <- df[!is.na(df$lat) & !is.na(df$lon), ]; st_coordinates(st_transform(st_as_sf(df, coords = c("lon", "lat"), crs = 4326), UTM)) }
 args <- commandArgs(trailingOnly = TRUE)   # optional: R/build_sites.R outputs instead of the Python ones
 S0 <- fread(if (length(args) >= 1) args[1] else "app/data/sites.csv"); S <- S0[fe_hazard == TRUE]
-L <- fread(if (length(args) >= 2) args[2] else "data/results/CO_directory_listings_1961-2002.csv")
+L <- suppressWarnings(fread(if (length(args) >= 2) args[2] else "data/results/CO_directory_listings_1961-2002.csv", colClasses = list(character = "sic")))   # SIC as text
 nh <- L[geo_level == "address" & !(fe_hazard | ext_hazard) & !(site_id %in% S0$site_id)]
+# placebo: manufacturers (SIC 20-39) outside the hazardous sectors, as in R/mortality_block.R; listings with no SIC or a non-manufacturing SIC are left out
+if ("sic" %in% names(nh)) nh <- nh[suppressWarnings(as.integer(substr(as.character(sic), 1, 2))) %between% c(20L, 39L)]
 nh <- nh[!duplicated(paste0(round(lat, 4), round(lon, 4)))]
 Hx <- xy(as.data.frame(S)); Pn <- xy(as.data.frame(nh))
 nh <- nh[apply(Pn, 1, function(p) sqrt(min((Hx[, 1] - p[1])^2 + (Hx[, 2] - p[2])^2))) > 100]

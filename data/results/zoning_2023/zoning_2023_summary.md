@@ -23,13 +23,13 @@ Source: Denver-metro zoning, 3 Oct 2023, compiled by C. Makarewicz (CU Denver) f
 | Industrial B |  3.77 | 61.0 |  2.2 |  1.8 | 11.5 | 0.0 | 23.4 |
 
 ## Hazardous sites by 2023 zoning (% of sites)
-Sites in the study area that fall in no 2023 polygon (mostly suburban street geocodes on unzoned right-of-way) take the nearest polygon within 50 m: 53 of 1558 1965-92 sites and 0 of 268 pre-1960 trades; 0 and 0 remain unmatched and are left out.
+Sites in the study area that fall in no 2023 polygon (mostly suburban street geocodes on unzoned right-of-way) take the nearest polygon within 50 m: 53 of 1558 1965-92 sites and 0 of 267 pre-1960 trades; 0 and 0 remain unmatched and are left out.
 
 | series | where | n | Industrial (housing not allowed) | Industrial mixed use (housing allowed) | Mixed use with housing | Residential | Commercial | Open space, civic, other |
 |---|---|---|---|---|---|---|---|---
 |
-| Hazardous trades before 1960 (street level) | Denver County |  263 |  5.3 |  9.5 | 75.7 |  4.9 | 0.4 | 4.2 |
-| Hazardous trades before 1960 (street level) | Study area |  268 |  6.3 |  9.3 | 74.6 |  4.9 | 0.4 | 4.5 |
+| Hazardous trades before 1960 (street level) | Denver County |  262 |  5.3 |  9.5 | 75.6 |  5.0 | 0.4 | 4.2 |
+| Hazardous trades before 1960 (street level) | Study area |  267 |  6.4 |  9.4 | 74.5 |  4.9 | 0.4 | 4.5 |
 | Hazardous-sector manufacturers 1965-1992 | Denver County | 1108 | 39.7 | 15.1 | 30.8 | 10.5 | 0.6 | 3.3 |
 | Hazardous-sector manufacturers 1965-1992 | Study area | 1558 | 47.7 | 10.7 | 25.9 | 11.0 | 1.9 | 2.8 |
 | Hazardous-sector manufacturers 1965-1992 | Suburban study tracts |  450 | 67.3 |  0.0 | 13.8 | 12.4 | 5.1 | 1.3 |

@@ -50,14 +50,14 @@ M4 single-family homes (as M2),Single-family homes,Present-day control,tri_500,-
 M4 single-family homes (as M2),Single-family homes,Present-day control,superfund,-14.59,-16.69,-12.43,1.65e-24,-0.1577,0.0127,90217
 M4 single-family homes (as M2),Single-family homes,Present-day control,freeway_250,-5.52,-8.17,-2.79,0.000143,-0.0567,0.0145,90217
 M4 single-family homes (as M2),Single-family homes,Present-day control,zoned_ind,-4.41,-8.75,0.13,0.0586,-0.0451,0.0237,90217
-M5 site counts within 400 m,All residential sales,Hidden (no current inventory),per site within 400 m,0.02,-0.76,0.81,0.956,2e-04,0.004,153599
-M5 site counts within 400 m,All residential sales,Known (on a current inventory),per site within 400 m,-0.37,-0.94,0.21,0.212,-0.0037,0.0029,153599
-M5 site counts within 400 m,All residential sales,Pre-1960 hazardous trade,per site within 400 m,-0.01,-0.62,0.59,0.963,-1e-04,0.0031,153599
+M5 site counts within 400 m,All residential sales,Hidden (no current inventory),per site within 400 m,0.02,-0.76,0.81,0.955,2e-04,0.004,153599
+M5 site counts within 400 m,All residential sales,Known (on a current inventory),per site within 400 m,-0.37,-0.94,0.21,0.215,-0.0037,0.003,153599
+M5 site counts within 400 m,All residential sales,Pre-1960 hazardous trade,per site within 400 m,-0.02,-0.61,0.58,0.96,-2e-04,0.0031,153599
 M5 site counts within 400 m,All residential sales,Present-day control,petro_100,0.71,-1.17,2.62,0.463,0.0071,0.0096,153599
 M5 site counts within 400 m,All residential sales,Present-day control,tri_500,-1.7,-7.26,4.2,0.565,-0.0171,0.0297,153599
-M5 site counts within 400 m,All residential sales,Present-day control,superfund,5.12,-12.05,25.64,0.584,0.05,0.091,153599
+M5 site counts within 400 m,All residential sales,Present-day control,superfund,5.12,-12.05,25.64,0.584,0.0499,0.091,153599
 M5 site counts within 400 m,All residential sales,Present-day control,freeway_250,-4.34,-7.22,-1.36,0.00524,-0.0443,0.0156,153599
-M5 site counts within 400 m,All residential sales,Present-day control,zoned_ind,-2.67,-6.72,1.55,0.213,-0.0271,0.0217,153599
+M5 site counts within 400 m,All residential sales,Present-day control,zoned_ind,-2.67,-6.73,1.55,0.213,-0.0271,0.0217,153599
 M6 within 400 m (pooled),All residential sales,Hidden (no current inventory),0-400 m,-0.64,-1.91,0.64,0.326,-0.0064,0.0065,153599
 M6 within 400 m (pooled),All residential sales,Known (on a current inventory),0-400 m,-0.2,-1.51,1.11,0.761,-0.002,0.0067,153599
 M6 within 400 m (pooled),All residential sales,Pre-1960 hazardous trade,0-400 m,1.04,-0.43,2.53,0.17,0.0103,0.0075,153599

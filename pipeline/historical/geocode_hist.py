@@ -40,9 +40,13 @@ def street_level(q):
     return parts <= {'cityzips', 'dirzip', 'dirtype'}
 
 REVIEW = 'data/historical/street_review.csv'
+TOWN_REVIEW = 'data/historical/town_review.csv'   # hand review of every town-level listing (3 November 2026)
+FE_GROUP = {'Chemicals': '28', 'Paint & varnish': '28', 'Soap': '28', 'Explosives': '28', 'Fertilizer & rendering': '28', 'Petroleum refining & asphalt': '29',
+            'Rubber': '30', 'Plastics': '30', 'Smelting & refining': '33', 'Foundry': '33', 'Iron & steel works': '33', 'Metal working': '34',
+            'Machine shop / machinery': '35', 'Transportation equipment': '37'}   # every other sector is EXT (extended)
 REVIEW_KEY = ['year', 'town', 'nkey', 'sector']
 
-def apply_review(df, rv):
+def apply_review(df, rv, town_level=False):
     """Apply the hand review of street placements (data/historical/street_review.csv, 3 November 2026): every listing that the
     previous run placed at a street address was read against the OCR text of its page. Verdicts:
       ok           keep as parsed
@@ -53,9 +57,14 @@ def apply_review(df, rv):
       not_works    dropped (a sales branch, dealer, office, residence or service, or the trade word belonged to a neighbour)
       other_town   moved to town_fix (and street_fix when given)
       doubtful     kept, flagged in the `review` column
+    The town review (data/historical/town_review.csv) adds other_sector (sector_fix replaces the sector and its F&E group).
     Rows are matched on (year, town, nkey, sector) as written by run_hist.py; a listing with no review row gets review = ''."""
     rv = rv.fillna('')
-    df = df.copy(); df['review'] = ''
+    for c in ('street_fix', 'town_fix', 'name_fix', 'sector_fix'):
+        if c not in rv: rv[c] = ''
+    df = df.copy()
+    if 'review' not in df: df['review'] = ''
+    if 'town_only' not in df: df['town_only'] = False
     key = lambda d: list(zip(d.year.astype(int), d.town.fillna(''), d.nkey.fillna(''), d.sector.fillna('')))
     idx = dict(zip(key(df), df.index))
     drop = []
@@ -63,12 +72,20 @@ def apply_review(df, rv):
         i = idx.get(k)
         if i is None: continue
         v = r.verdict; df.at[i, 'review'] = v
+        if town_level:                                   # town review: never placed at a street address nobody checked; the printed
+            df.at[i, 'town_only'] = True                # address is kept (R/denver_1880.R places 1878-85 Denver firms on the 1880
+            if r.town_fix and r.town_fix != r.town: df.at[i, 'street'] = ''   # building file) unless the listing moved town
         if v == 'not_works': drop.append(i); continue
         if v == 'fix_address' or r.street_fix:                                       # fix_address with no street_fix, or 'none': town only
             df.at[i, 'street'] = '' if r.street_fix == 'none' else r.street_fix
-        if r.name_fix: df.at[i, 'name'] = r.name_fix
-        if v == 'other_town': df.at[i, 'town'] = r.town_fix; df.at[i, 'town_src'] = 'review'
-    return df.drop(index=drop)
+        if r.name_fix:                                   # the corrected name also gives the key, so two copies of one firm in an edition collapse
+            df.at[i, 'name'] = r.name_fix; df.at[i, 'nkey'] = re.sub(r'[^A-Z0-9]', '', r.name_fix.upper())
+        if r.town_fix: df.at[i, 'town'] = r.town_fix; df.at[i, 'town_src'] = 'review'   # other_town, or a doubtful row whose town is clear
+        sf = r.sector_fix
+        if sf: df.at[i, 'sector'] = sf; df.at[i, 'fe_group'] = FE_GROUP.get(sf, 'EXT')
+    df = df.drop(index=drop)
+    # a correction can turn a listing into a copy of another one in the same edition (an advertisement moved to its own town)
+    return df.drop_duplicates(['year', 'town', 'nkey', 'sector'])
 
 def main():
     df = pd.read_csv('work/hist/hist_hazard_entries.csv', dtype={'street': str})
@@ -76,17 +93,28 @@ def main():
         rv = pd.read_csv(REVIEW, dtype=str); rv['year'] = rv.year.astype(int)
         n0 = len(df); df = apply_review(df, rv)
         print('street review:', rv.verdict.value_counts().to_dict(), '- dropped', n0 - len(df))
+    if os.path.exists(TOWN_REVIEW):
+        tv = pd.read_csv(TOWN_REVIEW, dtype=str); tv['year'] = tv.year.astype(int)
+        n0 = len(df); df = apply_review(df, tv, town_level=True)
+        print('town review:', tv.verdict.value_counts().to_dict(), '- dropped', n0 - len(df))
     G = pd.read_csv('data/historical/gnis_places_co.csv')
+    # historical places (mining camps, vanished towns) from the full USGS GNIS file (R/fetch_gnis_historical.R), and the directory's
+    # spelling variants of gazetteer names (data/historical/town_aliases.csv: EMPIRE CITY -> EMPIRE, CANON CITY -> CAÑON CITY)
+    if os.path.exists('data/historical/gnis_places_co_historical.csv'):
+        G = pd.concat([G, pd.read_csv('data/historical/gnis_places_co_historical.csv').assign(feature_class='Populated Place')], ignore_index=True)
     G['rank'] = G.feature_class.map({'Populated Place': 0, 'Census': 1, 'Civil': 2})
     G = G.sort_values('rank').drop_duplicates('name')
     TC = {r.name: (r.lat, r.lon, r.county_name) for r in G.itertuples()}
+    if os.path.exists('data/historical/town_aliases.csv'):   # the variant spelling is kept as the town; only the point comes from the gazetteer name
+        for v, n in pd.read_csv('data/historical/town_aliases.csv', dtype=str).dropna().values:
+            if n in TC and v not in TC: TC[v] = TC[n]
     sys.path.insert(0, 'pipeline')
     from tiger_geocode import Geocoder
     geo = Geocoder()
     out = []
     for r in df.itertuples():
         lat = lon = None; prec = 'none'
-        if street_ok(r):
+        if street_ok(r) and not getattr(r, 'town_only', False):
             st = hist_street(r.street, r.entry)
             la, lo, q = geo.geocode(st, r.town, '') if st else (None, None, 'none')
             if street_level(q): lat, lon, prec = la, lo, 'street'

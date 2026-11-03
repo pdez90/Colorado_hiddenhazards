@@ -1,60 +1,46 @@
 census,name,sector,listed,lon,lat
-1880,"Boyd, 0. C. agt Hercules Powder Co",Explosives,1884,-104.99718,39.7497
-1880,California Powder Works,Explosives,1884,-104.99689,39.75053
-1880,"Cohn, E. A. new and second Colorado Brass Works",Foundry,1884,-105.00285,39.74596
-1880,Practical,Machine shop / machinery,1884,-104.98332,39.76155
-1880,"TESCH, ROBT., 37 6Law. wTTC£frvrB|V Waz„*n WILMO 1, R. I)., 443 Holl",Machine shop / machinery,1878,-104.99677,39.75116
-1880,TSOMA8 COX. PROPRIETOR Central Foundry,Foundry,1878,-104.99202,39.75372
-1880,"MUELLER, O., 491 Champa",Metal working,1878,-104.99152,39.7486
-1880,"WCLBERBROS., 242 nth; D. R. Clay, C e n ’l Purchasing Ag't., Denve",Machine shop / machinery,1879,-104.99938,39.74917
-1880,"J. Gorman, CARRIAGE &LIGHT",Transportation equipment,1879,-104.99281,39.75294
+1880,Colorado Brass Works,Foundry,1884,-105.00285,39.74596
+1880,"Kingsley, H. M., 404 Lawrence",Machine shop / machinery,1878,-104.99677,39.75116
+1880,"Central Foundry (Thomas Cox), Wynkoop & 17th",Foundry,1878,-104.99202,39.75372
+1880,"Kellogg, E. L., 377 Larimer",Metal working,1878,-104.99152,39.7486
+1880,"Gorman, J. J., 433 Blake",Transportation equipment,1879,-104.99281,39.75294
 1880,MARSH & KELLER,Metal working,1881,-105.00265,39.74742
-1880,BAKING,Explosives,1881,-104.99827,39.74721
-1880,BOILER MAKERS. COLO RADOIRONWORKS,Machine shop / machinery,1881,-104.99902,39.75036
-1880,"M cLEOD J. J. & CO., 8th and Lawrence",Transportation equipment,1881,-105.00197,39.75051
+1880,Colorado Iron Works,Machine shop / machinery,1881,-104.99902,39.75036
 1880,Cann & Wilson,Transportation equipment,1881,-104.98456,39.7598
 1880,"Gorman, J. J",Transportation equipment,1881,-104.99552,39.7535
 1880,"Huselton, G. W. 6c C o",Soap,1881,-104.99577,39.7533
-1880,"Larned, Wm., agent California Powder Works",Explosives,1881,-105.00141,39.75023
 1880,"Lockwood, J. C",Metal working,1881,-105.00268,39.74604
-1880,Manhattan Smelting & Refining Co,Smelting & refining,1881,-104.99471,39.75162
 1880,"Melburn, L. A., blacksmith and",Transportation equipment,1881,-104.99147,39.75539
-1880,"Seibel, Gust, A., copper and sheet iron works",Iron & steel works,1881,-105.00197,39.75051
 1880,Swain 6c Ainsworth,Machine shop / machinery,1881,-104.99348,39.75242
 1880,"Walker, T. C machine shop",Machine shop / machinery,1881,-104.99678,39.75518
-1880,"Wolcott, H. R., assistant manager B. & C Smelting Co",Smelting & refining,1881,-104.99752,39.74943
 1880,"Young, John & Co",Metal working,1881,-105.00141,39.74652
-1880,BakerSc Co,Metal working,1882,-105.00184,39.75041
-1880,"Courvoisier, A., watchmaker, Crowley, John, blacksmith and 473 Lawrence",Machine shop / machinery,1882,-104.99539,39.74958
-1880,"Holzer 6l Aeby, copper, tin and",Metal working,1882,-104.99602,39.75311
-1880,"McBeth, J. C., physician, 16th McFarland 6c Haas",Metal working,1882,-104.98808,39.75663
-1880,"Magill &. Bryden, Western Carriage Works",Transportation equipment,1882,-105.00558,39.74571
+1880,Baker & Co.,Metal working,1882,-105.00184,39.75041
+1880,"Crowley, John",Machine shop / machinery,1882,-104.99539,39.74958
+1880,Holzer & Aeby,Metal working,1882,-104.99602,39.75311
+1880,McFarland & Haas,Metal working,1882,-104.98808,39.75663
+1880,Magill & Bryden,Transportation equipment,1882,-105.00558,39.74571
 1880,"Marsh, W. H. & Co",Metal working,1882,-104.9931,39.75412
-1880,"Price, Edwin 6c Co., job printReed, Ben., roofer and",Metal working,1882,-104.99898,39.74666
-1880,"M. A., millinery, Simpson &. Miller, National employment bureau and 345 Larimer. mf’rs age",Iron & steel works,1882,-105.00068,39.74687
-1880,"Williams, W. H., physician, Wolcott, H., R-, acting man375 Lawrence. ager B. & C Smelting",Smelting & refining,1882,-104.99799,39.74743
-1880,"Cook, Jr., & Co., J. real es­ Cox & Son, Thos foundry",Foundry,1883,-104.99678,39.75518
+1880,"Reed, Ben.",Metal working,1882,-104.99898,39.74666
+1880,"Seibel, Gustav A.",Metal working,1882,-105.00197,39.75051
+1880,Shaw & Roche,Metal working,1882,-105.00068,39.74687
+1880,"Cox & Son, Thos.",Foundry,1883,-104.99678,39.75518
 1880,Denver Freight Transfer Co. Denver Variety Machine Shop,Machine shop / machinery,1883,-105.0008,39.74681
-1880,Denver Furnace and,Iron & steel works,1883,-104.99974,39.74889
-1880,"ROCKYMOUNTAIN Howard & Co., J. billiards, Copper, Tin, and",Iron & steel works,1883,-104.99842,39.74858
+1880,Denver Furnace and Rolling Mills,Iron & steel works,1883,-104.99974,39.74889
+1880,"Holzer & Aeby (Rocky Mountain Copper, Tin and Sheet Iron Works)",Metal working,1883,-104.99842,39.74858
 1880,Melbum & Co. L. A. carriage and wagon works,Transportation equipment,1883,-105.00365,39.74545
 1880,"Brout, J. H",Metal working,1885,-104.99405,39.74664
 1880,"Davoran, W. T brass works",Foundry,1885,-104.99693,39.75057
 1880,"Day, E. S",Metal working,1885,-104.99587,39.74956
 1880,Denver Silver Plating Co,Metal working,1885,-104.99592,39.75318
-1880,"Fraser & Bessie, real estate and loans, 406 Arap, Fraser & Chalmers",Machine shop / machinery,1885,-104.99556,39.74807
-1880,Hazard Powder Co,Explosives,1885,-104.9989,39.75028
-1880,"Kennedy, C. E",Machine shop / machinery,1885,-104.99535,39.75347
-1880,"Lackey, A. L., jeweler, at Tryner’s. Laflin & Rand Powder Co",Explosives,1885,-104.99503,39.75098
-1880,with Painter & Gilbert foundry,Foundry,1885,-104.99762,39.74786
-1880,"A., tin, copper and",Metal working,1885,-104.99433,39.74783
+1880,Painter & Gilbert,Foundry,1885,-104.99762,39.74786
+1880,"Wahlgren, Jno. A.",Metal working,1885,-104.99433,39.74783
 1900,"Akerer, A,tailor, i8i2Champ Adams, Mrs Marie E J, mu­ Akron Carriage Works",Transportation equipment,1892,-104.99085,39.75042
 1900,"Austin, Percy,atty, 26Goodblk Bacon, Geo M, furnaces and",Metal working,1892,-104.99363,39.74526
 1900,"Lynch & Co, wh grain and McClaskey, R, carriage and wagon works",Transportation equipment,1892,-105.00405,39.74414
 1900,"Maginn, EJ",Transportation equipment,1892,-105.0027,39.75178
 1900,{S3 Nock &Garside,Machine shop / machinery,1892,-104.9959,39.75192
 1900,"Established il Ravenscroft, Frank C",Machine shop / machinery,1892,-105.00118,39.75039
-1900,Denver Variety Machine Shops,Machine shop / machinery,1885,-104.98828,39.75882
+1900,Denver Variety Machine Shop,Foundry; Machine shop / machinery,1885,-104.98828,39.75882
 1900,"go o BACON GEORGE M., dealer in hardware, stoves, ranges and furnaces, tin and",Metal working,1891,-104.99707,39.74694
 1900,"Button & Flaherty, (C. E. Burton and D. J. Flah erty,) proprs, Queen City Cornice Works",Metal working,1891,-104.991,39.7423
 1900,"PLATING WORKS, James Russel, propr, gold, silver, nickel, copper, bronze, brass and zinc",Metal working,1891,-104.99674,39.75256
@@ -70,18 +56,19 @@ census,name,sector,listed,lon,lat
 1900,CO Taubman Andy,Metal working,1891,-104.98815,39.74191
 1900,"Walker Thomas C., propr, Midland Foundry and Machine Works",Foundry,1891,-105.00368,39.7526
 1900,CO Welch Austin J,Metal working,1891,-104.98815,39.74191
-1900,Armstrong H. A,Machine shop / machinery; Metal working,1891,-104.99299,39.74977
-1900,Brickham Henry,Metal working,1891,-104.99552,39.75186
-1910,O ’BrienDL,Metal working,1910,-104.97173,39.7706
-1910,Armstrong H. A,Machine shop / machinery; Metal working,1891,-104.99299,39.74977
-1910,Brickham Henry,Metal working,1891,-104.99552,39.75186
-1910,CARD C S IRON WORKS CO THE,Iron & steel works,1910,-105.00005,39.75135
-1920,Neuman-Allen Chemical Co,Chemicals,1911,-104.99234,39.74223
+1900,Dorrington W H,Metal working,1892,-104.99378,39.74915
+1910,Davis Chemical Co,Chemicals,1910,-104.99956,39.74605
+1910,Gartman C E,Machine shop / machinery,1910,-104.9998,39.74902
+1910,O'Brien D L,Metal working,1910,-104.97173,39.7706
+1910,Hingley J A,Machine shop / machinery,1910,-104.99645,39.75249
+1910,Flaherty P J,Metal working,1910,-104.99544,39.73871
+1910,Dorrington W H,Metal working,1892,-104.99378,39.74915
+1910,Card C S Iron Works Co,Iron & steel works; Machine shop / machinery,1910,-105.00005,39.75135
 1920,Spangelberger R A,Metal working,1911,-104.99125,39.7502
 1920,Type Foundry,Foundry,1911,-104.99904,39.75082
+1920,“ Neuman-Alien Chemical Co,Chemicals,1911,-104.99234,39.74223
 1920,Jones Wm,Metal working,1911,-104.99389,39.74263
 1920,Bogue Lead Co,Smelting & refining,1911,-104.99675,39.75257
-1920,Fair Cornice Works Co The C W,Metal working,1911,-104.99095,39.75572
 1920,Degenhardt J A,Transportation equipment,1912,-105.00218,39.74933
 1920,Denver Iron Works & Foundry DENVER MASTER PLUMBERS,Foundry,1912,-104.99826,39.7541
 1920,Fox M,Metal working,1912,-105.01942,39.74066
@@ -90,14 +77,11 @@ census,name,sector,listed,lon,lat
 1920,DicksonEA,Machine shop / machinery,1913,-104.98801,39.75143
 1920,Freund &CoGeo,Metal working,1913,-104.99985,39.74986
 1920,HeinshonAE,Machine shop / machinery,1913,-104.99904,39.75082
-1920,O ’BrienDL,Metal working,1910,-104.97173,39.7706
 1920,SchmittWC,Metal working,1913,-104.99861,39.74995
 1920,ScottWE,Machine shop / machinery,1913,-104.99703,39.75248
-1920,WALTER LOUIS H,Metal working,1911,-105.00102,39.74895
 1920,WESTERN SMELTING WORKS,Smelting & refining,1913,-105.00109,39.7489
 1920,Type Foundry,Foundry,1913,-104.99904,39.75082
 1920,Brotherton C A,Metal working,1913,-104.99264,39.75315
-1920,Browne Iron Works Co,Iron & steel works,1912,-105.01591,39.73999
 1920,Colorado Brass Foundry Co,Foundry,1914,-105.00094,39.74901
 1920,Dencolo Chemical Co,Chemicals,1914,-104.99417,39.74514
 1920,Emery & Schultze,Machine shop / machinery,1914,-104.98973,39.75098
@@ -109,47 +93,45 @@ census,name,sector,listed,lon,lat
 1920,NOCK & GARSIDE,Machine shop / machinery,1911,-104.99698,39.75343
 1920,WESTERN SMELTING WORKS,Smelting & refining,1914,-105.00109,39.7489
 1920,White Bros,Metal working,1914,-104.99302,39.75005
-1920,The Davis Chemical,Chemicals,1914,-104.99956,39.74605
+1920,Davis Chemical Co,Chemicals,1910,-104.99956,39.74605
 1920,DENVER GAS & ELECTRIC Denver IronW orks & Foundry Co,Foundry,1915,-104.99826,39.7541
 1920,Fish A E,Machine shop / machinery,1915,-104.9907,39.75023
 1920,Fox P,Metal working,1915,-105.02096,39.73991
 1920,Mass Sol,Metal working,1915,-104.98956,39.74889
 1920,Shank & Ahearn,Machine shop / machinery,1913,-104.99591,39.75194
 1920,Somerville Brass Foundry,Foundry,1911,-104.99747,39.75201
-1920,Sprigg & Son Z T,Machine shop / machinery,1915,-104.99142,39.75099
-1920,Banner Chemical Co,Chemicals,1914,-105.00792,39.75557
+1920,Banner Chemical Co,Chemicals,1913,-105.00792,39.75557
 1920,Barry Silver Plating Works,Metal working,1916,-104.99293,39.74219
 1920,Denver Iron Works & Foundry Co The,Foundry,1916,-104.99826,39.7541
-1920,Dorrington W H,Metal working,1914,-104.99378,39.74915
-1920,Fair C W,Metal working,1915,-104.9973,39.75214
-1920,Gartman C E,Machine shop / machinery,1914,-104.9998,39.74902
+1920,Gartman C E,Machine shop / machinery,1910,-104.9998,39.74902
 1920,Johnson &Ball,Metal working,1916,-105.00942,39.75672
 1920,“ Western Brass Works,Foundry,1916,-105.00088,39.74906
 1920,Rex Iron Works Co The,Iron & steel works,1916,-105.00216,39.74595
 1920,Atlas Wire & Iron Works Co,Iron & steel works,1912,-104.98788,39.75692
 1920,civil,Metal working,1917,-104.99293,39.74219
+1920,Browne Iron Works Co,Iron & steel works,1912,-105.01591,39.73999
 1920,Clark-Magness Mfg Co,Soap,1917,-104.99066,39.74944
 1920,Enterprise Sheet Metal Works,Metal working,1917,-104.98293,39.74982
 1920,Enz Iron Foundry Co,Foundry,1917,-104.99747,39.75201
+1920,Fair C W,Metal working,1915,-104.9973,39.75214
 1920,Fortner L A,Metal working,1914,-105.03303,39.76938
 1920,Globe Sheet Metal Works,Metal working,1911,-105.01025,39.75452
 1920,Hoover Chemical Laboratory,Chemicals,1917,-104.98848,39.75058
+1920,O'Brien D L,Metal working,1910,-104.97173,39.7706
 1920,RELIABLE EMPLOYMENT RetaliaJL,Metal working,1917,-104.99231,39.74793
 1920,Western Brass Works,Foundry,1917,-105.00088,39.74906
-1920,Armstrong H. A,Machine shop / machinery; Metal working,1891,-104.99299,39.74977
-1920,Bio-Pharm Chemical Co,Chemicals,1917,-104.98409,39.75029
-1920,Brickham Henry,Metal working,1891,-104.99552,39.75186
-1920,CARD C S IRON WORKS CO THE,Iron & steel works,1910,-105.00005,39.75135
+1920,ARMSTRONG A,Machine shop / machinery,1917,-104.99299,39.74977
+1920,Brickham Henry,Metal working,1920,-104.99552,39.75186
 1920,eae N aE: machine shop,Machine shop / machinery,1920,-104.99149,39.75008
 1920,SOLORADO SHEET METAL,Metal working,1920,-104.9976,39.75191
 1920,Dawson W H,Metal working,1914,-104.99346,39.75243
+1920,Fair Cornice Works Co The C W,Metal working,1911,-104.99095,39.75572
 1920,Garnett-Klator Chemical Co,Chemicals,1920,-104.98898,39.7505
 1920,Gates Rubber Co,Rubber,1920,-104.98759,39.6986
 1920,Greubel T C,Metal working,1915,-104.98825,39.74269
-1920,Hingley J A,Machine shop / machinery,1914,-104.99645,39.75249
+1920,Hingley J A,Machine shop / machinery,1910,-104.99645,39.75249
 1920,James B L,Paint & varnish,1920,-104.99973,39.74454
 1920,Jesse H,Metal working,1920,-104.98992,39.75485
-1920,Johnson J A,Metal working,1917,-105.00942,39.75672
 1920,Kobel C F,Metal working,1920,-104.99181,39.75099
 1920,Lang Haes tinner,Metal working,1920,-104.9965,39.74065
 1920,Leson J,Metal working,1911,-105.0098,39.76215
@@ -159,40 +141,51 @@ census,name,sector,listed,lon,lat
 1920,Peerless Alloy Co,Foundry; Smelting & refining,1916,-105.00141,39.74895
 1920,Queen City Brass Works,Foundry,1911,-105.00118,39.74913
 1920,Retalia J L,Metal working,1916,-104.98936,39.74587
-1920,Schlitter Iron Foundry,Foundry,1920,-104.97361,39.77287
 1920,Schmitt W C,Metal working,1914,-104.99986,39.75016
 1920,Sigafoos T R,Machine shop / machinery,1920,-104.99314,39.74981
+1920,Sprigg & Son Z T,Machine shop / machinery,1915,-104.99142,39.75099
 1920,Stiles George A,Machine shop / machinery,1920,-105.00113,39.74886
 1920,Stone Chemical Co,Chemicals,1920,-104.99264,39.7491
 1920,Walker Manufacturing Co,Machine shop / machinery,1920,-105.00629,39.75401
 1920,Western Research Corporation,Chemicals,1920,-104.98825,39.74573
+1920,Bio-Pharm Chemical Co,Chemicals,1920,-104.98409,39.75029
 1920,Capitol Foundry Co,Foundry,1911,-105.0118,39.73956
-1920,Flaherty P J,Metal working,1911,-104.99544,39.73871
-1920,Slack-Horner Brass Mfg Co The,Metal working,1912,-104.99862,39.75083
+1920,Flaherty P J,Metal working,1910,-104.99544,39.73871
+1920,Johnson J A,Metal working,1917,-105.00942,39.75672
+1920,Schlitter Iron Foundry,Foundry,1920,-104.97361,39.77287
+1920,Dorrington W H,Metal working,1892,-104.99378,39.74915
 1920,Goldberg Bros,Metal working,1911,-104.99869,39.74703
-1920,Pioneer Iron & Wire Works Co,Metal working,1920,-105.00038,39.74839
-1920,MIDWEST STEEL AND IRON WORKS CO,Iron & steel works,1920,-105.01591,39.73999
+1920,Woeber Auto Body & Mfg. C o,Transportation equipment,1916,-104.94277,39.78642
+1920,Midwest Steel & Iron Works Co,Iron & steel works,1920,-105.01591,39.73999
 1920,Pekrul Iron Works,Iron & steel works,1911,-105.00317,39.74638
+1920,Pioneer Iron & Wire Works Co,Iron & steel works; Metal working,1911,-105.00038,39.74839
 1920,Silver State Plating Co,Metal working,1911,-105.0012,39.74838
-1930,Johnson J A,Metal working,1917,-105.00942,39.75672
+1920,Slack-Horner Brass Mfg Co,Foundry; Metal working,1911,-104.99862,39.75083
+1920,Card C S Iron Works Co,Iron & steel works; Machine shop / machinery,1910,-105.00005,39.75135
 1930,Queen City Brass Works,Foundry,1911,-105.00118,39.74913
-1930,Schlitter Iron Foundry,Foundry,1920,-104.97361,39.77287
+1930,Bio-Pharm Chemical Co,Chemicals,1920,-104.98409,39.75029
 1930,Acme Paint Works Inc,Paint & varnish,1929,-104.98632,39.75931
 1930,Capitol Foundry Co,Foundry,1911,-105.0118,39.73956
 1930,Card L J & Son Inc,Machine shop / machinery,1929,-105.00747,39.74408
 1930,Crites E B,Metal working,1929,-104.98741,39.71224
-1930,Flaherty P J,Metal working,1911,-104.99544,39.73871
+1930,Flaherty P J,Metal working,1910,-104.99544,39.73871
 1930,General Metals Foundry Go,Foundry,1929,-105.01023,39.7418
-1930,— Scott Automobile Body Co,Transportation equipment,1929,-104.97952,39.74497
-1930,Slack-Horner Brass Mfg Co The,Metal working,1912,-104.99862,39.75083
+1930,Johnson J A,Metal working,1917,-105.00942,39.75672
+1930,Schlitter Iron Foundry,Foundry,1920,-104.97361,39.77287
+1930,— Scott Automobile Body Co,Transportation equipment,1927,-104.97952,39.74497
 1930,Nock & Garside Elevator Co,Machine shop / machinery; Metal working,1927,-104.99698,39.75343
+1930,Dorrington W H,Metal working,1892,-104.99378,39.74915
 1930,Goldberg Bros,Metal working,1911,-104.99869,39.74703
 1930,Goldberg Simon,Metal working,1929,-105.02051,39.74067
-1930,Pioneer Iron & Wire Works Co,Metal working,1920,-105.00038,39.74839
-1930,MIDWEST STEEL AND IRON WORKS CO,Iron & steel works,1920,-105.01591,39.73999
+1930,Shattuck SW Chemical Co The,Chemicals,1927,-104.99008,39.68331
+1930,Woeber Auto Body & Mfg. C o,Transportation equipment,1916,-104.94277,39.78642
+1930,Midwest Steel & Iron Works Co,Iron & steel works,1920,-105.01591,39.73999
 1930,Midwest Machine Shop,Machine shop / machinery,1929,-104.99469,39.74981
 1930,Pekrul Iron Works,Iron & steel works,1911,-105.00317,39.74638
+1930,Pioneer Iron & Wire Works Co,Iron & steel works; Metal working,1911,-105.00038,39.74839
 1930,Silver State Plating Co,Metal working,1911,-105.0012,39.74838
+1930,Slack-Horner Brass Mfg Co,Foundry; Metal working,1911,-104.99862,39.75083
+1930,Card C S Iron Works Co,Iron & steel works; Machine shop / machinery,1910,-105.00005,39.75135
 1940,Metal Spinning & Plating Works Meyer Brokerage Go,Metal working,1932,-104.99953,39.74912
 1940,—Denver Sheet MetalWorks,Metal working,1932,-105.00632,39.74145
 1940,DilF soap mfrs,Soap,1935,-104.98933,39.72361
@@ -202,33 +195,38 @@ census,name,sector,listed,lon,lat
 1940,Hicks Arthur G^ machine shop,Machine shop / machinery,1935,-105.0139,39.7694
 1940,Western Chemical Go,Chemicals,1935,-105.00102,39.75183
 1940,Western Iron Foundry,Foundry,1935,-105.00297,39.74863
-1940,Johnson J A,Metal working,1917,-105.00942,39.75672
 1940,Queen City Brass Works,Foundry,1911,-105.00118,39.74913
+1940,Johnson J A,Metal working,1917,-105.00942,39.75672
 1940,Schlitter Iron Foundry,Foundry,1920,-104.97361,39.77287
-1940,— Scott Automobile Body Co,Transportation equipment,1929,-104.97952,39.74497
-1940,Slack-Horner Brass Mfg Co The,Metal working,1912,-104.99862,39.75083
-1940,Stiles Manufacturing Co The,Iron & steel works; Metal working,1932,-105.00113,39.74886
+1940,— Scott Automobile Body Co,Transportation equipment,1927,-104.97952,39.74497
+1940,Dorrington W H,Metal working,1892,-104.99378,39.74915
+1940,Goldberg Bros,Metal working,1911,-104.99869,39.74703
 1940,KesslerFred,Metal working,1933,-104.98396,39.75948
 1940,Berry )machinists,Machine shop / machinery,1933,-104.98728,39.75056
+1940,Stiles Manufacturing Co The,Iron & steel works; Machine shop / machinery; Metal working,1932,-105.00113,39.74886
 1940,Whipple GhasI,Metal working,1933,-104.99034,39.7495
 1940,A-C Motors & Metal Works,Metal working,1932,-104.99332,39.75088
 1940,Commercial Chemical Corp,Chemicals,1939,-104.99894,39.75059
-1940,Denver Grinding Ball & Foundry,Foundry,1935,-105.0119,39.73977
 1940,Dunn Sheet Metal Wks,Metal working,1939,-104.99467,39.75253
 1940,Fox & Co Inc,Machine shop / machinery,1939,-104.99213,39.75075
-1940,Goldberg Bros,Metal working,1911,-104.99869,39.74703
 1940,Goldberg Simon,Metal working,1929,-105.02051,39.74067
-1940,Pioneer Iron & Wire Works Co,Metal working,1920,-105.00038,39.74839
 1940,Rocky Mountain Chromium Plating Co,Metal working,1939,-104.99953,39.74912
 1940,Square Deal Manufacturing Co,Machine shop / machinery,1939,-104.98718,39.75729
 1940,Stewart Fred H,Machine shop / machinery,1939,-104.99288,39.74029
 1940,Western Bronze & Brass Foundry Western File Service,Foundry,1939,-105.00283,39.74844
-1940,Pyramid Petroleum Co,Petroleum refining & asphalt,1932,-104.99355,39.71471
+1940,Shattuck SW Chemical Co The,Chemicals,1927,-104.99008,39.68331
 1940,Thompson-Hayward Chemical C o,Chemicals,1935,-104.99147,39.75636
-1940,MIDWEST STEEL AND IRON WORKS CO,Iron & steel works,1920,-105.01591,39.73999
+1940,Woeber Auto Body & Mfg. C o,Transportation equipment,1916,-104.94277,39.78642
+1940,Midwest Steel & Iron Works Co,Iron & steel works,1920,-105.01591,39.73999
 1940,Wompey Sheet Metal Works,Metal working,1933,-105.01061,39.75732
 1940,Denver Metals Foundry,Foundry,1935,-104.99686,39.75266
+1940,Denver Grinding Ball & Foundry Co,Foundry,1935,-105.0119,39.73977
 1940,Harner Chas D,Machine shop / machinery,1939,-104.99054,39.73216
+1940,McPherson Edw B,Foundry,1939,-104.994,39.73555
 1940,Midwest Machine Shop,Machine shop / machinery,1929,-104.99469,39.74981
 1940,Pekrul Iron Works,Iron & steel works,1911,-105.00317,39.74638
+1940,Pioneer Iron & Wire Works Co,Iron & steel works; Metal working,1911,-105.00038,39.74839
 1940,Silver State Plating Co,Metal working,1911,-105.0012,39.74838
+1940,South Denver Sheet Metal & Furnace Works,Metal working,1935,-104.98762,39.69095
+1940,Slack-Horner Brass Mfg Co,Foundry; Metal working,1911,-104.99862,39.75083
+1940,Card C S Iron Works Co,Iron & steel works; Machine shop / machinery,1910,-105.00005,39.75135

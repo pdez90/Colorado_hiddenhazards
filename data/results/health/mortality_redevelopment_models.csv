@@ -1,13 +1,13 @@
 model,outcome,term,rr,lo,hi,p,n_obs
 All three groups together,deaths_nat,hidden,1.0169,0.7417,1.3942,0.917,156400
-All three groups together,deaths_nat,known,0.8252,0.4549,1.4971,0.527,156400
-All three groups together,deaths_nat,pre1960,1.0726,0.8746,1.3155,0.501,156400
+All three groups together,deaths_nat,known,0.8252,0.4548,1.4971,0.527,156400
+All three groups together,deaths_nat,pre1960,1.0722,0.8754,1.3132,0.501,156400
 One group: hidden,deaths_nat,hidden,0.9698,0.7141,1.3171,0.844,156400
 One group: known,deaths_nat,known,0.8963,0.5576,1.4408,0.651,156400
-One group: pre1960,deaths_nat,pre1960,0.9809,0.7759,1.24,0.872,156400
-All three groups together,deaths_all,hidden,1.0395,0.777,1.3907,0.794,159360
+One group: pre1960,deaths_nat,pre1960,0.981,0.7771,1.2383,0.872,156400
+All three groups together,deaths_all,hidden,1.0396,0.777,1.3907,0.794,159360
 All three groups together,deaths_all,known,0.6734,0.3472,1.3061,0.242,159360
-All three groups together,deaths_all,pre1960,1.1486,0.94,1.4035,0.175,159360
+All three groups together,deaths_all,pre1960,1.1476,0.9404,1.4005,0.175,159360
 One group: hidden,deaths_all,hidden,0.9438,0.7153,1.2453,0.682,159360
 One group: known,deaths_all,known,0.7937,0.4749,1.3265,0.378,159360
-One group: pre1960,deaths_all,pre1960,0.9529,0.7422,1.2233,0.705,159360
+One group: pre1960,deaths_all,pre1960,0.9532,0.7436,1.2218,0.705,159360
