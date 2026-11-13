@@ -70,12 +70,12 @@ message(sprintf("%.1f%% of 1940 residents found in the GRF; %.1f%% with a street
 pts <- P[!is.na(x), .(x, y)][, k := .I]; U <- unique(pts[, .(x, y)]); U[, u := .I]
 Hs <- fread(file.path(A, "historical_sites.csv"))[town == "DENVER" & precision != "town" & !is.na(lat) & fe_hazard %in% c(TRUE, "True") & first_year <= 1940]
 hx <- st_coordinates(st_transform(st_as_sf(Hs[, .(lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM))
-nn <- RANN::nn2(hx, as.matrix(U[, .(x, y)]), k = min(nrow(hx), 200), searchtype = "radius", radius = 2000)
+nn <- RANN::nn2(hx, as.matrix(U[, .(x, y)]), k = min(nrow(hx), 600), searchtype = "radius", radius = 2000)
 d <- nn$nn.dists; d[nn$nn.idx == 0] <- NA
 U[, `:=`(haz_k = rowSums(exp(-0.5 * (d / 500)^2), na.rm = TRUE), haz_500 = as.numeric(rowSums(d <= 500, na.rm = TRUE) > 0),
          haz_km = fifelse(is.na(d[, 1]), 2, d[, 1] / 1000))]
 S <- fread(file.path(A, "sites.csv"))[fe_hazard %in% c(TRUE, "True") & geo_level %in% c("address", "address_approx") & !is.na(lat) & !is.na(lon)]
-kern <- function(px) { if (!nrow(px)) return(rep(0, nrow(U))); q <- RANN::nn2(px, UXY, k = min(nrow(px), 300), searchtype = "radius", radius = 2000)
+kern <- function(px) { if (!nrow(px)) return(rep(0, nrow(U))); q <- RANN::nn2(px, UXY, k = min(nrow(px), 600), searchtype = "radius", radius = 2000)
   dd <- q$nn.dists; dd[q$nn.idx == 0] <- NA; rowSums(exp(-0.5 * (dd / 500)^2), na.rm = TRUE) }
 sx <- function(d) st_coordinates(st_transform(st_as_sf(d[, .(lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM))
 UXY <- as.matrix(U[, .(x, y)]); hk <- kern(sx(S[radar == "Not on any list"])); kk <- kern(sx(S[radar != "Not on any list"]))

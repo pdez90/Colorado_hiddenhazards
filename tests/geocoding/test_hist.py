@@ -177,3 +177,90 @@ def test_every_listing_was_reviewed_once_the_town_review_exists():
     missing = L[L.review.fillna('') == '']
     assert missing.empty, f"{len(missing)} listings have no review verdict, e.g. {missing[['year', 'town', 'name']].head(5).values.tolist()}"
     assert not L.review.eq('not_works').any()
+
+
+# ---- geocode_hist.main(): no-town review (data/historical/notown_review.csv) and homonym overrides (town_homonyms.csv), 13 Nov 2026
+GAZ = pd.DataFrame(dict(name=['DENVER', 'GOLD HILL', 'SEDGWICK'], feature_class=['Populated Place'] * 3, county_name=['Denver', 'Summit', 'Sedgwick'],
+                        lat=[39.7392, 39.5453, 40.9364], lon=[-104.9847, -106.0484, -102.5255]))
+
+def entry(year, town, nkey, name, street='', sector='Foundry', page=1):
+    return dict(vol='v', year=year, page=page, town=town, town_src='heading' if town else 'none', name=name, entry=name, trade='foundry', sector=sector, fe_group=gh.FE_GROUP.get(sector, 'EXT'),
+                street=street, mode='', is_person=False, office=False, name_quality='ok', nkey=nkey)
+
+def run_main(tmp_path, monkeypatch, geocoder, entries, **files):
+    """Run gh.main() in an empty directory laid out like the repository: the entries, the small gazetteer above and whichever of
+    street_review / town_review / notown_review / town_homonyms are given; the TIGER index is the synthetic one of the test suite."""
+    import sys, tiger_geocode
+    (tmp_path / 'work' / 'hist').mkdir(parents=True); (tmp_path / 'data' / 'historical').mkdir(parents=True)
+    pd.DataFrame(entries).to_csv(tmp_path / 'work/hist/hist_hazard_entries.csv', index=False)
+    GAZ.to_csv(tmp_path / 'data/historical/gnis_places_co.csv', index=False)
+    for name, d in files.items(): pd.DataFrame(d).to_csv(tmp_path / f'data/historical/{name}.csv', index=False)
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(sys, 'path', list(sys.path))                    # main() puts 'pipeline' at the front of sys.path
+    monkeypatch.setattr(tiger_geocode, 'Geocoder', lambda: geocoder)
+    gh.main()
+    return pd.read_csv(tmp_path / 'work/hist/hist_hazard_geocoded.csv', dtype={'street': str, 'review': str}).fillna({'street': '', 'town': ''})
+
+def review(rows, cols=('year', 'town', 'nkey', 'sector', 'verdict', 'town_fix', 'street_fix', 'sector_fix', 'name_fix')):
+    return pd.DataFrame(rows, columns=list(cols))
+
+
+def test_main_notown_entry_takes_town_street_and_name_from_its_review_row(tmp_path, monkeypatch, geocoder):
+    """An entry extracted without a town is matched on town = '' and gets town_fix, street_fix and name_fix (the key follows the
+    name); it may then be placed at the street. not_works, a doubtful row without town_fix and an entry with no row are dropped."""
+    E = [entry(1913, '', 'KALAMATHFNDRY', 'Kalamath Fndry'), entry(1913, '', 'DEALER', 'Dealer'), entry(1913, '', 'WHERE', 'Where'),
+         entry(1913, '', 'NOROW', 'No Row', sector='Tannery'), entry(1913, '', 'TOWNLEVEL', 'Town Level', street='9 Elm'), entry(1913, '', 'OFFICE', 'Assay Co', sector='Foundry')]
+    nv = review([(1913, '', 'KALAMATHFNDRY', 'Foundry', 'ok', 'DENVER', '450 S Kalamath', '', 'Kalamath Foundry Co'),
+                 (1913, '', 'DEALER', 'Foundry', 'not_works', '', '', '', ''),
+                 (1913, '', 'WHERE', 'Foundry', 'doubtful', '', '', '', ''),
+                 (1913, '', 'TOWNLEVEL', 'Foundry', 'ok', 'DENVER', 'none', '', ''),
+                 (1913, '', 'OFFICE', 'Foundry', 'other_sector', 'DENVER', 'none', 'Assay office', '')])
+    out = run_main(tmp_path, monkeypatch, geocoder, E, notown_review=nv).set_index('nkey')
+    assert sorted(out.index) == ['KALAMATHFOUNDRYCO', 'OFFICE', 'TOWNLEVEL']
+    r = out.loc['KALAMATHFOUNDRYCO']
+    assert (r.town, r.street, r['name'], r.review, r.town_src) == ('DENVER', '450 S Kalamath', 'Kalamath Foundry Co', 'ok', 'review')
+    assert r.precision == 'street' and r.lat == pytest.approx(39.712 - 50 / 98 * 0.0015, abs=1e-9) and r.county == 'Denver'
+    t = out.loc['TOWNLEVEL']                                             # street_fix 'none': the parsed address is not used
+    assert (t.town, t.street, t.precision) == ('DENVER', '', 'town') and (t.lat, t.lon) == (39.7392, -104.9847)
+    o = out.loc['OFFICE']
+    assert (o.sector, o.fe_group, o.review, o.precision) == ('Assay office', 'EXT', 'other_sector', 'town')
+
+
+def test_main_notown_row_that_becomes_a_copy_of_a_reviewed_listing_is_the_one_dropped(tmp_path, monkeypatch, geocoder):
+    """The no-town entry stands first in the entries file; after the review it has the key of a Denver listing of the same edition
+    that the town review kept. The reviewed listing (page 7, town review verdict, town_only) must survive, not the no-town row."""
+    E = [entry(1913, '', 'QUEENCITY', 'Queen City advert', page=3), entry(1913, 'DENVER', 'QUEENCITY', 'Queen City Iron Works', page=7),
+         entry(1913, '', 'OTHER', 'Other Works', page=4)]
+    tv = review([(1913, 'DENVER', 'QUEENCITY', 'Foundry', 'doubtful', '', '', '', '')])
+    nv = review([(1913, '', 'QUEENCITY', 'Foundry', 'ok', 'DENVER', '450 S Kalamath', '', ''), (1913, '', 'OTHER', 'Foundry', 'ok', 'DENVER', 'none', '', '')])
+    out = run_main(tmp_path, monkeypatch, geocoder, E, town_review=tv, notown_review=nv)
+    assert out.nkey.tolist() == ['QUEENCITY', 'OTHER']                   # listings that had a town first, then the no-town entries
+    q = out.iloc[0]
+    assert (q.page, q['name'], q.review, q.street) == (7, 'Queen City Iron Works', 'doubtful', '') and bool(q.town_only) and q.precision == 'town'
+    # the same frames without the sort: apply_review alone keeps whichever copy stands first, here the no-town row
+    df = gh.apply_review(pd.DataFrame(E), tv, town_level=True)
+    assert gh.apply_review(df, nv).iloc[0].page == 3
+    assert gh.apply_review(df.assign(_nt=(df.town == '')).sort_values('_nt', kind='stable').drop(columns='_nt'), nv).iloc[0].page == 7
+
+
+HOMONYMS = pd.DataFrame(dict(town=['GOLD HILL', 'SEDGWICK'], year_from=[1871, 1871], year_to=[1900, 1888], county=['Boulder', 'Saguache'],
+                             lat=[40.0633, None], lon=[-105.4096, None], note=['Boulder County camp', 'no point']))
+
+def test_main_homonym_override_applies_only_in_its_years(tmp_path, monkeypatch, geocoder):
+    E = [entry(1880, 'GOLD HILL', 'A', 'A Works'), entry(1900, 'GOLD HILL', 'B', 'B Works'), entry(1910, 'GOLD HILL', 'C', 'C Works'),
+         entry(1880, 'DENVER', 'D', 'D Works')]
+    out = run_main(tmp_path, monkeypatch, geocoder, E, town_homonyms=HOMONYMS).set_index('nkey')
+    for k in 'AB':                                                       # year_from and year_to are inclusive
+        assert (out.loc[k, 'lat'], out.loc[k, 'lon'], out.loc[k, 'county'], out.loc[k, 'precision']) == (40.0633, -105.4096, 'Boulder', 'town')
+    assert (out.loc['C', 'lat'], out.loc['C', 'lon'], out.loc['C', 'county']) == (39.5453, -106.0484, 'Summit')       # the gazetteer row
+    assert (out.loc['D', 'lat'], out.loc['D', 'county']) == (39.7392, 'Denver')                                    # other towns untouched
+
+
+def test_main_blank_coordinate_override_leaves_the_listing_unplaced(tmp_path, monkeypatch, geocoder):
+    """Blank lat/lon: the place the directory means has no point, so the listing must not go to its namesake's."""
+    E = [entry(1882, 'SEDGWICK', 'A', 'A Assay'), entry(1920, 'SEDGWICK', 'B', 'B Works'), entry(1882, 'NOWHERE', 'C', 'C Works')]
+    out = run_main(tmp_path, monkeypatch, geocoder, E, town_homonyms=HOMONYMS).set_index('nkey')
+    a = out.loc['A']
+    assert a.precision == 'none' and pd.isna(a.lat) and pd.isna(a.lon) and a.county == 'Saguache'
+    assert (out.loc['B', 'precision'], out.loc['B', 'lat'], out.loc['B', 'county']) == ('town', 40.9364, 'Sedgwick')
+    assert out.loc['C', 'precision'] == 'none' and pd.isna(out.loc['C', 'county'])                                  # a town with no point at all

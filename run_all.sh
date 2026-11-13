@@ -43,11 +43,9 @@ if [[ -d work/hist/pdf || -d work/hist/text ]]; then
   py pipeline/historical/link_hist.py      # firms across editions; links to 1961-2002 directory -> data/historical/*
   py pipeline/historical/app_hist.py       # app/data/historical_sites.csv, site_precursors.csv
   py pipeline/app_radium.py                # app/data/radium_firms.csv (radium, uranium, vanadium firms in both directories)
+  py pipeline/rekey_sanborn_observations.py   # hand-recorded Sanborn observations: site ids re-keyed by address after a rebuild
 fi
-# ---- health analyses (pipeline/health): EnviroScreen block groups are public; the mortality model needs restricted
-# Colorado death records aggregated to block groups in work/health/ (see pipeline/health/mortality_bg.py)
-if [[ -f work/health/enviroscreen_v2_blockgroups.geojson ]]; then
-  py pipeline/health/build_exposures.py
-  py pipeline/health/health_models.py
-  [[ -f work/health/deaths_bg_year.csv ]] && py pipeline/health/mortality_bg.py
-fi
+# ---- health analyses: the published tract and block-group health tables are the R versions, run at the end of rerun_results.sh
+# (R/prepare_health_inputs.R -> build_exposures -> health_models -> mortality_bg -> pipeline/health/write_health_tables.py). The Python
+# versions in pipeline/health/ (they need libpysal/spreg) write the same file names, so they are not run here; run them by hand only
+# to compare with R, and rerun the R chain afterwards.

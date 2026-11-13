@@ -67,3 +67,8 @@ test_that("pick(): a common-element parcel is replaced by a unit parcel at the s
   expect_equal(s2$SCHEDNUM, "CE")                                                         # no unit parcel: the common element stays, not the neighbour's vacant lot
   expect_equal(E$broad(s2$D_CLASS_CN, s2$ZONE_ID), "Residential")
 })
+
+test_that("pick(): a same-side parcel 100 or more house numbers away is only a same-street match", {
+  s <- E$pick(site("1400 Larimer St"), "address")            # even, like 1200 and 1210, but two blocks away
+  expect_equal(s$parcel_match, "same street, nearest parcel"); expect_equal(s$SCHEDNUM, "B")   # the nearest parcel on the street
+})

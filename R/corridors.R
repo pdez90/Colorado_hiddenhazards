@@ -99,13 +99,15 @@ fwrite(ENT, "data/results/corridors/entry_models.csv")
 tr <- st_make_valid(st_transform(st_read("app/data/enviroscreen_tracts.geojson", quiet = TRUE), UTM))
 pts <- st_as_sf(unique(L[, .(estab_id, year, x, y, hazardous)]), coords = c("x", "y"), crs = UTM)
 j <- st_join(pts, tr["GEOID"], join = st_within); jd <- as.data.table(st_drop_geometry(j))
+jd <- jd[!duplicated(jd[, .(estab_id, year)])]   # the simplified outlines overlap slightly: a point on a shared edge is counted once
 hist_t <- jd[!is.na(GEOID), .(firm_years = .N, haz_firm_years = sum(hazardous), firms = uniqueN(estab_id), first = min(year)), by = GEOID]
 S <- fread("app/data/sites.csv", colClasses = c(GEOID = "character"))
 hid <- S[fe_hazard == TRUE & radar == "Not on any list", .(hidden_sites = .N), by = .(GEOID = substr(GEOID, 1, 11))]
 TT <- as.data.table(st_drop_geometry(tr)); TT[, GEOID := as.character(GEOID)]
+TT[, area_km2 := as.numeric(st_area(tr)) / 1e6]   # before the merges below, which re-sort TT by GEOID (tr stays in file order)
 TT <- merge(merge(TT, hist_t, by = "GEOID", all.x = TRUE), hid, by = "GEOID", all.x = TRUE)
 for (v in c("firm_years", "haz_firm_years", "firms", "hidden_sites")) TT[is.na(get(v)), (v) := 0]
-TT[, area_km2 := as.numeric(st_area(tr)) / 1e6]; TT[, log_density := log1p(population / area_km2)]
+stopifnot(!anyNA(TT$area_km2), !anyDuplicated(TT$GEOID)); TT[, log_density := log1p(population / area_km2)]
 TT <- TT[population >= 500]
 queen_listw <- function(g, snap = 2) nb2listw(poly2nb(g, queen = TRUE, snap = snap), style = "W", zero.policy = TRUE)   # snap 2 m (UTM): simplified outlines
 w <- queen_listw(tr[match(TT$GEOID, as.character(tr$GEOID)), ])

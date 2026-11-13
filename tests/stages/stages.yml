@@ -1,0 +1,683 @@
+# Stage manifest (proposal, review 4): every committed file under `roots` is the declared output of exactly one stage,
+# a declared byte-identical copy of one (`copies`, app/data only), or listed under `unscripted` with the reason.
+# tests/stages/test_stage_H_publication.py::test_every_committed_file_is_declared_once enforces it.
+# Pattern syntax: fnmatch globs; "glob!excl" removes basenames matching `excl` from the glob.
+# run_by: run_all.sh | rerun_results.sh | none (a script no orchestrator runs).
+roots:
+- data/results
+- data/historical
+- data/by_year
+- app/data
+orchestrators:
+  run_all.sh: inventory + pre-1960 chains (Python)
+  rerun_results.sh: result scripts (R) + health tables + paper tables + SI + manifest
+  none: run by hand; no orchestrator calls it
+stages:
+- id: export
+  script: pipeline/export.py
+  run_by: run_all.sh
+  inputs:
+  - work/inv/records_final.pkl
+  - work/inv/sites_final.pkl
+  outputs:
+  - data/results/CO_directory_listings_1961-2002.csv
+  - data/results/CO_hazardous_listings_not_street_located.csv
+  - data/results/CO_hazardous_sites_1961-2002.xlsx
+  - data/results/CO_historical_industrial_sites.geojson
+  note: 'R/fix_direction_geocodes.R (run_all.sh) later rewrites the listings and sites in place: a second writer of the same files'
+- id: export_by_year
+  script: pipeline/export_by_year.py
+  run_by: run_all.sh
+  inputs:
+  - work/inv/records_final.pkl
+  outputs:
+  - data/by_year/CO_DCM_*_geocoded.csv
+  copies:
+  - app/data/by_year/CO_DCM_*_geocoded.csv
+  note: app/data/by_year is copied by a cp line in run_all.sh; R/fix_direction_geocodes.R rewrites data/by_year in place before the copy
+- id: validate_geocoding
+  script: pipeline/validate_geocoding.py
+  run_by: run_all.sh
+  inputs:
+  - work/inv/records_final.pkl
+  - work/inv/frs_addr.pkl
+  outputs:
+  - data/results/geocoding_coverage_by_year.csv
+  - data/results/geocoding_validation.md
+  - data/results/geocoding_validation_frs.csv
+  copies:
+  - app/data/geocoding_validation_frs.csv
+- id: validate_addresspoints
+  script: pipeline/validate_addresspoints.py
+  run_by: run_all.sh
+  inputs:
+  - work/inv/sites_final.pkl
+  - gis.colorado.gov address points (network)
+  outputs:
+  - data/results/geocoding_validation_addresspoints.csv
+- id: app_inputs
+  script: pipeline/app_inputs.py
+  run_by: run_all.sh
+  inputs:
+  - work/inv/sites_final.pkl
+  - work/reg/*
+  - work/health/enviroscreen*
+  outputs:
+  - app/data/sites.csv
+  - app/data/site_years.csv
+  - app/data/tri_facilities.csv
+  - app/data/cleanup_sites.csv
+  - app/data/schools.csv
+  - app/data/health_facilities.csv
+  - app/data/enviroscreen_tracts.geojson
+  - data/results/known_hidden/site_match_evidence.csv
+- id: app_site_firms
+  script: pipeline/app_site_firms.py
+  run_by: run_all.sh
+  inputs:
+  - work/inv/records_final.pkl
+  - app/data/sites.csv
+  outputs:
+  - app/data/site_firms.csv
+- id: app_industry_mix
+  script: pipeline/app_industry_mix.py
+  run_by: run_all.sh
+  inputs:
+  - work/inv/records_final.pkl
+  outputs:
+  - app/data/industry_mix.csv
+  - app/data/firm_longevity.csv
+- id: hist_link
+  script: pipeline/historical/link_hist.py
+  run_by: run_all.sh
+  inputs:
+  - work/hist/hist_hazard_entries.csv (run_hist.py)
+  - data/historical/street_review.csv
+  - data/historical/town_review.csv
+  - data/historical/town_aliases.csv
+  - data/historical/gnis_places_co*.csv
+  - app/data/sites.csv
+  outputs:
+  - data/historical/CO_pre1960_hazardous_listings.csv
+  - data/historical/CO_pre1960_hazardous_sites.csv
+  note: chain run_hist.py -> geocode_hist.py (applies the two review files) -> link_hist.py
+- id: hist_app
+  script: pipeline/historical/app_hist.py
+  run_by: run_all.sh
+  inputs:
+  - data/historical/CO_pre1960_hazardous_sites.csv
+  outputs:
+  - app/data/historical_sites.csv
+  - app/data/site_precursors.csv
+- id: app_radium
+  script: pipeline/app_radium.py
+  run_by: rerun_results.sh
+  inputs:
+  - data/historical/CO_pre1960_hazardous_listings.csv
+  - data/results/CO_directory_listings_1961-2002.csv
+  outputs:
+  - app/data/radium_firms.csv
+- id: fetch_gnis_historical
+  script: R/fetch_gnis_historical.R
+  run_by: none
+  inputs:
+  - USGS GNIS archive (network)
+  outputs:
+  - data/historical/gnis_places_co_historical.csv
+- id: address_only_name_check
+  script: pipeline/address_only_name_check.py
+  run_by: rerun_results.sh
+  inputs:
+  - app/data/sites.csv
+  - data/results/known_hidden/site_match_evidence.csv
+  outputs:
+  - data/results/known_hidden/address_only_name_check.csv
+  note: run by rerun_results.sh before the paper tables (added 13 Nov)
+- id: check_r_vs_python
+  script: pipeline/check_r_vs_python.py
+  run_by: none
+  inputs:
+  - work/inv/*.pkl
+  - R hand-off files
+  outputs:
+  - data/results/r_vs_python.md
+  note: 'stale: reports 9,848 sites / 4,312 hazardous sites (current all-editions run: 4,669)'
+- id: edition_coverage
+  script: R/edition_coverage.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/full_inventory/CO_directory_listings_1961-2002.csv
+  - data/historical/CO_pre1960_hazardous_listings.csv
+  - work/tsv
+  outputs:
+  - data/results/edition_coverage.csv
+  copies:
+  - app/data/edition_coverage.csv
+- id: benchmarks
+  script: R/benchmarks.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/full_inventory/*
+  - CBP county files, NHGIS (network)
+  outputs:
+  - data/results/benchmarks/*
+  copies:
+  - app/data/atack_colorado_by_sector.csv
+  - app/data/cbp_vs_directory_county.csv
+  - app/data/cbp_vs_directory_state.csv
+  - app/data/nhgis_mfg_vs_directory.csv
+- id: fetch_hmda
+  script: R/fetch_hmda.R
+  run_by: none
+  inputs:
+  - CFPB HMDA 2018-2021 (network)
+  outputs:
+  - data/results/hmda_tracts_2018_2021.csv
+  copies:
+  - app/data/hmda_tracts_2018_2021.csv
+- id: grf_eds
+  script: R/grf_eds.R
+  run_by: none
+  inputs:
+  - work/census/brown GRF (conditions of use)
+  - work/tiger
+  outputs:
+  - data/results/denver_eds/denver_eds_*.geojson
+  - data/results/denver_eds/ed_geocoding_R.csv
+- id: denver_1880
+  script: R/denver_1880.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/census/brown/1880 (conditions of use)
+  - data/historical/CO_pre1960_hazardous_listings.csv
+  outputs:
+  - data/results/denver_1880/*
+- id: denver_eds_analysis
+  script: R/denver_eds_analysis.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/results/denver_eds/denver_eds_*.geojson
+  - work/census/ipums ED aggregates
+  - data/historical/CO_pre1960_hazardous_sites.csv
+  - data/results/denver_1880/firms_1878_1885_placed.csv
+  outputs:
+  - data/results/denver_eds/ed_*.csv!ed_geocoding_R.csv
+  - data/results/denver_eds/denver_eds_summary.md
+  - app/data/denver_eds.geojson
+  - app/data/denver_eds_firms.csv
+  copies:
+  - app/data/ed_dissimilarity_fixed_grid.csv
+  - app/data/ed_distance_models.csv
+  - app/data/ed_firm_shares.csv
+  - app/data/ed_year_groups.csv
+- id: county_panel_1880_1940
+  script: R/county_panel_1880_1940.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/census (NHGIS county extract)
+  - data/historical/CO_pre1960_hazardous_listings.csv
+  outputs:
+  - data/results/county_panel_1880_1940.csv
+  - app/data/co_counties_1880_1940.geojson
+- id: ej_panel
+  script: R/ej_panel.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/census/denver_tract_panel.csv
+  - app/data/sites.csv
+  - app/data/site_years.csv
+  outputs:
+  - data/results/ej_panel_*.csv
+  copies:
+  - app/data/ej_panel_*.csv
+- id: app_census_layers
+  script: R/app_census_layers.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/census/denver_tract_panel.csv
+  - data/results/corridors/*
+  - data/results/denver_1880/*
+  - data/results/hmda_tracts_2018_2021.csv
+  - data/historical/CO_pre1960_hazardous_listings.csv
+  outputs:
+  - app/data/tract_panel.csv
+  - app/data/co_tracts_2010.geojson
+  - app/data/corridor_cells.csv
+  - app/data/corridor_eg.csv
+  - app/data/corridor_transitions.csv
+  - app/data/denver_1880_*.csv
+  - app/data/denver_city_1880_1940.csv
+  - app/data/pre1960_listings.csv
+  note: runs twice (before and after corridors)
+- id: known_hidden_sensitivity
+  script: R/known_hidden_sensitivity.R
+  run_by: rerun_results.sh
+  inputs:
+  - app/data/sites.csv
+  - data/results/known_hidden/site_match_evidence.csv
+  - app/data/enviroscreen_tracts.geojson
+  - app/data/holc_denver.geojson
+  outputs:
+  - data/results/known_hidden/holc_grade_by_status.csv
+  - data/results/known_hidden/proximity_only_by_tier_distance.csv
+  - data/results/known_hidden/sensitivity_counts.csv
+  - data/results/known_hidden/summary.md
+  - data/results/known_hidden/tract_comparison_enviroscreen.csv
+  note: reads app/data/holc_denver.geojson, which holc_covenants writes one step LATER
+- id: holc_covenants
+  script: R/holc_covenants.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/holc (Mapping Inequality)
+  - data/covenants/*
+  - app/data/tract_panel.csv
+  - data/results/zoning_1929/zoning_shares_*.csv
+  - data/results/denver_eds/*
+  - data/results/hmda_tracts_2018_2021.csv
+  outputs:
+  - data/results/holc/*
+  - app/data/holc_denver.geojson
+  - app/data/covenants_denver.csv
+  - app/data/eds_holc_*.geojson
+  copies:
+  - app/data/ed_holc_classes.csv
+  - app/data/hmda_by_grade.csv
+  - app/data/hmda_grade_model.csv
+  - app/data/holc_boundary.csv
+  - app/data/holc_boundary_bandwidth.csv
+  - app/data/holc_by_grade.csv
+  - app/data/holc_facility_shares.csv
+  - app/data/holc_gaps.csv
+  - app/data/holc_industry_periods.csv
+  - app/data/holc_tract_models.csv
+  - app/data/holc_trend_test.csv
+  - app/data/holc_zoning_by_grade.csv
+  - app/data/trajectories_by_grade.csv
+  - app/data/trajectories_pre_by_grade.csv
+  note: runs twice (before and after zoning_1925)
+- id: zoning_1925
+  script: R/zoning_1925.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/raw/zoning_1929/zone_cells_1929.csv
+  - app/data/holc_denver.geojson
+  - data/results/denver_eds/*
+  - app/data/co_tracts_2010.geojson
+  outputs:
+  - data/results/zoning_1929/*
+  copies:
+  - app/data/zoning_1929.geojson
+  - app/data/zoning_shares_holc.csv
+  - app/data/zoning_shares_tracts.csv
+- id: zoning_1944
+  script: R/zoning_1944.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/raw/zoning_1929/zone_cells_1944.csv
+  - data/raw/zoning_1929/changes_1944_review.csv
+  outputs:
+  - data/results/zoning_1944/*
+  copies:
+  - app/data/zoning_1944.geojson
+  - app/data/zoning_1929_1944_change.geojson
+  - app/data/zoning_1929_vs_1944.csv
+  - app/data/zoning_change_by_holc_grade.csv
+  - app/data/zoning_changes_1944.csv
+- id: zoning_1955
+  script: R/zoning_1955.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/raw/zoning_1955/zone_cells_1955.csv
+  - data/raw/zoning_1955/gcps_1955.csv
+  - work/tiger
+  outputs:
+  - data/results/zoning_1955/*
+  copies:
+  - app/data/zoning_1955.geojson
+  - app/data/zoning_1955_km2.csv
+  - app/data/gcp_fit_1955.csv
+- id: zoning_2023
+  script: R/zoning_2023.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/zoning_2023 (not redistributed)
+  - app/data/zoning_1929.geojson
+  - app/data/sites.csv
+  - app/data/historical_sites.csv
+  - app/data/tract_panel.csv
+  outputs:
+  - data/results/zoning_2023/*
+  copies:
+  - app/data/zoning_2023_study_area.csv
+  - app/data/zoning_1929_to_2023.csv
+  - app/data/sites_by_zoning_2023.csv
+  - app/data/sites_by_zoning_2023_last_listed.csv
+  - app/data/tract_composition_by_zoning_2023.csv
+- id: zoning_over_time
+  script: R/zoning_over_time.R
+  run_by: rerun_results.sh
+  inputs:
+  - app/data/zoning_1929.geojson
+  - app/data/zoning_1944.geojson
+  - app/data/zoning_1955.geojson
+  - work/zoning_2023
+  - work/zoning_city
+  outputs:
+  - data/results/zoning_over_time/*
+  - app/data/zoning_2023_categories.geojson
+  copies:
+  - app/data/zoning_1929_industrial_fate.csv
+  - app/data/zoning_1944_1955_change.csv
+  - app/data/zoning_by_holc_grade_years.csv
+  - app/data/zoning_land_by_year.csv
+  - app/data/zoning_over_time_notes.txt
+  - app/data/zoning_sites_by_year.csv
+  - app/data/zoning_today_categories.geojson
+  - app/data/zoning_tract_paths.csv
+- id: rezoning_denver
+  script: R/rezoning_denver.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/raw/ordinances/text/*
+  - work/property/legal.csv
+  - work/tiger
+  outputs:
+  - data/results/rezoning/*
+  - app/data/rezoning_1925_1956.geojson
+  copies:
+  - app/data/rezoning_by_*.csv
+  - app/data/rezoning_placed.csv
+  - app/data/rezoning_test.csv
+- id: loc_sanborn_1903
+  script: R/loc_sanborn_1903.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/raw/sanborn_loc/*
+  - app/data/sanborn_volumes.geojson
+  - app/data/zoning_1929.geojson
+  - app/data/denver_eds.geojson
+  outputs:
+  - data/results/sanborn_1903/*
+  - app/data/sanborn_1903_sheets.geojson
+  - app/data/sanborn_1903_blocks.geojson
+  - app/data/sanborn_1903_plants.geojson
+  copies:
+  - app/data/sanborn1903_*.csv
+  note: reads app/data/sanborn_volumes.geojson, which context_layers writes LATER in the chain
+- id: denver_tracts_1950_2020
+  script: R/denver_tracts_1950_2020.R
+  run_by: rerun_results.sh
+  inputs:
+  - app/data/tract_panel.csv
+  - app/data/sites.csv
+  - app/data/historical_sites.csv
+  outputs:
+  - data/results/denver_tracts/*
+  - app/data/denver_tracts.geojson
+  copies:
+  - app/data/denver_tracts_*.csv
+- id: descriptive_sequences
+  script: R/descriptive_sequences.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/results/denver_eds/*
+  - app/data/tract_panel.csv
+  - app/data/holc_denver.geojson
+  - app/data/zoning_1929.geojson
+  outputs:
+  - data/results/descriptive/*
+  copies:
+  - app/data/d_area_timeline.csv
+  - app/data/grid_*.csv
+  - app/data/tract_first_arrival_1965_1992.csv
+  - app/data/tract_location_quotients_1940_2020.csv
+- id: corridors
+  script: R/corridors.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/results/CO_directory_listings_1961-2002.csv
+  - data/historical/CO_pre1960_hazardous_sites.csv
+  - app/data/enviroscreen_tracts.geojson
+  outputs:
+  - data/results/corridors/*
+  copies:
+  - app/data/legacy_tract_models.csv
+- id: landuse_1937_1997
+  script: R/landuse_1937_1997.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/usgs_landuse
+  - app/data/holc_denver.geojson
+  - app/data/zoning_1929.geojson
+  - app/data/sites.csv
+  outputs:
+  - data/results/landuse/*
+  copies:
+  - app/data/landuse_*
+- id: highways_denver
+  script: R/highways_denver.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/highways
+  - app/data/tract_panel.csv
+  - app/data/holc_denver.geojson
+  outputs:
+  - data/results/highways/*
+  copies:
+  - app/data/highways_*
+- id: context_layers
+  script: R/context_layers.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/context
+  - app/data/sites.csv
+  - data/results/site_fate/site_fate_denver*.csv
+  - app/data/landuse_tracts.csv
+  - data/raw/vbi70/*
+  - data/raw/sanborn/*
+  outputs:
+  - data/results/context/*!sanborn_batch1*.csv
+  - app/data/aqs_monitors_denver.csv
+  - app/data/petroleum_releases_study.csv
+  - app/data/site_context.csv
+  - app/data/urban_renewal_sites.csv
+  - app/data/urban_renewal_denver.geojson
+  - app/data/superfund_ou_study.geojson
+  - app/data/tri_facility_years_study.csv
+  - app/data/sanborn_volumes.geojson
+  - app/data/vbi70_neighborhoods.geojson
+  - app/data/vbi70_rod2003_soils.csv
+  copies:
+  - app/data/aqs_denver_by_year.csv
+  - app/data/health_by_history.csv
+  - app/data/health_tracts_study.csv
+  - app/data/petroleum_by_status.csv
+  - app/data/petroleum_by_use_now.csv
+  - app/data/site_context_summary.csv
+  - app/data/tri_by_year.csv
+  - app/data/tri_by_year_holc.csv
+  - app/data/urban_renewal_composition.csv
+  - app/data/urban_renewal_denver.csv
+  note: reads data/results/site_fate/site_fate_denver*.csv, which site_fate writes two steps LATER
+- id: statewide
+  script: R/statewide.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/results/county_panel_1880_1940.csv
+  - app/data/sites.csv
+  - app/data/tract_panel.csv
+  outputs:
+  - data/results/statewide/*
+  copies:
+  - app/data/county_correlations_1880_1940.csv
+  - app/data/county_regions_1880_1940.csv
+  - app/data/graded_cities_*.csv
+  - app/data/regional_shares_1965_1992.csv
+  - app/data/tract_associations_1980_2020.csv
+- id: site_fate
+  script: R/site_fate.R
+  run_by: rerun_results.sh
+  inputs:
+  - app/data/sites.csv
+  - app/data/historical_sites.csv
+  - work/site_fate/parcels_by_point.csv
+  outputs:
+  - data/results/site_fate/site_fate_*
+  copies:
+  - app/data/site_fate_denver.csv
+  - app/data/site_fate_denver_pre1960.csv
+  - app/data/site_fate_summary.csv
+  - app/data/site_fate_zoning.csv
+- id: archival_followup
+  script: R/archival_followup.R
+  run_by: rerun_results.sh
+  inputs:
+  - data/results/site_fate/site_fate_denver*.csv
+  outputs:
+  - data/results/site_fate/archival_followup_hidden_conversions.csv
+- id: hedonic_denver
+  script: R/hedonic_denver.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/property
+  - app/data/sites.csv
+  - app/data/petroleum_releases_study.csv
+  outputs:
+  - data/results/hedonic/*
+  copies:
+  - app/data/hedonic_models.csv
+  - app/data/hedonic_sample.csv
+- id: ownership_denver
+  script: R/ownership_denver.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/property/owners.csv (names never published)
+  - data/raw/acs/*
+  - data/raw/ownership/*
+  outputs:
+  - data/results/ownership/*
+  copies:
+  - app/data/ownership_*.csv
+- id: housing_conditions_denver
+  script: R/housing_conditions_denver.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/property
+  - work/denver311
+  - work/evictionlab
+  outputs:
+  - data/results/housing_conditions/*
+  copies:
+  - app/data/conditions_*.csv
+- id: mortality_block
+  script: R/mortality_block.R
+  run_by: rerun_results.sh
+  inputs:
+  - ~/Downloads/CO_HIA (restricted death records, read in place)
+  - app/data/sites.csv
+  outputs:
+  - data/results/health/mortality_block_*
+- id: mortality_redevelopment
+  script: R/mortality_redevelopment.R
+  run_by: rerun_results.sh
+  inputs:
+  - ~/Downloads/CO_HIA (restricted)
+  - data/results/site_fate/site_fate_denver*.csv
+  outputs:
+  - data/results/health/mortality_redevelopment_*
+- id: censoc_denver_1940
+  script: R/censoc_denver_1940.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/censoc (CenSoc, IPUMS; person-level, never published)
+  outputs:
+  - data/results/censoc/censoc_models.csv
+  - data/results/censoc/censoc_groups.csv
+  - data/results/censoc/censoc_linkage.csv
+  - data/results/censoc/censoc_summary.md
+  copies:
+  - app/data/censoc_models.csv
+  - app/data/censoc_groups.csv
+  - app/data/censoc_linkage.csv
+- id: censoc_extensions
+  script: R/censoc_extensions.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/censoc/denver_1940_residents.rds
+  outputs:
+  - data/results/censoc/censoc_ext_*.csv
+  - data/results/censoc/censoc_extensions_summary.md
+  copies:
+  - app/data/censoc_ext_*.csv
+- id: censoc_enlistment
+  script: R/censoc_enlistment.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/censoc
+  outputs:
+  - data/results/censoc/enlistment_*
+  copies:
+  - app/data/enlistment_*.csv
+- id: mlp_residential_history
+  script: R/mlp_residential_history.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/mlp
+  - work/censoc/denver_1940_residents.rds
+  outputs:
+  - data/results/censoc/mlp_*
+  copies:
+  - app/data/mlp_*.csv
+- id: health_models_R
+  script: R/health_models.R
+  run_by: rerun_results.sh
+  inputs:
+  - work/health exposures (R/prepare_health_inputs.R, R/build_exposures.R)
+  outputs:
+  - data/results/health_models_R.csv
+- id: mortality_bg_R
+  script: R/mortality_bg.R
+  run_by: rerun_results.sh
+  inputs:
+  - ~/Downloads/CO_HIA block-group deaths (restricted)
+  outputs:
+  - data/results/mortality_bg_models_R.csv
+- id: write_health_tables
+  script: pipeline/health/write_health_tables.py
+  run_by: rerun_results.sh
+  inputs:
+  - data/results/health_models_R.csv
+  - data/results/mortality_bg_models_R.csv
+  outputs:
+  - data/results/health_models.csv
+  - data/results/health_models.md
+  - data/results/mortality_bg_models.csv
+  - data/results/mortality_bg_models.md
+  note: health_models.csv and mortality_bg_models.csv are re-serialised copies of the *_R.csv files (numerically equal)
+unscripted:
+- path: data/historical/street_review.csv
+  why: hand review of every street-level placement (input to geocode_hist.py)
+- path: data/historical/town_review.csv
+  why: hand review of every town-level listing (input to geocode_hist.py)
+- path: data/historical/town_aliases.csv
+  why: hand-made alias table (input)
+- path: data/historical/town_homonyms.csv
+  why: hand-made table of town names that moved or repeat, with the point to use by year (input to geocode_hist.py)
+- path: data/historical/notown_review.csv
+  why: hand review of the 2,860 pre-1960 entries the parser left without a town (input to geocode_hist.py, 13 Nov 2026)
+- path: data/historical/notown_check_2026-11-13.csv
+  why: independent reader sample of 120 rows of the no-town review
+- path: data/historical/placement_check_2026-11-03.csv
+  why: hand check of 60 placements
+- path: data/historical/town_level_check_2026-11-03.csv
+  why: independent reader sample of 120
+- path: data/historical/gnis_places_co.csv
+  why: GNIS gazetteer extract; read by four scripts, written by none in the repository
+- path: data/results/geocoding_validation_addresspoints_recheck.csv
+  why: queried from a browser on 17 Oct 2026 (README); no script
+- path: data/results/context/sanborn_batch1.csv
+  why: hand transcription (data/raw/sanborn/README.md); lives under data/results
+- path: data/results/context/sanborn_batch1_sheets.csv
+  why: hand transcription; lives under data/results
+- path: data/results/site_fate/archival_check_sanborn_1887_1904.csv
+  why: hand-filled worklist read by R/sanborn_check.R; no script writes it

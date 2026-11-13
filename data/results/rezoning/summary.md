@@ -80,6 +80,6 @@ By period:
 
 | black_band | changes | pct_res_to_business_or_industrial | pct_to_industrial | pct_to_residential | mean_haz_trades_400m |
 |---|---|---|---|---|---|
-| Under 1% Black | 152 | 38.2 | 3.3 | 55.3 | 0.1 |
-| 1-10% Black | 25 | 20.0 | 0.0 | 68.0 | 0.8 |
-| 10%+ Black | 3 | 33.3 | 0.0 | 66.7 | 0.3 |
+| Under 1% Black | 157 | 37.6 | 3.2 | 56.1 | 0.2 |
+| 1-10% Black | 25 | 20.0 | 0.0 | 68.0 | 1.1 |
+| 10%+ Black | 4 | 50.0 | 0.0 | 50.0 | 0.2 |

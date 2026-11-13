@@ -89,6 +89,7 @@ def parsed(tsv_root):
     for vol in GOLDEN_VOLS:
         year, parser, mode = VOLUMES[vol]
         R = parse_all.parse_vol(vol, year, parser, mode, T=str(tsv_root))
+        R, _ = parse_all.drop_nameless(R)      # as parse_all.main does: a record without a firm name is not a listing
         with open(WS / 'work/parsed' / f'{vol}.jsonl', 'w') as f:
             for r in R: f.write(json.dumps(r) + '\n')
         out[vol] = R
@@ -110,6 +111,7 @@ def consolidated(parsed, classifier):
     """consolidate stages run over the golden volumes (the real classifier), as main() runs them."""
     import consolidate
     df = consolidate.load_parsed(str(WS / 'work/parsed/*.jsonl'))
+    consolidate.validate_bare_codes(df)
     consolidate.assign_sic(df)
     title = consolidate.fix_ocr_codes(df)
     consolidate.drop_bad_hazard(df, title)

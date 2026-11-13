@@ -1,0 +1,121 @@
+year,vol,page,nkey,sector,verdict,town_fix,street_fix,sector_fix,note
+1935,Narvdir_coloradoBus1935_part2,288,THOMPSONHAYWARDCHEMICAL,Chemicals,ok,DENVER,2228 Blake,,classified CHEMICALS: 'Denver' list; heading mixes makers and dealers; unsure
+1935,Narvdir_coloradoBus1935_part2,288,TOGOCHEMICALCO,Chemicals,ok,DENVER,1533 Lincoln,,"classified Chemists-Manufacturing (right col), 'Denver' list; fairly sure"
+1935,Narvdir_coloradoBus1935_part2,298,MACHINESHOPGOBATTIMFGG0,Machine shop / machinery,ok,PUEBLO,503 W 4th,,"header advert: machine shop 'PUEBLO, COLO.'; repeat margin/header advert in this volume (keep one per edition); sure"
+1935,Narvdir_coloradoBus1935_part2,550,MACHINESHOPRA,Machine shop / machinery,ok,DENVER,1415-1417 18th,,header advert: 'DENVER MACHINE SHOP ... 1415-1417 Eighteenth St'; repeat margin/header advert in this volume (keep one per edition); fairly sure
+1935,Narvdir_coloradoBus1935_part2,611,PHILLIPSPETROLEUMCORP,Petroleum refining & asphalt,not_works,,,,"classified OIL companies, Trinidad distributor/station (500 E Main), not a refinery; sure"
+1935,Narvdir_coloradoBus1935_part2,725,WORKS,Iron & steel works,ok,DENVER,25 Larimer,,"classified STEEL: 'Denver' list, 'Branch ... Pueblo'; sure"
+1877,narv_dir_coloradoBus1877_c2,212,CROOKEBROSCONCENTRATIONWORKS,Ore milling & sampling,ok,LAKE CITY,none,,heading 'LAKE CITY BUSINESS DIRECTORY'; sure
+1878,narv_dir_coloradoBus1878,10,FCMARSHSECRETARYKANSASCITYWHITELEAD,Paint & varnish,not_works,,,,"advert of Kansas City, Mo. firm (out of state); sure"
+1878,narv_dir_coloradoBus1878,233,YEFFECTIVEINMININGANDMANUFACTURINGWORKSANDINTHESMALLERESTABLISHMENTSFOR,Smelting & refining,not_works,,,,editorial text on Blake ore crusher; sure
+1879,narv_dir_coloradoBus1879,175,STOVESREPAIREDAND,Metal working,ok,LONGMONT,Main,,"advert: 'Manufacturer of Tin, Sheet Iron and Copper Ware ... Main St., Longmont'; fairly sure"
+1879,narv_dir_coloradoBus1879,278,ALMASAMPLINGWORKS,Ore milling & sampling,ok,ALMA,none,,appendix list under 'Alma.'; sure
+1879,narv_dir_coloradoBus1879,278,MULOCHBROSBUTCHERS,Ore milling & sampling,not_works,,,,Muloch Bros butchers; 'Ore Buyer' is neighbour Kendrick's line; sure
+1880,narv_dir_coloradoBus1880_6th,122,HOFFMANMORRISBOARDG,Smelting & refining,not_works,,,,"Malta: Hoffman is boarding; 'Smelter' belongs to neighbour 'Abbey, C. F.'; fairly sure"
+1880,narv_dir_coloradoBus1880_6th,279,SOUTHNORWALKCONN,Iron & steel works,not_works,,,,"advert Norwalk Iron Works, South Norwalk, Conn. (out of state); sure"
+1880,narv_dir_coloradoBus1880_6th,296,AMERICANSMELTINGWORKS2,Smelting & refining,not_works,,,,"list of plant supplied inside an out-of-state machinery maker's notice, not a listing; sure"
+1881,narv_dir_coloradoBus1881_7th,446,THEYCARRYALARGESTOCKOFTOOLSANDMACHINERYFORBLACKSMITHSWAGONMAKERS,Machine shop / machinery,not_works,,,,editorial on Leavenworth supply house; sure
+1881,narv_dir_coloradoBus1881_7th,468,WGHYNDMANCOMANUFACTURERSOF,Metal working,not_works,,,,"advert 'Cincinnati, Ohio' (out of state); sure"
+1882,narv_dir_coloradoBus1882,335,ALOGUESONNEWYORKAPPLICATIONEHSARGENTCOSURGICALDHINSTRUMENTSTJGS,Chemicals,not_works,,,,advert Chicago supply house '125 State St' (out of state); sure
+1883,narv_dir_coloradoBus1883,257,HYAMSHARRYTINSHOP,Metal working,ok,PITKIN,none,,"town list on PITKIN page (Pitkin House, Pitkin Bank); sure"
+1883,narv_dir_coloradoBus1883,338,SUPPLIESBOHEMIANGERMANANDFRENCHCHEMISTSGLASSANDPORCELAINWARE,Assay office,not_works,,,,"assayers' supplies dealer advert, not an assay office; sure"
+1883,narv_dir_coloradoBus1883,354,SSAYSANDANALYSESOFALLKINDSSLWMABALDWINWALTERLEEBROWNMININFFAPNCYANFL,Assay office,not_works,,,,"advert '163 Randolph St., CHICAGO, ILL.' (out of state); sure"
+1883,narv_dir_coloradoBus1883,478,WELLSFARGOCOSEXPRESSWESTNORTHANDSOUTHKANSASGUYSMELTINGANDDEFININGCO,Smelting & refining,not_works,,,,"margin advert Kansas City Smelting & Refining Co, out-of-state, no Colorado works shown; MINING&SMELTING; fairly sure"
+1887,narv_dir_coloradoBus1887,12,HAWKFOUNDRY,Foundry,not_works,,,,index to advertisements line; sure
+1887,narv_dir_coloradoBus1887,120,COLORADOCOPPERSHEETIRONWORKS,Iron & steel works,other_sector,DENVER,16th and Bassett,Metal working,Denver classified (Denver streets); copper & sheet iron works = sheet metal; fairly sure
+1887,narv_dir_coloradoBus1887,30,BRANDANDERSON,Metal working,ok,DENVER,426 16th,,"Denver alphabetical (Champa, Larimer); 'tinners and furnace builders'; sure"
+1887,narv_dir_coloradoBus1887,97,BROSBLACKSMITHSAND,Transportation equipment,ok,DENVER,1820-22 15th,,Denver alphabetical; 'blacksmiths and wagon mfrs'; sure
+1911,narv_dir_coloradoBus1911,1191,EMERGENCYHOSPITAL,Assay office,ok,VICTOR,113 S 3rd,,heading VICTOR p.1190-91; assayers line run into hospital line; sure
+1911,narv_dir_coloradoBus1911,420,GEYSERITEMFGCO,Soap,ok,DENVER,31st and Walnut,,"Denver alphabetical; 'soap mfrs, 31st & Walnut'; sure"
+1911,narv_dir_coloradoBus1911,602,COOPERCA,Assay office,ok,DURANGO,854 2nd av,,heading DURANGO p.601; 'assayer and chemist'; sure
+1911,narv_dir_coloradoBus1911,813,ZELLBOAEH,Assay office,ok,IRONTON,none,,"left column under IRONTON (C,S,V,Z run); column order uncertain; fairly sure"
+1911,narv_dir_coloradoBus1911,916,MAYERD,Metal working,ok,MANCOS,none,,Mancos list (Mancos Drug Co etc.); 'plumber and tinner'; sure
+1912,narv_dir_coloradoBus1912_38th_1,344,PEERLESSRUBBERMANUFACTUR,Rubber,not_works,,,,"Geo B Carpenter & Co 'genl western distributors, Peerless Rubber Manufacturing Co' = distributor; sure"
+1912,narv_dir_coloradoBus1912_38th_1,535,TANGEMANHH,Ore milling & sampling,not_works,,,,Tangeman is attorney; neighbour Taylor & Brunton are ore buyers (dealers); sure
+1912,narv_dir_coloradoBus1912_38th_1,568,IRCLECTORAL,Iron & steel works,doubtful,DENVER,none,,"margin advert on DUMONT page, no town on this page (Denver from same advert elsewhere in vol); repeat margin/header advert in this volume (keep one per edition); unsure"
+1912,narv_dir_coloradoBus1912_38th_1,568,THEQUEENCITYIRONWIREWORKSCO,Metal working,doubtful,DENVER,none,,"same margin advert as previous row, no town on this page; repeat margin/header advert in this volume (keep one per edition); unsure"
+1912,narv_dir_coloradoBus1912_38th_2,109,GENERALMACHINIST,Machine shop / machinery,ok,LA JUNTA,none,,heading LA JUNTA; 'plumber and general machinist'; fairly sure
+1913,narv_dir_coloradoBus1913_39th_1,537,UNIONCOALCOKECO,Coke works,not_works,,,,coal & coke company office '319 Opera House blk' Denver; sure
+1913,narv_dir_coloradoBus1913_39th_1,91,FLRCHITECTARAI,Iron & steel works,ok,DENVER,33d and Walnut,,"margin advert 'Corner Thirty-third and Walnut Street', town line garbled (Denver); repeat margin/header advert in this volume (keep one per edition); fairly sure"
+1913,narv_dir_coloradoBus1913_39th_2,181,ARCHITECTURAL,Iron & steel works,ok,DENVER,33d and Walnut,,margin advert: 'Cor. 33d and Walnut St. Denver'; repeat margin/header advert in this volume (keep one per edition); sure
+1913,narv_dir_coloradoBus1913_39th_2,35,ANDMACHINESHOPHOLLY,Machine shop / machinery,ok,HOLLY,none,,advert on HOLLY page; fairly sure
+1913,narv_dir_coloradoBus1913_39th_3,275,MADEBYTHEWESTERNCHEMICALMFC,Chemicals,ok,DENVER,none,,margin advert 'Made by ... DENVER'; repeat margin/header advert in this volume (keep one per edition); sure
+1914,narv_dir_coloradoBus1914,1148,ASSAYER0BALANCES,Assay office,not_works,,,,classified heading 'ASSAYERS' BALANCES'; sure
+1914,narv_dir_coloradoBus1914,1188,ELECTROPLATING,Metal working,ok,DENVER,none,,header advert electro-plating 'Blake Street ... DENVER' (number unreadable); repeat margin/header advert in this volume (keep one per edition); fairly sure
+1914,narv_dir_coloradoBus1914,165,CANONGASCO,Manufactured gas,ok,CANON CITY,114 N 5th,,GASCO; Canon City page; sure
+1914,narv_dir_coloradoBus1914,347,COALCOKECO,Coke works,not_works,,,,Continental Coal & Coke Co Denver office address; sure
+1914,narv_dir_coloradoBus1914,991,HEINZEHERMAN,Metal working,ok,RIFLE,none,,heading RIFLE; 'tinner'; sure
+1915,narv_dir_coloradoBus1915_41st_1-458,178,GOTTLIEBMERCANTILECO,Metal working,ok,COLLBRAN,none,,right column of COLLBRAN page (Gottlieb Merc is the other town's column); fairly sure
+1915,narv_dir_coloradoBus1915_41st_2,259,MODERNMACHINESHOPFULLYEQUIPPED,Machine shop / machinery,ok,LA JUNTA,none,,advert on LA JUNTA page; fairly sure
+1915,narv_dir_coloradoBus1915_41st_2,327,HARRISDJ,Metal working,ok,LYONS,none,,"heading LYONS, right-column C-D-H run; LYCAN lines are the other column; fairly sure"
+1915,narv_dir_coloradoBus1915_41st_3,80,WESTERNIRONFOUNDRYCO,Foundry,ok,DENVER,1320 Wazee,,"classified Foundries, Denver ditto list; 'Canon City' is other column; sure"
+1915,narv_dir_coloradoBus1915_41st_3,9,SEEALSOASSAYERSCHEMISTS,Assay office,not_works,,,,cross-reference line under a heading; sure
+1916,narv_dir_coloradoBus1916_CombinedPDF_opt,1288,MADEBYTHEWESTERNCHEMICALMFGGO,Chemicals,ok,DENVER,none,,margin advert 'Made by ... DENVER'; repeat margin/header advert in this volume (keep one per edition); sure
+1916,narv_dir_coloradoBus1916_CombinedPDF_opt,180,AOTANNERMCMULLINMERCCO,Tannery,not_works,,,,"Tanner-McMullin Merc Co is a mercantile firm, not a tannery; sure"
+1916,narv_dir_coloradoBus1916_CombinedPDF_opt,355,FOXP,Metal working,ok,DENVER,2767 W Colfax av,,Denver alphabetical; 'tinner'; sure
+1916,narv_dir_coloradoBus1916_CombinedPDF_opt,436,NEWLANDERJ,Metal working,ok,DENVER,rear 227 Bdway,,"Denver alphabetical; 'tinner, rear 227' continued 'Bdway' ('Nicoll' is other column); fairly sure"
+1916,narv_dir_coloradoBus1916_CombinedPDF_opt,788,ZFLORENCEWGOLDMINESCO,Metal working,ok,MANCOS,none,,"heading MANCOS; 'plumber, tinner'; name is other column; sure"
+1917,narv_dir_coloradoBus1917,1132,REFINERY8232527LARIMERSTREET,Petroleum refining & asphalt,ok,DENVER,823-25-27 Larimer,,advert: 'Petroleum Products Refinery: 823-25-27 Larimer Street Denver'; fairly sure
+1917,narv_dir_coloradoBus1917,1349,VERDECKBERGIRONWIREWORKS,Metal working,ok,DENVER,1932 Speer blvd,,"classified, Denver ditto list; sure"
+1917,narv_dir_coloradoBus1917,1520,SEEALSOSHEETMETALWORKS,Metal working,not_works,,,,cross-reference line '(See also Sheet Metal Works)'; sure
+1917,narv_dir_coloradoBus1917,200,WRITTOTHEWESTERNCHEMICALMFGCO,Chemicals,ok,DENVER,none,,"margin advert on Colorado Springs page, 'DENVER' printed; repeat margin/header advert in this volume (keep one per edition); fairly sure"
+1917,narv_dir_coloradoBus1917,426,MACLEARMFGCO,Foundry,ok,DENVER,341 Navajo,,"Denver alphabetical; 'foundry, 341 Navajo'; sure"
+1917,narv_dir_coloradoBus1917,438,MORELLMFGCO,Soap,ok,DENVER,1024 18th,,Denver alphabetical; 'soap mfrs'; sure
+1917,narv_dir_coloradoBus1917,550,I4OIKJLBURKHARDTSONSIRONANDWIREWORKSCO,Metal working,ok,DENVER,1401 Market,,"foot advert on ELIZABETH page: 'Market St. ... Denver, Colo.' (number OCR 'i4oi'); repeat margin/header advert in this volume (keep one per edition); fairly sure"
+1932,narv_dir_coloradoBus1932,534,VANGENDERENGASEY,Metal working,ok,DENVER,1857 S Lafayette,,"Denver alphabetical; 'tinner, 1857 S Lafayette' ('108 S Bdway' is other column); fairly sure"
+1932,narv_dir_coloradoBus1932,719,SHADYRESTAUTOGAMP,Metal working,ok,HOLYOKE,none,,right column under HOLYOKE; 'sheet metal works'; name is HOLLY column neighbour; fairly sure
+1932,narv_dir_coloradoBus1932,773,AMERICANSMELTINGREFININGCO,Smelting & refining,ok,LEADVILLE,none,,heading LEADVILLE; '(Arkansas Valley Plant) ... supt'; MINING&SMELTING n/a; sure
+1932,narv_dir_coloradoBus1932,851,GUARDSWHEELGUAROSORNAMENTALIRON,Iron & steel works,ok,DENVER,1416-18 Blake,,"foot advert: ornamental iron and wire work, '1416-18 Blake Street : DENVER'; possibly repeat advert; fairly sure"
+1935,narv_dir_coloradoBus1935_part1,483,ELECTROPLATING,Metal working,ok,DENVER,1130 12th,,"Denver alphabetical; 'castings, brass finishings and electroplating ... 1130 12th' (also a brass foundry); fairly sure"
+1935,narv_dir_coloradoBus1935_part1,98,DOLLISONJASE,Assay office,ok,ALMA,none,,"heading ALMA (Bank of Alma); 'assayer, mining eng'; sure"
+1943,narv_dir_coloradoBus1943,1027,YUMARENDERINGWORKS,Fertilizer & rendering,ok,YUMA,none,,"Yuma town list (Yuma Milling, Yuma Pioneer); sure"
+1943,narv_dir_coloradoBus1943,1180,MINESMELTERSUPPLYCO,Smelting & refining,not_works,,,,Mine & Smelter Supply Co = supply house; sure
+1943,narv_dir_coloradoBus1943,1266,MACHINESHOPG1BATTIF00,Machine shop / machinery,ok,PUEBLO,501-507 W 4th,,"header advert machine shop 'PUEBLO, COLO.'; repeat margin/header advert in this volume (keep one per edition); sure"
+1943,narv_dir_coloradoBus1943,1492,ROOFINGPAINTMANUFACTURERS,Paint & varnish,doubtful,DENVER,none,,"row is the classified heading; firm under it 'Denver, Western Elaterite Roofing Co, 838-44 Equitable Bldg' = office address, plant not shown; unsure"
+1943,narv_dir_coloradoBus1943,1506,YORKBRADLEYSHEETMETAL,Metal working,ok,DENVER,521 E Exposition,,"classified sheet metal, Denver ditto list; '1745 Blake' is Colorado Sheet Metal Works; fairly sure"
+1943,narv_dir_coloradoBus1943,445,OFMCBRIDEHARLOE,Metal working,ok,DENVER,3221 Zuni,,"Denver alphabetical; 'tinner, 3221 Zuni'; sure"
+1943,narv_dir_coloradoBus1943,781,BLKSMITH,Machine shop / machinery,ok,LIMON,none,,"page header LIMON, G-W run; LINDON heading starts lower; 'blksmith, machine shop, auto parts'; fairly sure"
+1885,narv_dir_coloradoBus_1885_ocr,11,JACKETFURNACESE1,Smelting & refining,not_works,,,,"advert of out-of-state furnace maker (Fraser & Chalmers), Denver branch office only; fairly sure"
+1885,narv_dir_coloradoBus_1885_ocr,631,C2EMANUFACTURERSOFFIREBRICKMOFFLESDEALERSINESWHS,Chemicals,not_works,,,,"fire-brick maker 'Dealers in Chemicals, Glassware ... Assayers' Supplies' = supply dealer; fairly sure"
+1891,narv_dir_coloradoBus_1891_Part1,307,CAPELLIMICHAEL,Machine shop / machinery,not_works,,,,"worker line 'machinist, Rocky Mountain Brewery'; sure"
+1920,narv_dir_coloradoBus_1920_ocr,1431,HURMHENRY,Assay office,ok,LEADVILLE,140 W 3d,,heading LEADVILLE; 'assayer'; sure
+1920,narv_dir_coloradoBus_1920_ocr,1525,MIADEBYTHEWESTERNCHEMICALMFGCO,Chemicals,ok,DENVER,none,,margin advert 'Made by ... DENVER'; repeat margin/header advert in this volume (keep one per edition); sure
+1920,narv_dir_coloradoBus_1920_ocr,17,EOAMMONIADYNAMITEBLASTINGCAPS,Explosives,not_works,,,,"product list in Hercules Powder Co advert, Denver office (Foster Building); sure"
+1920,narv_dir_coloradoBus_1920_ocr,17,GRANULARDYNAMITEELECTRICBLASTINGCAPS,Explosives,not_works,,,,"product list in Hercules Powder Co advert, Denver office; sure"
+1920,narv_dir_coloradoBus_1920_ocr,2099,DIAMONDRUBBERCO,Rubber,not_works,,,,classified auto tires: tire company branch/dealer; fairly sure
+1920,narv_dir_coloradoBus_1920_ocr,2101,ROWEAGRUBBERCO,Rubber,not_works,,,,classified auto tires: tire dealer; fairly sure
+1920,narv_dir_coloradoBus_1920_ocr,2225,GALVANIZEDCANS,Metal working,not_works,,,,"'local sales mgr, 403 Foster bldg' = sales office of can maker; sure"
+1920,narv_dir_coloradoBus_1920_ocr,223,CIVILENGINERSCOLLECTIONSFLORISTSFOUNDRIES,Foundry,not_works,,,,page running heading; sure
+1920,narv_dir_coloradoBus_1920_ocr,2433,SEHLITTERIRON,Foundry,ok,DENVER,none,,"classified Foundries, Denver ditto list; street number lost ('Wynkoop'); fairly sure"
+1920,narv_dir_coloradoBus_1920_ocr,2975,CRUDERUBBERCO,Rubber,not_works,,,,"Colorado Springs 'American Crude Rubber Co, 310 Mining Exch bldg' = office under Rubber Goods; fairly sure"
+1920,narv_dir_coloradoBus_1920_ocr,533,AMALGAMATEDPETROLEUMCO,Petroleum refining & asphalt,not_works,,,,petroleum company office '312 Ideal bldg'; sure
+1929,narv_dir_coloradoBus_1929,1095,CARTWRIGHTTIRERUBBERCO,Rubber,not_works,,,,classified tire dealers; sure
+1929,narv_dir_coloradoBus_1929,1547,BSSSTRUCKSFRED0GLASBYMACHINEWORKS,Machine shop / machinery,ok,PUEBLO,322-324 W 4th,,"advert: cylinder/crankshaft grinding, '322-324 W. Fourth St. ... PUEBLO, COLO.'; fairly sure"
+1929,narv_dir_coloradoBus_1929,1630,IRONWORKSCO,Iron & steel works,ok,DENVER,25 Larimer,,"classified: 'Denver, Midwest Steel & Iron Works Co, 25 Larimer; Branch ... Pueblo' ('118 E River' is Nelson, Pueblo); sure"
+1929,narv_dir_coloradoBus_1929,337,COLORADOSIGNCO,Tannery,ok,DENVER,1787 S Bdway,,Denver alphabetical; right-column firm '(Jonas Bros) 1787 S Bdway'; name given is left-column neighbour; fairly sure
+1929,narv_dir_coloradoBus_1929,467,REXIRONWORKS,Iron & steel works,not_works,,,,"officer line 'MONTGOMERY E T, treas The Rex Iron Works Company'; fairly sure"
+1929,narv_dir_coloradoBus_1929,796,FLAHERTYEJ,Metal working,ok,LONGMONT,none,,heading LONGMONT; 'sheet metal wks'; sure
+1929,narv_dir_coloradoBus_1929,808,GREATVANSCHOIACKGEO,Metal working,ok,LOVELAND,none,,heading LOVELAND; 'sheet metal works'; sure
+1933,narv_dir_coloradoBus_1933,230,LIEEFMETALWORKS,Metal working,ok,COLORADO SPRINGS,217 S Cascade av,,"Colorado Springs alphabetical (Tejon, Independence bldg); name cut off, from classified 'York Chas F, 217 S Cascade av'; fairly sure"
+1939,narv_dir_coloradoBus_1939_part4,170,ARCHITECTURALIRONWORKS,Iron & steel works,ok,DENVER,869 S Broadway,,"classified Architectural Iron Works: 'Denver ... S Broadway' (number garbled, 869 in same vol); fairly sure"
+1939,narv_dir_coloradoBus_1939_part4,201,LIBERTYPETROLEUMCO,Petroleum refining & asphalt,not_works,,,,classified auto service stations / oil dealers; sure
+1939,narv_dir_coloradoBus_1939_part5,115,MINESMELTERSUPPLYCO,Smelting & refining,not_works,,,,Mine & Smelter Supply Co = supply house; sure
+1939,narv_dir_coloradoBus_1939_part5,24,SOMERSEL,Coke works,not_works,,,,classified coal mines list (Somerset); sure
+1939,narv_dir_coloradoBus_1939_part6,87,ILVERSTATEPLATINGCO,Metal working,ok,DENVER,1444 Blake,,"classified plating, Denver list: 'chromium and all kinds electro plating ... 1444 Blake'; fairly sure"
+1956,narv_dir_coloradoBus_1956,1166,STILLSWELDINGMACHINESHOP,Machine shop / machinery,ok,ENGLEWOOD,3141 So Bdwy,,"1956 classified welding, Denver-area column with suffix 'Eng.' after the address; fairly sure"
+1956,narv_dir_coloradoBus_1956,568,CARLSONSBLACKSMITHMACHINESHOPJOHNE,Machine shop / machinery,ok,MEAD,none,,heading MEAD; code 10-1; sure
+1941,narvdir_coloradoBus1941_part1,269,TEXASCOREFINERY,Petroleum refining & asphalt,ok,CRAIG,none,,"page header CRAIG, T run; 'Texas Co Refinery ... supt'; fairly sure"
+1941,narvdir_coloradoBus1941_part1,309,ANDALLOTHERELECTROPLATED,Metal working,ok,DENVER,1128-1130 12th,,"header advert chromium plating: 'Most complete plant in Denver, 1128-1130 12th St.'; repeat margin/header advert in this volume (keep one per edition); fairly sure"
+1941,narvdir_coloradoBus1941_part1,336,CHEMICALSALESCO,Chemicals,not_works,,,,'Chemical Sales Co' = dealer; fairly sure
+1941,narvdir_coloradoBus1941_part1,342,COLECHEMICALCO,Chemicals,not_works,,,,'whol drugs' = wholesale druggist; sure
+1941,narvdir_coloradoBus1941_part1,8,ORNAMENTALIRONCRAFTSMEN,Iron & steel works,ok,DENVER,869 S Broadway,,"front advert: structural steel fabricators, ornamental iron, '869 South Broadway, Denver' (name partly garbled '& SONS ... since 1889'); fairly sure"
+1941,narvdir_coloradoBus1941_part4,360,TRINIDADSHEETMETALWORKS,Metal working,ok,TRINIDAD,600 W Main,,classified: 'Trinidad' list; sure
+1877,user_csbd_gaze_1877,115,ERJELLINGHAMSICOANDWARDMININGCOSSTAMPMILLSANDOTHERSTAMPNIILLSAND,Ore milling & sampling,not_works,,,,gazetteer description of Ward (editorial); sure
+1877,user_csbd_gaze_1877,483,WOULDBETHEBESTTHINGTHATCOULDHAPPENTOCOLORADOMINIRGINTERESTSTOHAVEMOWBRAYS,Explosives,not_works,,,,editorial note on out-of-state explosives maker; sure
+1877,user_csbd_gaze_1877,493,GOODSGARDENSEEDSPERFUMERIESANDFANCYARTICLESJHEALSOKEEPSACOMPLETESUPPLYOF,Assay office,not_works,,,,editorial on a druggist; sure
+1871,user_rockymountaindir_1871,238,RKEDOFTHEGOLDANDSILVERBEARINGORESOFCOLORADODESCRIPTIONSOFAFEWOFTHEMILLSR,Smelting & refining,not_works,,,,editorial text; sure
+1871,user_rockymountaindir_1871,348,FANDGMEGINNISJH,Machine shop / machinery,not_works,,,,"resident line 'machinist, K. P. Junction' (worker); sure"
+1871,user_rockymountaindir_1871,387,ATSANDCAPSCARPETSMILLINERYETCLARIMERSTREETBETWEENEANDFDENVERCOLORADOF,Foundry,ok,DENVER,none,,"advert: town line garbled but reads DENVER, COLORADO; fairly sure"
+1871,user_rockymountaindir_1871,493,MIDDLENEVADA,Machine shop / machinery,not_works,,,,residents' list; 'machinist' is a worker line; sure
+1871,user_rockymountaindir_1871,512,ROSECHARLESJAMESMINERSECONDWARDCHARLESTHOMASMINERSECONDWARDCHEEVERBWME,Smelting & refining,not_works,,,,"worker line 'metallurgist, at International Reduction Works'; sure"
+1871,user_rockymountaindir_1871,578,FOUNDRY3DMALLEABLEFOUNDRYANDFITTINGDEPARTMENT4THWROUGHTIRONPIPE5THBRASS,Foundry,not_works,,,,editorial on a Chicago firm; sure

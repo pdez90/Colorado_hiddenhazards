@@ -35,6 +35,7 @@ pct_tab <- function(d, by) { r <- d[, .N, by = c(by, "zone2023")]; r[, pct := ro
 # ---------------------------------------------------------------- study area and zoning
 tr <- st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM); tr$core <- as.logical(tr$core) %in% TRUE
 AREA <- st_union(st_make_valid(tr[tr$core | substr(tr$GEOID, 1, 5) == "08031", ]))
+AREA_GEOID <- tr$GEOID[tr$core | substr(tr$GEOID, 1, 5) == "08031"]
 Z <- st_make_valid(st_transform(st_read(SHP, quiet = TRUE), UTM))
 Z$zone2023 <- cat_of(Z$GenZone2, Z$Local_zon)
 Z <- suppressWarnings(st_intersection(Z[, c("zone2023", "GenZone2", "Local_zon", "jurisd")], AREA)); Z$km2 <- as.numeric(st_area(Z)) / 1e6
@@ -60,7 +61,8 @@ H <- fread(file.path(A, "historical_sites.csv"), colClasses = c(GEOID = "charact
 # within NEAR_M metres (the parcel facing the street); sites with no polygon within NEAR_M stay unmatched and are counted.
 NEAR_M <- 50; MATCH <- list(); ZJ <- Z[, c("zone2023", "GenZone2", "Local_zon", "jurisd")]
 locate <- function(d, id, label) { p <- st_transform(st_as_sf(d, coords = c("lon", "lat"), crs = 4326, remove = FALSE), UTM)
-  p <- p[lengths(st_intersects(p, AREA)) > 0, ]
+  # membership by the site's own tract (GEOID from the full-resolution tracts): the simplified outlines of AREA leave slivers along streets
+  p <- p[p$GEOID %in% AREA_GEOID | lengths(st_intersects(p, AREA)) > 0, ]
   j <- st_join(p, ZJ, left = TRUE); j <- j[!duplicated(j[[id]]), ]; j$match <- ifelse(is.na(j$zone2023), NA_character_, "inside polygon")
   u <- which(is.na(j$zone2023))
   if (length(u)) { near <- lengths(st_is_within_distance(j[u, ], ZJ, NEAR_M)) > 0; u <- u[near]

@@ -1,9 +1,9 @@
 layer,A,B,C,D,Industrial,Commercial,total,share_A,share_B,share_C,share_D,share_Industrial,share_Commercial
 Land area of HOLC areas,5.73938207155757,13.3585931999222,41.2358143674139,27.1685616629592,12.6654248648878,4.43032332478898,104.59809949153,5.5,12.8,39.4,26,12.1,4.2
 Population 1940,8712,31754,118892,77990,17651,23991,278990,3.1,11.4,42.6,28,6.3,8.6
-Hazardous trades before the map (1871-1937),0,0,3,13,21,109,146,0,0,2.1,8.9,14.4,74.7
-Hazardous trades after the map (1938-1956),0,4,13,22,26,63,128,0,3.1,10.2,17.2,20.3,49.2
-Hazardous-sector manufacturers 1965-1992 (complete editions),3,17,62,370,185,143,780,0.4,2.2,7.9,47.4,23.7,18.3
-Hazardous-sector sites with no match in searched inventories (1965-1992),3,10,33,105,30,44,225,1.3,4.4,14.7,46.7,13.3,19.6
+Hazardous trades before the map (1871-1937),0,0,6,26,33,171,236,0,0,2.5,11,14,72.5
+Hazardous trades after the map (1938-1956),0,4,14,30,33,87,168,0,2.4,8.3,17.9,19.6,51.8
+Hazardous-sector manufacturers 1965-1992 (complete editions),3,16,65,378,185,146,793,0.4,2,8.2,47.7,23.3,18.4
+Hazardous-sector sites with no match in searched inventories (1965-1992),3,9,36,107,30,42,227,1.3,4,15.9,47.1,13.2,18.5
 EPA TRI facilities (today),0,0,6,18,18,4,46,0,0,13,39.1,39.1,8.7
 Cleanup / contamination sites (today),1,35,106,180,252,99,673,0.1,5.2,15.8,26.7,37.4,14.7

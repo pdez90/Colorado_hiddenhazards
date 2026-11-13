@@ -48,3 +48,7 @@ VOLUMES = {
   'DCM_1999':            (1999, 'para',  'coltxt'),
   'DCM_2002_part2':      (2002, '2002',  'tsv'),
 }
+# what each edition prints: 1966 gives a product description but no SIC code (codes are inferred, never 'directory');
+# only 1999 and 2002 print NAICS codes (in the SIC-era editions a 5-6 digit number is a house number or a ZIP)
+NO_PRINTED_CODES = {1966}
+NAICS_EDITIONS = {1999, 2002}

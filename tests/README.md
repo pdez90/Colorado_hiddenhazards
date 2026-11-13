@@ -23,6 +23,7 @@ every push and pull request; tests that need `work/` inputs skip themselves when
 | `tests/digitization` | parsing / OCR digitization (pytest) |
 | `tests/geocoding` | the TIGER geocoder (pytest) |
 | `tests/outputs` | the committed outputs and the text that describes them, including the manuscript's tables (pytest; this document) |
+| `tests/stages` | one file per group of pipeline stages: row conservation, keys, ranges, recomputation from committed files, and a stage manifest (pytest; see `tests/stages/README.md`, which also lists the known defects) |
 | `tests/r` | the R re-implementation (testthat) |
 
 ## tests/outputs

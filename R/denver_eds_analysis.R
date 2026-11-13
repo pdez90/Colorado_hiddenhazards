@@ -53,7 +53,7 @@ for (yr in c(1880, 1900, 1910, 1920, 1930, 1940)) {
   if (nrow(Fp) >= 3) for (v in c(CORE, EXTRA)) { if (sum(!is.na(d[[v]])) < 10) next
     m <- lm(as.formula(paste(v, "~ log(dist_m + 50)")), d[!is.na(get(v))], weights = pop); ct <- coeftest(m, vcov. = vcovHC(m, type = "HC1"))
     m2 <- lm(as.formula(paste(v, "~ log(dist_m + 50) + log(dist_cbd)")), d[!is.na(get(v))], weights = pop); c2 <- coeftest(m2, vcov. = vcovHC(m2, type = "HC1"))   # nearness to firms vs nearness to the centre
-    models[[length(models) + 1]] <- data.table(census = yr, outcome = v, b_per_log_m = ct[2, 1], se = ct[2, 2], p = ct[2, 4], EDs = nrow(d), firms = nrow(Fp), b_cbd_ctrl = c2[2, 1], se_cbd_ctrl = c2[2, 2], p_cbd_ctrl = c2[2, 4]) }
+    models[[length(models) + 1]] <- data.table(census = yr, outcome = v, b_per_log_m = ct[2, 1], se = ct[2, 2], p = ct[2, 4], EDs = sum(!is.na(d[[v]])), firms = sum(d$firms), b_cbd_ctrl = c2[2, 1], se_cbd_ctrl = c2[2, 2], p_cbd_ctrl = c2[2, 4]) }
   # where were the firms? share of the decade's firms in the districts that make up the top population quartile on each measure (25% = proportional)
   for (v in c(CORE, "pct_white", "pct_owner_hh", "median_rent", "mean_sei")) { if (sum(!is.na(d[[v]])) < 10 || sum(d$firms) == 0) next
     o <- d[!is.na(get(v))][order(-get(v))]; o[, cum := cumsum(pop) / sum(pop)]; top <- o$ED[o$cum <= 0.25 | seq_len(nrow(o)) == 1]; bot <- rev(o$ED)[cumsum(rev(o$pop)) / sum(o$pop) <= 0.25]

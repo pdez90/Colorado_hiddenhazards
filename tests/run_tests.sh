@@ -37,7 +37,7 @@ run_suite() {  # name, command...
 }
 
 PY_DIRS=()
-for d in tests/digitization tests/geocoding tests/outputs; do [ -d "$d" ] && PY_DIRS+=("$d"); done
+for d in tests/digitization tests/geocoding tests/outputs tests/stages; do [ -d "$d" ] && PY_DIRS+=("$d"); done
 
 overall=0
 if [ $RUN_PY -eq 1 ]; then

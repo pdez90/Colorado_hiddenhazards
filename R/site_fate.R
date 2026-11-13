@@ -59,7 +59,7 @@ message(uniqueN(PC[!is.na(SCHEDNUM), pkey]), " of ", uniqueN(PC$pkey), " points 
 # ---- 2b. which of the candidate parcels is the site? House number, direction, street name and street type of the site's address and
 #          of each parcel's situs address are each spelled one way (as in R/housing_conditions_denver.R; the assessor writes the N/S/E/W
 #          the directories usually omit, so a direction missing on one side is no conflict). Rules, in order:
-#          1 same address: situs house number and street equal the site's;  2 same street and side (odd/even), nearest house number;
+#          1 same address: situs house number and street equal the site's;  2 same street and side (odd/even), nearest house number within the block (fewer than 100 numbers away);
 #          3 same street, nearest parcel;  4 nearest parcel of any street (the former rule, and the only one for an address without a
 #          number). The rule used is written to parcel_match; rule 1's share among numbered addresses is the agreement rate reported below.
 DIRW <- c(NORTH = "N", SOUTH = "S", EAST = "E", WEST = "W", N = "N", S = "S", E = "E", W = "W")
@@ -83,7 +83,7 @@ pick <- function(d, acol) {   # d: one row per site with pkey and the address co
   X[, `:=`(n_a = suppressWarnings(as.integer(a_num)), n_p = suppressWarnings(as.integer(p_num)))]
   X[, same_street := a_sname != "" & a_sname == p_sname & (a_dir == "" | p_dir == "" | a_dir == p_dir) & (a_stype == "" | p_stype == "" | a_stype == p_stype)]
   X[, rule := fcase(same_street & !is.na(n_a) & !is.na(n_p) & n_a == n_p, 1L,
-                    same_street & !is.na(n_a) & !is.na(n_p) & n_a %% 2L == n_p %% 2L, 2L,
+                    same_street & !is.na(n_a) & !is.na(n_p) & n_a %% 2L == n_p %% 2L & abs(n_a - n_p) < 100L, 2L,   # same side AND same block: a parcel 100+ numbers away is only "same street"
                     same_street, 3L, default = 4L)]
   X[, numdiff := fifelse(rule == 2L, abs(n_a - n_p), NA_integer_)]
   # a condominium's "general common elements" parcel (the land under the units, classed VACANT LAND / GENERAL COMMON ELEMENTS, with no
@@ -117,7 +117,9 @@ broad <- function(cls, zone) { cls <- toupper(ifelse(is.na(cls), "", cls)); zone
         grepl("COMMERCIAL|OFFICE|RETAIL|STORE|HOTEL|MOTEL|RESTAURANT|PARKING|GARAGE|SERVICE|BANK|THEATER|SHOPPING", cls), "Commercial / office",
         default = "Other") }
 score <- function(d, acol) { d <- pick(d[, pkey := sprintf("%.6f,%.6f", lon, lat)], acol)
-  d[, use_now := broad(D_CLASS_CN, ZONE_ID)]; d[, zone_industrial := grepl("^I-?(A|B|MX)|^M-IMX", toupper(ZONE_ID))]   # I-A, I-B, I-MX-*, M-IMX-* and the former-code IA/IB districts
+  # the parcel service writes the master-planned industrial mixed-use district (ZONE_10 "M-IMX-5") as ZONE_ID "MIX": read it from ZONE_10
+  d[, zone_id := fifelse(!is.na(ZONE_10) & grepl("^M-IMX", toupper(ZONE_10)), "M-IMX", as.character(ZONE_ID))]
+  d[, use_now := broad(D_CLASS_CN, zone_id)]; d[, zone_industrial := grepl("^I-?(A|B|MX)|^M-IMX", toupper(zone_id))]; d[, zone_id := NULL]   # I-A, I-B, I-MX-*, M-IMX-* and the former-code IA/IB districts
   d[, redeveloped := !is.na(year_built) & year_built > last_year]; d[, last_decade := paste0(floor(last_year / 10) * 10, "s")]; d[, pkey := NULL]; d[] }
 S <- score(sites[, .(site_id, address, first_year, last_year, radar, fe_sectors, lat, lon)], "address")
 H <- score(hist[, .(hfirm, name, street, first_year, last_year, sectors, persists_to_1961plus, lat, lon)], "street")
@@ -142,5 +144,5 @@ print(Z); fwrite(Z, file.path(O, "site_fate_zoning.csv"))
 SEN <- S[use_now %in% c("Residential", "Park / open space", "Civic / school / health") & radar == "Not on any list"]
 fwrite(SEN[, .(site_id, address, first_year, last_year, fe_sectors, use_now, D_CLASS_CN, ZONE_ID, ZONE_10, TOT_UNITS, year_built, SITUS_ADDRESS_LINE1, parcel_match, parcel_dist_m, lat, lon)], file.path(O, "site_fate_sensitive.csv"))
 message(nrow(S), " Denver sites (", sum(S$use_now != "No parcel match"), " on a parcel); ", nrow(SEN), " are now residential, park or civic/school/health with no cleanup record; ",
-        sum(S$use_now == "Residential"), " residential in all (", sum(S$TOT_UNITS[S$use_now == "Residential"], na.rm = TRUE), " dwelling units)")
+        sum(S$use_now == "Residential"), " residential in all (", S[use_now == "Residential" & !duplicated(SCHEDNUM), sum(TOT_UNITS, na.rm = TRUE)], " dwelling units on ", uniqueN(S$SCHEDNUM[S$use_now == "Residential"]), " parcels)")   # units once per parcel: several sites can share one
 file.copy(file.path(O, c("site_fate_summary.csv", "site_fate_denver.csv", "site_fate_denver_pre1960.csv", "site_fate_zoning.csv")), A, overwrite = TRUE)

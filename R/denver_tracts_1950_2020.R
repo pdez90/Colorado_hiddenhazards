@@ -25,12 +25,20 @@ hist <- fread(file.path(A, "historical_sites.csv"))[precision != "town" & !is.na
 sites <- fread(file.path(A, "sites.csv"))[!is.na(lat) & fe_hazard %in% c(TRUE, "True")]
 pt <- function(d) st_transform(st_as_sf(d, coords = c("lon", "lat"), crs = 4326), UTM)
 WIN <- list("1950" = c(1941, 1950), "1960" = c(1951, 1960), "1970" = c(1961, 1970), "1980" = c(1971, 1980), "1990" = c(1981, 1990), "2000" = c(1983, 1992), "2010" = c(1983, 1992), "2020" = c(1983, 1992))
-firms_of <- function(y) { a <- WIN[[as.character(y)]]; if (y <= 1960) pt(hist[first_year <= a[2] & last_year >= a[1], .(lon, lat, name, years = years, sector = sectors)]) else pt(sites[first_year <= a[2] & last_year >= a[1], .(lon, lat, name = address, years = paste(first_year, last_year, sep = "-"), sector = fe_sectors)]) }
+# the years in which a site had a hazardous-sector (Frickel-Elliott) listing, from the listings themselves: site_years.csv also carries the
+# years of extended-sector listings (wood preserving, batteries, metal mining), which are not part of these analyses
+SY <- unique(fread("data/results/CO_directory_listings_1961-2002.csv", select = c("site_id", "year", "fe_hazard"))[fe_hazard == TRUE & !is.na(site_id) & site_id != "", .(site_id, year)])
+# a site is a hazardous firm of a decade when it has a hazardous-sector listing in that decade (its first/last years span every listing at
+# the site, hazardous or not, so they cannot be used); pre-1960 firm-locations, whose editions are sparse, by the span of their listings
+firms_of <- function(y) { a <- WIN[[as.character(y)]]; if (y <= 1960) pt(hist[first_year <= a[2] & last_year >= a[1], .(lon, lat, name, years = years, sector = sectors)]) else pt(sites[site_id %in% SY[year >= a[1] & year <= a[2], site_id], .(lon, lat, name = address, years = paste(first_year, last_year, sep = "-"), sector = fe_sectors)]) }
+STUDY <- st_union(TR)
+# each firm is counted in one tract only (the simplified outlines overlap slightly along shared edges)
+firms_by_tract <- function(f) { w <- st_intersects(f, TR); k <- vapply(w, function(i) if (length(i)) i[1] else NA_integer_, 1L); tabulate(k[!is.na(k)], nbins = nrow(TR)) }
 ctr <- st_centroid(st_geometry(TR)); CBD <- st_sfc(st_point(c(500250, 4399500)), crs = UTM)   # downtown point used in every script
 analyse <- function(pan) {
 res <- lapply(names(WIN), function(yc) { y <- as.integer(yc); f <- firms_of(y); if (!nrow(f)) return(NULL)
   d <- pan[census == y]; d <- merge(data.table(GEOID = TR$GEOID, idx = seq_len(nrow(TR))), d, by = "GEOID")
-  d$firms <- lengths(st_intersects(TR, f))[d$idx]; d$dist_m <- as.numeric(st_distance(ctr[d$idx], st_union(f))); d$dist_cbd <- pmax(as.numeric(st_distance(ctr[d$idx], CBD)), 100)
+  d$firms <- firms_by_tract(f)[d$idx]; d$dist_m <- as.numeric(st_distance(ctr[d$idx], st_union(f))); d$dist_cbd <- pmax(as.numeric(st_distance(ctr[d$idx], CBD)), 100)
   d <- d[!is.na(pop) & pop >= 200]; d[, has := firms > 0]
   # groups
   wm <- function(x, w) if (all(is.na(x))) NA_real_ else weighted.mean(x, w, na.rm = TRUE)
@@ -44,7 +52,7 @@ res <- lapply(names(WIN), function(yc) { y <- as.integer(yc); f <- firms_of(y); 
     dd$y <- dd[[m]]; if (m %in% c("mval_2020", "mrent_2020")) dd$y <- log(dd$y); dd <- dd[is.finite(y)]; if (nrow(dd) < 20 || sd(dd$y) == 0) return(NULL)
     fit <- lm(y ~ log(dist_m), dd, weights = pop); ct <- coeftest(fit, vcov. = vcovHC(fit, type = "HC1"))
     fit2 <- lm(y ~ log(dist_m) + log(dist_cbd), dd, weights = pop); c2 <- coeftest(fit2, vcov. = vcovHC(fit2, type = "HC1"))   # nearness to firms vs nearness to the centre
-    data.table(census = y, outcome = if (m %in% c("mval_2020", "mrent_2020")) paste0("log_", m) else m, b_per_log_m = ct[2, 1], se = ct[2, 2], p = ct[2, 4], EDs = nrow(dd), firms = nrow(f),
+    data.table(census = y, outcome = if (m %in% c("mval_2020", "mrent_2020")) paste0("log_", m) else m, b_per_log_m = ct[2, 1], se = ct[2, 2], p = ct[2, 4], EDs = nrow(dd), firms = sum(lengths(st_intersects(f, STUDY)) > 0),
                b_cbd_ctrl = c2[2, 1], se_cbd_ctrl = c2[2, 2], p_cbd_ctrl = c2[2, 4]) }))
   # shares in the top population quartile
   S <- rbindlist(lapply(names(MEAS), function(m) { dd <- d[!is.na(get(m))][order(-get(m))]; if (nrow(dd) < 8) return(NULL); cp <- cumsum(dd$pop) / sum(dd$pop); top <- cp <= 0.25 | seq_len(nrow(dd)) == 1
@@ -55,7 +63,7 @@ res <- Filter(Negate(is.null), res)
 G <- rbindlist(lapply(res, `[[`, "G"), fill = TRUE); M <- rbindlist(lapply(res, `[[`, "M")); S <- rbindlist(lapply(res, `[[`, "S")); D <- rbindlist(lapply(res, `[[`, "D"))
 # pooled model with census effects
 P <- rbindlist(lapply(names(MEAS), function(m) { dd <- D[!is.na(get(m)) & dist_m > 0]; dd$y <- dd[[m]]; if (m %in% c("mval_2020", "mrent_2020")) dd$y <- log(dd$y); if (nrow(dd) < 40) return(NULL)
-  dd <- dd[is.finite(y)]; if (nrow(dd) < 40) return(NULL); fit <- lm(y ~ log(dist_m) + factor(census), dd, weights = pop); ct <- coeftest(fit, vcov. = vcovHC(fit, type = "HC1"))
+  dd <- dd[is.finite(y)]; if (nrow(dd) < 40) return(NULL); fit <- lm(y ~ log(dist_m) + factor(census), dd, weights = pop); ct <- coeftest(fit, vcov. = vcovCL(fit, cluster = dd$GEOID, type = "HC1"))   # a tract enters once per census: errors clustered by tract
   data.table(census = 0L, outcome = if (m %in% c("mval_2020", "mrent_2020")) paste0("log_", m) else m, b_per_log_m = ct[2, 1], se = ct[2, 2], p = ct[2, 4], EDs = nrow(dd), firms = NA_integer_) }))
 M <- rbind(M, P, fill = TRUE)
 list(G = G, M = M, S = S, D = D) }

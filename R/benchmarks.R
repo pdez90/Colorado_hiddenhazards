@@ -21,7 +21,9 @@ sf_use_s2(FALSE); W <- "work/benchmarks"; O <- "data/results/benchmarks"; A <- "
 for (d in c(W, file.path(W, "cbp"), file.path(W, "atack"), O)) dir.create(d, showWarnings = FALSE, recursive = TRUE)
 HAZ_SIC <- c("28", "29", "30", "33", "34", "35", "37"); HAZ_NAICS <- c("325", "324", "326", "331", "332", "333", "336")
 # NHGIS county GISJOIN = "G" + state (3 digits, "080") + county (4 digits, FIPS x 10, e.g. "G0801010" = Pueblo 08101): characters 5-8 are NHGISCTY
-gisjoin_county <- function(g) sprintf("%03d", as.integer(substr(g, 5, 8)) %/% 10)
+# a code not ending in 0 is a historical county that shares a modern county's first three digits (e.g. 0495): it keeps its own four-digit
+# id instead of being folded into, and duplicating, the modern county's row
+gisjoin_county <- function(g) { k <- as.integer(substr(g, 5, 8)); ifelse(k %% 10L == 0L, sprintf("%03d", k %/% 10L), sprintf("%04d", k)) }
 # a census is compared only when a directory edition was printed within two years of it (none between 1892 and 1910, so 1900 is left out:
 # a firm listed in 1892 and again in 1910 is not evidence of a 1900 listing)
 has_edition <- function(cy, ed_yrs, within = 2) any(abs(ed_yrs - cy) <= within)
@@ -71,7 +73,7 @@ CMP_state <- merge(CMP_state, ED, by = "year", all.x = TRUE)
 fwrite(CMP_state, file.path(O, "cbp_vs_directory_state.csv"))
 CC <- CMP[!is.na(cbp_mfg) & year %in% DIR$year][, .(year, county, county_name, cbp_mfg, cbp_haz, dir_mfg, dir_haz, dir_all, dir_street)][order(year, -cbp_mfg)]
 for (k in c("dir_mfg", "dir_haz", "dir_all", "dir_street")) CC[is.na(get(k)), (k) := 0L]
-CC[, `:=`(ratio_mfg = round(dir_mfg / cbp_mfg, 2), ratio_haz = round(dir_haz / pmax(cbp_haz, 1), 2))]
+CC[, `:=`(ratio_mfg = fifelse(cbp_mfg > 0, round(dir_mfg / cbp_mfg, 2), NA_real_), ratio_haz = round(dir_haz / pmax(cbp_haz, 1), 2))]   # no ratio where CBP counts no manufacturer
 fwrite(CC, file.path(O, "cbp_vs_directory_county.csv"))
 print(CMP_state[year %in% c(1976, 1980, 1985, 1990, 1993, 1999, 2002)])
 # county-level fit in the editions with CBP (the median ratio leaves out county-years with no CBP manufacturer, where the ratio is undefined)
@@ -84,7 +86,7 @@ NH <- NULL
 if (nzchar(Sys.getenv("IPUMS_API_KEY")) && requireNamespace("ipumsr", quietly = TRUE)) {
   library(ipumsr)   # ipumsr reads IPUMS_API_KEY from the environment (~/.Renviron); nothing is written there
   ds <- as.data.table(get_metadata_catalog("nhgis", metadata_type = "datasets"))
-  mf <- file.path(W, "nhgis_mfg_county_v3.csv")   # v3: county codes read from the right GISJOIN characters (v2 dropped the hundreds digit)
+  mf <- file.path(W, "nhgis_mfg_county_v4.csv")   # v4: historical counties (code not ending in 0) keep their own id; v3 folded them into the modern county
   if (!length(Sys.glob(file.path(W, "nhgis*_csv", "*_county.csv")))) { specs <- list()
     for (dname in ds[grepl("^(1880|1890|1900|1910|1920|1930|1940)", group)]$name) {
       md <- tryCatch(get_metadata("nhgis", dataset = dname), error = function(e) NULL); if (is.null(md) || !"county" %in% md$geog_levels$name) next

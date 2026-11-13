@@ -7,7 +7,10 @@ import re, sys, os, glob, json
 sys.path.insert(0, os.path.dirname(__file__))
 from segment import page_lines
 from parse_block import fix_street, norm_digits, street_like
-from geoctx import heading
+from geoctx import heading, CITIES
+from rapidfuzz import fuzz, process
+TOWNS=sorted(c for c in CITIES if len(c)>=4)
+from volumes import NAICS_EDITIONS
 
 def is_name(t):
     t=t.strip()
@@ -61,32 +64,66 @@ def parse_text_record(name, text, year, vol, page, col):
         # ('2000 employees') is not a code: SIC 3000 would have made the firm a rubber & plastics maker
         if raw_addr.lower().startswith((c+' '+d.strip()[:3]).lower()) or re.match(r"(?i)(?:employees|people|persons?)\b",d.strip()): continue
         if (2000<=int(c)<=3999 or 1000<=int(c)<=1499) and c not in r['sic']: r['sic'].append(c); r['sic_desc'].append(d.strip())
-    for c,d in re.findall(r"\b(\d{5,6})\s?[:\-]\s?([A-Za-z][^,\.]{2,70})",t):
+    # NAICS codes exist only in the 1999 and 2002 editions; before that 'ddddd-' is a house number or ZIP ('11705 Teller St')
+    for c,d in (re.findall(r"\b(\d{5,6})\s?[:\-]\s?([A-Za-z][^,\.]{2,70})",t) if year in NAICS_EDITIONS else []):
         if c[:2] in ('31','32','33','21','11','42','54','56','81','22'): r['naics'].append(c); r['sic_desc'].append(d.strip())
     return r
 
-def parse_lines(L, vol, year):
-    recs=[]; cur=None; city=''
+def settle_city(addr_city, head_city, recent):
+    """Town of one listing. addr_city: the town read in its address ('' when the address was not parsed); head_city: the
+    town heading in force; recent: towns read in the addresses of the preceding listings under this heading (newest last).
+    * an address town that is not a known place but reads like the heading's ('BOUKIER', 'BOUICIER' under BOULDER) is the
+      heading's town;
+    * a listing without an address town takes the heading's town, unless the three preceding listings with an address
+      all name one other known town: then the heading is stale (the OCR dropped the BOULDER heading of 1992 and 104
+      Boulder firms were filed under BLACK HAWK, the heading before it) and their town is used."""
+    a=(addr_city or '').upper().strip(); h=(head_city or '').upper().strip()
+    if a:
+        if a in CITIES: return a
+        if h and fuzz.ratio(a,h)>=65: return h
+        last=[c for c in recent if c in CITIES][-1:]
+        if last and fuzz.ratio(a,last[0])>=65: return last[0]
+        return a
+    known=[c for c in recent if c in CITIES]
+    if len(known)>=3 and known[-1]==known[-2]==known[-3] and known[-1]!=h: return known[-1]
+    return h
+
+def parse_lines(L, vol, year, geographic=True):
+    """geographic: the listings stand under town headings (1990-1993); the 1999 volume is not arranged by town."""
+    recs=[]; cur=None; city=''; hseq=0
     for l in L:
         t=l['text'].strip()
         if not t or re.match(r"^\d{1,3}$",t) or re.search(r"GEOGRAPHICAL SECTION",t.upper()): continue
-        mcont=re.match(r"^([A-Z][A-Z \.']+),\s*Cont",t)
-        if mcont: city=mcont.group(1).strip(); continue
+        # 'Aurora, Cont' as before; in capitals only when the line ends there ('BOULDER, CONT.' but not 'ADOLPH COORS CO, CONTAINER MFG')
+        mcont=re.match(r"^([A-Z][A-Z \.']+),\s*Cont",t) or (re.match(r"^([A-Z][A-Z \.']+),\s*CONT(?:INUED|'D)?\W*$",t) if geographic and len(t)<40 else None)
+        if mcont:
+            # running title 'BOULDER, CONT.': the town of the page's first listings. A title the OCR garbled ('UTTLETON, CONT.')
+            # is the current town if it reads like it, a known town if it reads like exactly one, else it changes nothing
+            c=mcont.group(1).strip().upper()
+            if c in CITIES or not geographic: city=c; hseq+=1
+            elif city and fuzz.ratio(c,city)>=65: pass
+            else:
+                m2=process.extract(c,TOWNS,scorer=fuzz.ratio,limit=2)
+                if m2 and m2[0][1]>=80 and (len(m2)<2 or m2[0][1]>m2[1][1]): city=m2[0][0]; hseq+=1
+            continue
         if re.match(r"^\(\s*[A-Z][a-z]+(?: [A-Z][a-z]+)? County\s*\)$",t): continue
         hh=heading(t) if t.isupper() and len(t)<30 else None
         if hh and hh[0] in ('city','both'):
-            city=hh[1]
+            city=hh[1]; hseq+=1
             if cur: recs.append(cur); cur=None
             continue
         if is_name(t) and not (cur and cur['text'].rstrip().endswith((',','-')) and len(cur['text'])<40) and not (cur and cur['text']=='' and len(cur['name'])<45 and not re.search(r"(INC|CO|CORP|LTD|LLC|COMPANY)\.?$",cur['name'])):
             if cur: recs.append(cur)
-            cur=dict(name=t,text='',page=l.get('page',0),col=l.get('col',0),city=city)
+            cur=dict(name=t,text='',page=l.get('page',0),col=l.get('col',0),city=city,hseq=hseq)
         elif cur: cur['text']+=' '+t
     if cur: recs.append(cur)
-    out=[]
+    out=[]; recent=[]; seq=None
     for c in recs:
         r=parse_text_record(c['name'],c['text'],year,vol,c['page'],c['col'])
-        if not r['city_ctx'] and c.get('city'): r['city_ctx']=c['city']
+        if c['hseq']!=seq: recent=[]; seq=c['hseq']
+        town=settle_city(r['city_ctx'],c.get('city'),recent) if geographic else (r['city_ctx'] or c.get('city') or '')
+        if r['city_ctx']: recent.append(town)
+        r['city_ctx']=town
         if r['zip'] or r['sic'] or r['naics'] or r.get('est'): out.append(r)
     return out
 
@@ -105,7 +142,7 @@ def parse_coltxt(vol,year):
         for line in open(p):
             if line.startswith('=====COL'): col=int(line.split()[-1]); continue
             L.append(dict(text=line.rstrip('\n'),page=pg,col=col))
-    return parse_lines(L,vol,year)
+    return parse_lines(L,vol,year,geographic=False)
 
 if __name__=='__main__':
     vol=sys.argv[1]; year=int(sys.argv[2]); mode=sys.argv[3] if len(sys.argv)>3 else 'tsv'

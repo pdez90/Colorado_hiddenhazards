@@ -169,7 +169,7 @@ firms_in <- function(a, b) { src <- if (a >= 1960) sp else hp; src[src$first_yea
 IND <- rbindlist(lapply(PER, function(pr) { f <- firms_in(pr[1], pr[2]); f$grade <- side_of(f); f$band <- in_band(f, 400)
   g <- as.data.table(st_drop_geometry(GR))[, .(km2 = as.numeric(sum(st_area(GR[GR$grade == .BY$grade, ]))) / 1e6), by = grade]
   d <- merge(g, as.data.table(st_drop_geometry(f))[!is.na(grade), .(firms = .N, firms_band = sum(band)), by = grade], by = "grade", all.x = TRUE)
-  d[is.na(firms), `:=`(firms = 0L, firms_band = 0L)]; d[, `:=`(period = sprintf("%d-%d", pr[1], pr[2]), start = pr[1], per_km2 = round(firms / km2, 2), km2 = round(km2, 1))]; d }))
+  d[is.na(firms), `:=`(firms = 0L, firms_band = 0L)]; d[, `:=`(period = sprintf("%d-%d", pr[1], pr[2]), start = pr[1], per_km2 = round(firms / km2, 2), km2_raw = km2, km2 = round(km2, 1))]; d }))   # km2_raw: unrounded, for the densities and the ratio below
 IND[, source := ifelse(start >= 1960, "Directory of Colorado Manufacturers (hazardous sectors)", "Colorado State Business Directory (hazardous trades, street level)")]
 # periods differ in length and number of editions, and the two sources are not comparable: per EDITION (mean firms listed in each edition
 # of the period, per km2) and the D/C ratio within each period are the comparable quantities; the change across the 1956/1965 source
@@ -180,10 +180,10 @@ in_ed <- function(a, b) rbindlist(lapply(ed_years(a, b), function(y) { if (a >= 
   if (!nrow(f)) return(NULL); data.table(edition = y, grade = side_of(f)) }))
 PE <- rbindlist(lapply(PER, function(pr) { x <- in_ed(pr[1], pr[2]); if (!nrow(x)) return(NULL); ne <- uniqueN(x$edition)
   x[!is.na(grade), .(firms_per_edition = .N / ne), by = grade][, `:=`(period = sprintf("%d-%d", pr[1], pr[2]), editions = ne)] }))
-IND <- merge(IND, PE, by = c("period", "grade"), all.x = TRUE); IND[is.na(firms_per_edition), firms_per_edition := 0]; IND[, per_km2_per_edition := round(firms_per_edition / km2, 3)]
+IND <- merge(IND, PE, by = c("period", "grade"), all.x = TRUE); IND[is.na(firms_per_edition), firms_per_edition := 0]; IND[, per_km2_per_edition := round(firms_per_edition / km2_raw, 3)]
 # the ratio from the unrounded densities (the printed per_km2_per_edition is rounded to 3 decimals)
-IND[, dc_ratio_within_period := { r <- (firms_per_edition[grade == "D"] / km2[grade == "D"]) / (firms_per_edition[grade == "C"] / km2[grade == "C"]); if (length(r) && is.finite(r)) round(r, 1) else NA_real_ }, by = period]
-setorder(IND, start, grade); fwrite(IND, file.path(O, "holc_industry_periods.csv")); file.copy(file.path(O, "holc_industry_periods.csv"), A, overwrite = TRUE)
+IND[, dc_ratio_within_period := { r <- (firms_per_edition[grade == "D"] / km2_raw[grade == "D"]) / (firms_per_edition[grade == "C"] / km2_raw[grade == "C"]); if (length(r) && is.finite(r)) round(r, 1) else NA_real_ }, by = period]
+IND[, km2_raw := NULL]; setorder(IND, start, grade); fwrite(IND, file.path(O, "holc_industry_periods.csv")); file.copy(file.path(O, "holc_industry_periods.csv"), A, overwrite = TRUE)
 print(dcast(IND, period ~ grade, value.var = "per_km2"))
 # B. boundary comparison, census by census: units whose centroid lies within 400 m (districts) / 800 m (tracts) of both a C and a D area
 bnd_ed <- rbindlist(lapply(c(1900, 1910, 1920, 1930, 1940), function(yr) { f <- sprintf("data/results/denver_eds/denver_eds_%d.geojson", yr); if (!file.exists(f)) return(NULL)

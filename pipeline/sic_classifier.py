@@ -1,9 +1,9 @@
 import json, glob, re, collections, pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
-def norm(t):
-    t=t.upper(); t=re.sub(r"[^A-Z ]"," ",t); t=re.sub(r"\bN ?E ?C\b"," ",t)
-    return re.sub(r"\s+"," ",t).strip()
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from sic_classifier_norm import norm     # the same function the predictor applies to query text
 def train(parsed_glob='work/parsed/*.jsonl'):
     """Description -> SIC model from the editions that print codes (1967-1986): the modal code of every frequent
     printed description, indexed by character n-grams for nearest-neighbour lookup (sic_predict.predict)."""

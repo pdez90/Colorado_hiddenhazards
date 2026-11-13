@@ -103,10 +103,10 @@
 | 1938 HOLC grade | C | 11069 | 60221 | 52613 | 0.32 | 7.84 | 6.1 | 27.4 |
 | 1938 HOLC grade | D | 6194 | 41899 | 38458 | 0.20 | 7.94 | 5.1 | 28.7 |
 | 1938 HOLC grade | B | 2517 | 5840 | 4974 | 0.23 | 6.24 | 2.8 | 22.8 |
-| Historical sites | Within 400 m of a hidden site | 11881 | 99077 | 87972 | 0.22 | 7.86 | 5.2 | 27.3 |
-| Historical sites | Within 400 m of a known site | 11902 | 114290 | 103347 | 0.23 | 8.18 | 6.3 | 28.7 |
-| Historical sites | Within 400 m of a pre-1960 hazardous trade | 5347 | 72013 | 65092 | 0.17 | 7.74 | 6.4 | 28.2 |
-| Historical sites | More than 400 m from any | 19475 | 110653 | 92297 | 0.27 | 6.26 | 4.2 | 22.2 |
+| Historical sites | Within 400 m of a hidden site | 12078 | 98744 | 87872 | 0.22 | 7.78 | 5.2 | 27.0 |
+| Historical sites | Within 400 m of a known site | 11913 | 116608 | 105482 | 0.23 | 8.22 | 6.4 | 28.7 |
+| Historical sites | Within 400 m of a pre-1960 hazardous trade | 6174 | 78973 | 71060 | 0.17 | 7.84 | 6.6 | 28.7 |
+| Historical sites | More than 400 m from any | 18868 | 108201 | 89964 | 0.27 | 6.24 | 4.2 | 22.1 |
 | All rental buildings | all | 37729 | 256469 | 222931 | 0.25 | 7.07 | 4.9 | 24.8 |
 
 ## Largest 1% of owners
@@ -148,24 +148,24 @@ Tract data: Eviction Lab full tract file (not the validated subset); years limit
 
 | model | term | estimate | se | p | tracts |
 |---|---|---|---|---|---|
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | pct_rental_owner_100plus | 0.084 | 0.012 | 7.65e-11 | 142 |
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_black | 0.191 | 0.033 | 4.83e-08 | 142 |
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_hisp | 0.105 | 0.017 | 1.26e-08 | 142 |
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_pov | -0.106 | 0.038 | 5.86e-03 | 142 |
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | any_hidden | -0.113 | 0.490 | 8.18e-01 | 142 |
-| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | any_known | -1.818 | 0.506 | 4.57e-04 | 142 |
-| Filing rate on share of rental units held by companies | pct_rental_company | 0.107 | 0.018 | 1.15e-08 | 142 |
-| Filing rate on share of rental units held by companies | p_black | 0.208 | 0.039 | 4.96e-07 | 142 |
-| Filing rate on share of rental units held by companies | p_hisp | 0.093 | 0.017 | 1.33e-07 | 142 |
-| Filing rate on share of rental units held by companies | p_pov | -0.043 | 0.042 | 3.10e-01 | 142 |
-| Filing rate on share of rental units held by companies | any_hidden | 0.027 | 0.554 | 9.62e-01 | 142 |
-| Filing rate on share of rental units held by companies | any_known | -1.354 | 0.532 | 1.20e-02 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | pct_rental_out_of_state | 0.080 | 0.018 | 2.03e-05 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | p_black | 0.203 | 0.039 | 7.76e-07 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | p_hisp | 0.084 | 0.014 | 1.44e-08 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | p_pov | -0.019 | 0.035 | 5.95e-01 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | any_hidden | 0.158 | 0.529 | 7.66e-01 | 142 |
-| Filing rate on share of rental units with an out-of-state owner | any_known | -1.364 | 0.540 | 1.27e-02 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | pct_rental_owner_100plus | 0.084 | 0.012 | 7.22e-11 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_black | 0.188 | 0.033 | 7.11e-08 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_hisp | 0.105 | 0.017 | 1.01e-08 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | p_pov | -0.099 | 0.037 | 8.74e-03 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | any_hidden | -0.003 | 0.511 | 9.95e-01 | 142 |
+| Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units | any_known | -1.947 | 0.548 | 5.29e-04 | 142 |
+| Filing rate on share of rental units held by companies | pct_rental_company | 0.108 | 0.018 | 7.32e-09 | 142 |
+| Filing rate on share of rental units held by companies | p_black | 0.204 | 0.039 | 6.06e-07 | 142 |
+| Filing rate on share of rental units held by companies | p_hisp | 0.094 | 0.016 | 6.98e-08 | 142 |
+| Filing rate on share of rental units held by companies | p_pov | -0.035 | 0.041 | 4.02e-01 | 142 |
+| Filing rate on share of rental units held by companies | any_hidden | 0.134 | 0.569 | 8.14e-01 | 142 |
+| Filing rate on share of rental units held by companies | any_known | -1.584 | 0.571 | 6.34e-03 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | pct_rental_out_of_state | 0.081 | 0.018 | 1.59e-05 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | p_black | 0.198 | 0.039 | 1.24e-06 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | p_hisp | 0.085 | 0.014 | 8.17e-09 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | p_pov | -0.011 | 0.034 | 7.51e-01 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | any_hidden | 0.174 | 0.543 | 7.50e-01 | 142 |
+| Filing rate on share of rental units with an out-of-state owner | any_known | -1.538 | 0.573 | 8.24e-03 | 142 |
 
 ## Denver County eviction filings (Eviction Lab)
 

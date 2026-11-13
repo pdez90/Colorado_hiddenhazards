@@ -96,8 +96,8 @@
 
 | what | n | pct_with_1965_92_site_150m | pct_with_hidden_site_150m | pct_with_known_site_150m |
 |---|---|---|---|---|
-| Blocks with a hazardous trade | 177 | 91.5 | 57.1 | 84.2 |
-| Hazardous plants on unplatted ground | 27 | 51.9 | 29.6 | 44.4 |
+| Blocks with a hazardous trade | 177 | 91.0 | 57.6 | 84.2 |
+| Hazardous plants on unplatted ground | 27 | 55.6 | 29.6 | 48.1 |
 
 ## Plants on unplatted ground (placed from their outlines)
 

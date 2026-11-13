@@ -17,3 +17,8 @@ def predict(texts):
         c,s=sc.most_common(1)[0]
         out.append((c,1-d[0],M['docs'][i[0]]))
     return out
+def code_set():
+    """The SIC codes the classifier knows: codes printed with a description at least five times in the editions that
+    print both (1967-1986). Used to validate codes printed without a description (1965)."""
+    if M is None: load()
+    return set(M['labels'])

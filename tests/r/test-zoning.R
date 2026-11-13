@@ -11,7 +11,7 @@ to_ll <- function(x, y) { p <- sf::st_transform(sf::st_sfc(sf::st_point(c(x, y))
 test_that("zoning_2023 locate(): a site in no polygon takes the nearest polygon within 50 m; farther sites stay unmatched and are counted", {
   ZJ <- sf::st_sf(zone2023 = factor(c(E23$CATS[1], E23$CATS[4]), E23$CATS), GenZone2 = c("Industrial", "Residential_Low"), Local_zon = c("I-A", "E-SU-D"), jurisd = "Denver",
                   geometry = sf::st_sfc(sq(0, 0, 1000), sq(1200, 0, 1000), crs = UTM))
-  E23$ZJ <- ZJ; E23$AREA <- sf::st_sfc(sq(-500, -500, 4000), crs = UTM); E23$MATCH <- list()
+  E23$ZJ <- ZJ; E23$AREA <- sf::st_sfc(sq(-500, -500, 4000), crs = UTM); E23$MATCH <- list(); E23$AREA_GEOID <- "08031000100"
   pts <- rbind(to_ll(500, 500), to_ll(1030, 500), to_ll(1100, 500), to_ll(600, 600), to_ll(1150, 2500))   # inside A; 30 m from A (gap); 100 m from both; inside A; a duplicate id 1,500 m away
   d <- data.table(site_id = c(1L, 2L, 3L, 4L, 4L), lon = pts[, 1], lat = pts[, 2], GEOID = c("08031000100", "08031000100", "08005000100", "08031000100", "08031000100"))
   invisible(capture.output(r <- E23$locate(copy(d), "site_id", "test")))

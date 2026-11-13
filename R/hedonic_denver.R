@@ -76,7 +76,7 @@ SFU <- st_make_valid(st_transform(st_read(file.path(A, "superfund_ou_study.geojs
 M[, superfund := as.numeric(lengths(st_intersects(pts, SFU)) > 0)]
 HW <- st_transform(st_read(file.path(A, "highways_denver.geojson"), quiet = TRUE), UTM); HW <- HW[HW$kind == "Freeway", ]
 M[, freeway_250 := as.numeric(lengths(st_is_within_distance(pts, HW, 250)) > 0)]
-M[, zoned_ind := as.numeric(grepl("^I-|^I-[ABMX]|^IMX|^IA|^IB", toupper(zone)))]
+M[, zoned_ind := as.numeric(grepl("^I-|^I-[ABMX]|^IMX|^IA|^IB|^M-IMX", toupper(zone)))]
 TR <- st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM)
 M[, tract := TR$GEOID[vapply(st_within(pts, TR), function(i) if (length(i)) i[1] else NA_integer_, 1L)]]
 M <- M[!is.na(tract)]

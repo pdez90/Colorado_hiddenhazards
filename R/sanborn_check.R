@@ -7,9 +7,11 @@
 # This script downloads those regions to data/raw/sanborn_1890/<hfirm>.jpg so the readings can be checked by eye, and prints the tally.
 suppressPackageStartupMessages(library(data.table))
 f <- "data/results/site_fate/archival_check_sanborn_1887_1904.csv"; O <- "data/raw/sanborn_1890"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
-S <- fread(f)
+S <- fread(f, colClasses = c(hfirm = "character")); S[is.na(hfirm), hfirm := ""]
 for (i in seq_len(nrow(S))) {
-  out <- file.path(O, paste0(S$hfirm[i], ".jpg"))
+  # file named by the firm-location when it is still in the layer, else by the street read (a blank id would make every such row ".jpg")
+  key <- if (nzchar(S$hfirm[i])) S$hfirm[i] else paste0("street_", gsub("[^A-Za-z0-9]+", "_", S$street[i]))
+  out <- file.path(O, paste0(key, ".jpg"))
   if (file.exists(out) && file.size(out) > 1000) next
   ok <- tryCatch({ download.file(S$sheet_crop_url[i], out, mode = "wb", quiet = TRUE); TRUE }, error = function(e) FALSE)
   message(sprintf("%-8s %-14s %s", S$hfirm[i], S$street[i], if (ok) "downloaded" else "FAILED"))

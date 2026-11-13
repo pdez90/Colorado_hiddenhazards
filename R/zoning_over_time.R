@@ -82,7 +82,7 @@ R2 <- rbindlist(lapply(list(list(Z29, "1929"), list(Z44, "1944"), list(Z55, "195
 R2 <- merge(CJ(grade = ga$grade, year = c("1929", "1944", "1955", "2023", "today")), R2, by = c("grade", "year"), all.x = TRUE)
 for (v in c("industrial", "industrial_mx")) set(R2, which(is.na(R2[[v]])), v, 0)
 R2 <- merge(R2, ga, by = "grade")[, `:=`(pct_industrial = round(100 * industrial / grade_km2, 1), pct_industrial_incl_imx = round(100 * industrial_mx / grade_km2, 1))]
-R2 <- R2[, .(grade, year, grade_km2 = round(grade_km2, 1), pct_industrial, pct_industrial_incl_imx)][order(grade, year)]
+R2 <- R2[, .(grade, year, grade_km2 = round(grade_km2, 3), pct_industrial, pct_industrial_incl_imx)][order(grade, year)]
 fwrite(R2, file.path(O, "zoning_by_holc_grade_years.csv")); print(dcast(R2, grade ~ year, value.var = "pct_industrial"))
 # 1944 -> 1955: industrial land kept, added and dropped on geography (a), and how much of each lay in each HOLC grade
 ind <- function(z) st_make_valid(st_intersection(st_union(z[z$cat == "Industrial", ]), COMMON))
@@ -110,7 +110,7 @@ ED_OK <- c(1965:1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990, 1992)
 S <- fread(file.path(A, "sites.csv"), colClasses = c(GEOID = "character"))[fe_hazard %in% c(TRUE, "True") & geo_level %in% c("address", "address_approx") & !is.na(lat)]
 S <- S[site_id %in% fread(file.path(A, "site_years.csv"))[year %in% ED_OK, site_id]]
 Hs <- fread(file.path(A, "historical_sites.csv"), colClasses = c(GEOID = "character"))[fe_hazard %in% c(TRUE, "True") & precision != "town" & !is.na(lat)]
-pts <- function(d, lab) { p <- st_transform(st_as_sf(d, coords = c("lon", "lat"), crs = 4326), UTM); p <- p[lengths(st_intersects(p, COMMON)) > 0, ]; p$series <- lab; p[, "series"] }
+pts <- function(d, lab) { p <- st_transform(st_as_sf(d, coords = c("lon", "lat"), crs = 4326), UTM); p <- p[substr(p$GEOID, 1, 5) == "08031" & lengths(st_intersects(p, SHEET)) > 0, ]; p$series <- lab; p[, "series"] }   # Denver by the site's own tract (GEOID), on both sheets: the simplified county outline has slivers along streets
 SP <- rbind(pts(S, "Hazardous-sector manufacturers 1965-1992"), pts(Hs, "Hazardous trades before 1960 (street level)"))
 zon_at <- function(z) { j <- st_join(SP[, "series"], z[, "cat"], left = TRUE); j <- j[!duplicated(attr(j, "row.names") %/% 1), ]; j$cat }
 R4 <- rbindlist(lapply(list(list(Z29, "1929"), list(Z44, "1944"), list(Z55, "1955"), list(Z23, "2023"), list(ZT, "today")), function(x) {

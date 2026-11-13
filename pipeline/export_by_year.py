@@ -24,7 +24,7 @@ def main():
         if c not in df: df[c] = None
     out = df[list(cols)].rename(columns=cols)
     for c in ['firm_name', 'street_address', 'address_as_ocr']:
-        out[c] = out[c].astype(str).str.replace(r'^[=+@\-]+\s*', '', regex=True).replace('nan', '')
+        out[c] = out[c].astype(str).str.replace(r'''^[\s"'=+@\-]+''', '', regex=True).replace('nan', '')   # same rule as export.scrub_cell
     for y, g in out.groupby('edition_year'):
         g.sort_values(['county', 'city', 'firm_name']).to_csv(f'data/by_year/CO_DCM_{y}_geocoded.csv', index=False)
         print(y, len(g))

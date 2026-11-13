@@ -39,6 +39,8 @@ groups = {
 R = pd.read_pickle('work/inv/records_final.pkl')
 haz_sites = set(pd.read_csv('app/data/sites.csv').site_id)
 nh = R[(R.geo_level == 'address') & ~R.hazard_any.astype(bool) & ~R.site_id.isin(haz_sites)].copy()
+# manufacturers only (SIC 20-39), as in R/build_exposures.R and R/mortality_block.R: listings with no SIC or a non-manufacturing SIC are left out
+nh = nh[pd.to_numeric(nh.sic.astype(str).str[:2], errors='coerce').between(20, 39)]
 nh['k'] = nh.lat.round(4).astype(str) + nh.lon.round(4).astype(str)
 nh = nh.drop_duplicates('k')
 P = pts(nh); Hx = pts(S)

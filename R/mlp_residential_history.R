@@ -44,7 +44,7 @@ hxy <- st_coordinates(st_transform(st_as_sf(Hs[, .(lon, lat)], coords = c("lon",
 KMIN <- 20                                                          # a census window needs this many listed sites to count as comparable
 in_win <- function(yr) Hs$first_year <= yr & Hs$last_year >= yr - 9    # listed in a directory in the decade up to the census
 kern <- function(hk, xy) { if (!nrow(hk) || !nrow(xy)) return(list(k = rep(0, nrow(xy)), w500 = rep(0, nrow(xy))))
-  nn <- RANN::nn2(hk, xy, k = min(nrow(hk), 100), searchtype = "radius", radius = 2000); d <- nn$nn.dists; d[nn$nn.idx == 0] <- NA
+  nn <- RANN::nn2(hk, xy, k = min(nrow(hk), 300), searchtype = "radius", radius = 2000); d <- nn$nn.dists; d[nn$nn.idx == 0] <- NA
   list(k = rowSums(exp(-0.5 * (d / 500)^2), na.rm = TRUE), w500 = as.numeric(rowSums(d <= 500, na.rm = TRUE) > 0)) }
 pctl <- function(v) 100 * frank(v, ties.method = "average") / length(v)    # percentile among all geocoded residents that census (ties share the average rank)
 Z <- st_make_valid(st_transform(st_read(file.path(A, "zoning_1929.geojson"), quiet = TRUE), UTM))

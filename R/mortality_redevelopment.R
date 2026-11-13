@@ -55,7 +55,7 @@ SF <- fread("data/results/site_fate/site_fate_denver.csv")
 S <- rbind(rb(SF[radar == "Not on any list"], "hidden"), rb(SF[radar != "Not on any list"], "known"),
            rb(fread("data/results/site_fate/site_fate_denver_pre1960.csv"), "pre1960"))
 sxy <- st_coordinates(st_transform(st_as_sf(S, coords = c("lon", "lat"), crs = 4326), UTM))
-nn <- RANN::nn2(sxy, CXY, k = min(nrow(S), 400), searchtype = "radius", radius = 2000)
+nn <- RANN::nn2(sxy, CXY, k = min(nrow(S), 2000), searchtype = "radius", radius = 2000)
 W <- data.table(b = rep(seq_len(nrow(CXY)), ncol(nn$nn.idx)), s = as.vector(nn$nn.idx), d = as.vector(nn$nn.dists))[s > 0]
 W[, `:=`(w = exp(-0.5 * (d / 500)^2), bck = B$bck[b], group = S$group[s], rebuilt = S$rebuilt[s])]
 SC <- W[, .(k = sum(w)), by = .(bck, group)]; SC <- dcast(SC, bck ~ group, value.var = "k", fill = 0)
@@ -98,7 +98,7 @@ fwrite(ES, file.path(O, "mortality_redevelopment_event.csv")); print(ES)
 # ---------------------------------------------------------------- 5. summary
 kab <- function(x) { x <- as.data.frame(x); c(paste("|", paste(names(x), collapse = " | "), "|"), paste0(strrep("|---", ncol(x)), "|"),
   apply(x, 1, function(r) paste("|", paste(ifelse(is.na(r), "", trimws(r)), collapse = " | "), "|"))) }
-md <- c("# Former hazardous sites, before and after they were rebuilt: block mortality 2000-2019, Denver study area", "",
+md <- c("# Former hazardous sites, before and after they were rebuilt: block mortality 2000-2019, City and County of Denver", "",
         sprintf("%s blocks, %s block-years, %s natural-cause deaths, years %s.", format(uniqueN(PN$bck), big.mark = ","), format(nrow(PN), big.mark = ","),
                 format(sum(PN$deaths_nat), big.mark = ","), paste(range(KEEPY), collapse = "-")), "", "## Death records matched to 2010 blocks, by year", "", kab(MR[, .(year, pct_matched)]), "",
         "## Sites", "", kab(SUM), "", "## Rate ratio per SD of nearby sites still standing (block and year fixed effects)", "", kab(R), "",

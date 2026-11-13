@@ -1,10 +1,10 @@
 """Combine parsed volumes into one establishment-year table, assign SIC (observed or predicted), hazard flags.
-The stages are functions (load_parsed -> assign_sic -> fix_ocr_codes -> drop_bad_hazard -> hazard_flags) so the rules
+The stages are functions (load_parsed -> validate_bare_codes -> assign_sic -> fix_ocr_codes -> drop_bad_hazard -> hazard_flags) so the rules
 can be exercised on small frames in tests/digitization; main() runs them in that order on work/parsed."""
-import json, glob, re, os, sys, collections
+import json, glob, re, os, sys, collections, itertools
 import pandas as pd, numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
-from sic_predict import predict
+from sic_predict import predict, code_set
 from rapidfuzz import fuzz
 
 from volumes import VOLUMES
@@ -66,8 +66,83 @@ def strip_quotes(df):
 def prepare(df):
     strip_quotes(df)
     for c in ['sic','sic_desc']: df[c]=df[c].apply(lambda x: x if isinstance(x,list) else [])
-    for c in ['product','county_ctx','size','est','naics']:
+    for c in ['product','county_ctx','size','est','naics','sic_raw']:
         if c not in df: df[c]=None
+    return df
+
+# ---- codes printed without a description (the 1965 edition): nothing on the page confirms the four characters the OCR
+# returned, so they are checked against the codes the directory is known to use (review 4, finding E3)
+# characters this scan's OCR returns for a digit, most likely reading first ('2CS1' = 2051, '3€79' = 3679, '3£S1' = 3591)
+BARE_READ = {'S':'598','s':'598','$':'598','€':'68','£':'568','C':'0','c':'0','O':'0','o':'0','Q':'0','D':'0','U':'0',
+             'I':'1','l':'1','L':'1','i':'1','|':'1','!':'1','B':'83','Z':'2','z':'2','G':'6','g':'9','T':'7','A':'4',
+             '&':'8','@':'8','E':'86','e':'86','?':'7','F':'7','b':'6'}
+# digits the OCR mistakes for one another (either direction)
+DIGIT_CONF = {'0':'869','1':'7','2':'','3':'859','4':'9','5':'6398','6':'580','7':'1','8':'36059','9':'40835'}
+MINING = lambda c: len(c)==4 and c.isdigit() and 1000<=int(c)<=1499
+
+def read_bare_code(raw, valid, hint=None, freq=None):
+    """raw: the code characters as the OCR returned them; valid: set of acceptable codes; hint: optional set of major
+    groups (2 digits) the firm's name points to; freq: optional {code: times it was read cleanly in the same edition}.
+    Returns (code or None, how):
+    'asread'    the characters are digits and the code is valid;
+    'ocr'       the one valid code among the readings of the non-digit characters, or else among the codes one confused
+                digit away (DIGIT_CONF); with several candidates, the one in a hinted major group if exactly one is,
+                else the one that makes up 75% of the candidates' clean readings in the same edition (at least 5);
+    'ambiguous' several valid candidates, none singled out;  'invalid' no valid candidate."""
+    raw=re.sub(r"[^0-9A-Za-z$€£&@|!?]","",raw or '')
+    if len(raw)!=4: return None,'invalid'
+    if raw.isdigit() and raw in valid: return raw,'asread'
+    opts=[(ch if ch.isdigit() else BARE_READ.get(ch,'')) for ch in raw]
+    if not all(opts): return None,'invalid'
+    cands=[]
+    if not raw.isdigit():
+        cands=[c for c in (''.join(x) for x in itertools.product(*opts)) if c in valid]
+    if not cands:
+        base=''.join(o[0] for o in opts)
+        cands=sorted({base[:k]+d+base[k+1:] for k in range(4) for d in DIGIT_CONF[base[k]]} & set(valid))
+        # a neighbour of a clean but invalid reading must itself be a code the edition uses or the name points to
+        # ('2291' at drapery makers is not 2241 narrow fabrics just because 2241 is the only valid code one digit away)
+        cands=[c for c in cands if (freq or {}).get(c,0)>=3 or (hint and c[:2] in hint)]
+    if len(cands)==1: return cands[0],'ocr'
+    if len(cands)>1 and hint:
+        h=[c for c in cands if c[:2] in hint]
+        if len(h)==1: return h[0],'ocr'
+    if len(cands)>1 and freq:
+        n=sorted(((freq.get(c,0),c) for c in cands),reverse=True); tot=sum(k for k,_ in n)
+        if n[0][0]>=5 and n[0][0]>=0.75*tot: return n[0][1],'ocr'
+    return None,('ambiguous' if cands else 'invalid')
+
+def validate_bare_codes(df, valid=None):
+    """Rows that carry sic_raw (a code printed without a description) keep a code only when it is one the directory
+    uses: the classifier's code set (codes printed with a description in 1967-1986), plus mining codes 10xx-14xx that
+    recur at least three times in the same edition (the later editions list hardly any mines, so their codes cannot
+    be learnt there: 1441 sand and gravel, 1094 uranium, 1211 coal). A misread code is repaired when exactly one valid
+    code fits (read_bare_code); otherwise the code is dropped and assign_sic infers the industry from the firm's name
+    (sic_source 'name_keyword' or 'predicted', not 'directory'). Logged in sic_raw_fix: 'raw->code' or 'raw->dropped'."""
+    df['sic_raw_fix']=''
+    m=df.sic_raw.apply(lambda v: isinstance(v,str))
+    if not m.any(): return df
+    valid=set(code_set() if valid is None else valid)
+    freq={}
+    for y,g in df[m].groupby('year'):
+        n=collections.Counter(c for cs in g.sic for c in cs if MINING(c))
+        valid|={c for c,k in n.items() if k>=3}
+    for y,g in df[m].groupby('year'):
+        freq[y]=collections.Counter(r for r in g.sic_raw if r.isdigit() and r in valid)
+    names=df.loc[m,'name'].fillna('').tolist()
+    P=predict(names) if names else []
+    nfix=ndrop=0
+    for i,nm,(pc,ps,_),y in zip(df.index[m],names,P,df.loc[m,'year']):
+        raw=df.at[i,'sic_raw']
+        hint={x[:2] for x in [kw_sic(nm), pc if ps>=0.6 else None] if x}
+        code,how=read_bare_code(raw,valid,hint,freq.get(y))
+        if code:
+            if df.at[i,'sic']!=[code]: df.at[i,'sic_raw_fix']=f'{raw}->{code}'; nfix+=1
+            df.at[i,'sic']=[code]
+        else:
+            df.at[i,'sic']=[]
+            if raw: df.at[i,'sic_raw_fix']=f'{raw}->dropped'; ndrop+=1
+    print('codes printed without description:',int(m.sum()),'rows;',nfix,'repaired,',ndrop,'dropped (industry inferred from the name)')
     return df
 
 def assign_sic(df):
@@ -96,6 +171,14 @@ def assign_sic(df):
     for i,r in df[df.sic.str.len()==0].iterrows():
         k=kw_sic(r['name'])
         if k: df.at[i,'sic']=[k]; df.at[i,'sic_source']='name_keyword'
+    # a listing of an edition that prints only a code (sic_raw) whose code was unreadable has nothing but its name: the
+    # classifier's reading of the name is used when it is confident (>= 0.6: the major group then agrees with the
+    # printed code for about 7 in 10 of the 1965 firms whose code is readable)
+    if 'sic_raw' in df:
+        bare=df[(df.sic.str.len()==0) & df.sic_raw.apply(lambda v: isinstance(v,str)) & df.name.fillna('').str.contains(r"[A-Za-z]{4}")]
+        if len(bare):
+            for i,(c,sc,_) in zip(bare.index,predict(bare.name.tolist())):
+                if sc>=0.6: df.at[i,'sic']=[c]; df.at[i,'sic_source']='predicted'; df.at[i,'sic_pred_score']=round(float(sc),2)
     if 'naics' not in df: df['naics']=None
     df['naics']=df.naics.apply(lambda x: x if isinstance(x,list) else [])
     m=df.sic.str.len().eq(0) & df.naics.str.len().gt(0)
@@ -211,6 +294,7 @@ def hazard_flags(df):
 
 def main():
     df=load_parsed()
+    validate_bare_codes(df)
     assign_sic(df)
     TITLE=fix_ocr_codes(df)
     drop_bad_hazard(df,TITLE)

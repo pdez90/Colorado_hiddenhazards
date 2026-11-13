@@ -1,19 +1,19 @@
 model,term,estimate,se,p,tracts
-Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,pct_rental_owner_100plus,0.084,0.012,7.65e-11,142
-Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,p_black,0.191,0.033,4.83e-08,142
-Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,p_hisp,0.105,0.017,1.26e-08,142
-Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,p_pov,-0.106,0.038,0.00586,142
-Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,any_hidden,-0.113,0.49,0.818,142
-Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,any_known,-1.818,0.506,0.000457,142
-Filing rate on share of rental units held by companies,pct_rental_company,0.107,0.018,1.15e-08,142
-Filing rate on share of rental units held by companies,p_black,0.208,0.039,4.96e-07,142
-Filing rate on share of rental units held by companies,p_hisp,0.093,0.017,1.33e-07,142
-Filing rate on share of rental units held by companies,p_pov,-0.043,0.042,0.31,142
-Filing rate on share of rental units held by companies,any_hidden,0.027,0.554,0.962,142
-Filing rate on share of rental units held by companies,any_known,-1.354,0.532,0.012,142
-Filing rate on share of rental units with an out-of-state owner,pct_rental_out_of_state,0.08,0.018,2.03e-05,142
-Filing rate on share of rental units with an out-of-state owner,p_black,0.203,0.039,7.76e-07,142
-Filing rate on share of rental units with an out-of-state owner,p_hisp,0.084,0.014,1.44e-08,142
-Filing rate on share of rental units with an out-of-state owner,p_pov,-0.019,0.035,0.595,142
-Filing rate on share of rental units with an out-of-state owner,any_hidden,0.158,0.529,0.766,142
-Filing rate on share of rental units with an out-of-state owner,any_known,-1.364,0.54,0.0127,142
+Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,pct_rental_owner_100plus,0.084,0.012,7.22e-11,142
+Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,p_black,0.188,0.033,7.11e-08,142
+Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,p_hisp,0.105,0.017,1.01e-08,142
+Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,p_pov,-0.099,0.037,0.00874,142
+Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,any_hidden,-0.003,0.511,0.995,142
+Filing rate (% of renter households per year) on share of rental units held by owners of 100+ units,any_known,-1.947,0.548,0.000529,142
+Filing rate on share of rental units held by companies,pct_rental_company,0.108,0.018,7.32e-09,142
+Filing rate on share of rental units held by companies,p_black,0.204,0.039,6.06e-07,142
+Filing rate on share of rental units held by companies,p_hisp,0.094,0.016,6.98e-08,142
+Filing rate on share of rental units held by companies,p_pov,-0.035,0.041,0.402,142
+Filing rate on share of rental units held by companies,any_hidden,0.134,0.569,0.814,142
+Filing rate on share of rental units held by companies,any_known,-1.584,0.571,0.00634,142
+Filing rate on share of rental units with an out-of-state owner,pct_rental_out_of_state,0.081,0.018,1.59e-05,142
+Filing rate on share of rental units with an out-of-state owner,p_black,0.198,0.039,1.24e-06,142
+Filing rate on share of rental units with an out-of-state owner,p_hisp,0.085,0.014,8.17e-09,142
+Filing rate on share of rental units with an out-of-state owner,p_pov,-0.011,0.034,0.751,142
+Filing rate on share of rental units with an out-of-state owner,any_hidden,0.174,0.543,0.75,142
+Filing rate on share of rental units with an out-of-state owner,any_known,-1.538,0.573,0.00824,142

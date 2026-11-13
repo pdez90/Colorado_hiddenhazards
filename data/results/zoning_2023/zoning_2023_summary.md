@@ -23,24 +23,24 @@ Source: Denver-metro zoning, 3 Oct 2023, compiled by C. Makarewicz (CU Denver) f
 | Industrial B |  3.77 | 61.0 |  2.2 |  1.8 | 11.5 | 0.0 | 23.4 |
 
 ## Hazardous sites by 2023 zoning (% of sites)
-Sites in the study area that fall in no 2023 polygon (mostly suburban street geocodes on unzoned right-of-way) take the nearest polygon within 50 m: 53 of 1558 1965-92 sites and 0 of 267 pre-1960 trades; 0 and 0 remain unmatched and are left out.
+Sites in the study area that fall in no 2023 polygon (mostly suburban street geocodes on unzoned right-of-way) take the nearest polygon within 50 m: 58 of 1588 1965-92 sites and 1 of 368 pre-1960 trades; 0 and 0 remain unmatched and are left out.
 
 | series | where | n | Industrial (housing not allowed) | Industrial mixed use (housing allowed) | Mixed use with housing | Residential | Commercial | Open space, civic, other |
 |---|---|---|---|---|---|---|---|---
 |
-| Hazardous trades before 1960 (street level) | Denver County |  262 |  5.3 |  9.5 | 75.6 |  5.0 | 0.4 | 4.2 |
-| Hazardous trades before 1960 (street level) | Study area |  267 |  6.4 |  9.4 | 74.5 |  4.9 | 0.4 | 4.5 |
-| Hazardous-sector manufacturers 1965-1992 | Denver County | 1108 | 39.7 | 15.1 | 30.8 | 10.5 | 0.6 | 3.3 |
-| Hazardous-sector manufacturers 1965-1992 | Study area | 1558 | 47.7 | 10.7 | 25.9 | 11.0 | 1.9 | 2.8 |
-| Hazardous-sector manufacturers 1965-1992 | Suburban study tracts |  450 | 67.3 |  0.0 | 13.8 | 12.4 | 5.1 | 1.3 |
+| Hazardous trades before 1960 (street level) | Denver County |  364 |  4.9 |  8.8 | 73.6 |  5.5 | 0.3 | 6.9 |
+| Hazardous trades before 1960 (street level) | Study area |  368 |  5.7 |  8.7 | 73.1 |  5.4 | 0.3 | 6.8 |
+| Hazardous-sector manufacturers 1965-1992 | Denver County | 1132 | 39.5 | 15.1 | 31.0 | 10.6 | 0.4 | 3.4 |
+| Hazardous-sector manufacturers 1965-1992 | Study area | 1588 | 47.6 | 10.8 | 26.2 | 10.9 | 1.7 | 2.8 |
+| Hazardous-sector manufacturers 1965-1992 | Suburban study tracts |  456 | 67.8 |  0.0 | 14.3 | 11.6 | 4.8 | 1.5 |
 
 ## 1965-92 sites by the decade last listed
 | last_decade | n | Industrial (housing not allowed) | Industrial mixed use (housing allowed) | Mixed use with housing | Residential | Commercial | Open space, civic, other |
 |---|---|---|---|---|---|---|---
 |
-| 1965-1970 | 289 | 25.3 | 10.7 | 39.4 | 16.6 | 3.8 | 4.2 |
-| 1971-1980 | 415 | 39.3 |  9.2 | 31.1 | 13.5 | 2.7 | 4.3 |
-| 1981-1992 | 854 | 59.4 | 11.5 | 18.7 |  8.0 | 0.9 | 1.5 |
+| 1965-1970 | 303 | 26.1 | 10.9 | 39.9 | 16.2 | 2.6 | 4.3 |
+| 1971-1980 | 417 | 39.3 |  9.6 | 30.7 | 13.4 | 2.6 | 4.3 |
+| 1981-1992 | 868 | 59.1 | 11.3 | 19.2 |  7.8 | 0.9 | 1.6 |
 
 ## 2020 composition by the tract's 2023 industrial share (population-weighted means)
 | group | tracts | residents | pct_hispanic | pct_black | pct_white | pct_foreign_born | pct_poverty | pct_owner_occupied |

@@ -83,6 +83,21 @@ kd <- function(P) { if (!nrow(P)) return(rep(0, nrow(CXY))); cell <- 2000; key <
   out }
 for (k in names(groups)) { v <- kd(groups[[k]]); D[[paste0("k_", k)]] <- v[names_idx]; message("exposure: ", k) }
 # ---------------------------------------------------------------- 5. models
+# where the deaths go: every death of 2015-2019, by the first reason its block is left out of the models (aggregates only)
+all_deaths <- DE[, .(deaths_all = sum(deaths_all), deaths_nat = sum(deaths_nat))]
+D[, why_out := fcase(pyears < 100 | is.na(pyears), "fewer than 100 person-years 2015-2019", is.na(pct_65plus), "no 2010 age structure", !is.finite(pm25), "no PM2.5 estimate",
+                     is.na(t_pov), "no tract poverty rate", default = "in the models")]
+ACC <- rbind(D[, .(blocks = .N, deaths_all = sum(deaths_all), deaths_nat = sum(deaths_nat)), by = .(status = why_out)],
+             data.table(status = "block code not among the 2010 blocks", blocks = sum(!DE$bck %in% BD$bck), deaths_all = sum(DE$deaths_all[!DE$bck %in% BD$bck]), deaths_nat = sum(DE$deaths_nat[!DE$bck %in% BD$bck])))
+# no cell under 11 deaths is published: small cells are added to the largest excluded group, whose label says so
+{ sm <- ACC[, deaths_all < 11 | deaths_nat < 11]
+  if (any(sm)) { big <- which(!sm & ACC$status != "in the models"); tg <- big[which.max(ACC$deaths_all[big])]
+    for (v in c("blocks", "deaths_all", "deaths_nat")) set(ACC, tg, v, ACC[[v]][tg] + sum(ACC[[v]][sm]))
+    set(ACC, tg, "status", paste0(ACC$status[tg], " (or, for a few blocks, no age structure, PM2.5 or poverty rate)")); ACC <- ACC[!sm] }
+  stopifnot(ACC[, all(deaths_all >= 11 & deaths_nat >= 11)]) }
+ACC[, `:=`(pct_deaths_all = round(100 * deaths_all / all_deaths$deaths_all, 1), pct_deaths_nat = round(100 * deaths_nat / all_deaths$deaths_nat, 1))]
+stopifnot(sum(ACC$deaths_all) == all_deaths$deaths_all)
+fwrite(ACC[order(-deaths_all)], file.path(O, "mortality_block_death_accounting.csv")); print(ACC[order(-deaths_all)]); D[, why_out := NULL]
 D <- D[pyears >= 100 & !is.na(pct_65plus) & is.finite(pm25) & !is.na(t_pov)]
 for (v in esv) { x <- D[[paste0("es_", v)]]; x[is.na(x)] <- median(x, na.rm = TRUE); D[[paste0("es_", v)]] <- x }
 D[, log_py := log(pyears)]; D[, county := factor(county)]

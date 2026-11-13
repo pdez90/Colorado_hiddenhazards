@@ -3730,7 +3730,7 @@ year,town,nkey,sector,name,verdict,town_fix,sector_fix,name_fix,note
 1916,WINDSOR,TANNERMERCCO,Tannery,Tanner Merc Co,not_works,,,,"Tanner Merc Co, general mdse"
 1916,OURAY,BLUEFRONTCARRIAGEANDAUTOWORKS,Transportation equipment,Blue Front Carriage and Auto Works,other_town,DENVER,,,"Denver firm ad (1322 22nd St); one copy moved, own listing not in input"
 1916,MIDLAND,MIDLANDASSAYCO,Assay office,“ Midland Assay Co,other_town,VICTOR,,,"assayers classified, ditto under Victor (301 N 4th)"
-1916,PLACERVILLE,PLACERVILLERADIUMSPRINGS,Radium & uranium,Placerville Radium Springs,not_works,,,,"radium springs resort, not works"
+1916,PLACERVILLE,PLACERVILLERADIUMSPRINGS,Radium & uranium,Placerville Radium Springs,ok,,,,"RADIUMCURE: radium-cure spa or baths, kept on purpose and flagged (decision of 12 Nov 2026); first judged not_works: radium springs resort, not works"
 1916,BLACK HAWK,BOILERANDSHEETIRONWORKS,Iron & steel works,BOILERANDSHEET IRON WORKS,other_sector,,Metal working,Stroehle & Sons Geo,"Boiler and sheet iron works classified, Black Hawk"
 1916,EAGLE,EAGLEBOILERWORKS,Machine shop / machinery,Eagle Boiler Works,other_town,DENVER,Metal working,,"boiler works ad, 1830 Lawrence St Denver"
 1916,DENVER,FACTURESTIN,Metal working,factures tin,not_works,,,,American Can Co local sales office
@@ -3756,7 +3756,7 @@ year,town,nkey,sector,name,verdict,town_fix,sector_fix,name_fix,note
 1916,ROCKY FORD,LEADWORKS,Smelting & refining,LEAD WORKS,other_town,DENVER,Metal working,Bogue-Wensley Lead Co,"Lead works heading; Denver lead pipe/sheet maker, 18th & Blake"
 1916,JOHNSON,JOHNSONMACHINECOAE,Machine shop / machinery,Johnson Machine Co A E,other_town,DENVER,,,"Machine shops classified, Denver; 1447 Blake"
 1916,STERLING,PEKRULIRONWORKS,Iron & steel works,Pekrul Iron Works,other_town,DENVER,,,"Denver iron works (1348 12th), listed before Sterling"
-1916,PLACERVILLE,PLACERVILLERADIUMSPRINGSCO,Radium & uranium,Placerville Radium Springs Co,not_works,,,,mineral water/springs co office
+1916,PLACERVILLE,PLACERVILLERADIUMSPRINGSCO,Radium & uranium,Placerville Radium Springs Co,ok,,,,"RADIUMCURE: radium-cure spa or baths, kept on purpose and flagged (decision of 12 Nov 2026); first judged not_works: mineral water/springs co office"
 1916,VULCAN,VULCANMINESSMELTERCO,Smelting & refining,“ Vulcan Mines & Smelter Co,not_works,,,,"consistency pass: MINING&SMELTING: mining companies list, office Century bldg"
 1916,VULCAN,VULCANSHEETMETALCO,Metal working,Vulcan Sheet Metal Co,other_town,DENVER,,,Denver classified (1401 Osage); sheet metal co
 1916,GROVER,INTERNATIONALOILREFINERIESCO,Petroleum refining & asphalt,“ International Oil Refineries Co,not_works,,,,"oil co office, First Natl Bank bldg"
@@ -3954,7 +3954,7 @@ year,town,nkey,sector,name,verdict,town_fix,sector_fix,name_fix,note
 1917,MANASSA,JOHNSONAS,Machine shop / machinery,Johnson A S,other_town,HUGO,,Johnson A S,page is Hugo (Lincoln Co) continued; machine shop
 1917,IDAHO SPRINGS,JACKSONCONCENTRATINGWORKS,Ore milling & sampling,Jackson Concentrating Works,ok,,,,"Idaho Springs; concentrating works, John G Roberts prop"
 1917,IDAHO SPRINGS,IDAHOSPRINGSMACHINEWORKS,Machine shop / machinery,Idaho Springs Machine Works,ok,,,,Idaho Springs; machine works and garage (own advert)
-1917,IDAHO SPRINGS,HOTELRADIUMCAVEBATHS,Radium & uranium,Hotel & Radium Cave Baths,not_works,,,,hot springs hotel / radium baths
+1917,IDAHO SPRINGS,HOTELRADIUMCAVEBATHS,Radium & uranium,Hotel & Radium Cave Baths,ok,,,,"RADIUMCURE: radium-cure spa or baths, kept on purpose and flagged (decision of 12 Nov 2026); first judged not_works: hot springs hotel / radium baths"
 1917,IDAHO SPRINGS,SHAFFERCOWL,Assay office,Shaffer & Co W L,ok,,,,Idaho Springs continued; assayers
 1917,ILIUM,GARSTCOJOHNB,Assay office,GARST CO JOHN B,other_town,ILSE,,Henry Lawrence,"""Henry Lawrence, jeweler, assayer"" in ILSE column, not Ilium"
 1917,DENVER,MOOREWS,Assay office,Moore W S,other_town,INDEPENDENCE,,,"Independence continued from p713 (Vindicator, Last Dollar); assayer"
@@ -3983,7 +3983,7 @@ year,town,nkey,sector,name,verdict,town_fix,sector_fix,name_fix,note
 1917,OXFORD,ELECTRICGARAGEANDMACHINESHOP,Machine shop / machinery,Electric Garage and Machine Shop,other_town,PAGOSA SPRINGS,,Electric Garage and Machine Shop (C E Moore),advert by Pagosa Springs heading; garage & machine shop
 1917,PAGOSA SPRINGS,AGEMACHINESHOP,Machine shop / machinery,age & Machine Shop,ok,,,Electric Garage & Machine Shop,"""MOORE C E, prop Electric Garage & Machine Shop""; garage & machine shop"
 1917,PENROSE,WRITETOTHEWESTERNCHEMICALMFGCO,Chemicals,Write to THE WESTERN CHEMICAL MFG. CO,not_works,,,,Western Chemical Mfg Co (Denver) advert on Penrose page
-1917,PLACERVILLE,PLACERVILLERADIUMSPRINGS,Radium & uranium,Placerville Radium Springs,not_works,,,,radium springs resort
+1917,PLACERVILLE,PLACERVILLERADIUMSPRINGS,Radium & uranium,Placerville Radium Springs,ok,,,,"RADIUMCURE: radium-cure spa or baths, kept on purpose and flagged (decision of 12 Nov 2026); first judged not_works: radium springs resort"
 1917,PUEBLO,HALFADOZENMACHINESHOPSANDFOUNDRIES,Foundry,half a dozen machine shops and foundries,not_works,,,,Pueblo town description
 1917,FORT COLLINS,THEPUEBLOFOUNDRYAND,Foundry,The Pueblo Foundry and,other_town,PUEBLO,,Pueblo Foundry and Machine Co,own advert in Pueblo Leading Industries pages
 1917,PUEBLO,ALLENWMP,Metal working,Allen Wm P,ok,,,,Pueblo; sheet metal work
@@ -5249,7 +5249,7 @@ year,town,nkey,sector,name,verdict,town_fix,sector_fix,name_fix,note
 1929,BENNETT,BENNETTGE,Metal working,Bennett G E,other_town,HOLYOKE,,,"Holyoke page (co clerk, co sheriff)"
 1929,HYDE,IDAHOSPRINGSMACHINEWORKSANDGARAGE,Machine shop / machinery,IDAHO SPRINGS MACHINE WORKS AND GARAGE,other_town,IDAHO SPRINGS,,,Idaho Springs Machine Works & Garage advert
 1929,IDAHO SPRINGS,ARGOOREMILL,Ore milling & sampling,Argo Ore Mill,ok,,,,"Idaho Springs, ore mill"
-1929,IDAHO SPRINGS,HOTSPRINGSHOTELRADIUMCAVEBATHS,Radium & uranium,Hot Springs Hotel & Radium Cave Baths,not_works,,,,hotel and radium cave baths
+1929,IDAHO SPRINGS,HOTSPRINGSHOTELRADIUMCAVEBATHS,Radium & uranium,Hot Springs Hotel & Radium Cave Baths,ok,,,,"RADIUMCURE: radium-cure spa or baths, kept on purpose and flagged (decision of 12 Nov 2026); first judged not_works: hotel and radium cave baths"
 1929,JASPER,GOODRICHER,Machine shop / machinery,GoodrichER,other_town,KIM,,,"Kim column (Kim-Country Record), machine shop"
 1929,KREMMLING,FRED0CLFLSBYMACHINEWORKS,Machine shop / machinery,FRED 0. CLflSBY MACHINE WORKS,not_works,,,,Clasby Machine Works advert (Pueblo) repeated off its own town page
 1929,LA JUNTA,KNIGHTSOFPYTHIAS,Metal working,KnightsofP ythias,ok,,,La Junta Sheet Metal Works,"""La Junta Sheet Metal Works, D D Darby prop"""

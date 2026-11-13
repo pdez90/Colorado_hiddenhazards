@@ -41,6 +41,8 @@ def street_level(q):
 
 REVIEW = 'data/historical/street_review.csv'
 TOWN_REVIEW = 'data/historical/town_review.csv'   # hand review of every town-level listing (3 November 2026)
+NOTOWN_REVIEW = 'data/historical/notown_review.csv'   # hand review of every entry extracted without a town (13 November 2026): town, address, verdict
+HOMONYMS = 'data/historical/town_homonyms.csv'       # town names that exist in two counties: which one the directory means, by year
 FE_GROUP = {'Chemicals': '28', 'Paint & varnish': '28', 'Soap': '28', 'Explosives': '28', 'Fertilizer & rendering': '28', 'Petroleum refining & asphalt': '29',
             'Rubber': '30', 'Plastics': '30', 'Smelting & refining': '33', 'Foundry': '33', 'Iron & steel works': '33', 'Metal working': '34',
             'Machine shop / machinery': '35', 'Transportation equipment': '37'}   # every other sector is EXT (extended)
@@ -97,6 +99,19 @@ def main():
         tv = pd.read_csv(TOWN_REVIEW, dtype=str); tv['year'] = tv.year.astype(int)
         n0 = len(df); df = apply_review(df, tv, town_level=True)
         print('town review:', tv.verdict.value_counts().to_dict(), '- dropped', n0 - len(df))
+    # entries the parser could not give a town (classified sections, adverts, missed headings): the reviewer supplies the town
+    # (town_fix), the firm's own printed address (street_fix; 'none' = town level) and the verdict; rows are keyed with town = ''.
+    # They are applied last and sorted after the listings that had a town, so that where one becomes a copy of an already
+    # reviewed listing of the same edition, the reviewed listing is the one kept.
+    df['town'] = df.town.fillna('')
+    if os.path.exists(NOTOWN_REVIEW):
+        nv = pd.read_csv(NOTOWN_REVIEW, dtype=str).fillna(''); nv['year'] = nv.year.astype(int); nv['town'] = ''
+        df = df.assign(_nt=(df.town == '')).sort_values('_nt', kind='stable').drop(columns='_nt')
+        n0 = len(df); df = apply_review(df, nv)
+        print('no-town review:', nv.verdict.value_counts().to_dict(), '- dropped', n0 - len(df))
+    left = df[df.town == '']
+    if len(left): print(len(left), 'entries without a town are dropped (no verdict gives them one)')
+    df = df[df.town != '']
     G = pd.read_csv('data/historical/gnis_places_co.csv')
     # historical places (mining camps, vanished towns) from the full USGS GNIS file (R/fetch_gnis_historical.R), and the directory's
     # spelling variants of gazetteer names (data/historical/town_aliases.csv: EMPIRE CITY -> EMPIRE, CANON CITY -> CAÑON CITY)
@@ -108,6 +123,16 @@ def main():
     if os.path.exists('data/historical/town_aliases.csv'):   # the variant spelling is kept as the town; only the point comes from the gazetteer name
         for v, n in pd.read_csv('data/historical/town_aliases.csv', dtype=str).dropna().values:
             if n in TC and v not in TC: TC[v] = TC[n]
+    # a name that exists in two counties has one gazetteer row: data/historical/town_homonyms.csv says which place the directory means in
+    # which years (blank coordinates: the place has no gazetteer point and the listing stays unplaced rather than at its namesake)
+    HOM = []
+    if os.path.exists(HOMONYMS):
+        for h in pd.read_csv(HOMONYMS, dtype={'town': str}).itertuples():
+            HOM.append((h.town, int(h.year_from), int(h.year_to), (None if pd.isna(h.lat) else float(h.lat), None if pd.isna(h.lon) else float(h.lon), h.county)))
+    def town_point(town, year):
+        for t, a, b, pt in HOM:
+            if t == town and a <= year <= b: return pt
+        return TC.get(town)
     sys.path.insert(0, 'pipeline')
     from tiger_geocode import Geocoder
     geo = Geocoder()
@@ -118,9 +143,10 @@ def main():
             st = hist_street(r.street, r.entry)
             la, lo, q = geo.geocode(st, r.town, '') if st else (None, None, 'none')
             if street_level(q): lat, lon, prec = la, lo, 'street'
-        if lat is None and isinstance(r.town, str) and r.town in TC:
-            lat, lon, _ = TC[r.town]; prec = 'town'
-        out.append((lat, lon, prec, TC.get(r.town, (None, None, ''))[2] if isinstance(r.town, str) else ''))
+        tp = town_point(r.town, int(r.year)) if isinstance(r.town, str) else None
+        if lat is None and tp is not None and tp[0] is not None:
+            lat, lon, _ = tp; prec = 'town'
+        out.append((lat, lon, prec, tp[2] if tp is not None else ''))
     df[['lat', 'lon', 'precision', 'county']] = pd.DataFrame(out, index=df.index)
     df.to_csv('work/hist/hist_hazard_geocoded.csv', index=False)
     print(df.precision.value_counts().to_string())

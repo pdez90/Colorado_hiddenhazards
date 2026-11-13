@@ -11,15 +11,24 @@ import consolidate as C
 
 BASELINE = {
     #                    records  zip   garbage  hazardous  with_sic  with_street
-    'DCM_1967_part1': dict(records=1653, zip=1301, garbage=80, hazardous=634, with_sic=1572, with_street=1200),
-    'DCM_1977_part1': dict(records=2018, zip=1843, garbage=98, hazardous=831, with_sic=1900, with_street=1607),
-    'DCM_1965':       dict(records=2411, zip=0,    garbage=24, hazardous=687, with_sic=2411, with_street=1451),
-    'DCM_1992_part3': dict(records=1385, zip=877,  garbage=0,  hazardous=441, with_sic=1197, with_street=831),
+    # review 4 (13 Nov 2026) changed three rows; the values before it are kept for comparison:
+    #  1967_part1 (was 1653, 1301, 80, 634, 1572, 1200) and 1977_part1 (was 2018, 1843, 98, 831, 1900, 1607): record
+    #    fragments are attached to their firm or dropped (no nameless records), listings swallowed into the previous
+    #    record start their own, a street line is no longer taken for the name ('garbage' = names without 3 letters);
+    #  1965 (was 2411, 0, 24, 687, 2411, 1451): record lines whose code or class the OCR garbled ('2C42 El NAME') are
+    #    read (+816), street lines read as firms are not (-100) and stay with their firm as its street; with_sic counts
+    #    codes whose 4 characters read as digits.
+    'DCM_1967_part1': dict(records=1734, zip=1395, garbage=39, hazardous=638, with_sic=1650, with_street=1318),
+    'DCM_1977_part1': dict(records=1998, zip=1863, garbage=25, hazardous=828, with_sic=1901, with_street=1686),
+    'DCM_1965':       dict(records=3127, zip=0,    garbage=1,  hazardous=790, with_sic=2816, with_street=1852),
+    'DCM_1992_part3': dict(records=1385, zip=877,  garbage=0,  hazardous=440, with_sic=1197, with_street=831),
 }
 # consolidate over the same four volumes (classifier trained on 1967 + 1977): F&E / extended hazard flags per edition
-BASELINE_FLAGS = {1965: dict(fe=651, ext=36), 1967: dict(fe=604, ext=36), 1977: dict(fe=820, ext=38), 1992: dict(fe=410, ext=30)}
-BASELINE_OCR_FIXES = 44       # printed codes corrected by one digit (sic_ocr_fix)
-BASELINE_DROPPED = 7          # records with a hazardous code dropped as software / bled in
+# (before review 4: 1965 fe=651 ext=36, 1967 fe=604 ext=36, 1977 fe=820 ext=38, 1992 fe=410 ext=30. 1965 now has 3130 listings,
+# its codes are validated (consolidate.validate_bare_codes) and its mining codes kept: ext 36 -> 72.)
+BASELINE_FLAGS = {1965: dict(fe=654, ext=72), 1967: dict(fe=613, ext=35), 1977: dict(fe=818, ext=38), 1992: dict(fe=409, ext=30)}
+BASELINE_OCR_FIXES = 42       # printed codes corrected by one digit (sic_ocr_fix)
+BASELINE_DROPPED = 6          # records with a hazardous code dropped as software / bled in
 
 
 def metrics(R):
@@ -76,7 +85,9 @@ VERIFIED = [
     ('DCM_1967_part1', 35, 'PLAT PACKING CO',                     '707 & 90TH',             '80216', 'DENVER',      ['2011']),
     ('DCM_1967_part1', 41, 'WESTERN PAPER Co',                    '1816 MARKET',            '80202', None,          ['2653']),   # name was 'PRES' before the review
     ('DCM_1967_part1', 41, 'WESTERN FASHIONS INC',                '1513 WAZEE',             '80262', None,          ['2385']),
-    ('DCM_1965',       15, 'CRAWFCRD CHRONICLE',                  'CELTA',                  '',      'CRAWFORD',    ['2711']),
+    # 'CELTA' under this listing is the next town heading (DELTA, at the left margin after a blank line), not its street:
+    # the layout-based 1965 parser files the following listings under DELTA and leaves this street empty (review 4, E2)
+    ('DCM_1965',       15, 'CRAWFCRD CHRONICLE',                  '',                       '',      'CRAWFORD',    ['2711']),
     ('DCM_1965',       43, 'CHERRY PRODUCTS, INC.',               'L.S. HWY. 34',           '',      'LOVELAND',    ['2037']),
     ('DCM_1965',       47, 'MCHRLAND BROTHERS MFG. CO.',          '',                       '',      'BRUSH',       ['2042']),
     ('DCM_1992_part3', 20, 'ALL-RITE PAVING & REDILMIX',          '200 Speculater Ave',     '81052', 'LAMAR',       ['3272', '2999']),

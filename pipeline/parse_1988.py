@@ -10,11 +10,36 @@ SIC lines (dddd text, may wrap)
 import re, sys, os, glob, json
 sys.path.insert(0, os.path.dirname(__file__))
 from segment import page_lines
-from parse_block import norm_digits, fix_street, parse_sic, PHONE
+from parse_block import norm_digits, fix_street, parse_sic, PHONE, NUMSTART, POBOX, street_like
 
 ESTL = re.compile(r"^\W{0,2}(\S{4})\s*[=:\-]+\s*[EB8][S5$][T7]")
 ZIPP = re.compile(r"\(?\s*([0-9A-Za-z]{5})\s*\)?\s*$")
 CITYL = re.compile(r"^([A-Z][A-Z \.'\-]+?)\s*[-—\.]\s*([A-Z][A-Z \.'\-]*?)\s*COUN", re.I)
+
+def street_above(L, j, lo, addr, cityline):
+    """The street line when it carries no '(ZIP' of its own. j: index of the line above the address / town line found
+    so far; lo: first line that can belong to this listing. Returns (index of the line above the street, address text).
+    The ZIP is often read as a line of its own ('2180 S DELEWARE' / '(enzze') or lost ('3010 S TEJON eer'), and a
+    house number 2000-3999 makes the street line look like a SIC line, which ended the search for the name: 107 listings
+    of 1988 came out without a firm name. The line right above the town line (or above a bare ZIP) is the street when
+    it starts with a number or 'PO BOX' and what follows is not a code description; OCR specks (<= 3 characters)
+    between the lines are skipped."""
+    junk=lambda q: len(re.sub(r"[^A-Za-z0-9]","",L[q]['text']))<=2 or (len(L[q]['text'].strip())<=3 and not L[q]['text'].strip().isupper())
+    def is_street(t):
+        if POBOX.match(t): return True
+        if not NUMSTART.match(t): return False
+        s=parse_sic(t)
+        return not s or street_like(s[1]) or len(s[1].split())<=2
+    q=j
+    while q>=lo and junk(q): q-=1
+    if q<lo: return j,addr
+    t=L[q]['text'].strip()
+    bare_zip = addr is not None and not re.search(r"[A-Za-z0-9]",addr[:addr.find('(')])
+    if (bare_zip or (addr is None and cityline is not None)) and is_street(t) and q-1>=lo and not parse_sic(L[q-1]['text']):
+        addr=t+(' '+addr.strip() if addr else ''); q-=1
+        while q>=lo and junk(q): q-=1
+        return q,addr
+    return j,addr
 
 def parse(vol, tsvdir, year):
     L=[]
@@ -36,10 +61,14 @@ def parse(vol, tsvdir, year):
                 break
             if cityline is None and re.search(r"COUN|CNTY",t.upper()): cityline=t; j=q-1
         prev_end = anchors[k-1]+2 if k>0 else 0
+        j,addr=street_above(L,j,prev_end,addr,cityline)
         while j>=prev_end and len(names)<2:
             t=L[j]['text'].strip()
             if parse_sic(t) or re.search(r",\s*(PRESIDENT|OWNER|MANAGER|PARTNER|VICE|SECRETARY|GENERAL|CHIEF|SALES|DIRECTOR|TREASURER)",t.upper()): break
-            if re.match(r"^\d{1,4}\s+[A-Z]+\s*-\s*[A-Z]+$",t): break  # page header
+            if re.match(r"^\d{1,4}\s+[A-Z]+\s*-\s*[A-Z]+$",t) or re.match(r"^[A-Z][A-Z ]+\s*-\s*[A-Z][A-Z ]+\s+\d{1,4}$",t): break  # page header
+            # the wrapped end of the previous listing's last SIC description ('3499 VACUUM FLANGES, FITTINGS' / '+ VALVES';
+            # '3629 WELDING APPARATUS,' / 'ELECTRIC') is not the first line of this firm's name
+            if names and j-1>=prev_end and parse_sic(L[j-1]['text']) and (re.match(r"^\W*[+&]",t) or re.search(r"([,+&]|\bAND|\bOR)\s*$",L[j-1]['text'].strip())): break
             names.insert(0,t); j-=1
             if len(names)==1 and re.search(r"(INC|CO|CORP|LTD|COMPANY|CORPORATION)\.?$",t.upper()):
                 # likely complete single-line name unless previous line is a name start
