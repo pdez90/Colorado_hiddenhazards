@@ -667,6 +667,8 @@ unscripted:
   why: hand review of the 2,860 pre-1960 entries the parser left without a town (input to geocode_hist.py, 13 Nov 2026)
 - path: data/historical/notown_check_2026-11-13.csv
   why: independent reader sample of 120 rows of the no-town review
+- path: data/results/scan_check_2026-11-13.csv
+  why: random sample (pipeline/scan_check_sample.py, seed 20261113) of 30 pre-1960 street-level and 30 1961-2002 hazardous-sector sites, read by eye against the page images
 - path: data/historical/placement_check_2026-11-03.csv
   why: hand check of 60 placements
 - path: data/historical/town_level_check_2026-11-03.csv
