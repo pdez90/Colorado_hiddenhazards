@@ -26,7 +26,9 @@ def test_si_blocks_reproduce():
         # point the temporary copy at the repository's result files but write beside itself
         script = script.replace("A = os.path.abspath(os.path.join(HERE, '..', '..')) + '/'", "A = %r + '/'" % str(REPO))
         (si / "make_si.py").write_text(script, encoding="utf-8")
-        r = subprocess.run([sys.executable, "-I", str(si / "make_si.py")], capture_output=True, text=True, cwd=str(REPO))
+        # -P (3.11+): the script's folder is not put on sys.path. Not -I, which would also hide a user-site pandas (pip --user)
+        flags = ["-P"] if sys.version_info >= (3, 11) else []
+        r = subprocess.run([sys.executable, *flags, str(si / "make_si.py")], capture_output=True, text=True, cwd=str(REPO))
         assert r.returncode == 0, r.stdout[-2000:] + r.stderr[-2000:]
         new = json.load(open(si / "si_blocks.json", encoding="utf-8"))
     old = json.load(open(REPO / "paper" / "si" / "si_blocks.json", encoding="utf-8"))
