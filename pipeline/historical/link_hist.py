@@ -50,7 +50,40 @@ for (town, la, lo), g in st.groupby(['town', st.lat.round(5), st.lon.round(5)]):
     for a in range(len(idx)):
         for b in range(a + 1, len(idx)):
             if len(fk[a]) >= 6 and len(fk[b]) >= 6 and fuzz.token_sort_ratio(fk[a], fk[b]) >= 85: par[find(idx[a])] = find(idx[b])
-H['hfirm'] = ['HF%05d' % find(i) for i in range(len(H))]
+H['firm'] = [find(i) for i in range(len(H))]
+# --- a firm that moved is several firm-locations (scan check of 13 Nov 2026: 92 of 516 street-level firm-locations had merged
+# listings at different addresses). Within a firm: street-level listings within 60 m of each other are one location; a town-level
+# listing that prints an address joins the street-level location with the same printed address, or else forms a town-level
+# location with the other listings printing that address (its address is not verified, so it is not placed at street level);
+# a listing printing no address joins the location whose listing years lie nearest its own (the larger on a tie). The location
+# holding the firm's id keeps it (a firm that did not move keeps its id); every other location is named by its lowest listing index.
+def _m(la1, lo1, la2, lo2):
+    return float(np.hypot((la1 - la2) * 111320, (lo1 - lo2) * 111320 * np.cos(np.radians(la1))))
+def _akey(s):
+    m = re.match(r"\s*(\d+)[\d\-/ ]*\s+(.+)", s) if isinstance(s, str) else None
+    if not m: return ''
+    nm = re.sub(r"\b(ST|STREET|AV|AVE|AVENUE|BLVD|PL|PLACE|N|S|E|W)\b", " ", m.group(2).upper())
+    return m.group(1) + ' ' + re.sub(r"[^A-Z0-9]", "", nm)[:4]
+H['hfirm'] = ''
+for f, g in H.groupby('firm'):
+    groups = []                                                         # [kind, lat, lon, {address keys}, [indices], [years]]
+    for i, r in g[g.precision == 'street'].sort_values('year').iterrows():
+        c = next((c for c in groups if _m(c[1], c[2], r.lat, r.lon) <= 60), None)
+        if c is None: c = ['street', r.lat, r.lon, set(), [], []]; groups.append(c)
+        c[3].add(_akey(r.street)); c[4].append(i); c[5].append(r.year)
+    loose = []
+    for i, r in g[g.precision != 'street'].iterrows():
+        k = _akey(r.street)
+        if not k: loose.append(i); continue
+        c = next((c for c in groups if k in c[3]), None)
+        if c is None: c = ['town', None, None, {k}, [], []]; groups.append(c)
+        c[4].append(i); c[5].append(r.year)
+    if not groups:
+        H.loc[g.index, 'hfirm'] = 'HF%05d' % f; continue
+    for i in loose:
+        y = H.at[i, 'year']; c = min(groups, key=lambda c: (min(abs(y - v) for v in c[5]), -len(c[4])))
+        c[4].append(i); c[5].append(y)
+    for c in groups: H.loc[c[4], 'hfirm'] = 'HF%05d' % (f if f in c[4] else min(c[4]))
 
 # --- (b) link to 1961-2002 directory establishments (same city, similar name) and sites (same address)
 R = pd.read_pickle(os.path.join(REPO, 'work/inv/records_final.pkl'))

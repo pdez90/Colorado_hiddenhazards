@@ -1,5 +1,5 @@
 """Combine parsed volumes into one establishment-year table, assign SIC (observed or predicted), hazard flags.
-The stages are functions (load_parsed -> validate_bare_codes -> assign_sic -> fix_ocr_codes -> drop_bad_hazard -> hazard_flags) so the rules
+The stages are functions (load_parsed -> validate_bare_codes -> assign_sic -> fix_ocr_codes -> drop_bad_hazard -> apply_scan_review -> hazard_flags) so the rules
 can be exercised on small frames in tests/digitization; main() runs them in that order on work/parsed."""
 import json, glob, re, os, sys, collections, itertools
 import pandas as pd, numpy as np
@@ -282,9 +282,63 @@ def drop_bad_hazard(df, TITLE):
     print('hazardous codes dropped as software / bled-in:',(df.sic_dropped!='').sum(),'records')
     return df
 
+SCAN_REVIEW = 'data/raw/dcm_scan_review.csv'
+def apply_scan_review(df, path=SCAN_REVIEW):
+    """The hand review of every hazardous-sector listing against the page scans (14 Nov 2026; key: volume, page and the name and
+    street as parsed). not_listing rows are dropped; name_fix / street_fix / city_fix replace the parsed field; sic_printed (the
+    codes printed for the firm) replaces the codes (sic_source 'directory', or 'naics' in 2002, mapped as in assign_sic); a 'no'
+    verdict on an edition that prints no codes removes the hazardous codes. not_found rows are left as parsed. Returns df."""
+    if not os.path.exists(path): df['name_parsed'] = df['name']; return df
+    R = pd.read_csv(path, dtype=str, keep_default_na=False)
+    # the published listings file drops leading OCR punctuation from names ('+ LASTIC TOOLING' -> 'LASTIC TOOLING'): match on that form
+    key = lambda v, p, n, s: (str(v), str(int(float(p))), re.sub(r"^[^A-Za-z0-9]+", "", str(n or '')).strip(), str(s or '').strip())
+    rv = {key(r.vol, r.page, r['name'], r.street): r for _, r in R.iterrows()}
+    df['name_parsed'] = df['name']          # the name as parsed, before any review correction (row-conservation tests, audit)
+    drop, hit, match, left = [], set(), {}, collections.defaultdict(list)
+    for i, v, p, n, s in zip(df.index, df.vol, df.page, df.name, df.street):
+        k = key(v, p, n if isinstance(n, str) else '', s if isinstance(s, str) else '')
+        if k in rv and k not in hit: match[i] = rv[k]; hit.add(k)
+        else: left[k[:2]].append((i, k[2], k[3]))
+    # a re-read of the scans can spell a listing differently ('SHERIOAN' / 'SHERIDAN BLVD'; the page image of a rendered scan depends
+    # on the PDF library's version): a reviewed row with no exact match takes the unmatched listing on the same page whose name and
+    # street are the closest near match (name >= 80, name + street >= 165 of 200), one to one
+    cand = []
+    for k, r in rv.items():
+        if k in hit: continue
+        for i, n, s in left.get(k[:2], []):
+            a = fuzz.ratio(k[2].upper(), n.upper()); b = fuzz.ratio(k[3].upper(), s.upper()) if (k[3] or s) else 100
+            if a >= 80 and a + b >= 165: cand.append((a + b, i, k))
+    near = 0
+    for _, i, k in sorted(cand, key=lambda c: -c[0]):
+        if i in match or k in hit: continue
+        match[i] = rv[k]; hit.add(k); near += 1
+    for i in df.index:
+        r = match.get(i)
+        if r is None: continue
+        if r.verdict == 'not_listing': drop.append(i); continue
+        if r.verdict == 'not_found': continue
+        if r.name_fix: df.at[i, 'name'] = r.name_fix
+        if r.street_fix: df.at[i, 'street'] = r.street_fix
+        if r.city_fix: df.at[i, 'city_ctx'] = r.city_fix
+        codes = [c.strip() for c in r.sic_printed.split(';') if c.strip()]
+        if codes:
+            sic = [c for c in codes if len(c) == 4] + sic_from_naics([c for c in codes if len(c) == 6])
+            # the codes read from the page are the directory's printed codes: the source stays 'directory' ('naics' in 2002), so a
+            # reviewed listing counts as printed evidence downstream; the printed descriptions are kept when the codes did not change
+            if sic != list(df.at[i, 'sic']): df.at[i, 'sic'] = sic; df.at[i, 'sic_desc'] = []
+            df.at[i, 'sic_source'] = 'naics' if any(len(c) == 6 for c in codes) else 'directory'
+        elif r.hazardous == 'no':
+            df.at[i, 'sic'] = [c for c in df.at[i, 'sic'] if c[:2] not in FE_MAJOR]
+            if not df.at[i, 'sic']: df.at[i, 'sic_source'] = ''
+    df.drop(index=drop, inplace=True)
+    print('scan review:', len(hit), 'of', len(R), 'rows matched (' + str(near) + ' as near matches on the same page);', len(drop), 'not listings dropped')
+    return df
+
 def hazard_flags(df):
     """fe_hazard: any code in the F&E major groups (28-30, 33-35, 37); ext_hazard: an EXT_4 code or metal mining (10xx) without fe_hazard."""
-    df['sic2']=df.sic.apply(lambda L: sorted({c[:2] for c in L}))
+    # 1965-1968 print the 1957 SIC, where ordnance is major group 19; from 1972 the same products are 348x (fabricated metals),
+    # so a 19xx code counts as fabricated metals (scan review, 14 Nov 2026: otherwise a gun maker changes status between editions)
+    df['sic2']=df.sic.apply(lambda L: sorted({'34' if c[:2]=='19' else c[:2] for c in L}))
     df['fe_hazard']=df.sic2.apply(lambda L: any(c in FE_MAJOR for c in L))
     df['fe_sectors']=df.sic2.apply(lambda L: '; '.join(FE_MAJOR[c] for c in L if c in FE_MAJOR))
     df['ext_hazard']=df.sic.apply(lambda L: any((c in EXT_4) or c[:2]=='10' for c in L)) & ~df.fe_hazard
@@ -298,6 +352,7 @@ def main():
     assign_sic(df)
     TITLE=fix_ocr_codes(df)
     drop_bad_hazard(df,TITLE)
+    apply_scan_review(df)
     hazard_flags(df)
     df.to_pickle('work/inv/records.pkl')
     print(len(df),'records'); print(df.groupby('year').agg(n=('name','size'),fe=('fe_hazard','sum'),ext=('ext_hazard','sum'),zip=('zip',lambda s:(s.fillna('')!='').mean().round(2))).to_string())

@@ -31,44 +31,44 @@
 
 | group | sites | rebuilt_in_window | rebuilt_before | standing_throughout |
 |---|---|---|---|---|
-| hidden | 307 | 23 | 21 | 263 |
-| known | 825 | 54 | 42 | 729 |
-| pre1960 | 366 | 49 | 102 | 215 |
+| hidden | 235 | 11 | 14 | 210 |
+| known | 737 | 44 | 31 | 662 |
+| pre1960 | 390 | 52 | 110 | 228 |
 
 ## Rate ratio per SD of nearby sites still standing (block and year fixed effects)
 
 | model | outcome | term | rr | lo | hi | p | n_obs |
 |---|---|---|---|---|---|---|---|
-| All three groups together | deaths_nat | hidden | 1.0530 | 0.7762 | 1.4286 | 0.740 | 156400 |
-| All three groups together | deaths_nat | known | 0.7931 | 0.4402 | 1.4289 | 0.440 | 156400 |
-| All three groups together | deaths_nat | pre1960 | 1.1431 | 0.8516 | 1.5344 | 0.373 | 156400 |
-| One group: hidden | deaths_nat | hidden | 1.0070 | 0.7578 | 1.3383 | 0.961 | 156400 |
-| One group: known | deaths_nat | known | 0.9073 | 0.5900 | 1.3952 | 0.658 | 156400 |
-| One group: pre1960 | deaths_nat | pre1960 | 0.9828 | 0.7301 | 1.3231 | 0.909 | 156400 |
-| All three groups together | deaths_all | hidden | 1.0540 | 0.7972 | 1.3934 | 0.712 | 159360 |
-| All three groups together | deaths_all | known | 0.6652 | 0.3447 | 1.2838 | 0.224 | 159360 |
-| All three groups together | deaths_all | pre1960 | 1.2444 | 0.9017 | 1.7174 | 0.183 | 159360 |
-| One group: hidden | deaths_all | hidden | 0.9727 | 0.7517 | 1.2587 | 0.834 | 159360 |
-| One group: known | deaths_all | known | 0.8139 | 0.5069 | 1.3069 | 0.394 | 159360 |
-| One group: pre1960 | deaths_all | pre1960 | 0.9431 | 0.6810 | 1.3060 | 0.724 | 159360 |
+| All three groups together | deaths_nat | hidden | 1.0583 | 0.7404 | 1.5127 | 0.756 | 156400 |
+| All three groups together | deaths_nat | known | 0.8708 | 0.5352 | 1.4167 | 0.577 | 156400 |
+| All three groups together | deaths_nat | pre1960 | 1.0528 | 0.8412 | 1.3175 | 0.653 | 156400 |
+| One group: hidden | deaths_nat | hidden | 1.0190 | 0.7043 | 1.4743 | 0.921 | 156400 |
+| One group: known | deaths_nat | known | 0.9213 | 0.5963 | 1.4235 | 0.712 | 156400 |
+| One group: pre1960 | deaths_nat | pre1960 | 0.9736 | 0.7292 | 1.2999 | 0.856 | 156400 |
+| All three groups together | deaths_all | hidden | 1.0922 | 0.7794 | 1.5304 | 0.608 | 159360 |
+| All three groups together | deaths_all | known | 0.7285 | 0.4261 | 1.2455 | 0.247 | 159360 |
+| All three groups together | deaths_all | pre1960 | 1.1299 | 0.9009 | 1.4171 | 0.290 | 159360 |
+| One group: hidden | deaths_all | hidden | 1.0025 | 0.7018 | 1.4320 | 0.989 | 159360 |
+| One group: known | deaths_all | known | 0.8211 | 0.5163 | 1.3059 | 0.405 | 159360 |
+| One group: pre1960 | deaths_all | pre1960 | 0.9380 | 0.6863 | 1.2821 | 0.688 | 159360 |
 
 ## Event study (rate ratio relative to the year before the rebuild)
 
 | outcome | years_since_rebuild | rr | lo | hi | p | n_obs | rebuilt_blocks | comparison_blocks |
 |---|---|---|---|---|---|---|---|---|
-| deaths_nat | -4 or earlier | 1.0549 | 0.8150 | 1.3656 | 0.685 | 60540 | 770 | 3400 |
-| deaths_nat | -3 | 1.0424 | 0.8459 | 1.2845 | 0.697 | 60540 | 770 | 3400 |
-| deaths_nat | -2 | 0.9813 | 0.8455 | 1.1389 | 0.804 | 60540 | 770 | 3400 |
-| deaths_nat | 0 | 0.8986 | 0.7331 | 1.1016 | 0.304 | 60540 | 770 | 3400 |
-| deaths_nat | 1 | 0.9646 | 0.7951 | 1.1701 | 0.714 | 60540 | 770 | 3400 |
-| deaths_nat | 2 | 0.8640 | 0.6848 | 1.0902 | 0.218 | 60540 | 770 | 3400 |
-| deaths_nat | 3 | 0.9921 | 0.7814 | 1.2597 | 0.948 | 60540 | 770 | 3400 |
-| deaths_nat | 4 or later | 1.0289 | 0.8498 | 1.2459 | 0.770 | 60540 | 770 | 3400 |
-| deaths_all | -4 or earlier | 1.0397 | 0.8166 | 1.3238 | 0.752 | 61720 | 770 | 3400 |
-| deaths_all | -3 | 0.9860 | 0.7941 | 1.2244 | 0.899 | 61720 | 770 | 3400 |
-| deaths_all | -2 | 0.9575 | 0.8205 | 1.1173 | 0.581 | 61720 | 770 | 3400 |
-| deaths_all | 0 | 0.8857 | 0.7190 | 1.0911 | 0.254 | 61720 | 770 | 3400 |
-| deaths_all | 1 | 0.9469 | 0.7972 | 1.1247 | 0.534 | 61720 | 770 | 3400 |
-| deaths_all | 2 | 0.8773 | 0.7094 | 1.0848 | 0.227 | 61720 | 770 | 3400 |
-| deaths_all | 3 | 1.0025 | 0.7919 | 1.2692 | 0.983 | 61720 | 770 | 3400 |
-| deaths_all | 4 or later | 1.0414 | 0.8804 | 1.2319 | 0.636 | 61720 | 770 | 3400 |
+| deaths_nat | -4 or earlier | 0.9520 | 0.7519 | 1.2054 | 0.6830 | 51300 | 760 | 2887 |
+| deaths_nat | -3 | 0.9675 | 0.7792 | 1.2015 | 0.7650 | 51300 | 760 | 2887 |
+| deaths_nat | -2 | 0.9656 | 0.8134 | 1.1464 | 0.6900 | 51300 | 760 | 2887 |
+| deaths_nat | 0 | 0.8793 | 0.7095 | 1.0898 | 0.2400 | 51300 | 760 | 2887 |
+| deaths_nat | 1 | 0.8793 | 0.7166 | 1.0790 | 0.2180 | 51300 | 760 | 2887 |
+| deaths_nat | 2 | 0.7860 | 0.6243 | 0.9895 | 0.0404 | 51300 | 760 | 2887 |
+| deaths_nat | 3 | 0.9791 | 0.7850 | 1.2212 | 0.8510 | 51300 | 760 | 2887 |
+| deaths_nat | 4 or later | 0.9696 | 0.7903 | 1.1897 | 0.7680 | 51300 | 760 | 2887 |
+| deaths_all | -4 or earlier | 0.9858 | 0.7817 | 1.2432 | 0.9040 | 52340 | 760 | 2887 |
+| deaths_all | -3 | 0.9825 | 0.7905 | 1.2210 | 0.8730 | 52340 | 760 | 2887 |
+| deaths_all | -2 | 0.9421 | 0.8037 | 1.1043 | 0.4620 | 52340 | 760 | 2887 |
+| deaths_all | 0 | 0.8953 | 0.7218 | 1.1106 | 0.3150 | 52340 | 760 | 2887 |
+| deaths_all | 1 | 0.8932 | 0.7322 | 1.0896 | 0.2650 | 52340 | 760 | 2887 |
+| deaths_all | 2 | 0.8205 | 0.6623 | 1.0166 | 0.0703 | 52340 | 760 | 2887 |
+| deaths_all | 3 | 1.0423 | 0.8488 | 1.2798 | 0.6930 | 52340 | 760 | 2887 |
+| deaths_all | 4 or later | 1.0195 | 0.8444 | 1.2309 | 0.8410 | 52340 | 760 | 2887 |

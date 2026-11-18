@@ -141,10 +141,12 @@ def test_hazard_flags_recomputed_from_the_published_codes(which):
     D = _csv(RES if which == 'results' else FULL)
     codes = D.sic.apply(lambda s: [c for c in s.split(';') if c])
     assert all(re.fullmatch(r'\d{4}', c) for cs in codes for c in cs)
-    fe = codes.apply(lambda cs: any(c[:2] in FE for c in cs))
+    # the 1957 SIC of the 1965-1968 editions files ordnance under major group 19; from 1972 it is 348x, so 19xx counts as 34
+    m2 = lambda c: '34' if c[:2] == '19' else c[:2]
+    fe = codes.apply(lambda cs: any(m2(c) in FE for c in cs))
     ext = codes.apply(lambda cs: any(c in EXT4 or c[:2] == '10' for c in cs)) & ~fe
     assert (fe.values == T(D.fe_hazard).values).all() and (ext.values == T(D.ext_hazard).values).all()
-    sect = codes.apply(lambda cs: '; '.join(FE[k] for k in sorted({c[:2] for c in cs}) if k in FE))
+    sect = codes.apply(lambda cs: '; '.join(FE[k] for k in sorted({m2(c) for c in cs}) if k in FE))
     assert (sect == D.fe_sectors).all()
     assert not (T(D.fe_hazard) & T(D.ext_hazard)).any()            # the extended set is defined as "not F&E"
     assert ((D.ext_sectors != '') >= T(D.ext_hazard)).all()
@@ -278,18 +280,23 @@ def test_founding_years_not_after_the_edition(L):
 
 # ------------------------------------------------------------------ work/-dependent row conservation
 def test_parsed_volumes_all_reach_records_pkl_in_order():
-    """Row conservation parse -> consolidate: every parsed line of every volume is one row of records.pkl, same order, same name."""
+    """Row conservation parse -> consolidate: every parsed line of every volume is one row of records.pkl, same order, same name
+    as parsed (name_parsed; the scan review may correct `name`), except the rows the scan review drops as not listings."""
     _need('parsed', 'inv/records.pkl')
     R = pd.read_pickle(WORK / 'inv' / 'records.pkl')
+    rv = _csv(ROOT / 'data' / 'raw' / 'dcm_scan_review.csv')
+    nl = rv[rv.verdict == 'not_listing']
+    gone = {(v, int(float(p)), n.strip()) for v, p, n in zip(nl.vol, nl.page, nl['name'])}
     vols = dict(_volumes())
     assert {os.path.basename(f)[:-6] for f in glob.glob(str(WORK / 'parsed' / '*.jsonl'))} == set(vols)
     n = 0
     for f in sorted(glob.glob(str(WORK / 'parsed' / '*.jsonl'))):
         v = os.path.basename(f)[:-6]
         rows = [json.loads(l) for l in open(f)]
+        rows = [r for r in rows if (v, int(r.get('page')), (r.get('name') or '').replace('"', '').strip()) not in gone]
         seg = R.iloc[n:n + len(rows)]
         assert (seg.vol == v).all() and (seg.year == vols[v]).all(), v
-        assert [(r.get('name') or '').replace('"', '').strip() for r in rows] == seg.name.fillna('').tolist(), v
+        assert [(r.get('name') or '').replace('"', '').strip() for r in rows] == seg.name_parsed.fillna('').tolist(), v
         assert [r.get('page') for r in rows] == seg.page.tolist(), v
         n += len(rows)
     assert n == len(R)
@@ -301,8 +308,9 @@ def test_records_survive_geo_prep_link_and_edition_filter(CFG, L):
     _need('inv/records.pkl', 'inv/records_geo.pkl', 'inv/records_linked.pkl', 'inv/records_final.pkl')
     R, G, K, F = (pd.read_pickle(WORK / 'inv' / f'{n}.pkl') for n in ['records', 'records_geo', 'records_linked', 'records_final'])
     assert len(R) == len(G) == len(K)
-    for D in (G, K):
-        assert (D.vol.values == R.vol.values).all() and (D.page.values == R.page.values).all() and (D.name.fillna('').values == R.name.fillna('').values).all()
+    for D in (G, K):       # clean_spelling.py respells `name` in the linked records and keeps the reading in name_as_read
+        nm = D.name_as_read if 'name_as_read' in D.columns else D.name
+        assert (D.vol.values == R.vol.values).all() and (D.page.values == R.page.values).all() and (nm.fillna('').values == R.name.fillna('').values).all()
         assert [tuple(x) for x in D.sic] == [tuple(x) for x in R.sic] and (D.fe_hazard.values == R.fe_hazard.values).all()
     Kc = K[K.year.isin(CFG['complete_editions'])]
     assert len(Kc) == len(F) == len(L)

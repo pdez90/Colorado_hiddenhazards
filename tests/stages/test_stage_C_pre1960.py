@@ -455,9 +455,9 @@ def test_site_coordinates_come_from_one_of_its_listings(L, S):
 
 
 def test_denver_street_level_counts(S):
-    """Denver hazardous-sector street-level firm-locations and how many of them are doubtful (13 Nov 2026 run)."""
+    """Denver hazardous-sector street-level firm-locations and how many of them are doubtful (14 Nov 2026: firms split by address)."""
     d = S[(S.precision == 'street') & (S.town == 'DENVER') & S.fe_hazard.astype(bool)]
-    assert [len(S), int((S.precision == 'street').sum()), len(d), int((d.review == 'doubtful').sum())] == [3417, 565, 366, 34]
+    assert [len(S), int((S.precision == 'street').sum()), len(d), int((d.review == 'doubtful').sum())] == [3702, 604, 390, 36]
 
 
 def test_readme_denver_street_level_counts(S):
@@ -467,10 +467,11 @@ def test_readme_denver_street_level_counts(S):
     assert m and [int(m.group(1).replace(',', '')), int(m.group(2))] == [len(d), int((d.review == 'doubtful').sum())]
 
 
-def test_identical_name_in_one_town_is_one_firm_location(L):
-    """The same normalised name in the same town in different editions must be one firm-location, or counts and persistence are
-    wrong (FINDING 3 of 12 Nov, 116 names split into 388 firm-locations: closed by the nkey and whole-name rules of link_hist.py)."""
-    n = L.groupby(['town', 'nkey']).hfirm.nunique()
+def test_identical_name_in_one_town_is_one_firm(L):
+    """The same normalised name in the same town in different editions must be one firm (FINDING 3 of 12 Nov, 116 names split into
+    388 firm-locations: closed by the nkey and whole-name rules of link_hist.py). Since 14 Nov a firm that moved is several
+    firm-locations of one firm."""
+    n = L.groupby(['town', 'nkey']).firm.nunique()
     assert (n == 1).all(), f'{int((n > 1).sum())} names split, {int((n - 1).sum())} excess firm-locations'
 
 
@@ -480,8 +481,8 @@ def _fkey(s):
     return re.sub(r'\s+', ' ', s.replace('&', ' ')).strip()
 
 
-def test_firm_locations_are_the_components_of_the_documented_merge_rules(L):
-    """The partition of listings into firm-locations must be exactly the connected components of the four documented rules, within
+def test_firms_are_the_components_of_the_documented_merge_rules(L):
+    """The partition of listings into firms must be exactly the connected components of the four documented rules, within
     a town: distinctive keys (nk, 4+ characters) with token_sort_ratio >= 90; the identical printed-name key (nkey, 4+ characters);
     for names without a distinctive key the identical whole name (fk, 6+ characters); and whole names (6+ characters) with
     token_sort_ratio >= 85 on the same street-level point (coordinates rounded to 5 places)."""
@@ -502,9 +503,25 @@ def test_firm_locations_are_the_components_of_the_documented_merge_rules(L):
     for _, g in st.groupby(['town', st.lat.round(5), st.lon.round(5)]): pairs(g, 'fk2', 85)
     ed = np.array(ed)
     n, lab = csg.connected_components(sp.coo_matrix((np.ones(len(ed)), (ed[:, 0], ed[:, 1])), shape=(len(d), len(d))), directed=False)
-    assert n == d.hfirm.nunique() == 3417
-    assert d.groupby('hfirm').apply(lambda g: len(set(lab[g.index])), include_groups=False).eq(1).all()      # no firm-location spans two components
-    assert pd.Series(d.hfirm.values).groupby(lab).nunique().eq(1).all()                                    # no component is split
+    assert n == d.firm.nunique() == 3417
+    assert d.groupby('firm').apply(lambda g: len(set(lab[g.index])), include_groups=False).eq(1).all()       # no firm spans two components
+    assert pd.Series(d.firm.values).groupby(lab).nunique().eq(1).all()                                     # no component is split
+
+
+def test_a_firm_location_holds_one_address(L):
+    """14 Nov 2026 (scan check: 92 of 516 street-level firm-locations mixed addresses): every firm-location lies inside one firm; its
+    street-level listings lie within 60 m of each other's first point; two street-level locations of one firm are more than 60 m
+    apart; and a town-level listing printing an address sits with the listings printing that address."""
+    def m(a, b): return float(np.hypot((a.lat - b.lat) * 111320, (a.lon - b.lon) * 111320 * np.cos(np.radians(a.lat))))
+    assert L.groupby('hfirm').firm.nunique().eq(1).all()
+    st = L[L.precision == 'street'].sort_values('year')
+    first = st.groupby('hfirm').head(1).set_index('hfirm')
+    assert all(m(r, first.loc[r.hfirm]) <= 60 for r in st.itertuples())
+    for f, g in first.groupby('firm'):
+        rows = list(g.itertuples())
+        assert all(m(a, b) > 60 for i, a in enumerate(rows) for b in rows[i + 1:]), f
+    pre = L.groupby('hfirm').precision.agg(lambda s: (s == 'street').any())
+    assert pre.sum() == 604
 
 
 def test_similar_names_on_one_street_point_are_one_firm_location(L):
@@ -576,7 +593,7 @@ def test_address_links_recomputed_from_sites_csv(L, S):
     r = pd.DataFrame(rows, columns=['hfirm', 'd', 'sid']).merge(S, on='hfirm', validate='1:1')
     assert set(S[S.link == 'address'].hfirm) <= set(r.hfirm) and len(r) == int((S.precision == 'street').sum())
     a = r[r.link == 'address']
-    assert len(a) == 253 and (a.d <= 40).all() and (a.sid == a.dcm_site).all() and (a.link_score == a.d.astype(int)).all()
+    assert len(a) == 228 and (a.d <= 40).all() and (a.sid == a.dcm_site).all() and (a.link_score == a.d.astype(int)).all()
     assert r.link.notna()[r.d <= 40].all()
 
 
@@ -586,7 +603,7 @@ def test_linked_sites_exist_in_the_published_site_file(S):
     sites = _csv(APP / 'sites.csv')
     assert S.dcm_site.notna().sum() > 0 and S.dcm_site.dropna().isin(sites.site_id).all() and not (S.dcm_site == '').any()
     assert _csv(APP / 'site_precursors.csv').site_id.isin(sites.site_id).all()
-    assert [int(S.link.notna().sum()), S.dcm_site.nunique()] == [314, 186]
+    assert [int(S.link.notna().sum()), S.dcm_site.nunique()] == [305, 170]
     assert S[S.link == 'address'].dcm_site.notna().all()
 
 

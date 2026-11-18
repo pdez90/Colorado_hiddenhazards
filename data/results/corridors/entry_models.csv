@@ -1,6 +1,6 @@
 model,term,estimate,se
-"Poisson, pooled (cell-years)",log1p(stock_lag),0.957477834571866,0.0188647278536078
-"Poisson, pooled (cell-years)",log1p(nb_lag),0.273488543249807,0.0155273735380755
-"Poisson, pooled (cell-years)",dist_km,0.00528019890850658,0.00294881888566298
-within-cell (demeaned OLS),s_dm,0.159944334156121,0.0153602373130284
-within-cell (demeaned OLS),n_dm,0.114450999755921,0.0122633468242308
+"Poisson, pooled (cell-years)",log1p(stock_lag),0.946984430892849,0.0192079800452857
+"Poisson, pooled (cell-years)",log1p(nb_lag),0.269847193658589,0.0158235894902747
+"Poisson, pooled (cell-years)",dist_km,0.00595407734357117,0.00302089142713695
+within-cell (demeaned OLS),s_dm,0.143178609388783,0.0154797220923016
+within-cell (demeaned OLS),n_dm,0.121254412401028,0.0125045760995609

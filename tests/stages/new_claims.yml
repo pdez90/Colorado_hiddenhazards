@@ -10,9 +10,9 @@
   expect: 19
 - id: h_readme_full_inventory_net_effect
   file: README.md
-  text: "after which the all-editions run has 4,733, 1,809 and 1,155"
+  text: "after which the all-editions run has 4,335, 1,567 and 1,037"
   check: "(lambda s: (lambda f: [len(f), (f.radar == 'Not on any list').sum(), ((f.radar == 'Not on any list') & (f.confidence == 'high')).sum()])(s[s.fe_hazard == 'TRUE']))(load('data/full_inventory/sites.csv', as_str=True))"
-  expect: [4733, 1809, 1155]
+  expect: [4335, 1567, 1037]
 - id: h_readme_full_inventory_largest_firm
   file: README.md
   text: "largest firm now 27 listings"
@@ -30,9 +30,9 @@
   expect: [667, 465, 122, 88, 58, 20, 41]
 - id: h_readme_pre1960_denver_street_layer
   file: README.md
-  text: "(366 Denver hazardous-sector firm-locations, 34 of them doubtful)"
+  text: "(390 Denver hazardous-sector firm-locations, 36 of them doubtful)"
   check: "(lambda d: [len(d), (d.review == 'doubtful').sum()])((lambda s: s[(s.town == 'DENVER') & (s.precision == 'street') & (s.fe_hazard == 'True')])(load('data/historical/CO_pre1960_hazardous_sites.csv', as_str=True)))"
-  expect: [366, 34]
+  expect: [390, 36]
 - id: h_readme_pre1960_placement_check
   file: README.md
   text: "found 29 correct, 11 with a neighbouring listing's address or a garbled one, 11 whose firm is a neighbour's or not a works (sales branches, dealers), 2 from another town's section and 7 doubtful (all 1950, where the trade codes cover dealers as well as works): 24 of 60 clearly wrong (40%"
@@ -50,13 +50,13 @@
   expect: [120, 53]
 - id: h_readme_health_placebo_prose
   file: README.md
-  text: "(life expectancy −0.42 years per SD, heart disease +3.4, diabetes +2.0, all p < 0.05)"
+  text: "(life expectancy −0.47 years per SD, heart disease +3.4, diabetes +2.1, all p < 0.05)"
   check: "(lambda p: [p[p.outcome == 'Life expectancy (years)'].z_placebo_b.iloc[0], p[p.outcome == 'Heart disease (index)'].z_placebo_b.iloc[0], p[p.outcome == 'Diabetes (index)'].z_placebo_b.iloc[0], p[p.outcome.isin(['Life expectancy (years)', 'Heart disease (index)', 'Diabetes (index)'])].z_placebo_p.max()])((lambda h: h[h.model == 'M4 +placebo'])(load('data/results/health_models.csv')))"
-  expect: [-0.42, 3.4, 2.0, 0.05]
+  expect: [-0.47, 3.4, 2.1, 0.05]
   tol: [0.005, 0.05, 0.05, 0.05]
 - id: h_readme_mortality_bg_prose_ratios
   file: README.md
-  text: "(natural causes 1.035 per SD, 95% CI 1.000–1.072, p = 0.053; all causes 1.033, 0.999–1.068, p = 0.055), the\nhigh-confidence subset carries none (1.001, 0.967–1.036), and known historical sites none (1.003). The non-hazardous-manufacturer\nplacebo is larger and clearly significant (1.057, 1.016–1.100), and with it in the model the hidden-site ratio is no longer\ndistinguishable from 1 (1.022, 0.984–1.062)"
+  text: "(natural causes 1.035 per SD, 95% CI 1.001–1.071, p = 0.046; all causes 1.034, 1.001–1.068, p = 0.040), the\nhigh-confidence subset carries none (1.011, 0.978–1.045), and known historical sites none (1.006). The non-hazardous-manufacturer\nplacebo is larger and clearly significant (1.058, 1.016–1.102), and with it in the model the hidden-site ratio is no longer\ndistinguishable from 1 (1.024, 0.987–1.061)"
   check: >-
     (lambda m: (lambda g: [g('deaths_nat', 'M4 +hidden').z_hidden_rr, g('deaths_nat', 'M4 +hidden').z_hidden_lo, g('deaths_nat', 'M4 +hidden').z_hidden_hi,
     g('deaths_all', 'M4 +hidden').z_hidden_rr, g('deaths_all', 'M4 +hidden').z_hidden_lo, g('deaths_all', 'M4 +hidden').z_hidden_hi,
@@ -65,17 +65,17 @@
     g('deaths_nat', 'Placebo: M2 +non-hazardous mfrs').z_placebo_rr, g('deaths_nat', 'Placebo: M2 +non-hazardous mfrs').z_placebo_lo, g('deaths_nat', 'Placebo: M2 +non-hazardous mfrs').z_placebo_hi,
     g('deaths_nat', 'M4 +placebo').z_hidden_rr, g('deaths_nat', 'M4 +placebo').z_hidden_lo, g('deaths_nat', 'M4 +placebo').z_hidden_hi])(
     lambda o, k: m[(m.outcome == o) & (m.model == k)].iloc[0]))(load('data/results/mortality_bg_models.csv'))
-  expect: [1.035, 1.0, 1.072, 1.033, 0.999, 1.068, 1.001, 0.967, 1.036, 1.003, 1.057, 1.016, 1.1, 1.022, 0.984, 1.062]
+  expect: [1.035, 1.001, 1.071, 1.034, 1.001, 1.068, 1.011, 0.978, 1.045, 1.006, 1.058, 1.016, 1.102, 1.024, 0.987, 1.061]
 - id: h_readme_mortality_bg_natural_reaches_threshold
   file: README.md
-  text: "falls just short of the conventional threshold (natural causes 1.035 per SD, 95% CI 1.000–1.072, p = 0.053; all causes 1.033, 0.999–1.068, p = 0.055)"
+  text: "only just reaches the conventional threshold (natural causes 1.035 per SD, 95% CI 1.001–1.071, p = 0.046; all causes 1.034, 1.001–1.068, p = 0.040)"
   check: "(lambda m: [round(m[(m.outcome == o) & (m.model == 'M4 +hidden')].z_hidden_p.iloc[0], 3) for o in ('deaths_nat', 'deaths_all')])(load('data/results/mortality_bg_models.csv'))"
-  expect: [0.053, 0.055]
+  expect: [0.046, 0.04]
 - id: h_readme_mortality_bg_table_rows_all_cause
   file: README.md
-  text: "| all-cause | M4 +placebo | 1.021 (0.985–1.059) | 1.002 (0.961–1.046) | 1.046 (1.003–1.091)* | 0.998 (0.960–1.038) | 31404.8 |"
+  text: "| all-cause | M4 +placebo | 1.023 (0.989–1.060) | 1.006 (0.965–1.048) | 1.045 (1.002–1.091)* | 0.996 (0.958–1.035) | 31403.7 |"
   check: "(lambda r: [r.z_hidden_rr, r.z_hidden_lo, r.z_hidden_hi, r.z_known_hist_rr, r.z_known_hist_lo, r.z_known_hist_hi, r.z_placebo_rr, r.z_placebo_lo, r.z_placebo_hi, r.z_cleanup_rr, r.z_cleanup_lo, r.z_cleanup_hi, r.aic, int(r.z_placebo_p < 0.05)])((lambda m: m[(m.outcome == 'deaths_all') & (m.model == 'M4 +placebo')].iloc[0])(load('data/results/mortality_bg_models.csv')))"
-  expect: [1.021, 0.985, 1.059, 1.002, 0.961, 1.046, 1.046, 1.003, 1.091, 0.998, 0.96, 1.038, 31404.8, 1]
+  expect: [1.023, 0.989, 1.060, 1.006, 0.965, 1.048, 1.045, 1.002, 1.091, 0.996, 0.96, 1.035, 31403.7, 1]
 - id: h_readme_mortality_bg_md_is_the_readme_table
   file: README.md
   text: "| natural-cause | M2 +regulated |  |  |  | 1.027 (0.993–1.062) | 30736.0 |"
@@ -98,9 +98,9 @@
   expect: [54, 48]
 - id: h_readme_holc_hispanic_1970_2010_p_values
   file: README.md
-  text: "(0.035; HC1 p = 0.053, Conley p = 0.13)"
+  text: "(0.032; HC1 p = 0.061, Conley p = 0.13)"
   check: "(lambda r: [r.p_classical, r.p, r.p_conley2km])((lambda m: m[(m.grade == 'D') & (m.outcome == 'p_hisp') & (m.period == '1970-2010')].iloc[0])(load('data/results/holc/holc_tract_models.csv')))"
-  expect: [0.035, 0.053, 0.13]
+  expect: [0.032, 0.061, 0.13]
 - id: h_readme_r_vs_python_address_keys
   file: README.md
   text: "to 0.0 m on all 36,615 address keys"
@@ -114,7 +114,7 @@
   expect: [152, 558]
 - id: h_readme_pre1960_entries_at_town_centre
   file: README.md
-  text: "Most entries (about 87%; 83% of firm-locations) are placed only at the town centre"
+  text: "Most entries (about 87%; 84% of firm-locations) are placed only at the town centre"
   check: "100 * (load('data/historical/CO_pre1960_hazardous_listings.csv', as_str=True).precision == 'town').mean()"
   expect: 87
 # (replaces readme_pre1960_town_share, whose check counts firm-locations (87.8%), not entries, and passes only through tol: 5)
@@ -123,14 +123,14 @@
 # ------------------------------------------------------------------ app/app.R
 - id: h_app_dc_ratio_before_the_map
   file: app/app.R
-  text: "Per edition, D/C is lower just after the map (3.9 in 1938\\u201356) than just before it (10.6 in 1921\\u201337; 10.0 in 1906\\u201320)"
+  text: "Per edition, D/C was already falling before the map (11.4 in 1906\\u201320, 5.8 in 1921\\u201337) and fell further after it (3.7 in 1938\\u201356)"
   check: "(lambda d: [d[d.period == p].dc_ratio_within_period.iloc[0] for p in ('1938-1956', '1921-1937', '1906-1920')])(load('app/data/holc_industry_periods.csv'))"
-  expect: [3.9, 10.6, 10.0]
+  expect: [3.7, 5.8, 11.4]
 - id: h_app_enlistment_schooling_hazardous_trade
   file: app/app.R
-  text: "about a third of a year less (−0.33, −0.48 to −0.19)"
+  text: "about a third of a year less (−0.30, −0.45 to −0.16)"
   check: "(lambda r: [r.estimate, r.lo, r.hi])((lambda e: e[(e.outcome == 'Years of schooling at enlistment') & (e['sample'] == 'Men born 1905-1927') & (e.exposure == 'Hazardous trade within 500 m (to 1940)')].iloc[0])(load('app/data/enlistment_models.csv')))"
-  expect: [-0.33, -0.48, -0.19]
+  expect: [-0.30, -0.45, -0.16]
 - id: h_app_holc_ungraded_zones
   file: app/app.R
   text: "holding 16% of HOLC's land area and 15% of the 1940 population but 86% of the pre-map hazardous trades (the Industrial zone alone: 12% of the land, 6% of the population)"
@@ -155,24 +155,24 @@
 # ------------------------------------------------------------------ manuscript prose (tables are under test_paper_tables.py)
 - id: h_paper_sites_colorado_and_denver
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "they yield 3,565 Colorado sites in the hazardous sectors after linking listings across editions within 30 m, 1,132 of them in the City and County of Denver"
+  text: "they yield 3,141 Colorado sites in the hazardous sectors after linking listings across editions within 30 m, 972 of them in the City and County of Denver"
   check: "[len(fe_sites()), len(load('data/results/site_fate/site_fate_denver.csv'))]"
-  expect: [3565, 1132]
+  expect: [3141, 972]
 - id: h_paper_hidden_share
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "1,284 of the 3,565 sites (36.0%) match no record, but 1,042 of the 2,281 matched sites (46%)"
+  text: "1,021 of the 3,141 sites (32.5%) match no record, but 916 of the 2,120 matched sites (43%)"
   check: "[len(hidden_sites()), len(fe_sites()), 100 * len(hidden_sites()) / len(fe_sites()), len(fe_sites()) - len(hidden_sites())]"
-  expect: [1284, 3565, 36.0, 2281]
+  expect: [1021, 3141, 32.5, 2120]
 - id: h_paper_cbp_ratios
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "0.76 (1992) to 1.20 (1980) as many Colorado hazardous-sector establishments as CBP counts (with CBP's suppressed cells imputed as in Eckert et al. 2021) (1977 1.11, 1983 1.14, 1988 0.99, 1990 1.02); the partial editions list 0.45–0.89"
+  text: "0.75 (1992) to 1.19 (1980) as many Colorado hazardous-sector establishments as CBP counts (with CBP's suppressed cells imputed as in Eckert et al. 2021) (1977 1.11, 1983 1.14, 1988 0.94, 1990 1.02); the partial editions list 0.46–0.89"
   check: "(lambda s: [s[s.year == y].ratio_haz.iloc[0] for y in (1992, 1980, 1977, 1983, 1988, 1990)] + [s[s.year.isin([1976, 1979, 1982, 1984, 1985, 1986, 1993, 1999, 2002])].ratio_haz.min(), s[s.year.isin([1976, 1979, 1982, 1984, 1985, 1986, 1993, 1999, 2002])].ratio_haz.max()])(load('app/data/cbp_vs_directory_state.csv'))"
-  expect: [0.76, 1.2, 1.11, 1.14, 0.99, 1.02, 0.45, 0.89]
+  expect: [0.75, 1.19, 1.11, 1.14, 0.94, 1.02, 0.46, 0.89]
 - id: h_paper_ed_firms_and_districts
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "(38, 39, 34, 144, 69 and 96 firms), and 11, 19, 14, 39, 34 and 39 districts contain one"
+  text: "(38, 34, 22, 149, 52 and 83 firms), and 11, 19, 14, 39, 32 and 38 districts contain one"
   check: "(lambda f, g: [int((f.census == y).sum()) for y in (1880, 1900, 1910, 1920, 1930, 1940)] + [g[(g.census == y) & (g.group == 'EDs with hazardous firms')].EDs.iloc[0] for y in (1880, 1900, 1910, 1920, 1930, 1940)])(load('app/data/denver_eds_firms.csv'), load('data/results/denver_eds/ed_year_groups.csv'))"
-  expect: [38, 39, 34, 144, 69, 96, 11, 19, 14, 39, 34, 39]
+  expect: [38, 34, 22, 149, 52, 83, 11, 19, 14, 39, 32, 38]
 - id: h_paper_mapped_population_1940
   file: paper/Before_and_After_the_Map_manuscript.md
   text: "(for example 317,663 of 322,780 in 1940). The resulting districts (17 in 1880, 128–330 in 1900–1940)"
@@ -207,14 +207,14 @@
   tol: [0.005, 0.005, 0.005, 0.005, 0.5]
 - id: h_paper_site_fate_current_use
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "50% are still industrial parcels today, 27% are commercial, 16% residential and 4% vacant, and 54% are still zoned industrial"
+  text: "55% are still industrial parcels today, 27% are commercial, 12% residential and 4% vacant, and 59% are still zoned industrial"
   check: "(lambda s, z: [100 * s[s.use_now == u].n.sum() / s.n.sum() for u in ('Industrial / utility', 'Commercial / office', 'Residential', 'Vacant')] + [z[z.series.str.startswith('Manufacturers')].pct_zone_industrial.iloc[0], s.n.sum()])((lambda d: d[d.series.str.startswith('Manufacturers')])(load('data/results/site_fate/site_fate_summary.csv')), load('data/results/site_fate/site_fate_zoning.csv'))"
-  expect: [50, 27, 16, 4, 54, 1132]
+  expect: [55, 27, 12, 4, 59, 972]
 - id: h_paper_residential_sites_unmatched
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "104 of those 183 (57%) match no record in any inventory searched"
+  text: "67 of those 119 (56%) match no record in any inventory searched"
   check: "(lambda r: [(r.radar == 'Not on any list').sum(), len(r), 100 * (r.radar == 'Not on any list').mean()])((lambda d: d[d.use_now == 'Residential'])(load('data/results/site_fate/site_fate_denver.csv')))"
-  expect: [104, 183, 57]
+  expect: [67, 119, 56]
 - id: h_paper_block_mortality_samples
   file: paper/Before_and_After_the_Map_manuscript.md
   text: "(59,293 blocks in 1,241 tracts; 132,051 natural-cause deaths) and separately for the Denver study area (10,395 blocks in 184 tracts; 24,399 natural-cause deaths)"
@@ -222,9 +222,9 @@
   expect: [59293, 1241, 132051, 10395, 184, 24399]
 - id: h_paper_block_mortality_known_and_pre1960
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "the pre-1960 trades themselves are inversely associated (0.956, 0.923–0.990; all causes 0.967, 0.937–0.999; Denver 0.977, 0.905–1.053)"
+  text: "the pre-1960 trades themselves are inversely associated (0.956, 0.922–0.990; all causes 0.967, 0.935–0.999; Denver 0.984, 0.910–1.064)"
   check: "(lambda m: [v for s, o in (('Colorado', 'natural causes'), ('Colorado', 'all causes'), ('Denver', 'natural causes')) for v in m[m['sample'].str.startswith(s) & (m.outcome == o) & (m.model == 'M5 + pre-1960 trades') & (m.term == 'pre1960')].iloc[0][['rr', 'lo', 'hi']].tolist()])(load('data/results/health/mortality_block_models.csv'))"
-  expect: [0.956, 0.923, 0.99, 0.967, 0.937, 0.999, 0.977, 0.905, 1.053]
+  expect: [0.956, 0.922, 0.99, 0.967, 0.935, 0.999, 0.984, 0.910, 1.064]
 - id: h_paper_censoc_industrial_district
   file: paper/Before_and_After_the_Map_manuscript.md
   text: "a difference that is no longer statistically clear (−0.72, −1.56 to 0.12)"
@@ -232,9 +232,9 @@
   expect: [-0.72, -1.56, 0.12]
 - id: h_paper_censoc_linkage_haz500
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "(−0.94 percentage points, −1.41 to −0.47; DMF −0.46, −1.21 to 0.28)"
+  text: "(−0.92 percentage points, −1.38 to −0.46; DMF −0.45, −1.18 to 0.28)"
   check: "(lambda l: [v for o in ('linked_num', 'linked_dmf') for v in l[(l.outcome == o) & (l.term == 'haz_500')].iloc[0][['pct_points', 'lo', 'hi']].tolist()])(load('data/results/censoc/censoc_ext_linkage_models.csv'))"
-  expect: [-0.94, -1.41, -0.47, -0.46, -1.21, 0.28]
+  expect: [-0.92, -1.38, -0.46, -0.45, -1.18, 0.28]
 - id: h_paper_notown_review
   file: paper/Before_and_After_the_Map_manuscript.md
   text: "A third review read every one of the 2,860 entries extracted without a town against its page: 1,494 were kept with their town (935 of them with the street address read off the page; 62 were given another hazardous sector and 61 kept as doubtful and flagged), and 1,366 were dropped as not works; of a random 120 of these entries, a second independent reader kept all 53 that the review kept, 49 of them in the same town."
@@ -248,9 +248,9 @@
   expect: [2860, 1494, 935, 62, 61, 1366, 120, 53, 49]
 - id: h_paper_pre1960_layer_counts
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "After the three reviews the pre-1960 layer holds 6,038 listings in 3,417 firm-locations, 565 of them placed at street level; 314 firm-locations are linked to the 1961–2002 directory, and 186 of its sites have a pre-1960 precursor."
+  text: "After the three reviews the pre-1960 layer holds 6,038 listings in 3,702 firm-locations, 604 of them placed at street level; 305 firm-locations are linked to the 1961–2002 directory, and 170 of its sites have a pre-1960 precursor."
   check: "(lambda l, s: [len(l), len(s), int((s.precision == 'street').sum()), int(s.link.notna().sum()), s.dcm_site.nunique()])(load('data/historical/CO_pre1960_hazardous_listings.csv'), load('data/historical/CO_pre1960_hazardous_sites.csv'))"
-  expect: [6038, 3417, 565, 314, 186]
+  expect: [6038, 3702, 604, 305, 170]
 - id: h_paper_block_death_share
   file: paper/Before_and_After_the_Map_manuscript.md
   text: "The Colorado models hold 79.0% of the natural-cause deaths in the records (78.7% of all deaths); the rest fall in blocks with fewer than 100 person-years"
@@ -259,11 +259,43 @@
   tol: [0.05, 0.05]
 - id: h_paper_tract_firms_by_census
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "Firms located in the study tracts: 137 (1950), 47 (1960), 667 (1970), 825 (1980), 743 (1990), 793 (2000–2020, the 1983–92 sites)."
+  text: "Firms located in the study tracts: 127 (1950), 43 (1960), 564 (1970), 791 (1980), 701 (1990), 739 (2000–2020, the 1983–92 sites)."
   check: "(lambda d: [int(d[d.census == y].firms.iloc[0]) for y in (1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020)])(load('data/results/denver_tracts/denver_tracts_models.csv'))"
-  expect: [137, 47, 667, 825, 743, 793, 793, 793]
+  expect: [127, 43, 564, 791, 701, 739, 739, 739]
 - id: h_paper_first_arrival_cells
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "too few first arrivals occurred in 1900–1910 (6, because no edition survives for 1893–1909) and 1920–1930 (5) to tabulate, and the 1930–1940 row rests on 13 cells."
+  text: "too few first arrivals occurred in 1900–1910 (7, because no edition survives for 1893–1909) and 1920–1930 (6) to tabulate, and the 1930–1940 row rests on 13 cells."
   check: "(lambda g: [int(g[(g['from'] == y) & g.group.str.startswith('first')].cells.iloc[0]) for y in (1900, 1920, 1930)])(load('data/results/descriptive/grid_first_arrival_1900_1940.csv'))"
-  expect: [6, 5, 13]
+  expect: [7, 6, 13]
+
+# ------------------------------------------------------------------ 18 Nov reconciliation (final inventory)
+- id: h_paper_ed_race_gradients
+  file: paper/Before_and_After_the_Map_manuscript.md
+  text: "(−0.50 pooled, +0.02 controlled). Black Denverites were a small population, about 2.4–2.8% of the city in every census, so the gradient rests on few districts and the with/without comparison flips with them (Black shares were lower in firm districts in 1920, 1930 and 1940). The Hispanic gradient is small before 1920 and steepens to −3.44 in 1940, and it is not only a downtown gradient: with distance to downtown controlled it is −0.43 in 1920 and −2.25 in 1940 (both p < 0.05), −1.19 in 1930 (p = 0.11) and −1.07 pooled (p < 0.001)."
+  check: "(lambda d: (lambda r: [r(0, 'pct_black').b_per_log_m, r(0, 'pct_black').b_cbd_ctrl, r(1940, 'pct_hisp').b_per_log_m, r(1920, 'pct_hisp').b_cbd_ctrl, r(1940, 'pct_hisp').b_cbd_ctrl, (lambda q: 0.05 if q < 0.05 else q)(max(r(1920, 'pct_hisp').p_cbd_ctrl, r(1940, 'pct_hisp').p_cbd_ctrl)), r(1930, 'pct_hisp').b_cbd_ctrl, r(1930, 'pct_hisp').p_cbd_ctrl, r(0, 'pct_hisp').b_cbd_ctrl, (lambda q: 0.001 if q < 0.001 else q)(r(0, 'pct_hisp').p_cbd_ctrl)])(lambda c, o: d[(d.census == c) & (d.outcome == o)].iloc[0]))(load('app/data/ed_distance_models.csv'))"
+  expect: [-0.50, 0.02, -3.44, -0.43, -2.25, 0.05, -1.19, 0.11, -1.07, 0.001]
+- id: h_paper_ed_workers_gradient
+  file: paper/Before_and_After_the_Map_manuscript.md
+  text: "(−0.24 per log m pooled, p = 0.047); with it, those workers lived clearly closer to them (−1.32 per log m)"
+  check: "(lambda r: [r.b_per_log_m, r.p, r.b_cbd_ctrl])((lambda d: d[(d.census == 0) & (d.outcome == 'pct_haz_industry')].iloc[0])(load('app/data/ed_distance_models.csv')))"
+  expect: [-0.24, 0.047, -1.32]
+- id: h_paper_ed_lodging_gradient
+  file: paper/Before_and_After_the_Map_manuscript.md
+  text: "the lodging gradient all but disappears (−9.14 to −1.02 pooled, no longer significant)"
+  check: "(lambda r: [r.b_per_log_m, r.b_cbd_ctrl, r.p_cbd_ctrl > 0.05])((lambda d: d[(d.census == 0) & (d.outcome == 'pct_boarders')].iloc[0])(load('app/data/ed_distance_models.csv')))"
+  expect: [-9.14, -1.02, True]
+- id: h_paper_tract_first_arrival_1965_92
+  file: paper/Before_and_After_the_Map_manuscript.md
+  text: "no poorer than (10.4% against 10.7% in 1970) and more owner-occupied than (61.7% against 50.8%) tracts that never had one, and those tracts then gained Hispanic residents faster (+10.8 points against +3.8) and lost owners faster (−6.3 against −2.5). The post-1965 sequence is consistent with residents following industry, or with both following cheap land, but with 26 arrival tracts"
+  check: "(lambda t: (lambda a, n: [a.pct_poverty_1970, n.pct_poverty_1970, a.pct_owner_1970, n.pct_owner_1970, a.chg_hisp_1970_90, n.chg_hisp_1970_90, a.chg_owner_1970_90, n.chg_owner_1970_90, a.tracts])(t[t.group.str.contains('arrival')].iloc[0], t[t.group.str.startswith('none')].iloc[0]))(load('data/results/descriptive/tract_first_arrival_1965_1992.csv'))"
+  expect: [10.4, 10.7, 61.7, 50.8, 10.8, 3.8, -6.3, -2.5, 26]
+- id: h_paper_redevelopment_models
+  file: paper/Before_and_After_the_Map_manuscript.md
+  text: "1.02 (0.70–1.47) for hidden sites, 0.92 (0.60–1.42) for known sites and 0.97 (0.73–1.30) for pre-1960 trades"
+  check: "(lambda m: [v for g in ('hidden', 'known', 'pre1960') for v in (lambda r: [r.rr, r.lo, r.hi])(m[(m.model == 'One group: ' + g) & (m.outcome == 'deaths_nat')].iloc[0])])(load('data/results/health/mortality_redevelopment_models.csv'))"
+  expect: [1.02, 0.70, 1.47, 0.92, 0.60, 1.42, 0.97, 0.73, 1.30]
+- id: h_paper_redevelopment_event
+  file: paper/Before_and_After_the_Map_manuscript.md
+  text: "(760 blocks, against 2,887 blocks near sites that stood throughout), mortality before and after the rebuild was indistinguishable from the year before it (0.95, 0.75–1.21, four or more years before; 0.97, 0.81–1.15, two years before; 0.97, 0.79–1.19, four or more years after), except two years after, when natural-cause mortality was lower (0.79, 0.62–0.99; all causes 0.82, 0.66–1.02)"
+  check: "(lambda e: [e.rebuilt_blocks.iloc[0], e.comparison_blocks.iloc[0]] + [v for o, y in (('deaths_nat', '-4 or earlier'), ('deaths_nat', '-2'), ('deaths_nat', '4 or later'), ('deaths_nat', '2'), ('deaths_all', '2')) for v in (lambda r: [r.rr, r.lo, r.hi])(e[(e.outcome == o) & (e.years_since_rebuild == y)].iloc[0])])(load('data/results/health/mortality_redevelopment_event.csv', as_str=False))"
+  expect: [760, 2887, 0.95, 0.75, 1.21, 0.97, 0.81, 1.15, 0.97, 0.79, 1.19, 0.79, 0.62, 0.99, 0.82, 0.66, 1.02]

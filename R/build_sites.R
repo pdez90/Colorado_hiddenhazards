@@ -41,6 +41,30 @@ REP <- c(STREET = "ST", AVENUE = "AVE", AV = "AVE", BOULEVARD = "BLVD", ROAD = "
 norm_street <- function(s) vapply(strsplit(gsub("[^A-Z0-9 ]", " ", toupper(ifelse(is.na(s), "", s))), " "), function(t) {
   t <- t[nzchar(t)]; r <- REP[t]; paste(ifelse(is.na(r), t, r), collapse = " ") }, "")
 
+# Row number -> geo_key of the located listing one digit away (see twin_keys() in pipeline/build_sites.py; same rule, same tie-break).
+twin_keys <- function(df) {
+  alpha <- function(x) gsub("[0-9]", "#", x); digits <- function(x) gsub("[^0-9]", "", x)
+  ends <- function(x) cumsum(nchar(regmatches(x, gregexpr("[0-9]+", x))[[1]]))      # positions of the last digit of each number
+  one_inner <- function(a, b) {        # one digit differs, not the last digit of its number (as in Python)
+    if (alpha(a) != alpha(b)) return(FALSE); da <- strsplit(digits(a), "")[[1]]; db <- strsplit(digits(b), "")[[1]]
+    if (length(da) != length(db)) return(FALSE); k <- which(da != db); length(k) == 1 && !(k %in% ends(a)) }
+  amb <- grepl("dirambig", ifelse(is.na(df$geo_quality), "", df$geo_quality))
+  ok <- !is.na(df$estab_id) & !is.na(df$street_n) & df$street_n != ""
+  out <- character(); idx <- which(ok)
+  for (g in split(idx, df$estab_id[idx])) {
+    loc <- df$located[g]; if (all(loc) || !any(loc)) next
+    L <- g[loc]
+    for (i in g[!loc]) {
+      if (amb[i] || !nzchar(digits(df$street_n[i]))) next
+      one <- vapply(df$street_n[L], function(b) one_inner(df$street_n[i], b), logical(1))
+      same_city <- (is.na(df$city_g[L]) & is.na(df$city_g[i])) | (!is.na(df$city_g[L]) & !is.na(df$city_g[i]) & df$city_g[L] == df$city_g[i])
+      k <- df$geo_key[L][same_city & one]
+      if (length(k)) { tb <- table(k); top <- names(tb)[tb == max(tb)]; out[as.character(i)] <- min(top) }
+    }
+  }
+  out
+}
+
 # The run (inputs from work/, outputs to work/inv/sites_R.csv). Skipped when TESTING is defined, so tests/geocoding can source the
 # functions above without the pipeline inputs.
 if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
@@ -60,6 +84,23 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
                   fifelse(q %in% c("zip_centroid", "city_centroid"), q, "none"))))
   df$placed_loose <- grepl("fuzzy|nearzips|trim|dirloose|sufloose|street_nearest", q)
   df$located <- df$geo_level %in% c("address", "address_approx")
+  # as twin_keys() in pipeline/build_sites.py: an unlocated listing whose street differs in exactly one digit from a located listing of
+  # the same establishment and town ('12280 W 90TH PL' / '12280 W 50TH PL') takes that listing's address key, and with it the point
+  tw <- twin_keys(df)
+  df$geo_twin <- FALSE
+  if (length(tw)) {
+    df$geo_twin[as.integer(names(tw))] <- TRUE; df$geo_key[as.integer(names(tw))] <- unname(tw)
+    df <- df[, setdiff(names(df), c(setdiff(names(geo), "geo_key"), "geo_level", "placed_loose", "located")), with = FALSE]
+    df <- merge(df, geo, by = "geo_key", all.x = TRUE); setorder(df, row)
+    q <- fifelse(is.na(df$geo_quality), "none", df$geo_quality)
+    df$geo_level <- fifelse(grepl("dirambig", q), "zip_centroid",
+                    fifelse(grepl("range_interp", q) & !grepl("fuzzy|nearzips|trim|dirloose|sufloose|dirsplit", q), "address",
+                    fifelse(grepl("range_interp|street_nearest", q), "address_approx",
+                    fifelse(q %in% c("zip_centroid", "city_centroid"), q, "none"))))
+    df$placed_loose <- grepl("fuzzy|nearzips|trim|dirloose|sufloose|street_nearest", q)
+    df$located <- df$geo_level %in% c("address", "address_approx")
+  }
+  message("listings placed at the address of the same establishment one digit away: ", length(tw))
   df$hazard_any <- df$fe_hazard | df$ext_hazard
   # ---- sites: connected components of geocoded points within 30 m of each other; points on the same street with odd and even house
   # numbers (opposite sides of the street, 24 m apart after the geocoder's 12 m offset) are never linked directly
@@ -111,6 +152,12 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
       list(j = j, m = as.numeric(st_distance(spts[k], PGs[j]))[seq_along(j)]) }) } else replicate(nrow(S), list(j = integer(), m = numeric()), simplify = FALSE)
   RULES <- c(cleanup = 75, tri = 100, rcra_handler = 40, other_epa = 40, solid_waste = 75)
   key_zip <- paste(reg$akey, reg$zip5, sep = "|"); key_city <- paste(reg$akey, reg$city_u, sep = "|")
+  rv_key <- character(); rv_reg <- integer()
+  if (file.exists("data/raw/known_match_review.csv") && "src_id" %in% names(reg)) {
+    rv <- fread("data/raw/known_match_review.csv", colClasses = "character", na.strings = NULL); rv <- rv[verdict == "same"]
+    j <- match(paste(rv$reg_source, rv$reg_src_id), paste(reg$source, reg$src_id))
+    rv_key <- paste(rv$site_akey, toupper(trimws(rv$site_city)), sep = "|")[!is.na(j)]; rv_reg <- j[!is.na(j)]
+  }
   dl <- 250 / RE * 180 / pi
   res <- vector("list", nrow(S))
   for (k in seq_len(nrow(S))) {
@@ -122,6 +169,8 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
     if (!length(am)) am <- which(key_city == paste(s$akey, toupper(trimws(ifelse(is.na(s$city), "", s$city))), sep = "|"))   # blank ZIP: street + city
     # either way, only a record within 250 m (or without a point), as in Python: the key drops the street type ('DOVER DR' = 'DOVER RD')
     if (length(am)) am <- am[is.na(reg$lat[am]) | hav(s$lat, s$lon, reg$lat[am], reg$lon[am]) <= 250]
+    # author-reviewed matches (data/raw/known_match_review.csv), as in pipeline/build_sites.py
+    if (length(rv_key)) am <- union(am, rv_reg[rv_key == paste(s$akey, toupper(trimws(ifelse(is.na(s$city), "", s$city))), sep = "|")])
     rec <- list(); basis <- character()   # evidence behind every hit, over all tiers: 'entity' (name or address), 'boundary', 'prox'
     for (tier in names(RULES)) {
       ct <- R$tier[ii] == tier; cj <- ii[ct]; cd <- d[ct]

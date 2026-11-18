@@ -116,9 +116,11 @@ def main():
     R=df.copy(); R['sic']=R.sic.apply(lambda x:';'.join(x)); R['naics']=R.naics.apply(lambda x:';'.join(x) if isinstance(x,list) else '')
     # the same scrub export_by_year.py applies to firm_name / street_address / address_as_ocr: no cell may start with
     # = + @ - (a spreadsheet reads it as a formula), and the two published listing files must carry the same names
-    for c in ['name','street','addr_raw']:
+    for c in ['name','street','addr_raw','name_as_read','street_as_read']:
         if c in R: R[c]=R[c].apply(scrub_cell)
-    rc=['year','vol','page','name','street','city_g','zip5','est','size','sic','sic_source','naics','fe_hazard','fe_sectors','ext_hazard','ext_sectors','estab_id','site_id','lat','lon','geo_level']
+    for c in ['name_as_read','street_as_read']:      # the reading before clean_spelling.py's vote across editions (the same text when unchanged)
+        if c not in R: R[c]=R[c[:-8]]
+    rc=['year','vol','page','name','street','city_g','zip5','est','size','sic','sic_source','naics','fe_hazard','fe_sectors','ext_hazard','ext_sectors','estab_id','site_id','lat','lon','geo_level','name_as_read','street_as_read']
     R[rc].rename(columns={'city_g':'city','zip5':'zip','vol':'source_volume'}).to_csv(O+'CO_directory_listings_1961-2002.csv',index=False)
     U=R[R.fe_hazard & ~df.located][rc].rename(columns={'city_g':'city','zip5':'zip','vol':'source_volume'})
     U.to_csv(O+'CO_hazardous_listings_not_street_located.csv',index=False)

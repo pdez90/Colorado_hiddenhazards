@@ -321,7 +321,7 @@ def test_ed_firm_counts_match_site_file_and_app_layer():
     for yr in ED_YEARS:
         E, F = ed_layer(yr)
         assert set(M[M.census == yr].firms) == {int(E.firms.sum())}, yr
-        assert len(F) - int(E.firms.sum()) == {1920: 1, 1930: 1}.get(yr, 0), yr   # one firm-location lies outside every reconstructed district
+        assert len(F) == int(E.firms.sum()), yr   # every firm-location of the window lies inside a reconstructed district (18 Nov rebuild)
         assert (A.census == yr).sum() == len(F), yr
         assert G[(G.census == yr) & (G.group == "EDs with hazardous firms")].EDs.iloc[0] == (E.firms > 0).sum(), yr
 
@@ -348,8 +348,8 @@ class ManuscriptWordingPending(AssertionError):
 SPAN_RULE = "first_year <= yr & hp$last_year >= yr - 9"
 MS_DECADE_WORDING = r"list(?:ed|ings) (?:in|of) the ten years ending at"
 # firms of each census (all, without a listing inside [census-9, census]) under the span rule, recomputed in the test below
-SPAN_DENVER = {1900: (39, 2), 1910: (34, 4), 1920: (144, 0), 1930: (69, 15), 1940: (96, 2)}        # street-level Denver firms (district analysis)
-SPAN_STATE = {1900: (123, 8), 1910: (89, 16), 1920: (685, 0), 1930: (258, 34), 1940: (361, 9)}     # all placed firms (county panel)
+SPAN_DENVER = {1900: (34, 1), 1910: (22, 2), 1920: (149, 0), 1930: (52, 9), 1940: (83, 2)}        # street-level Denver firms (district analysis)
+SPAN_STATE = {1900: (120, 5), 1910: (82, 9), 1920: (790, 0), 1930: (250, 23), 1940: (383, 10)}     # all placed firms (county panel)
 
 
 def _ms_says_listed_in_the_decade():

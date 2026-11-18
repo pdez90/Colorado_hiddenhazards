@@ -4,28 +4,28 @@ census,region,trades,pop,pct_trades,pct_pop
 1880,mining counties,72,59117,38.9,30.4
 1880,rest of Colorado,66,63651,35.7,32.7
 1880,southern Hispano counties,3,25438,1.6,13.1
-1900,Denver (Arapahoe before 1902),87,152801,70.7,28.3
-1900,Pueblo,6,34500,4.9,6.4
-1900,mining counties,8,89668,6.5,16.6
-1900,rest of Colorado,21,210927,17.1,39.1
+1900,Denver (Arapahoe before 1902),85,152801,70.8,28.3
+1900,Pueblo,6,34500,5,6.4
+1900,mining counties,7,89668,5.8,16.6
+1900,rest of Colorado,21,210927,17.5,39.1
 1900,southern Hispano counties,1,51675,0.8,9.6
-1910,Denver (Arapahoe before 1902),59,213444,66.3,26.7
-1910,Pueblo,2,52364,2.2,6.5
-1910,mining counties,7,59482,7.9,7.4
-1910,rest of Colorado,20,400273,22.5,50
-1910,southern Hispano counties,1,74541,1.1,9.3
-1920,Denver (Arapahoe before 1902),308,258017,45,27.4
-1920,Pueblo,29,57728,4.2,6.1
-1920,mining counties,56,40009,8.2,4.2
-1920,rest of Colorado,268,499029,39.1,53
-1920,southern Hispano counties,24,87072,3.5,9.2
-1930,Denver (Arapahoe before 1902),125,287832,48.4,27.8
-1930,Pueblo,24,66039,9.3,6.4
-1930,mining counties,10,30581,3.9,3
-1930,rest of Colorado,86,558074,33.3,53.9
-1930,southern Hispano counties,13,93419,5,9
-1940,Denver (Arapahoe before 1902),187,322780,51.8,28.7
-1940,Pueblo,31,69191,8.6,6.1
-1940,mining counties,10,40513,2.8,3.6
-1940,rest of Colorado,120,596127,33.2,53
-1940,southern Hispano counties,13,96788,3.6,8.6
+1910,Denver (Arapahoe before 1902),53,213444,64.6,26.7
+1910,Pueblo,2,52364,2.4,6.5
+1910,mining counties,6,59482,7.3,7.4
+1910,rest of Colorado,20,400273,24.4,50
+1910,southern Hispano counties,1,74541,1.2,9.3
+1920,Denver (Arapahoe before 1902),393,258017,49.7,27.4
+1920,Pueblo,34,57728,4.3,6.1
+1920,mining counties,61,40009,7.7,4.2
+1920,rest of Colorado,276,499029,34.9,53
+1920,southern Hispano counties,26,87072,3.3,9.2
+1930,Denver (Arapahoe before 1902),119,287832,47.6,27.8
+1930,Pueblo,23,66039,9.2,6.4
+1930,mining counties,10,30581,4,3
+1930,rest of Colorado,86,558074,34.4,53.9
+1930,southern Hispano counties,12,93419,4.8,9
+1940,Denver (Arapahoe before 1902),202,322780,52.7,28.7
+1940,Pueblo,34,69191,8.9,6.1
+1940,mining counties,10,40513,2.6,3.6
+1940,rest of Colorado,123,596127,32.1,53
+1940,southern Hispano counties,14,96788,3.7,8.6

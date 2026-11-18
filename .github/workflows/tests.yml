@@ -27,7 +27,7 @@ jobs:
         # one pytest process per suite (each has its own conftest.py; see tests/run_tests.sh)
         run: |
           rc=0
-          for d in tests/digitization tests/geocoding tests/outputs; do
+          for d in tests/digitization tests/geocoding tests/outputs tests/stages; do
             python -m pytest "$d" -m "not slow" -ra || rc=1
           done
           exit $rc

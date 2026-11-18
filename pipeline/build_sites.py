@@ -117,7 +117,7 @@ def radar_status(M):
     """Best inventory tier with any hit (cleanup > TRI > RCRA handler > solid waste > other EPA), else '6 Not on any list'."""
     return np.select([M[c]!='' for c,_ in RADAR],[l for _,l in RADAR],'6 Not on any list')
 
-def match_inventory(sites,reg):
+def match_inventory(sites,reg,review_path='data/raw/known_match_review.csv'):
     """One row per site: per-tier hits, nearest record, and match_basis. sites: lat, lon, spread_m, address (normalised street), zip,
     city, names_n (list of normalised firm names). reg: name, source, tier, lat, lon, address, zip, city, optional geom_wkt."""
     from shapely import wkt as _w
@@ -135,6 +135,12 @@ def match_inventory(sites,reg):
     addr_ix=reg.groupby(['akey','zip5']).indices
     reg['city_u']=reg.city.fillna('').astype(str).str.upper().str.strip() if 'city' in reg else ''
     addr_city_ix=reg.groupby(['akey','city_u']).indices
+    reviewed=collections.defaultdict(list)
+    if review_path and os.path.exists(review_path) and 'src_id' in reg:
+        rv=pd.read_csv(review_path,dtype=str,keep_default_na=False); rv=rv[rv.verdict=='same']
+        pos={(a,str(b)):j for j,(a,b) in enumerate(zip(reg.source,reg.src_id))}
+        for k,c,a,b in zip(rv.site_akey,rv.site_city,rv.reg_source,rv.reg_src_id):
+            if (a,b) in pos: reviewed[(k,c.upper().strip())].append(pos[(a,b)])
     # polygons for containment
     polys=reg[reg.geom_wkt.notna()] if 'geom_wkt' in reg else reg.iloc[0:0]
     # polygons and site points in metres (UTM 13N): a site counts as inside a cleanup boundary only when its point is inside the
@@ -156,6 +162,9 @@ def match_inventory(sites,reg):
         # either way, only a record within 250 m (or without a point): the key drops the street type, so '230 DOVER DR' and '230 DOVER RD'
         # share it, and an undirected Denver address ('450 KALAMATH') would otherwise claim a record on the other half of the grid
         am=[j for j in am if pd.isna(reg.lat.iat[j]) or hav(s.lat,s.lon,reg.lat.iat[j],reg.lon.iat[j])<=250]
+        # author-reviewed matches (data/raw/known_match_review.csv): the same firm at the same address whose inventory point lies beyond
+        # 250 m of ours, or whose name or address is spelled too differently for the rules; found by a search out to 400 m, 18 Nov 2026
+        am+= [j for j in reviewed.get((ak, str(s.city or '').upper().strip()),[]) if j not in am]
         am_t=collections.defaultdict(list)
         for j in am: am_t[reg.iloc[j]['tier']].append(f"{reg.iloc[j]['name']} [{reg.iloc[j]['source'].replace('EPA_','').replace('CDPHE_','CDPHE ')}]")
         inpoly=[]; nearpoly=[]   # (label, distance m) for boundaries within NEAR_BOUNDARY_M but not containing the point
@@ -204,6 +213,35 @@ def match_inventory(sites,reg):
     M['radar_status']=radar_status(M)
     return M
 
+def twin_keys(df):
+    """A misread street number leaves a listing unlocated while the same establishment is located in other editions ('12280 W 90TH PL'
+    for '12280 W 50TH PL'). Returns {row label: geo_key of the located listing} for unlocated listings whose street differs from a
+    located listing of the same establishment and town in exactly one digit (same words, same number of digits), where that digit is
+    not the last one of a number: a last-digit difference changes the side of the street (450 / 451) or the premises next door (450 /
+    452), so it is not treated as a misreading. A listing left unplaced because its direction is ambiguous (dirambig) is never moved.
+    Several candidate addresses: the one with the most listings, then the smallest key. Identical to twin_keys() in R/build_sites.R."""
+    alpha=lambda x: re.sub(r'\d','#',str(x)); digits=lambda x: re.sub(r'\D','',str(x))
+    def one_inner(a,b):     # same digit layout; exactly one digit differs, and it is not the last digit of its number
+        if alpha(a)!=alpha(b): return False
+        da,db=digits(a),digits(b)
+        if len(da)!=len(db): return False
+        k=[i for i,(x,y) in enumerate(zip(da,db)) if x!=y]
+        if len(k)!=1: return False
+        ends=set(); n=-1
+        for m in re.finditer(r'\d+',str(a)): n+=len(m.group()); ends.add(n)
+        return k[0] not in ends
+    out={}
+    d=df[df.estab_id.notna()&df.street_n.notna()&(df.street_n!='')]; d=d.assign(city_g=d.city_g.fillna(''))
+    amb=df.geo_quality.fillna('').str.contains('dirambig')
+    for _,g in d.groupby('estab_id',sort=False):
+        if g.located.all() or not g.located.any(): continue
+        L=g[g.located]
+        for i,r in g[~g.located].iterrows():
+            if amb.at[i] or not digits(r.street_n): continue
+            c=collections.Counter(q.geo_key for q in L.itertuples() if q.city_g==r.city_g and one_inner(r.street_n,q.street_n))
+            if c: out[i]=min(c,key=lambda k:(-c[k],k))
+    return out
+
 def main():
     df=pd.read_pickle('work/inv/records_linked.pkl')
     # edition set: config/editions.json restricts the directory to the editions whose scans are complete (see R/edition_coverage.R)
@@ -217,6 +255,13 @@ def main():
     df['geo_level']=geo_level(df.geo_quality)
     df['placed_loose']=placed_loose(df.geo_quality)
     df['located']=df.geo_level.isin(['address','address_approx'])
+    tw=twin_keys(df)
+    if tw:      # the listing takes the located twin's address key, and with it the point (geo_twin marks it; the street stays as read)
+        df['geo_twin']=df.index.isin(list(tw)); df.loc[list(tw),'geo_key']=list(tw.values())
+        df=df.drop(columns=[c for c in geo.columns if c!='geo_key']+['geo_level','placed_loose','located']).merge(geo,on='geo_key',how='left')
+        df['geo_level']=geo_level(df.geo_quality); df['placed_loose']=placed_loose(df.geo_quality); df['located']=df.geo_level.isin(['address','address_approx'])
+    else: df['geo_twin']=False
+    print('listings placed at the address of the same establishment one digit away:',len(tw))
     df['hazard_any']=df.fe_hazard|df.ext_hazard
     L=df[df.located].copy()
     pts=L.drop_duplicates('geo_key')[['geo_key','lat','lon','street_n']].reset_index(drop=True)

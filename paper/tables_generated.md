@@ -7,27 +7,27 @@
 | 1880 | without | 6 | 13,038 | 1.45 | 22.9 | 0.19 | 5.5 | — | 16.8 |
 | 1900 | with hazardous firms | 19 | 17,505 | 2.91 | 27.2 | 0.44 | 10.5 | 12.4 | 39.4 |
 | 1900 | without | 109 | 115,973 | 2.83 | 18.9 | 0.24 | 6.6 | 31.5 | 12.6 |
-| 1910 | with hazardous firms | 14 | 20,282 | 3.71 | 25.6 | 0.72 | 13.9 | 14.7 | 37.8 |
-| 1910 | without | 144 | 192,214 | 2.42 | 18.0 | 0.30 | 6.5 | 37.6 | 15.1 |
+| 1910 | with hazardous firms | 14 | 20,603 | 3.68 | 25.4 | 0.69 | 13.4 | 15.8 | 34.2 |
+| 1910 | without | 144 | 191,893 | 2.42 | 18.0 | 0.30 | 6.6 | 37.5 | 15.5 |
 | 1920 | with hazardous firms | 39 | 57,449 | 1.32 | 24.2 | 2.61 | 11.1 | 12.8 | 48.7 |
 | 1920 | without | 270 | 199,868 | 2.70 | 15.0 | 0.63 | 4.4 | 42.6 | 10.9 |
-| 1930 | with hazardous firms | 34 | 33,462 | 0.96 | 14.7 | 4.71 | 10.5 | 25.9 | 21.3 |
-| 1930 | without | 194 | 251,361 | 2.72 | 11.1 | 0.94 | 5.2 | 48.0 | 8.5 |
-| 1940 | with hazardous firms | 39 | 41,553 | 0.91 | 10.4 | 12.95 | 6.9 | 20.8 | 11.0 |
-| 1940 | without | 291 | 276,110 | 2.69 | 7.5 | 3.30 | 2.8 | 42.6 | 6.8 |
+| 1930 | with hazardous firms | 32 | 32,062 | 0.95 | 15.0 | 4.77 | 10.5 | 25.8 | 20.5 |
+| 1930 | without | 196 | 252,761 | 2.71 | 11.1 | 0.95 | 5.2 | 47.9 | 8.7 |
+| 1940 | with hazardous firms | 38 | 40,460 | 0.93 | 10.4 | 13.17 | 6.8 | 21.7 | 10.6 |
+| 1940 | without | 292 | 277,203 | 2.68 | 7.5 | 3.31 | 2.8 | 42.4 | 6.9 |
 
 <!-- table: s3_ed_gradients ; source: data/results/denver_eds/ed_distance_models.csv -->
 | outcome (percentage points per log m) | 1880 | 1900 | 1910 | 1920 | 1930 | 1940 | pooled | pooled, downtown controlled |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| % White | +2.72\* | +1.66\*\*\* | +1.54\*\* | +0.55\* | +0.67\*\* | +0.27 | +0.80\*\*\* | +0.18 |
-| % Black | −1.79 | −1.30\*\* | −1.07\*\* | −0.26 | −0.41 | −0.02 | −0.49\*\*\* | +0.06 |
-| % Hispanic | −0.10 | −0.08 | −0.15\*\* | −0.74\*\*\* | −1.28\*\* | −3.42\*\*\* | −1.36\*\*\* | −1.18\*\*\* |
-| % foreign born | −0.43 | −3.26\*\*\* | −2.88\*\*\* | −3.93\*\*\* | −1.56\*\*\* | −1.02\*\* | −2.38\*\*\* | −2.20\*\*\* |
-| % laborers | +1.01 | −1.09\* | −2.78\*\*\* | −2.75\*\*\* | −2.05\*\*\* | −1.84\*\*\* | −2.12\*\*\* | −2.06\*\*\* |
-| % owner households | — | +11.01\*\*\* | +19.69\*\*\* | +18.13\*\*\* | +18.03\*\*\* | +18.26\*\*\* | +17.55\*\*\* | +8.16\*\*\* |
-| mean SEI | −1.66 | — | +3.85\*\*\* | +4.88\*\*\* | +4.57\*\*\* | +6.02\*\*\* | +4.83\*\*\* | +5.73\*\*\* |
-| % boarders and lodgers | −14.21\*\* | −10.76\*\*\* | −10.76\*\*\* | −16.13\*\*\* | −6.71\*\*\* | −2.43\*\* | −9.21\*\*\* | −1.00 |
-| % in hazardous industries (workers) | +0.80 | — | −0.10 | +0.41\* | −0.74\*\* | −0.56\*\* | −0.23 | −1.37\*\*\* |
+| % White | +2.72\* | +1.66\*\*\* | +1.57\*\* | +0.55\* | +0.67\*\* | +0.26 | +0.81\*\*\* | +0.21 |
+| % Black | −1.79 | −1.30\*\* | −1.11\*\* | −0.27 | −0.43 | 0.00 | −0.50\*\*\* | +0.02 |
+| % Hispanic | −0.10 | −0.08 | −0.15\* | −0.73\*\*\* | −1.19\*\* | −3.44\*\*\* | −1.31\*\*\* | −1.07\*\*\* |
+| % foreign born | −0.43 | −3.25\*\*\* | −2.86\*\*\* | −3.95\*\*\* | −1.41\*\*\* | −1.07\*\* | −2.37\*\*\* | −2.14\*\*\* |
+| % laborers | +1.01 | −1.10\* | −2.60\*\*\* | −2.71\*\*\* | −1.80\*\*\* | −1.78\*\*\* | −2.01\*\*\* | −1.79\*\*\* |
+| % owner households | — | +11.01\*\*\* | +19.70\*\*\* | +18.09\*\*\* | +17.17\*\*\* | +18.42\*\*\* | +17.36\*\*\* | +7.79\*\*\* |
+| mean SEI | −1.66 | — | +3.86\*\*\* | +4.83\*\*\* | +3.89\*\*\* | +5.81\*\*\* | +4.56\*\*\* | +5.02\*\*\* |
+| % boarders and lodgers | −14.21\*\* | −10.76\*\*\* | −10.10\*\*\* | −16.01\*\*\* | −6.45\*\*\* | −2.64\*\* | −9.14\*\*\* | −1.02 |
+| % in hazardous industries (workers) | +0.80 | — | −0.11 | +0.38 | −0.76\*\* | −0.53\*\* | −0.24\* | −1.32\*\*\* |
 
 <!-- table: s3_segregation ; source: data/results/denver_eds/ed_dissimilarity_fixed_grid.csv -->
 | census | EDs | dissimilarity on that census's EDs | fixed grid, 1880 city (53 cells) | fixed grid, 1900 city (310 cells) |
@@ -43,11 +43,11 @@
 | period | source | editions | A | B | C | D | D/C |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1891–1905 | business directory | 2 | 0 | 0 | 0 | 0.018 | — |
-| 1906–1920 | business directory | 9 | 0 | 0 | 0.013 | 0.135 | 10.0 |
-| 1921–1937 | business directory | 5 | 0 | 0 | 0.019 | 0.206 | 10.6 |
-| 1938–1956 | business directory | 5 | 0 | 0.060 | 0.073 | 0.287 | 3.9 |
-| 1965–1980 | manufacturers' directory | 9 | 0.039 | 0.191 | 0.288 | 3.902 | 13.5 |
-| 1981–1992 | manufacturers' directory | 4 | 0.044 | 0.131 | 0.200 | 3.626 | 18.1 |
+| 1906–1920 | business directory | 9 | 0 | 0 | 0.011 | 0.123 | 11.4 |
+| 1921–1937 | business directory | 5 | 0 | 0 | 0.029 | 0.169 | 5.8 |
+| 1938–1956 | business directory | 5 | 0 | 0.060 | 0.073 | 0.272 | 3.7 |
+| 1965–1980 | manufacturers' directory | 9 | 0 | 0.150 | 0.272 | 3.844 | 14.1 |
+| 1981–1992 | manufacturers' directory | 4 | 0 | 0.094 | 0.176 | 3.533 | 20.1 |
 
 <!-- table: s4_zoning_by_grade ; source: data/results/holc/holc_zoning_by_grade.csv -->
 | HOLC grade (1938) | areas | on the 1929 sheet | km² on the sheet | % zoned industrial, 1929 | % zoned commercial, 1929 |
@@ -73,14 +73,14 @@
 <!-- table: s4_xu_change_by_grade ; source: data/results/holc/holc_tract_models.csv -->
 | change relative to A tracts | period | B | C | D |
 | --- | --- | --- | --- | --- |
-| % Hispanic | 1970–1980 | +0.1 | +1.4 | +3.8 |
-| % Hispanic | 1980–2010 | −2.4 | +4.1 | +15.5 |
-| % Hispanic | 1970–2010 | −2.4 | +5.8 | +21.3 |
-| % Black (1940 nonwhite) | 1940–2010 | +2.4 | +1.3 | −1.4 |
-| % below poverty (first measured 1970) | 1970–2010 | −1.0 | +7.5\* | +15.5\*\*\* |
-| % owner-occupied | 1940–2010 | +5.8 | −12.0 | −9.4 |
-| log median home value | 1940–1980 | −0.18 | −0.28 | −0.54\*\* |
-| log median home value | 1940–2010 | 0.00 | −0.43\* | −0.79\*\* |
+| % Hispanic | 1970–1980 | +0.1 | +1.5 | +4.2 |
+| % Hispanic | 1980–2010 | −2.4 | +4.3 | +16.1 |
+| % Hispanic | 1970–2010 | −2.4 | +6.1 | +22.3 |
+| % Black (1940 nonwhite) | 1940–2010 | +2.4 | +1.3 | −1.5 |
+| % below poverty (first measured 1970) | 1970–2010 | −1.0 | +7.6\* | +15.7\*\*\* |
+| % owner-occupied | 1940–2010 | +5.8 | −12.0 | −9.2 |
+| log median home value | 1940–1980 | −0.18 | −0.28 | −0.55\*\* |
+| log median home value | 1940–2010 | 0.00 | −0.43\* | −0.78\*\* |
 
 <!-- table: s4_grid_lq ; source: data/results/descriptive/grid_location_quotients_1900_1940.csv -->
 | future class or 1929 zoning | cells | Black LQ 1900 | 1910 | 1920 | 1930 | 1940 | Hispanic LQ 1900 | 1910 | 1920 | 1930 | 1940 |
@@ -104,13 +104,13 @@
 <!-- table: s4_first_arrival ; source: data/results/descriptive/grid_first_arrival_1900_1940.csv; data/results/descriptive/tract_first_arrival_1965_1992.csv -->
 | places | decade | places (n) | % Black at start | % foreign born at start | % owner-occupied at start | change in % Black | change in % Hispanic | change in % owner-occupied |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| grid cells, first trade arrives | 1910–1920 | 19 | 5.32 | 21.3 | 16.8 | −0.79 | +1.90 | +1.02 |
-| grid cells, no trade | 1910–1920 | 271 | 2.17 | 17.4 | 39.5 | +0.37 | +0.26 | +1.50 |
-| grid cells, first trade arrives | 1930–1940 | 13 | 1.55 | 12.8 | 26.8 | −0.66 | +5.49 | −6.23 |
-| grid cells, no trade | 1930–1940 | 253 | 3.40 | 11.0 | 47.4 | +0.20 | +2.70 | −8.25 |
-| tracts, first hazardous manufacturer listed 1973–80 | 1970–1990 | 22 | 0.46 | — | 67.6 | +2.18 | +12.49 | −9.86 |
-| tracts, none listed 1965–92 | 1970–1990 | 24 | 7.23 | — | 50.1 | +4.98 | +2.49 | −3.63 |
-| tracts, listed 1965–70 | 1970–1990 | 89 | 7.99 | — | 53.0 | +0.55 | +8.48 | −3.64 |
+| grid cells, first trade arrives | 1910–1920 | 17 | 5.63 | 21.2 | 16.5 | −0.82 | +1.76 | +0.98 |
+| grid cells, no trade | 1910–1920 | 272 | 2.17 | 17.5 | 39.4 | +0.37 | +0.29 | +1.54 |
+| grid cells, first trade arrives | 1930–1940 | 13 | 1.69 | 13.0 | 27.0 | −0.72 | +5.27 | −6.43 |
+| grid cells, no trade | 1930–1940 | 253 | 3.43 | 11.0 | 47.2 | +0.17 | +2.74 | −8.09 |
+| tracts, first hazardous manufacturer listed 1973–80 | 1970–1990 | 26 | 5.77 | — | 61.7 | +0.54 | +10.78 | −6.29 |
+| tracts, none listed 1965–92 | 1970–1990 | 32 | 8.45 | — | 50.8 | +3.67 | +3.84 | −2.49 |
+| tracts, listed 1965–70 | 1970–1990 | 75 | 7.63 | — | 53.2 | +0.55 | +8.33 | −4.15 |
 
 <!-- table: s4_tract_lq ; source: data/results/descriptive/tract_location_quotients_1940_2020.csv -->
 | dominant 1938 class (tracts) | measure | 1940 | 1950 | 1960 | 1970 | 1980 | 1990 | 2000 | 2010 | 2020 |
@@ -126,38 +126,38 @@
 <!-- table: s5_tract_gradients ; source: data/results/denver_tracts/denver_tracts_models.csv -->
 | change per log m of distance from the nearest hazardous firm | 1950 | 1960 | 1970 | 1980 | 1990 | 2000 | 2010 | 2020 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| % Hispanic | — | −7.1\*\*\* | −10.9\*\*\* | −9.4\*\*\* | −9.1\*\*\* | −8.6\*\*\* | −5.4\* | −3.2 |
-| % Hispanic, downtown controlled | — | −4.5\*\* | −7.9\*\*\* | −6.4\*\*\* | −6.6\*\*\* | −7.4\*\* | −7.0\*\* | −6.2\*\* |
-| % White | +1.5 | +2.7 | +0.5 | +4.9 | +5.4\* | +5.4\*\* | +3.2\* | +2.6 |
-| % White, downtown controlled | −0.3 | −1.6 | −1.4 | +3.3 | +2.7 | +4.2\* | +4.0\* | +5.1\*\* |
-| % Black | −0.5 | −2.2 | −0.2 | +0.2 | −0.1 | −0.7 | −0.8 | −0.5 |
-| % foreign born | −0.4 | −0.9\*\*\* | −0.6\* | −1.2\*\* | −1.2\* | −3.2\*\* | −1.0 | −0.6 |
-| % below poverty | — | — | −8.2\*\*\* | −5.4\*\*\* | −5.7\*\*\* | −3.8\*\*\* | −4.0\*\*\* | −1.7\*\* |
-| % below poverty, downtown controlled | — | — | −5.0\*\*\* | −2.5\*\* | −3.2\*\* | −2.5\*\*\* | −3.9\*\*\* | −1.3\* |
-| % owner-occupied | +14.8\*\*\* | +13.9\*\*\* | +13.9\*\*\* | +6.3\*\* | +3.5 | +3.2 | +4.0\* | +6.4\*\* |
-| % owner-occupied, downtown controlled | +2.9\* | −1.1 | +5.9\*\* | +0.7 | −0.6 | +0.1 | +1.4 | +2.7 |
-| log median home value | +0.18\*\*\* | +0.18\*\*\* | +0.17\*\*\* | +0.09\*\* | +0.11\*\*\* | +0.13\*\*\* | +0.13\* | +0.07\* |
+| % Hispanic | — | −7.1\*\*\* | −10.8\*\*\* | −9.0\*\*\* | −10.3\*\*\* | −10.5\*\*\* | −7.6\*\* | −4.9\* |
+| % Hispanic, downtown controlled | — | −4.4\*\* | −8.3\*\*\* | −6.0\*\* | −8.0\*\*\* | −9.5\*\*\* | −9.1\*\*\* | −7.4\*\* |
+| % White | +1.5 | +2.6 | +0.2 | +6.7\* | +6.4\*\* | +6.3\*\*\* | +4.1\*\* | +3.9 |
+| % White, downtown controlled | −0.2 | −1.6 | −1.5 | +5.3 | +3.9 | +5.3\*\* | +4.8\*\* | +5.9\*\* |
+| % Black | −0.5 | −2.2 | +0.1 | −1.2 | −0.4 | −0.4 | −0.6 | −0.4 |
+| % foreign born | −0.4 | −0.9\*\*\* | −0.3 | −1.2\*\* | −1.3\* | −3.8\*\*\* | −1.7 | −1.0 |
+| % below poverty | — | — | −7.5\*\*\* | −5.7\*\*\* | −6.1\*\*\* | −4.0\*\*\* | −4.6\*\*\* | −1.9\*\* |
+| % below poverty, downtown controlled | — | — | −4.7\*\*\* | −2.9\*\* | −3.7\*\*\* | −2.8\*\*\* | −4.5\*\*\* | −1.7\* |
+| % owner-occupied | +14.8\*\*\* | +13.5\*\*\* | +12.5\*\*\* | +5.7\* | +3.3 | +2.8 | +3.8\* | +6.2\*\* |
+| % owner-occupied, downtown controlled | +3.1\* | −1.4 | +5.4\*\*\* | +0.3 | −0.8 | 0.0 | +1.6 | +3.1\* |
+| log median home value | +0.18\*\*\* | +0.18\*\*\* | +0.17\*\*\* | +0.10\*\* | +0.14\*\*\* | +0.17\*\*\* | +0.18\*\* | +0.10\*\* |
 
 <!-- table: s5_quartile_shares ; source: data/results/denver_tracts/denver_tracts_shares.csv -->
 | measure | 1950 | 1960 | 1970 | 1980 | 1990 | 2000 | 2010 | 2020 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| % Hispanic | — | 48.9 | 67.3 | 50.1 | 50.0 | 34.4 | 37.8 | 55.7 |
-| % below poverty | — | — | 60.8 | 50.5 | 56.7 | 57.7 | 58.9 | 50.4 |
-| % Black | 32.8 | 55.3 | 49.6 | 34.9 | 25.5 | 20.8 | 37.1 | 30.5 |
-| % foreign born | 41.6 | 42.6 | 33.3 | 42.5 | 45.2 | 31.3 | 31.5 | 42.7 |
-| % White | 8.8 | 6.4 | 15.2 | 6.3 | 7.5 | 6.3 | 4.5 | 4.4 |
-| % owner-occupied | 2.9 | 2.1 | 10.3 | 10.8 | 15.0 | 17.3 | 11.6 | 13.7 |
+| % Hispanic | — | 51.2 | 69.4 | 49.9 | 50.4 | 35.2 | 39.2 | 57.4 |
+| % below poverty | — | — | 60.9 | 50.3 | 56.9 | 57.5 | 60.4 | 51.7 |
+| % Black | 35.4 | 51.2 | 49.8 | 35.0 | 25.0 | 19.7 | 36.1 | 30.7 |
+| % foreign born | 37.8 | 37.2 | 33.5 | 42.4 | 45.1 | 31.8 | 32.1 | 44.8 |
+| % White | 9.4 | 7.0 | 16.0 | 5.7 | 7.2 | 6.0 | 3.8 | 3.2 |
+| % owner-occupied | 3.1 | 4.7 | 10.5 | 10.7 | 16.0 | 17.9 | 12.4 | 14.2 |
 
 <!-- table: s5_panel ; source: data/results/ej_panel_models.csv; data/results/ej_panel_legacy_sites.csv; data/results/ej_panel_reverse.csv -->
 | outcome | within tracts | between tracts | between, spatial-error | legacy firms (gone before the census), between | 2000 | 2010 | 2020 | reverse: composition → change in hazardous firms |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| % Hispanic | −1.45 | +18.79\*\*\* | +8.35\*\*\* | −4.37 | +12.77\*\*\* | +11.68\*\*\* | +8.67\*\*\* | +0.043\*\*\* |
-| % White | +2.20 | −6.68 | −4.63 | −1.75 | −7.30\*\*\* | −6.26\*\*\* | −7.47\*\*\* | −0.008 |
-| % Black | −0.26 | −2.37 | −0.54 | +1.71 | −0.61 | +0.22 | +0.68 | +0.004 |
-| % foreign born | +0.56 | +0.82 | +1.11 | +0.16 | +5.36\*\*\* | +4.15\*\*\* | +3.33\*\*\* | −0.101 |
-| % below poverty | +0.72 | +4.65\*\* | +3.65\*\* | +3.13 | +4.06\*\*\* | +5.90\*\*\* | +3.24\*\*\* | +0.042 |
-| % owner-occupied | −1.16 | +4.66 | −0.49 | −7.48\* | −3.37 | −5.58\*\*\* | −6.75\*\*\* | +0.007 |
-| log median home value | −0.03 | −0.26\*\*\* | −0.14\*\* | +0.06 | −0.20\*\*\* | −0.21\*\*\* | −0.15\*\*\* | −2.21\*\* |
+| % Hispanic | −1.15 | +16.83\*\*\* | +7.80\*\*\* | −2.34 | +13.72\*\*\* | +12.57\*\*\* | +9.19\*\*\* | +0.042\*\*\* |
+| % White | −0.06 | −6.95 | −4.81 | −1.91 | −8.02\*\*\* | −6.79\*\*\* | −7.97\*\*\* | −0.004 |
+| % Black | −0.38 | −2.22 | −0.26 | +2.02 | −0.45 | +0.28 | +0.75 | +0.004 |
+| % foreign born | +0.53 | +1.03 | +1.23\* | −0.16 | +5.64\*\*\* | +4.33\*\*\* | +3.38\*\*\* | −0.101 |
+| % below poverty | +0.47 | +4.00\*\* | +3.15\* | +4.19\*\* | +4.16\*\*\* | +6.06\*\*\* | +3.68\*\*\* | +0.050 |
+| % owner-occupied | −1.18 | +3.98 | −0.33 | −7.12\* | −2.95 | −5.18\*\* | −6.65\*\*\* | +0.007 |
+| log median home value | −0.03 | −0.22\*\*\* | −0.13\*\* | +0.02 | −0.22\*\*\* | −0.23\*\*\* | −0.16\*\*\* | −2.28\*\* |
 
 <!-- table: s5_landuse_freeways ; source: data/results/landuse/landuse_by_holc_grade.csv; data/results/highways/highways_by_holc_grade.csv -->
 |  | A | B | C | D |
@@ -169,35 +169,35 @@
 | land within 250 m of such a freeway (%) | 0.0 | 1.8 | 4.7 | 17.2 |
 
 <!-- table: s6_parcel_use ; source: data/results/site_fate/site_fate_denver.csv; data/results/site_fate/site_fate_denver_pre1960.csv -->
-| current parcel use | manufacturers' directory sites 1965–1992 (n = 1,132 matched) | business-directory hazardous trades 1891–1956 (n = 366 matched) |
+| current parcel use | manufacturers' directory sites 1965–1992 (n = 972 matched) | business-directory hazardous trades 1891–1956 (n = 390 matched) |
 | --- | --- | --- |
-| Industrial / utility | 50.1% | 9.6% |
-| Commercial / office | 26.5% | 61.2% |
-| Residential | 16.2% | 20.5% |
-| Vacant | 4.1% | 4.1% |
-| Civic / school / health | 1.9% | 1.9% |
-| Park / open space | 1.1% | 2.5% |
-| Still zoned industrial (current zone district) | 54.0% | 14.8% |
-| Building newer than last listing | 14.0% | 42.9% |
-| Median year built of present building | 1962 | 1952 |
+| Industrial / utility | 54.5% | 9.5% |
+| Commercial / office | 26.7% | 61.0% |
+| Residential | 12.2% | 20.5% |
+| Vacant | 3.7% | 4.4% |
+| Civic / school / health | 1.7% | 2.1% |
+| Park / open space | 0.8% | 2.3% |
+| Still zoned industrial (current zone district) | 58.8% | 14.4% |
+| Building newer than last listing | 12.3% | 43.3% |
+| Median year built of present building | 1962 | 1953 |
 
 <!-- table: s6_fate_by_decade ; source: data/results/site_fate/site_fate_summary.csv -->
 | decade of last listing | sites | industrial / utility | commercial / office | residential | vacant | civic, school, park |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1960s | 123 | 19.5% | 35.8% | 32.5% | 7.3% | 4.9% |
-| 1970s | 234 | 35.0% | 32.1% | 22.6% | 5.6% | 4.7% |
-| 1980s | 306 | 50.3% | 26.1% | 17.6% | 2.9% | 2.3% |
-| 1990s (listed in 1990 or 1992) | 469 | 65.5% | 21.5% | 7.7% | 3.2% | 2.1% |
+| 1960s | 75 | 22.7% | 40.0% | 24.0% | 10.7% | 2.7% |
+| 1970s | 195 | 38.5% | 32.8% | 19.5% | 5.1% | 4.1% |
+| 1980s | 266 | 53.8% | 29.3% | 11.7% | 1.9% | 2.6% |
+| 1990s (listed in 1990 or 1992) | 436 | 67.7% | 20.2% | 7.3% | 3.0% | 1.8% |
 
 <!-- table: s6_zoning_2023 ; source: data/results/zoning_2023/zoning_1929_to_2023.csv; data/results/zoning_2023/sites_by_zoning_2023.csv -->
-| 2023 zoning | 1929 Industrial A land (24.7 km²) | 1929 Industrial B land (3.8 km²) | 1965–92 sites, Denver County (n = 1,132) | 1965–92 sites, suburban study tracts (n = 456) | pre-1960 trades, Denver County (n = 364) |
+| 2023 zoning | 1929 Industrial A land (24.7 km²) | 1929 Industrial B land (3.8 km²) | 1965–92 sites, Denver County (n = 972) | 1965–92 sites, suburban study tracts (n = 418) | pre-1960 trades, Denver County (n = 388) |
 | --- | --- | --- | --- | --- | --- |
-| Industrial, housing not allowed | 51.2% | 61.0% | 39.5% | 67.8% | 4.9% |
-| Industrial mixed use, housing allowed (Denver I-MX) | 12.1% | 2.2% | 15.1% | 0.0% | 8.8% |
-| Other mixed use with housing | 21.8% | 1.8% | 31.0% | 14.3% | 73.6% |
-| Residential | 6.0% | 11.5% | 10.6% | 11.6% | 5.5% |
-| Commercial | 0.1% | 0.0% | 0.4% | 4.8% | 0.3% |
-| Open space, civic, other | 8.8% | 23.4% | 3.4% | 1.5% | 6.9% |
+| Industrial, housing not allowed | 51.2% | 61.0% | 43.2% | 71.8% | 4.9% |
+| Industrial mixed use, housing allowed (Denver I-MX) | 12.1% | 2.2% | 15.9% | 0.0% | 8.5% |
+| Other mixed use with housing | 21.8% | 1.8% | 29.9% | 13.6% | 73.5% |
+| Residential | 6.0% | 11.5% | 7.4% | 8.6% | 5.7% |
+| Commercial | 0.1% | 0.0% | 0.4% | 4.5% | 0.3% |
+| Open space, civic, other | 8.8% | 23.4% | 3.1% | 1.4% | 7.2% |
 
 <!-- table: s6_zoning_over_time ; source: data/results/zoning_over_time/zoning_land_by_year.csv; data/results/zoning_over_time/zoning_by_holc_grade_years.csv; data/results/zoning_over_time/zoning_sites_by_year.csv -->
 | zoned industrial (housing not allowed) | 1929 | 1944 | 1955 | 2023 | today |
@@ -205,8 +205,8 @@
 | land mapped in 1929 and 1944 (203 km²) | 14.0% | 13.8% | 16.1% | 10.6% | 10.3% |
 | HOLC D land (25.3 km²) | 16.2% | 16.0% | 21.3% | 12.4% | 12.2% |
 | HOLC A, B and C land (54.1 km²) | 0.3–1.8% | 0.3–1.8% | 0–0.1% | 0% | 0% |
-| hazardous-sector sites 1965–92 (n = 1,054) | 43.2% | 41.7% | 58.1% | 36.2% | 35.8% |
-| hazardous trades before 1960 (n = 364) | 19.8% | 19.2% | 46.4% | 4.9% | 4.9% |
+| hazardous-sector sites 1965–92 (n = 895) | 46.1% | 44.6% | 62.5% | 39.6% | 39.1% |
+| hazardous trades before 1960 (n = 388) | 19.1% | 18.6% | 47.2% | 4.9% | 4.9% |
 
 <!-- table: s6_rezoned_tracts ; source: data/results/zoning_over_time/zoning_tract_paths.csv -->
 | tracts (2010) | n | census | % Hispanic | % Black | % in poverty | % owner-occupied |
@@ -224,31 +224,31 @@
 <!-- table: s7_block_mortality ; source: data/results/health/mortality_block_models.csv -->
 | site exposure (per SD of kernel density) | Colorado, natural causes | Colorado, all causes | Denver study area, natural causes |
 | --- | --- | --- | --- |
-| known historical sites | 1.043 (1.003–1.084) | 1.049 (1.011–1.089) | 1.079 (0.986–1.180) |
-| known historical sites, placebo also in the model | 1.040 (0.999–1.082) | 1.046 (1.007–1.087) | 1.072 (0.977–1.177) |
-| hidden sites | 1.022 (0.992–1.052) | 1.022 (0.993–1.051) | 1.006 (0.951–1.066) |
-| hidden sites, high-confidence only | 0.997 (0.968–1.026) | 0.999 (0.971–1.028) | 0.980 (0.932–1.030) |
-| pre-1960 hazardous trades | 0.956 (0.923–0.990) | 0.967 (0.937–0.999) | 0.977 (0.905–1.053) |
-| placebo: non-hazardous manufacturers, alone | 1.035 (1.001–1.071) | 1.039 (1.006–1.073) | 1.068 (0.995–1.148) |
+| known historical sites | 1.042 (1.005–1.081) | 1.047 (1.011–1.083) | 1.076 (0.997–1.162) |
+| known historical sites, placebo also in the model | 1.038 (1.000–1.078) | 1.042 (1.006–1.081) | 1.065 (0.982–1.155) |
+| hidden sites | 1.017 (0.988–1.046) | 1.019 (0.991–1.048) | 0.988 (0.942–1.037) |
+| hidden sites, high-confidence only | 1.006 (0.978–1.034) | 1.008 (0.982–1.036) | 0.991 (0.944–1.040) |
+| pre-1960 hazardous trades | 0.956 (0.922–0.990) | 0.967 (0.935–0.999) | 0.984 (0.910–1.064) |
+| placebo: non-hazardous manufacturers, alone | 1.040 (1.004–1.077) | 1.043 (1.009–1.079) | 1.077 (1.003–1.156) |
 
 <!-- table: s7_censoc_table22 ; source: data/results/censoc/censoc_models.csv -->
 | exposure at the 1940 address | men, deaths 1975–2020: birth year only | men, deaths 1975–2020: with 1940 controls | men and women, deaths 1988–2005: birth year and sex only | men and women, deaths 1988–2005: with 1940 controls |
 | --- | --- | --- | --- | --- |
 | 1929 industrial district (vs residence or commercial) | −1.29 (−2.14 to −0.43) | −0.72 (−1.56 to 0.12) | −0.07 (−0.48 to 0.35) | 0.10 (−0.33 to 0.52) |
 | industrial land within 250 m, 1937 (per 10 points) | −0.38 (−0.54 to −0.21) | −0.23 (−0.39 to −0.08) | −0.06 (−0.14 to 0.03) | −0.01 (−0.10 to 0.08) |
-| hazardous trade listed by 1940 within 500 m | −0.56 (−1.12 to −0.01) | −0.15 (−0.69 to 0.40) | −0.13 (−0.35 to 0.09) | −0.01 (−0.25 to 0.22) |
-| hazardous trades listed by 1940, kernel (per SD) | −0.02 (−0.30 to 0.26) | 0.17 (−0.10 to 0.43) | −0.06 (−0.20 to 0.09) | 0.00 (−0.13 to 0.13) |
+| hazardous trade listed by 1940 within 500 m | −0.61 (−1.16 to −0.07) | −0.23 (−0.77 to 0.31) | −0.14 (−0.37 to 0.08) | −0.03 (−0.26 to 0.21) |
+| hazardous trades listed by 1940, kernel (per SD) | −0.02 (−0.31 to 0.26) | 0.16 (−0.11 to 0.43) | −0.06 (−0.21 to 0.09) | −0.01 (−0.14 to 0.13) |
 | placebo: commercial land within 250 m, 1937 (per 10 points) | −0.01 (−0.11 to 0.09) | 0.08 (−0.02 to 0.19) | −0.02 (−0.06 to 0.02) | 0.00 (−0.04 to 0.04) |
 | HOLC grade D (vs A or B) | −1.29 (−2.01 to −0.58) | −0.30 (−1.26 to 0.65) | −0.46 (−0.75 to −0.17) | −0.23 (−0.60 to 0.15) |
-| 1965–92 sites on no inventory, kernel (per SD) | −0.31 (−0.66 to 0.04) | −0.04 (−0.41 to 0.34) | −0.13 (−0.23 to −0.04) | −0.06 (−0.16 to 0.05) |
-| 1965–92 sites on an inventory, kernel (per SD) | −0.47 (−0.80 to −0.15) | −0.18 (−0.58 to 0.21) | −0.09 (−0.19 to 0.00) | 0.02 (−0.10 to 0.14) |
+| 1965–92 sites on no inventory, kernel (per SD) | −0.34 (−0.69 to 0.02) | −0.04 (−0.43 to 0.35) | −0.13 (−0.23 to −0.04) | −0.05 (−0.16 to 0.05) |
+| 1965–92 sites on an inventory, kernel (per SD) | −0.49 (−0.82 to −0.16) | −0.20 (−0.59 to 0.20) | −0.10 (−0.19 to 0.00) | 0.01 (−0.11 to 0.13) |
 
 <!-- table: s7_enlistment_table23 ; source: data/results/censoc/enlistment_models.csv -->
 | exposure at the 1940 address | years of schooling | height (inches) | weight (pounds) | years of schooling, boys aged 13–17 in 1940 |
 | --- | --- | --- | --- | --- |
 | 1929 industrial district | −0.45 (−0.73 to −0.16) | −0.33 (−1.01 to 0.35) | −0.5 (−5.7 to 4.6) | −0.51 (−0.84 to −0.17) |
 | industrial land within 250 m, 1937 (per 10 points) | −0.10 (−0.14 to −0.06) | −0.01 (−0.15 to 0.12) | 0.0 (−1.0 to 0.9) | −0.12 (−0.19 to −0.06) |
-| hazardous trade listed by 1940 within 500 m | −0.33 (−0.48 to −0.19) | −0.14 (−0.47 to 0.19) | −2.4 (−4.8 to 0.0) | −0.26 (−0.47 to −0.05) |
+| hazardous trade listed by 1940 within 500 m | −0.30 (−0.45 to −0.16) | −0.07 (−0.39 to 0.25) | −2.2 (−4.6 to 0.2) | −0.24 (−0.44 to −0.04) |
 | HOLC grade D (vs A or B) | −0.56 (−0.83 to −0.30) | −0.57 (−1.17 to 0.03) | −6.7 (−10.8 to −2.6) | −0.42 (−0.68 to −0.16) |
 | major road open in 1940 within 100 m | −0.36 (−0.79 to 0.08) | −0.30 (−1.08 to 0.49) | −2.1 (−7.5 to 3.3) | −0.93 (−1.45 to −0.40) |
 | placebo: commercial land within 250 m (per 10 points) | −0.01 (−0.04 to 0.02) | −0.06 (−0.12 to 0.00) | −0.7 (−1.1 to −0.2) | −0.04 (−0.08 to 0.01) |

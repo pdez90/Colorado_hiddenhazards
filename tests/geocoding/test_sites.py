@@ -213,3 +213,16 @@ def test_address_match_same_zip_far_away_is_not_entity():
     assert M.iloc[0].match_basis == 'none'
     M = run([site()], [reg('Other Name', 'tri', LAT0 + dlat(200), LON0, address='450 KALAMATH DR', zip5='80204')])
     assert M.iloc[0].match_basis == 'same entity (name or address)'
+
+
+def test_one_digit_twin_rule_moves_only_inner_digit_misreadings():
+    """twin_keys (18 Nov 2026): an unplaced listing takes the point of the same establishment's located address when one inner digit
+    differs (90TH / 50TH, 2410 / 3410); never when the last digit differs (450 / 452: next door or across the street), never for an
+    ambiguous direction, never across towns."""
+    import pandas as pd
+    import build_sites as B
+    t = pd.DataFrame(dict(estab_id=['e'] * 8,
+                          street_n=['12280 W 90TH PL', '12280 W 50TH PL', '450 KALAMATH ST', '452 KALAMATH ST', '2410 BRIGHTON BLVD', '3410 BRIGHTON BLVD', '3410 BRIGHTON BLVD', '2410 BRIGHTON BLVD'],
+                          city_g=['W', 'W', 'D', 'D', 'D', 'D', 'X', 'D'], located=[False, True, False, True, False, True, True, False],
+                          geo_key=list('abcdefgh'), geo_quality=['zip_centroid', 'range_interp', 'zip_centroid', 'range_interp', 'zip_centroid', 'range_interp', 'range_interp', 'range_interp_dirambig_cityzips']))
+    assert B.twin_keys(t) == {0: 'b', 4: 'f'}

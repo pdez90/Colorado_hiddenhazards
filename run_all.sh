@@ -19,6 +19,7 @@ py pipeline/sic_classifier.py     # learns description -> SIC from editions that
 py pipeline/consolidate.py        # -> work/inv/records.pkl (SIC, F&E sector flags)
 py pipeline/geo_prep.py
 py pipeline/link.py               # establishments across years (~10 min)
+py pipeline/clean_spelling.py     # scan misreadings in firm and street names voted out across editions of the same establishment
 py pipeline/build_reg.py          # regulatory inventories -> work/inv/reg.pkl
 py pipeline/frs_addr_geo.py       # ZIP centroids + FRS address points
 py pipeline/tiger_geocode.py build

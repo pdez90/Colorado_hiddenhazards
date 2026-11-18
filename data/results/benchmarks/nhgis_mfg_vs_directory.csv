@@ -1,6 +1,6 @@
 census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_street,ratio_haz_to_census,estab_label
-1880,005,Arapahoe,259,,,62,2,0.24,Number of Manufacturing Establishments
-1880,065,Lake,82,,,40,0,0.49,Number of Manufacturing Establishments
+1880,005,Arapahoe,259,,,62,1,0.24,Number of Manufacturing Establishments
+1880,065,Lake,82,,,42,0,0.51,Number of Manufacturing Establishments
 1880,013,Boulder,31,,,14,0,0.45,Number of Manufacturing Establishments
 1880,069,Larimer,25,,,6,0,0.24,Number of Manufacturing Establishments
 1880,019,Clear Creek,23,,,15,0,0.65,Number of Manufacturing Establishments
@@ -30,7 +30,7 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1880,067,La Plata,0,,,2,0,2,Number of Manufacturing Establishments
 1880,107,Routt,0,,,0,0,0,Number of Manufacturing Establishments
 1880,123,Weld,0,,,2,0,2,Number of Manufacturing Establishments
-1890,005,Arapahoe,781,10921,30048472,105,39,0.13,Number of Manufacturing Establishments Reporting
+1890,005,Arapahoe,781,10921,30048472,106,34,0.14,Number of Manufacturing Establishments Reporting
 1890,101,Pueblo,112,1556,3626200,11,0,0.1,Number of Manufacturing Establishments Reporting
 1890,065,Lake,62,366,908531,2,0,0.03,Number of Manufacturing Establishments Reporting
 1890,071,Las Animas,60,483,904656,0,0,0,Number of Manufacturing Establishments Reporting
@@ -86,13 +86,13 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1890,075,Logan,1,,,1,0,1,Number of Manufacturing Establishments Reporting
 1890,095,Phillips,1,,,0,0,0,Number of Manufacturing Establishments Reporting
 1890,0495,,0,0,0,0,0,0,Number of Manufacturing Establishments Reporting
-1920,031,Denver,1097,16635,125411272,118,75,0.11,Manufacturing Establishments
-1920,101,Pueblo,143,6585,47568936,9,7,0.06,Manufacturing Establishments
-1920,041,El Paso,141,848,4788504,9,5,0.06,Manufacturing Establishments
-1920,123,Weld,98,794,9743802,7,2,0.07,Manufacturing Establishments
+1920,031,Denver,1097,16635,125411272,118,59,0.11,Manufacturing Establishments
+1920,101,Pueblo,143,6585,47568936,8,6,0.06,Manufacturing Establishments
+1920,041,El Paso,141,848,4788504,9,4,0.06,Manufacturing Establishments
+1920,123,Weld,98,794,9743802,6,2,0.06,Manufacturing Establishments
 1920,013,Boulder,95,713,9660142,7,3,0.07,Manufacturing Establishments
 1920,069,Larimer,87,1013,13440084,8,2,0.09,Manufacturing Establishments
-1920,071,Las Animas,60,884,3943416,4,1,0.07,Manufacturing Establishments
+1920,071,Las Animas,60,884,3943416,3,0,0.05,Manufacturing Establishments
 1920,089,Otero,57,1223,8766758,2,0,0.04,Manufacturing Establishments
 1920,099,Prowers,49,205,3825014,2,0,0.04,Manufacturing Establishments
 1920,043,Fremont,45,821,6787570,4,0,0.09,Manufacturing Establishments
@@ -146,15 +146,15 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1920,037,Eagle,4,7,31016,0,0,0,Manufacturing Establishments
 1920,117,Summit,4,1,9290,0,0,0,Manufacturing Establishments
 1920,115,Sedgwick,3,6,30896,1,0,0.33,Manufacturing Establishments
-1930,031,Denver,781,16239,,138,79,0.18,"Manufacturing Establishments, 1929"
-1930,101,Pueblo,81,5831,,28,15,0.35,"Manufacturing Establishments, 1929"
+1930,031,Denver,781,16239,,130,60,0.17,"Manufacturing Establishments, 1929"
+1930,101,Pueblo,81,5831,,28,12,0.35,"Manufacturing Establishments, 1929"
 1930,041,El Paso,69,933,,5,3,0.07,"Manufacturing Establishments, 1929"
 1930,069,Larimer,50,915,,4,0,0.08,"Manufacturing Establishments, 1929"
 1930,123,Weld,50,1066,,7,3,0.14,"Manufacturing Establishments, 1929"
-1930,013,Boulder,37,564,,7,4,0.19,"Manufacturing Establishments, 1929"
+1930,013,Boulder,37,564,,6,2,0.16,"Manufacturing Establishments, 1929"
 1930,089,Otero,34,896,,5,0,0.15,"Manufacturing Establishments, 1929"
-1930,071,Las Animas,31,560,,8,3,0.26,"Manufacturing Establishments, 1929"
-1930,077,Mesa,30,408,,7,2,0.23,"Manufacturing Establishments, 1929"
+1930,071,Las Animas,31,560,,7,1,0.23,"Manufacturing Establishments, 1929"
+1930,077,Mesa,30,408,,8,2,0.27,"Manufacturing Establishments, 1929"
 1930,043,Fremont,23,467,,4,0,0.17,"Manufacturing Establishments, 1929"
 1930,001,Adams,20,726,,1,0,0.05,"Manufacturing Establishments, 1929"
 1930,067,La Plata,20,229,,4,2,0.2,"Manufacturing Establishments, 1929"
@@ -181,17 +181,17 @@ census,county,county_name,mfg_estab,wage_earners,value_products,dir_haz,dir_stre
 1930,037,Eagle,3,15,,1,0,0.33,"Manufacturing Establishments, 1929"
 1930,113,San Miguel,3,11,,1,0,0.33,"Manufacturing Establishments, 1929"
 1930,119,Teller,3,13,,0,0,0,"Manufacturing Establishments, 1929"
-1940,031,Denver,620,11477,107715056,142,74,0.23,"Manufacturing Establishments, 1939"
-1940,101,Pueblo,72,5019,41212184,23,14,0.32,"Manufacturing Establishments, 1939"
+1940,031,Denver,620,11477,107715056,140,58,0.23,"Manufacturing Establishments, 1939"
+1940,101,Pueblo,72,5019,41212184,22,10,0.31,"Manufacturing Establishments, 1939"
 1940,041,El Paso,62,421,3163302,12,6,0.19,"Manufacturing Establishments, 1939"
 1940,069,Larimer,47,681,6911092,6,2,0.13,"Manufacturing Establishments, 1939"
 1940,123,Weld,41,761,7870136,7,2,0.17,"Manufacturing Establishments, 1939"
-1940,013,Boulder,32,433,3763989,9,3,0.28,"Manufacturing Establishments, 1939"
+1940,013,Boulder,32,433,3763989,9,2,0.28,"Manufacturing Establishments, 1939"
 1940,077,Mesa,32,266,1596285,8,3,0.25,"Manufacturing Establishments, 1939"
 1940,071,Las Animas,28,205,2393107,4,1,0.14,"Manufacturing Establishments, 1939"
 1940,089,Otero,27,448,3532481,5,0,0.19,"Manufacturing Establishments, 1939"
 1940,001,Adams,22,484,11656138,1,0,0.05,"Manufacturing Establishments, 1939"
-1940,067,La Plata,21,140,932401,4,2,0.19,"Manufacturing Establishments, 1939"
+1940,067,La Plata,21,140,932401,5,2,0.24,"Manufacturing Establishments, 1939"
 1940,087,Morgan,18,230,2716892,6,0,0.33,"Manufacturing Establishments, 1939"
 1940,005,Arapahoe,16,358,1752822,8,5,0.5,"Manufacturing Establishments, 1939"
 1940,029,Delta,16,181,1319148,3,0,0.19,"Manufacturing Establishments, 1939"

@@ -1,11 +1,11 @@
 parcel_match,series,n,pct
-same address,Business-directory hazardous trades 1891-1956,72,19.7
-"same street and side, nearest number",Business-directory hazardous trades 1891-1956,174,47.5
-"same street, nearest parcel",Business-directory hazardous trades 1891-1956,65,17.8
-nearest parcel,Business-directory hazardous trades 1891-1956,55,15
-same address,Manufacturers' directory sites 1965-1992,517,45.7
-"same street and side, nearest number",Manufacturers' directory sites 1965-1992,363,32.1
-"same street, nearest parcel",Manufacturers' directory sites 1965-1992,94,8.3
-nearest parcel,Manufacturers' directory sites 1965-1992,158,14
-agreement rate: situs address = site address (numbered addresses with a parcel),Manufacturers' directory sites 1965-1992,1131,45.7
-agreement rate: situs address = site address (numbered addresses with a parcel),Business-directory hazardous trades 1891-1956,366,19.7
+same address,Business-directory hazardous trades 1891-1956,75,19.2
+"same street and side, nearest number",Business-directory hazardous trades 1891-1956,188,48.2
+"same street, nearest parcel",Business-directory hazardous trades 1891-1956,70,17.9
+nearest parcel,Business-directory hazardous trades 1891-1956,57,14.6
+same address,Manufacturers' directory sites 1965-1992,480,49.4
+"same street and side, nearest number",Manufacturers' directory sites 1965-1992,296,30.5
+"same street, nearest parcel",Manufacturers' directory sites 1965-1992,75,7.7
+nearest parcel,Manufacturers' directory sites 1965-1992,121,12.4
+agreement rate: situs address = site address (numbered addresses with a parcel),Manufacturers' directory sites 1965-1992,972,49.4
+agreement rate: situs address = site address (numbered addresses with a parcel),Business-directory hazardous trades 1891-1956,390,19.2

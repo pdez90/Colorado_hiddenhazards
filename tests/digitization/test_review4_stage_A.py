@@ -460,4 +460,4 @@ def test_export_scrub_matches_export_by_year():
     pat = "r'''^[\\s\"'=+@\\-]+'''"
     assert pat in by and pat in src                                                # the two exports apply the same pattern (13 Nov: a leading blank or quote is stripped too)
     assert [scrub(x) for x in [' =X', '"+Y', "'@Z"]] == ['X', 'Y', 'Z']
-    assert re.search(r"for c in \['name','street','addr_raw'\]:\s+if c in R: R\[c\]=R\[c\]\.apply\(scrub_cell\)", src)
+    assert re.search(r"for c in \['name','street','addr_raw','name_as_read','street_as_read'\]:\s+if c in R: R\[c\]=R\[c\]\.apply\(scrub_cell\)", src)
