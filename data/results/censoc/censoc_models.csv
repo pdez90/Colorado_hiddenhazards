@@ -1,49 +1,49 @@
 file,model,exposure,term,years,se,lo,hi,p,n
 "Numident (men and women, deaths 1988-2005)",M1: birth year (and sex) only,"Hazardous trades to 1940, kernel (per SD)",haz_kz,-0.058,0.075,-0.206,0.09,0.444,13376
-"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,"Hazardous trades to 1940, kernel (per SD)",haz_kz,-0.005,0.067,-0.137,0.127,0.945,13376
-"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,"Hazardous trades to 1940, kernel (per SD)",haz_kz,0.097,0.367,-0.622,0.816,0.791,13376
+"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,"Hazardous trades to 1940, kernel (per SD)",haz_kz,-0.006,0.068,-0.138,0.127,0.93,13376
+"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,"Hazardous trades to 1940, kernel (per SD)",haz_kz,0.093,0.367,-0.626,0.813,0.799,13376
 "Numident (men and women, deaths 1988-2005)",M1: birth year (and sex) only,Hazardous trade within 500 m,haz_500,-0.143,0.114,-0.366,0.081,0.211,13376
-"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,Hazardous trade within 500 m,haz_500,-0.027,0.12,-0.262,0.208,0.82,13376
-"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,Hazardous trade within 500 m,haz_500,0.308,0.209,-0.102,0.719,0.141,13376
+"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,Hazardous trade within 500 m,haz_500,-0.034,0.12,-0.27,0.202,0.778,13376
+"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,Hazardous trade within 500 m,haz_500,0.307,0.21,-0.104,0.718,0.143,13376
 "Numident (men and women, deaths 1988-2005)",M1: birth year (and sex) only,"Industrial land within 250 m, 1937 (per 10 points)",ind10,-0.058,0.042,-0.14,0.025,0.169,13376
-"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,"Industrial land within 250 m, 1937 (per 10 points)",ind10,-0.008,0.046,-0.097,0.082,0.869,13376
-"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,"Industrial land within 250 m, 1937 (per 10 points)",ind10,0.069,0.099,-0.126,0.263,0.489,13376
+"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,"Industrial land within 250 m, 1937 (per 10 points)",ind10,-0.009,0.046,-0.099,0.08,0.839,13376
+"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,"Industrial land within 250 m, 1937 (per 10 points)",ind10,0.069,0.099,-0.126,0.263,0.488,13376
 "Numident (men and women, deaths 1988-2005)",M1: birth year (and sex) only,"Placebo: commercial land within 250 m, 1937 (per 10 points)",com10,-0.022,0.021,-0.062,0.019,0.292,13376
-"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,"Placebo: commercial land within 250 m, 1937 (per 10 points)",com10,0.004,0.021,-0.037,0.045,0.85,13376
-"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,"Placebo: commercial land within 250 m, 1937 (per 10 points)",com10,-0.017,0.057,-0.129,0.094,0.758,13376
+"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,"Placebo: commercial land within 250 m, 1937 (per 10 points)",com10,0.004,0.021,-0.038,0.045,0.866,13376
+"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,"Placebo: commercial land within 250 m, 1937 (per 10 points)",com10,-0.018,0.057,-0.129,0.093,0.746,13376
 "Numident (men and women, deaths 1988-2005)",M1: birth year (and sex) only,1929 industrial district,zone_ind,-0.065,0.213,-0.482,0.352,0.76,13376
-"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,1929 industrial district,zone_ind,0.095,0.215,-0.326,0.516,0.658,13376
+"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,1929 industrial district,zone_ind,0.088,0.215,-0.333,0.508,0.682,13376
 "Numident (men and women, deaths 1988-2005)",M1: birth year (and sex) only,"Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD)",hidden_kz,-0.131,0.049,-0.226,-0.036,0.00708,13376
-"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,"Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD)",hidden_kz,-0.053,0.053,-0.158,0.051,0.317,13376
-"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,"Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD)",hidden_kz,0.011,0.25,-0.479,0.501,0.964,13376
+"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,"Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD)",hidden_kz,-0.057,0.053,-0.161,0.048,0.289,13376
+"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,"Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD)",hidden_kz,0.012,0.25,-0.478,0.501,0.963,13376
 "Numident (men and women, deaths 1988-2005)",M1: birth year (and sex) only,"Later (1965-92) manufacturers on an inventory, kernel (per SD)",known_kz,-0.099,0.049,-0.194,-0.004,0.0411,13376
-"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,"Later (1965-92) manufacturers on an inventory, kernel (per SD)",known_kz,0.009,0.06,-0.108,0.127,0.875,13376
-"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,"Later (1965-92) manufacturers on an inventory, kernel (per SD)",known_kz,0.296,0.23,-0.156,0.748,0.199,13376
+"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,"Later (1965-92) manufacturers on an inventory, kernel (per SD)",known_kz,0.005,0.06,-0.112,0.122,0.936,13376
+"Numident (men and women, deaths 1988-2005)",M3: + 1940 ED fixed effects,"Later (1965-92) manufacturers on an inventory, kernel (per SD)",known_kz,0.299,0.231,-0.153,0.751,0.195,13376
 "Numident (men and women, deaths 1988-2005)",M1: birth year (and sex) only,HOLC grade D (vs A/B),holc_D,-0.46,0.146,-0.747,-0.173,0.00169,13376
-"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,HOLC grade D (vs A/B),holc_D,-0.227,0.191,-0.6,0.146,0.233,13376
-"Numident (men and women, deaths 1988-2005)",M2 joint,"Hazardous trades kernel, with industrial and commercial land",haz_kz,-0.009,0.077,-0.16,0.142,0.906,13376
-"Numident (men and women, deaths 1988-2005)",M2 joint,"Industrial land, with hazardous trades and commercial land",ind10,-0.005,0.046,-0.095,0.085,0.912,13376
+"Numident (men and women, deaths 1988-2005)",M2: + 1940 person and household controls,HOLC grade D (vs A/B),holc_D,-0.262,0.19,-0.635,0.111,0.169,13376
+"Numident (men and women, deaths 1988-2005)",M2 joint,"Hazardous trades kernel, with industrial and commercial land",haz_kz,-0.01,0.077,-0.16,0.141,0.902,13376
+"Numident (men and women, deaths 1988-2005)",M2 joint,"Industrial land, with hazardous trades and commercial land",ind10,-0.007,0.046,-0.096,0.083,0.881,13376
 "DMF (men, deaths 1975 on)",M1: birth year (and sex) only,"Hazardous trades to 1940, kernel (per SD)",haz_kz,-0.024,0.144,-0.306,0.258,0.866,8390
-"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,"Hazardous trades to 1940, kernel (per SD)",haz_kz,0.16,0.138,-0.109,0.43,0.244,8390
-"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,"Hazardous trades to 1940, kernel (per SD)",haz_kz,-0.042,0.385,-0.796,0.713,0.914,8390
+"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,"Hazardous trades to 1940, kernel (per SD)",haz_kz,0.163,0.137,-0.106,0.432,0.236,8390
+"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,"Hazardous trades to 1940, kernel (per SD)",haz_kz,-0.05,0.385,-0.803,0.704,0.897,8390
 "DMF (men, deaths 1975 on)",M1: birth year (and sex) only,Hazardous trade within 500 m,haz_500,-0.615,0.28,-1.164,-0.066,0.0281,8390
-"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,Hazardous trade within 500 m,haz_500,-0.229,0.277,-0.771,0.314,0.409,8390
-"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,Hazardous trade within 500 m,haz_500,0.097,0.452,-0.79,0.983,0.831,8390
+"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,Hazardous trade within 500 m,haz_500,-0.207,0.277,-0.75,0.335,0.453,8390
+"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,Hazardous trade within 500 m,haz_500,0.082,0.451,-0.802,0.965,0.856,8390
 "DMF (men, deaths 1975 on)",M1: birth year (and sex) only,"Industrial land within 250 m, 1937 (per 10 points)",ind10,-0.376,0.083,-0.54,-0.213,6.32e-06,8390
-"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,"Industrial land within 250 m, 1937 (per 10 points)",ind10,-0.234,0.078,-0.386,-0.081,0.00273,8390
-"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,"Industrial land within 250 m, 1937 (per 10 points)",ind10,-0.093,0.12,-0.329,0.142,0.438,8390
+"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,"Industrial land within 250 m, 1937 (per 10 points)",ind10,-0.234,0.078,-0.386,-0.081,0.00265,8390
+"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,"Industrial land within 250 m, 1937 (per 10 points)",ind10,-0.093,0.12,-0.329,0.142,0.437,8390
 "DMF (men, deaths 1975 on)",M1: birth year (and sex) only,"Placebo: commercial land within 250 m, 1937 (per 10 points)",com10,-0.008,0.052,-0.109,0.094,0.882,8390
-"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,"Placebo: commercial land within 250 m, 1937 (per 10 points)",com10,0.082,0.054,-0.024,0.189,0.13,8390
-"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,"Placebo: commercial land within 250 m, 1937 (per 10 points)",com10,0.022,0.123,-0.219,0.263,0.86,8390
+"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,"Placebo: commercial land within 250 m, 1937 (per 10 points)",com10,0.087,0.054,-0.02,0.193,0.111,8390
+"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,"Placebo: commercial land within 250 m, 1937 (per 10 points)",com10,0.027,0.122,-0.213,0.267,0.826,8390
 "DMF (men, deaths 1975 on)",M1: birth year (and sex) only,1929 industrial district,zone_ind,-1.289,0.436,-2.144,-0.433,0.00315,8390
-"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,1929 industrial district,zone_ind,-0.718,0.428,-1.557,0.122,0.0938,8390
+"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,1929 industrial district,zone_ind,-0.72,0.427,-1.558,0.117,0.0918,8390
 "DMF (men, deaths 1975 on)",M1: birth year (and sex) only,"Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD)",hidden_kz,-0.335,0.183,-0.693,0.023,0.067,8390
-"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,"Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD)",hidden_kz,-0.043,0.199,-0.432,0.347,0.829,8390
-"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,"Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD)",hidden_kz,-0.06,0.544,-1.126,1.005,0.912,8390
+"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,"Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD)",hidden_kz,-0.034,0.199,-0.424,0.355,0.863,8390
+"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,"Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD)",hidden_kz,-0.08,0.544,-1.146,0.986,0.883,8390
 "DMF (men, deaths 1975 on)",M1: birth year (and sex) only,"Later (1965-92) manufacturers on an inventory, kernel (per SD)",known_kz,-0.489,0.168,-0.818,-0.161,0.0035,8390
-"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,"Later (1965-92) manufacturers on an inventory, kernel (per SD)",known_kz,-0.198,0.201,-0.592,0.196,0.324,8390
-"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,"Later (1965-92) manufacturers on an inventory, kernel (per SD)",known_kz,-0.223,0.396,-0.999,0.554,0.574,8390
+"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,"Later (1965-92) manufacturers on an inventory, kernel (per SD)",known_kz,-0.188,0.201,-0.581,0.205,0.349,8390
+"DMF (men, deaths 1975 on)",M3: + 1940 ED fixed effects,"Later (1965-92) manufacturers on an inventory, kernel (per SD)",known_kz,-0.238,0.398,-1.018,0.541,0.549,8390
 "DMF (men, deaths 1975 on)",M1: birth year (and sex) only,HOLC grade D (vs A/B),holc_D,-1.294,0.366,-2.012,-0.577,0.000408,8390
-"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,HOLC grade D (vs A/B),holc_D,-0.302,0.488,-1.259,0.654,0.536,8390
-"DMF (men, deaths 1975 on)",M2 joint,"Hazardous trades kernel, with industrial and commercial land",haz_kz,0.187,0.152,-0.111,0.485,0.219,8390
-"DMF (men, deaths 1975 on)",M2 joint,"Industrial land, with hazardous trades and commercial land",ind10,-0.259,0.076,-0.408,-0.109,0.000686,8390
+"DMF (men, deaths 1975 on)",M2: + 1940 person and household controls,HOLC grade D (vs A/B),holc_D,-0.161,0.499,-1.139,0.818,0.747,8390
+"DMF (men, deaths 1975 on)",M2 joint,"Hazardous trades kernel, with industrial and commercial land",haz_kz,0.185,0.152,-0.113,0.483,0.223,8390
+"DMF (men, deaths 1975 on)",M2 joint,"Industrial land, with hazardous trades and commercial land",ind10,-0.257,0.076,-0.406,-0.108,0.000706,8390

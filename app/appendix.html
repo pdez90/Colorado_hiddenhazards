@@ -1,0 +1,250 @@
+<div class="appendix">
+<style>
+.appendix { max-width: 1100px; }
+.appendix h3 { margin-top: 0.4rem; }
+.appendix details { border: 1px solid var(--bs-border-color, #dee2e6); border-radius: 6px; margin: 0 0 0.6rem 0; padding: 0.35rem 0.8rem; background: var(--bs-body-bg, #fff); }
+.appendix details[open] { padding-bottom: 0.6rem; }
+.appendix summary { font-weight: 600; font-size: 1.05rem; cursor: pointer; padding: 0.2rem 0; }
+.appendix summary .lead-in { font-weight: 400; color: var(--bs-secondary-color, #6c757d); font-size: 0.92rem; margin-left: 0.4rem; }
+.appendix h5 { margin: 0.9rem 0 0.3rem 0; font-size: 0.98rem; font-weight: 600; }
+.appendix table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.appendix th, .appendix td { border-top: 1px solid var(--bs-border-color, #dee2e6); padding: 0.35rem 0.5rem; vertical-align: top; text-align: left; }
+.appendix th { font-weight: 600; background: var(--bs-tertiary-bg, #f6f6f6); }
+.appendix td:first-child { width: 30%; }
+.appendix td:nth-child(2) { width: 7.5rem; white-space: nowrap; }
+.appendix .k { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 0.08rem 0.45rem; border-radius: 0.6rem; }
+.appendix .k-a { background: #e7f1fb; color: #1d4f80; }
+.appendix .k-d { background: #e5f4e4; color: #23602a; }
+.appendix .k-l { background: #f9ece7; color: #8a3b1c; }
+.appendix .k-c { background: #efedff; color: #4a3c99; }
+.appendix .k-n { background: #f0efec; color: #555; }
+@media (prefers-color-scheme: dark) { .appendix .k-a, .appendix .k-d, .appendix .k-l, .appendix .k-c, .appendix .k-n { filter: brightness(0.9); } }
+</style>
+
+<h3>Appendix: assumptions, decisions and limitations</h3>
+<p>Every assumption, judgement call and known limitation behind this site, in the order the data are built. Each row is labelled:
+<span class="k k-a">Assumption</span> something taken as true without being checked for every record;
+<span class="k k-d">Decision</span> a choice between defensible alternatives (dated where the author made it);
+<span class="k k-l">Limitation</span> a known way the data fall short, with its size where it has been measured;
+<span class="k k-c">Check</span> a test of the data against another source; <span class="k k-n">Note</span> a fact needed to read the others.
+Figures are for the inventory rebuilt on 18 November 2026 (13 complete editions) unless stated. Click a heading to open it.</p>
+
+<details open><summary>1. What is counted<span class="lead-in">sources, editions and the hazard definition</span></summary>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Only the 13 complete editions of the <i>Directory of Colorado Manufacturers</i> are used: 1965, 1966, 1967, 1968, 1970, 1973, 1974, 1977, 1980, 1983, 1988, 1990, 1992</td><td><span class="k k-d">Decision</span></td><td>The other 12 (1961, 1962, 1971, 1976, 1979, 1982, 1984, 1985, 1986, 1993, 1999, 2002) reached the project as scans that stop part-way through the geographic section. They are kept in a separate all-editions file (Data &amp; downloads) and enter no result.</td></tr>
+<tr><td>The directory is a voluntary listing of manufacturers</td><td><span class="k k-a">Assumption</span></td><td>A plant never listed is absent: very small shops, firms that declined to answer the publisher, and non-manufacturing hazards (dry cleaners, gas stations, auto repair, rail yards). The inventory is a floor, not a census. Against County Business Patterns the complete editions list 0.75–1.19 times the number of manufacturing establishments (Benchmarks tab).</td></tr>
+<tr><td>Nothing after 1992</td><td><span class="k k-l">Limitation</span></td><td>Firms that opened after 1992 are absent. Analyses that need "firms of the decade" for 2000, 2010 or 2020 use the last complete decade, 1983–1992, so those years measure proximity to historically listed sites, not to active manufacturing.</td></tr>
+<tr><td>Firms are seen only in edition years</td><td><span class="k k-l">Limitation</span></td><td>A firm that opened and closed between two editions (say 1977 and 1980) is never seen. A site's first and last years are the first and last editions it appears in, not its true dates.</td></tr>
+<tr><td>"Firm of a decade"</td><td><span class="k k-d">Decision</span></td><td>A 1965–92 site counts for a census when it has a hazardous-sector listing in the ten years ending at that census. A pre-1960 firm, whose editions are sparse, counts in every decade between its first and last listing. The 1880 districts use the firms of the 1878–85 editions.</td></tr>
+<tr><td>Hazardous = Frickel and Elliott's seven sectors</td><td><span class="k k-d">Decision</span></td><td>SIC 28 chemicals, 29 petroleum refining, 30 rubber and plastics, 33 primary metals, 34 fabricated metals, 35 industrial machinery, 37 transportation equipment (NAICS 325, 324, 326, 331, 332, 333, 336). The same definition selects the pre-1960 trades, the 1965–92 sites and the firms in every model and map.</td></tr>
+<tr><td>A sector is a proxy for hazard</td><td><span class="k k-a">Assumption</span></td><td>No record says what a firm stored, used or released. A machine shop and a smelter count once each. Group 35 includes computer and office-equipment assembly, which counts like the rest of the group.</td></tr>
+<tr><td>"Extended sectors"</td><td><span class="k k-d">Decision</span></td><td>Wood preserving, tanning, electronic components and circuit boards, batteries, photographic chemicals and ore milling are flagged separately and shown only when chosen in the sidebar; they are not in the headline counts.</td></tr>
+<tr><td>Ordnance in the 1957 code system</td><td><span class="k k-d">Decision</span></td><td>The 1965–68 editions file ordnance under major group 19; from 1972 it is 348x. Codes 19xx are counted as group 34.</td></tr>
+<tr><td>The pre-1960 layer: 34 editions of the <i>Colorado State Business Directory</i>, 1871–1956</td><td><span class="k k-n">Note</span></td><td>1871, 1875, 1877, 1878, 1879, 1880, 1881, 1882, 1883, 1884, 1885, 1887, 1888, 1891, 1892, 1910–1917, 1920, 1927, 1929, 1932, 1933, 1935, 1939, 1941, 1943, 1950, 1956. None survives for 1893–1909; the decade ending in 1910 has 1910 only. Counts of firms are therefore not compared across censuses.</td></tr>
+</table></details>
+
+<details><summary>2. Reading the scans<span class="lead-in">OCR, parsing, the scan review and spelling</span></summary>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Text is read by OCR (Tesseract 5.3.4, word boxes) and split into listings by format-specific parsers</td><td><span class="k k-a">Assumption</span></td><td>Each edition's layout (columns, line pitch, where the address and code sit) is assumed. Column cuts are chosen per page among the detected and forced two- or three-column splits by whichever leaves the fewest over-long lines; lines are clustered on the printed line pitch. Pages that break the layout give merged or split listings.</td></tr>
+<tr><td>OCR digit confusions are corrected from context</td><td><span class="k k-d">Decision</span></td><td>C→0, e/€/@→8, B→8 in codes and ZIPs; S/$→5, E→1, G→0 in house numbers. A five-digit token becomes a ZIP only when it is a Colorado ZIP and not the house number. A ZIP left at the end of the street is moved back to the ZIP field.</td></tr>
+<tr><td>A page scanned twice within an edition is parsed once; a record without a firm name is attached to its listing or dropped</td><td><span class="k k-d">Decision</span></td><td>From the 13 November re-parse. Town headings contradicted by the towns printed under them are replaced (in 1992 the OCR dropped the BOULDER heading and filed its firms under Black Hawk).</td></tr>
+<tr><td>A re-read of the same scan is not letter-for-letter identical</td><td><span class="k k-l">Limitation</span></td><td>The page image depends on the PDF library's version; in the 18 November re-read about 200 listings of 1983 were spelled slightly differently. Without the scan review the rebuild reproduced the 13 November run to within 4 sites of 3,565.</td></tr>
+<tr><td>Full scan review, 14 November 2026</td><td><span class="k k-d">Decision</span></td><td>All 10,586 hazardous-sector listings on 1,191 pages were read against the page image: 8,091 correct, 2,494 corrected (name, street or town), 1 not a listing. After the author's decisions of 18 November, 260 are judged not hazardous. 10,565 review rows are applied, 200 of them by a near match on the same page (name similarity ≥ 80 of 100, or name plus street ≥ 165 of 200); 21 could not be matched after the re-read.</td></tr>
+<tr><td>The review was done by AI readers working from a written protocol</td><td><span class="k k-l">Limitation</span></td><td>A blind second reading of 150 listings agreed on the hazardous verdict and the printed codes in all 150, on the overall verdict in 143 and on street corrections in 146.</td></tr>
+<tr><td>Only hazardous-sector listings were reviewed</td><td><span class="k k-l">Limitation</span></td><td>A hazardous firm that the software read as non-hazardous (a misread code) was never reviewed and is missing. The review removes false positives; it cannot find false negatives.</td></tr>
+<tr><td>Spelling clean-up across editions</td><td><span class="k k-d">Decision (18 Nov)</span></td><td>A misread firm or street name is replaced by the spelling that a strict majority of at least three listings of the same firm (or the same street address and town) agree on: 5,552 names and 1,277 street names respelled. Numbers, one- and two-letter street words (directions), a word that differs by more than a misreading, and listings with a different number of words are never changed; a renamed firm keeps its new name. The reading as scanned is kept in <code>name_as_read</code> and <code>street_as_read</code>.</td></tr>
+<tr><td>Names listed in fewer than three editions stay as read</td><td><span class="k k-d">Decision (18 Nov)</span></td><td>One-off misreadings remain. In the author's check of 65 listings, 9 names (14%) had misread letters; all were the right firm. Names enter no count.</td></tr>
+<tr><td>Map points use the address as read, not the cleaned spelling</td><td><span class="k k-d">Decision</span></td><td>So the displayed street and the point never disagree. In the author's check, 4 of 5 misspelled addresses sat on the same point as the clean spelling.</td></tr>
+<tr><td>Pre-1960 text layers are uncorrected OCR with columns interleaved</td><td><span class="k k-l">Limitation</span></td><td>Names can be garbled and an entry can run into its neighbour's. 1871, 1875 and 1877 are read from Internet Archive / Google Books copies; the CU 1885 and 1920 scans had no text layer and were OCR'd here (300 and 220 dpi).</td></tr>
+</table></details>
+
+<details><summary>3. Industry codes<span class="lead-in">printed, corrected and inferred</span></summary>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>The printed code decides</td><td><span class="k k-d">Decision</span></td><td>Where the directory prints a SIC (1965, 1967–1993) or NAICS (2002) code, that code is used even if the product line reads oddly, with the three exceptions below.</td></tr>
+<tr><td>Three printed codes overruled as misprints</td><td><span class="k k-d">Decision (18 Nov)</span></td><td>Bestway Concrete, Greeley (1990, 1992): printed 3773 "ready mix concrete", read as 3273, not hazardous. Sew Be It, Littleton (1992): printed 3069 with "baby clothes", not hazardous. Chinook Technology, Longmont (1992): printed 3751 "hard drives", read as 3572, still hazardous.</td></tr>
+<tr><td>Automatic code corrections</td><td><span class="k k-d">Decision</span></td><td>A printed code whose printed description belongs to a code one digit away is corrected ("2911 meat packing" → 2011; 876 codes over all 25 editions). A hazardous code that contradicts the firm's own name or description is removed (a bakery with "paving mixtures"; 290 listings). Both are logged in the downloads.</td></tr>
+<tr><td>Editions without printed codes</td><td><span class="k k-l">Limitation</span></td><td>1961, 1962 and 1966 print a product description only, and 1999 prints codes for few listings. Codes are inferred by a nearest-neighbour classifier trained on description–code pairs from the other editions, plus keyword rules (smelters, refineries, plating, wood preserving). In the scan review 6.8% of 1966's hazardous listings were judged not hazardous, against under 1.5% in most editions with printed codes.</td></tr>
+<tr><td>1965 is the least reliable complete edition for codes</td><td><span class="k k-l">Limitation</span></td><td>Its codes are printed without a description, so a misread code cannot be checked against one. A code is kept only if it is one the directory uses, repaired when exactly one valid code fits, otherwise dropped and inferred from the name. 14.2% of its hazardous listings were judged not hazardous in the scan review and are removed. The repair uses the classifier, whose answers differ slightly between versions of the scikit-learn library.</td></tr>
+<tr><td>Evidence label</td><td><span class="k k-n">Note</span></td><td>Each listing records whether its code was printed or inferred (<code>industry_code_source</code>); codes confirmed in the scan review count as printed.</td></tr>
+</table></details>
+
+<details><summary>4. Geocoding<span class="lead-in">how every layer was put on the map</span></summary>
+
+<h5>4a. The 1965–1992 manufacturers' directory</h5>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Addresses are placed on today's street network</td><td><span class="k k-a">Assumption</span></td><td>House numbers are interpolated along the US Census Bureau's TIGER/Line 2023 address ranges (ADDRFEAT), offline and deterministically. A street renamed, renumbered or removed since the listing is misplaced or not placed.</td></tr>
+<tr><td>Interpolation is not a rooftop</td><td><span class="k k-l">Limitation</span></td><td>The point is where the number would fall if numbers were spread evenly along the block, not the building.</td></tr>
+<tr><td>Two precision levels count as located</td><td><span class="k k-d">Decision</span></td><td><b>address</b>: exact match of number, street, direction and type in the stated ZIP or town. <b>address_approx</b>: any loosened match — street-type or direction misread, unit numbers or trailing text dropped, a fuzzy street name (similarity ≥ 86, keeping the street's own numbers), a neighbouring ZIP within 12 km, or a missing direction settled by rule. Both form sites; the level is in every download and drives the "confidence" label.</td></tr>
+<tr><td>Missing directions in Denver-grid towns</td><td><span class="k k-d">Decision</span></td><td>"4300 Lipan" can be north or south. The printed street type decides first, then the printed ZIP's own address ranges or its half of the grid. An address neither settles is left unplaced (kept at ZIP level, flagged <code>dirambig</code>).</td></tr>
+<tr><td>Baselines</td><td><span class="k k-d">Decision</span></td><td>A prefixed address is never placed on the unprefixed street across the Ellsworth and Broadway baselines; a final check sets to unlocated any Denver listing whose point lies on the wrong side for its own direction (none remain). "SO"/"NO" and a direction letter glued to the street name are read as directions.</td></tr>
+<tr><td>City check</td><td><span class="k k-d">Decision</span></td><td>A match more than 15 km from the stated town is rejected. Listings filed under the wrong town heading (sometimes in 1961, 1962 and 1965) fail this check and stay off the map.</td></tr>
+<tr><td>Each point is offset 12 m from the centreline</td><td><span class="k k-d">Decision</span></td><td>Toward the side of the street whose range held the number, so the two sides of a street stay apart.</td></tr>
+<tr><td>One-digit rule</td><td><span class="k k-d">Decision (18 Nov)</span></td><td>An unplaced listing whose street differs in exactly one inner digit from a placed listing of the same firm in the same town takes that listing's point ("12280 W 90th Pl" for "12280 W 50th Pl"): 73 listings, 40 hazardous. A difference in the last digit (450 / 452) is not treated as a misreading, because it can be the next building; a listing left unplaced for an ambiguous direction is not moved either.</td></tr>
+<tr><td>Listings with no street-level point are in no site</td><td><span class="k k-l">Limitation</span></td><td>5,225 of 15,575 hazardous-sector listings (34%) fall back to a ZIP or town centre: rural routes, PO boxes, misread numbers, unmatched streets. They count as listings, never as sites, so site counts are a floor. Coverage varies by edition: 30–65% of listings at address level, 40–77% including approximate.</td></tr>
+<tr><td>Star-route and rural addresses</td><td><span class="k k-l">Limitation</span></td><td>Addresses such as "296 Sandy … SR" west of Boulder (Clark Associates, 1988) are placed approximately and may be several hundred metres off; left as is by the author's decision.</td></tr>
+<tr><td>Check against Colorado's statewide address points (October 2026, 1,000 random sites)</td><td><span class="k k-c">Check</span></td><td>address level: median 49 m, 79% within 100 m, 94% within 250 m, 0.9% over 1 km (n = 455 compared). address_approx: median 103 m, 50% within 100 m, 75% within 250 m, 10.1% over 1 km (n = 119). A re-check on 17 October gave median 67 m and 88% within 250 m at address level. About a third of address-level listings have no address point today (building gone, street renumbered, or misread number) and could not be checked. The State's service was unreachable on 18 November, so the check was not rerun on the rebuilt data.</td></tr>
+<tr><td>Check against EPA Facility Registry coordinates for identical addresses</td><td><span class="k k-c">Check</span></td><td>address level, n = 1,238: median 48 m, 88% within 250 m, 3.1% over 1 km (FRS coordinates carry their own error).</td></tr>
+<tr><td>Check against the scans (25 random sites)</td><td><span class="k k-c">Check</span></td><td>23 matched the printed page; one house number was misread (2915 for 3915 Tennyson, about 1.3 km off). Expect roughly 4% of house numbers to carry an OCR digit error.</td></tr>
+<tr><td>Five unresolved north/south cases</td><td><span class="k k-l">Limitation</span></td><td>"4440 Yates", "4300 Lipan", "4200 Fox", "4450 Cherokee", "4010 Holly": placed on the north side (their printed ZIPs are north-Denver ZIPs) while the State's points know only the south-side address, 14–16 km away. Left at address level.</td></tr>
+</table>
+
+<h5>4b. The pre-1960 hazardous trades</h5>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>The town of each entry</td><td><span class="k k-a">Assumption</span></td><td>From town headings ("ALPINE.", "DENVER CONT'D"), page running heads and, failing that, a town named in the entry, matched to the USGS GNIS gazetteer. Town names shared by two places (Alpine, Gold Hill, Independence, Colorado City …) are resolved by a hand-made table for the years each can mean.</td></tr>
+<tr><td>Street-level placement only where today's numbering applies</td><td><span class="k k-d">Decision</span></td><td>Denver from 1891 (after the 1887 renumbering) and larger cities from 1910, on an exact TIGER address-range match only, with old street names translated (Holladay → Market). Everything else sits at the town's GNIS point and is excluded from every spatial analysis.</td></tr>
+<tr><td>Most pre-1960 firms are placed at a town, not a street</td><td><span class="k k-l">Limitation</span></td><td>3,702 firm-locations, 604 at a street address (390 in Denver, 36 of them marked doubtful).</td></tr>
+<tr><td>Later street renamings are not handled</td><td><span class="k k-l">Limitation</span></td><td>Points use today's street geometry; they were checked against the page text, not against historical maps.</td></tr>
+<tr><td>Vanished mining camps</td><td><span class="k k-l">Limitation</span></td><td>104 reviewed listings in camps with no coordinates even in the 2021 GNIS archive (Mosquito, Dora, Robinson, Parrot City …) stay unplaced and out of the counts. Older names of surviving places (Animas City, Oro City) are mapped by hand.</td></tr>
+<tr><td>1,233 listings keep a printed address that was never verified</td><td><span class="k k-l">Limitation</span></td><td>Town-reviewed listings keep their printed address for reference but are never placed at it.</td></tr>
+<tr><td>Office listings and workers at home addresses</td><td><span class="k k-d">Decision</span></td><td>Vetting removed 2,205 entries that were workers listed at their homes ("stoker, Denver Gas Co, 2422 Champa") and stopped placing 1,846 office listings at their downtown offices.</td></tr>
+</table>
+
+<h5>4c. Denver 1880 (Brown University, Urban Transition HGIS)</h5>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Residents are at Brown's geocoded 1880 buildings</td><td><span class="k k-a">Assumption</span></td><td>Brown's project geocoded the complete 1880 census to buildings on the 1880 street grid; 4,534 buildings, 34,386 residents, 17 enumeration districts.</td></tr>
+<tr><td>Firms of 1878–1885 are placed on the 1880 grid by their printed house numbers</td><td><span class="k k-d">Decision</span></td><td>At the building with that number, else the nearest number on the street, else the street only: 64 of 84 firm listings placed (29 at a building, 29 at the nearest number, 6 street only; street-only placements are left out of the district analysis).</td></tr>
+</table>
+
+<h5>4d. Enumeration districts 1900–1940 (reconstructed)</h5>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>No public map of 1900–1940 districts exists</td><td><span class="k k-n">Note</span></td><td>IPUMS gives each person's district number but no address. Brown's Geographic Reference Files list every household's street, house number and district (no coordinates).</td></tr>
+<tr><td>Every distinct address is geocoded with the same offline TIGER geocoder</td><td><span class="k k-a">Assumption</span></td><td>Denver's post-1887 numbering still applies; renamed streets are translated. Only street-level results are kept: 72% of the 1900 addresses.</td></tr>
+<tr><td>Stray geocodes are dropped</td><td><span class="k k-d">Decision</span></td><td>An address farther from its district's person-weighted median centre than max(400 m, 2.5 × the median), or with fewer than 30% of its ten nearest neighbours in the same district. The addresses kept hold 60% of the 1900 population (73% in 1940).</td></tr>
+<tr><td>Districts are drawn by Voronoi tessellation</td><td><span class="k k-d">Decision</span></td><td>Cells around the kept addresses are dissolved by district and clipped to the concave hull of all addresses; each district keeps its main body and freed ground goes to the nearest district, so districts are space-filling like tracts. 1880 is drawn the same way from Brown's buildings.</td></tr>
+<tr><td>Boundaries are approximate</td><td><span class="k k-l">Limitation</span></td><td>About a block at the edges. Populations come from the IPUMS full count joined by district number (1900–1930: ENUMDIST mod 100000; 1940: supervisor district, district and suffix, e.g. "250A"); mapped populations reproduce the county totals (317,663 of 322,780 in 1940).</td></tr>
+<tr><td>Districts are not linked across censuses</td><td><span class="k k-l">Limitation</span></td><td>Each census has its own districts. Where they are compared with HOLC areas, grid cells or 2010 tracts, counts are area-weighted onto those units.</td></tr>
+</table>
+
+<h5>4e. 1940 residents followed to death and enlistment (CenSoc)</h5>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Each person's 1940 address comes from Brown's GRF, geocoded as in 4d</td><td><span class="k k-a">Assumption</span></td><td>Exposures (1938 HOLC grade, 1929 zoning district, industrial and commercial land within 250 m in 1937, hazardous trades listed to 1940 within 500 m and as a 500 m kernel, 1965–92 sites) are measured at that point. People whose address did not geocode at street level are not in the models.</td></tr>
+<tr><td>Links are CenSoc's</td><td><span class="k k-a">Assumption</span></td><td>CenSoc links the 1940 census to Social Security death records (Numident: men and women, deaths 1988–2005; DMF: men, deaths from 1975) and to WWII enlistment records. Linked samples are mostly men, cover only deaths in those windows, and are reweighted with CenSoc's weights; they are not representative of all 1940 residents.</td></tr>
+<tr><td>Earlier addresses (1910–1930) come from the IPUMS Multigenerational Longitudinal Panel</td><td><span class="k k-a">Assumption</span></td><td>Because surviving directory years list very different numbers of sites, exposure at those addresses is also expressed as a percentile among all geocoded Denver residents of the same census.</td></tr>
+</table>
+
+<h5>4f. Deaths 2015–2019 (Colorado death records)</h5>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Deaths are placed by the 2010 block code in the state's file</td><td><span class="k k-a">Assumption</span></td><td>The project does not geocode death addresses; it uses the block assigned in the record. Residence at death, not residential history.</td></tr>
+<tr><td>Not every death can be used</td><td><span class="k k-l">Limitation</span></td><td>Of 189,606 deaths, 78.7% are in the 59,293 blocks the Colorado block models use; 16.4% are in blocks with fewer than 100 person-years (or missing an age structure, PM2.5 or tract poverty); 4.9% carry a block code not among the 2010 blocks. Block-group models keep 95% of natural-cause deaths.</td></tr>
+</table>
+
+<h5>4g. Today's parcels (What became of the sites)</h5>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Each Denver site is matched to an assessor parcel within 40 m</td><td><span class="k k-d">Decision</span></td><td>The parcel whose situs address matches the directory address; else the nearest number on the same street and side; else the same street; else the nearest parcel. The rule used is in <code>parcel_match</code>. Address matches: 49% of 1965–92 sites (480 of 972), 19% of pre-1960 trades (75 of 390).</td></tr>
+<tr><td>A parcel is today's lot, not the historical one</td><td><span class="k k-l">Limitation</span></td><td>Lots have been split and merged. "Rebuilt" means the present structure was built after the site's last listing, from the assessor's year built.</td></tr>
+</table>
+
+<h5>4h. Historical maps placed on today's coordinates</h5>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>1929 Building Zone Map (Denver Public Library)</td><td><span class="k k-d">Decision</span></td><td>Districts read from the hatched scan by a texture classifier (32-pixel cells: Industrial A, Industrial B, Commercial) and placed from 15 street intersections and park corners matched to TIGER intersections (affine fit, RMSE 19 m). Residence E (apartments) shares a hatch with Industrial A and is separated only by lot lines; those cells are flagged uncertain and a strict share without them is carried as a sensitivity check.</td></tr>
+<tr><td>1944 revision</td><td><span class="k k-d">Decision</span></td><td>Registered to the 1929 scan (ten points, RMSE about 32 m). Only visibly redrawn districts of a block or more were accepted (9 of 118 inspected candidates); smaller changes and the hand-coloured amendments are not included.</td></tr>
+<tr><td>1955 zone map (History Colorado)</td><td><span class="k k-d">Decision</span></td><td>Industrial districts (I-1, I-2) read by a random forest on 16-pixel cells (58 of 60 random cells right) and placed from 23 intersections (second-order fit, RMSE 13 m). Business districts are not used: strip edges were unreliable. The scan is licensed for the paper and this site only.</td></tr>
+<tr><td>Misregistration between sheets</td><td><span class="k k-l">Limitation</span></td><td>Each map is placed to within 20–30 m, so a few km² of the gross change along district boundaries between years is misregistration.</td></tr>
+<tr><td>1903–04 Sanborn atlas (Library of Congress)</td><td><span class="k k-d">Decision</span></td><td>152 sheets transcribed block by block; each sheet placed by a similarity transform fitted by RANSAC to TIGER street crossings and a 1903 gazetteer from the volume key maps, held to the atlas scale (50 ft to the inch). Sheets placed on only two crossings are kept only if 75% or more of their blocks land beside their bounding streets; sheets with no street crossings (rail yards, the Grant smelter, packing houses) stay unplaced.</td></tr>
+<tr><td>1938 HOLC map, 1933 aerial survey, urban-renewal projects</td><td><span class="k k-a">Assumption</span></td><td>Used as georeferenced by their publishers: Mapping Inequality (University of Richmond), the City and County of Denver's 1933 tile service, Renewing Inequality (University of Richmond).</td></tr>
+<tr><td>Land use 1937–1997 (USGS, interpreted from aerial photographs)</td><td><span class="k k-a">Assumption</span></td><td>The 1 m rasters are grouped into eight classes and aggregated to 10 m. They end at latitude 39.62, so a sliver of far-south Denver is unmapped; shares are of mapped land.</td></tr>
+<tr><td>Freeways</td><td><span class="k k-a">Assumption</span></td><td>Dated alignments from OpenHistoricalMap, checked against the NBER/FHWA interstate opening dates for Denver County.</td></tr>
+</table>
+
+<h5>4i. Other layers placed by address or description</h5>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Zoning changes 1925–1956 (558 ordinances)</td><td><span class="k k-d">Decision</span></td><td>Each change is placed from the subdivision and block it names (matched to today's parcel legal descriptions) or from the crossings of the streets its boundary follows. Where the two disagree by more than 1 km the named block is used; the "sure" comparisons keep only block-placed changes or crossings a named subdivision confirms.</td></tr>
+<tr><td>Racial covenants 1931–35 (Mapping Prejudice: Denver)</td><td><span class="k k-a">Assumption</span></td><td>Placed at the parcel by the project: 730 of 764 deeds have a location.</td></tr>
+<tr><td>Home sales since 2015 (hedonic model) and rental owners</td><td><span class="k k-a">Assumption</span></td><td>Placed at the parcel's situs point from Denver's assessor records.</td></tr>
+<tr><td>Petroleum releases and tanks, TRI facilities</td><td><span class="k k-d">Decision</span></td><td>Matched to historical sites within 50 m (releases, tank facilities) and 100 m (TRI), using the agencies' coordinates.</td></tr>
+</table>
+</details>
+
+<details><summary>5. Sites<span class="lead-in">what a "site" is</span></summary>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>A site is a cluster of listings within 30 m, not a parcel</td><td><span class="k k-d">Decision (kept 18 Nov)</span></td><td>Next-door premises are counted as one site, so on streets of small workshops the site count is lower than the number of premises. Numbered addresses on opposite sides of the same street are not joined directly.</td></tr>
+<tr><td>Chains</td><td><span class="k k-l">Limitation</span></td><td>Clustering is by connection: a row of workshops each within 30 m of the next becomes one site even if its ends are further apart. In the author's check of 40 sites none mixed distant addresses (largest spread 21 m); about a dozen held neighbouring numbers (5612 Newland Way, Arvada holds about ten).</td></tr>
+<tr><td>A site is hazardous if any listing there is</td><td><span class="k k-d">Decision</span></td><td>Successive tenants and renamed firms share a site; it is hazardous if any listing, in any complete edition, is in a hazardous sector.</td></tr>
+<tr><td>Linking listings into establishments</td><td><span class="k k-a">Assumption</span></td><td>Across editions by token-sorted name similarity ≥ 92 within a ZIP or town, or ≥ 80 at the same street address: 45,715 listings → 22,060 establishments. A badly misread name can fail to link, which overstates the number of establishments at a site.</td></tr>
+<tr><td>Phantom sites from misread numbers</td><td><span class="k k-c">Check</span></td><td>Before the scan review one firm could appear as several sites (Western Motor Rebuilders at 20, 520 and 620 W 12th Ave). Correcting streets removed most of about 420 sites (3,561 → 3,141). Listings outside the hazardous sectors were not reviewed, so the same error persists there; it does not affect hazardous-site counts.</td></tr>
+<tr><td>Site identifiers are not permanent</td><td><span class="k k-l">Limitation</span></td><td>Identifiers (S00001 …) are renumbered whenever the inventory is rebuilt.</td></tr>
+</table></details>
+
+<details><summary>6. Hidden or known<span class="lead-in">matching sites to today's inventories</span></summary>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>"Not on any list" is not "contaminated"</td><td><span class="k k-n">Note</span></td><td>It means no record on the searched federal and state lists could be tied to the site. It is a lead for records review or soil testing, not evidence of contamination, and not evidence that no agency knows of it.</td></tr>
+<tr><td>Lists searched</td><td><span class="k k-d">Decision</span></td><td>EPA's Facility Registry Service (Colorado; all programmes), EPA TRI, and CDPHE's hazardous-materials and waste layers: Superfund/SEMS, brownfields, voluntary cleanup, federal facilities, hazardous-waste handlers and corrective action, institutional controls (environmental covenants), solid waste, uranium mill tailings.</td></tr>
+<tr><td>Lists not searched</td><td><span class="k k-l">Limitation</span></td><td>State petroleum-tank and release registers are reported separately and do not make a site known. Local fire-department, county and city records are not searched.</td></tr>
+<tr><td>The lists are a snapshot of 18 November 2026</td><td><span class="k k-l">Limitation</span></td><td>They change. A rebuild with freshly downloaded lists moved the hidden count by 9 of 1,284 against the 13 November run.</td></tr>
+<tr><td>A site is known if any of four tests holds</td><td><span class="k k-d">Decision</span></td><td>A record within 75 m (cleanup programmes), 100 m (TRI) or 40 m (hazardous-waste handlers and other permits); a record of the same firm name within 250 m; a record at the same address; or the point lies inside a mapped cleanup boundary. A site's radius grows with the spread of its own points, to at most 250 m.</td></tr>
+<tr><td>Name matching</td><td><span class="k k-a">Assumption</span></td><td>Two names match with two shared informative words or a near-identical whole name. A firm that changed its name before reaching a list is missed; one that shares two words with an unrelated neighbour is matched.</td></tr>
+<tr><td>"Known" often rests on a nearby record only</td><td><span class="k k-l">Limitation</span></td><td>916 of the 2,120 known sites (43%) are known only because a differently named record lies within the radius, which may belong to another occupant of the block. The hidden share is therefore near the low end of what reasonable rules give: 18% with every radius doubled, 62% counting only the same firm, the same address or a cleanup boundary. Counting the roughly 90 address-only matches with no other nearby record as hidden would raise 32.5% to about 35%.</td></tr>
+<tr><td>Reviewed matches beyond the rules</td><td><span class="k k-d">Decision (18 Nov)</span></td><td>A search out to 400 m found 65 hidden sites with a record of a similar name or the same street number. 25 now count as known: 12 with the same firm name and street address whose two points are 250–400 m apart, and 13 judged the same place by the author. They are in a reviewed file applied by the pipeline.</td></tr>
+<tr><td>The other 40 candidates</td><td><span class="k k-l">Limitation</span></td><td>Not individually examined; some may be the same place and are still counted as hidden.</td></tr>
+<tr><td>No one checked each hidden site against the agencies' own search pages</td><td><span class="k k-l">Limitation</span></td><td>An October check of 50 hidden sites against the directory text found about 1 in 10 with a doubtful industry code.</td></tr>
+<tr><td>Headline</td><td><span class="k k-n">Note</span></td><td>3,141 hazardous-sector sites, 1,021 (32.5%) on no list; Denver 972 sites, 235 on no list. Before the scan review: 3,565 and 1,284 (36.0%).</td></tr>
+</table></details>
+
+<details><summary>7. Before 1960<span class="lead-in">the business-directory layer</span></summary>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Hazardous trades are found by keyword</td><td><span class="k k-a">Assumption</span></td><td>Smelting and reduction works, foundries, iron and steel works, machine and boiler shops, tinners, chemical, paint, soap, powder and fertilizer works, refineries, rubber works, carriage, wagon and car shops, mapped to the Frickel–Elliott sectors; assay offices, ore mills, gas works, tanneries, tie-treating plants and coke ovens are extended trades. The 1950 edition's numeric codes are mapped directly. A works described in words outside the vocabulary is missed.</td></tr>
+<tr><td>Three hand reviews</td><td><span class="k k-d">Decision</span></td><td>Every street-level placement (667 listings: 122 dropped as not works, 88 addresses and 58 names corrected, 20 moved, 41 doubtful), every town-level listing (6,908: 2,320 dropped, 1,286 moved, 85 re-sectored, 163 doubtful) and every entry without a town (2,860: 1,494 kept, 1,366 dropped). An independent sample of the town review disagreed on 8 of 82 kept listings (9.8%).</td></tr>
+<tr><td>The reviews checked what was extracted, not what was missed</td><td><span class="k k-l">Limitation</span></td><td>Works printed on the pages but never extracted are absent: the layer undercounts. A random check before the reviews had found 40% of street placements clearly wrong.</td></tr>
+<tr><td>A firm-location is one firm at one address</td><td><span class="k k-d">Decision (14 Nov)</span></td><td>The same printed name in the same town is one firm-location in every edition; firms merged across addresses were split back (3,417 → 3,702).</td></tr>
+<tr><td>Links to the 1961–2002 directory</td><td><span class="k k-a">Assumption</span></td><td>By name in the same town (77) or by a street address within 40 m of a later hazardous site (228), giving 170 later sites a documented precursor. An address link shows the place was in a hazardous trade earlier, not that it was the same firm.</td></tr>
+<tr><td>Radium-cure hotels and baths</td><td><span class="k k-d">Decision (13 Nov)</span></td><td>Kept and flagged (7 listings) for the radium history, although they are not works.</td></tr>
+</table></details>
+
+<details><summary>8. Census units, redlining, zoning and land use<span class="lead-in">how places are compared over time</span></summary>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>One fixed tract study area</td><td><span class="k k-d">Decision</span></td><td>The 147 census tracts (2010 boundaries) whose centroid lies within 10 km of downtown Denver. Tract-years with fewer than 200 residents are dropped from every measure; the tracted area grows (97 tracts in 1950, 144 in 1960, 145–147 from 1970), so trends are also shown on fixed sets of tracts.</td></tr>
+<tr><td>Earlier tracts moved onto 2010 tracts by area weighting</td><td><span class="k k-a">Assumption</span></td><td>People are assumed spread evenly within an old tract. Counts are interpolated first and shares computed afterwards, each with its own table's denominator; medians are averaged with weights of occupied units times overlap. 1990–2020 population, race and Hispanic origin come from NHGIS's standardised series instead.</td></tr>
+<tr><td>Hispanic origin is measured differently over time</td><td><span class="k k-l">Limitation</span></td><td>1880–1940 districts use IPUMS HISPAN, inferred from birthplace, parents' birthplace and Spanish surname; tracts use Spanish surname (1960), Spanish American (1970), Spanish origin (1980) and Hispanic (1990+). The two series are compared in direction, not level. The 1940 tract tables report nonwhite rather than Black.</td></tr>
+<tr><td>Questions a census did not ask are missing, not zero</td><td><span class="k k-d">Decision</span></td><td>Ownership in 1880, SEI in the 1900 extract, rent and residence five years earlier only in 1940; 1940 sample-line questions (about 5% of persons) are left missing at district level.</td></tr>
+<tr><td>1940 contract rent</td><td><span class="k k-d">Decision (18 Nov)</span></td><td>About 3% of 1940 renter households in the Colorado full count carry the rent multiplied by 100 (1500 for $15.00); in enumeration districts 238 and 243 nearly every value does, which had given medians of $2,000 and $3,300 a month. Values of 500 or more are divided by 100; the few of 200–499 cannot be told apart and are set to missing. With the correction, the median rent was lower in the 1940 districts with a hazardous firm ($17 against $27 a month), the opposite of the uncorrected figures.</td></tr>
+<tr><td>Counties 1880–1940</td><td><span class="k k-l">Limitation</span></td><td>Shown on each census's own county boundaries and not harmonised (counties were created and split through 1913).</td></tr>
+<tr><td>Redlining grades are the 1938 map's</td><td><span class="k k-a">Assumption</span></td><td>"Before the map" comparisons assign the 1938 grade areas to earlier years. HOLC graded only residential areas; 16 non-residential zones were outlined but labelled Industrial or Commercial, not graded.</td></tr>
+<tr><td>The simplified tract layer does not tile Denver</td><td><span class="k k-l">Limitation</span></td><td>The tract outlines used in the app and some analyses leave 91 sliver gaps inside Denver County (0.72 km²); a point on a tract boundary can fall in no tract (7 rezonings placed at street crossings get no tract).</td></tr>
+<tr><td>Present-day status scores overlap with the outcome</td><td><span class="k k-l">Limitation</span></td><td>EnviroScreen already includes proximity to listed sites, so comparing hidden sites with that score is partly circular.</td></tr>
+<tr><td>Spatial unit</td><td><span class="k k-n">Note</span></td><td>Every card on this site states its spatial unit (site, block, block group, tract, district, grid cell, HOLC area). Results are not comparable across units.</td></tr>
+</table></details>
+
+<details><summary>9. Health and mortality<span class="lead-in">associations, not effects</span></summary>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Exposure is a kernel density of site points</td><td><span class="k k-a">Assumption</span></td><td>Gaussian, 500 m bandwidth, 2 km cutoff, per standard deviation. A site counts the same whatever it made, however long it operated and whatever it released, and carries the location error of section 4.</td></tr>
+<tr><td>Ecological design</td><td><span class="k k-l">Limitation</span></td><td>Rates are compared across areas with controls for age structure, socioeconomic status, density and PM2.5. Unmeasured differences between neighbourhoods can produce or hide an association.</td></tr>
+<tr><td>Residence at death, not residential history</td><td><span class="k k-l">Limitation</span></td><td>People who lived near a site for decades and moved away are not counted there.</td></tr>
+<tr><td>Tract health outcomes vary only between tracts</td><td><span class="k k-l">Limitation</span></td><td>EnviroScreen 2.0 repeats the tract value for every block group; heart disease, cancer, diabetes and mental-health indices are modelled estimates.</td></tr>
+<tr><td>Placebo</td><td><span class="k k-d">Decision</span></td><td>Non-hazardous manufacturers from the same directories (same source, same geocoding, no hazardous process).</td></tr>
+<tr><td>Death records stay on the author's machine</td><td><span class="k k-d">Decision</span></td><td>Only rate ratios and aggregates leave it, and no cell under 11 deaths is published.</td></tr>
+<tr><td>Rebuilding</td><td><span class="k k-a">Assumption</span></td><td>A site counts as rebuilt from the year its parcel's present structure was built, when that is after its last listing; a parcel without a building date is kept as standing. Rebuilding also brings younger residents, whose age the population offset does not capture.</td></tr>
+<tr><td>Survival-model (Gompertz) check</td><td><span class="k k-d">Decision</span></td><td>CenSoc's doubly-truncated Gompertz model is fitted by Nelder–Mead, which can stop at its iteration limit or short of the optimum when there are many controls; each fit is restarted from its own estimates until it has converged and the likelihood no longer improves. Men's deaths are limited to 1975–2005 and both files to deaths at ages 65–100.</td></tr>
+<tr><td>Results moved with the 18 November inventory</td><td><span class="k k-c">Check</span></td><td>Coefficients moved in the second or third decimal; two sentences of the paper changed meaning (the uncontrolled workers' gradient became just significant, and one post-rebuild year became significant) and were reworded.</td></tr>
+</table></details>
+
+<details><summary>10. Who owns rental housing<span class="lead-in">linking owners</span></summary>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Owners are linked in five stages</td><td><span class="k k-d">Decision</span></td><td>Exact names and addresses; cleaned names and normalised addresses; near-identical names (3-gram cosine ≥ 0.85, never across different numbers, suffixes or initials); names sharing a mailing address (not addresses used by many owners or PO boxes, unless checked by hand); and companies sharing a principal address or registered agent (agent firms never link; chains of more than 30 families are undone). Concentration is reported at each stage.</td></tr>
+<tr><td>A unit is a rental when its owner does not live there</td><td><span class="k k-a">Assumption</span></td><td>Owner-occupied: the owner's mailing address is the property (same unit for condominiums and rowhouses, or another door of the same duplex or triplex).</td></tr>
+<tr><td>Owner names are never published</td><td><span class="k k-d">Decision</span></td><td>Only aggregates by owner size, type, tract and HOLC grade are shown. Names in 1930s covenant deeds are kept.</td></tr>
+</table></details>
+
+<details><summary>11. Reproducibility and data that cannot be shared</summary>
+<table><tr><th>Item</th><th>Kind</th><th>What it means</th></tr>
+<tr><td>Rebuild from scratch, 18 November 2026</td><td><span class="k k-c">Check</span></td><td>The 1961–2002 inventory was rebuilt from the 65 scans. Without the scan review it gave 3,561 hazardous-sector sites and 1,275 hidden, against 3,565 and 1,284 on 13 November.</td></tr>
+<tr><td>Hand-review files are part of the method</td><td><span class="k k-n">Note</span></td><td>The scan review, the three pre-1960 reviews, the 25 reviewed regulatory matches and the author's decisions are stored as data files and applied by the code, so a rebuild reproduces them; they cannot be regenerated without repeating the reading.</td></tr>
+<tr><td>Software versions matter</td><td><span class="k k-l">Limitation</span></td><td>The pipeline needs pandas 2.x; the PDF library's version changes how some scans are read; the 1965 code repair depends on the scikit-learn version.</td></tr>
+<tr><td>Not redistributed</td><td><span class="k k-l">Limitation</span></td><td>Person-level census and linked-death files (Brown, IPUMS, CenSoc, MLP); Colorado death records; LightBox parcel data (aggregates only); ProQuest Sanborn maps of 1929–51; the full-resolution History Colorado 1955 zone map; the 2023 metro zoning layer (shown with permission, available from its author).</td></tr>
+</table></details>
+
+<details><summary>12. Checks made by the author (17–18 November 2026)</summary>
+<table><tr><th>Check</th><th>Sample</th><th>Result</th></tr>
+<tr><td>Listings against the scanned page</td><td>65 hazardous listings, 5 per complete edition</td><td>No wrong firm; none absent from the page. Code right in 60 of 60 where printed (1966 prints none). 9 names and 5 addresses with misread letters. Map points were not checked.</td></tr>
+<tr><td>Do a site's listings share one address?</td><td>40 sites</td><td>No site mixed distant addresses; about a dozen held neighbouring street numbers, which the 30 m rule intends.</td></tr>
+<tr><td>Possible regulatory matches for hidden sites</td><td>13 pairs</td><td>All 13 judged the same place.</td></tr>
+<tr><td>Printed-code misprints</td><td>3 firms</td><td>All 3 overruled (section 3).</td></tr>
+</table></details>
+
+<details><summary>13. Still open</summary>
+<ul>
+<li>The 21 scan-review rows that no longer match a listing.</li>
+<li>The 40 possible regulatory matches not yet examined (section 6).</li>
+<li>Recorded defects: double entries in the 1990 edition, Commerce City headings in 1965, 48 unmatched pre-1960 street-review rows, 12 split firm-locations, the tract layer's slivers, the land-use outline selection, and 275 dropped regulatory records.</li>
+<li>The State address-point check on the rebuilt data, once the service is reachable.</li>
+</ul></details>
+</div>

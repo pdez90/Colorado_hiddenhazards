@@ -43,6 +43,7 @@ EXPECTED_PLOTS = {
     "Nearby schools & health care": [],
     "Benchmarks": ["p_bm_state", "p_bm_cty"],
     "About the data": [],
+    "Appendix: assumptions": [],
     "Data & downloads": [],
 }
 # selectInputs whose choices are computed at start-up from data files, and the tab each sits on

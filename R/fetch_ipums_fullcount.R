@@ -49,6 +49,12 @@ ddi <- read_ipums_ddi(use); D <- as.data.table(read_ipums_micro(ddi, verbose = F
 for (v in VARS) if (!v %in% names(D)) D[[v]] <- NA_integer_
 message(nrow(D), " person records, years ", paste(sort(unique(D$YEAR)), collapse = " "), " (", basename(use), ")")
 na0 <- function(x) { x <- as.numeric(x); x[is.na(x)] <- 0; x }
+# 1940 contract rent (RENT) in dollars. In the Colorado full count about 3% of renter households carry the rent multiplied by 100
+# (1500 for $15.00): 96% of the values of 500 or more are multiples of 50, and in EDs 238 and 243 nearly every value is (district
+# medians of 2,000 and 3,300 dollars a month). Values of 500+ are divided by 100; the few of 200-499 cannot be told apart (a $2-$4.99
+# rent or a $200-$499 one, both implausible in 1940) and are set to missing. 0 and 9998-9999 are N/A codes.
+rent_dollars <- function(r) { r <- as.numeric(r); r[is.na(r) | r <= 0 | r >= 9998] <- NA; big <- !is.na(r) & r >= 500; r[big] <- r[big] / 100
+  r[!is.na(r) & r >= 200 & r < 500] <- NA; r }
 # region of birth from BPL (IPUMS general codes): 1-120 US and territories; 150 Canada; 200 Mexico; 210-399 other Americas;
 # 400-499 Europe; 500-599 Asia; 600 Africa; 700-800 Oceania; 900+ abroad n.s. / unknown
 D[, BPL := as.numeric(BPL)]
@@ -68,7 +74,7 @@ D[, `:=`(recent_immig = fb & na0(YRIMMIG) > 0 & (YEAR - na0(YRIMMIG)) <= 10,
          head = RELATE == 1, boarder = na0(RELATE) %in% 12:13 | (na0(RELATE) >= 1200 & na0(RELATE) < 1300), gq = na0(GQ) >= 3,
          owner_hh = na0(OWNERSHP) == 1 & RELATE == 1, renter_hh = na0(OWNERSHP) == 2 & RELATE == 1, mortgaged_hh = na0(OWNERSHP) == 1 & RELATE == 1 & na0(MORTGAGE) >= 2, tenure_hh = na0(OWNERSHP) > 0 & RELATE == 1,
          value_h = fifelse(RELATE == 1 & na0(OWNERSHP) == 1 & na0(VALUEH) > 0 & na0(VALUEH) < 9999998, as.numeric(VALUEH), NA_real_),
-         rent_h = fifelse(RELATE == 1 & na0(OWNERSHP) == 2 & na0(RENT) > 0 & na0(RENT) < 9998, as.numeric(RENT), NA_real_),
+         rent_h = fifelse(RELATE == 1 & na0(OWNERSHP) == 2, rent_dollars(RENT), NA_real_),
          radio_hh = RELATE == 1 & na0(RADIO) == 2, radio_universe = RELATE == 1 & na0(RADIO) > 0,
          mover = na0(MIGRATE5) %in% 2:4, mover_universe = na0(MIGRATE5) %in% 1:4, mover_other_state = na0(MIGRATE5) %in% 3:4,
          sei_v = fifelse(na0(LABFORCE) == 2 & na0(SEI) > 0, as.numeric(SEI), NA_real_), occscore_v = fifelse(na0(LABFORCE) == 2 & na0(OCCSCORE) > 0, as.numeric(OCCSCORE), NA_real_))]

@@ -128,9 +128,9 @@
   expect: [3.7, 5.8, 11.4]
 - id: h_app_enlistment_schooling_hazardous_trade
   file: app/app.R
-  text: "about a third of a year less (−0.30, −0.45 to −0.16)"
+  text: "about a third of a year less (−0.28, −0.43 to −0.14)"
   check: "(lambda r: [r.estimate, r.lo, r.hi])((lambda e: e[(e.outcome == 'Years of schooling at enlistment') & (e['sample'] == 'Men born 1905-1927') & (e.exposure == 'Hazardous trade within 500 m (to 1940)')].iloc[0])(load('app/data/enlistment_models.csv')))"
-  expect: [-0.30, -0.45, -0.16]
+  expect: [-0.28, -0.43, -0.14]
 - id: h_app_holc_ungraded_zones
   file: app/app.R
   text: "holding 16% of HOLC's land area and 15% of the 1940 population but 86% of the pre-map hazardous trades (the Industrial zone alone: 12% of the land, 6% of the population)"
@@ -232,9 +232,9 @@
   expect: [-0.72, -1.56, 0.12]
 - id: h_paper_censoc_linkage_haz500
   file: paper/Before_and_After_the_Map_manuscript.md
-  text: "(−0.92 percentage points, −1.38 to −0.46; DMF −0.45, −1.18 to 0.28)"
+  text: "(−0.92 percentage points, −1.38 to −0.46; DMF −0.48, −1.21 to 0.24)"
   check: "(lambda l: [v for o in ('linked_num', 'linked_dmf') for v in l[(l.outcome == o) & (l.term == 'haz_500')].iloc[0][['pct_points', 'lo', 'hi']].tolist()])(load('data/results/censoc/censoc_ext_linkage_models.csv'))"
-  expect: [-0.92, -1.38, -0.46, -0.45, -1.18, 0.28]
+  expect: [-0.92, -1.38, -0.46, -0.48, -1.21, 0.24]
 - id: h_paper_notown_review
   file: paper/Before_and_After_the_Map_manuscript.md
   text: "A third review read every one of the 2,860 entries extracted without a town against its page: 1,494 were kept with their town (935 of them with the street address read off the page; 62 were given another hazardous sector and 61 kept as doubtful and flagged), and 1,366 were dropped as not works; of a random 120 of these entries, a second independent reader kept all 53 that the review kept, 49 of them in the same town."

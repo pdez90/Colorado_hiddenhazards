@@ -108,7 +108,7 @@ from `build_sites`.
   boundary within 40 m): for 46% of them the nearest such record is an RCRA hazardous-waste handler and for 34% another EPA permit, and
   79% lie 10–40 m away. Counting only a record with the same name or at the same address, or a cleanup boundary, 1,937 sites (62%) are on
   no inventory; counting proximity only within 25 m, 1,431 (46%); counting proximity only to cleanup and TRI records, 1,630 (52%); with
-  every radius doubled, 582 (18%). The published 36% sits toward the low end of that range. An address match to a differently named
+  every radius doubled, 582 (18%). The published 33% sits toward the low end of that range. An address match to a differently named
   record is counted as the same entity (the contamination belongs to the lot): about 528 sites are known by address only, to a record whose
   name shares no informative word with the hazardous firms listed there, but most of them also have a differently named record within the radius; counting
   the roughly 90 that do not as hidden would raise the published share to about 35%, and counting all 528 hidden would raise the strict rule to about 77%
@@ -415,11 +415,11 @@ Boundaries are approximate (a block or so at the edges). The Python and R versio
 come from sf (GEOS ≥ 3.11).
 
 **All fields (IPUMS extract with 43 variables, 64 measures per district; `ed_year_groups.csv`, `ed_distance_models.csv`).** The
-housing market reads the hazard as expected in tenure, though not in 1940 rents: owner-occupancy rises 11.0 (1900) to 19.7 (1910) points
+housing market reads the hazard as expected in tenure and in 1940 rents: owner-occupancy rises 11.0 (1900) to 19.7 (1910) points
 per log-metre from the nearest firm in every census 1900–1940 (18.4 in 1940; pooled +17.4, p < 1e-100), mean SEI of employed residents rises 3.9–5.8 points, and
 non-relatives in the household (boarders, lodgers, servants) fall by 2.6–16.0 points; districts with a firm had 12–26% owner households
-against 32–48% elsewhere. The 1940 median rent was higher in the firm districts, $87 against $43, and has no significant gradient
-with distance (−29 dollars per log-metre, p = 0.27). Recent immigrants (arrived within ten years) concentrate near
+against 32–48% elsewhere. The 1940 median rent was lower in the firm districts, $17 against $27 a month, and rises
+with distance (+6.5 dollars per log-metre, p < 0.001; about 3% of 1940 rents are recorded times 100 in the full count and are divided by 100). Recent immigrants (arrived within ten years) concentrate near
 industry 1900–1930; illiteracy is higher there; and in 1940, 79% of residents of the firm districts had moved house since 1935 against
 72% elsewhere (−4.9 points per log-metre, p < 1e-6) — the industrial districts were the city's high-turnover rental belt. Employment
 in the hazardous industries themselves shows no gradient without a control for distance to downtown (7–12% of workers everywhere); with that control they lived closer to the plants (−1.32 points per log-metre pooled, p < 0.001), so it cannot be said that the people living next to the plants were not, for the most part,

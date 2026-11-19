@@ -234,21 +234,21 @@
 <!-- table: s7_censoc_table22 ; source: data/results/censoc/censoc_models.csv -->
 | exposure at the 1940 address | men, deaths 1975–2020: birth year only | men, deaths 1975–2020: with 1940 controls | men and women, deaths 1988–2005: birth year and sex only | men and women, deaths 1988–2005: with 1940 controls |
 | --- | --- | --- | --- | --- |
-| 1929 industrial district (vs residence or commercial) | −1.29 (−2.14 to −0.43) | −0.72 (−1.56 to 0.12) | −0.07 (−0.48 to 0.35) | 0.10 (−0.33 to 0.52) |
+| 1929 industrial district (vs residence or commercial) | −1.29 (−2.14 to −0.43) | −0.72 (−1.56 to 0.12) | −0.07 (−0.48 to 0.35) | 0.09 (−0.33 to 0.51) |
 | industrial land within 250 m, 1937 (per 10 points) | −0.38 (−0.54 to −0.21) | −0.23 (−0.39 to −0.08) | −0.06 (−0.14 to 0.03) | −0.01 (−0.10 to 0.08) |
-| hazardous trade listed by 1940 within 500 m | −0.61 (−1.16 to −0.07) | −0.23 (−0.77 to 0.31) | −0.14 (−0.37 to 0.08) | −0.03 (−0.26 to 0.21) |
+| hazardous trade listed by 1940 within 500 m | −0.61 (−1.16 to −0.07) | −0.21 (−0.75 to 0.34) | −0.14 (−0.37 to 0.08) | −0.03 (−0.27 to 0.20) |
 | hazardous trades listed by 1940, kernel (per SD) | −0.02 (−0.31 to 0.26) | 0.16 (−0.11 to 0.43) | −0.06 (−0.21 to 0.09) | −0.01 (−0.14 to 0.13) |
-| placebo: commercial land within 250 m, 1937 (per 10 points) | −0.01 (−0.11 to 0.09) | 0.08 (−0.02 to 0.19) | −0.02 (−0.06 to 0.02) | 0.00 (−0.04 to 0.04) |
-| HOLC grade D (vs A or B) | −1.29 (−2.01 to −0.58) | −0.30 (−1.26 to 0.65) | −0.46 (−0.75 to −0.17) | −0.23 (−0.60 to 0.15) |
-| 1965–92 sites on no inventory, kernel (per SD) | −0.34 (−0.69 to 0.02) | −0.04 (−0.43 to 0.35) | −0.13 (−0.23 to −0.04) | −0.05 (−0.16 to 0.05) |
-| 1965–92 sites on an inventory, kernel (per SD) | −0.49 (−0.82 to −0.16) | −0.20 (−0.59 to 0.20) | −0.10 (−0.19 to 0.00) | 0.01 (−0.11 to 0.13) |
+| placebo: commercial land within 250 m, 1937 (per 10 points) | −0.01 (−0.11 to 0.09) | 0.09 (−0.02 to 0.19) | −0.02 (−0.06 to 0.02) | 0.00 (−0.04 to 0.04) |
+| HOLC grade D (vs A or B) | −1.29 (−2.01 to −0.58) | −0.16 (−1.14 to 0.82) | −0.46 (−0.75 to −0.17) | −0.26 (−0.64 to 0.11) |
+| 1965–92 sites on no inventory, kernel (per SD) | −0.34 (−0.69 to 0.02) | −0.03 (−0.42 to 0.35) | −0.13 (−0.23 to −0.04) | −0.06 (−0.16 to 0.05) |
+| 1965–92 sites on an inventory, kernel (per SD) | −0.49 (−0.82 to −0.16) | −0.19 (−0.58 to 0.20) | −0.10 (−0.19 to 0.00) | 0.01 (−0.11 to 0.12) |
 
 <!-- table: s7_enlistment_table23 ; source: data/results/censoc/enlistment_models.csv -->
 | exposure at the 1940 address | years of schooling | height (inches) | weight (pounds) | years of schooling, boys aged 13–17 in 1940 |
 | --- | --- | --- | --- | --- |
-| 1929 industrial district | −0.45 (−0.73 to −0.16) | −0.33 (−1.01 to 0.35) | −0.5 (−5.7 to 4.6) | −0.51 (−0.84 to −0.17) |
-| industrial land within 250 m, 1937 (per 10 points) | −0.10 (−0.14 to −0.06) | −0.01 (−0.15 to 0.12) | 0.0 (−1.0 to 0.9) | −0.12 (−0.19 to −0.06) |
-| hazardous trade listed by 1940 within 500 m | −0.30 (−0.45 to −0.16) | −0.07 (−0.39 to 0.25) | −2.2 (−4.6 to 0.2) | −0.24 (−0.44 to −0.04) |
-| HOLC grade D (vs A or B) | −0.56 (−0.83 to −0.30) | −0.57 (−1.17 to 0.03) | −6.7 (−10.8 to −2.6) | −0.42 (−0.68 to −0.16) |
-| major road open in 1940 within 100 m | −0.36 (−0.79 to 0.08) | −0.30 (−1.08 to 0.49) | −2.1 (−7.5 to 3.3) | −0.93 (−1.45 to −0.40) |
-| placebo: commercial land within 250 m (per 10 points) | −0.01 (−0.04 to 0.02) | −0.06 (−0.12 to 0.00) | −0.7 (−1.1 to −0.2) | −0.04 (−0.08 to 0.01) |
+| 1929 industrial district | −0.45 (−0.74 to −0.16) | −0.31 (−0.99 to 0.37) | −0.6 (−5.7 to 4.6) | −0.51 (−0.84 to −0.17) |
+| industrial land within 250 m, 1937 (per 10 points) | −0.10 (−0.14 to −0.06) | −0.01 (−0.14 to 0.13) | −0.1 (−1.0 to 0.9) | −0.12 (−0.19 to −0.06) |
+| hazardous trade listed by 1940 within 500 m | −0.28 (−0.43 to −0.14) | −0.05 (−0.37 to 0.26) | −2.2 (−4.5 to 0.2) | −0.22 (−0.42 to −0.02) |
+| HOLC grade D (vs A or B) | −0.49 (−0.76 to −0.22) | −0.49 (−1.09 to 0.11) | −6.8 (−11.0 to −2.6) | −0.36 (−0.62 to −0.10) |
+| major road open in 1940 within 100 m | −0.36 (−0.78 to 0.06) | −0.30 (−1.09 to 0.49) | −2.2 (−7.6 to 3.2) | −0.94 (−1.47 to −0.41) |
+| placebo: commercial land within 250 m (per 10 points) | −0.01 (−0.04 to 0.02) | −0.06 (−0.12 to 0.01) | −0.7 (−1.1 to −0.2) | −0.03 (−0.07 to 0.01) |

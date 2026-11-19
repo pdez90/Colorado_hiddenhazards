@@ -27,6 +27,10 @@
 # and work/censoc/censoc_denver_1940_linked.rds (person-level, stays on this machine).
 for (p in c("ipumsr", "RANN", "sandwich", "lmtest", "terra")) if (!requireNamespace(p, quietly = TRUE)) install.packages(p, repos = "https://cloud.r-project.org")
 suppressPackageStartupMessages({ library(data.table); library(sf); library(terra); library(sandwich); library(lmtest) })
+# 1940 contract rent in dollars, the same correction as R/fetch_ipums_fullcount.R: values of 500+ are the rent times 100 (divided by
+# 100), values of 200-499 are ambiguous (missing), 0 and 9998-9999 are N/A codes
+rent_dollars <- function(r) { r <- as.numeric(r); r[is.na(r) | r <= 0 | r >= 9998] <- NA; big <- !is.na(r) & r >= 500; r[big] <- r[big] / 100
+  r[!is.na(r) & r >= 200 & r < 500] <- NA; r }
 sf_use_s2(FALSE); UTM <- 26913; W <- "work/censoc"; O <- "data/results/censoc"; A <- "app/data"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
 cs <- Sys.glob(file.path(W, "*.csv")); cs <- cs[!grepl("demo|geography|codebook|sib", basename(cs), ignore.case = TRUE)]
 cs <- cs[grepl("numident|dmf", basename(cs), ignore.case = TRUE)]
@@ -44,7 +48,7 @@ P <- P[YEAR == 1940 & (CITY == 1710 | COUNTYICP == 310)]; for (v in setdiff(V, "
 P[, HISTID := toupper(trimws(as.character(HISTID)))]
 HAZ_IND <- c(206:239, 336:339, 346:349, 356:359, 376:379, 466:469, 476:478)   # IND1950 hazardous industries, as in R/fetch_ipums_fullcount.R
 H <- P[RELATE == 1, .(SERIAL, h_haz_job = as.numeric(IND1950 %in% HAZ_IND), h_manuf = as.numeric(IND1950 >= 306 & IND1950 <= 499), h_hs = fifelse(EDUC > 0 & EDUC < 99, as.numeric(EDUC >= 6), NA_real_), h_sei = fifelse(SEI > 0, SEI, NA_real_),
-                      owner = as.numeric(OWNERSHP == 1), rent = fifelse(OWNERSHP == 2 & RENT > 0 & RENT < 9998, RENT, NA_real_),
+                      owner = as.numeric(OWNERSHP == 1), rent = fifelse(OWNERSHP == 2, rent_dollars(RENT), NA_real_),
                       value = fifelse(OWNERSHP == 1 & VALUEH > 0 & VALUEH < 9999998, VALUEH, NA_real_))]
 H[, hc_q := NA_integer_]
 H[owner == 1 & !is.na(value), hc_q := as.integer(cut(value, unique(quantile(value, 0:5 / 5)), include.lowest = TRUE))]

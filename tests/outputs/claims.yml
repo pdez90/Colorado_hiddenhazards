@@ -518,11 +518,11 @@
 
 - id: app_censoc_gompertz
   file: app/app.R
-  text: "(Gompertz, deaths 1975\\u20132005) points the same way for the industrial district (hazard ratio 1.12, not statistically clear) and the D grade (1.16, 1.01\\u20131.34"
+  text: "(Gompertz, deaths 1975\\u20132005) points the same way for the industrial district (hazard ratio 1.12, not statistically clear) and the D grade (1.20, 1.04\\u20131.37"
   check: >-
     (lambda g: (lambda m: [m[m.exposure == '1929 industrial district'].hr.iloc[0], m[m.exposure.str.startswith('HOLC grade D')].hr.iloc[0],
     m[m.exposure.str.startswith('HOLC grade D')].hr_lower.iloc[0], m[m.exposure.str.startswith('HOLC grade D')].hr_upper.iloc[0]])(g[g.people.str.startswith('Men,')]))(load('app/data/censoc_ext_gompertz.csv'))
-  expect: [1.12, 1.16, 1.01, 1.34]
+  expect: [1.12, 1.20, 1.04, 1.37]
 
 - id: app_censoc_displacement_hispanic_shares
   file: app/app.R
@@ -975,11 +975,11 @@
 
 - id: readme_ed_owner_households_and_rent
   file: README.md
-  text: "districts with a firm had 12–26% owner households\nagainst 32–48% elsewhere. The 1940 median rent was higher in the firm districts, $87 against $43"
+  text: "districts with a firm had 12–26% owner households\nagainst 32–48% elsewhere. The 1940 median rent was lower in the firm districts, $17 against $27"
   check: >-
     (lambda g, w, o: [w.pct_owner_hh.min(), w.pct_owner_hh.max(), o.pct_owner_hh.min(), o.pct_owner_hh.max(), w[w.census == 1940].median_rent.iloc[0], o[o.census == 1940].median_rent.iloc[0]])(
     (g := load('app/data/ed_year_groups.csv')), g[g.group == 'EDs with hazardous firms'], g[g.group == 'EDs without'])
-  expect: [12, 26, 32, 48, 87, 43]
+  expect: [12, 26, 32, 48, 17, 27]
 
 - id: readme_ed_movers_1940_shares
   file: README.md
@@ -1094,10 +1094,10 @@
 
 - id: app_censoc_holc_d_third_of_a_year
   file: app/app.R
-  text: "The HOLC D gap shrinks to a third of a year once household circumstances are accounted for"
+  text: "The HOLC D gap shrinks to about a sixth of a year once household circumstances are accounted for"
   check: "(lambda d: -d[(d.term == 'holc_D') & d.model.str.startswith('M2')].years.iloc[0])((lambda m: m[m.file.str.startswith('DMF')])(load('app/data/censoc_models.csv')))"
-  expect: 0.33
-  tol: 0.05
+  expect: 0.167
+  tol: 0.03
 
 - id: app_censoc_aged_15_29
   file: app/app.R
@@ -1543,9 +1543,10 @@
 
 - id: readme_ed_rent_gradient
   file: README.md
-  text: "The 1940 median rent was higher in the firm districts, $87 against $43, and has no significant gradient\nwith distance (−29 dollars per log-metre, p = 0.27)"
+  text: "The 1940 median rent was lower in the firm districts, $17 against $27 a month, and rises\nwith distance (+6.5 dollars per log-metre, p < 0.001"
   check: "(lambda g, d: [g[(g.census == 1940) & (g.group == 'EDs with hazardous firms')].median_rent.iloc[0], g[(g.census == 1940) & (g.group == 'EDs without')].median_rent.iloc[0], d[(d.census == 1940) & (d.outcome == 'median_rent')].b_per_log_m.iloc[0], d[(d.census == 1940) & (d.outcome == 'median_rent')].p.iloc[0]])(load('app/data/ed_year_groups.csv'), load('app/data/ed_distance_models.csv'))"
-  expect: [87, 43, -29, 0.27]
+  expect: [17, 27, 6.5, 0.001]
+  tol: [0.5, 0.5, 0.05, 0.001]   # p is an upper bound ('p < 0.001')
 
 - id: readme_denver_1880_listed_with_street
   file: README.md
@@ -1562,9 +1563,9 @@
 
 - id: app_enlistment_weight_hazardous_trade
   file: app/app.R
-  text: "weight is 2.2 pounds lower within 500 m of a hazardous trade, but the interval includes zero (−4.6 to 0.2)"
+  text: "weight is 2.2 pounds lower within 500 m of a hazardous trade, but the interval includes zero (−4.5 to 0.2)"
   check: "(lambda r: [r.estimate, r.lo, r.hi])((lambda e: e[(e.outcome == 'Weight (pounds)') & (e['sample'] == 'Men born 1905-1927') & (e.exposure == 'Hazardous trade within 500 m (to 1940)')].iloc[0])(load('app/data/enlistment_models.csv')))"
-  expect: [-2.2, -4.6, 0.2]
+  expect: [-2.2, -4.5, 0.2]
 
 - id: readme_mortality_bg_table_verbatim
   file: README.md

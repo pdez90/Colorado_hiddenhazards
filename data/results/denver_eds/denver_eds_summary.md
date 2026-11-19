@@ -42,8 +42,8 @@
 | 1930 | EDs without | 47.9 | NA | 39.2 | 8.9 | 1.2 | NA | 1.2 | 8.7 |
 | 1930 | EDs with hazardous firms | 25.8 | NA | 29.1 | 12 | 2.3 | NA | 3.9 | 20.5 |
 | 1930 | dissimilarity (all mapped EDs) | NA | NA | NA | NA | NA | NA | NA | NA |
-| 1940 | EDs without | 42.4 | 43 | 38.2 | 6.7 | NA | 71.6 | NA | 6.9 |
-| 1940 | EDs with hazardous firms | 21.7 | 87 | 28.6 | 8.1 | NA | 78.6 | NA | 10.6 |
+| 1940 | EDs without | 42.4 | 27 | 38.2 | 6.7 | NA | 71.6 | NA | 6.9 |
+| 1940 | EDs with hazardous firms | 21.7 | 17 | 28.6 | 8.1 | NA | 78.6 | NA | 10.6 |
 | 1940 | dissimilarity (all mapped EDs) | NA | NA | NA | NA | NA | NA | NA | NA |
 
 ## ED-level models: percentage points per log-metre of distance from the ED centroid to the nearest hazardous firm (pop-weighted, HC1 SE; census 0 = pooled with census effects)
@@ -113,7 +113,7 @@
 | 1940 | pct_laborers | -1.785 | 0.253 | 1.08e-11 | 330 | 83 |
 | 1940 | pct_white | 0.260 | 0.246 | 0.291 | 330 | 83 |
 | 1940 | pct_owner_hh | 18.417 | 0.961 | 2.34e-55 | 328 | 83 |
-| 1940 | median_rent | -28.962 | 26.074 | 0.267 | 329 | 83 |
+| 1940 | median_rent | 6.528 | 0.671 | 8.25e-20 | 329 | 83 |
 | 1940 | mean_sei | 5.809 | 0.542 | 3.55e-23 | 330 | 83 |
 | 1940 | pct_haz_industry | -0.530 | 0.186 | 0.00454 | 328 | 83 |
 | 1940 | pct_movers | -4.940 | 0.929 | 1.93e-07 | 330 | 83 |
@@ -125,7 +125,7 @@
 | pooled | pct_laborers | -2.013 | 0.173 | 8.14e-30 | 1170 |  |
 | pooled | pct_white | 0.810 | 0.142 | 1.47e-08 | 1170 |  |
 | pooled | pct_owner_hh | 17.357 | 0.476 | 1.94e-193 | 1146 |  |
-| pooled | median_rent | -28.962 | 26.074 | 0.267 | 329 |  |
+| pooled | median_rent | 6.528 | 0.671 | 8.25e-20 | 329 |  |
 | pooled | mean_sei | 4.555 | 0.309 | 1.03e-44 | 1042 |  |
 | pooled | pct_haz_industry | -0.239 | 0.120 | 0.0466 | 1039 |  |
 | pooled | pct_recent_immig | -1.088 | 0.171 | 3.12e-10 | 823 |  |

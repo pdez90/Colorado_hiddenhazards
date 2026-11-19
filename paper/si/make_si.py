@@ -153,7 +153,7 @@ eg = pd.read_csv(R + 'denver_eds/ed_geocoding_R.csv').set_index('year')
 geo1900 = round(100 * eg.loc[1900, 'geocoded'] / eg.loc[1900, 'addresses'])
 chk(eg.loc[1900, 'used'] <= eg.loc[1900, 'geocoded'] <= eg.loc[1900, 'addresses'], '1900 geocoded share')
 es = open(R + 'denver_eds/denver_eds_summary.md').read()
-yg = pd.read_csv(R + 'denver_eds/ed_year_groups.csv'); yg['census'] = np.repeat(sorted(eg.index.tolist() + [1880]), 3)   # three rows per census, in census order
+yg = pd.read_csv(R + 'denver_eds/ed_year_groups.csv'); yg['census'] = np.repeat(sorted(set(eg.index.tolist()) | {1880}), 3)   # three rows per census, in census order
 city = pd.read_csv(A + 'app/data/denver_city_1880_1940.csv').set_index('census')
 mapped = {}
 for c in [1920, 1930, 1940]:

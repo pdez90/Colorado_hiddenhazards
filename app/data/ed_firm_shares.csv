@@ -44,5 +44,5 @@ census,measure,firms,share_firms_top_quartile,share_firms_bottom_quartile,share_
 1940,pct_laborers,83,74.7,1.2,25
 1940,pct_white,83,8.4,34.9,24.7
 1940,pct_owner_hh,83,4.8,72.3,24.8
-1940,median_rent,83,1.2,75.9,24.8
+1940,median_rent,83,0,75.9,24.6
 1940,mean_sei,83,0,71.1,25

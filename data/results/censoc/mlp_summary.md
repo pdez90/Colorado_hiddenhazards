@@ -27,17 +27,17 @@
 
 | model | term | years | lo | hi | p | n | people |
 |---|---|---|---|---|---|---|---|
-| Mean within-census percentile of hazardous-trade exposure, 1910-1940 (per 10 points), people traced to an earlier Denver address | mean_pct10 | -0.008 | -0.205 | 0.189 | 0.9340 | 4005 | Men, deaths 1975-2020 |
-| Share of observed censuses (1910-1940) in that census's top quarter of exposure | top_share | -0.310 | -1.686 | 1.066 | 0.6590 | 4005 | Men, deaths 1975-2020 |
-| Mean within-census percentile, only censuses whose directory window lists 20+ sites (1910, 1920, 1930, 1940) | mean_pct10_good | -0.008 | -0.205 | 0.189 | 0.9340 | 4005 | Men, deaths 1975-2020 |
-| 1940 address only, within-census percentile (per 10 points), same people (comparison) | pct40_10 | -0.075 | -0.229 | 0.079 | 0.3390 | 4005 | Men, deaths 1975-2020 |
-| Raw count of censuses within 500 m of a listed hazardous trade (depends on which directory years survive) | censuses_near_haz | 0.037 | -0.457 | 0.532 | 0.8820 | 4005 | Men, deaths 1975-2020 |
-| Childhood address (ages 0-14, 1910-1930), within-census percentile per 10 points, with the 1940 address | child_pct10 | 0.181 | -0.003 | 0.366 | 0.0546 | 2370 | Men, deaths 1975-2020 |
-| 1940 address, with the childhood address | pct40_10 | -0.173 | -0.378 | 0.032 | 0.0987 | 2370 | Men, deaths 1975-2020 |
-| Mean within-census percentile of hazardous-trade exposure, 1910-1940 (per 10 points), people traced to an earlier Denver address | mean_pct10 | -0.037 | -0.120 | 0.046 | 0.3830 | 5956 | Men and women, deaths at 65+ 1988-2005 |
-| Share of observed censuses (1910-1940) in that census's top quarter of exposure | top_share | -0.610 | -1.197 | -0.023 | 0.0417 | 5956 | Men and women, deaths at 65+ 1988-2005 |
-| Mean within-census percentile, only censuses whose directory window lists 20+ sites (1910, 1920, 1930, 1940) | mean_pct10_good | -0.037 | -0.120 | 0.046 | 0.3830 | 5956 | Men and women, deaths at 65+ 1988-2005 |
-| 1940 address only, within-census percentile (per 10 points), same people (comparison) | pct40_10 | -0.010 | -0.079 | 0.058 | 0.7680 | 5956 | Men and women, deaths at 65+ 1988-2005 |
-| Raw count of censuses within 500 m of a listed hazardous trade (depends on which directory years survive) | censuses_near_haz | -0.234 | -0.507 | 0.039 | 0.0935 | 5956 | Men and women, deaths at 65+ 1988-2005 |
-| Childhood address (ages 0-14, 1910-1930), within-census percentile per 10 points, with the 1940 address | child_pct10 | -0.004 | -0.083 | 0.075 | 0.9250 | 5001 | Men and women, deaths at 65+ 1988-2005 |
-| 1940 address, with the childhood address | pct40_10 | -0.002 | -0.090 | 0.086 | 0.9630 | 5001 | Men and women, deaths at 65+ 1988-2005 |
+| Mean within-census percentile of hazardous-trade exposure, 1910-1940 (per 10 points), people traced to an earlier Denver address | mean_pct10 | -0.006 | -0.203 | 0.191 | 0.9530 | 4005 | Men, deaths 1975-2020 |
+| Share of observed censuses (1910-1940) in that census's top quarter of exposure | top_share | -0.296 | -1.675 | 1.084 | 0.6750 | 4005 | Men, deaths 1975-2020 |
+| Mean within-census percentile, only censuses whose directory window lists 20+ sites (1910, 1920, 1930, 1940) | mean_pct10_good | -0.006 | -0.203 | 0.191 | 0.9530 | 4005 | Men, deaths 1975-2020 |
+| 1940 address only, within-census percentile (per 10 points), same people (comparison) | pct40_10 | -0.072 | -0.226 | 0.082 | 0.3560 | 4005 | Men, deaths 1975-2020 |
+| Raw count of censuses within 500 m of a listed hazardous trade (depends on which directory years survive) | censuses_near_haz | 0.044 | -0.451 | 0.539 | 0.8610 | 4005 | Men, deaths 1975-2020 |
+| Childhood address (ages 0-14, 1910-1930), within-census percentile per 10 points, with the 1940 address | child_pct10 | 0.182 | -0.003 | 0.366 | 0.0535 | 2370 | Men, deaths 1975-2020 |
+| 1940 address, with the childhood address | pct40_10 | -0.171 | -0.375 | 0.032 | 0.0996 | 2370 | Men, deaths 1975-2020 |
+| Mean within-census percentile of hazardous-trade exposure, 1910-1940 (per 10 points), people traced to an earlier Denver address | mean_pct10 | -0.042 | -0.125 | 0.041 | 0.3270 | 5956 | Men and women, deaths at 65+ 1988-2005 |
+| Share of observed censuses (1910-1940) in that census's top quarter of exposure | top_share | -0.625 | -1.211 | -0.039 | 0.0367 | 5956 | Men and women, deaths at 65+ 1988-2005 |
+| Mean within-census percentile, only censuses whose directory window lists 20+ sites (1910, 1920, 1930, 1940) | mean_pct10_good | -0.042 | -0.125 | 0.041 | 0.3270 | 5956 | Men and women, deaths at 65+ 1988-2005 |
+| 1940 address only, within-census percentile (per 10 points), same people (comparison) | pct40_10 | -0.015 | -0.084 | 0.054 | 0.6730 | 5956 | Men and women, deaths at 65+ 1988-2005 |
+| Raw count of censuses within 500 m of a listed hazardous trade (depends on which directory years survive) | censuses_near_haz | -0.243 | -0.515 | 0.029 | 0.0801 | 5956 | Men and women, deaths at 65+ 1988-2005 |
+| Childhood address (ages 0-14, 1910-1930), within-census percentile per 10 points, with the 1940 address | child_pct10 | -0.004 | -0.083 | 0.074 | 0.9130 | 5001 | Men and women, deaths at 65+ 1988-2005 |
+| 1940 address, with the childhood address | pct40_10 | -0.003 | -0.092 | 0.086 | 0.9490 | 5001 | Men and women, deaths at 65+ 1988-2005 |

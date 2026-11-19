@@ -120,8 +120,17 @@ R6 <- rbindlist(lapply(names(FL), function(s) { d <- as.data.frame(L[src == s & 
     # both CenSoc files carry weights only for deaths at ages 65-100, and L keeps weighted records only, so neither sample can contain a death
     # before 65 or after 100: the truncation window of each cohort must say so (gompertz_mle raises each left truncation age to 65 and
     # lowers each right truncation age to 101: an integer death age of 100 is 100-101), otherwise cohorts younger than 65 at the window's start are fitted as if early deaths were possible
-    g <- tryCatch(gompertztrunc::gompertz_mle(f, left_trunc = lt, right_trunc = rt, data = d, weights = w, lower_age_bound = 65, upper_age_bound = 101),
+    fit <- function(start = NULL) tryCatch(gompertztrunc::gompertz_mle(f, left_trunc = lt, right_trunc = rt, data = d, weights = w, lower_age_bound = 65, upper_age_bound = 101, start = start),
                   error = function(err) { message(s, " ", e, ": ", conditionMessage(err)); NULL })
+    # gompertz_mle uses Nelder-Mead, which with a dozen control parameters can stop at its iteration limit or settle short of the optimum
+    # (on 18 Nov 2026 the Numident HOLC D fit stopped unconverged and two other Numident fits moved far from their OLS counterparts):
+    # restart from the last estimates until the fit has converged and the log-likelihood no longer improves (at most 8 fits)
+    g <- fit(); k <- 1
+    while (!is.null(g) && k < 8) { g2 <- fit(g$optim_fit$par); k <- k + 1; if (is.null(g2)) break
+      done <- g$optim_fit$convergence == 0 && g2$optim_fit$convergence == 0 && abs(g2$optim_fit$value - g$optim_fit$value) < 1e-6 * (1 + abs(g$optim_fit$value))
+      if (g2$optim_fit$value <= g$optim_fit$value || g$optim_fit$convergence != 0) g <- g2
+      if (done) break }
+    if (!is.null(g)) message(s, " ", e, ": ", k, " Gompertz fits, converged = ", g$optim_fit$convergence == 0)
     if (is.null(g)) return(NULL); r <- as.data.table(g$results)[parameter == EXP[[e]][1]]
     ex <- tryCatch(as.data.table(gompertztrunc::convert_hazards_to_ex(g$results, age = 65, use_model_estimates = TRUE))[parameter == EXP[[e]][1]], error = function(err) NULL)
     out <- data.table(people = FL[[s]], window = paste(GW[[s]], collapse = "-"), exposure = e, hr = round(r$hr, 3), hr_lower = round(r$hr_lower, 3), hr_upper = round(r$hr_upper, 3),

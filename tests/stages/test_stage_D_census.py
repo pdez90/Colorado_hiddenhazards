@@ -415,6 +415,14 @@ def test_ed_distance_models_recompute():
         assert [b[1], se[1], b2[1], se2[1]] == pytest.approx([r.b_per_log_m, r.se, r.b_cbd_ctrl, r.se_cbd_ctrl], rel=5e-3, abs=1e-5), r.outcome
 
 
+def test_1940_district_rents_are_monthly_dollars():
+    """Catches the 1940 contract rent read as recorded: about 3% of renter households carry the rent times 100 (EDs 238 and 243 had
+    medians of 2,000 and 3,300 dollars a month). R/fetch_ipums_fullcount.R divides values of 500+ by 100 and drops 200-499."""
+    E, _ = ed_layer(1940)
+    r = E.median_rent.dropna()
+    assert len(r) > 300 and r.max() < 200, r.sort_values().tail(3).to_dict()
+
+
 def test_ed_single_census_pooled_rows_equal_that_census():
     """Catches a 'pooled' row of a measure only one census provides that differs from that census's own row."""
     M = csv(RES / "denver_eds" / "ed_distance_models.csv")
