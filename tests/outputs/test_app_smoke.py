@@ -141,8 +141,13 @@ def _open_tab(page, tab):
         " if (!a) return false; a.click(); return true; }", tab)
     assert ok, f"no nav link with data-value {tab!r}"
     time.sleep(TAB_SETTLE)
+    # wait for the open tab only: newer Shiny versions keep the outputs of tabs not yet opened marked .recalculating, so a
+    # page-wide check never settles (it cost 90 s per tab and left plots unrendered on the author's Mac)
     try:
-        page.wait_for_function("document.querySelectorAll('.recalculating').length === 0", timeout=90_000)
+        page.wait_for_function(
+            "() => { const p = document.querySelector('.tab-pane.active');"
+            " return p.querySelectorAll('.recalculating').length === 0"
+            " && Array.from(p.querySelectorAll('.plotly.html-widget')).every(e => e.data); }", timeout=120_000)
     except Exception:  # noqa: BLE001
         pass  # inspected below anyway
 
