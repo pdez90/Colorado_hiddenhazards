@@ -9,7 +9,7 @@ Run from the repository root:  python3 paper/si/make_si.py   ->  paper/si/si_blo
 Then:  cd paper/si && npm install docx && node build_si.js   ->  paper/Before_and_After_the_Map_SI.docx
 """
 import pandas as pd, numpy as np, json, sys
-import os
+import os, re
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); from md2blocks import runs, plain
 A = os.path.abspath(os.path.join(HERE, '..', '..')) + '/'
 R = A + 'data/results/'
@@ -134,7 +134,11 @@ bs = open(R + 'benchmarks/benchmarks_summary.md').read()
 cc = pd.read_csv(R + 'benchmarks/cbp_vs_directory_county.csv', dtype={'county': str}); cc = cc[cc.dir_all > 0]
 r_mfg = float(np.corrcoef(np.log1p(cc.dir_mfg), np.log1p(cc.cbp_mfg))[0, 1]); r_haz = float(np.corrcoef(np.log1p(cc.dir_haz), np.log1p(cc.cbp_haz))[0, 1])
 den_ratio = float((cc.dir_mfg / cc.cbp_mfg)[cc.county == '031'].median()); n_ed, n_cty = cc.year.nunique(), cc.county.nunique()
-chk(f'across {n_ed} editions and {n_cty} counties: r = {r_mfg:.2f} (log manufacturers), {r_haz:.2f} (log hazardous sectors)' in bs and f'(Denver {den_ratio:.2f})' in bs, 'benchmark correlations')
+_m = re.search(r'across (\d+) editions and (\d+) counties: r = ([0-9.]+) \(log manufacturers\), ([0-9.]+) \(log hazardous sectors\).*?\(Denver ([0-9.]+)\)', bs)
+# compared as numbers: R and numpy can round a correlation on the .xx5 boundary differently (0.84504 is 0.84 in R/benchmarks.R's summary)
+chk(_m is not None and (int(_m[1]), int(_m[2])) == (n_ed, n_cty) and abs(float(_m[3]) - r_mfg) < 0.006 and abs(float(_m[4]) - r_haz) < 0.006
+    and abs(float(_m[5]) - den_ratio) < 0.006, 'benchmark correlations')
+r_mfg, r_haz, den_ratio = float(_m[3]), float(_m[4]), float(_m[5])   # print the summary's figures, so the SI and the paper agree
 chk(n_ed == len(cb) and set(cb.year) <= complete | partial, 'benchmark editions')
 above1 = [int(y) for y in cb[cb.dir_haz > cb.cbp_haz].year]; chk(above1 == [int(y) for y in cb[cb.ratio_haz > 1].year], f'ratios above 1: {above1}')
 P(f"Across {n_ed} editions and {n_cty} counties the log directory count correlates with the log CBP count at r = {r_mfg:.2f} (all manufacturing) and {r_haz:.2f} (hazardous sectors); Denver's directory/CBP ratio is {den_ratio:.2f}. "
