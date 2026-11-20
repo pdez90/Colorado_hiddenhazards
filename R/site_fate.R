@@ -60,7 +60,7 @@ message(uniqueN(PC[!is.na(SCHEDNUM), pkey]), " of ", uniqueN(PC$pkey), " points 
 #          of each parcel's situs address are each spelled one way (as in R/housing_conditions_denver.R; the assessor writes the N/S/E/W
 #          the directories usually omit, so a direction missing on one side is no conflict). Rules, in order:
 #          1 same address: situs house number and street equal the site's;  2 same street and side (odd/even), nearest house number within the block (fewer than 100 numbers away);
-#          3 same street, nearest parcel;  4 nearest parcel of any street (the former rule, and the only one for an address without a
+#          3 same street, nearest parcel (fewer than 1,000 numbers away);  4 nearest parcel of any street (the former rule, and the only one for an address without a
 #          number). The rule used is written to parcel_match; rule 1's share among numbered addresses is the agreement rate reported below.
 DIRW <- c(NORTH = "N", SOUTH = "S", EAST = "E", WEST = "W", N = "N", S = "S", E = "E", W = "W")
 TYPW <- c(STREET = "ST", ST = "ST", AVENUE = "AVE", AVE = "AVE", AV = "AVE", BOULEVARD = "BLVD", BLVD = "BLVD", PLACE = "PL", PL = "PL", DRIVE = "DR", DR = "DR",
@@ -84,7 +84,9 @@ pick <- function(d, acol) {   # d: one row per site with pkey and the address co
   X[, same_street := a_sname != "" & a_sname == p_sname & (a_dir == "" | p_dir == "" | a_dir == p_dir) & (a_stype == "" | p_stype == "" | a_stype == p_stype)]
   X[, rule := fcase(same_street & !is.na(n_a) & !is.na(n_p) & n_a == n_p, 1L,
                     same_street & !is.na(n_a) & !is.na(n_p) & n_a %% 2L == n_p %% 2L & abs(n_a - n_p) < 100L, 2L,   # same side AND same block: a parcel 100+ numbers away is only "same street"
-                    same_street, 3L, default = 4L)]
+                    # a parcel 1,000 or more numbers along the same street is not the site's lot: the geocode was placed at a street end or the
+                    # printed number does not exist today (2434 Brighton Blvd sits by 3434 N Brighton); it counts as the nearest parcel (20 Nov 2026)
+                    same_street & (is.na(n_a) | is.na(n_p) | abs(n_a - n_p) < 1000L), 3L, default = 4L)]
   X[, numdiff := fifelse(rule == 2L, abs(n_a - n_p), NA_integer_)]
   # a condominium's "general common elements" parcel (the land under the units, classed VACANT LAND / GENERAL COMMON ELEMENTS, with no
   # units or year built of its own) is not vacant land. When it is the chosen parcel, a unit parcel of the same condominium (same situs

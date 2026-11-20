@@ -225,7 +225,7 @@ OCC <- P[, .(parcels = .N, units = sum(units), owner_occupied_units = sum(units 
 P[, `:=`(x = num(SITUS_X_COORD), y = num(SITUS_Y_COORD))]; Q <- P[!is.na(x) & x > 0]
 fam_size <- SF$G[, .(g_family, fam_rental = rental)]; Q <- merge(Q, fam_size, by = "g_family", all.x = TRUE); Q[is.na(fam_rental), fam_rental := 0]
 pts <- st_transform(st_as_sf(Q[, .(x, y)], coords = c("x", "y"), crs = 2877), UTM)
-TR <- st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM); TR <- TR[substr(TR$GEOID, 1, 5) == "08031", ]
+TR <- st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM); TR <- TR[substr(TR$GEOID, 1, 5) == "08031", ]
 Q[, GEOID := TR$GEOID[vapply(st_within(pts, TR), function(i) if (length(i)) i[1] else NA_integer_, 1L)]]
 HOLC <- st_make_valid(st_transform(st_read(file.path(A, "holc_denver.geojson"), quiet = TRUE), UTM)); HOLC <- HOLC[HOLC$grade %in% c("A", "B", "C", "D"), "grade"]
 Q[, holc := { w <- st_within(pts, HOLC); vapply(w, function(i) if (length(i)) HOLC$grade[i[1]] else "Not graded", "") }]

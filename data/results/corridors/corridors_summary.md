@@ -1,13 +1,13 @@
 # Industrial corridors: formation, clustering, succession, legacy
 
-Located establishments in the 13 complete editions 1965-1992: 13,090 statewide, 7,680 in the Denver metro (25 km of downtown); 500 m cells with any manufacturer: 3325 (1494 metro).
+Located establishments in the 13 complete editions 1965-1992: 13,087 statewide, 7,680 in the Denver metro (25 km of downtown); 500 m cells with any manufacturer: 3322 (1494 metro).
 
 ## Persistence classes of 500 m cells (metro)
 
 | class | cells | ever hazardous | with a pre-1960 street-level firm |
 |---|---|---|---|
 | emerging | 570 | 184 | 3 |
-| intermittent | 305 | 198 | 13 |
+| intermittent | 305 | 198 | 12 |
 | former (gone by 1980s) | 286 | 99 | 6 |
 | persistent, sector turnover | 234 | 215 | 56 |
 | persistent | 99 | 73 | 22 |
@@ -24,7 +24,7 @@ Located establishments in the 13 complete editions 1965-1992: 13,090 statewide, 
 | Furniture | 0.001 | 0.38 | 0.002 | 0.31 |
 | Instruments | 0.001 | 0.38 | -0.001 | 0 |
 | Leather | -0.001 | 0.08 | 0.003 | 0.14 |
-| Lumber & wood | 0 | 0.31 | 0.001 | 0.08 |
+| Lumber & wood | 0 | 0.23 | 0.001 | 0.08 |
 | Machinery | 0.001 | 0.92 | 0.001 | 0.92 |
 | Misc. manufacturing | 0 | 0.23 | 0.002 | 0.23 |
 | Paper | 0.002 | 0.17 | 0.001 | 0.08 |
@@ -63,15 +63,15 @@ Located establishments in the 13 complete editions 1965-1992: 13,090 statewide, 
 
 | outcome | predictor | b | SE | p |
 |---|---|---|---|---|
-| people_of_color | log1p(firm_years) | 0.738 | 0.240 | 0.00207 |
-| people_of_color | log1p(haz_firm_years) | 1.239 | 0.291 | 2.03e-05 |
-| people_of_color | log1p(hidden_sites) | 1.970 | 0.586 | 0.000779 |
-| low_income | log1p(firm_years) | 1.773 | 0.240 | 1.41e-13 |
-| low_income | log1p(haz_firm_years) | 1.696 | 0.294 | 7.89e-09 |
-| low_income | log1p(hidden_sites) | 2.526 | 0.601 | 2.66e-05 |
-| enviroscreen_pctl | log1p(firm_years) | 3.058 | 0.314 | 0 |
-| enviroscreen_pctl | log1p(haz_firm_years) | 2.963 | 0.387 | 1.8e-14 |
-| enviroscreen_pctl | log1p(hidden_sites) | 4.087 | 0.786 | 1.98e-07 |
-| pollution_climate_pctl | log1p(firm_years) | 1.132 | 0.183 | 6.52e-10 |
-| pollution_climate_pctl | log1p(haz_firm_years) | 0.980 | 0.224 | 1.24e-05 |
-| pollution_climate_pctl | log1p(hidden_sites) | 1.815 | 0.447 | 4.93e-05 |
+| people_of_color | log1p(firm_years) | 0.725 | 0.240 | 0.00252 |
+| people_of_color | log1p(haz_firm_years) | 1.226 | 0.291 | 2.51e-05 |
+| people_of_color | log1p(hidden_sites) | 1.936 | 0.587 | 0.000981 |
+| low_income | log1p(firm_years) | 1.795 | 0.240 | 6.97e-14 |
+| low_income | log1p(haz_firm_years) | 1.722 | 0.294 | 4.6e-09 |
+| low_income | log1p(hidden_sites) | 2.629 | 0.602 | 1.25e-05 |
+| enviroscreen_pctl | log1p(firm_years) | 3.074 | 0.314 | 0 |
+| enviroscreen_pctl | log1p(haz_firm_years) | 2.981 | 0.387 | 1.24e-14 |
+| enviroscreen_pctl | log1p(hidden_sites) | 4.048 | 0.787 | 2.71e-07 |
+| pollution_climate_pctl | log1p(firm_years) | 1.143 | 0.183 | 4.51e-10 |
+| pollution_climate_pctl | log1p(haz_firm_years) | 0.993 | 0.224 | 9.72e-06 |
+| pollution_climate_pctl | log1p(hidden_sites) | 1.752 | 0.448 | 9.1e-05 |

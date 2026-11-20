@@ -1,0 +1,49 @@
+review_file,year,town,nkey,sector,name,street,verdict
+street_review.csv,1911,DENVER,ANCECO,Manufactured gas,ance Co,1524 Market,not_works
+street_review.csv,1914,DENVER,RICEWE,Manufactured gas,Rice W E,435 15th,not_works
+street_review.csv,1915,CANON CITY,CALDWELLJAS,Manufactured gas,Caldwell Jas,114 N 5th,doubtful
+street_review.csv,1917,DENVER,CIDENTINS,Manufactured gas,cident ins,2101 York,not_works
+street_review.csv,1929,DENVER,INCHARGE,Manufactured gas,in charge,614 27th,not_works
+street_review.csv,1929,DURANGO,CHITWOODAJ,Manufactured gas,Chitwood A J,969 Main av,not_works
+street_review.csv,1935,DURANGO,DURANGONATURALGASCO,Manufactured gas,Durango Natural Gas Co,1025 Main av,not_works
+street_review.csv,1939,DURANGO,DURANGONATURALGASCO,Manufactured gas,Durango Natural Gas Co,140 E 8th,not_works
+street_review.csv,1943,GREELEY,HOMEGASELECTRICCO,Manufactured gas,Home Gas & Electric Co,810 9th,not_works
+street_review.csv,1943,TRINIDAD,RAILWAYGASCO,Manufactured gas,Railway & Gas Co,231 W Main,not_works
+street_review.csv,1950,BOULDER,CARLSONSBOTTLEDGASMRMRSHUGOCARLSON,Petroleum refining & asphalt,• Carlson's Bottled Gas Mr • Mrs Hugo Carlson,3093 Bdwy,not_works
+street_review.csv,1950,BOULDER,CONSOLIDATEDCARIBONSILVERMINESINC,Assay office,Consolidated Caribon Silver Mines Inc,1406 Pearl,not_works
+street_review.csv,1950,CANON CITY,BROOKCANONCOALMINENICKJMOSCHETTITOMPOKASJR,Assay office,Brook Canon Coal Mine Nick J Moschetti & Tom Pokas Jr,812 N 5th,not_works
+street_review.csv,1950,CANON CITY,CHANDLERCREEKMINEGRIFFITHSCOALMININGCO,Assay office,Chandler Creek Mine Griffiths Coal Mining Co,1024 Greenwood,not_works
+street_review.csv,1950,COLORADO SPRINGS,ACMEPESTCONTROLMJMSGILLEN,Chemicals,Acme Pest Control M J & MS Gillen,1111 Cheyenne,not_works
+street_review.csv,1950,COLORADO SPRINGS,UNITEDGASCO,Manufactured gas,United Gas Co,3709 N Nevada,doubtful
+street_review.csv,1950,DENVER,COLOFUMIGATINGTEXTERMINATINGCO,Chemicals,Colo Fumigating &t Exterminating Co,1754 S Bdwy,not_works
+street_review.csv,1950,DENVER,DEPESTCONTROLSERVLAB,Chemicals,De Pest Control & Serv Lab,754 S Bdwy,not_works
+street_review.csv,1950,DENVER,GENERALLEADMFGCO,Assay office,General Lead Mfg Co,2130 Mkt St,ok
+street_review.csv,1950,DENVER,GENERAMACHINERYISUPPLYCO,Machine shop / machinery,Genera Machinery I< Supply Co,3434 Brighton Blvd,not_works
+street_review.csv,1950,DENVER,GRADENCOALCOTHE,Assay office,Graden Coal Co The,318 Walnut St,not_works
+street_review.csv,1950,DENVER,GREATWESTERNEXTERMINATINGCO,Chemicals,Great Western Exterminating Co,4536 E Colfax Av,not_works
+street_review.csv,1950,DENVER,GRIMESPIPEASUPPLYCOTHEDAJGRIMES,Metal working,Grimes Pipe a. Supply Co The D a. J Grimes,1300 Larimer St,not_works
+street_review.csv,1950,DENVER,HAVERGLOVERSERV,Soap,Haver-Glover Serv,1411 Mkt St,doubtful
+street_review.csv,1950,DENVER,HEINSOHNAEPRINTINGIRMACHINERYIRSUPPLIESAEHEINSOHN,Machine shop / machinery,Heinsohn A E Printing Ir Machinery Ir Supplies A E Heinsohn,1443 Blake St,not_works
+street_review.csv,1950,DENVER,PUEBLOCOLORADOHUNTMINERALCOJCNEUDIGATETRUSTEE,Assay office,"Pueblo, Colorado Hunt Mineral Co J C Neudigate, Tru stee",1033 W 14th Av,doubtful
+street_review.csv,1950,DENVER,PIERSWL,Assay office,Piers W ·L,1925 Arapahoe,ok
+street_review.csv,1950,DENVER,QUICKWAYTRKSHOVELCOPOBOX,Assay office,Quick Way Trk Shovel Co PO Box,4150 Josephine,ok
+street_review.csv,1950,DENVER,REDDOTLPGASCO,Petroleum refining & asphalt,Red Dot L-P Gas Co,2910 Huron,doubtful
+street_review.csv,1950,DENVER,RELIABLEPESTCONTROLCOORPHILLIPSCBMORGAN,Chemicals,Reliable Pest Control Co O R Phillips & CB Morgan,3145 Tejon,not_works
+street_review.csv,1950,DENVER,SCIENTIFICSUPPLYCO,Chemicals,Scientific Supply Co,800 Water,not_works
+street_review.csv,1950,DENVER,TIBBSVETERINARYSUPPLYGRANTRORTIBBS,Soap,Tibbs Veterinary Supply Grant R & OR Tibbs,1110 E 18th Av,not_works
+street_review.csv,1950,DENVER,TRIANGLEWESTERNSLSSUPPLYCO,Plastics,Triangle Western Sls & Supply Co,2255 S Delaware,not_works
+street_review.csv,1950,DURANGO,MORNINGSTARCOALCOFRANKJRFRANKSRREALSTINSHOPJAMESBREAL,Assay office,Morning Star Coal Co Frank Jr & Frank Sr Real's Tin Shop James B Real,1251 Main,not_works
+street_review.csv,1950,GRAND JUNCTION,GRANDSERVTHESTANDARDOILCO,Petroleum refining & asphalt,Grand Serv The Standard Oil Co,110 S 7th,not_works
+street_review.csv,1950,PUEBLO,ARKANSASVALLEYWELDERSSUPPLYJFDAMMANNDANMILLSON,Machine shop / machinery,Arkansas Valle y Welder s Supply J F Dammann & Dan Millson,308 N Grand,not_works
+street_review.csv,1950,PUEBLO,COLOINTERSTATEGASCO,Manufactured gas,Colo Interstate Gas Co,2701 N Santa,doubtful
+street_review.csv,1950,PUEBLO,COLOTERMINIXSERV,Chemicals,Colo Terminix Serv,310 S Main,not_works
+street_review.csv,1950,TRINIDAD,BALDYCOALCOEWMEGGISON,Assay office,Baldy Coal Co E W Meggison,633 Tillotson St,not_works
+street_review.csv,1956,DENVER,DENVERPROPANEGASCO,Manufactured gas,Denver Propane Gas Co,4701 E Evans,not_works
+street_review.csv,1956,DENVER,HIAWATHAOILGASCO,Manufactured gas,Hiawatha Oil & Gas Co,1636 Welton,not_works
+street_review.csv,1956,DENVER,NEEDHAMRBOILGASCO,Manufactured gas,Needham R B Oil & Gas Co,3108 Brighton,not_works
+street_review.csv,1956,DENVER,SINCLAIROILGASCO,Manufactured gas,Sinclair Oil & Gas Co,634 W. 4th,not_works
+street_review.csv,1956,DURANGO,THREESTATESNATLGASCO,Manufactured gas,Three States Nat'l Gas Co,93 Riverview,not_works
+street_review.csv,1956,DURANGO,SOUTHERNUNIONGASCOMPANY,Manufactured gas,Southern Union Gas Company,738 Main Av,not_works
+street_review.csv,1956,GREELEY,GREELEYGASCOMPANY,Manufactured gas,Greeley Gas Company,1000 9th Av,not_works
+street_review.csv,1956,STERLING,NAVYGASCOSOFSTERLINGOILSWHOL,Manufactured gas,Navy Gas Co Sof Sterling Oils Whol,620 N 2nd,not_works
+street_review.csv,1956,FORT COLLINS,TRINIDADBROWNPROPANEGASCO,Manufactured gas,TRIN ID AD -Brow n Propane Gas Co,206 Pine,not_works

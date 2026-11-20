@@ -17,7 +17,7 @@
 #   denver_tracts.geojson (+ the three csvs), read by the Denver tab for 1950-2020.
 suppressPackageStartupMessages({ library(sf); library(data.table); library(sandwich); library(lmtest) })
 sf_use_s2(FALSE); UTM <- 26913; A <- "app/data"; O <- "data/results/denver_tracts"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
-TR <- st_make_valid(st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM)); TR <- TR[TR$core %in% c(TRUE, "TRUE"), c("GEOID")]
+TR <- st_make_valid(st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM)); TR <- TR[TR$core %in% c(TRUE, "TRUE"), c("GEOID")]
 pan <- fread(file.path(A, "tract_panel.csv"), colClasses = c(GEOID = "character"))[GEOID %in% TR$GEOID & census >= 1950]; if (!"p_white" %in% names(pan)) pan[, p_white := NA_real_]
 MEAS <- c(p_white = "White % (race)", p_black = "Black %", p_hisp = "Hispanic %", p_fb = "Foreign born %", p_pov = "Below poverty %", p_owner = "Owner-occupied %", mval_2020 = "Median home value (2020 $)", mrent_2020 = "Median rent (2020 $)")
 # firms of the decade

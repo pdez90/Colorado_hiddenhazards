@@ -1,17 +1,17 @@
 outcome,portfolio,term,irr,lo,hi,p,buildings
-Requests about conditions inside the home,S3 by owner name,per doubling of the owner's Denver rental units,1.143,1.046,1.25,0.00313,37687
-Requests about conditions inside the home,S4 by owner family,per doubling of the owner's Denver rental units,1.087,1.033,1.144,0.00129,37687
-Requests about conditions inside the home,S5 by registry group,per doubling of the owner's Denver rental units,1.074,1.024,1.126,0.00312,37687
-Requests about the outside of the property,S3 by owner name,per doubling of the owner's Denver rental units,1.05,1.023,1.077,0.000214,37687
-Requests about the outside of the property,S4 by owner family,per doubling of the owner's Denver rental units,1.043,1.02,1.066,0.000182,37687
-Requests about the outside of the property,S5 by registry group,per doubling of the owner's Denver rental units,1.038,1.016,1.061,0.000707,37687
-Requests about conditions inside the home,S4 by owner family (size bands vs 1 unit),2-4 units,1.646,1.354,2,5.54e-07,37687
-Requests about conditions inside the home,S4 by owner family (size bands vs 1 unit),5-19 units,2.124,1.689,2.67,1.15e-10,37687
-Requests about conditions inside the home,S4 by owner family (size bands vs 1 unit),20-99 units,2.749,2.112,3.58,5.89e-14,37687
-Requests about conditions inside the home,S4 by owner family (size bands vs 1 unit),100-999 units,2.984,1.99,4.476,1.25e-07,37687
-Requests about conditions inside the home,S4 by owner family (size bands vs 1 unit),"1,000+ units",2.904,1.862,4.53,2.59e-06,37687
-Requests about the outside of the property,S4 by owner family (size bands vs 1 unit),2-4 units,1.2,1.112,1.295,2.56e-06,37687
-Requests about the outside of the property,S4 by owner family (size bands vs 1 unit),5-19 units,1.254,1.144,1.375,1.4e-06,37687
-Requests about the outside of the property,S4 by owner family (size bands vs 1 unit),20-99 units,1.53,1.335,1.753,8.87e-10,37687
-Requests about the outside of the property,S4 by owner family (size bands vs 1 unit),100-999 units,1.232,0.978,1.551,0.0759,37687
-Requests about the outside of the property,S4 by owner family (size bands vs 1 unit),"1,000+ units",0.989,0.641,1.527,0.961,37687
+Requests about conditions inside the home,S3 by owner name,per doubling of the owner's Denver rental units,1.143,1.046,1.25,0.00314,37695
+Requests about conditions inside the home,S4 by owner family,per doubling of the owner's Denver rental units,1.087,1.034,1.144,0.00121,37695
+Requests about conditions inside the home,S5 by registry group,per doubling of the owner's Denver rental units,1.074,1.025,1.126,0.00292,37695
+Requests about the outside of the property,S3 by owner name,per doubling of the owner's Denver rental units,1.05,1.023,1.077,0.000206,37695
+Requests about the outside of the property,S4 by owner family,per doubling of the owner's Denver rental units,1.043,1.02,1.066,0.000191,37695
+Requests about the outside of the property,S5 by registry group,per doubling of the owner's Denver rental units,1.038,1.016,1.061,0.000713,37695
+Requests about conditions inside the home,S4 by owner family (size bands vs 1 unit),2-4 units,1.647,1.355,2.002,5.25e-07,37695
+Requests about conditions inside the home,S4 by owner family (size bands vs 1 unit),5-19 units,2.123,1.688,2.67,1.2e-10,37695
+Requests about conditions inside the home,S4 by owner family (size bands vs 1 unit),20-99 units,2.754,2.118,3.581,4.01e-14,37695
+Requests about conditions inside the home,S4 by owner family (size bands vs 1 unit),100-999 units,2.979,1.988,4.463,1.23e-07,37695
+Requests about conditions inside the home,S4 by owner family (size bands vs 1 unit),"1,000+ units",2.913,1.87,4.538,2.28e-06,37695
+Requests about the outside of the property,S4 by owner family (size bands vs 1 unit),2-4 units,1.199,1.112,1.294,2.72e-06,37695
+Requests about the outside of the property,S4 by owner family (size bands vs 1 unit),5-19 units,1.252,1.142,1.373,1.65e-06,37695
+Requests about the outside of the property,S4 by owner family (size bands vs 1 unit),20-99 units,1.53,1.334,1.753,1.04e-09,37695
+Requests about the outside of the property,S4 by owner family (size bands vs 1 unit),100-999 units,1.229,0.976,1.549,0.0798,37695
+Requests about the outside of the property,S4 by owner family (size bands vs 1 unit),"1,000+ units",0.993,0.643,1.533,0.974,37695

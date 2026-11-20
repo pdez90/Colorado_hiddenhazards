@@ -162,6 +162,8 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
     j <- match(paste(rv$reg_source, rv$reg_src_id), paste(reg$source, reg$src_id))
     rv_key <- paste(rv$site_akey, toupper(trimws(rv$site_city)), sep = "|")[!is.na(j)]; rv_reg <- j[!is.na(j)]
   }
+  # records without a usable point are matched by name within the site's ZIP or town (20 Nov 2026), as in pipeline/build_sites.py
+  np_ok <- is.na(reg$lat) & nzchar(reg$nn)
   dl <- 250 / RE * 180 / pi
   res <- vector("list", nrow(S))
   for (k in seq_len(nrow(S))) {
@@ -176,6 +178,10 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
     if (nzchar(s$lkey)) { lm <- which(reg$lkey == s$lkey & !is.na(reg$lat)); lm <- lm[hav(s$lat, s$lon, reg$lat[lm], reg$lon[lm]) <= 250]; am <- union(am, lm) }
     # author-reviewed matches (data/raw/known_match_review.csv), as in pipeline/build_sites.py
     if (length(rv_key)) am <- union(am, rv_reg[rv_key == paste(s$akey, toupper(trimws(ifelse(is.na(s$city), "", s$city))), sep = "|")])
+    sc <- toupper(trimws(ifelse(is.na(s$city), "", s$city)))
+    npc <- which(np_ok & ((!is.na(s$zip) & nzchar(s$zip) & reg$zip5 == s$zip) | (nzchar(sc) & reg$city_u == sc)))
+    npc <- setdiff(npc, am)
+    npm <- if (length(names) && length(npc)) npc[vapply(npc, function(j) any(vapply(names, function(n) name_match(reg$nn[j], n), TRUE)), TRUE)] else integer()
     rec <- list(); basis <- character()   # evidence behind every hit, over all tiers: 'entity' (name or address), 'boundary', 'prox'
     for (tier in names(RULES)) {
       ct <- R$tier[ii] == tier; cj <- ii[ct]; cd <- d[ct]
@@ -187,6 +193,8 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
       hits <- c(sprintf("%s [%s; name match, %d m]", R$name[cj[nmok]], src_lab(R$source[cj[nmok]]), as.integer(cd[nmok])),
                 sprintf("%s [%s; %d m]", R$name[cj[!nmok & cd <= r_eff]], src_lab(R$source[cj[!nmok & cd <= r_eff]]), as.integer(cd[!nmok & cd <= r_eff])))
       a <- am[reg$tier[am] == tier]; hits <- c(hits, if (length(a)) sprintf("%s [%s] (address match)", reg$name[a], src_lab(reg$source[a])))
+      np_j <- sort(npm[reg$tier[npm] == tier]); hits <- c(hits, if (length(np_j)) sprintf("%s [%s] (name match in the same town; record has no map point)", reg$name[np_j], src_lab(reg$source[np_j])))
+      a <- c(a, np_j)
       nb <- if (tier == "cleanup") near_b[[k]] else list(j = integer(), m = numeric())
       if (tier == "cleanup" && length(inside[[k]])) hits <- c(hits, sprintf("%s [%s] (inside site boundary)", PG$name[inside[[k]]], sub("CDPHE_", "CDPHE ", PG$source[inside[[k]]])))
       if (length(nb$j)) hits <- c(hits, sprintf("%s [%s]; %d m from site boundary", PG$name[nb$j], sub("CDPHE_", "CDPHE ", PG$source[nb$j]), as.integer(nb$m)))

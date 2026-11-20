@@ -201,7 +201,7 @@ HOLC <- st_make_valid(st_transform(st_read(file.path(A, "holc_denver.geojson"), 
 G[, holc := { w <- st_within(pts, HOLC); vapply(w, function(i) if (length(i)) HOLC$grade[i[1]] else "Not graded", "") }]
 Z29 <- st_make_valid(st_transform(st_read(file.path(A, "zoning_1929.geojson"), quiet = TRUE), UTM))
 G[, zone_1929 := { w <- st_within(pts, Z29); vapply(w, function(i) if (length(i)) as.character(Z29$zone[i[1]]) else "Residence or business (not mapped)", "") }]
-TR <- st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM)
+TR <- st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM)
 G[, GEOID := TR$GEOID[vapply(st_within(pts, TR), function(i) if (length(i)) i[1] else NA_integer_, 1L)]]
 # a change placed at a street crossing lies on a tract boundary and can fall in a sliver between the simplified outlines: nearest tract within 60 m
 { u <- which(is.na(G$GEOID)); if (length(u)) { nf <- st_nearest_feature(pts[u, ], TR); dd <- as.numeric(st_distance(pts[u, ], TR[nf, ], by_element = TRUE)); G[u[dd <= 60], GEOID := TR$GEOID[nf[dd <= 60]]] } }

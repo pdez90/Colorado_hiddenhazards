@@ -140,7 +140,7 @@ setnames(CNT, c("Conditions inside the home", "Outside of the property"), c("n_i
 B <- merge(B, CNT, by = "bkey", all.x = TRUE); for (cc in c("n_inside", "n_outside")) { if (!cc %in% names(B)) B[, (cc) := 0]; set(B, which(is.na(B[[cc]])), cc, 0) }
 # ---------------------------------------------------------------- where buildings are
 pts <- st_as_sf(B[, .(ux, uy)], coords = c("ux", "uy"), crs = UTM)
-TR <- st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM); TR <- TR[substr(TR$GEOID, 1, 5) == "08031", ]
+TR <- st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM); TR <- TR[substr(TR$GEOID, 1, 5) == "08031", ]
 B[, GEOID := TR$GEOID[vapply(st_within(pts, TR), function(i) if (length(i)) i[1] else NA_integer_, 1L)]]
 HOLC <- st_make_valid(st_transform(st_read(file.path(A, "holc_denver.geojson"), quiet = TRUE), UTM)); HOLC <- HOLC[HOLC$grade %in% c("A", "B", "C", "D"), "grade"]
 B[, holc := { w <- st_within(pts, HOLC); vapply(w, function(i) if (length(i)) HOLC$grade[i[1]] else "Not graded", "") }]

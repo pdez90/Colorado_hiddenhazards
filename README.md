@@ -96,30 +96,30 @@ from `build_sites`.
 
 ## Key results (the 13 complete editions, as published in `data/` and the app)
 
-*Note (20 November 2026): every file below was regenerated in the rerun of 19–20 November 2026 (`bash rerun_results.sh`). Since 13 November every hazardous-sector listing was checked against its page and corrected (10,586 review rows, all applied), misread names and streets were unified across editions, the 1940 rents were converted to monthly dollars, a record at the same street address within 250 m (street type and unit ignored) now makes a site known, and the State address-point check was rerun on the published sites. Result: hazardous-sector sites 3,129 (3,565 before the scan review), 969 of them in Denver; 1,004 on no inventory (1,284 before), 784 of them high confidence. The app's "Appendix: assumptions" tab lists every assumption and decision.*
+*Note (20 November 2026): every file below was regenerated in the rerun of 19–20 November 2026 (`bash rerun_results.sh`). Since 13 November every hazardous-sector listing was checked against its page and corrected (10,586 review rows, all applied), misread names and streets were unified across editions, the 1940 rents were converted to monthly dollars, a record at the same street address within 250 m (street type and unit ignored) now makes a site known, and the State address-point check was rerun on the published sites. Result: hazardous-sector sites 3,129 (3,565 before the scan review), 969 of them in Denver; 997 on no inventory (1,284 before), 779 of them high confidence. The app's "Appendix: assumptions" tab lists every assumption and decision.*
 
-*Note (13 November 2026): every file below was regenerated in the full rerun of 13 November 2026, after the fourth review (`bash rerun_results.sh` reruns the result scripts in order). Three things changed since the run of 3 November. (1) The 1961–2002 directory was parsed again (Method 1): hazardous-sector sites 3,487 → 3,565, on no inventory 1,242 → 1,284. (2) The pre-1960 layer had a third hand review, of every entry extracted without a town (`data/historical/notown_review.csv`; see "Before 1960"): 4,822 → 6,038 listings, Denver street-level hazardous-sector firm-locations 266 → 390. (3) Analysis fixes: the legacy tract models align tract areas by GEOID (`R/corridors.R`); a site is a firm of a decade only with a hazardous listing in it, the firms column is the study-area count and the pooled standard errors are clustered by tract (`R/denver_tracts_1950_2020.R`); the districts column is each model's n and the firms column counts firms inside districts (`R/denver_eds_analysis.R`); HOLC densities and the D/C ratio come from unrounded areas (`R/holc_covenants.R`); a site belongs to Denver by its own tract (`R/zoning_2023.R`, `R/zoning_over_time.R`); a zone-map change that falls in a sliver between tract outlines goes to the nearest tract within 60 m (`R/rezoning_denver.R`); the same-side parcel match is limited to parcels fewer than 100 house numbers away, the M-IMX district is recognised as industrial mixed use and dwelling units are counted once per parcel (`R/site_fate.R`); `R/mortality_block.R` accounts for every death; and the health placebo is limited to manufacturers, SIC 20–39. Still in force from the audit of 3 November: a same-address match to an inventory record more than 250 m away is not counted (it was a geocoding error, not the same lot); the pre-1960 parser does not read lodges, union halls and depots as works, keeps 1950 entries that print two addresses at town level, and moves 1956 out-of-town listings to their town; condominium parcels are classed by use; DIA, campus and hospital districts are civic in the 2023 zoning layer; and the rebuilt-site mortality models (`R/mortality_redevelopment.R`) are restricted to the City and County of Denver. The tract health models and the block-group mortality model were rerun the same day in R from the restricted records kept on the analyst's machine (`R/prepare_health_inputs.R` → `R/build_exposures.R` → `R/health_models.R`, `R/mortality_bg.R`; the last step of `rerun_results.sh`).*
+*Note (13 November 2026): every file below was regenerated in the full rerun of 13 November 2026, after the fourth review (`bash rerun_results.sh` reruns the result scripts in order). Three things changed since the run of 3 November. (1) The 1961–2002 directory was parsed again (Method 1): hazardous-sector sites 3,487 → 3,565, on no inventory 1,242 → 1,284. (2) The pre-1960 layer had a third hand review, of every entry extracted without a town (`data/historical/notown_review.csv`; see "Before 1960"): 4,822 → 5,977 listings, Denver street-level hazardous-sector firm-locations 266 → 380. (3) Analysis fixes: the legacy tract models align tract areas by GEOID (`R/corridors.R`); a site is a firm of a decade only with a hazardous listing in it, the firms column is the study-area count and the pooled standard errors are clustered by tract (`R/denver_tracts_1950_2020.R`); the districts column is each model's n and the firms column counts firms inside districts (`R/denver_eds_analysis.R`); HOLC densities and the D/C ratio come from unrounded areas (`R/holc_covenants.R`); a site belongs to Denver by its own tract (`R/zoning_2023.R`, `R/zoning_over_time.R`); a zone-map change that falls in a sliver between tract outlines goes to the nearest tract within 60 m (`R/rezoning_denver.R`); the same-side parcel match is limited to parcels fewer than 100 house numbers away, the M-IMX district is recognised as industrial mixed use and dwelling units are counted once per parcel (`R/site_fate.R`); `R/mortality_block.R` accounts for every death; and the health placebo is limited to manufacturers, SIC 20–39. Still in force from the audit of 3 November: a same-address match to an inventory record more than 250 m away is not counted (it was a geocoding error, not the same lot); the pre-1960 parser does not read lodges, union halls and depots as works, keeps 1950 entries that print two addresses at town level, and moves 1956 out-of-town listings to their town; condominium parcels are classed by use; DIA, campus and hospital districts are civic in the 2023 zoning layer; and the rebuilt-site mortality models (`R/mortality_redevelopment.R`) are restricted to the City and County of Denver. The tract health models and the block-group mortality model were rerun the same day in R from the restricted records kept on the analyst's machine (`R/prepare_health_inputs.R` → `R/build_exposures.R` → `R/health_models.R`, `R/mortality_bg.R`; the last step of `rerun_results.sh`).*
 
 
 * 45,718 listings in the 13 complete editions (1965–1992) → 22,067 establishments; **3,129 hazardous-sector sites** located at street level.
-* **1,004 (32%) are on no current federal or state inventory** (784 of them high confidence); 606 (19%) are on a cleanup or contamination
-  list; 276 report to TRI; 895 are known only as RCRA hazardous-waste handlers; 348 have only other EPA permits or solid-waste records.
+* **997 (32%) are on no current federal or state inventory** (779 of them high confidence); 608 (19%) are on a cleanup or contamination
+  list; 279 report to TRI; 891 are known only as RCRA hazardous-waste handlers; 354 have only other EPA permits or solid-waste records.
 * 1,121 sites hosted two or more hazardous-sector firms over time.
 * **How much "hidden" depends on the matching rule** (`R/known_hidden_sensitivity.R`; `data/results/known_hidden/summary.md`).
-  892 of the 2,125 known sites (42%) are known only because a differently named record lies within the tier's radius (or a cleanup
+  884 of the 2,132 known sites (41%) are known only because a differently named record lies within the tier's radius (or a cleanup
   boundary within 40 m): for 46% of them the nearest such record is an RCRA hazardous-waste handler and for 34% another EPA permit, and
-  80% lie 10–40 m away. Counting only a record with the same name or at the same address, or a cleanup boundary, 1,896 sites (61%) are on
-  no inventory; counting proximity only within 25 m, 1,409 (45%); counting proximity only to cleanup and TRI records, 1,594 (51%); with
-  every radius doubled, 577 (18%). The published 33% sits toward the low end of that range. An address match to a differently named
-  record is counted as the same entity (the contamination belongs to the lot): about 553 sites are known by address only, to a record whose
+  80% lie 10–40 m away. Counting only a record with the same name or at the same address, or a cleanup boundary, 1,881 sites (60%) are on
+  no inventory; counting proximity only within 25 m, 1,400 (45%); counting proximity only to cleanup and TRI records, 1,584 (51%); with
+  every radius doubled, 574 (18%). The published 32% sits toward the low end of that range. An address match to a differently named
+  record is counted as the same entity (the contamination belongs to the lot): about 549 sites are known by address only, to a record whose
   name shares no informative word with the hazardous firms listed there, but most of them also have a differently named record within the radius; counting
-  the roughly 100 that do not as hidden would raise the published share to about 35%, and counting all 512 hidden would raise the strict rule to about 77%
+  the roughly 100 that do not as hidden would raise the published share to about 35%, and counting all 509 hidden would raise the strict rule to about 76%
   (`python3 pipeline/address_only_name_check.py` → `known_hidden/address_only_name_check.csv`). The tract
   comparison does not depend on the rule: under each of the six rules, 2020 tracts that hold a hidden site have higher EnviroScreen 2.0
-  percentiles (medians 61 vs 43 in tracts with no hazardous-sector site), more low-income residents (24.9–26.4% vs 18.2%) and more
+  percentiles (medians 61 vs 43 in tracts with no hazardous-sector site), more low-income residents (24.9–26.4% vs 18.1%) and more
   adults without a high-school diploma (5.8–6.1% vs 4.4%), all p < 1e-4, but similar shares of people of color (28% vs 26%,
-  p = 0.03–0.09); and they do not differ from tracts with only known sites on any of the four measures (all p > 0.03; a low-powered
-  comparison on 59–262 known-only tracts).
+  p = 0.02–0.09); and they do not differ from tracts with only known sites on any of the four measures (all p > 0.02; a low-powered
+  comparison on 62–264 known-only tracts).
 
 ## All 25 editions, partial ones included (`data/full_inventory/`, rebuilt 13 November 2026 by `pipeline/build_full_inventory.sh`; kept for reference)
 
@@ -179,16 +179,11 @@ stated town and measured the distance to our point:
 (24 further lookups, 17 at address level and 7 approximate, returned several address points that disagree, so they could not be decided;
 our point was within 250 m of the nearest of them in 18 of the 24.)
 
-**Re-check on the final data** (17 October 2026, fresh random sample of 300 address-level and 100 approximate sites, queried from
-a browser in 20 batched requests; `data/results/geocoding_validation_addresspoints_recheck.csv`): address level n = 131 compared,
-median 67 m, 88% within 250 m, 3.8% (5 sites) over 1 km; approximate n = 32, median 97 m, 75% within 250 m, 12.5% over 1 km.
-All five address-level misses were Denver addresses printed without a direction ("4440 YATES", "4300 LIPAN", "4200 FOX",
-"4450 CHEROKEE", "4010 HOLLY") that the geocoder put on the north side of town while the State's address points only know the
-south-side address, 14–16 km away. The `dirambig` rule above does not catch them, because it searches for the directional twin
-only within the printed ZIP and its neighbours (12 km); these listings' printed ZIPs (80211, 80212, 80216) are north-Denver ZIPs,
-so the north-side placement may in fact be right and the State's point the wrong match. They stay at address level; treat them as
-unresolved. Addresses that do not exist today anywhere in the stated town (129 of the 167 unmatched address-level sites) cannot be
-checked.
+Six address-level sites lie more than 1 km from the State's point: 3110 Gilpin, 1365 Osage, 266 Knox Ct, 5131 Race Ct and
+2102 31st St in Denver, and 1841 Elm in Grand Junction. Denver addresses printed without a direction can match the State's point
+for the namesake on the other half of the grid (3110 Gilpin is 11 km and 5131 Race Ct 18 km from it), so these are unresolved
+rather than known errors; they stay as placed. An earlier check of 400 sites (17 October 2026) was drawn before the final rebuild
+and is superseded by this one.
 
 (Run on 20 November 2026 on the final sites; the State's service is not reachable from every network, so
 `validate_addresspoints.py` leaves the saved results in place when it cannot connect.) For 267 of the 700 address-level sites (38%) there is no matching address point today (the building is gone, the street was renumbered or
@@ -211,7 +206,7 @@ city. 113 sites moved by more than 1 km. Address-level points over 1 km from the
 **How to read it.** `address` points are good to about a city block (median ~50 m, 94% within 250 m), with roughly 1–3% badly wrong,
 mostly because of misread house numbers. `address_approx` points are right to the street or neighbourhood but about 1 in 10 are more
 than 1 km off; check them before field work. Listings placed only at a ZIP or city centroid are in the edition CSVs but not on the map.
-Coverage varies by edition: 30–65% of listings geocode at address level (40–77% including approximate placements) (`data/results/geocoding_coverage_by_year.csv`).
+Coverage varies by edition: 30–65% of listings geocode at address level (40–78% including approximate placements) (`data/results/geocoding_coverage_by_year.csv`).
 
 **Pre-1960 layer.** Most entries (about 87%; 84% of firm-locations) are placed only at the town centre and are drawn as clusters. Street-level placement uses
 today's numbering, which applies to Denver after the 1887 renumbering, but later street renamings are not handled and these points have
@@ -243,19 +238,19 @@ Coefficients for 1 SD more exposure, spatial error models (standard errors in pa
 
 | Outcome | Hidden sites, M4 (per SD) | Known historical, M4 | Placebo (non-hazardous mfrs), M4+placebo | ΔAIC M3→M4 | LR p (M4 vs M3) |
 |---|---|---|---|---|---|
-| Asthma hospitalization rate (log) | 0.008 (0.038) | 0.080 (0.048) | 0.004 (0.045) | 1.9 | 0.837 |
-| Low birth weight (%) | -0.044 (0.154) | 0.180 (0.191) | -0.034 (0.181) | 1.9 | 0.776 |
-| Life expectancy (years) | -0.057 (0.141) | -0.312 (0.176) | -0.457 (0.168)** | 1.9 | 0.688 |
-| Heart disease (index) | 0.132 (0.895) | -1.185 (1.087) | 3.411 (1.084)** | 2.0 | 0.883 |
-| Cancer (index) | -0.851 (0.854) | 0.106 (1.043) | -0.039 (1.030) | 1.0 | 0.319 |
-| Diabetes (index) | 0.007 (0.818) | 0.566 (0.986) | 2.099 (0.999)* | 2.0 | 0.993 |
-| Poor mental health (%) | -0.091 (0.083) | 0.059 (0.102) | -0.042 (0.098) | 0.8 | 0.269 |
+| Asthma hospitalization rate (log) | 0.009 (0.038) | 0.078 (0.048) | 0.003 (0.045) | 2.0 | 0.818 |
+| Low birth weight (%) | -0.047 (0.153) | 0.189 (0.191) | -0.032 (0.181) | 1.9 | 0.758 |
+| Life expectancy (years) | -0.044 (0.141) | -0.323 (0.176) | -0.463 (0.168)** | 1.9 | 0.758 |
+| Heart disease (index) | 0.159 (0.893) | -1.252 (1.088) | 3.409 (1.084)** | 2.0 | 0.859 |
+| Cancer (index) | -0.882 (0.852) | 0.144 (1.044) | -0.052 (1.030) | 0.9 | 0.301 |
+| Diabetes (index) | 0.015 (0.815) | 0.570 (0.987) | 2.061 (1.000)* | 2.0 | 0.985 |
+| Poor mental health (%) | -0.087 (0.082) | 0.055 (0.102) | -0.043 (0.098) | 0.9 | 0.294 |
 
 **Reading.** Unadjusted, tracts with more hidden sites have more asthma hospitalizations, lower life expectancy and more heart disease
 and diabetes. Most of that goes away with SES and demographics, and the rest goes away once regulated hazards (above all
 cleanup-site density) are in the model: hidden sites add explanatory power for none of the seven outcomes (the smallest likelihood-ratio
-p, for poor mental health, is 0.269, with a protective sign, −0.09 points per SD; for the other six it is 0.32 or more). Known
-historical sites go with slightly lower life expectancy (−0.31 years per SD), but not significantly (p = 0.077), and with no other outcome. The
+p, for poor mental health, is 0.294, with a protective sign, −0.09 points per SD; for the other six it is 0.30 or more). Known
+historical sites go with slightly lower life expectancy (−0.32 years per SD), but not significantly (p = 0.067), and with no other outcome. The
 placebo is stronger than the hidden sites (life expectancy −0.46 years per SD, heart disease +3.4, diabetes +2.1, all p < 0.05). So at the
 tract level, with these outcomes, the association is with industrial land use generally, not specifically with unregulated hazardous sites.
 This does not show hidden hazards are harmless: tract averages and modelled outcomes are blunt, and many cleanup sites are themselves
@@ -274,22 +269,22 @@ Block groups: 3439, natural-cause deaths 2015-2019: 158,758
 |---|---|---|---|---|---|---|
 | natural-cause | M1 SES+age+PM2.5 |  |  |  |  | 30738.9 |
 | natural-cause | M2 +regulated |  |  |  | 1.027 (0.993–1.062) | 30736.0 |
-| natural-cause | M3 +known historical |  | 1.026 (0.986–1.066) |  | 1.016 (0.978–1.055) | 30735.8 |
-| natural-cause | M4 +hidden | 1.036 (1.001–1.072)* | 1.005 (0.963–1.050) |  | 1.009 (0.970–1.048) | 30732.0 |
-| natural-cause | M4 hidden high-confidence only | 1.012 (0.979–1.047) | 1.019 (0.977–1.062) |  | 1.013 (0.975–1.053) | 30737.1 |
-| natural-cause | Placebo: M2 +non-hazardous mfrs |  |  | 1.055 (1.014–1.099)* | 0.997 (0.957–1.038) | 30727.1 |
-| natural-cause | M4 +placebo | 1.025 (0.988–1.064) | 0.998 (0.955–1.041) | 1.044 (0.998–1.092) | 0.993 (0.952–1.035) | 30728.2 |
+| natural-cause | M3 +known historical |  | 1.026 (0.986–1.067) |  | 1.015 (0.978–1.054) | 30735.7 |
+| natural-cause | M4 +hidden | 1.035 (1.000–1.071)* | 1.006 (0.963–1.051) |  | 1.009 (0.970–1.048) | 30732.1 |
+| natural-cause | M4 hidden high-confidence only | 1.012 (0.978–1.046) | 1.019 (0.977–1.063) |  | 1.013 (0.975–1.053) | 30737.1 |
+| natural-cause | Placebo: M2 +non-hazardous mfrs |  |  | 1.055 (1.014–1.099)* | 0.997 (0.958–1.038) | 30727.2 |
+| natural-cause | M4 +placebo | 1.025 (0.988–1.064) | 0.998 (0.956–1.042) | 1.044 (0.998–1.092) | 0.993 (0.952–1.035) | 30728.3 |
 | all-cause | M1 SES+age+PM2.5 |  |  |  |  | 31421.8 |
 | all-cause | M2 +regulated |  |  |  | 1.034 (1.002–1.067)* | 31414.2 |
-| all-cause | M3 +known historical |  | 1.033 (0.996–1.073) |  | 1.019 (0.984–1.055) | 31412.1 |
-| all-cause | M4 +hidden | 1.035 (1.001–1.069)* | 1.014 (0.973–1.056) |  | 1.012 (0.976–1.049) | 31408.2 |
-| all-cause | M4 hidden high-confidence only | 1.013 (0.981–1.046) | 1.026 (0.986–1.068) |  | 1.016 (0.980–1.054) | 31413.3 |
+| all-cause | M3 +known historical |  | 1.034 (0.996–1.073) |  | 1.019 (0.983–1.055) | 31412.0 |
+| all-cause | M4 +hidden | 1.034 (1.001–1.069)* | 1.014 (0.973–1.057) |  | 1.012 (0.976–1.049) | 31408.3 |
+| all-cause | M4 hidden high-confidence only | 1.012 (0.980–1.045) | 1.027 (0.987–1.069) |  | 1.016 (0.980–1.053) | 31413.3 |
 | all-cause | Placebo: M2 +non-hazardous mfrs |  |  | 1.056 (1.016–1.096)* | 1.003 (0.966–1.042) | 31404.3 |
-| all-cause | M4 +placebo | 1.025 (0.989–1.062) | 1.006 (0.966–1.048) | 1.042 (0.998–1.087) | 0.997 (0.959–1.037) | 31404.4 |
+| all-cause | M4 +placebo | 1.024 (0.989–1.061) | 1.007 (0.966–1.049) | 1.042 (0.998–1.087) | 0.997 (0.959–1.037) | 31404.5 |
 
 With the regulated hazards and the known historical sites in the model, hidden sites carry a small association with mortality that
-only just reaches the conventional threshold (natural causes 1.036 per SD, 95% CI 1.001–1.072, p = 0.045; all causes 1.035, 1.001–1.069, p = 0.040), the
-high-confidence subset carries none (1.012, 0.979–1.047), and known historical sites none (1.005). The non-hazardous-manufacturer
+only just reaches the conventional threshold (natural causes 1.035 per SD, 95% CI 1.000–1.071, p = 0.047; all causes 1.034, 1.001–1.069, p = 0.044), the
+high-confidence subset carries none (1.012, 0.978–1.046), and known historical sites none (1.006). The non-hazardous-manufacturer
 placebo is larger and clearly significant (1.055, 1.014–1.099), and with it in the model the hidden-site ratio is no longer
 distinguishable from 1 (1.025, 0.988–1.064). The same pattern as the tract analysis: mortality is higher around historical industry
 generally, and these data cannot attribute it to the hidden hazardous sites specifically. Age adjustment is limited to block-group age
@@ -376,7 +371,7 @@ from 24% to 8% while its dissimilarity stayed at 0.13–0.26; the Hispanic share
 ### Denver 1880: who lived next to the hazardous trades? (`R/denver_1880.R`)
 
 Brown University's Urban Transition HGIS geocoded the full 1880 census of Denver to buildings and drew the 17 enumeration districts and
-the 1880 street grid. `R/denver_1880.R` places the 84 hazardous-trade firms of the 1878–1885 business directories that are listed in Denver with a street (smelters, foundries,
+the 1880 street grid. `R/denver_1880.R` places the 83 hazardous-trade firms of the 1878–1885 business directories that are listed in Denver with a street (smelters, foundries,
 powder agents, gas works, assay offices…) on that grid by their printed house numbers — the same pre-1887 numbering Brown used, so this
 does not depend on today's streets — and measures every resident's distance to the nearest one. 54 firms are placed (48 at the building
 or within a few house numbers). Results (`data/results/denver_1880/`, aggregates only; Brown's files stay in `work/census/brown/` under
@@ -384,15 +379,15 @@ their conditions of use):
 
 | band | residents | % foreign born | % German | % Black | % Chinese | % laborers (employed adults) | mean SEI (employed adults) |
 |---|---|---|---|---|---|---|---|
-| < 100 m | 10,216 | 27.2 | 5.4 | 2.6 | 1.7 | 10.9 | 31.9 |
-| 100–250 m | 9,218 | 23.8 | 4.3 | 4.9 | 0.4 | 10.7 | 31.3 |
-| 250–500 m | 6,340 | 23.8 | 4.1 | 1.5 | 0.0 | 11.3 | 31.6 |
-| > 500 m | 8,612 | 24.1 | 3.4 | 1.7 | 0.0 | 19.0 | 28.3 |
+| < 100 m | 9,929 | 27.8 | 5.5 | 2.3 | 1.8 | 11.1 | 31.9 |
+| 100–250 m | 8,386 | 24.1 | 4.6 | 4.9 | 0.4 | 11.5 | 30.7 |
+| 250–500 m | 6,808 | 23.4 | 3.8 | 2.2 | 0.0 | 10.5 | 32.1 |
+| > 500 m | 9,263 | 23.6 | 3.3 | 1.8 | 0.0 | 17.9 | 28.9 |
 
-Person-level models (odds ratio per log-metre of distance, building-clustered SE; < 1 = lived closer): foreign born 0.945 (p = 0.03),
-Black 0.891 (p = 0.045), Chinese 0.31 (p < 1e-10), German-born 0.87 (p = 0.0002), Irish 1.02 (n.s.); employed adults' SEI fell by 1.0 per
-log-metre (p = 0.006), and unskilled laborers (Duncan SEI 8) were more common farther out (OR 1.21), in the cheap land beyond the
-built-up core. In 1880 the hazardous trades were concentrated in the lower-downtown districts (ED 10 alone holds 16 of the 48 firms placed at a building or house number) where the foreign-born and Black shares were highest; the `laborer`
+Person-level models (odds ratio per log-metre of distance, building-clustered SE; < 1 = lived closer): foreign born 0.929 (p = 0.00),
+Black 0.915 (p = 0.142), Chinese 0.33 (p < 1e-10), German-born 0.85 (p = 0.0000), Irish 1.00 (n.s.); employed adults' SEI fell by 0.7 per
+log-metre (p = 0.032), and unskilled laborers (Duncan SEI 8) were more common farther out (OR 1.17), in the cheap land beyond the
+built-up core. In 1880 the hazardous trades were concentrated in the lower-downtown districts (ED 10 alone holds 15 of the 48 firms placed at a building or house number) where the foreign-born and Black shares were highest; the `laborer`
 pattern is the opposite of what the later tract panel shows for poverty, a reminder that "far from industry" meant the undeveloped
 fringe in a 35,000-person city. `occlabelB` in Brown's microdata is an undocumented occupation-string id; SEI (`seiusB`, 0 = no
 occupation) is the documented measure and is used for both the laborer flag and the SEI results.
@@ -419,13 +414,13 @@ come from sf (GEOS ≥ 3.11).
 
 **All fields (IPUMS extract with 43 variables, 64 measures per district; `ed_year_groups.csv`, `ed_distance_models.csv`).** The
 housing market reads the hazard as expected in tenure and in 1940 rents: owner-occupancy rises 11.0 (1900) to 19.7 (1910) points
-per log-metre from the nearest firm in every census 1900–1940 (18.4 in 1940; pooled +17.4, p < 1e-100), mean SEI of employed residents rises 3.9–5.8 points, and
-non-relatives in the household (boarders, lodgers, servants) fall by 2.6–16.0 points; districts with a firm had 12–26% owner households
+per log-metre from the nearest firm in every census 1900–1940 (18.4 in 1940; pooled +17.2, p < 1e-100), mean SEI of employed residents rises 3.9–5.8 points, and
+non-relatives in the household (boarders, lodgers, servants) fall by 2.6–15.7 points; districts with a firm had 12–26% owner households
 against 32–48% elsewhere. The 1940 median rent was lower in the firm districts, $17 against $27 a month, and rises
 with distance (+6.5 dollars per log-metre, p < 0.001; about 3% of 1940 rents are recorded times 100 in the full count and are divided by 100). Recent immigrants (arrived within ten years) concentrate near
 industry 1900–1930; illiteracy is higher there; and in 1940, 79% of residents of the firm districts had moved house since 1935 against
 72% elsewhere (−4.9 points per log-metre, p < 1e-6) — the industrial districts were the city's high-turnover rental belt. Employment
-in the hazardous industries themselves shows no gradient without a control for distance to downtown (7–12% of workers everywhere); with that control they lived closer to the plants (−1.32 points per log-metre pooled, p < 0.001), so it cannot be said that the people living next to the plants were not, for the most part,
+in the hazardous industries themselves shows no gradient without a control for distance to downtown (7–12% of workers everywhere); with that control they lived closer to the plants (−1.31 points per log-metre pooled, p < 0.001), so it cannot be said that the people living next to the plants were not, for the most part,
 their workforce.
 
 `R/county_panel_1880_1940.R` gives the statewide counterpart: the full count by county on each census's county boundaries (NHGIS
@@ -443,18 +438,18 @@ descriptions cite industry, railroads, smoke or odours. In 1930 the future D are
 1.6% Hispanic and 7.2% laborers; by 1940 their Hispanic share was 9.9% (0.5–0.7% elsewhere). Afterwards the D tracts went to 37%
 Hispanic in 1970 and 57% in 2000. In the change models (`holc_tract_models.csv`; A = reference, 1940 baseline, 1940 % Black and
 1931–40 firms controlled; the Hispanic-share models start in 1970, the first census that identifies Hispanic residents comparably),
-the D tracts' Hispanic share rose 4.2 points more than the A tracts' 1970–80 (SE 3.1, HC1 p = 0.18) and 16.1 points more 1980–2010
-(9.4, p = 0.093; Conley 2 km p = 0.17); poverty rose 4.4 points more in D than in A tracts 1970–80 (2.1, p = 0.043; Conley p = 0.010)
-and 12.6 points 1980–2010 (3.9, p = 0.002; Conley p = 0.012); log home value fell 0.55 more 1940–80 (0.17, p = 0.002;
+the D tracts' Hispanic share rose 4.1 points more than the A tracts' 1970–80 (SE 3.1, HC1 p = 0.19) and 16.2 points more 1980–2010
+(9.5, p = 0.095; Conley 2 km p = 0.17); poverty rose 4.4 points more in D than in A tracts 1970–80 (2.1, p = 0.044; Conley p = 0.010)
+and 12.8 points 1980–2010 (4.0, p = 0.002; Conley p = 0.012); log home value fell 0.55 more 1940–80 (0.17, p = 0.002;
 Conley p = 0.001). Black share did not differ by grade once the 1940 baseline is controlled. Classes with fewer than five tracts are
 dropped from these models (the A reference class, four tracts, is kept), so the estimates are fragile; the D estimates for poverty
 1970–2010 and 1980–2010 and for home value 1940–80 and 1940–2010 hold under classical, HC1 and Conley errors (poverty 1980–2010 most
-narrowly: classical p = 0.022); the Hispanic-share estimate for 1970–2010 reaches p < 0.05 under classical errors only
-(0.032; HC1 p = 0.061, Conley p = 0.13), and the shorter Hispanic-share periods reach it under none.
+narrowly: classical p = 0.020); the Hispanic-share estimate for 1970–2010 reaches p < 0.05 under classical errors only
+(0.031; HC1 p = 0.063, Conley p = 0.14), and the shorter Hispanic-share periods reach it under none.
 27 of the covenant deeds also bar business or manufacturing use. HOLC also outlined ungraded "Industrial" and "Commercial"
 zones, and that is where the pre-1938 industry sat: 71% of the street-level hazardous trades listed before the map were in
 Commercial zones and 15% in Industrial ones, 11% in D areas and none in A or B (`holc_facility_shares.csv`). Classing the 1930
-districts by the HOLC class that covers them (`ed_holc_classes.csv`): the D districts, 7.3% Black in 1930, held 3.2 hazardous
+districts by the HOLC class that covers them (`ed_holc_classes.csv`): the D districts, 7.3% Black in 1930, held 3.1 hazardous
 firms per 10,000 residents before the map and 44 hazardous-sector sites per 10,000 in 1965–92, against 4.4 per 10,000 in A–C —
 the post-war industrial growth went into the redlined and industrial districts. The app's Redlining tab shows the 1930
 districts by class, covenants, composition and firms before/after the map, and the share of each era's facilities by HOLC class.
@@ -466,9 +461,9 @@ to 2020 (2010 tracts), both for all C vs all D areas and within a boundary band 
 firms per km² of each grade in six periods from 1891 to 2002 (`holc_industry_periods.csv`). At the C–D boundaries the Black-share gap
 was nil in 1900–1920, 4 points by 1930 and 6 by 1940 — before the map — then 10–18 points in 1950–1970 before converging after 1980;
 the Hispanic gap opens only in 1940 and after. Hazardous firms per km² per directory edition in D areas against C areas
-(`holc_industry_periods.csv`): 11.4× in 1906–20 (but on 16 firms in D against 2 in C), 5.8× in 1921–37 (15 against 5 firms) and 3.7×
-in 1938–56 (29 against 14), then 14.1× in 1965–80 (276 against 37) and 20.1× in 1981–92 (218 against 24); the pre-1938 ratios rest on a
-handful of street-level listings, and the fall from 1906–20 to 1921–37 came before the map. Reading: the appraisers ratified a divergence already under way; the step from 3.7× to 14.1× between
+(`holc_industry_periods.csv`): 11.0× in 1906–20 (but on 15 firms in D against 2 in C), 5.8× in 1921–37 (14 against 5 firms) and 3.8×
+in 1938–56 (28 against 12), then 14.1× in 1965–80 (276 against 37) and 20.1× in 1981–92 (218 against 24); the pre-1938 ratios rest on a
+handful of street-level listings, and the fall from 1906–20 to 1921–37 came before the map. Reading: the appraisers ratified a divergence already under way; the step from 3.8× to 14.1× between
 1938–56 and 1965–80 is a change of source (business directory to manufacturers' directory), not a measured acceleration, and within
 the manufacturers' directory the ratio rose from 14.1× to 20.1×. Railways and the 1925 zoning
 ordinance are not controlled, and Fishback, Rose, Snowden & Storrs (2024) show that FHA practice, not the HOLC map, governed lending,
@@ -525,7 +520,7 @@ within about 550 m of an industrial district, 58 were right when judged by eye o
 `Rscript R/zoning_1955.R` with 23 street intersections read off the scan and located on TIGER/Line 2023 address features
 (`gcps_1955.csv`): a second-order polynomial fits them with RMSE 13 m (leave-one-out 17 m; affine 21 m). Result: 15.5 km² of I-1 and
 17.3 km² of I-2 (`data/results/zoning_1955/`). On the land both earlier sheets cover, industrial zoning grew from 27.9 km² (1944) to
-32.5 km² (1955): 22.5 km² was industrial in both years, 10.0 km² was added and 5.3 km² dropped, 2.6 km² of the added land in D areas
+32.6 km² (1955): 22.6 km² was industrial in both years, 10.0 km² was added and 5.3 km² dropped, 2.6 km² of the added land in D areas
 (`zoning_over_time/zoning_land_by_year.csv`, `zoning_1944_1955_change.csv`; the two maps are each placed to within 20–30 m, so a few km² of the gross
 change along district boundaries is misregistration); D land zoned industrial went from 16.0% to 21.3%, and C areas lost almost all of their
 small industrial share (1.8% → 0.1%) (`zoning_by_holc_grade_years.csv`).
@@ -536,8 +531,8 @@ National Zoning Atlas layer, and the city's official zoning map today (`Rscript 
 data, layer CCD_Zoning/27, into `work/zoning_city/`; each district carries the year of the ordinance that last zoned it). Citywide
 maps between 1955 and 2010 are not digitised (Denver Public Library holds them in print). `Rscript
 R/zoning_over_time.R` writes to `data/results/zoning_over_time/`: industrial land by year and by HOLC grade on the 203 km² of Denver
-County covered by both 1929/1944 sheets (1929, 1944, 1955, 2023, today: 14.0% → 13.8% → 16.1% → 10.6% → 10.3%; D land 16.2% → 16.0%
-→ 21.3% → 12.4% → 12.2%); what the 1929 industrial land is zoned
+County covered by both 1929/1944 sheets (1929, 1944, 1955, 2023, today: 14.0% → 13.8% → 16.1% → 10.5% → 10.3%; D land 16.2% → 16.0%
+→ 21.3% → 12.4% → 12.3%); what the 1929 industrial land is zoned
 today and the year of its last zoning ordinance (an upper bound on when it left industrial zoning, since earlier rezonings are not
 recorded); the share of sites in industrial districts each year; tracts industrial in 1929 and/or today with their 1970–2020
 composition; and dissolved category polygons for the site's maps.
@@ -740,10 +735,10 @@ The manufacturers' directory starts in 1961, but Colorado's smelters, foundries,
 4. **Links firms** across editions (fuzzy names within a town) and to the 1961–2002 directory, by name in the same city or by a street
    address within 40 m of a later hazardous site.
 
-Result: 6,038 hazardous-trade listings → 3,702 firm-locations; 604 at a street address; 305 link to the 1961–2002 directory,
-giving 169 later sites (of the 13 complete editions) a documented pre-1960 hazardous precursor. The street-level layer is the weakest
+Result: 5,977 hazardous-trade listings → 3,689 firm-locations; 584 at a street address; 298 link to the 1961–2002 directory,
+giving 168 later sites (of the 13 complete editions) a documented pre-1960 hazardous precursor. The street-level layer is the weakest
 part of the pre-1960 data: the 1900+ volumes' text layers interleave two columns, so an entry often runs into its neighbour's, and a
-random check of 60 of the then 370 Denver street-level hazardous-trade placements (3 November 2026, seed 20261103; `data/historical/placement_check_2026-11-03.csv`) found 29 correct, 11 with a neighbouring listing's address or a garbled one, 11 whose firm is a neighbour's or not a works (sales branches, dealers), 2 from another town's section and 7 doubtful (all 1950, where the trade codes cover dealers as well as works): 24 of 60 clearly wrong (40%, 95% interval 29–53%), 13 of 60 (22%) if only location errors count (a wrong address or another town's section). Every listing the parser extracted was then read by hand against its page, in three reviews applied in that order by `pipeline/historical/geocode_hist.py`. (1) Every street-level placement (667 listings, 465 in Denver; `data/historical/street_review.csv`): 122 dropped as not works, 88 addresses and 58 names corrected, 20 moved to another town, and 41 doubtful kept with `review = doubtful`. (2) Every town-level listing (`data/historical/town_review.csv`, 6,908 listings, applied in `geocode_hist.py` after the street review): 2,320 dropped as not works (offices, dealers, mines, advertisements, neighbours' trades), 1,286 moved to another town, 85 given another hazardous sector, and 163 kept with `review = doubtful`; coal mines and dealers under the 1950 codes, and gas-company offices, advertisements and post-1930 distributors, had already been removed by rule in `run_hist.py` (manufactured gas 550 → 89 listings). (3) Every entry extracted without a town (`data/historical/notown_review.csv`, 2,860 entries, 13 November 2026): 1,371 kept, 62 kept with another hazardous sector and 61 kept as doubtful, each with the town and address read off the page (1,494 kept, 935 of them with a street), and 1,366 dropped as not works. Rows that a correction turned into copies of another listing of the same edition are collapsed. Two independent readers checked the reviews: before the town review a random sample of 120 town-level listings (`data/historical/town_level_check_2026-11-03.csv`) found 53% wrong, and after it, of the 82 sampled listings the review kept, the reader judged 8 differently (9.8%, 95% interval 5.0–18.1%); of a random sample of 120 no-town entries (`data/historical/notown_check_2026-11-13.csv`) the second reader kept all 53 that the review kept, 49 of them in the same town, and dropped none the review kept (the 18 the reader kept and the review dropped are repeated advertisements of firms that have a listing in the edition). Every one of the 10,387 extracted entries is accounted for (`tests/stages/test_stage_C_pre1960.py`): 6,038 published; 83 + 2,320 + 1,366 dropped as not works by the three reviews; 4 + 214 + 258 collapsed as copies; and 104 listings reviewed to vanished camps that cannot be placed. Towns whose name belongs to two places (Alpine, Gold Hill, Independence, Colorado City…) are placed at the right one by `data/historical/town_homonyms.csv`, for the years the entry can mean it, or left unplaced where that place has no point, never at the namesake; and the same printed name in the same town is one firm-location in every edition (`link_hist.py`; the previous run had split 116 names into 388 firm-locations). The radium-cure spas and baths (Placerville Radium Springs; the Hot Springs Hotel & Radium Cave Baths at Idaho Springs), first dropped as not works, are kept on purpose and flagged `RADIUMCURE` in the review notes (5 town-review and 3 no-town-review rows; 7 published listings), because they belong to the radium history below although they are not works. The remaining street layer (390 Denver hazardous-sector firm-locations, 36 of them doubtful) is hand-verified, not estimated. Two limits remain. The 104 unplaced listings (77 that had a town and 27 from the no-town review, in 52 towns, 26 of them from 1900 on) are in vanished camps (Parrot City, Robinson, Mosquito, Dora, Orodelfan…) for which the USGS gazetteer, even its 2021 archive, has no coordinates (`R/fetch_gnis_historical.R` adds what it has; older names of places that survive, such as Animas City and Oro City, are mapped by hand in `data/historical/town_aliases.csv`), so they are left out of the map and the counts. And the reviews checked what the parser extracted, not what it missed: the reviewers again saw classified headings whose firms had not been extracted, so works printed on the pages but never extracted are absent and the layer undercounts. The whole chain (`run_hist.py` → `geocode_hist.py` → `link_hist.py` → `app_hist.py`)
+random check of 60 of the then 370 Denver street-level hazardous-trade placements (3 November 2026, seed 20261103; `data/historical/placement_check_2026-11-03.csv`) found 29 correct, 11 with a neighbouring listing's address or a garbled one, 11 whose firm is a neighbour's or not a works (sales branches, dealers), 2 from another town's section and 7 doubtful (all 1950, where the trade codes cover dealers as well as works): 24 of 60 clearly wrong (40%, 95% interval 29–53%), 13 of 60 (22%) if only location errors count (a wrong address or another town's section). Every listing the parser extracted was then read by hand against its page, in three reviews applied in that order by `pipeline/historical/geocode_hist.py`. (1) Every street-level placement (667 listings, 465 in Denver; `data/historical/street_review.csv`): 122 dropped as not works, 88 addresses and 58 names corrected, 20 moved to another town, and 41 doubtful kept with `review = doubtful`. (2) Every town-level listing (`data/historical/town_review.csv`, 6,908 listings, applied in `geocode_hist.py` after the street review): 2,320 dropped as not works (offices, dealers, mines, advertisements, neighbours' trades), 1,286 moved to another town, 85 given another hazardous sector, and 163 kept with `review = doubtful`; coal mines and dealers under the 1950 codes, and gas-company offices, advertisements and post-1930 distributors, had already been removed by rule in `run_hist.py` (manufactured gas 550 → 89 listings). (3) Every entry extracted without a town (`data/historical/notown_review.csv`, 2,860 entries, 13 November 2026): 1,371 kept, 62 kept with another hazardous sector and 61 kept as doubtful, each with the town and address read off the page (1,494 kept, 935 of them with a street), and 1,366 dropped as not works. Rows that a correction turned into copies of another listing of the same edition are collapsed. Two independent readers checked the reviews: before the town review a random sample of 120 town-level listings (`data/historical/town_level_check_2026-11-03.csv`) found 53% wrong, and after it, of the 82 sampled listings the review kept, the reader judged 8 differently (9.8%, 95% interval 5.0–18.1%); of a random sample of 120 no-town entries (`data/historical/notown_check_2026-11-13.csv`) the second reader kept all 53 that the review kept, 49 of them in the same town, and dropped none the review kept (the 18 the reader kept and the review dropped are repeated advertisements of firms that have a listing in the edition). Every one of the 10,387 extracted entries is accounted for (`tests/stages/test_stage_C_pre1960.py`): 5,977 published; 83 + 2,320 + 1,366 dropped as not works by the three reviews; 4 + 214 + 258 collapsed as copies; and 104 listings reviewed to vanished camps that cannot be placed. Towns whose name belongs to two places (Alpine, Gold Hill, Independence, Colorado City…) are placed at the right one by `data/historical/town_homonyms.csv`, for the years the entry can mean it, or left unplaced where that place has no point, never at the namesake; and the same printed name in the same town is one firm-location in every edition (`link_hist.py`; the previous run had split 116 names into 388 firm-locations). The radium-cure spas and baths (Placerville Radium Springs; the Hot Springs Hotel & Radium Cave Baths at Idaho Springs), first dropped as not works, are kept on purpose and flagged `RADIUMCURE` in the review notes (5 town-review and 3 no-town-review rows; 7 published listings), because they belong to the radium history below although they are not works. The remaining street layer (380 Denver hazardous-sector firm-locations, 35 of them doubtful) is hand-verified, not estimated. Two limits remain. The 104 unplaced listings (77 that had a town and 27 from the no-town review, in 52 towns, 26 of them from 1900 on) are in vanished camps (Parrot City, Robinson, Mosquito, Dora, Orodelfan…) for which the USGS gazetteer, even its 2021 archive, has no coordinates (`R/fetch_gnis_historical.R` adds what it has; older names of places that survive, such as Animas City and Oro City, are mapped by hand in `data/historical/town_aliases.csv`), so they are left out of the map and the counts. And the reviews checked what the parser extracted, not what it missed: the reviewers again saw classified headings whose firms had not been extracted, so works printed on the pages but never extracted are absent and the layer undercounts. The whole chain (`run_hist.py` → `geocode_hist.py` → `link_hist.py` → `app_hist.py`)
 must be rerun from `run_hist.py` after any parser change: the 31 October run reused a parse from 18 October, which is why its
 street-level counts (664; Denver 408) were higher than the current ones.
 

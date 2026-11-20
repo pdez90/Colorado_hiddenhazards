@@ -63,7 +63,7 @@ ES <- st_transform(st_read("app/data/enviroscreen_tracts.geojson", quiet = TRUE)
 j <- st_intersects(cen, ES); ei <- vapply(j, function(i) if (length(i)) i[1] else NA_integer_, 1L)
 esv <- c("low_income", "less_than_hs", "linguistic_isolation", "prox_hazwaste_pctl", "prox_npl_pctl")
 for (v in esv) D[[paste0("es_", v)]] <- suppressWarnings(as.numeric(ES[[v]]))[ei[names_idx]]
-den_tr <- st_read("app/data/co_tracts_2010.geojson", quiet = TRUE); den_tr <- den_tr[as.logical(den_tr$core) %in% TRUE | substr(den_tr$GEOID, 1, 5) == "08031", ]
+den_tr <- st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE); den_tr <- den_tr[as.logical(den_tr$core) %in% TRUE | substr(den_tr$GEOID, 1, 5) == "08031", ]
 D[, study_area := tract %in% den_tr$GEOID]
 # ---------------------------------------------------------------- 4. exposures
 pts <- function(d) { d <- d[!is.na(lat) & !is.na(lon)]; st_coordinates(st_transform(st_as_sf(d, coords = c("lon", "lat"), crs = 4326), UTM)) }

@@ -2,7 +2,8 @@
 #   Rscript R/app_census_layers.R            (run from the repository root, after fetch_census.R, ej_panel.R, corridors.R,
 #                                             fetch_ipums_fullcount.R and denver_1880.R)
 # Writes to app/data/:
-#   co_tracts_2010.geojson            all Colorado 2010 census tracts (simplified) with distance to downtown Denver and a Denver-core flag
+#   co_tracts_2010.geojson            all Colorado 2010 census tracts (simplified, for drawing only; analyses read the full-resolution
+#                                     data/geo/co_tracts_2010.gpkg) with distance to downtown Denver and a Denver-core flag
 #                                     (core = centroid within 10 km of downtown, any county; 147 tracts)
 #   tract_panel.csv                   tract x census year 1940-2020 (all Colorado tracts): population, % Black, % Hispanic, % foreign born, % poverty
 #                                     (NHGIS, area-weighted to 2010 tracts) + hazardous / all directory firms active in the
@@ -30,6 +31,10 @@ tr <- tr[substr(tr$GEOID, 1, 2) == "08", c("GEOID", "dist_km")]
 tr$core <- tr$dist_km <= 10   # study area of every tract analysis (ej_panel.R, denver_tracts_1950_2020.R, holc_covenants.R): 2010 tracts whose centroid is within 10 km of downtown, any county
 tr$area_km2 <- round(as.numeric(st_area(tr)) / 1e6, 3); tr$county <- substr(tr$GEOID, 1, 5)
 message(nrow(tr), " Colorado tracts, ", sum(tr$core), " in the Denver core")
+# the analysis layer keeps the full TIGER/NHGIS boundaries, so the tracts tile each county (FINDING 3 of 12 Nov 2026: the simplified
+# outlines left 91 slivers inside Denver County); the simplified copy is only for drawing in the app (20 Nov 2026)
+dir.create("data/geo", showWarnings = FALSE)
+st_write(st_transform(tr, 4326), "data/geo/co_tracts_2010.gpkg", delete_dsn = TRUE, quiet = TRUE)
 st_write(st_transform(st_simplify(tr, dTolerance = 40), 4326), file.path(A, "co_tracts_2010.geojson"), delete_dsn = TRUE, quiet = TRUE)
 
 cen <- fread(file.path(C, "denver_tract_panel.csv"), colClasses = c(GEOID = "character"))[GEOID %in% tr$GEOID]

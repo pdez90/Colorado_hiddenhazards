@@ -1,3 +1,3 @@
 variant,fe_hazard_sites,same_entity_sites,address_only_sites,no_shared_token,newly_hidden_published_rule,hidden_published_pct,newly_hidden_strict_rule,hidden_strict_pct,hidden_now,strict_hidden_now
-hazardous firm names only,3129,1130,670,553,100,35.3,512,77.0,1004,1896
-all firm names at the site,3129,1130,670,507,95,35.1,467,75.5,1004,1896
+hazardous firm names only,3129,1146,665,549,99,35.0,509,76.4,997,1881
+all firm names at the site,3129,1146,665,504,94,34.9,465,75.0,997,1881

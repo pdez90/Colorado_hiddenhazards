@@ -45,11 +45,16 @@ for town, g in H[H.nk == ''].groupby('town'):
         ix = gg.index.tolist()
         for b in ix[1:]: par[find(b)] = find(ix[0])
 st = H[H.precision == 'street']
+# at one street-level point, a similar whole name, or the same first 12 letters of the printed name: the 1950 and 1956 editions print
+# the proprietor after the firm ('Reliable Sheet Metal Robert J Oppelt' beside 'Reliable Sheet Metal'), which a whole-name comparison
+# misses (FINDING 3 of 12 Nov 2026; 20 Nov 2026)
+k12 = H.name.astype(str).str.upper().str.replace(r'[^A-Z0-9]', '', regex=True).str[:12]
 for (town, la, lo), g in st.groupby(['town', st.lat.round(5), st.lon.round(5)]):
-    idx = g.index.tolist(); fk = g.fk.tolist()
+    idx = g.index.tolist(); fk = g.fk.tolist(); kk = k12[idx].tolist()
     for a in range(len(idx)):
         for b in range(a + 1, len(idx)):
-            if len(fk[a]) >= 6 and len(fk[b]) >= 6 and fuzz.token_sort_ratio(fk[a], fk[b]) >= 85: par[find(idx[a])] = find(idx[b])
+            if ((len(fk[a]) >= 6 and len(fk[b]) >= 6 and fuzz.token_sort_ratio(fk[a], fk[b]) >= 85)
+                    or (len(kk[a]) == 12 and kk[a] == kk[b])): par[find(idx[a])] = find(idx[b])
 H['firm'] = [find(i) for i in range(len(H))]
 # --- a firm that moved is several firm-locations (scan check of 13 Nov 2026: 92 of 516 street-level firm-locations had merged
 # listings at different addresses). Within a firm: street-level listings within 60 m of each other are one location; a town-level
@@ -84,6 +89,16 @@ for f, g in H.groupby('firm'):
         y = H.at[i, 'year']; c = min(groups, key=lambda c: (min(abs(y - v) for v in c[5]), -len(c[4])))
         c[4].append(i); c[5].append(y)
     for c in groups: H.loc[c[4], 'hfirm'] = 'HF%05d' % (f if f in c[4] else min(c[4]))
+
+# a kept no-town entry (classified section, advert) that repeats a listing its firm-location already has in that edition and sector
+# under another spelling (1920 Vulcan Iron Works p.2433 beside Vulcan Iron Works Co p.937) is a second copy: the listing that had a
+# town is kept, and among no-town entries alone the first (20 Nov 2026; until then 58 copies were published)
+if 'entry_src' in H:
+    _d = H.assign(_o=(H.entry_src == 'notown').astype(int)).sort_values('_o', kind='stable')
+    _cp = _d.duplicated(['hfirm', 'year', 'sector']) & (_d.entry_src == 'notown')
+    print('no-town second copies dropped:', int(_cp.sum()))
+    _d[_cp].drop(columns=['_o', 'entry_src']).to_csv('data/historical/notown_copies_dropped.csv', index=False)   # every column, so the firm merges they took part in can be recomputed
+    H = H.drop(index=_d.index[_cp]).drop(columns='entry_src').reset_index(drop=True)
 
 # --- (b) link to 1961-2002 directory establishments (same city, similar name) and sites (same address)
 R = pd.read_pickle(os.path.join(REPO, 'work/inv/records_final.pkl'))

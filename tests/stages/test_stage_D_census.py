@@ -140,8 +140,8 @@ def ed_layer(yr):
 @functools.lru_cache(maxsize=None)
 def tracts():
     g = gpd()
-    need(APP / "co_tracts_2010.geojson")
-    T = g.read_file(APP / "co_tracts_2010.geojson").to_crs(UTM)
+    need(ROOT / "data" / "geo" / "co_tracts_2010.gpkg")
+    T = g.read_file(ROOT / "data" / "geo" / "co_tracts_2010.gpkg").to_crs(UTM)
     T["geometry"] = T.geometry.make_valid()
     T["core"] = T.core.astype(str).str.upper() == "TRUE"
     return T
@@ -231,8 +231,6 @@ def test_readme_1880_firm_count_matches_listings():
     assert m and int(m.group(1)) in ok
 
 
-@pytest.mark.xfail(strict=True, reason="FINDING 5: 3 of the 1878-79 firms carry their own address in the name (404 Lawrence, 377 Larimer, 433 Blake) "
-                                       "but are placed at a neighbouring entry's address (443 Holl, 491 Champa, 486 Larimer)")
 def test_1880_firm_placed_at_its_own_printed_address():
     """Catches a firm whose name still carries its printed address but whose street field (used for placement) is another entry's."""
     f = csv(RES / "denver_1880" / "firms_1878_1885_placed.csv")
@@ -348,13 +346,16 @@ class ManuscriptWordingPending(AssertionError):
 SPAN_RULE = "first_year <= yr & hp$last_year >= yr - 9"
 MS_DECADE_WORDING = r"list(?:ed|ings) (?:in|of) the ten years ending at"
 # firms of each census (all, without a listing inside [census-9, census]) under the span rule, recomputed in the test below
-SPAN_DENVER = {1900: (34, 1), 1910: (22, 2), 1920: (149, 0), 1930: (52, 9), 1940: (83, 2)}        # street-level Denver firms (district analysis)
-SPAN_STATE = {1900: (120, 5), 1910: (82, 9), 1920: (790, 0), 1930: (250, 23), 1940: (383, 10)}     # all placed firms (county panel)
+SPAN_DENVER = {1900: (34, 1), 1910: (22, 2), 1920: (146, 0), 1930: (51, 8), 1940: (81, 2)}        # street-level Denver firms (district analysis)
+SPAN_STATE = {1900: (120, 5), 1910: (82, 9), 1920: (789, 0), 1930: (250, 23), 1940: (382, 10)}     # all placed firms (county panel)
 
 
 def _ms_says_listed_in_the_decade():
     f = ROOT / "paper" / "Before_and_After_the_Map_manuscript.md"
-    return f.exists() and re.search(MS_DECADE_WORDING, f.read_text(encoding="utf-8")) is not None
+    # the manuscript may say 'listed in the ten years ending at the census' only where it also states the span rule for the sparse
+    # business-directory editions ('when the span from its first to its last listing overlaps them'), as it does since 13 Nov 2026
+    t = f.read_text(encoding="utf-8") if f.exists() else ""
+    return re.search(MS_DECADE_WORDING, t) is not None and "span from its first to its last listing" not in t
 
 
 @pytest.mark.xfail(_ms_says_listed_in_the_decade(), strict=True, raises=ManuscriptWordingPending,

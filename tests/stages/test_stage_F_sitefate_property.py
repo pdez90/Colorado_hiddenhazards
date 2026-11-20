@@ -142,7 +142,9 @@ def _rule(d, col):
     both = na.notna() & npn.notna()
     # rule 2 needs the same side AND the same block: fewer than 100 house numbers away (site_fate.R, review 5); farther is only "same street"
     gap = (na - npn).abs()
-    r = np.where(same & both & (na == npn), PM[0], np.where(same & both & (na % 2 == npn % 2) & (gap < 100), PM[1], np.where(same, PM[2], PM[3])))
+    # rule 3 needs fewer than 1,000 numbers between the two (site_fate.R, 20 Nov 2026): a parcel farther along the street is not the lot
+    near3 = same & (~both | (gap < 1000))
+    r = np.where(same & both & (na == npn), PM[0], np.where(same & both & (na % 2 == npn % 2) & (gap < 100), PM[1], np.where(near3, PM[2], PM[3])))
     return pd.Series(r, index=d.index), (na - npn).abs()
 
 
@@ -164,9 +166,6 @@ def test_same_street_and_side_match_stays_within_the_block(S, H):
         assert gap.notna().all() and (gap < 100).all()
 
 
-@pytest.mark.xfail(strict=True, reason="FINDING 2 (remains; ids renumbered): S08040 '267 W ALAMEDA AVE' sits on the parcel 3325 W ALAMEDA AVE (3,058 house numbers "
-                                       "away, now labelled 'same street, nearest parcel'): the site's address and coordinates disagree by about 3.8 km. In the "
-                                       "rebuilt pre-1960 layer HF02952 '1329 Walnut' and HF05049 '1327 Walnut' sit on 2536 WALNUT ST (1,200 numbers away)")
 def test_same_street_match_is_not_blocks_away(S, H):
     """A geocode that put the site far along its street from its printed house number, so that the parcel is not the site's lot."""
     for d, col, idc in ((S, "address", "site_id"), (H, "street", "hfirm")):
@@ -176,10 +175,10 @@ def test_same_street_match_is_not_blocks_away(S, H):
 
 
 def test_share_of_same_street_matches_a_block_or_more_away_stays_small(S):
-    """A geocoder regression that moves many sites along their streets (currently 39 of the 371 same-street matches are 100+ numbers away)."""
+    """A geocoder regression that moves many sites along their streets (38 of the 366 same-street matches are 100+ numbers away, 20 Nov 2026)."""
     d = S[S.parcel_match.isin(PM[1:3])].reset_index(drop=True)
     _, gap = _rule(d, "address")
-    assert gap.notna().all() and ((gap >= 100).sum(), len(d)) == (39, 367) and (gap >= 100).mean() <= 0.12
+    assert gap.notna().all() and ((gap >= 100).sum(), len(d)) == (38, 366) and (gap >= 100).mean() <= 0.12
 
 
 # ------------------------------------------------------------------------------------------------------------------
@@ -292,17 +291,14 @@ def _manuscript():
     return p.read_text(encoding="utf-8")
 
 
-@pytest.mark.xfail(strict=True, reason="TEXT PENDING: manuscript Results (site fate) still has the pre-rebuild counts '171 of the later sites are residential "
-                                       "parcels ... 96 of those 171 (56%) ... (136 have no cleanup record)' and 'For 108 of the 171 ... (45 were built later; 18 have "
-                                       "no date) ... Of the 96 ..., 75 ... Of the 47 pre-1960 trades now residential, 22'; site_fate_denver*.csv now give 183; 104 of "
-                                       "183 (57%); 143; 115 of 183 (51; 17); of the 104, 81; of the 75 pre-1960, 39")
 def test_manuscript_residential_site_counts(S, H):
-    """The manuscript's counts of residential sites (171; 96 on no list; 136 without a cleanup record; 108 / 45 / 18 by building date; 75; 47 and 22)."""
+    """The manuscript's counts of residential sites (on no list, without a cleanup record, by building date, pre-1960 trades); rewritten
+    with the text of 20 Nov 2026 ('118 of the later sites are residential, on 117 parcels holding ...')."""
     t = _manuscript()
     R = S[S.use_now == "Residential"]
     hid = R[R.radar == "Not on any list"]
     Hr = H[H.use_now == "Residential"]
-    m = re.search(r"([\d,]+) of the later sites are residential parcels.*?(\d+) of those \d+ \((\d+)%\) match no record.*?\((\d+) have no cleanup record\)", t)
+    m = re.search(r"([\d,]+) of the later sites are residential, on [\d,]+ parcels.*?(\d+) of those \d+ \((\d+)%\) match no record.*?\((\d+) have no cleanup record\)", t)
     assert m, "sentence not found"
     assert [int(m.group(i).replace(",", "")) for i in (1, 2, 4)] == [len(R), len(hid), int((R.radar != "Cleanup / contamination list").sum())]
     assert int(m.group(3)) == round(100 * len(hid) / len(R))
@@ -315,13 +311,10 @@ def test_manuscript_residential_site_counts(S, H):
     assert got == want
 
 
-@pytest.mark.xfail(strict=True, reason="TEXT PENDING (FINDING 1 fixed in site_fate.R, which now counts units once per parcel): the manuscript still says "
-                                       "'171 ... residential parcels holding 5,637 dwelling units'; the 183 residential sites stand on 180 parcels with 4,982 units "
-                                       "(5,555 if summed over sites)")
 def test_manuscript_dwelling_units_count_each_parcel_once(S):
     """Dwelling units double-counted where two or more sites share one parcel."""
     t = _manuscript()
-    m = re.search(r"residential parcels holding ([\d,]+) dwelling units", t)
+    m = re.search(r"residential, on [\d,]+ parcels holding ([\d,]+) dwelling units", t)
     assert m, "sentence not found"
     R = S[S.use_now == "Residential"]
     assert int(m.group(1).replace(",", "")) == int(R.drop_duplicates("SCHEDNUM").TOT_UNITS.sum())

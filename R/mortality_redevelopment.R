@@ -32,7 +32,7 @@ O <- "data/results/health"; dir.create(O, showWarnings = FALSE, recursive = TRUE
 # ---------------------------------------------------------------- 1. study-area blocks, yearly population and deaths
 # the City and County of Denver only: the rebuilt-site dates come from Denver's assessor parcels (R/site_fate.R), so suburban blocks would
 # see none of their own nearby sites and would enter as unexposed controls
-den_tr <- st_read("app/data/co_tracts_2010.geojson", quiet = TRUE); den_tr <- den_tr$GEOID[substr(den_tr$GEOID, 1, 5) == "08031"]
+den_tr <- st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE); den_tr <- den_tr$GEOID[substr(den_tr$GEOID, 1, 5) == "08031"]
 pad15 <- function(x) { x <- as.character(x); paste0(strrep("0", pmax(0, 15 - nchar(x))), x) }
 B <- st_read(file.path(HIA, "block_noyr.gpkg"), quiet = TRUE); B$bck <- pad15(B$bck)
 B <- B[substr(B$bck, 1, 11) %in% den_tr, ]; B <- st_transform(st_make_valid(B), UTM)

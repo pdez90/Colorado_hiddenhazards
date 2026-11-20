@@ -26,9 +26,11 @@ suppressPackageStartupMessages({ library(data.table); library(sf); library(terra
 sf_use_s2(FALSE); UTM <- 26913; W <- "work/context"; A <- "app/data"; O <- "data/results/context"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
 if (!dir.exists(W)) stop("run Rscript R/fetch_context_layers.R first")
 toUTM <- function(d, lon = "lon", lat = "lat") st_transform(st_as_sf(d, coords = c(lon, lat), crs = 4326, remove = FALSE), UTM)
-TR <- st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE); STUDY_IDS <- TR$GEOID[as.logical(TR$core) %in% TRUE | substr(TR$GEOID, 1, 5) == "08031"]
+TR <- st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE); STUDY_IDS <- TR$GEOID[as.logical(TR$core) %in% TRUE | substr(TR$GEOID, 1, 5) == "08031"]
 STUDY <- st_union(st_make_valid(st_transform(TR[TR$GEOID %in% STUDY_IDS, ], UTM)))
-in_study <- function(s) lengths(st_intersects(s, STUDY)) > 0
+# a point on a tract edge takes the nearest tract within about 100 m (pipeline/app_inputs.py), so the study area includes points within
+# 100 m of its outline: otherwise a Denver site with a Denver tract id could fall outside it (5151 S Syracuse, 6 m out; 20 Nov 2026)
+in_study <- function(s) lengths(st_is_within_distance(s, STUDY, 100)) > 0
 HOLC <- st_make_valid(st_transform(st_read(file.path(A, "holc_denver.geojson"), quiet = TRUE), UTM)); HOLC <- HOLC[HOLC$grade %in% c("A", "B", "C", "D"), "grade"]
 grade_of <- function(s) { w <- st_within(s, HOLC); vapply(w, function(i) if (length(i)) HOLC$grade[i[1]] else "ungraded", "") }
 # ---------------------------------------------------------------- the historical sites

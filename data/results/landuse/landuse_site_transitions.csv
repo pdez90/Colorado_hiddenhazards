@@ -1,5 +1,5 @@
 land_use_1977,land_use_1997,N,pct_of_1977_group
-Commercial,Commercial,550,97
+Commercial,Commercial,552,97
 Commercial,Open land,6,1.1
 Commercial,"Residential, multifamily",4,0.7
 Commercial,Industrial,3,0.5
@@ -13,19 +13,19 @@ Institutional,Institutional,15,62.5
 Institutional,Transportation,3,12.5
 Institutional,Commercial,3,12.5
 Institutional,Open land,3,12.5
-Open land,Industrial,44,42.3
-Open land,Open land,34,32.7
-Open land,Commercial,21,20.2
+Open land,Industrial,45,42.9
+Open land,Open land,34,32.4
+Open land,Commercial,21,20
 Open land,"Residential, single family",2,1.9
 Open land,Transportation,1,1
 Open land,Institutional,1,1
 Open land,Waste and extraction,1,1
 "Residential, multifamily","Residential, multifamily",16,94.1
 "Residential, multifamily",Commercial,1,5.9
-"Residential, single family","Residential, single family",98,83.8
+"Residential, single family","Residential, single family",99,83.9
 "Residential, single family",Commercial,10,8.5
-"Residential, single family",Industrial,9,7.7
-Transportation,Transportation,55,96.5
-Transportation,Commercial,1,1.8
-Transportation,Open land,1,1.8
+"Residential, single family",Industrial,9,7.6
+Transportation,Transportation,56,96.6
+Transportation,Commercial,1,1.7
+Transportation,Open land,1,1.7
 Waste and extraction,Commercial,1,100

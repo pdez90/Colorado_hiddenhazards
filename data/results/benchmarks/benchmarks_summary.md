@@ -30,11 +30,11 @@ Raw county files from Eckert, Fort, Schott & Yang (2021), NBER WP 26632 (github.
 
 | census | counties | census manufacturing establishments | directory hazardous trades (+/- 2 years) |
 |---|---|---|---|
-| 1880 | 31 |   599 | 279 |
+| 1880 | 31 |   599 | 278 |
 | 1890 | 56 | 1,518 | 165 |
 | 1920 | 60 | 2,626 | 232 |
-| 1930 | 35 | 1,452 | 238 |
-| 1940 | 59 | 1,298 | 292 |
+| 1930 | 35 | 1,452 | 236 |
+| 1940 | 59 | 1,298 | 291 |
 
 Censuses with no directory edition within two years are left out (1900: none between 1892 and 1910). The business directory only lists the hazardous trades, so the ratio is a floor on its coverage of all manufacturing; the census counts every establishment above a small output threshold.
 

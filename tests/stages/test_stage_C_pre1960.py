@@ -125,6 +125,13 @@ def _replay(E, rv, town_level):
 
 
 @pytest.fixture(scope='module')
+def NC():
+    """No-town entries dropped by link_hist.py as second copies of a listing their firm-location has in the edition (20 Nov 2026)."""
+    d = _csv(ROOT / 'data' / 'historical' / 'notown_copies_dropped.csv', dtype={'street': str})
+    d['town'] = d.town.fillna(''); d['nkey'] = d.nkey.fillna('').astype(str); return d
+
+
+@pytest.fixture(scope='module')
 def replayed(E, SR, TR, NV):
     """Street review, town review, then the no-town review (rows keyed town = '') on the frame stably sorted so that entries
     that had a town come first: a no-town entry that becomes a copy of a listing already reviewed is the one dropped. Entries
@@ -135,6 +142,11 @@ def replayed(E, SR, TR, NV):
     d2, l2 = _replay(d1, TR, True)
     d2 = d2.assign(_nt=(d2.town == '')).sort_values('_nt', kind='stable').drop(columns='_nt')
     d3, l3 = _replay(d2, NV.assign(town=''), False)
+    # an 1870s entry whose name ends with its own printed address takes that address (geocode_hist.py, 20 Nov 2026)
+    m = d3.name.astype(str).str.extract(r",\s*(\d{2,4})\s+([A-Z][a-z]+)\.?$")
+    own = (m[0].notna() & pd.Series([not str(a).startswith(str(b)) for a, b in zip(d3.street.fillna(''), m[0])], index=d3.index)).values
+    d3 = d3.copy(); d3.loc[own, 'street'] = (m[0] + ' ' + m[1])[own]
+    d3.loc[own, 'name'] = d3.loc[own, 'name'].str.replace(r",\s*\d{2,4}\s+[A-Z][a-z]+\.?$", '', regex=True)
     return d3[d3.town != ''], l1, l2, l3, d3[d3.town == '']
 
 
@@ -177,22 +189,26 @@ def test_replay_of_reviews_reproduces_the_geocoded_file(replayed, G):
     assert (G[KEY].values == d[KEY].values).all(), 'row order: listings that had a town first, then the no-town entries'
 
 
-def test_every_dropped_entry_has_a_named_reason(E, G, L, replayed, TC, HOM):
+def test_every_dropped_entry_has_a_named_reason(E, G, L, replayed, TC, HOM, NC):
     """All 10,387 extracted entries are accounted for: published, or dropped as not works / as a copy collapsed by a correction in
-    one of the three reviews, or left without a town, or reviewed to a town that has no point; nothing else may vanish."""
+    one of the three reviews, or left without a town, or reviewed to a town that has no point, or (20 Nov 2026) a no-town entry that
+    repeats a listing its firm-location already has in that edition and sector (data/historical/notown_copies_dropped.csv)."""
     d, l1, l2, l3, left = replayed
     placed = np.array([_placed(TC, HOM, t, y) for t, y in zip(d.town, d.year)])
     why = {'street review: not works': l1['not_works'], 'street review: copy': l1['dedup'],
            'town review: not works': l2['not_works'], 'town review: copy': l2['dedup'],
            'no-town review: not works': l3['not_works'], 'no-town review: copy of a listing of the edition': l3['dedup'],
-           'still without a town': len(left), 'town has no point': int((~placed).sum()), 'published': len(L)}
+           'still without a town': len(left), 'town has no point': int((~placed).sum()),
+           'no-town copy of its firm-location\'s listing (link_hist.py)': len(NC), 'published': len(L)}
     assert sum(why.values()) == len(E) == 10387, why
     assert why == {'street review: not works': 83, 'street review: copy': 4, 'town review: not works': 2320, 'town review: copy': 214,
                    'no-town review: not works': 1366, 'no-town review: copy of a listing of the edition': 258,
-                   'still without a town': 0, 'town has no point': 104, 'published': 6038}
+                   'still without a town': 0, 'town has no point': 104, 'no-town copy of its firm-location\'s listing (link_hist.py)': 61,
+                   'published': 5977}
     assert len(d) == len(G)
     pub = set(map(tuple, L.assign(town=L.town.fillna(''))[KEY].values))
-    assert pub == set(map(tuple, d[placed][KEY].values))
+    nc = set(map(tuple, NC[KEY].values))
+    assert not (pub & nc) and pub | nc == set(map(tuple, d[placed][KEY].values))
     assert set(map(tuple, G[G.precision == 'none'][KEY].values)) == set(map(tuple, d[~placed][KEY].values))
     assert set(left.review) <= {'', 'doubtful'}, 'only an unreviewed entry or a doubtful one without town_fix may stay without a town'
 
@@ -205,12 +221,19 @@ def test_no_extracted_entry_is_dropped_without_a_verdict(replayed):
     assert (left.review.fillna('') != '').all(), len(left)
 
 
-@pytest.mark.xfail(strict=True, reason="FINDING 8: 48 street_review.csv rows (39 not_works, 6 doubtful, 3 ok) match no entry of the current "
-                                       "parse and are skipped silently by apply_review (`if i is None: continue`)")
-def test_every_review_row_matches_an_entry(E, SR, TR):
-    """A review row whose key no longer exists (parser changed after the review) is ignored without notice: its verdict is lost."""
+def test_every_review_row_matches_an_entry_or_is_logged(E, SR, TR):
+    """A review row whose key no longer exists (parser changed after the review) used to be skipped silently (FINDING 8 of 12 Nov).
+    geocode_hist.py now logs every such row in data/historical/review_rows_unmatched.csv: the log must hold exactly the street-review
+    rows that match no entry. They are not works, doubtful, or (3) 'ok' rows the current parse no longer extracts (1950 entries
+    classed as assay offices); none of the 'ok' rows carries a correction."""
     ek = set(map(tuple, E[KEY].values))
-    assert all(tuple(k) in ek for k in SR[KEY].values)
+    miss = SR[[tuple(k) not in ek for k in SR[KEY].values]]
+    U = _csv(ROOT / 'data' / 'historical' / 'review_rows_unmatched.csv', dtype=str).fillna('')
+    U = U[U.review_file == 'street_review.csv']
+    assert sorted(map(tuple, U[KEY].values)) == sorted(map(tuple, miss[KEY].astype(str).values))
+    assert set(miss.verdict) <= {'not_works', 'doubtful', 'ok'}
+    ok = miss[miss.verdict == 'ok']
+    assert (ok.street_fix.fillna('') == '').all() and (ok.name_fix.fillna('') == '').all()
 
 
 def test_every_town_review_row_matches_an_entry_after_the_street_review(replayed, TR):
@@ -251,7 +274,7 @@ def test_notown_review_vocabulary_and_required_fields(NV, TR, SR):
     assert set(NV.sector) <= set(FE) | EXT
 
 
-def test_notown_kept_rows_are_published_unless_their_town_has_no_point(NV, G, L, replayed, TC, HOM):
+def test_notown_kept_rows_are_published_unless_their_town_has_no_point(NV, G, L, replayed, TC, HOM, NC):
     """Each kept no-town row ends as a listing under its corrected key (its own row, or the listing of the same edition it is a
     copy of); that listing is published unless the town has no gazetteer point and no override - the only reason allowed."""
     d, _, _, l3, left = replayed
@@ -262,7 +285,8 @@ def test_notown_kept_rows_are_published_unless_their_town_has_no_point(NV, G, L,
     assert all(k in g for k in keys)
     assert len(set(keys)) == len(kept) - l3['dedup'] + len(set(keys) & set(map(tuple, d[d._src == 'town'][KEY].values)))
     pub = set(map(tuple, L[KEY].values))
-    out = [k for k in keys if k not in pub]
+    nc = set(map(tuple, NC[KEY].values))
+    out = [k for k in keys if k not in pub and k not in nc]
     assert all(g[k] == 'none' and not _placed(TC, HOM, k[1], k[0]) for k in out)
     own = d[d._src == 'notown']
     placed = np.array([_placed(TC, HOM, t, y) for t, y in zip(own.town, own.year)])
@@ -457,7 +481,7 @@ def test_site_coordinates_come_from_one_of_its_listings(L, S):
 def test_denver_street_level_counts(S):
     """Denver hazardous-sector street-level firm-locations and how many of them are doubtful (14 Nov 2026: firms split by address)."""
     d = S[(S.precision == 'street') & (S.town == 'DENVER') & S.fe_hazard.astype(bool)]
-    assert [len(S), int((S.precision == 'street').sum()), len(d), int((d.review == 'doubtful').sum())] == [3702, 604, 390, 36]
+    assert [len(S), int((S.precision == 'street').sum()), len(d), int((d.review == 'doubtful').sum())] == [3689, 584, 380, 35]
 
 
 def test_readme_denver_street_level_counts(S):
@@ -481,14 +505,15 @@ def _fkey(s):
     return re.sub(r'\s+', ' ', s.replace('&', ' ')).strip()
 
 
-def test_firms_are_the_components_of_the_documented_merge_rules(L):
+def test_firms_are_the_components_of_the_documented_merge_rules(L, NC):
     """The partition of listings into firms must be exactly the connected components of the four documented rules, within
     a town: distinctive keys (nk, 4+ characters) with token_sort_ratio >= 90; the identical printed-name key (nkey, 4+ characters);
     for names without a distinctive key the identical whole name (fk, 6+ characters); and whole names (6+ characters) with
     token_sort_ratio >= 85 on the same street-level point (coordinates rounded to 5 places)."""
     fuzz = pytest.importorskip('rapidfuzz.fuzz'); process = pytest.importorskip('rapidfuzz.process')
     sp = pytest.importorskip('scipy.sparse'); csg = pytest.importorskip('scipy.sparse.csgraph')
-    d = L.reset_index(drop=True).copy()
+    # the no-town copies dropped after the merge (notown_copies_dropped.csv) took part in it, so they are put back for the recomputation
+    d = pd.concat([L, NC[[c for c in L.columns if c in NC.columns]]], ignore_index=True)
     d['nk'] = d.nk.fillna(''); d['nkey'] = d.nkey.fillna('').astype(str); d['fk2'] = d.name.map(_fkey)
     assert (d.fk2 == d.fk.fillna('')).all(), 'the published fk column is not the whole normalised name'
     ed = [(i, i) for i in d.index]
@@ -501,9 +526,13 @@ def test_firms_are_the_components_of_the_documented_merge_rules(L):
     for _, g in d[(d.nk == '') & (d.fk2.str.len() >= 6)].groupby(['town', 'fk2']): ed.extend((g.index[0], i) for i in g.index[1:])
     st = d[(d.precision == 'street') & (d.fk2.str.len() >= 6)]
     for _, g in st.groupby(['town', st.lat.round(5), st.lon.round(5)]): pairs(g, 'fk2', 85)
+    # fifth rule (20 Nov 2026): the same first 12 letters of the printed name on the same street-level point
+    st12 = d[d.precision == 'street'].assign(k12=d.name.astype(str).str.upper().str.replace(r'[^A-Z0-9]', '', regex=True).str[:12])
+    st12 = st12[st12.k12.str.len() == 12]
+    for _, g in st12.groupby(['town', st12.lat.round(5), st12.lon.round(5), 'k12']): ed.extend((g.index[0], i) for i in g.index[1:])
     ed = np.array(ed)
     n, lab = csg.connected_components(sp.coo_matrix((np.ones(len(ed)), (ed[:, 0], ed[:, 1])), shape=(len(d), len(d))), directed=False)
-    assert n == d.firm.nunique() == 3417
+    assert n == d.firm.nunique() == 3403
     assert d.groupby('firm').apply(lambda g: len(set(lab[g.index])), include_groups=False).eq(1).all()       # no firm spans two components
     assert pd.Series(d.firm.values).groupby(lab).nunique().eq(1).all()                                     # no component is split
 
@@ -521,7 +550,7 @@ def test_a_firm_location_holds_one_address(L):
         rows = list(g.itertuples())
         assert all(m(a, b) > 60 for i, a in enumerate(rows) for b in rows[i + 1:]), f
     pre = L.groupby('hfirm').precision.agg(lambda s: (s == 'street').any())
-    assert pre.sum() == 604
+    assert pre.sum() == 584
 
 
 def test_similar_names_on_one_street_point_are_one_firm_location(L):
@@ -538,13 +567,6 @@ def test_similar_names_on_one_street_point_are_one_firm_location(L):
     assert not bad, bad[:5]
 
 
-@pytest.mark.xfail(strict=True, reason="FINDING 3 (remaining, 56 -> 12): 12 street-level firm-locations still repeat another one with the same "
-                                       "point and the same first 12 letters of the name, because the same-point rule compares whole names at "
-                                       "token_sort_ratio >= 85 and the 1950/1956 editions print the proprietor after the firm: Reliable Sheet Metal "
-                                       "/ 'Reliable Sheet Metal Robert J Oppelt' (2685 S High, both 1956), Denver Machine Shop at 1409 Blake (three "
-                                       "firm-locations), Denver Metals Foundry at 1525 18th, General Chemical at 1271 W Bayaud, Dowdle Sheet Metal "
-                                       "at 1804 S Pearl, Horton and Greeley Sheet Metal (Greeley), Richards Machine Shop (Pueblo), Maxwell Sheet "
-                                       "Metal (Sterling)")
 def test_same_name_at_the_same_point_is_one_firm_location(S):
     """Two street-level firm-locations with the same point and the same normalised name are one place counted twice."""
     s = S[S.precision == 'street'].copy()
@@ -552,11 +574,6 @@ def test_same_name_at_the_same_point_is_one_firm_location(S):
     assert not s.duplicated(['town', 'k', 'lat', 'lon']).any(), int(s.duplicated(['town', 'k', 'lat', 'lon']).sum())
 
 
-@pytest.mark.xfail(strict=True, reason="NEW (13 Nov): the no-town review removes a copy only when the corrected key is letter-for-letter that of a "
-                                       "listing of the edition; 62 kept no-town entries (classified sections, adverts) repeat a listing the same "
-                                       "firm-location already has in that edition and sector under another spelling (1920 Vulcan Iron Works p.2433 "
-                                       "next to Vulcan Iron Works Co p.937), so 62 of the 1,209 published no-town listings are second copies; "
-                                       "firm-location counts are not affected")
 def test_a_notown_entry_does_not_repeat_a_listing_of_its_firm_in_the_edition(L, replayed):
     """'Keep one per edition': a kept no-town entry must not stand beside another listing of the same firm-location, edition and sector."""
     d = replayed[0]
@@ -593,7 +610,7 @@ def test_address_links_recomputed_from_sites_csv(L, S):
     r = pd.DataFrame(rows, columns=['hfirm', 'd', 'sid']).merge(S, on='hfirm', validate='1:1')
     assert set(S[S.link == 'address'].hfirm) <= set(r.hfirm) and len(r) == int((S.precision == 'street').sum())
     a = r[r.link == 'address']
-    assert len(a) == 228 and (a.d <= 40).all() and (a.sid == a.dcm_site).all() and (a.link_score == a.d.astype(int)).all()
+    assert len(a) == 223 and (a.d <= 40).all() and (a.sid == a.dcm_site).all() and (a.link_score == a.d.astype(int)).all()
     assert r.link.notna()[r.d <= 40].all()
 
 
@@ -603,7 +620,7 @@ def test_linked_sites_exist_in_the_published_site_file(S):
     sites = _csv(APP / 'sites.csv')
     assert S.dcm_site.notna().sum() > 0 and S.dcm_site.dropna().isin(sites.site_id).all() and not (S.dcm_site == '').any()
     assert _csv(APP / 'site_precursors.csv').site_id.isin(sites.site_id).all()
-    assert [int(S.link.notna().sum()), S.dcm_site.nunique()] == [305, 169]
+    assert [int(S.link.notna().sum()), S.dcm_site.nunique()] == [298, 168]
     assert S[S.link == 'address'].dcm_site.notna().all()
 
 

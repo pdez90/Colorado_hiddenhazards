@@ -57,6 +57,11 @@ for k,feats in J.items():
             address=pick(p,['Address','address']),city=pick(p,['City','CITY','CityNam']),zip=str(pick(p,['ZipCode','ZIPCODE','Zip']) or '')[:5],
             lat=lat,lon=lon,programs=svc,tier=tier))
 reg=pd.concat([reg,pd.DataFrame(rows)],ignore_index=True)
-reg=reg[(reg.lat.between(36.5,41.5))&(reg.lon.between(-109.5,-101.5))|reg.lat.isna()]
+# a record whose point is (0,0) or outside Colorado keeps its name and address (it can still match by name in its town or by
+# address) but loses the point, as records printed without coordinates do
+bad=reg.lat.notna()&~(reg.lat.between(36.5,41.5)&reg.lon.between(-109.5,-101.5))
+reg.loc[bad,['lat','lon']]=np.nan
+if 'geom_wkt' in reg: reg.loc[bad,'geom_wkt']=None
+print('records with an unusable point kept without it:',int(bad.sum()))
 reg.to_pickle('work/inv/reg.pkl'); reg.to_csv('work/inv/reg.csv',index=False)   # CSV for R/build_sites.R
 print(reg.groupby(['source','tier']).size().to_string()); print('with coords',reg.lat.notna().mean().round(3))

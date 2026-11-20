@@ -405,16 +405,6 @@ def test_addresspoint_sample_is_drawn_from_the_published_editions():
     assert A.year.isin(ed).all()
 
 
-@pytest.mark.xfail(strict=True, reason='FINDING 5: site ids in geocoding_validation_addresspoints_recheck.csv are from an earlier build; 66 of 400 no '
-                                       'longer exist and none of the other 334 is the same point today')
-def test_addresspoint_recheck_site_ids_are_current(geojson):
-    """A validation file keyed by site_id must refer to today's sites: same id, same point (within 5 m) for at least 95% of rows."""
-    B = pd.read_csv(RES / 'geocoding_validation_addresspoints_recheck.csv')
-    m = B.merge(geojson[['site_id', 'lat', 'lon']], on='site_id', how='left', suffixes=('', '_now'))
-    same = m.lat_now.notna() & (hav(m.lat, m.lon, m.lat_now.fillna(0), m.lon_now.fillna(0)) < 5)
-    assert same.mean() >= 0.95
-
-
 def test_zip_centroids_agree_with_geocoded_addresses(keys):
     """ZIP centroids (medians of inventory coordinates, pipeline/frs_addr_geo.py) drive the geocoder's 15 km town check and the
     fallback points: where 10+ exact addresses were geocoded in a ZIP, its centroid must lie within 12 km of their median."""
@@ -490,9 +480,6 @@ def test_reg_coordinates_and_tiers(reg, raw_inventories):
 
 
 @needs_work
-@pytest.mark.xfail(strict=True, reason='FINDING 2: build_reg.py drops 275 inventory records whose coordinates are (0,0) or outside Colorado '
-                                       '(121 CDPHE voluntary-cleanup sites, 69 CDPHE RCRA handlers, 33 TRI facilities, 47 FRS, 5 solid waste) instead of '
-                                       'keeping them without a point for the address match')
 def test_no_inventory_record_is_dropped_for_bad_coordinates(reg, raw_inventories):
     """A record with unusable coordinates should stay in the inventory without a point (it can still match by address), as records
     with no coordinates do. Counts raw rows missing from reg.pkl."""
@@ -503,11 +490,12 @@ def test_no_inventory_record_is_dropped_for_bad_coordinates(reg, raw_inventories
 
 @needs_work
 def test_inventory_records_without_a_point_stay_a_bounded_share(reg):
-    """Monitors FINDING 3: records without coordinates can only match by address, never by name or distance. Fails if the share grows
-    (18.4% of all records, 16% of cleanup-tier and 12% of TRI-tier records in Nov 2026)."""
+    """Monitors FINDING 3: records without a usable point match by address, or by name within their ZIP or town, never by distance. Fails
+    if the share grows (18.5% of all records, 12% of cleanup-tier and 14.3% of TRI-tier records on 20 Nov 2026, after the 275 records
+    with (0,0) or out-of-state coordinates were kept without a point instead of dropped)."""
     nc = reg.lat.isna()
     assert nc.mean() < 0.20
-    assert nc[reg.tier == 'cleanup'].mean() < 0.18 and nc[reg.tier == 'tri'].mean() < 0.14
+    assert nc[reg.tier == 'cleanup'].mean() < 0.18 and nc[reg.tier == 'tri'].mean() < 0.16
 
 
 @needs_work
@@ -573,8 +561,6 @@ def test_zip_centroid_files_agree():
 
 
 @needs_work
-@pytest.mark.xfail(strict=True, reason='FINDING 6: ZIP "centroids" are medians of inventory coordinates with no minimum count (103 rest on one record); '
-                                       'several lie 50-460 km from the ZIP\'s own TIGER streets (81061, 81244, 80842, 80732, 80307, 81124, 80541, 81241)')
 def test_zip_centroids_lie_in_their_zip():
     """A ZIP centroid must be within 50 km of the median of that ZIP's TIGER street segments (generous: rural ZIPs are large)."""
     shp = sorted(glob.glob(str(WORK / 'tiger' / '*_addrfeat.shp')))
@@ -648,8 +634,6 @@ def test_known_hidden_geometry_recomputes_from_the_inventory(site_table, reg):
 
 
 @needs_work
-@pytest.mark.xfail(strict=True, reason='FINDING 3: 9 hidden F&E sites have an inventory record of the same firm in the same town or ZIP that has no '
-                                       'coordinates (528 FRS cleanup-tier and 197 TRI records have none), so the name match, which only searches within 250 m, cannot see it')
 def test_no_hidden_site_has_a_same_name_record_without_coordinates(site_table, reg):
     """A site must not be 'on no inventory' only because the inventory record of the same firm has no point: for every hidden F&E
     site, no record without coordinates in the same town or ZIP carries a hazardous firm's name (the pipeline's two-informative-words

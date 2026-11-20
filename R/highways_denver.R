@@ -16,7 +16,7 @@ for (p in c("haven")) if (!requireNamespace(p, quietly = TRUE)) install.packages
 suppressPackageStartupMessages({ library(sf); library(data.table) })
 sf_use_s2(FALSE); UTM <- 26913; O <- "data/results/highways"; A <- "app/data"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
 yr <- function(x) suppressWarnings(as.integer(substr(gsub("^~", "", x), 1, 4)))
-tr <- st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM); tr$core <- as.logical(tr$core) %in% TRUE
+tr <- st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM); tr$core <- as.logical(tr$core) %in% TRUE
 STUDY <- st_union(st_make_valid(tr[tr$core | substr(tr$GEOID, 1, 5) == "08031", ]))
 # ---------------------------------------------------------------- alignments
 H <- st_transform(st_read("work/highways/ohm_denver_highways.geojson", quiet = TRUE), UTM)

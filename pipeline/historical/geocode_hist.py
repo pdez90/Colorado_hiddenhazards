@@ -3,6 +3,7 @@ Street level only where today's numbering applies: Denver from 1891 on (the city
 other larger cities from 1910 on; only exact address-range matches (no fuzzy/nearest) are accepted.
 Everything else goes to the USGS GNIS point for the town (precision='town')."""
 import os, re, sys
+import numpy as np
 import pandas as pd
 REPO = '.'
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -48,7 +49,9 @@ FE_GROUP = {'Chemicals': '28', 'Paint & varnish': '28', 'Soap': '28', 'Explosive
             'Machine shop / machinery': '35', 'Transportation equipment': '37'}   # every other sector is EXT (extended)
 REVIEW_KEY = ['year', 'town', 'nkey', 'sector']
 
-def apply_review(df, rv, town_level=False):
+UNMATCHED = []   # review rows whose listing the current parse no longer extracts (written to data/historical/review_rows_unmatched.csv)
+
+def apply_review(df, rv, town_level=False, source=''):
     """Apply the hand review of street placements (data/historical/street_review.csv, 3 November 2026): every listing that the
     previous run placed at a street address was read against the OCR text of its page. Verdicts:
       ok           keep as parsed
@@ -72,7 +75,9 @@ def apply_review(df, rv, town_level=False):
     drop = []
     for r, k in zip(rv.itertuples(), key(rv)):
         i = idx.get(k)
-        if i is None: continue
+        if i is None:                                    # logged, not skipped silently (FINDING 8 of 12 Nov 2026)
+            UNMATCHED.append(dict(review_file=source, year=k[0], town=k[1], nkey=k[2], sector=k[3], name=getattr(r, 'name', ''),
+                                  street=getattr(r, 'street', ''), verdict=r.verdict)); continue
         v = r.verdict; df.at[i, 'review'] = v
         if town_level:                                   # town review: never placed at a street address nobody checked; the printed
             df.at[i, 'town_only'] = True                # address is kept (R/denver_1880.R places 1878-85 Denver firms on the 1880
@@ -91,13 +96,14 @@ def apply_review(df, rv, town_level=False):
 
 def main():
     df = pd.read_csv('work/hist/hist_hazard_entries.csv', dtype={'street': str})
+    df['entry_src'] = np.where(df.town.fillna('') == '', 'notown', 'town')   # how the entry came out of the parser (used by link_hist.py)
     if os.path.exists(REVIEW):
         rv = pd.read_csv(REVIEW, dtype=str); rv['year'] = rv.year.astype(int)
-        n0 = len(df); df = apply_review(df, rv)
+        n0 = len(df); df = apply_review(df, rv, source='street_review.csv')
         print('street review:', rv.verdict.value_counts().to_dict(), '- dropped', n0 - len(df))
     if os.path.exists(TOWN_REVIEW):
         tv = pd.read_csv(TOWN_REVIEW, dtype=str); tv['year'] = tv.year.astype(int)
-        n0 = len(df); df = apply_review(df, tv, town_level=True)
+        n0 = len(df); df = apply_review(df, tv, town_level=True, source='town_review.csv')
         print('town review:', tv.verdict.value_counts().to_dict(), '- dropped', n0 - len(df))
     # entries the parser could not give a town (classified sections, adverts, missed headings): the reviewer supplies the town
     # (town_fix), the firm's own printed address (street_fix; 'none' = town level) and the verdict; rows are keyed with town = ''.
@@ -107,8 +113,18 @@ def main():
     if os.path.exists(NOTOWN_REVIEW):
         nv = pd.read_csv(NOTOWN_REVIEW, dtype=str).fillna(''); nv['year'] = nv.year.astype(int); nv['town'] = ''
         df = df.assign(_nt=(df.town == '')).sort_values('_nt', kind='stable').drop(columns='_nt')
-        n0 = len(df); df = apply_review(df, nv)
+        n0 = len(df); df = apply_review(df, nv, source='notown_review.csv')
         print('no-town review:', nv.verdict.value_counts().to_dict(), '- dropped', n0 - len(df))
+    U = pd.DataFrame(UNMATCHED, columns=['review_file', 'year', 'town', 'nkey', 'sector', 'name', 'street', 'verdict'])
+    U.to_csv('data/historical/review_rows_unmatched.csv', index=False)
+    print(len(U), 'review rows match no entry of the current parse (data/historical/review_rows_unmatched.csv):', U.verdict.value_counts().to_dict())
+    # an 1870s entry that carries its own address at the end of the name ('Kingsley, H. M., 404 Lawrence') had been given the next
+    # entry's address by the parser; the printed address replaces it (FINDING 5 of 12 Nov 2026; 20 Nov 2026)
+    m = df.name.astype(str).str.extract(r",\s*(\d{2,4})\s+([A-Z][a-z]+)\.?$")
+    own = m[0].notna() & [not str(a).startswith(str(b)) for a, b in zip(df.street.fillna(''), m[0])]
+    df.loc[own, 'street'] = (m[0] + ' ' + m[1])[own]
+    df.loc[own, 'name'] = df.loc[own, 'name'].str.replace(r",\s*\d{2,4}\s+[A-Z][a-z]+\.?$", '', regex=True)
+    print('address printed in the name used for', int(own.sum()), 'entries')
     left = df[df.town == '']
     if len(left): print(len(left), 'entries without a town are dropped (no verdict gives them one)')
     df = df[df.town != '']

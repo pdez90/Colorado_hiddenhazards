@@ -146,6 +146,11 @@ def match_inventory(sites,reg,review_path='data/raw/known_match_review.csv'):
     # 'AURORA' for 'COMMERCE CITY'), or the N/S/E/W printed on one side only; accepted when the record's point is within 250 m (19 Nov 2026)
     reg['lkey']=reg.street_n.apply(loose_key)
     loose_ix=reg.groupby('lkey').indices; loose_ix.pop('',None)   # positions in reg, as for addr_ix
+    # records printed without a usable point (no coordinates, or (0,0) / outside Colorado) can still be the same firm: they are matched
+    # by name within the site's ZIP or town, with the same name rule as the 250 m search (FINDING 3 of 12 Nov 2026; 20 Nov 2026)
+    _np=reg[reg.lat.isna() & (reg.nn!='')]
+    nopt_zip=_np.groupby('zip5').indices if len(_np) else {}; nopt_city=_np.groupby('city_u').indices if len(_np) else {}
+    _np_pos=np.flatnonzero((reg.lat.isna() & (reg.nn!='')).values)
     reviewed=collections.defaultdict(list)
     if review_path and os.path.exists(review_path) and 'src_id' in reg:
         rv=pd.read_csv(review_path,dtype=str,keep_default_na=False); rv=rv[rv.verdict=='same']
@@ -180,6 +185,13 @@ def match_inventory(sites,reg,review_path='data/raw/known_match_review.csv'):
         am+= [j for j in reviewed.get((ak, str(s.city or '').upper().strip()),[]) if j not in am]
         am_t=collections.defaultdict(list)
         for j in am: am_t[reg.iloc[j]['tier']].append(f"{reg.iloc[j]['name']} [{reg.iloc[j]['source'].replace('EPA_','').replace('CDPHE_','CDPHE ')}]")
+        npm=set()
+        if names:
+            for loc in list(nopt_zip.get(s.zip,[]) if s.zip else [])+(list(nopt_city.get(str(s.city or '').upper().strip(),[])) if str(s.city or '').strip() else []):
+                j=_np_pos[loc]
+                if j not in am and any(name_match(reg.nn.iat[j],n) for n in names): npm.add(j)
+        np_t=collections.defaultdict(list)
+        for j in sorted(npm): np_t[reg.iloc[j]['tier']].append(f"{reg.iloc[j]['name']} [{reg.iloc[j]['source'].replace('EPA_','').replace('CDPHE_','CDPHE ')}]")
         inpoly=[]; nearpoly=[]   # (label, distance m) for boundaries within NEAR_BOUNDARY_M but not containing the point
         if ptree is not None:
             pu=_tf(_to_utm,Point(s.lon,s.lat))
@@ -206,14 +218,15 @@ def match_inventory(sites,reg,review_path='data/raw/known_match_review.csv'):
             for j,d in prox:
                 if j not in [x for x,_ in nm]: hits.append(f"{R.at[j,'name']} [{R.at[j,'source'].replace('EPA_','').replace('CDPHE_','CDPHE ')}; {int(d)} m]")
             hits+= [h+' (address match)' for h in am_t.get(tier,[])]
+            hits+= [h+' (name match in the same town; record has no map point)' for h in np_t.get(tier,[])]
             if tier=='cleanup': hits+= [h+' (inside site boundary)' for h in inpoly]+[f"{h}; {int(dm)} m from site boundary" for h,dm in nearpoly]
-            if nm or am_t.get(tier): basis.add('entity')
+            if nm or am_t.get(tier) or np_t.get(tier): basis.add('entity')
             if tier=='cleanup' and inpoly: basis.add('boundary')
             if prox or (tier=='cleanup' and nearpoly): basis.add('prox')
             # per-tier evidence for the sensitivity analysis (R/known_hidden_sensitivity.R): strongest basis in this tier and the
             # distance to the nearest differently named record inside the tier's radius (a boundary within 40 m counts at its distance)
             nm_ids={x for x,_ in nm}; pd_other=[d for j,d in prox if j not in nm_ids]+([dm for _,dm in nearpoly] if tier=='cleanup' else [])
-            rec[f'{tier}_basis']=('entity' if (nm or am_t.get(tier)) else 'boundary' if (tier=='cleanup' and inpoly) else 'prox' if pd_other else '')
+            rec[f'{tier}_basis']=('entity' if (nm or am_t.get(tier) or np_t.get(tier)) else 'boundary' if (tier=='cleanup' and inpoly) else 'prox' if pd_other else '')
             rec[f'{tier}_prox_m']=round(min(pd_other)) if pd_other else np.nan
             rec[f'{tier}_match']=' | '.join(dict.fromkeys(hits))[:400]
             rec[f'{tier}_nearest_m']=round(cand[0][1]) if cand else np.nan

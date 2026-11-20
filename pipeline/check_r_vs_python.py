@@ -19,6 +19,12 @@ out += ['## Sites (R/build_sites.R vs pipeline/build_sites.py + finalize.py)', '
 d = H[H.radar_status_py != H.radar_status_r]
 if len(d): out += ['Differences:', '', d[['site_id_py', 'radar_status_py', 'radar_status_r']].to_markdown(index=False), '']
 
+_prev = open('data/results/r_vs_python.md').read() if os.path.exists('data/results/r_vs_python.md') else ''
+if not os.path.exists('work/health/bg_exposures_R.csv') and '## Exposures' in _prev:
+    # the block-group exposures are built from restricted inputs on the analyst's machine: keep that section of the last report
+    sec = _prev[_prev.index('## Exposures'):]; sec = sec[:sec.index('\n## ', 3) + 1] if '\n## ' in sec[3:] else sec
+    out += [sec.rstrip().replace('## Exposures (R/build_exposures.R vs pipeline/health/build_exposures.py)',
+                                 '## Exposures (R/build_exposures.R vs pipeline/health/build_exposures.py; not rerun here: restricted inputs)'), '']
 if os.path.exists('work/health/bg_exposures_R.csv'):
     a = pd.read_csv('work/health/bg_exposures.csv', dtype={'GEOID': str}); b = pd.read_csv('work/health/bg_exposures_R.csv', dtype={'GEOID': str})
     a['GEOID'] = a.GEOID.str.zfill(12); b['GEOID'] = b.GEOID.str.zfill(12); m = a.merge(b, on='GEOID', suffixes=('_py', '_r'))

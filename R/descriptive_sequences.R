@@ -91,7 +91,7 @@ fwrite(A3, file.path(O, "grid_zoning_1920_1940.csv"))
 pan <- fread("app/data/tract_panel.csv", colClasses = c(GEOID = "character"))[core == TRUE]
 fix <- pan[census >= 1960 & !is.na(pop) & pop >= 200, .N, by = GEOID][N == uniqueN(pan[census >= 1960, census]), GEOID]
 P <- pan[GEOID %in% fix]
-TRg <- st_make_valid(st_transform(st_read("app/data/co_tracts_2010.geojson", quiet = TRUE), UTM)); TRg <- TRg[TRg$GEOID %in% fix, "GEOID"]
+TRg <- st_make_valid(st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM)); TRg <- TRg[TRg$GEOID %in% fix, "GEOID"]
 ovt <- suppressWarnings(st_intersection(TRg, H[, "cls"])); ovt$a <- as.numeric(st_area(ovt)); TRg$a <- as.numeric(st_area(TRg))
 ct <- as.data.table(st_drop_geometry(ovt))[, .(a = sum(a)), by = .(GEOID, cls)]; ct <- merge(ct, data.table(GEOID = TRg$GEOID, at = TRg$a), by = "GEOID")
 dom <- ct[, .(cls = cls[which.max(a)], covered = sum(a) / at[1]), by = GEOID][covered >= 0.4]
@@ -108,7 +108,7 @@ setorder(B1, cls, census); fwrite(B1, file.path(O, "tract_location_quotients_194
 # B2 first arrival within the manufacturers' directory: complete editions 1965-68, 1970 = "before"; first listing 1973-1980 = "arrival"
 # sites.csv's GEOID is the EnviroScreen (2020) tract, not a 2010 tract: sites are placed in the 2010 tracts by their coordinates
 st <- fread("app/data/sites.csv", colClasses = c(GEOID = "character"))[fe_hazard %in% c(TRUE, "True") & !is.na(lat)]
-TR10 <- st_make_valid(st_transform(st_read("app/data/co_tracts_2010.geojson", quiet = TRUE), UTM))
+TR10 <- st_make_valid(st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM))
 sp <- st_transform(st_as_sf(st[, .(lon, lat)], coords = c("lon", "lat"), crs = 4326), UTM)
 k <- vapply(st_within(sp, TR10), function(i) if (length(i)) i[1] else NA_integer_, 1L)
 miss <- which(is.na(k)); if (length(miss)) { nn <- st_nearest_feature(sp[miss, ], TR10); d <- as.numeric(st_distance(sp[miss, ], TR10[nn, ], by_element = TRUE)); k[miss[d <= 100]] <- nn[d <= 100] }   # on a simplified edge

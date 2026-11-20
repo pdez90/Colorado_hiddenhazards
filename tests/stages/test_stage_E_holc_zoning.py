@@ -92,7 +92,7 @@ def sites_addr():
 
 @cached
 def tracts():
-    t = gpd.read_file(A / "co_tracts_2010.geojson").to_crs(UTM)
+    t = gpd.read_file(ROOT / "data" / "geo" / "co_tracts_2010.gpkg").to_crs(UTM)
     t["geometry"] = shapely.make_valid(t.geometry.values)
     return t
 
@@ -100,7 +100,7 @@ def tracts():
 @cached
 def tracts_raw():
     """The tract outlines as rezoning_denver.R reads them (no make_valid)."""
-    return gpd.read_file(A / "co_tracts_2010.geojson").to_crs(UTM)
+    return gpd.read_file(ROOT / "data" / "geo" / "co_tracts_2010.gpkg").to_crs(UTM)
 
 
 @cached
@@ -461,7 +461,7 @@ def test_common_land_area_matches_notes_and_tables():
         assert abs(R1.km2[R1.year == y].sum() - km) < 0.02 and abs(R1.pct[R1.year == y].sum() - 100) < 0.11
     for y in ("2023", "today"):
         assert km - 1.0 < R1.km2[R1.year == y].sum() <= km + 0.02                           # zoned land cannot exceed the land
-    assert np.allclose(R1.pct, (100 * R1.km2 / km).round(1), atol=0.051)
+    assert np.allclose(R1.pct, 100 * R1.km2 / km, atol=0.06)   # km2 is rounded to 0.01, so a share on the .x5 boundary may round either way
 
 
 def test_zoning_land_by_year_industrial_recomputed():
@@ -491,7 +491,7 @@ def test_zoning_by_holc_grade_years_recomputed():
                              ("2023", cat_geom(L["2023"], ["Industrial"]), 0.25), ("today", cat_geom(L["today"], ["Industrial"]), 0.25)):
             assert abs(100 * geom.intersection(hg).area / hg.area - R2.pct_industrial[(g, y)]) < tol, (g, y)
         assert (R2.pct_industrial_incl_imx[g] >= R2.pct_industrial[g]).all()
-    assert round(d_km2, 1) == 25.3 and round(tot, 1) == 54.1                             # D (the last grade of the loop) and A+B+C, from the polygons
+    assert round(d_km2, 1) == 25.4 and round(tot, 1) == 54.1                             # D (the last grade of the loop) and A+B+C, from the polygons
 
 
 def test_abc_land_total_is_rounded_after_summing():
@@ -544,10 +544,10 @@ def common_points():
 
 
 def test_zoning_sites_by_year_recomputed():
-    """Catches wrong site counts on the two sheets in Denver (895 and 388) and wrong shares standing in an industrial district in each year."""
+    """Catches wrong site counts on the two sheets in Denver (892 and 378) and wrong shares standing in an industrial district in each year."""
     L = layers()
     s, p = common_points()
-    assert (len(s), len(p)) == (892, 388)
+    assert (len(s), len(p)) == (892, 378)
     R4 = csv("data/results/zoning_over_time/zoning_sites_by_year.csv").set_index(["series", "year"])
     for nm, q in (("Hazardous-sector manufacturers 1965-1992", s), ("Hazardous trades before 1960 (street level)", p)):
         assert (R4.sites[nm] == len(q)).all()
@@ -562,31 +562,31 @@ def test_zoning_sites_by_year_recomputed():
 
 
 def test_sites_off_the_common_land_are_accounted_for():
-    """Catches unexplained loss of sites between Denver (969 sites by GEOID / 390 street-level trades of the town) and the zoning tables (892 / 388)."""
+    """Catches unexplained loss of sites between Denver (969 sites by GEOID / 380 street-level trades of the town) and the zoning tables (892 / 378)."""
     L = layers()
     s, p = sites_addr(), hist_street()
     sd, pd_ = s[_denver(s)], p[p.town == "DENVER"]
-    assert (len(sd), len(pd_)) == (969, 390)
+    assert (len(sd), len(pd_)) == (969, 380)
     cs, cp = common_points()
     # 1965-92: every Denver site is either on both sheets (counted) or off them; none is lost at a tract boundary any more
     off_s = ~sd.intersects(L["on_sheets"])
     assert off_s.sum() == 77 and len(cs) == len(sd) - off_s.sum() == 892
     assert (off_s & sd.intersects(den())).sum() == 76                                    # 76 of the 77 lie inside the simplified county outline
     assert (sd[~sd.intersects(den())].distance(den()) < 20).all()                        # sites of Denver tracts outside the simplified outline: slivers only
-    # pre-1960: all 390 lie on both sheets; the 2 not counted have an Adams County GEOID (the 3 that had none get one from the full-resolution tracts since 13 Nov)
+    # pre-1960: all 380 lie on both sheets; the 2 not counted have an Adams County GEOID (the 3 that had none get one from the full-resolution tracts since 13 Nov)
     assert (~pd_.intersects(L["on_sheets"])).sum() == 0 and set(cp.hfirm) <= set(pd_.hfirm)
     lost = pd_[~pd_.hfirm.isin(cp.hfirm)]
-    assert len(cp) == 388 and len(lost) == 2 and lost.GEOID.isna().sum() == 0 and (lost.GEOID.dropna().str[:5] == "08001").all()
+    assert len(cp) == 378 and len(lost) == 2 and lost.GEOID.isna().sum() == 0 and (lost.GEOID.dropna().str[:5] == "08001").all()
 
 
 def test_no_denver_site_on_both_sheets_is_lost_at_a_tract_boundary():
     """Catches sites dropped from the zoning tables only because the clip polygon has gaps or a generalised county boundary."""
     L = layers()
     R4 = csv("data/results/zoning_over_time/zoning_sites_by_year.csv").set_index(["series", "year"]).sites
-    for nm, d, n in (("Hazardous-sector manufacturers 1965-1992", sites_addr(), 3), ("Hazardous trades before 1960 (street level)", hist_street(), 1)):
+    for nm, d, n in (("Hazardous-sector manufacturers 1965-1992", sites_addr(), 1), ("Hazardous trades before 1960 (street level)", hist_street(), 0)):
         d = d[_denver(d)]
         assert (R4[nm] == d.intersects(L["on_sheets"]).sum()).all()
-        assert (d.intersects(L["on_sheets"]) & ~d.intersects(L["common"])).sum() == n   # the sliver sites, now counted (3 sites, 1 trade)
+        assert (d.intersects(L["on_sheets"]) & ~d.intersects(L["common"])).sum() == n   # on the sheets but off the common land: 1 site (3 sites and 1 trade on the simplified tract outlines)
 
 
 def test_every_street_level_trade_inside_a_tract_has_a_geoid():
@@ -597,14 +597,17 @@ def test_every_street_level_trade_inside_a_tract_has_a_geoid():
     assert inside.hfirm.nunique() == 0
 
 
-@pytest.mark.xfail(strict=True, reason="FINDING 3: app/data/co_tracts_2010.geojson is used as an analysis geometry but its simplified tracts neither tile Denver County (91 interior slivers, 0.72 km2) nor avoid overlap (0.36 km2)")
 def test_denver_tract_polygons_tile_the_county():
-    """Catches a tract layer with gaps or overlaps being used for point-in-polygon tests and area shares."""
+    """Catches a tract layer with gaps or overlaps being used for point-in-polygon tests and area shares (FINDING 3, fixed 20 Nov 2026:
+    analyses read the full-resolution data/geo/co_tracts_2010.gpkg; the simplified geojson is only drawn in the app)."""
     t = tracts()
-    d = t[t.GEOID.str[:5] == "08031"]
+    d = t[t.GEOID.str[:5] == "08031"]; o = t[t.GEOID.str[:5] != "08031"]
     u = den()
     holes = [Polygon(r) for g in getattr(u, "geoms", [u]) for r in g.interiors]
-    assert sum(1 for h in holes if h.area < 3e5) == 0
+    # a hole is allowed only where another county's tracts fill it: Denver encloses parts of Arapahoe (Glendale, Holly Hills) and
+    # Jefferson counties
+    filled = lambda h: sum(h.intersection(g).area for g in o[o.intersects(h)].geometry) >= 0.95 * h.area   # noqa: E731
+    assert [round(h.area) for h in holes if not filled(h)] == []
     assert d.area.sum() - u.area < 1e4
 
 
@@ -614,7 +617,7 @@ def test_sites_zoning_2023_rows_are_the_selected_sites_once_each():
     """Catches duplicated or foreign rows in sites_zoning_2023.csv and a 'where' label that disagrees with the site's county."""
     z = csv("data/results/zoning_2023/sites_zoning_2023.csv")
     s = sites_addr().set_index("site_id")
-    assert z.site_id.is_unique and z.site_id.isin(s.index).all() and len(z) == 1384
+    assert z.site_id.is_unique and z.site_id.isin(s.index).all() and len(z) == 1385
     t = tracts()
     core = t[(t.core.astype(str).str.lower() == "true") | (t.GEOID.str[:5] == "08031")]
     sa = sites_addr()
@@ -741,9 +744,10 @@ def test_every_placed_rezoning_has_a_tract():
     hit = (j.GEOID_right == p.GEOID.reindex(j.index)).groupby(level=0).any().reindex(p.index)
     # inside a tract (two where the outlines overlap): that tract; changes.csv writes lon/lat to 5 decimals (about 1 m), so a point on a
     # boundary may be written just across it (2 changes, 0.1 and 0.4 m)
-    assert (hit | (own.values < 1.0))[inside].all() and (inside & ~hit).sum() <= 2
-    near = np.array([t.distance(pt).min() for pt in g.geometry[~inside]])
-    assert (~inside).sum() == 6 and (own[~inside].values <= near + 1.4).all() and (own[~inside] <= 60).all()   # in a sliver: the nearest tract within 60 m (5-decimal coordinates move a point up to 0.7 m)
+    # boundary may be written just across it (8 changes on the full-resolution outlines, all within 0.5 m)
+    assert (hit | (own.values < 1.0))[inside].all() and (inside & ~hit).sum() <= 10
+    # the full-resolution tracts (20 Nov 2026) leave no slivers inside Denver: every placed change lies inside a tract
+    assert (~inside).sum() == 0
 
 
 # ====================================================================== Sanborn 1903 (R/loc_sanborn_1903.R)
@@ -866,7 +870,7 @@ def test_landuse_tables_add_up():
     t_ = tracts()
     study = shapely.union_all(t_[(t_.core.astype(str).str.lower() == "true") | (t_.GEOID.str[:5] == "08031")].geometry.values)
     n_study = int(sites_addr().intersects(study).sum())                                   # landuse_1937_1997.R selects by the study-area outline
-    assert n_study == 1380
+    assert n_study == 1384
     assert (m["all"] == m["on a current inventory"] + m["on no current inventory"]).all() and (m["all"] <= n_study).all() and (m["all"] >= n_study - 1).all()
     w = S[S.series.str.startswith("Hazardous-sector")].pivot(index="year", columns="status", values="pct_on_industrial_land")
     mix = (w["on a current inventory"] * m["on a current inventory"] + w["on no current inventory"] * m["on no current inventory"]) / m["all"]
@@ -1081,7 +1085,6 @@ def test_generated_table_d_land_is_not_rounded_twice():
     assert m and float(m.group(1)) == round(d, 1)
 
 
-@pytest.mark.xfail(strict=True, reason="FINDING 7: zoning_tract_paths.csv compares 7 tracts in 1970 and 2020 with 6 in 1990 ('Industrial in 1929, not today'; 86/86/87 for 'Neither') because the 200-resident floor is applied census by census; the manuscript reads the three rows as the same seven tracts")
 def test_zoning_tract_paths_follow_the_same_tracts_in_every_census():
     """Catches a before/after comparison whose set of tracts changes between censuses."""
     T = csv("data/results/zoning_over_time/zoning_tract_paths.csv")

@@ -31,7 +31,7 @@ group_of <- function(x) { x <- tolower(x); fcase(
   grepl("retail|office|mixed urban|commercial", x), 4L, grepl("single family", x), 5L, grepl("multi.?family|mobile", x), 6L,
   grepl("institution|school|cemetery|communication|utilit", x), 7L, !is.na(x), 8L, default = NA_integer_) }
 # ---------------------------------------------------------------- geographies
-tr <- st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM); tr$core <- as.logical(tr$core) %in% TRUE
+tr <- st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM); tr$core <- as.logical(tr$core) %in% TRUE
 STUDY <- st_union(st_make_valid(tr[tr$core | substr(tr$GEOID, 1, 5) == "08031", ]))
 DEN <- st_union(st_make_valid(tr[substr(tr$GEOID, 1, 5) == "08031", ]))
 # ---------------------------------------------------------------- rasters: crop, group, aggregate

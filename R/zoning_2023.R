@@ -33,7 +33,7 @@ pct_tab <- function(d, by) { r <- d[, .N, by = c(by, "zone2023")]; r[, pct := ro
   w <- dcast(r, as.formula(paste(paste(by, collapse = " + "), "~ zone2023")), value.var = "pct", fill = 0)
   merge(r[, .(n = sum(N)), by = by], w, by = by) }
 # ---------------------------------------------------------------- study area and zoning
-tr <- st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM); tr$core <- as.logical(tr$core) %in% TRUE
+tr <- st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM); tr$core <- as.logical(tr$core) %in% TRUE
 AREA <- st_union(st_make_valid(tr[tr$core | substr(tr$GEOID, 1, 5) == "08031", ]))
 AREA_GEOID <- tr$GEOID[tr$core | substr(tr$GEOID, 1, 5) == "08031"]
 Z <- st_make_valid(st_transform(st_read(SHP, quiet = TRUE), UTM))

@@ -127,7 +127,7 @@ fill_hisp_1940 <- function(pan, h40) { h40 <- h40[pop40 >= MIN_POP40]
 f40 <- "data/results/denver_eds/denver_eds_1940.geojson"
 if (file.exists(f40) && "census" %in% names(pan)) {   # 1940 tract Hispanic share from the full count (no tract table has it before 1960): districts area-weighted into 2010 tracts
   E40 <- st_make_valid(st_transform(st_read(f40, quiet = TRUE), UTM)); E40 <- E40[!is.na(E40$pop), ]; E40$a <- as.numeric(st_area(E40))
-  T40 <- st_make_valid(st_transform(st_read("app/data/co_tracts_2010.geojson", quiet = TRUE), UTM)); T40 <- T40[T40$GEOID %in% pan$GEOID, "GEOID"]
+  T40 <- st_make_valid(st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM)); T40 <- T40[T40$GEOID %in% pan$GEOID, "GEOID"]
   ov <- suppressWarnings(st_intersection(E40[, c("a", "pop", "hisp", "black")], T40)); ov$w <- as.numeric(st_area(ov)) / ov$a
   h40 <- as.data.table(st_drop_geometry(ov))[, .(pop40 = sum(pop * w), hisp40 = sum(hisp * w)), by = GEOID]
   pan <- fill_hisp_1940(pan, h40)
@@ -193,7 +193,7 @@ bnd_ed <- rbindlist(lapply(c(1900, 1910, 1920, 1930, 1940), function(yr) { f <- 
              p_owner = 100 * E$owner_hh / E$tenure_hh, side = side_of(ce), band = in_band(ce, 400), rail_m = rail_m(ce), lon = st_coordinates(st_transform(ce, 4326))[, 1], lat = st_coordinates(st_transform(ce, 4326))[, 2],
              ind29 = if (is.null(ZS_E)) NA_real_ else ZS_E[census == yr][match(as.character(E$ED), ED), share_industrial_1929],
              ind29s = if (is.null(ZS_E) || !"share_industrial_1929_strict" %in% names(ZS_E)) NA_real_ else ZS_E[census == yr][match(as.character(E$ED), ED), share_industrial_1929_strict])[, c("nA", "nB", "nC", "nD") := as.data.table(near_g(ce, 400))[]][, c("nC_narrow", "nD_narrow") := as.data.table(near_g(ce, 200))[, c("C", "D")]][, c("nC_wide", "nD_wide") := as.data.table(near_g(ce, 800))[, c("C", "D")]] }))
-TRg <- st_make_valid(st_transform(st_read("app/data/co_tracts_2010.geojson", quiet = TRUE), UTM)); TRg <- TRg[TRg$GEOID %in% pan$GEOID, ]; ct <- st_centroid(st_geometry(TRg))
+TRg <- st_make_valid(st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM)); TRg <- TRg[TRg$GEOID %in% pan$GEOID, ]; ct <- st_centroid(st_geometry(TRg))
 tb <- data.table(GEOID = TRg$GEOID, side = side_of(ct), band = in_band(ct, 800), rail_m = rail_m(ct), lon = st_coordinates(st_transform(ct, 4326))[, 1], lat = st_coordinates(st_transform(ct, 4326))[, 2],
                  ind29 = if (is.null(ZS_T)) NA_real_ else ZS_T$share_industrial_1929[match(TRg$GEOID, ZS_T$GEOID)],
                  ind29s = if (is.null(ZS_T) || !"share_industrial_1929_strict" %in% names(ZS_T)) NA_real_ else ZS_T$share_industrial_1929_strict[match(TRg$GEOID, ZS_T$GEOID)])[, c("nA", "nB", "nC", "nD") := as.data.table(near_g(ct, 800))[]][, c("nC_narrow", "nD_narrow") := as.data.table(near_g(ct, 400))[, c("C", "D")]][, c("nC_wide", "nD_wide") := as.data.table(near_g(ct, 1600))[, c("C", "D")]]

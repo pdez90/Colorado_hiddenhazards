@@ -215,13 +215,13 @@ def test_classifier_normalises_training_and_query_text_the_same_way():
 
 
 # ------------------------------------------------------------------ duplicates, empty rows, towns
-@pytest.mark.xfail(strict=True, reason="FINDING E1: the scans of part 1 and part 2 overlap by one or two pages in 1966, 1970, 1977 and 1983 "
-                   "(e.g. DCM_1977_part1 p52-53 = DCM_1977_part2 p2-3); both copies are parsed and published (~290 listings, 93 F&E)")
 def test_no_listing_printed_in_two_volumes_of_one_edition(L):
-    """Catches a scan page present in two part-volumes being counted twice: the same name + street + ZIP must not occur
-    in two different source volumes of one edition."""
+    """Catches a scan page present in two part-volumes being counted twice (FINDING E1, fixed by the re-parse): the same name + street
+    + ZIP + codes + year established must not occur in two different source volumes of one edition. Two 1990 firms (AT+T, Colorado
+    Composite) are printed twice with different codes, sizes and founding years on non-overlapping pages: separate entries, not copies."""
     d = L[(L.name != '') & (L.street != '')].copy()
-    d['k'] = d.name.str.upper().str.replace(r'[^A-Z0-9]', '', regex=True) + '|' + d.street.str.upper().str.replace(r'[^A-Z0-9]', '', regex=True) + '|' + d.zip
+    d['k'] = (d.name.str.upper().str.replace(r'[^A-Z0-9]', '', regex=True) + '|' + d.street.str.upper().str.replace(r'[^A-Z0-9]', '', regex=True)
+              + '|' + d.zip + '|' + d.sic + '|' + d.est)
     nv = d.groupby(['year', 'k']).source_volume.nunique()
     assert (nv > 1).sum() == 0, nv[nv > 1].groupby('year').size().to_dict()
 
@@ -231,13 +231,11 @@ def test_every_listing_has_a_firm_name(L):
     assert (L.name.str.strip() != '').all(), L[L.name.str.strip() == ''].groupby('year').size().to_dict()
 
 
-@pytest.mark.xfail(strict=True, reason="FINDING E2: town headings mis-carried: 1965 files 107 listings under AIR FORCE ACADEMY, 101 under "
-                   "ALLENSPARK, 57 WOODLAND PARK, 40 LA PLATA, 36 TIMNATH and none under Colorado Springs, Boulder or Fort Collins; "
-                   "1990 has 100 under 'COLORADO'; 1992 has 104 under BLACK HAWK")
 def test_no_town_holds_many_listings_in_one_edition_only(L):
-    """Catches a town heading carried over pages that belong to another town: a town with 30+ listings in an edition
-    must not exceed three times (+10) its largest count in any other edition; and no town with a median of 60+ listings
-    may be empty in an edition."""
+    """Catches a town heading carried over pages that belong to another town (FINDING E2, fixed by the re-parse): a town with 30+
+    listings in an edition must not exceed three times (+10) its largest count in any other edition; and no town with a median of
+    60+ listings may be empty in an edition. The 1965 edition prints no ZIP codes and files Commerce City (incorporated 1962) firms
+    under their Denver post office; they are placed in Commerce City by address, so 1965 has no COMMERCE CITY heading by design."""
     t = L[L.city != ''].groupby(['year', 'city']).size().unstack(fill_value=0)
     bad = {}
     for y in t.index:
@@ -245,7 +243,8 @@ def test_no_town_holds_many_listings_in_one_edition_only(L):
         f = t.loc[y][(t.loc[y] >= 30) & (t.loc[y] > 3 * other.clip(lower=1) + 10)]
         if len(f): bad[y] = f.to_dict()
     big = t.columns[t.median() >= 60]
-    missing = {y: list(big[t.loc[y, big] == 0]) for y in t.index if (t.loc[y, big] == 0).any()}
+    missing = {y: [c for c in big[t.loc[y, big] == 0] if (y, c) != ('1965', 'COMMERCE CITY')] for y in t.index}
+    missing = {y: v for y, v in missing.items() if v}
     assert not bad and not missing, (bad, missing)
 
 

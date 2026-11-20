@@ -31,7 +31,7 @@ suppressPackageStartupMessages({ library(sf); library(data.table) })
 sf_use_s2(FALSE); UTM <- 26913; O <- "data/results/zoning_over_time"; A <- "app/data"; R0 <- "data/raw/zoning_1929"; dir.create(O, showWarnings = FALSE, recursive = TRUE)
 CATS <- c("Industrial", "Industrial mixed use", "Commercial or mixed use", "Commercial (housing not allowed)", "Residential", "PUD (custom district)", "Open space, civic, other", "Residence or business (1929, 1944)", "Other districts (1955)")
 # ---------------------------------------------------------------- geographies
-tr <- st_transform(st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE), UTM); tr$core <- as.logical(tr$core) %in% TRUE
+tr <- st_transform(st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE), UTM); tr$core <- as.logical(tr$core) %in% TRUE
 DEN <- st_union(st_make_valid(tr[substr(tr$GEOID, 1, 5) == "08031", ]))
 STUDY <- st_union(st_make_valid(tr[tr$core | substr(tr$GEOID, 1, 5) == "08031", ]))
 g <- fread("data/results/zoning_1929/gcp_fit.csv"); fx <- lm(X ~ px_x + px_y, g); fy <- lm(Y ~ px_x + px_y, g)
@@ -129,7 +129,10 @@ T <- T[on_km2 / km2 >= 0.5]   # tracts at least half on both historical sheets a
 T[, `:=`(s29 = ind29 / km2, snow = indnow / km2)]
 T[, path := factor(fcase(s29 >= 0.2 & snow >= 0.2, "Industrial in 1929 and today", s29 >= 0.2, "Industrial in 1929, not today", snow >= 0.2, "Industrial today, not in 1929", default = "Neither"),
                    levels = c("Industrial in 1929 and today", "Industrial in 1929, not today", "Industrial today, not in 1929", "Neither"))]
-Pn <- fread(file.path(A, "tract_panel.csv"), colClasses = c(GEOID = "character"))[census %in% c(1970, 1990, 2020) & !is.na(pop) & pop >= 200]
+# the same tracts in every census: a tract enters when it has 200+ residents in all three (FINDING 7 of 12 Nov 2026: the floor used to be
+# applied census by census, so 1990 compared six tracts with seven in 1970 and 2020)
+Pn <- fread(file.path(A, "tract_panel.csv"), colClasses = c(GEOID = "character"))[census %in% c(1970, 1990, 2020)]
+Pn <- Pn[GEOID %in% Pn[!is.na(pop) & pop >= 200, .N, by = GEOID][N == 3, GEOID]]
 M <- merge(Pn, T[, .(GEOID, path)], by = "GEOID")
 wm <- function(v, w) round(weighted.mean(v, w, na.rm = TRUE), 1)
 R5 <- M[, .(tracts = uniqueN(GEOID), residents = sum(pop), pct_hispanic = wm(p_hisp, pop), pct_black = wm(p_black, pop), pct_white = wm(p_white, pop), pct_poverty = wm(p_pov, pop),

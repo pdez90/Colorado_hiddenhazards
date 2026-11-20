@@ -7,6 +7,7 @@ roots:
 - data/results
 - data/historical
 - data/by_year
+- data/geo
 - app/data
 orchestrators:
   run_all.sh: inventory + pre-1960 chains (Python)
@@ -100,7 +101,9 @@ stages:
   outputs:
   - data/historical/CO_pre1960_hazardous_listings.csv
   - data/historical/CO_pre1960_hazardous_sites.csv
-  note: chain run_hist.py -> geocode_hist.py (applies the two review files) -> link_hist.py
+  - data/historical/review_rows_unmatched.csv
+  - data/historical/notown_copies_dropped.csv
+  note: chain run_hist.py -> geocode_hist.py (applies the review files; logs review rows that match no entry) -> link_hist.py (logs the no-town copies it drops)
 - id: hist_app
   script: pipeline/historical/app_hist.py
   run_by: run_all.sh
@@ -242,6 +245,7 @@ stages:
   outputs:
   - app/data/tract_panel.csv
   - app/data/co_tracts_2010.geojson
+  - data/geo/co_tracts_2010.gpkg
   - app/data/corridor_cells.csv
   - app/data/corridor_eg.csv
   - app/data/corridor_transitions.csv
@@ -302,7 +306,7 @@ stages:
   - data/raw/zoning_1929/zone_cells_1929.csv
   - app/data/holc_denver.geojson
   - data/results/denver_eds/*
-  - app/data/co_tracts_2010.geojson
+  - data/geo/co_tracts_2010.gpkg
   outputs:
   - data/results/zoning_1929/*
   copies:
@@ -681,8 +685,6 @@ unscripted:
   why: independent reader sample of 120
 - path: data/historical/gnis_places_co.csv
   why: GNIS gazetteer extract; read by four scripts, written by none in the repository
-- path: data/results/geocoding_validation_addresspoints_recheck.csv
-  why: queried from a browser on 17 Oct 2026 (README); no script
 - path: data/results/context/sanborn_batch1.csv
   why: hand transcription (data/raw/sanborn/README.md); lives under data/results
 - path: data/results/context/sanborn_batch1_sheets.csv

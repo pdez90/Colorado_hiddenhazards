@@ -9,41 +9,41 @@ wider,known,D,251,28.5
 wider,known,Outside the 1938 map,596,67.6
 published,hidden,B,5,2.2
 published,hidden,C,18,7.8
-published,hidden,D,78,33.6
-published,hidden,Outside the 1938 map,131,56.5
+published,hidden,D,77,33.3
+published,hidden,Outside the 1938 map,131,56.7
 published,known,B,6,0.8
 published,known,C,17,2.3
-published,known,D,205,27.8
-published,known,Outside the 1938 map,509,69.1
+published,known,D,206,27.9
+published,known,Outside the 1938 map,509,69
 cleanup_tri_prox,hidden,B,7,1.7
 cleanup_tri_prox,hidden,C,28,6.7
-cleanup_tri_prox,hidden,D,149,35.8
-cleanup_tri_prox,hidden,Outside the 1938 map,232,55.8
+cleanup_tri_prox,hidden,D,148,35.7
+cleanup_tri_prox,hidden,Outside the 1938 map,232,55.9
 cleanup_tri_prox,known,B,4,0.7
 cleanup_tri_prox,known,C,7,1.3
-cleanup_tri_prox,known,D,134,24.2
-cleanup_tri_prox,known,Outside the 1938 map,408,73.8
+cleanup_tri_prox,known,D,135,24.4
+cleanup_tri_prox,known,Outside the 1938 map,408,73.6
 prox25,hidden,B,7,1.8
 prox25,hidden,C,26,6.6
-prox25,hidden,D,122,31
-prox25,hidden,Outside the 1938 map,238,60.6
+prox25,hidden,D,121,30.9
+prox25,hidden,Outside the 1938 map,238,60.7
 prox25,known,B,4,0.7
 prox25,known,C,9,1.6
-prox25,known,D,161,28
-prox25,known,Outside the 1938 map,402,69.8
+prox25,known,D,162,28.1
+prox25,known,Outside the 1938 map,402,69.7
 prox10,hidden,B,9,1.7
 prox10,hidden,C,31,5.8
-prox10,hidden,D,172,31.9
-prox10,hidden,Outside the 1938 map,327,60.7
+prox10,hidden,D,171,31.8
+prox10,hidden,Outside the 1938 map,327,60.8
 prox10,known,B,2,0.5
 prox10,known,C,4,0.9
-prox10,known,D,111,25.8
-prox10,known,Outside the 1938 map,313,72.8
+prox10,known,D,112,26
+prox10,known,Outside the 1938 map,313,72.6
 strict,hidden,B,10,1.8
-strict,hidden,C,32,5.7
-strict,hidden,D,176,31.5
-strict,hidden,Outside the 1938 map,340,60.9
+strict,hidden,C,32,5.8
+strict,hidden,D,175,31.5
+strict,hidden,Outside the 1938 map,339,61
 strict,known,B,1,0.2
 strict,known,C,3,0.7
-strict,known,D,107,26
-strict,known,Outside the 1938 map,300,73
+strict,known,D,108,26.2
+strict,known,Outside the 1938 map,301,72.9

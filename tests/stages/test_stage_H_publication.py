@@ -84,11 +84,11 @@ def test_claim_expected_values_are_printed_in_the_anchored_text():
     assert not new_loose, new_loose
 
 
-@pytest.mark.xfail(strict=True, reason="FINDING 9: readme_pre1960_town_share checks firm-locations (87.8% at town level) for a sentence about entries (90.0%) and passes only through tol: 5")
 def test_about_90pct_claim_measures_entries_not_firm_locations():
-    """A claim passes for the wrong reason: the check computes a different quantity from the one the sentence states and a wide tolerance hides it."""
+    """A claim must not pass for the wrong reason (FINDING 9, fixed 20 Nov 2026): the sentence gives the share of entries first and of
+    firm-locations second, and the check computes the entries' share first."""
     c = next(c for c in OLD_CLAIMS if c["id"] == "readme_pre1960_town_share")
-    got = float(eval(c["check"], dict(TC.NAMESPACE, __builtins__={})))
+    got = float(eval(c["check"], dict(TC.NAMESPACE, __builtins__={}))[0])
     listings = pd.read_csv(ROOT / "data/historical/CO_pre1960_hazardous_listings.csv", dtype=str, keep_default_na=False)
     assert abs(got - 100 * (listings.precision == "town").mean()) < 0.5
 
@@ -404,8 +404,6 @@ def test_rerun_results_runs_every_writer_before_its_reader():
     assert not _order_violations(), _order_violations()
 
 
-@pytest.mark.xfail(strict=True, reason="FINDING 3 (observed effect): data/results/context/petroleum_by_use_now.csv lists all 255 pre-1960 Denver trades as 'not matched to a "
-                                       "parcel' and 556/295/170 later sites by use, while site_fate now matches all 266 trades and gives 557/297/171: context_layers ran before site_fate")
 def test_context_tables_were_built_from_the_committed_site_fate():
     """context_layers.R was run before site_fate.R, so its by-use tables (shown in the app) carry the previous run's parcel uses."""
     pet = pd.read_csv(ROOT / "data/results/context/petroleum_by_use_now.csv")
@@ -491,9 +489,8 @@ def test_workbook_summary_formulas_cover_the_whole_site_sheet():
         assert [head[c] for c, _ in cols] == ["radar", "confidence"] and all(int(r) == n for _, r in cols), g
 
 
-@pytest.mark.xfail(strict=True, reason="FINDING 8: data/results/r_vs_python.md is from an older inventory (4,312 hazardous-sector sites; the all-editions run now has 4,669)")
 def test_r_vs_python_report_describes_the_committed_inventory():
-    """The R-vs-Python comparison report is stale: it compares an inventory that is no longer the committed one."""
+    """The R-vs-Python comparison report must describe the committed inventory (FINDING 8, fixed 20 Nov 2026 by rerunning it)."""
     md = (ROOT / "data/results/r_vs_python.md").read_text(encoding="utf-8")
     n = int(re.search(r"same inventory status: ([\d,]+) of", md).group(1).replace(",", ""))
     full = pd.read_csv(ROOT / "data/full_inventory/sites.csv", dtype=str)

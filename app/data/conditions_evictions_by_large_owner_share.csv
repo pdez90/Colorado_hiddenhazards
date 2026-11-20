@@ -1,4 +1,4 @@
 large_owner_tercile,tracts,renter_households,filings_per_year,filing_rate,years,tract_file
 lowest third,48,26804,752,2.81,2012-2016,Eviction Lab full tract file (not the validated subset); years limited to those validated for Denver County
-middle third,47,49058,2043,4.16,2012-2016,Eviction Lab full tract file (not the validated subset); years limited to those validated for Denver County
-highest third,48,65986,4439,6.73,2012-2016,Eviction Lab full tract file (not the validated subset); years limited to those validated for Denver County
+middle third,47,49987,2090,4.18,2012-2016,Eviction Lab full tract file (not the validated subset); years limited to those validated for Denver County
+highest third,48,65057,4392,6.75,2012-2016,Eviction Lab full tract file (not the validated subset); years limited to those validated for Denver County

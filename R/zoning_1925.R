@@ -74,6 +74,6 @@ H <- st_read(file.path(A, "holc_denver.geojson"), quiet = TRUE); hs <- cbind(as.
 fwrite(hs, file.path(O, "zoning_shares_holc.csv")); print(hs[grade %in% c("A", "B", "C", "D"), .(areas = .N, km2 = sum(area_km2), pct_industrial_1929 = round(100 * sum(share_industrial_1929 * area_km2) / sum(area_km2), 1), pct_commercial_1929 = round(100 * sum(share_commercial_1929 * area_km2) / sum(area_km2), 1)), by = grade][order(grade)])
 es <- rbindlist(lapply(c(1900, 1910, 1920, 1930, 1940), function(yr) { fe <- sprintf("data/results/denver_eds/denver_eds_%d.geojson", yr); if (!file.exists(fe)) return(NULL); E <- st_read(fe, quiet = TRUE); cbind(data.table(census = yr, ED = as.character(E$ED)), share(st_geometry(E))) }))
 fwrite(es, file.path(O, "zoning_shares_eds.csv"))
-TRg <- st_read(file.path(A, "co_tracts_2010.geojson"), quiet = TRUE); TRg <- TRg[TRg$core %in% c(TRUE, "TRUE"), ]; ts <- cbind(data.table(GEOID = TRg$GEOID), share(st_geometry(TRg)))
+TRg <- st_read("data/geo/co_tracts_2010.gpkg", quiet = TRUE); TRg <- TRg[TRg$core %in% c(TRUE, "TRUE"), ]; ts <- cbind(data.table(GEOID = TRg$GEOID), share(st_geometry(TRg)))
 fwrite(ts, file.path(O, "zoning_shares_tracts.csv")); file.copy(file.path(O, c("zoning_shares_holc.csv", "zoning_shares_tracts.csv")), A, overwrite = TRUE)
 message("industrial 1929: ", round(as.numeric(st_area(ZI)) / 1e6, 1), " km2; commercial: ", round(as.numeric(st_area(ZC)) / 1e6, 1), " km2; tracts with any industrial zoning: ", sum(ts$share_industrial_1929 > 0), " of ", nrow(ts))
