@@ -12,7 +12,7 @@ The committed results were produced with exactly these queries, sent from a brow
 route to gis.colorado.gov; running this script anywhere with internet access reproduces them (allowing for edits to the
 address-point layer since October 2026).
 """
-import json, sys, time, urllib.parse, urllib.request
+import os, json, sys, time, urllib.parse, urllib.request
 import numpy as np, pandas as pd
 sys.path.insert(0, 'pipeline')
 from tiger_geocode import parse_addr
@@ -53,7 +53,14 @@ def classify(cands, pre, c0, lat, lon):
                 n_candidates=len(cc), n_plain=sum(1 for c in cc if not c[3]), dmin=min(ds) if ds else np.nan, dmax=max(ds) if ds else np.nan)
 
 def main():
-    r = pd.read_pickle('work/inv/records_final.pkl')
+    # the working records when the pipeline has just run, else the published listings (so the check can run on a machine that holds
+    # only the repository); the street is taken as read, the form the geocoder placed
+    if os.path.exists('work/inv/records_final.pkl'):
+        r = pd.read_pickle('work/inv/records_final.pkl')
+    else:
+        r = pd.read_csv('data/results/CO_directory_listings_1961-2002.csv', dtype={'site_id': str}, low_memory=False).rename(columns={'city': 'city_g'})
+        r['geo_quality'] = ''
+    if 'street_as_read' in r: r['street'] = r.street_as_read.where(r.street_as_read.notna() & (r.street_as_read.astype(str) != ''), r.street)
     h = r[r.site_id.notna() & r.geo_level.isin(['address', 'address_approx'])].sort_values('year').drop_duplicates('site_id', keep='last')
     s = pd.concat([h[h.geo_level == 'address'].sample(700, random_state=42), h[h.geo_level == 'address_approx'].sample(300, random_state=42)])
     G = pd.read_csv('data/historical/gnis_places_co.csv'); G = G[G.feature_class == 'Populated Place'].drop_duplicates('name')

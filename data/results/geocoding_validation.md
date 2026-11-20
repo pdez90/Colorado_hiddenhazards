@@ -4,8 +4,8 @@
 
 | geocode_level   |    n |   median_m |   p75_m |   p90_m |   within_100m |   within_250m |   over_1km |
 |:----------------|-----:|-----------:|--------:|--------:|--------------:|--------------:|-----------:|
-| address         | 1238 |         48 |     111 |     311 |         0.725 |         0.876 |      0.031 |
-| address_approx  |   96 |        131 |     473 |    1143 |         0.406 |         0.615 |      0.115 |
+| address         | 1237 |         48 |     111 |     311 |         0.724 |         0.876 |      0.031 |
+| address_approx  |   98 |        131 |     474 |    1116 |         0.408 |         0.612 |      0.112 |
 
 FRS coordinates have their own error (often 30-100 m), so these distances overstate our error somewhat; addresses that also appear in FRS are cleaner than average, so they may understate it.
 
@@ -22,7 +22,7 @@ FRS coordinates have their own error (often 30-100 m), so these distances overst
 |   1974 |       3310 |     0.536 |            0.127 |           0.045 |  0.034 |          0.257 |
 |   1977 |       3482 |     0.544 |            0.123 |           0.034 |  0.012 |          0.286 |
 |   1980 |       3946 |     0.56  |            0.139 |           0.029 |  0.018 |          0.254 |
-|   1983 |       4378 |     0.607 |            0.14  |           0.016 |  0.007 |          0.23  |
+|   1983 |       4381 |     0.611 |            0.135 |           0.019 |  0.006 |          0.229 |
 |   1988 |       4168 |     0.492 |            0.155 |           0.055 |  0.106 |          0.193 |
 |   1990 |       4487 |     0.651 |            0.125 |           0.093 |  0.001 |          0.13  |
 |   1992 |       3874 |     0.303 |            0.095 |           0.381 |  0.005 |          0.216 |

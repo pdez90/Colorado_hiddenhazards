@@ -547,7 +547,7 @@ def test_zoning_sites_by_year_recomputed():
     """Catches wrong site counts on the two sheets in Denver (895 and 388) and wrong shares standing in an industrial district in each year."""
     L = layers()
     s, p = common_points()
-    assert (len(s), len(p)) == (895, 388)
+    assert (len(s), len(p)) == (892, 388)
     R4 = csv("data/results/zoning_over_time/zoning_sites_by_year.csv").set_index(["series", "year"])
     for nm, q in (("Hazardous-sector manufacturers 1965-1992", s), ("Hazardous trades before 1960 (street level)", p)):
         assert (R4.sites[nm] == len(q)).all()
@@ -562,15 +562,15 @@ def test_zoning_sites_by_year_recomputed():
 
 
 def test_sites_off_the_common_land_are_accounted_for():
-    """Catches unexplained loss of sites between Denver (972 sites by GEOID / 390 street-level trades of the town) and the zoning tables (895 / 388)."""
+    """Catches unexplained loss of sites between Denver (969 sites by GEOID / 390 street-level trades of the town) and the zoning tables (892 / 388)."""
     L = layers()
     s, p = sites_addr(), hist_street()
     sd, pd_ = s[_denver(s)], p[p.town == "DENVER"]
-    assert (len(sd), len(pd_)) == (972, 390)
+    assert (len(sd), len(pd_)) == (969, 390)
     cs, cp = common_points()
     # 1965-92: every Denver site is either on both sheets (counted) or off them; none is lost at a tract boundary any more
     off_s = ~sd.intersects(L["on_sheets"])
-    assert off_s.sum() == 77 and len(cs) == len(sd) - off_s.sum() == 895
+    assert off_s.sum() == 77 and len(cs) == len(sd) - off_s.sum() == 892
     assert (off_s & sd.intersects(den())).sum() == 76                                    # 76 of the 77 lie inside the simplified county outline
     assert (sd[~sd.intersects(den())].distance(den()) < 20).all()                        # sites of Denver tracts outside the simplified outline: slivers only
     # pre-1960: all 390 lie on both sheets; the 2 not counted have an Adams County GEOID (the 3 that had none get one from the full-resolution tracts since 13 Nov)
@@ -614,13 +614,13 @@ def test_sites_zoning_2023_rows_are_the_selected_sites_once_each():
     """Catches duplicated or foreign rows in sites_zoning_2023.csv and a 'where' label that disagrees with the site's county."""
     z = csv("data/results/zoning_2023/sites_zoning_2023.csv")
     s = sites_addr().set_index("site_id")
-    assert z.site_id.is_unique and z.site_id.isin(s.index).all() and len(z) == 1390
+    assert z.site_id.is_unique and z.site_id.isin(s.index).all() and len(z) == 1384
     t = tracts()
     core = t[(t.core.astype(str).str.lower() == "true") | (t.GEOID.str[:5] == "08031")]
     sa = sites_addr()
     member = sa.GEOID.isin(set(core.GEOID)).values | sa.intersects(shapely.union_all(core.geometry.values)).values   # own tract, or inside the outline
     assert set(z.site_id) == set(sa.site_id[member])                                                               # none left unmatched
-    assert (z["where"] == "Denver County").sum() == 972
+    assert (z["where"] == "Denver County").sum() == 969
     den_geoid = s.GEOID.reindex(z.site_id).str[:5].values == "08031"
     assert ((z["where"] == "Denver County").values == den_geoid).all()
     last = site_years()[site_years().year.isin(ED_OK)].groupby("site_id").year.max()
@@ -866,7 +866,7 @@ def test_landuse_tables_add_up():
     t_ = tracts()
     study = shapely.union_all(t_[(t_.core.astype(str).str.lower() == "true") | (t_.GEOID.str[:5] == "08031")].geometry.values)
     n_study = int(sites_addr().intersects(study).sum())                                   # landuse_1937_1997.R selects by the study-area outline
-    assert n_study == 1386
+    assert n_study == 1380
     assert (m["all"] == m["on a current inventory"] + m["on no current inventory"]).all() and (m["all"] <= n_study).all() and (m["all"] >= n_study - 1).all()
     w = S[S.series.str.startswith("Hazardous-sector")].pivot(index="year", columns="status", values="pct_on_industrial_land")
     mix = (w["on a current inventory"] * m["on a current inventory"] + w["on no current inventory"] * m["on no current inventory"]) / m["all"]

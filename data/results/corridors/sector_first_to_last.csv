@@ -1,24 +1,24 @@
 first,last,N
-Printing,Printing,162
-Food,Food,100
-Fabricated metals,Fabricated metals,56
-"Stone, clay & glass","Stone, clay & glass",53
+Printing,Printing,164
+Food,Food,99
+Fabricated metals,Fabricated metals,57
+"Stone, clay & glass","Stone, clay & glass",54
 Food,Printing,46
 Lumber & wood,Lumber & wood,45
-Printing,,35
-,Printing,35
-Machinery,Machinery,34
+,Printing,36
+Machinery,Machinery,35
+Printing,,34
 Misc. manufacturing,Misc. manufacturing,32
 Food,,27
 Electronics,Electronics,26
 Fabricated metals,Printing,23
 Fabricated metals,,21
-Machinery,Printing,19
+Instruments,Instruments,20
+Machinery,Printing,18
 Apparel,Apparel,18
-Instruments,Instruments,18
 Machinery,Fabricated metals,17
+Chemicals,Chemicals,17
 ,,16
-Chemicals,Chemicals,16
 ,Machinery,15
 Machinery,,15
 Printing,Food,14
@@ -34,12 +34,12 @@ Instruments,Printing,12
 ,Fabricated metals,11
 Food,Fabricated metals,11
 Lumber & wood,,11
+Fabricated metals,Misc. manufacturing,11
 Machinery,Rubber & plastics,10
 Food,Lumber & wood,10
 Apparel,Printing,10
 Food,"Stone, clay & glass",10
 Furniture,Furniture,10
-Fabricated metals,Misc. manufacturing,10
 Food,Machinery,10
 Fabricated metals,Machinery,9
 Printing,Misc. manufacturing,9
@@ -66,17 +66,17 @@ Printing,Fabricated metals,8
 Petroleum,Petroleum,7
 ,Lumber & wood,7
 Furniture,Printing,7
-Food,Chemicals,7
+Food,Rubber & plastics,7
 Misc. manufacturing,Lumber & wood,7
 Fabricated metals,Food,7
 Transportation eq.,Lumber & wood,7
 Electronics,Machinery,7
+Lumber & wood,Machinery,7
 ,Electronics,7
 Rubber & plastics,Fabricated metals,6
 ,Chemicals,6
-Food,Rubber & plastics,6
-Electronics,Instruments,6
 Food,Furniture,6
+Food,Chemicals,6
 Electronics,Fabricated metals,6
 Furniture,,6
 Machinery,Misc. manufacturing,6
@@ -88,7 +88,6 @@ Furniture,Fabricated metals,6
 Transportation eq.,,6
 Fabricated metals,Paper,6
 "Stone, clay & glass",,6
-Lumber & wood,Machinery,6
 Printing,Electronics,6
 Machinery,Apparel,5
 Paper,,5
@@ -111,8 +110,6 @@ Lumber & wood,Fabricated metals,4
 ,Furniture,4
 Electronics,Printing,4
 Chemicals,Printing,4
-Machinery,Furniture,4
-Fabricated metals,Transportation eq.,4
 "Stone, clay & glass",Machinery,4
 Chemicals,Apparel,4
 Lumber & wood,Chemicals,4
@@ -121,9 +118,11 @@ Electronics,Rubber & plastics,4
 Apparel,Food,4
 Lumber & wood,Food,4
 Furniture,Misc. manufacturing,4
+Electronics,Instruments,4
 Paper,Printing,3
 Rubber & plastics,"Stone, clay & glass",3
 Transportation eq.,Fabricated metals,3
+Food,Paper,3
 Instruments,Food,3
 Fabricated metals,Primary metals,3
 Transportation eq.,Machinery,3
@@ -133,7 +132,9 @@ Lumber & wood,Rubber & plastics,3
 Leather,,3
 ,Petroleum,3
 ,Instruments,3
+Machinery,Furniture,3
 Printing,Transportation eq.,3
+Fabricated metals,Transportation eq.,3
 Rubber & plastics,Electronics,3
 Printing,Paper,3
 Printing,Textiles,3
@@ -146,8 +147,8 @@ Leather,Leather,3
 Chemicals,Food,3
 Lumber & wood,Printing,3
 "Stone, clay & glass",Food,3
+Misc. manufacturing,Chemicals,3
 "Stone, clay & glass",Misc. manufacturing,3
-Fabricated metals,Electronics,3
 Machinery,Instruments,3
 Misc. manufacturing,Machinery,3
 "Stone, clay & glass",Electronics,3
@@ -156,7 +157,6 @@ Instruments,Chemicals,2
 ,Transportation eq.,2
 Instruments,Apparel,2
 Misc. manufacturing,Furniture,2
-Food,Paper,2
 Printing,Chemicals,2
 Chemicals,Paper,2
 Primary metals,Machinery,2
@@ -182,10 +182,11 @@ Electronics,Food,2
 Lumber & wood,Instruments,2
 Electronics,Lumber & wood,2
 Furniture,"Stone, clay & glass",2
+Apparel,Furniture,2
 Electronics,Misc. manufacturing,2
-Misc. manufacturing,Chemicals,2
 Leather,Printing,2
 Lumber & wood,Transportation eq.,2
+Fabricated metals,Electronics,2
 Misc. manufacturing,"Stone, clay & glass",2
 Fabricated metals,Furniture,2
 Apparel,Misc. manufacturing,2
@@ -236,7 +237,6 @@ Leather,Furniture,1
 Chemicals,Rubber & plastics,1
 Textiles,Textiles,1
 Apparel,Lumber & wood,1
-Apparel,Furniture,1
 Electronics,Paper,1
 "Stone, clay & glass",Paper,1
 Instruments,Lumber & wood,1
@@ -244,6 +244,7 @@ Rubber & plastics,Chemicals,1
 Printing,Leather,1
 Rubber & plastics,Instruments,1
 Rubber & plastics,Lumber & wood,1
+Electronics,Transportation eq.,1
 Chemicals,Leather,1
 Electronics,Furniture,1
 Transportation eq.,Apparel,1

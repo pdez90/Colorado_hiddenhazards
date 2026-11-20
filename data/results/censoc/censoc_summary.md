@@ -26,12 +26,12 @@
 | Numident (men and women, deaths 1988-2005) | M3: + 1940 ED fixed effects | Placebo: commercial land within 250 m, 1937 (per 10 points) | -0.018 | -0.13 to 0.09 | 7.46e-01 | 13376 |
 | Numident (men and women, deaths 1988-2005) | M1: birth year (and sex) only | 1929 industrial district | -0.065 | -0.48 to 0.35 | 7.60e-01 | 13376 |
 | Numident (men and women, deaths 1988-2005) | M2: + 1940 person and household controls | 1929 industrial district | 0.088 | -0.33 to 0.51 | 6.82e-01 | 13376 |
-| Numident (men and women, deaths 1988-2005) | M1: birth year (and sex) only | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | -0.131 | -0.23 to -0.04 | 7.08e-03 | 13376 |
-| Numident (men and women, deaths 1988-2005) | M2: + 1940 person and household controls | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | -0.057 | -0.16 to 0.05 | 2.89e-01 | 13376 |
-| Numident (men and women, deaths 1988-2005) | M3: + 1940 ED fixed effects | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | 0.012 | -0.48 to 0.50 | 9.63e-01 | 13376 |
-| Numident (men and women, deaths 1988-2005) | M1: birth year (and sex) only | Later (1965-92) manufacturers on an inventory, kernel (per SD) | -0.099 | -0.19 to -0.00 | 4.11e-02 | 13376 |
-| Numident (men and women, deaths 1988-2005) | M2: + 1940 person and household controls | Later (1965-92) manufacturers on an inventory, kernel (per SD) | 0.005 | -0.11 to 0.12 | 9.36e-01 | 13376 |
-| Numident (men and women, deaths 1988-2005) | M3: + 1940 ED fixed effects | Later (1965-92) manufacturers on an inventory, kernel (per SD) | 0.299 | -0.15 to 0.75 | 1.95e-01 | 13376 |
+| Numident (men and women, deaths 1988-2005) | M1: birth year (and sex) only | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | -0.133 | -0.23 to -0.04 | 5.81e-03 | 13376 |
+| Numident (men and women, deaths 1988-2005) | M2: + 1940 person and household controls | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | -0.059 | -0.16 to 0.04 | 2.63e-01 | 13376 |
+| Numident (men and women, deaths 1988-2005) | M3: + 1940 ED fixed effects | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | 0.011 | -0.49 to 0.52 | 9.65e-01 | 13376 |
+| Numident (men and women, deaths 1988-2005) | M1: birth year (and sex) only | Later (1965-92) manufacturers on an inventory, kernel (per SD) | -0.099 | -0.19 to -0.00 | 4.10e-02 | 13376 |
+| Numident (men and women, deaths 1988-2005) | M2: + 1940 person and household controls | Later (1965-92) manufacturers on an inventory, kernel (per SD) | 0.005 | -0.11 to 0.12 | 9.38e-01 | 13376 |
+| Numident (men and women, deaths 1988-2005) | M3: + 1940 ED fixed effects | Later (1965-92) manufacturers on an inventory, kernel (per SD) | 0.290 | -0.16 to 0.74 | 2.05e-01 | 13376 |
 | Numident (men and women, deaths 1988-2005) | M1: birth year (and sex) only | HOLC grade D (vs A/B) | -0.460 | -0.75 to -0.17 | 1.69e-03 | 13376 |
 | Numident (men and women, deaths 1988-2005) | M2: + 1940 person and household controls | HOLC grade D (vs A/B) | -0.262 | -0.64 to 0.11 | 1.69e-01 | 13376 |
 | Numident (men and women, deaths 1988-2005) | M2 joint | Hazardous trades kernel, with industrial and commercial land | -0.010 | -0.16 to 0.14 | 9.02e-01 | 13376 |
@@ -50,12 +50,12 @@
 | DMF (men, deaths 1975 on) | M3: + 1940 ED fixed effects | Placebo: commercial land within 250 m, 1937 (per 10 points) | 0.027 | -0.21 to 0.27 | 8.26e-01 | 8390 |
 | DMF (men, deaths 1975 on) | M1: birth year (and sex) only | 1929 industrial district | -1.289 | -2.14 to -0.43 | 3.15e-03 | 8390 |
 | DMF (men, deaths 1975 on) | M2: + 1940 person and household controls | 1929 industrial district | -0.720 | -1.56 to 0.12 | 9.18e-02 | 8390 |
-| DMF (men, deaths 1975 on) | M1: birth year (and sex) only | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | -0.335 | -0.69 to 0.02 | 6.70e-02 | 8390 |
-| DMF (men, deaths 1975 on) | M2: + 1940 person and household controls | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | -0.034 | -0.42 to 0.35 | 8.63e-01 | 8390 |
-| DMF (men, deaths 1975 on) | M3: + 1940 ED fixed effects | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | -0.080 | -1.15 to 0.99 | 8.83e-01 | 8390 |
-| DMF (men, deaths 1975 on) | M1: birth year (and sex) only | Later (1965-92) manufacturers on an inventory, kernel (per SD) | -0.489 | -0.82 to -0.16 | 3.50e-03 | 8390 |
-| DMF (men, deaths 1975 on) | M2: + 1940 person and household controls | Later (1965-92) manufacturers on an inventory, kernel (per SD) | -0.188 | -0.58 to 0.20 | 3.49e-01 | 8390 |
-| DMF (men, deaths 1975 on) | M3: + 1940 ED fixed effects | Later (1965-92) manufacturers on an inventory, kernel (per SD) | -0.238 | -1.02 to 0.54 | 5.49e-01 | 8390 |
+| DMF (men, deaths 1975 on) | M1: birth year (and sex) only | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | -0.349 | -0.69 to -0.00 | 4.83e-02 | 8390 |
+| DMF (men, deaths 1975 on) | M2: + 1940 person and household controls | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | -0.053 | -0.43 to 0.33 | 7.84e-01 | 8390 |
+| DMF (men, deaths 1975 on) | M3: + 1940 ED fixed effects | Later (1965-92) hazardous manufacturers on no inventory, kernel (per SD) | -0.153 | -1.26 to 0.96 | 7.87e-01 | 8390 |
+| DMF (men, deaths 1975 on) | M1: birth year (and sex) only | Later (1965-92) manufacturers on an inventory, kernel (per SD) | -0.486 | -0.82 to -0.15 | 4.03e-03 | 8390 |
+| DMF (men, deaths 1975 on) | M2: + 1940 person and household controls | Later (1965-92) manufacturers on an inventory, kernel (per SD) | -0.183 | -0.58 to 0.21 | 3.65e-01 | 8390 |
+| DMF (men, deaths 1975 on) | M3: + 1940 ED fixed effects | Later (1965-92) manufacturers on an inventory, kernel (per SD) | -0.230 | -1.01 to 0.55 | 5.65e-01 | 8390 |
 | DMF (men, deaths 1975 on) | M1: birth year (and sex) only | HOLC grade D (vs A/B) | -1.294 | -2.01 to -0.58 | 4.08e-04 | 8390 |
 | DMF (men, deaths 1975 on) | M2: + 1940 person and household controls | HOLC grade D (vs A/B) | -0.161 | -1.14 to 0.82 | 7.47e-01 | 8390 |
 | DMF (men, deaths 1975 on) | M2 joint | Hazardous trades kernel, with industrial and commercial land | 0.185 | -0.11 to 0.48 | 2.23e-01 | 8390 |

@@ -103,10 +103,10 @@
 | 1938 HOLC grade | C | 11069 | 60221 | 52613 | 0.32 | 7.84 | 6.1 | 27.4 |
 | 1938 HOLC grade | D | 6194 | 41899 | 38458 | 0.20 | 7.94 | 5.1 | 28.7 |
 | 1938 HOLC grade | B | 2517 | 5840 | 4974 | 0.23 | 6.24 | 2.8 | 22.8 |
-| Historical sites | Within 400 m of a hidden site | 8909 | 81423 | 72992 | 0.22 | 7.96 | 5.5 | 27.7 |
+| Historical sites | Within 400 m of a hidden site | 8909 | 81332 | 72901 | 0.22 | 7.96 | 5.5 | 27.7 |
 | Historical sites | Within 400 m of a known site | 10309 | 100728 | 91959 | 0.19 | 7.80 | 5.6 | 28.1 |
 | Historical sites | Within 400 m of a pre-1960 hazardous trade | 6344 | 80662 | 72122 | 0.18 | 8.14 | 6.8 | 29.0 |
-| Historical sites | More than 400 m from any | 21594 | 123411 | 103004 | 0.30 | 6.49 | 4.4 | 22.5 |
+| Historical sites | More than 400 m from any | 21593 | 123410 | 103003 | 0.30 | 6.49 | 4.4 | 22.5 |
 | All rental buildings | all | 37729 | 256469 | 222931 | 0.25 | 7.07 | 4.9 | 24.8 |
 
 ## Largest 1% of owners

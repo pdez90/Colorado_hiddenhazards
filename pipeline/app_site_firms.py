@@ -1,5 +1,6 @@
 """Per-site firm details for the app popups and downloads (app/data/site_firms.csv).
-One row per establishment (firm linked across editions) at each mapped site: name, years listed, what the directory says
+One row per establishment (firm linked across editions) at each mapped site: name, the street address it was listed at (a site
+groups listings within 30 m, so its firms can have neighbouring addresses), years listed, what the directory says
 it made (product descriptions / SIC titles), SIC codes, year established, employment class, hazardous-sector flag."""
 import pandas as pd, numpy as np
 
@@ -28,7 +29,8 @@ for (site, est_id), g in r.sort_values('year').groupby(['site_id', 'estab_id']):
     if not desc and sics: desc = [TITLE[c] + ' (from SIC)' for c in sics if c in TITLE][:3]
     est = pd.to_numeric(g.est, errors='coerce').min()
     size = g['size'].dropna().astype(str)
-    rows.append(dict(site_id=site, estab_id=est_id, name=clean_name(g.name.iloc[-1]), first_year=yrs[0], last_year=yrs[-1], editions=len(yrs),
+    st = g.street.dropna().astype(str).str.strip(); st = st[st != '']
+    rows.append(dict(site_id=site, estab_id=est_id, name=clean_name(g.name.iloc[-1]), address=st.value_counts().index[0] if len(st) else '', first_year=yrs[0], last_year=yrs[-1], editions=len(yrs),
                      makes='; '.join(desc), sic=' '.join(sics), sic_source=g.sic_source.dropna().iloc[-1] if g.sic_source.notna().any() else '',
                      established=int(est) if pd.notna(est) and 1850 <= est <= 2003 else None,
                      employees=next((clean_size(v) for v in size[::-1] if clean_size(v)), ''), hazardous=bool(g.hazard_any.any()),

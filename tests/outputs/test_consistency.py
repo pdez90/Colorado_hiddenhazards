@@ -195,7 +195,7 @@ def test_full_inventory_internally_consistent():
     bad = [sid for sid, (mn, mx) in yrs.items() if sid in m.index and (int(m.at[sid, "first_year"]), int(m.at[sid, "last_year"])) != (mn, mx)]
     assert not bad, bad[:5]
     assert not ((s.fe_hazard == "FALSE") & (s.ext_hazard == "FALSE")).any()
-    assert len(L) == 72880   # all 25 editions after the 18 November rebuild from the scans
+    assert len(L) == 72899   # all 25 editions after the 19 November rebuild (OCR pages restored)
     by = sorted((fi / "by_year").glob("*.csv"))
     assert len(by) == 25
 

@@ -18,8 +18,8 @@ period,grade,km2,firms,firms_band,start,per_km2,source,firms_per_edition,edition
 1965-1980,A,5.7,0,0,1965,0,Directory of Colorado Manufacturers (hazardous sectors),0,,0,14.1
 1965-1980,B,13.4,9,2,1965,0.67,Directory of Colorado Manufacturers (hazardous sectors),2,9,0.15,14.1
 1965-1980,C,41.2,37,10,1965,0.9,Directory of Colorado Manufacturers (hazardous sectors),11.2222222222222,9,0.272,14.1
-1965-1980,D,27.2,277,84,1965,10.2,Directory of Colorado Manufacturers (hazardous sectors),104.444444444444,9,3.844,14.1
+1965-1980,D,27.2,276,84,1965,10.16,Directory of Colorado Manufacturers (hazardous sectors),104.444444444444,9,3.844,14.1
 1981-1992,A,5.7,0,0,1981,0,Directory of Colorado Manufacturers (hazardous sectors),0,,0,20.1
 1981-1992,B,13.4,3,0,1981,0.22,Directory of Colorado Manufacturers (hazardous sectors),1.25,4,0.094,20.1
 1981-1992,C,41.2,24,9,1981,0.58,Directory of Colorado Manufacturers (hazardous sectors),7.25,4,0.176,20.1
-1981-1992,D,27.2,220,62,1981,8.1,Directory of Colorado Manufacturers (hazardous sectors),96,4,3.533,20.1
+1981-1992,D,27.2,218,62,1981,8.02,Directory of Colorado Manufacturers (hazardous sectors),96,4,3.533,20.1

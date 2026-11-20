@@ -136,6 +136,10 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
   # the address key drops the street type and any unit ('230 YUMA ST STE 4' -> '230 YUMA'), as in Python: directories rarely print the type
   addr_key <- function(x) vapply(x, function(s) { a <- e$parse_addr(s); if (is.na(a$num)) trimws(s) else trimws(gsub("\\s+", " ", paste(a$num, a$pre, a$core))) }, "", USE.NAMES = FALSE)
   reg$akey <- addr_key(reg$street_n); S$akey <- addr_key(S$address)
+  # number and street name only (no direction, type or unit), for records within 250 m: the same address written with another ZIP or
+  # town, or with the direction on one side only (19 Nov 2026), as loose_key() in pipeline/build_sites.py
+  loose_key <- function(x) vapply(x, function(s) { a <- e$parse_addr(s); if (is.na(a$num) || is.na(a$core) || !nzchar(a$core)) "" else paste(a$num, a$core) }, "", USE.NAMES = FALSE)
+  reg$lkey <- loose_key(reg$street_n); S$lkey <- loose_key(S$address)
   reg$city_u <- toupper(trimws(ifelse(is.na(reg$city), "", reg$city)))
   src_lab <- function(x) sub("CDPHE_", "CDPHE ", sub("EPA_", "", x))
   R <- reg[!is.na(lat) & !is.na(lon)][order(lat)]
@@ -169,6 +173,7 @@ if (!exists("TESTING") && !nzchar(Sys.getenv("AUDIT_TESTING"))) {
     if (!length(am)) am <- which(key_city == paste(s$akey, toupper(trimws(ifelse(is.na(s$city), "", s$city))), sep = "|"))   # blank ZIP: street + city
     # either way, only a record within 250 m (or without a point), as in Python: the key drops the street type ('DOVER DR' = 'DOVER RD')
     if (length(am)) am <- am[is.na(reg$lat[am]) | hav(s$lat, s$lon, reg$lat[am], reg$lon[am]) <= 250]
+    if (nzchar(s$lkey)) { lm <- which(reg$lkey == s$lkey & !is.na(reg$lat)); lm <- lm[hav(s$lat, s$lon, reg$lat[lm], reg$lon[lm]) <= 250]; am <- union(am, lm) }
     # author-reviewed matches (data/raw/known_match_review.csv), as in pipeline/build_sites.py
     if (length(rv_key)) am <- union(am, rv_reg[rv_key == paste(s$akey, toupper(trimws(ifelse(is.na(s$city), "", s$city))), sep = "|")])
     rec <- list(); basis <- character()   # evidence behind every hit, over all tiers: 'entity' (name or address), 'boundary', 'prox'

@@ -30,7 +30,7 @@ edition_to_open,volume_to_open,address,id,status,name,first_year,last_year,use_n
 1950-51,1,,,pre-1960,Acme Silver Plating Works,1941,1941,Civic / school / health,work/sanborn/HF07701_1950.pdf
 1950-51,1,,,pre-1960,Glenshore Mfg Co Inc,1950,1950,Park / open space,work/sanborn/HF06584_1950.pdf
 1950-51,1,1114 LARIMER,S00223,on a current inventory,ACME SILVER PLATING WORKS (1965; SIC 3471) | REX IRON WORKS CO (1968; SIC 3591),1965,1968,Civic / school / health,work/sanborn/S00076_1950.pdf
-1950-51,1,1120 10TH,S02149,on no current inventory,"THELCO CCRP (1968; SIC 3533,3561,3566)",1968,1968,Civic / school / health,work/sanborn/S01823_1950.pdf
+1950-51,1,1120 10TH,S02150,on no current inventory,"THELCO CCRP (1968; SIC 3533,3561,3566)",1968,1968,Civic / school / health,work/sanborn/S01823_1950.pdf
 1950-51,1,1122 9TH,,on a current inventory,EVERSMAN MFG CO INC (1973; SIC 3523),1967,1973,Civic / school / health,work/sanborn/S01490_1950.pdf
 1950-51,1,1123 Larimer,HF04265,pre-1960,Oneida Chemical Co Inc,1956,1956,Civic / school / health,work/sanborn/HF07230_1950.pdf
 1950-51,1,1125 11TH ST,S00285,on no current inventory,"CAPITOL ENGRAVING CC (1968; SIC 2793,3555)",1966,1973,Civic / school / health,work/sanborn/S00793_1950.pdf
@@ -57,7 +57,7 @@ edition_to_open,volume_to_open,address,id,status,name,first_year,last_year,use_n
 1950-51,1,2565 CURTIS,S00255,on a current inventory,"ART NEON CO. (1965-1966; SIC 3553) | ote (1967; SIC 2842,3993) | GALAXY PLASTIC INDUSTRIES INC (1974; SIC 3079)",1965,1983,Civic / school / health,work/sanborn/S00111_1950.pdf
 1950-51,1,2807 Blake St,HF03934,pre-1960,Howard Flint Ink Co,1950,1950,Residential,work/sanborn/HF06613_1950.pdf
 1950-51,1,2814 Lari,,pre-1960,Cars 11,1943,1943,Residential,work/sanborn/HF04795_1950.pdf
-1950-51,1,900 WEWATTA,S02033,on no current inventory,CROWN TAR + CHEMICAL WORKS INC (1967-1980; SIC 2814) | CROWN TAR + CHEMICAL WORKS INC 2791 TYPESETTING (1977; SIC 2899),1967,1980,Civic / school / health,work/sanborn/S01424_1950.pdf
+1950-51,1,900 WEWATTA,S02034,on no current inventory,CROWN TAR + CHEMICAL WORKS INC (1967-1980; SIC 2814) | CROWN TAR + CHEMICAL WORKS INC 2791 TYPESETTING (1977; SIC 2899),1967,1980,Civic / school / health,work/sanborn/S01424_1950.pdf
 1950-51,2,1125 LIPAN,S03077,on no current inventory,"O-C METAL PLATING + FOUNDRY WORKS (1973-1974; SIC 3361,3362,3471)",1973,1974,Civic / school / health,work/sanborn/S02437_1950.pdf
 1950-51,2,1251 Osage,HF03964,pre-1960,Overland Fndry Go Hosek Mfg Go,1950,1950,Civic / school / health,work/sanborn/HF06652_1950.pdf
 1950-51,2,1334 Speer Blvd,HF03932,pre-1960,Hold Everything Prod Edwin Hill & Jack Kline,1950,1950,Residential,work/sanborn/HF06610_1950.pdf
@@ -68,13 +68,13 @@ edition_to_open,volume_to_open,address,id,status,name,first_year,last_year,use_n
 1950-51,2,615 W 14th av,HF04261,pre-1960,Newlander A Machine Works,1956,1956,Residential,work/sanborn/HF07225_1950.pdf
 1950-51,2,617 E 1st Av,,pre-1960,Hanes Agcy,1950,1950,Residential,work/sanborn/HF06599_1950.pdf
 1950-51,2,970 Cherokee St,HF03927,pre-1960,Gunderson-Taylor Machinery Co,1950,1950,Park / open space,work/sanborn/HF06597_1950.pdf
-1950-51,3,1632 E 47TH,S01369,on a current inventory,"OEMCO INC (1968-1974; SIC 2834) | OILED TYMPAN SUPREME CHEMICAL (1988; SIC 2841,2842)",1968,1988,Civic / school / health,work/sanborn/S01724_1950.pdf
+1950-51,3,1632 E 47TH,S01370,on a current inventory,"OEMCO INC (1968-1974; SIC 2834) | OILED TYMPAN SUPREME CHEMICAL (1988; SIC 2841,2842)",1968,1988,Civic / school / health,work/sanborn/S01724_1950.pdf
 1950-51,3,2570 Grape,,pre-1960,Smedegaard G N Constr Co,1950,1950,Residential,work/sanborn/HF06702_1950.pdf
 1950-51,3,3315 Gilpin,HF03980,pre-1960,RedfieldGun SightColWItWC Redfield Et Al,1950,1950,Residential,work/sanborn/HF06676_1950.pdf
 1950-51,3,3609 Wynkoop,HF04527,pre-1960,United Steel & Iron Works,1956,1956,Residential,work/sanborn/HF07269_1950.pdf
 1950-51,3,4280 COLUMBINE,S00251,on a current inventory,"C O C CRAFTSMEN (1983; SIC 3964,3499) | SANCHEZ INTERNATIONAL (1983; SIC 3964,2387,3079)",1965,1983,Civic / school / health,work/sanborn/S00107_1950.pdf
-1950-51,3,4800 BRIGHTON BLVD,S01360,on a current inventory,GRANNAN SAND + GRAVEL CO (1967-1990; SIC 2951) | BRANNAN SAND + GRAVEL CO (1968; SIC 2951),1966,1992,Civic / school / health,work/sanborn/S00742_1950.pdf
-1950-51,3,5131 RACE CT,S05642,on a current inventory,"PLASTMOLD INC (1983-1990; SIC 3079) | FRYE COPY SYSTEMS (1988; SIC 3089,3955,3500) | OMEGA MOLD INC (1988-1990; SIC 3089) | NER DATA PRODUCTS (1990; SIC 3089,3955)",1983,1992,Civic / school / health,work/sanborn/S04810_1950.pdf
+1950-51,3,4800 BRIGHTON BLVD,S01361,on a current inventory,GRANNAN SAND + GRAVEL CO (1967-1990; SIC 2951) | BRANNAN SAND + GRAVEL CO (1968; SIC 2951),1966,1992,Civic / school / health,work/sanborn/S00742_1950.pdf
+1950-51,3,5131 RACE CT,S05643,on a current inventory,"PLASTMOLD INC (1983-1990; SIC 3079) | FRYE COPY SYSTEMS (1988; SIC 3089,3955,3500) | OMEGA MOLD INC (1988-1990; SIC 3089) | NER DATA PRODUCTS (1990; SIC 3089,3955)",1983,1992,Civic / school / health,work/sanborn/S04810_1950.pdf
 1950-51,4,1004 Elm ST,,pre-1960,ROCKY FORD-Steward Metal Works,1956,1956,Residential,work/sanborn/HF07599_1950.pdf
 1950-51,4,140 Cook,,pre-1960,genl mgr Colorado Iron Works,1914,1915,Residential,work/sanborn/HF03621_1950.pdf
 1950-51,4,157 S Lafayette,HF03967,pre-1960,Perfec BondingMtlCoGR & EttaV Fisher,1950,1950,Residential,work/sanborn/HF06656_1950.pdf
@@ -99,6 +99,6 @@ edition_to_open,volume_to_open,address,id,status,name,first_year,last_year,use_n
 1950-51,7,1379 W Alameda,,pre-1960,Surplus Tools & Commodities Wm D Cox & CF Hale,1950,1950,Residential,work/sanborn/HF06717_1950.pdf
 1950-51,7,1419 Morrison Rd,HF04468,pre-1960,Merz,1956,1956,Park / open space,work/sanborn/HF07569_1950.pdf
 1950-51,7,260 S Dale Ct,HF04026,pre-1960,Wilkerson Valve Co Inc,1950,1950,Residential,work/sanborn/HF06744_1950.pdf
-1950-51,7,360 S NAVAJO,S01459,on a current inventory,"MACLEAR MFG CO (1966-1983; SIC 3599) | HURT, ARTHUR Jy + CO (1967-1970; SIC 3729,3843) | AMERICAN INSULATING WINDOW (1988-1990; SIC 3089,3442,3499) | UNIVERSAL PATTERN CO (1988-1990; SIC 3089,3544,3565)",1966,1990,Civic / school / health,work/sanborn/S00861_1950.pdf
+1950-51,7,360 S NAVAJO,S01460,on a current inventory,"MACLEAR MFG CO (1966-1983; SIC 3599) | HURT, ARTHUR Jy + CO (1967-1970; SIC 3729,3843) | AMERICAN INSULATING WINDOW (1988-1990; SIC 3089,3442,3499) | UNIVERSAL PATTERN CO (1988-1990; SIC 3089,3544,3565)",1966,1990,Civic / school / health,work/sanborn/S00861_1950.pdf
 1950-51,7,4836 Bryant St,,pre-1960,Jesmer Ralph K,1950,1950,Residential,work/sanborn/HF06622_1950.pdf
 1950-51,7,4980 Elm,HF04473,pre-1960,Smaldone Sheet Metal Works,1956,1956,Residential,work/sanborn/HF07575_1950.pdf

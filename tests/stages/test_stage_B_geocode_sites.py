@@ -398,8 +398,6 @@ def test_frs_validation_table_is_coherent_and_matches_the_markdown():
     assert pd.read_csv(APP / 'geocoding_validation_frs.csv').equals(v)
 
 
-@pytest.mark.xfail(strict=True, reason='FINDING 5: 555 of the 1,000 sampled rows in geocoding_validation_addresspoints.csv are listings from '
-                                       'editions outside the published 13 (sample drawn 17 Oct, before config/editions.json); the README table is not a check of the published sites')
 def test_addresspoint_sample_is_drawn_from_the_published_editions():
     """The address-point check must sample the sites it vouches for: every sampled listing year is a complete edition."""
     A = pd.read_csv(RES / 'geocoding_validation_addresspoints.csv')

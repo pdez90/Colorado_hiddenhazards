@@ -21,7 +21,6 @@ S00275,1932,Burkhardt E & Sons Steel & Iron Works Co | Burkhardt Steel Co
 S00292,1913,Cole Chemical Co | SchmittWC
 S00306,1917,Hoover Chemical Laboratory
 S00314,1950,Colo Gear Co
-S00320,1950,"Colo Standard Upholstery Co M Nierenberg M Stein, I Lande"
 S00322,1915,BURKHARDT & SONS IRON & WIRE WORKS CO E
 S00324,1950,Colo Serum Co
 S00325,1920,Colorado Tanning & Fur Dressing Co
@@ -58,7 +57,7 @@ S00595,1935,South Denver Sheet Metal & Furnace Works
 S00611,1932,Sachs-Lawlor Co
 S00618,1910,The Denver Sheet Metal Works Co.
 S00629,1910,A-C Motors & Metal Works | Eagle Boiler Works | Prout Bros
-S00632,1939,"Square Deal Manufacturing Co | Square Deal Mfg Co WA. WA Jr, I, Trusella P Thomas"
+S00632,1939,"Colo Standard Upholstery Co M Nierenberg M Stein, I Lande | Square Deal Manufacturing Co | Square Deal Mfg Co WA. WA Jr, I, Trusella P Thomas"
 S00636,1912,Emery & Schultze | Willoughby Fred W
 S00637,1950,Stayput Clamp It Coupling Co
 S00655,1912,Berens C | Prout Bros
@@ -93,50 +92,50 @@ S01136,1956,Denver Rendering Co
 S01137,1956,Empire Petroleum Co
 S01138,1950,Timpte Bros Inc
 S01167,1950,Arapahoe Mfg Co
-S01260,1941,Mountain Peat Co
-S01263,1941,Cox Tolbert G | Nichols Carl J
-S01304,1913,Fox P
-S01319,1911,Factor H | Fox & Co Inc | Kobe! G F
-S01327,1910,CARD IRON WORKS CO C S | Card C S Iron Works Co | Card Iron Works Co C S
-S01396,1911,Pekrul Iron Works
-S01398,1911,Blue Front Carriage Works
-S01409,1950,Freeman• Freeman Inc
-S01435,1913,Gunther & Sons | Gunther Ernst
-S01442,1956,Heabler Sheet Metal Shop
-S01456,1910,O'Brien D L
-S01461,1891,"IRON WORKS, (E. Verdeckberg, E. Burkhardt and G. Winter,) manufacturers of wire, iron and | Nat'l Cash Register Co The | Smith Otis D"
-S01478,1956,Moyle's Sheet Metal & Furnace
-S01479,1929,Kohler-McLister Paint Co
-S01498,1914,Maclear Mfg Co
-S01512,1927,Capitol Foundry & Mfg Co | Denver Grinding Ball & Foundry Co
-S01517,1950,Metalcraft Welding Ii Fabricating Co
-S01521,1892,"Akerer, A,tailor, i8i2Champ Adams, Mrs Marie E J, mu­ Akron Carriage Works | Fish A E | Route Jas V"
-S01538,1941,Kenyon Iron Works
-S01539,1916,Peerless Alloy Co
-S01570,1950,Sechrist Albert Mfg Co The
-S01571,1932,Box Wm A Iron Works Co
-S01583,1892,Colorado Sheet Metal Works | Enz Iron Foundry Co | Grainger A P
-S01594,1911,Pioneer Iron & Wire Works Co
-S01601,1956,United Iron Foundry Inc
-S01602,1943,United Steel & Iron Works Co
-S01613,1950,De Brass & Copper Co Frank L Beeson & Fern Beeson
-S01644,1941,Van's Auto & Machine Shop
-S01765,1932,Norton Sheet Metal Works
-S01818,1956,Northwest Machine Works
-S01833,1939,General Machine Shop
-S01875,1932,Gobatti Manufacturing Co | Gobatti Manufacturing Co The
-S01880,1956,Teck's Ornamental Iron Shop
-S01894,1920,Mapes Ghas
-S01897,1935,Midwest Steel & Iron Works Co
-S01932,1927,Stanton Machine Shop | Stanton W E
-S02013,1920,"General Chemical Co | General Chemical Div Allied Chemical I, Dye Corp"
-S02030,1950,Continental Can Co Inc QCC Po Box
-S02036,1911,Globe Sheet Metal Works
-S02142,1916,Johnson J A
-S02156,1915,VERDECKBERG IRON & WIRE WORKS CO | Verdeckberg Iron & Wire Works Co
-S02243,1927,West & Crask
-S02270,1939,Western Sheet Metal Works
-S02314,1939,Brunton Lucius | iBrunton Lucins
+S01261,1941,Mountain Peat Co
+S01264,1941,Cox Tolbert G | Nichols Carl J
+S01305,1913,Fox P
+S01320,1911,Factor H | Fox & Co Inc | Kobe! G F
+S01328,1910,CARD IRON WORKS CO C S | Card C S Iron Works Co | Card Iron Works Co C S
+S01397,1911,Pekrul Iron Works
+S01399,1911,Blue Front Carriage Works
+S01410,1950,Freeman• Freeman Inc
+S01436,1913,Gunther & Sons | Gunther Ernst
+S01443,1956,Heabler Sheet Metal Shop
+S01457,1910,O'Brien D L
+S01462,1891,"IRON WORKS, (E. Verdeckberg, E. Burkhardt and G. Winter,) manufacturers of wire, iron and | Nat'l Cash Register Co The | Smith Otis D"
+S01479,1956,Moyle's Sheet Metal & Furnace
+S01480,1929,Kohler-McLister Paint Co
+S01499,1914,Maclear Mfg Co
+S01513,1927,Capitol Foundry & Mfg Co | Denver Grinding Ball & Foundry Co
+S01518,1950,Metalcraft Welding Ii Fabricating Co
+S01522,1892,"Akerer, A,tailor, i8i2Champ Adams, Mrs Marie E J, mu­ Akron Carriage Works | Fish A E | Route Jas V"
+S01539,1941,Kenyon Iron Works
+S01540,1916,Peerless Alloy Co
+S01571,1950,Sechrist Albert Mfg Co The
+S01572,1932,Box Wm A Iron Works Co
+S01584,1892,Colorado Sheet Metal Works | Enz Iron Foundry Co | Grainger A P
+S01595,1911,Pioneer Iron & Wire Works Co
+S01602,1956,United Iron Foundry Inc
+S01603,1943,United Steel & Iron Works Co
+S01614,1950,De Brass & Copper Co Frank L Beeson & Fern Beeson
+S01645,1941,Van's Auto & Machine Shop
+S01766,1932,Norton Sheet Metal Works
+S01819,1956,Northwest Machine Works
+S01834,1939,General Machine Shop
+S01876,1932,Gobatti Manufacturing Co | Gobatti Manufacturing Co The
+S01881,1956,Teck's Ornamental Iron Shop
+S01895,1920,Mapes Ghas
+S01898,1935,Midwest Steel & Iron Works Co
+S01933,1927,Stanton Machine Shop | Stanton W E
+S02014,1920,"General Chemical Co | General Chemical Div Allied Chemical I, Dye Corp"
+S02031,1950,Continental Can Co Inc QCC Po Box
+S02037,1911,Globe Sheet Metal Works
+S02143,1916,Johnson J A
+S02157,1915,VERDECKBERG IRON & WIRE WORKS CO | Verdeckberg Iron & Wire Works Co
+S02244,1927,West & Crask
+S02271,1939,Western Sheet Metal Works
+S02315,1939,Brunton Lucius | iBrunton Lucins
 S02338,1914,Her F M | Safety Seal Foundry & Mfg Co
 S02354,1910,Colorado Brass Foundry Co | Jacobi Plating Co | Oneida Chemical Co Inc
 S02356,1950,"FlexoveyorMfgCoGC Penn, EC HorneIt James Shields"
@@ -163,9 +162,9 @@ S03740,1950,Canon Welding Works Cl yde J Mer ris & Robert E Killion
 S04097,1885,Denver Variety Machine Shop
 S04154,1929,Acme Paint Works Inc
 S04202,1920,Hart Frank
-S04688,1927,Freeman Chemical Co
-S04757,1950,Davis Power Tools John W Davis & Leona B Graham
-S04791,1911,Fair Cornice Works Co The C W
-S05594,1910,Western Brass Works Co
-S06396,1950,Crucible Steel Co of America | Gourmet Shop Roy B Simons & Ina E Simons Goodrich BF Co
-S06445,1932,Niederhut Carriage Co
+S04687,1927,Freeman Chemical Co
+S04756,1950,Davis Power Tools John W Davis & Leona B Graham
+S04790,1911,Fair Cornice Works Co The C W
+S06391,1950,Crucible Steel Co of America | Gourmet Shop Roy B Simons & Ina E Simons Goodrich BF Co
+S06440,1932,Niederhut Carriage Co
+S07257,1910,Western Brass Works Co

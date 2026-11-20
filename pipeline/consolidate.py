@@ -292,26 +292,32 @@ def apply_scan_review(df, path=SCAN_REVIEW):
     R = pd.read_csv(path, dtype=str, keep_default_na=False)
     # the published listings file drops leading OCR punctuation from names ('+ LASTIC TOOLING' -> 'LASTIC TOOLING'): match on that form
     key = lambda v, p, n, s: (str(v), str(int(float(p))), re.sub(r"^[^A-Za-z0-9]+", "", str(n or '')).strip(), str(s or '').strip())
-    rv = {key(r.vol, r.page, r['name'], r.street): r for _, r in R.iterrows()}
+    # a firm printed twice on a page is reviewed twice under one key: keep every row, and give each of them its own listing
+    rvs = collections.defaultdict(list)
+    for _, r in R.iterrows(): rvs[key(r.vol, r.page, r['name'], r.street)].append(r)
     df['name_parsed'] = df['name']          # the name as parsed, before any review correction (row-conservation tests, audit)
-    drop, hit, match, left = [], set(), {}, collections.defaultdict(list)
+    drop, match, left, used = [], {}, collections.defaultdict(list), 0
     for i, v, p, n, s in zip(df.index, df.vol, df.page, df.name, df.street):
         k = key(v, p, n if isinstance(n, str) else '', s if isinstance(s, str) else '')
-        if k in rv and k not in hit: match[i] = rv[k]; hit.add(k)
+        if rvs.get(k): match[i] = rvs[k].pop(0); used += 1
         else: left[k[:2]].append((i, k[2], k[3]))
     # a re-read of the scans can spell a listing differently ('SHERIOAN' / 'SHERIDAN BLVD'; the page image of a rendered scan depends
     # on the PDF library's version): a reviewed row with no exact match takes the unmatched listing on the same page whose name and
     # street are the closest near match (name >= 80, name + street >= 165 of 200), one to one
+    # a second, street-led rule catches names the re-read garbled further ('DECORATIVE + COATING Syst;' for 'Syst;'): the same street
+    # (ratio or containment >= 90) and a name that still agrees (ratio or containment >= 70)
+    pr = lambda x, y: max(fuzz.ratio(x, y), fuzz.partial_ratio(x, y) if min(len(x), len(y)) >= 5 else 0)
     cand = []
-    for k, r in rv.items():
-        if k in hit: continue
+    for k, rows in rvs.items():
+        if not rows: continue
         for i, n, s in left.get(k[:2], []):
             a = fuzz.ratio(k[2].upper(), n.upper()); b = fuzz.ratio(k[3].upper(), s.upper()) if (k[3] or s) else 100
-            if a >= 80 and a + b >= 165: cand.append((a + b, i, k))
+            if a >= 80 and a + b >= 165: cand.append((1, a + b, i, k))
+            elif k[3] and s and pr(k[3].upper(), s.upper()) >= 90 and pr(k[2].upper(), n.upper()) >= 70: cand.append((0, a + b, i, k))
     near = 0
-    for _, i, k in sorted(cand, key=lambda c: -c[0]):
-        if i in match or k in hit: continue
-        match[i] = rv[k]; hit.add(k); near += 1
+    for _, _, i, k in sorted(cand, key=lambda c: (-c[0], -c[1])):
+        if i in match or not rvs[k]: continue
+        match[i] = rvs[k].pop(0); near += 1; used += 1
     for i in df.index:
         r = match.get(i)
         if r is None: continue
@@ -331,7 +337,8 @@ def apply_scan_review(df, path=SCAN_REVIEW):
             df.at[i, 'sic'] = [c for c in df.at[i, 'sic'] if c[:2] not in FE_MAJOR]
             if not df.at[i, 'sic']: df.at[i, 'sic_source'] = ''
     df.drop(index=drop, inplace=True)
-    print('scan review:', len(hit), 'of', len(R), 'rows matched (' + str(near) + ' as near matches on the same page);', len(drop), 'not listings dropped')
+    print('scan review:', used, 'of', len(R), 'rows matched (' + str(near) + ' as near matches on the same page);', len(drop), 'not listings dropped')
+    df.attrs['scan_review_unmatched'] = [(k[0], k[1], k[2], k[3]) for k, rows in rvs.items() for _ in rows]
     return df
 
 def hazard_flags(df):

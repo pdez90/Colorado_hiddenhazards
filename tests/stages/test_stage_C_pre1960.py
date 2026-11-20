@@ -603,7 +603,7 @@ def test_linked_sites_exist_in_the_published_site_file(S):
     sites = _csv(APP / 'sites.csv')
     assert S.dcm_site.notna().sum() > 0 and S.dcm_site.dropna().isin(sites.site_id).all() and not (S.dcm_site == '').any()
     assert _csv(APP / 'site_precursors.csv').site_id.isin(sites.site_id).all()
-    assert [int(S.link.notna().sum()), S.dcm_site.nunique()] == [305, 170]
+    assert [int(S.link.notna().sum()), S.dcm_site.nunique()] == [305, 169]
     assert S[S.link == 'address'].dcm_site.notna().all()
 
 

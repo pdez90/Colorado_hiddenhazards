@@ -17,6 +17,13 @@ def addr_key(street_n):
     if num is None: return str(street_n or '').strip()
     return ' '.join(x for x in (str(num),pre,core) if x)
 
+def loose_key(street_n):
+    """House number and street name only, without direction, type or unit: '6330 N WASHINGTON' and '6330 WASHINGTON ST STE 1' both give
+    '6330 WASHINGTON'. Used only for records within 250 m of the site's point (19 Nov 2026), where a direction printed on one side only
+    cannot point to the other half of the grid."""
+    num,core,pre,suf=parse_addr(str(street_n or ''))
+    return f"{num} {core}" if num is not None and core else ''
+
 def norm_street(s):
     from consolidate import norm_street as _ns   # consolidate -> sic_predict loads work/inv/sic_clf.pkl at import; keep it out of import time
     return _ns(s)
@@ -135,6 +142,10 @@ def match_inventory(sites,reg,review_path='data/raw/known_match_review.csv'):
     addr_ix=reg.groupby(['akey','zip5']).indices
     reg['city_u']=reg.city.fillna('').astype(str).str.upper().str.strip() if 'city' in reg else ''
     addr_city_ix=reg.groupby(['akey','city_u']).indices
+    # the same street address written differently: another ZIP or town name (a directory's 'GOLDEN' for an inventory's 'WHEAT RIDGE',
+    # 'AURORA' for 'COMMERCE CITY'), or the N/S/E/W printed on one side only; accepted when the record's point is within 250 m (19 Nov 2026)
+    reg['lkey']=reg.street_n.apply(loose_key)
+    loose_ix=reg.groupby('lkey').indices; loose_ix.pop('',None)   # positions in reg, as for addr_ix
     reviewed=collections.defaultdict(list)
     if review_path and os.path.exists(review_path) and 'src_id' in reg:
         rv=pd.read_csv(review_path,dtype=str,keep_default_na=False); rv=rv[rv.verdict=='same']
@@ -162,6 +173,8 @@ def match_inventory(sites,reg,review_path='data/raw/known_match_review.csv'):
         # either way, only a record within 250 m (or without a point): the key drops the street type, so '230 DOVER DR' and '230 DOVER RD'
         # share it, and an undirected Denver address ('450 KALAMATH') would otherwise claim a record on the other half of the grid
         am=[j for j in am if pd.isna(reg.lat.iat[j]) or hav(s.lat,s.lon,reg.lat.iat[j],reg.lon.iat[j])<=250]
+        lk=loose_key(s.address)
+        if lk: am+= [j for j in loose_ix.get(lk,[]) if j not in am and pd.notna(reg.lat.iat[j]) and hav(s.lat,s.lon,reg.lat.iat[j],reg.lon.iat[j])<=250]
         # author-reviewed matches (data/raw/known_match_review.csv): the same firm at the same address whose inventory point lies beyond
         # 250 m of ours, or whose name or address is spelled too differently for the rules; found by a search out to 400 m, 18 Nov 2026
         am+= [j for j in reviewed.get((ak, str(s.city or '').upper().strip()),[]) if j not in am]

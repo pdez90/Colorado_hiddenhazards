@@ -69,8 +69,8 @@
 | 1938 HOLC grade | D | 33622 | 3.4 | 36.7 | 16.0 | 4.1 | 36.1 | 3.7 | 18.6 | 5.7 | 100455 | 88816 | 40.1 | 63.5 | 57.2 |
 | 1938 HOLC grade | Not graded | 118465 | 2.5 | 28.5 | 13.0 | 2.7 | 46.9 | 6.4 | 603.6 | 9.5 | 106383 | 87096 | 44.9 | 63.5 | 54.7 |
 | All private rental units | all | 209345 | 2.8 | 34.1 | 14.7 | 4.1 | 39.8 | 4.5 | 22.6 | 8.3 | 104494 | 88966 | 40.0 | 64.6 | 60.7 |
-| Historical sites | More than 400 m from any | 101057 | 2.9 | 34.1 | 16.2 | 4.3 | 37.7 | 4.8 | 18.4 | 8.8 | 105028 | 89556 | 40.1 | 65.1 | 59.8 |
-| Historical sites | Within 400 m of a hidden site | 65851 | 2.4 | 33.1 | 13.0 | 3.7 | 42.7 | 5.1 | 52.0 | 8.3 | 103945 | 88068 | 41.0 | 64.8 | 61.1 |
+| Historical sites | More than 400 m from any | 101056 | 2.9 | 34.1 | 16.2 | 4.3 | 37.7 | 4.8 | 18.4 | 8.8 | 105028 | 89556 | 40.1 | 65.1 | 59.8 |
+| Historical sites | Within 400 m of a hidden site | 65852 | 2.4 | 33.1 | 13.0 | 3.7 | 42.7 | 5.1 | 52.0 | 8.3 | 103945 | 88068 | 41.0 | 64.8 | 61.1 |
 | Historical sites | Within 400 m of a known site | 81859 | 2.9 | 32.0 | 13.4 | 3.7 | 43.0 | 5.0 | 49.8 | 7.7 | 106392 | 89023 | 43.1 | 64.3 | 59.8 |
 | Historical sites | Within 400 m of a pre-1960 hazardous trade | 64616 | 2.2 | 31.7 | 10.9 | 3.6 | 46.0 | 5.5 | 539.4 | 8.9 | 107753 | 88859 | 45.3 | 64.4 | 62.7 |
 | Owner family size (rental units in Denver) | 1 unit | 24343 | 3.0 | 37.0 | 28.6 | 10.6 | 20.1 | 0.7 | 15.1 | 7.2 | 102162 | 91709 | 32.4 | 65.4 | 59.7 |
@@ -98,16 +98,16 @@
 
 | area | parcels | units | rental_units | pct_rental | pct_rental_owner_20plus | pct_rental_owner_100plus | pct_rental_company | pct_rental_out_of_state | pct_rental_public |
 |---|---|---|---|---|---|---|---|---|---|
-| Within 400 m of a hidden site (1965-92, no inventory) | 45162 | 110279 | 77804 | 70.6 | 82.6 | 74.1 | 71.9 | 40.5 | 3.8 |
-| Within 400 m of a known site (1965-92, on an inventory) | 46720 | 131086 | 98843 | 75.4 | 84.4 | 75.3 | 70.3 | 39.7 | 3.5 |
+| Within 400 m of a hidden site (1965-92, no inventory) | 45167 | 110193 | 77713 | 70.5 | 82.6 | 74.1 | 72.0 | 40.5 | 3.7 |
+| Within 400 m of a known site (1965-92, on an inventory) | 46721 | 131087 | 98843 | 75.4 | 84.4 | 75.3 | 70.3 | 39.7 | 3.5 |
 | Within 400 m of a pre-1960 hazardous trade | 32727 | 100182 | 77871 | 77.7 | 85.6 | 77.8 | 71.2 | 42.7 | 3.2 |
-| More than 400 m from any historical site | 139008 | 215289 | 104781 | 48.7 | 72.1 | 61.9 | 73.8 | 41.0 | 0.9 |
+| More than 400 m from any historical site | 139002 | 215283 | 104780 | 48.7 | 72.1 | 61.9 | 73.8 | 41.0 | 0.9 |
 | All of Denver | 216206 | 398200 | 232395 | 58.4 | 77.1 | 67.4 | 71.7 | 39.9 | 2.3 |
 
 | area | parcels | units | rental_units | pct_rental | pct_rental_owner_20plus | pct_rental_owner_100plus | pct_rental_company | pct_rental_out_of_state | pct_rental_public |
 |---|---|---|---|---|---|---|---|---|---|
-| Houses, condos, rowhouses, duplexes within 400 m of any historical site | 75046 | 77164 | 22040 | 28.6 | 10.1 | 4.3 | 31.0 | 15.8 | 1.4 |
-| Houses, condos, rowhouses, duplexes farther away | 137397 | 139017 | 28594 | 20.6 | 9.6 | 4.0 | 29.5 | 16.8 | 1.3 |
+| Houses, condos, rowhouses, duplexes within 400 m of any historical site | 75052 | 77170 | 22041 | 28.6 | 10.1 | 4.3 | 31.0 | 15.8 | 1.4 |
+| Houses, condos, rowhouses, duplexes farther away | 137391 | 139011 | 28593 | 20.6 | 9.6 | 4.0 | 29.5 | 16.8 | 1.3 |
 
 ## Tract associations (weighted by rental units; tracts with 50+ rental units)
 

@@ -33,25 +33,25 @@ Colorado State Business Directory,1941,narvdir_coloradoBus1941_part1; narvdir_co
 Colorado State Business Directory,1943,narv_dir_coloradoBus1943,155,188,184,14.9,,TRUE,"full volume scanned (CU Boulder Libraries digital collection); only the hazardous trades are extracted, so counts are not all manufacturing"
 Colorado State Business Directory,1950,narv_dir_coloradoBus_1950,260,381,381,24.1,,TRUE,"full volume; this edition uses numeric business codes, mapped directly, so more trades are captured than in the keyword-based editions"
 Colorado State Business Directory,1956,narv_dir_coloradoBus_1956,211,355,341,21.7,,TRUE,"full volume scanned (CU Boulder Libraries digital collection); only the hazardous trades are extracted, so counts are not all manufacturing"
-Directory of Colorado Manufacturers,1961,DCM_1961,56,1966,345,24.1,7.8,FALSE,"geographic section by county, pp. 2-88, with 31 pages missing (6-7, 21-23, 25, 27, 30, 37-49, 53-55, 61, 66-67, 70-71, 80, 87); pp. 37-49 cover Denver and El Paso counties"
-Directory of Colorado Manufacturers,1962,DCM_1962_part1_SIC; DCM_1962_part2,35,1867,404,31.9,12.7,FALSE,two files with 15-16 pages missing each; 7 of Denver County's 15 pages and all of Pueblo County absent
+Directory of Colorado Manufacturers,1961,DCM_1961,56,1966,345,24.1,7.6,FALSE,"geographic section by county, pp. 2-88, with 31 pages missing (6-7, 21-23, 25, 27, 30, 37-49, 53-55, 61, 66-67, 70-71, 80, 87); pp. 37-49 cover Denver and El Paso counties"
+Directory of Colorado Manufacturers,1962,DCM_1962_part1_SIC; DCM_1962_part2,35,1867,400,31.9,12.7,FALSE,two files with 15-16 pages missing each; 7 of Denver County's 15 pages and all of Pueblo County absent
 Directory of Colorado Manufacturers,1965,DCM_1965,51,3127,690,41.6,13.1,TRUE,geographic section complete as scanned
-Directory of Colorado Manufacturers,1966,DCM_1966_part1; DCM_1966_part2,54,2908,770,59.1,13.3,TRUE,geographic section complete as scanned
-Directory of Colorado Manufacturers,1967,DCM_1967_part1; DCM_1967_part2,68,2927,938,54,1,TRUE,geographic section complete as scanned
-Directory of Colorado Manufacturers,1968,DCM_1968_part1,70,3043,1025,56.4,0.7,TRUE,geographic section complete as scanned
-Directory of Colorado Manufacturers,1970,DCM_1970_part1; DCM_1970_part2,69,2842,974,59.4,1.9,TRUE,geographic section complete as scanned
+Directory of Colorado Manufacturers,1966,DCM_1966_part1; DCM_1966_part2,54,2908,768,59.1,13.3,TRUE,geographic section complete as scanned
+Directory of Colorado Manufacturers,1967,DCM_1967_part1; DCM_1967_part2,68,2927,938,54,0.9,TRUE,geographic section complete as scanned
+Directory of Colorado Manufacturers,1968,DCM_1968_part1,70,3043,1025,56.4,0.6,TRUE,geographic section complete as scanned
+Directory of Colorado Manufacturers,1970,DCM_1970_part1; DCM_1970_part2,69,2842,971,59.4,1.9,TRUE,geographic section complete as scanned
 Directory of Colorado Manufacturers,1971,DCM_1971,39,1625,680,76.8,0.2,FALSE,"single file ends at Louviers (Douglas County, p. 41); counties Eagle-Weld missing, incl. El Paso (Colorado Springs), Jefferson, Larimer, Mesa, Pueblo, Weld"
 Directory of Colorado Manufacturers,1973,DCM_1973_part1; DCM_1973_part2,79,3223,1215,69.9,0.7,TRUE,geographic section complete as scanned
 Directory of Colorado Manufacturers,1974,DCM_1974_part1; DCM_1974_part2,82,3310,1254,66.3,0.5,TRUE,geographic section complete as scanned
 Directory of Colorado Manufacturers,1976,DCM_1976,47,1901,810,80.9,0.5,FALSE,"single file ends with Denver (p. 51); counties after Denver missing (Douglas-Weld, incl. El Paso, Jefferson, Larimer, Mesa, Pueblo, Weld)"
-Directory of Colorado Manufacturers,1977,DCM_1977_part1; DCM_1977_part2,88,3482,1296,66.9,0.9,TRUE,geographic section complete as scanned
-Directory of Colorado Manufacturers,1979,DCM_1979,55,2199,850,71.2,1.7,FALSE,"single file ends with Colorado Springs (El Paso County, p. 60); Fremont-Weld missing, incl. Jefferson (Arvada, Golden, Lakewood, Wheat Ridge), Larimer, Mesa, Pueblo, Weld"
-Directory of Colorado Manufacturers,1980,DCM_1980_part1; DCM_1980_part2,98,3946,1439,70,0.6,TRUE,geographic section complete as scanned
-Directory of Colorado Manufacturers,1982,DCM_1982,57,2334,951,84.3,0.1,FALSE,single file ends with Denver (p. 62); counties after Denver missing
-Directory of Colorado Manufacturers,1983,DCM_1983_part1; DCM_1983_part2,111,4378,1650,74.7,0.7,TRUE,geographic section complete as scanned
-Directory of Colorado Manufacturers,1984,DCM_1961_copy,69,2326,878,55.8,3.1,FALSE,scan (file named DCM_1961_copy) ends with Denver on p. 73; all cities after Denver (Durango-Yuma) missing
-Directory of Colorado Manufacturers,1985,DCM_1985_part1; DCM_1985_part2,62,1853,651,45.4,4.5,FALSE,"part 1 has only pp. 2-10 (Berthoud-Brighton); cities before Berthoud and Broomfield-Delta (incl. Colorado Springs, Commerce City) missing; part 2 (Denver-Yuma) complete except p. 43"
-Directory of Colorado Manufacturers,1986,DCM_1986_part1; DCM_1986_part2,78,3178,1233,78,0.7,FALSE,"two files end with Fort Collins (p. 42 of part 2); cities Fort Morgan-Yuma missing, incl. Golden, Grand Junction, Greeley, Lakewood, Littleton, Longmont, Loveland, Pueblo, Wheat Ridge"
+Directory of Colorado Manufacturers,1977,DCM_1977_part1; DCM_1977_part2,88,3482,1295,66.9,0.9,TRUE,geographic section complete as scanned
+Directory of Colorado Manufacturers,1979,DCM_1979,55,2199,851,71.1,1.6,FALSE,"single file ends with Colorado Springs (El Paso County, p. 60); Fremont-Weld missing, incl. Jefferson (Arvada, Golden, Lakewood, Wheat Ridge), Larimer, Mesa, Pueblo, Weld"
+Directory of Colorado Manufacturers,1980,DCM_1980_part1; DCM_1980_part2,98,3946,1438,70,0.6,TRUE,geographic section complete as scanned
+Directory of Colorado Manufacturers,1982,DCM_1982,57,2335,954,84.1,0.1,FALSE,single file ends with Denver (p. 62); counties after Denver missing
+Directory of Colorado Manufacturers,1983,DCM_1983_part1; DCM_1983_part2,111,4381,1635,74.6,0.8,TRUE,geographic section complete as scanned
+Directory of Colorado Manufacturers,1984,DCM_1961_copy,69,2326,876,55.8,3.2,FALSE,scan (file named DCM_1961_copy) ends with Denver on p. 73; all cities after Denver (Durango-Yuma) missing
+Directory of Colorado Manufacturers,1985,DCM_1985_part1; DCM_1985_part2,62,1868,648,47.5,5.1,FALSE,"part 1 has only pp. 2-10 (Berthoud-Brighton); cities before Berthoud and Broomfield-Delta (incl. Colorado Springs, Commerce City) missing; part 2 (Denver-Yuma) complete except p. 43"
+Directory of Colorado Manufacturers,1986,DCM_1986_part1; DCM_1986_part2,78,3178,1231,78.3,0.8,FALSE,"two files end with Fort Collins (p. 42 of part 2); cities Fort Morgan-Yuma missing, incl. Golden, Grand Junction, Greeley, Lakewood, Littleton, Longmont, Loveland, Pueblo, Wheat Ridge"
 Directory of Colorado Manufacturers,1988,DCM_1988_part1; DCM_1988_part2; DCM_1988_part3; DCM_1988_part4,193,4168,1495,64.7,2.2,TRUE,geographic section complete as scanned
 Directory of Colorado Manufacturers,1990,DCM_1990_part1; DCM_1990_part2; DCM_1990_part3,129,4487,1570,77.6,5.5,TRUE,geographic section complete as scanned
 Directory of Colorado Manufacturers,1992,DCM_1992_part1; DCM_1992_part2; DCM_1992_part3,132,3874,1229,39.8,13.3,TRUE,geographic section complete as scanned

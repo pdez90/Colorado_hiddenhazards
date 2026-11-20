@@ -179,7 +179,7 @@ def test_share_of_same_street_matches_a_block_or_more_away_stays_small(S):
     """A geocoder regression that moves many sites along their streets (currently 39 of the 371 same-street matches are 100+ numbers away)."""
     d = S[S.parcel_match.isin(PM[1:3])].reset_index(drop=True)
     _, gap = _rule(d, "address")
-    assert gap.notna().all() and ((gap >= 100).sum(), len(d)) == (39, 371) and (gap >= 100).mean() <= 0.12
+    assert gap.notna().all() and ((gap >= 100).sum(), len(d)) == (39, 367) and (gap >= 100).mean() <= 0.12
 
 
 # ------------------------------------------------------------------------------------------------------------------
