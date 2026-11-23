@@ -370,3 +370,8 @@
   text: "About 12% of the 1965–92 hazardous sites and 20% of the pre-1960 trades now stand under housing; most of the later ones were small firms in residential buildings rather than conversions, and 66 carry no record in any inventory this project searched."
   check: "(lambda a, b: [100 * (a.use_now == 'Residential').mean(), 100 * (b.use_now == 'Residential').mean(), ((a.use_now == 'Residential') & (a.radar == 'Not on any list')).sum()])(load('data/results/site_fate/site_fate_denver.csv'), load('data/results/site_fate/site_fate_denver_pre1960.csv'))"
   expect: [12, 20, 66]
+- id: h_app_radium_code_only_listings
+  file: app/app.R
+  text: "Four 1965 listings are included only for SIC 1094 and name no such product"
+  check: "(lambda r: int(r[r.basis == 'code'].first_year.max()) if (r.basis == 'code').sum() == 4 and r[r.basis == 'code'].first_year.min() == 1965 else -1)(load('app/data/radium_firms.csv'))"
+  expect: 1965

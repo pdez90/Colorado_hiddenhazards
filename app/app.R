@@ -769,7 +769,7 @@ ui <- page_navbar(id = "nav",
                   "(CU Boulder Libraries). Placed at a street address only where today's numbering applies (Denver from 1891, larger cities from 1910); otherwise at the town centre."),
           tags$dt("Radium & uranium firms"),
           tags$dd("Firms in either directory whose name or products mention radium, uranium, vanadium or carnotite, or carry SIC 1094: Colorado's radium refiners and 'radium water' spas of the 1910s\u201320s, ",
-                  "and later uranium and vanadium mills. Detection-instrument makers are excluded. Most are placed at the town only."),
+                  "and later uranium and vanadium mills. Detection-instrument makers are excluded. Most are placed at the town only. Four 1965 listings are included only for SIC 1094 and name no such product; their popups say so, since some (such as a Denver mining company at 2138 Champa) are offices rather than works."),
           tags$dt("Firms at this site (popups)"),
           tags$dd("All manufacturers the directories list at the site, linked across editions, with the street address each was listed at: a site is a cluster of listings within 30 m of one another, not a parcel, so next-door premises appear as one site. What the directory says they made, year established and employment class are as printed (uncorrected OCR)."),
           tags$dt("Industrial corridors (500 m cells)"),
@@ -1067,13 +1067,18 @@ server <- function(input, output, session) {
     h
   })
   # radium & uranium: Colorado's radium industry (1910s-20s), 'radium cure' waters and baths, and uranium/vanadium mills; a sidebar filter like the sectors
-  observe({ req(input$map_zoom); px <- leafletProxy("map") |> clearGroup("Radium & uranium firms"); if (is.null(radium) || !isTRUE(input$radium)) return()
+  observe({ req(input$map_zoom); px <- leafletProxy("map") |> clearGroup("Radium & uranium firms") |> removeControl("radlegend"); if (is.null(radium) || !isTRUE(input$radium)) return()
     rp <- radium[!is.na(radium$lat) & radium$last_year >= input$yrs[1] & radium$first_year <= input$yrs[2], ]; if (!nrow(rp)) return()
+    by_code <- if ("basis" %in% names(rp)) rp$basis %in% "code" else rep(FALSE, nrow(rp))
+    px <- px |> addLegend("topleft", colors = c("#ffd400", "#ffe97f"), labels = c("Street address", "Town only"), opacity = 1, layerId = "radlegend",
+        title = "&#9762; Radium, uranium &amp; vanadium firms<br><small>yellow circle, black ring</small>")
     px |> addCircleMarkers(data = rp, ~lon, ~lat, radius = ifelse(rp$precision == "street", 8, 6), color = "#000000", weight = 2.5,
         fillColor = "#ffd400", fillOpacity = ifelse(rp$precision == "street", 0.95, 0.6),
-        popup = sprintf("<b>&#9762; %s</b><br>%s%s · listed %s<br>%s<br><i>Location: %s</i><br><small>Source: %s</small>",
+        popup = sprintf("<b>&#9762; %s</b><br>%s%s · listed %s<br>%s%s<br><i>Location: %s</i><br><small>Source: %s</small>",
                         esc(rp$name), ifelse(is.na(rp$street) | rp$street == "", "", paste0(esc(rp$street), ", ")), esc(rp$city), esc(rp$years),
-                        esc(rp$what), ifelse(rp$precision == "street", "street address", "town only (no usable street address)"), esc(rp$source)),
+                        esc(rp$what),
+                        ifelse(by_code, "<small>Included only for its industry code, SIC 1094 (uranium, radium and vanadium ores): the listing names no radium or uranium product, so the address may be an office rather than a mill or works.</small>", ""),
+                        ifelse(rp$precision == "street", "street address", "town only (no usable street address)"), esc(rp$source)),
         label = ~paste0("☢ ", name), group = "Radium & uranium firms", options = pathOptions(pane = "haz")) })
   observe({
     h <- sel_hist(); px <- leafletProxy("map") |> clearGroup("Pre-1960 hazardous trades") |> removeControl("histlegend")
