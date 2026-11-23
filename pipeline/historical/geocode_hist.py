@@ -96,7 +96,7 @@ def apply_review(df, rv, town_level=False, source=''):
 
 def main():
     df = pd.read_csv('work/hist/hist_hazard_entries.csv', dtype={'street': str})
-    df['entry_src'] = np.where(df.town.fillna('') == '', 'notown', 'town')   # how the entry came out of the parser (used by link_hist.py)
+    df['entry_src'] = np.where(df.town.astype(object).fillna('') == '', 'notown', 'town')   # how the entry came out of the parser (used by link_hist.py)
     if os.path.exists(REVIEW):
         rv = pd.read_csv(REVIEW, dtype=str); rv['year'] = rv.year.astype(int)
         n0 = len(df); df = apply_review(df, rv, source='street_review.csv')
@@ -109,7 +109,7 @@ def main():
     # (town_fix), the firm's own printed address (street_fix; 'none' = town level) and the verdict; rows are keyed with town = ''.
     # They are applied last and sorted after the listings that had a town, so that where one becomes a copy of an already
     # reviewed listing of the same edition, the reviewed listing is the one kept.
-    df['town'] = df.town.fillna('')
+    df['town'] = df.town.astype(object).fillna('')
     if os.path.exists(NOTOWN_REVIEW):
         nv = pd.read_csv(NOTOWN_REVIEW, dtype=str).fillna(''); nv['year'] = nv.year.astype(int); nv['town'] = ''
         df = df.assign(_nt=(df.town == '')).sort_values('_nt', kind='stable').drop(columns='_nt')
@@ -121,7 +121,7 @@ def main():
     # an 1870s entry that carries its own address at the end of the name ('Kingsley, H. M., 404 Lawrence') had been given the next
     # entry's address by the parser; the printed address replaces it (FINDING 5 of 12 Nov 2026; 20 Nov 2026)
     m = df.name.astype(str).str.extract(r",\s*(\d{2,4})\s+([A-Z][a-z]+)\.?$")
-    own = m[0].notna() & [not str(a).startswith(str(b)) for a, b in zip(df.street.fillna(''), m[0])]
+    own = m[0].notna() & pd.Series([not str(a).startswith(str(b)) for a, b in zip(df.street.astype(object).fillna(''), m[0])], index=df.index)
     df.loc[own, 'street'] = (m[0] + ' ' + m[1])[own]
     df.loc[own, 'name'] = df.loc[own, 'name'].str.replace(r",\s*\d{2,4}\s+[A-Z][a-z]+\.?$", '', regex=True)
     print('address printed in the name used for', int(own.sum()), 'entries')
